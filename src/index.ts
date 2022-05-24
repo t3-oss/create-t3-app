@@ -1,5 +1,5 @@
 import prompts from "prompts";
-import { createProject } from "./helpers/create";
+import createProject from "./helpers/create";
 
 const questions = [
   {
@@ -38,4 +38,6 @@ const questions = [
   }
 
   createProject(name);
+
+  process.exit(0);
 })();
