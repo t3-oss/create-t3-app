@@ -1,4 +1,5 @@
 import prompts from "prompts";
+import { createProject } from "./helpers/create";
 
 const questions = [
   {
@@ -31,6 +32,10 @@ const questions = [
   const { name, language } = response;
 
   if (language === "javascript") {
-    console.log("Wrong answer.");
+    console.log("Wrong answer. Using TypeScript instead.");
+  } else {
+    console.log(`Good choice!`);
   }
+
+  createProject(name);
 })();
