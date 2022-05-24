@@ -37,13 +37,14 @@ const questions = [
 
   if (language === "javascript") {
     console.log(
-      chalk.bold.underline(
-        "Wrong answer. Using",
-        chalk.blue("TypeScript ") + "instead.\n\n"
-      )
+      "\n" +
+        chalk.bold.underline(
+          "Wrong answer. Using",
+          chalk.blue("TypeScript ") + "instead.\n\n"
+        )
     );
   } else {
-    console.log(chalk.bold("Good choice!"));
+    console.log(chalk.bold.underline("Good choice!"));
   }
 
   createProject(name);
