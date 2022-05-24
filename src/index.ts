@@ -43,7 +43,7 @@ const questions = [
       )
     );
   } else {
-    console.log(`Good choice!`);
+    console.log(chalk.bold("Good choice!"));
   }
 
   createProject(name);
