@@ -1,4 +1,4 @@
-<h1 align="center">Create Nex App</h1>
+<h1 align="center">Create t3 App</h1>
 
 Scaffold a starting project using the [t3 stack](https://init.tips) using this interactice CLI.
 
