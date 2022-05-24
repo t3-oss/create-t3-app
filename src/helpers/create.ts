@@ -9,14 +9,15 @@ const createProject = (projectName: string) => {
   const pkgManager = getPkgManager();
 
   if (fs.existsSync(projectDir)) {
-    throw new Error(`${projectName} already exists.`);
+    console.log(`${projectName} already exists!`);
+    process.exit(1);
   }
 
-  fs.copy(srcDir, projectDir);
+  fs.copySync(srcDir, projectDir);
 
   console.log(`${projectName} created successfully.`);
   console.log(`Next steps:`);
-  console.log(`- cd ${name}`);
+  console.log(`- cd ${projectName}`);
   console.log(`- ${pkgManager} install`);
 
   if (pkgManager === "yarn") {

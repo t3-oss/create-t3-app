@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex flex-col items-center justify-center w-1/2 min-h-screen mx-auto">
         <h1 className="font-extrabold text-center text-7xl">
-          Create <span className="text-blue-500">Nex</span> App
+          Create <span className="text-blue-500">t3</span> App
         </h1>
 
         <div className="w-fit">
