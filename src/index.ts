@@ -28,4 +28,9 @@ const questions = [
   const response: { name: string; language: string } = await prompts(
     questions as any
   );
+  const { name, language } = response;
+
+  if (language === "javascript") {
+    console.log("Wrong answer.");
+  }
 })();
