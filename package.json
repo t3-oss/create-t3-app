@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Create web application with the t3 stack",
   "main": "index.js",
-  "bin": {
-    "create-t3-app": "./dist/index.js"
-  },
   "scripts": {
     "build": "rm -rf dist && tsc && chmod +x dist/index.js",
     "start": "npm run build && node dist/index.js"
@@ -37,5 +34,8 @@
     "fs-extra": "^10.1.0",
     "prompts": "^2.4.2",
     "rimraf": "3.0.0"
+  },
+  "bin": {
+    "create-t3-app": "./dist/index.js"
   }
 }
