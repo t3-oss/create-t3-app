@@ -1,4 +1,6 @@
+import chalk from "chalk";
 import prompts from "prompts";
+
 import createProject from "./helpers/create";
 
 const questions = [
@@ -32,7 +34,12 @@ const questions = [
   const { name, language } = response;
 
   if (language === "javascript") {
-    console.log("Wrong answer. Using TypeScript instead.");
+    console.log(
+      chalk.bold.underline(
+        "Wrong answer. Using",
+        chalk.blue("TypeScript ") + "instead.\n\n"
+      )
+    );
   } else {
     console.log(`Good choice!`);
   }
