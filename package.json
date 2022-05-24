@@ -12,6 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.35",
+    "@types/prompts": "^2.0.14",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
   }
 }
