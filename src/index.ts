@@ -44,7 +44,7 @@ const questions = [
         )
     );
   } else {
-    console.log(chalk.bold.underline("Good choice!"));
+    console.log(chalk.bold.underline("\nGood choice!"));
   }
 
   createProject(name);
