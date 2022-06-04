@@ -1,6 +1,6 @@
 <h1 align="center">Create t3 App</h1>
 
-Scaffold a starting project using the [t3 stack](https://init.tips) using this interactice CLI.
+Scaffold a starting project using the [t3 stack](https://init.tips) using this interactive CLI.
 
 ## Usage
 
@@ -18,3 +18,4 @@ pnpm create t3-app@latest
 - [tRPC](https://trpc.io)
 - [TailwindCSS](https://tailwindcss.com)
 - [TypeScript](https://typescriptlang.org)
+- [Prisma](https://prisma.io)
