@@ -3,8 +3,10 @@ import fs from "fs-extra";
 import getPkgManager from "./getPkgManager";
 import chalk from "chalk";
 
-const createProject = (projectName: string) => {
-  const srcDir = `${path.resolve(__dirname)}/../../template`;
+const createProject = (projectName: string, usingPrisma: boolean) => {
+  const srcDir = `${path.resolve(__dirname)}/../../${
+    usingPrisma ? "template-prisma" : "template"
+  }`;
   const projectDir = `./${projectName}`;
 
   const pkgManager = getPkgManager();
@@ -25,10 +27,12 @@ const createProject = (projectName: string) => {
   console.log("  cd " + chalk.cyan.bold(projectName));
   console.log(`  ${pkgManager} install`);
 
-  if (pkgManager === "yarn") {
-    console.log("  yarn dev");
-  } else if (pkgManager === "pnpm") {
-    console.log("  pnpm dev");
+  if (usingPrisma) {
+    console.log(`  ${pkgManager} prisma db push`);
+  }
+
+  if (pkgManager !== "npm") {
+    console.log(`  ${pkgManager} dev`);
   } else {
     console.log("  npm run dev");
   }
