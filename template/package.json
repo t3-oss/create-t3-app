@@ -17,6 +17,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-query": "^3.39.0",
+    "superjson": "^1.9.1",
     "zod": "^3.16.0"
   },
   "devDependencies": {
