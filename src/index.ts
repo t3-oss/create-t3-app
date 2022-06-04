@@ -27,13 +27,21 @@ const questions = [
     ],
     initial: 0,
   },
+  {
+    type: "toggle",
+    name: "usingPrisma",
+    message: "Would you like to use Prisma?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  },
 ];
 
+type Response = { name: string; language: string; usingPrisma: boolean };
+
 (async () => {
-  const response: { name: string; language: string } = await prompts(
-    questions as any
-  );
-  const { name, language } = response;
+  const response: Response = await prompts(questions as any);
+  const { name, language, usingPrisma } = response;
 
   if (language === "javascript") {
     console.log(
@@ -47,7 +55,7 @@ const questions = [
     console.log(chalk.bold.underline("\nGood choice!"));
   }
 
-  createProject(name);
+  createProject(name, usingPrisma);
 
   process.exit(0);
 })();
