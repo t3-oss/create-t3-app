@@ -55,7 +55,7 @@ type Response = { name: string; language: string; usingPrisma: boolean };
     console.log(chalk.bold.underline("\nGood choice!"));
   }
 
-  createProject(name, usingPrisma);
+  await createProject(name, usingPrisma);
 
   process.exit(0);
 })();
