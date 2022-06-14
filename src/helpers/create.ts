@@ -29,7 +29,7 @@ const createProject = async (projectName: string, usingPrisma: boolean) => {
   await fs.copy(srcDir, projectDir);
 
   try {
-    await execa("git init");
+    await execa("git init", { cwd: projectDir });
     logger.success(`${chalk.bold.green("Finished")} initializing git`);
   } catch (error) {
     logger.error(`${chalk.bold.red("Failed: ")} could not initialize git`);
