@@ -1,9 +1,10 @@
-import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
-import fs from "fs-extra";
-import getPkgManager from "./getPkgManager";
 import chalk from "chalk";
+import { exec } from "child_process";
+import fs from "fs-extra";
+import path from "path";
+import { promisify } from "util";
+import getPkgManager from "./getPkgManager";
+import { logger } from "./logger";
 
 const execa = promisify(exec);
 
@@ -18,10 +19,10 @@ const createProject = async (projectName: string, usingPrisma: boolean) => {
 
   const pkgManager = getPkgManager();
 
+  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}`);
+
   if (fs.existsSync(projectDir)) {
-    console.log(
-      chalk.redBright.bold(projectName) + chalk.red(" already exists.")
-    );
+    logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
     process.exit(1);
   }
 
@@ -29,9 +30,9 @@ const createProject = async (projectName: string, usingPrisma: boolean) => {
 
   try {
     await execa("git init");
-    console.log(`${chalk.cyan.green("Finished")} initializing git`);
+    logger.success(`${chalk.bold.green("Finished")} initializing git`);
   } catch (error) {
-    console.log(`${chalk.red.bold("Failed: ")} could not initialize git`);
+    logger.error(`${chalk.bold.red("Failed: ")} could not initialize git`);
   }
 
   await fs.rename(
@@ -39,22 +40,20 @@ const createProject = async (projectName: string, usingPrisma: boolean) => {
     path.join(projectDir, ".gitignore")
   );
 
-  console.log(
-    chalk.cyan.bold(projectName) + chalk.green(" created successfully.")
-  );
+  logger.success(`${chalk.cyan.bold(projectName)} created successfully.`);
 
-  console.log("Next steps:");
-  console.log("  cd " + chalk.cyan.bold(projectName));
-  console.log(`  ${pkgManager} install`);
+  logger.info("Next steps:");
+  logger.info(` cd ${chalk.cyan.bold(projectName)}`);
+  logger.info(`  ${pkgManager} install`);
 
   if (usingPrisma) {
-    console.log(`  ${pkgManager} prisma db push`);
+    logger.info(`  ${pkgManager} prisma db push`);
   }
 
   if (pkgManager !== "npm") {
-    console.log(`  ${pkgManager} dev`);
+    logger.info(`  ${pkgManager} dev`);
   } else {
-    console.log("  npm run dev");
+    logger.info("  npm run dev");
   }
 };
 
