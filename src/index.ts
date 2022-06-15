@@ -5,55 +5,65 @@ import prompts from "prompts";
 
 import createProject from "./helpers/create";
 
-const questions = [
+const promptOne = [
   {
     type: "text",
     name: "name",
-    message: "What is your project named?",
-  },
-  {
-    type: "select",
-    name: "language",
-    message: "Do you want to use JavaScript or TypeScript?",
-    choices: [
-      {
-        title: "JavaScript",
-        value: "javascript",
-      },
-      {
-        title: "TypeScript",
-        value: "typescript",
-      },
-    ],
-    initial: 0,
-  },
-  {
-    type: "toggle",
-    name: "usingPrisma",
-    message: "Would you like to use Prisma?",
-    initial: true,
-    active: "Yes",
-    inactive: "No",
+    message: "What will your project be called?",
   },
 ];
 
-type Response = { name: string; language: string; usingPrisma: boolean };
+const promptTwo = {
+  type: "select",
+  name: "language",
+  message: "Will you be using JavaScript or TypeScript?",
+  choices: [
+    {
+      title: "JavaScript",
+      value: "javascript",
+    },
+    {
+      title: "TypeScript",
+      value: "typescript",
+    },
+  ],
+  initial: 0,
+};
+
+const promptThree = {
+  type: "toggle",
+  name: "usingPrisma",
+  message: "Would you like to use Prisma?",
+  initial: true,
+  active: "Yes",
+  inactive: "No",
+};
 
 (async () => {
-  const response: Response = await prompts(questions as any);
-  const { name, language, usingPrisma } = response;
+  const returnValues = await Promise.all([
+    await prompts(promptOne as any),
+    await prompts(promptTwo as any),
+  ]);
+
+  const language = returnValues[1].language;
+  const name = returnValues[0].name;
+
+  console.log(language, name);
 
   if (language === "javascript") {
     console.log(
       "\n" +
         chalk.bold.underline(
           "Wrong answer. Using",
-          chalk.blue("TypeScript ") + "instead.\n\n"
-        )
+          chalk.blue("TypeScript ") + "instead.\n\n",
+        ),
     );
   } else {
     console.log(chalk.bold.underline("\nGood choice!"));
   }
+
+  const thirdPrompt = await prompts(promptThree as any);
+  const usingPrisma = thirdPrompt.usingPrisma;
 
   await createProject(name, usingPrisma);
 
