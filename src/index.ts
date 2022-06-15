@@ -41,8 +41,8 @@ const promptThree = {
 
 (async () => {
   const returnValues = await Promise.all([
-    await prompts(promptOne as any),
-    await prompts(promptTwo as any),
+    prompts(promptOne as any),
+    prompts(promptTwo as any),
   ]);
 
   const language = returnValues[1].language;
