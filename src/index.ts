@@ -38,7 +38,7 @@ const promptThree = {
 };
 
 (async () => {
-  console.log(chalk.red("Welcome to the create-t3-app project!"));
+  console.log(`Welcome to the ${chalk.red.bold("create-t3-app")} project!`);
 
   const { name }: { name: string } = await prompts(promptOne as any);
   const { language }: { language: string } = await prompts(promptTwo as any);
