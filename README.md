@@ -26,3 +26,4 @@ pnpm create t3-app@latest
 - [TailwindCSS](https://tailwindcss.com)
 - [TypeScript](https://typescriptlang.org)
 - [Prisma](https://prisma.io)
+- [Next-Auth](https://next-auth.js.org)
