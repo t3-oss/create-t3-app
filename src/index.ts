@@ -5,13 +5,11 @@ import prompts from "prompts";
 
 import createProject from "./helpers/create";
 
-const promptOne = [
-  {
-    type: "text",
-    name: "name",
-    message: "What will your project be called?",
-  },
-];
+const promptOne = {
+  type: "text",
+  name: "name",
+  message: "What will your project be called?",
+};
 
 const promptTwo = {
   type: "select",
@@ -40,30 +38,22 @@ const promptThree = {
 };
 
 (async () => {
-  const returnValues = await Promise.all([
-    prompts(promptOne as any),
-    prompts(promptTwo as any),
-  ]);
+  console.log(chalk.red("Welcome to the create-t3-app project!"));
 
-  const language = returnValues[1].language;
-  const name = returnValues[0].name;
-
-  console.log(language, name);
+  const { name }: { name: string } = await prompts(promptOne as any);
+  const { language }: { language: string } = await prompts(promptTwo as any);
 
   if (language === "javascript") {
     console.log(
-      "\n" +
-        chalk.bold.underline(
-          "Wrong answer. Using",
-          chalk.blue("TypeScript ") + "instead.\n\n",
-        ),
+      `\n Wrong answer... Using ${chalk.blue("TypeScript")} instead. \n\n`
     );
   } else {
-    console.log(chalk.bold.underline("\nGood choice!"));
+    console.log(`\n Good choice! Using ${chalk.blue(language)} \n\n`);
   }
 
-  const thirdPrompt = await prompts(promptThree as any);
-  const usingPrisma = thirdPrompt.usingPrisma;
+  const { usingPrisma }: { usingPrisma: boolean } = await prompts(
+    promptThree as any
+  );
 
   await createProject(name, usingPrisma);
 
