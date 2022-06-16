@@ -5,9 +5,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Next-auth will not work with SQLite, so default here is postgresql.
+// Next-auth will not work with SQLite, so default here is mysql.
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
