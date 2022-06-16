@@ -37,6 +37,15 @@ const promptThree = {
   inactive: "No",
 };
 
+const promptFour = {
+  type: "toggle",
+  name: "useNextAuth",
+  message: "Would you like to use next-auth?",
+  initial: true,
+  active: "Yes",
+  inactive: "No",
+};
+
 (async () => {
   console.log(`Welcome to the ${chalk.red.bold("create-t3-app")} project!`);
 
@@ -55,7 +64,14 @@ const promptThree = {
     promptThree as any
   );
 
-  await createProject(name, usingPrisma);
+  let usingNextAuth = false;
+
+  if (usingPrisma) {
+    const { useNextAuth } = await prompts(promptFour as any);
+    usingNextAuth = useNextAuth;
+  }
+
+  await createProject(name, usingPrisma, usingNextAuth);
 
   process.exit(0);
 })();

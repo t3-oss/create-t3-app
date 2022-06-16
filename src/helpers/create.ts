@@ -8,11 +8,19 @@ import { logger } from "./logger";
 
 const execa = promisify(exec);
 
-const createProject = async (projectName: string, usingPrisma: boolean) => {
+const createProject = async (
+  projectName: string,
+  usingPrisma: boolean,
+  usingNextAuth: boolean
+) => {
   const srcDir = path.join(
     __dirname,
     "../../",
-    usingPrisma ? "template-prisma" : "template"
+    usingPrisma
+      ? usingNextAuth
+        ? "template-prisma-auth"
+        : "template-prisma"
+      : "template"
   );
 
   const projectDir = path.resolve(process.cwd(), projectName);
