@@ -55,7 +55,13 @@ const createProject = async (
   logger.info(`  ${pkgManager} install`);
 
   if (usingPrisma) {
-    logger.info(`  ${pkgManager} prisma db push`);
+    if (pkgManager !== "npm") {
+      logger.info(`  ${pkgManager} prisma db push`);
+    }
+    else {
+      logger.info(`  npx prisma db push`);
+    }
+
   }
 
   if (pkgManager !== "npm") {
