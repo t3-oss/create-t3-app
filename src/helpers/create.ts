@@ -27,8 +27,9 @@ const createProject = async (
 
   const pkgManager = getPkgManager();
 
-  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}`);
-
+  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
+  logger.info(`Scaffolding in: ${projectDir}\n`)
+  
   if (fs.existsSync(projectDir)) {
     logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
     process.exit(1);
