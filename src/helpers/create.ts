@@ -23,7 +23,10 @@ const createProject = async (
       : "template"
   );
 
-  const projectDir = path.resolve(process.cwd(), projectName);
+  const projectDir = path.resolve(
+    process.cwd(),
+    !!projectName ? projectName : "t3-app"
+  );
 
   const pkgManager = getPkgManager();
 
@@ -57,11 +60,9 @@ const createProject = async (
   if (usingPrisma) {
     if (pkgManager !== "npm") {
       logger.info(`  ${pkgManager} prisma db push`);
-    }
-    else {
+    } else {
       logger.info(`  npx prisma db push`);
     }
-
   }
 
   if (pkgManager !== "npm") {

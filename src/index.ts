@@ -49,7 +49,7 @@ const promptFour = {
 (async () => {
   console.log(chalk.red("Welcome to the create-t3-app !"));
 
-  const { name = 'default name' }: { name: string } = await prompts(promptOne as any);
+  const { name }: { name: string } = await prompts(promptOne as any);
   const { language }: { language: string } = await prompts(promptTwo as any);
 
   if (language === "javascript") {
