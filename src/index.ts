@@ -66,7 +66,7 @@ const promts: PromptObject[] = [
 (async () => {
   console.log(chalk.red("Welcome to the create-t3-app !"));
 
-  const { name, packages } = await prompts(promts);
+  const { name, packages } = await prompts(promts) as { name: string, packages: string[]};
 
   // TODO: It should probably be createProject's responsiblity to interpret the `packages` array
   const usingPrisma = packages.some((p: string) => p === "prisma");
