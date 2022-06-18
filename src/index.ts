@@ -41,7 +41,7 @@ const promts: PromptObject[] = [
       } else {
         console.log(chalk.green("Good choice! Using TypeScript!"));
       }
-      return "typescript";
+      return;
     }
   },
   {
