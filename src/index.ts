@@ -1,75 +1,75 @@
 #!/usr/bin/env node
 
 import chalk from "chalk";
-import prompts from "prompts";
+import prompts, { type PromptObject } from "prompts";
 
 import createProject from "./helpers/create";
 
-const promptOne = {
-  type: "text",
-  name: "name",
-  message: "What will your project be called?",
-};
+const DEFAULT_PROJECT_NAME = "my-t3-app";
 
-const promptTwo = {
-  type: "select",
-  name: "language",
-  message: "Will you be using JavaScript or TypeScript?",
-  choices: [
-    {
-      title: "JavaScript",
-      value: "javascript",
-    },
-    {
-      title: "TypeScript",
-      value: "typescript",
-    },
-  ],
-  initial: 0,
-};
-
-const promptThree = {
-  type: "toggle",
-  name: "usingPrisma",
-  message: "Would you like to use Prisma?",
-  initial: true,
-  active: "Yes",
-  inactive: "No",
-};
-
-const promptFour = {
-  type: "toggle",
-  name: "useNextAuth",
-  message: "Would you like to use next-auth?",
-  initial: true,
-  active: "Yes",
-  inactive: "No",
-};
+const promts: PromptObject[] = [
+  {
+    name: "name",
+    type: "text",
+    message: "What will your project be called?",
+    format: (name: string) => {
+      if (name === "") {
+        console.log(chalk.yellow(`Using default name: ${DEFAULT_PROJECT_NAME}`));
+        return DEFAULT_PROJECT_NAME;
+      }
+      return name.trim();
+     },
+  },
+  {
+    name: "language",
+    type: "select",
+    message: "Will you be using JavaScript or TypeScript?",
+    instructions: false,
+    choices: [
+      {
+        title: "JavaScript",
+        value: "javascript",
+      },
+      {
+        title: "TypeScript",
+        value: "typescript",
+      },
+    ],
+    format: (language: string) => {
+      if (language === "javascript") {
+        console.log(chalk.red("Wrong answer, using TypeScript instead..."));
+      } else {
+        console.log(chalk.green("Good choice! Using TypeScript!"));
+      }
+      return "typescript";
+    }
+  },
+  {
+    name: "packages",
+    type: "multiselect",
+    message: "Which packages will you be using?",
+    hint: "- Space to select, Return to submit",
+    instructions: false,
+    choices: [
+      {
+        title: "Next Auth",
+        value: "next-auth",
+      },
+      {
+        title: "Prisma",
+        value: "prisma",
+      },
+    ]
+  }
+];
 
 (async () => {
   console.log(chalk.red("Welcome to the create-t3-app !"));
 
-  const { name }: { name: string } = await prompts(promptOne as any);
-  const { language }: { language: string } = await prompts(promptTwo as any);
+  const { name, packages } = await prompts(promts);
 
-  if (language === "javascript") {
-    console.log(
-      `\n Wrong answer... Using ${chalk.blue("TypeScript")} instead. \n\n`
-    );
-  } else {
-    console.log(`\n Good choice! Using ${chalk.blue(language)} \n\n`);
-  }
-
-  const { usingPrisma }: { usingPrisma: boolean } = await prompts(
-    promptThree as any
-  );
-
-  let usingNextAuth = false;
-
-  if (usingPrisma) {
-    const { useNextAuth } = await prompts(promptFour as any);
-    usingNextAuth = useNextAuth;
-  }
+  const usingPrisma = packages.some((p: string) => p === "prisma");
+  const usingNextAuth = packages.some((p: string) => p === "next-auth");
 
   await createProject(name, usingPrisma, usingNextAuth);
 
