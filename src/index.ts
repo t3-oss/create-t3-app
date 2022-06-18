@@ -68,6 +68,7 @@ const promts: PromptObject[] = [
 
   const { name, packages } = await prompts(promts);
 
+  // TODO: It should probably be createProject's responsiblity to interpret the `packages` array
   const usingPrisma = packages.some((p: string) => p === "prisma");
   const usingNextAuth = packages.some((p: string) => p === "next-auth");
 
