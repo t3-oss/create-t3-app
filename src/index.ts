@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
 import prompts, { type PromptObject } from "prompts";
+import { logger } from "./helpers/logger";
 
 import createProject from "./helpers/create";
 
@@ -14,7 +14,7 @@ const promts: PromptObject[] = [
     message: "What will your project be called?",
     format: (name: string) => {
       if (name === "") {
-        console.log(chalk.yellow(`Using default name: ${DEFAULT_PROJECT_NAME}`));
+        logger.warn(`Using default name: ${DEFAULT_PROJECT_NAME}`);
         return DEFAULT_PROJECT_NAME;
       }
       return name.trim();
@@ -37,9 +37,9 @@ const promts: PromptObject[] = [
     ],
     format: (language: string) => {
       if (language === "javascript") {
-        console.log(chalk.red("Wrong answer, using TypeScript instead..."));
+        logger.error("Wrong answer, using TypeScript instead...");
       } else {
-        console.log(chalk.green("Good choice! Using TypeScript!"));
+        logger.success("Good choice! Using TypeScript!");
       }
       return;
     }
@@ -64,7 +64,7 @@ const promts: PromptObject[] = [
 ];
 
 (async () => {
-  console.log(chalk.red("Welcome to the create-t3-app !"));
+  logger.error("Welcome to the create-t3-app !");
 
   const { name, packages } = await prompts(promts) as { name: string, packages: string[]};
 
