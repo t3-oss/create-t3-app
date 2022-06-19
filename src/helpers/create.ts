@@ -7,9 +7,11 @@ import { getPkgManager, type PackageManager } from "./getPkgManager";
 import { logger } from "./logger";
 
 import { tailwindInstaller } from "../installers/tailwind";
+import { trpcInstaller } from "../installers/trpc";
 
 const installers = {
   tailwind: tailwindInstaller,
+  trpc: trpcInstaller,
 };
 
 const execa = promisify(exec);
