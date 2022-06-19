@@ -18,7 +18,7 @@ const promts: PromptObject[] = [
         return DEFAULT_PROJECT_NAME;
       }
       return name.trim();
-     },
+    },
   },
   {
     name: "language",
@@ -42,7 +42,7 @@ const promts: PromptObject[] = [
         logger.success("Good choice! Using TypeScript!");
       }
       return;
-    }
+    },
   },
   /*{
     name: "packages",
@@ -63,24 +63,32 @@ const promts: PromptObject[] = [
   }*/
   {
     name: "usePrisma",
-    type: "confirm",
+    type: "toggle",
     message: "Would you like to use Prisma?",
     initial: true,
+    active: "Yes",
+    inactive: "No",
   },
   {
     name: "useNextAuth",
     // only show this prompt if usePrisma is true
-    type: (prev) => prev ? "confirm" : null,
+    type: (prev) => (prev ? "toggle" : null),
     message: "Would you like to use Next Auth?",
     initial: true,
-  }
+    active: "Yes",
+    inactive: "No",
+  },
 ];
 
 (async () => {
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
-  const { name, usePrisma, useNextAuth } = await prompts(promts) as { name: string, usePrisma: boolean, useNextAuth: boolean | undefined };
+  const { name, usePrisma, useNextAuth } = (await prompts(promts)) as {
+    name: string;
+    usePrisma: boolean;
+    useNextAuth: boolean | undefined;
+  };
   const useNextAuthBool = !!useNextAuth;
 
   await createProject(name, usePrisma, useNextAuthBool);
