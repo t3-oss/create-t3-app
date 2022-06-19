@@ -10,6 +10,7 @@ const execa = promisify(exec);
 
 const createProject = async (
   projectName: string,
+  projectDir: string,
   usingPrisma: boolean,
   usingNextAuth: boolean
 ) => {
@@ -22,8 +23,13 @@ const createProject = async (
         : "template-prisma"
       : "template"
   );
+  
+  if (projectDir == "") { // If there's no input for the project directory, set it to CWD
+   projectDir = path.resolve(process.cwd(), projectName);
+  } else {
+    projectDir = path.resolve(projectDir, projectName);
+  }
 
-  const projectDir = path.resolve(process.cwd(), projectName);
 
   const pkgManager = getPkgManager();
 
@@ -54,7 +60,7 @@ const createProject = async (
   logger.success(`${chalk.cyan.bold(projectName)} created successfully.`);
 
   logger.info("Next steps:");
-  logger.info(` cd ${chalk.cyan.bold(projectName)}`);
+  logger.info(` cd ${chalk.cyan.bold(projectDir)}`);
   logger.info(`  ${pkgManager} install`);
 
   if (usingPrisma) {

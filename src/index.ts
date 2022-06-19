@@ -11,6 +11,12 @@ const namePrompt = {
   message: "What will your project be called?",
 };
 
+const dirPrompt = {
+  type: "text",
+  name: "dir",
+  message: "Where would you like to create the project? [Press enter for here]",
+};
+
 const languagePrompt = {
   type: "select",
   name: "language",
@@ -50,6 +56,7 @@ const nextAuthPrompt = {
   console.log(chalk.red("Welcome to the create-t3-app !"));
 
   const { name }: { name: string } = await prompts(namePrompt as any);
+  const { dir }: { dir: string } = await prompts(dirPrompt as any);
   const { language }: { language: string } = await prompts(languagePrompt as any);
 
   if (language === "javascript") {
@@ -71,7 +78,7 @@ const nextAuthPrompt = {
     usingNextAuth = useNextAuth;
   }
 
-  await createProject(name, usingPrisma, usingNextAuth);
+  await createProject(name, dir, usingPrisma, usingNextAuth);
 
   process.exit(0);
 })();
