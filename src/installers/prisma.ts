@@ -25,7 +25,7 @@ export const prismaInstaller = async (
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
   const clientSrc = path.join(prismaAssetDir, "client.ts");
-  const clientDest = path.join(projectDir, "src/server/prisma.ts");
+  const clientDest = path.join(projectDir, "src/server/db/client.ts");
 
   await Promise.all([
     fs.copy(schemaSrc, schemaDest),
