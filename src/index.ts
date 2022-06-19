@@ -5,13 +5,13 @@ import prompts from "prompts";
 
 import createProject from "./helpers/create";
 
-const promptOne = {
+const namePrompt = {
   type: "text",
   name: "name",
   message: "What will your project be called?",
 };
 
-const promptTwo = {
+const languagePrompt = {
   type: "select",
   name: "language",
   message: "Will you be using JavaScript or TypeScript?",
@@ -28,7 +28,7 @@ const promptTwo = {
   initial: 0,
 };
 
-const promptThree = {
+const prismaPrompt = {
   type: "toggle",
   name: "usingPrisma",
   message: "Would you like to use Prisma?",
@@ -37,7 +37,7 @@ const promptThree = {
   inactive: "No",
 };
 
-const promptFour = {
+const nextAuthPrompt = {
   type: "toggle",
   name: "useNextAuth",
   message: "Would you like to use next-auth?",
@@ -49,8 +49,8 @@ const promptFour = {
 (async () => {
   console.log(chalk.red("Welcome to the create-t3-app !"));
 
-  const { name }: { name: string } = await prompts(promptOne as any);
-  const { language }: { language: string } = await prompts(promptTwo as any);
+  const { name }: { name: string } = await prompts(namePrompt as any);
+  const { language }: { language: string } = await prompts(languagePrompt as any);
 
   if (language === "javascript") {
     console.log(
@@ -61,13 +61,13 @@ const promptFour = {
   }
 
   const { usingPrisma }: { usingPrisma: boolean } = await prompts(
-    promptThree as any
+    prismaPrompt as any
   );
 
   let usingNextAuth = false;
 
   if (usingPrisma) {
-    const { useNextAuth } = await prompts(promptFour as any);
+    const { useNextAuth } = await prompts(nextAuthPrompt as any);
     usingNextAuth = useNextAuth;
   }
 
