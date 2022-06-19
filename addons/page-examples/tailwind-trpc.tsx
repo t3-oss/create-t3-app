@@ -4,11 +4,6 @@ import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["hello", { text: "from tRPC" }]);
-  const exampleData = trpc.useQuery(["example"]);
-  const { invalidateQueries } = trpc.useContext();
-  const createExample = trpc.useMutation("create-example", {
-    onSuccess: () => invalidateQueries("example"),
-  });
 
   return (
     <>
@@ -45,36 +40,11 @@ const Home: NextPage = () => {
                 TypeScript
               </a>
             </li>
-            <li>
-              <a href="https://www.prisma.io/" target="_blank">
-                Prisma
-              </a>
-            </li>
           </ul>
 
           <div className="py-6 text-2xl">
             {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
           </div>
-          <div className="py-6 text-2xl">
-            <p>Data from Prisma:</p>
-            {exampleData.data ? (
-              <div>
-                {exampleData.data.length === 0 ? (
-                  <p className="text-2xl">No data available, create new!</p>
-                ) : (
-                  exampleData.data.map(({ id }) => <p key={id}>{id}</p>)
-                )}
-              </div>
-            ) : (
-              <p>Loading...</p>
-            )}
-          </div>
-          <button
-            onClick={() => createExample.mutate()}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Create New Example
-          </button>
         </div>
       </div>
     </>
