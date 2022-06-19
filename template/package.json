@@ -1,5 +1,5 @@
 {
-  "name": "create-t3-app",
+  "name": "template",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,26 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@trpc/client": "^9.23.4",
-    "@trpc/next": "^9.23.4",
-    "@trpc/react": "^9.23.4",
-    "@trpc/server": "^9.23.4",
     "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-query": "^3.39.0",
-    "superjson": "^1.9.1",
-    "zod": "^3.16.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "17.0.35",
-    "@types/react": "18.0.9",
-    "@types/react-dom": "18.0.4",
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.15.0",
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.0.24",
-    "typescript": "4.6.4"
+    "typescript": "4.7.4"
   }
 }
