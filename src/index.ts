@@ -3,7 +3,7 @@
 import prompts, { type PromptObject } from "prompts";
 import { logger } from "./helpers/logger";
 
-import createProject from "./helpers/create";
+import { createProject } from "./helpers/create";
 
 const DEFAULT_PROJECT_NAME = "my-t3-app";
 
@@ -18,7 +18,7 @@ const promts: PromptObject[] = [
         return DEFAULT_PROJECT_NAME;
       }
       return name.trim();
-     },
+    },
   },
   {
     name: "language",
@@ -42,7 +42,7 @@ const promts: PromptObject[] = [
         logger.success("Good choice! Using TypeScript!");
       }
       return;
-    }
+    },
   },
   /*{
     name: "packages",
@@ -62,6 +62,12 @@ const promts: PromptObject[] = [
     ]
   }*/
   {
+    name: "useTailwind",
+    type: "confirm",
+    message: "Would you like to use Tailwind?",
+    initial: true,
+  },
+  {
     name: "usePrisma",
     type: "confirm",
     message: "Would you like to use Prisma?",
@@ -70,20 +76,32 @@ const promts: PromptObject[] = [
   {
     name: "useNextAuth",
     // only show this prompt if usePrisma is true
-    type: (prev) => prev ? "confirm" : null,
+    type: (prev) => (prev ? "confirm" : null),
     message: "Would you like to use Next Auth?",
     initial: true,
-  }
+  },
 ];
 
 (async () => {
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
-  const { name, usePrisma, useNextAuth } = await prompts(promts) as { name: string, usePrisma: boolean, useNextAuth: boolean | undefined };
+  const { name, useTailwind, usePrisma, useNextAuth } = (await prompts(
+    promts
+  )) as {
+    name: string;
+    useTailwind: boolean;
+    usePrisma: boolean;
+    useNextAuth: boolean | undefined;
+  };
   const useNextAuthBool = !!useNextAuth;
 
-  await createProject(name, usePrisma, useNextAuthBool);
+  const packages = [];
+  if (useTailwind) packages.push("tailwind");
+  if (usePrisma) packages.push("prisma");
+  if (useNextAuthBool) packages.push("next-auth");
+
+  await createProject(name, packages);
 
   process.exit(0);
 })();
