@@ -1,4 +1,7 @@
-import { execSync } from "child_process";
+import { execSync, exec } from "child_process";
+import { promisify } from "util";
+
+const execa = promisify(exec);
 
 export type PackageManager = "npm" | "pnpm" | "yarn";
 
@@ -23,4 +26,16 @@ export const getPkgManager: () => PackageManager = () => {
   } catch {
     return "npm";
   }
+};
+
+export const installPkgs = async (
+  pkgMgr: PackageManager,
+  isDev: boolean,
+  projectDir: string,
+  pkgs: string[]
+) => {
+  const cmd = pkgMgr === "yarn" ? "add" : "install";
+  const flag = isDev ? "-D" : "";
+  const fullCmd = `${pkgMgr} ${cmd} ${flag} ${pkgs.join(" ")}`;
+  await execa(fullCmd, { cwd: projectDir });
 };

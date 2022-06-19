@@ -1,18 +1,16 @@
-import { type PackageManager } from "../helpers/getPkgManager";
-import { exec } from "child_process";
-import { promisify } from "util";
+import { installPkgs, type PackageManager } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
-
-const execa = promisify(exec);
 
 export const tailwindInstaller = async (
   projectDir: string,
   pkgManager: PackageManager
 ) => {
-  await execa(`${pkgManager} install -D tailwindcss postcss autoprefixer`, {
-    cwd: projectDir,
-  });
+  await installPkgs(pkgManager, true, projectDir, [
+    "tailwindcss",
+    "postcss",
+    "autoprefixer",
+  ]);
 
   const twAssetDir = path.join(__dirname, "../../", "template/addons/tailwind");
 
