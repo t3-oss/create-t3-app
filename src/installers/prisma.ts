@@ -21,13 +21,16 @@ export const prismaInstaller = async (
     "template/addons/prisma"
   );
 
-  const schemaFile = path.join(prismaAssetDir, "schema.prisma");
+  const schemaSrc = path.join(prismaAssetDir, "schema.prisma");
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
-  await fs.copy(schemaFile, schemaDest);
 
-  const clientFile = path.join(prismaAssetDir, "client.ts");
+  const clientSrc = path.join(prismaAssetDir, "client.ts");
   const clientDest = path.join(projectDir, "src/server/prisma.ts");
-  await fs.copy(clientFile, clientDest);
+
+  await Promise.all([
+    fs.copy(schemaSrc, schemaDest),
+    fs.copy(clientSrc, clientDest),
+  ]);
 
   if (pkgManager === "npm") {
     await execa("npx prisma generate");

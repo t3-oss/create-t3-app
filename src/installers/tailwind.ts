@@ -14,15 +14,18 @@ export const tailwindInstaller = async (
 
   const twAssetDir = path.join(__dirname, "../../", "template/addons/tailwind");
 
-  const twConfig = path.join(twAssetDir, "tailwind.config.js");
-  const twDest = path.join(projectDir, "tailwind.config.js");
-  await fs.copy(twConfig, twDest);
+  const twCfgSrc = path.join(twAssetDir, "tailwind.config.js");
+  const twCfgDest = path.join(projectDir, "tailwind.config.js");
 
-  const postcssConfig = path.join(twAssetDir, "postcss.config.js");
+  const postcssSrc = path.join(twAssetDir, "postcss.config.js");
   const postcssDest = path.join(projectDir, "postcss.config.js");
-  await fs.copy(postcssConfig, postcssDest);
 
-  const cssFile = path.join(twAssetDir, "globals.css");
+  const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
-  await fs.copy(cssFile, cssDest);
+
+  await Promise.all([
+    fs.copy(twCfgSrc, twCfgDest),
+    fs.copy(postcssSrc, postcssDest),
+    fs.copy(cssSrc, cssDest),
+  ]);
 };
