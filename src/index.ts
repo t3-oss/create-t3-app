@@ -68,6 +68,12 @@ const promts: PromptObject[] = [
     initial: true,
   },
   {
+    name: "useTrpc",
+    type: "confirm",
+    message: "Would you like to use tRPC?",
+    initial: true,
+  },
+  {
     name: "usePrisma",
     type: "confirm",
     message: "Would you like to use Prisma?",
@@ -86,11 +92,12 @@ const promts: PromptObject[] = [
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
-  const { name, useTailwind, usePrisma, useNextAuth } = (await prompts(
+  const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
     promts
   )) as {
     name: string;
     useTailwind: boolean;
+    useTrpc: boolean;
     usePrisma: boolean;
     useNextAuth: boolean | undefined;
   };
@@ -98,6 +105,7 @@ const promts: PromptObject[] = [
 
   const packages = [];
   if (useTailwind) packages.push("tailwind");
+  if (useTrpc) packages.push("trpc");
   if (usePrisma) packages.push("prisma");
   if (useNextAuthBool) packages.push("next-auth");
 
