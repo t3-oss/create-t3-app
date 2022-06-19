@@ -27,9 +27,13 @@ export const prismaInstaller = async (
   const clientSrc = path.join(prismaAssetDir, "client.ts");
   const clientDest = path.join(projectDir, "src/server/db/client.ts");
 
+  const sampleApiRouteSrc = path.join(prismaAssetDir, "sample-api.ts");
+  const sampleApiRouteDest = path.join(projectDir, "src/pages/api/examples.ts");
+
   await Promise.all([
     fs.copy(schemaSrc, schemaDest),
     fs.copy(clientSrc, clientDest),
+    fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
   ]);
 
   if (pkgManager === "npm") {
