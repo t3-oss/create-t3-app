@@ -44,7 +44,7 @@ const promts: PromptObject[] = [
       return;
     }
   },
-  {
+  /*{
     name: "packages",
     type: "multiselect",
     message: "Which packages will you be using?",
@@ -60,19 +60,28 @@ const promts: PromptObject[] = [
         value: "prisma",
       },
     ]
+  }*/
+  {
+    name: "usePrisma",
+    type: "confirm",
+    message: "Would you like to use Prisma?",
+    initial: true,
+  },
+  {
+    name: "useNextAuth",
+    type: "confirm",
+    message: "Would you like to use Next Auth?",
+    initial: true,
   }
 ];
 
 (async () => {
   logger.error("Welcome to the create-t3-app !");
 
-  const { name, packages } = await prompts(promts) as { name: string, packages: string[]};
+  // FIXME: Look into if the type can be inferred
+  const { name, usePrisma, useNextAuth } = await prompts(promts) as { name: string, usePrisma: boolean, useNextAuth: boolean };
 
-  // TODO: It should probably be createProject's responsiblity to interpret the `packages` array
-  const usingPrisma = packages.some((p: string) => p === "prisma");
-  const usingNextAuth = packages.some((p: string) => p === "next-auth");
-
-  await createProject(name, usingPrisma, usingNextAuth);
+  await createProject(name, usePrisma, useNextAuth);
 
   process.exit(0);
 })();
