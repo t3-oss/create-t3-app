@@ -63,28 +63,36 @@ const promts: PromptObject[] = [
   }*/
   {
     name: "useTailwind",
-    type: "confirm",
+    type: "toggle",
     message: "Would you like to use Tailwind?",
     initial: true,
+    active: "Yes",
+    inactive: "No",
   },
   {
     name: "useTrpc",
-    type: "confirm",
+    type: "toggle",
     message: "Would you like to use tRPC?",
     initial: true,
+    active: "Yes",
+    inactive: "No",
   },
   {
     name: "usePrisma",
-    type: "confirm",
+    type: "toggle",
     message: "Would you like to use Prisma?",
     initial: true,
+    active: "Yes",
+    inactive: "No",
   },
   {
     name: "useNextAuth",
     // only show this prompt if usePrisma is true
-    type: (prev) => (prev ? "confirm" : null),
+    type: (prev) => (prev ? "toggle" : null),
     message: "Would you like to use Next Auth?",
     initial: true,
+    active: "Yes",
+    inactive: "No",
   },
 ];
 
