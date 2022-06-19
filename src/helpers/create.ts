@@ -45,6 +45,7 @@ const installPackages = async (
     if (packages.some((p) => p === packageName)) {
       logger.info(`  Installing ${packageName}...`);
       await installer(projectDir, pkgManager);
+      logger.success(`  ${packageName} installed successfully.`);
     }
   }
 };
@@ -63,6 +64,31 @@ const initializeGit = async (projectDir: string) => {
   );
 };
 
+const selectIndexPage = async (projectDir: string, packages: string[]) => {
+  const indexFilesDir = path.join(
+    __dirname,
+    "../../",
+    "template/addons/page-examples"
+  );
+
+  const tw = packages.some((p) => p === "tailwind");
+  const trpc = packages.some((p) => p === "trpc");
+
+  let indexFile = "";
+  if (tw && !trpc) {
+    indexFile = path.join(indexFilesDir, "tailwind.tsx");
+  } else if (!tw && trpc) {
+    indexFile = path.join(indexFilesDir, "trpc.tsx");
+  } else if (tw && trpc) {
+    indexFile = path.join(indexFilesDir, "tailwind-trpc.tsx");
+  }
+
+  if (indexFile !== "") {
+    const indexDest = path.join(projectDir, "src/pages/index.tsx");
+    await fs.copy(indexFile, indexDest);
+  }
+};
+
 const logNextSteps = (
   projectName: string,
   pkgManager: PackageManager,
@@ -70,7 +96,6 @@ const logNextSteps = (
 ) => {
   logger.info("Next steps:");
   logger.info(` cd ${chalk.cyan.bold(projectName)}`);
-  logger.info(`  ${pkgManager} install`);
 
   if (usingPrisma) {
     if (pkgManager !== "npm") {
@@ -99,6 +124,9 @@ export const createProject = async (
 
   logger.info("Installing packages...");
   await installPackages(projectDir, pkgManager, packages);
+
+  // FIXME: Perhaps do this more dynamically
+  await selectIndexPage(projectDir, packages);
 
   logger.info("Initializing git...");
   await initializeGit(projectDir);
