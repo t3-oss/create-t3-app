@@ -69,7 +69,8 @@ const promts: PromptObject[] = [
   },
   {
     name: "useNextAuth",
-    type: "confirm",
+    // only show this prompt if usePrisma is true
+    type: (prev) => prev ? "confirm" : null,
     message: "Would you like to use Next Auth?",
     initial: true,
   }
@@ -79,9 +80,10 @@ const promts: PromptObject[] = [
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
-  const { name, usePrisma, useNextAuth } = await prompts(promts) as { name: string, usePrisma: boolean, useNextAuth: boolean };
+  const { name, usePrisma, useNextAuth } = await prompts(promts) as { name: string, usePrisma: boolean, useNextAuth: boolean | undefined };
+  const useNextAuthBool = !!useNextAuth;
 
-  await createProject(name, usePrisma, useNextAuth);
+  await createProject(name, usePrisma, useNextAuthBool);
 
   process.exit(0);
 })();
