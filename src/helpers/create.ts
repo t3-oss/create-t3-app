@@ -8,10 +8,12 @@ import { logger } from "./logger";
 
 import { tailwindInstaller } from "../installers/tailwind";
 import { trpcInstaller } from "../installers/trpc";
+import { prismaInstaller } from "../installers/prisma";
 
 const installers = {
   tailwind: tailwindInstaller,
   trpc: trpcInstaller,
+  prisma: prismaInstaller,
 };
 
 const execa = promisify(exec);
