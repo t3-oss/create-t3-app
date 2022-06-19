@@ -68,7 +68,7 @@ const selectIndexPage = async (projectDir: string, packages: string[]) => {
   const indexFilesDir = path.join(
     __dirname,
     "../../",
-    "template/addons/page-examples"
+    "template/index-examples"
   );
 
   const tw = packages.some((p) => p === "tailwind");
