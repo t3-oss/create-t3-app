@@ -28,8 +28,4 @@ export const trpcInstaller = async (
   const utilsFile = path.join(trpcAssetDir, "utils.ts");
   const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
   await fs.copy(utilsFile, utilsDest);
-
-  const indexFile = path.join(trpcAssetDir, "../page-examples", "trpc.tsx");
-  const indexDest = path.join(projectDir, "src/pages/index.tsx");
-  await fs.copy(indexFile, indexDest);
 };

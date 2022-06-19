@@ -25,8 +25,4 @@ export const tailwindInstaller = async (
   const cssFile = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
   await fs.copy(cssFile, cssDest);
-
-  const indexFile = path.join(twAssetDir, "../page-examples", "tailwind.tsx");
-  const indexDest = path.join(projectDir, "src/pages/index.tsx");
-  await fs.copy(indexFile, indexDest);
 };
