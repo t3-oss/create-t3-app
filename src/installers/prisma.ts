@@ -2,7 +2,7 @@ import { installPkgs } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
 import { execa } from "../helpers/execa";
-import type { Installer } from "../index";
+import { type Installer } from "./index";
 
 export const prismaInstaller: Installer = async (
   projectDir,
@@ -10,8 +10,18 @@ export const prismaInstaller: Installer = async (
   packages
 ) => {
   await Promise.all([
-    installPkgs(packageManager, true, projectDir, ["prisma"]),
-    installPkgs(packageManager, false, projectDir, ["@prisma/client"]),
+    installPkgs({
+      packageManager,
+      projectDir,
+      packages: ["prisma"],
+      devMode: true,
+    }),
+    installPkgs({
+      packageManager,
+      projectDir,
+      packages: ["@prisma/client"],
+      devMode: false,
+    }),
   ]);
 
   const prismaAssetDir = path.join(
@@ -22,7 +32,7 @@ export const prismaInstaller: Installer = async (
 
   const schemaSrc = path.join(
     prismaAssetDir,
-    packages?.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma"
+    packages.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma"
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
@@ -38,9 +48,9 @@ export const prismaInstaller: Installer = async (
     fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
   ]);
 
-  const generateCmd =
+  const generateClientCmd =
     packageManager === "npm"
       ? "npx prisma generate"
       : `${packageManager} prisma generate`;
-  await execa(generateCmd, { cwd: projectDir });
+  await execa(generateClientCmd, { cwd: projectDir });
 };

@@ -1,21 +1,26 @@
 import { installPkgs } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
-import { type Installer } from "../index";
+import { type Installer } from "./index";
 
 export const trpcInstaller: Installer = async (
   projectDir,
   packageManager,
   packages
 ) => {
-  await installPkgs(packageManager, false, projectDir, [
-    "@trpc/server",
-    "@trpc/client",
-    "@trpc/next",
-    "@trpc/react",
-    "superjson",
-    "zod",
-  ]);
+  await installPkgs({
+    packageManager,
+    projectDir,
+    packages: [
+      "@trpc/server",
+      "@trpc/client",
+      "@trpc/next",
+      "@trpc/react",
+      "superjson",
+      "zod",
+    ],
+    devMode: false,
+  });
 
   const trpcAssetDir = path.join(__dirname, "../../", "template/addons/trpc");
 
@@ -27,7 +32,7 @@ export const trpcInstaller: Installer = async (
 
   const contextSrc = path.join(
     trpcAssetDir,
-    packages?.prisma.inUse ? "prisma-context.ts" : "base-context.ts"
+    packages.prisma.inUse ? "prisma-context.ts" : "base-context.ts"
   );
   const contextDest = path.join(projectDir, "src/server/router/context.ts");
 
@@ -36,7 +41,7 @@ export const trpcInstaller: Installer = async (
 
   const exampleRouterSrc = path.join(
     trpcAssetDir,
-    packages?.prisma.inUse ? "example-prisma-router.ts" : "example-router.ts"
+    packages.prisma.inUse ? "example-prisma-router.ts" : "example-router.ts"
   );
   const exampleRouterDest = path.join(
     projectDir,

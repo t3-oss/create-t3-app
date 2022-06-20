@@ -28,14 +28,19 @@ export const getPkgManager: () => PackageManager = () => {
   }
 };
 
-export const installPkgs = async (
-  pkgMgr: PackageManager,
-  isDev: boolean,
-  projectDir: string,
-  pkgs: string[]
-) => {
-  const cmd = pkgMgr === "yarn" ? "add" : "install";
-  const flag = isDev ? "-D" : "";
-  const fullCmd = `${pkgMgr} ${cmd} ${flag} ${pkgs.join(" ")}`;
+export const installPkgs = async (opts: {
+  packageManager: PackageManager;
+  devMode: boolean;
+  projectDir: string;
+  packages: string[];
+}) => {
+  const { packageManager, devMode, projectDir, packages } = opts;
+
+  const installCmd =
+    packageManager === "yarn"
+      ? `${packageManager} add`
+      : `${packageManager} install`;
+  const flag = devMode ? "-D" : "";
+  const fullCmd = `${installCmd} ${flag} ${packages.join(" ")}`;
   await execa(fullCmd, { cwd: projectDir });
 };
