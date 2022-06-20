@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import fs from "fs-extra";
 import path from "path";
-import { getPkgManager, type PackageManager } from "./getPkgManager";
+import { getPkgManager, type PackageManager } from "./get-pkg-manager";
 import { logger } from "./logger";
 import type { Packages } from "../index";
 import { execa } from "./execa";

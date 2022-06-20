@@ -1,4 +1,4 @@
-import { installPkgs } from "../helpers/getPkgManager";
+import { installPkgs } from "../helpers/get-pkg-manager";
 import fs from "fs-extra";
 import path from "path";
 import { execa } from "../helpers/execa";
