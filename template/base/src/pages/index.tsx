@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-// imports
 
 const Home: NextPage = () => {
-  // usage
   return (
     <>
       <Head>
