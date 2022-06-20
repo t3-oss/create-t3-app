@@ -13,15 +13,15 @@ export const createProject = async (
   packages: Packages
 ) => {
   const pkgManager = getPkgManager();
-  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}`);
+  const projectDir = path.resolve(process.cwd(), projectName);
 
-  logger.info("Scaffolding project...");
-  const projectDir = await scaffoldProject(projectName, pkgManager);
+  // Bootstraps the base Next.js application
+  await scaffoldProject(projectName, projectDir, pkgManager);
 
-  logger.info("Installing packages...");
+  // Install the selected packages
   await installPackages(projectDir, pkgManager, packages);
 
-  // FIXME: Perhaps do this more dynamically
+  // FIXME: Perhaps do this more dynamically. Adjust the _app and index based on packages
   await selectAppFile(projectDir, packages);
   await selectIndexFile(projectDir, packages);
 
@@ -31,14 +31,13 @@ export const createProject = async (
 // This bootstraps the base Next.js application
 const scaffoldProject = async (
   projectName: string,
+  projectDir: string,
   pkgManager: PackageManager
 ) => {
-  const srcDir = path.join(__dirname, "../../", "template/base");
-  const projectDir = path.resolve(process.cwd(), projectName);
-
-  logger.info(`Scaffolding in: ${projectDir}\n`);
-
+  logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
+
+  const srcDir = path.join(__dirname, "../../", "template/base");
 
   if (fs.existsSync(projectDir)) {
     logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
@@ -48,9 +47,7 @@ const scaffoldProject = async (
   await fs.copy(srcDir, projectDir);
 
   await execa(`${pkgManager} install`, { cwd: projectDir });
-  logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.`);
-
-  return projectDir;
+  logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
 };
 
 // This installs all the packages that the user has selected
@@ -59,11 +56,14 @@ const installPackages = async (
   pkgManager: PackageManager,
   packages: Packages
 ) => {
+  logger.info("Installing packages...");
+
   for (const [name, opts] of Object.entries(packages)) {
     if (opts.inUse) {
-      logger.info(`Installing ${name}...`);
+      logger.info(`  Installing ${name}...`);
       await opts.installer(projectDir, pkgManager, packages);
-      logger.success(`Successfully installed ${name}.`);
+      logger.success(`  Successfully installed ${name}.`);
     }
   }
+  logger.info("");
 };
