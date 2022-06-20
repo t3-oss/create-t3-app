@@ -1,5 +1,5 @@
 import { installPkgs } from "../helpers/getPkgManager";
-import type { Installer } from "../index";
+import { type Installer } from "./index";
 import fs from "fs-extra";
 import path from "path";
 
@@ -8,10 +8,15 @@ export const nextAuthInstaller: Installer = async (
   packageManager,
   packages
 ) => {
-  await installPkgs(packageManager, false, projectDir, [
-    "next-auth",
-    packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
-  ]);
+  await installPkgs({
+    packageManager,
+    projectDir,
+    packages: [
+      "next-auth",
+      packages.prisma.inUse ? "@next-auth/prisma-adapter" : "",
+    ],
+    devMode: false,
+  });
 
   const nextAuthAssetDir = path.join(
     __dirname,
@@ -21,7 +26,7 @@ export const nextAuthInstaller: Installer = async (
 
   const apiHandlerSrc = path.join(
     nextAuthAssetDir,
-    packages?.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts"
+    packages.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts"
   );
   const apiHandlerDest = path.join(
     projectDir,
