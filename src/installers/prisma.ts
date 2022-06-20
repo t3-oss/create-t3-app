@@ -6,7 +6,8 @@ import type { Installer } from "../index";
 
 export const prismaInstaller: Installer = async (
   projectDir,
-  packageManager
+  packageManager,
+  packages
 ) => {
   await Promise.all([
     installPkgs(packageManager, true, projectDir, ["prisma"]),
@@ -19,7 +20,10 @@ export const prismaInstaller: Installer = async (
     "template/addons/prisma"
   );
 
-  const schemaSrc = path.join(prismaAssetDir, "schema.prisma");
+  const schemaSrc = path.join(
+    prismaAssetDir,
+    packages?.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma"
+  );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
   const clientSrc = path.join(prismaAssetDir, "client.ts");

@@ -83,8 +83,7 @@ const promts: PromptObject[] = [
   },
   {
     name: "useNextAuth",
-    // only show this prompt if usePrisma is true
-    type: (prev) => (prev ? "toggle" : null),
+    type: "toggle",
     message: "Would you like to use Next Auth?",
     initial: true,
     active: "Yes",
@@ -103,15 +102,14 @@ const promts: PromptObject[] = [
     useTailwind: boolean;
     useTrpc: boolean;
     usePrisma: boolean;
-    useNextAuth: boolean | undefined;
+    useNextAuth: boolean;
   };
-  const useNextAuthBool = !!useNextAuth;
 
   const packages: Packages = {
     tailwind: { inUse: useTailwind, installer: installers.tailwind },
     trpc: { inUse: useTrpc, installer: installers.trpc },
     prisma: { inUse: usePrisma, installer: installers.prisma },
-    nextAuth: { inUse: useNextAuthBool, installer: installers.nextAuth },
+    nextAuth: { inUse: useNextAuth, installer: installers.nextAuth },
   };
 
   await createProject(name, packages);
