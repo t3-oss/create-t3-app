@@ -25,6 +25,10 @@ const scaffoldProject = async (
   const srcDir = path.join(__dirname, "../../", "template/base");
   const projectDir = path.resolve(process.cwd(), projectName);
 
+  logger.info(`Scaffolding in: ${projectDir}\n`);
+
+  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
+
   if (fs.existsSync(projectDir)) {
     logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
     process.exit(1);
