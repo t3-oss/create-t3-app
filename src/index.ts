@@ -5,8 +5,6 @@ import { createProject } from "./helpers/create";
 import { installers } from "./installers";
 import { type PackageManager } from "./helpers/getPkgManager";
 
-const DEFAULT_PROJECT_NAME = "my-t3-app";
-
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Installer = (
   projectDir: string,
@@ -19,6 +17,8 @@ export type Packages = {
     installer: Installer;
   };
 };
+
+const DEFAULT_PROJECT_NAME = "my-t3-app";
 
 const promts: PromptObject[] = [
   {
