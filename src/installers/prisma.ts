@@ -39,6 +39,4 @@ export const prismaInstaller: Installer = async (
   } else {
     await execa(`${packageManager} prisma generate`, { cwd: projectDir });
   }
-
-  // add prisma to trpc context is using trpc
 };

@@ -3,8 +3,12 @@ import fs from "fs-extra";
 import path from "path";
 import { type Installer } from "../index";
 
-export const trpcInstaller: Installer = async (projectDir, pkgManager) => {
-  await installPkgs(pkgManager, false, projectDir, [
+export const trpcInstaller: Installer = async (
+  projectDir,
+  packageManager,
+  packages
+) => {
+  await installPkgs(packageManager, false, projectDir, [
     "@trpc/server",
     "@trpc/client",
     "@trpc/next",
@@ -24,13 +28,19 @@ export const trpcInstaller: Installer = async (projectDir, pkgManager) => {
   const utilsSrc = path.join(trpcAssetDir, "utils.ts");
   const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
 
-  const contextSrc = path.join(trpcAssetDir, "base-context.ts");
+  const contextSrc = path.join(
+    trpcAssetDir,
+    packages?.prisma.inUse ? "prisma-context.ts" : "base-context.ts"
+  );
   const contextDest = path.join(projectDir, "src/server/router/context.ts");
 
   const routerSrc = path.join(trpcAssetDir, "index-router.ts");
   const routerDest = path.join(projectDir, "src/server/router/index.ts");
 
-  const exampleRouterSrc = path.join(trpcAssetDir, "example-router.ts");
+  const exampleRouterSrc = path.join(
+    trpcAssetDir,
+    packages?.prisma.inUse ? "example-prisma-router.ts" : "example-router.ts"
+  );
   const exampleRouterDest = path.join(
     projectDir,
     "src/server/router/example.ts"
