@@ -38,9 +38,9 @@ export const prismaInstaller: Installer = async (
     fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
   ]);
 
-  if (packageManager === "npm") {
-    await execa("npx prisma generate");
-  } else {
-    await execa(`${packageManager} prisma generate`, { cwd: projectDir });
-  }
+  const generateCmd =
+    packageManager === "npm"
+      ? "npx prisma generate"
+      : `${packageManager} prisma generate`;
+  await execa(generateCmd, { cwd: projectDir });
 };
