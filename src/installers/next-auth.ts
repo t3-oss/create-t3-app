@@ -1,4 +1,4 @@
-import { installPkgs } from "../helpers/getPkgManager";
+import { installPkgs } from "../helpers/get-pkg-manager";
 import { type Installer } from "./index";
 import fs from "fs-extra";
 import path from "path";

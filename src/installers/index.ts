@@ -3,7 +3,7 @@ import { trpcInstaller } from "./trpc";
 import { prismaInstaller } from "./prisma";
 import { nextAuthInstaller } from "./next-auth";
 
-import type { PackageManager } from "../helpers/getPkgManager";
+import type { PackageManager } from "../helpers/get-pkg-manager";
 import type { Packages } from "../index";
 
 export type Installer = (

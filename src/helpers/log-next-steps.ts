@@ -1,7 +1,7 @@
 import chalk from "chalk";
 
 import { logger } from "./logger";
-import { getPkgManager } from "./getPkgManager";
+import { getPkgManager } from "./get-pkg-manager";
 import type { Packages } from "../index";
 
 // This logs the next steps that the user should take in order to advance the project

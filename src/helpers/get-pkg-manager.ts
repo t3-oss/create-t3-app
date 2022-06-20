@@ -1,7 +1,5 @@
-import { execSync, exec } from "child_process";
-import { promisify } from "util";
-
-const execa = promisify(exec);
+import { execSync } from "child_process";
+import { execa } from "./execa";
 
 export type PackageManager = "npm" | "pnpm" | "yarn";
 
