@@ -19,9 +19,6 @@ export const trpcInstaller: Installer = async (
 
   const trpcAssetDir = path.join(__dirname, "../../", "template/addons/trpc");
 
-  const appSrc = path.join(trpcAssetDir, "_app.tsx");
-  const appDest = path.join(projectDir, "src/pages/_app.tsx");
-
   const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
 
@@ -47,7 +44,6 @@ export const trpcInstaller: Installer = async (
   );
 
   await Promise.all([
-    fs.copy(appSrc, appDest),
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(utilsSrc, utilsDest),
     fs.copy(contextSrc, contextDest),

@@ -6,6 +6,8 @@ import { logger } from "./logger";
 import type { Packages } from "../index";
 import { execa } from "./execa";
 
+import { selectAppFile, selectIndexFile } from "./select-boilerplate";
+
 export const createProject = async (
   projectName: string,
   packages: Packages
@@ -20,7 +22,8 @@ export const createProject = async (
   await installPackages(projectDir, pkgManager, packages);
 
   // FIXME: Perhaps do this more dynamically
-  await selectIndexPage(projectDir, packages);
+  await selectAppFile(projectDir, packages);
+  await selectIndexFile(projectDir, packages);
 
   logger.info("Initializing git...");
   await initializeGit(projectDir);
@@ -81,30 +84,6 @@ const initializeGit = async (projectDir: string) => {
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore")
   );
-};
-
-// FIXME:: GENERATE THE PROPER index.tsx FILE INSTEAD
-// This selects the proper index.tsx to be used that showcases the chosen tech
-const selectIndexPage = async (projectDir: string, packages: Packages) => {
-  const indexFilesDir = path.join(
-    __dirname,
-    "../../",
-    "template/index-examples"
-  );
-
-  let indexFile = "";
-  if (packages.tailwind.inUse && !packages.trpc.inUse) {
-    indexFile = path.join(indexFilesDir, "tailwind.tsx");
-  } else if (!packages.tailwind.inUse && packages.trpc.inUse) {
-    indexFile = path.join(indexFilesDir, "trpc.tsx");
-  } else if (packages.tailwind.inUse && packages.trpc.inUse) {
-    indexFile = path.join(indexFilesDir, "tailwind-trpc.tsx");
-  }
-
-  if (indexFile !== "") {
-    const indexDest = path.join(projectDir, "src/pages/index.tsx");
-    await fs.copy(indexFile, indexDest);
-  }
 };
 
 // This logs the next steps that the user should take in order to advance the project
