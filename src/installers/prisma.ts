@@ -1,10 +1,7 @@
 import { installPkgs, type PackageManager } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
-
-const execa = promisify(exec);
+import { execa } from "../helpers/execa";
 
 export const prismaInstaller = async (
   projectDir: string,

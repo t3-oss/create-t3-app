@@ -1,23 +1,34 @@
 import chalk from "chalk";
-import { exec } from "child_process";
 import fs from "fs-extra";
 import path from "path";
-import { promisify } from "util";
 import { getPkgManager, type PackageManager } from "./getPkgManager";
 import { logger } from "./logger";
+import type { Packages } from "../index";
+import { execa } from "./execa";
 
-import { tailwindInstaller } from "../installers/tailwind";
-import { trpcInstaller } from "../installers/trpc";
-import { prismaInstaller } from "../installers/prisma";
+export const createProject = async (
+  projectName: string,
+  packages: Packages
+) => {
+  const pkgManager = getPkgManager();
+  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}`);
 
-const installers = {
-  tailwind: tailwindInstaller,
-  trpc: trpcInstaller,
-  prisma: prismaInstaller,
+  logger.info("Scaffolding project...");
+  const projectDir = await scaffoldProject(projectName, pkgManager);
+
+  logger.info("Installing packages...");
+  await installPackages(projectDir, pkgManager, packages);
+
+  // FIXME: Perhaps do this more dynamically
+  await selectIndexPage(projectDir, packages);
+
+  logger.info("Initializing git...");
+  await initializeGit(projectDir);
+
+  logNextSteps(projectName, pkgManager, packages);
 };
 
-const execa = promisify(exec);
-
+// This bootstraps the base Next.js application
 const scaffoldProject = async (
   projectName: string,
   pkgManager: PackageManager
@@ -42,20 +53,22 @@ const scaffoldProject = async (
   return projectDir;
 };
 
+// This installs all the packages that the user has selected
 const installPackages = async (
   projectDir: string,
   pkgManager: PackageManager,
-  packages: string[]
+  packages: Packages
 ) => {
-  for (const [packageName, installer] of Object.entries(installers)) {
-    if (packages.some((p) => p === packageName)) {
-      logger.info(`  Installing ${packageName}...`);
-      await installer(projectDir, pkgManager);
-      logger.success(`  ${packageName} installed successfully.`);
+  for (const [name, opts] of Object.entries(packages)) {
+    if (opts.inUse) {
+      logger.info(`Installing ${name}...`);
+      await opts.installer(projectDir, pkgManager, packages);
+      logger.success(`Successfully installed ${name}.`);
     }
   }
 };
 
+// This initializes the Git-repository for the project
 const initializeGit = async (projectDir: string) => {
   try {
     await execa("git init", { cwd: projectDir });
@@ -70,22 +83,21 @@ const initializeGit = async (projectDir: string) => {
   );
 };
 
-const selectIndexPage = async (projectDir: string, packages: string[]) => {
+// FIXME:: GENERATE THE PROPER index.tsx FILE INSTEAD
+// This selects the proper index.tsx to be used that showcases the chosen tech
+const selectIndexPage = async (projectDir: string, packages: Packages) => {
   const indexFilesDir = path.join(
     __dirname,
     "../../",
     "template/index-examples"
   );
 
-  const tw = packages.some((p) => p === "tailwind");
-  const trpc = packages.some((p) => p === "trpc");
-
   let indexFile = "";
-  if (tw && !trpc) {
+  if (packages.tailwind.inUse && !packages.trpc.inUse) {
     indexFile = path.join(indexFilesDir, "tailwind.tsx");
-  } else if (!tw && trpc) {
+  } else if (!packages.tailwind.inUse && packages.trpc.inUse) {
     indexFile = path.join(indexFilesDir, "trpc.tsx");
-  } else if (tw && trpc) {
+  } else if (packages.tailwind.inUse && packages.trpc.inUse) {
     indexFile = path.join(indexFilesDir, "tailwind-trpc.tsx");
   }
 
@@ -95,15 +107,16 @@ const selectIndexPage = async (projectDir: string, packages: string[]) => {
   }
 };
 
+// This logs the next steps that the user should take in order to advance the project
 const logNextSteps = (
   projectName: string,
   pkgManager: PackageManager,
-  usingPrisma: boolean
+  packages: Packages
 ) => {
   logger.info("Next steps:");
   logger.info(` cd ${chalk.cyan.bold(projectName)}`);
 
-  if (usingPrisma) {
+  if (packages.prisma.inUse) {
     if (pkgManager !== "npm") {
       logger.info(`  ${pkgManager} prisma db push`);
     } else {
@@ -116,27 +129,4 @@ const logNextSteps = (
   } else {
     logger.info("  npm run dev");
   }
-};
-
-export const createProject = async (
-  projectName: string,
-  packages: string[]
-) => {
-  const pkgManager = getPkgManager();
-  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}`);
-
-  logger.info("Scaffolding project...");
-  const projectDir = await scaffoldProject(projectName, pkgManager);
-
-  logger.info("Installing packages...");
-  await installPackages(projectDir, pkgManager, packages);
-
-  // FIXME: Perhaps do this more dynamically
-  await selectIndexPage(projectDir, packages);
-
-  logger.info("Initializing git...");
-  await initializeGit(projectDir);
-
-  const usingPrisma = packages.some((p) => p === "prisma");
-  logNextSteps(projectName, pkgManager, usingPrisma);
 };

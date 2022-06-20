@@ -1,11 +1,18 @@
 #!/usr/bin/env node
-
 import prompts, { type PromptObject } from "prompts";
 import { logger } from "./helpers/logger";
-
 import { createProject } from "./helpers/create";
+import { installers } from "./installers";
 
 const DEFAULT_PROJECT_NAME = "my-t3-app";
+
+type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
+export type Packages = {
+  [pkg in AvailablePackages]: {
+    inUse: boolean;
+    installer: (...args: any) => Promise<void>;
+  };
+};
 
 const promts: PromptObject[] = [
   {
@@ -27,12 +34,12 @@ const promts: PromptObject[] = [
     instructions: false,
     choices: [
       {
-        title: "JavaScript",
-        value: "javascript",
-      },
-      {
         title: "TypeScript",
         value: "typescript",
+      },
+      {
+        title: "JavaScript",
+        value: "javascript",
       },
     ],
     format: (language: string) => {
@@ -44,23 +51,6 @@ const promts: PromptObject[] = [
       return;
     },
   },
-  /*{
-    name: "packages",
-    type: "multiselect",
-    message: "Which packages will you be using?",
-    hint: "- Space to select, Return to submit",
-    instructions: false,
-    choices: [
-      {
-        title: "Next Auth",
-        value: "next-auth",
-      },
-      {
-        title: "Prisma",
-        value: "prisma",
-      },
-    ]
-  }*/
   {
     name: "useTailwind",
     type: "toggle",
@@ -111,11 +101,12 @@ const promts: PromptObject[] = [
   };
   const useNextAuthBool = !!useNextAuth;
 
-  const packages = [];
-  if (useTailwind) packages.push("tailwind");
-  if (useTrpc) packages.push("trpc");
-  if (usePrisma) packages.push("prisma");
-  if (useNextAuthBool) packages.push("next-auth");
+  const packages: Packages = {
+    tailwind: { inUse: useTailwind, installer: installers.tailwind },
+    trpc: { inUse: useTrpc, installer: installers.trpc },
+    prisma: { inUse: usePrisma, installer: installers.prisma },
+    nextAuth: { inUse: useNextAuthBool, installer: installers.nextAuth },
+  };
 
   await createProject(name, packages);
 
