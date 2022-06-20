@@ -1,77 +1,97 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
-import prompts from "prompts";
+import prompts, { type PromptObject } from "prompts";
+import { logger } from "./helpers/logger";
 
 import createProject from "./helpers/create";
 
-const promptOne = {
-  type: "text",
-  name: "name",
-  message: "What will your project be called?",
-};
+const DEFAULT_PROJECT_NAME = "my-t3-app";
 
-const promptTwo = {
-  type: "select",
-  name: "language",
-  message: "Will you be using JavaScript or TypeScript?",
-  choices: [
-    {
-      title: "JavaScript",
-      value: "javascript",
+const promts: PromptObject[] = [
+  {
+    name: "name",
+    type: "text",
+    message: "What will your project be called?",
+    format: (name: string) => {
+      if (name === "") {
+        logger.warn(`Using default name: ${DEFAULT_PROJECT_NAME}`);
+        return DEFAULT_PROJECT_NAME;
+      }
+      return name.trim();
     },
-    {
-      title: "TypeScript",
-      value: "typescript",
+  },
+  {
+    name: "language",
+    type: "select",
+    message: "Will you be using JavaScript or TypeScript?",
+    instructions: false,
+    choices: [
+      {
+        title: "JavaScript",
+        value: "javascript",
+      },
+      {
+        title: "TypeScript",
+        value: "typescript",
+      },
+    ],
+    format: (language: string) => {
+      if (language === "javascript") {
+        logger.error("Wrong answer, using TypeScript instead...");
+      } else {
+        logger.success("Good choice! Using TypeScript!");
+      }
+      return;
     },
-  ],
-  initial: 0,
-};
-
-const promptThree = {
-  type: "toggle",
-  name: "usingPrisma",
-  message: "Would you like to use Prisma?",
-  initial: true,
-  active: "Yes",
-  inactive: "No",
-};
-
-const promptFour = {
-  type: "toggle",
-  name: "useNextAuth",
-  message: "Would you like to use next-auth?",
-  initial: true,
-  active: "Yes",
-  inactive: "No",
-};
+  },
+  /*{
+    name: "packages",
+    type: "multiselect",
+    message: "Which packages will you be using?",
+    hint: "- Space to select, Return to submit",
+    instructions: false,
+    choices: [
+      {
+        title: "Next Auth",
+        value: "next-auth",
+      },
+      {
+        title: "Prisma",
+        value: "prisma",
+      },
+    ]
+  }*/
+  {
+    name: "usePrisma",
+    type: "toggle",
+    message: "Would you like to use Prisma?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  },
+  {
+    name: "useNextAuth",
+    // only show this prompt if usePrisma is true
+    type: (prev) => (prev ? "toggle" : null),
+    message: "Would you like to use Next Auth?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  },
+];
 
 (async () => {
-  console.log(chalk.red("Welcome to the create-t3-app !"));
+  logger.error("Welcome to the create-t3-app !");
 
-  const { name }: { name: string } = await prompts(promptOne as any);
-  const { language }: { language: string } = await prompts(promptTwo as any);
+  // FIXME: Look into if the type can be inferred
+  const { name, usePrisma, useNextAuth } = (await prompts(promts)) as {
+    name: string;
+    usePrisma: boolean;
+    useNextAuth: boolean | undefined;
+  };
+  const useNextAuthBool = !!useNextAuth;
 
-  if (language === "javascript") {
-    console.log(
-      `\n Wrong answer... Using ${chalk.blue("TypeScript")} instead. \n\n`
-    );
-  } else {
-    console.log(`\n Good choice! Using ${chalk.blue(language)} \n\n`);
-  }
-
-  const { usingPrisma }: { usingPrisma: boolean } = await prompts(
-    promptThree as any
-  );
-
-  let usingNextAuth = false;
-
-  if (usingPrisma) {
-    const { useNextAuth } = await prompts(promptFour as any);
-    usingNextAuth = useNextAuth;
-  }
-
-  await createProject(name, usingPrisma, usingNextAuth);
+  await createProject(name, usePrisma, useNextAuthBool);
 
   process.exit(0);
 })();
