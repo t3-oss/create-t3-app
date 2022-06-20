@@ -1,15 +1,16 @@
-import { installPkgs, type PackageManager } from "../helpers/getPkgManager";
+import { installPkgs } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
 import { execa } from "../helpers/execa";
+import type { Installer } from "../index";
 
-export const prismaInstaller = async (
-  projectDir: string,
-  pkgManager: PackageManager
+export const prismaInstaller: Installer = async (
+  projectDir,
+  packageManager
 ) => {
   await Promise.all([
-    installPkgs(pkgManager, true, projectDir, ["prisma"]),
-    installPkgs(pkgManager, false, projectDir, ["@prisma/client"]),
+    installPkgs(packageManager, true, projectDir, ["prisma"]),
+    installPkgs(packageManager, false, projectDir, ["@prisma/client"]),
   ]);
 
   const prismaAssetDir = path.join(
@@ -33,9 +34,11 @@ export const prismaInstaller = async (
     fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
   ]);
 
-  if (pkgManager === "npm") {
+  if (packageManager === "npm") {
     await execa("npx prisma generate");
   } else {
-    await execa(`${pkgManager} prisma generate`, { cwd: projectDir });
+    await execa(`${packageManager} prisma generate`, { cwd: projectDir });
   }
+
+  // add prisma to trpc context is using trpc
 };

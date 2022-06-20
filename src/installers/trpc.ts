@@ -1,11 +1,9 @@
-import { installPkgs, type PackageManager } from "../helpers/getPkgManager";
+import { installPkgs } from "../helpers/getPkgManager";
 import fs from "fs-extra";
 import path from "path";
+import { type Installer } from "../index";
 
-export const trpcInstaller = async (
-  projectDir: string,
-  pkgManager: PackageManager
-) => {
+export const trpcInstaller: Installer = async (projectDir, pkgManager) => {
   await installPkgs(pkgManager, false, projectDir, [
     "@trpc/server",
     "@trpc/client",

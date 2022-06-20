@@ -1,11 +1,9 @@
-import { installPkgs, type PackageManager } from "../helpers/getPkgManager";
+import { installPkgs } from "../helpers/getPkgManager";
+import type { Installer } from "../index";
 import fs from "fs-extra";
 import path from "path";
 
-export const tailwindInstaller = async (
-  projectDir: string,
-  pkgManager: PackageManager
-) => {
+export const tailwindInstaller: Installer = async (projectDir, pkgManager) => {
   await installPkgs(pkgManager, true, projectDir, [
     "tailwindcss",
     "postcss",

@@ -3,14 +3,20 @@ import prompts, { type PromptObject } from "prompts";
 import { logger } from "./helpers/logger";
 import { createProject } from "./helpers/create";
 import { installers } from "./installers";
+import { type PackageManager } from "./helpers/getPkgManager";
 
 const DEFAULT_PROJECT_NAME = "my-t3-app";
 
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
+export type Installer = (
+  projectDir: string,
+  packageManager: PackageManager,
+  packages?: Packages
+) => Promise<void>;
 export type Packages = {
   [pkg in AvailablePackages]: {
     inUse: boolean;
-    installer: (...args: any) => Promise<void>;
+    installer: Installer;
   };
 };
 
