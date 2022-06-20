@@ -25,10 +25,7 @@ export const createProject = async (
   await selectAppFile(projectDir, packages);
   await selectIndexFile(projectDir, packages);
 
-  logger.info("Initializing git...");
-  await initializeGit(projectDir);
-
-  logNextSteps(projectName, pkgManager, packages);
+  return projectDir;
 };
 
 // This bootstraps the base Next.js application
@@ -68,44 +65,5 @@ const installPackages = async (
       await opts.installer(projectDir, pkgManager, packages);
       logger.success(`Successfully installed ${name}.`);
     }
-  }
-};
-
-// This initializes the Git-repository for the project
-const initializeGit = async (projectDir: string) => {
-  try {
-    await execa("git init", { cwd: projectDir });
-    logger.success(`${chalk.bold.green("Finished")} initializing git`);
-  } catch (error) {
-    logger.error(`${chalk.bold.red("Failed: ")} could not initialize git`);
-  }
-
-  await fs.rename(
-    path.join(projectDir, "_gitignore"),
-    path.join(projectDir, ".gitignore")
-  );
-};
-
-// This logs the next steps that the user should take in order to advance the project
-const logNextSteps = (
-  projectName: string,
-  pkgManager: PackageManager,
-  packages: Packages
-) => {
-  logger.info("Next steps:");
-  logger.info(` cd ${chalk.cyan.bold(projectName)}`);
-
-  if (packages.prisma.inUse) {
-    if (pkgManager !== "npm") {
-      logger.info(`  ${pkgManager} prisma db push`);
-    } else {
-      logger.info(`  npx prisma db push`);
-    }
-  }
-
-  if (pkgManager !== "npm") {
-    logger.info(`  ${pkgManager} dev`);
-  } else {
-    logger.info("  npm run dev");
   }
 };
