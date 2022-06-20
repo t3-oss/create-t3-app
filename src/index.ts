@@ -3,6 +3,8 @@ import prompts, { type PromptObject } from "prompts";
 import { logger } from "./helpers/logger";
 import { createProject } from "./helpers/create";
 import { installers, type Installer } from "./installers";
+import { initializeGit } from "./helpers/init-git";
+import { logNextSteps } from "./helpers/log-next-steps";
 
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Packages = {
@@ -106,7 +108,11 @@ const promts: PromptObject[] = [
     nextAuth: { inUse: useNextAuth, installer: installers.nextAuth },
   };
 
-  await createProject(name, packages);
+  const projectDir = await createProject(name, packages);
+
+  await initializeGit(projectDir);
+
+  logNextSteps(name, packages);
 
   process.exit(0);
 })();
