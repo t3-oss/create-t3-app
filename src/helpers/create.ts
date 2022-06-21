@@ -5,6 +5,7 @@ import path from "path";
 import { promisify } from "util";
 import getPkgManager from "./getPkgManager";
 import { logger } from "./logger";
+import prompts from "prompts";
 
 const execa = promisify(exec);
 
@@ -33,8 +34,24 @@ const createProject = async (
   
 
   if (fs.existsSync(projectDir)) {
-    logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
-    process.exit(1);
+    if (fs.readdirSync(projectDir).length === 0) {
+      logger.info(`${chalk.bold.green(projectName)} exists but is empty, continuing..\n`);
+    } else {
+      const overwrite = await prompts({
+        name: "overwriteDir",
+        type: "toggle",
+        message: `${chalk.redBright.bold(projectName)} already exists, do you want to overwrite it?`,
+        initial: false,
+        active: "Yes",
+        inactive: "No",
+      });
+      if (!overwrite.overwriteDir) {
+        process.exit(0);
+      } else {
+        logger.info(`Emptying ${chalk.bold.green(projectName)} and creating t3 app..\n`);
+        fs.emptyDirSync(projectDir);
+      }
+    }
   }
 
   await fs.copy(srcDir, projectDir);
