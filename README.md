@@ -27,3 +27,10 @@ pnpm create t3-app@latest
 - [TypeScript](https://typescriptlang.org)
 - [Prisma](https://prisma.io)
 - [Next-Auth](https://next-auth.js.org)
+
+## Contributors
+<a href="https://github.com/nexxeln/create-t3-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nexxeln/create-t3-app" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
