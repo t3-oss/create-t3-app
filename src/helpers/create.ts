@@ -1,36 +1,43 @@
 import chalk from "chalk";
-import { exec } from "child_process";
 import fs from "fs-extra";
 import path from "path";
-import { promisify } from "util";
-import getPkgManager from "./getPkgManager";
+import { getPkgManager, type PackageManager } from "./get-pkg-manager";
 import { logger } from "./logger";
+import type { Packages } from "../index";
+import { execa } from "./execa";
 
-const execa = promisify(exec);
+import { selectAppFile, selectIndexFile } from "./select-boilerplate";
 
-const createProject = async (
+export const createProject = async (
   projectName: string,
-  usingPrisma: boolean,
-  usingNextAuth: boolean
+  packages: Packages
 ) => {
-  const srcDir = path.join(
-    __dirname,
-    "../../",
-    usingPrisma
-      ? usingNextAuth
-        ? "template-prisma-auth"
-        : "template-prisma"
-      : "template"
-  );
-
+  const pkgManager = getPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
 
-  const pkgManager = getPkgManager();
+  // Bootstraps the base Next.js application
+  await scaffoldProject(projectName, projectDir, pkgManager);
 
-  logger.info(`Scaffolding in: ${projectDir}\n`)
-  
+  // Install the selected packages
+  await installPackages(projectDir, pkgManager, packages);
+
+  // FIXME: Perhaps do this more dynamically. Adjust the _app and index based on packages
+  await selectAppFile(projectDir, packages);
+  await selectIndexFile(projectDir, packages);
+
+  return projectDir;
+};
+
+// This bootstraps the base Next.js application
+const scaffoldProject = async (
+  projectName: string,
+  projectDir: string,
+  pkgManager: PackageManager
+) => {
+  logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
-  
+
+  const srcDir = path.join(__dirname, "../../", "template/base");
 
   if (fs.existsSync(projectDir)) {
     logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
@@ -39,39 +46,24 @@ const createProject = async (
 
   await fs.copy(srcDir, projectDir);
 
-  try {
-    await execa("git init", { cwd: projectDir });
-    logger.success(`${chalk.bold.green("Finished")} initializing git`);
-  } catch (error) {
-    logger.error(`${chalk.bold.red("Failed: ")} could not initialize git`);
-  }
-
-  await fs.rename(
-    path.join(projectDir, "_gitignore"),
-    path.join(projectDir, ".gitignore")
-  );
-
-  logger.success(`${chalk.cyan.bold(projectName)} created successfully.`);
-
-  logger.info("Next steps:");
-  logger.info(` cd ${chalk.cyan.bold(projectName)}`);
-  logger.info(`  ${pkgManager} install`);
-
-  if (usingPrisma) {
-    if (pkgManager !== "npm") {
-      logger.info(`  ${pkgManager} prisma db push`);
-    }
-    else {
-      logger.info(`  npx prisma db push`);
-    }
-
-  }
-
-  if (pkgManager !== "npm") {
-    logger.info(`  ${pkgManager} dev`);
-  } else {
-    logger.info("  npm run dev");
-  }
+  await execa(`${pkgManager} install`, { cwd: projectDir });
+  logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
 };
 
-export default createProject;
+// This installs all the packages that the user has selected
+const installPackages = async (
+  projectDir: string,
+  pkgManager: PackageManager,
+  packages: Packages
+) => {
+  logger.info("Installing packages...");
+
+  for (const [name, opts] of Object.entries(packages)) {
+    if (opts.inUse) {
+      logger.info(`  Installing ${name}...`);
+      await opts.installer(projectDir, pkgManager, packages);
+      logger.success(`  Successfully installed ${name}.`);
+    }
+  }
+  logger.info("");
+};

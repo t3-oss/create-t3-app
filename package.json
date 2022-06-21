@@ -31,6 +31,8 @@
   "dependencies": {
     "chalk": "4.1.2",
     "fs-extra": "^10.1.0",
+    "handlebars": "^4.7.7",
+    "jscodeshift": "^0.13.1",
     "prompts": "^2.4.2"
   },
   "bin": {

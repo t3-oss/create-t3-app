@@ -1,9 +1,18 @@
 #!/usr/bin/env node
-
 import prompts, { type PromptObject } from "prompts";
 import { logger } from "./helpers/logger";
+import { createProject } from "./helpers/create";
+import { installers, type Installer } from "./installers";
+import { initializeGit } from "./helpers/init-git";
+import { logNextSteps } from "./helpers/log-next-steps";
 
-import createProject from "./helpers/create";
+type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
+export type Packages = {
+  [pkg in AvailablePackages]: {
+    inUse: boolean;
+    installer: Installer;
+  };
+};
 
 const DEFAULT_PROJECT_NAME = "my-t3-app";
 
@@ -27,12 +36,12 @@ const promts: PromptObject[] = [
     instructions: false,
     choices: [
       {
-        title: "JavaScript",
-        value: "javascript",
-      },
-      {
         title: "TypeScript",
         value: "typescript",
+      },
+      {
+        title: "JavaScript",
+        value: "javascript",
       },
     ],
     format: (language: string) => {
@@ -44,23 +53,22 @@ const promts: PromptObject[] = [
       return;
     },
   },
-  /*{
-    name: "packages",
-    type: "multiselect",
-    message: "Which packages will you be using?",
-    hint: "- Space to select, Return to submit",
-    instructions: false,
-    choices: [
-      {
-        title: "Next Auth",
-        value: "next-auth",
-      },
-      {
-        title: "Prisma",
-        value: "prisma",
-      },
-    ]
-  }*/
+  {
+    name: "useTailwind",
+    type: "toggle",
+    message: "Would you like to use Tailwind?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  },
+  {
+    name: "useTrpc",
+    type: "toggle",
+    message: "Would you like to use tRPC?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  },
   {
     name: "usePrisma",
     type: "toggle",
@@ -71,8 +79,7 @@ const promts: PromptObject[] = [
   },
   {
     name: "useNextAuth",
-    // only show this prompt if usePrisma is true
-    type: (prev) => (prev ? "toggle" : null),
+    type: "toggle",
     message: "Would you like to use Next Auth?",
     initial: true,
     active: "Yes",
@@ -84,14 +91,28 @@ const promts: PromptObject[] = [
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
-  const { name, usePrisma, useNextAuth } = (await prompts(promts)) as {
+  const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
+    promts
+  )) as {
     name: string;
+    useTailwind: boolean;
+    useTrpc: boolean;
     usePrisma: boolean;
-    useNextAuth: boolean | undefined;
+    useNextAuth: boolean;
   };
-  const useNextAuthBool = !!useNextAuth;
 
-  await createProject(name, usePrisma, useNextAuthBool);
+  const packages: Packages = {
+    tailwind: { inUse: useTailwind, installer: installers.tailwind },
+    trpc: { inUse: useTrpc, installer: installers.trpc },
+    prisma: { inUse: usePrisma, installer: installers.prisma },
+    nextAuth: { inUse: useNextAuth, installer: installers.nextAuth },
+  };
+
+  const projectDir = await createProject(name, packages);
+
+  await initializeGit(projectDir);
+
+  logNextSteps(name, packages);
 
   process.exit(0);
 })();
