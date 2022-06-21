@@ -18,6 +18,21 @@ yarn create t3-app
 # or
 pnpm create t3-app@latest
 ```
+To start your app 
+```bash
+yarn
+yarn dev
+```
+
+To install dependencies
+```bash
+pnpm install
+```
+
+If you don't have pnpm you can install it with npm
+```bash
+npm install -g pnpm
+```
 
 ## Stack
 
