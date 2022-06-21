@@ -40,7 +40,7 @@ const createProject = async (
       const overwrite = await prompts({
         name: "overwriteDir",
         type: "toggle",
-        message: `${chalk.redBright.bold(projectName)} already exists, do you want to overwrite it?`,
+        message: `${chalk.redBright.bold(projectName)} already exists and isn't empty, do you want to overwrite it?`,
         initial: false,
         active: "Yes",
         inactive: "No",
