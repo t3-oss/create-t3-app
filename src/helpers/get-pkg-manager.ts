@@ -1,27 +1,22 @@
-import { execSync } from "child_process";
+// import { execSync } from "child_process";
 import { execa } from "./execa";
 
 export type PackageManager = "npm" | "pnpm" | "yarn";
 
 export const getPkgManager: () => PackageManager = () => {
-  try {
-    const userAgent = process.env.npm_config_user_agent;
+  // This environment variable is set by npm and yarn but pnpm seems less consistent
 
-    if (userAgent) {
-      if (userAgent.startsWith("yarn")) {
-        return "yarn";
-      } else if (userAgent.startsWith("pnpm")) {
-        return "pnpm";
-      }
-    }
-    try {
-      execSync("yarn --version", { stdio: "ignore" });
+  const userAgent = process.env.npm_config_user_agent;
+
+  if (userAgent) {
+    if (userAgent.startsWith("yarn")) {
       return "yarn";
-    } catch {
-      execSync("pnpm --version", { stdio: "ignore" });
+    } else if (userAgent.startsWith("pnpm")) {
       return "pnpm";
+    } else {
+      return "npm";
     }
-  } catch {
+  } else { // If no user agent is set, assume npm
     return "npm";
   }
 };

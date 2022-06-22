@@ -6,7 +6,7 @@ import { installers, type Installer } from "./installers";
 import { initializeGit } from "./helpers/init-git";
 import { logNextSteps } from "./helpers/log-next-steps";
 
-type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
+type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth" | "prettier";
 export type Packages = {
   [pkg in AvailablePackages]: {
     inUse: boolean;
@@ -85,13 +85,22 @@ const promts: PromptObject[] = [
     active: "Yes",
     inactive: "No",
   },
+  {
+    name: "usePrettier",
+    type: "toggle",
+    message: "Would you like to use Prettier for formatting?",
+    initial: true,
+    active: "Yes",
+    inactive: "No",
+  }
 ];
 
 (async () => {
   logger.error("Welcome to the create-t3-app !");
+  logger.info(process.env._);
 
   // FIXME: Look into if the type can be inferred
-  const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
+  const { name, useTailwind, useTrpc, usePrisma, useNextAuth, usePrettier } = (await prompts(
     promts
   )) as {
     name: string;
@@ -99,6 +108,7 @@ const promts: PromptObject[] = [
     useTrpc: boolean;
     usePrisma: boolean;
     useNextAuth: boolean;
+    usePrettier: boolean;
   };
 
   const packages: Packages = {
@@ -106,6 +116,7 @@ const promts: PromptObject[] = [
     trpc: { inUse: useTrpc, installer: installers.trpc },
     prisma: { inUse: usePrisma, installer: installers.prisma },
     nextAuth: { inUse: useNextAuth, installer: installers.nextAuth },
+    prettier: { inUse: usePrettier, installer: installers.prettier },
   };
 
   const projectDir = await createProject(name, packages);
