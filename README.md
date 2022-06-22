@@ -26,16 +26,6 @@ yarn dev
 ```
 ## Dev
 
-To start the package locally on mac/linux
-```bash
-npm start
-```
-
-To start the package on windows:
-```bash
-npm start-w
-```
-
 To install dependencies
 ```bash
 pnpm install
@@ -44,6 +34,16 @@ pnpm install
 If you don't have pnpm you can install it with npm
 ```bash
 npm install -g pnpm
+```
+
+To start the package locally on mac/linux
+```bash
+npm start
+```
+
+To start the package on windows:
+```bash
+npm start-w
 ```
 
 ## Stack
