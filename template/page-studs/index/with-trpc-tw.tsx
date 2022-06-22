@@ -21,22 +21,30 @@ const Home: NextPage = () => {
           <h3 className="mt-4 text-3xl">This Stack uses:-</h3>
           <ul className="self-start text-xl underline list-disc">
             <li>
-              <a href="https://nextjs.org" target="_blank">
+              <a href="https://nextjs.org" target="_blank" rel="noreferrer">
                 Next.js
               </a>
             </li>
             <li>
-              <a href="https://trpc.io" target="_blank">
+              <a href="https://trpc.io" target="_blank" rel="noreferrer">
                 tRPC
               </a>
             </li>
             <li>
-              <a href="https://tailwindcss.com" target="_blank">
+              <a
+                href="https://tailwindcss.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 TailwindCSS
               </a>
             </li>
             <li>
-              <a href="https://typescriptlang.org" target="_blank">
+              <a
+                href="https://typescriptlang.org"
+                target="_blank"
+                rel="noreferrer"
+              >
                 TypeScript
               </a>
             </li>
