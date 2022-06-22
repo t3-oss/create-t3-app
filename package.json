@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && chmod +x dist/index.js",
-    "start": "npm run build && node dist/index.js"
+    "start": "npm run build && node dist/index.js",
+    "build-w": "rd /s dist && tsc && attrib +x dist/index.js",
+    "start-w": "npm run build-w && node dist/index.js"
   },
   "repository": {
     "type": "git",

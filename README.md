@@ -19,6 +19,28 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
+## Dev
+
+To install dependencies
+```bash
+pnpm install
+```
+
+If you don't have pnpm you can install it with npm
+```bash
+npm install -g pnpm
+```
+
+To start the package locally on mac/linux
+```bash
+pnpm start
+```
+
+To start the package on windows:
+```bash
+pnpm start-w
+```
+
 ## Stack
 
 - [Next.js](https://nextjs.org)
