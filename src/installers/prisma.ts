@@ -9,20 +9,18 @@ export const prismaInstaller: Installer = async (
   packageManager,
   packages
 ) => {
-  await Promise.all([
-    installPkgs({
-      packageManager,
-      projectDir,
-      packages: ["prisma"],
-      devMode: true,
-    }),
-    installPkgs({
-      packageManager,
-      projectDir,
-      packages: ["@prisma/client"],
-      devMode: false,
-    }),
-  ]);
+  await installPkgs({
+    packageManager,
+    projectDir,
+    packages: ["prisma"],
+    devMode: true,
+  });
+  await installPkgs({
+    packageManager,
+    projectDir,
+    packages: ["@prisma/client"],
+    devMode: false,
+  });
 
   const prismaAssetDir = path.join(
     __dirname,
@@ -42,10 +40,18 @@ export const prismaInstaller: Installer = async (
   const sampleApiRouteSrc = path.join(prismaAssetDir, "sample-api.ts");
   const sampleApiRouteDest = path.join(projectDir, "src/pages/api/examples.ts");
 
+  // add postinstall script to package.json
+  const packageJsonPath = path.join(projectDir, "package.json");
+  const packageJsonContent = await fs.readJSON(packageJsonPath);
+  packageJsonContent.scripts.postinstall = "prisma generate";
+
   await Promise.all([
     fs.copy(schemaSrc, schemaDest),
     fs.copy(clientSrc, clientDest),
     fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
+    fs.writeJSON(packageJsonPath, packageJsonContent, {
+      spaces: 2,
+    }),
   ]);
 
   const generateClientCmd =
