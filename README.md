@@ -18,10 +18,22 @@ yarn create t3-app
 # or
 pnpm create t3-app@latest
 ```
+
 To start your app 
 ```bash
 yarn
 yarn dev
+```
+## Dev
+
+To start the package locally on mac/linux
+```bash
+npm start
+```
+
+To start the package on windows:
+```bash
+npm start-w
 ```
 
 To install dependencies
