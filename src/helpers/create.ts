@@ -5,6 +5,7 @@ import { getPkgManager, type PackageManager } from "./get-pkg-manager";
 import { logger } from "./logger";
 import type { Packages } from "../index";
 import { execa } from "./execa";
+import prompts from "prompts";
 
 import { selectAppFile, selectIndexFile } from "./select-boilerplate";
 
@@ -40,8 +41,30 @@ const scaffoldProject = async (
   const srcDir = path.join(__dirname, "../../", "template/base");
 
   if (fs.existsSync(projectDir)) {
-    logger.error(`${chalk.redBright.bold(projectName)} already exists.`);
-    process.exit(1);
+    if (fs.readdirSync(projectDir).length === 0) {
+      logger.info(
+        `${chalk.bold.green(projectName)} exists but is empty, continuing..\n`
+      );
+    } else {
+      const overwrite = await prompts({
+        name: "overwriteDir",
+        type: "toggle",
+        message: `${chalk.redBright.bold(
+          projectName
+        )} already exists and isn't empty, do you want to overwrite it?`,
+        initial: false,
+        active: "Yes",
+        inactive: "No",
+      });
+      if (!overwrite.overwriteDir) {
+        process.exit(0);
+      } else {
+        logger.info(
+          `Emptying ${chalk.bold.green(projectName)} and creating t3 app..\n`
+        );
+        fs.emptyDirSync(projectDir);
+      }
+    }
   }
 
   await fs.copy(srcDir, projectDir);
