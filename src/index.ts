@@ -5,6 +5,8 @@ import { createProject } from "./helpers/create";
 import { installers, type Installer } from "./installers";
 import { initializeGit } from "./helpers/init-git";
 import { logNextSteps } from "./helpers/log-next-steps";
+import fs from "fs-extra";
+import path from "path";
 
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Packages = {
@@ -113,6 +115,12 @@ const promts: PromptObject[] = [
   await initializeGit(projectDir);
 
   logNextSteps(name, packages);
+
+  const pkgJson = await fs.readJSON(path.join(projectDir, "package.json"));
+  pkgJson.name = name;
+  await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
+    spaces: 2,
+  });
 
   process.exit(0);
 })();
