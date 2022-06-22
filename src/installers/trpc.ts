@@ -12,11 +12,12 @@ export const trpcInstaller: Installer = async (
     packageManager,
     projectDir,
     packages: [
+      "react-query",
+      "superjson",
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
       "@trpc/react",
-      "superjson",
       "zod",
     ],
     devMode: false,
