@@ -24,17 +24,21 @@ const Home: NextPage = () => {
           <h3>This Stack uses:-</h3>
           <ul>
             <li>
-              <a href="https://nextjs.org" target="_blank">
+              <a href="https://nextjs.org" target="_blank" rel="noreferrer">
                 Next.js
               </a>
             </li>
             <li>
-              <a href="https://trpc.io" target="_blank">
+              <a href="https://trpc.io" target="_blank" rel="noreferrer">
                 tRPC
               </a>
             </li>
             <li>
-              <a href="https://typescriptlang.org" target="_blank">
+              <a
+                href="https://typescriptlang.org"
+                target="_blank"
+                rel="noreferrer"
+              >
                 TypeScript
               </a>
             </li>
