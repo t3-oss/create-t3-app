@@ -89,7 +89,6 @@ const promts: PromptObject[] = [
 
 (async () => {
   logger.error("Welcome to the create-t3-app !");
-  logger.info(process.env._);
 
   // FIXME: Look into if the type can be inferred
   const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
