@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Create web application with the t3 stack",
   "main": "index.js",
   "scripts": {
