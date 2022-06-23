@@ -28,7 +28,9 @@
     "start-w": "npm run build-w && node dist/index.js",
     "lint": "eslint src/ --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
   },
   "dependencies": {
     "chalk": "4.1.2",
