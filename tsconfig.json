@@ -1,36 +1,50 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "lib": [
-            "dom",
-            "es6",
-            "es2017",
-            "esnext.asynciterable"
-        ],
-        "sourceMap": true,
-        "outDir": "./dist",
-        "moduleResolution": "node",
-        "removeComments": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "resolveJsonModule": true,
-        "baseUrl": "."
-    },
-    "exclude": [
-        "node_modules"
-    ],
-    "include": [
-        "./src/**/*.ts"
-    ]
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* LANGUAGE COMPILATION OPTIONS */
+    "target": "ES6",
+    "lib": ["DOM", "ES6", "ESNext"],
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+
+    /* EMIT RULES */
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    // "emitDeclarationOnly": true, //TODO: Turn on after transitioning build tool to tsup
+    "sourceMap": true,
+    "removeComments": true,
+
+    /* TYPE CHECKING RULES */
+    "strict": true,
+    // "noImplicitAny": true, // Included in "Strict"
+    // "noImplicitThis": true, // Included in "Strict"
+    // "strictBindCallApply": true, // Included in "Strict"
+    // "strictFunctionTypes": true, // Included in "Strict"
+    // "strictNullChecks": true, // Included in "Strict"
+    // "strictPropertyInitialization": true, // Included in "Strict"
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    // THE BELOW ARE EXTRA STRICT OPTIONS THAT SHOULD ONLY BY CONSIDERED IN VERY SAFE PROJECTS
+    // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
+    // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
+    // "noUncheckedIndexedAccess": true, // TLDR - Assigning an indexed value to a variable will force a <T | undefined> type if the param isn't confirmed to exist
+
+    /* OTHER OPTIONS */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "template"]
 }
