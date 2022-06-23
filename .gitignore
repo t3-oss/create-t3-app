@@ -1,2 +1,46 @@
-node_modules
-dist
+### STANDARD GIT IGNORE FILE ###
+
+# DEPENDENCIES
+node_modules/
+/.pnp
+.pnp.js
+
+# TESTING
+/coverage
+*.lcov
+.nyc_output
+
+# BUILD
+build/
+public/build/
+dist/
+generated/
+
+# ENV FILES
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# LOGS
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MISC
+.idea
+.turbo/
+.cache/
+.next/
+.nuxt/
+tmp/
+temp/
+.eslintcache
+
+# MAC
+._*
+.DS_Store
+Thumbs.db
