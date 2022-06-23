@@ -1,17 +1,16 @@
-import chalk from "chalk";
-import fs from "fs-extra";
-import path from "path";
-import { getPkgManager, type PackageManager } from "./get-pkg-manager";
-import { logger } from "./logger";
-import type { Packages } from "../index";
-import { execa } from "./execa";
-import prompts from "prompts";
-
-import { selectAppFile, selectIndexFile } from "./select-boilerplate";
+import type { Packages } from '../index';
+import path from 'path';
+import chalk from 'chalk';
+import fs from 'fs-extra';
+import prompts from 'prompts';
+import { execa } from './execa';
+import { getPkgManager, type PackageManager } from './get-pkg-manager';
+import { logger } from './logger';
+import { selectAppFile, selectIndexFile } from './select-boilerplate';
 
 export const createProject = async (
   projectName: string,
-  packages: Packages
+  packages: Packages,
 ) => {
   const pkgManager = getPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
@@ -33,34 +32,34 @@ export const createProject = async (
 const scaffoldProject = async (
   projectName: string,
   projectDir: string,
-  pkgManager: PackageManager
+  pkgManager: PackageManager,
 ) => {
   logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
 
-  const srcDir = path.join(__dirname, "../../", "template/base");
+  const srcDir = path.join(__dirname, '../../', 'template/base');
 
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
       logger.info(
-        `${chalk.bold.green(projectName)} exists but is empty, continuing..\n`
+        `${chalk.bold.green(projectName)} exists but is empty, continuing..\n`,
       );
     } else {
       const overwrite = await prompts({
-        name: "overwriteDir",
-        type: "toggle",
+        name: 'overwriteDir',
+        type: 'toggle',
         message: `${chalk.redBright.bold(
-          projectName
+          projectName,
         )} already exists and isn't empty, do you want to overwrite it?`,
         initial: false,
-        active: "Yes",
-        inactive: "No",
+        active: 'Yes',
+        inactive: 'No',
       });
       if (!overwrite.overwriteDir) {
         process.exit(0);
       } else {
         logger.info(
-          `Emptying ${chalk.bold.green(projectName)} and creating t3 app..\n`
+          `Emptying ${chalk.bold.green(projectName)} and creating t3 app..\n`,
         );
         fs.emptyDirSync(projectDir);
       }
@@ -77,9 +76,9 @@ const scaffoldProject = async (
 const installPackages = async (
   projectDir: string,
   pkgManager: PackageManager,
-  packages: Packages
+  packages: Packages,
 ) => {
-  logger.info("Installing packages...");
+  logger.info('Installing packages...');
 
   for (const [name, opts] of Object.entries(packages)) {
     if (opts.inUse) {
@@ -88,5 +87,5 @@ const installPackages = async (
       logger.success(`  Successfully installed ${name}.`);
     }
   }
-  logger.info("");
+  logger.info('');
 };
