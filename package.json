@@ -27,7 +27,8 @@
     "build-w": "rd /s dist && tsc && attrib +x dist/index.js",
     "start-w": "npm run build-w && node dist/index.js",
     "lint": "eslint src/ --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "chalk": "4.1.2",
@@ -51,5 +52,14 @@
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
     "typescript": "^4.6.4"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,mdx}": [
+      "prettier --write"
+    ]
   }
 }
