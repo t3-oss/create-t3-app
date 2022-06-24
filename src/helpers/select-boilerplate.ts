@@ -1,28 +1,28 @@
 // FIXME:: GENERATE THE PROPER _app.tsx and index.tsx FILES INSTEAD
 
-import path from 'path';
-import fs from 'fs-extra';
-import { Packages } from 'src';
+import path from "path";
+import fs from "fs-extra";
+import { Packages } from "src";
 
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = async (projectDir: string, packages: Packages) => {
-  const appFileDir = path.join(__dirname, '../../', 'template/page-studs/_app');
+  const appFileDir = path.join(__dirname, "../../", "template/page-studs/_app");
 
   const usingTrpc = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
 
-  let appFile = '';
+  let appFile = "";
   if (usingNextAuth && usingTrpc) {
-    appFile = 'with-auth-trpc.tsx';
+    appFile = "with-auth-trpc.tsx";
   } else if (usingNextAuth && !usingTrpc) {
-    appFile = 'with-auth.tsx';
+    appFile = "with-auth.tsx";
   } else if (!usingNextAuth && usingTrpc) {
-    appFile = 'with-trpc.tsx';
+    appFile = "with-trpc.tsx";
   }
 
-  if (appFile !== '') {
+  if (appFile !== "") {
     const appSrc = path.join(appFileDir, appFile);
-    const appDest = path.join(projectDir, 'src/pages/_app.tsx');
+    const appDest = path.join(projectDir, "src/pages/_app.tsx");
     await fs.copy(appSrc, appDest);
   }
 };
@@ -33,25 +33,25 @@ export const selectIndexFile = async (
 ) => {
   const indexFileDir = path.join(
     __dirname,
-    '../../',
-    'template/page-studs/index',
+    "../../",
+    "template/page-studs/index",
   );
 
   const usingTrpc = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
 
-  let indexFile = '';
+  let indexFile = "";
   if (usingTrpc && usingTw) {
-    indexFile = 'with-trpc-tw.tsx';
+    indexFile = "with-trpc-tw.tsx";
   } else if (usingTrpc && !usingTw) {
-    indexFile = 'with-trpc.tsx';
+    indexFile = "with-trpc.tsx";
   } else if (!usingTrpc && usingTw) {
-    indexFile = 'with-tw.tsx';
+    indexFile = "with-tw.tsx";
   }
 
-  if (indexFile !== '') {
+  if (indexFile !== "") {
     const indexSrc = path.join(indexFileDir, indexFile);
-    const indexDest = path.join(projectDir, 'src/pages/index.tsx');
+    const indexDest = path.join(projectDir, "src/pages/index.tsx");
     await fs.copy(indexSrc, indexDest);
   }
 };
