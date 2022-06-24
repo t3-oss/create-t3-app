@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-import path from 'path';
-import fs from 'fs-extra';
-import prompts, { type PromptObject } from 'prompts';
-import { createProject } from './helpers/create';
-import { initializeGit } from './helpers/init-git';
-import { logNextSteps } from './helpers/log-next-steps';
-import { logger } from './helpers/logger';
-import { installers, type Installer } from './installers';
+import path from "path";
+import fs from "fs-extra";
+import prompts, { type PromptObject } from "prompts";
+import { createProject } from "./helpers/create";
+import { initializeGit } from "./helpers/init-git";
+import { logNextSteps } from "./helpers/log-next-steps";
+import { logger } from "./helpers/logger";
+import { installers, type Installer } from "./installers";
 
-type AvailablePackages = 'tailwind' | 'trpc' | 'prisma' | 'nextAuth';
+type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Packages = {
   [pkg in AvailablePackages]: {
     inUse: boolean;
@@ -16,15 +16,15 @@ export type Packages = {
   };
 };
 
-const DEFAULT_PROJECT_NAME = 'my-t3-app';
+const DEFAULT_PROJECT_NAME = "my-t3-app";
 
 const promts: PromptObject[] = [
   {
-    name: 'name',
-    type: 'text',
-    message: 'What will your project be called?',
+    name: "name",
+    type: "text",
+    message: "What will your project be called?",
     format: (name: string) => {
-      if (name === '') {
+      if (name === "") {
         logger.warn(`Using default name: ${DEFAULT_PROJECT_NAME}`);
         return DEFAULT_PROJECT_NAME;
       }
@@ -32,65 +32,65 @@ const promts: PromptObject[] = [
     },
   },
   {
-    name: 'language',
-    type: 'select',
-    message: 'Will you be using JavaScript or TypeScript?',
+    name: "language",
+    type: "select",
+    message: "Will you be using JavaScript or TypeScript?",
     instructions: false,
     choices: [
       {
-        title: 'TypeScript',
-        value: 'typescript',
+        title: "TypeScript",
+        value: "typescript",
       },
       {
-        title: 'JavaScript',
-        value: 'javascript',
+        title: "JavaScript",
+        value: "javascript",
       },
     ],
     format: (language: string) => {
-      if (language === 'javascript') {
-        logger.error('Wrong answer, using TypeScript instead...');
+      if (language === "javascript") {
+        logger.error("Wrong answer, using TypeScript instead...");
       } else {
-        logger.success('Good choice! Using TypeScript!');
+        logger.success("Good choice! Using TypeScript!");
       }
       return;
     },
   },
   {
-    name: 'useTailwind',
-    type: 'toggle',
-    message: 'Would you like to use Tailwind?',
+    name: "useTailwind",
+    type: "toggle",
+    message: "Would you like to use Tailwind?",
     initial: true,
-    active: 'Yes',
-    inactive: 'No',
+    active: "Yes",
+    inactive: "No",
   },
   {
-    name: 'useTrpc',
-    type: 'toggle',
-    message: 'Would you like to use tRPC?',
+    name: "useTrpc",
+    type: "toggle",
+    message: "Would you like to use tRPC?",
     initial: true,
-    active: 'Yes',
-    inactive: 'No',
+    active: "Yes",
+    inactive: "No",
   },
   {
-    name: 'usePrisma',
-    type: 'toggle',
-    message: 'Would you like to use Prisma?',
+    name: "usePrisma",
+    type: "toggle",
+    message: "Would you like to use Prisma?",
     initial: true,
-    active: 'Yes',
-    inactive: 'No',
+    active: "Yes",
+    inactive: "No",
   },
   {
-    name: 'useNextAuth',
-    type: 'toggle',
-    message: 'Would you like to use Next Auth?',
+    name: "useNextAuth",
+    type: "toggle",
+    message: "Would you like to use Next Auth?",
     initial: true,
-    active: 'Yes',
-    inactive: 'No',
+    active: "Yes",
+    inactive: "No",
   },
 ];
 
 const main = async () => {
-  logger.error('Welcome to the create-t3-app !');
+  logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
   const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
@@ -117,9 +117,9 @@ const main = async () => {
   logNextSteps(name, packages);
 
   //TODO: Review lint error here and correct
-  const pkgJson = await fs.readJSON(path.join(projectDir, 'package.json')); // eslint-disable-line
+  const pkgJson = await fs.readJSON(path.join(projectDir, "package.json")); // eslint-disable-line
   pkgJson.name = name; // eslint-disable-line
-  await fs.writeJSON(path.join(projectDir, 'package.json'), pkgJson, {
+  await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
 

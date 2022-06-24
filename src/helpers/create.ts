@@ -1,12 +1,12 @@
-import type { Packages } from '../index';
-import path from 'path';
-import chalk from 'chalk';
-import fs from 'fs-extra';
-import prompts from 'prompts';
-import { execa } from './execa';
-import { getPkgManager, type PackageManager } from './get-pkg-manager';
-import { logger } from './logger';
-import { selectAppFile, selectIndexFile } from './select-boilerplate';
+import type { Packages } from "../index";
+import path from "path";
+import chalk from "chalk";
+import fs from "fs-extra";
+import prompts from "prompts";
+import { execa } from "./execa";
+import { getPkgManager, type PackageManager } from "./get-pkg-manager";
+import { logger } from "./logger";
+import { selectAppFile, selectIndexFile } from "./select-boilerplate";
 
 export const createProject = async (
   projectName: string,
@@ -37,7 +37,7 @@ const scaffoldProject = async (
   logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
 
-  const srcDir = path.join(__dirname, '../../', 'template/base');
+  const srcDir = path.join(__dirname, "../../", "template/base");
 
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
@@ -46,14 +46,14 @@ const scaffoldProject = async (
       );
     } else {
       const overwrite = await prompts({
-        name: 'overwriteDir',
-        type: 'toggle',
+        name: "overwriteDir",
+        type: "toggle",
         message: `${chalk.redBright.bold(
           projectName,
         )} already exists and isn't empty, do you want to overwrite it?`,
         initial: false,
-        active: 'Yes',
-        inactive: 'No',
+        active: "Yes",
+        inactive: "No",
       });
       if (!overwrite.overwriteDir) {
         process.exit(0);
@@ -78,7 +78,7 @@ const installPackages = async (
   pkgManager: PackageManager,
   packages: Packages,
 ) => {
-  logger.info('Installing packages...');
+  logger.info("Installing packages...");
 
   for (const [name, opts] of Object.entries(packages)) {
     if (opts.inUse) {
@@ -87,5 +87,5 @@ const installPackages = async (
       logger.success(`  Successfully installed ${name}.`);
     }
   }
-  logger.info('');
+  logger.info("");
 };
