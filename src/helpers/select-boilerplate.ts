@@ -6,7 +6,7 @@ import { Packages } from "src";
 
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = async (projectDir: string, packages: Packages) => {
-  const appFileDir = path.join(__dirname, "../../", "template/page-studs/_app");
+  const appFileDir = path.join(__dirname, "../", "template/page-studs/_app");
 
   const usingTrpc = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
@@ -31,11 +31,7 @@ export const selectIndexFile = async (
   projectDir: string,
   packages: Packages,
 ) => {
-  const indexFileDir = path.join(
-    __dirname,
-    "../../",
-    "template/page-studs/index",
-  );
+  const indexFileDir = path.join(__dirname, "../", "template/page-studs/index");
 
   const usingTrpc = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;

@@ -37,7 +37,7 @@ const scaffoldProject = async (
   logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
 
-  const srcDir = path.join(__dirname, "../../", "template/base");
+  const srcDir = path.join(__dirname, "../", "template/base");
 
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
