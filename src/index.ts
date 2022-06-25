@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import prompts, { type PromptObject } from "prompts";
@@ -116,9 +117,10 @@ const main = async () => {
 
   logNextSteps(name, packages);
 
-  //TODO: Review lint error here and correct
-  const pkgJson = await fs.readJSON(path.join(projectDir, "package.json")); // eslint-disable-line
-  pkgJson.name = name; // eslint-disable-line
+  const pkgJson = (await fs.readJSON(
+    path.join(projectDir, "package.json"),
+  )) as PackageJson;
+  pkgJson.name = name;
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
