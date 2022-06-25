@@ -22,21 +22,25 @@ pnpm create t3-app@latest
 ## Dev
 
 To install dependencies
+
 ```bash
 pnpm install
 ```
 
 If you don't have pnpm you can install it with npm
+
 ```bash
 npm install -g pnpm
 ```
 
 To start the package locally on mac/linux
+
 ```bash
 pnpm start
 ```
 
 To start the package on windows:
+
 ```bash
 pnpm start-w
 ```
@@ -51,6 +55,7 @@ pnpm start-w
 - [Next-Auth](https://next-auth.js.org)
 
 ## Contributors
+
 <a href="https://github.com/nexxeln/create-t3-app/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=nexxeln/create-t3-app" />
 </a>

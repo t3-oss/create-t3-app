@@ -29,12 +29,12 @@ export const selectAppFile = async (projectDir: string, packages: Packages) => {
 // This selects the proper index.tsx to be used that showcases the chosen tech
 export const selectIndexFile = async (
   projectDir: string,
-  packages: Packages
+  packages: Packages,
 ) => {
   const indexFileDir = path.join(
     __dirname,
     "../../",
-    "template/page-studs/index"
+    "template/page-studs/index",
   );
 
   const usingTrpc = packages.trpc.inUse;

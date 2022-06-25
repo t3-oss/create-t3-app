@@ -1,8 +1,7 @@
-import chalk from "chalk";
-
-import { logger } from "./logger";
-import { getPkgManager } from "./get-pkg-manager";
 import type { Packages } from "../index";
+import chalk from "chalk";
+import { getPkgManager } from "./get-pkg-manager";
+import { logger } from "./logger";
 
 // This logs the next steps that the user should take in order to advance the project
 export const logNextSteps = (projectName: string, packages: Packages) => {

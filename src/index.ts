@@ -1,12 +1,12 @@
 #!/usr/bin/env node
+import path from "path";
+import fs from "fs-extra";
 import prompts, { type PromptObject } from "prompts";
-import { logger } from "./helpers/logger";
 import { createProject } from "./helpers/create";
-import { installers, type Installer } from "./installers";
 import { initializeGit } from "./helpers/init-git";
 import { logNextSteps } from "./helpers/log-next-steps";
-import fs from "fs-extra";
-import path from "path";
+import { logger } from "./helpers/logger";
+import { installers, type Installer } from "./installers";
 
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Packages = {
@@ -89,12 +89,12 @@ const promts: PromptObject[] = [
   },
 ];
 
-(async () => {
+const main = async () => {
   logger.error("Welcome to the create-t3-app !");
 
   // FIXME: Look into if the type can be inferred
   const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
-    promts
+    promts,
   )) as {
     name: string;
     useTailwind: boolean;
@@ -116,11 +116,18 @@ const promts: PromptObject[] = [
 
   logNextSteps(name, packages);
 
-  const pkgJson = await fs.readJSON(path.join(projectDir, "package.json"));
-  pkgJson.name = name;
+  //TODO: Review lint error here and correct
+  const pkgJson = await fs.readJSON(path.join(projectDir, "package.json")); // eslint-disable-line
+  pkgJson.name = name; // eslint-disable-line
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
 
   process.exit(0);
-})();
+};
+
+main().catch((err) => {
+  if (err instanceof Error) {
+    console.error(err);
+  }
+});

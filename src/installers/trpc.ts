@@ -1,12 +1,12 @@
-import { installPkgs } from "../helpers/get-pkg-manager";
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+import { installPkgs } from "../helpers/get-pkg-manager";
 import { type Installer } from "./index";
 
 export const trpcInstaller: Installer = async (
   projectDir,
   packageManager,
-  packages
+  packages,
 ) => {
   await installPkgs({
     packageManager,
@@ -33,7 +33,7 @@ export const trpcInstaller: Installer = async (
 
   const contextSrc = path.join(
     trpcAssetDir,
-    packages.prisma.inUse ? "prisma-context.ts" : "base-context.ts"
+    packages.prisma.inUse ? "prisma-context.ts" : "base-context.ts",
   );
   const contextDest = path.join(projectDir, "src/server/router/context.ts");
 
@@ -42,11 +42,11 @@ export const trpcInstaller: Installer = async (
 
   const exampleRouterSrc = path.join(
     trpcAssetDir,
-    packages.prisma.inUse ? "example-prisma-router.ts" : "example-router.ts"
+    packages.prisma.inUse ? "example-prisma-router.ts" : "example-router.ts",
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/router/example.ts"
+    "src/server/router/example.ts",
   );
 
   await Promise.all([
