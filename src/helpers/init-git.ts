@@ -1,9 +1,8 @@
+import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
-import path from "path";
-
-import { logger } from "./logger";
 import { execa } from "./execa";
+import { logger } from "./logger";
 
 // This initializes the Git-repository for the project
 export const initializeGit = async (projectDir: string) => {
@@ -18,6 +17,6 @@ export const initializeGit = async (projectDir: string) => {
 
   await fs.rename(
     path.join(projectDir, "_gitignore"),
-    path.join(projectDir, ".gitignore")
+    path.join(projectDir, ".gitignore"),
   );
 };

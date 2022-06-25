@@ -1,13 +1,13 @@
-import { installPkgs } from "../helpers/get-pkg-manager";
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
 import { execa } from "../helpers/execa";
+import { installPkgs } from "../helpers/get-pkg-manager";
 import { type Installer } from "./index";
 
 export const prismaInstaller: Installer = async (
   projectDir,
   packageManager,
-  packages
+  packages,
 ) => {
   await installPkgs({
     packageManager,
@@ -25,12 +25,12 @@ export const prismaInstaller: Installer = async (
   const prismaAssetDir = path.join(
     __dirname,
     "../../",
-    "template/addons/prisma"
+    "template/addons/prisma",
   );
 
   const schemaSrc = path.join(
     prismaAssetDir,
-    packages.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma"
+    packages.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma",
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
@@ -42,8 +42,10 @@ export const prismaInstaller: Installer = async (
 
   // add postinstall script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
-  const packageJsonContent = await fs.readJSON(packageJsonPath);
-  packageJsonContent.scripts.postinstall = "prisma generate";
+
+  //TODO: Review lint error here and correct
+  const packageJsonContent = fs.readJSONSync(packageJsonPath); // eslint-disable-line
+  packageJsonContent.scripts.postinstall = "prisma generate"; // eslint-disable-line
 
   await Promise.all([
     fs.copy(schemaSrc, schemaDest),

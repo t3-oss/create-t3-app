@@ -16,7 +16,8 @@ export const getPkgManager: () => PackageManager = () => {
     } else {
       return "npm";
     }
-  } else { // If no user agent is set, assume npm
+  } else {
+    // If no user agent is set, assume npm
     return "npm";
   }
 };
