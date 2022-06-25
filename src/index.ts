@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import type { PackageJson } from "type-fest";
 import path from "path";
+import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs-extra";
 import prompts from "prompts";
@@ -21,39 +22,18 @@ export type Packages = {
 
 const DEFAULT_PROJECT_NAME = "my-t3-app";
 
-const titleText = `Welcome to the create-t3-app !`;
+const TITLE_TEXT = `Welcome to the create-t3-app !`;
 
-// const helpText = `
-//   ${titleText}
-
-//   Usage:
-//     $ npx create-t3-app [<dir>] [flags...]
-//   If <dir> is not provided up front you will be prompted for it.
-
-//   Flags:
-//     --default, -y       Bypass the CLI and use all default options to bootstrap a new t3-app
-//     --no-init           Explicitly tell the CLI to not initialize a new git repo in the project
-//     --no-install        Explicitly do not run the package manager's install command
-//     --help, -h          Show this help message
-//     --version, -v       Show the version of this script
-// `;
-
-const program = new Command()
-  .name("create-t3-app")
-  .usage("npx create-t3-app [<dir>] [flags...]");
+const program = new Command().name("create-t3-app");
 
 const main = async () => {
-  logger.error(titleText);
+  logger.error(TITLE_TEXT, "\n");
 
   program
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
       "[dir]",
       "The name of the application, as well as the name of the directory to create",
-    )
-    .option(
-      "-y, --default",
-      "Bypass the CLI and use all default options to bootstrap a new t3-app",
     )
     .option(
       "--noGit",
@@ -63,18 +43,35 @@ const main = async () => {
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
     )
-    .version(getVersion())
-    .addHelpText("beforeAll", "\n")
-    .addHelpText("after", "\n Support ping.gg")
+    .option(
+      "-y, --default",
+      "Bypass the CLI and use all default options to bootstrap a new t3-app",
+    )
+    .version(getVersion(), "-v, --version", "Display the version number")
+    .addHelpText(
+      "afterAll",
+      `\n The t3 stack was inspired by ${chalk
+        .hex("#E8DCFF")
+        .bold(
+          "@t3dotgg",
+        )} and has been used to build awesome fullstack applications like ${chalk
+        .hex("#E24A8D")
+        .underline("https://ping.gg")} \n`,
+    )
     .parse(process.argv);
 
-  program.outputHelp(); //DEV: Show help on every run
+  const programOptions = program.opts<{
+    noGit?: boolean;
+    noInstall?: boolean;
+    default?: boolean;
+  }>();
 
-  const argvOptions = program.opts();
+  const cliProvidedName: string | undefined = program.args[0];
 
+  //DEV
   console.log({
-    args: program.args,
-    argvOptions,
+    cliProvidedName,
+    programOptions,
   });
 
   // FIXME: Look into if the type can be inferred
@@ -82,13 +79,10 @@ const main = async () => {
     [
       {
         name: "name",
-        type: "text",
+        type: !!cliProvidedName ? null : "text",
         message: "What will your project be called?",
+        initial: DEFAULT_PROJECT_NAME,
         format: (input: string) => {
-          if (input === "") {
-            logger.warn(`Using default name: ${DEFAULT_PROJECT_NAME}`);
-            return DEFAULT_PROJECT_NAME;
-          }
           return input.trim();
         },
       },
