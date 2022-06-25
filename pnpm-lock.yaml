@@ -9,6 +9,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.28.0
   '@typescript-eslint/parser': ^5.28.0
   chalk: 4.1.2
+  commander: ^9.3.0
   eslint: ^8.18.0
   eslint-config-prettier: ^8.5.0
   eslint-import-resolver-typescript: ^2.7.1
@@ -27,6 +28,7 @@ specifiers:
 
 dependencies:
   chalk: 4.1.2
+  commander: 9.3.0
   fs-extra: 10.1.0
   handlebars: 4.7.7
   jscodeshift: 0.13.1
@@ -1545,7 +1547,6 @@ packages:
   /commander/9.3.0:
     resolution: {integrity: sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==}
     engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   /commondir/1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
