@@ -31,10 +31,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "useUnknownInCatchVariables": true,
+    "noUncheckedIndexedAccess": true, // TLDR - Checking an indexed value (array[0]) now forces type <T | undefined> as there is no confirmation that index exists
     // THE BELOW ARE EXTRA STRICT OPTIONS THAT SHOULD ONLY BY CONSIDERED IN VERY SAFE PROJECTS
     // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
     // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
-    // "noUncheckedIndexedAccess": true, // TLDR - Assigning an indexed value to a variable will force a <T | undefined> type if the param isn't confirmed to exist
 
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
