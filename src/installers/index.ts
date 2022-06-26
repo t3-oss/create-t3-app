@@ -1,5 +1,5 @@
-import type { PackageManager } from "../helpers/get-pkg-manager";
 import type { Packages } from "../index";
+import type { PackageManager } from "../utils/getUserPkgManager";
 import { nextAuthInstaller } from "./next-auth";
 import { prismaInstaller } from "./prisma";
 import { tailwindInstaller } from "./tailwind";

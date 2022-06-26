@@ -2,8 +2,8 @@ import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
 import ora from "ora";
-import { execa } from "./execa";
-import { logger } from "./logger";
+import { execa } from "../utils/execAsync";
+import { logger } from "../utils/logger";
 
 // This initializes the Git-repository for the project
 export const initializeGit = async (projectDir: string) => {
