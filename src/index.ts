@@ -54,7 +54,14 @@ const main = async () => {
 };
 
 main().catch((err) => {
+  logger.error("Aborting installation...");
   if (err instanceof Error) {
-    console.error(err);
+    logger.error(err.message);
+  } else {
+    logger.error(
+      "An unkown error has occured. Please open an issue on github with the below:",
+    );
+    console.log(err);
   }
+  process.exit(1);
 });
