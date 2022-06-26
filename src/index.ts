@@ -5,6 +5,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs-extra";
 import prompts from "prompts";
+import { CREATE_T3_APP, TITLE_TEXT, DEFAULT_APP_NAME } from "./consts";
 import { createProject } from "./helpers/create";
 import { getVersion } from "./helpers/getVersion";
 import { initializeGit } from "./helpers/init-git";
@@ -20,11 +21,7 @@ export type Packages = {
   };
 };
 
-const DEFAULT_PROJECT_NAME = "my-t3-app";
-
-const TITLE_TEXT = `Welcome to the create-t3-app !`;
-
-const program = new Command().name("create-t3-app");
+const program = new Command().name(CREATE_T3_APP);
 
 const main = async () => {
   logger.error(TITLE_TEXT, "\n");
@@ -81,7 +78,7 @@ const main = async () => {
         name: "name",
         type: !!cliProvidedName ? null : "text",
         message: "What will your project be called?",
-        initial: DEFAULT_PROJECT_NAME,
+        initial: DEFAULT_APP_NAME,
         format: (input: string) => {
           return input.trim();
         },
