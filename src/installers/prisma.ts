@@ -1,8 +1,9 @@
+import type { Installer } from "./index";
+import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { execa } from "../helpers/execa";
 import { installPkgs } from "../helpers/get-pkg-manager";
-import { type Installer } from "./index";
 
 export const prismaInstaller: Installer = async (
   projectDir,
@@ -43,9 +44,8 @@ export const prismaInstaller: Installer = async (
   // add postinstall script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
-  //TODO: Review lint error here and correct
-  const packageJsonContent = fs.readJSONSync(packageJsonPath); // eslint-disable-line
-  packageJsonContent.scripts.postinstall = "prisma generate"; // eslint-disable-line
+  const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+  packageJsonContent.scripts!.postinstall = "prisma generate"; //eslint-disable-line @typescript-eslint/no-non-null-assertion
 
   await Promise.all([
     fs.copy(schemaSrc, schemaDest),

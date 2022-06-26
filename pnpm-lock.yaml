@@ -19,6 +19,7 @@ specifiers:
   lint-staged: ^13.0.2
   prettier: ^2.7.1
   prompts: ^2.4.2
+  type-fest: ^2.14.0
   typescript: ^4.6.4
 
 dependencies:
@@ -42,6 +43,7 @@ devDependencies:
   husky: 8.0.1
   lint-staged: 13.0.2
   prettier: 2.7.1
+  type-fest: 2.14.0
   typescript: 4.6.4
 
 packages:
@@ -3961,6 +3963,11 @@ packages:
   /type-fest/0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+    dev: true
+
+  /type-fest/2.14.0:
+    resolution: {integrity: sha512-hQnTQkFjL5ik6HF2fTAM8ycbr94UbQXK364wF930VHb0dfBJ5JBP8qwrR8TaK9zwUEk7meruo2JAUDMwvuxd/w==}
+    engines: {node: '>=12.20'}
     dev: true
 
   /typescript/4.6.4:
