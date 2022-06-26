@@ -1,7 +1,7 @@
+import type { Installer } from "./index";
 import path from "path";
 import fs from "fs-extra";
-import { installPkgs } from "../helpers/get-pkg-manager";
-import { type Installer } from "./index";
+import { installPkgs } from "../helpers/installPackages";
 
 export const trpcInstaller: Installer = async (
   projectDir,

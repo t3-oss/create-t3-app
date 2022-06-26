@@ -6,12 +6,12 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import prompts from "prompts";
 import { CREATE_T3_APP, TITLE_TEXT, DEFAULT_APP_NAME } from "./consts";
-import { createProject } from "./helpers/create";
-import { getVersion } from "./helpers/getVersion";
-import { initializeGit } from "./helpers/init-git";
-import { logNextSteps } from "./helpers/log-next-steps";
-import { logger } from "./helpers/logger";
+import { createProject } from "./helpers/createProject";
+import { initializeGit } from "./helpers/initGit";
+import { logNextSteps } from "./helpers/logNextSteps";
 import { installers, type Installer } from "./installers";
+import { getVersion } from "./utils/getT3Version";
+import { logger } from "./utils/logger";
 
 type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
 export type Packages = {

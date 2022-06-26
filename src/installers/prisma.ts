@@ -2,8 +2,8 @@ import type { Installer } from "./index";
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
-import { execa } from "../helpers/execa";
-import { installPkgs } from "../helpers/get-pkg-manager";
+import { installPkgs } from "../helpers/installPackages";
+import { execa } from "../utils/execAsync";
 
 export const prismaInstaller: Installer = async (
   projectDir,

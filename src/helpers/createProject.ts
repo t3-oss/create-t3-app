@@ -4,16 +4,19 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import ora from "ora";
 import prompts from "prompts";
-import { execa } from "./execa";
-import { getPkgManager, type PackageManager } from "./get-pkg-manager";
-import { logger } from "./logger";
-import { selectAppFile, selectIndexFile } from "./select-boilerplate";
+import { execa } from "../utils/execAsync";
+import {
+  getUserPkgManager,
+  type PackageManager,
+} from "../utils/getUserPkgManager";
+import { logger } from "../utils/logger";
+import { selectAppFile, selectIndexFile } from "./selectBoilerplate";
 
 export const createProject = async (
   projectName: string,
   packages: Packages,
 ) => {
-  const pkgManager = getPkgManager();
+  const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
 
   // Bootstraps the base Next.js application
