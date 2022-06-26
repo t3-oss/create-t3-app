@@ -13,7 +13,6 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
-    // "emitDeclarationOnly": true, //TODO: Turn on after transitioning build tool to tsup
     "sourceMap": true,
     "removeComments": true,
 
