@@ -35,8 +35,6 @@
     "chalk": "4.1.2",
     "commander": "^9.3.0",
     "fs-extra": "^10.1.0",
-    "handlebars": "^4.7.7",
-    "jscodeshift": "^0.13.1",
     "ora": "4.0.0",
     "prompts": "^2.4.2"
   },
