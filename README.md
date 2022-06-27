@@ -33,16 +33,10 @@ If you don't have pnpm you can install it with npm
 npm install -g pnpm
 ```
 
-To start the package locally on mac/linux
+To start the package locally
 
 ```bash
 pnpm start
-```
-
-To start the package on windows:
-
-```bash
-pnpm start-w
 ```
 
 ## Stack
