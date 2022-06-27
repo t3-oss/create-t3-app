@@ -11,19 +11,13 @@ export const logNextSteps = (
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
-  logger.info(` cd ${chalk.cyan.bold(projectName)}`);
+  logger.info(`  cd ${chalk.cyan.bold(projectName)}`);
 
   if (packages.prisma.inUse) {
-    if (pkgManager !== "npm") {
-      logger.info(`  ${pkgManager} prisma db push`);
-    } else {
-      logger.info(`  npx prisma db push`);
-    }
+    logger.info(
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`,
+    );
   }
 
-  if (pkgManager !== "npm") {
-    logger.info(`  ${pkgManager} dev`);
-  } else {
-    logger.info("  npm run dev");
-  }
+  logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 };
