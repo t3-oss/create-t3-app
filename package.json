@@ -24,9 +24,7 @@
   "scripts": {
     "build": "tsup src/index.ts --clean --sourcemap --minify --metafile",
     "dev": "tsup src/index.ts --watch --clean --onSuccess \"node dist/index.js\"",
-    "start": "node dist/index.js",
-    "build-w": "rd /s dist && tsc && attrib +x dist/index.js",
-    "start-w": "npm run build-w && node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "lint": "eslint src/ --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
