@@ -4,7 +4,15 @@ import { prismaInstaller } from "./prisma";
 import { tailwindInstaller } from "./tailwind";
 import { trpcInstaller } from "./trpc";
 
-export type AvailablePackages = "nextAuth" | "prisma" | "tailwind" | "trpc";
+// Turning this into a const allows the list to be iterated over for programatically creating prompt options
+export const availablePackages = [
+  "nextAuth",
+  "prisma",
+  "tailwind",
+  "trpc",
+] as const;
+
+export type AvailablePackages = typeof availablePackages[number];
 
 export type Packages = {
   [pkg in AvailablePackages]: {
