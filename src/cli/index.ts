@@ -3,6 +3,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts";
+import { availablePackages } from "../installers";
 import { getVersion } from "../utils/getT3Version";
 import { logger } from "../utils/logger";
 import { validateAppName } from "../utils/validateAppName";
@@ -34,7 +35,8 @@ export const runCli = async () => {
 
   const program = new Command().name(CREATE_T3_APP);
 
-  //TODO: This doesn't return anything typesafe. Research other options
+  // TODO: This doesn't return anything typesafe. Research other options?
+  // Emulate from: https://github.com/Schniz/soundtype-commander
   program
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
@@ -112,28 +114,10 @@ export const runCli = async () => {
         name: "packages",
         type: "checkbox",
         message: "Which packages would you like to enable?",
-        choices: [
-          {
-            name: "NextAuth",
-            value: "nextAuth",
-            checked: defaultOptions.packages.includes("nextAuth"),
-          },
-          {
-            name: "Prisma",
-            value: "prisma",
-            checked: defaultOptions.packages.includes("prisma"),
-          },
-          {
-            name: "Tailwind",
-            value: "tailwind",
-            checked: defaultOptions.packages.includes("tailwind"),
-          },
-          {
-            name: "tRPC",
-            value: "trpc",
-            checked: defaultOptions.packages.includes("trpc"),
-          },
-        ],
+        choices: availablePackages.map((pkgName) => ({
+          name: pkgName,
+          checked: defaultOptions.packages.includes(pkgName),
+        })),
       });
 
       console.log({ packages, cliResults }); //DEV
