@@ -1,7 +1,7 @@
-import type { PkgInstallerMap } from "../installers";
+import type { PkgInstallerMap } from "../installers/index.js";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "../consts";
+import { PKG_ROOT } from "../consts.js";
 
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = async (

@@ -1,8 +1,8 @@
-import type { Installer } from "./index";
+import type { Installer } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "../consts";
-import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
+import { PKG_ROOT } from "../consts.js";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
 export const nextAuthInstaller: Installer = async (
   projectDir,

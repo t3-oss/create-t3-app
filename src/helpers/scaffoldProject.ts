@@ -3,10 +3,10 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
-import { PKG_ROOT } from "../consts";
-import { execa } from "../utils/execAsync";
-import { type PackageManager } from "../utils/getUserPkgManager";
-import { logger } from "../utils/logger";
+import { PKG_ROOT } from "../consts.js";
+import { execa } from "../utils/execAsync.js";
+import { type PackageManager } from "../utils/getUserPkgManager.js";
+import { logger } from "../utils/logger.js";
 
 // This bootstraps the base Next.js application
 export const scaffoldProject = async (
