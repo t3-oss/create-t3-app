@@ -7,7 +7,7 @@ import { TITLE_TEXT } from "./consts";
 import { createProject } from "./helpers/createProject";
 import { initializeGit } from "./helpers/initGit";
 import { logNextSteps } from "./helpers/logNextSteps";
-import { installers, Packages } from "./installers";
+import { buildPkgInstallerMap } from "./installers";
 import { logger } from "./utils/logger";
 
 const main = async () => {
@@ -19,24 +19,7 @@ const main = async () => {
     flags: { noGit },
   } = await runCli();
 
-  const usePackages: Packages = {
-    nextAuth: {
-      inUse: packages.includes("nextAuth"),
-      installer: installers.nextAuth,
-    },
-    prisma: {
-      inUse: packages.includes("prisma"),
-      installer: installers.prisma,
-    },
-    tailwind: {
-      inUse: packages.includes("tailwind"),
-      installer: installers.tailwind,
-    },
-    trpc: {
-      inUse: packages.includes("trpc"),
-      installer: installers.trpc,
-    },
-  };
+  const usePackages = buildPkgInstallerMap(packages);
 
   const projectDir = await createProject(appName, usePackages);
 

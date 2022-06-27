@@ -1,19 +1,23 @@
-import { execa } from "../utils/execAsync";
-import { PackageManager } from "../utils/getUserPkgManager";
+import type { PkgInstallerMap } from "../installers";
+import type { PackageManager } from "../utils/getUserPkgManager";
+import ora from "ora";
+import { logger } from "../utils/logger";
 
-export const installPkgs = async (opts: {
-  packageManager: PackageManager;
-  devMode: boolean;
-  projectDir: string;
-  packages: string[];
-}) => {
-  const { packageManager, devMode, projectDir, packages } = opts;
+// This runs the installer for all the packages that the user has selected
+export const installPackages = async (
+  projectDir: string,
+  pkgManager: PackageManager,
+  packages: PkgInstallerMap,
+) => {
+  logger.info("Installing packages...");
 
-  const installCmd =
-    packageManager === "yarn"
-      ? `${packageManager} add`
-      : `${packageManager} install`;
-  const flag = devMode ? "-D" : "";
-  const fullCmd = `${installCmd} ${flag} ${packages.join(" ")}`;
-  await execa(fullCmd, { cwd: projectDir });
+  for (const [name, opts] of Object.entries(packages)) {
+    if (opts.inUse) {
+      const spinner = ora(`Installing ${name}...`).start();
+      await opts.installer(projectDir, pkgManager, packages);
+      spinner.stop();
+      logger.success(`  Successfully installed ${name}.`);
+    }
+  }
+  logger.info("");
 };

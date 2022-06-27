@@ -1,10 +1,13 @@
-import type { Packages } from "../installers";
+import type { PkgInstallerMap } from "../installers";
 import chalk from "chalk";
 import { getUserPkgManager } from "../utils/getUserPkgManager";
 import { logger } from "../utils/logger";
 
 // This logs the next steps that the user should take in order to advance the project
-export const logNextSteps = (projectName: string, packages: Packages) => {
+export const logNextSteps = (
+  projectName: string,
+  packages: PkgInstallerMap,
+) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");

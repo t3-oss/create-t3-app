@@ -2,13 +2,13 @@ import type { Installer } from "./index";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts";
-import { installPkgs } from "../helpers/installPackages";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
 
 export const tailwindInstaller: Installer = async (
   projectDir,
   packageManager,
 ) => {
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["tailwindcss", "postcss", "autoprefixer"],
