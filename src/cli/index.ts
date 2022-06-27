@@ -138,7 +138,7 @@ export const runCli = async () => {
       logger.warn(
         `${CREATE_T3_APP} needs an interactive terminal to provide options`,
       );
-      logger.info(`Bootsrapping a default t3 app in ./${DEFAULT_APP_NAME}`);
+      logger.info(`Bootsrapping a default t3 app in ./${cliResults.appName}`);
     } else {
       throw err;
     }
