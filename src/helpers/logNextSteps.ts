@@ -1,5 +1,4 @@
 import type { PkgInstallerMap } from "../installers";
-import chalk from "chalk";
 import { getUserPkgManager } from "../utils/getUserPkgManager";
 import { logger } from "../utils/logger";
 
@@ -11,7 +10,7 @@ export const logNextSteps = (
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
-  logger.info(`  cd ${chalk.cyan.bold(projectName)}`);
+  logger.info(`  cd ${projectName}`);
 
   if (packages.prisma.inUse) {
     logger.info(
