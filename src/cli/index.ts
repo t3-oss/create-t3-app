@@ -123,7 +123,6 @@ export const runCli = async () => {
         })),
       });
 
-      console.log({ packages, cliResults }); //DEV
       cliResults.packages = packages;
     }
   } catch (err) {
