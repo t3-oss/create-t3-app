@@ -3,21 +3,21 @@ import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts";
-import { installPkgs } from "../helpers/installPackages";
 import { execa } from "../utils/execAsync";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
 
 export const prismaInstaller: Installer = async (
   projectDir,
   packageManager,
   packages,
 ) => {
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["prisma"],
     devMode: true,
   });
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["@prisma/client"],
