@@ -42,6 +42,17 @@ It consists of
 - [Prisma](https://prisma.io)
 - [Next-Auth](https://next-auth.js.org)
 
+<div style="display: flex;">
+  <a href="https://nextjs.org"><img src="https://user-images.githubusercontent.com/63950637/176016996-ebe531c4-06ec-4a60-a512-ab81e65865ba.png" width="36" height="36" alt="NextJS" /></a>
+  <a href="https://trpc.io"><img src="https://user-images.githubusercontent.com/63950637/176017246-bd7b6925-0874-414a-a49a-764c349d5ad6.png" width="36" height="36" alt="TRPC" /></a>
+  <a href="https://tailwindcss.com"><img src="https://user-images.githubusercontent.com/63950637/176017517-21b32067-40d9-4660-a3d3-96334e740d94.png" width="36" height="36" alt="Tailwindcss" /></a>
+  <a href="https://typescriptlang.org"><img src="https://user-images.githubusercontent.com/63950637/176018009-f6fbdac0-b8be-46d7-a4fe-e2c6ec3fa46a.png" width="36" height="36" alt="Typescript" /></a>
+  <a href="https://prisma.io"><img src="https://user-images.githubusercontent.com/63950637/176017636-054e2668-d1ba-4caa-8a09-d2cfa23725ac.png" width="36" height="36" alt="Prisma" /></a>
+    <a href="https://next-auth.js.org"><img src="https://user-images.githubusercontent.com/63950637/176017801-995f4b44-b3ed-4917-8edc-59ba8b5198c6.png" width="36" height="36" alt="Next Auth" /></a>
+</div>
+
+
+
 If you want to know more about the stack, check out [init.tips](https://init.tips)
 
 </div>
