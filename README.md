@@ -10,8 +10,8 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 <br/>
 
 ![PRs-Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)
-![Downloads](https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7)
 ![Version](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
+![Downloads](https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7)
 
 <p align="center">
   <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=t3-oss&utm_campaign=osss">
