@@ -1,9 +1,9 @@
-import type { PkgInstallerMap } from "../installers";
+import type { PkgInstallerMap } from "../installers/index.js";
 import path from "path";
-import { getUserPkgManager } from "../utils/getUserPkgManager";
-import { installPackages } from "./installPackages";
-import { scaffoldProject } from "./scaffoldProject";
-import { selectAppFile, selectIndexFile } from "./selectBoilerplate";
+import { getUserPkgManager } from "../utils/getUserPkgManager.js";
+import { installPackages } from "./installPackages.js";
+import { scaffoldProject } from "./scaffoldProject.js";
+import { selectAppFile, selectIndexFile } from "./selectBoilerplate.js";
 
 export const createProject = async (
   projectName: string,
