@@ -2,6 +2,7 @@ import type { Packages } from "../index";
 import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
+import ora from "ora";
 import prompts from "prompts";
 import { execa } from "./execa";
 import { getPkgManager, type PackageManager } from "./get-pkg-manager";
@@ -34,8 +35,10 @@ const scaffoldProject = async (
   projectDir: string,
   pkgManager: PackageManager,
 ) => {
-  logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
+  const spinner = ora(`Scaffolding in: ${projectDir}...\n`);
+  spinner.color = "blue";
+  spinner.start();
 
   const srcDir = path.join(__dirname, "../", "template/base");
 
@@ -69,6 +72,7 @@ const scaffoldProject = async (
   await fs.copy(srcDir, projectDir);
 
   await execa(`${pkgManager} install`, { cwd: projectDir });
+  spinner.stop();
   logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
 };
 
@@ -82,8 +86,9 @@ const installPackages = async (
 
   for (const [name, opts] of Object.entries(packages)) {
     if (opts.inUse) {
-      logger.info(`  Installing ${name}...`);
+      const spinner = ora(`Installing ${name}...`).start();
       await opts.installer(projectDir, pkgManager, packages);
+      spinner.stop();
       logger.success(`  Successfully installed ${name}.`);
     }
   }
