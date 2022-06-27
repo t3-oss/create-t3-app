@@ -1,4 +1,4 @@
-import { createRouter } from "./context";
+import { createRouter } from "~/context";
 import { z } from "zod";
 
 export const exampleRouter = createRouter().query("hello", {
