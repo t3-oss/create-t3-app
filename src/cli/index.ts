@@ -124,7 +124,7 @@ export const runCli = async () => {
         message: "Which packages would you like to enable?",
         choices: availablePackages.map((pkgName) => ({
           name: pkgName,
-          checked: defaultOptions.packages.includes(pkgName),
+          checked: false,
         })),
       });
 
