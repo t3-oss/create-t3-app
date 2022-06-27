@@ -1,10 +1,11 @@
-import type { AvailablePackages } from "src";
+import type { AvailablePackages } from "../installers";
 import chalk from "chalk";
 import { Command } from "commander";
-import prompts from "prompts";
+import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts";
 import { getVersion } from "../utils/getT3Version";
 import { logger } from "../utils/logger";
+import { validateAppName } from "../utils/validateAppName";
 
 interface CliFlags {
   noGit: boolean;
@@ -14,18 +15,13 @@ interface CliFlags {
 
 interface CliResults {
   appName: string;
-  usePackages: Record<AvailablePackages, boolean>;
+  packages: AvailablePackages[];
   flags: CliFlags;
 }
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  usePackages: {
-    nextAuth: true,
-    prisma: true,
-    tailwind: true,
-    trpc: true,
-  },
+  packages: ["nextAuth", "prisma", "tailwind", "trpc"],
   flags: {
     noGit: false,
     noInstall: false,
@@ -79,92 +75,82 @@ export const runCli = async () => {
   }
   cliResults.flags = program.opts();
 
-  //DEV
-  console.log({
-    cliResults,
-  });
+  try {
+    if (!cliResults.flags.default) {
+      if (!cliProvidedName) {
+        const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
+          name: "appName",
+          type: "input",
+          message: "What will your project be called?",
+          default: defaultOptions.appName,
+          validate: validateAppName,
+          transformer: (input: string) => {
+            return input.trim();
+          },
+        });
+        cliResults.appName = appName;
+      }
 
-  if (!cliResults.flags.default) {
-    // FIXME: Look into if the type can be inferred
-    const promptResults = (await prompts([
-      {
-        name: "name",
-        type: !!cliProvidedName ? null : "text",
-        message: "What will your project be called?",
-        initial: DEFAULT_APP_NAME,
-        format: (input: string) => {
-          return input.trim();
-        },
-      },
-      {
+      const { language } = await inquirer.prompt<{ language: string }>({
         name: "language",
-        type: "select",
+        type: "list",
         message: "Will you be using JavaScript or TypeScript?",
-        instructions: false,
+        choices: [
+          { name: "Typescript", value: "typescript", short: "Typescript" },
+          { name: "Javascript", value: "javascript", short: "Typescript" },
+        ],
+        default: "typescript",
+      });
+
+      if (language === "javascript") {
+        logger.error("Wrong answer, using TypeScript instead...");
+      } else {
+        logger.success("Good choice! Using TypeScript!");
+      }
+
+      const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
+        name: "packages",
+        type: "checkbox",
+        message: "Which packages would you like to enable?",
         choices: [
           {
-            title: "TypeScript",
-            value: "typescript",
+            name: "NextAuth",
+            value: "nextAuth",
+            checked: defaultOptions.packages.includes("nextAuth"),
           },
           {
-            title: "JavaScript",
-            value: "javascript",
+            name: "Prisma",
+            value: "prisma",
+            checked: defaultOptions.packages.includes("prisma"),
+          },
+          {
+            name: "Tailwind",
+            value: "tailwind",
+            checked: defaultOptions.packages.includes("tailwind"),
+          },
+          {
+            name: "tRPC",
+            value: "trpc",
+            checked: defaultOptions.packages.includes("trpc"),
           },
         ],
-        format: (language: string) => {
-          if (language === "javascript") {
-            logger.error("Wrong answer, using TypeScript instead...");
-          } else {
-            logger.success("Good choice! Using TypeScript!");
-          }
-          return;
-        },
-      },
-      {
-        name: "useTailwind",
-        type: "toggle",
-        message: "Would you like to use Tailwind?",
-        initial: true,
-        active: "Yes",
-        inactive: "No",
-      },
-      {
-        name: "useTrpc",
-        type: "toggle",
-        message: "Would you like to use tRPC?",
-        initial: true,
-        active: "Yes",
-        inactive: "No",
-      },
-      {
-        name: "usePrisma",
-        type: "toggle",
-        message: "Would you like to use Prisma?",
-        initial: true,
-        active: "Yes",
-        inactive: "No",
-      },
-      {
-        name: "useNextAuth",
-        type: "toggle",
-        message: "Would you like to use Next Auth?",
-        initial: true,
-        active: "Yes",
-        inactive: "No",
-      },
-    ])) as {
-      name: string;
-      useTailwind: boolean;
-      useTrpc: boolean;
-      usePrisma: boolean;
-      useNextAuth: boolean;
-    };
+      });
 
-    cliResults.appName = promptResults.name;
-    cliResults.usePackages.nextAuth = promptResults.useNextAuth;
-    cliResults.usePackages.prisma = promptResults.usePrisma;
-    cliResults.usePackages.tailwind = promptResults.useTailwind;
-    cliResults.usePackages.trpc = promptResults.useTrpc;
+      console.log({ packages, cliResults }); //DEV
+      cliResults.packages = packages;
+    }
+  } catch (err) {
+    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
+    // If this happens, we catch the error, tell the user what has happened, and then contiue to run the program with a default t3 app
+    // eslint-disable-next-line -- Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
+    if (err instanceof Error && (err as any).isTTYError) {
+      logger.warn(
+        `${CREATE_T3_APP} needs an interactive terminal to provide options`,
+      );
+      logger.info(`Bootsrapping a default t3 app in ./${DEFAULT_APP_NAME}`);
+    } else {
+      throw err;
+    }
   }
 
   return cliResults;

@@ -36,14 +36,14 @@
     "commander": "^9.3.0",
     "fs-extra": "^10.1.0",
     "ora": "4.0.0",
-    "prompts": "^2.4.2"
+    "inquirer": "^8.2.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.23.0",
     "@swc/core": "^1.2.205",
     "@types/fs-extra": "^9.0.13",
+    "@types/inquirer": "^8.2.1",
     "@types/node": "^17.0.35",
-    "@types/prompts": "^2.0.14",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.18.0",
