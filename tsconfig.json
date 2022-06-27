@@ -7,7 +7,6 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "baseUrl": ".",
 
     /* EMIT RULES */
     "outDir": "./dist",
