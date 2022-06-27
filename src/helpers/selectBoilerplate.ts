@@ -1,8 +1,8 @@
 // FIXME:: GENERATE THE PROPER _app.tsx and index.tsx FILES INSTEAD
 
+import type { Packages } from "../installers";
 import path from "path";
 import fs from "fs-extra";
-import { Packages } from "src";
 
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = async (projectDir: string, packages: Packages) => {

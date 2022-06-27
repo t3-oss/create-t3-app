@@ -1,4 +1,4 @@
-import type { Packages } from "../index";
+import type { Packages } from "../installers";
 import chalk from "chalk";
 import { getUserPkgManager } from "../utils/getUserPkgManager";
 import { logger } from "../utils/logger";

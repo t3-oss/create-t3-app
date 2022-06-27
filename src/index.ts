@@ -7,40 +7,44 @@ import { TITLE_TEXT } from "./consts";
 import { createProject } from "./helpers/createProject";
 import { initializeGit } from "./helpers/initGit";
 import { logNextSteps } from "./helpers/logNextSteps";
-import { installers, type Installer } from "./installers";
+import { installers, Packages } from "./installers";
 import { logger } from "./utils/logger";
-
-export type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
-export type Packages = {
-  [pkg in AvailablePackages]: {
-    inUse: boolean;
-    installer: Installer;
-  };
-};
 
 const main = async () => {
   logger.error(TITLE_TEXT, "\n");
 
   const {
     appName,
-    usePackages: { nextAuth, prisma, tailwind, trpc },
-    flags,
+    packages,
+    flags: { noGit },
   } = await runCli();
 
-  const packages: Packages = {
-    tailwind: { inUse: tailwind, installer: installers.tailwind },
-    trpc: { inUse: trpc, installer: installers.trpc },
-    prisma: { inUse: prisma, installer: installers.prisma },
-    nextAuth: { inUse: nextAuth, installer: installers.nextAuth },
+  const usePackages: Packages = {
+    nextAuth: {
+      inUse: packages.includes("nextAuth"),
+      installer: installers.nextAuth,
+    },
+    prisma: {
+      inUse: packages.includes("prisma"),
+      installer: installers.prisma,
+    },
+    tailwind: {
+      inUse: packages.includes("tailwind"),
+      installer: installers.tailwind,
+    },
+    trpc: {
+      inUse: packages.includes("trpc"),
+      installer: installers.trpc,
+    },
   };
 
-  const projectDir = await createProject(appName, packages);
+  const projectDir = await createProject(appName, usePackages);
 
-  if (!flags.noGit) {
+  if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, packages);
+  logNextSteps(appName, usePackages);
 
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
