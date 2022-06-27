@@ -35,8 +35,10 @@ const scaffoldProject = async (
   projectDir: string,
   pkgManager: PackageManager,
 ) => {
-  logger.info(`Scaffolding in: ${projectDir}...`);
   logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
+  const spinner = ora(`Scaffolding in: ${projectDir}...\n`);
+  spinner.color = "blue";
+  spinner.start();
 
   const srcDir = path.join(__dirname, "../", "template/base");
 
@@ -70,6 +72,7 @@ const scaffoldProject = async (
   await fs.copy(srcDir, projectDir);
 
   await execa(`${pkgManager} install`, { cwd: projectDir });
+  spinner.stop();
   logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
 };
 
