@@ -4,7 +4,6 @@
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
-  "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/nexxeln/create-t3-app.git"
@@ -18,8 +17,13 @@
     "tRPC",
     "typescript"
   ],
+  "type": "module",
+  "exports": "./dist/index.js",
   "bin": {
     "create-t3-app": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=14.16"
   },
   "scripts": {
     "build": "tsup src/index.ts --clean --sourcemap --minify --metafile",

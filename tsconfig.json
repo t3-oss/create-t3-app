@@ -4,8 +4,8 @@
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ES6",
     "lib": ["DOM", "ES6", "ESNext"],
-    "module": "commonjs",
-    "moduleResolution": "Node",
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "resolveJsonModule": true,
 
     /* EMIT RULES */
