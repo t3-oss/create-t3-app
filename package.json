@@ -36,6 +36,7 @@
     "fs-extra": "^10.1.0",
     "handlebars": "^4.7.7",
     "jscodeshift": "^0.13.1",
+    "ora": "4.0.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
@@ -53,8 +54,8 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
-    "type-fest": "^2.14.0",
     "tsup": "^6.1.2",
+    "type-fest": "^2.14.0",
     "typescript": "^4.6.4"
   },
   "lint-staged": {
