@@ -1,12 +1,14 @@
-// FIXME:: GENERATE THE PROPER _app.tsx and index.tsx FILES INSTEAD
-
+import type { PkgInstallerMap } from "../installers";
 import path from "path";
 import fs from "fs-extra";
-import { Packages } from "src";
+import { PKG_ROOT } from "../consts";
 
 // This generates the _app.tsx file that is used to render the app
-export const selectAppFile = async (projectDir: string, packages: Packages) => {
-  const appFileDir = path.join(__dirname, "../", "template/page-studs/_app");
+export const selectAppFile = async (
+  projectDir: string,
+  packages: PkgInstallerMap,
+) => {
+  const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
 
   const usingTrpc = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
@@ -26,12 +28,13 @@ export const selectAppFile = async (projectDir: string, packages: Packages) => {
     await fs.copy(appSrc, appDest);
   }
 };
+
 // This selects the proper index.tsx to be used that showcases the chosen tech
 export const selectIndexFile = async (
   projectDir: string,
-  packages: Packages,
+  packages: PkgInstallerMap,
 ) => {
-  const indexFileDir = path.join(__dirname, "../", "template/page-studs/index");
+  const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
 
   const usingTrpc = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;

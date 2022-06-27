@@ -1,14 +1,15 @@
+import type { Installer } from "./index";
 import path from "path";
 import fs from "fs-extra";
-import { installPkgs } from "../helpers/get-pkg-manager";
-import { type Installer } from "./index";
+import { PKG_ROOT } from "../consts";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
 
 export const trpcInstaller: Installer = async (
   projectDir,
   packageManager,
   packages,
 ) => {
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: [
@@ -23,7 +24,7 @@ export const trpcInstaller: Installer = async (
     devMode: false,
   });
 
-  const trpcAssetDir = path.join(__dirname, "../", "template/addons/trpc");
+  const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
 
   const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
