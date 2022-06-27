@@ -48,11 +48,16 @@ export const runCli = async () => {
       "Explicitly tell the CLI to not initialize a new git repo in the project",
       false,
     )
-    .option(
-      "--noInstall",
-      "Explicitly tell the CLI to not run the package manager's install command",
-      false,
-    )
+    // FIXME: Find a way to prevent the pkg manager from installing packages
+    // The current method of building the package.json relies on having the users package manager run multiple 'install XYZ' calls
+    // This is a good short term method to adding packages, but ultimatly it means that:
+    //  A - The user runs 'add XYZ' 2-6 times over the course of scaffolding
+    //  B - There is no way to easily add packages to the dependency array without also installing them
+    // .option(
+    //   "--noInstall",
+    //   "Explicitly tell the CLI to not run the package manager's install command",
+    //   false,
+    // )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
