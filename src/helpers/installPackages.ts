@@ -1,5 +1,6 @@
 import type { PkgInstallerMap } from "../installers";
 import type { PackageManager } from "../utils/getUserPkgManager";
+import chalk from "chalk";
 import ora from "ora";
 import { logger } from "../utils/logger";
 
@@ -15,8 +16,9 @@ export const installPackages = async (
     if (opts.inUse) {
       const spinner = ora(`Installing ${name}...`).start();
       await opts.installer(projectDir, pkgManager, packages);
-      spinner.stop();
-      logger.success(`  Successfully installed ${name}.`);
+      spinner.succeed(
+        chalk.green(`Successfully installed ${chalk.green.bold(name)}.`),
+      );
     }
   }
   logger.info("");

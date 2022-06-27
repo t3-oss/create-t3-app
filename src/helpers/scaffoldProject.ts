@@ -14,44 +14,44 @@ export const scaffoldProject = async (
   projectDir: string,
   pkgManager: PackageManager,
 ) => {
-  logger.info(`Using: ${chalk.cyan.bold(pkgManager)}\n`);
-  const spinner = ora(`Scaffolding in: ${projectDir}...\n`);
-  spinner.color = "blue";
-  spinner.start();
-
   const srcDir = path.join(PKG_ROOT, "template/base");
+
+  logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
-      logger.info(
-        `${chalk.bold.green(projectName)} exists but is empty, continuing..\n`,
+      spinner.info(
+        `${chalk.cyan.bold(projectName)} exists but is empty, continuing..\n`,
       );
     } else {
+      spinner.stopAndPersist();
       const { overwriteDir } = await inquirer.prompt<{ overwriteDir: boolean }>(
         {
           name: "overwriteDir",
           type: "confirm",
-          message: `${chalk.redBright.bold(
+          message: `${chalk.redBright.bold("!Warning:")} ${chalk.cyan.bold(
             projectName,
           )} already exists and isn't empty. Do you want to overwrite it?`,
           default: false,
         },
       );
       if (!overwriteDir) {
-        logger.info("Aborting installation...");
+        spinner.fail("Aborting installation...");
         process.exit(0);
       } else {
-        logger.info(
-          `Emptying ${chalk.green.bold(projectName)} and creating t3 app..\n`,
+        spinner.info(
+          `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
         );
         fs.emptyDirSync(projectDir);
       }
     }
   }
 
+  spinner.start();
   await fs.copy(srcDir, projectDir);
 
   await execa(`${pkgManager} install`, { cwd: projectDir });
-  spinner.stop();
-  logger.success(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
+
+  spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
 };
