@@ -14,7 +14,7 @@ export const tailwindInstaller: Installer = async (
     devMode: true,
   });
 
-  const twAssetDir = path.join(__dirname, "../../", "template/addons/tailwind");
+  const twAssetDir = path.join(__dirname, "../", "template/addons/tailwind");
 
   const twCfgSrc = path.join(twAssetDir, "tailwind.config.js");
   const twCfgDest = path.join(projectDir, "tailwind.config.js");

@@ -23,11 +23,7 @@ export const prismaInstaller: Installer = async (
     devMode: false,
   });
 
-  const prismaAssetDir = path.join(
-    __dirname,
-    "../../",
-    "template/addons/prisma",
-  );
+  const prismaAssetDir = path.join(__dirname, "../", "template/addons/prisma");
 
   const schemaSrc = path.join(
     prismaAssetDir,

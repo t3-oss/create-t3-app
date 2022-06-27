@@ -23,7 +23,7 @@ export const trpcInstaller: Installer = async (
     devMode: false,
   });
 
-  const trpcAssetDir = path.join(__dirname, "../../", "template/addons/trpc");
+  const trpcAssetDir = path.join(__dirname, "../", "template/addons/trpc");
 
   const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");

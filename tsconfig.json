@@ -11,6 +11,7 @@
 
     /* EMIT RULES */
     "outDir": "./dist",
+    "noEmit": true, // TSUP takes care of emitting js for us, in a MUCH faster way
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
