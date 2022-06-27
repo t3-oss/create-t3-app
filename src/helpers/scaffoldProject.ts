@@ -22,7 +22,7 @@ export const scaffoldProject = async (
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
       spinner.info(
-        `${chalk.cyan.bold(projectName)} exists but is empty, continuing..\n`,
+        `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`,
       );
     } else {
       spinner.stopAndPersist();
@@ -30,7 +30,7 @@ export const scaffoldProject = async (
         {
           name: "overwriteDir",
           type: "confirm",
-          message: `${chalk.redBright.bold("!Warning:")} ${chalk.cyan.bold(
+          message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
             projectName,
           )} already exists and isn't empty. Do you want to overwrite it?`,
           default: false,
@@ -49,9 +49,10 @@ export const scaffoldProject = async (
   }
 
   spinner.start();
+
   await fs.copy(srcDir, projectDir);
 
   await execa(`${pkgManager} install`, { cwd: projectDir });
 
-  spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully.\n`);
+  spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully!\n`);
 };
