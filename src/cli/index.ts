@@ -71,12 +71,15 @@ export const runCli = async () => {
     )
     .parse(process.argv);
 
+  // Needs to be seperated outside the if statement to correctly infer the type as string | undefined
   const cliProvidedName = program.args[0];
   if (cliProvidedName) {
     cliResults.appName = cliProvidedName;
   }
+
   cliResults.flags = program.opts();
 
+  // Explained below why this is in a try/catch block
   try {
     if (!cliResults.flags.default) {
       if (!cliProvidedName) {
