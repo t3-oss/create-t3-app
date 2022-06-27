@@ -11,7 +11,7 @@ import { buildPkgInstallerMap } from "./installers";
 import { logger } from "./utils/logger";
 
 const main = async () => {
-  logger.error(TITLE_TEXT, "\n");
+  logger.info("\n", TITLE_TEXT, "\n");
 
   const {
     appName,
