@@ -1,6 +1,7 @@
 import type { Installer } from "./index";
 import path from "path";
 import fs from "fs-extra";
+import { PKG_ROOT } from "../consts";
 import { installPkgs } from "../helpers/installPackages";
 
 export const nextAuthInstaller: Installer = async (
@@ -18,11 +19,7 @@ export const nextAuthInstaller: Installer = async (
     devMode: false,
   });
 
-  const nextAuthAssetDir = path.join(
-    __dirname,
-    "../",
-    "template/addons/next-auth",
-  );
+  const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
 
   const apiHandlerSrc = path.join(
     nextAuthAssetDir,
