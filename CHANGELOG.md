@@ -1,5 +1,15 @@
 # create-t3-app
 
+## 4.1.0
+
+### Minor Changes
+
+- Create-t3-app now accepts args!
+
+  When calling create-t3-app, you can specify the app name and directory directly from the cli.
+
+  Additonal options are visable by passing -h or --help into the command line
+
 ## 4.0.8
 
 ### Patch Changes

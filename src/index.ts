@@ -2,125 +2,37 @@
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
-import prompts, { type PromptObject } from "prompts";
-import { createProject } from "./helpers/create";
-import { initializeGit } from "./helpers/init-git";
-import { logNextSteps } from "./helpers/log-next-steps";
-import { logger } from "./helpers/logger";
-import { installers, type Installer } from "./installers";
-
-type AvailablePackages = "tailwind" | "trpc" | "prisma" | "nextAuth";
-export type Packages = {
-  [pkg in AvailablePackages]: {
-    inUse: boolean;
-    installer: Installer;
-  };
-};
-
-const DEFAULT_PROJECT_NAME = "my-t3-app";
-
-const promts: PromptObject[] = [
-  {
-    name: "name",
-    type: "text",
-    message: "What will your project be called?",
-    format: (name: string) => {
-      if (name === "") {
-        logger.warn(`Using default name: ${DEFAULT_PROJECT_NAME}`);
-        return DEFAULT_PROJECT_NAME;
-      }
-      return name.trim();
-    },
-  },
-  {
-    name: "language",
-    type: "select",
-    message: "Will you be using JavaScript or TypeScript?",
-    instructions: false,
-    choices: [
-      {
-        title: "TypeScript",
-        value: "typescript",
-      },
-      {
-        title: "JavaScript",
-        value: "javascript",
-      },
-    ],
-    format: (language: string) => {
-      if (language === "javascript") {
-        logger.error("Wrong answer, using TypeScript instead...");
-      } else {
-        logger.success("Good choice! Using TypeScript!");
-      }
-      return;
-    },
-  },
-  {
-    name: "useTailwind",
-    type: "toggle",
-    message: "Would you like to use Tailwind?",
-    initial: true,
-    active: "Yes",
-    inactive: "No",
-  },
-  {
-    name: "useTrpc",
-    type: "toggle",
-    message: "Would you like to use tRPC?",
-    initial: true,
-    active: "Yes",
-    inactive: "No",
-  },
-  {
-    name: "usePrisma",
-    type: "toggle",
-    message: "Would you like to use Prisma?",
-    initial: true,
-    active: "Yes",
-    inactive: "No",
-  },
-  {
-    name: "useNextAuth",
-    type: "toggle",
-    message: "Would you like to use Next Auth?",
-    initial: true,
-    active: "Yes",
-    inactive: "No",
-  },
-];
+import { runCli } from "./cli";
+import { TITLE_TEXT } from "./consts";
+import { createProject } from "./helpers/createProject";
+import { initializeGit } from "./helpers/initGit";
+import { logNextSteps } from "./helpers/logNextSteps";
+import { buildPkgInstallerMap } from "./installers";
+import { logger } from "./utils/logger";
 
 const main = async () => {
-  logger.error("Welcome to the create-t3-app !");
+  logger.info("\n", TITLE_TEXT, "\n");
 
-  // FIXME: Look into if the type can be inferred
-  const { name, useTailwind, useTrpc, usePrisma, useNextAuth } = (await prompts(
-    promts,
-  )) as {
-    name: string;
-    useTailwind: boolean;
-    useTrpc: boolean;
-    usePrisma: boolean;
-    useNextAuth: boolean;
-  };
+  const {
+    appName,
+    packages,
+    flags: { noGit },
+  } = await runCli();
 
-  const packages: Packages = {
-    tailwind: { inUse: useTailwind, installer: installers.tailwind },
-    trpc: { inUse: useTrpc, installer: installers.trpc },
-    prisma: { inUse: usePrisma, installer: installers.prisma },
-    nextAuth: { inUse: useNextAuth, installer: installers.nextAuth },
-  };
+  const usePackages = buildPkgInstallerMap(packages);
 
-  const projectDir = await createProject(name, packages);
+  const projectDir = await createProject(appName, usePackages);
 
-  await initializeGit(projectDir);
+  if (!noGit) {
+    await initializeGit(projectDir);
+  }
 
-  logNextSteps(name, packages);
+  logNextSteps(appName, usePackages);
 
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
-  pkgJson.name = name;
+  pkgJson.name = appName;
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
@@ -129,7 +41,14 @@ const main = async () => {
 };
 
 main().catch((err) => {
+  logger.error("Aborting installation...");
   if (err instanceof Error) {
-    console.error(err);
+    logger.error(err.message);
+  } else {
+    logger.error(
+      "An unkown error has occured. Please open an issue on github with the below:",
+    );
+    console.log(err);
   }
+  process.exit(1);
 });

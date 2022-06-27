@@ -1,20 +1,21 @@
+import type { Installer } from "./index";
 import path from "path";
 import fs from "fs-extra";
-import { installPkgs } from "../helpers/get-pkg-manager";
-import { type Installer } from "./index";
+import { PKG_ROOT } from "../consts";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
 
 export const tailwindInstaller: Installer = async (
   projectDir,
   packageManager,
 ) => {
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["tailwindcss", "postcss", "autoprefixer"],
     devMode: true,
   });
 
-  const twAssetDir = path.join(__dirname, "../", "template/addons/tailwind");
+  const twAssetDir = path.join(PKG_ROOT, "template/addons/tailwind");
 
   const twCfgSrc = path.join(twAssetDir, "tailwind.config.js");
   const twCfgDest = path.join(projectDir, "tailwind.config.js");

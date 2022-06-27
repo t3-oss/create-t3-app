@@ -2,28 +2,29 @@ import type { Installer } from "./index";
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
-import { execa } from "../helpers/execa";
-import { installPkgs } from "../helpers/get-pkg-manager";
+import { PKG_ROOT } from "../consts";
+import { execa } from "../utils/execAsync";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
 
 export const prismaInstaller: Installer = async (
   projectDir,
   packageManager,
   packages,
 ) => {
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["prisma"],
     devMode: true,
   });
-  await installPkgs({
+  await runPkgManagerInstall({
     packageManager,
     projectDir,
     packages: ["@prisma/client"],
     devMode: false,
   });
 
-  const prismaAssetDir = path.join(__dirname, "../", "template/addons/prisma");
+  const prismaAssetDir = path.join(PKG_ROOT, "template/addons/prisma");
 
   const schemaSrc = path.join(
     prismaAssetDir,

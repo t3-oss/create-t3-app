@@ -2,21 +2,21 @@ import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
 import ora from "ora";
-import { execa } from "./execa";
-import { logger } from "./logger";
+import { execa } from "../utils/execAsync";
+import { logger } from "../utils/logger";
 
 // This initializes the Git-repository for the project
 export const initializeGit = async (projectDir: string) => {
-  const spinner = ora("Initializing Git...\n");
-  spinner.color = "blue";
-  spinner.start();
+  logger.info("Initializing Git...");
+  const spinner = ora("Creating a new git repo...\n").start();
   try {
     await execa("git init", { cwd: projectDir });
-    logger.success(`${chalk.bold.green("Finished")} initializing git\n`);
+    spinner.succeed(
+      `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
+    );
   } catch (error) {
-    logger.error(`${chalk.bold.red("Failed: ")} could not initialize git\n`);
+    spinner.fail(`${chalk.bold.red("Failed:")} could not initialize git\n`);
   }
-  spinner.stop();
 
   await fs.rename(
     path.join(projectDir, "_gitignore"),
