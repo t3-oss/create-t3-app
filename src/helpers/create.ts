@@ -2,6 +2,7 @@ import type { Packages } from "../index";
 import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
+import ora from "ora";
 import prompts from "prompts";
 import { execa } from "./execa";
 import { getPkgManager, type PackageManager } from "./get-pkg-manager";
@@ -82,8 +83,9 @@ const installPackages = async (
 
   for (const [name, opts] of Object.entries(packages)) {
     if (opts.inUse) {
-      logger.info(`  Installing ${name}...`);
+      const spinner = ora(`Installing ${name}...`).start();
       await opts.installer(projectDir, pkgManager, packages);
+      spinner.stop();
       logger.success(`  Successfully installed ${name}.`);
     }
   }
