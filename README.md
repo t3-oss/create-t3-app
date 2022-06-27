@@ -14,6 +14,13 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 ![Version](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
 
 <br />
+
+<p align="center">
+  <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=t3-oss&utm_campaign=osss">
+    <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
+  </a>
+</p>
+
 </div>
 
 <summary><b> Table of contents :</b></summary>
@@ -77,7 +84,3 @@ We 💖 contributors! Feel free to contribute to this project
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
-
-# Sponsors
-
-[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss)
