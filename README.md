@@ -60,6 +60,8 @@ pnpx create-t3-app@latest
 
 ### Dev
 
+Read the [Contributing guidelines](CONTRIBUTING.md)
+
 To install dependencies
 
 ```bash
