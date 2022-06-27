@@ -20,7 +20,7 @@ export const nextAuthInstaller: Installer = async (
 
   const nextAuthAssetDir = path.join(
     __dirname,
-    "../../",
+    "../",
     "template/addons/next-auth",
   );
 
