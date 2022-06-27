@@ -2,6 +2,7 @@ import type { Installer } from "./index";
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
+import { PKG_ROOT } from "../consts";
 import { installPkgs } from "../helpers/installPackages";
 import { execa } from "../utils/execAsync";
 
@@ -23,7 +24,7 @@ export const prismaInstaller: Installer = async (
     devMode: false,
   });
 
-  const prismaAssetDir = path.join(__dirname, "../", "template/addons/prisma");
+  const prismaAssetDir = path.join(PKG_ROOT, "template/addons/prisma");
 
   const schemaSrc = path.join(
     prismaAssetDir,
