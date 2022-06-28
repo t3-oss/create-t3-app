@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.2.8
+
+### Patch Changes
+
+- diable version flag
+
 ## 4.2.2
 
 ### Patch Changes
