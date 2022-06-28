@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.2.1
+
+### Patch Changes
+
+- trying to fix esm error
+
 ## 4.2.0
 
 ### Minor Changes
