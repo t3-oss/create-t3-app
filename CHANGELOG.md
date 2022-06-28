@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.2.0
+
+### Minor Changes
+
+- a548f22: added cli args, esm support
+
 ## 4.1.1
 
 ### Patch Changes
