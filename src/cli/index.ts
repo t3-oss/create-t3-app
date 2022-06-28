@@ -4,7 +4,7 @@ import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
 import { availablePackages } from "../installers/index.js";
-import { getVersion } from "../utils/getT3Version.js";
+// import { getVersion } from "../utils/getT3Version.js";
 import { logger } from "../utils/logger.js";
 import { validateAppName } from "../utils/validateAppName.js";
 
@@ -63,7 +63,7 @@ export const runCli = async () => {
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
       false,
     )
-    .version(getVersion(), "-v, --version", "Display the version number")
+    // .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
       "afterAll",
       `\n The t3 stack was inspired by ${chalk
