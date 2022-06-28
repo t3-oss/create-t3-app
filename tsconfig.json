@@ -4,7 +4,7 @@
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ES6",
     "lib": ["DOM", "ES6", "ESNext"],
-    "module": "ES6",
+    "module": "NodeNext",
     "moduleResolution": "Node16",
     "resolveJsonModule": true,
 
