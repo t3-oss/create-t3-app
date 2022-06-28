@@ -13,6 +13,14 @@ import { renderTitle } from "./utils/renderTitle.js";
 const main = async () => {
   renderTitle();
 
+  // TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+  if (process.versions.node.startsWith("18")) {
+    logger.warn(`  WARNING: You are using Node.js version 18. This is currently not compatible with Next-Auth.
+  If you want to use Next-Auth, switch to a previous version of Node, e.g. 16 (LTS).
+  If you have nvm installed, use 'nvm install --lts' to switch to the latest LTS version of Node.
+    `);
+  }
+
   const {
     appName,
     packages,
