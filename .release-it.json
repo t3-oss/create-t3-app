@@ -1,0 +1,9 @@
+{
+  "github": {
+    "release": true,
+    "tokenRef": "GH_TOKEN"
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  }
+}
