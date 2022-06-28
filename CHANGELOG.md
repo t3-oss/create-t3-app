@@ -1,5 +1,9 @@
 # create-t3-app
 
+## 4.2.9
+
+- fix resolved path to package root
+
 ## 4.2.8
 
 ### Patch Changes
