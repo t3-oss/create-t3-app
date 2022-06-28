@@ -1,10 +1,10 @@
-import type { Installer } from "./index";
+import type { Installer } from "./index.js";
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "../consts";
-import { execa } from "../utils/execAsync";
-import { runPkgManagerInstall } from "../utils/runPkgManagerInstall";
+import { PKG_ROOT } from "../consts.js";
+import { execa } from "../utils/execAsync.js";
+import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
 export const prismaInstaller: Installer = async (
   projectDir,

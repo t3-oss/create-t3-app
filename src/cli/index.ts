@@ -1,12 +1,12 @@
-import type { AvailablePackages } from "../installers";
+import type { AvailablePackages } from "../installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
-import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts";
-import { availablePackages } from "../installers";
-import { getVersion } from "../utils/getT3Version";
-import { logger } from "../utils/logger";
-import { validateAppName } from "../utils/validateAppName";
+import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
+import { availablePackages } from "../installers/index.js";
+import { getVersion } from "../utils/getT3Version.js";
+import { logger } from "../utils/logger.js";
+import { validateAppName } from "../utils/validateAppName.js";
 
 interface CliFlags {
   noGit: boolean;
@@ -138,7 +138,7 @@ export const runCli = async () => {
       logger.warn(
         `${CREATE_T3_APP} needs an interactive terminal to provide options`,
       );
-      logger.info(`Bootsrapping a default t3 app in ./${DEFAULT_APP_NAME}`);
+      logger.info(`Bootsrapping a default t3 app in ./${cliResults.appName}`);
     } else {
       throw err;
     }

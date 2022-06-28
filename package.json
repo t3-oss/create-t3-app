@@ -1,10 +1,9 @@
 {
   "name": "create-t3-app",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
-  "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/nexxeln/create-t3-app.git"
@@ -18,12 +17,17 @@
     "tRPC",
     "typescript"
   ],
+  "type": "module",
+  "exports": "./dist/index.js",
   "bin": {
     "create-t3-app": "./dist/index.js"
   },
+  "engines": {
+    "node": ">=14.16"
+  },
   "scripts": {
-    "build": "tsup src/index.ts --clean --sourcemap --minify --metafile",
-    "dev": "tsup src/index.ts --watch --clean --onSuccess \"node dist/index.js\"",
+    "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
+    "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "lint": "eslint src/ --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
@@ -32,26 +36,26 @@
     "version-packages": "changeset version"
   },
   "dependencies": {
-    "chalk": "4.1.2",
+    "chalk": "5.0.1",
     "commander": "^9.3.0",
     "fs-extra": "^10.1.0",
-    "ora": "4.0.0",
-    "inquirer": "^8.2.1"
+    "inquirer": "^9.0.0",
+    "ora": "6.1.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.23.0",
-    "@swc/core": "^1.2.205",
+    "@swc/core": "^1.2.206",
     "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^8.2.1",
-    "@types/node": "^17.0.35",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-import-resolver-typescript": "^3.1.1",
     "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.2",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "tsup": "^6.1.2",
     "type-fest": "^2.14.0",

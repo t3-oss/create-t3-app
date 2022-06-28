@@ -1,5 +1,5 @@
-import type { PackageManager } from "./getUserPkgManager";
-import { execa } from "./execAsync";
+import type { PackageManager } from "./getUserPkgManager.js";
+import { execa } from "./execAsync.js";
 
 export const runPkgManagerInstall = async (opts: {
   packageManager: PackageManager;

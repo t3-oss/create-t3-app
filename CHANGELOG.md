@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.1.1
+
+### Patch Changes
+
+- Updated package to full ESM support
+
 ## 4.1.0
 
 ### Minor Changes
