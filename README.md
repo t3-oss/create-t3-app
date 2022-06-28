@@ -69,6 +69,8 @@ To install dependencies
 npm install -g pnpm
 # Install dependencies
 pnpm install
+# Initial build
+pnpm run build
 # Start the package locally
 pnpm start
 ```
