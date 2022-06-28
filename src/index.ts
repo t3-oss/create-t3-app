@@ -3,15 +3,15 @@ import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { runCli } from "./cli/index.js";
-import { TITLE_TEXT } from "./consts.js";
 import { createProject } from "./helpers/createProject.js";
 import { initializeGit } from "./helpers/initGit.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
 import { logger } from "./utils/logger.js";
+import { renderTitle } from "./utils/renderTitle.js";
 
 const main = async () => {
-  logger.info("\n", TITLE_TEXT, "\n");
+  renderTitle();
 
   const {
     appName,
