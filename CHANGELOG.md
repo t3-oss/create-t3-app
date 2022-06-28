@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.2.11
+
+### Patch Changes
+
+- modified the title to print a colorful ascii art
+
 ## 4.2.10
 
 ### Patch Changes
