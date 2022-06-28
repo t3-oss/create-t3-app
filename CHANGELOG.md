@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.2.12
+
+### Patch Changes
+
+- upgrade next to 12.2.0
+
 ## 4.2.11
 
 ### Patch Changes
