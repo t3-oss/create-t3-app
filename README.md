@@ -3,7 +3,7 @@
 
 Interactive CLI to quickly set up a project using the [t3 stack](https://init.tips)
 
-<img src="https://s6.imgcdn.dev/BJW4B.png" width="200" style="border-radius:40%"/>
+<img src="https://s6.imgcdn.dev/BJW4B.png" width="130" style="border-radius:40%"/>
 
 </div>  
 <div align="center">
