@@ -1,6 +1,14 @@
 # create-t3-app
 
+## 4.2.10
+
+### Patch Changes
+
+- add warning about next-auth when using Node 18
+
 ## 4.2.9
+
+### Patch Changes
 
 - fix resolved path to package root
 
