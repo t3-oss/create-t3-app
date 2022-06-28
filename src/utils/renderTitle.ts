@@ -1,5 +1,6 @@
 import figlet from "figlet";
 import gradient from "gradient-string";
+import { TITLE_TEXT } from "../consts.js";
 
 // colors brought in from vscode poimandres theme
 const poimandresTheme = {
@@ -12,7 +13,7 @@ const poimandresTheme = {
 };
 
 export const renderTitle = () => {
-  const text = figlet.textSync("CREATE T3 APP", { font: "Small" });
+  const text = figlet.textSync(TITLE_TEXT, { font: "Small" });
   const t3Gradient = gradient(Object.values(poimandresTheme));
   console.log(t3Gradient.multiline(text));
 };
