@@ -48,7 +48,6 @@ export const trpcInstaller: Installer = async (
   if (usingAuth) {
     const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
     const authRouterDest = path.join(projectDir, "src/server/router/auth.ts");
-    console.log("copying over");
     await fs.copy(authRouterSrc, authRouterDest);
   }
 
