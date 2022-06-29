@@ -10,7 +10,7 @@ export const initializeGit = async (projectDir: string) => {
   logger.info("Initializing Git...");
   const spinner = ora("Creating a new git repo...\n").start();
   try {
-    await execa("git init", { cwd: projectDir });
+    await execa("git init --initial-branch=main", { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
