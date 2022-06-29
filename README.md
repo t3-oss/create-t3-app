@@ -55,7 +55,7 @@ npx create-t3-app@latest
 # or
 yarn create t3-app
 # or
-pnpx create-t3-app@latest
+pnpm dlx create-t3-app@latest
 ```
 
 ### Dev
