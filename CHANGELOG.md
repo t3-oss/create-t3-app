@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.3.3
+
+### Patch Changes
+
+- Add description for packages in the template
+
 ## 4.3.2
 
 ### Patch Changes
