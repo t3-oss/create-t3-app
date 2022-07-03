@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.3.2
+
+### Patch Changes
+
+- Redesign pages
+
 ## 4.3.0
 
 ### Minor Changes
