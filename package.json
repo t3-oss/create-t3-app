@@ -33,7 +33,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "pub": "npm run build && npm publish"
   },
   "dependencies": {
     "chalk": "5.0.1",
