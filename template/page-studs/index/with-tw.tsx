@@ -11,46 +11,42 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center justify-center min-h-screen container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
+      <div className="container flex flex-col items-center justify-center min-h-screen p-10 px-0 mx-auto md:py-20 md:p-10 md:px-0">
         <h1 className="font-extrabold text-center text-7xl">
           Create <span className="text-blue-500">T3</span> App
         </h1>
 
         <h3 className="items-center m-5 text-3xl">This Stack uses:-</h3>
-        <section className="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-10 items-start ">
-          <section className="p-5 py-10 border-2 border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 text-center transform duration-500 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
-            <h1 className="text-3xl my-5">NextJS</h1>
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Distinctio, incidunt!
-            </p>
-            <button className="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+        <section className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 ">
+          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+            <h1 className="my-5 text-3xl">NextJS</h1>
+            <p className="mb-5">The React framework for production</p>
+            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://nextjs.org/">
                 <a target="_blank">Learn More</a>
               </Link>
             </button>
           </section>
 
-          <section className="p-5 py-10 border-2 border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 text-center transform duration-500 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
-            <h1 className="text-3xl my-5">TypeScript</h1>
+          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+            <h1 className="my-5 text-3xl">TypeScript</h1>
             <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Distinctio, incidunt!
+              Strongly typed programming language that builds on JavaScript,
+              giving you better tooling at any scale
             </p>
-            <button className="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://www.typescriptlang.org/">
                 <a target="_blank">Learn More</a>
               </Link>
             </button>
           </section>
 
-          <section className="p-5 py-10 border-2 border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 text-center transform duration-500 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
-            <h1 className="text-3xl my-5">TailwindCSS</h1>
+          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+            <h1 className="my-5 text-3xl">TailwindCSS</h1>
             <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Distinctio, incidunt!
+              Rapidly build modern websites without ever leaving your HTML
             </p>
-            <button className="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://tailwindcss.com/">
                 <a target="_blank">Learn More</a>
               </Link>
