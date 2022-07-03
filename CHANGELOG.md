@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.3.0
+
+### Minor Changes
+
+- added Next-Auth protected routes when using tRPC
+
 ## 4.2.12
 
 ### Patch Changes
