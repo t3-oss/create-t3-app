@@ -29,6 +29,12 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 
 <div id='info'>
 
+# What is this? Some kinda template?
+
+Kind of. We love all of the technologies that create-t3-app includes, but we do NOT believe every project needs all of them.
+
+`create-t3-app` was created to allow developers to select the **specific dependencies** within the T3 Stack that they'd like, with all the boilerplate and weird interop stuff handled.
+
 # What is the T3 Stack?
 
 t3 stack is a web development stack made by [Theo](https://twitter.com/t3dotgg).
