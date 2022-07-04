@@ -15,7 +15,11 @@ export const initializeGit = async (projectDir: string) => {
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
   } catch (error) {
-    spinner.fail(`${chalk.bold.red("Failed:")} could not initialize git\n`);
+    spinner.fail(
+      `${chalk.bold.red(
+        "Failed:",
+      )} could not initialize git. Update git to the latest version!\n`,
+    );
   }
 
   await fs.rename(
