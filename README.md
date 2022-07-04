@@ -77,10 +77,10 @@ It consists of
 
 - [Next.js](https://nextjs.org)
 - [tRPC](https://trpc.io)
-- [TailwindCSS](https://tailwindcss.com)
+- [Tailwind CSS](https://tailwindcss.com)
 - [TypeScript](https://typescriptlang.org)
 - [Prisma](https://prisma.io)
-- [Next-Auth](https://next-auth.js.org)
+- [NextAuth.js](https://next-auth.js.org)
 
 If you're looking for more info about this stack (state management solutions, deployment recommendations, etc) - check out [init.tips](https://init.tips/other)
 
