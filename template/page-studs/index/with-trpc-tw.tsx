@@ -22,10 +22,10 @@ const Home: NextPage = () => {
 
         <main className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ">
           
-          <section className="h-full transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+          <section className="h-full max-h-72 transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
             <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
               <div className="p-5 py-10 flex flex-col justify-center h-full cursor-pointer text-center">
-                <h1 className="mb-5 text-3xl">NextJS</h1>
+                <h2 className="mb-5 text-3xl">NextJS</h2>
                 <p className="mb-5">The React framework for production</p>
                 <button className="p-2 px-6 w-fit self-center text-white font-bold bg-blue-500 rounded-full group-hover:bg-blue-600 duration-300">
                   Documentation
@@ -34,10 +34,10 @@ const Home: NextPage = () => {
             </a>
           </section>
 
-          <section className="h-full transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+          <section className="h-full max-h-72 transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
             <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
               <div className="p-5 py-10 flex flex-col justify-center h-full cursor-pointer text-center">
-                <h1 className="mb-5 text-3xl">TypeScript</h1>
+                <h2 className="mb-5 text-3xl">TypeScript</h2>
                 <p className="mb-5">
                   Strongly typed programming language that builds on JavaScript,
                   giving you better tooling at any scale
@@ -49,10 +49,10 @@ const Home: NextPage = () => {
             </a>
           </section>
 
-          <section className="h-full transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+          <section className="h-full max-h-72 transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
             <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
               <div className="p-5 py-10 flex flex-col justify-center h-full cursor-pointer text-center">
-                <h1 className="mb-5 text-3xl">TailwindCSS</h1>
+                <h2 className="mb-5 text-3xl">TailwindCSS</h2>
                 <p className="mb-5">
                   Rapidly build modern websites without ever leaving your HTML
                 </p>
@@ -63,10 +63,10 @@ const Home: NextPage = () => {
             </a>
           </section>
 
-          <section className="h-full transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
+          <section className="h-full max-h-72 transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
             <a href="https://trpc.io/" target="_blank" rel="noreferrer">
               <div className="p-5 py-10 flex flex-col justify-center h-full cursor-pointer text-center">
-                <h1 className="mb-5 text-3xl">tRPC</h1>
+                <h2 className="mb-5 text-3xl">tRPC</h2>
                 <p className="mb-5">End-to-end typesafe APIs made easy</p>
                 <button className="p-2 px-6 w-fit self-center text-white font-bold bg-blue-500 rounded-full group-hover:bg-blue-600 duration-300">
                   Documentation
