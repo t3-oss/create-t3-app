@@ -21,7 +21,7 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 
 </div>
 
-<summary><b> Table of contents :</b></summary>
+## Table of contents
  
 * <a href="#usage">Usage</a>
 * <a href="#info">What is the t3 stack?</a> 
