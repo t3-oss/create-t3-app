@@ -23,11 +23,15 @@ export async function vscodeConfig(
         }`;
 
     await fs
-      .writeFile(prettierConfigFile, prettierConfigContent, {
-        flag: "w",
-      })
-      .then(() => {
-        logger.success(`Created ${prettierConfigFile} in ${projectDir}`);
+      .mkdir(`${projectDir}/.vscode`, { recursive: true })
+      .then(async () => {
+        await fs
+          .writeFile(prettierConfigFile, prettierConfigContent, {
+            flag: "w",
+          })
+          .then(() => {
+            logger.success(`Created ${prettierConfigFile} in ${projectDir}`);
+          });
       });
   } catch (err) {
     console.error(err);

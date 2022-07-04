@@ -145,7 +145,7 @@ export const runCli = async () => {
         type: "confirm",
         message:
           "Would you like to use prettier for code formatting in VSCODE?",
-        default: true,
+        default: false,
       });
 
       if (prettierConfig) {
