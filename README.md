@@ -23,11 +23,24 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 
 <summary><b> Table of contents :</b></summary>
  
+* <a href="#usage">Usage</a>
 * <a href="#info">What is the t3 stack?</a> 
-* <a href="#usage">Installation and Usage</a>
+* <a href="#dev">Dev setup</a>
 * <a href="#contributors">Contributors</a>
 
-<div id='info'>
+<div id="usage">
+# Usage
+
+```bash
+npx create-t3-app@latest
+# or
+yarn create t3-app
+# or
+pnpm dlx create-t3-app@latest
+```
+</div>
+
+<div id="info">
 
 # What is this? Some kinda template?
 
@@ -63,17 +76,7 @@ If you want to know more about the stack, check out [init.tips](https://init.tip
 
 </div>
 
-<div id="usage">
-
-# Usage
-
-```bash
-npx create-t3-app@latest
-# or
-yarn create t3-app
-# or
-pnpm dlx create-t3-app@latest
-```
+<div id="dev">
 
 ### Dev
 
