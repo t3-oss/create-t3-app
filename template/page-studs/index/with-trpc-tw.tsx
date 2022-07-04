@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
         <h3 className="items-center m-5 text-3xl">This Stack uses:-</h3>
 
-        <main className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 ">
+        <main className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ">
           
           <section className="h-full transform group border-2 border-neutral-800 rounded-2xl duration-300 hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
             <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
