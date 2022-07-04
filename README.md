@@ -135,8 +135,8 @@ pnpm start
 
 We 💖 contributors! Feel free to contribute to this project
 
-<a href="https://github.com/nexxeln/create-t3-app/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nexxeln/create-t3-app" />
+<a href="https://github.com/t3-oss/create-t3-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=t3-oss/create-t3-app" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
