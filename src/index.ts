@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs-extra";
 import { runCli } from "./cli/index.js";
 import { createProject } from "./helpers/createProject.js";
+import { vscodeConfig } from "./helpers/editorConfig.js";
 import { initializeGit } from "./helpers/initGit.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
@@ -24,12 +25,15 @@ const main = async () => {
   const {
     appName,
     packages,
+    prettierConfig,
     flags: { noGit },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
 
   const projectDir = await createProject(appName, usePackages);
+
+  await vscodeConfig(projectDir, prettierConfig);
 
   if (!noGit) {
     await initializeGit(projectDir);

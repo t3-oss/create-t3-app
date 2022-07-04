@@ -1,4 +1,5 @@
 import type { AvailablePackages } from "../installers/index.js";
+import type { prettierConfig } from "../types/editorConfig.js";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
@@ -17,6 +18,7 @@ interface CliFlags {
 interface CliResults {
   appName: string;
   packages: AvailablePackages[];
+  prettierConfig: prettierConfig | undefined;
   flags: CliFlags;
 }
 
@@ -27,6 +29,12 @@ const defaultOptions: CliResults = {
     noGit: false,
     noInstall: false,
     default: false,
+  },
+  prettierConfig: {
+    printWidth: 120,
+    tabWidth: 2,
+    useTabs: true,
+    semi: true,
   },
 };
 
@@ -129,6 +137,68 @@ export const runCli = async () => {
       });
 
       cliResults.packages = packages;
+
+      const { prettierConfig } = await inquirer.prompt<
+        Pick<CliResults, "prettierConfig">
+      >({
+        name: "prettierConfig",
+        type: "confirm",
+        message:
+          "Would you like to use prettier for code formatting in VSCODE?",
+        default: true,
+      });
+
+      if (prettierConfig) {
+        const { printWidth, tabWidth, useTabs, semi } =
+          await inquirer.prompt<prettierConfig>([
+            {
+              name: "printWidth",
+              type: "input",
+              message: "What would you like the print width to be?",
+              default: defaultOptions.prettierConfig!.printWidth,
+              validate: (input: string) => {
+                const num = parseInt(input, 10);
+                if (isNaN(num)) {
+                  return "Please enter a number";
+                }
+                return num > 0 ? true : "Please enter a number greater than 0";
+              },
+            },
+            {
+              name: "tabWidth",
+              type: "input",
+              message: "What would you like the tab width to be?",
+              default: defaultOptions.prettierConfig!.tabWidth,
+              validate: (input: string) => {
+                const num = parseInt(input, 10);
+                if (isNaN(num)) {
+                  return "Please enter a number";
+                }
+                return num > 0 ? true : "Please enter a number greater than 0";
+              },
+            },
+            {
+              name: "UseTabs",
+              type: "confirm",
+              message: "Would you like to use tabs?",
+              default: defaultOptions.prettierConfig!.useTabs,
+            },
+
+            {
+              name: "semi",
+              type: "confirm",
+              message: "Would you like to use semicolons?",
+              default: defaultOptions.prettierConfig!.semi,
+            },
+          ]);
+
+        cliResults.prettierConfig = {
+          printWidth: printWidth,
+          tabWidth: tabWidth,
+          useTabs: useTabs,
+          semi: semi,
+        };
+      }
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
