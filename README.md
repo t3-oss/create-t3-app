@@ -1,7 +1,7 @@
 <h1 align="center"> create-t3-app </h1>
 <div align="center">
 
-Interactive CLI to quickly set up a project using the [t3 stack](https://init.tips)
+Interactive CLI to quickly set up a project using the [T3 Stack](https://init.tips)
 
 <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" style="border-radius:40%"/>
 
@@ -135,8 +135,8 @@ pnpm start
 
 We 💖 contributors! Feel free to contribute to this project
 
-<a href="https://github.com/nexxeln/create-t3-app/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nexxeln/create-t3-app" />
+<a href="https://github.com/t3-oss/create-t3-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=t3-oss/create-t3-app" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
