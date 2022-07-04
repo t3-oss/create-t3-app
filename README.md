@@ -29,6 +29,7 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 * <a href="#contributors">Contributors</a>
 
 <div id="usage">
+
 # Usage
 
 ```bash
