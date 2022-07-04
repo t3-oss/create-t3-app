@@ -9,8 +9,8 @@ Interactive CLI to quickly set up a project using the [T3 Stack](https://init.ti
 <div align="center">
 <br/>
 
-![PRs-Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)
-![Version](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
+![[PRs-Welcome](https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md)](https://img.shields.io/badge/PRs-welcome-blue.svg)
+![[Version](https://www.npmjs.com/package/create-t3-app)](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
 ![Downloads](https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7)
 
 </div>
