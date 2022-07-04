@@ -13,21 +13,47 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 ![Version](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
 ![Downloads](https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7)
 
-<p align="center">
-  <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=t3-oss&utm_campaign=osss">
-    <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
-  </a>
-</p>
+</div>
+
+
+<div id="usage">
+
+# Usage
+
+**npm**
+```bash
+npx create-t3-app@latest
+```
+
+**yarn**
+```bash
+yarn create t3-app
+```
+
+
+**pnpm**
+```bash
+pnpm dlx create-t3-app@latest
+```
+</div>
+
 
 </div>
 
-<summary><b> Table of contents :</b></summary>
+## Table of contents
  
 * <a href="#info">What is the t3 stack?</a> 
-* <a href="#usage">Installation and Usage</a>
+* <a href="#dev">Dev setup</a>
 * <a href="#contributors">Contributors</a>
 
-<div id='info'>
+
+<div id="info">
+
+# What is this? Some kinda template?
+
+Kind of. We love all of the technologies that create-t3-app includes, but we do NOT believe every project needs all of them.
+
+`create-t3-app` was created to allow developers to select the **specific dependencies** within the T3 Stack that they'd like, with all the boilerplate and weird interop stuff handled.
 
 # What is the T3 Stack?
 
@@ -57,17 +83,7 @@ If you want to know more about the stack, check out [init.tips](https://init.tip
 
 </div>
 
-<div id="usage">
-
-# Usage
-
-```bash
-npx create-t3-app@latest
-# or
-yarn create t3-app
-# or
-pnpm dlx create-t3-app@latest
-```
+<div id="dev">
 
 ### Dev
 
@@ -97,3 +113,9 @@ We 💖 contributors! Feel free to contribute to this project
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
+
+<p align="center">
+  <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=t3-oss&utm_campaign=osss">
+    <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
+  </a>
+</p>
