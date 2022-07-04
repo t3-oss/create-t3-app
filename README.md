@@ -9,9 +9,9 @@ Interactive CLI to quickly set up a project using the [T3 Stack](https://init.ti
 <div align="center">
 <br/>
 
-![PRs-Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)
-![Version](https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285)
-![Downloads](https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7)
+[![PRs-Welcome][contribute-image]][contribute-url] [![NPM version][npm-image]][npm-url]
+[![Downloads][downloads-image]][npm-url]
+
 
 </div>
 
@@ -146,3 +146,12 @@ Made with [contrib.rocks](https://contrib.rocks).
     <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
   </a>
 </p>
+
+[downloads-image]: https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7
+
+[npm-url]: https://www.npmjs.com/package/create-t3-app
+[npm-image]: https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285
+
+[contribute-url]: https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md
+[contribute-image]: https://img.shields.io/badge/PRs-welcome-blue.svg
+
