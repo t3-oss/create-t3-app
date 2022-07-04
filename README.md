@@ -53,7 +53,9 @@ pnpm dlx create-t3-app@latest
 
 Kind of. We love all of the technologies that create-t3-app includes, but we do NOT believe every project needs all of them.
 
-`create-t3-app` was created to allow developers to select the **specific dependencies** within the T3 Stack that they'd like, with all the boilerplate and weird interop stuff handled.
+We made `create-t3-app` to do **one thing** - simplify the complex boilerplate around the core T3 Stack tech without compromising the modularity of the pieces.
+
+This is **NOT** an all-inclusive template. We don't add things that are as simple as an `npm install zustand`. _If you cut an issue asking us to add your preferred libraries, we will make fun of you._
 
 ## What is the T3 Stack?
 
