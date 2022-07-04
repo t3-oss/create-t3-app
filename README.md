@@ -43,6 +43,7 @@ pnpm dlx create-t3-app@latest
 ## Table of contents
  
 * <a href="#about">About</a> 
+* <a href="#axioms">T3 Axioms</a>
 * <a href="#dev">Dev/Contributor Setup</a>
 * <a href="#contributors">Contributors</a>
 
@@ -82,6 +83,30 @@ It consists of
 - [Next-Auth](https://next-auth.js.org)
 
 If you're looking for more info about this stack (state management solutions, deployment recommendations, etc) - check out [init.tips](https://init.tips/other)
+
+</div>
+
+<div id="axioms">
+
+# T3 Axioms
+
+I'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building, and we treat them as the basis for our decisions.
+
+## 1. Solve Problems
+
+It's easy to fall in the trap of "adding everything" - we explicitly _don't_ want to do that. Everything added to `create-t3-app` should solve a _specific_ problem that exists within the core technologies included.
+
+This means we **won't** add things like state libraries (zustand, redux), but we **will** add things like NextAuth.js and integrate it with Prisma and tRPC for you
+
+## 2. Bleed Responsibly
+
+We love our bleeding edge tech. The amount of speed and, honestly, _fun_ that comes out of new shit is really cool. We think it's important to **bleed responsibly**, using riskier tech in the less risky parts.
+
+This means we **wouldn't** bet on risky new database tech (SQL is great!) - but we **happily** bet on tRPC (it's just functions, moving off it is trivial).
+
+## 3. Typesafety Isn't Optional
+
+Two of the three T's are typesafe (Typescript, tRPC). We take typesafety seriously in these parts. Any decision that compromises the full-stack typesafe nature of `create-t3-app` is a decision that should be made in a different project.
 
 </div>
 
