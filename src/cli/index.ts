@@ -106,8 +106,8 @@ export const runCli = async () => {
         type: "list",
         message: "Will you be using JavaScript or TypeScript?",
         choices: [
-          { name: "Typescript", value: "typescript", short: "Typescript" },
-          { name: "Javascript", value: "javascript", short: "Typescript" },
+          { name: "TypeScript", value: "typescript", short: "TypeScript" },
+          { name: "Javascript", value: "javascript", short: "JavaScript" },
         ],
         default: "typescript",
       });
