@@ -42,12 +42,12 @@ pnpm dlx create-t3-app@latest
 
 ## Table of contents
  
-* <a href="#info">What is the t3 stack?</a> 
-* <a href="#dev">Dev setup</a>
+* <a href="#about">About</a> 
+* <a href="#dev">Dev/Contributor Setup</a>
 * <a href="#contributors">Contributors</a>
 
 
-<div id="info">
+<div id="about">
 
 # What is this? Some kinda template?
 
@@ -55,9 +55,9 @@ Kind of. We love all of the technologies that create-t3-app includes, but we do 
 
 `create-t3-app` was created to allow developers to select the **specific dependencies** within the T3 Stack that they'd like, with all the boilerplate and weird interop stuff handled.
 
-# What is the T3 Stack?
+## What is the T3 Stack?
 
-t3 stack is a web development stack made by [Theo](https://twitter.com/t3dotgg).
+The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg), focused on **simplicity**, **modularity**, and **full-stack typesafety**.
 
 <p align="center">
   <a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
@@ -79,13 +79,13 @@ It consists of
 - [Prisma](https://prisma.io)
 - [Next-Auth](https://next-auth.js.org)
 
-If you want to know more about the stack, check out [init.tips](https://init.tips)
+If you're looking for more info about this stack (state management solutions, deployment recommendations, etc) - check out [init.tips](https://init.tips/other)
 
 </div>
 
 <div id="dev">
 
-### Dev
+# Dev/Contributor Setup
 
 Read the [Contributing guidelines](CONTRIBUTING.md)
 
