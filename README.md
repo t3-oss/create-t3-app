@@ -33,6 +33,17 @@ Interactive CLI to quickly set up a project using the [t3 stack](https://init.ti
 
 t3 stack is a web development stack made by [Theo](https://twitter.com/t3dotgg).
 
+<p align="center">
+  <a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
+    <img src="https://t3.gg/random/T3%20Stack%20V4.png" alt="Watch the video" width="320" />
+  </a>
+</p>
+<p align="center">
+  <a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
+    Watch Theo's overview on Youtube here
+  </a>
+</p>
+
 It consists of
 
 - [Next.js](https://nextjs.org)
