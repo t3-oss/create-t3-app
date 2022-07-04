@@ -44,7 +44,7 @@ const Home: NextPage = () => {
 
         <section className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 ">
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h1 className="my-5 text-3xl">NextJS</h1>
+            <h2 className="my-5 text-3xl">NextJS</h2>
             <p className="mb-5">The React framework for production</p>
             <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://nextjs.org/">
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
           </section>
 
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h1 className="my-5 text-3xl">TypeScript</h1>
+            <h2 className="my-5 text-3xl">TypeScript</h2>
             <p className="mb-5">
               Strongly typed programming language that builds on JavaScript,
               giving you better tooling at any scale
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
           </section>
 
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h1 className="my-5 text-3xl">TailwindCSS</h1>
+            <h2 className="my-5 text-3xl">TailwindCSS</h2>
             <p className="mb-5">
               Rapidly build modern websites without ever leaving your HTML
             </p>
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
           </section>
 
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h1 className="my-5 text-3xl">tRPC</h1>
+            <h2 className="my-5 text-3xl">tRPC</h2>
             <p className="mb-5">End-to-end typesafe APIs made easy</p>
             <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://trpc.io/">
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
           </section>
 
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h1 className="my-5 text-3xl">Next-Auth</h1>
+            <h2 className="my-5 text-3xl">Next-Auth</h2>
             <p className="mb-5">Authentication for Next.js</p>
             <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
               <Link href="https://next-auth.js.org/">
