@@ -42,7 +42,6 @@ pnpm dlx create-t3-app@latest
 
 ## Table of contents
  
-* <a href="#usage">Usage</a>
 * <a href="#info">What is the t3 stack?</a> 
 * <a href="#dev">Dev setup</a>
 * <a href="#contributors">Contributors</a>
