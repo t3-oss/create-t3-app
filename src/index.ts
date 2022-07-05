@@ -8,6 +8,7 @@ import { initializeGit } from "./helpers/initGit.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
 import { logger } from "./utils/logger.js";
+import { parseNameAndPath } from "./utils/parseNameAndPath.js";
 import { renderTitle } from "./utils/renderTitle.js";
 
 const main = async () => {
@@ -29,18 +30,21 @@ const main = async () => {
 
   const usePackages = buildPkgInstallerMap(packages);
 
-  const projectDir = await createProject(appName, usePackages);
+  // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
+  const [scopedAppName, appDir] = parseNameAndPath(appName);
+
+  const projectDir = await createProject(appDir, usePackages);
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, usePackages);
+  logNextSteps(appDir, usePackages);
 
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
-  pkgJson.name = appName;
+  pkgJson.name = scopedAppName;
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
