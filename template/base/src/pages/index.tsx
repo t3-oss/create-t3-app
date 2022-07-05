@@ -15,7 +15,7 @@ const Home: NextPage = () => {
         </h1>
 
         <div>
-          <h3>This Stack uses:-</h3>
+          <h3>This stack uses:</h3>
           <ul>
             <li>
               <a href="https://nextjs.org" target="_blank" rel="noreferrer">

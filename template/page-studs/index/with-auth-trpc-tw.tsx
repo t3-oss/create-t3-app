@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
-import Link from "next/link";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
@@ -40,7 +39,7 @@ const Home: NextPage = () => {
           Create <span className="text-blue-500">T3</span> App
         </h1>
 
-        <h3 className="items-center m-5 text-3xl">This Stack uses:-</h3>
+        <h3 className="items-center m-5 text-3xl">This stack uses:</h3>
 
         <section className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 ">
           <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
@@ -97,7 +96,7 @@ const Home: NextPage = () => {
               </Link>
             </button>
           </section>
-        </section>
+        </main>
       </div>
     </>
   );
