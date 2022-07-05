@@ -36,8 +36,12 @@ export const nextAuthInstaller: Installer = async (
     "src/pages/api/restricted.ts",
   );
 
+  const middlewareSrc = path.join(nextAuthAssetDir, "middleware.ts");
+  const middlewareDest = path.join(projectDir, "src/middleware.ts");
+
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
+    fs.copy(middlewareSrc, middlewareDest),
   ]);
 };
