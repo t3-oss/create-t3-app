@@ -1,5 +1,11 @@
 # create-t3-app
 
+## 4.4.0
+
+### Minor Changes
+
+- improve ui examples of template app
+
 ## 4.3.5
 
 ### Patch Changes
