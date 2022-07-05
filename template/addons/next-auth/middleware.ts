@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 /**
- * This middleware will redirect to the home page if the user is not signed in and try to enter to the "/dashboard".
+ * This middleware will redirect to the home page if the user is not signed in and try to enter to "/profile".
  */
 export async function middleware(request: NextRequest) {
   const token = await getToken({
@@ -17,5 +17,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/dashboard/:path*",
+  matcher: "/profile/:path*",
 };
