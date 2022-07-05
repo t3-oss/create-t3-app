@@ -1,5 +1,17 @@
 # create-t3-app
 
+## 4.3.5
+
+### Patch Changes
+
+- add warning for old git versions
+
+## 4.3.4
+
+### Patch Changes
+
+- improve template styling
+
 ## 4.3.3
 
 ### Patch Changes
