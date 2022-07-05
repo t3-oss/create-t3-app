@@ -34,69 +34,96 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container flex flex-col items-center justify-center min-h-screen p-10 px-0 mx-auto md:py-20 md:p-10 md:px-0">
-        <h1 className="font-extrabold text-center text-7xl">
-          Create <span className="text-blue-500">T3</span> App
-        </h1>
-
-        <h3 className="items-center m-5 text-3xl">This stack uses:</h3>
-
-        <section className="grid items-start grid-cols-1 gap-10 p-5 md:p-0 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 ">
-          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h2 className="my-5 text-3xl">NextJS</h2>
-            <p className="mb-5">The React framework for production</p>
-            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-              <Link href="https://nextjs.org/">
-                <a target="_blank">Learn More</a>
-              </Link>
-            </button>
-          </section>
-
-          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h2 className="my-5 text-3xl">TypeScript</h2>
-            <p className="mb-5">
+      <div className="w-screen min-h-screen flex flex-col justify-center items-center p-4 overflow-y-scroll">
+        <h2 className="text-[3rem] lg:text-[5rem] md:text-[5rem] font-extrabold text-gray-700">
+          Create <span className="text-purple-300">T3</span> App
+        </h2>
+        <p className="text-2xl text-gray-700">This stack uses</p>
+        <div className="grid grid-cols-1 grid-rows-3 lg:grid-rows-2 md:grid-rows-2 justify-center items-center lg:grid-cols-3 md:grid-cols-3 gap-3 mt-3 pt-3 w-full lg:w-2/3 md:w-full">
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">NextJS</h2>
+            <p className="text-sm text-gray-600">
+              The react framework for production
+            </p>
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">TypeScript</h2>
+            <p className="text-sm text-gray-600">
               Strongly typed programming language that builds on JavaScript,
               giving you better tooling at any scale
             </p>
-            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-              <Link href="https://www.typescriptlang.org/">
-                <a target="_blank">Learn More</a>
-              </Link>
-            </button>
-          </section>
-
-          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h2 className="my-5 text-3xl">TailwindCSS</h2>
-            <p className="mb-5">
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://www.typescriptlang.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">TailwindCSS</h2>
+            <p className="text-sm text-gray-600">
               Rapidly build modern websites without ever leaving your HTML
             </p>
-            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-              <Link href="https://tailwindcss.com/">
-                <a target="_blank">Learn More</a>
-              </Link>
-            </button>
-          </section>
-
-          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h2 className="my-5 text-3xl">tRPC</h2>
-            <p className="mb-5">End-to-end typesafe APIs made easy</p>
-            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-              <Link href="https://trpc.io/">
-                <a target="_blank">Learn More</a>
-              </Link>
-            </button>
-          </section>
-
-          <section className="p-5 py-10 text-center duration-500 transform border-2 cursor-pointer border-neutral-800 rounded-2xl hover:scale-105 hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl">
-            <h2 className="my-5 text-3xl">Next-Auth</h2>
-            <p className="mb-5">Authentication for Next.js</p>
-            <button className="p-2 px-6 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-              <Link href="https://next-auth.js.org/">
-                <a target="_blank">Learn More</a>
-              </Link>
-            </button>
-          </section>
-        </main>
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">tRPC</h2>
+            <p className="text-sm text-gray-600">
+              End-to-end typesafe APIs made easy
+            </p>
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://trpc.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">Next-Auth</h2>
+            <p className="text-sm text-gray-600">Authentication for Next.js</p>
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://trpc.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+            <h2 className="text-lg text-gray-700">Prisma</h2>
+            <p className="text-sm text-gray-600">
+              Build data-driven JavaScript & TypeScript apps in less time
+            </p>
+            <a
+              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              href="https://www.prisma.io/docs/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );
