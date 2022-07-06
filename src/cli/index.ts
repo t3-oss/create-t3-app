@@ -150,12 +150,8 @@ export const runCli = async () => {
       if (!cliResults.flags.noInstall) {
         const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
           name: "runInstall",
-          type: "list",
+          type: "confirm",
           message: "Would you like us to run npm install?",
-          choices: [
-            { name: "Yes", value: true, short: "Yes" },
-            { name: "No", value: false, short: "No" },
-          ],
           default: true,
         });
 
