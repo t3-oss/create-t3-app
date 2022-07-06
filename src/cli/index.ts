@@ -157,7 +157,7 @@ export const runCli = async () => {
             { name: "Yes", value: true, short: "Yes" },
             { name: "No", value: false, short: "No" },
           ],
-          default: "typescript",
+          default: true,
         });
         if (gitInit) {
           logger.success("Nice one! Initializing repository!");
