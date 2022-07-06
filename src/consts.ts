@@ -9,6 +9,6 @@ export const PKG_ROOT = path.join(distPath, "../");
 
 //export const PKG_ROOT = path.dirname(require.main.filename);
 
-export const TITLE_TEXT = `Welcome to the create-t3-app !`;
+export const TITLE_TEXT = `CREATE T3 APP`;
 export const DEFAULT_APP_NAME = "my-t3-app";
 export const CREATE_T3_APP = "create-t3-app";

@@ -4,7 +4,7 @@ import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
 import { availablePackages } from "../installers/index.js";
-// import { getVersion } from "../utils/getT3Version.js";
+import { getVersion } from "../utils/getT3Version.js";
 import { logger } from "../utils/logger.js";
 import { validateAppName } from "../utils/validateAppName.js";
 
@@ -63,7 +63,7 @@ export const runCli = async () => {
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
       false,
     )
-    // .version(getVersion(), "-v, --version", "Display the version number")
+    .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
       "afterAll",
       `\n The t3 stack was inspired by ${chalk
@@ -75,6 +75,18 @@ export const runCli = async () => {
         .underline("https://ping.gg")} \n`,
     )
     .parse(process.argv);
+
+  // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+  if (process.versions.node.startsWith("18")) {
+    logger.warn(`  WARNING: You are using Node.js version 18. This is currently not compatible with Next-Auth.
+  If you want to use Next-Auth, switch to a previous version of Node, e.g. 16 (LTS).
+  If you have nvm installed, use 'nvm install --lts' to switch to the latest LTS version of Node.
+    `);
+
+    cliResults.packages = cliResults.packages.filter(
+      (val) => val !== "nextAuth",
+    );
+  }
 
   // Needs to be seperated outside the if statement to correctly infer the type as string | undefined
   const cliProvidedName = program.args[0];
@@ -125,6 +137,11 @@ export const runCli = async () => {
         choices: availablePackages.map((pkgName) => ({
           name: pkgName,
           checked: false,
+          // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+          disabled:
+            pkgName === "nextAuth" && process.versions.node.startsWith("18")
+              ? "Node.js version 18 is currently not compatible with Next-Auth."
+              : false,
         })),
       });
 
