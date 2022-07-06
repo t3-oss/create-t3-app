@@ -24,7 +24,6 @@ export const runPkgManagerInstall = async (opts: {
         continue;
       }
       const { stdout: latestVersion } = await execa(`npm show ${pkg} version`);
-      logger.info("Resolved latest version of", pkg, "to", latestVersion);
       if (!latestVersion) {
         logger.warn("WARN: Failed to resolve latest version of package:", pkg);
         continue;
