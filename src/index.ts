@@ -54,7 +54,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unkown error has occured. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:",
     );
     console.log(err);
   }
