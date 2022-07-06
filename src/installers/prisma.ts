@@ -6,22 +6,25 @@ import { PKG_ROOT } from "../consts.js";
 import { execa } from "../utils/execAsync.js";
 import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
-export const prismaInstaller: Installer = async (
+export const prismaInstaller: Installer = async ({
   projectDir,
-  packageManager,
+  pkgManager,
   packages,
-) => {
+  noInstall,
+}) => {
   await runPkgManagerInstall({
-    packageManager,
+    pkgManager,
     projectDir,
     packages: ["prisma"],
     devMode: true,
+    noInstallMode: noInstall,
   });
   await runPkgManagerInstall({
-    packageManager,
+    pkgManager,
     projectDir,
     packages: ["@prisma/client"],
     devMode: false,
+    noInstallMode: noInstall,
   });
 
   const prismaAssetDir = path.join(PKG_ROOT, "template/addons/prisma");
@@ -53,9 +56,12 @@ export const prismaInstaller: Installer = async (
     }),
   ]);
 
-  const generateClientCmd =
-    packageManager === "npm"
-      ? "npx prisma generate"
-      : `${packageManager} prisma generate`;
-  await execa(generateClientCmd, { cwd: projectDir });
+  // only generate client if we have installed the dependencies
+  if (!noInstall) {
+    const generateClientCmd =
+      pkgManager === "npm"
+        ? "npx prisma generate"
+        : `${pkgManager} prisma generate`;
+    await execa(generateClientCmd, { cwd: projectDir });
+  }
 };

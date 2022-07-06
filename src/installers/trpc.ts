@@ -4,13 +4,14 @@ import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
-export const trpcInstaller: Installer = async (
+export const trpcInstaller: Installer = async ({
   projectDir,
-  packageManager,
+  pkgManager,
   packages,
-) => {
+  noInstall,
+}) => {
   await runPkgManagerInstall({
-    packageManager,
+    pkgManager,
     projectDir,
     packages: [
       "react-query",
@@ -22,6 +23,7 @@ export const trpcInstaller: Installer = async (
       "zod",
     ],
     devMode: false,
+    noInstallMode: noInstall,
   });
   const usingAuth = packages.nextAuth.inUse;
   const usingPrisma = packages.prisma.inUse;
