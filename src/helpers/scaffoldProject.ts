@@ -9,11 +9,14 @@ import { type PackageManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 
 // This bootstraps the base Next.js application
-export const scaffoldProject = async (
-  projectName: string,
-  projectDir: string,
-  pkgManager: PackageManager,
-) => {
+export const scaffoldProject = async (opts: {
+  projectName: string;
+  projectDir: string;
+  pkgManager: PackageManager;
+  noInstall: boolean;
+}) => {
+  const { projectName, projectDir, pkgManager, noInstall } = opts;
+
   const srcDir = path.join(PKG_ROOT, "template/base");
 
   logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
@@ -52,7 +55,8 @@ export const scaffoldProject = async (
 
   await fs.copy(srcDir, projectDir);
 
-  await execa(`${pkgManager} install`, { cwd: projectDir });
-
+  if (!noInstall) {
+    await execa(`${pkgManager} install`, { cwd: projectDir });
+  }
   spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully!\n`);
 };
