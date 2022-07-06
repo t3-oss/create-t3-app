@@ -12,41 +12,40 @@ Interactive CLI to quickly set up an opinionated, full stack, typesafe NextJS pr
 [![PRs-Welcome][contribute-image]][contribute-url] [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
 
-
 </div>
-
 
 <div id="usage">
 
 # Usage
 
 **npm**
+
 ```bash
 npx create-t3-app@latest
 ```
 
 **yarn**
+
 ```bash
 yarn create t3-app
 ```
 
-
 **pnpm**
+
 ```bash
 pnpm dlx create-t3-app@latest
 ```
-</div>
 
+</div>
 
 </div>
 
 ## Table of contents
- 
-* <a href="#about">About</a> 
-* <a href="#axioms">T3 Axioms</a>
-* <a href="#dev">Dev/Contributor Setup</a>
-* <a href="#contributors">Contributors</a>
 
+- <a href="#about">About</a>
+- <a href="#axioms">T3 Axioms</a>
+- <a href="#dev">Dev/Contributor Setup</a>
+- <a href="#contributors">Contributors</a>
 
 <div id="about">
 
@@ -150,10 +149,7 @@ Made with [contrib.rocks](https://contrib.rocks).
 </p>
 
 [downloads-image]: https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7
-
 [npm-url]: https://www.npmjs.com/package/create-t3-app
 [npm-image]: https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285
-
 [contribute-url]: https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md
 [contribute-image]: https://img.shields.io/badge/PRs-welcome-blue.svg
-
