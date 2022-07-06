@@ -146,6 +146,26 @@ export const runCli = async () => {
       });
 
       cliResults.packages = packages;
+
+      // Skip if noGit flag provided
+      if (!cliResults.flags.noGit) {
+        const { gitInit } = await inquirer.prompt<{ git: boolean }>({
+          name: "git",
+          type: "list",
+          message: "Initialize a new git repository?",
+          choices: [
+            { name: "Yes", value: true, short: "Yes" },
+            { name: "No", value: false, short: "No" },
+          ],
+          default: "typescript",
+        });
+        if (gitInit) {
+          logger.success("Nice one! Initializing repository!");
+        } else {
+          cliResults.flags.noGit = true;
+          logger.info("Sounds good! You can come back and run git init later.");
+        }
+      }
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
