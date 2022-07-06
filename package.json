@@ -48,6 +48,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.23.0",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@swc/core": "^1.2.206",
     "@types/figlet": "^1.5.4",
     "@types/fs-extra": "^9.0.13",
