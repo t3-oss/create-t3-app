@@ -18,7 +18,7 @@ export const initializeGit = async (projectDir: string) => {
     const major = gitVersionTag?.split(".")[0];
     const minor = gitVersionTag?.split(".")[1];
     if (Number(major) < 2 || Number(minor) < 28) {
-      initCmd = "git init";
+      initCmd = "git init && git branch -m main";
     }
 
     await execa(initCmd, { cwd: projectDir });
