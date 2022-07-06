@@ -10,7 +10,18 @@ export const initializeGit = async (projectDir: string) => {
   logger.info("Initializing Git...");
   const spinner = ora("Creating a new git repo...\n").start();
   try {
-    await execa("git init --initial-branch=main", { cwd: projectDir });
+    let initCmd = "git init --initial-branch=main";
+
+    // --initial-branch flag was added in git v2.28.0
+    const { stdout: gitVersionOutput } = await execa("git --version"); // git version 2.32.0 ...
+    const gitVersionTag = gitVersionOutput.split(" ")[2];
+    const major = gitVersionTag?.split(".")[0];
+    const minor = gitVersionTag?.split(".")[1];
+    if (Number(major) < 2 || Number(minor) < 28) {
+      initCmd = "git init && git branch -m main";
+    }
+
+    await execa(initCmd, { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
