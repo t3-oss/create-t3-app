@@ -5,19 +5,28 @@ import ora from "ora";
 import { logger } from "../utils/logger.js";
 
 // This runs the installer for all the packages that the user has selected
-export const installPackages = async (
-  projectDir: string,
-  pkgManager: PackageManager,
-  packages: PkgInstallerMap,
-) => {
-  logger.info("Installing packages...");
+export const installPackages = async (opts: {
+  projectDir: string;
+  pkgManager: PackageManager;
+  packages: PkgInstallerMap;
+  noInstall: boolean;
+}) => {
+  const { projectDir, pkgManager, packages, noInstall } = opts;
 
-  for (const [name, opts] of Object.entries(packages)) {
-    if (opts.inUse) {
-      const spinner = ora(`Installing ${name}...`).start();
-      await opts.installer(projectDir, pkgManager, packages);
+  logger.info(`${noInstall ? "Adding" : "Installing"} packages...`);
+
+  for (const [name, pkgOpts] of Object.entries(packages)) {
+    if (pkgOpts.inUse) {
+      const spinner = ora(
+        `${noInstall ? "Adding" : "Installing"} ${name}...`,
+      ).start();
+      await pkgOpts.installer({ projectDir, pkgManager, packages, noInstall });
       spinner.succeed(
-        chalk.green(`Successfully installed ${chalk.green.bold(name)}`),
+        chalk.green(
+          `Successfully ${noInstall ? "added" : "installed"} ${chalk.green.bold(
+            name,
+          )}`,
+        ),
       );
     }
   }
