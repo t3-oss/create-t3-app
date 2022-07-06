@@ -1,7 +1,7 @@
 <h1 align="center"> create-t3-app </h1>
 <div align="center">
 
-Interactive CLI to quickly set up a project using the [T3 Stack](https://init.tips)
+Interactive CLI to quickly set up an opinionated, full stack, typesafe NextJS project using the [T3 Stack](https://init.tips)
 
 <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" style="border-radius:40%"/>
 
@@ -56,7 +56,9 @@ Kind of. We love all of the technologies that create-t3-app includes, but we do 
 
 We made `create-t3-app` to do **one thing** - simplify the complex boilerplate around the core T3 Stack tech without compromising the modularity of the pieces.
 
-This is **NOT** an all-inclusive template. We don't add things that are as simple as an `npm install zustand`. _If you cut an issue asking us to add your preferred libraries, we will make fun of you._
+This is **NOT** an all-inclusive template. We **expect you to bring your own libraries as well**.
+
+We are selective about the packages we have included. We don't add libraries that are as simple as an `npm install zustand`. _If you cut an issue asking us to add your preferred libraries, we will make fun of you._
 
 ## What is the T3 Stack?
 
