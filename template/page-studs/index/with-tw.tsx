@@ -10,19 +10,19 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-screen h-screen flex flex-col justify-center items-center p-4">
-        <h1 className="text-[3rem] lg:text-[5rem] md:text-[5rem] font-extrabold text-gray-700">
+      <div className="flex flex-col items-center justify-center h-screen p-4">
+        <h2 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
           Create <span className="text-purple-300">T3</span> App
-        </h1>
+        </h2>
         <p className="text-2xl text-gray-700">This stack uses</p>
-        <div className="grid grid-cols-1 grid-rows-3 lg:grid-rows-1 md:grid-rows-1 lg:grid-cols-3 md:grid-cols-3 gap-3 mt-3 pt-3 w-full lg:w-2/3 md:w-full">
-          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+        <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-3 lg:w-2/3">
+          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">NextJS</h2>
             <p className="text-sm text-gray-600">
               The React framework for production
             </p>
             <a
-              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
               href="https://nextjs.org/"
               target="_blank"
               rel="noreferrer"
@@ -30,14 +30,14 @@ const Home: NextPage = () => {
               Documentation
             </a>
           </div>
-          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">TypeScript</h2>
             <p className="text-sm text-gray-600">
               Strongly typed programming language that builds on JavaScript,
               giving you better tooling at any scale
             </p>
             <a
-              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
               href="https://www.typescriptlang.org/"
               target="_blank"
               rel="noreferrer"
@@ -45,13 +45,13 @@ const Home: NextPage = () => {
               Documentation
             </a>
           </div>
-          <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
+          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">TailwindCSS</h2>
             <p className="text-sm text-gray-600">
               Rapidly build modern websites without ever leaving your HTML
             </p>
             <a
-              className="text-sm text-violet-500 underline decoration-dotted underline-offset-2 cursor-pointer mt-3"
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
               href="https://tailwindcss.com/"
               target="_blank"
               rel="noreferrer"
