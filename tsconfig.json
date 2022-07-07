@@ -42,7 +42,12 @@
     // "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "paths": {
+      "@Consts":["./src/consts.ts"],
+      "@Installers/*": ["./src/installers/*"],
+      "@Utils/*": ["./src/utils/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "template"]
