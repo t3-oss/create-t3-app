@@ -16,19 +16,22 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit },
+    flags: { noGit, noInstall },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
 
-  const projectDir = await createProject(appName, usePackages);
+  const projectDir = await createProject({
+    projectName: appName,
+    packages: usePackages,
+    noInstall,
+  });
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, usePackages);
-
+  logNextSteps({ projectName: appName, packages: usePackages, noInstall });
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
