@@ -31,7 +31,7 @@ export const prismaInstaller: Installer = async ({
 
   const schemaSrc = path.join(
     prismaAssetDir,
-    packages.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma",
+    packages?.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma",
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 

@@ -25,8 +25,8 @@ export const trpcInstaller: Installer = async ({
     devMode: false,
     noInstallMode: noInstall,
   });
-  const usingAuth = packages.nextAuth.inUse;
-  const usingPrisma = packages.prisma.inUse;
+  const usingAuth = packages?.nextAuth.inUse;
+  const usingPrisma = packages?.prisma.inUse;
 
   const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
 
