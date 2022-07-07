@@ -5,7 +5,6 @@
  */
 const { z } = require("zod");
 
-/*eslint sort-keys: "error"*/
 const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
@@ -17,10 +16,19 @@ const envSchema = z.object({
 
 const env = envSchema.safeParse(process.env);
 
+const formatErrors = (
+  /** @type {import('zod').ZodFormattedError<Map<string,string>>} */ error,
+) =>
+  Object.entries(error)
+    .map(([name, value]) => {
+      if ("_errors" in value) return `${name}: ${value._errors.join(", ")}\n`;
+    })
+    .filter(Boolean);
+
 if (!env.success) {
   console.error(
-    "❌ Invalid environment variables:",
-    JSON.stringify(env.error.format(), null, 4),
+    "❌ Invalid environment variables:\n",
+    ...formatErrors(env.error.format()),
   );
   process.exit(1);
 }
