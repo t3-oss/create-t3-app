@@ -69,3 +69,22 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm build
+      
+  build-t3-app:
+    name: Build an outputted t3-app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.2.1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+      - run: pnpm install
+      - run: pnpm build
+      # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
+      # through. this way it ensures that it is the app's configs that are being used
+      - run: pnpm start -y ../ci-test-app
+      - run: cd ../ci-test-app && pnpm build
