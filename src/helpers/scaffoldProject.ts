@@ -4,16 +4,9 @@ import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "../consts.js";
+import { InstallerOptions } from "../installers/index.js";
 import { execa } from "../utils/execAsync.js";
-import { type PackageManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
-
-interface ScaffoldProjectOptions {
-  projectName: string;
-  projectDir: string;
-  pkgManager: PackageManager;
-  noInstall: boolean;
-}
 
 // This bootstraps the base Next.js application
 export const scaffoldProject = async ({
@@ -21,7 +14,7 @@ export const scaffoldProject = async ({
   projectDir,
   pkgManager,
   noInstall,
-}: ScaffoldProjectOptions) => {
+}: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
   if (!noInstall) {

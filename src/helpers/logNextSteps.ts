@@ -1,19 +1,14 @@
-import type { PkgInstallerMap } from "../installers/index.js";
+import type { InstallerOptions } from "../installers/index.js";
+import { DEFAULT_APP_NAME } from "../consts.js";
 import { getUserPkgManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 
-interface LogNextStepsOptions {
-  projectName: string;
-  packages: PkgInstallerMap;
-  noInstall: boolean;
-}
-
 // This logs the next steps that the user should take in order to advance the project
 export const logNextSteps = ({
-  projectName,
+  projectName = DEFAULT_APP_NAME,
   packages,
   noInstall,
-}: LogNextStepsOptions) => {
+}: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
@@ -22,7 +17,7 @@ export const logNextSteps = ({
     logger.info(`  ${pkgManager} install`);
   }
 
-  if (packages.prisma.inUse) {
+  if (packages?.prisma.inUse) {
     logger.info(
       `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`,
     );
