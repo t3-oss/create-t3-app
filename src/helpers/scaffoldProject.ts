@@ -21,6 +21,8 @@ export const scaffoldProject = async (opts: {
 
   if (!noInstall) {
     logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  } else {
+    logger.info("");
   }
 
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
