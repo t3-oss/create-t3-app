@@ -19,7 +19,10 @@ export const scaffoldProject = async (opts: {
 
   const srcDir = path.join(PKG_ROOT, "template/base");
 
-  logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  if (!noInstall) {
+    logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  }
+
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
