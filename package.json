@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "4.4.1",
+  "version": "5.0.0-beta.3",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
@@ -26,11 +26,14 @@
     "node": ">=14.16"
   },
   "scripts": {
+    "typecheck": "tsc",
     "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "lint": "eslint src/ --fix",
+    "lint:check": "eslint src/",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
     "release": "standard-version",
     "pub": "npm run build && npm publish"
@@ -47,7 +50,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@swc/core": "^1.2.206",
     "@types/figlet": "^1.5.4",
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
