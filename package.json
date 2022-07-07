@@ -33,8 +33,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
     "release": "standard-version",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
     "pub": "npm run build && npm publish"
   },
   "dependencies": {
@@ -47,7 +45,6 @@
     "ora": "6.1.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.23.0",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@swc/core": "^1.2.206",
