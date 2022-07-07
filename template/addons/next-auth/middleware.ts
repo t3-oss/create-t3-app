@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   });
 
   if (!token) {
-    // If the user is not authenticated, redirect to the login page https://nextjs.org/docs/api-reference/next/server#static-methods
+    // If the user is not authenticated, redirects to the login page https://nextjs.org/docs/api-reference/next/server#static-methods
     return NextResponse.redirect(new URL("/login", request.url));
   }
 }
