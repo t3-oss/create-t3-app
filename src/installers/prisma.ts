@@ -43,7 +43,7 @@ export const prismaInstaller: Installer = async ({
 
   const envSrc = path.join(
     prismaAssetDir,
-    packages.nextAuth.inUse ? "env-prisma-auth.js" : "env-prisma.js",
+    packages?.nextAuth.inUse ? "env-prisma-auth.js" : "env-prisma.js",
   );
   const envDest = path.join(projectDir, "src/server/env.js");
 
