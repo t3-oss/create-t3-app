@@ -1,4 +1,4 @@
-import type { CommonOptions } from "../installers/index.js";
+import type { InstallerOptions } from "../installers/index.js";
 import { getUserPkgManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 
@@ -7,7 +7,7 @@ export const logNextSteps = ({
   projectName,
   packages,
   noInstall,
-}: Required<CommonOptions>) => {
+}: Required<InstallerOptions>) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");

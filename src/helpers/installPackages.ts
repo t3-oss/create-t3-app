@@ -1,9 +1,9 @@
-import type { CommonOptions, PkgInstallerMap } from "../installers/index.js";
+import type { InstallerOptions, PkgInstallerMap } from "../installers/index.js";
 import chalk from "chalk";
 import ora from "ora";
 import { logger } from "../utils/logger.js";
 
-interface InstallPackagesOptions extends CommonOptions {
+interface InstallPackagesOptions extends InstallerOptions {
   packages: PkgInstallerMap;
 }
 // This runs the installer for all the packages that the user has selected

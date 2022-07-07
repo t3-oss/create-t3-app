@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "../consts.js";
-import { CommonOptions } from "../installers/index.js";
+import { InstallerOptions } from "../installers/index.js";
 import { execa } from "../utils/execAsync.js";
 import { logger } from "../utils/logger.js";
 
@@ -14,7 +14,7 @@ export const scaffoldProject = async ({
   projectDir,
   pkgManager,
   noInstall,
-}: CommonOptions) => {
+}: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
   if (!noInstall) {

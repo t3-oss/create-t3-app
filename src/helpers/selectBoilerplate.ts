@@ -1,10 +1,10 @@
-import type { CommonOptions } from "../installers/index.js";
+import type { InstallerOptions } from "../installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 
 type SelectBoilerplateProps = Required<
-  Pick<CommonOptions, "projectDir" | "packages">
+  Pick<InstallerOptions, "projectDir" | "packages">
 >;
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = async ({
