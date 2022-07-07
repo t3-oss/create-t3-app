@@ -1,7 +1,7 @@
 <h1 align="center"> create-t3-app </h1>
 <div align="center">
 
-Interactive CLI to quickly set up an opinionated, full stack, typesafe NextJS project using the [T3 Stack](https://init.tips)
+Interactive CLI to quickly set up an opinionated, full stack, typesafe NextJS project using the [T3 Stack](https://init.tips) adding some content here.
 
 <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" style="border-radius:40%"/>
 
