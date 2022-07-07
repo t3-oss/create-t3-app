@@ -15,7 +15,7 @@ export const nextAuthInstaller: Installer = async ({
     projectDir,
     packages: [
       "next-auth",
-      packages.prisma.inUse ? "@next-auth/prisma-adapter" : "",
+      packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
     ],
     devMode: false,
     noInstallMode: noInstall,
@@ -25,7 +25,7 @@ export const nextAuthInstaller: Installer = async ({
 
   const apiHandlerSrc = path.join(
     nextAuthAssetDir,
-    packages.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts",
+    packages?.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts",
   );
   const apiHandlerDest = path.join(
     projectDir,

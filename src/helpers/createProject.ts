@@ -26,8 +26,8 @@ export const createProject = async ({
   await installPackages({ projectDir, pkgManager, packages, noInstall });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  await selectAppFile(projectDir, packages);
-  await selectIndexFile(projectDir, packages);
+  await selectAppFile({ projectDir, packages });
+  await selectIndexFile({ projectDir, packages });
 
   return projectDir;
 };
