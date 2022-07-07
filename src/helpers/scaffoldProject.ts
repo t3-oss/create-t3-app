@@ -8,15 +8,20 @@ import { execa } from "../utils/execAsync.js";
 import { type PackageManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 
-// This bootstraps the base Next.js application
-export const scaffoldProject = async (opts: {
+interface ScaffoldProjectOptions {
   projectName: string;
   projectDir: string;
   pkgManager: PackageManager;
   noInstall: boolean;
-}) => {
-  const { projectName, projectDir, pkgManager, noInstall } = opts;
+}
 
+// This bootstraps the base Next.js application
+export const scaffoldProject = async ({
+  projectName,
+  projectDir,
+  pkgManager,
+  noInstall,
+}: ScaffoldProjectOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
   if (!noInstall) {

@@ -15,12 +15,14 @@ export const availablePackages = [
 
 export type AvailablePackages = typeof availablePackages[number];
 
-export type Installer = (opts: {
+export interface CommonOptions {
   projectDir: string;
   pkgManager: PackageManager;
   packages: PkgInstallerMap;
   noInstall: boolean;
-}) => Promise<void>;
+}
+
+export type Installer = (opts: CommonOptions) => Promise<void>;
 
 export type PkgInstallerMap = {
   [pkg in AvailablePackages]: {

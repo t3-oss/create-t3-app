@@ -4,15 +4,20 @@ import chalk from "chalk";
 import ora from "ora";
 import { logger } from "../utils/logger.js";
 
-// This runs the installer for all the packages that the user has selected
-export const installPackages = async (opts: {
+interface InstallPackagesOptions {
   projectDir: string;
   pkgManager: PackageManager;
   packages: PkgInstallerMap;
   noInstall: boolean;
-}) => {
-  const { projectDir, pkgManager, packages, noInstall } = opts;
+}
 
+// This runs the installer for all the packages that the user has selected
+export const installPackages = async ({
+  projectDir,
+  pkgManager,
+  packages,
+  noInstall,
+}: InstallPackagesOptions) => {
   logger.info(`${noInstall ? "Adding" : "Installing"} packages...`);
 
   for (const [name, pkgOpts] of Object.entries(packages)) {

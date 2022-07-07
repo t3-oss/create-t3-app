@@ -5,13 +5,17 @@ import { installPackages } from "./installPackages.js";
 import { scaffoldProject } from "./scaffoldProject.js";
 import { selectAppFile, selectIndexFile } from "./selectBoilerplate.js";
 
-export const createProject = async (opts: {
+interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
   noInstall: boolean;
-}) => {
-  const { projectName, packages, noInstall } = opts;
+}
 
+export const createProject = async ({
+  projectName,
+  packages,
+  noInstall,
+}: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
 
