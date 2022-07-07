@@ -1,4 +1,8 @@
-// Example of a restricted route that only authenticated users can access https://next-auth.js.org/configuration/nextjs#middleware
+/**
+ * Example of a middleware that blocks access to routes that only authenticated users can navigate to
+ * e.g. `http://localhost:300/protected/profile`
+ * Read more: https://next-auth.js.org/configuration/nextjs#middleware
+ */
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -11,10 +15,13 @@ export async function middleware(request: NextRequest) {
   });
 
   if (!token) {
-    return NextResponse.redirect(new URL("/", request.url));
+    // If the user is not authenticated, redirect to the login page https://nextjs.org/docs/api-reference/next/server#static-methods
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 }
 
+// Example of a "matcher" that filters where the middleware should be applied
+// https://nextjs.org/docs/advanced-features/middleware#matcher
 export const config = {
-  matcher: "/profile/:path*",
+  matcher: "/protected/:path*",
 };
