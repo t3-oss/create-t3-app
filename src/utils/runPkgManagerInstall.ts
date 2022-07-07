@@ -45,8 +45,8 @@ export const runPkgManagerInstall = async (opts: {
   }
 
   const installCmd =
-    pkgManager === "yarn" ? `${pkgManager} add` : `${pkgManager} install`;
-  const flag = devMode ? "-D" : "";
-  const fullCmd = `${installCmd} ${flag} ${packages.join(" ")}`;
+    pkgManager === "npm" ? `${pkgManager} install` : `${pkgManager} add`;
+  const flag = devMode ? " -D" : "";
+  const fullCmd = `${installCmd}${flag} ${packages.join(" ")}`;
   await execa(fullCmd, { cwd: projectDir });
 };
