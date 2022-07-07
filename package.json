@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nexxeln/create-t3-app.git"
+    "url": "https://github.com/t3-oss/create-t3-app.git"
   },
   "keywords": [
     "create-t3-app",
