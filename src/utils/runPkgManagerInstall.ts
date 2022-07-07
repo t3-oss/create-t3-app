@@ -21,6 +21,7 @@ export const runPkgManagerInstall = async (opts: {
 
     for (const pkg of packages) {
       if (pkg === "") {
+        // sometimes empty string is passed as a package when using ternaries so escaping that to prevent it pulling node's version
         continue;
       }
       const { stdout: latestVersion } = await execa(`npm show ${pkg} version`);

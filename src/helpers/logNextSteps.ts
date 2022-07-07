@@ -14,7 +14,7 @@ export const logNextSteps = (opts: {
 
   logger.info("Next steps:");
   logger.info(`  cd ${projectName}`);
-  if (!noInstall) {
+  if (noInstall) {
     logger.info(`  ${pkgManager} install`);
   }
 
