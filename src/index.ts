@@ -17,7 +17,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit },
+    flags: { noGit, noInstall },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -25,14 +25,17 @@ const main = async () => {
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
 
-  const projectDir = await createProject(appDir, usePackages);
+  const projectDir = await createProject({
+    projectName: appDir,
+    packages: usePackages,
+    noInstall,
+  });
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, usePackages);
-
+  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
