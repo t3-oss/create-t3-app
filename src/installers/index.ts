@@ -18,8 +18,9 @@ export type AvailablePackages = typeof availablePackages[number];
 export interface CommonOptions {
   projectDir: string;
   pkgManager: PackageManager;
-  packages: PkgInstallerMap;
   noInstall: boolean;
+  packages?: PkgInstallerMap;
+  projectName?: string;
 }
 
 export type Installer = (opts: CommonOptions) => Promise<void>;

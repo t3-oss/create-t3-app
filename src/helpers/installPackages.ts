@@ -1,16 +1,11 @@
-import type { PkgInstallerMap } from "../installers/index.js";
-import type { PackageManager } from "../utils/getUserPkgManager.js";
+import type { CommonOptions, PkgInstallerMap } from "../installers/index.js";
 import chalk from "chalk";
 import ora from "ora";
 import { logger } from "../utils/logger.js";
 
-interface InstallPackagesOptions {
-  projectDir: string;
-  pkgManager: PackageManager;
+interface InstallPackagesOptions extends CommonOptions {
   packages: PkgInstallerMap;
-  noInstall: boolean;
 }
-
 // This runs the installer for all the packages that the user has selected
 export const installPackages = async ({
   projectDir,
