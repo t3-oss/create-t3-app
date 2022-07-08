@@ -10,13 +10,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center justify-center h-screen p-4">
-        <h2 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+      <main className="container mx-auto flex flex-col items-center justify-center h-screen p-4">
+        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
           Create <span className="text-purple-300">T3</span> App
-        </h2>
-        <p className="text-2xl text-gray-700">This stack uses</p>
+        </h1>
+        <p className="text-2xl text-gray-700">This stack uses:</p>
         <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-3 lg:w-2/3">
-          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">NextJS</h2>
             <p className="text-sm text-gray-600">
               The React framework for production
@@ -29,8 +29,8 @@ const Home: NextPage = () => {
             >
               Documentation
             </a>
-          </div>
-          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
+          </section>
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">TypeScript</h2>
             <p className="text-sm text-gray-600">
               Strongly typed programming language that builds on JavaScript,
@@ -44,8 +44,8 @@ const Home: NextPage = () => {
             >
               Documentation
             </a>
-          </div>
-          <div className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl cursor-pointer motion-safe:hover:scale-105">
+          </section>
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
             <h2 className="text-lg text-gray-700">TailwindCSS</h2>
             <p className="text-sm text-gray-600">
               Rapidly build modern websites without ever leaving your HTML
@@ -58,9 +58,9 @@ const Home: NextPage = () => {
             >
               Documentation
             </a>
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     </>
   );
 };
