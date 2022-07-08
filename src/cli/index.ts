@@ -142,6 +142,22 @@ export const runCli = async () => {
 
       cliResults.packages = packages;
 
+      // Skip if noGit flag provided
+      if (!cliResults.flags.noGit) {
+        const { git } = await inquirer.prompt<{ git: boolean }>({
+          name: "git",
+          type: "confirm",
+          message: "Initialize a new git repository?",
+          default: true,
+        });
+        if (git) {
+          logger.success("Nice one! Initializing repository!");
+        } else {
+          cliResults.flags.noGit = true;
+          logger.info("Sounds good! You can come back and run git init later.");
+        }
+      }
+
       if (!cliResults.flags.noInstall) {
         const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
           name: "runInstall",
