@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "5.0.0-beta.6",
+  "version": "5.0.0-beta.7",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
@@ -36,7 +36,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
     "release": "standard-version",
-    "pub": "npm run build && npm publish"
+    "pub:beta": "npm run build && npm publish --tag beta",
+    "pub:release": "npm run build && npm publish"
   },
   "dependencies": {
     "chalk": "5.0.1",
