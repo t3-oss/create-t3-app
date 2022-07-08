@@ -1,12 +1,12 @@
 {
   "name": "create-t3-app",
-  "version": "4.4.0",
+  "version": "5.0.0-beta.4",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nexxeln/create-t3-app.git"
+    "url": "https://github.com/t3-oss/create-t3-app.git"
   },
   "keywords": [
     "create-t3-app",
@@ -26,14 +26,16 @@
     "node": ">=14.16"
   },
   "scripts": {
+    "typecheck": "tsc",
     "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "lint": "eslint src/ --fix",
+    "lint:check": "eslint src/",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
+    "release": "standard-version",
     "pub": "npm run build && npm publish"
   },
   "dependencies": {
@@ -46,8 +48,8 @@
     "ora": "6.1.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.23.0",
-    "@swc/core": "^1.2.206",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@types/figlet": "^1.5.4",
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
@@ -62,6 +64,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
+    "standard-version": "^9.5.0",
     "tsup": "^6.1.2",
     "type-fest": "^2.14.0",
     "typescript": "^4.7.4"

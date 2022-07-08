@@ -1,7 +1,7 @@
 <h1 align="center"> create-t3-app </h1>
 <div align="center">
 
-Interactive CLI to quickly set up a project using the [T3 Stack](https://init.tips)
+Interactive CLI to quickly set up an opinionated, full stack, typesafe NextJS project using the [T3 Stack](https://init.tips)
 
 <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" style="border-radius:40%"/>
 
@@ -12,41 +12,40 @@ Interactive CLI to quickly set up a project using the [T3 Stack](https://init.ti
 [![PRs-Welcome][contribute-image]][contribute-url] [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
 
-
 </div>
-
 
 <div id="usage">
 
 # Usage
 
 **npm**
+
 ```bash
 npx create-t3-app@latest
 ```
 
 **yarn**
+
 ```bash
 yarn create t3-app
 ```
 
-
 **pnpm**
+
 ```bash
 pnpm dlx create-t3-app@latest
 ```
-</div>
 
+</div>
 
 </div>
 
 ## Table of contents
- 
-* <a href="#about">About</a> 
-* <a href="#axioms">T3 Axioms</a>
-* <a href="#dev">Dev/Contributor Setup</a>
-* <a href="#contributors">Contributors</a>
 
+- <a href="#about">About</a>
+- <a href="#axioms">T3 Axioms</a>
+- <a href="#dev">Dev/Contributor Setup</a>
+- <a href="#contributors">Contributors</a>
 
 <div id="about">
 
@@ -56,7 +55,9 @@ Kind of. We love all of the technologies that create-t3-app includes, but we do 
 
 We made `create-t3-app` to do **one thing** - simplify the complex boilerplate around the core T3 Stack tech without compromising the modularity of the pieces.
 
-This is **NOT** an all-inclusive template. We don't add things that are as simple as an `npm install zustand`. _If you cut an issue asking us to add your preferred libraries, we will make fun of you._
+This is **NOT** an all-inclusive template. We **expect you to bring your own libraries as well**.
+
+We are selective about the packages we have included. We don't add libraries that are as simple as an `npm install zustand`. _If you cut an issue asking us to add your preferred libraries, we will make fun of you._
 
 ## What is the T3 Stack?
 
@@ -148,10 +149,7 @@ Made with [contrib.rocks](https://contrib.rocks).
 </p>
 
 [downloads-image]: https://img.shields.io/npm/dm/create-t3-app?color=364fc7&logoColor=364fc7
-
 [npm-url]: https://www.npmjs.com/package/create-t3-app
 [npm-image]: https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285
-
 [contribute-url]: https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md
 [contribute-image]: https://img.shields.io/badge/PRs-welcome-blue.svg
-

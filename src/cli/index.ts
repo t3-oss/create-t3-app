@@ -48,16 +48,11 @@ export const runCli = async () => {
       "Explicitly tell the CLI to not initialize a new git repo in the project",
       false,
     )
-    // FIXME: Find a way to prevent the pkg manager from installing packages
-    // The current method of building the package.json relies on having the users package manager run multiple 'install XYZ' calls
-    // This is a good short term method to adding packages, but ultimatly it means that:
-    //  A - The user runs 'add XYZ' 2-6 times over the course of scaffolding
-    //  B - There is no way to easily add packages to the dependency array without also installing them
-    // .option(
-    //   "--noInstall",
-    //   "Explicitly tell the CLI to not run the package manager's install command",
-    //   false,
-    // )
+    .option(
+      "--noInstall",
+      "Explicitly tell the CLI to not run the package manager's install command",
+      false,
+    )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
@@ -119,7 +114,7 @@ export const runCli = async () => {
         message: "Will you be using JavaScript or TypeScript?",
         choices: [
           { name: "TypeScript", value: "typescript", short: "TypeScript" },
-          { name: "Javascript", value: "javascript", short: "JavaScript" },
+          { name: "JavaScript", value: "javascript", short: "TypeScript" }, // Both options should have 'TypeScript' as the short value to improve UX and reduce confusion
         ],
         default: "typescript",
       });
@@ -147,6 +142,7 @@ export const runCli = async () => {
 
       cliResults.packages = packages;
 
+
       // Skip if noGit flag provided
       if (!cliResults.flags.noGit) {
         const { git } = await inquirer.prompt<{ git: boolean }>({
@@ -162,16 +158,34 @@ export const runCli = async () => {
           logger.info("Sounds good! You can come back and run git init later.");
         }
       }
+      
+      if (!cliResults.flags.noInstall) {
+        const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
+          name: "runInstall",
+          type: "confirm",
+          message: "Would you like us to run npm install?",
+          default: true,
+        });
+
+        if (runInstall) {
+          logger.success("Alright. We'll install the dependencies for you!");
+        } else {
+          cliResults.flags.noInstall = true;
+          logger.info(
+            "No worries. You can run 'npm install' later to install the dependencies.",
+          );
+        }
+      }
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
-    // If this happens, we catch the error, tell the user what has happened, and then contiue to run the program with a default t3 app
+    // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
     // eslint-disable-next-line -- Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
     if (err instanceof Error && (err as any).isTTYError) {
       logger.warn(
         `${CREATE_T3_APP} needs an interactive terminal to provide options`,
       );
-      logger.info(`Bootsrapping a default t3 app in ./${cliResults.appName}`);
+      logger.info(`Bootstrapping a default t3 app in ./${cliResults.appName}`);
     } else {
       throw err;
     }

@@ -4,19 +4,25 @@ import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "../consts.js";
+import { InstallerOptions } from "../installers/index.js";
 import { execa } from "../utils/execAsync.js";
-import { type PackageManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 
 // This bootstraps the base Next.js application
-export const scaffoldProject = async (
-  projectName: string,
-  projectDir: string,
-  pkgManager: PackageManager,
-) => {
+export const scaffoldProject = async ({
+  projectName,
+  projectDir,
+  pkgManager,
+  noInstall,
+}: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
-  logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  if (!noInstall) {
+    logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
+  } else {
+    logger.info("");
+  }
+
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
@@ -52,7 +58,8 @@ export const scaffoldProject = async (
 
   await fs.copy(srcDir, projectDir);
 
-  await execa(`${pkgManager} install`, { cwd: projectDir });
-
+  if (!noInstall) {
+    await execa(`${pkgManager} install`, { cwd: projectDir });
+  }
   spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully!\n`);
 };

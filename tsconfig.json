@@ -38,8 +38,8 @@
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    // "emitDecoratorMetadata": true,
+    // "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true
