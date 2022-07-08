@@ -18,6 +18,8 @@ export async function middleware(request: NextRequest) {
     // If the user is not authenticated, redirects to the login page https://nextjs.org/docs/api-reference/next/server#static-methods
     return NextResponse.redirect(new URL("/login", request.url));
   }
+
+  return NextResponse.next();
 }
 
 // Example of a "matcher" that filters where the middleware should be applied
