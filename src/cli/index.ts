@@ -149,17 +149,13 @@ export const runCli = async () => {
 
       // Skip if noGit flag provided
       if (!cliResults.flags.noGit) {
-        const { gitInit } = await inquirer.prompt<{ git: boolean }>({
+        const { git } = await inquirer.prompt<{ git: boolean }>({
           name: "git",
-          type: "list",
+          type: "confirm",
           message: "Initialize a new git repository?",
-          choices: [
-            { name: "Yes", value: true, short: "Yes" },
-            { name: "No", value: false, short: "No" },
-          ],
           default: true,
         });
-        if (gitInit) {
+        if (git) {
           logger.success("Nice one! Initializing repository!");
         } else {
           cliResults.flags.noGit = true;
