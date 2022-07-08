@@ -157,7 +157,7 @@ export const runCli = async () => {
           logger.info("Sounds good! You can come back and run git init later.");
         }
       }
-      
+
       if (!cliResults.flags.noInstall) {
         const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
           name: "runInstall",
