@@ -22,7 +22,7 @@ export const prismaInstaller: Installer = async ({
   await runPkgManagerInstall({
     pkgManager,
     projectDir,
-    packages: ["@prisma/client", "zod"],
+    packages: ["@prisma/client"],
     devMode: false,
     noInstallMode: noInstall,
   });
@@ -41,14 +41,11 @@ export const prismaInstaller: Installer = async ({
   const sampleApiRouteSrc = path.join(prismaAssetDir, "sample-api.ts");
   const sampleApiRouteDest = path.join(projectDir, "src/pages/api/examples.ts");
 
-  const envSrc = path.join(
+  const envSchemaSrc = path.join(
     prismaAssetDir,
     packages?.nextAuth.inUse ? "env-prisma-auth.js" : "env-prisma.js",
   );
-  const envDest = path.join(projectDir, "src/server/env.js");
-
-  const nextConfigSrc = path.join(prismaAssetDir, "next.config.js");
-  const nextConfigDest = path.join(projectDir, "next.config.js");
+  const envSchemaDest = path.join(projectDir, "src/server/env-schema.js");
 
   // add postinstall script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
@@ -60,8 +57,7 @@ export const prismaInstaller: Installer = async ({
     fs.copy(schemaSrc, schemaDest),
     fs.copy(clientSrc, clientDest),
     fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
-    fs.copy(envSrc, envDest),
-    fs.copy(nextConfigSrc, nextConfigDest, { overwrite: true }),
+    fs.copy(envSchemaSrc, envSchemaDest),
     fs.writeJSON(packageJsonPath, packageJsonContent, {
       spaces: 2,
     }),

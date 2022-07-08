@@ -1,8 +1,7 @@
 const { z } = require("zod");
 
 const envSchema = z.object({
-  DATABASE_URL: z.string().url(),
-  NODE_ENV: z.enum(["development", "test", "production"]),
+  // Specify your environment variables schema here
 });
 
 module.exports.envSchema = envSchema;

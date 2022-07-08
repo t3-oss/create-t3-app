@@ -38,12 +38,12 @@ export const nextAuthInstaller: Installer = async ({
     "src/pages/api/restricted.ts",
   );
 
-  const envSrc = path.join(nextAuthAssetDir, "env-auth.js");
-  const envDest = path.join(projectDir, "src/server/env.js");
+  const envSchemaSrc = path.join(nextAuthAssetDir, "env-auth.js");
+  const envSchemaDest = path.join(projectDir, "src/server/env-schema.js");
 
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
-    fs.copy(envSrc, envDest),
+    fs.copy(envSchemaSrc, envSchemaDest),
   ]);
 };
