@@ -5,6 +5,7 @@ import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
 import { availablePackages } from "../installers/index.js";
 import { getVersion } from "../utils/getT3Version.js";
+import { getUserPkgManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 import { validateAppName } from "../utils/validateAppName.js";
 
@@ -91,6 +92,8 @@ export const runCli = async () => {
 
   cliResults.flags = program.opts();
 
+  const pkgManager = getUserPkgManager();
+
   // Explained below why this is in a try/catch block
   try {
     if (!cliResults.flags.default) {
@@ -162,7 +165,7 @@ export const runCli = async () => {
         const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
           name: "runInstall",
           type: "confirm",
-          message: "Would you like us to run npm install?",
+          message: `Would you like us to run ${pkgManager} install?`,
           default: true,
         });
 
@@ -171,7 +174,7 @@ export const runCli = async () => {
         } else {
           cliResults.flags.noInstall = true;
           logger.info(
-            "No worries. You can run 'npm install' later to install the dependencies.",
+            `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
           );
         }
       }
