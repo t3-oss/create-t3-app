@@ -142,7 +142,6 @@ export const runCli = async () => {
 
       cliResults.packages = packages;
 
-
       // Skip if noGit flag provided
       if (!cliResults.flags.noGit) {
         const { git } = await inquirer.prompt<{ git: boolean }>({
