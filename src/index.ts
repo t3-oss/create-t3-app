@@ -3,36 +3,43 @@ import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { runCli } from "./cli/index.js";
-import { TITLE_TEXT } from "./consts.js";
 import { createProject } from "./helpers/createProject.js";
 import { initializeGit } from "./helpers/initGit.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
 import { logger } from "./utils/logger.js";
+import { parseNameAndPath } from "./utils/parseNameAndPath.js";
+import { renderTitle } from "./utils/renderTitle.js";
 
 const main = async () => {
-  logger.info("\n", TITLE_TEXT, "\n");
+  renderTitle();
 
   const {
     appName,
     packages,
-    flags: { noGit },
+    flags: { noGit, noInstall },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
 
-  const projectDir = await createProject(appName, usePackages);
+  // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
+  const [scopedAppName, appDir] = parseNameAndPath(appName);
+
+  const projectDir = await createProject({
+    projectName: appDir,
+    packages: usePackages,
+    noInstall,
+  });
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, usePackages);
-
+  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
-  pkgJson.name = appName;
+  pkgJson.name = scopedAppName;
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
@@ -46,7 +53,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unkown error has occured. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:",
     );
     console.log(err);
   }

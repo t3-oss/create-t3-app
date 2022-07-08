@@ -2,12 +2,27 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 
-const Home: NextPage = () => {
-  const { data, isLoading } = trpc.useQuery([
-    "example.hello",
-    { text: "from tRPC" },
+import { signIn, signOut, useSession } from "next-auth/react";
+
+const AuthShowcase: React.FC = () => {
+  const { data: secretMessage, isLoading } = trpc.useQuery([
+    "auth.getSecretMessage",
   ]);
 
+  const { data: sessionData } = useSession();
+
+  return (
+    <div>
+      {sessionData && <p>Logged in as {sessionData?.user?.name}</p>}
+      {secretMessage && <p>{secretMessage}</p>}
+      <button onClick={sessionData ? () => signOut() : () => signIn()}>
+        {sessionData ? "Sign out" : "Sign in"}
+      </button>
+    </div>
+  );
+};
+
+const Home: NextPage = () => {
   return (
     <>
       <Head>
@@ -29,8 +44,12 @@ const Home: NextPage = () => {
               </a>
             </li>
             <li>
-              <a href="https://trpc.io" target="_blank" rel="noreferrer">
-                tRPC
+              <a
+                href="https://tailwindcss.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                TailwindCSS
               </a>
             </li>
             <li>
@@ -43,9 +62,8 @@ const Home: NextPage = () => {
               </a>
             </li>
           </ul>
-
-          <div>{data ? <p>{data.greeting}</p> : <p>Loading..</p>}</div>
         </div>
+        <AuthShowcase />
       </div>
     </>
   );

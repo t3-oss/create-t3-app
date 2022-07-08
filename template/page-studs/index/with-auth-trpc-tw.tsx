@@ -1,5 +1,29 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { trpc } from "../utils/trpc";
+
+import { signIn, signOut, useSession } from "next-auth/react";
+
+const AuthShowcase: React.FC = () => {
+  const { data: secretMessage, isLoading } = trpc.useQuery([
+    "auth.getSecretMessage",
+  ]);
+
+  const { data: sessionData } = useSession();
+
+  return (
+    <div>
+      {sessionData && <p>Logged in as {sessionData?.user?.name}</p>}
+      {secretMessage && <p>{secretMessage}</p>}
+      <button
+        className="px-4 py-2 border-2 border-blue-500 rounded-md"
+        onClick={sessionData ? () => signOut() : () => signIn()}
+      >
+        {sessionData ? "Sign out" : "Sign in"}
+      </button>
+    </div>
+  );
+};
 
 const Home: NextPage = () => {
   return (
@@ -53,6 +77,46 @@ const Home: NextPage = () => {
             <a
               className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
               href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </section>
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
+            <h2 className="text-lg text-gray-700">tRPC</h2>
+            <p className="text-sm text-gray-600">
+              End-to-end typesafe APIs made easy
+            </p>
+            <a
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+              href="https://trpc.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </section>
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
+            <h2 className="text-lg text-gray-700">Next-Auth</h2>
+            <p className="text-sm text-gray-600">Authentication for Next.js</p>
+            <a
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+              href="https://trpc.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentation
+            </a>
+          </section>
+          <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
+            <h2 className="text-lg text-gray-700">Prisma</h2>
+            <p className="text-sm text-gray-600">
+              Build data-driven JavaScript & TypeScript apps in less time
+            </p>
+            <a
+              className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+              href="https://www.prisma.io/docs/"
               target="_blank"
               rel="noreferrer"
             >
