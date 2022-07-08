@@ -8,39 +8,38 @@ import { initializeGit } from "./helpers/initGit.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
 import { logger } from "./utils/logger.js";
+import { parseNameAndPath } from "./utils/parseNameAndPath.js";
 import { renderTitle } from "./utils/renderTitle.js";
 
 const main = async () => {
   renderTitle();
 
-  // TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-  if (process.versions.node.startsWith("18")) {
-    logger.warn(`  WARNING: You are using Node.js version 18. This is currently not compatible with Next-Auth.
-  If you want to use Next-Auth, switch to a previous version of Node, e.g. 16 (LTS).
-  If you have nvm installed, use 'nvm install --lts' to switch to the latest LTS version of Node.
-    `);
-  }
-
   const {
     appName,
     packages,
-    flags: { noGit },
+    flags: { noGit, noInstall },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
 
-  const projectDir = await createProject(appName, usePackages);
+  // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
+  const [scopedAppName, appDir] = parseNameAndPath(appName);
+
+  const projectDir = await createProject({
+    projectName: appDir,
+    packages: usePackages,
+    noInstall,
+  });
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps(appName, usePackages);
-
+  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
   const pkgJson = (await fs.readJSON(
     path.join(projectDir, "package.json"),
   )) as PackageJson;
-  pkgJson.name = appName;
+  pkgJson.name = scopedAppName;
   await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
@@ -54,7 +53,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unkown error has occured. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:",
     );
     console.log(err);
   }
