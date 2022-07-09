@@ -3,9 +3,9 @@ import chalk from "chalk";
 import ora from "ora";
 import { logger } from "../utils/logger.js";
 
-interface InstallPackagesOptions extends InstallerOptions {
+type InstallPackagesOptions = {
   packages: PkgInstallerMap;
-}
+} & InstallerOptions;
 // This runs the installer for all the packages that the user has selected
 export const installPackages = async ({
   projectDir,
@@ -14,7 +14,7 @@ export const installPackages = async ({
   noInstall,
 }: InstallPackagesOptions) => {
   logger.info(`${noInstall ? "Adding" : "Installing"} packages...`);
-
+  if (!packages) return;
   for (const [name, pkgOpts] of Object.entries(packages)) {
     if (pkgOpts.inUse) {
       const spinner = ora(
