@@ -15,5 +15,5 @@ const poimandresTheme = {
 export const renderTitle = () => {
   const text = figlet.textSync(TITLE_TEXT, { font: "Small" });
   const t3Gradient = gradient(Object.values(poimandresTheme));
-  console.log(t3Gradient.multiline(text));
+  console.log("\n", t3Gradient.multiline(text));
 };
