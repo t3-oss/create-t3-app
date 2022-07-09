@@ -120,8 +120,10 @@ Read the [Contributing guidelines](CONTRIBUTING.md)
 To install dependencies
 
 ```bash
+# Install corepack (for Node <16.9)
+npm install -g corepack
 # Install pnpm
-npm install -g pnpm
+corepack enable
 # Install dependencies
 pnpm install
 # Initial build
