@@ -22,6 +22,7 @@
   "bin": {
     "create-t3-app": "./dist/index.js"
   },
+  "packageManager": "pnpm@7.2.1",
   "engines": {
     "node": ">=14.16"
   },
