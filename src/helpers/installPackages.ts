@@ -14,7 +14,7 @@ export const installPackages = async ({
   noInstall,
 }: InstallPackagesOptions) => {
   logger.info(`${noInstall ? "Adding" : "Installing"} packages...`);
-  if (!packages) return;
+
   for (const [name, pkgOpts] of Object.entries(packages)) {
     if (pkgOpts.inUse) {
       const spinner = ora(
