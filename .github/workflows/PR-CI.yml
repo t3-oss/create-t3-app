@@ -5,7 +5,7 @@ name: PR-CI
 on:
   pull_request:
     branches: ["*"]
-  
+
 jobs:
   install-deps:
     runs-on: ubuntu-latest
@@ -30,7 +30,6 @@ jobs:
           cache: "pnpm"
         if: steps.pnpm-cache.outputs.cache-hit != 'true'
       - run: pnpm install
-
 
   lint:
     runs-on: ubuntu-latest
@@ -62,9 +61,18 @@ jobs:
     name: Lint the PR title
     needs: install-deps
     steps:
-      - uses: amannn/action-semantic-pull-request@v4
+      - name: Semantic PR Check
+        id: semantic-pr-check
+        uses: amannn/action-semantic-pull-request@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # close PR if previous step failed
+      - name: Auto Close Noncompliant PR
+        if: ${{ failure() && steps.semantic-pr-check.conclusion == 'failure' }}
+        id: auto-close-noncompliant-pr
+        uses: peter-evans/close-pull@v2
+        with:
+          comment: "This PR does not follow the conventional commit guidelines please see: https://www.conventionalcommits.org/en/v1.0.0/. Please fix & resubmit 🙂"
 
   prettier:
     runs-on: ubuntu-latest
