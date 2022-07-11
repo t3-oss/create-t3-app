@@ -1,14 +1,17 @@
+<p align="center">
+  <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" alt="Logo for T3" />
+</p>
+
 <h1 align="center">
   create-t3-app
 </h1>
 
 <p align="center">
-  Interactive CLI to quickly set up an opinionated, full-stack, typesafe Next.js project using the
-  <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a>
+  Interactive CLI to quickly set up an opinionated, full-stack, typesafe Next.js project.
 </p>
 
 <p align="center">
-  <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" alt="Logo for T3" />
+  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npx create-t3-app</code>
 </p>
 
 <div align="center">
@@ -49,13 +52,11 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 
 ### What is this? Some kinda template?
 
-Kind of. We love all of the technologies that `create-t3-app` includes. Check out [init.tips](https://init.tips/others) for even more info on topics such as state management and deployment. But we do not believe these are needed on every project so we made `create-t3-app` to do one thing:
+Kind of. We love all of the technologies that `create-t3-app` includes. Check out [init.tips](https://init.tips/others) for even more info on topics such as state management and deployment. But we do not believe these are needed on every project.
 
-- **_Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity_**.
+So we made `create-t3-app` to do one thing: **_Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity_**. This is NOT an all-inclusive template and we expect you to bring your own libraries as well.
 
-This is NOT an all-inclusive template and we expect you to bring your own libraries as well. We are selective about the packages we have included. We don't add libraries that are as simple as `npm install zustand`:
-
-- **_If you cut an issue asking us to add your preferred libraries, we will make fun of you._**
+We are selective about the packages we have included. We don't add libraries that are as simple as `npm install zustand`: **_If you cut an issue asking us to add your preferred libraries, we will make fun of you._**
 
 <p align="center">
   <img src="https://media4.giphy.com/media/3orieLHXgpfkKO9Iju/200.gif" alt="Nelson from the Simpsons pointing and saying ha-ha in a mocking tone" />
@@ -65,10 +66,22 @@ This is NOT an all-inclusive template and we expect you to bring your own librar
 
 To get started with `create-t3-app`, run any of the following three commands and answer the command prompt questions:
 
+### npm
+
 ```bash
-npx create-t3-app@latest       # npm
-yarn create t3-app             # yarn
-pnpm dlx create-t3-app@latest  # pnpm
+npx create-t3-app@latest
+```
+
+### yarn
+
+```bash
+yarn create t3-app
+```
+
+### pnpm
+
+```bash
+pnpm dlx create-t3-app@latest
 ```
 
 An ongoing development branch, `create-t3-app@beta`, can be downloaded for the most recent changes. Expect bugs when using the `beta` branch and please open issues with reproductions when they occur.
@@ -94,10 +107,7 @@ It's easy to fall in the trap of "adding everything" - we explicitly _don't_ wan
 
 ### 2. Bleed Responsibly
 
-We love our bleeding edge tech. The amount of speed and, honestly, _fun_ that comes out of new shit is really cool. We think it's important to **bleed responsibly**, using riskier tech in the less risky parts.
-
-- This means we **wouldn't** ⛔️ bet on risky new database tech (SQL is great!).
-- But we **happily** ✅ bet on tRPC since it's just functions that are trivial to move off.
+We love our bleeding edge tech. The amount of speed and, honestly, _fun_ that comes out of new shit is really cool. We think it's important to **bleed responsibly**, using riskier tech in the less risky parts. This means we **wouldn't** ⛔️ bet on risky new database tech (SQL is great!). But we **happily** ✅ bet on tRPC since it's just functions that are trivial to move off.
 
 ### 3. Typesafety Isn't Optional
 
