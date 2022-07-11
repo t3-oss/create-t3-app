@@ -5,6 +5,7 @@ import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
 import { availablePackages } from "../installers/index.js";
 import { getVersion } from "../utils/getT3Version.js";
+import { getUserPkgManager } from "../utils/getUserPkgManager.js";
 import { logger } from "../utils/logger.js";
 import { validateAppName } from "../utils/validateAppName.js";
 
@@ -71,6 +72,14 @@ export const runCli = async () => {
     )
     .parse(process.argv);
 
+  // FIXME: TEMPORARY WARNING WHEN USING YARN 3. SEE ISSUE #57
+  if (process.env.npm_config_user_agent?.startsWith("yarn/3")) {
+    logger.warn(`  WARNING: It looks like you are using Yarn 3. This is currently not supported,
+  and likely to result in a crash. Please run create-t3-app with another
+  package manager such as pnpm, npm, or Yarn Classic.
+  See: https://github.com/t3-oss/create-t3-app/issues/57`);
+  }
+
   // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
   if (process.versions.node.startsWith("18")) {
     logger.warn(`  WARNING: You are using Node.js version 18. This is currently not compatible with Next-Auth.
@@ -90,6 +99,8 @@ export const runCli = async () => {
   }
 
   cliResults.flags = program.opts();
+
+  const pkgManager = getUserPkgManager();
 
   // Explained below why this is in a try/catch block
   try {
@@ -142,11 +153,27 @@ export const runCli = async () => {
 
       cliResults.packages = packages;
 
+      // Skip if noGit flag provided
+      if (!cliResults.flags.noGit) {
+        const { git } = await inquirer.prompt<{ git: boolean }>({
+          name: "git",
+          type: "confirm",
+          message: "Initialize a new git repository?",
+          default: true,
+        });
+        if (git) {
+          logger.success("Nice one! Initializing repository!");
+        } else {
+          cliResults.flags.noGit = true;
+          logger.info("Sounds good! You can come back and run git init later.");
+        }
+      }
+
       if (!cliResults.flags.noInstall) {
         const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
           name: "runInstall",
           type: "confirm",
-          message: "Would you like us to run npm install?",
+          message: `Would you like us to run ${pkgManager} install?`,
           default: true,
         });
 
@@ -155,7 +182,7 @@ export const runCli = async () => {
         } else {
           cliResults.flags.noInstall = true;
           logger.info(
-            "No worries. You can run 'npm install' later to install the dependencies.",
+            `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
           );
         }
       }

@@ -83,7 +83,7 @@ It consists of
 - [Prisma](https://prisma.io)
 - [NextAuth.js](https://next-auth.js.org)
 
-If you're looking for more info about this stack (state management solutions, deployment recommendations, etc) - check out [init.tips](https://init.tips/other)
+If you're looking for more info about this stack (state management solutions, deployment recommendations, etc) - check out [init.tips](https://init.tips/others)
 
 </div>
 
