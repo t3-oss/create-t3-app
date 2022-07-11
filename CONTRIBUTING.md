@@ -13,8 +13,9 @@ When contributing to `create-t3-app` whether on GitHub or in other community spa
 4. Create a new branch and implement your changes.
 
 > Note: We use `commitlint` to autoupdate the changelog and versioning.
-> * Make sure you follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guidelines when making commits.
-> * Do not manually update the [changelog](./CHANGELOG.md) and version in the [package.json](./package.json).
+>
+> - Make sure you follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guidelines when making commits.
+> - Do not manually update the [changelog](./CHANGELOG.md) and version in the [package.json](./package.json).
 
 5. Open a pull request! All pull requests must be made to the `main` branch.
 
@@ -23,13 +24,13 @@ When contributing to `create-t3-app` whether on GitHub or in other community spa
 ```bash
 # Install pnpm
 npm install -g pnpm
-  
+
 # Install dependencies
 pnpm install
-  
+
 # Initial build
 pnpm run build
-  
+
 # Start the package locally
 pnpm start
 ```

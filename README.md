@@ -51,11 +51,11 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 
 Kind of. We love all of the technologies that `create-t3-app` includes. Check out [init.tips](https://init.tips/others) for even more info on topics such as state management and deployment. But we do not believe these are needed on every project so we made `create-t3-app` to do one thing:
 
-* ___Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity___.
+- **_Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity_**.
 
 This is NOT an all-inclusive template and we expect you to bring your own libraries as well. We are selective about the packages we have included. We don't add libraries that are as simple as `npm install zustand`:
 
-* ___If you cut an issue asking us to add your preferred libraries, we will make fun of you.___
+- **_If you cut an issue asking us to add your preferred libraries, we will make fun of you._**
 
 <p align="center">
   <img src="https://media4.giphy.com/media/3orieLHXgpfkKO9Iju/200.gif" alt="Nelson from the Simpsons pointing and saying ha-ha in a mocking tone" />
@@ -96,8 +96,8 @@ It's easy to fall in the trap of "adding everything" - we explicitly _don't_ wan
 
 We love our bleeding edge tech. The amount of speed and, honestly, _fun_ that comes out of new shit is really cool. We think it's important to **bleed responsibly**, using riskier tech in the less risky parts.
 
-* This means we **wouldn't** ⛔️ bet on risky new database tech (SQL is great!).
-* But we **happily** ✅ bet on tRPC since it's just functions that are trivial to move off.
+- This means we **wouldn't** ⛔️ bet on risky new database tech (SQL is great!).
+- But we **happily** ✅ bet on tRPC since it's just functions that are trivial to move off.
 
 ### 3. Typesafety Isn't Optional
 
