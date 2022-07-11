@@ -86,7 +86,7 @@ The following CLI options and flags can configure the create command with custom
 
 <h2 id="axioms">T3 Axioms</h2>
 
-I'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
 
 ### 1. Solve Problems
 
