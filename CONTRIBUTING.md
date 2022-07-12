@@ -12,7 +12,7 @@
 3. Follow the [README](https://github.com/nexxeln/create-t3-app#readme) to install the project.
 4. Create a new branch and implement your changes.
 
-- Note: We use `commitlint` to autoupdate the changelog and versioning so make sure you follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guidelines when making commits. Do not manually update the [changelog](./CHANGELOG.md) and version in the [package.json](./package.json).
+- Note: We use `commitlint` to autoupdate the changelog and versioning so make sure you follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guidelines when making commits (This goes for PR titles as well). Do not manually update the [changelog](./CHANGELOG.md) and version in the [package.json](./package.json).
 
 4. Open a pull request! All pull requests must be made to the `main` branch.
 
