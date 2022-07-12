@@ -27,13 +27,13 @@ const AuthShowcase: React.FC = () => {
 };
 
 // Technology component
-interface Tech {
+interface TechnologyProps {
   name: string;
   description: string;
   documentation: string;
 }
 
-const Technology: React.FC<Tech> = (props) => {
+const Technology: React.FC<TechnologyProps> = (props) => {
   return (
     <>
       <div className="hover:scale-105 cursor-pointer duration-500 flex flex-col justify-center items-center text-center rounded shadow-xl border-2 border-gray-500 h-full w-full p-6">
