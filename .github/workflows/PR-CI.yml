@@ -125,4 +125,5 @@ jobs:
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       - run: pnpm start -y ../ci-test-app
+      - run: mv ../ci-test-app/.env-example ../ci-test-app/.env
       - run: cd ../ci-test-app && pnpm build
