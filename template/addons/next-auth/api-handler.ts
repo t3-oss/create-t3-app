@@ -5,9 +5,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
-    async session({ session, user }) {
+    session({ session, user }) {
       session.user.id = user.id;
-      return Promise.resolve(session);
+      return session;
     },
   },
   // Configure one or more authentication providers
