@@ -22,6 +22,24 @@ const AuthShowcase: React.FC = () => {
   );
 };
 
+interface TechnologyProps {
+  name: string;
+  description: string;
+  documentation: string;
+}
+
+const Technology: React.FC<TechnologyProps> = (props) => {
+  return (
+    <>
+      <li>
+        <a href={props.documentation} target="_blank" rel="noreferrer">
+          {props.name}
+        </a>
+      </li>
+    </>
+  );
+};
+
 const Home: NextPage = () => {
   return (
     <>
@@ -34,33 +52,26 @@ const Home: NextPage = () => {
         <h1>
           Create <span>T3</span> App
         </h1>
-
         <div>
           <h3>This stack uses:</h3>
           <ul>
-            <li>
-              <a href="https://nextjs.org" target="_blank" rel="noreferrer">
-                Next.js
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tailwindcss.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                TailwindCSS
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://typescriptlang.org"
-                target="_blank"
-                rel="noreferrer"
-              >
-                TypeScript
-              </a>
-            </li>
+            <Technology
+              name={"NextJS"}
+              description={"The React framework for production"}
+              documentation={"https://nextjs.org/"}
+            />
+            <Technology
+              name={"tRPC"}
+              description={"End-to-end typesafe APIs made easy"}
+              documentation={"https://trpc.io/"}
+            />
+            <Technology
+              name={"TypeScript"}
+              description={
+                "Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"
+              }
+              documentation={"https://www.typescriptlang.org/"}
+            />
           </ul>
         </div>
         <AuthShowcase />

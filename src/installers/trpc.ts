@@ -20,7 +20,6 @@ export const trpcInstaller: Installer = async ({
       "@trpc/client",
       "@trpc/next",
       "@trpc/react",
-      "zod",
     ],
     devMode: false,
     noInstallMode: noInstall,

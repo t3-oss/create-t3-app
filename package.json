@@ -31,7 +31,7 @@
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "lint": "eslint src/ --fix",
-    "lint:check": "eslint src/",
+    "lint:check": "eslint src/ --cache --cache-strategy content",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "prepare": "husky install",
