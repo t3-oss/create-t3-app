@@ -46,12 +46,6 @@ export const trpcInstaller: Installer = async ({
   const contextSrc = path.join(trpcAssetDir, contextFile);
   const contextDest = path.join(projectDir, "src/server/router/context.ts");
 
-  if (usingAuth) {
-    const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
-    const authRouterDest = path.join(projectDir, "src/server/router/auth.ts");
-    await fs.copy(authRouterSrc, authRouterDest);
-  }
-
   const indexRouterFile = usingAuth
     ? "auth-index-router.ts"
     : "index-router.ts";
@@ -67,11 +61,18 @@ export const trpcInstaller: Installer = async ({
     "src/server/router/example.ts",
   );
 
+  const protectedRouterSrc = path.join(trpcAssetDir, "protected-router.ts");
+  const protectedRouterDest = path.join(
+    projectDir,
+    "src/server/router/protected-router.ts",
+  );
+
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(utilsSrc, utilsDest),
     fs.copy(contextSrc, contextDest),
     fs.copy(indexRouterSrc, indexRouterDest),
     fs.copy(exampleRouterSrc, exampleRouterDest),
+    ...(usingAuth ? [fs.copy(protectedRouterSrc, protectedRouterDest)] : []),
   ]);
 };

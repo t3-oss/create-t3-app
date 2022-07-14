@@ -41,18 +41,9 @@ export const nextAuthInstaller: Installer = async ({
   const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
   const nextAuthDefinitionDest = path.join(projectDir, "next-auth.d.ts");
 
-  const protectedRouterSrc = path.join(nextAuthAssetDir, "protected-router.ts");
-  const protectedRouterDest = path.join(
-    projectDir,
-    "src/server/router/protected-router.ts",
-  );
-
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
     fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
-    packages?.trpc.inUse
-      ? fs.copy(protectedRouterSrc, protectedRouterDest)
-      : [],
   ]);
 };
