@@ -138,3 +138,5 @@ We 💖 contributors! Feel free to contribute to this project but **please read 
 [npm-image]: https://img.shields.io/npm/v/create-t3-app?color=0b7285&logoColor=0b7285
 [contribute-url]: https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md
 [contribute-image]: https://img.shields.io/badge/PRs-welcome-blue.svg
+
+trpc
