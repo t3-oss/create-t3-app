@@ -3,7 +3,6 @@ import { createRouter } from "./context";
 import superjson from "superjson";
 
 import { exampleRouter } from "./example";
-import { authRouter } from "./auth";
 
 export const appRouter = createRouter()
   .transformer(superjson)
