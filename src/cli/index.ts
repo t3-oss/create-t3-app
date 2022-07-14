@@ -140,15 +140,17 @@ export const runCli = async () => {
         name: "packages",
         type: "checkbox",
         message: "Which packages would you like to enable?",
-        choices: availablePackages.map((pkgName) => ({
-          name: pkgName,
-          checked: false,
-          // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-          disabled:
-            pkgName === "nextAuth" && process.versions.node.startsWith("18")
-              ? "Node.js version 18 is currently not compatible with Next-Auth."
-              : false,
-        })),
+        choices: availablePackages
+          .filter((pkg) => pkg !== "envVaribles") // dont prompt for env-vars
+          .map((pkgName) => ({
+            name: pkgName,
+            checked: false,
+            // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+            disabled:
+              pkgName === "nextAuth" && process.versions.node.startsWith("18")
+                ? "Node.js version 18 is currently not compatible with Next-Auth."
+                : false,
+          })),
       });
 
       cliResults.packages = packages;
