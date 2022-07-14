@@ -19,6 +19,7 @@ interface CliResults {
   appName: string;
   packages: AvailablePackages[];
   flags: CliFlags;
+  usingTRPC10: boolean;
 }
 
 const defaultOptions: CliResults = {
@@ -29,6 +30,8 @@ const defaultOptions: CliResults = {
     noInstall: false,
     default: false,
   },
+  // TODO: Remove when tPRC 10 is released
+  usingTRPC10: false,
 };
 
 export const runCli = async () => {
@@ -154,6 +157,30 @@ export const runCli = async () => {
       });
 
       cliResults.packages = packages;
+
+      // TODO: Remove when tPRC 10 is released
+      if (cliResults.packages.includes("trpc")) {
+        const { version } = await inquirer.prompt<{ version: string }>({
+          name: "version",
+          type: "list",
+          message: "What version of tRPC would you like to use?",
+          choices: [
+            {
+              name: "v9",
+              value: "v9",
+            },
+            {
+              name: "v10 - Warn: We might not keep up with new API changes",
+              value: "v10",
+            },
+          ],
+          default: "v9",
+        });
+
+        if (version === "v10") {
+          cliResults.usingTRPC10 = true;
+        }
+      }
 
       // Skip if noGit flag provided
       if (!cliResults.flags.noGit) {

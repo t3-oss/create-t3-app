@@ -4,6 +4,7 @@ import { nextAuthInstaller } from "./next-auth.js";
 import { prismaInstaller } from "./prisma.js";
 import { tailwindInstaller } from "./tailwind.js";
 import { trpcInstaller } from "./trpc.js";
+import { trpc10Installer } from "./trpc10.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
@@ -36,6 +37,7 @@ export type PkgInstallerMap = {
 
 export const buildPkgInstallerMap = (
   packages: AvailablePackages[],
+  useTRPC10: boolean, // TODO: Remove when tPRC 10 is released
 ): PkgInstallerMap => ({
   nextAuth: {
     inUse: packages.includes("nextAuth"),
@@ -51,7 +53,8 @@ export const buildPkgInstallerMap = (
   },
   trpc: {
     inUse: packages.includes("trpc"),
-    installer: trpcInstaller,
+    // TODO: Remove when tPRC 10 is released
+    installer: useTRPC10 ? trpc10Installer : trpcInstaller,
   },
   envVaribles: {
     inUse: true,

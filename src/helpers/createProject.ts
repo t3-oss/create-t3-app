@@ -15,7 +15,8 @@ export const createProject = async ({
   projectName,
   packages,
   noInstall,
-}: CreateProjectOptions) => {
+  usingTRPC10, // TODO: Remove when TRPC10 is released
+}: CreateProjectOptions & { usingTRPC10: boolean }) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
 
@@ -26,8 +27,8 @@ export const createProject = async ({
   await installPackages({ projectDir, pkgManager, packages, noInstall });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  await selectAppFile({ projectDir, packages });
-  await selectIndexFile({ projectDir, packages });
+  await selectAppFile({ projectDir, packages, usingTRPC10 }); // TODO: Remove when TRPC10 is released
+  await selectIndexFile({ projectDir, packages, usingTRPC10 }); // TODO: Remove when TRPC10 is released
 
   return projectDir;
 };

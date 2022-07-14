@@ -5,11 +5,13 @@ import { PKG_ROOT } from "../consts.js";
 
 type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "projectDir" | "packages">
->;
+> & { usingTRPC10: boolean };
 // This generates the _app.tsx file that is used to render the app
+// TODO: Remove trpc10 ternaries when trpc10 is released
 export const selectAppFile = async ({
   projectDir,
   packages,
+  usingTRPC10,
 }: SelectBoilerplateProps) => {
   const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
 
@@ -18,11 +20,11 @@ export const selectAppFile = async ({
 
   let appFile = "";
   if (usingNextAuth && usingTrpc) {
-    appFile = "with-auth-trpc.tsx";
+    appFile = usingTRPC10 ? "with-auth-trpc10.tsx" : "with-auth-trpc.tsx";
   } else if (usingNextAuth && !usingTrpc) {
     appFile = "with-auth.tsx";
   } else if (!usingNextAuth && usingTrpc) {
-    appFile = "with-trpc.tsx";
+    appFile = usingTRPC10 ? "with-trpc10.tsx" : "with-trpc.tsx";
   }
 
   if (appFile !== "") {
@@ -33,9 +35,11 @@ export const selectAppFile = async ({
 };
 
 // This selects the proper index.tsx to be used that showcases the chosen tech
+// TODO: Remove trpc10 ternaries when trpc10 is released
 export const selectIndexFile = async ({
   projectDir,
   packages,
+  usingTRPC10,
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
 
@@ -47,13 +51,15 @@ export const selectIndexFile = async ({
   let indexFile = "";
   // FIXME: auth showcase doesn't work with prisma since it requires more setup
   if (usingTrpc && usingTw && usingAuth && !usingPrisma) {
-    indexFile = "with-auth-trpc-tw.tsx";
+    indexFile = usingTRPC10
+      ? "with-auth-trpc10-tw.tsx"
+      : "with-auth-trpc-tw.tsx";
   } else if (usingTrpc && !usingTw && usingAuth && !usingPrisma) {
-    indexFile = "with-auth-trpc.tsx";
+    indexFile = usingTRPC10 ? "with-auth-trpc10.tsx" : "with-auth-trpc.tsx";
   } else if (usingTrpc && usingTw) {
-    indexFile = "with-trpc-tw.tsx";
+    indexFile = usingTRPC10 ? "with-trpc10-tw.tsx" : "with-trpc-tw.tsx";
   } else if (usingTrpc && !usingTw) {
-    indexFile = "with-trpc.tsx";
+    indexFile = usingTRPC10 ? "with-trpc10.tsx" : "with-trpc.tsx";
   } else if (!usingTrpc && usingTw) {
     indexFile = "with-tw.tsx";
   }

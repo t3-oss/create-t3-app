@@ -18,9 +18,10 @@ const main = async () => {
     appName,
     packages,
     flags: { noGit, noInstall },
+    usingTRPC10, // TODO: Remove when TRPC10 is released
   } = await runCli();
 
-  const usePackages = buildPkgInstallerMap(packages);
+  const usePackages = buildPkgInstallerMap(packages, usingTRPC10); // TODO: Remove when TRPC10 is released
 
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
@@ -29,6 +30,7 @@ const main = async () => {
     projectName: appDir,
     packages: usePackages,
     noInstall,
+    usingTRPC10, // TODO: Remove when TRPC10 is released
   });
 
   if (!noGit) {
