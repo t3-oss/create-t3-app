@@ -51,6 +51,8 @@ export const nextAuthInstaller: Installer = async ({
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
     fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
-    fs.copy(protectedRouterSrc, protectedRouterDest),
+    packages?.trpc.inUse
+      ? fs.copy(protectedRouterSrc, protectedRouterDest)
+      : [],
   ]);
 };
