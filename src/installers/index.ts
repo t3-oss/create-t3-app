@@ -57,7 +57,7 @@ export const buildPkgInstallerMap = (
     installer: useTRPC10 ? trpc10Installer : trpcInstaller,
   },
   envVaribles: {
-    inUse: true,
+    inUse: packages.includes("prisma") || packages.includes("nextAuth"),
     installer: envVariblesInstaller,
   },
 });
