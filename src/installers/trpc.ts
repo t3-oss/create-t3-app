@@ -35,7 +35,8 @@ export const trpcInstaller: Installer = async ({
   const utilsSrc = path.join(trpcAssetDir, "utils.ts");
   const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
 
-  const serverUtilSrc = path.join(trpcAssetDir, "server-utils.ts");
+  const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
+  const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
   const serverUtilDest = path.join(projectDir, "src/server/trpc/utils.ts");
 
   const contextFile =
@@ -49,14 +50,11 @@ export const trpcInstaller: Installer = async ({
   const contextSrc = path.join(trpcAssetDir, contextFile);
   const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
 
-  if (usingAuth) {
-    const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
-    const authRouterDest = path.join(
-      projectDir,
-      "src/server/trpc/router/auth.ts",
-    );
-    await fs.copy(authRouterSrc, authRouterDest);
-  }
+  const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
+  const authRouterDest = path.join(
+    projectDir,
+    "src/server/trpc/router/auth.ts",
+  );
 
   const indexRouterFile = usingAuth
     ? "auth-index-router.ts"
@@ -83,5 +81,6 @@ export const trpcInstaller: Installer = async ({
     fs.copy(contextSrc, contextDest),
     fs.copy(indexRouterSrc, indexRouterDest),
     fs.copy(exampleRouterSrc, exampleRouterDest),
+    ...(usingAuth ? [fs.copy(authRouterSrc, authRouterDest)] : []),
   ]);
 };

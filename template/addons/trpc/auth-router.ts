@@ -1,4 +1,3 @@
-import { TRPCError } from "@trpc/server";
 import { t, authedProcedure } from "../utils";
 
 export const authRouter = t.router({
