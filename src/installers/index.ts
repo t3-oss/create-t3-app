@@ -1,4 +1,5 @@
 import type { PackageManager } from "../utils/getUserPkgManager.js";
+import type { CurriedRunPkgManagerInstallOptions } from "../utils/runPkgManagerInstall.js";
 import { envVariblesInstaller } from "./envVars.js";
 import { nextAuthInstaller } from "./next-auth.js";
 import { prismaInstaller } from "./prisma.js";
@@ -23,6 +24,9 @@ export interface InstallerOptions {
   noInstall: boolean;
   packages?: PkgInstallerMap;
   projectName?: string;
+  runPkgManagerInstall: (
+    opts: CurriedRunPkgManagerInstallOptions,
+  ) => Promise<void>;
 }
 
 export type Installer = (opts: InstallerOptions) => Promise<void>;
