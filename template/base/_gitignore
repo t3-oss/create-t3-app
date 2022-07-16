@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# database
+/prisma/db.sqlite
+
 # next.js
 /.next/
 /out/
