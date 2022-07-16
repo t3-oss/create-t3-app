@@ -1,21 +1,15 @@
-import { createRouter } from "./context";
+import { t } from "../utils";
 import { z } from "zod";
 
-export const exampleRouter = createRouter()
-  .query("hello", {
-    input: z
-      .object({
-        text: z.string().nullish(),
-      })
-      .nullish(),
-    resolve({ input }) {
+export const exampleRouter = t.router({
+  hello: t.procedure
+    .input(z.object({ text: z.string().nullish() }).nullish())
+    .query(({ input }) => {
       return {
         greeting: `Hello ${input?.text ?? "world"}`,
       };
-    },
-  })
-  .query("getAll", {
-    async resolve({ ctx }) {
-      return await ctx.prisma.example.findMany();
-    },
-  });
+    }),
+  getAll: t.procedure.query(({ ctx }) => {
+    return ctx.prisma.example.findMany();
+  }),
+});

@@ -5,12 +5,8 @@ import { trpc } from "../utils/trpc";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage, isLoading } = trpc.useQuery([
-    "auth.getSecretMessage",
-  ]);
-
+  const { data: secretMessage } = trpc.proxy.auth.getSecretMessage.useQuery();
   const { data: sessionData } = useSession();
-
   return (
     <div>
       {sessionData && <p>Logged in as {sessionData?.user?.name}</p>}
@@ -22,25 +18,9 @@ const AuthShowcase: React.FC = () => {
   );
 };
 
-interface TechnologyProps {
-  name: string;
-  description: string;
-  documentation: string;
-}
-
-const Technology: React.FC<TechnologyProps> = (props) => {
-  return (
-    <>
-      <li>
-        <a href={props.documentation} target="_blank" rel="noreferrer">
-          {props.name}
-        </a>
-      </li>
-    </>
-  );
-};
-
 const Home: NextPage = () => {
+  const hello = trpc.proxy.example.hello.useQuery({ text: "from tRPC" });
+
   return (
     <>
       <Head>
@@ -73,6 +53,9 @@ const Home: NextPage = () => {
               documentation={"https://www.typescriptlang.org/"}
             />
           </ul>
+          <div>
+            {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
+          </div>
         </div>
         <AuthShowcase />
       </div>
@@ -81,3 +64,21 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+interface TechnologyProps {
+  name: string;
+  description: string;
+  documentation: string;
+}
+
+const Technology: React.FC<TechnologyProps> = (props) => {
+  return (
+    <>
+      <li>
+        <a href={props.documentation} target="_blank" rel="noreferrer">
+          {props.name}
+        </a>
+      </li>
+    </>
+  );
+};
