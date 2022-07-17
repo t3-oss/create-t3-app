@@ -14,6 +14,7 @@ export const prismaInstaller: Installer = async ({
 }) => {
   await runPkgManagerInstall({
     packages: ["prisma"],
+    devMode: true,
   });
   await runPkgManagerInstall({
     packages: ["@prisma/client"],

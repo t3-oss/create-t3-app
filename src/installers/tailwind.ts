@@ -9,6 +9,7 @@ export const tailwindInstaller: Installer = async ({
 }) => {
   await runPkgManagerInstall({
     packages: ["tailwindcss", "postcss", "autoprefixer"],
+    devMode: true,
   });
 
   const twAssetDir = path.join(PKG_ROOT, "template/addons/tailwind");
