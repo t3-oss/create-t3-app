@@ -1,7 +1,7 @@
 import type { PkgInstallerMap } from "../installers/index.js";
 import path from "path";
 import { getUserPkgManager } from "../utils/getUserPkgManager.js";
-import { curryRunPckgManagerInstall } from "../utils/runPkgManagerInstall.js";
+import { curryRunPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 import { installPackages } from "./installPackages.js";
 import { scaffoldProject } from "./scaffoldProject.js";
 import { selectAppFile, selectIndexFile } from "./selectBoilerplate.js";
@@ -19,7 +19,7 @@ export const createProject = async ({
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
-  const runPkgManagerInstall = curryRunPckgManagerInstall({
+  const runPkgManagerInstall = curryRunPkgManagerInstall({
     projectDir,
     pkgManager,
     devMode: false,

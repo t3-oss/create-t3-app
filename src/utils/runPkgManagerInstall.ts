@@ -64,10 +64,10 @@ export type CurriedRunPkgManagerInstallOptions =
   Partial<CurryRunPkgManagerInstallOptions> &
     Omit<RunPkgManagerInstallOptions, keyof CurryRunPkgManagerInstallOptions>;
 
-export const curryRunPckgManagerInstall = (
+export const curryRunPkgManagerInstall = (
   baseOptions: CurryRunPkgManagerInstallOptions,
 ) => {
-  const curriedRunPckgManagerInstall = async (
+  const curriedRunPkgManagerInstall = async (
     options: CurriedRunPkgManagerInstallOptions,
   ) =>
     runPkgManagerInstall({
@@ -75,5 +75,5 @@ export const curryRunPckgManagerInstall = (
       ...options,
     });
 
-  return curriedRunPckgManagerInstall;
+  return curriedRunPkgManagerInstall;
 };
