@@ -1,7 +1,13 @@
-import type { Installer } from "./index.js";
+import type { Installer, PackageInfo } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
+
+export const tailwindInfo: PackageInfo = {
+  name: "TailwindCSS",
+  description: "Rapidly build modern websites without ever leaving your HTML",
+  URL: "https://tailwindcss.com/",
+};
 
 export const tailwindInstaller: Installer = async ({
   projectDir,

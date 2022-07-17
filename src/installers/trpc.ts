@@ -1,7 +1,13 @@
-import type { Installer } from "./index.js";
+import type { Installer, PackageInfo } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
+
+export const trpcInfo: PackageInfo = {
+  name: "tRPC",
+  description: "End-to-end typesafe APIs made easy",
+  URL: "https://trpc.io/",
+};
 
 export const trpcInstaller: Installer = async ({
   projectDir,

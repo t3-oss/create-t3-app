@@ -1,9 +1,15 @@
-import type { Installer } from "./index.js";
+import type { Installer, PackageInfo } from "./index.js";
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 import { execa } from "../utils/execAsync.js";
+
+export const prismaInfo: PackageInfo = {
+  name: "Prisma",
+  description: "Build data-driven JavaScript & TypeScript apps in less time",
+  URL: "https://www.prisma.io/",
+};
 
 export const prismaInstaller: Installer = async ({
   projectDir,

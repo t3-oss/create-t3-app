@@ -1,7 +1,13 @@
-import type { Installer } from "./index.js";
+import type { Installer, PackageInfo } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
+
+export const nextAuthInfo: PackageInfo = {
+  name: "Next-Auth",
+  description: "Authentication for Next.js",
+  URL: "https://next-auth.js.org/",
+};
 
 export const nextAuthInstaller: Installer = async ({
   projectDir,
