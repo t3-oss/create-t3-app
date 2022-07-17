@@ -2,23 +2,17 @@ import type { Installer } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
-import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
 export const nextAuthInstaller: Installer = async ({
-  pkgManager,
   projectDir,
+  runPkgManagerInstall,
   packages,
-  noInstall,
 }) => {
   await runPkgManagerInstall({
-    pkgManager,
-    projectDir,
     packages: [
       "next-auth",
       packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
     ],
-    devMode: false,
-    noInstallMode: noInstall,
   });
 
   const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
