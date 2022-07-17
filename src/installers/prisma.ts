@@ -4,27 +4,20 @@ import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 import { execa } from "../utils/execAsync.js";
-import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 
 export const prismaInstaller: Installer = async ({
   projectDir,
+  runPkgManagerInstall,
   pkgManager,
   packages,
   noInstall,
 }) => {
   await runPkgManagerInstall({
-    pkgManager,
-    projectDir,
     packages: ["prisma"],
     devMode: true,
-    noInstallMode: noInstall,
   });
   await runPkgManagerInstall({
-    pkgManager,
-    projectDir,
     packages: ["@prisma/client"],
-    devMode: false,
-    noInstallMode: noInstall,
   });
 
   const prismaAssetDir = path.join(PKG_ROOT, "template/addons/prisma");

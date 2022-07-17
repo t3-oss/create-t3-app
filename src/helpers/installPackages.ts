@@ -7,12 +7,8 @@ type InstallPackagesOptions = {
   packages: PkgInstallerMap;
 } & InstallerOptions;
 // This runs the installer for all the packages that the user has selected
-export const installPackages = async ({
-  projectDir,
-  pkgManager,
-  packages,
-  noInstall,
-}: InstallPackagesOptions) => {
+export const installPackages = async (options: InstallPackagesOptions) => {
+  const { packages, noInstall } = options;
   logger.info(`${noInstall ? "Adding" : "Installing"} packages...`);
 
   for (const [name, pkgOpts] of Object.entries(packages)) {
@@ -20,7 +16,7 @@ export const installPackages = async ({
       const spinner = ora(
         `${noInstall ? "Adding" : "Installing"} ${name}...`,
       ).start();
-      await pkgOpts.installer({ projectDir, pkgManager, packages, noInstall });
+      await pkgOpts.installer(options);
       spinner.succeed(
         chalk.green(
           `Successfully ${noInstall ? "added" : "installed"} ${chalk.green.bold(
