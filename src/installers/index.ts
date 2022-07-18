@@ -39,11 +39,11 @@ export type PkgInstallerMap = {
   };
 };
 
-export type PackageInfo = {
+export interface PackageInfo {
   name: string;
   description: string;
   URL: string;
-};
+}
 
 export const buildPkgInstallerMap = (
   packages: AvailablePackages[],
