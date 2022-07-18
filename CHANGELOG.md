@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/t3-oss/create-t3-app/compare/v5.1.0...v5.1.1) (2022-07-18)
+
+### Bug Fixes
+
+- add missing trpc import ([37b6283](https://github.com/t3-oss/create-t3-app/commit/37b6283bb56e44092fc9ef2d65c84e5298e51d22))
+
 ## [5.1.0](https://github.com/t3-oss/create-t3-app/compare/v5.0.0...v5.1.0) (2022-07-18)
 
 ### Features
