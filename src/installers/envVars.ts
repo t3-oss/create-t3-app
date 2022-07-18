@@ -29,7 +29,7 @@ export const envVariblesInstaller: Installer = async ({
   if (!envFile) return;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
-  const envSchemaDest = path.join(projectDir, "src/server/env-schema.mjs");
+  const envSchemaDest = path.join(projectDir, "src/env/env-schema.mjs");
 
   await fs.copy(envSchemaSrc, envSchemaDest, { overwrite: true });
 };

@@ -1,7 +1,7 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { env } from "../../../server/env.mjs";
+import { env } from "../../../env/server-env.mjs";
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
