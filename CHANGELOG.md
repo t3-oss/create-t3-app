@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/t3-oss/create-t3-app/compare/v5.0.0...v5.1.0) (2022-07-18)
+
+### Features
+
+- add trpc inference helpers ([1fcec81](https://github.com/t3-oss/create-t3-app/commit/1fcec81a74372ce5cfaf6503d63f16d5e2b12e3c))
+- migrate env + next config to esm ([#205](https://github.com/t3-oss/create-t3-app/issues/205)) ([59f8ad4](https://github.com/t3-oss/create-t3-app/commit/59f8ad4f2104aa1f11508b55da75c333dce03625))
+
+### Bug Fixes
+
+- **#218:** lock react-query to v3 ([15ea5f1](https://github.com/t3-oss/create-t3-app/commit/15ea5f1dc8b86430a720f2eaeb6ccdfaab629892)), closes [#218](https://github.com/t3-oss/create-t3-app/issues/218)
+- move gitignore rename call ([#215](https://github.com/t3-oss/create-t3-app/issues/215)) ([7111033](https://github.com/t3-oss/create-t3-app/commit/7111033d75c858041f06d69e95c51e40515457fc))
+
 ## 5.0.0 (2022-07-16)
 
 ### Features
