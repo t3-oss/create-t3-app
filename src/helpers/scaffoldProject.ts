@@ -57,6 +57,10 @@ export const scaffoldProject = async ({
   spinner.start();
 
   await fs.copy(srcDir, projectDir);
+  await fs.rename(
+    path.join(projectDir, "_gitignore"),
+    path.join(projectDir, ".gitignore"),
+  );
 
   if (!noInstall) {
     await execa(`${pkgManager} install`, { cwd: projectDir });
