@@ -69,14 +69,5 @@
     "tsup": "^6.1.2",
     "type-fest": "^2.14.0",
     "typescript": "^4.7.4"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{json,md,mdx}": [
-      "prettier --write"
-    ]
   }
 }
