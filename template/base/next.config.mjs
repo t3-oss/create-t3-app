@@ -1,4 +1,5 @@
-import { env } from "./src/server/env.mjs";
+import { env as serverEnv } from "./src/server/env.mjs";
+import { env as clientEnv } from "./src/client/env.mjs"
 
 /**
  * Don't be scared of the generics here.
