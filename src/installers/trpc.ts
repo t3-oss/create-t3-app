@@ -10,7 +10,7 @@ export const trpcInstaller: Installer = async ({
 }) => {
   await runPkgManagerInstall({
     packages: [
-      "react-query",
+      "react-query@3",
       "superjson",
       "@trpc/server@experimental",
       "@trpc/client@experimental",
