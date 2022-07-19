@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/t3-oss/create-t3-app/compare/v5.1.1...v5.2.0) (2022-07-19)
+
+### Features
+
+- add db.sqlite-journal to gitignore ([#221](https://github.com/t3-oss/create-t3-app/issues/221)) ([0604d21](https://github.com/t3-oss/create-t3-app/commit/0604d217f0dfe3d165013395c1a801e6bc32a17c))
+
+### Bug Fixes
+
+- handle pkg with version in noInstall mode ([#220](https://github.com/t3-oss/create-t3-app/issues/220)) ([5737beb](https://github.com/t3-oss/create-t3-app/commit/5737bebaab3ff6f955bf825274e25419a91642d6))
+- missing DATABASE_URL ([#222](https://github.com/t3-oss/create-t3-app/issues/222)) ([b6164d8](https://github.com/t3-oss/create-t3-app/commit/b6164d8944330564e9911e47f36d82620986c8c5))
+- typo - rename 'varibles' to 'variables' ([#223](https://github.com/t3-oss/create-t3-app/issues/223)) ([fc6519f](https://github.com/t3-oss/create-t3-app/commit/fc6519f66d067e4e348c7f4c00f6287dc5c40c3d))
+- typo in readme ([9390400](https://github.com/t3-oss/create-t3-app/commit/9390400b8720240c650e5dbde7ca0718b7835757))
+
+### [5.1.1](https://github.com/t3-oss/create-t3-app/compare/v5.1.0...v5.1.1) (2022-07-18)
+
+### Bug Fixes
+
+- add missing trpc import ([37b6283](https://github.com/t3-oss/create-t3-app/commit/37b6283bb56e44092fc9ef2d65c84e5298e51d22))
+
+## [5.1.0](https://github.com/t3-oss/create-t3-app/compare/v5.0.0...v5.1.0) (2022-07-18)
+
+### Features
+
+- add trpc inference helpers ([1fcec81](https://github.com/t3-oss/create-t3-app/commit/1fcec81a74372ce5cfaf6503d63f16d5e2b12e3c))
+- migrate env + next config to esm ([#205](https://github.com/t3-oss/create-t3-app/issues/205)) ([59f8ad4](https://github.com/t3-oss/create-t3-app/commit/59f8ad4f2104aa1f11508b55da75c333dce03625))
+
+### Bug Fixes
+
+- **#218:** lock react-query to v3 ([15ea5f1](https://github.com/t3-oss/create-t3-app/commit/15ea5f1dc8b86430a720f2eaeb6ccdfaab629892)), closes [#218](https://github.com/t3-oss/create-t3-app/issues/218)
+- move gitignore rename call ([#215](https://github.com/t3-oss/create-t3-app/issues/215)) ([7111033](https://github.com/t3-oss/create-t3-app/commit/7111033d75c858041f06d69e95c51e40515457fc))
+
 ## 5.0.0 (2022-07-16)
 
 ### Features

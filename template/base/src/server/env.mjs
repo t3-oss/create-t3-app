@@ -1,11 +1,11 @@
 // @ts-check
 /**
- * This file is included in `/next.config.js` which ensures the app isn't built with invalid env vars.
- * It has to be a `.js`-file to be imported there.
+ * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+ * It has to be a `.mjs`-file to be imported there.
  */
-const { envSchema } = require("./env-schema");
+import { envSchema } from "./env-schema.mjs";
 
-const env = envSchema.safeParse(process.env);
+const _env = envSchema.safeParse(process.env);
 
 const formatErrors = (
   /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
@@ -18,12 +18,12 @@ const formatErrors = (
     })
     .filter(Boolean);
 
-if (!env.success) {
+if (!_env.success) {
   console.error(
     "❌ Invalid environment variables:\n",
-    ...formatErrors(env.error.format()),
+    ...formatErrors(_env.error.format()),
   );
   process.exit(1);
 }
 
-module.exports.env = env.data;
+export const env = _env.data;
