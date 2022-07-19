@@ -1,6 +1,4 @@
-import path from "path";
 import chalk from "chalk";
-import fs from "fs-extra";
 import ora from "ora";
 import { execa } from "../utils/execAsync.js";
 import { logger } from "../utils/logger.js";
@@ -32,9 +30,4 @@ export const initializeGit = async (projectDir: string) => {
       )} could not initialize git. Update git to the latest version!\n`,
     );
   }
-
-  await fs.rename(
-    path.join(projectDir, "_gitignore"),
-    path.join(projectDir, ".gitignore"),
-  );
 };
