@@ -5,13 +5,17 @@ import { type PackageJson } from "type-fest";
 import { execa } from "./execAsync.js";
 import { logger } from "./logger.js";
 
-export const runPkgManagerInstall = async (opts: {
+export interface RunPkgManagerInstallOptions {
   pkgManager: PackageManager;
   devMode: boolean;
   projectDir: string;
   packages: string[];
   noInstallMode: boolean;
-}) => {
+}
+
+export const runPkgManagerInstall = async (
+  opts: RunPkgManagerInstallOptions,
+) => {
   const { pkgManager, devMode, projectDir, packages, noInstallMode } = opts;
 
   if (noInstallMode) {
@@ -30,11 +34,13 @@ export const runPkgManagerInstall = async (opts: {
         continue;
       }
 
+      const pkgName = pkg.replace(/^(@?[^@]+)(?:@.+)?$/, "$1");
+
       // Note: We know that pkgJson.[dev]Dependencies exists in the base Next.js template so we don't need to validate it
       if (devMode) {
-        pkgJson.devDependencies![pkg] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+        pkgJson.devDependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       } else {
-        pkgJson.dependencies![pkg] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+        pkgJson.dependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
     }
 
@@ -49,4 +55,27 @@ export const runPkgManagerInstall = async (opts: {
   const flag = devMode ? "-D" : "";
   const fullCmd = `${installCmd} ${flag} ${packages.join(" ")}`;
   await execa(fullCmd, { cwd: projectDir });
+};
+
+export type CurryRunPkgManagerInstallOptions = Omit<
+  RunPkgManagerInstallOptions,
+  "packages"
+>;
+
+export type CurriedRunPkgManagerInstallOptions =
+  Partial<CurryRunPkgManagerInstallOptions> &
+    Omit<RunPkgManagerInstallOptions, keyof CurryRunPkgManagerInstallOptions>;
+
+export const curryRunPkgManagerInstall = (
+  baseOptions: CurryRunPkgManagerInstallOptions,
+) => {
+  const curriedRunPkgManagerInstall = async (
+    options: CurriedRunPkgManagerInstallOptions,
+  ) =>
+    runPkgManagerInstall({
+      ...baseOptions,
+      ...options,
+    });
+
+  return curriedRunPkgManagerInstall;
 };
