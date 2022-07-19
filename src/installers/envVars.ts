@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 
-export const envVariblesInstaller: Installer = async ({
+export const envVariablesInstaller: Installer = async ({
   projectDir,
   packages,
 }) => {
