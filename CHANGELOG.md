@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.2.1](https://github.com/t3-oss/create-t3-app/compare/v5.2.0...v5.2.1) (2022-07-19)
+
+### Bug Fixes
+
+- update url in auth prisma schema ([97c9e27](https://github.com/t3-oss/create-t3-app/commit/97c9e279bf7465a47f29add10c8a6d4c9b7339a5))
+
 ## [5.2.0](https://github.com/t3-oss/create-t3-app/compare/v5.1.1...v5.2.0) (2022-07-19)
 
 ### Features
