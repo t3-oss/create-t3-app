@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/t3-oss/create-t3-app/compare/v5.1.1...v5.2.0) (2022-07-19)
+
+### Features
+
+- add db.sqlite-journal to gitignore ([#221](https://github.com/t3-oss/create-t3-app/issues/221)) ([0604d21](https://github.com/t3-oss/create-t3-app/commit/0604d217f0dfe3d165013395c1a801e6bc32a17c))
+
+### Bug Fixes
+
+- handle pkg with version in noInstall mode ([#220](https://github.com/t3-oss/create-t3-app/issues/220)) ([5737beb](https://github.com/t3-oss/create-t3-app/commit/5737bebaab3ff6f955bf825274e25419a91642d6))
+- missing DATABASE_URL ([#222](https://github.com/t3-oss/create-t3-app/issues/222)) ([b6164d8](https://github.com/t3-oss/create-t3-app/commit/b6164d8944330564e9911e47f36d82620986c8c5))
+- typo - rename 'varibles' to 'variables' ([#223](https://github.com/t3-oss/create-t3-app/issues/223)) ([fc6519f](https://github.com/t3-oss/create-t3-app/commit/fc6519f66d067e4e348c7f4c00f6287dc5c40c3d))
+- typo in readme ([9390400](https://github.com/t3-oss/create-t3-app/commit/9390400b8720240c650e5dbde7ca0718b7835757))
+
 ### [5.1.1](https://github.com/t3-oss/create-t3-app/compare/v5.1.0...v5.1.1) (2022-07-18)
 
 ### Bug Fixes
