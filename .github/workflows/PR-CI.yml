@@ -5,7 +5,7 @@ name: PR-CI
 on:
   pull_request:
     branches: ["*"]
-  
+
 jobs:
   install-deps:
     runs-on: ubuntu-latest
@@ -30,7 +30,6 @@ jobs:
           cache: "pnpm"
         if: steps.pnpm-cache.outputs.cache-hit != 'true'
       - run: pnpm install
-
 
   lint:
     runs-on: ubuntu-latest
@@ -125,5 +124,4 @@ jobs:
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       - run: pnpm start -y ../ci-test-app
-      - run: mv ../ci-test-app/.env-example ../ci-test-app/.env
       - run: cd ../ci-test-app && pnpm build
