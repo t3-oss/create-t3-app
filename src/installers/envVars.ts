@@ -29,7 +29,7 @@ export const envVariablesInstaller: Installer = async ({
   if (!envFile) return;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
-  const envSchemaDest = path.join(projectDir, "src/server/env-schema.mjs");
+  const envSchemaDest = path.join(projectDir, "src/env/env-schema.mjs");
 
   const envExample = path.join(projectDir, ".env-example");
   const envDest = path.join(projectDir, ".env");
