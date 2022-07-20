@@ -34,11 +34,13 @@ export const runPkgManagerInstall = async (
         continue;
       }
 
+      const pkgName = pkg.replace(/^(@?[^@]+)(?:@.+)?$/, "$1");
+
       // Note: We know that pkgJson.[dev]Dependencies exists in the base Next.js template so we don't need to validate it
       if (devMode) {
-        pkgJson.devDependencies![pkg] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+        pkgJson.devDependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       } else {
-        pkgJson.dependencies![pkg] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+        pkgJson.dependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
     }
 

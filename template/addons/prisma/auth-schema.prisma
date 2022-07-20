@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./db.sqlite"
-    // url      = env("DATABASE_URL")
+    provider = "sqlite" // NOTE: sqlite does not work with NextAuth.js
+    url      = env("DATABASE_URL")
 }
 
 model Example {
