@@ -1,8 +1,9 @@
+// @ts-check
 import { clientEnv, clientEnvSchema } from './env-schema.mjs';
 
 const _clientEnv = clientEnvSchema.safeParse(clientEnv)
 
-const formatErrors = (
+export const formatErrors = (
     /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
     errors,
   ) =>
