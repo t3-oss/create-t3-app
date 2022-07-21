@@ -37,6 +37,7 @@
     "prepare": "husky install",
     "release": "standard-version",
     "pub:beta": "npm run build && npm publish --tag beta",
+    "pub:next": "npm run build && npm publish --tag next",
     "pub:release": "npm run build && npm publish"
   },
   "dependencies": {
