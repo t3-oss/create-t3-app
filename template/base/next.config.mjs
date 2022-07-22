@@ -1,4 +1,4 @@
-import { env } from './src/env/server-env.mjs'
+import { env } from "./src/env/server-env.mjs";
 
 /**
  * Don't be scared of the generics here.
@@ -14,4 +14,5 @@ function defineNextConfig(config) {
 
 export default defineNextConfig({
   reactStrictMode: true,
+  swcMinify: true,
 });
