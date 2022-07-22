@@ -2,7 +2,7 @@ import * as trpc from "@trpc/server";
 import { createRouter } from "./context";
 
 /**
- * Modify the default trpc router to use the next-auth context and check for user session.
+ * Creates a tRPC router that asserts all queries and mutations are from an authorized user. Will throw an unauthorized error if a user is not signed in.
  */
 export function createProtectedRouter() {
   return createRouter().middleware(({ ctx, next }) => {

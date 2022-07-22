@@ -1,6 +1,6 @@
 import { createProtectedRouter } from "./protected-router";
 
-// Create queries & mutations with the surety that user has a session (due to createProtectedRouter).
+// Example router with queries that can only be hit if the user requesting is signed in
 export const protectedExampleRouter = createProtectedRouter()
   .query("getSession", {
     resolve({ ctx }) {
