@@ -1,6 +1,7 @@
 import figlet from "figlet";
 import gradient from "gradient-string";
 import { TITLE_TEXT } from "../consts.js";
+import { getUserPkgManager } from "./getUserPkgManager.js";
 
 // colors brought in from vscode poimandres theme
 const poimandresTheme = {
@@ -15,5 +16,11 @@ const poimandresTheme = {
 export const renderTitle = () => {
   const text = figlet.textSync(TITLE_TEXT, { font: "Small" });
   const t3Gradient = gradient(Object.values(poimandresTheme));
-  console.log("\n", t3Gradient.multiline(text));
+
+  // resolves weird behavior where the ascii is offset
+  const pkgManager = getUserPkgManager();
+  if (pkgManager === "yarn" || pkgManager === "pnpm") {
+    console.log("");
+  }
+  console.log(t3Gradient.multiline(text));
 };
