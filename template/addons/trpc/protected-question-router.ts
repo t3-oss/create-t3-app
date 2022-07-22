@@ -7,9 +7,7 @@ export const protectedQuestionRouter = createProtectedRouter()
     },
   })
   .query("getSecretMessage", {
-    async resolve({ ctx }) {
-      // Fetch protected data from your Database here and return
-
+    resolve({ ctx }) {
       return "He who asks a question is a fool for five minutes; he who does not ask a question remains a fool forever.";
     },
   });
