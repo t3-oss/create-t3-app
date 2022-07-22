@@ -57,11 +57,11 @@ export const trpcInstaller: Installer = async ({
 
   const protectedExampleRouterSrc = path.join(
     trpcAssetDir,
-    "protected-question-router.ts",
+    "protected-example-router.ts",
   );
   const protectedExampleRouterDest = path.join(
     projectDir,
-    "src/server/router/protected-question-router.ts",
+    "src/server/router/protected-example-router.ts",
   );
 
   const protectedRouterSrc = path.join(trpcAssetDir, "protected-router.ts");
