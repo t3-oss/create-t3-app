@@ -77,8 +77,10 @@ export const trpcInstaller: Installer = async ({
     fs.copy(indexRouterSrc, indexRouterDest),
     fs.copy(exampleRouterSrc, exampleRouterDest),
     ...(usingAuth
-      ? [fs.copy(protectedQuestionRouterSrc, protectedQuestionRouterDest)]
+      ? [
+          fs.copy(protectedQuestionRouterSrc, protectedQuestionRouterDest),
+          fs.copy(protectedRouterSrc, protectedRouterDest),
+        ]
       : []),
-    ...(usingAuth ? [fs.copy(protectedRouterSrc, protectedRouterDest)] : []),
   ]);
 };
