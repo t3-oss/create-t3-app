@@ -16,7 +16,7 @@
 
 <div align="center">
 
-[![PRs-Welcome][contribute-image]][contribute-url] [![Discord](https://img.shields.io/discord/957380329985958038?color=%235865F2&label=Discord&logo=discord&logoColor=%23fff)](https://discord.gg/VgfKCQydjb) [![NPM version][npm-image]][npm-url]
+[![PRs-Welcome][contribute-image]][contribute-url] [![Discord](https://img.shields.io/discord/966627436387266600?color=%235865F2&label=Discord&logo=discord&logoColor=%23fff)](https://discord.gg/VgfKCQydjb) [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
 
 </div>
