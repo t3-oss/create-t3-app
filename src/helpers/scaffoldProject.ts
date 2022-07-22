@@ -6,6 +6,7 @@ import ora from "ora";
 import { PKG_ROOT } from "../consts.js";
 import { InstallerOptions } from "../installers/index.js";
 import { execa } from "../utils/execAsync.js";
+import { getAllFiles } from "../utils/getAllFiles.js";
 import { logger } from "../utils/logger.js";
 
 // This bootstraps the base Next.js application
@@ -26,18 +27,37 @@ export const scaffoldProject = async ({
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
-    if (fs.readdirSync(projectDir).length === 0) {
+    const userFilesSet = new Set(getAllFiles(projectDir));
+    const srcFiles = [...getAllFiles(srcDir), ".gitignore"]; // template files
+    const conflictingFiles = srcFiles.filter((element) =>
+      userFilesSet.has(element),
+    );
+
+    if (userFilesSet.size === 0) {
       spinner.info(
         `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`,
       );
+    } else if (conflictingFiles.length === 0) {
+      spinner.info(
+        `${chalk.cyan.bold(
+          projectName,
+        )} is not empty, but no conflicting files found, continuing...\n`,
+      );
     } else {
+      let conflictingFilesStr = "";
+      for (const file of conflictingFiles) {
+        conflictingFilesStr += `\n  ${chalk.cyan.bold(
+          projectName,
+        )}${chalk.reset.red(path.sep + file)}`;
+      }
+
       spinner.stopAndPersist();
       const { overwriteDir } = await inquirer.prompt<{ overwriteDir: string }>({
         name: "overwriteDir",
         type: "list",
         message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
           projectName,
-        )} already exists and isn't empty. How would you like to proceed?`,
+        )} already exists and has conflicting files:\n${conflictingFilesStr}\n\n How would you like to proceed?`,
         choices: [
           { name: "Clear directory", value: "clear", short: "Clear" },
           { name: "Abort installation", value: "abort", short: "Abort" },
@@ -59,7 +79,9 @@ export const scaffoldProject = async ({
         fs.emptyDirSync(projectDir);
       } else if (overwriteDir === "overwrite") {
         spinner.info(
-          `Overwriting ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
+          `Overwriting conflicts in ${chalk.cyan.bold(
+            projectName,
+          )} and creating t3 app..\n`,
         );
       }
     }
