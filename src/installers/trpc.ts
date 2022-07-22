@@ -55,11 +55,11 @@ export const trpcInstaller: Installer = async ({
     "src/server/router/example.ts",
   );
 
-  const protectedQuestionRouterSrc = path.join(
+  const protectedExampleRouterSrc = path.join(
     trpcAssetDir,
     "protected-question-router.ts",
   );
-  const protectedQuestionRouterDest = path.join(
+  const protectedExampleRouterDest = path.join(
     projectDir,
     "src/server/router/protected-question-router.ts",
   );
@@ -78,7 +78,7 @@ export const trpcInstaller: Installer = async ({
     fs.copy(exampleRouterSrc, exampleRouterDest),
     ...(usingAuth
       ? [
-          fs.copy(protectedQuestionRouterSrc, protectedQuestionRouterDest),
+          fs.copy(protectedExampleRouterSrc, protectedExampleRouterDest),
           fs.copy(protectedRouterSrc, protectedRouterDest),
         ]
       : []),

@@ -1,6 +1,6 @@
 import { createProtectedRouter } from "./protected-router";
 
-export const protectedQuestionRouter = createProtectedRouter()
+export const protectedExampleRouter = createProtectedRouter()
   .query("getSession", {
     resolve({ ctx }) {
       return ctx.session;
