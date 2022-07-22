@@ -52,22 +52,24 @@ export const scaffoldProject = async ({
       }
 
       spinner.stopAndPersist();
-      const { overwriteDir } = await inquirer.prompt<{ overwriteDir: string }>({
+      const { overwriteDir } = await inquirer.prompt<{
+        overwriteDir: "abort" | "clear" | "overwrite";
+      }>({
         name: "overwriteDir",
         type: "list",
         message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
           projectName,
         )} already exists and has conflicting files:\n${conflictingFilesStr}\n\n How would you like to proceed?`,
         choices: [
-          { name: "Clear directory", value: "clear", short: "Clear" },
           { name: "Abort installation", value: "abort", short: "Abort" },
+          { name: "Clear directory", value: "clear", short: "Clear" },
           {
             name: "Overwrite files (dangerous)",
             value: "overwrite",
             short: "Overwrite",
           },
         ],
-        default: "clear",
+        default: "abort",
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
@@ -77,7 +79,7 @@ export const scaffoldProject = async ({
           `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
         );
         fs.emptyDirSync(projectDir);
-      } else if (overwriteDir === "overwrite") {
+      } else {
         spinner.info(
           `Overwriting conflicts in ${chalk.cyan.bold(
             projectName,
