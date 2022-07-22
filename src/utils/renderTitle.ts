@@ -1,4 +1,3 @@
-import figlet from "figlet";
 import gradient from "gradient-string";
 import { TITLE_TEXT } from "../consts.js";
 import { getUserPkgManager } from "./getUserPkgManager.js";
@@ -14,7 +13,6 @@ const poimandresTheme = {
 };
 
 export const renderTitle = () => {
-  const text = figlet.textSync(TITLE_TEXT, { font: "Small" });
   const t3Gradient = gradient(Object.values(poimandresTheme));
 
   // resolves weird behavior where the ascii is offset
@@ -22,5 +20,5 @@ export const renderTitle = () => {
   if (pkgManager === "yarn" || pkgManager === "pnpm") {
     console.log("");
   }
-  console.log(t3Gradient.multiline(text));
+  console.log(t3Gradient.multiline(TITLE_TEXT));
 };
