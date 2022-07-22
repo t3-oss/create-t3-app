@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
-  '@types/figlet': ^1.5.4
   '@types/fs-extra': ^9.0.13
   '@types/gradient-string': ^1.1.2
   '@types/inquirer': ^8.2.1
@@ -16,7 +15,6 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-import-resolver-typescript: ^3.1.1
   eslint-plugin-import: ^2.26.0
-  figlet: ^1.5.2
   fs-extra: ^10.1.0
   gradient-string: ^2.0.1
   husky: ^8.0.1
@@ -32,7 +30,6 @@ specifiers:
 dependencies:
   chalk: 5.0.1
   commander: 9.3.0
-  figlet: 1.5.2
   fs-extra: 10.1.0
   gradient-string: 2.0.1
   inquirer: 9.0.0
@@ -41,7 +38,6 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
-  '@types/figlet': 1.5.4
   '@types/fs-extra': 9.0.13
   '@types/gradient-string': 1.1.2
   '@types/inquirer': 8.2.1
@@ -350,10 +346,6 @@ packages:
 
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
-    dev: true
-
-  /@types/figlet/1.5.4:
-    resolution: {integrity: sha512-cskPTju7glYgzvkJy/hftqw7Fen3fsd0yrPOqcbBLJu+YdDQuA438akS1g+2XVKGzsQOnXGV2I9ePv6xUBnKMQ==}
     dev: true
 
   /@types/fs-extra/9.0.13:
@@ -1854,11 +1846,6 @@ packages:
     dependencies:
       reusify: 1.0.4
     dev: true
-
-  /figlet/1.5.2:
-    resolution: {integrity: sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ==}
-    engines: {node: '>= 0.4.0'}
-    dev: false
 
   /figures/3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
