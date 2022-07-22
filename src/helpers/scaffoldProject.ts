@@ -32,24 +32,35 @@ export const scaffoldProject = async ({
       );
     } else {
       spinner.stopAndPersist();
-      const { overwriteDir } = await inquirer.prompt<{ overwriteDir: boolean }>(
-        {
-          name: "overwriteDir",
-          type: "confirm",
-          message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
-            projectName,
-          )} already exists and isn't empty. Do you want to overwrite it?`,
-          default: false,
-        },
-      );
-      if (!overwriteDir) {
+      const { overwriteDir } = await inquirer.prompt<{ overwriteDir: string }>({
+        name: "overwriteDir",
+        type: "list",
+        message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
+          projectName,
+        )} already exists and isn't empty. How would you like to proceed?`,
+        choices: [
+          { name: "Clear directory", value: "clear", short: "Clear" },
+          { name: "Abort installation", value: "abort", short: "Abort" },
+          {
+            name: "Overwrite files (dangerous)",
+            value: "overwrite",
+            short: "Overwrite",
+          },
+        ],
+        default: "clear",
+      });
+      if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
         process.exit(0);
-      } else {
+      } else if (overwriteDir === "clear") {
         spinner.info(
           `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
         );
         fs.emptyDirSync(projectDir);
+      } else if (overwriteDir === "overwrite") {
+        spinner.info(
+          `Overwriting ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
+        );
       }
     }
   }
