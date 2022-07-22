@@ -42,7 +42,6 @@
   "dependencies": {
     "chalk": "5.0.1",
     "commander": "^9.3.0",
-    "figlet": "^1.5.2",
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.1",
     "inquirer": "^9.0.0",
@@ -51,7 +50,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@types/figlet": "^1.5.4",
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^8.2.1",
