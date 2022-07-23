@@ -106,6 +106,18 @@ The following CLI options and flags can configure the create command with custom
 | `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
 | `--noInstall`     | Generate project without installing dependencies                        |
 
+To use the beta version of `create-t3-app`:
+
+```bash
+npx create-t3-app@beta
+```
+
+To scaffold the project using tRPC v10 (experimental):
+
+```bash
+npx create-t3-app@next
+```
+
 <h2 id="axioms">T3 Axioms</h2>
 
 We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
