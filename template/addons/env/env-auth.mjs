@@ -14,12 +14,12 @@ export const clientEnvSchema = z.object({
 });
 
 /**
- * Next.js client-side environment variables are evaluated at build time, 
+ * Next.js client-side environment variables are evaluated at build time,
  * so only environment variables actually used will be included.
- * 
+ *
  * Define your client-side environment variables in this object to
- * be able to use autocompletion and destructuring in your code. 
+ * be able to use autocompletion and destructuring in your code.
  */
 export const clientEnv = {
   // NEXT_PUBLIC_FOO: process.env.NEXT_PUBLIC_FOO,
-}
+};
