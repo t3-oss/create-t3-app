@@ -16,13 +16,13 @@ export const envVariablesInstaller: Installer = async ({
 
   switch (true) {
     case usingAuth && usingPrisma:
-      envFile = "env-prisma-auth.mjs";
+      envFile = "auth-prisma-schema.mjs";
       break;
     case usingAuth:
-      envFile = "env-auth.mjs";
+      envFile = "auth-schema.mjs";
       break;
     case usingPrisma:
-      envFile = "env-prisma.mjs";
+      envFile = "prisma-schema.mjs";
       break;
   }
 
