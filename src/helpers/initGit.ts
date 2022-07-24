@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import ora from "ora";
-import { execa } from "../utils/execAsync.js";
-import { logger } from "../utils/logger.js";
+import { execa } from "~/utils/execAsync.js";
+import { logger } from "~/utils/logger.js";
 
 // This initializes the Git-repository for the project
 export const initializeGit = async (projectDir: string) => {

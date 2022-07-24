@@ -35,6 +35,12 @@
     // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
     // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
 
+    /* MODULE PATH ALIAS*/
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

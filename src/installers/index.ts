@@ -1,10 +1,10 @@
-import type { PackageManager } from "../utils/getUserPkgManager.js";
-import type { CurriedRunPkgManagerInstallOptions } from "../utils/runPkgManagerInstall.js";
-import { envVariablesInstaller as envVariablesInstaller } from "./envVars.js";
-import { nextAuthInstaller } from "./next-auth.js";
-import { prismaInstaller } from "./prisma.js";
-import { tailwindInstaller } from "./tailwind.js";
-import { trpcInstaller } from "./trpc.js";
+import type { PackageManager } from "~/utils/getUserPkgManager.js";
+import type { CurriedRunPkgManagerInstallOptions } from "~/utils/runPkgManagerInstall.js";
+import { envVariablesInstaller as envVariablesInstaller } from "~/installers/envVars.js";
+import { nextAuthInstaller } from "~/installers/next-auth.js";
+import { prismaInstaller } from "~/installers/prisma.js";
+import { tailwindInstaller } from "~/installers/tailwind.js";
+import { trpcInstaller } from "~/installers/trpc.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
