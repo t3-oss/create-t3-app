@@ -16,26 +16,26 @@ export const envVariablesInstaller: Installer = async ({
 
   switch (true) {
     case usingAuth && usingPrisma:
-      envFile = "env-prisma-auth.mjs";
+      envFile = "auth-prisma-schema.mjs";
       break;
     case usingAuth:
-      envFile = "env-auth.mjs";
+      envFile = "auth-schema.mjs";
       break;
     case usingPrisma:
-      envFile = "env-prisma.mjs";
+      envFile = "prisma-schema.mjs";
       break;
   }
 
   if (!envFile) return;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
-  const envSchemaDest = path.join(projectDir, "src/env/env-schema.mjs");
+  const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
-  const envExample = path.join(projectDir, ".env-example");
+  const envExampleSrc = path.join(projectDir, ".env-example");
   const envDest = path.join(projectDir, ".env");
 
   await Promise.all([
     fs.copy(envSchemaSrc, envSchemaDest, { overwrite: true }),
-    fs.rename(envExample, envDest),
+    fs.rename(envExampleSrc, envDest),
   ]);
 };

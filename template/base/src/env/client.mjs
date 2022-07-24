@@ -1,7 +1,7 @@
 // @ts-check
-import { clientEnv, clientEnvSchema } from "./env-schema.mjs";
+import { clientEnv, clientSchema } from "./schema.mjs";
 
-const _clientEnv = clientEnvSchema.safeParse(clientEnv);
+const _clientEnv = clientSchema.safeParse(clientEnv);
 
 export const formatErrors = (
   /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
@@ -22,6 +22,9 @@ if (!_clientEnv.success) {
   throw new Error("Invalid environment variables");
 }
 
+/**
+ * Validate that client-side environment variables are exposed to the client.
+ */
 for (let key of Object.keys(_clientEnv.data)) {
   if (!key.startsWith("NEXT_PUBLIC_")) {
     console.warn("❌ Invalid public environment variable name:", key);
