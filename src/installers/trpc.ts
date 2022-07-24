@@ -1,7 +1,7 @@
-import type { Installer } from "./index.js";
+import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "../consts.js";
+import { PKG_ROOT } from "~/consts.js";
 
 export const trpcInstaller: Installer = async ({
   projectDir,
