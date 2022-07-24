@@ -1,9 +1,9 @@
-import type { PackageManager } from "./getUserPkgManager.js";
+import type { PackageManager } from "~/utils/getUserPkgManager.js";
 import path from "path";
 import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
-import { execa } from "./execAsync.js";
-import { logger } from "./logger.js";
+import { execa } from "~/utils/execAsync.js";
+import { logger } from "~/utils/logger.js";
 
 export interface RunPkgManagerInstallOptions {
   pkgManager: PackageManager;
