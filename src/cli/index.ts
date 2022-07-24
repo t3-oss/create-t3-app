@@ -1,13 +1,13 @@
-import type { AvailablePackages } from "../installers/index.js";
+import type { AvailablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
-import { CREATE_T3_APP, DEFAULT_APP_NAME } from "../consts.js";
-import { availablePackages } from "../installers/index.js";
-import { getVersion } from "../utils/getT3Version.js";
-import { getUserPkgManager } from "../utils/getUserPkgManager.js";
-import { logger } from "../utils/logger.js";
-import { validateAppName } from "../utils/validateAppName.js";
+import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
+import { availablePackages } from "~/installers/index.js";
+import { getVersion } from "~/utils/getT3Version.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { logger } from "~/utils/logger.js";
+import { validateAppName } from "~/utils/validateAppName.js";
 
 interface CliFlags {
   noGit: boolean;

@@ -16,7 +16,7 @@
 
 <div align="center">
 
-[![PRs-Welcome][contribute-image]][contribute-url] [![NPM version][npm-image]][npm-url]
+[![PRs-Welcome][contribute-image]][contribute-url] [![Discord](https://img.shields.io/discord/966627436387266600?color=%235865F2&label=Discord&logo=discord&logoColor=%23fff)](https://t3.gg/discord) [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
 
 </div>
@@ -35,6 +35,7 @@
 
 - <a href="#about">What is the T3 Stack?</a>
 - <a href="#getting-started">Getting Started</a>
+- <a href="#community">Community</a>
 - <a href="#cli">CLI Docs</a>
 - <a href="#axioms">T3 Axioms</a>
 - <a href="#contributors">Contributors</a>
@@ -88,6 +89,12 @@ If you prefer using the [experimental v10 version of tRPC](https://github.com/tr
 
 An ongoing development branch, `create-t3-app@beta`, can be downloaded for the most recent changes. Expect bugs when using the `beta` branch and please open issues with reproductions when they occur.
 
+<h2 id="community">Community</h2>
+
+For help, discussion about best practices, or any other conversation that would benefit create-t3-app:
+
+[Join the T3 Discord Server](https://t3.gg/discord)
+
 <h2 id="cli">CLI Docs</h2>
 
 The following CLI options and flags can configure the create command with custom behavior:
@@ -98,6 +105,18 @@ The following CLI options and flags can configure the create command with custom
 | `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
 | `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
 | `--noInstall`     | Generate project without installing dependencies                        |
+
+To use the beta version of `create-t3-app`:
+
+```bash
+npx create-t3-app@beta
+```
+
+To scaffold the project using tRPC v10 (experimental):
+
+```bash
+npx create-t3-app@next
+```
 
 <h2 id="axioms">T3 Axioms</h2>
 
