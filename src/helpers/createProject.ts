@@ -1,10 +1,10 @@
-import type { PkgInstallerMap } from "../installers/index.js";
+import type { PkgInstallerMap } from "~/installers/index.js";
 import path from "path";
-import { getUserPkgManager } from "../utils/getUserPkgManager.js";
-import { curryRunPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
-import { installPackages } from "./installPackages.js";
-import { scaffoldProject } from "./scaffoldProject.js";
-import { selectAppFile, selectIndexFile } from "./selectBoilerplate.js";
+import { installPackages } from "~/helpers/installPackages.js";
+import { scaffoldProject } from "~/helpers/scaffoldProject.js";
+import { selectAppFile, selectIndexFile } from "~/helpers/selectBoilerplate.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { curryRunPkgManagerInstall } from "~/utils/runPkgManagerInstall.js";
 
 interface CreateProjectOptions {
   projectName: string;
