@@ -69,13 +69,11 @@ export const trpcInstaller: Installer = async ({
     "src/server/trpc/router/example.ts",
   );
 
-  await Promise.all([
-    fs.copy(apiHandlerSrc, apiHandlerDest),
-    fs.copy(utilsSrc, utilsDest),
-    fs.copy(serverUtilSrc, serverUtilDest),
-    fs.copy(contextSrc, contextDest),
-    fs.copy(indexRouterSrc, indexRouterDest),
-    fs.copy(exampleRouterSrc, exampleRouterDest),
-    ...(usingAuth ? [fs.copy(authRouterSrc, authRouterDest)] : []),
-  ]);
+  fs.copySync(apiHandlerSrc, apiHandlerDest);
+  fs.copySync(utilsSrc, utilsDest);
+  fs.copySync(serverUtilSrc, serverUtilDest);
+  fs.copySync(contextSrc, contextDest);
+  fs.copySync(indexRouterSrc, indexRouterDest);
+  fs.copySync(exampleRouterSrc, exampleRouterDest);
+  usingAuth && fs.copySync(authRouterSrc, authRouterDest);
 };

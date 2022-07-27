@@ -23,9 +23,7 @@ export const tailwindInstaller: Installer = async ({
   const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
-  await Promise.all([
-    fs.copy(twCfgSrc, twCfgDest),
-    fs.copy(postcssCfgSrc, postcssCfgDest),
-    fs.copy(cssSrc, cssDest),
-  ]);
+  fs.copySync(twCfgSrc, twCfgDest);
+  fs.copySync(postcssCfgSrc, postcssCfgDest);
+  fs.copySync(cssSrc, cssDest);
 };

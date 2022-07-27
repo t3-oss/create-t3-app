@@ -36,9 +36,7 @@ export const nextAuthInstaller: Installer = async ({
   const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
   const nextAuthDefinitionDest = path.join(projectDir, "next-auth.d.ts");
 
-  await Promise.all([
-    fs.copy(apiHandlerSrc, apiHandlerDest),
-    fs.copy(restrictedApiSrc, restrictedApiDest),
-    fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
-  ]);
+  fs.copySync(apiHandlerSrc, apiHandlerDest);
+  fs.copySync(restrictedApiSrc, restrictedApiDest);
+  fs.copySync(nextAuthDefinitionSrc, nextAuthDefinitionDest);
 };

@@ -41,14 +41,12 @@ export const prismaInstaller: Installer = async ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts!.postinstall = "prisma generate"; //eslint-disable-line @typescript-eslint/no-non-null-assertion
 
-  await Promise.all([
-    fs.copy(schemaSrc, schemaDest),
-    fs.copy(clientSrc, clientDest),
-    fs.copy(sampleApiRouteSrc, sampleApiRouteDest),
-    fs.writeJSON(packageJsonPath, packageJsonContent, {
-      spaces: 2,
-    }),
-  ]);
+  fs.copySync(schemaSrc, schemaDest);
+  fs.copySync(clientSrc, clientDest);
+  fs.copySync(sampleApiRouteSrc, sampleApiRouteDest);
+  fs.writeJSONSync(packageJsonPath, packageJsonContent, {
+    spaces: 2,
+  });
 
   // only generate client if we have installed the dependencies
   if (!noInstall) {

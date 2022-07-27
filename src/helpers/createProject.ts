@@ -45,8 +45,8 @@ export const createProject = async ({
   });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  await selectAppFile({ projectDir, packages });
-  await selectIndexFile({ projectDir, packages });
+  selectAppFile({ projectDir, packages });
+  selectIndexFile({ projectDir, packages });
 
   return projectDir;
 };
