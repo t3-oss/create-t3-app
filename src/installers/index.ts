@@ -15,8 +15,35 @@ export const availablePackages = [
   "trpc",
   "envVariables",
 ] as const;
-
 export type AvailablePackages = typeof availablePackages[number];
+
+/*
+ * This maps the necessary packages to a version.
+ * This improves performance significantly over fetching it from the npm registry.
+ */
+export const dependencyVersionMap = {
+  // NextAuth.js
+  "next-auth": "^4.10.2",
+  "@next-auth/prisma-adapter": "^1.0.4",
+
+  // Prisma
+  prisma: "^4.1.0",
+  "@prisma/client": "^4.1.0",
+
+  // TailwindCSS
+  tailwindcss: "^3.1.6",
+  autoprefixer: "^10.4.7",
+  postcss: "^8.4.14",
+
+  // tRPC
+  "@trpc/client": "10.0.0-alpha.41",
+  "@trpc/server": "10.0.0-alpha.41",
+  "@trpc/react": "10.0.0-alpha.41",
+  "@trpc/next": "10.0.0-alpha.41",
+  "react-query": "^3.39.2",
+  superjson: "^1.9.1",
+} as const;
+export type AvailableDependencies = keyof typeof dependencyVersionMap;
 
 export interface InstallerOptions {
   projectDir: string;
@@ -29,7 +56,7 @@ export interface InstallerOptions {
   ) => Promise<void>;
 }
 
-export type Installer = (opts: InstallerOptions) => Promise<void>;
+export type Installer = (opts: InstallerOptions) => void;
 
 export type PkgInstallerMap = {
   [pkg in AvailablePackages]: {
