@@ -10,7 +10,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
 
   addPackageDependency({
     projectDir,
-    dependenies: deps,
+    dependencies: deps,
     devMode: false,
   });
 

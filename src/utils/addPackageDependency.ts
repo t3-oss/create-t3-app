@@ -7,17 +7,17 @@ import {
 } from "~/installers/index.js";
 
 export const addPackageDependency = (opts: {
-  dependenies: AvailableDependencies[];
+  dependencies: AvailableDependencies[];
   devMode: boolean;
   projectDir: string;
 }) => {
-  const { dependenies, devMode, projectDir } = opts;
+  const { dependencies, devMode, projectDir } = opts;
 
   const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
   ) as PackageJson;
 
-  dependenies.forEach((pkgName) => {
+  dependencies.forEach((pkgName) => {
     const version = dependencyVersionMap[pkgName];
 
     if (devMode) {

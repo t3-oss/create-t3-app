@@ -8,12 +8,12 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependenies: ["prisma"],
+    dependencies: ["prisma"],
     devMode: true,
   });
   addPackageDependency({
     projectDir,
-    dependenies: ["@prisma/client"],
+    dependencies: ["@prisma/client"],
     devMode: false,
   });
 

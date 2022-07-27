@@ -7,7 +7,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependenies: [
+    dependencies: [
       "react-query",
       "superjson",
       "@trpc/server",
