@@ -1,7 +1,6 @@
 import type { PkgInstallerMap } from "../installers/index.js";
 import path from "path";
 import { getUserPkgManager } from "../utils/getUserPkgManager.js";
-import { curryRunPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
 import { installPackages } from "./installPackages.js";
 import { scaffoldProject } from "./scaffoldProject.js";
 import { selectAppFile, selectIndexFile } from "./selectBoilerplate.js";
@@ -19,12 +18,6 @@ export const createProject = async ({
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
-  const runPkgManagerInstall = curryRunPkgManagerInstall({
-    projectDir,
-    pkgManager,
-    devMode: false,
-    noInstallMode: noInstall,
-  });
 
   // Bootstraps the base Next.js application
   await scaffoldProject({
@@ -32,16 +25,14 @@ export const createProject = async ({
     projectDir,
     pkgManager,
     noInstall,
-    runPkgManagerInstall,
   });
 
   // Install the selected packages
-  await installPackages({
+  installPackages({
     projectDir,
     pkgManager,
     packages,
     noInstall,
-    runPkgManagerInstall,
   });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file

@@ -2,23 +2,22 @@ import type { Installer } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
+import { addPackageDependency } from "../utils/addPackageDependency.js";
 
-export const trpcInstaller: Installer = async ({
-  projectDir,
-  packages,
-  runPkgManagerInstall,
-}) => {
-  await runPkgManagerInstall({
-    packages: [
-      "react-query@3",
+export const trpcInstaller: Installer = ({ projectDir, packages }) => {
+  addPackageDependency({
+    projectDir,
+    dependenies: [
+      "react-query",
       "superjson",
-      "@trpc/server@experimental",
-      "@trpc/client@experimental",
-      "@trpc/next@experimental",
-      "@trpc/react@experimental",
+      "@trpc/server",
+      "@trpc/client",
+      "@trpc/next",
+      "@trpc/react",
     ],
     devMode: false,
   });
+
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 

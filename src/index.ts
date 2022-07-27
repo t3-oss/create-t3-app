@@ -5,6 +5,7 @@ import fs from "fs-extra";
 import { runCli } from "./cli/index.js";
 import { createProject } from "./helpers/createProject.js";
 import { initializeGit } from "./helpers/initGit.js";
+import { installDependencies } from "./helpers/installDependencies.js";
 import { logNextSteps } from "./helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "./installers/index.js";
 import { logger } from "./utils/logger.js";
@@ -31,16 +32,20 @@ const main = async () => {
     noInstall,
   });
 
+  if (!noInstall) {
+    installDependencies(projectDir);
+  }
+
   if (!noGit) {
-    await initializeGit(projectDir);
+    initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
-  const pkgJson = (await fs.readJSON(
+  const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
-  )) as PackageJson;
+  ) as PackageJson;
   pkgJson.name = scopedAppName;
-  await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
+  fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
 

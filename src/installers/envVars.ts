@@ -3,11 +3,7 @@ import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
 
-export const envVariablesInstaller: Installer = async ({
-  projectDir,
-  packages,
-  // eslint-disable-next-line
-}) => {
+export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 

@@ -3,21 +3,17 @@ import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
-import { execa } from "../utils/execAsync.js";
+import { addPackageDependency } from "../utils/addPackageDependency.js";
 
-export const prismaInstaller: Installer = async ({
-  projectDir,
-  runPkgManagerInstall,
-  pkgManager,
-  packages,
-  noInstall,
-}) => {
-  await runPkgManagerInstall({
-    packages: ["prisma"],
+export const prismaInstaller: Installer = ({ projectDir, packages }) => {
+  addPackageDependency({
+    projectDir,
+    dependenies: ["prisma"],
     devMode: true,
   });
-  await runPkgManagerInstall({
-    packages: ["@prisma/client"],
+  addPackageDependency({
+    projectDir,
+    dependenies: ["@prisma/client"],
     devMode: false,
   });
 
@@ -47,13 +43,4 @@ export const prismaInstaller: Installer = async ({
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
   });
-
-  // only generate client if we have installed the dependencies
-  if (!noInstall) {
-    const generateClientCmd =
-      pkgManager === "npm"
-        ? "npx prisma generate"
-        : `${pkgManager} prisma generate`;
-    await execa(generateClientCmd, { cwd: projectDir });
-  }
 };

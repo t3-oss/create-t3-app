@@ -1,18 +1,16 @@
-import type { Installer } from "./index.js";
+import type { Installer, AvailableDependencies } from "./index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "../consts.js";
+import { addPackageDependency } from "../utils/addPackageDependency.js";
 
-export const nextAuthInstaller: Installer = async ({
-  projectDir,
-  runPkgManagerInstall,
-  packages,
-}) => {
-  await runPkgManagerInstall({
-    packages: [
-      "next-auth",
-      packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
-    ],
+export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
+  const deps: AvailableDependencies[] = ["next-auth"];
+  if (packages?.prisma.inUse) deps.push("@next-auth/prisma-adapter");
+
+  addPackageDependency({
+    projectDir,
+    dependenies: deps,
     devMode: false,
   });
 
