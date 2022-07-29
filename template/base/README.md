@@ -30,7 +30,7 @@ We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_cam
 - Click **Deploy**
 - Now whenever you push a change to your repository, Vercel will automatically redeploy your website!
 
-You can also dockerize this stack and deploy a container. 
+You can also dockerize this stack and deploy a container.
 
 - In your next.config.mjs, add the `output: "standalone"` option to your config.
 - Create a `.dockerignore` file with the following contents:
@@ -44,6 +44,7 @@ You can also dockerize this stack and deploy a container.
   .git
   ```
 - Create a `Dockerfile` with the following contents:
+
   ```
   # Install dependencies only when needed
   FROM node:16-alpine AS deps
@@ -93,7 +94,7 @@ You can also dockerize this stack and deploy a container.
   COPY --from=builder /app/public ./public
   COPY --from=builder /app/package.json ./package.json
 
-  # Automatically leverage output traces to reduce image size 
+  # Automatically leverage output traces to reduce image size
   # https://nextjs.org/docs/advanced-features/output-file-tracing
   COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
   COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
@@ -106,6 +107,7 @@ You can also dockerize this stack and deploy a container.
 
   CMD ["node", "server.js"]
   ```
+
 - You can now build an image to deploy yourself, or use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
 ## Useful resources
