@@ -21,6 +21,8 @@ If you are not familiar with the different technologies used in this project, pl
 
 ## How do I deploy this?
 
+### Vercel
+
 We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy NextJs apps.
 
 - Push your code to a GitHub repository.
@@ -30,31 +32,41 @@ We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_cam
 - Click **Deploy**
 - Now whenever you push a change to your repository, Vercel will automatically redeploy your website!
 
+### Docker
+
 You can also dockerize this stack and deploy a container.
 
-- In your next.config.mjs, add the `output: "standalone"` option to your config.
-- Create a `.dockerignore` file with the following contents:
-  ```
-  Dockerfile
-  .dockerignore
-  node_modules
-  npm-debug.log
-  README.md
-  .next
-  .git
-  ```
-- Create a `Dockerfile` with the following contents:
+1. In your [next.config.mjs](./next.config.mjs), add the `output: "standalone"` option to your config.
+2. Create a `.dockerignore` file with the following contents:
+   <details>
+   <summary>.dockerignore</summary>
 
-  ```
-  # Install dependencies only when needed
-  FROM node:16-alpine AS deps
-  # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-  RUN apk add --no-cache libc6-compat
-  WORKDIR /app
+   ```
+   Dockerfile
+   .dockerignore
+   node_modules
+   npm-debug.log
+   README.md
+   .next
+   .git
+   ```
 
-  # Install dependencies based on the preferred package manager
-  COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-  RUN \
+  </details>
+
+3. Create a `Dockerfile` with the following contents:
+   <details>
+   <summary>Dockerfile</summary>
+
+   ```Dockerfile
+   # Install dependencies only when needed
+   FROM node:16-alpine AS deps
+   # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+   RUN apk add --no-cache libc6-compat
+   WORKDIR /app
+
+   # Install dependencies based on the preferred package manager
+   COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+   RUN \
       if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
       elif [ -f package-lock.json ]; then npm ci; \
       elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
@@ -62,53 +74,55 @@ You can also dockerize this stack and deploy a container.
       fi
 
 
-  # Rebuild the source code only when needed
-  FROM node:16-alpine AS builder
-  WORKDIR /app
-  COPY --from=deps /app/node_modules ./node_modules
-  COPY . .
+   # Rebuild the source code only when needed
+   FROM node:16-alpine AS builder
+   WORKDIR /app
+   COPY --from=deps /app/node_modules ./node_modules
+   COPY . .
 
-  # Next.js collects completely anonymous telemetry data about general usage.
-  # Learn more here: https://nextjs.org/telemetry
-  # Uncomment the following line in case you want to disable telemetry during the build.
-  # ENV NEXT_TELEMETRY_DISABLED 1
+   # Next.js collects completely anonymous telemetry data about general usage.
+   # Learn more here: https://nextjs.org/telemetry
+   # Uncomment the following line in case you want to disable telemetry during the build.
+   # ENV NEXT_TELEMETRY_DISABLED 1
 
-  RUN yarn build
+   RUN yarn build
 
-  # If using npm comment out above and use below instead
-  # RUN npm run build
+   # If using npm comment out above and use below instead
+   # RUN npm run build
 
-  # Production image, copy all the files and run next
-  FROM node:16-alpine AS runner
-  WORKDIR /app
+   # Production image, copy all the files and run next
+   FROM node:16-alpine AS runner
+   WORKDIR /app
 
-  ENV NODE_ENV production
-  # Uncomment the following line in case you want to disable telemetry during runtime.
-  # ENV NEXT_TELEMETRY_DISABLED 1
+   ENV NODE_ENV production
+   # Uncomment the following line in case you want to disable telemetry during runtime.
+   # ENV NEXT_TELEMETRY_DISABLED 1
 
-  RUN addgroup --system --gid 1001 nodejs
-  RUN adduser --system --uid 1001 nextjs
+   RUN addgroup --system --gid 1001 nodejs
+   RUN adduser --system --uid 1001 nextjs
 
-  # You only need to copy next.config.js if you are NOT using the default configuration
-  # COPY --from=builder /app/next.config.js ./
-  COPY --from=builder /app/public ./public
-  COPY --from=builder /app/package.json ./package.json
+   # You only need to copy next.config.js if you are NOT using the default configuration
+   # COPY --from=builder /app/next.config.js ./
+   COPY --from=builder /app/public ./public
+   COPY --from=builder /app/package.json ./package.json
 
-  # Automatically leverage output traces to reduce image size
-  # https://nextjs.org/docs/advanced-features/output-file-tracing
-  COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-  COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+   # Automatically leverage output traces to reduce image size
+   # https://nextjs.org/docs/advanced-features/output-file-tracing
+   COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+   COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-  USER nextjs
+   USER nextjs
 
-  EXPOSE 3000
+   EXPOSE 3000
 
-  ENV PORT 3000
+   ENV PORT 3000
 
-  CMD ["node", "server.js"]
-  ```
+   CMD ["node", "server.js"]
+   ```
 
-- You can now build an image to deploy yourself, or use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
+  </details>
+
+4. You can now build an image to deploy yourself, or use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
 ## Useful resources
 
