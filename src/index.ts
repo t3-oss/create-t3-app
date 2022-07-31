@@ -10,6 +10,7 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
 
 const main = async () => {
   renderTitle();
@@ -31,16 +32,22 @@ const main = async () => {
     noInstall,
   });
 
+  if (!noInstall) {
+    installDependencies(projectDir);
+  }
+
   if (!noGit) {
-    await initializeGit(projectDir);
+    initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
-  const pkgJson = (await fs.readJSON(
+
+  // Write name to package.json
+  const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
-  )) as PackageJson;
+  ) as PackageJson;
   pkgJson.name = scopedAppName;
-  await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
+  fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
 

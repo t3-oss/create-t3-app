@@ -2,23 +2,22 @@ import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
+import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const trpcInstaller: Installer = async ({
-  projectDir,
-  packages,
-  runPkgManagerInstall,
-}) => {
-  await runPkgManagerInstall({
-    packages: [
-      "react-query@3.39.2",
+export const trpcInstaller: Installer = ({ projectDir, packages }) => {
+  addPackageDependency({
+    projectDir,
+    dependencies: [
+      "react-query",
       "superjson",
-      "@trpc/server@experimental",
-      "@trpc/client@experimental",
-      "@trpc/next@experimental",
-      "@trpc/react@experimental",
+      "@trpc/server",
+      "@trpc/client",
+      "@trpc/next",
+      "@trpc/react",
     ],
     devMode: false,
   });
+
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
@@ -69,13 +68,11 @@ export const trpcInstaller: Installer = async ({
     "src/server/trpc/router/example.ts",
   );
 
-  await Promise.all([
-    fs.copy(apiHandlerSrc, apiHandlerDest),
-    fs.copy(utilsSrc, utilsDest),
-    fs.copy(serverUtilSrc, serverUtilDest),
-    fs.copy(contextSrc, contextDest),
-    fs.copy(indexRouterSrc, indexRouterDest),
-    fs.copy(exampleRouterSrc, exampleRouterDest),
-    ...(usingAuth ? [fs.copy(authRouterSrc, authRouterDest)] : []),
-  ]);
+  fs.copySync(apiHandlerSrc, apiHandlerDest);
+  fs.copySync(utilsSrc, utilsDest);
+  fs.copySync(serverUtilSrc, serverUtilDest);
+  fs.copySync(contextSrc, contextDest);
+  fs.copySync(indexRouterSrc, indexRouterDest);
+  fs.copySync(exampleRouterSrc, exampleRouterDest);
+  usingAuth && fs.copySync(authRouterSrc, authRouterDest);
 };

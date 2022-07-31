@@ -7,7 +7,7 @@ type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "projectDir" | "packages">
 >;
 // This generates the _app.tsx file that is used to render the app
-export const selectAppFile = async ({
+export const selectAppFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
@@ -28,12 +28,12 @@ export const selectAppFile = async ({
   if (appFile !== "") {
     const appSrc = path.join(appFileDir, appFile);
     const appDest = path.join(projectDir, "src/pages/_app.tsx");
-    await fs.copy(appSrc, appDest);
+    fs.copySync(appSrc, appDest);
   }
 };
 
 // This selects the proper index.tsx to be used that showcases the chosen tech
-export const selectIndexFile = async ({
+export const selectIndexFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
@@ -61,6 +61,6 @@ export const selectIndexFile = async ({
   if (indexFile !== "") {
     const indexSrc = path.join(indexFileDir, indexFile);
     const indexDest = path.join(projectDir, "src/pages/index.tsx");
-    await fs.copy(indexSrc, indexDest);
+    fs.copySync(indexSrc, indexDest);
   }
 };

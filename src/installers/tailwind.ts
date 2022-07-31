@@ -2,13 +2,12 @@ import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
+import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const tailwindInstaller: Installer = async ({
-  projectDir,
-  runPkgManagerInstall,
-}) => {
-  await runPkgManagerInstall({
-    packages: ["tailwindcss", "postcss", "autoprefixer"],
+export const tailwindInstaller: Installer = ({ projectDir }) => {
+  addPackageDependency({
+    projectDir,
+    dependencies: ["tailwindcss", "postcss", "autoprefixer"],
     devMode: true,
   });
 
@@ -23,9 +22,7 @@ export const tailwindInstaller: Installer = async ({
   const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
-  await Promise.all([
-    fs.copy(twCfgSrc, twCfgDest),
-    fs.copy(postcssCfgSrc, postcssCfgDest),
-    fs.copy(cssSrc, cssDest),
-  ]);
+  fs.copySync(twCfgSrc, twCfgDest);
+  fs.copySync(postcssCfgSrc, postcssCfgDest);
+  fs.copySync(cssSrc, cssDest);
 };
