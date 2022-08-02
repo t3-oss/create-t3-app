@@ -32,7 +32,10 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   );
 
   const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
-  const nextAuthDefinitionDest = path.join(projectDir, "next-auth.d.ts");
+  const nextAuthDefinitionDest = path.join(
+    projectDir,
+    "src/types/next-auth.d.ts",
+  );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(restrictedApiSrc, restrictedApiDest);
