@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/t3-oss/create-t3-app/compare/v5.3.0...v5.4.0) (2022-08-02)
+
+### Features
+
+- add deployment strategy to generated README ([#258](https://github.com/t3-oss/create-t3-app/issues/258)) ([c7d4dce](https://github.com/t3-oss/create-t3-app/commit/c7d4dce182b1c306dc2a41d42483994c336843f4))
+- set appName to directory on 'npx create-t3-app .' ([#273](https://github.com/t3-oss/create-t3-app/issues/273)) ([2179f2d](https://github.com/t3-oss/create-t3-app/commit/2179f2d38f74de0e3fda5661f5125d049eb4d238))
+
+### Bug Fixes
+
+- height on small screens ([#256](https://github.com/t3-oss/create-t3-app/issues/256)) ([fe86915](https://github.com/t3-oss/create-t3-app/commit/fe86915ced72dc979e5fe68bd56b038d9c714928))
+- missing next-auth types ([#255](https://github.com/t3-oss/create-t3-app/issues/255)) ([ed42629](https://github.com/t3-oss/create-t3-app/commit/ed42629be5fb9be72abd40bbe784f2bda99eec99)), closes [#254](https://github.com/t3-oss/create-t3-app/issues/254)
+- **prisma:** make db changes for next-auth on mysql obvious ([#275](https://github.com/t3-oss/create-t3-app/issues/275)) ([e9507c8](https://github.com/t3-oss/create-t3-app/commit/e9507c887e135f3e44357c618689f5cdb2f13c43))
+
 ## [5.3.0](https://github.com/t3-oss/create-t3-app/compare/v5.2.1...v5.3.0) (2022-07-25)
 
 ### Features
