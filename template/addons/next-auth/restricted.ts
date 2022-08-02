@@ -1,7 +1,7 @@
 // Example of a restricted endpoint that only authenticated users can access from https://next-auth.js.org/getting-started/example
 
 import { NextApiRequest, NextApiResponse } from "next";
-import { unstable_getServerSession as getServerSession } from "next-auth";
+import { unstable_getServerSession as getServerSession } from "next-auth/next";
 import { authOptions as nextAuthOptions } from "./auth/[...nextauth]";
 
 const restricted = async (req: NextApiRequest, res: NextApiResponse) => {
