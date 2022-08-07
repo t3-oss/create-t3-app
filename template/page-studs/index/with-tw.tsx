@@ -7,6 +7,7 @@ type TechnologyCardProps = {
   documentation: string;
 };
 
+export type Variant<T extends string> = { [P in T]: string };
 const Home: NextPage = () => {
   return (
     <>
