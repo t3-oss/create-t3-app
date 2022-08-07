@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/t3-oss/create-t3-app/compare/v5.4.0...v5.5.0) (2022-08-07)
+
+### Features
+
+- make session.user.id non-nullable ([#282](https://github.com/t3-oss/create-t3-app/issues/282)) ([6a81f03](https://github.com/t3-oss/create-t3-app/commit/6a81f03bfafdf77c1c82b7972a97e3e54d77935c))
+
 ## [5.4.0](https://github.com/t3-oss/create-t3-app/compare/v5.3.0...v5.4.0) (2022-08-02)
 
 ### Features
