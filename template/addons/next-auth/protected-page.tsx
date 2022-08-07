@@ -6,7 +6,7 @@ const ProtectedPage: NextPage = () => {
   return (
     <div>
       <h1>Protected Page</h1>
-      <p>You're only seeing this page because you're authenticated.</p>
+      <p>You are only seeing this page because you are authenticated.</p>
       <button onClick={() => signOut()}>Sign out</button>
     </div>
   );
