@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSidePropsContext } from "next";
+import { signOut } from "next-auth/react";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
 const ProtectedPage: NextPage = () => {
@@ -6,6 +7,7 @@ const ProtectedPage: NextPage = () => {
     <div>
       <h1>Protected Page</h1>
       <p>You're only seeing this page because you're authenticated.</p>
+      <button onClick={() => signOut()}>Sign out</button>
     </div>
   );
 };
