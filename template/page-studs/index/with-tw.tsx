@@ -55,6 +55,20 @@ const Home: NextPage = () => {
   );
 };
 
+const Headline: React.FC<{ color?: ColorToken; children: React.ReactNode }> = ({
+  color = "gray",
+  children,
+}) => (
+  <h1
+    className={[
+      "text-5xl md:text-[5rem] leading-normal font-extrabold",
+      colors[color],
+    ].join(" ")}
+  >
+    {children}
+  </h1>
+);
+
 const TechnologyCard = ({
   name,
   description,
