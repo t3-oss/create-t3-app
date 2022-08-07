@@ -8,6 +8,8 @@ type TechnologyCardProps = {
 };
 
 export type Variant<T extends string> = { [P in T]: string };
+
+export type ColorToken = "red" | "green" | "blue" | "purple" | "gray";
 const Home: NextPage = () => {
   return (
     <>
