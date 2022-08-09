@@ -29,11 +29,11 @@ const TableOfContents = ({ headings }: { headings: MarkdownHeading[] }) => {
       setActiveId(slug);
     };
     window.addEventListener("hashchange", () =>
-      updateActiveId(window.location.hash.slice(1))
+      updateActiveId(window.location.hash.slice(1)),
     );
     return () => {
       window.removeEventListener("hashchange", () =>
-        updateActiveId(window.location.hash.slice(1))
+        updateActiveId(window.location.hash.slice(1)),
       );
     };
   }, []);

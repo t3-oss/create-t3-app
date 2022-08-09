@@ -21,7 +21,7 @@ const Highlight = ({ highlight, attribute, hit }) => {
           <span key={index}>{parse(part.value)}</span>
         ) : (
           <span key={index}>{parse(part.value.substring(0, 10))}</span>
-        )
+        ),
       )}
     </span>
   );

@@ -8,7 +8,7 @@ import * as dotenv from "dotenv";
 const env = dotenv.config().parsed;
 const client = Algolia(
   env.ALGOLIA_APP_ID as string,
-  env.ALGOLIA_API_KEY as string
+  env.ALGOLIA_API_KEY as string,
 );
 const index = client.initIndex(env.ALGOLIA_INDEX_NAME);
 // scan directories in /src/pages for .md files, extract the title and description from between the two sets of ---, and add all pages to Algolia

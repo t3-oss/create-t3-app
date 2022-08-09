@@ -141,7 +141,7 @@ var dotenv = require("dotenv");
 var env = dotenv.config().parsed;
 var client = (0, algoliasearch_1["default"])(
   env.ALGOLIA_APP_ID,
-  env.ALGOLIA_API_KEY
+  env.ALGOLIA_API_KEY,
 );
 var index = client.initIndex(env.ALGOLIA_INDEX_NAME);
 // scan directories in /src/pages for .md files, extract the title and description from between the two sets of ---, and add all pages to Algolia
