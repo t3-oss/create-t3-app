@@ -1,3 +1,4 @@
+import type { PackageJson } from "type-fest";
 import type { PackageManager } from "~/utils/getUserPkgManager.js";
 import type { CurriedRunPkgManagerInstallOptions } from "~/utils/runPkgManagerInstall.js";
 import { envVariablesInstaller as envVariablesInstaller } from "~/installers/envVars.js";
@@ -62,3 +63,9 @@ export const buildPkgInstallerMap = (
     installer: envVariablesInstaller,
   },
 });
+
+export type CT3APackageJSON = PackageJson & {
+  ct3aMetadata?: {
+    initVersion: string;
+  };
+};
