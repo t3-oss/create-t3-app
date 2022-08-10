@@ -1,24 +1,18 @@
-import type { Installer } from "./index.js";
+import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
-import { PKG_ROOT } from "../consts.js";
-import { runPkgManagerInstall } from "../utils/runPkgManagerInstall.js";
+import { PKG_ROOT } from "~/consts.js";
 
 export const nextAuthInstaller: Installer = async ({
-  pkgManager,
   projectDir,
+  runPkgManagerInstall,
   packages,
-  noInstall,
 }) => {
   await runPkgManagerInstall({
-    pkgManager,
-    projectDir,
     packages: [
       "next-auth",
       packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
     ],
-    devMode: false,
-    noInstallMode: noInstall,
   });
 
   const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
@@ -38,8 +32,15 @@ export const nextAuthInstaller: Installer = async ({
     "src/pages/api/restricted.ts",
   );
 
+  const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
+  const nextAuthDefinitionDest = path.join(
+    projectDir,
+    "src/types/next-auth.d.ts",
+  );
+
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
+    fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
   ]);
 };
