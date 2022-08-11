@@ -11,6 +11,13 @@ import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
 import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
+
+type CT3APackageJSON = PackageJson & {
+  ct3aMetadata?: {
+    initVersion: string;
+  };
+};
 
 const main = async () => {
   renderTitle();
@@ -45,8 +52,9 @@ const main = async () => {
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
-  ) as PackageJson;
+  ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
+  pkgJson.ct3aMetadata = { initVersion: getVersion() };
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
