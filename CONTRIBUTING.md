@@ -69,7 +69,11 @@ If your change should appear in the changelog, i.e. it changes some behavior of 
 pnpm changeset
 ```
 
-and filling out the form with the appropriate information.
+and filling out the form with the appropriate information. Then, add the generated changeset to git:
+
+```bash
+git add ./changeset/*.md && git commit -m "chore: add changeset"
+```
 
 When all that's done, it's time to file a pull request to upstream:
 
