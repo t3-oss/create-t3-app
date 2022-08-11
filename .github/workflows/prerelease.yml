@@ -1,0 +1,39 @@
+name: Prerelease
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  prerelease:
+    if: ${{ github.repository_owner == 't3-oss' }}
+    name: Build & Publish a beta release to NPM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.2.1
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      - name: Modify package.json version
+        run: node .github/version-script.js
+
+      - name: Publish Beta to NPM
+        run: pnpm pub:beta
+        env:
+          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
