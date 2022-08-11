@@ -1,3 +1,6 @@
+// ORIGINALLY FROM CLOUDFLARE WRANGLER:
+// https://github.com/cloudflare/wrangler2/blob/main/.github/version-script.js
+
 const fs = require("fs");
 const { exec } = require("child_process");
 
