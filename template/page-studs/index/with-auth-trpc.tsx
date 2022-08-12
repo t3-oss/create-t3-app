@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 const AuthShowcase: React.FC = () => {
   const { data: secretMessage, isLoading } = trpc.useQuery([
-    "auth.getSecretMessage",
+    "question.getSecretMessage",
   ]);
 
   const { data: sessionData } = useSession();

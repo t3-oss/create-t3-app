@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 import { trpc } from "../utils/trpc";
 
 type TechnologyCardProps = {
@@ -11,7 +11,7 @@ type TechnologyCardProps = {
 
 const AuthShowcase: React.FC = () => {
   const { data: secretMessage, isLoading } = trpc.useQuery([
-    "auth.getSecretMessage",
+    "question.getSecretMessage",
   ]);
 
   const { data: sessionData } = useSession();
