@@ -2,7 +2,6 @@
   <img src="https://user-images.githubusercontent.com/95541290/184307358-ebf8be63-e434-49d9-8181-90269ad79599.png" width="130" alt="Logo for T3" />
 </p>
 
-
 <h1 align="center">
   create-t3-app
 </h1>
