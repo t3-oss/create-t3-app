@@ -23,7 +23,10 @@ export const trpcInstaller: Installer = async ({
 
   const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
 
-  const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
+  const apiHandlerSrc = path.join(
+    trpcAssetDir,
+    usingPrisma ? "api-handler-prisma.ts" : "api-handler.ts",
+  );
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
 
   const utilsSrc = path.join(trpcAssetDir, "utils.ts");
