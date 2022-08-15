@@ -46,3 +46,5 @@ temp/
 ._*
 .DS_Store
 Thumbs.db
+
+.vscode

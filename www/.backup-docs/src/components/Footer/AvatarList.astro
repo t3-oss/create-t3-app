@@ -1,0 +1,99 @@
+---
+export interface Props {
+  path: string;
+}
+const path = Astro.props.path as Props;
+const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${path}`;
+const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/main/docs/${path}`;
+
+async function getCommits(url: string) {
+  try {
+    const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
+
+    if (!token) {
+      throw new Error(
+        'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
+      );
+    }
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "User-Agent": "create-t3-app-docs/1.0",
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(
+        `Request to fetch commits failed. Reason: ${res.statusText}
+       Message: ${data.message}`,
+      );
+    }
+
+    return data;
+  } catch (e) {
+    console.warn(`[error]  /src/components/AvatarList.astro 
+    ${e?.message ?? e}`);
+    return new Array();
+  }
+}
+
+function removeDups(arr) {
+  if (!arr) {
+    return new Array();
+  }
+  let map = new Map();
+
+  for (let item of arr) {
+    let author = item.author;
+    // Deduplicate based on author.id
+    map.set(author.id, { login: author.login, id: author.id });
+  }
+
+  return Array.from(map.values());
+}
+const data = await getCommits(url);
+const unique = removeDups(data);
+const recentContributors = unique.slice(0, 3); // only show avatars for the 3 most recent contributors
+const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
+---
+
+<!-- Thanks to @5t3ph for https://smolcss.dev/#smol-avatar-list! -->{
+  recentContributors && (
+    <div class="flex flex-col max-w-6xl mx-auto border rounded-xl py-2 px-4 border-slate-900 dark:border-slate-50">
+      <h2 class="text-lg pb-3">We ❤️ Contributors</h2>
+      <ul
+        class="flex flex-wrap space-x-2"
+        style={`--avatar-count: ${recentContributors.length}`}
+      >
+        {recentContributors.map((item) => (
+          <li>
+            <a href={`https://github.com/${item.login}`}>
+              <img
+                class="rounded-full border-2 border-slate-900 dark:border-slate-50"
+                alt={`Contributor ${item.login}`}
+                title={`Contributor ${item.login}`}
+                width="48"
+                height="48"
+                src={`https://avatars.githubusercontent.com/u/${item.id}`}
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+      {additionalContributors > 0 && (
+        <span>
+          <a
+            href={commitsURL}
+          >{`and ${additionalContributors} additional contributor${
+            additionalContributors > 1 ? "s" : ""
+          }.`}</a>
+        </span>
+      )}
+      {unique.length === 0 && <a href={commitsURL}>Contributors</a>}
+    </div>
+  )
+}

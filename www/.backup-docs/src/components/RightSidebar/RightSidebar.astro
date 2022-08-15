@@ -1,0 +1,14 @@
+---
+import TableOfContents from "./TableOfContents";
+import MoreMenu from "./MoreMenu.astro";
+const { content, githubEditUrl } = Astro.props;
+const headings = Astro.props.headings;
+// const headings = content.astro.headings;
+---
+
+<nav class="min-w-[290px] px-2 sticky top-0">
+  <div class="h-full w-full">
+    <TableOfContents client:media="(min-width: 50em)" client:load {headings} />
+    <MoreMenu editHref={githubEditUrl} />
+  </div>
+</nav>
