@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "5.6.0-next.1",
+  "version": "5.7.0-next.1",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "license": "MIT",
@@ -30,15 +30,16 @@
     "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
-    "lint": "eslint src/ --fix",
-    "lint:check": "eslint src/ --cache --cache-strategy content",
+    "lint": "eslint src/ --cache --cache-strategy content",
+    "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck",
     "prepare": "husky install",
-    "release": "standard-version",
-    "pub:beta": "npm run build && npm publish --tag beta",
-    "pub:next": "npm run build && npm publish --tag next",
-    "pub:release": "npm run build && npm publish"
+    "release": "changeset version",
+    "pub:beta": "pnpm build && npm publish --tag beta",
+    "pub:next": "pnpm build && npm publish --tag next",
+    "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
     "chalk": "5.0.1",
@@ -49,6 +50,7 @@
     "ora": "6.1.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.24.3",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/fs-extra": "^9.0.13",
