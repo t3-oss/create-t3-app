@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/t3-oss/create-t3-app/compare/v5.5.0...v5.6.0) (2022-08-11)
+
+### Features
+
+- Include ct3a version as metadata in generated app ([#305](https://github.com/t3-oss/create-t3-app/issues/305)) ([0be4a97](https://github.com/t3-oss/create-t3-app/commit/0be4a97fdf1c7bfab78d7be2051c2b21e665c491))
+
+### Bug Fixes
+
+- change ! reversion to equality in env validation ([#293](https://github.com/t3-oss/create-t3-app/issues/293)) ([7822c43](https://github.com/t3-oss/create-t3-app/commit/7822c433df18011f0cc6748e2c499c0e4283386c))
+- parse path returned from process.cwd() before using it ([#303](https://github.com/t3-oss/create-t3-app/issues/303)) ([b55f196](https://github.com/t3-oss/create-t3-app/commit/b55f196d0146c5c3969de4c25e7732046aad6284))
+
 ## [5.5.0](https://github.com/t3-oss/create-t3-app/compare/v5.4.0...v5.5.0) (2022-08-07)
 
 ### Features

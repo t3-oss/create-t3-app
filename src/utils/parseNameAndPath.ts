@@ -1,3 +1,5 @@
+import pathModule from "path";
+
 /**
  *  Parses the appName and its path from the user input.
  * Returns an array of [appName, path] where appName is the name put in the package.json and
@@ -15,7 +17,8 @@ export const parseNameAndPath = (input: string) => {
 
   // If the user ran `npx create-t3-app .` or similar, the appName should be the current directory
   if (appName === ".") {
-    appName = process.cwd().split("/").pop();
+    const parsedCwd = pathModule.resolve(process.cwd());
+    appName = pathModule.basename(parsedCwd);
   }
 
   // If the first part is a @, it's a scoped package
