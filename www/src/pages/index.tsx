@@ -14,8 +14,9 @@ export default function Home(): JSX.Element {
         <div className="flex flex-col items-center justify-center min-h-screen">
           <img src="/img/t3-logo.png" width="80" height="80" alt="lol" />
           <div className="pt-4" />
-          <h1 className="text-[#E8DCFF] text-5xl font-bold text-center anim-1">
-            Create <span className="text-violet-300">T3</span> App
+          <h1 className="dark:text-[#E8DCFF] text-violet-500 text-5xl font-bold text-center anim-1">
+            Create{" "}
+            <span className="dark:text-violet-300 text-violet-400">T3</span> App
           </h1>
 
           <div className="pt-12 md:pt-6" />
@@ -41,7 +42,7 @@ export default function Home(): JSX.Element {
           </code>
 
           <div className="mt-4" />
-          <div className="flex gap-4 font-medium text-neutral-300 anim-2">
+          <div className="flex gap-4 font-medium dark:text-neutral-300 text-zinc-700 anim-2">
             <a
               href="https://github.com/t3-oss/create-t3-app"
               rel="noreferrer"

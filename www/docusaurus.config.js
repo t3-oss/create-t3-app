@@ -9,7 +9,8 @@ const config = {
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-
+  organizationName: "t3-oss",
+  projectName: "create-t3-app",
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -45,8 +46,16 @@ const config = {
         },
         items: [
           {
-            to: "docs/introduction",
+            to: "docs/intro",
             label: "Docs",
+          },
+          {
+            to: "docs/faq",
+            label: "FAQ",
+          },
+          {
+            to: "docs/project-board",
+            label: "Made with T3",
           },
           {
             href: "https://github.com/t3-oss/create-t3-app",

@@ -6,7 +6,14 @@ const sidebars = {
     {
       type: "category",
       label: "Introduction",
-      items: ["introduction", "getting-started", "installation", "why"],
+      items: [
+        "introduction",
+        "getting-started",
+        "installation",
+        "why",
+        "faq",
+        "project-board",
+      ],
       collapsed: false,
     },
     {

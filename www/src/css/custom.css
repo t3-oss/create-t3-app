@@ -9,25 +9,40 @@
 @tailwind utilities;
 
 :root {
-  --ifm-color-primary: #398ccb;
-  --ifm-color-primary-dark: #317eb9;
-  --ifm-color-primary-darker: #2e77af;
-  --ifm-color-primary-darkest: #266290;
-  --ifm-color-primary-light: #4e98d0;
-  --ifm-color-primary-lighter: #589ed3;
-  --ifm-color-primary-lightest: #77b0db;
-  --ifm-code-font-size: 95%;
-  --ifm-container-width: 1140px;
-  --ifm-container-width-xl: 1320px;
-  --ifm-footer-background-color: #e8dcff;
+  --ifm-background-color: #f3f4f6;
+  --ifm-color-primary: #8b5cf6;
 }
 
 :root[data-theme="dark"] {
-  --ifm-footer-background-color: #e8dcff;
   --ifm-navbar-background-color: #18181b;
   --ifm-background-color: #18181b;
 }
 
 .navbar-external-link svg {
   @apply hidden;
+}
+
+.theme-edit-this-page {
+  @apply flex items-center;
+}
+
+.markdown h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-bold;
+}
+.markdown h1 {
+  @apply text-4xl;
+}
+.markdown h2 {
+  @apply text-3xl;
+}
+.markdown h3 {
+  @apply text-2xl;
+}
+.markdown h4,
+h5 {
+  @apply text-xl;
 }

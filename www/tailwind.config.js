@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{ts,tsx,md,mdx}"],
+  content: ["./src/**/*.{ts,tsx,md,mdx}", "./docs/**/*.{ts,tsx,md,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -15,5 +15,6 @@ module.exports = {
       },
     },
   },
+  darkMode: ["class", '[data-theme="dark"]'],
   plugins: [],
 };
