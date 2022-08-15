@@ -10,6 +10,8 @@
     "dev": {
       "cache": false
     },
-    "typecheck": {}
+    "typecheck": {
+      "cache": false
+    }
   }
 }
