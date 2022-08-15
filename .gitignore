@@ -41,6 +41,7 @@ yarn-error.log*
 tmp/
 temp/
 .eslintcache
+.docusaurus
 
 # MAC
 ._*

@@ -1,6 +1,0 @@
-{
-  "include": ["www", "cli"],
-  "compilerOptions": {
-    "strict": true
-  }
-}
