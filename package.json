@@ -40,8 +40,9 @@
     "check": "pnpm lint && pnpm format:check && pnpm typecheck",
     "prepare": "husky install",
     "release": "changeset version",
-    "pub:beta": "npm run build && npm publish --tag beta",
-    "pub:release": "npm run build && npm publish"
+    "pub:beta": "pnpm build && npm publish --tag beta",
+    "pub:next": "pnpm build && npm publish --tag next",
+    "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
     "chalk": "5.0.1",
