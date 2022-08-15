@@ -7,5 +7,5 @@ import { exec } from "child_process";
 // So we also run `npm install`, which does this update.
 // This is a workaround until this is handled automatically by `changeset version`.
 // See https://github.com/changesets/changesets/issues/421.
-exec("pnpm release");
-exec("pnpm install");
+exec("npx changeset version");
+exec("npm install");
