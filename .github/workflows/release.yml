@@ -43,6 +43,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
           version: node .github/changeset-version.js
           publish: npx changeset publish
         env:
