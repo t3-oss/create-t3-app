@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.7.0
+
+### Minor Changes
+
+- 7a76c95: feat(app): add lint config for typescript
+
 ## [5.6.0](https://github.com/t3-oss/create-t3-app/compare/v5.5.0...v5.6.0) (2022-08-11)
 
 ### Features
