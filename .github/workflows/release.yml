@@ -44,7 +44,7 @@ jobs:
         uses: changesets/action@v1
         with:
           version: node .github/changeset-version.js
-          publish: pnpm dlx changeset publish
+          publish: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
