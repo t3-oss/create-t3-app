@@ -6,11 +6,11 @@ name: Prerelease
 on:
   push:
     branches:
-      - main
+      - next
 jobs:
   prerelease:
     if: ${{ github.repository_owner == 't3-oss' }}
-    name: Build & Publish a beta release to NPM
+    name: Build & Publish a next release to NPM
     runs-on: ubuntu-latest
 
     steps:
@@ -34,12 +34,12 @@ jobs:
         run: pnpm install
 
       - name: Modify package.json version
-        run: node .github/version-script-beta.js
+        run: node .github/version-script-next.js
 
       - name: Authenticate to NPM
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > .npmrc
 
       - name: Publish Beta to NPM
-        run: pnpm pub:beta
+        run: pnpm pub:next
         env:
           NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

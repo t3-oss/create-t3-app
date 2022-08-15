@@ -2,6 +2,7 @@
 // https://github.com/cloudflare/wrangler2/blob/main/.github/version-script.js
 import fs from "fs";
 import { exec } from "child_process";
+import { getT3Version } from "../src/utils/getT3Version";
 
 try {
   const pkg = JSON.parse(fs.readFileSync("package.json"));
@@ -10,8 +11,8 @@ try {
       console.log(err);
       process.exit(1);
     }
-    // Version has to supersede the currently available version
-    pkg.version = "5.5.0-" + stdout.trim();
+    const currentVersion = getT3Version();
+    pkg.version = currentVersion + "-beta." + stdout.trim();
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, "\t") + "\n");
   });
 } catch (error) {
