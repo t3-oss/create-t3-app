@@ -1,7 +1,7 @@
 // ORIGINALLY FROM CLOUDFLARE WRANGLER:
 // https://github.com/cloudflare/wrangler2/blob/main/.github/version-script.js
-const fs = require("fs");
-const { exec } = require("child_process");
+import fs from "fs";
+import { exec } from "child_process";
 
 try {
   const pkg = JSON.parse(fs.readFileSync("package.json"));
