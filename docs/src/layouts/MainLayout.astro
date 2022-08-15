@@ -1,0 +1,67 @@
+---
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import Header from "../components/Header/Header.astro";
+import PageContent from "../components/PageContent/PageContent.astro";
+import MobileSidebar from "../components/LeftSidebar/MobileSidebar";
+import LeftSidebar from "../components/LeftSidebar/LeftSidebar.astro";
+import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
+import * as CONFIG from "../config";
+import "../styles/globals.css";
+
+const { content = {} } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const currentPage = Astro.url.pathname;
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
+const githubEditUrl =
+  CONFIG.GITHUB_EDIT_URL && CONFIG.GITHUB_EDIT_URL + currentFile;
+---
+
+<html
+  dir={content.dir ?? "ltr"}
+  lang={content.lang ?? "en-us"}
+  class="h-full scrollbar-thin dark:scrollbar-thumb-brand-primary scrollbar-thumb-slate-800 scrollbar-track-brand-primary"
+>
+  <head>
+    <HeadCommon />
+    <HeadSEO {content} canonicalURL={canonicalURL} />
+    <title>
+      {content.title
+        ? `${content.title} 🚀 ${CONFIG.SITE.title}`
+        : CONFIG.SITE.title}
+    </title>
+  </head>
+  <body
+    class="w-full h-full flex flex-col bg-slate-50 dark:bg-dark-background text-black dark:text-slate-50 "
+  >
+    <Header currentPage={currentPage} />
+    <MobileSidebar
+      client:load
+      currentPage={currentPage}
+      pathName={Astro.site.pathname}
+    />
+    <main
+      class="h-full flex lg:grid-cols-4 lg:grid max-w-full overflow-x-hidden pt-8 sm:pt-20 scrollbar-thin dark:scrollbar-thumb-slate-500 scrollbar-thumb-slate-800 scrollbar-track-brand-primary"
+    >
+      <aside
+        class="hidden w-fit mx-auto sm:flex sm:flex-col sm:sticky sm:top-0 sm:h-fit z-10  sm:bg-slate-50 sm:dark:bg-dark-background col-span-1"
+        
+      >
+        <LeftSidebar currentPage={currentPage} />
+      </aside>
+      <div class="block sm:hidden"></div>
+
+      <PageContent {content} {githubEditUrl} {currentFile} {currentPage}>
+        <slot />
+      </PageContent>
+
+      <aside
+        class="hidden w-fit mx-auto lg:flex lg:flex-col  h-fit"
+        title="Table of Contents"
+      >
+        <RightSidebar {content} {githubEditUrl} />
+      </aside>
+    </main>
+  </body>
+</html>
