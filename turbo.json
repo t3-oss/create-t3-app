@@ -9,6 +9,7 @@
     },
     "dev": {
       "cache": false
-    }
+    },
+    "typecheck": {}
   }
 }

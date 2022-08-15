@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
             id="command"
             className="px-3 py-1.5 text-base text-blue-300 rounded-md cursor-pointer bg-neutral-800 hover:bg-neutral-700 transition-all duration-300 anim-2"
             onClick={() => {
-              navigator.clipboard.writeText("npx create-t3-app@latest");
+              void navigator.clipboard.writeText("npx create-t3-app@latest");
 
               toast.success("Copied", {
                 style: {
