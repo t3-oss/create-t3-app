@@ -12,7 +12,7 @@ try {
       process.exit(1);
     }
     const currentVersion = getT3Version();
-    pkg.version = currentVersion + "-next." + stdout.trim();
+    pkg.version = "6.0.0-next." + stdout.trim();
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, "\t") + "\n");
   });
 } catch (error) {
