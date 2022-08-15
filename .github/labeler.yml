@@ -1,0 +1,5 @@
+"area: cli":
+  - any: ["src/**"]
+
+"area: t3-app":
+  - any: ["template/**"]

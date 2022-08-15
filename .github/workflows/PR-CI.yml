@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: pnpm lint:check
+      - run: pnpm lint
 
   lint-pr:
     runs-on: ubuntu-latest
