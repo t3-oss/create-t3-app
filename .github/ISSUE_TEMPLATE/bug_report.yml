@@ -1,0 +1,32 @@
+name: 🐞 Bug Report
+description: Create a bug report to help us improve
+title: "bug: "
+labels: ["unconfirmed bug"]
+body:
+  - type: textarea
+    attributes:
+      label: Provide environment information
+      description: |
+        Run this command in your project root and paste the results:
+        ```bash
+        npx envinfo --system --binaries
+        ```
+        If the issue is regarding a scaffolded app, please include the version used to scaffold that app which you can find in the `package.json` under `ct3aMetadata.initVersion`.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and consice description of the bug, as well as what you expected to happen when encountering it.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: To reproduce
+      description: Describe how to reproduce your bug. Steps, code snippets, reproduction repos etc.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: Add any other information related to the bug here, screenshots if applicable.
