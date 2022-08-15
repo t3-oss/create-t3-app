@@ -11,8 +11,7 @@ try {
       console.log(err);
       process.exit(1);
     }
-    const currentVersion = getT3Version();
-    pkg.version = currentVersion + "-beta." + stdout.trim();
+    pkg.version = "6.0.0-beta." + stdout.trim();
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, "\t") + "\n");
   });
 } catch (error) {
