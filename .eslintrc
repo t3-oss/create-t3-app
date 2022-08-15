@@ -50,5 +50,5 @@
       }
     }
   },
-  "ignorePatterns": ["node_modules/", "build/", "dist/"]
+  "ignorePatterns": ["node_modules/", "build/", "dist/", "template/base"]
 }
