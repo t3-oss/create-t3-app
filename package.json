@@ -3,6 +3,9 @@
   "version": "5.6.0",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
+  "maintainers": [
+    "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -30,16 +33,18 @@
     "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
-    "lint": "eslint src/ --fix",
-    "lint:check": "eslint src/ --cache --cache-strategy content",
+    "lint": "eslint src/ --cache --cache-strategy content",
+    "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck",
     "prepare": "husky install",
-    "release": "standard-version",
+    "release": "changeset version",
     "pub:beta": "npm run build && npm publish --tag beta",
     "pub:release": "npm run build && npm publish"
   },
   "dependencies": {
+    "@changesets/cli": "^2.24.3",
     "chalk": "5.0.1",
     "commander": "^9.3.0",
     "fs-extra": "^10.1.0",
