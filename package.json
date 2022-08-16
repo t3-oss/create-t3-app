@@ -1,6 +1,6 @@
 {
-  "name": "create-t3-app",
-  "version": "5.7.0",
+  "name": "@ct3a/root",
+  "version": "0.0.0",
   "description": "Create web application with the t3 stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
   "maintainers": [
@@ -20,57 +20,43 @@
     "tRPC",
     "typescript"
   ],
-  "type": "module",
-  "exports": "./dist/index.js",
-  "bin": {
-    "create-t3-app": "./dist/index.js"
-  },
   "engines": {
     "node": ">=14.16"
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
-    "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
-    "start": "node dist/index.js",
-    "lint": "eslint src/ --cache --cache-strategy content",
-    "lint:fix": "eslint src/ --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
+    "typecheck": "turbo run typecheck",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "start": "turbo run start",
+    "lint": "eslint . --cache --cache-strategy content",
+    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
+    "format:check": "prettier --check --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
     "check": "pnpm lint && pnpm format:check && pnpm typecheck",
     "prepare": "husky install",
     "release": "changeset version",
-    "pub:beta": "pnpm build && npm publish --tag beta",
-    "pub:next": "pnpm build && npm publish --tag next",
-    "pub:release": "pnpm build && npm publish"
-  },
-  "dependencies": {
-    "chalk": "5.0.1",
-    "commander": "^9.3.0",
-    "fs-extra": "^10.1.0",
-    "gradient-string": "^2.0.1",
-    "inquirer": "^9.0.0",
-    "ora": "6.1.1"
+    "pub:beta": "cd cli && pnpm pub:bete",
+    "pub:next": "cd cli && pnpm pub:next",
+    "pub:release": "cd cli && pnpm pub:release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.24.2",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@types/fs-extra": "^9.0.13",
-    "@types/gradient-string": "^1.1.2",
-    "@types/inquirer": "^8.2.1",
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
+    "@typescript-eslint/parser": "^5.33.1",
     "eslint": "^8.18.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.1.1",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-no-only-tests": "^2.6.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-unicorn": "40.1.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "tsup": "^6.1.2",
-    "type-fest": "^2.14.0",
-    "typescript": "^4.7.4"
+    "prettier-plugin-astro": "^0.5.0",
+    "turbo": "^1.4.3"
   }
 }

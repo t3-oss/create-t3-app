@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["cli", "www"],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ES2020",
@@ -35,12 +35,6 @@
     // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
     // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
 
-    /* MODULE PATH ALIAS*/
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -49,7 +43,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "template"]
+  }
 }
