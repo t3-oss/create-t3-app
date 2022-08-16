@@ -41,6 +41,7 @@
     "pub:release": "cd cli && pnpm pub:release"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.2",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
