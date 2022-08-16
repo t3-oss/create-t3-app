@@ -6,6 +6,7 @@
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
   ],
+  "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
