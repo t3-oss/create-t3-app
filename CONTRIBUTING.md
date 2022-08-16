@@ -41,17 +41,27 @@ pnpm install
 
 ### Implement your changes
 
-Now you're all setup and can start implementing your changes.
+This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
 
-When you want to test your changes, run:
+Here are some useful scripts for when you are developing:
+
+| Command          | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| `pnpm dev:cli`   | Builds and starts the CLI in watch-mode                 |
+| `pnpm dev:www`   | Starts the development server for the docs with HMR     |
+| `pnpm build:cli` | Builds the CLI                                          |
+| `pnpm build:www` | Builds the docs                                         |
+| `pnpm build`     | Builds CLI and docs                                     |
+| `pnpm format`    | Formats the code                                        |
+| `pnpm lint`      | Lints the code                                          |
+| `pnpm lint:fix`  | Lints the code and fixes any errors                     |
+| `pnpm check`     | Checks your code for typeerrors, formatting and linting |
+
+When making commits, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc... You can use `git status` to double check which files have not yet been staged for commit:
 
 ```bash
-pnpm dev
+git add <file> && git commit -m "feat/fix/chore/docs: commit message"
 ```
-
-which will build and start the CLI.
-
-When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:` etc...
 
 ### When you're done
 
@@ -72,7 +82,7 @@ pnpm changeset
 and filling out the form with the appropriate information. Then, add the generated changeset to git:
 
 ```bash
-git add ./changeset/*.md && git commit -m "chore: add changeset"
+git add .changeset/*.md && git commit -m "chore: add changeset"
 ```
 
 When all that's done, it's time to file a pull request to upstream:
@@ -81,7 +91,7 @@ When all that's done, it's time to file a pull request to upstream:
 gh pr create --web
 ```
 
-and fill out the title and body appropriately. Again, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines for your title.
+and fill out the title and body appropriately. Again, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines for your title.
 
 ## Credits
 

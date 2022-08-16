@@ -1,59 +1,52 @@
 {
   "name": "@ct3a/www",
   "version": "0.0.1",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/t3-oss/create-t3-app.git",
-    "directory": "www"
-  },
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "dev": "pnpm start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "typecheck": "tsc --noEmit",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "check": "astro check",
+    "clean": "rm -rf node_modules .turbo dist .eslintcache",
+    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore",
+    "format:check": "prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore",
+    "lint": "eslint src --cache --cache-strategy content",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.1",
-    "@docusaurus/plugin-content-docs": "^2.0.1",
-    "@docusaurus/preset-classic": "2.0.1",
-    "@docusaurus/theme-classic": "^2.0.1",
-    "@docusaurus/types": "^2.0.1",
-    "@mdx-js/react": "^1.6.22",
-    "clsx": "^1.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-github-btn": "^1.3.0",
-    "react-hot-toast": "^2.3.0"
+    "@algolia/client-search": "^4.13.1",
+    "@astrojs/image": "^0.9.1",
+    "@docsearch/css": "^3.2.1",
+    "@docsearch/react": "^3.2.1",
+    "@fontsource/inter": "^4.5.12",
+    "@fontsource/jetbrains-mono": "^4.5.10",
+    "clsx": "^1.2.1",
+    "embla-carousel": "^7.0.3",
+    "embla-carousel-autoplay": "^7.0.3",
+    "sharp": "^0.31.1",
+    "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.1",
-    "@tsconfig/docusaurus": "^1.0.6",
-    "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.24",
-    "typescript": "^4.7.4"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "engines": {
-    "node": ">=16.14"
+    "@astrojs/react": "^1.1.4",
+    "@astrojs/tailwind": "^2.0.2",
+    "@types/node": "^18.8.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-typist": "^2.0.3",
+    "@typescript-eslint/parser": "^5.39.0",
+    "astro": "^1.4.3",
+    "eslint": "^8.24.0",
+    "eslint-plugin-astro": "^0.19.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.5",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-typist": "^2.0.5",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.8.4"
   }
 }

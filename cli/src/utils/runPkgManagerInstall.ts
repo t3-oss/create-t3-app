@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
 import { execa } from "~/utils/execAsync.js";
 import { logger } from "~/utils/logger.js";
+import sortPackageJson from "sort-package-json";
 
 export interface RunPkgManagerInstallOptions {
   pkgManager: PackageManager;
@@ -42,9 +43,15 @@ export const runPkgManagerInstall = async (
       } else {
         pkgJson.dependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
-    }
 
-    await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
+      // FIXME: temp fix for `next-auth@^4.11` requiring `next@12.2.5` as a peer dependency
+      if (pkg === "next-auth") {
+        pkgJson.dependencies![pkgName] = `~4.10.3`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+      }
+    }
+    const sortedPkgJson = sortPackageJson(pkgJson);
+
+    await fs.writeJSON(path.join(projectDir, "package.json"), sortedPkgJson, {
       spaces: 2,
     });
     return;

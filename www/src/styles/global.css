@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Design System Theming */
+  html {
+    --color-default: 236 228 236;
+    --color-neutral: 29 40 58;
+    --color-primary: 112 64 255;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 15 23 42;
+    --color-background: 236 228 236;
+
+    @apply bg-default text-slate-900;
+  }
+
+  html.dark {
+    --color-default: 15 23 41;
+    --color-neutral: 29 40 58;
+    --color-primary: 112 64 255;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 232 221 255;
+    --color-background: 15 23 41;
+
+    @apply bg-default text-t3-purple-100;
+  }
+
+  html {
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300 ;
+  }
+
+  .t3-scrollbar {
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
+  }
+
+  /* Typewriter */
+  .cursor::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background-color: #fff;
+    animation: cursor 0.6s linear infinite alternate;
+    will-change: opacity;
+  }
+
+  @keyframes cursor {
+    0%,
+    40% {
+      opacity: 1;
+    }
+
+    60%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Base stylings */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
+  article > section :is(ul, ol) > * + * {
+    margin-top: 0.75rem;
+  }
+
+  article > section li > :is(p, pre, blockquote):not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  article > section :is(ul, ol) {
+    padding-left: 1em;
+  }
+
+  article > section nav :is(ul, ol) {
+    padding-left: inherit;
+  }
+
+  td,
+  th {
+    padding: 6px;
+    text-align: left;
+  }
+
+  .mobile-sidebar-toggle {
+    overflow: hidden;
+  }
+
+  .mobile-sidebar-toggle #grid-left {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-sidebar-toggle #grid-left {
+      display: none;
+    }
+  }
+
+  /* Markdown Styling */
+  .markdown {
+    @apply flex w-full flex-col items-start justify-start px-3 text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
+  }
+  .markdown h1 {
+    @apply mt-8 mb-4 text-3xl font-extrabold;
+  }
+  .markdown h2 {
+    @apply mt-8 mb-4 text-2xl font-semibold;
+  }
+  .markdown h3 {
+    @apply mt-8 mb-0 text-xl font-semibold;
+  }
+  .markdown li {
+    @apply list-disc;
+  }
+  .markdown ol > li {
+    @apply list-decimal;
+  }
+  .markdown p {
+    @apply mb-4 dark:text-white;
+  }
+  .markdown a > p {
+    @apply mb-0 text-sm;
+  }
+  .markdown a {
+    @apply text-t3-purple-500 underline decoration-slate-500 decoration-dotted underline-offset-2 hover:text-t3-purple-700 dark:text-t3-purple-200 dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
+  }
+  .markdown pre {
+    @apply my-3 mx-auto rounded-md p-2 pl-3 font-mono sm:pt-2;
+  }
+
+  .markdown ol {
+    @apply w-full;
+  }
+
+  .markdown details {
+    @apply w-full rounded-md bg-t3-purple-200/50 px-3 pb-0.5 dark:bg-slate-700;
+  }
+
+  .markdown summary {
+    @apply py-3;
+  }
+
+  .markdown p > img {
+    @apply mt-8 text-sm;
+  }
+  .markdown table > tbody > tr > td > a {
+    word-wrap: break-word;
+  }
+  .markdown table {
+    @apply max-w-full table-fixed;
+  }
+  .markdown blockquote a {
+    @apply text-slate-900 dark:text-t3-purple-50;
+  }
+  .DocSearch-SearchBar {
+    @apply my-3 rounded-md bg-purple-400 p-2 text-sm;
+  }
+
+  #DocSearch-SearchBar {
+    @apply my-3 rounded-md bg-purple-400 p-2 text-sm;
+  }
+}

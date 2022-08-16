@@ -1,5 +1,133 @@
 # Changelog
 
+## 5.15.0
+
+### Minor Changes
+
+- [#533](https://github.com/t3-oss/create-t3-app/pull/533) [`a3a168a`](https://github.com/t3-oss/create-t3-app/commit/a3a168a5a2c54a51e841b2fce5786ec94d72b0fb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Tailor .env to only include relevant keys
+
+## 5.14.1
+
+### Patch Changes
+
+- [#510](https://github.com/t3-oss/create-t3-app/pull/510) [`39d766d`](https://github.com/t3-oss/create-t3-app/commit/39d766d3b384c3420c6c058c27be775e961a9319) Thanks [@EkkoKo](https://github.com/EkkoKo)! - fix: resolve target area of `Documentation` links in TechnologyCard
+
+## 5.14.0
+
+### Minor Changes
+
+- [#517](https://github.com/t3-oss/create-t3-app/pull/517) [`2b434bb`](https://github.com/t3-oss/create-t3-app/commit/2b434bb181dc346f299591ddf5465d3175df5c07) Thanks [@gabrielelpidio](https://github.com/gabrielelpidio)! - Add prettier and prettier-plugin-tailwindcss
+
+## 5.13.1
+
+### Patch Changes
+
+- [#506](https://github.com/t3-oss/create-t3-app/pull/506) [`f371ef8`](https://github.com/t3-oss/create-t3-app/commit/f371ef8f0b64205cbbfb5dc6f3416da01a673a71) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temp fix for next-auth peer deps issue
+
+## 5.13.0
+
+### Minor Changes
+
+- [#485](https://github.com/t3-oss/create-t3-app/pull/485) [`ecc7642`](https://github.com/t3-oss/create-t3-app/commit/ecc764264eff0cf5062fee4f7e4bd9f75975ef41) Thanks [@nexxeln](https://github.com/nexxeln)! - bump next to 12.3.1 and fix AppType
+
+## 5.12.0
+
+### Minor Changes
+
+- [#446](https://github.com/t3-oss/create-t3-app/pull/446) [`6f63ec6`](https://github.com/t3-oss/create-t3-app/commit/6f63ec65201a077e534ec89c4ef18bfa07a30331) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: better cli text when scaffolding in '.'
+
+## 5.11.0
+
+### Minor Changes
+
+- [#430](https://github.com/t3-oss/create-t3-app/pull/430) [`306777a`](https://github.com/t3-oss/create-t3-app/commit/306777a5513c365dfb3525c1484459236734a289) Thanks [@benmarg](https://github.com/benmarg)! - feat: direct developer to add schema from .env to schema.mjs for zod validation
+
+### Patch Changes
+
+- [#416](https://github.com/t3-oss/create-t3-app/pull/416) [`14b6d4a`](https://github.com/t3-oss/create-t3-app/commit/14b6d4a0764f57ece45749724c5b12a85544733e) Thanks [@xpressivecode](https://github.com/xpressivecode)! - fix(template): missing ctx when using ssr with trpc
+
+## 5.10.3
+
+### Patch Changes
+
+- [#419](https://github.com/t3-oss/create-t3-app/pull/419) [`554de8f`](https://github.com/t3-oss/create-t3-app/commit/554de8f2838a8d539d81bcb520f121a7e14e3c84) Thanks [@sor4chi](https://github.com/sor4chi)! - Remove unnecessary singlequote in tailwind classname
+
+## 5.10.2
+
+### Patch Changes
+
+- [#387](https://github.com/t3-oss/create-t3-app/pull/387) [`0f8f59c`](https://github.com/t3-oss/create-t3-app/commit/0f8f59c30155ddf4f6be90f3713ff5d5379f0cbb) Thanks [@Vallerem](https://github.com/Vallerem)! - feat: add basic i18n configuration in next.config
+
+## 5.10.1
+
+### Patch Changes
+
+- [#396](https://github.com/t3-oss/create-t3-app/pull/396) [`30f3db6`](https://github.com/t3-oss/create-t3-app/commit/30f3db64c3a81475488c712fa16682076ba3f18b) Thanks [@rhenriquez28](https://github.com/rhenriquez28)! - fixing ssr by forwarding client's headers
+
+## 5.10.0
+
+### Minor Changes
+
+- [#388](https://github.com/t3-oss/create-t3-app/pull/388) [`86d053c`](https://github.com/t3-oss/create-t3-app/commit/86d053c440ed3c5d5101faf8d73574b6d24bf99e) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: non-tw index.tsx with styling
+
+* [#381](https://github.com/t3-oss/create-t3-app/pull/381) [`773b27e`](https://github.com/t3-oss/create-t3-app/commit/773b27e1399970992e232975830d327100316e74) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: include all cards on all index.tsx files
+
+- [#383](https://github.com/t3-oss/create-t3-app/pull/383) [`e05bc3d`](https://github.com/t3-oss/create-t3-app/commit/e05bc3da9867fcf8d8262b4e8dd976565650cf8f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - add safeguards for overwriting git repos
+
+* [#375](https://github.com/t3-oss/create-t3-app/pull/375) [`296c79b`](https://github.com/t3-oss/create-t3-app/commit/296c79b9617142d727a12e9a5c4250f68f437d9d) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: add option to continue and overwrite on existing directory
+
+  for reference see: https://github.com/t3-oss/create-t3-app/issues/230
+
+### Patch Changes
+
+- [#394](https://github.com/t3-oss/create-t3-app/pull/394) [`52e9db7`](https://github.com/t3-oss/create-t3-app/commit/52e9db7be8eacbb1e0bb2196647f646f8af617ea) Thanks [@nadilas](https://github.com/nadilas)! - Extending the warning message for invalid client environment variables by including the reason
+
+## 5.9.0
+
+### Minor Changes
+
+- [#366](https://github.com/t3-oss/create-t3-app/pull/366) [`1f43f83`](https://github.com/t3-oss/create-t3-app/commit/1f43f83261c0e6f91b6af0fb39f579845889b724) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Thanks [@hnqg](https://github.com/hnqg) for the initial PR. add wrapper function for unstable_getServerSession
+
+## 5.8.5
+
+### Patch Changes
+
+- [#357](https://github.com/t3-oss/create-t3-app/pull/357) [`b032074`](https://github.com/t3-oss/create-t3-app/commit/b03207434484d7ec3411b2d7c062a22cf425badc) Thanks [@virtuoushub](https://github.com/virtuoushub)! - chore: Sort package.json when in noInstallMode
+
+* [#365](https://github.com/t3-oss/create-t3-app/pull/365) [`b3ce004`](https://github.com/t3-oss/create-t3-app/commit/b3ce004affb9474e53e845e8507f676e3a771de0) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - revert prisma cleint teardown from #353
+
+## 5.8.4
+
+### Patch Changes
+
+- [#353](https://github.com/t3-oss/create-t3-app/pull/353) [`7a20de9`](https://github.com/t3-oss/create-t3-app/commit/7a20de9f19dfd9ae64143da112a4e3e1bfe30f52) Thanks [@Gejsi](https://github.com/Gejsi)! - Added loggers during development
+
+## 5.8.3
+
+### Patch Changes
+
+- [#345](https://github.com/t3-oss/create-t3-app/pull/345) [`8ee2ea0`](https://github.com/t3-oss/create-t3-app/commit/8ee2ea0c6ca4e49f2bb9b0f5c988471947c8a7ff) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Include `cjs` and `mjs` files in tsconfig. Thanks @timfee for reporting!
+
+## 5.8.2
+
+### Patch Changes
+
+- [#330](https://github.com/t3-oss/create-t3-app/pull/330) [`5ba03fd`](https://github.com/t3-oss/create-t3-app/commit/5ba03fdf801265668c7bb89b757840ef1f8410f8) Thanks [@nexxeln](https://github.com/nexxeln)! - use auth instead of question while merging the router
+
+## 5.8.1
+
+### Patch Changes
+
+- [#335](https://github.com/t3-oss/create-t3-app/pull/335) [`5745ad7`](https://github.com/t3-oss/create-t3-app/commit/5745ad796ed5647a7103bfb91e16f981152bcbe5) Thanks [@julianread](https://github.com/julianread)! - Fix invalid typeof window comparison to undefined
+
+* [#334](https://github.com/t3-oss/create-t3-app/pull/334) [`a107f14`](https://github.com/t3-oss/create-t3-app/commit/a107f14c5981a233d118252a57066bdf1938b96c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: build fails on trpc, trpc+next
+
+## 5.8.0
+
+### Minor Changes
+
+- [#324](https://github.com/t3-oss/create-t3-app/pull/324) [`fb5498c`](https://github.com/t3-oss/create-t3-app/commit/fb5498ceda6d3c528c2fe4e9a5ba4adf3dd36b10) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: wrap createContext with helper function to make it independent of req/res
+
 ## 5.7.0
 
 ### Minor Changes

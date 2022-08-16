@@ -1,4 +1,9 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@tsconfig/docusaurus/tsconfig.json"
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "types": ["@astrojs/image/client"],
+    // Skip type checking of external libraries.
+    "skipLibCheck": true
+  }
 }

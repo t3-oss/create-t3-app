@@ -1,7 +1,7 @@
 # Originally inspired by Cloudflare Wrangler
 # https://github.com/cloudflare/wrangler2/blob/main/.github/workflows/prereleases.yml
 
-name: Prerelease
+name: Release - Next
 
 on:
   push:
@@ -21,8 +21,6 @@ jobs:
 
       - name: Use PNPM
         uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.2.1
 
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -39,7 +37,7 @@ jobs:
       - name: Authenticate to NPM
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > .npmrc
 
-      - name: Publish Beta to NPM
+      - name: Publish Next to NPM
         run: pnpm pub:next
         env:
           NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

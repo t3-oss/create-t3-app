@@ -1,8 +1,8 @@
 {
   "name": "@ct3a/root",
   "version": "0.0.0",
-  "description": "Create web application with the t3 stack",
-  "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
+  "description": "Quickest way to start a new web app with full stack typesafety",
+  "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
   ],
@@ -24,40 +24,43 @@
   "engines": {
     "node": ">=14.16"
   },
+  "packageManager": "pnpm@7.13.0",
   "scripts": {
-    "typecheck": "turbo run typecheck",
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "start": "turbo run start",
-    "lint": "eslint . --cache --cache-strategy content",
-    "lint:fix": "pnpm lint --fix",
-    "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
-    "format:check": "prettier --check --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
-    "check": "pnpm lint && pnpm format:check && pnpm typecheck",
-    "prepare": "husky install",
+    "typecheck": "turbo typecheck",
+    "build:cli": "turbo --filter=create-t3-app build",
+    "build:www": "turbo --filter=www build",
+    "build": "turbo build",
+    "start:cli": "turbo --filter=create-t3-app start",
+    "start:www": "turbo --filter=www start",
+    "dev:cli": "turbo --filter=create-t3-app dev",
+    "dev:www": "turbo --filter=www dev",
+    "clean": "turbo clean && rm -rf node_modules",
+    "lint": "turbo lint",
+    "format": "turbo format && prettier --write *.{cjs,md,json}",
+    "format:check": "turbo format:check && prettier --check *.{cjs,md,json}",
+    "check": "turbo lint typecheck format:check && manypkg check",
     "release": "changeset version",
     "pub:beta": "cd cli && pnpm pub:beta",
     "pub:next": "cd cli && pnpm pub:next",
-    "pub:release": "cd cli && pnpm pub:release"
+    "pub:release": "cd cli && pnpm pub:release",
+    "merge-main": "git checkout main && git pull && git checkout next && git pull && git checkout -b next-merge-$(date '+%Y-%m-%d') next && git merge main"
   },
-  "devDependencies": {
-    "@changesets/cli": "^2.24.2",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.33.1",
-    "eslint": "^8.18.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-no-only-tests": "^2.6.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-unicorn": "40.1.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.0",
+    "@manypkg/cli": "^0.19.2",
+    "@types/node": "^18.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-turbo": "^0.0.4",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "44.0.0",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.5.0",
-    "turbo": "^1.4.3"
+    "turbo": "^1.5.5",
+    "typescript": "^4.8.4"
   }
 }

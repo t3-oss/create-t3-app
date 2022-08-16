@@ -6,6 +6,16 @@
   create-t3-app
 </h1>
 
+> **You are looking at the deprecated version of create-t3-app!**
+>
+> This branch is no longer maintained and should only get critical bug fixes. Please submit your PRs to the `next` branch.
+>
+> Please use the new version of create-t3-app instead:
+>
+> ```bash
+> npx create-t3-app@next
+> ```
+
 <p align="center">
   Interactive CLI to quickly set up an opinionated, full-stack, typesafe Next.js project.
 </p>
@@ -85,10 +95,6 @@ yarn create t3-app
 pnpm dlx create-t3-app@latest
 ```
 
-If you prefer using the [experimental v10 version of tRPC](https://alpha.trpc.io/), use `create-t3-app@next`. Note that the alpha versions of tRPC that it uses may contain API changes. We will try our best to keep on top of these, please file an issue if we have missed something.
-
-An ongoing development branch, `create-t3-app@beta`, can be downloaded for the most recent changes. Expect bugs when using the `beta` branch and please open issues with reproductions when they occur.
-
 <h2 id="community">Community</h2>
 
 For help, discussion about best practices, or any other conversation that would benefit create-t3-app:
@@ -106,13 +112,13 @@ The following CLI options and flags can configure the create command with custom
 | `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
 | `--noInstall`     | Generate project without installing dependencies                        |
 
-To use the beta version of `create-t3-app`:
+To use the beta version of `create-t3-app` (published continuously after merged PRs):
 
 ```bash
 npx create-t3-app@beta
 ```
 
-To scaffold the project using tRPC v10 (experimental):
+If you prefer using the [v10 beta version of tRPC](https://trpc.io/docs/v10/), use `create-t3-app@next`:
 
 ```bash
 npx create-t3-app@next

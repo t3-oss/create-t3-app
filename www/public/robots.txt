@@ -1,0 +1,5 @@
+# Algolia-Crawler-Verif: 013A1A14AB9EE32B
+
+User-agent: *
+Allow: /
+Sitemap: https://beta.create.t3.gg/sitemap.xml

@@ -6,9 +6,15 @@ import { PKG_ROOT } from "~/consts.js";
 export const tailwindInstaller: Installer = async ({
   projectDir,
   runPkgManagerInstall,
+  pkgManager,
 }) => {
   await runPkgManagerInstall({
-    packages: ["tailwindcss", "postcss", "autoprefixer"],
+    packages: [
+      "tailwindcss",
+      "postcss",
+      "autoprefixer",
+      "prettier-plugin-tailwindcss",
+    ],
     devMode: true,
   });
 
@@ -20,12 +26,21 @@ export const tailwindInstaller: Installer = async ({
   const postcssCfgSrc = path.join(twAssetDir, "postcss.config.cjs");
   const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");
 
+  const prettierSrc = path.join(twAssetDir, "prettier.config.cjs");
+  const prettierDest = path.join(projectDir, "prettier.config.cjs");
+
   const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
+
+  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
 
   await Promise.all([
     fs.copy(twCfgSrc, twCfgDest),
     fs.copy(postcssCfgSrc, postcssCfgDest),
     fs.copy(cssSrc, cssDest),
+    ...(pkgManager === "pnpm" || pkgManager === "yarn"
+      ? [fs.copy(prettierSrc, prettierDest)]
+      : []),
+    fs.unlink(indexModuleCss),
   ]);
 };
