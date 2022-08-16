@@ -26,7 +26,12 @@
   },
   "scripts": {
     "typecheck": "turbo run typecheck",
+    "build:cli": "turbo run build --filter create-t3-app",
+    "build:www": "turbo run build --filter www",
     "build": "turbo run build",
+    "start:cli": "pnpm run start --filter create-t3-app",
+    "start:www": "turbo run start --filter www",
+    "dev:cli": "pnpm --filter create-t3-app dev",
     "dev:www": "turbo run dev --filter=www",
     "lint": "eslint . --cache --cache-strategy content",
     "lint:fix": "pnpm lint --fix",
