@@ -1,7 +1,8 @@
 ---
-title: Why?
-description: Why create-t3-app?
-layout: ../../layouts/MainLayout.astro
+id: why
+title: Why create-t3-app?
+sidebar_label: Why CT3A?
+slug: /why
 ---
 
 ## Why TypeScript ?

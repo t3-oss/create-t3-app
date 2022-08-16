@@ -1,10 +1,9 @@
 ---
+id: installation
 title: Installation
-description: Installing create-t3-app
-layout: ../../layouts/MainLayout.astro
+sidebar_label: Installation
+slug: /installation
 ---
-
-## Installation
 
 To install `create-t3-app`, run any of the following three commands and answer the command prompt questions:
 
