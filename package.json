@@ -1,8 +1,8 @@
 {
   "name": "@ct3a/root",
   "version": "0.0.0",
-  "description": "Create web application with the t3 stack",
-  "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
+  "description": "Quickest way to start a new web app with full stack typesafety",
+  "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
   ],
@@ -28,6 +28,7 @@
     "typecheck": "turbo run typecheck",
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:www": "turbo run dev --filter=www",
     "start": "turbo run start",
     "lint": "eslint . --cache --cache-strategy content",
     "lint:fix": "pnpm lint --fix",
