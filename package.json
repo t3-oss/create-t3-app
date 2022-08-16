@@ -36,7 +36,7 @@
     "check": "pnpm lint && pnpm format:check && pnpm typecheck",
     "prepare": "husky install",
     "release": "changeset version",
-    "pub:beta": "cd cli && pnpm pub:bete",
+    "pub:beta": "cd cli && pnpm pub:beta",
     "pub:next": "cd cli && pnpm pub:next",
     "pub:release": "cd cli && pnpm pub:release"
   },
