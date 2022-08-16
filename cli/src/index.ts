@@ -1,8 +1,7 @@
 #!/usr/bin/env node
+import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
-import { PackageJson } from "type-fest";
-import { getVersion } from "./utils/getT3Version.js";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/initGit.js";
@@ -11,6 +10,8 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
@@ -38,17 +39,23 @@ const main = async () => {
     noInstall,
   });
 
+  if (!noInstall) {
+    installDependencies(projectDir);
+  }
+
   if (!noGit) {
-    await initializeGit(projectDir);
+    initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
-  const pkgJson = (await fs.readJSON(
+
+  // Write name to package.json
+  const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
-  )) as CT3APackageJSON;
+  ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
-  await fs.writeJSON(path.join(projectDir, "package.json"), pkgJson, {
+  fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
 
