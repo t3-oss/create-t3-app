@@ -54,8 +54,8 @@ const config = {
             label: "FAQ",
           },
           {
-            to: "docs/project-board",
-            label: "Made with T3",
+            to: "docs/t3-collection",
+            label: "T3 Collection",
           },
           {
             href: "https://github.com/t3-oss/create-t3-app",

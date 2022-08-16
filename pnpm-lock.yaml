@@ -77,7 +77,10 @@ importers:
     specifiers:
       '@docusaurus/core': 2.0.1
       '@docusaurus/module-type-aliases': 2.0.1
+      '@docusaurus/plugin-content-docs': ^2.0.1
       '@docusaurus/preset-classic': 2.0.1
+      '@docusaurus/theme-classic': ^2.0.1
+      '@docusaurus/types': ^2.0.1
       '@mdx-js/react': ^1.6.22
       '@tsconfig/docusaurus': ^1.0.6
       autoprefixer: ^10.4.4
@@ -91,7 +94,10 @@ importers:
       typescript: ^4.7.4
     dependencies:
       '@docusaurus/core': 2.0.1_aoyvzlomggvyirsrnkx2lqkjiy
+      '@docusaurus/plugin-content-docs': 2.0.1_3tgeifm2vmwrlpqlopppsnjtcu
       '@docusaurus/preset-classic': 2.0.1_ind54bwlsfvgd4pz4wkkelf5qu
+      '@docusaurus/theme-classic': 2.0.1_3tgeifm2vmwrlpqlopppsnjtcu
+      '@docusaurus/types': 2.0.1_sfoxds7t5ydpegc3knd667wn6m
       '@mdx-js/react': 1.6.22_react@17.0.2
       clsx: 1.2.1
       react: 17.0.2

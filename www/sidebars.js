@@ -12,7 +12,7 @@ const sidebars = {
         "installation",
         "why",
         "faq",
-        "project-board",
+        "t3-collection",
       ],
       collapsed: false,
     },
