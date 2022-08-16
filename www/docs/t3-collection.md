@@ -18,4 +18,4 @@ slug: /t3-collection
 
 | Company | Link                       |
 | ------- | -------------------------- |
-| ping.gg | [ping.gg](https://ping.gg) |
+| Ping.gg | [ping.gg](https://ping.gg) |
