@@ -46,10 +46,10 @@ This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the
 When you want to test your changes, run:
 
 ```bash
-pnpm dev
+cd cli && pnpm dev
 ```
 
-which will build and start the CLI.
+which will build and start the CLI. Make sure to `cd ..` after you've tested your changes.
 
 If you're making a docs change, run:
 

@@ -27,9 +27,7 @@
   "scripts": {
     "typecheck": "turbo run typecheck",
     "build": "turbo run build",
-    "dev": "turbo run dev",
     "dev:www": "turbo run dev --filter=www",
-    "start": "turbo run start",
     "lint": "eslint . --cache --cache-strategy content",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
