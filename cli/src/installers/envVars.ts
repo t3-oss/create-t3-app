@@ -3,10 +3,7 @@ import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
 
-export const envVariablesInstaller: Installer = async ({
-  projectDir,
-  packages,
-}) => {
+export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
@@ -31,11 +28,9 @@ export const envVariablesInstaller: Installer = async ({
   const envSchemaSrc = path.join(envAssetDir, envFile);
   const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
-  const envExampleSrc = path.join(projectDir, ".env-example");
+  const envExample = path.join(projectDir, ".env-example");
   const envDest = path.join(projectDir, ".env");
 
-  await Promise.all([
-    fs.copy(envSchemaSrc, envSchemaDest, { overwrite: true }),
-    fs.rename(envExampleSrc, envDest),
-  ]);
+  fs.copySync(envSchemaSrc, envSchemaDest);
+  fs.renameSync(envExample, envDest);
 };

@@ -2,22 +2,22 @@ import type { Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
+import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const trpcInstaller: Installer = async ({
-  projectDir,
-  packages,
-  runPkgManagerInstall,
-}) => {
-  await runPkgManagerInstall({
-    packages: [
-      "react-query@3.39.2",
+export const trpcInstaller: Installer = ({ projectDir, packages }) => {
+  addPackageDependency({
+    projectDir,
+    dependencies: [
+      "react-query",
       "superjson",
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
       "@trpc/react",
     ],
+    devMode: false,
   });
+
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
@@ -29,6 +29,10 @@ export const trpcInstaller: Installer = async ({
   const utilsSrc = path.join(trpcAssetDir, "utils.ts");
   const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
 
+  const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
+  const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
+  const serverUtilDest = path.join(projectDir, "src/server/trpc/utils.ts");
+
   const contextFile =
     usingAuth && usingPrisma
       ? "auth-prisma-context.ts"
@@ -38,13 +42,22 @@ export const trpcInstaller: Installer = async ({
       ? "prisma-context.ts"
       : "base-context.ts";
   const contextSrc = path.join(trpcAssetDir, contextFile);
-  const contextDest = path.join(projectDir, "src/server/router/context.ts");
+  const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
+
+  const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
+  const authRouterDest = path.join(
+    projectDir,
+    "src/server/trpc/router/auth.ts",
+  );
 
   const indexRouterFile = usingAuth
     ? "auth-index-router.ts"
     : "index-router.ts";
   const indexRouterSrc = path.join(trpcAssetDir, indexRouterFile);
-  const indexRouterDest = path.join(projectDir, "src/server/router/index.ts");
+  const indexRouterDest = path.join(
+    projectDir,
+    "src/server/trpc/router/index.ts",
+  );
 
   const exampleRouterFile = usingPrisma
     ? "example-prisma-router.ts"
@@ -52,35 +65,14 @@ export const trpcInstaller: Installer = async ({
   const exampleRouterSrc = path.join(trpcAssetDir, exampleRouterFile);
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/router/example.ts",
+    "src/server/trpc/router/example.ts",
   );
 
-  const protectedExampleRouterSrc = path.join(
-    trpcAssetDir,
-    "protected-example-router.ts",
-  );
-  const protectedExampleRouterDest = path.join(
-    projectDir,
-    "src/server/router/protected-example-router.ts",
-  );
-
-  const protectedRouterSrc = path.join(trpcAssetDir, "protected-router.ts");
-  const protectedRouterDest = path.join(
-    projectDir,
-    "src/server/router/protected-router.ts",
-  );
-
-  await Promise.all([
-    fs.copy(apiHandlerSrc, apiHandlerDest),
-    fs.copy(utilsSrc, utilsDest),
-    fs.copy(contextSrc, contextDest),
-    fs.copy(indexRouterSrc, indexRouterDest),
-    fs.copy(exampleRouterSrc, exampleRouterDest),
-    ...(usingAuth
-      ? [
-          fs.copy(protectedExampleRouterSrc, protectedExampleRouterDest),
-          fs.copy(protectedRouterSrc, protectedRouterDest),
-        ]
-      : []),
-  ]);
+  fs.copySync(apiHandlerSrc, apiHandlerDest);
+  fs.copySync(utilsSrc, utilsDest);
+  fs.copySync(serverUtilSrc, serverUtilDest);
+  fs.copySync(contextSrc, contextDest);
+  fs.copySync(indexRouterSrc, indexRouterDest);
+  fs.copySync(exampleRouterSrc, exampleRouterDest);
+  usingAuth && fs.copySync(authRouterSrc, authRouterDest);
 };

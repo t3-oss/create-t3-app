@@ -5,7 +5,6 @@ import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "~/consts.js";
 import { InstallerOptions } from "~/installers/index.js";
-import { execa } from "~/utils/execAsync.js";
 import { logger } from "~/utils/logger.js";
 
 // This bootstraps the base Next.js application
@@ -56,14 +55,11 @@ export const scaffoldProject = async ({
 
   spinner.start();
 
-  await fs.copy(srcDir, projectDir);
-  await fs.rename(
+  fs.copySync(srcDir, projectDir);
+  fs.renameSync(
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore"),
   );
 
-  if (!noInstall) {
-    await execa(`${pkgManager} install`, { cwd: projectDir });
-  }
   spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully!\n`);
 };

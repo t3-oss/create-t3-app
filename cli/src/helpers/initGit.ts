@@ -1,17 +1,17 @@
+import { execSync } from "child_process";
 import chalk from "chalk";
 import ora from "ora";
-import { execa } from "~/utils/execAsync.js";
 import { logger } from "~/utils/logger.js";
 
 // This initializes the Git-repository for the project
-export const initializeGit = async (projectDir: string) => {
+export const initializeGit = (projectDir: string) => {
   logger.info("Initializing Git...");
   const spinner = ora("Creating a new git repo...\n").start();
   try {
     let initCmd = "git init --initial-branch=main";
 
     // --initial-branch flag was added in git v2.28.0
-    const { stdout: gitVersionOutput } = await execa("git --version"); // git version 2.32.0 ...
+    const gitVersionOutput = execSync("git --version").toString(); // git version 2.32.0 ...
     const gitVersionTag = gitVersionOutput.split(" ")[2];
     const major = gitVersionTag?.split(".")[0];
     const minor = gitVersionTag?.split(".")[1];
@@ -19,7 +19,7 @@ export const initializeGit = async (projectDir: string) => {
       initCmd = "git init && git branch -m main";
     }
 
-    await execa(initCmd, { cwd: projectDir });
+    execSync(initCmd, { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
