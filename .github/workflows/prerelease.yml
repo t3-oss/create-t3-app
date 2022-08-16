@@ -37,7 +37,7 @@ jobs:
         run: node .github/version-script-beta.js
 
       - name: Authenticate to NPM
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > cli/.npmrc
 
       - name: Publish Beta to NPM
         run: pnpm pub:beta
