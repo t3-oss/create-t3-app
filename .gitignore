@@ -41,8 +41,11 @@ yarn-error.log*
 tmp/
 temp/
 .eslintcache
+.docusaurus
 
 # MAC
 ._*
 .DS_Store
 Thumbs.db
+
+.vscode

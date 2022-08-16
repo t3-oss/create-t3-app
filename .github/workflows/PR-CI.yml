@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v3
         id: pnpm-cache
         with:
-          path: node_modules
+          path: "**/node_modules"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -40,7 +40,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: "**/node_modules"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore ESLint Cache
         uses: actions/cache@v3
@@ -74,7 +74,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: "**/node_modules"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -93,7 +93,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: "**/node_modules"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -112,7 +112,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: "**/node_modules"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -123,5 +123,5 @@ jobs:
       - run: pnpm build
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
-      - run: pnpm start -y ../ci-test-app
+      - run: cd cli && pnpm start -y ../../ci-test-app
       - run: cd ../ci-test-app && pnpm build

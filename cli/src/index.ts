@@ -2,6 +2,7 @@
 import path from "path";
 import fs from "fs-extra";
 import { PackageJson } from "type-fest";
+import { getVersion } from "./utils/getT3Version.js";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/initGit.js";
@@ -10,7 +11,6 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
-import { getVersion } from "./utils/getT3Version.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
