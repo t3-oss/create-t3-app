@@ -3,15 +3,16 @@
 import fs from "fs";
 import { exec } from "child_process";
 
+const pkgJsonPath = "cli/package.json";
 try {
-  const pkg = JSON.parse(fs.readFileSync("package.json"));
+  const pkg = JSON.parse(fs.readFileSync(pkgJsonPath));
   exec("git rev-parse --short HEAD", (err, stdout) => {
     if (err) {
       console.log(err);
       process.exit(1);
     }
     pkg.version = "6.0.0-next." + stdout.trim();
-    fs.writeFileSync("package.json", JSON.stringify(pkg, null, "\t") + "\n");
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, "\t") + "\n");
   });
 } catch (error) {
   console.error(error);
