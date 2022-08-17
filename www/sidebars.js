@@ -8,7 +8,7 @@ const sidebars = {
       label: "Introduction",
       items: [
         "introduction",
-        "getting-started",
+        "t3-axioms",
         "installation",
         "why",
         "faq",

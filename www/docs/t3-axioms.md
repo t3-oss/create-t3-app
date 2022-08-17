@@ -1,8 +1,8 @@
 ---
-id: getting-started
-title: Getting started on your T3 App
-sidebar_label: Getting started
-slug: /getting-started
+id: t3-axioms
+title: The T3 Axioms
+sidebar_label: T3 Axioms
+slug: /t3-axioms
 ---
 
 We'll be frank - this is an opinionated project. We share a handful of core beliefs around building and we treat them as the basis for our decisions.

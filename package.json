@@ -1,8 +1,8 @@
 {
   "name": "@ct3a/root",
   "version": "0.0.0",
-  "description": "Create web application with the t3 stack",
-  "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
+  "description": "Quickest way to start a new web app with full stack typesafety",
+  "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
   ],
@@ -26,9 +26,13 @@
   },
   "scripts": {
     "typecheck": "turbo run typecheck",
+    "build:cli": "turbo run build --filter create-t3-app",
+    "build:www": "turbo run build --filter www",
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "start": "turbo run start",
+    "start:cli": "pnpm run start --filter create-t3-app",
+    "start:www": "turbo run start --filter www",
+    "dev:cli": "pnpm --filter create-t3-app dev",
+    "dev:www": "turbo run dev --filter=www",
     "lint": "eslint . --cache --cache-strategy content",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
