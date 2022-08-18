@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://s6.imgcdn.dev/BJW4B.png" width="130" alt="Logo for T3" />
+  <img src="https://user-images.githubusercontent.com/95541290/184307358-ebf8be63-e434-49d9-8181-90269ad79599.png" width="130" alt="Logo for T3" />
 </p>
 
 <h1 align="center">
@@ -85,7 +85,7 @@ yarn create t3-app
 pnpm dlx create-t3-app@latest
 ```
 
-If you prefer using the [experimental v10 version of tRPC](https://github.com/trpc/trpc/blob/next/.tmp/v10-docs.md), use `create-t3-app@next`. Note that the alpha versions of tRPC that it uses may contain API changes. We will try our best to keep on top of these, please file an issue if we have missed something.
+If you prefer using the [experimental v10 version of tRPC](https://alpha.trpc.io/), use `create-t3-app@next`. Note that the alpha versions of tRPC that it uses may contain API changes. We will try our best to keep on top of these, please file an issue if we have missed something.
 
 An ongoing development branch, `create-t3-app@beta`, can be downloaded for the most recent changes. Expect bugs when using the `beta` branch and please open issues with reproductions when they occur.
 

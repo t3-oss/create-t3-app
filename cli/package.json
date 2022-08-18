@@ -1,0 +1,56 @@
+{
+  "name": "create-t3-app",
+  "version": "5.7.0",
+  "description": "Create web application with the t3 stack",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t3-oss/create-t3-app.git",
+    "directory": "cli"
+  },
+  "keywords": [
+    "create-t3-app",
+    "init.tips",
+    "next.js",
+    "t3-stack",
+    "tailwind",
+    "tRPC",
+    "typescript"
+  ],
+  "type": "module",
+  "exports": "./dist/index.js",
+  "bin": {
+    "create-t3-app": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=14.16"
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "build": "tsup src/index.ts --format esm --clean --sourcemap --minify --metafile",
+    "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
+    "start": "node dist/index.js",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck",
+    "release": "changeset version",
+    "pub:beta": "pnpm build && npm publish --tag beta",
+    "pub:next": "pnpm build && npm publish --tag next",
+    "pub:release": "pnpm build && npm publish"
+  },
+  "dependencies": {
+    "chalk": "5.0.1",
+    "commander": "^9.3.0",
+    "fs-extra": "^10.1.0",
+    "gradient-string": "^2.0.1",
+    "inquirer": "^9.0.0",
+    "ora": "6.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/gradient-string": "^1.1.2",
+    "@types/inquirer": "^8.2.1",
+    "@types/node": "^18.0.0",
+    "tsup": "^6.1.2",
+    "type-fest": "^2.14.0",
+    "typescript": "^4.7.4"
+  }
+}
