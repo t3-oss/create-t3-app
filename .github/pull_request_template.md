@@ -1,12 +1,16 @@
-# [Short title]
+Closes #<issue>
 
-- [ ] I reviewed linter warnings + errors, resolved formatting, types and other issues related to my work
+## ✅ Checklist
+
+- [ ] I have followed every step in the [contributing guide](https://github.com/t3-oss/create-t3-app/blob/main/CONTRIBUTING.md) (updated 2022-08-15).
 - [ ] The PR title follows the convention we established [conventional-commit](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ ] I performed a functional test on my final commit
 
 ---
 
-_[Short summary/description of story/feature/bugfix]_
+## Changelog
+
+_[Short description of what has changed]_
 
 ---
 

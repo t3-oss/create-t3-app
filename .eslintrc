@@ -1,54 +1,37 @@
 {
-  "$schema": "http://json.schemastore.org/eslintrc",
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["@typescript-eslint", "import"],
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "plugins": ["no-only-tests", "unicorn"],
   "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@typescript-eslint/strict",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "prettier"
+    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
   ],
-  "env": {
-    "node": true,
-    "es6": true
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of import
+    "project": "./tsconfig.eslint.json" // Allows for the use of rules which require parserServices to be generated
   },
   "rules": {
-    "no-shadow": 1,
-    "import/no-named-as-default": 0,
-    "import/no-named-as-default-member": 0,
-    "import/order": [
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-floating-promises": "error",
+    "no-only-tests/no-only-tests": "error",
+    "unicorn/filename-case": [
       "error",
       {
-        "groups": [
-          "type",
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling", "index"],
-          "unknown"
-        ],
-        "newlines-between": "never",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "warnOnUnassignedImports": true
+        "case": "camelCase",
+        "ignore": ["\\.d\\.ts$"]
       }
     ]
   },
   "settings": {
-    "import/resolver": {
-      "typescript": {
-        "alwaysTryTypes": true,
-        "project": "./tsconfig.json"
-      }
+    "react": {
+      "version": "18.2.0"
     }
-  },
-  "ignorePatterns": ["node_modules/", "build/", "dist/"]
+  }
 }
