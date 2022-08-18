@@ -136,3 +136,4 @@ You can also dockerize this stack and deploy a container.
 Here are some resources that we commonly refer to:
 
 - [Protecting routes with Next-Auth.js](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)
+  - [Example of a protected route in create-t3-app](https://github.com/t3-oss/create-t3-app/tree/main/cli/template/addons/next-auth/protected-page.tsx)

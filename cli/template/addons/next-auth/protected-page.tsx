@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
 // If you need to use the session object,
-// receive it as a prop and not from the useSession hook
+// use the useSession hook to retrieve it
 const ProtectedPage: NextPage = () => {
   return (
     <div>
@@ -28,7 +28,5 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return { redirect: { destination: "/", permanent: false } };
   }
 
-  // You can send the session object as a prop
-  // return { props: { session } };
   return { props: {} };
 };
