@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.8.0
+
+### Minor Changes
+
+- [#324](https://github.com/t3-oss/create-t3-app/pull/324) [`fb5498c`](https://github.com/t3-oss/create-t3-app/commit/fb5498ceda6d3c528c2fe4e9a5ba4adf3dd36b10) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: wrap createContext with helper function to make it independent of req/res
+
 ## 5.7.0
 
 ### Minor Changes
