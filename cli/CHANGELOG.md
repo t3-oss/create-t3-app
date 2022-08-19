@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.8.1
+
+### Patch Changes
+
+- [#335](https://github.com/t3-oss/create-t3-app/pull/335) [`5745ad7`](https://github.com/t3-oss/create-t3-app/commit/5745ad796ed5647a7103bfb91e16f981152bcbe5) Thanks [@julianread](https://github.com/julianread)! - Fix invalid typeof window comparison to undefined
+
+* [#334](https://github.com/t3-oss/create-t3-app/pull/334) [`a107f14`](https://github.com/t3-oss/create-t3-app/commit/a107f14c5981a233d118252a57066bdf1938b96c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: build fails on trpc, trpc+next
+
 ## 5.8.0
 
 ### Minor Changes
