@@ -62,6 +62,10 @@ export const SIDEBAR: Sidebar = {
       { text: "tRPC", link: "en/usage/trpc" },
       { text: "Prisma", link: "en/usage/prisma" },
       { text: "NextAuth.js", link: "en/usage/next-auth" },
+      {
+        text: "Environment Variables",
+        link: "en/usage/env-variables",
+      },
       { text: "Tailwind CSS", link: "en/usage/tailwind" },
     ],
   },
