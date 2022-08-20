@@ -76,7 +76,7 @@ Please note that Next.js requires a different process for buildtime (available i
    ########################
 
    # Install dependencies only when needed
-   # TODO re-evaluate if emulation is still necessary on arm64 after moving to    node 18
+   # TODO: re-evaluate if emulation is still necessary on arm64 after moving to    node 18
    FROM --platform=linux/amd64 node:16-alpine AS deps
    # Check https://github.com/nodejs/docker-node/tree/   b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why    libc6-compat might be needed.
    RUN apk add --no-cache libc6-compat
@@ -96,7 +96,7 @@ Please note that Next.js requires a different process for buildtime (available i
    ########################
 
    # Rebuild the source code only when needed
-   # TODO re-evaluate if emulation is still necessary on arm64 after moving to    node 18
+   # TODO: re-evaluate if emulation is still necessary on arm64 after moving to    node 18
    FROM --platform=linux/amd64 node:16-alpine AS builder
 
    ARG NEXT_PUBLIC_FOO
@@ -118,15 +118,12 @@ Please note that Next.js requires a different process for buildtime (available i
      else echo "Lockfile not found." && exit 1; \
      fi
 
-   # If using npm comment out above and use below instead
-   # RUN npm run build
-
    ########################
    #        RUNNER        #
    ########################
 
    # Production image, copy all the files and run next
-   # TODO re-evaluate if emulation is still necessary after moving to node 18
+   # TODO: re-evaluate if emulation is still necessary after moving to node 18
    FROM --platform=linux/amd64 node:16-alpine AS runner
    # WORKDIR /usr/app
    WORKDIR /app
@@ -138,8 +135,7 @@ Please note that Next.js requires a different process for buildtime (available i
    RUN addgroup --system --gid 1001 nodejs
    RUN adduser --system --uid 1001 nextjs
 
-   # You only need to copy next.config.js if you are NOT using the default    configuration
-   # COPY --from=builder /app/next.config.js ./
+   COPY --from=builder /app/next.config.mjs ./
    COPY --from=builder /app/public ./public
    COPY --from=builder /app/package.json ./package.json
 
