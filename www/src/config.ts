@@ -1,6 +1,7 @@
 export const SITE = {
-  title: "Documentation",
-  description: "Your website description.",
+  title: "Create T3 APP",
+  description:
+    "Create T3 App is the quickest way to start a new web app with fullstack typesafety",
   defaultLanguage: "en_US",
 };
 
@@ -11,7 +12,7 @@ export const OPEN_GRAPH = {
       "astro logo on a starry expanse of space," +
       " with a purple saturn-like planet floating in the right foreground",
   },
-  twitter: "astrodotbuild",
+  twitter: "t3dotgg",
 };
 
 // This is the type of the frontmatter you put in the docs markdown files.
@@ -30,9 +31,9 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/withastro/astro/tree/main/examples/docs`;
+export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/main/www`;
 
-export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
+export const COMMUNITY_INVITE_URL = `https://t3.gg/discord`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
@@ -47,10 +48,13 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
   en: {
-    "Section Header": [
+    Introduction: [
       { text: "Introduction", link: "en/introduction" },
-      { text: "Page 2", link: "en/page-2" },
-      { text: "Page 3", link: "en/page-3" },
+      { text: "T3 Axioms", link: "en/t3-axioms" },
+      { text: "Why CT3A?", link: "en/why" },
+      { text: "Installation", link: "en/installation" },
+      { text: "FAQ", link: "en/faq" },
+      { text: "T3 Colletion", link: "en/t3-collection" },
     ],
     "Another Section": [{ text: "Page 4", link: "en/page-4" }],
   },
