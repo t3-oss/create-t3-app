@@ -58,6 +58,12 @@ const sidebars = {
       items: ["nextauth/nextauth-usage", "nextauth/nextauth-user-id"],
       collapsed: false,
     },
+    {
+      type: "category",
+      label: "Deployment",
+      items: ["deployment/vercel", "deployment/docker"],
+      collapsed: false,
+    },
   ],
 };
 
