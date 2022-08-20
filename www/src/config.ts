@@ -1,5 +1,5 @@
 export const SITE = {
-  title: "Create T3 APP",
+  title: "Create T3 App",
   description:
     "Create T3 App is the quickest way to start a new web app with fullstack typesafety",
   defaultLanguage: "en_US",
