@@ -46,3 +46,6 @@ h5 {
 h5 {
   @apply text-lg;
 }
+.markdown a {
+  @apply text-primary;
+}
