@@ -54,7 +54,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Why CT3A?", link: "en/why" },
       { text: "Installation", link: "en/installation" },
       { text: "FAQ", link: "en/faq" },
-      { text: "T3 Colletion", link: "en/t3-collection" },
+      { text: "T3 Collection", link: "en/t3-collection" },
     ],
     "Another Section": [{ text: "Page 4", link: "en/page-4" }],
   },
