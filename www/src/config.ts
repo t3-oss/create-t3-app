@@ -56,6 +56,13 @@ export const SIDEBAR: Sidebar = {
       { text: "FAQ", link: "en/faq" },
       { text: "T3 Collection", link: "en/t3-collection" },
     ],
-    "Another Section": [{ text: "Page 4", link: "en/page-4" }],
+    Usage: [
+      { text: "Next.js", link: "en/usage/next-js" },
+      { text: "TypeScript", link: "en/usage/typescript" },
+      { text: "tRPC", link: "en/usage/trpc" },
+      { text: "Prisma", link: "en/usage/prisma" },
+      { text: "NextAuth.js", link: "en/usage/next-auth" },
+      { text: "Tailwind CSS", link: "en/usage/tailwind" },
+    ],
   },
 };
