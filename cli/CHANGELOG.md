@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.8.2
+
+### Patch Changes
+
+- [#330](https://github.com/t3-oss/create-t3-app/pull/330) [`5ba03fd`](https://github.com/t3-oss/create-t3-app/commit/5ba03fdf801265668c7bb89b757840ef1f8410f8) Thanks [@nexxeln](https://github.com/nexxeln)! - use auth instead of question while merging the router
+
 ## 5.8.1
 
 ### Patch Changes
