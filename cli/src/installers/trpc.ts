@@ -8,7 +8,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
     dependencies: [
-      "react-query",
+      "@tanstack/react-query",
       "superjson",
       "@trpc/server",
       "@trpc/client",
@@ -31,7 +31,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
 
   const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
   const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
-  const serverUtilDest = path.join(projectDir, "src/server/trpc/utils.ts");
+  const serverUtilDest = path.join(projectDir, "src/server/trpc/trpc.ts");
 
   const contextFile =
     usingAuth && usingPrisma
