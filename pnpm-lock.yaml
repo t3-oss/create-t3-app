@@ -87,6 +87,7 @@ importers:
       '@types/react-dom': ^17.0.11
       astro: ^1.0.6
       preact: ^10.7.3
+      preact-render-to-string: ^5.2.2
       react: ^18.1.0
       react-dom: ^18.1.0
     dependencies:
@@ -94,6 +95,7 @@ importers:
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.0_h2q7ltx4sqgye5xvrbnj7n2sfm
       preact: 10.10.6
+      preact-render-to-string: 5.2.2_preact@10.10.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -2132,8 +2134,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -5052,7 +5054,6 @@ packages:
     dependencies:
       preact: 10.10.6
       pretty-format: 3.8.0
-    dev: true
 
   /preact/10.10.6:
     resolution: {integrity: sha512-w0mCL5vICUAZrh1DuHEdOWBjxdO62lvcO++jbzr8UhhYcTbFkpegLH9XX+7MadjTl/y0feoqwQ/zAnzkc/EGog==}
@@ -5103,7 +5104,6 @@ packages:
 
   /pretty-format/3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
-    dev: true
 
   /prismjs/1.28.0:
     resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
