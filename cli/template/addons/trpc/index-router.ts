@@ -1,5 +1,5 @@
 // src/server/router/index.ts
-import { t } from "../utils";
+import { t } from "../trpc";
 
 import { exampleRouter } from "./example";
 

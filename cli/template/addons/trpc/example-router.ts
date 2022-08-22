@@ -1,4 +1,4 @@
-import { t } from "../utils";
+import { t } from "../trpc";
 import { z } from "zod";
 
 export const exampleRouter = t.router({
