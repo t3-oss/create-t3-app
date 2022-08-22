@@ -4,10 +4,10 @@ type Props = {
   path: string;
 };
 const { path } = Astro.props as Props;
-const resolvedPath = `examples/docs/${path}`;
+const resolvedPath = `www/${path}`;
 console.log(resolvedPath);
-const url = `https://api.github.com/repos/withastro/astro/commits?path=${resolvedPath}`;
-const commitsURL = `https://github.com/withastro/astro/commits/main/${resolvedPath}`;
+const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
+const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/main/${resolvedPath}`;
 
 type Commit = {
   author: {
