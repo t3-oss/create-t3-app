@@ -1,7 +1,7 @@
 ---
 title: T3 Collection
 description: Cool open source projects and companies using the T3 stack
-layout: ../../layouts/MainLayout.astro
+layout: ../../layouts/mainLayout.astro
 ---
 
 ### Open Source apps made using the T3 Stack

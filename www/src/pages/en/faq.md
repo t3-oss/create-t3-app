@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Frequently asked questions about Create T3 App
-layout: ../../layouts/MainLayout.astro
+layout: ../../layouts/mainLayout.astro
 ---
 
 Here are some commonly asked questions about `create-t3-app`.

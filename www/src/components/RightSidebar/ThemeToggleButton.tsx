@@ -1,11 +1,12 @@
 import type { FunctionalComponent } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import "./ThemeToggleButton.css";
+import "./themeToggleButton.css";
 
 const themes = ["light", "dark"];
 
 const icons = [
   <svg
+    key="dark"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -19,6 +20,7 @@ const icons = [
     />
   </svg>,
   <svg
+    key="light"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -58,7 +60,7 @@ const ThemeToggle: FunctionalComponent = () => {
         const icon = icons[i];
         const checked = t === theme;
         return (
-          <label className={checked ? " checked" : ""}>
+          <label key={t} className={checked ? " checked" : ""}>
             {icon}
             <input
               type="radio"
