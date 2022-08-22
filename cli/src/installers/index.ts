@@ -35,11 +35,11 @@ export const dependencyVersionMap = {
   postcss: "^8.4.14",
 
   // tRPC
-  "@trpc/client": "10.0.0-alpha.41",
-  "@trpc/server": "10.0.0-alpha.41",
-  "@trpc/react": "10.0.0-alpha.41",
-  "@trpc/next": "10.0.0-alpha.41",
-  "react-query": "^3.39.2",
+  "@trpc/client": "10.0.0-alpha.48",
+  "@trpc/server": "10.0.0-alpha.48",
+  "@trpc/react": "10.0.0-alpha.48",
+  "@trpc/next": "10.0.0-alpha.48",
+  "@tanstack/react-query": "^4.2.1",
   superjson: "^1.9.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
