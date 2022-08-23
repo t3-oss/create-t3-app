@@ -33,6 +33,7 @@
     "start:www": "turbo run start --filter www",
     "dev:cli": "pnpm --filter create-t3-app dev",
     "dev:www": "turbo run dev --filter=www",
+    "clean": "find . -name node_modules -o -name .turbo -o -name dist -o -name build -type d -prune | xargs rm -rf",
     "lint": "eslint . --cache --cache-strategy content",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
