@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.8.3
+
+### Patch Changes
+
+- [#345](https://github.com/t3-oss/create-t3-app/pull/345) [`8ee2ea0`](https://github.com/t3-oss/create-t3-app/commit/8ee2ea0c6ca4e49f2bb9b0f5c988471947c8a7ff) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Include `cjs` and `mjs` files in tsconfig. Thanks @timfee for reporting!
+
 ## 5.8.2
 
 ### Patch Changes
