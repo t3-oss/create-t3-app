@@ -68,5 +68,9 @@ export const SIDEBAR: Sidebar = {
       },
       { text: "Tailwind CSS", link: "en/usage/tailwind" },
     ],
+    Deployment: [
+      { text: "Docker", link: "en/deployment/docker" },
+      { text: "Vercel", link: "en/deployment/vercel" },
+    ],
   },
 };
