@@ -4,9 +4,11 @@ description: Deployment with Docker
 layout: ../../../layouts/mainLayout.astro
 ---
 
-You can also dockerize this stack and deploy a container.
+You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose.
 
 Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
+
+## Docker
 
 1. In your [next.config.mjs](./next.config.mjs), add the `output: "standalone"` option to your config.
 
@@ -127,7 +129,7 @@ Please note that Next.js requires a different process for buildtime (available i
 
 6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
-### docker-compose
+## docker-compose
 
 You can also use docker-compose to build and run the container.
 
