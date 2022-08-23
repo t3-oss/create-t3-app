@@ -25,7 +25,7 @@
       "error",
       {
         "case": "camelCase",
-        "ignore": ["\\.d\\.ts$"]
+        "ignore": ["\\.d\\.ts$", "/^www/i"]
       }
     ]
   },

@@ -41,17 +41,23 @@ pnpm install
 
 ### Implement your changes
 
-Now you're all setup and can start implementing your changes.
+This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
 
-When you want to test your changes, run:
+Here are some useful scripts for when you are developing:
 
-```bash
-pnpm dev
-```
+| Command          | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| `pnpm dev:cli`   | Builds and starts the CLI in watch-mode                 |
+| `pnpm dev:www`   | Starts the development server for the docs with HMR     |
+| `pnpm build:cli` | Builds the CLI                                          |
+| `pnpm build:www` | Builds the docs                                         |
+| `pnpm build`     | Builds CLI and docs                                     |
+| `pnpm format`    | Formats the code                                        |
+| `pnpm lint`      | Lints the code                                          |
+| `pnpm lint:fix`  | Lints the code and fixes any errors                     |
+| `pnpm check`     | Checks your code for typeerrors, formatting and linting |
 
-which will build and start the CLI.
-
-When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:` etc...
+When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc...
 
 ### When you're done
 

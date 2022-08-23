@@ -1,8 +1,8 @@
 {
   "name": "@ct3a/root",
   "version": "0.0.0",
-  "description": "Create web application with the t3 stack",
-  "author": "Shoubhit Dash <shoubhit2005@gmail.com>",
+  "description": "Quickest way to start a new web app with full stack typesafety",
+  "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
   ],
@@ -28,6 +28,8 @@
     "typecheck": "turbo run typecheck",
     "build:cli": "turbo run build --filter create-t3-app",
     "build:www": "turbo run build --filter www",
+    "build:cli": "turbo run build --filter create-t3-app",
+    "build:www": "turbo run build --filter www",
     "build": "turbo run build",
     "start:cli": "pnpm --filter create-t3-app start",
     "start:www": "turbo run start --filter www",
@@ -47,6 +49,7 @@
     "pub:release": "cd cli && pnpm pub:release"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.2",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
