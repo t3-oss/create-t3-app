@@ -1,5 +1,25 @@
 # Changelog
 
+## 5.8.2
+
+### Patch Changes
+
+- [#330](https://github.com/t3-oss/create-t3-app/pull/330) [`5ba03fd`](https://github.com/t3-oss/create-t3-app/commit/5ba03fdf801265668c7bb89b757840ef1f8410f8) Thanks [@nexxeln](https://github.com/nexxeln)! - use auth instead of question while merging the router
+
+## 5.8.1
+
+### Patch Changes
+
+- [#335](https://github.com/t3-oss/create-t3-app/pull/335) [`5745ad7`](https://github.com/t3-oss/create-t3-app/commit/5745ad796ed5647a7103bfb91e16f981152bcbe5) Thanks [@julianread](https://github.com/julianread)! - Fix invalid typeof window comparison to undefined
+
+* [#334](https://github.com/t3-oss/create-t3-app/pull/334) [`a107f14`](https://github.com/t3-oss/create-t3-app/commit/a107f14c5981a233d118252a57066bdf1938b96c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: build fails on trpc, trpc+next
+
+## 5.8.0
+
+### Minor Changes
+
+- [#324](https://github.com/t3-oss/create-t3-app/pull/324) [`fb5498c`](https://github.com/t3-oss/create-t3-app/commit/fb5498ceda6d3c528c2fe4e9a5ba4adf3dd36b10) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: wrap createContext with helper function to make it independent of req/res
+
 ## 5.7.0
 
 ### Minor Changes
