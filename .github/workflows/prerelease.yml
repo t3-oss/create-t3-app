@@ -1,7 +1,7 @@
 # Originally inspired by Cloudflare Wrangler
 # https://github.com/cloudflare/wrangler2/blob/main/.github/workflows/prereleases.yml
 
-name: Prerelease
+name: Release - Beta
 
 on:
   push:
