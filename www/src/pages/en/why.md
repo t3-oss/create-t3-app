@@ -35,7 +35,7 @@ Tailwind generates the CSS you should create by hand, without leaving your JSX a
 
 By providing building blocks in the form of good default colors, spaces, and others, Tailwind makes creating something good-looking easier; while not getting in the way when you're building something beautiful.
 
-Additionally, with its inline-like approach, Tailwind encourages you to style without worring about naming classes, organizing files or any other issue not directly tied to the problem you're trying to solve. Because of this, it's not rare to see Tailwind described as "zen-mode CSS".
+Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve. Because of this, it's not rare to see Tailwind described as "zen-mode CSS".
 
 ### NextAuth.js
 
