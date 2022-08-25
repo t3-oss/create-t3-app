@@ -13,9 +13,4 @@ export default defineConfig({
     image(),
   ],
   site: `https://create.t3.gg`,
-  // vite: {
-  //   ssr: {
-  //     external: ["svgo"],
-  //   },
-  // },
 });

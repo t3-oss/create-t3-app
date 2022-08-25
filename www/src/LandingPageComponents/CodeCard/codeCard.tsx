@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 /** @jsxImportSource react */
 import Typist from "react-typist";
 
