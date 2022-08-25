@@ -13,7 +13,7 @@
   "dependencies": {
     "@algolia/client-search": "^4.13.1",
     "@docsearch/css": "^3.2.1",
-    "@docsearch/react": "^3.1.0",
+    "@docsearch/react": "^3.2.1",
     "@nanostores/react": "^0.3.0",
     "astro-icon": "^0.7.3",
     "astro-robots-txt": "^0.3.8",

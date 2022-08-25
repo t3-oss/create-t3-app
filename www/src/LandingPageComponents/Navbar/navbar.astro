@@ -1,6 +1,7 @@
 ---
 import MobileMenuButton from "./mobileMenuButton";
 import MobileMenu from "./mobileMenu";
+import Search from "../../components/header/search";
 ---
 
 <nav
@@ -41,13 +42,37 @@ import MobileMenu from "./mobileMenu";
     <div class="flex items-center mr-2 md:hidden">
       <MobileMenuButton client:load />
     </div>
-    <div class="hidden md:flex md:items-center md:space-x-2 transition-opacity">
-      <a
-        class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-slate-900 border-t3-purple-200 bg-t3-purple-100 hover:bg-t3-purple-200 hover:border-t3-purple-100 shadow-sm"
-        href="/en/introduction"
-        ><span class="">Get Started</span>
-      </a>
+
+    <div class="search-item hidden md:block">
+      <Search client:load />
     </div>
   </div>
-  <MobileMenu client:load />
+  <MobileMenu client:idle />
 </nav>
+
+<style>
+  :root {
+    --docsearch-primary-color: var(--theme-accent);
+    --docsearch-logo-color: var(--theme-text);
+  }
+
+  .search-item {
+    display: none;
+    position: relative;
+    z-index: 10;
+    flex-grow: 1;
+    padding-right: 0.7rem;
+    display: flex;
+    max-width: 200px;
+  }
+
+  :global(.search-item > *) {
+    flex-grow: 1;
+  }
+
+  @media (min-width: 50em) {
+    .search-item {
+      max-width: 400px;
+    }
+  }
+</style>

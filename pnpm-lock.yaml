@@ -83,7 +83,7 @@ importers:
       '@astrojs/react': ^1.0.0
       '@astrojs/tailwind': ^1.0.0
       '@docsearch/css': ^3.2.1
-      '@docsearch/react': ^3.1.0
+      '@docsearch/react': ^3.2.1
       '@nanostores/react': ^0.3.0
       '@types/node': ^18.7.6
       '@types/react': ^17.0.48
