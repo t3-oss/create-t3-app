@@ -1,0 +1,135 @@
+---
+import Icon from "astro-icon";
+---
+
+<section>
+  <div class="overflow-x-hidden">
+    <div class="relative w-full h-full overflow-hidden py-16 xl:py-32">
+      <div
+        class="absolute top-16 left-[25%] lg:left-[33%] w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-white mix-blend-overlay rounded-full filter blur-xl opacity-30 animate-blob -z-10 select-none touch-none overflow-hidden"
+      >
+      </div>
+      <div
+        class="absolute top-16 right-[25%] lg:right-[33%] w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-white mix-blend-overlay rounded-full filter blur-xl opacity-30 animate-blob animation-delay-2000 -z-10 select-none touch-none overflow-hidden"
+      >
+      </div>
+      <div
+        class="absolute bottom-6 sm:bottom-8 left-[38%] w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-white mix-blend-overlay rounded-full filter blur-xl opacity-30 animate-blob animation-delay-4000 -z-10 select-none touch-none overflow-hidden"
+      >
+      </div>
+      <div class="mx-auto max-w-8xl lg:px-8">
+        <div class="flex flex-col items-center justify-center text-center">
+          <div
+            class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:flex lg:items-center"
+          >
+            <div class="lg:py-12 flex flex-col items-start justify-between">
+              <h1
+                class="mt-4 text-5xl tracking-tight font-bold text-white sm:mt-5 sm:text-6xl sm:tracking-tight lg:mt-6 xl:text-6xl xl:tracking-tight"
+              >
+                <span class="block"
+                  >The best way to setup an<span
+                    class="text-t3-purple-200 text-4xl"
+                  >
+                    opinionated, full-stack, typesafe Next.js project
+                  </span>
+                </span>
+              </h1>
+
+              <div
+                class="flex flex-col items-center justify-center mt-8 w-full"
+              >
+                <div class="flex items-center justify-between w-full max-w-xs">
+                  <a
+                    href="/en/introduction"
+                    class="inline-flex items-center text-white rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer"
+                  >
+                    <span
+                      class="px-3 sm:px-5 py-1.5 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full flex items-center justify-between hover:bg-t3-purple-200"
+                    >
+                      Documentation
+                      <Icon
+                        pack="akar-icons"
+                        name="chevron-right"
+                        class="ml-2 w-5 h-5 text-gray-500"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </a>
+                  <a
+                    href="https://github.com/t3-oss/create-t3-app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-white rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer bg-neutral-800 hover:bg-neutral-900"
+                  >
+                    <span
+                      class="ml-4 px-2 py-0.5 text-sm flex items-center justify-between"
+                      >Github <Icon
+                        pack="akar-icons"
+                        name="link-out"
+                        class="ml-2 w-5 h-5 text-gray-500"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </a>
+                </div>
+                <div class="mt-8 block h-full relative mx-auto">
+                  <code
+                    id="command"
+                    class="px-3 sm:px-5 py-1.5 text-base text-blue-300 rounded-md cursor-pointer bg-neutral-800 hover:bg-neutral-900 transition-all duration-300 relative"
+                    >npx create-t3-app@latest
+                  </code>
+
+                  <div
+                    id="toast"
+                    class="absolute items-center justify-center rounded-lg top-0 mx-auto bg-[#262626] h-10 opacity-0 px-3"
+                  >
+                    <span
+                      class="flex px-3 items-center justify-center rounded-lg text-[#e8dcff]"
+                      ><svg
+                        id="checkmark"
+                        class="checkmark"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 52 52"
+                      >
+                        <circle
+                          id="checkmark__circle"
+                          class="checkmark__circle"
+                          cx="26"
+                          cy="26"
+                          r="25"
+                          fill="none"></circle>
+                        <path
+                          id="checkmark__check"
+                          class="checkmark__check"
+                          fill="none"
+                          d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+                      </svg><span class="pl-1">Copied</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    document.getElementById("command").addEventListener("click", function () {
+      const pre = this.parentElement;
+      let code = pre.querySelector("code");
+      let text = code.innerText;
+      navigator.clipboard.writeText(text);
+      document.getElementById("toast").className =
+        "px-3 opacity-100 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
+      document.getElementById("checkmark").style =
+        "animation-play-state: running";
+      document.getElementById("checkmark__check").style =
+        "animation-play-state: running";
+      setTimeout(() => {
+        document.getElementById("toast").className =
+          "px-3 opacity-0 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
+      }, 2500);
+    });
+  </script>
+</section>
