@@ -27,7 +27,8 @@
         "case": "camelCase",
         "ignore": ["\\.d\\.ts$", "/^www/i"]
       }
-    ]
+    ],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
   "settings": {
     "react": {
