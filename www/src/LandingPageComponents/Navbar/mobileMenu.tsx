@@ -15,13 +15,13 @@ const MobileMenu = () => {
       >
         <a
           className="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
-          href="/"
+          href="/en/introduction"
         >
           <span className="">Docs</span>
         </a>
         <a
           className="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
-          href="/"
+          href="/en/faq"
         >
           <span className="">FAQ</span>
         </a>
