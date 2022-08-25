@@ -32,6 +32,7 @@
     // For usage of JSX syntax.
     "jsx": "preserve",
     // Skip type checking of external libraries.
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["@astrojs/image/client"]
   }
 }

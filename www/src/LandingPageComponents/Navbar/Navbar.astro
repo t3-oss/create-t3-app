@@ -1,0 +1,53 @@
+---
+import MobileMenuButton from "./MobileMenuButton";
+import MobileMenu from "./MobileMenu";
+---
+
+<nav
+  class="flex flex-col relative justify-between items-center mt-3 bg-opacity-50"
+  aria-label="Global"
+>
+  <div class="flex items-center justify-between w-full px-6">
+    <div class="flex justify-between items-center w-full md:w-auto">
+      <div>
+        <a class="" href="/">
+          <img src="/assets/Logo.svg" width="60" height="60" alt="T3 Logo" />
+        </a>
+      </div><div class="hidden -space-x-1 md:flex md:ml-10">
+        <a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="/"
+          ><span class="">Docs</span>
+        </a>
+        <a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="/"
+          ><span class="">FAQ</span>
+        </a><a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="https://github.com/t3-oss/create-t3-app"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span class="">Github</span>
+        </a><a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="https://init.tips"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span class="">T3 Stack</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex items-center mr-2 md:hidden">
+      <MobileMenuButton client:load />
+    </div>
+    <div class="hidden md:flex md:items-center md:space-x-2 transition-opacity">
+      <a
+        class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-slate-900 border-t3-purple-200 bg-t3-purple-100 hover:bg-t3-purple-200 hover:border-t3-purple-100 shadow-sm"
+        href="/"
+        ><span class="">Get Started</span>
+      </a>
+    </div>
+  </div>
+  <MobileMenu client:load />
+</nav>
