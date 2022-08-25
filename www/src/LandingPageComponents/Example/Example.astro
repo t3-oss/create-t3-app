@@ -1,3 +1,7 @@
+---
+import CodeCard from "../CodeCard/CodeCard";
+---
+
 <section>
   <div class="w-full items-center flex flex-col justify-center">
     <h1
@@ -46,6 +50,8 @@
         </span>
       </div>
     </div>
-    <div class="w-full"></div>
+    <div class="w-full">
+      <CodeCard client:only="react" />
+    </div>
   </div>
 </section>
