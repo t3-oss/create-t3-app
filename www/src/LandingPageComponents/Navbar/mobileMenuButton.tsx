@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 /** @jsxImportSource react */
 import { useStore } from "@nanostores/react";
 import { MobileMenuState } from "../../stores/mobileMenu";
