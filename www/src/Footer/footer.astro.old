@@ -24,28 +24,28 @@
           <li>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="/en/introduction"
               class="hover:dark:text-t3-purple-200">Docs</a
             >
           </li>
           <li>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="/en/faqs"
               class="hover:dark:text-t3-purple-200">FAQ</a
             >
           </li>
           <li>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="https://github.com/t3-oss/create-t3-app"
               class="hover:dark:text-t3-purple-200">Github</a
             >
           </li>
           <li>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="https://init.tips"
               class="hover:dark:text-t3-purple-200">T3 Stack</a
             >
           </li>

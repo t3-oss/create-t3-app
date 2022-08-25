@@ -16,12 +16,12 @@ import MobileMenu from "./mobileMenu";
       </div><div class="hidden -space-x-1 md:flex md:ml-10">
         <a
           class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
-          href="/"
+          href="/en/introduction"
           ><span class="">Docs</span>
         </a>
         <a
           class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
-          href="/"
+          href="/en/faq"
           ><span class="">FAQ</span>
         </a><a
           class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"

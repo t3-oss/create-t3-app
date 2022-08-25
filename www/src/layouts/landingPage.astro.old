@@ -3,8 +3,8 @@ export interface Props {
   title: string;
   description: string;
 }
-import Footer from "../LandingPageComponents/Footer.astro";
-import Navbar from "../LandingPageComponents/Navbar/Navbar.astro";
+import Footer from "../LandingPageComponents/Footer/footer.astro";
+import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
 const { title, description } = Astro.props as Props;
 import { SEO } from "astro-seo";
 import "../styles/global.css";
