@@ -31,7 +31,7 @@ TODO: need a bit more here
 
 ### Tailwind CSS
 
-TODO: someone write this
+Tailwind generates the CSS you should create by hand, without leaving your JSX and is generally faster to write. By providing building blocks in the form of good default colors, spaces, and others, Tailwind makes creating something good-looking easier; while not getting in the way when you're building something beautiful.
 
 ### NextAuth.js
 
