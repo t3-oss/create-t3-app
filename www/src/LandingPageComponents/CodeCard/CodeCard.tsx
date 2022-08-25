@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import Typist from "react-typist";
 
-export default () => {
+const codeCard = () => {
   return (
     <div className="md:w-[550px] w-full sm:w-[600px]  mx-auto overflow-hidden my-5 shadow-[0_0_8px_2px_rgba(245,40,145,0.3)] rounded-lg ">
       <div
@@ -190,11 +190,11 @@ export default () => {
           avgTypingDelay={-10000}
           className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
-          Alright. We'll install the dependencies for you!
+          Alright. We&apos;ll install the dependencies for you!
         </Typist>
       </div>
     </div>
   );
 };
 
-
+export default codeCard;
