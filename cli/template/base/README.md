@@ -46,16 +46,20 @@ You can also dockerize this stack and deploy a container.
 Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
 
 1. In your [next.config.mjs](./next.config.mjs), add the `standalone` output-option to your config:
-```diff
-  export default defineNextConfig({
-    reactStrictMode: true,
-    swcMinify: true,
-+   output: "standalone",
-  });
+
+   ```diff
+     export default defineNextConfig({
+       reactStrictMode: true,
+       swcMinify: true,
+   +   output: "standalone",
+     });
+   ```
 
 2. Remove the `env`-import from [next.config.mjs](./next.config.mjs):
-```diff
-- import { env } from "./src/env/server.mjs";
+
+   ```diff
+   - import { env } from "./src/env/server.mjs";
+   ```
 
 3. Create a `.dockerignore` file with the following contents:
    <details>
