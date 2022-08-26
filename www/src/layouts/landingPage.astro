@@ -1,0 +1,31 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+import Footer from "../LandingPageComponents/Footer/footer.astro";
+import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
+const { title, description } = Astro.props as Props;
+import { SEO } from "astro-seo";
+import "../styles/global.css";
+import "@docsearch/css";
+---
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900"
+>
+  <head>
+    <SEO title={title} description={description} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>
