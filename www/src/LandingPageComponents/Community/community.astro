@@ -1,0 +1,67 @@
+---
+import Icon from "astro-icon";
+---
+
+<section>
+  <div
+    class="flex flex-col items-center justify-center max-w-7xl text-t3-purple-100 mx-auto"
+  >
+    <h1 class="text-3xl py-3">Community</h1>
+    <p class="text-center pb-8 px-4">
+      Join our community to get help, share your projects, and even contribute
+      to the project!
+    </p>
+    <div
+      class="flex flex-col sm:flex-row items-start justify-center space-y-4 sm:space-y-0 sm:space-x-6 mx-2 sm:mx-4 lg:mx-8"
+    >
+      <a
+        href="https://t3.gg/discord"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-start justify-center border border-t3-purple-100 rounded-lg p-3 space-y-3 h-48 sm:h-56 hover:bg-white/10 cursor-pointer w-full"
+      >
+        <Icon pack="logos" name="discord-icon" class="w-10 h-10 pb-1" />
+        <h2 class="text-xl">Discord</h2>
+        <p class="text-left">
+          Join our Discord server to chat with other developers and get help
+          with your projects.
+        </p>
+      </a>
+      <a
+        href="https://github.com/t3-oss/create-t3-app"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-start justify-center border border-t3-purple-100 rounded-lg p-3 space-y-3 h-48 sm:h-56 hover:bg-white/10 cursor-pointer w-full"
+      >
+        <Icon
+          pack="bi"
+          name="github"
+          style="color: #FFFFFF;"
+          class="w-10 h-10 pb-1"
+        />
+        <h2 class="text-xl">Github</h2>
+        <p class="text-left">
+          Contribute to the project by submitting issues and pull requests on
+          our Github repository.
+        </p>
+      </a>
+      <a
+        href="https://twitter.com/t3dotgg"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-start justify-center border border-t3-purple-100 rounded-lg p-3 space-y-3 h-48 sm:h-56 hover:bg-white/10 cursor-pointer w-full"
+      >
+        <Icon
+          pack="bi"
+          name="twitter"
+          style="color: #1DA1F2;"
+          class="w-10 h-10 pb-1"
+        />
+        <h2 class="text-xl">Twitter</h2>
+        <span class="text-left"
+          >Join us on Twitter <span class="lowercase">F</span>or shitposts
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

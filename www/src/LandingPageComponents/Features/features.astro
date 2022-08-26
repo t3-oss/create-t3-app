@@ -1,0 +1,108 @@
+---
+import Icon from "astro-icon";
+import NextAuthIcon from "./nextauth.png";
+import { Image } from "@astrojs/image/components";
+import TRPCIcon from "./trpcIcon";
+const features = [
+  {
+    name: "NextJS",
+    description: `We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating a website using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.`,
+    iconPack: "logos",
+    iconName: "nextjs-icon",
+  },
+  {
+    name: "TypeScript",
+    description: `Javascript is hard. Why add more rules?
+We firmly believe the experience TypeScript provides will help you be a better developer, regardless of where you are in your career as an engineer. Whether you're new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS`,
+    iconPack: "logos",
+    iconName: "typescript-icon",
+  },
+  {
+    name: "TailwindCSS",
+    description: `Tailwind is a utility-first CSS framework for rapidly building custom user interfaces. It's a great way to quickly get up and running with a new project, but it can also be used to add some much needed polish to an existing project. We include the option to add Tailwind to provide a consistent, responsive, and accessible experience across all of your projects.`,
+    iconPack: "logos",
+    iconName: "tailwindcss-icon",
+  },
+  {
+    name: "tRPC",
+    description:
+      "If you use TypeScript on both the frontend and backend, you should use tRPC to infer types to create a full stack type-safe API. It can be used in place or alongside Next.js' API routes, or as a standalone server.",
+  },
+  {
+    name: "NextAuth",
+    description:
+      "When you need a flexible, secure, and scalable authentication solution, NextAuth.js is the go-to. It ties into your existing database and provides a simple API to manage users and sessions, and ties into NextJS and tRPC to provide a seamless experience.",
+  },
+  {
+    name: "Prisma",
+    description:
+      "Prisma is the best way to work with databases in your NextJS app. It provides a simple, type-safe API to query your database, and it can be used with a bunch of different databases, including Postgres, MySQL, SQL Server, and SQLite.",
+    iconPack: "logos",
+    iconName: "prisma",
+  },
+];
+---
+
+<section>
+  <div
+    class="max-w-full mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8 text-t3-purple-100"
+  >
+    <div>
+      <h2 class="text-2xl font-semibold text-t3-purple-100">
+        Libraries that work
+      </h2>
+      <p class="mt-2 text-4xl tracking-tight font-bold text-t3-purple-200">
+        Without the complex setup
+      </p>
+      <p class="mt-4 text-xl text-t3-purple-200">
+        create-t3-app gives you the option to install libraries that you need
+        without the hassle of scaffolding it all yourself.
+      </p>
+    </div>
+    <div class="mt-12 lg:mt-0 lg:col-span-2">
+      <dl
+        class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col sm:gap-x-6 sm:gap-y-10 lg:gap-x-8"
+      >
+        {
+          features.map((feature) => (
+            <div class="relative">
+              <dt class="flex">
+                {feature.iconName && (
+                  <Icon
+                    pack={feature.iconPack}
+                    name={feature.iconName}
+                    class="absolute h-6 w-6 text-green-500"
+                    aria-hidden="true"
+                  />
+                )}
+                {feature.name === "tRPC" && <TRPCIcon client:load />}
+                {feature.name === "NextAuth" && (
+                  <Image
+                    src={NextAuthIcon}
+                    width={28}
+                    height={32}
+                    alt="NextAuthJS"
+                  />
+                )}
+                <p
+                  class={
+                    feature.name === "tRPC"
+                      ? `ml-1 text-lg leading-6 font-medium text-t3-purple-200`
+                      : feature.name === "NextAuth"
+                      ? `ml-3 text-lg leading-6 font-medium text-t3-purple-200`
+                      : `ml-9 text-lg leading-6 font-medium text-t3-purple-200`
+                  }
+                >
+                  {feature.name}
+                </p>
+              </dt>
+              <dd class="mt-2 ml-9 text-base text-t3-purple-100">
+                {feature.description}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>

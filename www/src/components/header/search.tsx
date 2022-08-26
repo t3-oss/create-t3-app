@@ -50,21 +50,23 @@ export default function Search() {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="search-input"
+        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-gray-700 dark:bg-white bg-slate-900 rounded-lg"
       >
-        <svg width="24" height="24" fill="none">
-          <path
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <div className="flex items-center justify-center text-slate-900 stroke-slate-900">
+          <svg width="24" height="24" fill="none">
+            <path
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
 
-        <span>Search</span>
+          <span className="pl-1 lg:pl-3">Search</span>
+        </div>
 
-        <span className="search-hint">
+        <span className="border px-1 rounded-md border-slate-900">
           <span className="sr-only">Press </span>
 
           <kbd>/</kbd>

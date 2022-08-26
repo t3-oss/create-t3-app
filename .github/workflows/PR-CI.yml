@@ -120,7 +120,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: pnpm build
+      - run: pnpm build:cli
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       - run: cd cli && pnpm start -y ../../ci-test-app

@@ -1,0 +1,80 @@
+---
+import MobileMenuButton from "./mobileMenuButton";
+import MobileMenu from "./mobileMenu";
+import Search from "../../components/header/search";
+---
+
+<nav
+  class="flex flex-col relative justify-between items-center mt-3 bg-opacity-50"
+  aria-label="Global"
+>
+  <div class="flex items-center justify-between w-full px-6">
+    <div class="flex justify-between items-center w-full md:w-auto">
+      <div>
+        <a class="" href="/">
+          <img src="/assets/Logo.svg" width="60" height="60" alt="T3 Logo" />
+        </a>
+      </div><div class="hidden -space-x-1 md:flex md:ml-10">
+        <a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="/en/introduction"
+          ><span class="">Docs</span>
+        </a>
+        <a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="/en/faq"
+          ><span class="">FAQ</span>
+        </a><a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="https://github.com/t3-oss/create-t3-app"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span class="">Github</span>
+        </a><a
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          href="https://init.tips"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span class="">T3 Stack</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex items-center mr-2 md:hidden">
+      <MobileMenuButton client:load />
+    </div>
+
+    <div
+      class="search-item hidden md:block shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg"
+    >
+      <Search client:load />
+    </div>
+  </div>
+  <MobileMenu client:idle />
+</nav>
+
+<style>
+  :root {
+    --docsearch-primary-color: var(--theme-accent);
+    --docsearch-logo-color: var(--theme-text);
+  }
+
+  .search-item {
+    display: none;
+    position: relative;
+    z-index: 10;
+    flex-grow: 1;
+    padding-right: 0.7rem;
+    display: flex;
+    max-width: 200px;
+  }
+
+  :global(.search-item > *) {
+    flex-grow: 1;
+  }
+
+  @media (min-width: 50em) {
+    .search-item {
+      max-width: 400px;
+    }
+  }
+</style>

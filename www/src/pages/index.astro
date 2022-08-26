@@ -1,4 +1,21 @@
-<!-- TODO: add landing page -->
-<html>
-  <h1>ct3a</h1>
-</html>
+---
+import LandingPage from "../layouts/landingPage.astro";
+import Banner from "../LandingPageComponents/Banner/banner.astro";
+import Example from "../LandingPageComponents/Example/example.astro";
+import Features from "../LandingPageComponents/Features/features.astro";
+import Tweets from "../LandingPageComponents/Tweets/tweets.astro";
+import Community from "../LandingPageComponents/Community/community.astro";
+---
+
+<LandingPage
+  title="Create T3 App"
+  description="The best way to setup an opinionated, full-stack, typesafe Next.js project"
+>
+  <main>
+    <Banner />
+    <Example />
+    <Features />
+    <Tweets />
+    <Community />
+  </main>
+</LandingPage>
