@@ -10,12 +10,18 @@ const { editHref } = Astro.props as Props;
 const showMoreSection = CONFIG.COMMUNITY_INVITE_URL;
 ---
 
-{showMoreSection && <h2 class="heading">More</h2>}
-<ul>
+{
+  showMoreSection && (
+    <h2 class="heading dark:text-white text-slate-900">More</h2>
+  )
+}
+<ul class="">
   {
     editHref && (
-      <li class={`heading-link depth-2`}>
-        <a class="edit-on-github" href={editHref} target="_blank">
+      <li
+        class={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 border-t3-purple-500 dark:border-t3-purple-200 depth-2 border-l-2 hover:border-t3-purple-300`}
+      >
+        <a class="flex pl-2" href={editHref} target="_blank">
           <svg
             aria-hidden="true"
             focusable="false"
@@ -40,8 +46,10 @@ const showMoreSection = CONFIG.COMMUNITY_INVITE_URL;
   }
   {
     CONFIG.COMMUNITY_INVITE_URL && (
-      <li class={`heading-link depth-2`}>
-        <a href={CONFIG.COMMUNITY_INVITE_URL} target="_blank">
+      <li
+        class={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 border-t3-purple-500 dark:border-t3-purple-200 depth-2 border-l-2 hover:border-t3-purple-300`}
+      >
+        <a class="flex pl-2" href={CONFIG.COMMUNITY_INVITE_URL} target="_blank">
           <svg
             aria-hidden="true"
             focusable="false"

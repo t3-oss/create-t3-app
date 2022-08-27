@@ -10,8 +10,8 @@ const MobileMenu = () => {
       <div
         className={
           $isMobileMenuOpen
-            ? `absolute flex flex-col items-start justify-start -mx-4 w-full mt-1 transform transition-transform duration-300 ease-in-out translate-y-16 z-50 bg-gray-900 shadow shadow-t3-purple-100`
-            : `absolute flex flex-col transform items-start justify-start w-full transition-transform duration-300 ease-in-out -translate-y-96 z-50 bg-gray-900 shadow shadow-t3-purple-100 `
+            ? `absolute flex flex-col items-start justify-start -mx-4 w-full mt-1 transform transition-transform duration-300 ease-in-out translate-y-16 z-50 bg-gray-900 shadow shadow-t3-purple-100 opacity-100`
+            : `absolute flex flex-col transform items-start justify-start w-full transition-transform duration-300 ease-in-out -translate-y-96 z-50 bg-gray-900 shadow shadow-t3-purple-100 opacity-0`
         }
       >
         <div className="search-item w-full p-2">

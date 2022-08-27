@@ -9,7 +9,7 @@
 	font-size: 1rem;
 	font-family: inherit;
 	line-height: inherit;
-	background-color: var(--theme-bg);
+	/* background-color: var(--theme-bg); */
 	border-color: var(--theme-text-lighter);
 	color: var(--theme-text-light);
 	border-style: solid;
