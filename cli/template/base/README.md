@@ -55,7 +55,7 @@ Please note that Next.js requires a different process for buildtime (available i
      });
    ```
 
-2. Remove the `env`-import from [next.config.mjs](./template/base/next.config.mjs):
+2. Remove the `env`-import from [next.config.mjs](./next.config.mjs):
 
    ```diff
    - import { env } from "./src/env/server.mjs";
