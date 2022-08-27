@@ -25,5 +25,45 @@
       opacity: 0;
     }
   }
-  
+
+  .markdown {
+    @apply text-slate-900 dark:text-t3-purple-300;
+  }
+
+  .markdown h1 {
+    @apply mt-8 mb-4 text-3xl font-extrabold;
+  }
+  .markdown h2 {
+    @apply mt-8 mb-4 text-2xl font-semibold;
+  }
+  .markdown h3 {
+    @apply mt-8 mb-4 text-xl font-semibold;
+  }
+  .markdown li {
+    @apply list-disc;
+  }
+  .markdown ol > li {
+    @apply list-decimal;
+  }
+  .markdown p {
+    @apply mb-4 dark:text-t3-purple-100 
+  }
+  .markdown a > p {
+    @apply mb-0 text-sm;
+  }
+  .markdown a {
+    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-600 dark:decoration-t3-purple-600 decoration-slate-500 hover:text-slate-500;
+  }
+  .markdown pre {
+    @apply font-mono my-3 p-2 rounded-md pt-10 sm:pt-2;
+  }
+  .markdown h3 {
+    @apply mb-0 font-semibold;
+  }
+  .markdown code {
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50;
+  }
+  .markdown p > img {
+    @apply text-sm mt-8;
+  }  
 }
