@@ -6,13 +6,25 @@ layout: ../../../layouts/mainLayout.astro
 
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose.
 
-Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
+Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
 
 ## Docker
 
-1. In your [next.config.mjs](./next.config.mjs), add the `output: "standalone"` option to your config.
+1. In your [next.config.mjs](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option to your config:
 
-2. Delete the first line (`import { env } from "./src/env/server.mjs";`) from [next.config.mjs](./next.config.mjs).
+   ```diff
+     export default defineNextConfig({
+       reactStrictMode: true,
+       swcMinify: true,
+   +   output: "standalone",
+     });
+   ```
+
+2. Remove the `env`-import from [next.config.mjs](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs):
+
+   ```diff
+   - import { env } from "./src/env/server.mjs";
+   ```
 
 3. Create a `.dockerignore` file with the following contents:
    <details>
@@ -43,7 +55,7 @@ Please note that Next.js requires a different process for buildtime (available i
    # Install dependencies only when needed
    # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
    FROM --platform=linux/amd64 node:16-alpine AS deps
-   # Check https://github.com/nodejs/docker-node/tree/ b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+   # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
    RUN apk add --no-cache libc6-compat
    WORKDIR /app
 
@@ -122,7 +134,7 @@ Please note that Next.js requires a different process for buildtime (available i
 
 5. To build and run this image locally, run:
 
-   ```
+   ```bash
    docker build -t ct3a -e NEXT_PUBLIC_FOO=foo .
    docker run -p 3000:3000 -e BAR="bar" ct3a
    ```
