@@ -1,13 +1,14 @@
 ---
 import HeadCommon from "../components/headCommon.astro";
 import HeadSEO from "../components/headSEO.astro";
-import Header from "../components/header/header.astro";
 import PageContent from "../components/pageContent/pageContent.astro";
 import LeftSidebar from "../components/leftSidebar/leftSidebar.astro";
 import RightSidebar from "../components/rightSidebar/rightSidebar.astro";
 import * as CONFIG from "../config";
 import type { MarkdownHeading } from "astro";
 import Footer from "../components/footer/footer.astro";
+import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
+import "../styles/global.css";
 
 type Props = {
   frontmatter: CONFIG.Frontmatter;
@@ -68,7 +69,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
 
       #grid-left {
         position: fixed;
-        background-color: var(--theme-bg);
+        /* background-color: var(--theme-bg); */
         z-index: 10;
         display: none;
       }
@@ -126,12 +127,20 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   </head>
 
   <body>
-    <Header currentPage={currentPage} />
-    <main class="layout">
-      <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
+    <Navbar />
+    <main
+      class="bg-white dark:bg-slate-900 w-full justify-items-center grid grid-cols-1 px-6 md:px-0 md:grid-cols-3 h-full relative"
+    >
+      <aside
+        id="grid-left"
+        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 place-self-start bg-white dark:bg-slate-900 pt-16 col-span-1 col-start-1"
+        title="Site Navigation"
+      >
         <LeftSidebar currentPage={currentPage} />
       </aside>
-      <div id="grid-main">
+      <div
+        class="w-full sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2 place-self-start px-3"
+      >
         <PageContent
           frontmatter={frontmatter}
           headings={headings}
@@ -140,7 +149,11 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
           <slot />
         </PageContent>
       </div>
-      <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
+      <aside
+        id="grid-right"
+        title="Table of Contents"
+        class="justify-self-center hidden lg:block"
+      >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>
     </main>

@@ -5,6 +5,8 @@ export interface Props {
 }
 import Footer from "../LandingPageComponents/Footer/footer.astro";
 import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
+import LeftSidebar from "../components/leftSidebar/leftSidebar.astro";
+const currentPage = Astro.url.pathname;
 const { title, description } = Astro.props as Props;
 import { SEO } from "astro-seo";
 import "../styles/global.css";
@@ -23,9 +25,26 @@ import "@docsearch/css";
     <link rel="icon" type="image/ico" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
+  <body class="relative">
     <Navbar />
+    <aside
+      id="grid-left"
+      class="hidden sticky h-[100vh] bottom-0 -top-20 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 z-10"
+      title="Site Navigation"
+    >
+      <LeftSidebar currentPage={currentPage} />
+    </aside>
     <slot />
     <Footer />
+    <style>
+      :global(.mobile-sidebar-toggle) {
+        overflow: hidden;
+      }
+
+      :global(.mobile-sidebar-toggle) #grid-left {
+        display: block;
+        top: 2rem;
+      }
+    </style>
   </body>
 </html>

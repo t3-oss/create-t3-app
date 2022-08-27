@@ -4,7 +4,7 @@
 	gap: 0.25em;
 	padding: 0.33em 0.67em;
 	border-radius: 99em;
-	background-color: var(--theme-code-inline-bg);
+	
 }
 
 .theme-toggle > label:focus-within {

@@ -103,7 +103,13 @@ const additionalContributors = unique.length - recentContributors.length; // lis
       </span>
     )
   }
-  {unique.length === 0 && <a href={commitsURL}>Contributors</a>}
+  {
+    unique.length === 0 && (
+      <a class="text-slate-900 dark:text-white" href={commitsURL}>
+        Contributors
+      </a>
+    )
+  }
 </div>
 
 <style>

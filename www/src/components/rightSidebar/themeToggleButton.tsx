@@ -48,19 +48,28 @@ const ThemeToggle: FunctionalComponent = () => {
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "light") {
-      root.classList.remove("theme-dark");
+      root.classList.remove("dark");
     } else {
-      root.classList.add("theme-dark");
+      root.classList.add("dark");
     }
   }, [theme]);
 
   return (
-    <div className="theme-toggle">
+    <div className=" flex border border-slate-900 dark:border-white p-1 w-fit mx-auto rounded-full space-x-3">
       {themes.map((t, i) => {
         const icon = icons[i];
         const checked = t === theme;
         return (
-          <label key={t} className={checked ? " checked" : ""}>
+          <label
+            key={t}
+            className={
+              checked && i === 0
+                ? `text-orange-500 stroke-orange-500`
+                : checked && i === 1
+                ? `text-blue-500 stroke-blue-500`
+                : `text-slate-900 dark:text-white`
+            }
+          >
             {icon}
             <input
               type="radio"

@@ -1,11 +1,13 @@
 ---
-import MobileMenuButton from "./mobileMenuButton";
-import MobileMenu from "./mobileMenu";
 import Search from "../../components/header/search";
+import SidebarToggle from "../../components/header/sidebarToggle";
+const currentPage = Astro.url.pathname;
 ---
 
 <nav
-  class="flex flex-col relative justify-between items-center mt-3 bg-opacity-50"
+  class={currentPage === "/"
+    ? `flex flex-col relative justify-between items-center pt-3 z-50 text-slate-50`
+    : `flex flex-col relative justify-between items-center pt-3 bg-white dark:bg-slate-900 z-50`}
   aria-label="Global"
 >
   <div class="flex items-center justify-between w-full px-6">
@@ -16,22 +18,22 @@ import Search from "../../components/header/search";
         </a>
       </div><div class="hidden -space-x-1 md:flex md:ml-10">
         <a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
           href="/en/introduction"
           ><span class="">Docs</span>
         </a>
         <a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
           href="/en/faq"
           ><span class="">FAQ</span>
         </a><a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
           href="https://github.com/t3-oss/create-t3-app"
           target="_blank"
           rel="noopener noreferrer"
           ><span class="">Github</span>
         </a><a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
           href="https://init.tips"
           target="_blank"
           rel="noopener noreferrer"
@@ -39,17 +41,15 @@ import Search from "../../components/header/search";
         </a>
       </div>
     </div>
-    <div class="flex items-center mr-2 md:hidden">
-      <MobileMenuButton client:load />
+    <div class="menu-toggle">
+      <SidebarToggle client:idle />
     </div>
-
     <div
-      class="search-item hidden md:block shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg"
+      class="hidden md:block shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg w-full max-w-xs"
     >
       <Search client:load />
     </div>
   </div>
-  <MobileMenu client:idle />
 </nav>
 
 <style>
@@ -58,7 +58,7 @@ import Search from "../../components/header/search";
     --docsearch-logo-color: var(--theme-text);
   }
 
-  .search-item {
+  /* .search-item {
     display: none;
     position: relative;
     z-index: 10;
@@ -66,7 +66,7 @@ import Search from "../../components/header/search";
     padding-right: 0.7rem;
     display: flex;
     max-width: 200px;
-  }
+  } */
 
   :global(.search-item > *) {
     flex-grow: 1;

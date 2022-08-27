@@ -21,11 +21,12 @@ const MenuToggle: FunctionalComponent = () => {
       aria-pressed={sidebarShown ? "true" : "false"}
       id="menu-toggle"
       onClick={() => setSidebarShown(!sidebarShown)}
+      className="z-20 text-slate-900 stroke-slate-900 block md:hidden dark:text-white"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
+        width="1.7em"
+        height="1.7em"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
