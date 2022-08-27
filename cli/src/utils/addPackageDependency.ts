@@ -5,6 +5,7 @@ import {
   dependencyVersionMap,
   AvailableDependencies,
 } from "~/installers/index.js";
+import sortPackageJson from "sort-package-json";
 
 export const addPackageDependency = (opts: {
   dependencies: AvailableDependencies[];
@@ -28,8 +29,9 @@ export const addPackageDependency = (opts: {
       pkgJson.dependencies![pkgName] = version;
     }
   });
+  const sortedPkgJson = sortPackageJson(pkgJson);
 
-  fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
+  fs.writeJSONSync(path.join(projectDir, "package.json"), sortedPkgJson, {
     spaces: 2,
   });
 };
