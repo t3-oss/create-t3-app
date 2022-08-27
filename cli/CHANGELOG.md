@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.8.4
+
+### Patch Changes
+
+- [#353](https://github.com/t3-oss/create-t3-app/pull/353) [`7a20de9`](https://github.com/t3-oss/create-t3-app/commit/7a20de9f19dfd9ae64143da112a4e3e1bfe30f52) Thanks [@Gejsi](https://github.com/Gejsi)! - Added loggers during development
+
 ## 5.8.3
 
 ### Patch Changes
