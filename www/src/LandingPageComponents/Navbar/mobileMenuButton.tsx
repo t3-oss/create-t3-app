@@ -10,7 +10,7 @@ const MobileMenuButton = () => {
         type="button"
         aria-pressed={$isMobileMenuOpen ? "true" : "false"}
         id="menu-toggle"
-        className="dark:text-slate-50 "
+        className="dark:text-slate-50 block md:hidden"
         onClick={() => {
           MobileMenuState.set(!$isMobileMenuOpen);
         }}

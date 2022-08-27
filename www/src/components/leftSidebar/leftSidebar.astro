@@ -1,6 +1,7 @@
 ---
 import { getLanguageFromURL } from "../../languages";
 import { SIDEBAR } from "../../config";
+import Search from "../header/search";
 
 type Props = {
   currentPage: string;
@@ -12,23 +13,43 @@ const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
 
-<nav aria-labelledby="grid-left">
-  <ul class="nav-groups">
+<nav aria-labelledby="grid-left" class="max-w-sm mr-4">
+  <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
+    <Search client:idle />
+  </div>
+  <ul
+    class="h-full p-8 max-h-[100vh] overflow-x-visible overflow-y-auto dark:text-slate-50 text-slate-800"
+  >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
-          <div class="nav-group">
-            <h2>{header}</h2>
+          <div>
+            <h2 class="text-xl dark:text-slate-50 text-slate-800">{header}</h2>
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;
+                console.log(currentPageMatch, child.link);
                 return (
-                  <li class="nav-link">
+                  <li>
                     <a
                       href={url}
                       aria-current={
                         currentPageMatch === child.link ? "page" : false
                       }
+                      class={`
+                        ${
+                          currentPageMatch === child.link
+                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 font-extrabold "
+                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+                        }
+                        
+                        transition-colors
+                        font-medium
+                        block
+                        py-2
+                        px-4
+                        rounded-md
+                      `}
                     >
                       {child.text}
                     </a>
@@ -53,11 +74,6 @@ const sidebar = SIDEBAR[langCode];
 </script>
 
 <style>
-  nav {
-    width: 100%;
-    margin-right: 1rem;
-  }
-
   .nav-groups {
     height: 100%;
     padding: 2rem 0;
@@ -99,12 +115,12 @@ const sidebar = SIDEBAR[langCode];
 
   .nav-link a:hover,
   .nav-link a:focus {
-    background-color: var(--theme-bg-hover);
+    /* background-color: var(--theme-bg-hover); */
   }
 
   .nav-link a[aria-current="page"] {
     color: var(--theme-text-accent);
-    background-color: var(--theme-bg-accent);
+    /* background-color: var(--theme-bg-accent); */
     font-weight: 600;
   }
 
