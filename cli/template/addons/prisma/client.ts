@@ -15,17 +15,5 @@ export const prisma =
   });
 
 if (env.NODE_ENV !== "production") {
-  /**
-   * Uncomment this prisma middleware to show database queries elapsed time
-   */
-  // prisma.$use(async (params, next) => {
-  //   const before = Date.now()
-  //   await next(params)
-  //   const after = Date.now()
-  //   console.log(
-  //     `Query ${params.model}.${params.action} took ${after - before}ms`
-  //   )
-  // })
-
   global.prisma = prisma;
 }
