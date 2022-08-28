@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "t3-purple-50": "#F3EEFF",
         "t3-purple-100": "#e8ddff",
         "t3-purple-200": "#c3b4fc",
         "t3-purple-300": "#9e8bf9",
