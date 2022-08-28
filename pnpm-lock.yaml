@@ -95,6 +95,7 @@ importers:
       astro-icon: ^0.7.3
       astro-robots-txt: ^0.3.8
       astro-seo: ^0.6.0
+      image-size: ^1.0.2
       nanostores: ^0.6.0
       preact: ^10.7.3
       preact-render-to-string: ^5.2.2
@@ -112,6 +113,7 @@ importers:
       astro-icon: 0.7.3
       astro-robots-txt: 0.3.8
       astro-seo: 0.6.0
+      image-size: 1.0.2
       nanostores: 0.6.0
       preact: 10.10.6
       preact-render-to-string: 5.2.2_preact@10.10.6
@@ -3982,7 +3984,6 @@ packages:
     hasBin: true
     dependencies:
       queue: 6.0.2
-    dev: true
 
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
@@ -5808,7 +5809,6 @@ packages:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
     dependencies:
       inherits: 2.0.4
-    dev: true
 
   /quick-lru/4.0.1:
     resolution: {integrity: sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==}

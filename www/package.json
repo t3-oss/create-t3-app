@@ -18,6 +18,7 @@
     "astro-icon": "^0.7.3",
     "astro-robots-txt": "^0.3.8",
     "astro-seo": "^0.6.0",
+    "image-size": "^1.0.2",
     "nanostores": "^0.6.0",
     "preact": "^10.7.3",
     "preact-render-to-string": "^5.2.2",
