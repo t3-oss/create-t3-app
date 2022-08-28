@@ -1,0 +1,148 @@
+---
+import { getLanguageFromURL } from "../../languages";
+import { SIDEBAR } from "../../config";
+import Search from "../header/search";
+
+type Props = {
+  currentPage: string;
+};
+
+const { currentPage } = Astro.props as Props;
+const currentPageMatch = currentPage.slice(1);
+const langCode = getLanguageFromURL(currentPage);
+const sidebar = SIDEBAR[langCode];
+---
+
+<nav
+  aria-labelledby="grid-left"
+  class={currentPage === "/"
+    ? `pt-6 pb-28 h-full`
+    : `overflow-y-scroll md:overflow-hidden h-full pb-32`}
+>
+  <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
+    <Search client:idle />
+  </div>
+  <ul
+    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+  >
+    {
+      Object.entries(sidebar).map(([header, children]) => (
+        <li>
+          <div>
+            <h2
+              class={
+                currentPage === "/"
+                  ? `text-2xl sm:text-xl text-slate-50`
+                  : `text-2xl sm:text-xl dark:text-slate-50 text-slate-900 `
+              }
+            >
+              {header}
+            </h2>
+            <ul>
+              {children.map((child) => {
+                const url = Astro.site?.pathname + child.link;
+                return (
+                  <li>
+                    <a
+                      href={url}
+                      aria-current={
+                        currentPageMatch === child.link ? "page" : false
+                      }
+                      class={`
+                        ${
+                          currentPageMatch === child.link
+                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
+                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
+                        }
+                        
+                        transition-colors
+                        font-medium
+                        block
+                        py-2
+                        px-4
+                        rounded-md
+                      `}
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    var target = document.querySelector('[aria-current="page"]');
+    if (target && target.offsetTop > window.innerHeight - 100) {
+      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
+    }
+  });
+</script>
+
+<style>
+  .nav-groups {
+    height: 100%;
+    padding: 2rem 0;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .nav-groups > li + li {
+    margin-top: 2rem;
+  }
+
+  .nav-groups > :first-child {
+    padding-top: var(--doc-padding);
+  }
+
+  .nav-groups > :last-child {
+    padding-bottom: 2rem;
+    margin-bottom: var(--theme-navbar-height);
+  }
+
+  .nav-group-title {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.1rem 1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-link a {
+    font-size: 1rem;
+    margin: 1px;
+    padding: 0.3rem 1rem;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+  }
+
+  .nav-link a:hover,
+  .nav-link a:focus {
+    /* background-color: var(--theme-bg-hover); */
+  }
+
+  .nav-link a[aria-current="page"] {
+    color: var(--theme-text-accent);
+    /* background-color: var(--theme-bg-accent); */
+    font-weight: 600;
+  }
+
+  :global(:root.theme-dark) .nav-link a[aria-current="page"] {
+    color: hsla(var(--color-base-white), 100%, 1);
+  }
+
+  @media (min-width: 50em) {
+    .nav-groups {
+      padding: 0;
+    }
+  }
+</style>

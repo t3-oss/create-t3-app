@@ -1,0 +1,19 @@
+---
+import AvatarList from "./avatarList.astro";
+type Props = {
+  path: string;
+};
+const { path } = Astro.props as Props;
+---
+
+<footer class="mt-auto p-8 border-t-2 bg-white dark:bg-slate-900">
+  <AvatarList path={path} />
+</footer>
+
+<style>
+  footer {
+    margin-top: auto;
+    padding: 2rem;
+    border-top: 3px solid var(--theme-divider);
+  }
+</style>
