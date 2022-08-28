@@ -50,17 +50,29 @@ const title = frontmatter.title;
 
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
-    block.className = "relative w-full";
+    block.className = "relative inline-flex w-full h-full hover:cursor-pointer";
     let copyButton = document.createElement("button");
     copyButton.className =
-      "absolute right-1 top-1 border border-slate-50 rounded-lg px-2 py-1 text-sm hover:text-slate-800 hover:bg-gray-100 focus:outline-none focus:shadow-outline text-brand-primary";
+      "inline-flex absolute right-1 top-1 border border-slate-50 rounded-lg px-2 py-1 text-sm hover:text-slate-800 hover:bg-gray-100 focus:outline-none focus:shadow-outline text-brand-primary";
     copyButton.innerHTML = copySVG;
     copyButton.addEventListener("click", () => {
+      let text = "";
       const pre = copyButton.parentElement;
       let code = pre?.querySelector("code");
-      let text = code?.innerText;
+      if (code) {
+        text = code.innerText;
+      } else {
+        const span = pre?.querySelector("span");
+        if (span) {
+          text = span.innerText;
+        }
+      }
       if (text) {
-        navigator.clipboard.writeText(text);
+        try {
+          navigator.clipboard.writeText(text);
+        } catch (err) {
+          console.error("Failed to copy: ", err);
+        }
         copyButton.innerHTML = `<svg
     stroke="currentColor"
     fill="currentColor"
@@ -85,6 +97,7 @@ const title = frontmatter.title;
         }, 1000);
       }
     });
+
     block.appendChild(copyButton);
   });
 </script>

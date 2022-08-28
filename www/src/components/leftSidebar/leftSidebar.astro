@@ -13,22 +13,34 @@ const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
 
-<nav aria-labelledby="grid-left" class="max-w-sm mr-4">
+<nav
+  aria-labelledby="grid-left"
+  class={currentPage === "/"
+    ? `pt-6 pb-28 h-full`
+    : `overflow-y-scroll md:overflow-hidden h-full pb-32`}
+>
   <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
     <Search client:idle />
   </div>
   <ul
-    class="h-full p-8 max-h-[100vh] overflow-x-visible overflow-y-auto dark:text-slate-50 text-slate-800"
+    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
           <div>
-            <h2 class="text-xl dark:text-slate-50 text-slate-800">{header}</h2>
+            <h2
+              class={
+                currentPage === "/"
+                  ? `text-2xl sm:text-xl text-slate-50`
+                  : `text-2xl sm:text-xl dark:text-slate-50 text-slate-900 `
+              }
+            >
+              {header}
+            </h2>
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;
-                console.log(currentPageMatch, child.link);
                 return (
                   <li>
                     <a
@@ -39,8 +51,8 @@ const sidebar = SIDEBAR[langCode];
                       class={`
                         ${
                           currentPageMatch === child.link
-                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 font-extrabold "
-                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
+                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
                         }
                         
                         transition-colors

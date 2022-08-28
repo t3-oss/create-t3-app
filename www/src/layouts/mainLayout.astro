@@ -129,17 +129,17 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   <body>
     <Navbar />
     <main
-      class="bg-white dark:bg-slate-900 w-full justify-items-center grid grid-cols-1 px-6 md:px-0 md:grid-cols-3 h-full relative"
+      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-center grid grid-cols-1 md:grid-cols-3 h-full relative overflow-y-auto"
     >
       <aside
         id="grid-left"
-        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 place-self-start bg-white dark:bg-slate-900 pt-16 col-span-1 col-start-1"
+        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 place-self-start bg-t3-purple-50 bg-blend-lighten dark:bg-slate-900 pt-16 md:col-span-1 md:col-start-1 w-full"
         title="Site Navigation"
       >
         <LeftSidebar currentPage={currentPage} />
       </aside>
       <div
-        class="w-full sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2 place-self-start px-3"
+        class="w-full sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2 place-self-start px-6"
       >
         <PageContent
           frontmatter={frontmatter}

@@ -2,7 +2,9 @@
 import type { FunctionalComponent } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-const MenuToggle: FunctionalComponent = () => {
+const MenuToggle: FunctionalComponent<{ currentPage: string }> = ({
+  currentPage,
+}) => {
   const [sidebarShown, setSidebarShown] = useState(false);
 
   useEffect(() => {
@@ -21,12 +23,16 @@ const MenuToggle: FunctionalComponent = () => {
       aria-pressed={sidebarShown ? "true" : "false"}
       id="menu-toggle"
       onClick={() => setSidebarShown(!sidebarShown)}
-      className="z-20 text-slate-900 stroke-slate-900 block md:hidden dark:text-white"
+      className={
+        currentPage === "/"
+          ? `z-20 block md:hidden text-white`
+          : `z-20 block md:hidden text-black dark:text-white`
+      }
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="1.7em"
-        height="1.7em"
+        width="2em"
+        height="2em"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

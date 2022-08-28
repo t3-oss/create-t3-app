@@ -27,9 +27,9 @@ const {
 import { Image } from "@astrojs/image/components";
 ---
 
-<div class="max-w-xl mx-auto my-6">
+<div class="max-w-xl mx-auto my-2">
   <article
-    class="border-t border-b border-gray-400 p-2 hover:bg-gray-100 flex flex-wrap items-start cursor-pointer bg-white bg-cover rounded-lg"
+    class="border-t border-b border-gray-400 px-4 pt-4 pb-1 hover:bg-gray-100 flex flex-wrap items-start cursor-pointer bg-white bg-cover rounded-lg"
   >
     <Image
       src={avatar}
@@ -39,14 +39,14 @@ import { Image } from "@astrojs/image/components";
       class="rounded-full w-12 h-12 mr-3"
       alt={`@${handle}'s Avatar`}
     />
-    <div class="flex flex-wrap justify-start items-start flex-1">
+    <div class="flex flex-wrap justify-start flex-1">
       <div class="flex-1 flex items-center">
         <h3 class="mr-2 font-bold hover:underline">
           <a
             href={`https://twitter.com/${handle}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-[#1da1f2]"
+            class="hover:text-[#1da1f2] text-sm sm:text-base"
             >{author}
           </a>
         </h3>

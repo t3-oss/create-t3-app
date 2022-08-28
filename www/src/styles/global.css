@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html  {
+    @apply w-full
+  }
   .cursor::after {
     display: block;
     content: "";
@@ -27,7 +30,7 @@
   }
 
   .markdown {
-    @apply text-slate-900 dark:text-t3-purple-300;
+    @apply text-slate-900 dark:text-t3-purple-100;
   }
 
   .markdown h1 {
@@ -46,16 +49,16 @@
     @apply list-decimal;
   }
   .markdown p {
-    @apply mb-4 dark:text-t3-purple-100 
+    @apply mb-4 dark:text-white
   }
   .markdown a > p {
     @apply mb-0 text-sm;
   }
   .markdown a {
-    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-600 dark:decoration-t3-purple-600 decoration-slate-500 hover:text-slate-500;
+    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-slate-500 text-t3-purple-200;
   }
   .markdown pre {
-    @apply font-mono my-3 p-2 rounded-md pt-10 sm:pt-2;
+    @apply font-mono my-3 p-2 rounded-md sm:pt-2;
   }
   .markdown h3 {
     @apply mb-0 font-semibold;

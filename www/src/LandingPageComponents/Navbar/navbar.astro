@@ -7,10 +7,10 @@ const currentPage = Astro.url.pathname;
 <nav
   class={currentPage === "/"
     ? `flex flex-col relative justify-between items-center pt-3 z-50 text-slate-50`
-    : `flex flex-col relative justify-between items-center pt-3 bg-white dark:bg-slate-900 z-50`}
+    : `flex flex-col relative justify-between items-center pt-3 bg-t3-purple-50 dark:bg-slate-900 z-50`}
   aria-label="Global"
 >
-  <div class="flex items-center justify-between w-full px-6">
+  <div class="flex items-center justify-between w-full px-6 pb-2">
     <div class="flex justify-between items-center w-full md:w-auto">
       <div>
         <a class="" href="/">
@@ -18,22 +18,22 @@ const currentPage = Astro.url.pathname;
         </a>
       </div><div class="hidden -space-x-1 md:flex md:ml-10">
         <a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
+          class="inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
           href="/en/introduction"
           ><span class="">Docs</span>
         </a>
         <a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
+          class="inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
           href="/en/faq"
           ><span class="">FAQ</span>
         </a><a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
+          class="inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
           href="https://github.com/t3-oss/create-t3-app"
           target="_blank"
           rel="noopener noreferrer"
           ><span class="">Github</span>
         </a><a
-          class="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-300 hover:text-t3-purple-400"
+          class="inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
           href="https://init.tips"
           target="_blank"
           rel="noopener noreferrer"
@@ -41,8 +41,8 @@ const currentPage = Astro.url.pathname;
         </a>
       </div>
     </div>
-    <div class="menu-toggle">
-      <SidebarToggle client:idle />
+    <div>
+      <SidebarToggle currentPage={currentPage} client:idle />
     </div>
     <div
       class="hidden md:block shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg w-full max-w-xs"
