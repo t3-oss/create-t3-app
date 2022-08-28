@@ -41,12 +41,6 @@ export const nextAuthInstaller: Installer = async ({
     "src/pages/api/restricted.ts",
   );
 
-  const protectedPageSrc = path.join(nextAuthAssetDir, "protected-page.tsx");
-  const protectedPageDest = path.join(
-    projectDir,
-    "src/pages/protected-page.tsx",
-  );
-
   const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
   const nextAuthDefinitionDest = path.join(
     projectDir,
@@ -57,7 +51,6 @@ export const nextAuthInstaller: Installer = async ({
     fs.copy(apiHandlerSrc, apiHandlerDest),
     fs.copy(getServerAuthSessionSrc, getServerAuthSessionDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
-    fs.copy(protectedPageSrc, protectedPageDest),
     fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
   ]);
 };
