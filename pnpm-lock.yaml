@@ -23,6 +23,7 @@ importers:
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.5.3
       turbo: ^1.4.3
+      typescript: ^4.7.4
     devDependencies:
       '@changesets/changelog-github': 0.4.6
       '@changesets/cli': 2.24.3
@@ -43,6 +44,7 @@ importers:
       prettier: 2.7.1
       prettier-plugin-astro: 0.5.3
       turbo: 1.4.3
+      typescript: 4.7.4
 
   cli:
     specifiers:
@@ -82,20 +84,19 @@ importers:
       '@algolia/client-search': ^4.13.1
       '@astrojs/image': ^0.3.6
       '@astrojs/preact': ^1.0.2
-      '@astrojs/react': ^1.0.0
+      '@astrojs/react': ^1.1.0
       '@astrojs/tailwind': ^1.0.0
       '@docsearch/css': ^3.2.1
       '@docsearch/react': ^3.2.1
       '@nanostores/react': ^0.3.0
       '@types/node': ^18.7.6
-      '@types/react': ^17.0.48
-      '@types/react-dom': ^17.0.11
+      '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
       '@types/react-typist': ^2.0.3
-      astro: ^1.0.8
+      astro: ^1.1.1
       astro-icon: ^0.7.3
       astro-robots-txt: ^0.3.8
       astro-seo: ^0.6.0
-      image-size: ^1.0.2
       nanostores: ^0.6.0
       preact: ^10.7.3
       preact-render-to-string: ^5.2.2
@@ -103,36 +104,33 @@ importers:
       react-dom: ^18.0.0
       react-typist: ^2.0.5
       sass: ^1.54.5
-      svgo: ^2.8.0
-      tiny-glob: ^0.2.9
+      typescript: ^4.7.4
     dependencies:
       '@algolia/client-search': 4.14.2
       '@docsearch/css': 3.2.1
-      '@docsearch/react': 3.2.1_h2q7ltx4sqgye5xvrbnj7n2sfm
+      '@docsearch/react': 3.2.1_bnoix7udcyfzum3bz5llzjedt4
       '@nanostores/react': 0.3.0_resngft2y545aodfc4fe35fzvu
       astro-icon: 0.7.3
       astro-robots-txt: 0.3.8
       astro-seo: 0.6.0
-      image-size: 1.0.2
       nanostores: 0.6.0
       preact: 10.10.6
       preact-render-to-string: 5.2.2_preact@10.10.6
       react-typist: 2.0.5_biqbaboplfbrettd7655fr4n2y
       sass: 1.54.5
-      svgo: 2.8.0
-      tiny-glob: 0.2.9
     devDependencies:
       '@astrojs/image': 0.3.6
       '@astrojs/preact': 1.0.2_preact@10.10.6
-      '@astrojs/react': 1.0.0_biqbaboplfbrettd7655fr4n2y
+      '@astrojs/react': 1.1.0_biqbaboplfbrettd7655fr4n2y
       '@astrojs/tailwind': 1.0.0
       '@types/node': 18.7.13
-      '@types/react': 17.0.48
-      '@types/react-dom': 17.0.17
+      '@types/react': 18.0.17
+      '@types/react-dom': 18.0.6
       '@types/react-typist': 2.0.3
-      astro: 1.0.9_sass@1.54.5
+      astro: 1.1.1_sass@1.54.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      typescript: 4.7.4
 
 packages:
 
@@ -270,11 +268,13 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
-  /@astrojs/language-server/0.20.3:
-    resolution: {integrity: sha512-MuzTsSpUjtmMXfrBThtZwgO39Jc+Bbl5hLevumkp01N/YCKE+Iipd3ELSdbk7+TPiuBV+/SKrVmaQPvJBnWPkA==}
+  /@astrojs/language-server/0.23.0:
+    resolution: {integrity: sha512-vWQOPipssNUivHIytKX9Zw7TSYVIb1sItDEuZvaWIcim8Q3n7sbigaPpakeVhNh8EbstMMuYswUffJuUemueAw==}
     hasBin: true
     dependencies:
       '@vscode/emmet-helper': 2.8.4
+      prettier: 2.7.1
+      prettier-plugin-astro: 0.5.3
       source-map: 0.7.4
       typescript: 4.6.4
       vscode-css-languageservice: 6.0.1
@@ -286,8 +286,8 @@ packages:
       vscode-uri: 3.0.3
     dev: true
 
-  /@astrojs/markdown-remark/1.0.0:
-    resolution: {integrity: sha512-yQIMvVjSMs4ZQHffT2nBgXiqVHKOwIgd6xC0o5XkcbXxyspxjRGpHyiAp/WKEdKsUeXwjVuL8b+6lhAYByd+lw==}
+  /@astrojs/markdown-remark/1.1.0:
+    resolution: {integrity: sha512-8PkcOFeMbAb+4PEC/YakTEtJ4TCGQ2n4M3R/XEAu17gsTZkjJMP+z9pbV5ye0b/+qrYZOlpjGSu8dA1ysPk5kg==}
     dependencies:
       '@astrojs/micromark-extension-mdx-jsx': 1.0.3
       '@astrojs/prism': 1.0.1
@@ -350,8 +350,8 @@ packages:
       prismjs: 1.29.0
     dev: true
 
-  /@astrojs/react/1.0.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-CHJQ1dwjpYOTunioi02yWKdSxN/YeLP1vI70Xq+AqhcTmcmdbCMwbtYOEVwIK1k/AJmLItsJMcrsTfRoQU+Z+Q==}
+  /@astrojs/react/1.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-T9/mEE/9yO36X3QeqzQjGMFXRH0f3vcBC9Jhxb3oGm5NlKm2m9Sg9GR52fcCtLRVR3ihc8qAElgEmQAAUTZ3KQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     peerDependencies:
       react: ^17.0.2 || ^18.0.0
@@ -1007,7 +1007,7 @@ packages:
     resolution: {integrity: sha512-gaP6TxxwQC+K8D6TRx5WULUWKrcbzECOPA2KCVMuI+6C7dNiGUk5yXXzVhc5sld79XKYLnO9DRTI4mjXDYkh+g==}
     dev: false
 
-  /@docsearch/react/3.2.1_h2q7ltx4sqgye5xvrbnj7n2sfm:
+  /@docsearch/react/3.2.1_bnoix7udcyfzum3bz5llzjedt4:
     resolution: {integrity: sha512-EzTQ/y82s14IQC5XVestiK/kFFMe2aagoYFuTAIfIb/e+4FU7kSMKonRtLwsCiLQHmjvNQq+HO+33giJ5YVtaQ==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 19.0.0'
@@ -1024,7 +1024,7 @@ packages:
       '@algolia/autocomplete-core': 1.7.1
       '@algolia/autocomplete-preset-algolia': 1.7.1_qs6lk5nhygj2o3hj4sf6xnr724
       '@docsearch/css': 3.2.1
-      '@types/react': 17.0.48
+      '@types/react': 18.0.17
       algoliasearch: 4.14.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1372,20 +1372,20 @@ packages:
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom/17.0.17:
-    resolution: {integrity: sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==}
+  /@types/react-dom/18.0.6:
+    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 17.0.48
+      '@types/react': 18.0.17
     dev: true
 
   /@types/react-typist/2.0.3:
     resolution: {integrity: sha512-5eDrikVNJ73qR5XEV+ZNApoYarzYUD5OOPdNwnNY5RtqituZl9haq0OdZUaac2R751QSOe3zDwnqYhBmdFhG7g==}
     dependencies:
-      '@types/react': 17.0.48
+      '@types/react': 18.0.17
     dev: true
 
-  /@types/react/17.0.48:
-    resolution: {integrity: sha512-zJ6IYlJ8cYYxiJfUaZOQee4lh99mFihBoqkOSEGV+dFi9leROW6+PgstzQ+w3gWTnUfskALtQPGHK6dYmPj+2A==}
+  /@types/react/18.0.17:
+    resolution: {integrity: sha512-38ETy4tL+rn4uQQi7mB81G7V1g0u2ryquNmsVIOKUAEIDK+3CUjZ6rSRpdvS99dNBnkLFL83qfmtLacGOTIhwQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -1803,14 +1803,14 @@ packages:
     resolution: {integrity: sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==}
     dev: false
 
-  /astro/1.0.9_sass@1.54.5:
-    resolution: {integrity: sha512-Pa/7wLIuXFs+sgdVxUTT0QHe+9yKQVE21jxZU/p2ZzcUrAB+8JN32fHEG28QTwEx+NuwTqvC5xTvDBXLZJGtqw==}
+  /astro/1.1.1_sass@1.54.5:
+    resolution: {integrity: sha512-FTjjivWeJizYLidzBgiAAXzILptvT6ssvWodzSwT1mYm9kWiua2kzMk5r6E9KqB+okV4Z/OryxdhWJwmLD0G7g==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 0.23.4
-      '@astrojs/language-server': 0.20.3
-      '@astrojs/markdown-remark': 1.0.0
+      '@astrojs/language-server': 0.23.0
+      '@astrojs/markdown-remark': 1.1.0
       '@astrojs/telemetry': 1.0.0
       '@astrojs/webapi': 1.0.0
       '@babel/core': 7.18.13
@@ -3724,6 +3724,7 @@ packages:
 
   /globalyzer/0.1.0:
     resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
+    dev: true
 
   /globby/10.0.0:
     resolution: {integrity: sha512-3LifW9M4joGZasyYPz2A1U74zbC/45fvpXUvO/9KbSa+VV0aGZarWkfdgKyR9sExNP0t0x0ss/UMJpNpcaTspw==}
@@ -3753,6 +3754,7 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
@@ -3984,6 +3986,7 @@ packages:
     hasBin: true
     dependencies:
       queue: 6.0.2
+    dev: true
 
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
@@ -5809,6 +5812,7 @@ packages:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
     dependencies:
       inherits: 2.0.4
+    dev: true
 
   /quick-lru/4.0.1:
     resolution: {integrity: sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==}
@@ -6766,6 +6770,7 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
+    dev: true
 
   /tinycolor2/1.4.2:
     resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}

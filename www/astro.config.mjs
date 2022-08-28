@@ -22,11 +22,6 @@ export default defineConfig({
       },
     }),
   ],
-  vite: {
-    ssr: {
-      external: ["svgo", "tiny-glob", "image-size", "sharp", "preact"],
-    },
-  },
   experimental: {
     integrations: true,
   },
