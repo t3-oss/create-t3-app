@@ -23,7 +23,8 @@
     "preact-render-to-string": "^5.2.2",
     "react-typist": "^2.0.5",
     "sass": "^1.54.5",
-    "svgo": "^2.8.0"
+    "svgo": "^2.8.0",
+    "tiny-glob": "^0.2.9"
   },
   "devDependencies": {
     "@astrojs/image": "^0.3.6",
