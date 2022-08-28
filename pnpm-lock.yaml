@@ -84,7 +84,7 @@ importers:
       '@algolia/client-search': ^4.13.1
       '@astrojs/image': ^0.3.6
       '@astrojs/preact': ^1.0.2
-      '@astrojs/react': ^1.1.0
+      '@astrojs/react': 1.1.0
       '@astrojs/tailwind': ^1.0.0
       '@docsearch/css': ^3.2.1
       '@docsearch/react': ^3.2.1
@@ -93,7 +93,7 @@ importers:
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
       '@types/react-typist': ^2.0.3
-      astro: ^1.1.1
+      astro: 1.1.0
       astro-icon: ^0.7.3
       astro-robots-txt: ^0.3.8
       astro-seo: ^0.6.0
@@ -103,7 +103,6 @@ importers:
       react: ^18.0.0
       react-dom: ^18.0.0
       react-typist: ^2.0.5
-      typescript: ^4.7.4
     dependencies:
       '@algolia/client-search': 4.14.2
       '@docsearch/css': 3.2.1
@@ -125,10 +124,9 @@ importers:
       '@types/react': 18.0.17
       '@types/react-dom': 18.0.6
       '@types/react-typist': 2.0.3
-      astro: 1.1.1
+      astro: 1.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      typescript: 4.7.4
 
 packages:
 
@@ -1802,8 +1800,8 @@ packages:
     resolution: {integrity: sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==}
     dev: false
 
-  /astro/1.1.1:
-    resolution: {integrity: sha512-FTjjivWeJizYLidzBgiAAXzILptvT6ssvWodzSwT1mYm9kWiua2kzMk5r6E9KqB+okV4Z/OryxdhWJwmLD0G7g==}
+  /astro/1.1.0:
+    resolution: {integrity: sha512-Bi8vxRMEnXei78XvegprNXFETFS9t5/yu514ACpLD8Fx3iGU74rH3zpyxzVpkNED3Dt1lx2/QfVyjEfj6DJ1ZA==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:

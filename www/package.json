@@ -26,16 +26,15 @@
   "devDependencies": {
     "@astrojs/image": "^0.3.6",
     "@astrojs/preact": "^1.0.2",
-    "@astrojs/react": "^1.1.0",
+    "@astrojs/react": "1.1.0",
     "@astrojs/tailwind": "^1.0.0",
     "@types/node": "^18.7.6",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-typist": "^2.0.3",
-    "astro": "^1.1.1",
+    "astro": "1.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-typist": "^2.0.5",
-    "typescript": "^4.7.4"
+    "react-typist": "^2.0.5"
   }
 }
