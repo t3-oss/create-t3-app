@@ -102,6 +102,7 @@ importers:
       react-dom: ^18.0.0
       react-typist: ^2.0.5
       sass: ^1.54.5
+      svgo: ^2.8.0
     dependencies:
       '@algolia/client-search': 4.14.2
       '@docsearch/css': 3.2.1
@@ -115,6 +116,7 @@ importers:
       preact-render-to-string: 5.2.2_preact@10.10.6
       react-typist: 2.0.5_biqbaboplfbrettd7655fr4n2y
       sass: 1.54.5
+      svgo: 2.8.0
     devDependencies:
       '@astrojs/image': 0.3.6
       '@astrojs/preact': 1.0.2_preact@10.10.6

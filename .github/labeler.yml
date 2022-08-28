@@ -1,5 +1,8 @@
 "area: cli":
-  - any: ["src/**"]
+  - any: ["cli/src/**"]
 
 "area: t3-app":
-  - any: ["template/**"]
+  - any: ["cli/template/**"]
+
+"documentation":
+  - any: ["www/**", "**/*.md"]
