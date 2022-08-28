@@ -13,18 +13,31 @@ const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
 
-<nav aria-labelledby="grid-left" class={currentPage === "/" ? ` pt-6 pb-28 h-full` : `overflow-y-scroll md:overflow-hidden h-full pb-32`}>
+<nav
+  aria-labelledby="grid-left"
+  class={currentPage === "/"
+    ? ` pt-6 pb-28 h-full`
+    : `overflow-y-scroll md:overflow-hidden h-full pb-32`}
+>
   <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
     <Search client:idle />
   </div>
   <ul
-    class="p-8 h-full overflow-x-visible  overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
           <div>
-            <h2 class={currentPage === "/" ? `text-xl text-slate-50` : `text-xl dark:text-slate-50 text-slate-900`}>{header}</h2>
+            <h2
+              class={
+                currentPage === "/"
+                  ? `text-xl text-slate-50`
+                  : `text-xl dark:text-slate-50 text-slate-900`
+              }
+            >
+              {header}
+            </h2>
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;
