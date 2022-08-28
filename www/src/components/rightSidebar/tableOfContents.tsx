@@ -49,14 +49,16 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
   }, []);
 
   return (
-    <div className="w-full text-slate-900 dark:text-slate-50">
+    <div className="w-full ">
       <h2 className="text-lg my-4 font-semibold">On this page</h2>
-      <ul className="w-full border-l-2 border-slate-800 dark:border-brand-primary my-1">
+      <ul className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1">
         <li
-          className={`pl-2 ${activeId === "overview" ? "active" : ""}`.trim()}
+          className={`pl-2 marker:bg-t3-purple-300 ${
+            activeId === "overview" ? "active" : ""
+          }`.trim()}
         >
           <a
-            className="text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300"
+            className="text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 "
             href="#overview"
           >
             Overview
@@ -69,8 +71,10 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
             return (
               <li key={i} className="w-full list-none pl-2">
                 <a
-                  className={`pl-${padding} hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 ${
-                    activeId === heading.slug ? "font-bold " : ""
+                  className={`pl-${padding} hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
+                    activeId === heading.slug
+                      ? "font-bold text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 dark:hover:text-t3-purple-100"
+                      : "text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 dark:hover:text-t3-purple-100"
                   }`}
                   href={`#${heading.slug}`}
                 >

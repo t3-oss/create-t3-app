@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html  {
+    @apply w-full
+  }
   .cursor::after {
     display: block;
     content: "";
@@ -52,7 +55,7 @@
     @apply mb-0 text-sm;
   }
   .markdown a {
-    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-600 dark:decoration-t3-purple-600 decoration-slate-500 hover:text-slate-500;
+    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-slate-500 text-t3-purple-200;
   }
   .markdown pre {
     @apply font-mono my-3 p-2 rounded-md sm:pt-2;
