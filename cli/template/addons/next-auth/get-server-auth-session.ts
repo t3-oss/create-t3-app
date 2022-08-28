@@ -1,10 +1,9 @@
 // Wrapper for unstable_getServerSession https://next-auth.js.org/configuration/nextjs
 
-import { GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsContext } from "next";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextauth]";
 
-// gSSP example - /pages/protected-page.tsx
 // Next API route example - /pages/api/restricted.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
