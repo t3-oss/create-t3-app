@@ -13,7 +13,7 @@ const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
 
-<nav aria-labelledby="grid-left" class="max-w-sm mr-4">
+<nav aria-labelledby="grid-left">
   <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
     <Search client:idle />
   </div>
@@ -28,7 +28,6 @@ const sidebar = SIDEBAR[langCode];
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;
-                console.log(currentPageMatch, child.link);
                 return (
                   <li>
                     <a
