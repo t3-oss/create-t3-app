@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.8.5
+
+### Patch Changes
+
+- [#357](https://github.com/t3-oss/create-t3-app/pull/357) [`b032074`](https://github.com/t3-oss/create-t3-app/commit/b03207434484d7ec3411b2d7c062a22cf425badc) Thanks [@virtuoushub](https://github.com/virtuoushub)! - chore: Sort package.json when in noInstallMode
+
+* [#365](https://github.com/t3-oss/create-t3-app/pull/365) [`b3ce004`](https://github.com/t3-oss/create-t3-app/commit/b3ce004affb9474e53e845e8507f676e3a771de0) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - revert prisma cleint teardown from #353
+
 ## 5.8.4
 
 ### Patch Changes
