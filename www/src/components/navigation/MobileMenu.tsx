@@ -1,11 +1,11 @@
 /** @jsxImportSource react */
-import Search from "./search";
+import Search from "./Search";
 import { useStore } from "@nanostores/react";
 import { atom } from "nanostores";
 
 export const MobileMenuState = atom(false);
 
-const MobileMenu = () => {
+export default function MobileMenu() {
   const $isMobileMenuOpen = useStore(MobileMenuState);
   return (
     <>
@@ -48,6 +48,4 @@ const MobileMenu = () => {
       </div>
     </>
   );
-};
-
-export default MobileMenu;
+}
