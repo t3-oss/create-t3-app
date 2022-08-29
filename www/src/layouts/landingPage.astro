@@ -3,8 +3,8 @@ export interface Props {
   title: string;
   description: string;
 }
-import Footer from "../LandingPageComponents/Footer/footer.astro";
-import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
+import Footer from "../components/footer/footer.astro";
+import Navbar from "../components/header/navbar.astro";
 import LeftSidebar from "../components/blog/leftSidebar.astro";
 const currentPage = Astro.url.pathname;
 const { title, description } = Astro.props as Props;
@@ -35,7 +35,7 @@ import "@docsearch/css";
       <LeftSidebar currentPage={currentPage} />
     </aside>
     <slot />
-    <Footer />
+    <Footer isBlog={false} path="/" />
     <style>
       :global(.mobile-sidebar-toggle) {
         overflow: hidden;
