@@ -58,7 +58,7 @@ jobs:
         uses: actions/cache@v3
         id: eslint-cache
         with:
-          path: .eslintcache
+          path: "**/.eslintcache"
           key: ${{ matrix.os }}-eslint-${{ hashFiles('**/*.ts', 'package.json', 'tsconfig.json') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
