@@ -1,6 +1,6 @@
 # this workflow will run on every pr to make sure the project is following the guidelines
 
-name: PR-CI
+name: PR-CI-NEW
 
 on:
   pull_request:
