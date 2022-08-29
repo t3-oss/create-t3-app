@@ -12,7 +12,9 @@ const { title } = Astro.props;
       {title}
     </p>
   </dt>
-  <dd class="mt-2 ml-14 text-sm md:text-base text-t3-purple-100 subpixel-antialiased">
+  <dd
+    class="mt-2 ml-14 text-sm md:text-base text-t3-purple-100 subpixel-antialiased"
+  >
     <slot name="description" />
   </dd>
 </div>
