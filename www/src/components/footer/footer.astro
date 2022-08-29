@@ -7,7 +7,7 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer class="mt-auto p-8 border-t-2 bg-white dark:bg-slate-900">
+<footer class="mt-auto py-8 border-t-2 text-t3-purple-100">
   {isBlog && <AvatarList path={path} />}
   <div
     class="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50"
@@ -22,7 +22,7 @@ const { path, isBlog } = Astro.props;
           class="flex justify-center space-x-3 md:justify-start"
         >
           <div class="flex items-center justify-center">
-            <img src="favicon.svg" width="60" height="60" alt="T3 Logo" />
+            <img src="/favicon.svg" width="60" height="60" alt="T3 Logo" />
             <span class="text-2xl font-semibold pl-3">Create T3 App</span>
           </div>
         </a>
