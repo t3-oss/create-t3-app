@@ -22,10 +22,8 @@
     "typescript"
   ],
   "engines": {
-    "node": ">=14.16",
-    "pnpm": ">=7.9.5"
+    "node": ">=14.16"
   },
-  "packageManager": "pnpm@7.9.5",
   "scripts": {
     "typecheck": "turbo run typecheck",
     "build:cli": "turbo run build --filter create-t3-app",
