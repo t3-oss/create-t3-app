@@ -1,16 +1,18 @@
 ---
+import { SEO } from "astro-seo";
+import Footer from "../components/footer/footer.astro";
+import Navbar from "../components/navigation/navbar.astro";
+import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import "../styles/global.css";
+import "@docsearch/css";
+
 export interface Props {
   title: string;
   description: string;
 }
-import Footer from "../LandingPageComponents/Footer/footer.astro";
-import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
-import LeftSidebar from "../components/leftSidebar/leftSidebar.astro";
-const currentPage = Astro.url.pathname;
 const { title, description } = Astro.props as Props;
-import { SEO } from "astro-seo";
-import "../styles/global.css";
-import "@docsearch/css";
+
+const currentPage = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ import "@docsearch/css";
       <LeftSidebar currentPage={currentPage} />
     </aside>
     <slot />
-    <Footer />
+    <Footer isBlog={false} path="/" />
     <style>
       :global(.mobile-sidebar-toggle) {
         overflow: hidden;

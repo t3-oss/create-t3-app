@@ -15,10 +15,8 @@
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.2.1",
     "@nanostores/react": "^0.3.0",
-    "astro-robots-txt": "^0.3.8",
     "astro-seo": "^0.6.0",
-    "nanostores": "^0.6.0",
-    "react-typist": "^2.0.5"
+    "nanostores": "^0.6.0"
   },
   "devDependencies": {
     "@astrojs/react": "^1.1.0",
@@ -27,9 +25,9 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-typist": "^2.0.3",
-    "astro": "^1.1.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "astro": "^1.1.1",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "react-typist": "^2.0.5"
   }
 }

@@ -1,7 +1,9 @@
 /** @jsxImportSource react */
+import Search from "./search";
 import { useStore } from "@nanostores/react";
-import { MobileMenuState } from "../../stores/mobileMenu";
-import Search from "../../components/header/search";
+import { atom } from "nanostores";
+
+export const MobileMenuState = atom(false);
 
 const MobileMenu = () => {
   const $isMobileMenuOpen = useStore(MobileMenuState);

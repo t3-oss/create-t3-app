@@ -1,10 +1,10 @@
 ---
 import LandingPage from "../layouts/landingPage.astro";
-import Banner from "../LandingPageComponents/Banner/banner.astro";
-import Example from "../LandingPageComponents/Example/example.astro";
-import Features from "../LandingPageComponents/Features/features.astro";
-import Tweets from "../LandingPageComponents/Tweets/tweets.astro";
-import Community from "../LandingPageComponents/Community/community.astro";
+import Banner from "../components/landingPage/banner.astro";
+import About from "../components/landingPage/about.astro";
+import Features from "../components/landingPage/stack/stack.astro";
+import Tweets from "../components/landingPage/tweets/tweets.astro";
+import Community from "../components/landingPage/community.astro";
 ---
 
 <LandingPage
@@ -13,7 +13,7 @@ import Community from "../LandingPageComponents/Community/community.astro";
 >
   <main>
     <Banner />
-    <Example />
+    <About />
     <Features />
     <Tweets />
     <Community />

@@ -1,6 +1,5 @@
 /** @jsxImportSource react */
-import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { type FC, useState, useEffect } from "react";
 
 const MenuToggle: FC<{ currentPage: string }> = ({ currentPage }) => {
   const [sidebarShown, setSidebarShown] = useState(false);

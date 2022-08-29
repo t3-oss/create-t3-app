@@ -1,6 +1,6 @@
 ---
-import Search from "../../components/header/search";
-import SidebarToggle from "../../components/header/sidebarToggle";
+import Search from "./search";
+import SidebarToggle from "./sidebarToggle";
 const currentPage = Astro.url.pathname;
 ---
 
@@ -14,7 +14,7 @@ const currentPage = Astro.url.pathname;
     <div class="flex justify-between items-center w-full md:w-auto">
       <div>
         <a class="" href="/">
-          <img src="/assets/Logo.svg" width="60" height="60" alt="T3 Logo" />
+          <img src="/favicon.svg" width="60" height="60" alt="T3 Logo" />
         </a>
       </div><div class="hidden -space-x-1 md:flex md:ml-10">
         <a

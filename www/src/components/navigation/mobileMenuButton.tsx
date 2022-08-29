@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useStore } from "@nanostores/react";
-import { MobileMenuState } from "../../stores/mobileMenu";
+import { MobileMenuState } from "./mobileMenu";
 
 const MobileMenuButton = () => {
   const $isMobileMenuOpen = useStore(MobileMenuState);

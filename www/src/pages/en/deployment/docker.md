@@ -1,7 +1,7 @@
 ---
 title: Docker
 description: Deployment with Docker
-layout: ../../../layouts/mainLayout.astro
+layout: ../../../layouts/blog.astro
 ---
 
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose.

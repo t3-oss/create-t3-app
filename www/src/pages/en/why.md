@@ -1,7 +1,7 @@
 ---
 title: Why CT3A?
 description: Why you should pick Create T3 App for your next project
-layout: ../../layouts/mainLayout.astro
+layout: ../../layouts/blog.astro
 ---
 
 ## Why TypeScript ?

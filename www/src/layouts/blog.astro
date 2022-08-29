@@ -1,13 +1,13 @@
 ---
 import HeadCommon from "../components/headCommon.astro";
 import HeadSEO from "../components/headSEO.astro";
-import PageContent from "../components/pageContent/pageContent.astro";
-import LeftSidebar from "../components/leftSidebar/leftSidebar.astro";
-import RightSidebar from "../components/rightSidebar/rightSidebar.astro";
+import PageContent from "../components/blog/pageContent.astro";
+import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import RightSidebar from "../components/navigation/rightSidebar.astro";
 import * as CONFIG from "../config";
 import type { MarkdownHeading } from "astro";
 import Footer from "../components/footer/footer.astro";
-import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
+import Navbar from "../components/navigation/navbar.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -157,6 +157,6 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>
     </main>
-    <Footer path={currentFile} />
+    <Footer path={currentFile} isBlog={true} />
   </body>
 </html>
