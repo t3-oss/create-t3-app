@@ -150,3 +150,5 @@ jobs:
           node-version: 16
       - run: pnpm run check --filter=www
       - run: pnpm build:www
+        env:
+          PUBLIC_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
