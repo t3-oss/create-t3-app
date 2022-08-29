@@ -145,4 +145,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: pnpm run check --filter=www
       - run: pnpm build:www
