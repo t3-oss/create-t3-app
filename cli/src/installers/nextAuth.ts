@@ -26,6 +26,15 @@ export const nextAuthInstaller: Installer = async ({
     "src/pages/api/auth/[...nextauth].ts",
   );
 
+  const getServerAuthSessionSrc = path.join(
+    nextAuthAssetDir,
+    "get-server-auth-session.ts",
+  );
+  const getServerAuthSessionDest = path.join(
+    projectDir,
+    "src/server/common/get-server-auth-session.ts",
+  );
+
   const restrictedApiSrc = path.join(nextAuthAssetDir, "restricted.ts");
   const restrictedApiDest = path.join(
     projectDir,
@@ -40,6 +49,7 @@ export const nextAuthInstaller: Installer = async ({
 
   await Promise.all([
     fs.copy(apiHandlerSrc, apiHandlerDest),
+    fs.copy(getServerAuthSessionSrc, getServerAuthSessionDest),
     fs.copy(restrictedApiSrc, restrictedApiDest),
     fs.copy(nextAuthDefinitionSrc, nextAuthDefinitionDest),
   ]);
