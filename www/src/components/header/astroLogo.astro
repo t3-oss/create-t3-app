@@ -1,8 +1,8 @@
 ---
-type Props = {
+export interface Props {
   size: number;
-};
-const { size } = Astro.props as Props;
+}
+const { size } = Astro.props;
 ---
 
 <svg

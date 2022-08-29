@@ -1,18 +1,15 @@
 ---
-import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from "../../languages";
 import * as CONFIG from "../../config";
 import AstroLogo from "./astroLogo.astro";
 import SkipToContent from "./skipToContent.astro";
 import SidebarToggle from "./sidebarToggle";
-import LanguageSelect from "./languageSelect";
 import Search from "./search";
 
-type Props = {
+export interface Props {
   currentPage: string;
-};
+}
 
-const { currentPage } = Astro.props as Props;
-const lang = getLanguageFromURL(currentPage);
+const { currentPage } = Astro.props;
 ---
 
 <header>
@@ -27,12 +24,6 @@ const lang = getLanguageFromURL(currentPage);
         <h1>{CONFIG.SITE.title ?? "Documentation"}</h1>
       </a>
     </div>
-    <div style="flex-grow: 1;"></div>
-    {
-      KNOWN_LANGUAGE_CODES.length > 1 && (
-        <LanguageSelect lang={lang} client:idle />
-      )
-    }
     <div class="search-item shadow-lg rounded-md w-fit">
       <Search client:idle />
     </div>

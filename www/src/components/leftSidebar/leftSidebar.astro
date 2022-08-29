@@ -1,15 +1,14 @@
 ---
-import { getLanguageFromURL } from "../../languages";
 import { SIDEBAR } from "../../config";
 import Search from "../header/search";
 
-type Props = {
+export interface Props {
   currentPage: string;
-};
+}
 
-const { currentPage } = Astro.props as Props;
+const { currentPage } = Astro.props;
 const currentPageMatch = currentPage.slice(1);
-const langCode = getLanguageFromURL(currentPage);
+const langCode = "en";
 const sidebar = SIDEBAR[langCode];
 ---
 

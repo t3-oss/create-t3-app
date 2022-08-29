@@ -4,13 +4,13 @@ import MoreMenu from "../rightSidebar/moreMenu.astro";
 import TableOfContents from "../rightSidebar/tableOfContents";
 import type { MarkdownHeading } from "astro";
 
-type Props = {
+export interface Props {
   frontmatter: Frontmatter;
   headings: MarkdownHeading[];
   githubEditUrl: string;
-};
+}
 
-const { frontmatter, headings, githubEditUrl } = Astro.props as Props;
+const { frontmatter, headings, githubEditUrl } = Astro.props;
 const title = frontmatter.title;
 ---
 

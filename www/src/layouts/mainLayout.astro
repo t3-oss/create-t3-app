@@ -10,12 +10,12 @@ import Footer from "../components/footer/footer.astro";
 import Navbar from "../LandingPageComponents/Navbar/navbar.astro";
 import "../styles/global.css";
 
-type Props = {
+export interface Props {
   frontmatter: CONFIG.Frontmatter;
   headings: MarkdownHeading[];
-};
+}
 
-const { frontmatter, headings } = Astro.props as Props;
+const { frontmatter, headings } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
 const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;

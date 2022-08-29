@@ -3,12 +3,12 @@ import TableOfContents from "./tableOfContents";
 import MoreMenu from "./moreMenu.astro";
 import type { MarkdownHeading } from "astro";
 
-type Props = {
+export interface Props {
   headings: MarkdownHeading[];
   githubEditUrl: string;
-};
+}
 
-const { headings, githubEditUrl } = Astro.props as Props;
+const { headings, githubEditUrl } = Astro.props;
 ---
 
 <nav class="sidebar-nav hidden lg:block max-w-sm" aria-labelledby="grid-right">

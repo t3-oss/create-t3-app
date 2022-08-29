@@ -1,18 +1,16 @@
 import { defineConfig } from "astro/config";
-//@ts-lint-ignore
 
-import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import robotsTxt from "astro-robots-txt";
 
-// https://astro.build/config
-
+/**
+ * @link https://astro.build/config
+ */
 export default defineConfig({
   site: `https://create.t3.gg`,
   integrations: [
-    preact(), // Enable React for the Algolia search component.
     react(),
     tailwind(),
     image(),

@@ -15,17 +15,13 @@
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.2.1",
     "@nanostores/react": "^0.3.0",
-    "astro-icon": "^0.7.3",
     "astro-robots-txt": "^0.3.8",
     "astro-seo": "^0.6.0",
     "nanostores": "^0.6.0",
-    "preact": "^10.7.3",
-    "preact-render-to-string": "^5.2.2",
     "react-typist": "^2.0.5"
   },
   "devDependencies": {
     "@astrojs/image": "^0.3.6",
-    "@astrojs/preact": "^1.0.2",
     "@astrojs/react": "1.1.0",
     "@astrojs/tailwind": "^1.0.0",
     "@types/node": "^18.7.6",
