@@ -24,7 +24,12 @@
     "unicorn/filename-case": [
       "error",
       {
-        "case": "camelCase",
+        // PascalCase is currently necessary due to Astro component issues that require use to use named functions
+        // see: https://github.com/withastro/astro/issues/4220
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        },
         "ignore": ["\\.d\\.ts$", "/^www/i"]
       }
     ],
