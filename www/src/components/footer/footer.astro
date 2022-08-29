@@ -7,7 +7,7 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer class="mt-auto py-8 border-t-2 text-t3-purple-100">
+<footer class="mt-auto pb-8 pt-16 text-t3-purple-100">
   {isBlog && <AvatarList path={path} />}
   <div
     class="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50"
@@ -64,11 +64,3 @@ const { path, isBlog } = Astro.props;
     </div>
   </div>
 </footer>
-
-<style>
-  footer {
-    margin-top: auto;
-    padding: 2rem;
-    border-top: 3px solid var(--theme-divider);
-  }
-</style>
