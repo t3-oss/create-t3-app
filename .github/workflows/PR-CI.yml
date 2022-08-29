@@ -29,10 +29,10 @@ jobs:
       - uses: actions/cache@v3
         id: pnpm-cache
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            turbo-${{ github.job }}-${{ github.ref_name }}-
+            ${{ runner.os }}-node-
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.2.1
@@ -52,8 +52,8 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore ESLint Cache
         uses: actions/cache@v3
         id: eslint-cache
@@ -77,8 +77,8 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.2.1
@@ -96,8 +96,8 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.2.1
@@ -115,8 +115,8 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.2.1
@@ -140,8 +140,8 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: .turbo
-          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.2.1
