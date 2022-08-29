@@ -1,0 +1,18 @@
+---
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="relative">
+  <dt class="flex">
+    <slot name="icon" />
+    <p class="ml-9 text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
+      {title}
+    </p>
+  </dt>
+  <dd class="mt-2 ml-9 text-sm md:text-base text-t3-purple-100">
+    <slot name="description" />
+  </dd>
+</div>
