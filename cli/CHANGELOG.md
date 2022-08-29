@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.9.0
+
+### Minor Changes
+
+- [#366](https://github.com/t3-oss/create-t3-app/pull/366) [`1f43f83`](https://github.com/t3-oss/create-t3-app/commit/1f43f83261c0e6f91b6af0fb39f579845889b724) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Thanks [@hnqg](https://github.com/hnqg) for the initial PR. add wrapper function for unstable_getServerSession
+
 ## 5.8.5
 
 ### Patch Changes
