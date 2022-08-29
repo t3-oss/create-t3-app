@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ["*"]
 
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
 jobs:
   lint-pr:
     runs-on: ubuntu-latest
@@ -129,9 +133,6 @@ jobs:
     runs-on: ubuntu-latest
     # We explicitely build this in GHA & Vercel since Vercel doesn't seem to catch some errors
     # meaning the www might be deployed even with errors
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     name: Build www
     needs: install-deps
     steps:
