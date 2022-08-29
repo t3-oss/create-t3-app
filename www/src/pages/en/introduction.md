@@ -1,7 +1,7 @@
 ---
 title: Introduction
 description: Introduction to the T3 Stack
-layout: ../../layouts/mainLayout.astro
+layout: ../../layouts/blog.astro
 ---
 
 <a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">

@@ -1,7 +1,7 @@
 ---
 title: Vercel
 description: Deploying to Vercel
-layout: ../../../layouts/mainLayout.astro
+layout: ../../../layouts/blog.astro
 ---
 
 We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
