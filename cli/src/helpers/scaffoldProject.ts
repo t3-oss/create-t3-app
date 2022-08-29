@@ -64,6 +64,25 @@ export const scaffoldProject = async ({
         process.exit(0);
       }
 
+      const overwriteAction =
+        overwriteDir === "clear"
+          ? "clear the directory"
+          : "overwrite conflicting files";
+
+      const { confirmOverwriteDir } = await inquirer.prompt<{
+        confirmOverwriteDir: boolean;
+      }>({
+        name: "confirmOverwriteDir",
+        type: "confirm",
+        message: `Are you sure you want to ${overwriteAction}?`,
+        default: false,
+      });
+
+      if (!confirmOverwriteDir) {
+        spinner.fail("Aborting installation...");
+        process.exit(0);
+      }
+
       if (overwriteDir === "clear") {
         spinner.info(
           `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
