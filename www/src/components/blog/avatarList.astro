@@ -18,7 +18,7 @@ type Commit = {
 async function getCommits(url: string) {
   try {
     const token = import.meta.env.SNOWPACK_PUBLIC_GITHUB_TOKEN ?? "hello";
-    if (!token) {
+    if (!token || token === "hello") {
       throw new Error(
         'Cannot find "SNOWPACK_PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
       );
