@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 import robotsTxt from "astro-robots-txt";
 
 /**
@@ -13,7 +12,6 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind(),
-    image(),
     robotsTxt({
       transform(content) {
         return `# Algolia-Crawler-Verif: 013A1A14AB9EE32B\n\n${content}`;

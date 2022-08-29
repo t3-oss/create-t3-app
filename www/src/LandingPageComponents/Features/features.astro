@@ -1,7 +1,6 @@
 ---
 import Feature from "./feature.astro";
 import NextAuthIcon from "./nextauth.png";
-import { Image } from "@astrojs/image/components";
 ---
 
 <section>
@@ -112,7 +111,7 @@ import { Image } from "@astrojs/image/components";
           </Fragment>
         </Feature>
         <Feature title="NextAuth.js">
-          <Image slot="icon" src={NextAuthIcon} class="h-10 w-10" />
+          <img slot="icon" src={NextAuthIcon} class="h-10 w-10" />
           <Fragment slot="description">
             When you need a flexible, secure, and scalable authentication
             solution, NextAuth.js is the go-to. It ties into your existing
