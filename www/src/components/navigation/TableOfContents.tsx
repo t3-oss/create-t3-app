@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { MarkdownHeading } from "astro";
 
 type ItemOffsets = {
@@ -7,9 +7,11 @@ type ItemOffsets = {
 };
 
 /** FIXME: SIMPLIFY THIS PLS */
-const TableOfContents: FC<{ headings: MarkdownHeading[] }> = ({
+export default function TableOfContents({
   headings = [],
-}) => {
+}: {
+  headings: MarkdownHeading[];
+}) {
   const itemOffsets = useRef<ItemOffsets[]>([]);
   const [activeId, setActiveId] = useState<string | undefined>(undefined);
   useEffect(() => {
@@ -86,6 +88,4 @@ const TableOfContents: FC<{ headings: MarkdownHeading[] }> = ({
       </ul>
     </div>
   );
-};
-
-export default TableOfContents;
+}
