@@ -1,9 +1,9 @@
 ---
 // fetch all commits for just this page's path
-type Props = {
+export interface Props {
   path: string;
-};
-const { path } = Astro.props as Props;
+}
+const { path } = Astro.props;
 const resolvedPath = `www/${path}`;
 const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
 const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/main/${resolvedPath}`;

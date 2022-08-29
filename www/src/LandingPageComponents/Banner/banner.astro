@@ -1,5 +1,4 @@
 ---
-import Icon from "astro-icon";
 ---
 
 <section>
@@ -47,12 +46,15 @@ import Icon from "astro-icon";
                       class="px-3 sm:px-5 py-1.5 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full flex items-center justify-between hover:bg-t3-purple-200"
                     >
                       Documentation
-                      <Icon
-                        pack="akar-icons"
-                        name="chevron-right"
-                        class="ml-2 w-5 h-5 text-gray-500"
-                        aria-hidden="true"
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                        class="h-4 ml-2"
+                      >
+                        <path
+                          d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
+                        ></path>
+                      </svg>
                     </span>
                   </a>
                   <a
@@ -63,12 +65,17 @@ import Icon from "astro-icon";
                   >
                     <span
                       class="ml-4 px-2 py-0.5 text-sm flex items-center justify-between"
-                      >Github <Icon
-                        pack="akar-icons"
-                        name="link-out"
-                        class="ml-2 w-5 h-5 text-gray-500"
-                        aria-hidden="true"
-                      />
+                    >
+                      Github
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                        class="h-4 ml-2 fill-white"
+                      >
+                        <path
+                          d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
+                        ></path>
+                      </svg>
                     </span>
                   </a>
                 </div>
@@ -115,7 +122,7 @@ import Icon from "astro-icon";
     </div>
   </div>
   <script is:inline>
-    document.getElementById("command").addEventListener("click", function () {
+    document.getElementById("command").addEventListener("click", () => {
       const pre = this.parentElement;
       let code = pre.querySelector("code");
       let text = code.innerText;

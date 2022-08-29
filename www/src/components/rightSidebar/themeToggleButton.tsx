@@ -1,5 +1,6 @@
-import type { FunctionalComponent } from "preact";
-import { useState, useEffect } from "preact/hooks";
+/** @jsxImportSource react */
+import type { FC } from "react";
+import { useState, useEffect } from "react";
 import "./themeToggleButton.css";
 
 const themes = ["light", "dark"];
@@ -31,7 +32,7 @@ const icons = [
   </svg>,
 ];
 
-const ThemeToggle: FunctionalComponent = () => {
+const ThemeToggle: FC = () => {
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;

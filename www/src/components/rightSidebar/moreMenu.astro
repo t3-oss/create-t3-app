@@ -2,11 +2,11 @@
 import ThemeToggleButton from "./themeToggleButton";
 import * as CONFIG from "../../config";
 
-type Props = {
+export interface Props {
   editHref: string;
-};
+}
 
-const { editHref } = Astro.props as Props;
+const { editHref } = Astro.props;
 const showMoreSection = CONFIG.COMMUNITY_INVITE_URL;
 ---
 

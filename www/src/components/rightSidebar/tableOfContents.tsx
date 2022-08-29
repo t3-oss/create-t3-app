@@ -1,5 +1,5 @@
-import type { FunctionalComponent } from "preact";
-import { useState, useEffect, useRef } from "preact/hooks";
+import type { FC } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { MarkdownHeading } from "astro";
 
 type ItemOffsets = {
@@ -7,7 +7,8 @@ type ItemOffsets = {
   topOffset: number;
 };
 
-const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
+/** FIXME: SIMPLIFY THIS PLS */
+const TableOfContents: FC<{ headings: MarkdownHeading[] }> = ({
   headings = [],
 }) => {
   const itemOffsets = useRef<ItemOffsets[]>([]);

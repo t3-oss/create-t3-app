@@ -24,18 +24,16 @@ const {
   verified,
   tweetId,
 } = Astro.props;
-import { Image } from "@astrojs/image/components";
 ---
 
 <div class="max-w-xl mx-auto my-2">
   <article
     class="border-t border-b border-gray-400 px-4 pt-4 pb-1 hover:bg-gray-100 flex flex-wrap items-start cursor-pointer bg-white bg-cover rounded-lg"
   >
-    <Image
+    <img
       src={avatar}
       width={48}
       height={48}
-      format={"webp"}
       class="rounded-full w-12 h-12 mr-3"
       alt={`@${handle}'s Avatar`}
     />

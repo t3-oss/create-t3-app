@@ -1,9 +1,9 @@
 ---
 import AvatarList from "./avatarList.astro";
-type Props = {
+export interface Props {
   path: string;
-};
-const { path } = Astro.props as Props;
+}
+const { path } = Astro.props;
 ---
 
 <footer class="mt-auto p-8 border-t-2 bg-white dark:bg-slate-900">

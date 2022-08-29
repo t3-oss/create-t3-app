@@ -125,3 +125,25 @@ jobs:
       # through. this way it ensures that it is the app's configs that are being used
       - run: cd cli && pnpm start -y ../../ci-test-app
       - run: cd ../ci-test-app && pnpm build
+
+  build-www:
+    runs-on: ubuntu-latest
+    # We explicitely build this in GHA & Vercel since Vercel doesn't seem to catch some errors
+    # meaning the www might be deployed even with errors
+    name: Build www
+    needs: install-deps
+    steps:
+      - uses: actions/checkout@v3
+      - name: Load node_modules
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.2.1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: pnpm run check --filter=www
+      - run: pnpm build:www
