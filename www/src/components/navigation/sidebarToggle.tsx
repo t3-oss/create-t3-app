@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
-import { type FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const MenuToggle: FC<{ currentPage: string }> = ({ currentPage }) => {
+export default function MenuToggle({ currentPage }: { currentPage: string }) {
   const [sidebarShown, setSidebarShown] = useState(false);
 
   useEffect(() => {
@@ -44,6 +44,4 @@ const MenuToggle: FC<{ currentPage: string }> = ({ currentPage }) => {
       <span className="sr-only">Toggle sidebar</span>
     </button>
   );
-};
-
-export default MenuToggle;
+}

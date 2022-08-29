@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { type FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./themeToggleButton.css";
 
 const themes = ["light", "dark"];
@@ -31,7 +31,7 @@ const icons = [
   </svg>,
 ];
 
-const ThemeToggle: FC = () => {
+export default function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;
@@ -88,6 +88,4 @@ const ThemeToggle: FC = () => {
       })}
     </div>
   );
-};
-
-export default ThemeToggle;
+}

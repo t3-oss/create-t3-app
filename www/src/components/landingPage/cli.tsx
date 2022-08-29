@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import Typist from "react-typist";
 
-const codeCard = () => {
+export default function CodeCard() {
   return (
     <div className="md:w-[550px] w-full sm:w-[600px]  mx-auto overflow-hidden my-5 shadow-[0_0_8px_2px_rgba(245,40,145,0.3)] rounded-lg ">
       <div
@@ -195,6 +195,4 @@ const codeCard = () => {
       </div>
     </div>
   );
-};
-
-export default codeCard;
+}

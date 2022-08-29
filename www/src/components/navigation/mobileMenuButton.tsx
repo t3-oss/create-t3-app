@@ -2,7 +2,7 @@
 import { useStore } from "@nanostores/react";
 import { MobileMenuState } from "./mobileMenu";
 
-const MobileMenuButton = () => {
+export default function MobileMenuButton() {
   const $isMobileMenuOpen = useStore(MobileMenuState);
   return (
     <>
@@ -34,6 +34,4 @@ const MobileMenuButton = () => {
       </button>
     </>
   );
-};
-
-export default MobileMenuButton;
+}
