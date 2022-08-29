@@ -24,7 +24,6 @@
     "@astrojs/image": "^0.3.6",
     "@astrojs/react": "1.1.0",
     "@astrojs/tailwind": "^1.0.0",
-    "@types/node": "^18.7.6",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-typist": "^2.0.3",
