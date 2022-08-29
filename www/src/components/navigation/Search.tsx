@@ -9,9 +9,11 @@ import * as docSearchReact from "@docsearch/react";
 /** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
 const DocSearchModal =
   docSearchReact.DocSearchModal ||
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (docSearchReact as any).default.DocSearchModal;
 const useDocSearchKeyboardEvents =
   docSearchReact.useDocSearchKeyboardEvents ||
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
 export default function Search() {

@@ -29,7 +29,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.ts"],
+      files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       extends: ["plugin:@typescript-eslint/recommended"],
       rules: {
@@ -38,6 +38,15 @@ module.exports = {
           { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
         ],
         "@typescript-eslint/no-non-null-assertion": "off",
+        "unicorn/filename-case": [
+          "error",
+          {
+            cases: {
+              camelCase: true,
+              pascalCase: true,
+            },
+          },
+        ],
       },
     },
   ],
