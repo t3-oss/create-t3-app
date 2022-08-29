@@ -3,15 +3,15 @@
 name: PR-CI
 
 on:
-  pull_request:
-    branches: ["*"]
+  # pull_request:
+  # branches: ["*"]
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  lint-pr:
+  lint-pr-title:
     runs-on: ubuntu-latest
     name: Lint the PR title
     steps:
