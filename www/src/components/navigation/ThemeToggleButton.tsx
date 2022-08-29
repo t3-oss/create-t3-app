@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useState, useEffect } from "react";
-import "./themeToggleButton.css";
+import "./ThemeToggleButton.css";
 
 const themes = ["light", "dark"];
 
