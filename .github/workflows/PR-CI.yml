@@ -7,6 +7,14 @@ on:
     branches: ["*"]
 
 jobs:
+  lint-pr:
+    runs-on: ubuntu-latest
+    name: Lint the PR title
+    steps:
+      - uses: amannn/action-semantic-pull-request@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   install-deps:
     runs-on: ubuntu-latest
     name: Run pnpm install
@@ -17,7 +25,7 @@ jobs:
       - uses: actions/cache@v3
         id: pnpm-cache
         with:
-          path: "**/node_modules"
+          path: "./node_modules/.cache/turbo"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -40,7 +48,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: "**/node_modules"
+          path: "./node_modules/.cache/turbo"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore ESLint Cache
         uses: actions/cache@v3
@@ -56,15 +64,6 @@ jobs:
           node-version: 16
       - run: pnpm lint
 
-  lint-pr:
-    runs-on: ubuntu-latest
-    name: Lint the PR title
-    needs: install-deps
-    steps:
-      - uses: amannn/action-semantic-pull-request@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   prettier:
     runs-on: ubuntu-latest
     name: Run Prettier Check
@@ -74,7 +73,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: "**/node_modules"
+          path: "./node_modules/.cache/turbo"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -93,7 +92,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: "**/node_modules"
+          path: "./node_modules/.cache/turbo"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -112,7 +111,7 @@ jobs:
       - name: Load node_modules
         uses: actions/cache@v3
         with:
-          path: "**/node_modules"
+          path: "./node_modules/.cache/turbo"
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
@@ -130,6 +129,9 @@ jobs:
     runs-on: ubuntu-latest
     # We explicitely build this in GHA & Vercel since Vercel doesn't seem to catch some errors
     # meaning the www might be deployed even with errors
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     name: Build www
     needs: install-deps
     steps:

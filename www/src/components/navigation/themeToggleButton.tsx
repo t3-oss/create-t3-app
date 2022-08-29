@@ -36,8 +36,9 @@ const ThemeToggle: FC = () => {
     if (import.meta.env.SSR) {
       return undefined;
     }
-    if (typeof localStorage !== undefined && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
+    const item = localStorage.getItem("theme");
+    if (item) {
+      return item;
     }
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return "dark";
