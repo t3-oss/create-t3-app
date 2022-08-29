@@ -1,6 +1,6 @@
 # this workflow will run on every pr to make sure the project is following the guidelines
 
-name: PR-CI-NEW
+name: CI
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ env:
 jobs:
   lint-pr-title:
     runs-on: ubuntu-latest
-    name: Lint the PR title
+    name: Validate PR Title
     steps:
       - uses: amannn/action-semantic-pull-request@v4
         env:
@@ -21,7 +21,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    name: Run pnpm install
+    name: Run ESLint
     steps:
       - uses: actions/checkout@v3
         with:
@@ -34,7 +34,6 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.2.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -50,11 +49,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm lint
+      - run: pnpm turbo run lint
 
   prettier:
     runs-on: ubuntu-latest
-    name: Run pnpm install
+    name: Run Prettier
     steps:
       - uses: actions/checkout@v3
         with:
@@ -67,7 +66,6 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.2.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -87,7 +85,7 @@ jobs:
 
   tsc:
     runs-on: ubuntu-latest
-    name: Run pnpm install
+    name: Run Typechecker
     steps:
       - uses: actions/checkout@v3
         with:
@@ -100,7 +98,6 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.2.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -120,7 +117,7 @@ jobs:
 
   build-t3-app:
     runs-on: ubuntu-latest
-    name: Run pnpm install
+    name: Build and Start T3 App
     steps:
       - uses: actions/checkout@v3
         with:
@@ -133,7 +130,6 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.2.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -149,7 +145,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm build:cli
+      - run: pnpm turbo run --filter=create-t3-app build
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       - run: cd cli && pnpm start -y ../../ci-test-app
@@ -157,7 +153,7 @@ jobs:
 
   build-www:
     runs-on: ubuntu-latest
-    name: Run pnpm install
+    name: Build and Check Astro
     steps:
       - uses: actions/checkout@v3
         with:
@@ -170,7 +166,6 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.2.1
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -186,7 +181,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm run check --filter=www
-      - run: pnpm build:www
+      # No need to lint & typecheck here (which is otherwise done by the `check` script), done in above jobs
+      - run: pnpm run --filter=www astro check
+      - run: pnpm turbo run --filter=www build
         env:
           PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
