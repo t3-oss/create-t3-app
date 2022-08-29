@@ -41,7 +41,11 @@ export const scaffoldProject = async ({
           projectName,
         )} already exists and isn't empty. How would you like to proceed?`,
         choices: [
-          { name: "Abort installation", value: "abort", short: "Abort" },
+          {
+            name: "Abort installation (recommended)",
+            value: "abort",
+            short: "Abort",
+          },
           {
             name: "Clear the directory and continue installation",
             value: "clear",
