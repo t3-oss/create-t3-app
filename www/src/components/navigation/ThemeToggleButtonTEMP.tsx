@@ -31,7 +31,7 @@ const icons = [
   </svg>,
 ];
 
-export default function ThemeToggle() {
+export default function ThemeToggleButton() {
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;

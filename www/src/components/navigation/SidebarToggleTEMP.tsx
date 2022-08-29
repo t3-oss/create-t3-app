@@ -1,7 +1,11 @@
 /** @jsxImportSource react */
 import { useState, useEffect } from "react";
 
-export default function MenuToggle({ currentPage }: { currentPage: string }) {
+export default function SidebarToggle({
+  currentPage,
+}: {
+  currentPage: string;
+}) {
   const [sidebarShown, setSidebarShown] = useState(false);
 
   useEffect(() => {

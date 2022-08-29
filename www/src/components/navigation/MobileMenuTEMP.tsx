@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import Search from "./search";
+import Search from "./Search";
 import { useStore } from "@nanostores/react";
 import { atom } from "nanostores";
 
