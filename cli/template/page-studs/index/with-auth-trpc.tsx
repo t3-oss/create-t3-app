@@ -22,23 +22,11 @@ const AuthShowcase: React.FC = () => {
   );
 };
 
-interface TechnologyProps {
+interface TechnologyCardProps {
   name: string;
   description: string;
   documentation: string;
 }
-
-const Technology: React.FC<TechnologyProps> = (props) => {
-  return (
-    <>
-      <li>
-        <a href={props.documentation} target="_blank" rel="noreferrer">
-          {props.name}
-        </a>
-      </li>
-    </>
-  );
-};
 
 const Home: NextPage = () => {
   return (
@@ -55,22 +43,35 @@ const Home: NextPage = () => {
         <div>
           <h3>This stack uses:</h3>
           <ul>
-            <Technology
-              name={"NextJS"}
-              description={"The React framework for production"}
-              documentation={"https://nextjs.org/"}
+            <TechnologyCard
+              name="NextJS"
+              description="The React framework for production"
+              documentation="https://nextjs.org/"
             />
-            <Technology
-              name={"tRPC"}
-              description={"End-to-end typesafe APIs made easy"}
-              documentation={"https://trpc.io/"}
+            <TechnologyCard
+              name="TypeScript"
+              description="Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"
+              documentation="https://www.typescriptlang.org/"
             />
-            <Technology
-              name={"TypeScript"}
-              description={
-                "Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"
-              }
-              documentation={"https://www.typescriptlang.org/"}
+            <TechnologyCard
+              name="TailwindCSS"
+              description="Rapidly build modern websites without ever leaving your HTML"
+              documentation="https://tailwindcss.com/"
+            />
+            <TechnologyCard
+              name="tRPC"
+              description="End-to-end typesafe APIs made easy"
+              documentation="https://trpc.io/"
+            />
+            <TechnologyCard
+              name="Next-Auth"
+              description="Authentication for Next.js"
+              documentation="https://next-auth.js.org/"
+            />
+            <TechnologyCard
+              name="Prisma"
+              description="Build data-driven JavaScript & TypeScript apps in less time"
+              documentation="https://www.prisma.io/docs/"
             />
           </ul>
         </div>
@@ -81,3 +82,17 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+const TechnologyCard = ({
+  name,
+  description,
+  documentation,
+}: TechnologyCardProps) => {
+  return (
+    <li>
+      <a href={documentation} target="_blank" rel="noreferrer">
+        <strong>{name}</strong> - {description}
+      </a>
+    </li>
+  );
+};
