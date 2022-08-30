@@ -126,10 +126,10 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     </style>
   </head>
 
-  <body>
+  <body class="w-full">
     <Navbar />
     <main
-      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-center grid grid-cols-1 md:grid-cols-3 h-full relative overflow-y-auto"
+      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start flex flex-col sm:grid sm:grid-cols-1 md:grid-cols-3 h-full relative overflow-y-auto"
     >
       <aside
         id="grid-left"
@@ -139,7 +139,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         <LeftSidebar currentPage={currentPage} />
       </aside>
       <div
-        class="w-full sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2 place-self-start px-6"
+        class="w-full flex flex-col sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2"
       >
         <PageContent
           frontmatter={frontmatter}
@@ -152,7 +152,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="justify-self-center hidden lg:block"
+        class="justify-self-center hidden lg:block pt-16"
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>

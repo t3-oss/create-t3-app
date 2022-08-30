@@ -7,10 +7,14 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer class="mt-auto pb-8 pt-16 text-t3-purple-100">
+<footer
+  class={path === "/"
+    ? `mt-auto pb-8 pt-16 text-t3-purple-100 bg-[#131232] flex flex-col`
+    : `mt-auto pb-8 pt-16 text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 flex flex-col`}
+>
   {isBlog && <AvatarList path={path} />}
   <div
-    class="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50"
+    class="container px-6 mx-auto space-y-3 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 pt-6"
   >
     <div class="flex flex-col sm:flex-row items-center justify-between w-full">
       <div

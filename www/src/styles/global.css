@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  html  {
-    @apply w-full
-  }
+  
   .cursor::after {
     display: block;
     content: "";
@@ -30,7 +28,7 @@
   }
 
   .markdown {
-    @apply text-slate-900 dark:text-t3-purple-100;
+    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3;
   }
 
   .markdown h1 {
@@ -64,7 +62,7 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100;
   }
   .markdown p > img {
     @apply text-sm mt-8;

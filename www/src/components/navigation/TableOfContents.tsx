@@ -60,7 +60,7 @@ export default function TableOfContents({
           }`.trim()}
         >
           <a
-            className="text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 "
+            className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200"
             href="#overview"
           >
             Overview
@@ -73,10 +73,8 @@ export default function TableOfContents({
             return (
               <li key={i} className="w-full list-none pl-2">
                 <a
-                  className={`pl-${padding} hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
-                    activeId === heading.slug
-                      ? "font-bold text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 dark:hover:text-t3-purple-100"
-                      : "text-t3-purple-500 dark:text-t3-purple-200 hover:text-t3-purple-300 dark:hover:text-t3-purple-100"
+                  className={`pl-${padding} hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
+                    activeId === heading.slug ? "font-bold" : "font-normal"
                   }`}
                   href={`#${heading.slug}`}
                 >
