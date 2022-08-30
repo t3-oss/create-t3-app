@@ -17,7 +17,7 @@ const title = frontmatter.title;
 <article id="article" class="flex flex-col w-full mx-28 h-full">
   <section class="mb-16 markdown">
     <h1 id="overview">{title}</h1>
-    <nav class="flex sm:hidden">
+    <nav class="flex sm:hidden pl-3">
       <TableOfContents client:media="(max-width: 50em)" headings={headings} />
     </nav>
     <article class="markdown">
