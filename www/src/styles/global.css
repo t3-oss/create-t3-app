@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  html  {
-    @apply w-full
-  }
+  
   .cursor::after {
     display: block;
     content: "";
@@ -30,7 +28,7 @@
   }
 
   .markdown {
-    @apply text-slate-900 dark:text-t3-purple-100;
+    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3;
   }
 
   .markdown h1 {
