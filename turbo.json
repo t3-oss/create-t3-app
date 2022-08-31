@@ -8,13 +8,11 @@
       "dependsOn": ["^build"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [".eslintcache"]
     },
     "dev": {
       "cache": false
     },
-    "typecheck": {
-      "cache": false
-    }
+    "typecheck": {}
   }
 }
