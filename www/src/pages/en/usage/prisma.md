@@ -16,6 +16,10 @@ Located at `/server/db/client.ts`, the Prisma Client is instantiated as a global
 
 You will find the Prisma schema file at `/prisma/schema.prisma`. This file is where you define your database schema and models, and is used when generating the Prisma Client.
 
+### With NextAuth.js
+
+When you select NextAuth.js in combination with Prisma, the schema file is generated and set up for you with the recommended values for the `User`, `Session`, `Account` and `VerificationToken` models, as per the [NextAuth.js documentation](https://next-auth.js.org/adapters/prisma).
+
 ## Default Database
 
 The default database is a SQLite database, which is great for development and quickly spinning up a proof-of-concept, but not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.

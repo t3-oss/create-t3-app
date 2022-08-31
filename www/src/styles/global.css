@@ -62,7 +62,7 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 overflow-y-scroll whitespace-pre-wrap;
   }
   .markdown p > img {
     @apply text-sm mt-8;
