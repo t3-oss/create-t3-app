@@ -1,0 +1,22 @@
+---
+export interface Props {
+  title: string;
+  text: string;
+  href: string;
+}
+
+const { text, title, href } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="py-8 flex flex-col items-center justify-center rounded-lg p-3 space-y-3 h-60 hover:bg-white/20 bg-white/10 transition-colors cursor-pointer w-full"
+>
+  <div class="w-14 h-14"><slot name="icon" /></div>
+  <h2 class="text-xl font-black">{title}</h2>
+  <p class="text-center">
+    {text}
+  </p>
+</a>
