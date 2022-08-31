@@ -209,6 +209,15 @@ You can also use docker compose to build the image and run the container.
 
 3. Run this using `docker compose up`.
 
+### Further reading
+
+Here are some useful references you can further look into:
+
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+- [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+- [Docker CLI reference](https://docs.docker.com/engine/reference/commandline/docker/)
+- [Docker Compose CLI reference](https://docs.docker.com/compose/reference/)
+
 ## Useful resources
 
 Here are some resources that we commonly refer to:
