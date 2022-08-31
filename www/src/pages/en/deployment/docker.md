@@ -141,9 +141,9 @@ Please note that Next.js requires a different process for buildtime (available i
 
 6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
-## docker-compose
+## Docker Compose
 
-You can also use docker-compose to build and run the container.
+You can also use docker compose to build and run the container.
 
 1. Follow steps 1-4 above
 
@@ -172,4 +172,4 @@ You can also use docker-compose to build and run the container.
 
    </details>
 
-3. Run this using `docker-compose up`.
+3. Run this using `docker compose up`.
