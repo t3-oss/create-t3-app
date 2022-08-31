@@ -45,6 +45,16 @@ const Home: NextPage = () => {
             description="End-to-end typesafe APIs made easy"
             documentation="https://trpc.io/"
           />
+          <TechnologyCard
+            name="Next-Auth"
+            description="Authentication for Next.js"
+            documentation="https://next-auth.js.org/"
+          />
+          <TechnologyCard
+            name="Prisma"
+            description="Build data-driven JavaScript & TypeScript apps in less time"
+            documentation="https://www.prisma.io/docs/"
+          />
         </div>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}

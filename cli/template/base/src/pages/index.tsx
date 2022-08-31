@@ -1,6 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+interface TechnologyCardProps {
+  name: string;
+  description: string;
+  documentation: string;
+}
+
 const Home: NextPage = () => {
   return (
     <>
@@ -17,20 +23,36 @@ const Home: NextPage = () => {
         <div>
           <h3>This stack uses:</h3>
           <ul>
-            <li>
-              <a href="https://nextjs.org" target="_blank" rel="noreferrer">
-                Next.js
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://typescriptlang.org"
-                target="_blank"
-                rel="noreferrer"
-              >
-                TypeScript
-              </a>
-            </li>
+            <TechnologyCard
+              name="NextJS"
+              description="The React framework for production"
+              documentation="https://nextjs.org/"
+            />
+            <TechnologyCard
+              name="TypeScript"
+              description="Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"
+              documentation="https://www.typescriptlang.org/"
+            />
+            <TechnologyCard
+              name="TailwindCSS"
+              description="Rapidly build modern websites without ever leaving your HTML"
+              documentation="https://tailwindcss.com/"
+            />
+            <TechnologyCard
+              name="tRPC"
+              description="End-to-end typesafe APIs made easy"
+              documentation="https://trpc.io/"
+            />
+            <TechnologyCard
+              name="Next-Auth"
+              description="Authentication for Next.js"
+              documentation="https://next-auth.js.org/"
+            />
+            <TechnologyCard
+              name="Prisma"
+              description="Build data-driven JavaScript & TypeScript apps in less time"
+              documentation="https://www.prisma.io/docs/"
+            />
           </ul>
         </div>
       </div>
@@ -39,3 +61,17 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+const TechnologyCard = ({
+  name,
+  description,
+  documentation,
+}: TechnologyCardProps) => {
+  return (
+    <li>
+      <a href={documentation} target="_blank" rel="noreferrer">
+        <strong>{name}</strong> - {description}
+      </a>
+    </li>
+  );
+};
