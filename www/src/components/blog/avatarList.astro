@@ -17,10 +17,10 @@ type Commit = {
 
 async function getCommits(url: string) {
   try {
-    const token = import.meta.env.SNOWPACK_PUBLIC_GITHUB_TOKEN;
+    const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
     if (!token) {
       throw new Error(
-        'Cannot find "SNOWPACK_PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
+        'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
       );
     }
 
@@ -30,7 +30,7 @@ async function getCommits(url: string) {
       method: "GET",
       headers: {
         Authorization: auth,
-        "User-Agent": "astro-docs/1.0",
+        "User-Agent": "@ct3a-www/1.0",
       },
     });
 
