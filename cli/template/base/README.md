@@ -178,7 +178,7 @@ Please note that Next.js requires a different process for buildtime (available i
 
 ### Docker Compose
 
-You can also use docker compose to build and run the container.
+You can also use docker compose to build the image and run the container.
 
 1. Follow steps 1-4 above
 
