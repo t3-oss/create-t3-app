@@ -46,7 +46,7 @@ export const initializeGit = async (projectDir: string) => {
 
   const isRoot = isRootGitRepo(projectDir);
   const isInside = isInsideGitRepo(projectDir);
-  const dirName = path.parse(projectDir).dir;
+  const dirName = path.parse(projectDir).name; // skip full path for logging
 
   if (isInside && isRoot) {
     // Dir is a root git repo
