@@ -153,7 +153,7 @@ You can also use docker compose to build and run the container.
    <summary>docker-compose.yml</summary>
 
    ```yaml
-   version: "3.7"
+   version: "3.9"
    services:
      app:
        platform: "linux/amd64"
