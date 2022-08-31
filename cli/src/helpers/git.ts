@@ -69,6 +69,7 @@ export const initializeGit = async (projectDir: string) => {
     fs.removeSync(path.join(projectDir, ".git"));
   } else if (isInside && !isRoot) {
     // Dir is inside a git worktree
+    spinner.stopAndPersist();
     const { initializeChildGitRepo } = await inquirer.prompt<{
       initializeChildGitRepo: boolean;
     }>({
