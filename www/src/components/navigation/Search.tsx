@@ -51,7 +51,7 @@ export default function Search() {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-t3-purple-400 shadow-inner shadow-t3-purple-700 dark:shadow-t3-purple-300 rounded-lg"
+        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-white/10 rounded-lg"
       >
         <div className="flex items-center justify-center text-white dark:text-slate-900 dark:stroke-slate-900">
           <svg width="24" height="24" fill="none">
