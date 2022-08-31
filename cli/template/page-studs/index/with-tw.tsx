@@ -37,6 +37,21 @@ const Home: NextPage = () => {
             description="Rapidly build modern websites without ever leaving your HTML"
             documentation="https://tailwindcss.com/"
           />
+          <TechnologyCard
+            name="tRPC"
+            description="End-to-end typesafe APIs made easy"
+            documentation="https://trpc.io/"
+          />
+          <TechnologyCard
+            name="Next-Auth"
+            description="Authentication for Next.js"
+            documentation="https://next-auth.js.org/"
+          />
+          <TechnologyCard
+            name="Prisma"
+            description="Build data-driven JavaScript & TypeScript apps in less time"
+            documentation="https://www.prisma.io/docs/"
+          />
         </div>
       </main>
     </>
