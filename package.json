@@ -12,10 +12,6 @@
     "type": "git",
     "url": "https://github.com/t3-oss/create-t3-app.git"
   },
-  "workspaces": [
-    "www",
-    "cli"
-  ],
   "keywords": [
     "create-t3-app",
     "init.tips",

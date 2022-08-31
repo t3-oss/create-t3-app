@@ -7,7 +7,7 @@ export interface Props {
 const { title, href } = Astro.props;
 ---
 
-<div class="relative bg-white/5 rounded-md">
+<div class="relative bg-white/5 rounded-md flex flex-col justify-between">
   <a href={href} target="_blank" rel="noopener noreferrer"
     ><dt
       class="flex space-x-4 items-center bg-white/10 p-2 pl-6 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors"
@@ -18,16 +18,18 @@ const { title, href } = Astro.props;
       </p>
     </dt>
   </a>
-  <dd class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased">
+
+  <dd
+    class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
+  >
     <slot name="description" />
   </dd>
-  <div class="m-6">
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="font-bold text-t3-purple-300 hover:text-t3-purple-400 transition-colors"
-      >Read more</a
-    >
-  </div>
+
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="font-bold text-t3-purple-300 hover:text-t3-purple-400 transition-colors mx-6 mb-6"
+    >Read more</a
+  >
 </div>
