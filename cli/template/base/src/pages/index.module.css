@@ -1,0 +1,121 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+
+.title,
+.subtitle,
+.list,
+.itemTitle,
+.itemDescription {
+  margin: 0;
+}
+
+.title {
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: 900;
+}
+
+.title > span {
+  color: #d8b4fe;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.listItem {
+  text-align: center;
+  padding: 1.5rem;
+  border: solid 2px #6b7280;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition: all 500ms;
+}
+
+.listItem:hover {
+  transform: scale(1.05);
+}
+
+.itemLink {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #8b5cf6;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+.itemTitle {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.itemDescription {
+  font-size: 0.875rem;
+}
+
+.trpcGreeting {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  color: #3b82f6;
+}
+
+.authShowcase {
+  margin-top: 2rem;
+}
+
+.authShowcaseBtn {
+  background-color: transparent;
+  border: solid 1px #6b7280;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  color: #374151;
+  transition: all 300ms;
+}
+
+.authShowcaseBtn:hover {
+  color: #fff;
+  background-color: #d8b4fe;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1024px;
+  }
+  .title {
+    font-size: 5rem;
+  }
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .listItem {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
