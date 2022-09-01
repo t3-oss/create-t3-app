@@ -41,7 +41,7 @@ callbacks: {
   },
 ```
 
-This is coupled with a types file located at `/types/next-auth.d.ts` to allow the `session` object to be typed.
+This is coupled with a types file located at `/types/next-auth.d.ts` to allow the `user.id` to be typed in the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
 
 ```ts
 import { DefaultSession } from "next-auth";
