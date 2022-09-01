@@ -2,6 +2,7 @@ import type { InstallerOptions, PkgInstallerMap } from "../installers/index.js";
 import chalk from "chalk";
 import ora from "ora";
 import { logger } from "~/utils/logger.js";
+import { noTailwindInstaller } from "../installers/noTailwind.js";
 
 type InstallPackagesOptions = {
   packages: PkgInstallerMap;
@@ -26,5 +27,16 @@ export const installPackages = async (options: InstallPackagesOptions) => {
       );
     }
   }
+
+  if (!packages.tailwind.inUse) {
+    const spinner = ora("Tailwind not selected. Adding css module.").start();
+
+    await noTailwindInstaller({ ...options, projectDir: options.projectDir });
+
+    spinner.succeed(
+      chalk.green(`Successfully added ${chalk.green.bold("css module")}`),
+    );
+  }
+
   logger.info("");
 };
