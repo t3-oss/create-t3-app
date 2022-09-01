@@ -1,5 +1,5 @@
 ---
-type Props = {
+export interface Props {
   date: string;
   author: string;
   avatar: string;
@@ -10,7 +10,7 @@ type Props = {
   retweets: number;
   verified: boolean;
   tweetId: string;
-};
+}
 
 const {
   author,
