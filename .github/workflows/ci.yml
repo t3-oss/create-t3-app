@@ -120,7 +120,13 @@ jobs:
 
   build-t3-app:
     runs-on: ubuntu-latest
-    name: Build and Start T3 App
+    matrix:
+      trpc: [true, false]
+      tailwind: [true, false]
+      nextAuth: [true, false]
+      prisma: [true, false]
+
+    name: Build and Start T3 App [trpc: ${{ matrix.trpc }}, tailwind: ${{ matrix.tailwind }}, nextAuth: ${{ matrix.nextAuth }}, prisma: ${{ matrix.prisma }}]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -152,7 +158,7 @@ jobs:
       - run: pnpm turbo run --filter=create-t3-app build
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
-      - run: cd cli && pnpm start -y ../../ci-test-app
+      - run: cd cli && pnpm start ../../ci-test-app --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }}
       - run: cd ../ci-test-app && pnpm build
 
   build-www:
