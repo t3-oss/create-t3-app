@@ -159,7 +159,7 @@ jobs:
       - run: pnpm turbo run --filter=create-t3-app build
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
-      - run: cd cli && pnpm start ../../ci-test-app --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }}
+      - run: cd cli && pnpm start ../../ci-test-app --CI true --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }}
       - run: cd ../ci-test-app && pnpm build
 
   build-www:
