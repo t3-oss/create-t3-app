@@ -56,15 +56,19 @@
     @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-slate-500 text-t3-purple-200;
   }
   .markdown pre {
-    @apply font-mono my-3 p-2 rounded-md sm:pt-2;
+    @apply font-mono my-3 p-2 rounded-md sm:pt-2 pl-3 mx-auto;
   }
   .markdown h3 {
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto ;
   }
   .markdown p > img {
     @apply text-sm mt-8;
-  }  
+  }
+ .markdown table > tbody > tr > td > a {
+  @apply break-all;
+ }
+
 }
