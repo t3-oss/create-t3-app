@@ -15,8 +15,8 @@ const sidebar = SIDEBAR[langCode];
 <nav
   aria-labelledby="grid-left"
   class={currentPage === "/"
-    ? `pt-6 pb-28 h-full`
-    : `overflow-y-scroll md:overflow-hidden h-full pb-32`}
+    ? `pt-3 pb-28 h-full`
+    : `md:overflow-hidden h-full pb-32`}
 >
   <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
     <Search client:idle />
@@ -83,65 +83,3 @@ const sidebar = SIDEBAR[langCode];
     }
   });
 </script>
-
-<style>
-  .nav-groups {
-    height: 100%;
-    padding: 2rem 0;
-    overflow-x: visible;
-    overflow-y: auto;
-    max-height: 100vh;
-  }
-
-  .nav-groups > li + li {
-    margin-top: 2rem;
-  }
-
-  .nav-groups > :first-child {
-    padding-top: var(--doc-padding);
-  }
-
-  .nav-groups > :last-child {
-    padding-bottom: 2rem;
-    margin-bottom: var(--theme-navbar-height);
-  }
-
-  .nav-group-title {
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.1rem 1rem;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .nav-link a {
-    font-size: 1rem;
-    margin: 1px;
-    padding: 0.3rem 1rem;
-    font: inherit;
-    color: inherit;
-    text-decoration: none;
-    display: block;
-  }
-
-  .nav-link a:hover,
-  .nav-link a:focus {
-    /* background-color: var(--theme-bg-hover); */
-  }
-
-  .nav-link a[aria-current="page"] {
-    color: var(--theme-text-accent);
-    /* background-color: var(--theme-bg-accent); */
-    font-weight: 600;
-  }
-
-  :global(:root.theme-dark) .nav-link a[aria-current="page"] {
-    color: hsla(var(--color-base-white), 100%, 1);
-  }
-
-  @media (min-width: 50em) {
-    .nav-groups {
-      padding: 0;
-    }
-  }
-</style>
