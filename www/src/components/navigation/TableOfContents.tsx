@@ -55,8 +55,9 @@ export default function TableOfContents({
       <h2 className="text-lg my-4 font-semibold">On this page</h2>
       <ul className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1">
         <li
-          className={`pl-1 ml-1 marker:bg-t3-purple-300 ${activeId === "overview" ? "font-bold" : "font-normal"
-            }`.trim()}
+          className={`pl-1 ml-1 marker:bg-t3-purple-300 ${
+            activeId === "overview" ? "font-bold" : "font-normal"
+          }`.trim()}
         >
           <a
             className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200"
@@ -72,13 +73,15 @@ export default function TableOfContents({
             return (
               <li key={i} className={`pl-${padding} ml-1 w-full list-none`}>
                 <a
-                  className={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 marker:text-t3-purple-300 ${activeId === heading.slug ? "font-bold" : "font-normal"
-                    } ${padding < 3
+                  className={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
+                    activeId === heading.slug ? "font-bold" : "font-normal"
+                  } ${
+                    padding < 3
                       ? "text-base"
                       : padding >= 3
-                        ? "text-sm"
-                        : "text-sm"
-                    }`}
+                      ? "text-sm"
+                      : "text-sm"
+                  }`}
                   href={`#${heading.slug}`}
                 >
                   {heading.text}
