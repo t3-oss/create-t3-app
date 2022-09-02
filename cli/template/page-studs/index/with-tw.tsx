@@ -1,12 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-type TechnologyCardProps = {
-  name: string;
-  description: string;
-  documentation: string;
-};
-
 const Home: NextPage = () => {
   return (
     <>
@@ -58,6 +52,14 @@ const Home: NextPage = () => {
   );
 };
 
+export default Home;
+
+type TechnologyCardProps = {
+  name: string;
+  description: string;
+  documentation: string;
+};
+
 const TechnologyCard = ({
   name,
   description,
@@ -78,5 +80,3 @@ const TechnologyCard = ({
     </section>
   );
 };
-
-export default Home;
