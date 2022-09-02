@@ -62,9 +62,13 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 overflow-y-scroll whitespace-pre-wrap;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap;
   }
   .markdown p > img {
     @apply text-sm mt-8;
-  }  
+  }
+ .markdown table > tbody > tr > td > a {
+  @apply break-all;
+ }
+
 }
