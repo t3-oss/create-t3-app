@@ -26,5 +26,6 @@ export const installPackages = async (options: InstallPackagesOptions) => {
       );
     }
   }
+
   logger.info("");
 };
