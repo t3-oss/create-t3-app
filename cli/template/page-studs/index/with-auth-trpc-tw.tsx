@@ -3,33 +3,6 @@ import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
-type TechnologyCardProps = {
-  name: string;
-  description: string;
-  documentation: string;
-};
-
-const AuthShowcase: React.FC = () => {
-  const { data: secretMessage, isLoading } = trpc.useQuery([
-    "auth.getSecretMessage",
-  ]);
-
-  const { data: sessionData } = useSession();
-
-  return (
-    <div>
-      {sessionData && <p>Logged in as {sessionData?.user?.name}</p>}
-      {secretMessage && <p>{secretMessage}</p>}
-      <button
-        className="px-4 py-2 border-2 border-blue-500 rounded-md"
-        onClick={sessionData ? () => signOut() : () => signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
-    </div>
-  );
-};
-
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
 
@@ -81,15 +54,16 @@ const Home: NextPage = () => {
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
         </div>
+        <AuthShowcase />
       </main>
     </>
   );
 };
 
+export default Home;
+
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage, isLoading } = trpc.useQuery([
-    "auth.getSecretMessage",
-  ]);
+  const { data: secretMessage } = trpc.useQuery(["auth.getSecretMessage"]);
 
   const { data: sessionData } = useSession();
 
@@ -113,6 +87,12 @@ const AuthShowcase: React.FC = () => {
   );
 };
 
+type TechnologyCardProps = {
+  name: string;
+  description: string;
+  documentation: string;
+};
+
 const TechnologyCard = ({
   name,
   description,
@@ -133,5 +113,3 @@ const TechnologyCard = ({
     </section>
   );
 };
-
-export default Home;
