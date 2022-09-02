@@ -13,6 +13,7 @@ interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
+  CI: boolean /** @internal - used in CI */;
   tailwind: boolean /** @internal - used in CI */;
   trpc: boolean /** @internal - used in CI */;
   prisma: boolean /** @internal - used in CI */;
@@ -32,6 +33,7 @@ const defaultOptions: CliResults = {
     noGit: false,
     noInstall: false,
     default: false,
+    CI: false,
     tailwind: false,
     trpc: false,
     prisma: false,
@@ -66,6 +68,16 @@ export const runCli = async () => {
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
       false,
+    )
+    /** START CI-FLAGS */
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option(
+      "--CI <boolean>",
+      "Boolean value if we should install base",
+      (value) => value === "true",
     )
     /**
      * @internal - used for CI E2E tests
@@ -149,12 +161,7 @@ export const runCli = async () => {
    * @internal - used for CI E2E tests
    */
   let CIMode = false;
-  if (
-    cliResults.flags.trpc ||
-    cliResults.flags.tailwind ||
-    cliResults.flags.prisma ||
-    cliResults.flags.nextAuth
-  ) {
+  if (cliResults.flags.CI) {
     CIMode = true;
     cliResults.packages = [];
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
