@@ -28,15 +28,5 @@ export const installPackages = async (options: InstallPackagesOptions) => {
     }
   }
 
-  if (!packages.tailwind.inUse) {
-    const spinner = ora("Tailwind not selected. Adding css module.").start();
-
-    await noTailwindInstaller({ ...options, projectDir: options.projectDir });
-
-    spinner.succeed(
-      chalk.green(`Successfully added ${chalk.green.bold("css module")}`),
-    );
-  }
-
   logger.info("");
 };
