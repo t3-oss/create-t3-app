@@ -145,7 +145,7 @@ export const runCli = async () => {
     );
   }
 
-  // Needs to be seperated outside the if statement to correctly infer the type as string | undefined
+  // Needs to be separated outside the if statement to correctly infer the type as string | undefined
   const cliProvidedName = program.args[0];
   if (cliProvidedName) {
     cliResults.appName = cliProvidedName;
