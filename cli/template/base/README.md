@@ -43,7 +43,7 @@ We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_cam
 
 You can also dockerize this stack and deploy a container.
 
-Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `SERVERVAR` and `NEXT_PUBLIC_CLIENTVAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
+Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `DATABASE_URL` (used by the server) and `NEXT_PUBLIC_CLIENTVAR` (used by the client). Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
 
 1. In your [next.config.mjs](./next.config.mjs), add the `standalone` output-option to your config:
 
@@ -94,6 +94,9 @@ Please note that Next.js requires a different process for buildtime (available i
    RUN apk add --no-cache libc6-compat
    WORKDIR /app
 
+   # Install Prisma Client - remove if not using Prisma
+   copy prisma ./
+
    # Install dependencies based on the preferred package manager
    COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
    RUN \
@@ -111,7 +114,7 @@ Please note that Next.js requires a different process for buildtime (available i
    # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
    FROM --platform=linux/amd64 node:16-alpine AS builder
 
-   ARG SERVERVAR
+   ARG DATABASE_URL
    ARG NEXT_PUBLIC_CLIENTVAR
 
    WORKDIR /app
@@ -171,8 +174,10 @@ Please note that Next.js requires a different process for buildtime (available i
 
    ```bash
    docker build -t ct3a -e NEXT_PUBLIC_CLIENTVAR=clientvar .
-   docker run -p 3000:3000 -e SERVERVAR="servervar" ct3a
+   docker run -p 3000:3000 -e DATABASE_URL="postgresql://<database_url_goes_here>" ct3a
    ```
+
+   (If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`)
 
 6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
@@ -202,7 +207,8 @@ You can also use docker compose to build the image and run the container.
          - "3000:3000"
        image: t3-app
        environment:
-         - SERVERVAR=servervar
+         # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`
+         - DATABASE_URL=postgresql://<database_url_goes_here>
    ```
 
    </details>
