@@ -44,7 +44,7 @@ const main = async () => {
   }
 
   if (!noGit) {
-    initializeGit(projectDir);
+    await initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
