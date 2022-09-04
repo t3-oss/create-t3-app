@@ -37,7 +37,7 @@ jobs:
         run: pnpm check
 
       - name: Build the package
-        run: pnpm build
+        run: pnpm build:cli
 
       - name: Create Version PR or Publish to NPM
         id: changesets

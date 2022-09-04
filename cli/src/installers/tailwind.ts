@@ -22,7 +22,10 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
+  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
+
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
+  fs.unlinkSync(indexModuleCss);
 };

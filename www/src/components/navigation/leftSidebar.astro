@@ -1,0 +1,85 @@
+---
+import { SIDEBAR } from "../../config";
+import Search from "./Search";
+
+export interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.slice(1);
+const langCode = "en";
+const sidebar = SIDEBAR[langCode];
+---
+
+<nav
+  aria-labelledby="grid-left"
+  class={currentPage === "/"
+    ? `pt-3 pb-28 h-full`
+    : `md:overflow-hidden h-full pb-32`}
+>
+  <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
+    <Search client:idle />
+  </div>
+  <ul
+    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+  >
+    {
+      Object.entries(sidebar).map(([header, children]) => (
+        <li>
+          <div>
+            <h2
+              class={
+                currentPage === "/"
+                  ? `text-2xl sm:text-xl text-slate-50`
+                  : `text-2xl sm:text-xl dark:text-slate-50 text-slate-900 `
+              }
+            >
+              {header}
+            </h2>
+            <ul>
+              {children.map((child) => {
+                const url = Astro.site?.pathname + child.link;
+                return (
+                  <li>
+                    <a
+                      href={url}
+                      aria-current={
+                        currentPageMatch === child.link ? "page" : false
+                      }
+                      class={`
+                        ${
+                          currentPageMatch === child.link
+                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
+                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
+                        }
+                        
+                        transition-colors
+                        font-medium
+                        block
+                        py-2
+                        px-4
+                        rounded-md
+                      `}
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    var target = document.querySelector('[aria-current="page"]');
+    if (target && target.offsetTop > window.innerHeight - 100) {
+      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
+    }
+  });
+</script>

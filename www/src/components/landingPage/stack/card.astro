@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  href: string;
+}
+
+const { title, href } = Astro.props;
+---
+
+<div class="relative bg-white/5 rounded-md flex flex-col justify-between">
+  <a href={href} target="_blank" rel="noopener noreferrer"
+    ><dt
+      class="flex space-x-4 items-center bg-white/10 p-2 pl-6 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors"
+    >
+      <slot name="icon" />
+      <p class="text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
+        {title}
+      </p>
+    </dt>
+  </a>
+
+  <dd
+    class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
+  >
+    <slot name="description" />
+  </dd>
+
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="font-bold text-t3-purple-300 hover:text-t3-purple-400 transition-colors mx-6 mb-6"
+    >Read more</a
+  >
+</div>
