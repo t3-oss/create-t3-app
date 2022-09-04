@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
+    "lint": "eslint src --cache --cache-strategy content",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -13,18 +14,26 @@
   "dependencies": {
     "@algolia/client-search": "^4.13.1",
     "@docsearch/css": "^3.2.1",
-    "@docsearch/react": "^3.1.0",
-    "preact": "^10.7.3",
-    "preact-render-to-string": "^5.2.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@docsearch/react": "^3.2.1",
+    "@nanostores/react": "^0.3.0",
+    "astro-seo": "^0.6.0",
+    "nanostores": "^0.6.0"
   },
   "devDependencies": {
-    "@astrojs/preact": "^1.0.2",
-    "@astrojs/react": "^1.0.0",
-    "@types/node": "^18.7.6",
-    "@types/react": "^17.0.45",
-    "@types/react-dom": "^17.0.11",
-    "astro": "^1.0.6"
+    "@astrojs/react": "^1.1.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@types/node": "^18.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-typist": "^2.0.3",
+    "@typescript-eslint/parser": "^5.35.1",
+    "astro": "^1.1.2",
+    "eslint": "^8.22.0",
+    "eslint-plugin-astro": "^0.17.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-typist": "^2.0.5",
+    "typescript": "^4.8.2"
   }
 }

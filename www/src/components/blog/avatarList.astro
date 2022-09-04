@@ -1,0 +1,188 @@
+---
+// fetch all commits for just this page's path
+export interface Props {
+  path: string;
+}
+const { path } = Astro.props;
+const resolvedPath = `www/${path}`;
+const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
+const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/main/${resolvedPath}`;
+
+type Commit = {
+  author: {
+    id: string;
+    login: string;
+  };
+};
+
+async function getCommits(url: string) {
+  try {
+    const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
+    if (!token) {
+      throw new Error(
+        'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
+      );
+    }
+
+    const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: auth,
+        "User-Agent": "@ct3a-www/1.0",
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(
+        `Request to fetch commits failed. Reason: ${res.statusText}
+       Message: ${data.message}`,
+      );
+    }
+
+    return data as Commit[];
+  } catch (e) {
+    console.warn(`[error]  /src/components/AvatarList.astro 
+    ${(e as any)?.message ?? e}`);
+    return [] as Commit[];
+  }
+}
+
+function removeDups(arr: Commit[]) {
+  const map = new Map<string, Commit["author"]>();
+
+  for (let item of arr) {
+    const author = item.author;
+    // Deduplicate based on author.id
+    map.set(author.id, { login: author.login, id: author.id });
+  }
+
+  return [...map.values()];
+}
+
+const data = await getCommits(url);
+const unique = removeDups(data);
+const recentContributors = unique.slice(0, 3); // only show avatars for the 3 most recent contributors
+const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
+---
+
+<div class="flex flex-col items-center justify-center py-3">
+  <span class="py-2">Recent Contributers To This Page</span>
+  <ul
+    class={`grid grid-cols-${recentContributors.length} gap-2 sm:gap-4 sm:grid-cols-${recentContributors.length}`}
+  >
+    {
+      recentContributors.map((item) => (
+        <li>
+          <a href={`https://github.com/${item.login}`}>
+            <img
+              class="rounded-full w-8 h-8 sm:w-10 sm:h-10"
+              alt={`Contributor ${item.login}`}
+              title={`Contributor ${item.login}`}
+              width="64"
+              height="64"
+              src={`https://avatars.githubusercontent.com/u/${item.id}`}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    additionalContributors > 0 && (
+      <span>
+        <a
+          href={commitsURL}
+        >{`and ${additionalContributors} additional contributor${
+          additionalContributors > 1 ? "s" : ""
+        }.`}</a>
+      </span>
+    )
+  }
+  {
+    unique.length === 0 && (
+      <a class="text-slate-900 dark:text-white" href={commitsURL}>
+        Contributors
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .avatar-list {
+    --avatar-size: 2.5rem;
+    --avatar-count: 3;
+
+    display: grid;
+    list-style: none;
+    /* Default to displaying most of the avatar to
+  enable easier access on touch devices, ensuring
+  the WCAG touch target size is met or exceeded */
+    grid-template-columns: repeat(
+      var(--avatar-count),
+      max(44px, calc(var(--avatar-size) / 1.15))
+    );
+    /* `padding` matches added visual dimensions of
+  the `box-shadow` to help create a more accurate
+  computed component size */
+    padding: 0.08em;
+    font-size: var(--avatar-size);
+  }
+
+  @media (any-hover: hover) and (any-pointer: fine) {
+    .avatar-list {
+      /* We create 1 extra cell to enable the computed 
+    width to match the final visual width */
+      grid-template-columns: repeat(
+        calc(var(--avatar-count) + 1),
+        calc(var(--avatar-size) / 1.75)
+      );
+    }
+  }
+
+  .avatar-list li {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+  }
+
+  .avatar-list li:hover ~ li a,
+  .avatar-list li:focus-within ~ li a {
+    transform: translateX(33%);
+  }
+
+  .avatar-list img,
+  .avatar-list a {
+    display: block;
+    border-radius: 50%;
+  }
+
+  .avatar-list a {
+    transition: transform 180ms ease-in-out;
+  }
+
+  .avatar-list img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.05em #fff, 0 0 0 0.08em rgba(0, 0, 0, 0.15);
+  }
+
+  .avatar-list a:focus {
+    outline: 2px solid transparent;
+    /* Double-layer trick to work for dark and light backgrounds */
+    box-shadow: 0 0 0 0.08em var(--theme-accent), 0 0 0 0.12em white;
+  }
+
+  .contributors {
+    display: flex;
+    align-items: center;
+  }
+
+  .contributors > * + * {
+    margin-left: 0.75rem;
+  }
+</style>

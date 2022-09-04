@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
-import { initializeGit } from "~/helpers/initGit.js";
+import { initializeGit } from "~/helpers/git.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
@@ -44,7 +44,7 @@ const main = async () => {
   }
 
   if (!noGit) {
-    initializeGit(projectDir);
+    await initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });

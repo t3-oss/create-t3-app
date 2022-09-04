@@ -1,0 +1,61 @@
+---
+import Tweet from "./tweet.astro";
+---
+
+<section class="pb-16">
+  <div class="flex flex-col lg:flex-row items-center justify-center mx-3">
+    <div class="w-fit sm:p-2">
+      <Tweet
+        author="Emilia Zapata"
+        avatar="https://pbs.twimg.com/profile_images/1426010455055638531/xUFu5JP7_400x400.jpg"
+        comments={2}
+        handle="synecdokey"
+        likes={75}
+        retweets={9}
+        date="Jul 31"
+        text="Finally had the chance to play with @trpcio and it's scary how easy it makes to make your data flow, with full type safety and backend validation. With create-t3-app and @supabase, I was able to create a simple to-do app with auth in less than 3 hours, scary."
+        verified={false}
+        tweetId="1553580714591158272"
+      />
+    </div>
+    <div class="w-fit sm:p-2">
+      <Tweet
+        author="Antonio Pitasi"
+        avatar="https://pbs.twimg.com/profile_images/1478681149824245762/OPY0MMZX_400x400.jpg"
+        handle="pitasiantonio"
+        comments={4}
+        likes={43}
+        retweets={5}
+        date="Jul 7"
+        text={`We just launched @Pisa_Dev: https://pisa.dev/ ... 🎉🎉 
+        
+        Built using the cool kids’ stack of 2022:
+        - @nextjs
+        - @tailwindcss
+        - @trcpio
+        - @prisma
+        - @planetscaledata
+        - @PlausibleHQ
+        Built by create-t3-app, thanks @t3dotgg!
+        
+        Let me go deeper on this, a thread…🧵`}
+        verified={false}
+        tweetId="1544944058291953664"
+      />
+    </div>
+    <div class="w-fit sm:p-2">
+      <Tweet
+        author="Anthony (ajcwebdev.x)"
+        avatar="https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_400x400.png"
+        comments={9}
+        handle="ajcwebdev"
+        likes={18}
+        retweets={4}
+        date="Jul 7"
+        text="Now that Blitz.js has pivoted and Bison has stagnated, create-t3-app will be the only framework to give Redwood a run for its money in the quest to build a legitimate fullstack React framework."
+        verified={false}
+        tweetId="1544909672137867264"
+      />
+    </div>
+  </div>
+</section>

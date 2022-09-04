@@ -1,0 +1,84 @@
+---
+import HeadCommon from "../components/headCommon.astro";
+import HeadSEO from "../components/headSeo.astro";
+import PageContent from "../components/blog/pageContent.astro";
+import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import RightSidebar from "../components/navigation/rightSidebar.astro";
+import * as CONFIG from "../config";
+import type { MarkdownHeading } from "astro";
+import Footer from "../components/footer/footer.astro";
+import Navbar from "../components/navigation/navbar.astro";
+import "../styles/global.css";
+
+export interface Props {
+  frontmatter: CONFIG.Frontmatter;
+  headings: MarkdownHeading[];
+}
+
+const { frontmatter, headings } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
+const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
+---
+
+<html
+  dir={frontmatter.dir ?? "ltr"}
+  lang={frontmatter.lang ?? "en-us"}
+  class="initial"
+>
+  <head>
+    <HeadCommon />
+    <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} />
+    <title>
+      {
+        frontmatter.title
+          ? `${frontmatter.title} • ${CONFIG.SITE.title}`
+          : CONFIG.SITE.title
+      }
+    </title>
+    <style>
+      :global(.mobile-sidebar-toggle) {
+        overflow: hidden;
+      }
+      :global(.mobile-sidebar-toggle) #grid-left {
+        display: block;
+        position: fixed;
+        width: 100%;
+        top: 2rem;
+      }
+    </style>
+  </head>
+
+  <body class="w-full">
+    <Navbar />
+    <main
+      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 h-full relative overflow-y-auto"
+    >
+      <aside
+        id="grid-left"
+        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 bg-t3-purple-50 bg-blend-lighten dark:bg-slate-900 pt-16 md:flex md:col-span-3 md:col-start-1 w-full"
+        title="Site Navigation"
+      >
+        <LeftSidebar currentPage={currentPage} />
+      </aside>
+      <div class="col-span-1 sm:col-span-6 md:col-start-4 md:col-span-6 w-full">
+        <PageContent
+          frontmatter={frontmatter}
+          headings={headings}
+          githubEditUrl={githubEditUrl}
+        >
+          <slot />
+        </PageContent>
+      </div>
+      <aside
+        id="grid-right"
+        title="Table of Contents"
+        class="hidden lg:block pt-1 md:col-start-11 md:col-span-1"
+      >
+        <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
+      </aside>
+    </main>
+    <Footer path={currentFile} isBlog={true} />
+  </body>
+</html>

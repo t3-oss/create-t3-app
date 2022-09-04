@@ -1,5 +1,49 @@
 # Changelog
 
+## 5.10.0
+
+### Minor Changes
+
+- [#388](https://github.com/t3-oss/create-t3-app/pull/388) [`86d053c`](https://github.com/t3-oss/create-t3-app/commit/86d053c440ed3c5d5101faf8d73574b6d24bf99e) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: non-tw index.tsx with styling
+
+* [#381](https://github.com/t3-oss/create-t3-app/pull/381) [`773b27e`](https://github.com/t3-oss/create-t3-app/commit/773b27e1399970992e232975830d327100316e74) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: include all cards on all index.tsx files
+
+- [#383](https://github.com/t3-oss/create-t3-app/pull/383) [`e05bc3d`](https://github.com/t3-oss/create-t3-app/commit/e05bc3da9867fcf8d8262b4e8dd976565650cf8f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - add safeguards for overwriting git repos
+
+* [#375](https://github.com/t3-oss/create-t3-app/pull/375) [`296c79b`](https://github.com/t3-oss/create-t3-app/commit/296c79b9617142d727a12e9a5c4250f68f437d9d) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: add option to continue and overwrite on existing directory
+
+  for reference see: https://github.com/t3-oss/create-t3-app/issues/230
+
+### Patch Changes
+
+- [#394](https://github.com/t3-oss/create-t3-app/pull/394) [`52e9db7`](https://github.com/t3-oss/create-t3-app/commit/52e9db7be8eacbb1e0bb2196647f646f8af617ea) Thanks [@nadilas](https://github.com/nadilas)! - Extending the warning message for invalid client environment variables by including the reason
+
+## 5.9.0
+
+### Minor Changes
+
+- [#366](https://github.com/t3-oss/create-t3-app/pull/366) [`1f43f83`](https://github.com/t3-oss/create-t3-app/commit/1f43f83261c0e6f91b6af0fb39f579845889b724) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Thanks [@hnqg](https://github.com/hnqg) for the initial PR. add wrapper function for unstable_getServerSession
+
+## 5.8.5
+
+### Patch Changes
+
+- [#357](https://github.com/t3-oss/create-t3-app/pull/357) [`b032074`](https://github.com/t3-oss/create-t3-app/commit/b03207434484d7ec3411b2d7c062a22cf425badc) Thanks [@virtuoushub](https://github.com/virtuoushub)! - chore: Sort package.json when in noInstallMode
+
+* [#365](https://github.com/t3-oss/create-t3-app/pull/365) [`b3ce004`](https://github.com/t3-oss/create-t3-app/commit/b3ce004affb9474e53e845e8507f676e3a771de0) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - revert prisma cleint teardown from #353
+
+## 5.8.4
+
+### Patch Changes
+
+- [#353](https://github.com/t3-oss/create-t3-app/pull/353) [`7a20de9`](https://github.com/t3-oss/create-t3-app/commit/7a20de9f19dfd9ae64143da112a4e3e1bfe30f52) Thanks [@Gejsi](https://github.com/Gejsi)! - Added loggers during development
+
+## 5.8.3
+
+### Patch Changes
+
+- [#345](https://github.com/t3-oss/create-t3-app/pull/345) [`8ee2ea0`](https://github.com/t3-oss/create-t3-app/commit/8ee2ea0c6ca4e49f2bb9b0f5c988471947c8a7ff) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Include `cjs` and `mjs` files in tsconfig. Thanks @timfee for reporting!
+
 ## 5.8.2
 
 ### Patch Changes

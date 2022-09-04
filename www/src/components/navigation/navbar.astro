@@ -1,0 +1,100 @@
+---
+import Search from "./Search";
+import SidebarToggle from "./SidebarToggle";
+
+export interface Props {
+  mode?: "landing" | "default";
+}
+
+const currentPage = Astro.url.pathname;
+const { mode = "default" } = Astro.props;
+
+const navbarLinks: Array<{ href: string; label: string; newTab?: boolean }> = [
+  {
+    href: "/en/introduction",
+    label: "Docs",
+  },
+  {
+    href: "/en/faq",
+    label: "FAQ",
+  },
+  {
+    href: "https://github.com/t3-oss/create-t3-app",
+    label: "Github",
+    newTab: true,
+  },
+  {
+    href: "https://init.tips",
+    label: "T3 Stack",
+    newTab: true,
+  },
+];
+---
+
+<nav
+  class={currentPage === "/"
+    ? `flex flex-col relative justify-between items-center pt-6 z-50 text-slate-50`
+    : `flex flex-col relative justify-between items-center pt-6 bg-t3-purple-50 dark:bg-slate-900 z-50`}
+  aria-label="Global"
+>
+  <div class="flex items-center justify-between w-full px-6 pb-2">
+    <div class="flex justify-between items-center w-full md:w-auto">
+      <div>
+        <a class="" href="/">
+          <img src="/favicon.svg" width="45" height="45" alt="T3 Logo" />
+        </a>
+      </div><div class="hidden -space-x-1 md:flex md:ml-10">
+        {
+          navbarLinks.map((navbarLink) => (
+            <a
+              class={`inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent ${
+                mode === "landing"
+                  ? "text-t3-purple-100 hover:text-t3-purple-300"
+                  : "text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
+              }`}
+              href={navbarLink.href}
+              target={navbarLink.newTab ? "_blank" : ""}
+            >
+              <span class="">{navbarLink.label}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <SidebarToggle currentPage={currentPage} client:idle />
+    </div>
+    <div
+      class="hidden md:block shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg w-full max-w-xs"
+    >
+      <Search client:load />
+    </div>
+  </div>
+</nav>
+
+<style>
+  :root {
+    --docsearch-primary-color: var(--theme-accent);
+    --docsearch-logo-color: var(--theme-text);
+  }
+
+  /* .search-item {
+    display: none;
+    position: relative;
+    z-index: 10;
+    flex-grow: 1;
+    padding-right: 0.7rem;
+    display: flex;
+    max-width: 200px;
+  } */
+
+  :global(.search-item > *) {
+    flex-grow: 1;
+  }
+
+  @media (min-width: 50em) {
+    .search-item {
+      max-width: 400px;
+    }
+  }
+</style>

@@ -1,0 +1,196 @@
+.containerOuter {
+  --color-gray-500: rgba(107, 114, 128, 100%);
+  --color-gray-600: rgba(75, 85, 99, 100%);
+  --color-gray-700: rgba(55, 65, 81, 100%);
+  --color-purple-300: rgba(216, 180, 254, 100%);
+  --color-blue-500: rgba(59, 130, 246, 100%);
+  --color-violet-500: rgba(139, 92, 246, 100%);
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.containerInner {
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@media (min-width: 640px) {
+  .containerInner {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .containerInner {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .containerInner {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .containerInner {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .containerInner {
+    max-width: 1536px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--color-gray-700);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 5rem;
+  }
+}
+
+.titlePink {
+  color: var(--color-purple-300);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--color-gray-700);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.cardGrid {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardGrid {
+    width: calc(200% / 3);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  transition-duration: 500ms;
+  border: 2px solid var(--color-gray-500);
+  border-radius: 0.25rem;
+  box-shadow: var(--tw-shadow);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion) {
+  .card:hover {
+    transform: none;
+  }
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: var(--color-gray-500);
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-gray-600);
+}
+
+.cardDocumentation {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+  text-decoration-style: dotted;
+  -webkit-text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  color: var(--color-violet-500);
+}
+
+.helloFrom {
+  padding-top: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--color-blue-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.helloFrom p {
+  margin: 0;
+}
+
+.authShowcase {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loginInfo {
+  color: var(--color-blue-500);
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.signInButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  background-color: rgba(245, 243, 255, 100%);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.signInButton:hover {
+  background-color: rgba(237, 233, 254, 100%);
+}

@@ -38,6 +38,16 @@ const Home: NextPage = () => {
             description="End-to-end typesafe APIs made easy"
             documentation="https://trpc.io/"
           />
+          <TechnologyCard
+            name="Next-Auth"
+            description="Authentication for Next.js"
+            documentation="https://next-auth.js.org/"
+          />
+          <TechnologyCard
+            name="Prisma"
+            description="Build data-driven JavaScript & TypeScript apps in less time"
+            documentation="https://www.prisma.io/docs/"
+          />
         </div>
         <div className="flex items-center justify-center w-full pt-6 text-2xl text-blue-500">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
@@ -49,12 +59,11 @@ const Home: NextPage = () => {
 
 export default Home;
 
-// Technology component
-interface TechnologyCardProps {
+type TechnologyCardProps = {
   name: string;
   description: string;
   documentation: string;
-}
+};
 
 const TechnologyCard = ({
   name,

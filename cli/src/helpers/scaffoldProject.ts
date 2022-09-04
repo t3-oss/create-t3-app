@@ -31,20 +31,58 @@ export const scaffoldProject = async ({
       );
     } else {
       spinner.stopAndPersist();
-      const { overwriteDir } = await inquirer.prompt<{ overwriteDir: boolean }>(
-        {
-          name: "overwriteDir",
-          type: "confirm",
-          message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
-            projectName,
-          )} already exists and isn't empty. Do you want to overwrite it?`,
-          default: false,
-        },
-      );
-      if (!overwriteDir) {
+      const { overwriteDir } = await inquirer.prompt<{
+        overwriteDir: "abort" | "clear" | "overwrite";
+      }>({
+        name: "overwriteDir",
+        type: "list",
+        message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
+          projectName,
+        )} already exists and isn't empty. How would you like to proceed?`,
+        choices: [
+          {
+            name: "Abort installation (recommended)",
+            value: "abort",
+            short: "Abort",
+          },
+          {
+            name: "Clear the directory and continue installation",
+            value: "clear",
+            short: "Clear",
+          },
+          {
+            name: "Continue installation and overwrite conflicting files",
+            value: "overwrite",
+            short: "Overwrite",
+          },
+        ],
+        default: "abort",
+      });
+      if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
         process.exit(0);
-      } else {
+      }
+
+      const overwriteAction =
+        overwriteDir === "clear"
+          ? "clear the directory"
+          : "overwrite conflicting files";
+
+      const { confirmOverwriteDir } = await inquirer.prompt<{
+        confirmOverwriteDir: boolean;
+      }>({
+        name: "confirmOverwriteDir",
+        type: "confirm",
+        message: `Are you sure you want to ${overwriteAction}?`,
+        default: false,
+      });
+
+      if (!confirmOverwriteDir) {
+        spinner.fail("Aborting installation...");
+        process.exit(0);
+      }
+
+      if (overwriteDir === "clear") {
         spinner.info(
           `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
         );

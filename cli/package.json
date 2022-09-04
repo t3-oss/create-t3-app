@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "5.8.2",
+  "version": "5.10.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -31,6 +31,7 @@
     "dev": "tsup src/index.ts --format esm --watch --clean --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "check": "pnpm lint && pnpm format:check && pnpm typecheck",
+    "lint": "eslint src --cache --cache-strategy content",
     "release": "changeset version",
     "pub:beta": "pnpm build && npm publish --tag beta",
     "pub:next": "pnpm build && npm publish --tag next",
