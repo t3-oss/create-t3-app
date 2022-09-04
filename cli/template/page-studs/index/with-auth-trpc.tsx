@@ -53,7 +53,9 @@ const Home: NextPage = () => {
               documentation="https://www.prisma.io/docs/"
             />
           </div>
-
+          <div className={styles.helloFrom}>
+            {data ? <p>{data.greeting}</p> : <p>Loading...</p>}
+          </div>
           <AuthShowcase />
         </div>
       </div>
