@@ -1,7 +1,7 @@
 ---
 title: Why CT3A?
 description: Why you should pick Create T3 App for your next project
-layout: ../../layouts/mainLayout.astro
+layout: ../../layouts/blog.astro
 ---
 
 ## Why TypeScript ?
@@ -31,7 +31,11 @@ TODO: need a bit more here
 
 ### Tailwind CSS
 
-TODO: someone write this
+Tailwind generates the CSS you should create by hand, without leaving your JSX and is generally faster to write.
+
+By providing building blocks in the form of good default colors, spaces, and others, Tailwind makes creating something good-looking easier; while not getting in the way when you're building something beautiful and unique.
+
+Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve. Because of this, it's not rare to see Tailwind described as "zen-mode CSS".
 
 ### NextAuth.js
 
