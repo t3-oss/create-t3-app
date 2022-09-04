@@ -4,7 +4,7 @@ import { trpc } from "../utils/trpc";
 import styles from "./index.module.css";
 
 const Home: NextPage = () => {
-  const { data } = trpc.proxy.example.hello.useQuery({ text: "from tRPC" });
+  const { data } = trpc.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
