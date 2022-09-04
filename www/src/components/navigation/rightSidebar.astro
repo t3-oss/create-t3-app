@@ -1,0 +1,19 @@
+---
+import TableOfContents from "./TableOfContents";
+import MoreMenu from "./moreMenu.astro";
+import type { MarkdownHeading } from "astro";
+
+export interface Props {
+  headings: MarkdownHeading[];
+  githubEditUrl: string;
+}
+
+const { headings, githubEditUrl } = Astro.props;
+---
+
+<nav class="sidebar-nav hidden lg:block max-w-sm" aria-labelledby="grid-right">
+  <div class="sidebar-nav-inner">
+    <TableOfContents client:media="(min-width: 50em)" headings={headings} />
+    <MoreMenu editHref={githubEditUrl} />
+  </div>
+</nav>

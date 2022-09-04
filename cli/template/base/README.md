@@ -43,12 +43,30 @@ We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_cam
 
 You can also dockerize this stack and deploy a container.
 
-1. In your [next.config.mjs](./next.config.mjs), add the `output: "standalone"` option to your config.
-2. Create a `.dockerignore` file with the following contents:
+Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
+
+1. In your [next.config.mjs](./next.config.mjs), add the `standalone` output-option to your config:
+
+   ```diff
+     export default defineNextConfig({
+       reactStrictMode: true,
+       swcMinify: true,
+   +   output: "standalone",
+     });
+   ```
+
+2. Remove the `env`-import from [next.config.mjs](./next.config.mjs):
+
+   ```diff
+   - import { env } from "./src/env/server.mjs";
+   ```
+
+3. Create a `.dockerignore` file with the following contents:
    <details>
    <summary>.dockerignore</summary>
 
    ```
+   .env
    Dockerfile
    .dockerignore
    node_modules
@@ -60,13 +78,18 @@ You can also dockerize this stack and deploy a container.
 
   </details>
 
-3. Create a `Dockerfile` with the following contents:
+4. Create a `Dockerfile` with the following contents:
    <details>
    <summary>Dockerfile</summary>
 
    ```Dockerfile
+   ########################
+   #         DEPS         #
+   ########################
+
    # Install dependencies only when needed
-   FROM node:16-alpine AS deps
+   # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
+   FROM --platform=linux/amd64 node:16-alpine AS deps
    # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
    RUN apk add --no-cache libc6-compat
    WORKDIR /app
@@ -74,15 +97,23 @@ You can also dockerize this stack and deploy a container.
    # Install dependencies based on the preferred package manager
    COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
    RUN \
-      if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-      elif [ -f package-lock.json ]; then npm ci; \
-      elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
-      else echo "Lockfile not found." && exit 1; \
-      fi
+     if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+     elif [ -f package-lock.json ]; then npm ci; \
+     elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+     else echo "Lockfile not found." && exit 1; \
+     fi
 
+   ########################
+   #        BUILDER       #
+   ########################
 
    # Rebuild the source code only when needed
-   FROM node:16-alpine AS builder
+   # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
+   FROM --platform=linux/amd64 node:16-alpine AS builder
+
+   ARG NEXT_PUBLIC_FOO
+   ARG BAR
+
    WORKDIR /app
    COPY --from=deps /app/node_modules ./node_modules
    COPY . .
@@ -92,13 +123,21 @@ You can also dockerize this stack and deploy a container.
    # Uncomment the following line in case you want to disable telemetry during the build.
    # ENV NEXT_TELEMETRY_DISABLED 1
 
-   RUN yarn build
+   RUN \
+     if [ -f yarn.lock ]; then yarn build; \
+     elif [ -f package-lock.json ]; then npm run build; \
+     elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm run build; \
+     else echo "Lockfile not found." && exit 1; \
+     fi
 
-   # If using npm comment out above and use below instead
-   # RUN npm run build
+   ########################
+   #        RUNNER        #
+   ########################
 
    # Production image, copy all the files and run next
-   FROM node:16-alpine AS runner
+   # TODO: re-evaluate if emulation is still necessary after moving to node 18
+   FROM --platform=linux/amd64 node:16-alpine AS runner
+   # WORKDIR /usr/app
    WORKDIR /app
 
    ENV NODE_ENV production
@@ -108,8 +147,7 @@ You can also dockerize this stack and deploy a container.
    RUN addgroup --system --gid 1001 nodejs
    RUN adduser --system --uid 1001 nextjs
 
-   # You only need to copy next.config.js if you are NOT using the default configuration
-   # COPY --from=builder /app/next.config.js ./
+   COPY --from=builder /app/next.config.mjs ./
    COPY --from=builder /app/public ./public
    COPY --from=builder /app/package.json ./package.json
 
@@ -129,7 +167,56 @@ You can also dockerize this stack and deploy a container.
 
   </details>
 
-4. You can now build an image to deploy yourself, or use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
+5. To build and run this image locally, run:
+
+   ```bash
+   docker build -t ct3a -e NEXT_PUBLIC_FOO=foo .
+   docker run -p 3000:3000 -e BAR="bar" ct3a
+   ```
+
+6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
+
+### Docker Compose
+
+You can also use docker compose to build the image and run the container.
+
+1. Follow steps 1-4 above
+
+2. Create a `docker-compose.yml` file with the following:
+
+   <details>
+   <summary>docker-compose.yml</summary>
+
+   ```yaml
+   version: "3.9"
+   services:
+     app:
+       platform: "linux/amd64"
+       build:
+         context: .
+         dockerfile: Dockerfile
+         args:
+           NEXT_PUBLIC_FOO: "foo"
+       working_dir: /app
+       ports:
+         - "3000:3000"
+       image: t3-app
+       environment:
+         - BAR=bar
+   ```
+
+   </details>
+
+3. Run this using `docker compose up`.
+
+### Further reading
+
+Here are some useful references you can further look into:
+
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+- [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+- [Docker CLI reference](https://docs.docker.com/engine/reference/commandline/docker/)
+- [Docker Compose CLI reference](https://docs.docker.com/compose/reference/)
 
 ## Useful resources
 

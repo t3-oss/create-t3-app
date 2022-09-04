@@ -37,9 +37,9 @@ export const COMMUNITY_INVITE_URL = `https://t3.gg/discord`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-  indexName: "XXXXXXXXXX",
-  appId: "XXXXXXXXXX",
-  apiKey: "XXXXXXXXXX",
+  indexName: "create-t3-app",
+  appId: "0LE5592BV4",
+  apiKey: "892c4647b96fe1b3d0b7d8de1c5b5e40",
 };
 
 export type Sidebar = Record<
@@ -67,6 +67,10 @@ export const SIDEBAR: Sidebar = {
         link: "en/usage/env-variables",
       },
       { text: "Tailwind CSS", link: "en/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Docker", link: "en/deployment/docker" },
+      { text: "Vercel", link: "en/deployment/vercel" },
     ],
   },
 };

@@ -22,5 +22,6 @@ export const installPackages = (options: InstallPackagesOptions) => {
       );
     }
   }
+
   logger.info("");
 };

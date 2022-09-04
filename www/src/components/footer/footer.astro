@@ -1,19 +1,70 @@
 ---
-import AvatarList from "./avatarList.astro";
-type Props = {
+import AvatarList from "../blog/avatarList.astro";
+export interface Props {
   path: string;
-};
-const { path } = Astro.props as Props;
+  isBlog: boolean;
+}
+const { path, isBlog } = Astro.props;
 ---
 
-<footer>
-  <AvatarList path={path} />
+<footer
+  class={path === "/"
+    ? `mt-auto pb-8 pt-16 text-t3-purple-100 bg-[#131232] flex flex-col`
+    : `mt-auto pb-8 pt-16 text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 flex flex-col`}
+>
+  {isBlog && <AvatarList path={path} />}
+  <div
+    class="container px-6 mx-auto space-y-3 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 pt-6"
+  >
+    <div class="flex flex-col sm:flex-row items-center justify-between w-full">
+      <div
+        class="pb-6 mb-6 sm:pb-0 sm:mb-0 border border-x-0 border-t-0 border-b-t3-purple-100 sm:border-0"
+      >
+        <a
+          rel="noopener noreferrer"
+          href="/"
+          class="flex justify-center space-x-3 md:justify-start"
+        >
+          <div class="flex items-center justify-center">
+            <img src="/favicon.svg" width="60" height="60" alt="T3 Logo" />
+            <span class="text-2xl font-semibold pl-3">Create T3 App</span>
+          </div>
+        </a>
+      </div>
+      <div>
+        <ul
+          class="grid grid-cols-2 gap-6 sm:flex items-center justify-center flex-col sm:flex-row text-center lg:space-x-8"
+        >
+          <li>
+            <a
+              rel="noopener noreferrer"
+              href="/en/introduction"
+              class="hover:dark:text-t3-purple-200">Docs</a
+            >
+          </li>
+          <li>
+            <a
+              rel="noopener noreferrer"
+              href="/en/faqs"
+              class="hover:dark:text-t3-purple-200">FAQ</a
+            >
+          </li>
+          <li>
+            <a
+              rel="noopener noreferrer"
+              href="https://github.com/t3-oss/create-t3-app"
+              class="hover:dark:text-t3-purple-200">Github</a
+            >
+          </li>
+          <li>
+            <a
+              rel="noopener noreferrer"
+              href="https://init.tips"
+              class="hover:dark:text-t3-purple-200">T3 Stack</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </footer>
-
-<style>
-  footer {
-    margin-top: auto;
-    padding: 2rem;
-    border-top: 3px solid var(--theme-divider);
-  }
-</style>
