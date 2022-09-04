@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.proxy.example.hello.useQuery({ text: "from tRPC" });
+  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.proxy.auth.getSecretMessage.useQuery();
+  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery();
 
   const { data: sessionData } = useSession();
 
