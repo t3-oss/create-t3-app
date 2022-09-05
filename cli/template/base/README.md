@@ -207,7 +207,7 @@ You can also use docker compose to build the image and run the container.
          - "3000:3000"
        image: t3-app
        environment:
-         # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`
+         # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal` in the database url
          - DATABASE_URL=database_url_goes_here
    ```
 
