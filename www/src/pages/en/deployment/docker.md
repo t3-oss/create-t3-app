@@ -140,8 +140,6 @@ Please note that Next.js requires a different process for buildtime (available i
    docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a
    ```
 
-   (If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal` in the database url)
-
 6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
 
 ## Docker Compose
@@ -170,7 +168,6 @@ You can also use docker compose to build the image and run the container.
          - "3000:3000"
        image: t3-app
        environment:
-         # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal` in the database url
          - DATABASE_URL=database_url_goes_here
    ```
 
