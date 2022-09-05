@@ -42,7 +42,8 @@
     "release": "changeset version",
     "pub:beta": "cd cli && pnpm pub:beta",
     "pub:next": "cd cli && pnpm pub:next",
-    "pub:release": "cd cli && pnpm pub:release"
+    "pub:release": "cd cli && pnpm pub:release",
+    "merge-main": "git checkout main && git pull && git checkout next && git pull && git checkout -b next-merge-$(date '+%Y-%m-%d') next && git merge main"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",
