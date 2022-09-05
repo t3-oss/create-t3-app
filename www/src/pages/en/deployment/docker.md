@@ -137,7 +137,7 @@ Please note that Next.js requires a different process for buildtime (available i
 
    ```bash
    docker build -t ct3a -e NEXT_PUBLIC_CLIENTVAR=clientvar .
-   docker run -p 3000:3000 -e DATABASE_URL="postgresql://<database_url_goes_here>" ct3a
+   docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a
    ```
 
    (If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`)
@@ -171,7 +171,7 @@ You can also use docker compose to build the image and run the container.
        image: t3-app
        environment:
          # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`
-         - DATABASE_URL=postgresql://<database_url_goes_here>
+         - DATABASE_URL=database_url_goes_here
    ```
 
    </details>
