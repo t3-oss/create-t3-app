@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.10.1
+
+### Patch Changes
+
+- [#396](https://github.com/t3-oss/create-t3-app/pull/396) [`30f3db6`](https://github.com/t3-oss/create-t3-app/commit/30f3db64c3a81475488c712fa16682076ba3f18b) Thanks [@rhenriquez28](https://github.com/rhenriquez28)! - fixing ssr by forwarding client's headers
+
 ## 5.10.0
 
 ### Minor Changes
