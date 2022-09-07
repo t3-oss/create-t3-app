@@ -38,90 +38,14 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       }
     </title>
     <style>
-      body {
-        width: 100%;
-        display: grid;
-        grid-template-rows: var(--theme-navbar-height) 1fr;
-        --gutter: 0.5rem;
-        --doc-padding: 2rem;
-      }
-
-      .layout {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns:
-          minmax(var(--gutter), 1fr) minmax(0, var(--max-width))
-          minmax(var(--gutter), 1fr);
-        overflow-x: hidden;
-      }
-
-      .layout :global(> *) {
-        width: 100%;
-        height: 100%;
-      }
-
-      .grid-sidebar {
-        height: 100vh;
-        position: sticky;
-        top: 0;
-        padding: 0;
-      }
-
-      #grid-left {
-        position: fixed;
-        /* background-color: var(--theme-bg); */
-        z-index: 10;
-        display: none;
-      }
-
-      #grid-main {
-        padding: var(--doc-padding) var(--gutter);
-        grid-column: 2;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-
-      #grid-right {
-        display: none;
-      }
-
       :global(.mobile-sidebar-toggle) {
         overflow: hidden;
       }
-
       :global(.mobile-sidebar-toggle) #grid-left {
         display: block;
+        position: fixed;
+        width: 100%;
         top: 2rem;
-      }
-
-      @media (min-width: 50em) {
-        .layout {
-          overflow: initial;
-          grid-template-columns: 20rem minmax(0, var(--max-width));
-          gap: 1em;
-        }
-
-        #grid-left {
-          display: flex;
-          padding-left: 2rem;
-          position: sticky;
-          grid-column: 1;
-        }
-      }
-
-      @media (min-width: 72em) {
-        .layout {
-          grid-template-columns: 20rem minmax(0, var(--max-width)) 18rem;
-          padding-left: 0;
-          padding-right: 0;
-          margin: 0 auto;
-        }
-
-        #grid-right {
-          grid-column: 3;
-          display: flex;
-        }
       }
     </style>
   </head>
@@ -129,18 +53,16 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   <body class="w-full">
     <Navbar />
     <main
-      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start flex flex-col sm:grid sm:grid-cols-1 md:grid-cols-3 h-full relative overflow-y-auto"
+      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 h-full relative overflow-y-auto"
     >
       <aside
         id="grid-left"
-        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 place-self-start bg-t3-purple-50 bg-blend-lighten dark:bg-slate-900 pt-16 md:col-span-1 md:col-start-1 w-full"
+        class="hidden sticky h-[100vh] bottom-0 top-10 z-10 bg-t3-purple-50 bg-blend-lighten dark:bg-slate-900 pt-16 md:flex md:col-span-3 md:col-start-1 w-full"
         title="Site Navigation"
       >
         <LeftSidebar currentPage={currentPage} />
       </aside>
-      <div
-        class="w-full flex flex-col sm:col-start-2 sm:col-span-2 lg:col-span-1 lg:col-start-2"
-      >
+      <div class="col-span-1 sm:col-span-6 md:col-start-4 md:col-span-6 w-full">
         <PageContent
           frontmatter={frontmatter}
           headings={headings}
@@ -152,7 +74,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="justify-self-center hidden lg:block pt-16"
+        class="hidden lg:block pt-1 md:col-start-11 md:col-span-1"
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>

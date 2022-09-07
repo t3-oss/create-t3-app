@@ -14,6 +14,7 @@ importers:
       eslint: ^8.22.0
       eslint-config-prettier: ^8.5.0
       eslint-config-turbo: ^0.0.3
+      eslint-plugin-astro: ^0.17.1
       eslint-plugin-no-only-tests: ^2.6.0
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-react: ^7.31.0
@@ -37,6 +38,7 @@ importers:
       eslint: 8.23.0
       eslint-config-prettier: 8.5.0_eslint@8.23.0
       eslint-config-turbo: 0.0.3_eslint@8.23.0
+      eslint-plugin-astro: 0.17.1_eslint@8.23.0
       eslint-plugin-no-only-tests: 2.6.0
       eslint-plugin-prettier: 4.2.1_tgumt6uwl2md3n6uqnggd6wvce
       eslint-plugin-react: 7.31.1_eslint@8.23.0

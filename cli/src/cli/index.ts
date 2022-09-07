@@ -13,6 +13,11 @@ interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
+  CI: boolean /** @internal - used in CI */;
+  tailwind: boolean /** @internal - used in CI */;
+  trpc: boolean /** @internal - used in CI */;
+  prisma: boolean /** @internal - used in CI */;
+  nextAuth: boolean /** @internal - used in CI */;
 }
 
 interface CliResults {
@@ -28,6 +33,11 @@ const defaultOptions: CliResults = {
     noGit: false,
     noInstall: false,
     default: false,
+    CI: false,
+    tailwind: false,
+    trpc: false,
+    prisma: false,
+    nextAuth: false,
   },
 };
 
@@ -59,6 +69,49 @@ export const runCli = async () => {
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
       false,
     )
+    /** START CI-FLAGS */
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option("--CI", "Boolean value if we're running in CI", false)
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option(
+      "--tailwind <tailwind>",
+      "Boolean value if we should install tailwind",
+      (value) => value === "tailwind",
+    )
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option(
+      "--nextAuth <boolean>",
+      "Boolean value if we should install nextAuth",
+      (value) => value === "nextAuth",
+    )
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option(
+      "--prisma <boolean>",
+      "Boolean value if we should install prisma",
+      (value) => value === "prisma",
+    )
+    /**
+     * @internal - used for CI E2E tests
+     * If any of the following option-flags are provided, we skip prompting
+     */
+    .option(
+      "--trpc <boolean>",
+      "Boolean value if we should install trpc",
+      (value) => value === "trpc",
+    )
+    /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
       "afterAll",
@@ -92,7 +145,7 @@ export const runCli = async () => {
     );
   }
 
-  // Needs to be seperated outside the if statement to correctly infer the type as string | undefined
+  // Needs to be separated outside the if statement to correctly infer the type as string | undefined
   const cliProvidedName = program.args[0];
   if (cliProvidedName) {
     cliResults.appName = cliProvidedName;
@@ -100,11 +153,26 @@ export const runCli = async () => {
 
   cliResults.flags = program.opts();
 
+  /**
+   * @internal - used for CI E2E tests
+   */
+  let CIMode = false;
+  if (cliResults.flags.CI) {
+    CIMode = true;
+    cliResults.packages = [];
+    if (cliResults.flags.trpc) cliResults.packages.push("trpc");
+    if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
+    if (cliResults.flags.prisma) cliResults.packages.push("prisma");
+    if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+  }
+
   const pkgManager = getUserPkgManager();
 
   // Explained below why this is in a try/catch block
   try {
-    if (!cliResults.flags.default) {
+    // if --packages flag is set, we are running in CI mode and should not prompt the user
+    // if --default flag is set, we should not prompt the user
+    if (!cliResults.flags.default && !CIMode) {
       if (!cliProvidedName) {
         const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
           name: "appName",

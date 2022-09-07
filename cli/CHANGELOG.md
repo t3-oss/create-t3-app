@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.10.0
+
+### Minor Changes
+
+- [#388](https://github.com/t3-oss/create-t3-app/pull/388) [`86d053c`](https://github.com/t3-oss/create-t3-app/commit/86d053c440ed3c5d5101faf8d73574b6d24bf99e) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: non-tw index.tsx with styling
+
+* [#381](https://github.com/t3-oss/create-t3-app/pull/381) [`773b27e`](https://github.com/t3-oss/create-t3-app/commit/773b27e1399970992e232975830d327100316e74) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: include all cards on all index.tsx files
+
+- [#383](https://github.com/t3-oss/create-t3-app/pull/383) [`e05bc3d`](https://github.com/t3-oss/create-t3-app/commit/e05bc3da9867fcf8d8262b4e8dd976565650cf8f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - add safeguards for overwriting git repos
+
+* [#375](https://github.com/t3-oss/create-t3-app/pull/375) [`296c79b`](https://github.com/t3-oss/create-t3-app/commit/296c79b9617142d727a12e9a5c4250f68f437d9d) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: add option to continue and overwrite on existing directory
+
+  for reference see: https://github.com/t3-oss/create-t3-app/issues/230
+
+### Patch Changes
+
+- [#394](https://github.com/t3-oss/create-t3-app/pull/394) [`52e9db7`](https://github.com/t3-oss/create-t3-app/commit/52e9db7be8eacbb1e0bb2196647f646f8af617ea) Thanks [@nadilas](https://github.com/nadilas)! - Extending the warning message for invalid client environment variables by including the reason
+
 ## 5.9.0
 
 ### Minor Changes
