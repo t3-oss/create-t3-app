@@ -166,6 +166,8 @@ export const runCli = async () => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
 
+  const pkgManager = getUserPkgManager();
+
   // Explained below why this is in a try/catch block
   try {
     // if --packages flag is set, we are running in CI mode and should not prompt the user

@@ -1,6 +1,7 @@
-import { execSync } from "child_process";
 import chalk from "chalk";
 import ora from "ora";
+import { execSync } from "child_process";
+import { execa } from "~/utils/execAsync.js";
 import { logger } from "~/utils/logger.js";
 import fs from "fs-extra";
 import path from "path";
@@ -97,7 +98,7 @@ export const initializeGit = async (projectDir: string) => {
       initCmd = "git init && git branch -m main";
     }
 
-    execSync(initCmd, { cwd: projectDir });
+    await execa(initCmd, { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
