@@ -184,11 +184,15 @@ export const runCli = async () => {
         });
         cliResults.appName = appName;
 
-        await askLanguage();
-        cliResults.packages = await askPackages();
-        if (!cliResults.flags.noGit) cliResults.flags.noGit = !(await askGit());
-        if (!cliResults.flags.noInstall)
-          cliResults.flags.noInstall = !(await askInstall());
+        await promptLanguage();
+        cliResults.packages = await promptPackages();
+        if (!cliResults.flags.noGit) {
+          cliResults.flags.noGit = !(await promptGit());
+        }
+
+        if (!cliResults.flags.noInstall) {
+          cliResults.flags.noInstall = !(await promptInstall());
+        }
       }
     }
   } catch (err) {
@@ -208,7 +212,7 @@ export const runCli = async () => {
   return cliResults;
 };
 
-const askLanguage = async (): Promise<void> => {
+const promptLanguage = async (): Promise<void> => {
   const { language } = await inquirer.prompt<{ language: string }>({
     name: "language",
     type: "list",
@@ -227,7 +231,7 @@ const askLanguage = async (): Promise<void> => {
   }
 };
 
-const askPackages = async (): Promise<AvailablePackages[]> => {
+const promptPackages = async (): Promise<AvailablePackages[]> => {
   const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
     name: "packages",
     type: "checkbox",
@@ -248,7 +252,7 @@ const askPackages = async (): Promise<AvailablePackages[]> => {
   return packages;
 };
 
-const askGit = async (): Promise<boolean> => {
+const promptGit = async (): Promise<boolean> => {
   const { git } = await inquirer.prompt<{ git: boolean }>({
     name: "git",
     type: "confirm",
@@ -265,7 +269,7 @@ const askGit = async (): Promise<boolean> => {
   return git;
 };
 
-const askInstall = async (): Promise<boolean> => {
+const promptInstall = async (): Promise<boolean> => {
   const packageManager = getUserPkgManager();
 
   const { install } = await inquirer.prompt<{ install: boolean }>({
