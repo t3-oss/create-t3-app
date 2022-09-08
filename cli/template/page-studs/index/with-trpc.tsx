@@ -14,9 +14,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.containerOuter}>
-        <div className={styles.containerInner} className={styles.containerOuter}>
         <div className={styles.containerInner}>
-          <h1 className={styles.title} >
+        <div className={styles.containerInner}>
+          <h1 className={styles.title}>
             Create <span className={styles.titlePink}>T3</span> App
           </h1>
 
