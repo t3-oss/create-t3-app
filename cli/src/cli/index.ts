@@ -1,9 +1,9 @@
 import type { AvailablePackages } from "~/installers/index.js";
+import { availablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
@@ -166,95 +166,23 @@ export const runCli = async () => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
 
-  const pkgManager = getUserPkgManager();
-
   // Explained below why this is in a try/catch block
   try {
     // if --packages flag is set, we are running in CI mode and should not prompt the user
     // if --default flag is set, we should not prompt the user
     if (!cliResults.flags.default && !CIMode) {
       if (!cliProvidedName) {
-        const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
-          name: "appName",
-          type: "input",
-          message: "What will your project be called?",
-          default: defaultOptions.appName,
-          validate: validateAppName,
-          transformer: (input: string) => {
-            return input.trim();
-          },
-        });
-        cliResults.appName = appName;
+        cliResults.appName = await promptAppName();
       }
 
-      const { language } = await inquirer.prompt<{ language: string }>({
-        name: "language",
-        type: "list",
-        message: "Will you be using JavaScript or TypeScript?",
-        choices: [
-          { name: "TypeScript", value: "typescript", short: "TypeScript" },
-          { name: "JavaScript", value: "javascript", short: "TypeScript" }, // Both options should have 'TypeScript' as the short value to improve UX and reduce confusion
-        ],
-        default: "typescript",
-      });
-
-      if (language === "javascript") {
-        logger.error("Wrong answer, using TypeScript instead...");
-      } else {
-        logger.success("Good choice! Using TypeScript!");
-      }
-
-      const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
-        name: "packages",
-        type: "checkbox",
-        message: "Which packages would you like to enable?",
-        choices: availablePackages
-          .filter((pkg) => pkg !== "envVariables") // dont prompt for env-vars
-          .map((pkgName) => ({
-            name: pkgName,
-            checked: false,
-            // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-            disabled:
-              pkgName === "nextAuth" && process.versions.node.startsWith("18")
-                ? "Node.js version 18 is currently not compatible with Next-Auth."
-                : false,
-          })),
-      });
-
-      cliResults.packages = packages;
-
-      // Skip if noGit flag provided
+      await promptLanguage();
+      cliResults.packages = await promptPackages();
       if (!cliResults.flags.noGit) {
-        const { git } = await inquirer.prompt<{ git: boolean }>({
-          name: "git",
-          type: "confirm",
-          message: "Initialize a new git repository?",
-          default: true,
-        });
-        if (git) {
-          logger.success("Nice one! Initializing repository!");
-        } else {
-          cliResults.flags.noGit = true;
-          logger.info("Sounds good! You can come back and run git init later.");
-        }
+        cliResults.flags.noGit = !(await promptGit());
       }
 
       if (!cliResults.flags.noInstall) {
-        const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
-          name: "runInstall",
-          type: "confirm",
-          message: `Would you like us to run ${pkgManager} install?`,
-          default: true,
-        });
-
-        if (runInstall) {
-          logger.success("Alright. We'll install the dependencies for you!");
-        } else {
-          cliResults.flags.noInstall = true;
-          logger.info(
-            `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
-          );
-        }
+        cliResults.flags.noInstall = !(await promptInstall());
       }
     }
   } catch (err) {
@@ -272,4 +200,97 @@ export const runCli = async () => {
   }
 
   return cliResults;
+};
+
+const promptAppName = async (): Promise<string> => {
+  const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
+    name: "appName",
+    type: "input",
+    message: "What will your project be called?",
+    default: defaultOptions.appName,
+    validate: validateAppName,
+    transformer: (input: string) => {
+      return input.trim();
+    },
+  });
+
+  return appName;
+};
+
+const promptLanguage = async (): Promise<void> => {
+  const { language } = await inquirer.prompt<{ language: string }>({
+    name: "language",
+    type: "list",
+    message: "Will you be using JavaScript or TypeScript?",
+    choices: [
+      { name: "TypeScript", value: "typescript", short: "TypeScript" },
+      { name: "JavaScript", value: "javascript", short: "JavaScript" },
+    ],
+    default: "typescript",
+  });
+
+  if (language === "javascript") {
+    logger.error("Wrong answer, using TypeScript instead...");
+  } else {
+    logger.success("Good choice! Using TypeScript!");
+  }
+};
+
+const promptPackages = async (): Promise<AvailablePackages[]> => {
+  const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
+    name: "packages",
+    type: "checkbox",
+    message: "Which packages would you like to enable?",
+    choices: availablePackages
+      .filter((pkg) => pkg !== "envVariables") // dont prompt for env-vars
+      .map((pkgName) => ({
+        name: pkgName,
+        checked: false,
+        // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+        disabled:
+          pkgName === "nextAuth" && process.versions.node.startsWith("18")
+            ? "Node.js version 18 is currently not compatible with Next-Auth."
+            : false,
+      })),
+  });
+
+  return packages;
+};
+
+const promptGit = async (): Promise<boolean> => {
+  const { git } = await inquirer.prompt<{ git: boolean }>({
+    name: "git",
+    type: "confirm",
+    message: "Initialize a new git repository?",
+    default: true,
+  });
+
+  if (git) {
+    logger.success("Nice one! Initializing repository!");
+  } else {
+    logger.info("Sounds good! You can come back and run git init later.");
+  }
+
+  return git;
+};
+
+const promptInstall = async (): Promise<boolean> => {
+  const packageManager = getUserPkgManager();
+
+  const { install } = await inquirer.prompt<{ install: boolean }>({
+    name: "install",
+    type: "confirm",
+    message: `Would you like us to run '${packageManager} install'?`,
+    default: true,
+  });
+
+  if (install) {
+    logger.success("Alright. We'll install the dependencies for you!");
+  } else {
+    logger.info(
+      `No worries. You can run '${packageManager} install' later to install the dependencies.`,
+    );
+  }
+
+  return install;
 };
