@@ -271,7 +271,7 @@ const askInstall = async (): Promise<boolean> => {
   const { install } = await inquirer.prompt<{ install: boolean }>({
     name: "install",
     type: "confirm",
-    message: `Would you like us to run ${packageManager} install?`,
+    message: `Would you like us to run '${packageManager} install'?`,
     default: true,
   });
 
