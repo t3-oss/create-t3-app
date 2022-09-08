@@ -172,18 +172,7 @@ export const runCli = async () => {
     // if --default flag is set, we should not prompt the user
     if (!cliResults.flags.default && !CIMode) {
       if (!cliProvidedName) {
-        const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
-          name: "appName",
-          type: "input",
-          message: "What will your project be called?",
-          default: defaultOptions.appName,
-          validate: validateAppName,
-          transformer: (input: string) => {
-            return input.trim();
-          },
-        });
-        cliResults.appName = appName;
-
+        cliResults.appName = await promptAppName();
         await promptLanguage();
         cliResults.packages = await promptPackages();
         if (!cliResults.flags.noGit) {
@@ -210,6 +199,21 @@ export const runCli = async () => {
   }
 
   return cliResults;
+};
+
+const promptAppName = async (): Promise<string> => {
+  const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
+    name: "appName",
+    type: "input",
+    message: "What will your project be called?",
+    default: defaultOptions.appName,
+    validate: validateAppName,
+    transformer: (input: string) => {
+      return input.trim();
+    },
+  });
+
+  return appName;
 };
 
 const promptLanguage = async (): Promise<void> => {
