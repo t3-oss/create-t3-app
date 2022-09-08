@@ -7,4 +7,7 @@ import { createContext } from "../../../server/router/context";
 export default createNextApiHandler({
   router: appRouter,
   createContext,
+  onError({ path, error }) {
+    console.error(`❌ tRPC failed on ${path}: ${error}`);
+  },
 });
