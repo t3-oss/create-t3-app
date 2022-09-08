@@ -1,6 +1,6 @@
-import { execSync } from "child_process";
 import chalk from "chalk";
 import ora from "ora";
+import { execSync } from "child_process";
 import { logger } from "~/utils/logger.js";
 import fs from "fs-extra";
 import path from "path";

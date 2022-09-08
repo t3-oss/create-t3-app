@@ -6,9 +6,7 @@ layout: ../../../layouts/blog.astro
 
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose.
 
-Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `NEXT_PUBLIC_FOO` and `BAR`. Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
-
-## Docker
+Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `DATABASE_URL` (used by the server) and `NEXT_PUBLIC_CLIENTVAR` (used by the client). Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
 
 1. In your [next.config.mjs](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option to your config:
 
@@ -56,8 +54,11 @@ Please note that Next.js requires a different process for buildtime (available i
    # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
    FROM --platform=linux/amd64 node:16-alpine AS deps
    # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-   RUN apk add --no-cache libc6-compat
+   RUN apk add --no-cache libc6-compat openssl
    WORKDIR /app
+
+   # Install Prisma Client - remove if not using Prisma
+   copy prisma ./
 
    # Install dependencies based on the preferred package manager
    COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
@@ -76,8 +77,8 @@ Please note that Next.js requires a different process for buildtime (available i
    # TODO: re-evaluate if emulation is still necessary on arm64 after moving to node 18
    FROM --platform=linux/amd64 node:16-alpine AS builder
 
-   ARG NEXT_PUBLIC_FOO
-   ARG BAR
+   ARG DATABASE_URL
+   ARG NEXT_PUBLIC_CLIENTVAR
 
    WORKDIR /app
    COPY --from=deps /app/node_modules ./node_modules
@@ -135,8 +136,8 @@ Please note that Next.js requires a different process for buildtime (available i
 5. To build and run this image locally, run:
 
    ```bash
-   docker build -t ct3a -e NEXT_PUBLIC_FOO=foo .
-   docker run -p 3000:3000 -e BAR="bar" ct3a
+   docker build -t ct3a -e NEXT_PUBLIC_CLIENTVAR=clientvar .
+   docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a
    ```
 
 6. You can also use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app.
@@ -161,13 +162,13 @@ You can also use docker compose to build the image and run the container.
          context: .
          dockerfile: Dockerfile
          args:
-           NEXT_PUBLIC_FOO: "foo"
+           NEXT_PUBLIC_CLIENTVAR: "clientvar"
        working_dir: /app
        ports:
          - "3000:3000"
        image: t3-app
        environment:
-         - BAR=bar
+         - DATABASE_URL=database_url_goes_here
    ```
 
    </details>

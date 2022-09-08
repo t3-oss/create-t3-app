@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.10.2
+
+### Patch Changes
+
+- [#387](https://github.com/t3-oss/create-t3-app/pull/387) [`0f8f59c`](https://github.com/t3-oss/create-t3-app/commit/0f8f59c30155ddf4f6be90f3713ff5d5379f0cbb) Thanks [@Vallerem](https://github.com/Vallerem)! - feat: add basic i18n configuration in next.config
+
+## 5.10.1
+
+### Patch Changes
+
+- [#396](https://github.com/t3-oss/create-t3-app/pull/396) [`30f3db6`](https://github.com/t3-oss/create-t3-app/commit/30f3db64c3a81475488c712fa16682076ba3f18b) Thanks [@rhenriquez28](https://github.com/rhenriquez28)! - fixing ssr by forwarding client's headers
+
 ## 5.10.0
 
 ### Minor Changes
