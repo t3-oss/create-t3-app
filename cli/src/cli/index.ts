@@ -1,9 +1,9 @@
 import type { AvailablePackages } from "~/installers/index.js";
+import { availablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
@@ -166,8 +166,6 @@ export const runCli = async () => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
 
-  const pkgManager = getUserPkgManager();
-
   // Explained below why this is in a try/catch block
   try {
     // if --packages flag is set, we are running in CI mode and should not prompt the user
@@ -186,77 +184,13 @@ export const runCli = async () => {
         });
         cliResults.appName = appName;
       }
-
-      const { language } = await inquirer.prompt<{ language: string }>({
-        name: "language",
-        type: "list",
-        message: "Will you be using JavaScript or TypeScript?",
-        choices: [
-          { name: "TypeScript", value: "typescript", short: "TypeScript" },
-          { name: "JavaScript", value: "javascript", short: "TypeScript" }, // Both options should have 'TypeScript' as the short value to improve UX and reduce confusion
-        ],
-        default: "typescript",
-      });
-
-      if (language === "javascript") {
-        logger.error("Wrong answer, using TypeScript instead...");
-      } else {
-        logger.success("Good choice! Using TypeScript!");
-      }
-
-      const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
-        name: "packages",
-        type: "checkbox",
-        message: "Which packages would you like to enable?",
-        choices: availablePackages
-          .filter((pkg) => pkg !== "envVariables") // dont prompt for env-vars
-          .map((pkgName) => ({
-            name: pkgName,
-            checked: false,
-            // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-            disabled:
-              pkgName === "nextAuth" && process.versions.node.startsWith("18")
-                ? "Node.js version 18 is currently not compatible with Next-Auth."
-                : false,
-          })),
-      });
-
-      cliResults.packages = packages;
-
-      // Skip if noGit flag provided
-      if (!cliResults.flags.noGit) {
-        const { git } = await inquirer.prompt<{ git: boolean }>({
-          name: "git",
-          type: "confirm",
-          message: "Initialize a new git repository?",
-          default: true,
-        });
-        if (git) {
-          logger.success("Nice one! Initializing repository!");
-        } else {
-          cliResults.flags.noGit = true;
-          logger.info("Sounds good! You can come back and run git init later.");
-        }
-      }
-
-      if (!cliResults.flags.noInstall) {
-        const { runInstall } = await inquirer.prompt<{ runInstall: boolean }>({
-          name: "runInstall",
-          type: "confirm",
-          message: `Would you like us to run ${pkgManager} install?`,
-          default: true,
-        });
-
-        if (runInstall) {
-          logger.success("Alright. We'll install the dependencies for you!");
-        } else {
-          cliResults.flags.noInstall = true;
-          logger.info(
-            `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
-          );
-        }
-      }
     }
+
+    await askLanguage();
+    cliResults.packages = await askPackages();
+    if (!cliResults.flags.noGit) cliResults.flags.noGit = !(await askGit());
+    if (!cliResults.flags.noInstall)
+      cliResults.flags.noInstall = !(await askInstall());
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
@@ -272,4 +206,75 @@ export const runCli = async () => {
   }
 
   return cliResults;
+};
+
+const askLanguage = async (): Promise<void> => {
+  const { language } = await inquirer.prompt<{ language: string }>({
+    name: "language",
+    type: "list",
+    message: "What language would you like to use?",
+    choices: [
+      { name: "TypeScript", value: "typescript", short: "TypeScript" },
+      { name: "JavaScript", value: "javascript", short: "JavaScript" },
+    ],
+    default: "typescript",
+  });
+
+  if (language === "javascript") {
+    logger.error("Wrong answer! Using TypeScript instead...");
+  } else {
+    logger.success("Good choice! Using TypeScript!");
+  }
+};
+
+const askPackages = async (): Promise<AvailablePackages[]> => {
+  const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
+    name: "packages",
+    type: "checkbox",
+    message: "Which packages would you like to use?",
+    choices: availablePackages.map((pkg) => ({
+      name: pkg,
+      checked: false,
+    })),
+  });
+
+  return packages;
+};
+
+const askGit = async (): Promise<boolean> => {
+  const { git } = await inquirer.prompt<{ git: boolean }>({
+    name: "git",
+    type: "confirm",
+    message: "Would you like to initialize a git repository?",
+    default: true,
+  });
+
+  if (git) {
+    logger.success("Nice! Initializing a git repository...");
+  } else {
+    logger.info("Okay, no git repository for you...");
+  }
+
+  return git;
+};
+
+const askInstall = async (): Promise<boolean> => {
+  const packageManager = getUserPkgManager();
+
+  const { install } = await inquirer.prompt<{ install: boolean }>({
+    name: "install",
+    type: "confirm",
+    message: `Would you like to install dependencies with ${packageManager}?`,
+    default: true,
+  });
+
+  if (install) {
+    logger.success("Alright. We'll install the dependencies for you!");
+  } else {
+    logger.info(
+      `No worries. You can run '${packageManager} install' later to install the dependencies.`,
+    );
+  }
+
+  return install;
 };
