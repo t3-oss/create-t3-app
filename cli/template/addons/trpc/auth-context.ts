@@ -32,7 +32,7 @@ export const createContext = async (
 
   return await createContextInner({
     session,
-  }));
+  });
 };
 
 export type Context = trpc.inferAsyncReturnType<typeof createContext>;
