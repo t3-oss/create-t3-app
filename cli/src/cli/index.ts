@@ -173,15 +173,16 @@ export const runCli = async () => {
     if (!cliResults.flags.default && !CIMode) {
       if (!cliProvidedName) {
         cliResults.appName = await promptAppName();
-        await promptLanguage();
-        cliResults.packages = await promptPackages();
-        if (!cliResults.flags.noGit) {
-          cliResults.flags.noGit = !(await promptGit());
-        }
+      }
 
-        if (!cliResults.flags.noInstall) {
-          cliResults.flags.noInstall = !(await promptInstall());
-        }
+      await promptLanguage();
+      cliResults.packages = await promptPackages();
+      if (!cliResults.flags.noGit) {
+        cliResults.flags.noGit = !(await promptGit());
+      }
+
+      if (!cliResults.flags.noInstall) {
+        cliResults.flags.noInstall = !(await promptInstall());
       }
     }
   } catch (err) {
