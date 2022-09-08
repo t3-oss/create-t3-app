@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.10.2
+
+### Patch Changes
+
+- [#387](https://github.com/t3-oss/create-t3-app/pull/387) [`0f8f59c`](https://github.com/t3-oss/create-t3-app/commit/0f8f59c30155ddf4f6be90f3713ff5d5379f0cbb) Thanks [@Vallerem](https://github.com/Vallerem)! - feat: add basic i18n configuration in next.config
+
 ## 5.10.1
 
 ### Patch Changes
