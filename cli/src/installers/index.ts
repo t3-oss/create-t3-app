@@ -58,7 +58,7 @@ export const buildPkgInstallerMap = (
     installer: trpcInstaller,
   },
   envVariables: {
-    inUse: packages.includes("prisma") || packages.includes("nextAuth"),
+    inUse: packages.includes("prisma") || packages.includes("nextAuth") || packages.includes("trpc"),
     installer: envVariablesInstaller,
   },
 });
