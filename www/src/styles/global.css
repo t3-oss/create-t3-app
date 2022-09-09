@@ -80,4 +80,8 @@
   @apply break-all;
  }
 
+ .markdown blockquote {
+  @apply bg-gray-100 dark:bg-slate-700 p-2 rounded-md text-sm my-3;
+ }
+
 }
