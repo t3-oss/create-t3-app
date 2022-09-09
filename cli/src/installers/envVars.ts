@@ -9,7 +9,6 @@ export const envVariablesInstaller: Installer = async ({
 }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
-  const usingTrpc = packages?.trpc.inUse;
 
   const envAssetDir = path.join(PKG_ROOT, "template/addons/env");
 
@@ -24,9 +23,6 @@ export const envVariablesInstaller: Installer = async ({
       break;
     case usingPrisma:
       envFile = "prisma-schema.mjs";
-      break;
-    case usingTrpc:
-      envFile = "trpc-schema.mjs";
       break;
   }
 
