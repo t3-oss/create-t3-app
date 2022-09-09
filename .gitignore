@@ -48,4 +48,5 @@ temp/
 .DS_Store
 Thumbs.db
 
-.vscode.turbo
+.vscode
+.turbo
