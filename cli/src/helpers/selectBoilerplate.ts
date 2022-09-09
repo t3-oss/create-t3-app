@@ -42,13 +42,11 @@ export const selectIndexFile = ({
   const usingTrpc = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
   const usingAuth = packages.nextAuth.inUse;
-  const usingPrisma = packages.prisma.inUse;
 
   let indexFile = "";
-  // FIXME: auth showcase doesn't work with prisma since it requires more setup
-  if (usingTrpc && usingTw && usingAuth && !usingPrisma) {
+  if (usingTrpc && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTrpc && !usingTw && usingAuth && !usingPrisma) {
+  } else if (usingTrpc && !usingTw && usingAuth) {
     indexFile = "with-auth-trpc.tsx";
   } else if (usingTrpc && usingTw) {
     indexFile = "with-trpc-tw.tsx";
