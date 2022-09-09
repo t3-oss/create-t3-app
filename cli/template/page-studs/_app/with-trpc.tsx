@@ -2,14 +2,14 @@
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { withTRPC } from "@trpc/next";
-import type { AppType } from "next/dist/shared/lib/utils";
+import type { AppProps } from "next/app";
 import superjson from "superjson";
 import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
 
-const MyApp: AppType = ({ Component, pageProps }) => {
+function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
-};
+}
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
