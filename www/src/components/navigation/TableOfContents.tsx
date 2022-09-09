@@ -60,7 +60,7 @@ export default function TableOfContents({
           }`.trim()}
         >
           <a
-            className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200"
+            className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-base"
             href="#overview"
           >
             Overview

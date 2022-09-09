@@ -27,6 +27,15 @@
     }
   }
 
+  .mobile-sidebar-toggle {
+    overflow: hidden;
+  }
+
+  .mobile-sidebar-toggle #grid-left {
+    display: block;
+    top: 2rem;
+  }
+
   .markdown {
     @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3;
   }

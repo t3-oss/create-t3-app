@@ -40,15 +40,5 @@ const currentPage = Astro.url.pathname;
     </div>
     <slot />
     <Footer isBlog={false} path="/" />
-    <style>
-      :global(.mobile-sidebar-toggle) {
-        overflow: hidden;
-      }
-
-      :global(.mobile-sidebar-toggle) #grid-left {
-        display: block;
-        top: 2rem;
-      }
-    </style>
   </body>
 </html>
