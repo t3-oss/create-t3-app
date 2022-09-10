@@ -1,10 +1,10 @@
 /** @jsxImportSource react */
-import { useState, useCallback, useRef } from "react";
-import { ALGOLIA } from "../../config";
 import "@docsearch/css";
+import { useCallback, useRef, useState } from "react";
+import { ALGOLIA } from "../../config";
 
-import { createPortal } from "react-dom";
 import * as docSearchReact from "@docsearch/react";
+import { createPortal } from "react-dom";
 
 /** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
 const DocSearchModal =
@@ -53,7 +53,7 @@ export default function Search() {
         onClick={onOpen}
         className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-white/10 rounded-lg"
       >
-        <div className="flex items-center justify-center text-white dark:text-slate-900 dark:stroke-slate-900">
+        <div className="flex items-center justify-center text-slate-900 stroke-slate-900">
           <svg width="24" height="24" fill="none">
             <path
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
@@ -64,12 +64,10 @@ export default function Search() {
             />
           </svg>
 
-          <span className="pl-1 lg:pl-3 text-white dark:text-slate-900">
-            Search
-          </span>
+          <span className="pl-1 lg:pl-3 text-slate-900">Search</span>
         </div>
 
-        <span className="border px-1 rounded-md border-white text-white dark:border-slate-900 dark:text-slate-900">
+        <span className="border px-1 rounded-md border-slate-900 text-slate-900">
           <span className="sr-only">Press </span>
 
           <kbd>/</kbd>
