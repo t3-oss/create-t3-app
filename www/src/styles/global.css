@@ -79,8 +79,8 @@
     @apply break-all;
   }
 
-  .markdown blockquote {
-    @apply bg-gray-100 dark:bg-slate-700 p-2 rounded-md text-sm my-3;
+  .markdown blockquote a {
+    @apply text-slate-900 dark:text-t3-purple-50;
   }
   .DocSearch-SearchBar {
     @apply bg-purple-400 p-2 rounded-md text-sm my-3;

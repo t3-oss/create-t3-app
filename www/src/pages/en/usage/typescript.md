@@ -4,7 +4,7 @@ description: Usage of TypeScript
 layout: ../../../layouts/blog.astro
 ---
 
-<blockquote className="w-full max-w-sm relative p-6 text-xl italic border-l-4 bg-neutral-100 text-t3-purple-50 border-neutral-500 quote">
+<blockquote className="w-full max-w-sm relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
 <div className="relative w-fit flex items-center justify-center p-1">
     <span className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none" aria-hidden="true">
       &ldquo;
