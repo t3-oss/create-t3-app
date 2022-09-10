@@ -12,17 +12,17 @@ It provides live feedback as you write your code by defining expected data types
 
 # Type Inference
 
-<blockquote className="w-full max-w-sm relative p-4 text-xl italic border-l-4 bg-neutral-100 text-t3-purple-50 border-neutral-500 quote">
-<div className="relative w-fit flex items-center justify-center">
+<blockquote className="w-full max-w-sm relative p-6 text-xl italic border-l-4 bg-neutral-100 text-t3-purple-50 border-neutral-500 quote">
+<div className="relative w-fit flex items-center justify-center p-1">
     <span className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none" aria-hidden="true">
       &ldquo;
     </span>
-    <span className="mr-2 hidden sm:block absolute right-0 top-5 leading-none" aria-hidden="true">
+    <span className="mr-2 hidden sm:block absolute -right-1 top-7 leading-none" aria-hidden="true">
       &ldquo;
     </span>
     <p className="mb-4">Build safety nets, not guard rails</p>
     </div>
-    <cite className="flex items-center">
+    <cite className="flex items-center justify-end">
       <img
         alt="Avatar of @t3dotgg"
         className="w-12 mr-4 rounded-full bg-neutral-500"

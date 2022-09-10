@@ -17,7 +17,8 @@
     "@docsearch/react": "^3.2.1",
     "@nanostores/react": "^0.3.0",
     "astro-seo": "^0.6.0",
-    "nanostores": "^0.6.0"
+    "nanostores": "^0.6.0",
+    "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
     "@astrojs/react": "^1.1.0",
