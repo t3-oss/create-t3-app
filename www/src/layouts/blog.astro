@@ -1,13 +1,13 @@
 ---
+import type { MarkdownHeading } from "astro";
+import PageContent from "../components/blog/pageContent.astro";
+import Footer from "../components/footer/footer.astro";
 import HeadCommon from "../components/headCommon.astro";
 import HeadSEO from "../components/headSeo.astro";
-import PageContent from "../components/blog/pageContent.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import Navbar from "../components/navigation/navbar.astro";
 import RightSidebar from "../components/navigation/rightSidebar.astro";
 import * as CONFIG from "../config";
-import type { MarkdownHeading } from "astro";
-import Footer from "../components/footer/footer.astro";
-import Navbar from "../components/navigation/navbar.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -42,7 +42,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   <body class="w-full">
     <Navbar mode={"default"} />
     <main
-      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 h-full relative overflow-y-auto"
+      class="bg-t3-purple-50 dark:bg-slate-900 w-full justify-items-start place-content-start items-start grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 h-full relative"
     >
       <aside
         id="grid-left"
@@ -63,7 +63,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="hidden lg:block pt-1 md:col-start-10 md:col-span-2"
+        class="hidden lg:block pt-1 md:col-start-10 md:col-span-2 sticky top-8"
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>
