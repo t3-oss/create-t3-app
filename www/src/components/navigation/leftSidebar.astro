@@ -18,11 +18,11 @@ const sidebar = SIDEBAR[langCode];
     ? `pt-3 pb-28 h-full`
     : `md:overflow-hidden h-full pb-32`}
 >
-  <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
+  <div class="max-w-lg mx-auto p-3 md:hidden">
     <Search client:idle />
   </div>
   <ul
-    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+    class="p-8 h-full overflow-x-visible overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-50 scrollbar-track-slate-600 sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (

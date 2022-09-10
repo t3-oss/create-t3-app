@@ -4,7 +4,7 @@ import Footer from "../components/footer/footer.astro";
 import Navbar from "../components/navigation/navbar.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import "../styles/global.css";
-import "@docsearch/css";
+import "../styles/algolia/style.css";
 
 export interface Props {
   title: string;
@@ -40,15 +40,5 @@ const currentPage = Astro.url.pathname;
     </div>
     <slot />
     <Footer isBlog={false} path="/" />
-    <style>
-      :global(.mobile-sidebar-toggle) {
-        overflow: hidden;
-      }
-
-      :global(.mobile-sidebar-toggle) #grid-left {
-        display: block;
-        top: 2rem;
-      }
-    </style>
   </body>
 </html>

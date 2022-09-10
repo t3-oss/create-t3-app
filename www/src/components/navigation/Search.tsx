@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
-import "@docsearch/css";
 import { useCallback, useRef, useState } from "react";
 import { ALGOLIA } from "../../config";
+import "../../styles/algolia/style.css";
 
 import * as docSearchReact from "@docsearch/react";
 import { createPortal } from "react-dom";
@@ -51,7 +51,7 @@ export default function Search() {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-white/10 rounded-lg"
+        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-white/70 rounded-lg"
       >
         <div className="flex items-center justify-center text-slate-900 stroke-slate-900">
           <svg width="24" height="24" fill="none">

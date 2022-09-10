@@ -75,11 +75,15 @@ const additionalContributors = unique.length - recentContributors.length; // lis
     class={`grid grid-cols-${recentContributors.length} gap-2 sm:gap-4 sm:grid-cols-${recentContributors.length}`}
   >
     {
-      recentContributors.map((item) => (
+      recentContributors.map((item, i) => (
         <li>
           <a href={`https://github.com/${item.login}`}>
             <img
-              class="rounded-full w-8 h-8 sm:w-10 sm:h-10"
+              class={
+                i === 0
+                  ? `rounded-full w-8 h-8 sm:w-10 sm:h-10`
+                  : `rounded-full w-8 h-8 sm:w-10 sm:h-10 -translate-x-3 sm:-translate-x-5`
+              }
               alt={`Contributor ${item.login}`}
               title={`Contributor ${item.login}`}
               width="64"
@@ -110,79 +114,3 @@ const additionalContributors = unique.length - recentContributors.length; // lis
     )
   }
 </div>
-
-<style>
-  .avatar-list {
-    --avatar-size: 2.5rem;
-    --avatar-count: 3;
-
-    display: grid;
-    list-style: none;
-    /* Default to displaying most of the avatar to
-  enable easier access on touch devices, ensuring
-  the WCAG touch target size is met or exceeded */
-    grid-template-columns: repeat(
-      var(--avatar-count),
-      max(44px, calc(var(--avatar-size) / 1.15))
-    );
-    /* `padding` matches added visual dimensions of
-  the `box-shadow` to help create a more accurate
-  computed component size */
-    padding: 0.08em;
-    font-size: var(--avatar-size);
-  }
-
-  @media (any-hover: hover) and (any-pointer: fine) {
-    .avatar-list {
-      /* We create 1 extra cell to enable the computed 
-    width to match the final visual width */
-      grid-template-columns: repeat(
-        calc(var(--avatar-count) + 1),
-        calc(var(--avatar-size) / 1.75)
-      );
-    }
-  }
-
-  .avatar-list li {
-    width: var(--avatar-size);
-    height: var(--avatar-size);
-  }
-
-  .avatar-list li:hover ~ li a,
-  .avatar-list li:focus-within ~ li a {
-    transform: translateX(33%);
-  }
-
-  .avatar-list img,
-  .avatar-list a {
-    display: block;
-    border-radius: 50%;
-  }
-
-  .avatar-list a {
-    transition: transform 180ms ease-in-out;
-  }
-
-  .avatar-list img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: #fff;
-    box-shadow: 0 0 0 0.05em #fff, 0 0 0 0.08em rgba(0, 0, 0, 0.15);
-  }
-
-  .avatar-list a:focus {
-    outline: 2px solid transparent;
-    /* Double-layer trick to work for dark and light backgrounds */
-    box-shadow: 0 0 0 0.08em var(--theme-accent), 0 0 0 0.12em white;
-  }
-
-  .contributors {
-    display: flex;
-    align-items: center;
-  }
-
-  .contributors > * + * {
-    margin-left: 0.75rem;
-  }
-</style>

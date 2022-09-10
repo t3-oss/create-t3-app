@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  
   .cursor::after {
     display: block;
     content: "";
@@ -27,8 +26,17 @@
     }
   }
 
+  .mobile-sidebar-toggle {
+    overflow: hidden;
+  }
+
+  .mobile-sidebar-toggle #grid-left {
+    display: block;
+    top: 2rem;
+  }
+
   .markdown {
-    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3;
+    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-white;
   }
 
   .markdown h1 {
@@ -47,7 +55,7 @@
     @apply list-decimal;
   }
   .markdown p {
-    @apply mb-4 dark:text-white
+    @apply mb-4 dark:text-white;
   }
   .markdown a > p {
     @apply mb-0 text-sm;
@@ -62,13 +70,23 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto ;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto;
   }
   .markdown p > img {
     @apply text-sm mt-8;
   }
- .markdown table > tbody > tr > td > a {
-  @apply break-all;
- }
+  .markdown table > tbody > tr > td > a {
+    @apply break-all;
+  }
 
+  .markdown blockquote a {
+    @apply text-slate-900 dark:text-t3-purple-50;
+  }
+  .DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
+
+  #DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
 }
