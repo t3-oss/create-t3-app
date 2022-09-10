@@ -4,8 +4,6 @@ description: Usage of TypeScript
 layout: ../../../layouts/blog.astro
 ---
 
-# What is TypeScript?
-
 <blockquote className="w-full max-w-sm relative p-6 text-xl italic border-l-4 bg-neutral-100 text-t3-purple-50 border-neutral-500 quote">
 <div className="relative w-fit flex items-center justify-center p-1">
     <span className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none" aria-hidden="true">
@@ -35,7 +33,9 @@ layout: ../../../layouts/blog.astro
       </div>
     </cite>
   </blockquote>
-  
+
+# What is TypeScript?
+
 Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
 
 It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist, or you're trying to pass a value of the wrong type.
