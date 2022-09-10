@@ -10,11 +10,37 @@ Whether you're a new or seasoned developer, we think that TypeScript is a must h
 
 It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist, or you're trying to pass a value of the wrong type.
 
-<blockquote>
-"Build safety nets, not guard rails."
-</blockquote>
-
 # Type Inference
+
+<blockquote className="w-full max-w-sm relative p-4 text-xl italic border-l-4 bg-neutral-100 text-t3-purple-50 border-neutral-500 quote">
+<div className="relative w-fit flex items-center justify-center">
+    <span className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none" aria-hidden="true">
+      &ldquo;
+    </span>
+    <span className="mr-2 hidden sm:block absolute right-0 top-5 leading-none" aria-hidden="true">
+      &ldquo;
+    </span>
+    <p className="mb-4">Build safety nets, not guard rails</p>
+    </div>
+    <cite className="flex items-center">
+      <img
+        alt="Avatar of @t3dotgg"
+        className="w-12 mr-4 rounded-full bg-neutral-500"
+        src="https://pbs.twimg.com/profile_images/1475643465069301763/FUR05HHs_400x400.jpg"
+      />
+      <div className="flex flex-col items-start">
+        <span className="mb-1 text-sm italic font-bold">Theo</span>
+        <a
+          href="https://twitter.com/t3dotgg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm"
+        >
+          @t3dotgg
+        </a>
+      </div>
+    </cite>
+  </blockquote>
 
 Despite most guides go into depth on _writing_ TypeScript, for the most part, developers benefit the most from the type inference it provides. There is a ton of work that library maintainers do when providing types for their library, but means we as developers can benefit from the type inference - and almost provide a documentation platform within your code editor.
 

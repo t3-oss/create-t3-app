@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  
   .cursor::after {
     display: block;
     content: "";
@@ -56,7 +55,7 @@
     @apply list-decimal;
   }
   .markdown p {
-    @apply mb-4 dark:text-white
+    @apply mb-4 dark:text-white;
   }
   .markdown a > p {
     @apply mb-0 text-sm;
@@ -71,17 +70,23 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto ;
+    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto;
   }
   .markdown p > img {
     @apply text-sm mt-8;
   }
- .markdown table > tbody > tr > td > a {
-  @apply break-all;
- }
+  .markdown table > tbody > tr > td > a {
+    @apply break-all;
+  }
 
- .markdown blockquote {
-  @apply bg-gray-100 dark:bg-slate-700 p-2 rounded-md text-sm my-3;
- }
+  .markdown blockquote {
+    @apply bg-gray-100 dark:bg-slate-700 p-2 rounded-md text-sm my-3;
+  }
+  .DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
 
+  #DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
 }
