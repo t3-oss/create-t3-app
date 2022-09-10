@@ -107,6 +107,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
+      tailwind-scrollbar: ^2.0.1
       typescript: ^4.8.2
     dependencies:
       '@algolia/client-search': 4.14.2
@@ -115,6 +116,7 @@ importers:
       '@nanostores/react': 0.3.0_gwdviqdq472dtrt62dkrmuf3uu
       astro-seo: 0.6.0
       nanostores: 0.6.0
+      tailwind-scrollbar: 2.0.1
     devDependencies:
       '@astrojs/react': 1.1.0_zpnidt7m3osuk7shl3s4oenomq
       '@astrojs/tailwind': 1.0.0
@@ -6403,6 +6405,13 @@ packages:
       '@pkgr/utils': 2.3.1
       tslib: 2.4.0
     dev: true
+
+  /tailwind-scrollbar/2.0.1:
+    resolution: {integrity: sha512-OcR7qHBbux4k+k6bWqnEQFYFooLK/F4dhkBz6nvswIoaA9ancZ5h20e0tyV7ifSWLDCUBtpG+1NHRA8HMRH/wg==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: 3.x
+    dev: false
 
   /tailwindcss/3.1.8:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}
