@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.10.3
+
+### Patch Changes
+
+- [#419](https://github.com/t3-oss/create-t3-app/pull/419) [`554de8f`](https://github.com/t3-oss/create-t3-app/commit/554de8f2838a8d539d81bcb520f121a7e14e3c84) Thanks [@sor4chi](https://github.com/sor4chi)! - Remove unnecessary singlequote in tailwind classname
+
 ## 5.10.2
 
 ### Patch Changes
