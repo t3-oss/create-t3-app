@@ -1,6 +1,6 @@
 ---
-import ThemeToggleButton from "./ThemeToggleButton";
 import * as CONFIG from "../../config";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 export interface Props {
   editHref: string;
@@ -12,7 +12,7 @@ const showMoreSection = CONFIG.COMMUNITY_INVITE_URL;
 
 {
   showMoreSection && (
-    <h2 class="heading dark:text-white text-slate-900">More</h2>
+    <h2 class="text-lg mr-4 sm:my-4 sm:mr-0 font-semibold dark:text-white text-slate-900">More</h2>
   )
 }
 <ul>
@@ -73,7 +73,7 @@ const showMoreSection = CONFIG.COMMUNITY_INVITE_URL;
     )
   }
 </ul>
-<div style="margin: 2rem 0; text-align: center;">
+<div class="ml-4 text-center sm:my-8 sm:ml-0">
   <ThemeToggleButton client:visible />
 </div>
 

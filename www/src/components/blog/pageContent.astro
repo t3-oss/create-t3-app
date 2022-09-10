@@ -1,8 +1,8 @@
 ---
+import type { MarkdownHeading } from "astro";
 import type { Frontmatter } from "../../config";
 import MoreMenu from "../navigation/moreMenu.astro";
 import TableOfContents from "../navigation/TableOfContents";
-import type { MarkdownHeading } from "astro";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -24,7 +24,7 @@ const title = frontmatter.title;
       <slot />
     </article>
   </section>
-  <nav class="flex sm:hidden">
+  <nav class="flex my-8 sm:hidden">
     <MoreMenu editHref={githubEditUrl} />
   </nav>
 </article>
