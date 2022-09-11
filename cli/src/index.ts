@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
-import { initializeGit } from "~/helpers/git.js";
+import { initializeGit, isGitInstalled } from "~/helpers/git.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
@@ -21,6 +21,11 @@ type CT3APackageJSON = PackageJson & {
 
 const main = async () => {
   renderTitle();
+
+  if (!isGitInstalled()) {
+    logger.error("Git is not installed. Please install Git and try again.");
+    process.exit(127);
+  }
 
   const {
     appName,

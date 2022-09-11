@@ -6,7 +6,7 @@ import fs from "fs-extra";
 import path from "path";
 import inquirer from "inquirer";
 
-const isGitInstalled = (dir: string): boolean => {
+export const isGitInstalled = (dir = "."): boolean => {
   try {
     execSync("git --version", { cwd: dir });
     return true;
