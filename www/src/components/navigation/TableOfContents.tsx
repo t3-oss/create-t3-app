@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import type { MarkdownHeading } from "astro";
+import { useEffect, useRef, useState } from "react";
 
 type ItemOffsets = {
   id: string;
@@ -52,7 +52,9 @@ export default function TableOfContents({
 
   return (
     <div className="w-full ">
-      <h2 className="text-lg my-4 font-semibold">On this page</h2>
+      <h2 className="text-lg my-4 font-semibold dark:text-white text-slate-900">
+        On this page
+      </h2>
       <ul className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1">
         <li
           className={`pl-1 ml-1 marker:bg-t3-purple-300 ${

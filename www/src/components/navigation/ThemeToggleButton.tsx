@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./ThemeToggleButton.css";
 
 const themes = ["light", "dark"];
@@ -73,6 +73,7 @@ export default function ThemeToggleButton() {
           >
             {icon}
             <input
+              className="absolute invisible"
               type="radio"
               name="theme-toggle"
               checked={checked}
