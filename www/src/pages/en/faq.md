@@ -17,7 +17,7 @@ If you are not familiar with the different technologies used in this project, pl
 - [TailwindCSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io) (using @next version? [see v10 docs here](https://alpha.trpc.io))
 
-## What learning resources are currently available? 
+## What learning resources are currently available?
 
 Checkout these awesome tutorials on `create-t3-app`.
 
