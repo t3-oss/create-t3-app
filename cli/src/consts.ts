@@ -6,6 +6,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const distPath = path.dirname(__filename);
 export const PKG_ROOT = path.join(distPath, "../");
+export const TEMPLATE_URL = // TODO: Move to @t3-oss/template
+  "https://github.com/minsk-dev/create-t3-app-template";
 
 //export const PKG_ROOT = path.dirname(require.main.filename);
 

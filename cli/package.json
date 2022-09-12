@@ -40,6 +40,7 @@
   "dependencies": {
     "chalk": "5.0.1",
     "commander": "^9.3.0",
+    "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.1",
     "inquirer": "^9.0.0",
