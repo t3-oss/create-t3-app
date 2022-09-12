@@ -12,6 +12,7 @@ export const nextAuthInstaller: Installer = async ({
     packages: [
       "next-auth",
       packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
+      "caniuse-lite@1.0.30001393",
     ],
   });
 
