@@ -6,6 +6,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const deps: AvailableDependencies[] = ["next-auth"];
+  deps.push("caniuse-lite");
   if (packages?.prisma.inUse) deps.push("@next-auth/prisma-adapter");
 
   addPackageDependency({

@@ -24,6 +24,7 @@ export const dependencyVersionMap = {
   // NextAuth.js
   "next-auth": "^4.10.2",
   "@next-auth/prisma-adapter": "^1.0.4",
+  "caniuse-lite": "1.0.30001393",
 
   // Prisma
   prisma: "^4.1.0",
