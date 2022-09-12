@@ -12,8 +12,12 @@ export const nextAuthInstaller: Installer = async ({
     packages: [
       "next-auth",
       packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
-      "caniuse-lite@1.0.30001393",
     ],
+  });
+
+  await runPkgManagerInstall({
+    packages: ["caniuse-lite@1.0.30001393"],
+    devMode: true,
   });
 
   const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
