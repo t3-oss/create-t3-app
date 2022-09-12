@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.11.0
+
+### Minor Changes
+
+- [#430](https://github.com/t3-oss/create-t3-app/pull/430) [`306777a`](https://github.com/t3-oss/create-t3-app/commit/306777a5513c365dfb3525c1484459236734a289) Thanks [@benmarg](https://github.com/benmarg)! - feat: direct developer to add schema from .env to schema.mjs for zod validation
+
+### Patch Changes
+
+- [#416](https://github.com/t3-oss/create-t3-app/pull/416) [`14b6d4a`](https://github.com/t3-oss/create-t3-app/commit/14b6d4a0764f57ece45749724c5b12a85544733e) Thanks [@xpressivecode](https://github.com/xpressivecode)! - fix(template): missing ctx when using ssr with trpc
+
 ## 5.10.3
 
 ### Patch Changes
