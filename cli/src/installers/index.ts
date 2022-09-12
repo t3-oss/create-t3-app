@@ -1,5 +1,4 @@
 import type { PackageManager } from "~/utils/getUserPkgManager.js";
-import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
@@ -12,7 +11,6 @@ export const availablePackages = [
   "prisma",
   "tailwind",
   "trpc",
-  "envVariables",
 ] as const;
 export type AvailablePackages = typeof availablePackages[number];
 
@@ -79,9 +77,5 @@ export const buildPkgInstallerMap = (
   trpc: {
     inUse: packages.includes("trpc"),
     installer: trpcInstaller,
-  },
-  envVariables: {
-    inUse: packages.includes("prisma") || packages.includes("nextAuth"),
-    installer: envVariablesInstaller,
   },
 });
