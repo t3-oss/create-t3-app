@@ -14,6 +14,41 @@ export const availablePackages = [
 ] as const;
 export type AvailablePackages = typeof availablePackages[number];
 
+export type Patch = {
+  file: string;
+  package: AvailablePackages;
+  blockedBy: AvailablePackages[];
+};
+
+export const blockedPatches: Patch[] = [
+  {
+    file: "0002-feat-prisma-updates-env-schema.patch",
+    package: "prisma",
+    blockedBy: ["nextAuth"],
+  },
+  {
+    file: "0006-feat-prisma-adds-schema.patch",
+    package: "prisma",
+    blockedBy: ["nextAuth"],
+  },
+  {
+    file: "0005-feat-tailwind-updates-index.tsx.patch",
+    package: "tailwind",
+    blockedBy: ["trpc"],
+  },
+  {
+    file: "0005-feat-trpc-finishes-setup.patch",
+    package: "trpc",
+    blockedBy: ["nextAuth"],
+  },
+];
+
+const isPatchBlocked = (patchFile: string) => {
+  return blockedPatches.some(
+    (patch) => patch.file === patchFile && patch.blockedBy.length > 0,
+  );
+};
+
 /*
  * This maps the necessary packages to a version.
  * This improves performance significantly over fetching it from the npm registry.
@@ -50,7 +85,7 @@ export interface InstallerOptions {
   projectName?: string;
 }
 
-export type Installer = (opts: InstallerOptions) => void;
+export type Installer = (opts: InstallerOptions) => Promise<void>;
 
 export type PkgInstallerMap = {
   [pkg in AvailablePackages]: {

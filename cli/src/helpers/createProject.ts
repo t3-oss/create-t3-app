@@ -1,8 +1,7 @@
 import type { PkgInstallerMap } from "~/installers/index.js";
 import path from "path";
-import { installPackages } from "~/helpers/installPackages.js";
+import { cleanArtifacts, patchPackages } from "~/helpers/patchPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
-import { selectAppFile, selectIndexFile } from "~/helpers/selectBoilerplate.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
 interface CreateProjectOptions {
@@ -28,16 +27,14 @@ export const createProject = async ({
   });
 
   // Install the selected packages
-  installPackages({
+  await patchPackages({
     projectDir,
     pkgManager,
     packages,
     noInstall,
   });
 
-  // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  selectAppFile({ projectDir, packages });
-  selectIndexFile({ projectDir, packages });
+  await cleanArtifacts(projectDir);
 
   return projectDir;
 };
