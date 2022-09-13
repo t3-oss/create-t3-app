@@ -14,11 +14,13 @@ export const nextAuthInstaller: Installer = async ({
     await generatePatches("nextAuth+prisma", projectDir);
   }
 
+  if (packagesInUse.includes("trpc")) {
+    await generatePatches("nextAuth+trpc", projectDir);
+  }
+
   // We can apply every patch on nextAuth because they don't conflict with anything.
   // (other packages that conflict with nextAuth)
-  const patches = fs
-    .readdirSync(patchesFolder)
-    .map((file) => new Patch(file, "nextAuth"));
+  const patches = fs.readdirSync(patchesFolder).map((file) => new Patch(file));
 
   for (const patch of patches) {
     await patch.apply(projectDir);

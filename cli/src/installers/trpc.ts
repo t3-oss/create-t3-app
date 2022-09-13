@@ -1,78 +1,27 @@
-import fs from "fs-extra";
-import path from "path";
-import { PKG_ROOT } from "~/consts.js";
-import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import type { Installer } from "~/installers/index.js";
+import { deletePatches, generatePatches } from "~/utils/git.js";
+import fs from "fs-extra";
+import { Patch } from "~/utils/patch.js";
 
-export const trpcInstaller: Installer = ({ projectDir, packages }) => {
-  addPackageDependency({
-    projectDir,
-    dependencies: [
-      "@tanstack/react-query",
-      "superjson",
-      "@trpc/server",
-      "@trpc/client",
-      "@trpc/next",
-      "@trpc/react",
-    ],
-    devMode: false,
-  });
+export const trpcInstaller: Installer = async ({
+  projectDir,
+  packagesInUse,
+}) => {
+  await generatePatches("trpc", projectDir);
+  const patchesFolder = `${projectDir}/patches`;
 
-  const usingAuth = packages?.nextAuth.inUse;
-  const usingPrisma = packages?.prisma.inUse;
+  if (packagesInUse.includes("tailwind")) {
+    await generatePatches("trpc+tailwind", projectDir);
+  }
 
-  const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
+  const patches = fs
+    .readdirSync(patchesFolder)
+    .map((file) => new Patch(file, packagesInUse))
+    .filter((patch) => !patch.isBlocked());
 
-  const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
-  const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
+  for (const patch of patches) {
+    await patch.apply(projectDir);
+  }
 
-  const utilsSrc = path.join(trpcAssetDir, "utils.ts");
-  const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
-
-  const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
-  const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
-  const serverUtilDest = path.join(projectDir, "src/server/trpc/trpc.ts");
-
-  const contextFile =
-    usingAuth && usingPrisma
-      ? "auth-prisma-context.ts"
-      : usingAuth && !usingPrisma
-      ? "auth-context.ts"
-      : !usingAuth && usingPrisma
-      ? "prisma-context.ts"
-      : "base-context.ts";
-  const contextSrc = path.join(trpcAssetDir, contextFile);
-  const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
-
-  const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
-  const authRouterDest = path.join(
-    projectDir,
-    "src/server/trpc/router/auth.ts",
-  );
-
-  const indexRouterFile = usingAuth
-    ? "auth-index-router.ts"
-    : "index-router.ts";
-  const indexRouterSrc = path.join(trpcAssetDir, indexRouterFile);
-  const indexRouterDest = path.join(
-    projectDir,
-    "src/server/trpc/router/index.ts",
-  );
-
-  const exampleRouterFile = usingPrisma
-    ? "example-prisma-router.ts"
-    : "example-router.ts";
-  const exampleRouterSrc = path.join(trpcAssetDir, exampleRouterFile);
-  const exampleRouterDest = path.join(
-    projectDir,
-    "src/server/trpc/router/example.ts",
-  );
-
-  fs.copySync(apiHandlerSrc, apiHandlerDest);
-  fs.copySync(utilsSrc, utilsDest);
-  fs.copySync(serverUtilSrc, serverUtilDest);
-  fs.copySync(contextSrc, contextDest);
-  fs.copySync(indexRouterSrc, indexRouterDest);
-  fs.copySync(exampleRouterSrc, exampleRouterDest);
-  usingAuth && fs.copySync(authRouterSrc, authRouterDest);
+  await deletePatches(projectDir);
 };
