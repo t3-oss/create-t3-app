@@ -2,7 +2,7 @@ name: Vercel Preview URL Lighthouse Audit
 
 on:
   issue_comment:
-    types: [edited]
+    types: [created, edited]
 
 jobs:
   generate_lighthouse_audit:
