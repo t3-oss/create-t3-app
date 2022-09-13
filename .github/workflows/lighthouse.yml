@@ -27,10 +27,11 @@ jobs:
           script: |
             const comment = context.payload.comment;
             const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
-            const previewUrl = comment.body.match(regex)?.[0];
-            if (!previewUrl) {
+            const matches = comment.body.match(regex);
+            if (!matches) {
               throw new Error('No Vercel preview URL found in comment body');
             }
+            const previewUrl = matches[0];
             console.log('Preview url found:', previewUrl);
             core.setOutput('vercel-preview-url', previewUrl);
 
