@@ -63,13 +63,13 @@ export default function ThemeToggleButton() {
         return (
           <label
             key={t}
-            className={
+            className={`cursor-pointer ${
               checked && i === 0
                 ? `text-orange-500 stroke-orange-500`
                 : checked && i === 1
                 ? `text-blue-500 stroke-blue-500`
                 : `text-slate-900 dark:text-white`
-            }
+            }`}
           >
             {icon}
             <input
