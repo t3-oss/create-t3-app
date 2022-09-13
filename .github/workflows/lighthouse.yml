@@ -33,7 +33,7 @@ jobs:
             }
             const previewUrl = matches[0];
             console.log('Preview url found:', previewUrl);
-            core.setOutput('vercel-preview-url', previewUrl);
+            core.setOutput('vercel_preview_url', previewUrl);
 
       - name: Checkout repository
         uses: actions/checkout@v3
