@@ -18,27 +18,30 @@ jobs:
           header: lighthouse
           message: |
             Running Lighthouse audit...
+
       - name: Get Vercel preview URL
         id: get_preview_url
         uses: actions/github-script@v3
-        with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const comment = context.payload.comment;
-            console.log(comment);
             const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
-            console.log(regex);
-            const previewUrl = comment.body.match(regex)[0];
-            console.log(previewUrl);
+            const previewUrl = comment.body.match(regex)?.[0];
+            if (!previewUrl) {
+              throw new Error('No Vercel preview URL found in comment body');
+            }
+            console.log('Preview url found:', previewUrl);
             core.setOutput('vercel-preview-url', previewUrl);
 
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
-            ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
+            ${{ steps.get_preview_url.outputs.vercel_preview_url }}
           uploadArtifacts: true
           temporaryPublicStorage: true
       - name: Format lighthouse score
