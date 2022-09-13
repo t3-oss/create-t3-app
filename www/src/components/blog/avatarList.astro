@@ -69,21 +69,15 @@ const recentContributors = unique.slice(0, 3); // only show avatars for the 3 mo
 const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
 ---
 
-<div class="flex flex-col items-center justify-center py-3">
-  <span class="py-2">Recent Contributers To This Page</span>
-  <ul
-    class={`grid grid-cols-${recentContributors.length} gap-2 sm:gap-4 sm:grid-cols-${recentContributors.length}`}
-  >
+<div class="flex flex-col gap-2 items-center justify-center py-3">
+  <span class="py-2">Recent Contributors To This Page</span>
+  <ul class="flex gap-4">
     {
-      recentContributors.map((item, i) => (
+      recentContributors.map((item) => (
         <li>
           <a href={`https://github.com/${item.login}`}>
             <img
-              class={
-                i === 0
-                  ? `rounded-full w-8 h-8 sm:w-10 sm:h-10`
-                  : `rounded-full w-8 h-8 sm:w-10 sm:h-10 -translate-x-3 sm:-translate-x-5`
-              }
+              class="rounded-full w-8 h-8 sm:w-10 sm:h-10"
               alt={`Contributor ${item.login}`}
               title={`Contributor ${item.login}`}
               width="64"
