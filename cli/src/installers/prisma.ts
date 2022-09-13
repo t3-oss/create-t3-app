@@ -13,7 +13,7 @@ export const prismaInstaller: Installer = async ({
 
   const patches = fs
     .readdirSync(patchesFolder)
-    .map((file) => new Patch(file, "prisma", packagesInUse))
+    .map((file) => new Patch(file, packagesInUse))
     .filter((patch) => !patch.isBlocked());
 
   for (const patch of patches) {
