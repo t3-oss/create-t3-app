@@ -10,6 +10,10 @@ export const nextAuthInstaller: Installer = async ({
   await generatePatches("nextAuth", projectDir);
   const patchesFolder = `${projectDir}/patches`;
 
+  if (packagesInUse.includes("prisma")) {
+    await generatePatches("nextAuth+prisma", projectDir);
+  }
+
   // We can apply every patch on nextAuth because they don't conflict with anything.
   // (other packages that conflict with nextAuth)
   const patches = fs
