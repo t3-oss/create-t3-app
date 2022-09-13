@@ -230,6 +230,7 @@ jobs:
             https://create-t3-app-git-julius-www-rundown-t3-oss.vercel.app/
           uploadArtifacts: true
           temporaryPublicStorage: true
+
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v3
@@ -254,6 +255,7 @@ jobs:
                 `*Lighthouse ran on [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
              core.setOutput("comment", comment);
+
       - name: Add comment to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
@@ -263,3 +265,24 @@ jobs:
           header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
+
+  capture_vercel_preview_url:
+    name: Capture Vercel preview URL
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: aaimio/vercel-preview-url-action@v1
+        id: vercel_preview_url
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Below is merely an example of what you could do with the preview URL.
+      # The preview URL is accessed through ${{ steps.<step_id>.outputs.vercel_preview_url }}
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The preview URL is: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}.'
+            });
