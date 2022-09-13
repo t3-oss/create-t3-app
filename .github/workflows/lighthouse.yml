@@ -21,6 +21,7 @@ jobs:
       - uses: aaimio/vercel-preview-url-action@v1
         id: vercel_preview_url
         with:
+          preview_url_regexp: /\[Visit Preview\]\((.*)\)/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
       - name: Audit preview URL with Lighthouse
