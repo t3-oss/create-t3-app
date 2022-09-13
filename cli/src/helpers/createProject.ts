@@ -3,17 +3,18 @@ import path from "path";
 import { cleanArtifacts, patchPackages } from "~/helpers/patchPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { CliFlags } from "~/cli/index.js";
 
 interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
-  noInstall: boolean;
+  flags: CliFlags;
 }
 
 export const createProject = async ({
   projectName,
   packages,
-  noInstall,
+  flags,
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
@@ -23,7 +24,7 @@ export const createProject = async ({
     projectName,
     projectDir,
     pkgManager,
-    noInstall,
+    flags,
   });
 
   // Install the selected packages
@@ -31,7 +32,7 @@ export const createProject = async ({
     projectDir,
     pkgManager,
     packages,
-    noInstall,
+    flags,
   });
 
   await cleanArtifacts(projectDir);

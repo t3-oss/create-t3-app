@@ -1,11 +1,13 @@
 import { execa } from "execa";
 import { TEMPLATE_URL } from "~/consts.js";
-import { AvailablePackages } from "~/installers/index.js";
+import { BranchNames } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
+import fs from "fs-extra";
 
 export const cloneScaffoldAndReturnPath = async (
   projectName: string,
 ): Promise<void> => {
+  // git clone {TEMPLATE_URL} {projectName}
   try {
     await execa("git", ["clone", TEMPLATE_URL, projectName]);
   } catch (error) {
@@ -15,7 +17,7 @@ export const cloneScaffoldAndReturnPath = async (
 };
 
 export const generatePatches = async (
-  packageName: AvailablePackages,
+  packageName: BranchNames,
   path: string,
 ): Promise<void> => {
   try {
@@ -41,14 +43,18 @@ export const generatePatches = async (
   }
 };
 
-export const applyPatch = async (path: string, patchName: string) => {
-  // git apply {path}/patches/{patchName}
-  // Applies the patch file at {path}/patches/{patchName}
+export const applyPatch = async (projectDir: string, patchName: string) => {
+  // git apply {projectDir}/patches/{patchName}
+  // Applies the patch file at {projectDir}/patches/{patchName}
   try {
     await execa("git", ["am", `patches/${patchName}`], {
-      cwd: path,
+      cwd: projectDir,
     });
   } catch (error) {
     logger.error(error);
   }
+};
+
+export const deletePatches = async (path: string) => {
+  await fs.removeSync(`${path}/patches`);
 };

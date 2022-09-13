@@ -9,7 +9,7 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
 
-interface CliFlags {
+export interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
@@ -241,17 +241,15 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
     name: "packages",
     type: "checkbox",
     message: "Which packages would you like to enable?",
-    choices: availablePackages
-      .filter((pkg) => pkg !== "envVariables") // dont prompt for env-vars
-      .map((pkgName) => ({
-        name: pkgName,
-        checked: false,
-        // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-        disabled:
-          pkgName === "nextAuth" && process.versions.node.startsWith("18")
-            ? "Node.js version 18 is currently not compatible with Next-Auth."
-            : false,
-      })),
+    choices: availablePackages.map((pkgName) => ({
+      name: pkgName,
+      checked: false,
+      // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
+      disabled:
+        pkgName === "nextAuth" && process.versions.node.startsWith("18")
+          ? "Node.js version 18 is currently not compatible with Next-Auth."
+          : false,
+    })),
   });
 
   return packages;

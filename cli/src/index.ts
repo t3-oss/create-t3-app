@@ -27,11 +27,7 @@ const main = async () => {
     process.exit(127);
   }
 
-  const {
-    appName,
-    packages,
-    flags: { noGit, noInstall },
-  } = await runCli();
+  const { appName, packages, flags } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
 
@@ -41,14 +37,14 @@ const main = async () => {
   const projectDir = await createProject({
     projectName: appDir,
     packages: usePackages,
-    noInstall,
+    flags,
   });
 
-  if (!noInstall) {
+  if (!flags.noInstall) {
     installDependencies(projectDir);
   }
 
-  if (!noGit) {
+  if (!flags.noGit) {
     await initializeGit(projectDir);
   }
 

@@ -2,26 +2,32 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora, { Ora } from "ora";
-import { InstallerOptions } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { cloneScaffoldAndReturnPath } from "~/utils/git.js";
+import { PackageManager } from "~/utils/getUserPkgManager.js";
+import { CliFlags } from "~/cli/index.js";
+
+type ScaffoldProjectOptions = {
+  projectName: string;
+  projectDir: string;
+  pkgManager: PackageManager;
+  flags: CliFlags;
+};
 
 // This bootstraps the base Next.js application
 export const scaffoldProject = async ({
   projectName,
   projectDir,
   pkgManager,
-  noInstall,
-}: InstallerOptions & {
-  projectName: string;
-}) => {
-  if (!noInstall) {
+  flags,
+}: ScaffoldProjectOptions) => {
+  if (!flags.noInstall) {
     logger.info(`\nUsing: ${chalk.cyan.bold(pkgManager)}\n`);
   } else {
     logger.info("");
   }
 
-  const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
+  const spinner = ora(`Scaffolding in: '${projectDir}'...\n`).start();
 
   await assertProjectDirIsntDirty(projectName, projectDir, spinner);
   await cloneScaffoldAndReturnPath(projectName);
