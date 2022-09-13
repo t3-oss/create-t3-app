@@ -18,12 +18,21 @@ jobs:
           header: lighthouse
           message: |
             Running Lighthouse audit...
-      - uses: aaimio/vercel-preview-url-action@v1
-        id: vercel_preview_url
+      - name: Get Vercel preview URL
+        id: get_preview_url
+        uses: actions/github-script@v3
         with:
-          preview_url_regexp: /\[Visit Preview\]\((.*)\)/
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@v2
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const comment = context.payload.comment;
+            console.log(comment);
+            const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
+            console.log(regex);
+            const previewUrl = comment.body.match(regex)[0];
+            console.log(previewUrl);
+            core.setOutput('vercel-preview-url', previewUrl);
+
+      - uses: actions/checkout@v3
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3
