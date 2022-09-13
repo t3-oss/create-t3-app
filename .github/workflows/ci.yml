@@ -220,11 +220,6 @@ jobs:
           message: |
             Running Lighthouse audit...
 
-      - uses: aaimio/vercel-preview-url-action@v1
-        id: vercel_preview_url
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - uses: actions/checkout@v2
 
       - name: Audit preview URL with Lighthouse
@@ -232,7 +227,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
-            ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
+            https://create-t3-app-git-julius-www-rundown-t3-oss.vercel.app/
           uploadArtifacts: true
           temporaryPublicStorage: true
       - name: Format lighthouse score
