@@ -208,7 +208,8 @@ jobs:
     steps:
       - name: Wait for deployment
         run: |
-          sleep 120
+          sleep 60
+
       - name: Add comment to PR
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
@@ -218,11 +219,13 @@ jobs:
           header: lighthouse
           message: |
             Running Lighthouse audit...
+
       - name: Capture Vercel preview URL
         id: vercel_preview_url
-        uses: aaron-binary/vercel-preview-url-action@v0.0.3
+        uses: aaron-binary/vercel-preview-url-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v2
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
