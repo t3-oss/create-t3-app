@@ -29,7 +29,6 @@ export const blockedPatches: BlockedPatch[] = [
     blockedBy: ["nextAuth"],
   },
 ];
-
 export type BlockedPatches = typeof blockedPatches[number];
 
 export class Patch {
