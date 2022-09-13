@@ -202,9 +202,13 @@ jobs:
 
   generate_lighthouse_audit:
     # Credit: https://github.com/OskarAhl/Lighthouse-github-action-comment
-    timeout-minutes: 3 # Give some time for the deployment to finish
+    timeout-minutes: 30
     runs-on: ubuntu-latest
+    name: Generate Lighthouse Audit
     steps:
+      - name: Wait for deployment
+        run: |
+          sleep 120
       - name: Add comment to PR
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
