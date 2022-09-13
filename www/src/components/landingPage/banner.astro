@@ -84,35 +84,34 @@
                 <div class="mt-8 block h-full relative mx-auto">
                   <code
                     id="command"
-                    class="px-3 sm:px-5 py-1.5 text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative"
+                    class="px-5 py-4 text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative"
                     >npx create-t3-app@latest
                   </code>
 
                   <div
                     id="toast"
-                    class="absolute items-center justify-center rounded-lg top-0 mx-auto bg-[#262626] h-10 opacity-0 px-3"
+                    class="absolute flex items-center justify-center rounded-lg top-0 bg-[#262626] h-10 px-3 left-1/2 -translate-x-1/2 opacity-0 -z-10"
                   >
                     <span
                       class="flex px-3 items-center justify-center rounded-lg text-[#e8dcff]"
                       ><svg
                         id="checkmark"
-                        class="checkmark"
+                        class="h-8 w-8 rounded-full stroke-2 stroke-white shadow-[inset 0 0 0] shadow-green-500 my-1"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 52 52"
                       >
                         <circle
-                          id="checkmark__circle"
-                          class="checkmark__circle"
+                          id="checkmark-circle"
+                          class="stroke-2 stroke-green-500"
                           cx="26"
                           cy="26"
                           r="25"
                           fill="none"></circle>
                         <path
-                          id="checkmark__check"
-                          class="checkmark__check"
+                          id="checkmark-check"
                           fill="none"
                           d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                      </svg><span class="pl-1">Copied</span>
+                      </svg><span class="pl-2">Copied</span>
                     </span>
                   </div>
                 </div>
@@ -124,21 +123,72 @@
     </div>
   </div>
   <script is:inline>
-    document.getElementById("command").addEventListener("click", () => {
-      const pre = this.parentElement;
-      let code = pre.querySelector("code");
-      let text = code.innerText;
-      navigator.clipboard.writeText(text);
-      document.getElementById("toast").className =
-        "px-3 opacity-100 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
-      document.getElementById("checkmark").style =
-        "animation-play-state: running";
-      document.getElementById("checkmark__check").style =
-        "animation-play-state: running";
+    const command = document.querySelector("#command");
+    command.addEventListener("click", () => {
+      const pre = command.parentElement;
+      const toast = document.querySelector("#toast");
+      const checkmark = document.querySelector("#checkmark");
+      const checkmarkCircle = document.querySelector("#checkmark-circle");
+      const checkmarkCheck = document.querySelector("#checkmark-check");
+
+      navigator.clipboard.writeText(command.innerText);
+
+      const toggleClasses = () => {
+        toast.classList.toggle("toast-animation");
+        checkmark.classList.toggle("checkmark-animation");
+        checkmarkCircle.classList.toggle("checkmark-circle-animation");
+        checkmarkCheck.classList.toggle("checkmark-check-animation");
+      };
+      toggleClasses();
       setTimeout(() => {
-        document.getElementById("toast").className =
-          "px-3 opacity-0 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
+        toggleClasses();
       }, 2500);
     });
   </script>
+  <style>
+    .toast-animation {
+      opacity: 1;
+      top: 150%;
+      transition: all 1s ease-in-out;
+    }
+    .checkmark-circle-animation {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-miterlimit: 10;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark-animation {
+      stroke-miterlimit: 10;
+      animation: fill 0.4s ease-in-out 0.4s forwards,
+        scale 0.3s ease-in-out 0.9s both;
+    }
+
+    .checkmark-check-animation {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+    @keyframes scale {
+      0%,
+      100% {
+        transform: none;
+      }
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+      }
+    }
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 30px #22c55e;
+      }
+    }
+  </style>
 </section>
