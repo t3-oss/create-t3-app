@@ -48,7 +48,7 @@ const main = async () => {
     await initializeGit(projectDir);
   }
 
-  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
+  logNextSteps({ projectName: appDir, flags });
 
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
