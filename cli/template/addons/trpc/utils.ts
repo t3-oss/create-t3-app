@@ -6,7 +6,7 @@ import type { inferProcedureOutput, inferProcedureInput } from "@trpc/server";
 export const trpc = createReactQueryHooks<AppRouter>();
 
 /**
- * This is a helper method to infer the output of a query resolver
+ * These are helper types to infer the input and output of query resolvers
  * @example type HelloOutput = inferQueryOutput<'hello'>
  */
 export type inferQueryOutput<
