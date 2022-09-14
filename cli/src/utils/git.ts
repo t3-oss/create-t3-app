@@ -47,7 +47,7 @@ export const applyPatch = async (projectDir: string, patchName: string) => {
   // git apply {projectDir}/patches/{patchName}
   // Applies the patch file at {projectDir}/patches/{patchName}
   try {
-    await execa("git", ["apply", `patches/${patchName}`], {
+    await execa("git", ["am", `patches/${patchName}`], {
       cwd: projectDir,
     });
   } catch (error) {
