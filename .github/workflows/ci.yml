@@ -157,6 +157,10 @@ jobs:
         run: pnpm install
 
       - run: pnpm turbo run --filter=create-t3-app build
+      # CIs can't apply patches without having names and emails
+      # https://community.jenkins.io/t/committer-identity-unknown-missing-git-commit-author-error/2008
+      - run: git config --global user.name "GitHub Actions"
+      - run: git config --global user.email "actions@github.com"
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
