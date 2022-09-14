@@ -62,7 +62,7 @@ export default function TableOfContents({
           }`.trim()}
         >
           <a
-            className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-base"
+            className="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 text-base"
             href="#overview"
           >
             Overview
@@ -75,7 +75,7 @@ export default function TableOfContents({
             return (
               <li key={i} className={`pl-${padding} ml-1 w-full list-none`}>
                 <a
-                  className={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
+                  className={`hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
                     activeId === heading.slug ? "font-bold" : "font-normal"
                   } ${
                     padding < 3
