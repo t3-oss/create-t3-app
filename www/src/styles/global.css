@@ -70,7 +70,7 @@
     @apply mb-0 font-semibold;
   }
   .markdown code {
-    @apply font-mono bg-t3-purple-200 dark:bg-[#0d1117] p-1 rounded-md dark:text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto;
+    @apply font-mono dark:bg-[#0d1117] p-1 rounded-md dark:text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto;
   }
   .markdown p > img {
     @apply text-sm mt-8;

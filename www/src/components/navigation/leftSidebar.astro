@@ -22,7 +22,7 @@ const sidebar = SIDEBAR[langCode];
     <Search client:idle />
   </div>
   <ul
-    class="p-8 h-full overflow-x-visible overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-50 scrollbar-track-slate-600 sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+    class="p-8 h-full overflow-x-visible overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600 sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
@@ -50,8 +50,8 @@ const sidebar = SIDEBAR[langCode];
                       class={`
                         ${
                           currentPageMatch === child.link
-                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
-                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
+                            ? "hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
+                            : "hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
                         }
                         
                         transition-colors
