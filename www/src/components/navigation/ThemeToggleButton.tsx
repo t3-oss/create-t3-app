@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import "./ThemeToggleButton.css";
 
 const themes = ["light", "dark"];
@@ -63,13 +64,14 @@ export default function ThemeToggleButton() {
         return (
           <label
             key={t}
-            className={
+            className={clsx([
+              "cursor-pointer",
               checked && i === 0
                 ? `text-orange-500 stroke-orange-500`
                 : checked && i === 1
                 ? `text-blue-500 stroke-blue-500`
-                : `text-slate-900 dark:text-white`
-            }
+                : `text-slate-900 dark:text-white`,
+            ])}
           >
             {icon}
             <input
