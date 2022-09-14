@@ -1,9 +1,9 @@
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { CliFlags } from "~/cli/index.js";
-import { tailwindInstaller } from "~/installers/tailwind";
-import { trpcInstaller } from "~/installers/trpc";
-import { BlockedPatches } from "~/utils/patch";
+import { tailwindInstaller } from "~/installers/tailwind.js";
+import { trpcInstaller } from "~/installers/trpc.js";
+import { BlockedPatches } from "~/utils/patch.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
@@ -19,7 +19,7 @@ export type BranchNames =
   | `${AvailablePackages}+${AvailablePackages}`;
 export type Branches =
   | AvailablePackages
-  | `${BlockedPatches[number]["package"]}+${BlockedPatches[number]["blockedBy"][number]}`;
+  | `${BlockedPatches["package"]}+${BlockedPatches["blockedBy"][number]}`;
 
 export interface InstallerOptions {
   projectDir: string;
