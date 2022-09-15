@@ -63,7 +63,7 @@ export default function ThemeToggleButton() {
   };
 
   return (
-    <div className=" flex border border-slate-900 dark:border-white p-1 w-fit mx-auto rounded-full space-x-3">
+    <div className=" flex bg-t3-purple-200/50 dark:bg-slate-700 p-1.5 w-fit mx-auto rounded-full space-x-3">
       {themes.map((t, i) => {
         const icon = icons[i];
         const checked = t === theme;
