@@ -1,15 +1,12 @@
 ---
+import clsx from "clsx";
 import Search from "./Search";
 import SidebarToggle from "./SidebarToggle";
 
-export interface Props {
-  mode?: "landing" | "default";
-}
-
 const currentPage = Astro.url.pathname;
-const { mode = "default" } = Astro.props;
+const isLanding = currentPage === "/";
 
-const navbarLinks: Array<{ href: string; label: string; newTab?: boolean }> = [
+const navbarLinks: Array<{ href: string; label: string }> = [
   {
     href: "/en/introduction",
     label: "Docs",
@@ -21,20 +18,19 @@ const navbarLinks: Array<{ href: string; label: string; newTab?: boolean }> = [
   {
     href: "https://github.com/t3-oss/create-t3-app",
     label: "Github",
-    newTab: true,
   },
   {
     href: "https://init.tips",
     label: "T3 Stack",
-    newTab: true,
   },
 ];
 ---
 
 <nav
-  class={currentPage === "/"
-    ? `flex flex-col relative justify-between items-center pt-6 z-50 text-slate-50`
-    : `flex flex-col relative justify-between items-center pt-6 bg-t3-purple-50 dark:bg-slate-900 z-50`}
+  class={clsx("flex flex-col relative justify-between items-center pt-6", {
+    "z-50 text-slate-50": isLanding,
+    "bg-t3-purple-50 dark:bg-slate-900": !isLanding,
+  })}
   aria-label="Global"
 >
   <div class="flex items-center justify-between w-full px-6 pb-2">
@@ -47,15 +43,17 @@ const navbarLinks: Array<{ href: string; label: string; newTab?: boolean }> = [
         {
           navbarLinks.map((navbarLink) => (
             <a
-              class={`inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent ${
-                mode === "landing"
-                  ? "text-t3-purple-100 hover:text-t3-purple-300"
-                  : "text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400"
-              }`}
+              class={clsx(
+                "inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent",
+                {
+                  "text-t3-purple-100 hover:text-t3-purple-300": isLanding,
+                  "text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400":
+                    !isLanding,
+                },
+              )}
               href={navbarLink.href}
-              target={navbarLink.newTab ? "_blank" : ""}
             >
-              <span class="">{navbarLink.label}</span>
+              {navbarLink.label}
             </a>
           ))
         }

@@ -1,11 +1,8 @@
 /** @jsxImportSource react */
+import clsx from "clsx";
 import { useState, useEffect } from "react";
 
-export default function SidebarToggle({
-  currentPage,
-}: {
-  currentPage: string;
-}) {
+const SidebarToggle: React.FC<{ currentPage: string }> = ({ currentPage }) => {
   const [sidebarShown, setSidebarShown] = useState(false);
 
   useEffect(() => {
@@ -18,25 +15,22 @@ export default function SidebarToggle({
     }
   }, [sidebarShown]);
 
+  const isLanding = currentPage === "/";
+
   return (
     <button
       type="button"
       aria-pressed={sidebarShown ? "true" : "false"}
-      id="menu-toggle"
       onClick={() => setSidebarShown(!sidebarShown)}
-      className={
-        currentPage === "/"
-          ? `z-20 block md:hidden text-white`
-          : `z-20 block md:hidden text-black dark:text-white`
-      }
+      className={clsx("z-20 block md:hidden", {
+        "text-white": isLanding,
+        "text-black dark:text-white": !isLanding,
+      })}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="2em"
-        height="2em"
-        fill="none"
+        className="h-10 w-10 stroke-current fill-transparent"
         viewBox="0 0 24 24"
-        stroke="currentColor"
       >
         <path
           strokeLinecap="round"
@@ -48,4 +42,6 @@ export default function SidebarToggle({
       <span className="sr-only">Toggle sidebar</span>
     </button>
   );
-}
+};
+
+export default SidebarToggle;
