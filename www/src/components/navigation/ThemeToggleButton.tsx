@@ -33,28 +33,34 @@ const icons = [
 ];
 
 export default function ThemeToggleButton() {
-  const [theme, setTheme] = useState(() => {
-    if (import.meta.env.SSR) {
-      return undefined;
-    }
-    const item = localStorage.getItem("theme");
-    if (item) {
-      return item;
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  });
-
+  const [theme, setTheme] = useState<string | undefined>(undefined);
   useEffect(() => {
+    const init = () => {
+      if (typeof theme !== "string" && !import.meta.env.SSR) {
+        const item = localStorage.getItem("theme");
+        if (item) {
+          return setTheme(item);
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return setTheme("dark");
+        }
+        return setTheme("light");
+      }
+    };
+
+    init();
+  }, [theme]);
+
+  const handleChange = (t: string) => {
     const root = document.documentElement;
-    if (theme === "light") {
+    setTheme(t);
+    localStorage.setItem("theme", t);
+    if (t === "light") {
       root.classList.remove("dark");
     } else {
       root.classList.add("dark");
     }
-  }, [theme]);
+  };
 
   return (
     <div className=" flex border border-slate-900 dark:border-white p-1 w-fit mx-auto rounded-full space-x-3">
@@ -82,10 +88,7 @@ export default function ThemeToggleButton() {
               value={t}
               title={`Use ${t} theme`}
               aria-label={`Use ${t} theme`}
-              onChange={() => {
-                localStorage.setItem("theme", t);
-                setTheme(t);
-              }}
+              onChange={() => handleChange(t)}
             />
           </label>
         );

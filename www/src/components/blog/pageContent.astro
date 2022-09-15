@@ -50,8 +50,7 @@ const title = frontmatter.title;
 
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
-    block.className =
-      "relative flex max-w-xs sm:max-w-lg w-full h-full hover:cursor-pointer";
+    block.className = "relative flex w-full h-full hover:cursor-pointer";
     let copyButton = document.createElement("button");
     copyButton.className =
       "inline-flex absolute right-1 top-1 border border-slate-50 rounded-lg px-2 py-1 text-sm hover:text-slate-800 hover:bg-gray-100 focus:outline-none focus:shadow-outline text-brand-primary";
