@@ -64,8 +64,9 @@
     @apply mt-8 mb-4 text-2xl font-semibold;
   }
   .markdown h3 {
-    @apply mt-8 mb-4 text-xl font-semibold;
+    @apply mt-8 mb-0 text-xl font-semibold;
   }
+  
   .markdown li {
     @apply list-disc;
   }
@@ -83,9 +84,6 @@
   }
   .markdown pre {
     @apply font-mono my-3 p-2 rounded-md sm:pt-2 pl-3 mx-auto;
-  }
-  .markdown h3 {
-    @apply mb-0 font-semibold;
   }
 
   .markdown p > img {
