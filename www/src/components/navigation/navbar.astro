@@ -1,6 +1,7 @@
 ---
 import Search from "./Search";
 import SidebarToggle from "./SidebarToggle";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 export interface Props {
   mode?: "landing" | "default";
@@ -61,11 +62,20 @@ const navbarLinks: Array<{ href: string; label: string; newTab?: boolean }> = [
         }
       </div>
     </div>
-    <div>
-      <SidebarToggle currentPage={currentPage} client:idle />
-    </div>
-    <div class="hidden md:bloc rounded-lg w-full max-w-xs">
-      <Search client:load />
+    <div class="flex flex-grow justify-end">
+      {
+        mode === "default" && (
+          <div class="m-8 text-center">
+            <ThemeToggleButton client:visible />
+          </div>
+        )
+      }
+      <div>
+        <SidebarToggle currentPage={currentPage} client:idle />
+      </div>
+      <div class="hidden md:block rounded-lg w-full max-w-xs">
+        <Search client:load />
+      </div>
     </div>
   </div>
 </nav>
