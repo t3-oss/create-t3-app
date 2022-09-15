@@ -11,7 +11,7 @@ export interface Props {
 const { headings, githubEditUrl } = Astro.props;
 ---
 
-<nav class="sidebar-nav hidden lg:block max-w-sm" aria-labelledby="grid-right">
+<nav class="sidebar-nav hidden md:block max-w-sm" aria-labelledby="grid-right">
   <div class="sidebar-nav-inner">
     <TableOfContents client:media="(min-width: 50em)" headings={headings} />
     <MoreMenu editHref={githubEditUrl} />
