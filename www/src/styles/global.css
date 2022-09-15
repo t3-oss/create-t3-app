@@ -70,6 +70,18 @@
     @apply mb-0 font-semibold;
   }
 
+  .markdown ol {
+    @apply w-full;
+  }
+
+  .markdown details {
+    @apply w-full bg-t3-purple-200/50 dark:bg-slate-700 px-3 pb-0.5 rounded-md;
+  }
+
+  .markdown summary {
+    @apply py-3;
+  }
+
   .markdown p > img {
     @apply text-sm mt-8;
   }
