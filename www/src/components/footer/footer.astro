@@ -10,7 +10,7 @@ const { path, isBlog } = Astro.props;
 <footer
   class={path === "/"
     ? `mt-auto pb-8 pt-16 text-t3-purple-100 bg-[#131232] flex flex-col`
-    : `mt-auto pb-8 pt-16 text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 flex flex-col`}
+    : `mt-auto pb-8 pt-16 text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 transition-colors flex flex-col`}
 >
   {isBlog && <AvatarList path={path} />}
   <div

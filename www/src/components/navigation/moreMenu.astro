@@ -1,6 +1,5 @@
 ---
 import * as CONFIG from "../../config";
-import ThemeToggleButton from "./ThemeToggleButton";
 
 export interface Props {
   editHref: string;
@@ -71,7 +70,4 @@ const { editHref } = Astro.props;
       </a>
     </li>
   </ul>
-  <div class="m-8 text-center">
-    <ThemeToggleButton client:visible />
-  </div>
 </div>
