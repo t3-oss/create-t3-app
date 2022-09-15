@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* Design System Theming */
   html.light {
     --color-base: 236 228 236;
     --color-neutral: 29 40 58;
@@ -27,6 +28,7 @@
     --color-info: 12 166 233;
   }
 
+  /* Typewriter */
   .cursor::after {
     display: block;
     content: "";
@@ -50,15 +52,7 @@
     }
   }
 
-  .mobile-sidebar-toggle {
-    overflow: hidden;
-  }
-
-  .mobile-sidebar-toggle #grid-left {
-    display: block;
-    top: 2rem;
-  }
-
+  /* Markdown Styling */
   .markdown {
     @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500;
   }

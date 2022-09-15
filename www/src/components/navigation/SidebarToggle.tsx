@@ -1,19 +1,9 @@
 /** @jsxImportSource react */
 import clsx from "clsx";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SidebarToggle: React.FC<{ currentPage: string }> = ({ currentPage }) => {
   const [sidebarShown, setSidebarShown] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const body = document.querySelector("body")!;
-    if (sidebarShown) {
-      body.classList.add("mobile-sidebar-toggle");
-    } else {
-      body.classList.remove("mobile-sidebar-toggle");
-    }
-  }, [sidebarShown]);
 
   const isLanding = currentPage === "/";
 
