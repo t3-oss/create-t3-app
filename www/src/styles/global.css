@@ -4,27 +4,27 @@
 
 @layer base {
   html.light {
-    --color-base: 100 100 100;
-    --color-neutral: 0 0 0;
-    --color-primary: 255 155 179;
-    --color-secondary: 111 114 185;
-    --color-accent: 255 155 179;
-    --color-warning: 255 155 179;
-    --color-error: 255 155 179;
-    --color-success: 255 155 179;
-    --color-info: 255 155 179;
+    --color-base: 15 23 41;
+    --color-neutral: 29 40 58;
+    --color-primary: 122 98 246;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
   }
 
   html.dark {
-    --color-base: 100 100 100;
-    --color-neutral: 0 0 0;
-    --color-primary: 255 155 179;
-    --color-secondary: 111 114 185;
-    --color-accent: 255 155 179;
-    --color-warning: 255 155 179;
-    --color-error: 255 155 179;
-    --color-success: 255 155 179;
-    --color-info: 255 155 179;
+    --color-base: 236 228 236;
+    --color-neutral: 29 40 58;
+    --color-primary: 122 98 246;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
   }
 
   .cursor::after {
