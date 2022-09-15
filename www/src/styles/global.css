@@ -4,7 +4,7 @@
 
 @layer base {
   html.light {
-    --color-base: 15 23 41;
+    --color-base: 236 228 236;
     --color-neutral: 29 40 58;
     --color-primary: 122 98 246;
     --color-secondary: 58 191 248;
@@ -14,9 +14,9 @@
     --color-success: 43 212 189;
     --color-info: 12 166 233;
   }
-
+  
   html.dark {
-    --color-base: 236 228 236;
+    --color-base: 15 23 41;
     --color-neutral: 29 40 58;
     --color-primary: 122 98 246;
     --color-secondary: 58 191 248;
