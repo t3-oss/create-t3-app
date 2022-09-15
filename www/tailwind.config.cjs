@@ -5,6 +5,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        base: "rgb(var(--color-base) / <alpha-value>)",
+        neutral: "rgb(var(--color-neutral) / <alpha-value>)",
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        warning: "rgb(var(--color-warning) / <alpha-value>)",
+        error: "rgb(var(--color-error) / <alpha-value>)",
+        success: "rgb(var(--color-success) / <alpha-value>)",
+        info: "rgb(var(--color-info) / <alpha-value>)",
+
         "t3-purple-50": "#F3EEFF",
         "t3-purple-100": "#e8ddff",
         "t3-purple-200": "#c3b4fc",

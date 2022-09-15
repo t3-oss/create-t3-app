@@ -3,6 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  html.light {
+    --color-base: 100 100 100;
+    --color-neutral: 0 0 0;
+    --color-primary: 255 155 179;
+    --color-secondary: 111 114 185;
+    --color-accent: 255 155 179;
+    --color-warning: 255 155 179;
+    --color-error: 255 155 179;
+    --color-success: 255 155 179;
+    --color-info: 255 155 179;
+  }
+
+  html.dark {
+    --color-base: 100 100 100;
+    --color-neutral: 0 0 0;
+    --color-primary: 255 155 179;
+    --color-secondary: 111 114 185;
+    --color-accent: 255 155 179;
+    --color-warning: 255 155 179;
+    --color-error: 255 155 179;
+    --color-success: 255 155 179;
+    --color-info: 255 155 179;
+  }
+
   .cursor::after {
     display: block;
     content: "";
