@@ -31,7 +31,7 @@ const MoonIcon: React.FC = () => (
 );
 
 export default function ThemeToggleButton() {
-  const [theme, _setTheme] = useState<string | undefined>(undefined);
+  const [theme, _setTheme] = useState<Theme>("dark");
 
   const setTheme = (theme: Theme) => {
     _setTheme(theme);
@@ -51,8 +51,8 @@ export default function ThemeToggleButton() {
     const item = localStorage.getItem(LOCAL_STORAGE_KEY);
     const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const theme = item ?? (mediaMatch.matches ? "dark" : "light");
-    setTheme(theme as Theme);
+    const newTheme = item ?? (mediaMatch.matches ? "dark" : "light");
+    setTheme(newTheme as Theme);
   }, [theme]);
 
   return (
