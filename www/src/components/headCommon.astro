@@ -18,17 +18,3 @@
 
 <!-- Scrollable a11y code helper -->
 <script src="/makeScrollableCodeFocusable.js" is:inline></script>
-
-<!-- This is intentionally inlined to avoid FOUC -->
-<script is:inline>
-  const root = document.documentElement;
-  const theme = localStorage.getItem("theme");
-  if (
-    theme === "dark" ||
-    (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
-  }
-</script>
