@@ -1,28 +1,19 @@
 #!/usr/bin/env node
-import type { PackageJson } from "type-fest";
-import path from "path";
-import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
-import { initializeGit, isGitInstalled } from "~/helpers/git.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
 import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
-
-type CT3APackageJSON = PackageJson & {
-  ct3aMetadata?: {
-    initVersion: string;
-  };
-};
+import { finishSetup } from "~/helpers/finishSetup.js";
+import { initializeGit, isGitInstalled } from "~/utils/git.js";
 
 const main = async () => {
   renderTitle();
 
-  if (!isGitInstalled()) {
+  if (!(await isGitInstalled())) {
     logger.error("Git is not installed. Please install Git and try again.");
     process.exit(127);
   }
@@ -50,14 +41,9 @@ const main = async () => {
 
   logNextSteps({ projectName: appDir, flags });
 
-  // Write name to package.json
-  const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
-  ) as CT3APackageJSON;
-  pkgJson.name = scopedAppName;
-  pkgJson.ct3aMetadata = { initVersion: getVersion() };
-  fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
-    spaces: 2,
+  await finishSetup({
+    projectDir,
+    scopedAppName,
   });
 
   process.exit(0);
