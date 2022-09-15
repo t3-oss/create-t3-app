@@ -12,7 +12,7 @@ export const logNextSteps = ({
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
-  logger.info(`  cd ${projectName}`);
+  projectName !== "." && logger.info(`  cd ${projectName}`);
   if (noInstall) {
     logger.info(`  ${pkgManager} install`);
   }
