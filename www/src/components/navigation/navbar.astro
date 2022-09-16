@@ -62,7 +62,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     </div>
     <div class="flex flex-grow justify-end items-center">
       <div class={clsx("m-8 text-center", { hidden: isLanding })}>
-        <ThemeToggleButton />
+        <ThemeToggleButton client:load />
       </div>
 
       <div>
