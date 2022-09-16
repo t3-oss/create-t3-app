@@ -52,6 +52,43 @@
     }
   }
 
+  /* Base stylings */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
+  article > section :is(ul, ol) > * + * {
+    margin-top: 0.75rem;
+  }
+
+  article > section li > :is(p, pre, blockquote):not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  article > section :is(ul, ol) {
+    padding-left: 1em;
+  }
+
+  article > section nav :is(ul, ol) {
+    padding-left: inherit;
+  }
+
+  td,
+  th {
+    padding: 6px;
+    text-align: left;
+  }
+
   .mobile-sidebar-toggle {
     overflow: hidden;
   }
