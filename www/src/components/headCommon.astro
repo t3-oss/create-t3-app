@@ -17,7 +17,12 @@
 />
 
 <!-- Scrollable a11y code helper -->
-<script src="/makeScrollableCodeFocusable.js" is:inline></script>
+<script is:inline>
+  const preTags = document.querySelectorAll("pre");
+  Array.from(preTags).forEach((element) => {
+    element.setAttribute("tabindex", "0");
+  });
+</script>
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
