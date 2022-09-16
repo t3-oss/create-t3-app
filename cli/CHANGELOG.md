@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.12.0
+
+### Minor Changes
+
+- [#446](https://github.com/t3-oss/create-t3-app/pull/446) [`6f63ec6`](https://github.com/t3-oss/create-t3-app/commit/6f63ec65201a077e534ec89c4ef18bfa07a30331) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: better cli text when scaffolding in '.'
+
 ## 5.11.0
 
 ### Minor Changes
