@@ -20,7 +20,7 @@ const NavLink: React.FC<{
   </a>
 );
 
-const MobileMenu = () => {
+export default function MobileMenu() {
   const $isMobileMenuOpen = useStore(MobileMenuState);
   return (
     <>
@@ -47,6 +47,4 @@ const MobileMenu = () => {
       </div>
     </>
   );
-};
-
-export default MobileMenu;
+}
