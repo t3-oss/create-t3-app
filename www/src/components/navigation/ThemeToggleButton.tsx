@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 const themes = ["light", "dark"] as const;
@@ -47,8 +47,17 @@ export default function ThemeToggleButton() {
     }
   };
 
+  useEffect(() => {
+    const item = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const mediaMatch = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const newTheme = item ?? (mediaMatch.matches ? "dark" : "light");
+    // only update state, dom is already updated from script-tag in `headCommon.astro`
+    _setTheme(newTheme as Theme);
+  }, [theme]);
+
   return (
-    <div className=" flex bg-t3-purple-200/50 dark:bg-slate-700 p-1.5 w-fit mx-auto rounded-full space-x-3">
+    <div className="flex bg-t3-purple-200/50 dark:bg-slate-700 p-2 w-fit mx-auto rounded-lg gap-3">
       {themes.map((t) => {
         const checked = t === theme;
         return (

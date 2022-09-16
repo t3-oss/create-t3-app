@@ -16,10 +16,7 @@ const currentPage = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
->
+<html lang="en" class="initial">
   <head>
     <SEO title={title} description={description} />
     <meta charset="UTF-8" />
@@ -27,9 +24,9 @@ const currentPage = Astro.url.pathname;
     <link rel="icon" type="image/ico" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
+  <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
     <Navbar />
-    <div class="relative h-full">
+    <div class="relative">
       <aside
         id="grid-left"
         class="hidden sticky h-screen overflow-y-auto bottom-0 top-0 left-0 right-0 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 z-10"
