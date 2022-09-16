@@ -16,8 +16,10 @@ export const cloneScaffoldAndReturnPath = async (
   try {
     await execa("git", ["clone", TEMPLATE_URL, projectName]);
   } catch (error) {
-    // TODO: A ton of things can go wrong here (like proxy errors, etc).
-    console.error(error);
+    logger.warn(
+      `  Error trying to clone the scaffold project. Can you run 'git clone ${TEMPLATE_URL}'?`,
+    );
+    logger.error(error);
   }
 };
 
