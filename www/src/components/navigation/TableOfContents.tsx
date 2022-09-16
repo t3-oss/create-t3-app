@@ -52,7 +52,7 @@ export default function TableOfContents({
   }, []);
 
   return (
-    <div className="w-full ">
+    <div>
       <h2 className="text-lg my-4 font-semibold dark:text-white text-slate-900">
         On this page
       </h2>
