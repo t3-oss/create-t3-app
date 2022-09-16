@@ -6,19 +6,23 @@ import clsx from "clsx";
 
 export const MobileMenuState = atom(false);
 
-const NavLink: React.FC<{
+interface NavLinkProps {
   href: string;
   title: string;
   external?: boolean;
-}> = ({ href, title, external = false }) => (
-  <a
-    href={href}
-    className="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
-    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-  >
-    {title}
-  </a>
-);
+}
+
+function NavLink({ href, title, external = false }: NavLinkProps) {
+  return (
+    <a
+      href={href}
+      className="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {title}
+    </a>
+  );
+}
 
 export default function MobileMenu() {
   const $isMobileMenuOpen = useStore(MobileMenuState);

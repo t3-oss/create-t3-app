@@ -2,10 +2,11 @@
 import clsx from "clsx";
 import { useRef } from "react";
 
-interface Props {
+interface SidebarToggleProps {
   currentPage: string;
 }
-export default function SidebarToggle({ currentPage }: Props) {
+
+export default function SidebarToggle({ currentPage }: SidebarToggleProps) {
   const ref = useRef<HTMLButtonElement | null>(null);
   const isLanding = currentPage === "/";
 

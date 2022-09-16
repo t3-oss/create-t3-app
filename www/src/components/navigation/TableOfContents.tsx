@@ -7,12 +7,12 @@ interface ItemOffsets {
   topOffset: number;
 }
 
-interface Props {
+interface TOCProps {
   headings: MarkdownHeading[];
 }
 
 /** FIXME: SIMPLIFY THIS PLS */
-export default function TableOfContents({ headings = [] }: Props) {
+export default function TableOfContents({ headings = [] }: TOCProps) {
   const itemOffsets = useRef<ItemOffsets[]>([]);
   const [activeId, setActiveId] = useState<string | undefined>(undefined);
   useEffect(() => {

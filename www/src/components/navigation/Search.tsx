@@ -16,7 +16,7 @@ const useDocSearchKeyboardEvents =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
-function Search() {
+export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
   const [initialQuery, setInitialQuery] = useState("");
@@ -104,5 +104,3 @@ function Search() {
     </>
   );
 }
-
-export default Search;
