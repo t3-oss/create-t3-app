@@ -8,7 +8,11 @@ const { title, href } = Astro.props;
 ---
 
 <div class="relative bg-white/5 rounded-md flex flex-col justify-between">
-  <a href={href} target="_blank" rel="noopener noreferrer"
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hover:no-underline"
     ><dt
       class="flex space-x-4 items-center bg-white/10 p-2 pl-6 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors"
     >
