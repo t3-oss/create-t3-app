@@ -15,7 +15,7 @@
     --color-success: 43 212 189;
     --color-info: 12 166 233;
   }
-  
+
   html.dark {
     --color-base: 15 23 41;
     --color-neutral: 29 40 58;
@@ -52,11 +52,19 @@
     }
   }
 
+  .mobile-sidebar-toggle {
+    overflow: hidden;
+  }
+
+  .mobile-sidebar-toggle #grid-left {
+    display: block;
+    top: 2rem;
+  }
+
   /* Markdown Styling */
   .markdown {
     @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500;
   }
-
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
   }
@@ -66,7 +74,6 @@
   .markdown h3 {
     @apply mt-8 mb-0 text-xl font-semibold;
   }
-  
   .markdown li {
     @apply list-disc;
   }
@@ -85,18 +92,15 @@
   .markdown pre {
     @apply font-mono my-3 p-2 rounded-md sm:pt-2 pl-3 mx-auto;
   }
-
   .markdown p > img {
     @apply text-sm mt-8;
   }
   .markdown table > tbody > tr > td > a {
     @apply break-all;
   }
-
   .markdown table {
     @apply max-w-full table-fixed;
   }
-
   .markdown blockquote a {
     @apply text-slate-900 dark:text-t3-purple-50;
   }

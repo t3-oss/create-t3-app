@@ -1,17 +1,28 @@
 /** @jsxImportSource react */
 import clsx from "clsx";
-import { useState } from "react";
+import { useRef } from "react";
 
 const SidebarToggle: React.FC<{ currentPage: string }> = ({ currentPage }) => {
-  const [sidebarShown, setSidebarShown] = useState(false);
-
+  const ref = useRef<HTMLButtonElement | null>(null);
   const isLanding = currentPage === "/";
+
+  const handleClick = () => {
+    const body = document.querySelector("body")!;
+    if (body.classList.contains("mobile-sidebar-toggle")) {
+      ref.current?.setAttribute("aria-pressed", "false");
+      body.classList.remove("mobile-sidebar-toggle");
+    } else {
+      ref.current?.setAttribute("aria-pressed", "true");
+      body.classList.add("mobile-sidebar-toggle");
+    }
+  };
 
   return (
     <button
+      ref={ref}
       type="button"
-      aria-pressed={sidebarShown ? "true" : "false"}
-      onClick={() => setSidebarShown(!sidebarShown)}
+      aria-pressed="false"
+      onClick={handleClick}
       className={clsx("z-20 block md:hidden", {
         "text-white": isLanding,
         "text-black dark:text-white": !isLanding,
