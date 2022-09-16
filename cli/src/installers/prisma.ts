@@ -7,6 +7,11 @@ export const prismaInstaller: Installer = async ({
   projectDir,
   packagesInUse,
 }) => {
+  if (packagesInUse.includes("nextAuth")) {
+    // We are applying those commits in the trpc installer.
+    return;
+  }
+
   await generatePatches("prisma", projectDir);
 
   const patchesFolder = `${projectDir}/patches`;

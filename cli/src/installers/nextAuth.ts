@@ -15,7 +15,11 @@ export const nextAuthInstaller: Installer = async ({
   }
 
   if (packagesInUse.includes("trpc")) {
-    await generatePatches("nextAuth+trpc", projectDir);
+    if (packagesInUse.includes("tailwind")) {
+      await generatePatches("nextAuth+trpc+tailwind", projectDir);
+    } else {
+      await generatePatches("nextAuth+trpc", projectDir);
+    }
   }
 
   // We can apply every patch on nextAuth because they don't conflict with anything.
