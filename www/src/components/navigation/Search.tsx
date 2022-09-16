@@ -51,9 +51,9 @@ const Search: React.FC = () => {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-white dark:text-gray-700 dark:bg-t3-purple-100 bg-white/70 rounded-lg"
+        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-slate-900 dark:text-slate-100 dark:bg-slate-700 bg-t3-purple-200/50 rounded-lg"
       >
-        <div className="flex items-center justify-center text-slate-900 dark:stroke-slate-900">
+        <div className="flex items-center justify-center dark:text-slate-100 stroke-white">
           <svg width="24" height="24" fill="none">
             <path
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
@@ -64,10 +64,10 @@ const Search: React.FC = () => {
             />
           </svg>
 
-          <span className="pl-1 lg:pl-3 text-slate-900">Search</span>
+          <span className="pl-1 lg:pl-3 dark:text-slate-100">Search</span>
         </div>
 
-        <span className="border px-1 rounded-md border-slate-900 text-slate-900">
+        <span className="border px-1 rounded-md dark:text-slate-100 border-slate-900 dark:border-slate-100">
           <span className="sr-only">Press </span>
 
           <kbd>/</kbd>

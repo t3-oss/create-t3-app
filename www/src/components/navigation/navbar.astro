@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import Search from "./Search";
 import SidebarToggle from "./SidebarToggle";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const currentPage = Astro.url.pathname;
 const isLanding = currentPage === "/";
@@ -29,7 +30,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
 <nav
   class={clsx("flex flex-col relative justify-between items-center pt-6", {
     "z-50 text-slate-50": isLanding,
-    "bg-t3-purple-50 dark:bg-slate-900": !isLanding,
+    "bg-t3-purple-50 dark:bg-slate-900 transition-colors": !isLanding,
   })}
   aria-label="Global"
 >
@@ -59,13 +60,17 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         }
       </div>
     </div>
-    <div>
-      <SidebarToggle currentPage={currentPage} client:idle />
-    </div>
-    <div
-      class="hidden md:block shadow-sm dark:shadow-md shadow-slate-500 dark:shadow-slate-500/10 rounded-lg w-full max-w-xs"
-    >
-      <Search client:load />
+    <div class="flex flex-grow justify-end items-center">
+      <div class={clsx("m-8 text-center", { hidden: isLanding })}>
+        <ThemeToggleButton client:load />
+      </div>
+
+      <div>
+        <SidebarToggle currentPage={currentPage} client:idle />
+      </div>
+      <div class="hidden md:block rounded-lg w-full max-w-xs">
+        <Search client:load />
+      </div>
     </div>
   </div>
 </nav>
