@@ -50,7 +50,7 @@ export default function TableOfContents({ headings = [] }: TOCProps) {
   return (
     <div>
       <h2
-        className="text-lg my-4 font-semibold dark:text-white text-slate-900"
+        className="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
         id={onThisPageId}
       >
         On this page

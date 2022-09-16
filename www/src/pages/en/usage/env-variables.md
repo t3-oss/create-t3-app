@@ -96,7 +96,7 @@ _I want to add my Twitter API Token as a server-side environment variable_
 
 1. Add the environment variable to `.env`:
 
-```env
+```
 TWITTER_API_TOKEN=1234567890
 ```
 
