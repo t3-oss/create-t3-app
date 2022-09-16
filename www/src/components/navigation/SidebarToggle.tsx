@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { useRef } from "react";
 
-const SidebarToggle: React.FC<{ currentPage: string }> = ({ currentPage }) => {
+function SidebarToggle({ currentPage }: { currentPage: string }) {
   const ref = useRef<HTMLButtonElement | null>(null);
   const isLanding = currentPage === "/";
 
@@ -43,6 +43,6 @@ const SidebarToggle: React.FC<{ currentPage: string }> = ({ currentPage }) => {
       <span className="sr-only">Toggle sidebar</span>
     </button>
   );
-};
+}
 
 export default SidebarToggle;

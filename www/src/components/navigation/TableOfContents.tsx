@@ -2,17 +2,17 @@ import type { MarkdownHeading } from "astro";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 
-type ItemOffsets = {
+interface ItemOffsets {
   id: string;
   topOffset: number;
-};
+}
+
+interface Props {
+  headings: MarkdownHeading[];
+}
 
 /** FIXME: SIMPLIFY THIS PLS */
-export default function TableOfContents({
-  headings = [],
-}: {
-  headings: MarkdownHeading[];
-}) {
+export default function TableOfContents({ headings = [] }: Props) {
   const itemOffsets = useRef<ItemOffsets[]>([]);
   const [activeId, setActiveId] = useState<string | undefined>(undefined);
   useEffect(() => {
