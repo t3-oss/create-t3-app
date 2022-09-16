@@ -1,7 +1,3 @@
----
-import "../styles/index.css";
----
-
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
@@ -21,7 +17,12 @@ import "../styles/index.css";
 />
 
 <!-- Scrollable a11y code helper -->
-<script src="/makeScrollableCodeFocusable.js" is:inline></script>
+<script is:inline>
+  const preTags = document.querySelectorAll("pre");
+  Array.from(preTags).forEach((element) => {
+    element.setAttribute("tabindex", "0");
+  });
+</script>
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
@@ -32,7 +33,9 @@ import "../styles/index.css";
     (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     root.classList.add("dark");
+    root.classList.remove("light");
   } else {
+    root.classList.add("light");
     root.classList.remove("dark");
   }
 </script>

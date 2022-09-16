@@ -1,16 +1,20 @@
 ---
+import clsx from "clsx";
 import AvatarList from "../blog/avatarList.astro";
 export interface Props {
   path: string;
   isBlog: boolean;
 }
 const { path, isBlog } = Astro.props;
+const isLanding = path === "/";
 ---
 
 <footer
-  class={path === "/"
-    ? `mt-auto pb-8 pt-16 text-t3-purple-100 bg-[#131232] flex flex-col`
-    : `mt-auto pb-8 pt-16 text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 flex flex-col`}
+  class={clsx("transition-colors mt-auto pb-8 pt-16 flex flex-col", {
+    "text-t3-purple-100 bg-[#131232]": isLanding,
+    "text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 ":
+      !isLanding,
+  })}
 >
   {isBlog && <AvatarList path={path} />}
   <div
@@ -26,7 +30,13 @@ const { path, isBlog } = Astro.props;
           class="flex justify-center space-x-3 md:justify-start"
         >
           <div class="flex items-center justify-center">
-            <img src="/favicon.svg" width="60" height="60" alt="T3 Logo" />
+            <img
+              class="rounded-lg"
+              src="/favicon.svg"
+              width="60"
+              height="60"
+              alt="T3 Logo"
+            />
             <span class="text-2xl font-semibold pl-3">Create T3 App</span>
           </div>
         </a>

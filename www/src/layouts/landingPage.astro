@@ -28,11 +28,11 @@ const currentPage = Astro.url.pathname;
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <Navbar mode={"landing"} />
+    <Navbar />
     <div class="relative h-full">
       <aside
         id="grid-left"
-        class="hidden sticky h-[100vh] overflow-y-auto bottom-0 top-0 left-0 right-0 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 z-10"
+        class="hidden sticky h-screen overflow-y-auto bottom-0 top-0 left-0 right-0 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 z-10"
         title="Site Navigation"
       >
         <LeftSidebar currentPage={currentPage} />
