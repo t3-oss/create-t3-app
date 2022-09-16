@@ -70,6 +70,8 @@ const validated = schema.parse(process.env);
 
 This is where the validation happens and exports the validated objects. You shouldn't need to modify these files.
 
+## Using Environment Variables
+
 When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
 
 ```ts twoslash
