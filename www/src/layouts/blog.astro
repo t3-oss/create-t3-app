@@ -45,7 +45,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-left"
         title="Site Navigation"
-        class="hidden sticky h-fit top-8 z-10 sm:w-screen md:w-full md:flex md:col-span-4 lg:col-span-3 xl:col-span-2 w-full transition-colors"
+        class="hidden sticky h-fit top-20 z-10 sm:w-screen md:w-full md:flex md:col-span-4 lg:col-span-3 xl:col-span-2 w-full transition-colors"
       >
         <LeftSidebar currentPage={currentPage} />
       </aside>
@@ -63,7 +63,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="hidden sticky h-fit top-8 md:block md:col-span-2 lg:col-span-3 xl:col-span-2 justify-self-start"
+        class="hidden sticky h-fit top-20 md:block md:col-span-2 lg:col-span-3 xl:col-span-2 justify-self-start"
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>
