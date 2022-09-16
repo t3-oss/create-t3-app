@@ -2,11 +2,11 @@ import type { MarkdownHeading } from "astro";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 
-interface Props {
+interface TOCProps {
   headings: MarkdownHeading[];
 }
 
-export default function TableOfContents({ headings = [] }: Props) {
+export default function TableOfContents({ headings = [] }: TOCProps) {
   headings = [
     { depth: 2, slug: "overview", text: "Overview" },
     ...headings,
