@@ -7,14 +7,18 @@ export const tailwindInstaller: Installer = async ({
   projectDir,
   packagesInUse,
 }) => {
+  if (packagesInUse.includes("trpc")) {
+    // We are applying those commits in the trpc installer.
+    return;
+  }
+
   await generatePatches("tailwind", projectDir);
 
   const patchesFolder = `${projectDir}/patches`;
 
   const patches = fs
     .readdirSync(patchesFolder)
-    .map((file) => new Patch(file, packagesInUse))
-    .filter((patch) => !patch.isBlocked());
+    .map((file) => new Patch(file, packagesInUse));
 
   for (const patch of patches) {
     await patch.apply(projectDir);

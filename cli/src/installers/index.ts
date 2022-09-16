@@ -16,7 +16,8 @@ export const availablePackages = [
 export type AvailablePackages = typeof availablePackages[number];
 export type BranchNames =
   | `${AvailablePackages}`
-  | `${AvailablePackages}+${AvailablePackages}`;
+  | `${AvailablePackages}+${AvailablePackages}`
+  | `${AvailablePackages}+${AvailablePackages}+${AvailablePackages}`;
 export type Branches =
   | AvailablePackages
   | `${BlockedPatches["package"]}+${BlockedPatches["blockedBy"][number]}`;
