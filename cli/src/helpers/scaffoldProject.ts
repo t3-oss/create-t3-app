@@ -99,5 +99,8 @@ export const scaffoldProject = async ({
     path.join(projectDir, ".gitignore"),
   );
 
-  spinner.succeed(`${chalk.cyan.bold(projectName)} scaffolded successfully!\n`);
+  const scaffoldedName =
+    projectName === "." ? "App" : chalk.cyan.bold(projectName);
+
+  spinner.succeed(`${scaffoldedName} scaffolded successfully!\n`);
 };
