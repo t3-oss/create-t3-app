@@ -16,7 +16,7 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={clsx("hidden md:block", {
+  class={clsx({
     "pt-3 pb-28": isLanding,
     "pb-32 md:overflow-hidden": !isLanding,
   })}

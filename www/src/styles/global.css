@@ -106,6 +106,12 @@
     top: 2rem;
   }
 
+  @media (min-width: 768px) {
+    .mobile-sidebar-toggle #grid-left {
+        display: none;
+    }
+  }
+
   /* Markdown Styling */
   .markdown {
     @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500;
