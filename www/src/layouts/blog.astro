@@ -35,15 +35,17 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     </title>
   </head>
 
-  <body class="w-full">
-    <Navbar />
+  <body class="bg-base">
+    <div class="bg-base fixed top-0 w-full z-50 shadow-sm shadow-t3-purple-50">
+      <Navbar />
+    </div>
     <main
-      class="bg-t3-purple-50 dark:bg-slate-900 w-full place-content-start items-start justify-items-start xl:justify-items-center grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 h-full relative gap-4 transition-colors"
+      class="bg-base mt-20 justify-items-start xl:justify-items-center grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 relative gap-4 transition-colors"
     >
       <aside
         id="grid-left"
-        class="hidden sticky h-[100vh] bottom-0 top-8 z-10 bg-t3-purple-50 bg-blend-lighten dark:bg-slate-900 sm:w-screen md:w-full md:flex md:col-span-4 lg:col-span-3 xl:col-span-2 w-full transition-colors"
         title="Site Navigation"
+        class="hidden sticky h-fit top-20 z-10 sm:w-screen md:w-full md:flex md:col-span-4 lg:col-span-3 xl:col-span-2 w-full transition-colors"
       >
         <LeftSidebar currentPage={currentPage} />
       </aside>
@@ -61,7 +63,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="hidden lg:block pt-1 md:col-span-2 lg:col-span-3 xl:col-span-2 sticky top-8 justify-self-start"
+        class="hidden sticky h-fit top-20 md:block md:col-span-2 lg:col-span-3 xl:col-span-2 justify-self-start"
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>

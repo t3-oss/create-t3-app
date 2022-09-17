@@ -54,7 +54,7 @@ export default function Search() {
         className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-slate-900 dark:text-slate-100 dark:bg-slate-700 bg-t3-purple-200/50 rounded-lg"
       >
         <div className="flex items-center justify-center dark:text-slate-100 stroke-white">
-          <svg width="24" height="24" fill="none">
+          <svg className="h-6 w-6" fill="none">
             <path
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               stroke="currentColor"

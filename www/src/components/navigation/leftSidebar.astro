@@ -16,25 +16,25 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={clsx("h-full", {
+  class={clsx("hidden md:block", {
     "pt-3 pb-28": isLanding,
     "pb-32 md:overflow-hidden": !isLanding,
   })}
 >
-  <div class="max-w-lg mx-auto p-3 md:hidden">
+  <div class="w-full mx-auto px-8 md:hidden">
     <!-- Put Searchbar on Mobile Dropdown Navbar -->
     <Search client:idle />
   </div>
   <ul
     id="nav-groups"
-    class="p-8 h-full overflow-x-visible overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600 sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
+    class="p-8 h-full overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
           <div>
             <h2
-              class={clsx("text-2xl sm:text-xl my-2", {
+              class={clsx("text-xl sm:text-lg font-semibold mb-2", {
                 // mobile menu on landing page
                 "text-slate-50": isLanding,
               })}
@@ -69,13 +69,3 @@ const sidebar = SIDEBAR[langCode];
     }
   </ul>
 </nav>
-
-<script is:inline>
-  // Not sure what this script does tbf
-  window.addEventListener("DOMContentLoaded", () => {
-    const target = document.querySelector('[aria-current="page"]');
-    if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector("#nav-groups").scrollTop = target.offsetTop;
-    }
-  });
-</script>

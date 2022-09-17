@@ -14,6 +14,8 @@
     --color-error: 251 111 132;
     --color-success: 43 212 189;
     --color-info: 12 166 233;
+
+    @apply text-slate-900 bg-base;
   }
 
   html.dark {
@@ -26,6 +28,12 @@
     --color-error: 251 111 132;
     --color-success: 43 212 189;
     --color-info: 12 166 233;
+
+    @apply text-t3-purple-100 bg-base;
+  }
+
+  .t3-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600;
   }
 
   /* Typewriter */

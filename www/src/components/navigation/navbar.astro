@@ -28,13 +28,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
 ---
 
 <nav
-  class={clsx("flex flex-col relative justify-between items-center pt-6", {
+  class={clsx("flex flex-col relative justify-between items-center py-4", {
     "z-50 text-slate-50": isLanding,
-    "bg-t3-purple-50 dark:bg-slate-900 transition-colors": !isLanding,
+    "bg-base transition-colors": !isLanding,
   })}
   aria-label="Global"
 >
-  <div class="flex items-center justify-between w-full px-6 pb-2">
+  <div class="flex items-center justify-between w-full px-6">
     <div class="flex justify-between items-center w-full md:w-auto">
       <div>
         <a href="/">
@@ -46,7 +46,8 @@ const navbarLinks: Array<{ href: string; label: string }> = [
             class="rounded-lg"
           />
         </a>
-      </div><div class="hidden -space-x-1 md:flex md:ml-10">
+      </div>
+      <div class="hidden -space-x-1 md:flex md:ml-10">
         {
           navbarLinks.map((navbarLink) => (
             <a
@@ -67,7 +68,11 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       </div>
     </div>
     <div class="flex flex-grow justify-end items-center">
-      <div class={clsx("m-8 text-center", { hidden: isLanding })}>
+      <div
+        class={clsx("text-center mx-8", {
+          hidden: isLanding,
+        })}
+      >
         <ThemeToggleButton client:load />
       </div>
 
