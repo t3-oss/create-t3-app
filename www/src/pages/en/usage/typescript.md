@@ -7,14 +7,12 @@ layout: ../../../layouts/blog.astro
 <blockquote className="w-full max-w-sm relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
 <div className="relative w-fit flex items-center justify-center p-1">
     <span className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none" aria-hidden="true">
-      &ldquo;
     </span>
-    <span className="mr-2 hidden sm:block absolute -right-1 top-7 leading-none" aria-hidden="true">
-      &ldquo;
-    </span>
-    <p className="mb-4">Build safety nets, not guard rails</p>
+    <blockquote class="mb-4 text-xl md:text-2xl">
+      &ldquo;Build safety nets, not guard rails&ldquo;
+    </blockquote>
     </div>
-    <cite className="flex items-center justify-end">
+    <cite className="flex items-center justify-center md:justify-end">
       <img
         alt="Avatar of @t3dotgg"
         className="w-12 mr-4 rounded-full bg-neutral-500"
