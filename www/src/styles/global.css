@@ -160,7 +160,7 @@
     @apply text-sm mt-8;
   }
   .markdown table > tbody > tr > td > a {
-    @apply break-all;
+    word-wrap: break-word;
   }
   .markdown table {
     @apply max-w-full table-fixed;
