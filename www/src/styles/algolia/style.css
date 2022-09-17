@@ -1,7 +1,7 @@
 /*! @docsearch/css 3.2.1 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
 html {
   --docsearch-primary-color: rgb(var(--color-primary));
-  --docsearch-text-color: #1c1e21;
+  --docsearch-text-color: #fff;
   --docsearch-spacing: 12px;
   --docsearch-icon-stroke-width: 1.4;
   --docsearch-highlight-color: var(--docsearch-primary-color);
