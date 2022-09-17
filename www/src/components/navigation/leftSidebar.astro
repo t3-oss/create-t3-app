@@ -34,7 +34,7 @@ const sidebar = SIDEBAR[langCode];
         <li>
           <div>
             <h2
-              class={clsx("text-xl sm:text-lg font-semibold mb-2", {
+              class={clsx("text-xl sm:text-lg font-semibold py-2", {
                 // mobile menu on landing page
                 "text-slate-50": isLanding,
               })}
@@ -51,9 +51,11 @@ const sidebar = SIDEBAR[langCode];
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "text-t3-purple-300 dark:text-t3-purple-200 transition-colors font-medium block py-2 px-4 rounded-md hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg",
+                        "text-t3-purple-300 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
                         {
-                          "font-extrabold": isActive,
+                          "font-bold": isActive,
+                          "border-t3-purple-300": isActive,
+                          "border-t3-purple-300/20": !isActive,
                         },
                       )}
                     >
