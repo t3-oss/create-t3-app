@@ -81,8 +81,9 @@
                   <button
                     class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2"
                     title="Copy the command to get started"
+                    id="command"
                   >
-                    <code id="command"> npx create-t3-app@latest</code>
+                    <code id="command-text"> npx create-t3-app@latest</code>
                     <svg
                       id="copy-icon"
                       xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +112,6 @@
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="feather feather-check"
                       ><polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </button>
@@ -125,8 +125,10 @@
   </div>
   <script is:inline>
     const command = document.querySelector("#command");
+    const commandText = document.querySelector("#command-text");
     const copyIcon = document.querySelector("#copy-icon");
     const checkIcon = document.querySelector("#check-icon");
+    let cooldown = false;
 
     function toggleIcons() {
       copyIcon.classList.toggle("hidden");
@@ -134,12 +136,30 @@
     }
 
     command.addEventListener("click", () => {
-      navigator.clipboard.writeText(command.innerText);
-      toggleIcons();
-
-      setTimeout(() => {
+      if (cooldown === false) {
+        cooldown = true;
+        navigator.clipboard.writeText(commandText.innerText);
         toggleIcons();
-      }, 2000);
+
+        setTimeout(() => {
+          toggleIcons();
+          cooldown = false;
+        }, 2000);
+      }
     });
   </script>
 </section>
+
+<style>
+  #check-icon {
+    stroke-dasharray: 450;
+    stroke-dashoffset: -30;
+    animation: draw 2s linear normal;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 200;
+    }
+  }
+</style>
