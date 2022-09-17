@@ -1,7 +1,7 @@
 ---
 title: Environment Variables
 description: Getting started with create-t3-app
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
 Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional files in the `env`-directory:

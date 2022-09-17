@@ -1,7 +1,7 @@
 ---
 title: Tailwind
 description: Usage of TailwindCSS
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
 # What is TailwindCSS?

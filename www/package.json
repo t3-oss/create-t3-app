@@ -22,6 +22,7 @@
     "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^0.11.1",
     "@astrojs/react": "^1.1.3",
     "@astrojs/tailwind": "^2.0.1",
     "@types/node": "^18.7.13",
