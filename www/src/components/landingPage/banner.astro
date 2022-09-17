@@ -1,6 +1,3 @@
----
----
-
 <section>
   <div class="overflow-x-hidden">
     <div class="relative w-full h-full overflow-hidden py-16 xl:py-32 z-0">
@@ -81,38 +78,43 @@
                   </a>
                 </div>
                 <div class="mt-8 block h-full relative mx-auto">
-                  <code
-                    id="command"
-                    class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative"
-                    >npx create-t3-app@latest
-                  </code>
-
-                  <div
-                    id="toast"
-                    class="absolute flex items-center justify-center rounded-lg top-0 bg-[#262626] h-10 px-3 left-1/2 -translate-x-1/2 opacity-0 -z-10"
+                  <button
+                    class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2"
+                    title="Copy the command to get started"
                   >
-                    <span
-                      class="flex px-3 items-center justify-center rounded-lg text-[#e8dcff]"
-                      ><svg
-                        id="checkmark"
-                        class="h-8 w-8 rounded-full stroke-2 stroke-white shadow-[inset 0 0 0] shadow-green-500 my-1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 52 52"
-                      >
-                        <circle
-                          id="checkmark-circle"
-                          class="stroke-2 stroke-green-500"
-                          cx="26"
-                          cy="26"
-                          r="25"
-                          fill="none"></circle>
-                        <path
-                          id="checkmark-check"
-                          fill="none"
-                          d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                      </svg><span class="pl-2">Copied</span>
-                    </span>
-                  </div>
+                    <code id="command"> npx create-t3-app@latest</code>
+                    <svg
+                      id="copy-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                      ></rect><path
+                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                      ></path>
+                    </svg>
+                    <svg
+                      id="check-icon"
+                      class="hidden"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-check"
+                      ><polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -123,71 +125,21 @@
   </div>
   <script is:inline>
     const command = document.querySelector("#command");
+    const copyIcon = document.querySelector("#copy-icon");
+    const checkIcon = document.querySelector("#check-icon");
+
+    function toggleIcons() {
+      copyIcon.classList.toggle("hidden");
+      checkIcon.classList.toggle("hidden");
+    }
+
     command.addEventListener("click", () => {
-      const pre = command.parentElement;
-      const toast = document.querySelector("#toast");
-      const checkmark = document.querySelector("#checkmark");
-      const checkmarkCircle = document.querySelector("#checkmark-circle");
-      const checkmarkCheck = document.querySelector("#checkmark-check");
-
       navigator.clipboard.writeText(command.innerText);
+      toggleIcons();
 
-      const toggleClasses = () => {
-        toast.classList.toggle("toast-animation");
-        checkmark.classList.toggle("checkmark-animation");
-        checkmarkCircle.classList.toggle("checkmark-circle-animation");
-        checkmarkCheck.classList.toggle("checkmark-check-animation");
-      };
-      toggleClasses();
       setTimeout(() => {
-        toggleClasses();
-      }, 2500);
+        toggleIcons();
+      }, 2000);
     });
   </script>
-  <style>
-    .toast-animation {
-      opacity: 1;
-      top: 150%;
-      transition: all 1s ease-in-out;
-    }
-    .checkmark-circle-animation {
-      stroke-dasharray: 166;
-      stroke-dashoffset: 166;
-      stroke-miterlimit: 10;
-      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-    }
-
-    .checkmark-animation {
-      stroke-miterlimit: 10;
-      animation: fill 0.4s ease-in-out 0.4s forwards,
-        scale 0.3s ease-in-out 0.9s both;
-    }
-
-    .checkmark-check-animation {
-      transform-origin: 50% 50%;
-      stroke-dasharray: 48;
-      stroke-dashoffset: 48;
-      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-    }
-
-    @keyframes stroke {
-      100% {
-        stroke-dashoffset: 0;
-      }
-    }
-    @keyframes scale {
-      0%,
-      100% {
-        transform: none;
-      }
-      50% {
-        transform: scale3d(1.1, 1.1, 1);
-      }
-    }
-    @keyframes fill {
-      100% {
-        box-shadow: inset 0px 0px 0px 30px #22c55e;
-      }
-    }
-  </style>
 </section>
