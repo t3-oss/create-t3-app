@@ -28,14 +28,20 @@
 <script is:inline>
   const root = document.documentElement;
   const theme = localStorage.getItem("theme");
-  if (
-    theme === "dark" ||
-    (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    root.classList.add("dark");
-    root.classList.remove("light");
-  } else {
+
+  root.classList.remove("dark");
+  root.classList.remove("light");
+
+  if (window.location.pathname === "/") {
     root.classList.add("light");
-    root.classList.remove("dark");
+  } else {
+    if (
+      theme === "dark" ||
+      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      root.classList.add("dark");
+    } else {
+      root.classList.add("light");
+    }
   }
 </script>

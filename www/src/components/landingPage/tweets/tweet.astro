@@ -28,7 +28,7 @@ const {
 
 <div class="max-w-xl mx-auto my-2">
   <article
-    class="border-t border-b border-gray-400 px-4 pt-4 pb-1 hover:bg-gray-100 flex flex-wrap items-start cursor-pointer bg-white bg-cover rounded-lg"
+    class="px-4 pt-4 pb-1 flex flex-wrap items-start hover:bg-white/20 bg-white/10 bg-cover rounded-lg transition-colors hover:no-underline"
   >
     <img
       src={avatar}
@@ -69,17 +69,18 @@ const {
           href={`https://twitter.com/${handle}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-600 text-sm lg:text-sm whitespace-nowrap mr-1 hover:text-[#1da1f2]"
+          class="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap mr-1 hover:text-[#1da1f2]"
           >@{handle}
         </a>
-        <span class="text-gray-600 text-sm lg:text-sm whitespace-nowrap mr-1"
+        <span
+          class="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap mr-1"
           >·</span
         >
         <a
           href={`https://twitter.com/${handle}/status/${tweetId}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-600 text-sm lg:text-sm whitespace-nowrap hover:text-[#1da1f2]"
+          class="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap hover:text-[#1da1f2]"
           >{date}
         </a>
       </div>
@@ -88,13 +89,15 @@ const {
       <p class="my-1 text-sm xl:text-base whitespace-pre-line">{text}</p>
 
       <div class="flex items-center justify-start py-2">
-        <div class="text-gray-600 flex hover:text-blue-500 items-center mr-8">
+        <div
+          class="text-t3-purple-100 flex hover:text-blue-500 items-center mr-8"
+        >
           <a
             aria-label="Comment on Tweet"
             href={`https://twitter.com/intent/tweet?in_reply_to=${tweetId}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-8 h-8 hover:bg-blue-200 rounded-full flex items-center justify-center hover:text-blue-500"
+            class="w-8 h-8 rounded-full flex items-center justify-center hover:text-blue-500"
           >
             <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"
               ><g
@@ -106,13 +109,15 @@ const {
           </a>
           <span class="ml-1">{comments}</span>
         </div>
-        <div class="text-gray-600 flex hover:text-green-500 items-center mr-8">
+        <div
+          class="text-t3-purple-100 flex hover:text-green-500 items-center mr-8"
+        >
           <a
             aria-label="Retweet"
             href={`https://twitter.com/intent/retweet?tweet_id=${tweetId}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-8 h-8 hover:bg-green-200 rounded-full flex items-center justify-center hover:text-green-500"
+            class="w-8 h-8 rounded-full flex items-center justify-center hover:text-green-500"
           >
             <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"
               ><g
@@ -124,13 +129,15 @@ const {
           </a>
           <span class="ml-1">{retweets}</span>
         </div>
-        <div class="text-gray-600 flex hover:text-red-500 items-center mr-6">
+        <div
+          class="text-t3-purple-100 flex hover:text-red-500 items-center mr-6"
+        >
           <a
             aria-label="Like"
             href={`https://twitter.com/intent/like?tweet_id=${tweetId}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-8 h-8 hover:bg-red-200 rounded-full flex items-center justify-center hover:text-red-500"
+            class="w-8 h-8 rounded-full flex items-center justify-center hover:text-red-500"
           >
             <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"
               ><g
