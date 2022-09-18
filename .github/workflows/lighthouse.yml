@@ -18,14 +18,16 @@ jobs:
             const comment = context.payload.comment;
             const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
             const matches = comment.body.match(regex);
-            if (!matches) {
-              throw new Error('No Vercel preview URL found in comment body');
+            let previewUrl = "";
+            if (matches && matches.length) {
+              previewUrl = matches[0];
+              console.log('Preview url found:', previewUrl);
             }
-            const previewUrl = matches[0];
-            console.log('Preview url found:', previewUrl);
+            console.log("No preview url found.");
             core.setOutput('vercel_preview_url', previewUrl);
             
       - name: Add comment to PR
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
@@ -36,9 +38,11 @@ jobs:
             Running Lighthouse audit...
 
       - name: Checkout repository
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         uses: actions/checkout@v3
 
       - name: Audit preview URL with Lighthouse
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3
         with:
@@ -47,6 +51,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
       - name: Format lighthouse score
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: format_lighthouse_score
         uses: actions/github-script@v3
         with:
@@ -74,7 +79,9 @@ jobs:
             ].join('\n')
 
              core.setOutput("comment", comment);
+             
       - name: Add comment to PR
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
