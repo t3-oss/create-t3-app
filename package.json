@@ -38,7 +38,6 @@
     "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\" --ignore-path .gitignore",
     "format:check": "prettier --check --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\" --ignore-path .gitignore",
     "check": "pnpm lint && pnpm format:check && pnpm typecheck",
-    "prepare": "husky install",
     "release": "changeset version",
     "pub:beta": "cd cli && pnpm pub:beta",
     "pub:next": "cd cli && pnpm pub:next",
