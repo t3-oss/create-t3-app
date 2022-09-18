@@ -2,9 +2,11 @@
 import Tweet from "./tweet.astro";
 ---
 
-<section class="pb-16">
-  <div class="flex flex-col lg:flex-row items-center justify-center mx-3">
-    <div class="w-fit sm:p-2">
+<section
+  class="pb-16 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto gap-4 md:gap-10 px-4 sm:px-6 lg:px-8"
+>
+  <div class="grid grid-cols-1">
+    <div class="w-fit">
       <Tweet
         author="Emilia Zapata"
         avatar="https://pbs.twimg.com/profile_images/1426010455055638531/xUFu5JP7_400x400.jpg"
@@ -18,7 +20,7 @@ import Tweet from "./tweet.astro";
         tweetId="1553580714591158272"
       />
     </div>
-    <div class="w-fit sm:p-2">
+    <div class="w-fit">
       <Tweet
         author="Antonio Pitasi"
         avatar="https://pbs.twimg.com/profile_images/1478681149824245762/OPY0MMZX_400x400.jpg"
@@ -27,8 +29,8 @@ import Tweet from "./tweet.astro";
         likes={43}
         retweets={5}
         date="Jul 7"
-        text={`We just launched @Pisa_Dev: https://pisa.dev/ ... 🎉🎉 
-        
+        text={`We just launched @Pisa_Dev: https://pisa.dev/ ... 🎉🎉
+
         Built using the cool kids’ stack of 2022:
         - @nextjs
         - @tailwindcss
@@ -37,13 +39,13 @@ import Tweet from "./tweet.astro";
         - @planetscaledata
         - @PlausibleHQ
         Built by create-t3-app, thanks @t3dotgg!
-        
+
         Let me go deeper on this, a thread…🧵`}
         verified={false}
         tweetId="1544944058291953664"
       />
     </div>
-    <div class="w-fit sm:p-2">
+    <div class="w-fit">
       <Tweet
         author="Anthony (ajcwebdev.x)"
         avatar="https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_400x400.png"
@@ -57,5 +59,20 @@ import Tweet from "./tweet.astro";
         tweetId="1544909672137867264"
       />
     </div>
+  </div>
+  <div class="flex flex-col items-start text-left mb-12">
+    <h2 class="text-2xl font-semibold text-t3-purple-200">
+      Loved by the community
+    </h2>
+    <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
+      What others have to say about create-t3-app
+    </h3>
+    <p class="mt-4 text-xl text-t3-purple-200 max-w-3xl">
+      Want to be listed here? Mention <a
+        href="twitter.com"
+        rel="noopener noreferrer"
+        class="text-t3-purple-100">@placeholder</a
+      > on Twitter!
+    </p>
   </div>
 </section>
