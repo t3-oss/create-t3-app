@@ -1,20 +1,36 @@
 ---
 title: NextJS
 description: Usage of NextJS
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
 # What is NextJS?
 
 NextJS is a backend framework for your React applications.
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="_blank">
+<a
+href="https://www.youtube.com/watch?v=2cB5Fh46Vi4"
+className="mx-auto"
+target="\_blank"
+
+>
+
   <p align="center">
-    <img src="/images/nextjs_thumbnail.jpg" alt="NextJS is a backend framework" width="320" />
+    <img
+      src="/images/nextjs_thumbnail.jpg"
+      alt="NextJS is a backend framework"
+      width="320"
+    />
   </p>
 </a>
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="_blank">
+<a
+href="https://www.youtube.com/watch?v=2cB5Fh46Vi4"
+className="mx-auto"
+target="\_blank"
+
+>
+
   <p align="center">Watch Theo's overview on Youtube here</p>
 </a>
 

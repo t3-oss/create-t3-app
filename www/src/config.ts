@@ -24,6 +24,7 @@ export type Frontmatter = {
   dir?: "ltr" | "rtl";
   ogLocale?: string;
   lang?: string;
+  isMdx?: boolean;
 };
 
 export const KNOWN_LANGUAGES = {

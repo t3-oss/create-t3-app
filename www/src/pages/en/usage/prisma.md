@@ -1,7 +1,7 @@
 ---
 title: Prisma
 description: Usage of Prisma
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
 ## What is Prisma?

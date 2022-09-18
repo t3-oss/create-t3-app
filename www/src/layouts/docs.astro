@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
 import clsx from "clsx";
-import PageContent from "../components/blog/pageContent.astro";
+import PageContent from "../components/docs/pageContent.astro";
 import Footer from "../components/footer/footer.astro";
 import HeadCommon from "../components/headCommon.astro";
 import HeadSEO from "../components/headSeo.astro";
@@ -19,7 +19,11 @@ export interface Props {
 const { frontmatter, headings } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
-const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
+
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.${
+  frontmatter.isMdx ? "mdx" : "md"
+}`;
+
 const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
 const asideWidth = "72";
 ---
