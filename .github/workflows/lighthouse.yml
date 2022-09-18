@@ -38,6 +38,7 @@ jobs:
             Running Lighthouse audit...
 
       - name: Checkout repository
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         uses: actions/checkout@v3
 
       - name: Audit preview URL with Lighthouse
