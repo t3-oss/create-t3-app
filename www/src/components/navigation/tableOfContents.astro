@@ -52,6 +52,8 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           const tocItem = document.querySelector(`#toc-${heading.id}`); // corresponding item in TOC
 
           document.querySelector("html").classList.add("bg-error");
+          document.querySelector("html").classList.add("light");
+          document.querySelector("html").classList.remove("dark");
 
           tocItem.classList.toggle("text-error");
 
