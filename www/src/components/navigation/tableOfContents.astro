@@ -1,0 +1,81 @@
+---
+import type { MarkdownHeading } from "astro";
+
+export interface Props {
+  headings: MarkdownHeading[];
+  title: string;
+}
+
+let { headings, title } = Astro.props;
+headings = [{ depth: 2, slug: title, text: title }, ...headings].filter(
+  ({ depth }) => depth > 1 && depth < 4,
+);
+---
+
+<div>
+  <h2
+    class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+    id="on-this-page-heading"
+  >
+    On this page
+  </h2>
+  <ul
+    class="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300 dark:border-t3-purple-200 my-1 list-none"
+  >
+    {
+      headings.map((heading) => {
+        const { depth, slug, text } = heading;
+
+        return (
+          <li class={`pl-${depth * 2 - 2} ml-1 w-full list-none pb-1`}>
+            <a
+              class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+              href={`#${slug}`}
+              id={`toc-${slug}`}
+            >
+              {text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<script>
+  // Thanks Astro for the IntersectionObserver:
+  // https://github.com/withastro/docs/blob/main/src/components/RightSidebar/TableOfContents.tsx
+
+  const setCurrent: IntersectionObserverCallback = (entries) => {
+    for (const entry of entries) {
+      const heading = entry.target;
+      const tocItem = document.querySelector(`#toc-${heading.id}`);
+      if (entry.isIntersecting) {
+        if (heading.id === "toc-heading") continue;
+        tocItem?.classList.add(
+          "underline",
+          "text-t3-purple-700",
+          "dark:text-t3-purple-100",
+        );
+      } else {
+        tocItem?.classList.remove(
+          "underline",
+          "text-t3-purple-700",
+          "dark:text-t3-purple-100",
+        );
+      }
+    }
+  };
+
+  const headingsObserver = new IntersectionObserver(setCurrent, {
+    rootMargin: "-100px 0% -66%",
+    threshold: 1,
+  });
+
+  // Observe all the headings in the main page content.
+  document
+    .querySelectorAll("article :is(h1,h2,h3)")
+    .forEach((h) => headingsObserver.observe(h));
+</script>
+
+<!-- "underline text-t3-purple-700 dark:text-t3-purple-100": -->

@@ -67,7 +67,11 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         class="hidden lg:block relative"
       >
         <div class="sticky top-20">
-          <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
+          <RightSidebar
+            headings={headings}
+            githubEditUrl={githubEditUrl}
+            title={frontmatter.title}
+          />
         </div>
       </aside>
     </main>
