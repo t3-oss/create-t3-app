@@ -15,7 +15,7 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
 <div>
   <h2
     class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
-    id="on-this-page-heading"
+    id="toc-heading"
   >
     On this page
   </h2>
@@ -42,40 +42,52 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
   </ul>
 </div>
 
-<script>
-  // Thanks Astro for the IntersectionObserver:
-  // https://github.com/withastro/docs/blob/main/src/components/RightSidebar/TableOfContents.tsx
+<script is:inline>
+  // Toggle classes when items are in view
+  document.querySelectorAll("article :is(h1,h2,h3)").forEach((h) => {
+    new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const heading = entry.target; // observed item
+          const tocItem = document.querySelector(`#toc-${heading.id}`); // corresponding item in TOC
 
-  const setCurrent: IntersectionObserverCallback = (entries) => {
-    for (const entry of entries) {
-      const heading = entry.target;
-      const tocItem = document.querySelector(`#toc-${heading.id}`);
-      if (entry.isIntersecting) {
-        if (heading.id === "toc-heading") continue;
-        tocItem?.classList.add(
-          "underline",
-          "text-t3-purple-700",
-          "dark:text-t3-purple-100",
-        );
-      } else {
-        tocItem?.classList.remove(
-          "underline",
-          "text-t3-purple-700",
-          "dark:text-t3-purple-100",
-        );
-      }
-    }
-  };
+          document.querySelector("html").classList.add("bg-error");
 
-  const headingsObserver = new IntersectionObserver(setCurrent, {
-    rootMargin: "-100px 0% -66%",
-    threshold: 1,
+          tocItem.classList.toggle("text-error");
+
+          if (entry.isIntersecting) {
+            // this works
+            heading.classList.add("text-error");
+
+            // test: this doesn't
+            tocItem?.classList.add("text-error");
+
+            // this what i actually want to do
+            tocItem?.classList.add(
+              "underline",
+              "text-t3-purple-700",
+              "dark:text-t3-purple-100",
+            );
+          } else {
+            // again, this works
+            heading.classList.remove("text-error");
+
+            // this doesn't
+            tocItem?.classList.remove("text-error");
+
+            // this is what i actually want to do
+            tocItem?.classList.remove(
+              "underline",
+              "text-t3-purple-700",
+              "dark:text-t3-purple-100",
+            );
+          }
+        }
+      },
+      {
+        rootMargin: "-100px 0% -66%",
+        threshold: 1,
+      },
+    ).observe(h);
   });
-
-  // Observe all the headings in the main page content.
-  document
-    .querySelectorAll("article :is(h1,h2,h3)")
-    .forEach((h) => headingsObserver.observe(h));
 </script>
-
-<!-- "underline text-t3-purple-700 dark:text-t3-purple-100": -->
