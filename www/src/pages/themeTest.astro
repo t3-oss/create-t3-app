@@ -1,6 +1,6 @@
 ---
 import HeadCommon from "../components/headCommon.astro";
-import ThemeToggleButton from "../components/navigation/ThemeToggleButton";
+import ThemeToggleButton from "../components/navigation/themeToggleButton.astro";
 import "../styles/global.css";
 ---
 
@@ -11,7 +11,7 @@ import "../styles/global.css";
   <div class="grid grid-cols-1 gap-2 sm:gap-4">
     <div>
       <h1 class="text-4xl font-bold py-4">Colors</h1>
-      <ThemeToggleButton client:load />
+      <ThemeToggleButton />
       <div class="grid grid-cols-2 gap-4 mt-8 font-semibold">
         <div class="p-4 bg-neutral">Neutral</div>
         <div class="p-4 bg-primary">Primary</div>
