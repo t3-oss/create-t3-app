@@ -1,0 +1,6 @@
+tasks:
+  - init: pnpm install
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - bradlc.vscode-tailwindcss
