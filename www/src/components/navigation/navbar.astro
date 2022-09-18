@@ -30,7 +30,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
 <nav
   class={clsx("flex flex-col relative justify-between items-center py-4", {
     "z-50 text-slate-50": isLanding,
-    "bg-base transition-colors": !isLanding,
+    "bg-default transition-colors": !isLanding,
   })}
   aria-label="Global"
 >
@@ -52,7 +52,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           navbarLinks.map((navbarLink) => (
             <a
               class={clsx(
-                "inline-flex items-center border font-medium relative text-base px-3 py-2 rounded-md border-transparent",
+                "inline-flex items-center border font-medium relative px-3 py-2 rounded-md border-transparent",
                 {
                   "text-t3-purple-100 hover:text-t3-purple-300": isLanding,
                   "text-t3-purple-500 dark:text-t3-purple-100 hover:text-t3-purple-400":

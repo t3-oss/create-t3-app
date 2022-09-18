@@ -10,6 +10,7 @@ import Navbar from "../components/navigation/navbar.astro";
 import RightSidebar from "../components/navigation/rightSidebar.astro";
 import * as CONFIG from "../config";
 import "../styles/global.css";
+import "@fontsource/inter/variable.css";
 
 export interface Props {
   frontmatter: CONFIG.Frontmatter;
@@ -41,8 +42,8 @@ const asideWidth = "72";
     </title>
   </head>
 
-  <body class="bg-base">
-    <div class="bg-base sticky top-0 w-full z-50">
+  <body class="bg-default">
+    <div class="bg-default sticky top-0 w-full z-50">
       <Navbar />
     </div>
     <main>
@@ -50,7 +51,7 @@ const asideWidth = "72";
         id="grid-left"
         title="Site Navigation"
         class={clsx(
-          "hidden fixed z-50 bg-base inset-0 top-20 t3-scrollbar overflow-hidden md:bottom-2 md:overflow-auto md:block md:w-72 ",
+          "hidden fixed bg-default z-40 bg-base inset-0 top-16 t3-scrollbar overflow-hidden md:bottom-2 md:overflow-auto md:block md:w-72 ",
           `w-${asideWidth}`,
         )}
       >

@@ -5,16 +5,7 @@
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
-
 <link rel="sitemap" href="/sitemap.xml" />
-
-<!-- Preload Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap"
-  rel="stylesheet"
-/>
 
 <!-- Scrollable a11y code helper -->
 <script is:inline>
@@ -28,14 +19,20 @@
 <script is:inline>
   const root = document.documentElement;
   const theme = localStorage.getItem("theme");
-  if (
-    theme === "dark" ||
-    (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
+
+  root.classList.remove("dark");
+  root.classList.remove("light");
+
+  if (window.location.pathname === "/") {
     root.classList.add("dark");
-    root.classList.remove("light");
   } else {
-    root.classList.add("light");
-    root.classList.remove("dark");
+    if (
+      theme === "dark" ||
+      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      root.classList.add("dark");
+    } else {
+      root.classList.add("light");
+    }
   }
 </script>

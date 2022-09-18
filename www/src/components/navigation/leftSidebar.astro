@@ -16,8 +16,8 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={clsx("flex flex-col gap-4 h-full pb-4 px-2 md:h-auto", {
-    "pt-3 md:pb-28": isLanding,
+  class={clsx("flex flex-col gap-4 h-full pb-4 px-2 pt-6 md:pt-0 md:h-auto", {
+    "md:pb-28": isLanding,
     "md:pb-32 md:overflow-hidden": !isLanding,
   })}
 >
@@ -27,14 +27,14 @@ const sidebar = SIDEBAR[langCode];
   </div>
   <ul
     id="nav-groups"
-    class="p-4 md:p-8 h-full overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
+    class="p-4 md:p-8 h-screen overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
           <div>
             <h2
-              class={clsx("text-xl sm:text-lg font-semibold mb-2", {
+              class={clsx("text-xl sm:text-lg font-semibold py-2", {
                 // mobile menu on landing page
                 "text-slate-50": isLanding,
               })}
@@ -51,9 +51,11 @@ const sidebar = SIDEBAR[langCode];
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "text-t3-purple-300 dark:text-t3-purple-200 transition-colors font-medium block py-2 px-4 rounded-md hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg",
+                        "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
                         {
-                          "font-extrabold": isActive,
+                          "font-bold": isActive,
+                          "border-t3-purple-300": isActive,
+                          "border-t3-purple-300/20": !isActive,
                         },
                       )}
                     >

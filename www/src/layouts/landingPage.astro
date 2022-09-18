@@ -5,6 +5,8 @@ import Navbar from "../components/navigation/navbar.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import "../styles/global.css";
 import "../styles/algolia/style.css";
+import HeadCommon from "../components/headCommon.astro";
+import "@fontsource/inter/variable.css";
 
 export interface Props {
   title: string;
@@ -16,13 +18,10 @@ const currentPage = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="initial">
+<html dir="ltr" lang="en-us" class="initial">
   <head>
+    <HeadCommon />
     <SEO title={title} description={description} />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/ico" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
   </head>
   <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
     <Navbar />

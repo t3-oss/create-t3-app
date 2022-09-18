@@ -26,7 +26,7 @@ export default function MobileMenu() {
     <>
       <div
         className={clsx(
-          "absolute flex flex-col mt-1 transform transition-transform duration-300 ease-in-out z-50 bg-base shadow shadow-t3-purple-100",
+          "absolute flex flex-col mt-1 transform transition-transform duration-300 ease-in-out z-50 bg-default shadow shadow-t3-purple-100",
           {
             "-mx-4 mt-1 translate-y-16 opacity-100": $isMobileMenuOpen,
             "-translate-y-96 opacity-0": !$isMobileMenuOpen,

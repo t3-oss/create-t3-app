@@ -6,15 +6,12 @@ export interface Props {
   isBlog: boolean;
 }
 const { path, isBlog } = Astro.props;
-const isLanding = path === "/";
 ---
 
 <footer
-  class={clsx("transition-colors mt-auto pb-8 pt-16 flex flex-col", {
-    "text-t3-purple-100 bg-[#131232]": isLanding,
-    "text-slate-900 dark:text-t3-purple-100 bg-t3-purple-50 dark:bg-slate-900 ":
-      !isLanding,
-  })}
+  class={clsx(
+    "transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent",
+  )}
 >
   {isBlog && <AvatarList path={path} />}
   <div
