@@ -103,12 +103,11 @@
 
   .mobile-sidebar-toggle #grid-left {
     display: block;
-    top: 2rem;
   }
 
   @media (min-width: 768px) {
     .mobile-sidebar-toggle #grid-left {
-        display: none;
+      display: none;
     }
   }
 

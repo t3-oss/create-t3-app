@@ -16,18 +16,18 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={clsx({
-    "pt-3 pb-28": isLanding,
-    "pb-32 md:overflow-hidden": !isLanding,
+  class={clsx("flex flex-col gap-4 h-full pb-4 px-2 md:h-auto", {
+    "pt-3 md:pb-28": isLanding,
+    "md:pb-32 md:overflow-hidden": !isLanding,
   })}
 >
-  <div class="w-full mx-auto px-8 md:hidden">
+  <div class="w-full mx-auto px-4 md:px-8 md:hidden shrink-0">
     <!-- Put Searchbar on Mobile Dropdown Navbar -->
     <Search client:idle />
   </div>
   <ul
     id="nav-groups"
-    class="p-8 h-full overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
+    class="p-4 md:p-8 h-full overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
