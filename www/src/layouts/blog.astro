@@ -1,5 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
+import clsx from "clsx";
 import PageContent from "../components/blog/pageContent.astro";
 import Footer from "../components/footer/footer.astro";
 import HeadCommon from "../components/headCommon.astro";
@@ -20,6 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
 const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
 const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
+const asideWidth = "72";
 ---
 
 <html
@@ -39,19 +41,18 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     <div class="bg-base sticky top-0 w-full z-50">
       <Navbar />
     </div>
-    <main
-      class="bg-base justify-items-start xl:justify-items-center grid grid-cols-1 sm:grid-cols-6 md:grid-cols-12 relative gap-4 transition-colors"
-    >
+    <main>
       <aside
         id="grid-left"
         title="Site Navigation"
-        class="hidden sticky h-fit top-20 z-10 sm:w-screen md:w-full md:flex md:col-span-4 lg:col-span-3 xl:col-span-2 w-full transition-colors"
+        class={clsx(
+          "hidden fixed z-50 bg-base inset-0 top-20 t3-scrollbar overflow-hidden md:bottom-2 md:overflow-auto md:block md:w-72 ",
+          `w-${asideWidth}`,
+        )}
       >
         <LeftSidebar currentPage={currentPage} />
       </aside>
-      <div
-        class="col-span-1 sm:col-span-6 md:col-span-8 lg:col-span-6 xl:col-span-8 w-full max-w-screen-md"
-      >
+      <div class="p-4 md:ml-72 lg:mr-72 flex flex-col items-center">
         <PageContent
           frontmatter={frontmatter}
           headings={headings}
@@ -59,15 +60,18 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         >
           <slot />
         </PageContent>
+        <Footer path={currentFile} isBlog={true} />
       </div>
       <aside
-        id="grid-right"
+        id={"grid-right"}
         title="Table of Contents"
-        class="hidden sticky h-fit top-20 md:block md:col-span-2 lg:col-span-3 xl:col-span-2 justify-self-start"
+        class={clsx(
+          "px-8 hidden lg:block fixed right-0 top-20 bottom-8",
+          `w-${asideWidth}`,
+        )}
       >
         <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
       </aside>
     </main>
-    <Footer path={currentFile} isBlog={true} />
   </body>
 </html>
