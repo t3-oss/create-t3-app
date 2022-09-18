@@ -4,7 +4,7 @@ description: Installation instructions for Create T3 App
 layout: ../../layouts/docs.astro
 ---
 
-To install `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
 
 ### npm
 
@@ -36,3 +36,7 @@ pnpm dlx create-t3-app@latest
 ## Experimental
 
 If you prefer using the [experimental v10 version of tRPC](https://trpc.io?v10), use `create-t3-app@next`. Note that the alpha versions of tRPC that it uses may contain API changes. We will try our best to keep on top of these, please file an issue if we have missed something.
+
+```bash
+npx create-t3-app@next
+```

@@ -93,6 +93,7 @@ importers:
       '@astrojs/tailwind': ^2.0.1
       '@docsearch/css': ^3.2.1
       '@docsearch/react': ^3.2.1
+      '@fontsource/inter': ^4.5.12
       '@nanostores/react': ^0.3.0
       '@types/node': ^18.7.13
       '@types/react': ^18.0.0
@@ -116,6 +117,7 @@ importers:
       '@algolia/client-search': 4.14.2
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.1_yfbvrhpbhfpiewzab37lntawvq
+      '@fontsource/inter': 4.5.12
       '@nanostores/react': 0.3.0_gwdviqdq472dtrt62dkrmuf3uu
       astro-seo: 0.6.0
       clsx: 1.2.1
@@ -1098,6 +1100,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fontsource/inter/4.5.12:
+    resolution: {integrity: sha512-bGKk4/8tube/nCk8hav0ZDBVbzJzc7m0Vt4xF5p15IN4YImwGdtKG38Oq5bU8xHNS+VfvbFFCepgQNj7Pr/Lvg==}
+    dev: false
 
   /@humanwhocodes/config-array/0.10.4:
     resolution: {integrity: sha512-mXAIHxZT3Vcpg83opl1wGlVZ9xydbfZO3r5YfRSH6Gpp2J/PfdBP0wbDa2sO6/qRbcalpoevVyW6A/fI6LfeMw==}
