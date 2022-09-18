@@ -94,7 +94,6 @@ importers:
       '@docsearch/css': ^3.2.1
       '@docsearch/react': ^3.2.1
       '@fontsource/inter': ^4.5.12
-      '@nanostores/react': ^0.3.0
       '@types/node': ^18.7.13
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -106,7 +105,6 @@ importers:
       eslint: ^8.22.0
       eslint-plugin-astro: ^0.17.1
       eslint-plugin-jsx-a11y: ^6.6.1
-      nanostores: ^0.6.0
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
@@ -118,10 +116,8 @@ importers:
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.1_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
-      '@nanostores/react': 0.3.0_gwdviqdq472dtrt62dkrmuf3uu
       astro-seo: 0.6.0
       clsx: 1.2.1
-      nanostores: 0.6.0
       tailwind-scrollbar: 2.0.1_tailwindcss@3.1.8
     devDependencies:
       '@astrojs/mdx': 0.11.1
@@ -1234,20 +1230,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@nanostores/react/0.3.0_gwdviqdq472dtrt62dkrmuf3uu:
-    resolution: {integrity: sha512-gf2vRS2kGxLzLAF20BlUeFxMtBVEHaErk2XQ1YYnTAPtuesBD2nB1ndAOOinL2mSS2zxyQ4jtW3uljvbsGNuIQ==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      nanostores: ^0.6.0
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
-    dependencies:
-      nanostores: 0.6.0
-      react: 18.0.0
-      react-dom: 18.0.0_react@18.0.0
-      use-sync-external-store: 1.2.0_react@18.0.0
-    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -5322,11 +5304,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanostores/0.6.0:
-    resolution: {integrity: sha512-CQpKE8wtaJAr66hbg32t0MOAeybzLywU6UsLAX18kyQL/bME+xwhjWpmrvJRBp5kueFy6hs2oHlt3HFpNP+JaA==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    dev: false
-
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -7299,14 +7276,6 @@ packages:
     dependencies:
       punycode: 2.1.1
     dev: true
-
-  /use-sync-external-store/1.2.0_react@18.0.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.0.0
-    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
