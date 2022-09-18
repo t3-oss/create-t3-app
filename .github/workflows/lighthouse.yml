@@ -18,7 +18,7 @@ jobs:
             const comment = context.payload.comment;
             const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
             const matches = comment.body.match(regex);
-            const previewUrl = matches[0] ?? "";
+            const previewUrl = matches[0] || "";
             console.log('Preview url found:', previewUrl);
             core.setOutput('vercel_preview_url', previewUrl);
             
