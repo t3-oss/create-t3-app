@@ -1,42 +1,41 @@
 /** @jsxImportSource react */
-import { useState, useEffect } from "react";
+import clsx from "clsx";
+import { useRef } from "react";
 
 export default function SidebarToggle({
   currentPage,
 }: {
   currentPage: string;
 }) {
-  const [sidebarShown, setSidebarShown] = useState(false);
+  const ref = useRef<HTMLButtonElement | null>(null);
+  const isLanding = currentPage === "/";
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const handleClick = () => {
     const body = document.querySelector("body")!;
-    if (sidebarShown) {
-      body.classList.add("mobile-sidebar-toggle");
-    } else {
+    if (body.classList.contains("mobile-sidebar-toggle")) {
+      ref.current?.setAttribute("aria-pressed", "false");
       body.classList.remove("mobile-sidebar-toggle");
+    } else {
+      ref.current?.setAttribute("aria-pressed", "true");
+      body.classList.add("mobile-sidebar-toggle");
     }
-  }, [sidebarShown]);
+  };
 
   return (
     <button
+      ref={ref}
       type="button"
-      aria-pressed={sidebarShown ? "true" : "false"}
-      id="menu-toggle"
-      onClick={() => setSidebarShown(!sidebarShown)}
-      className={
-        currentPage === "/"
-          ? `z-20 block md:hidden text-white`
-          : `z-20 block md:hidden text-black dark:text-white`
-      }
+      aria-pressed="false"
+      onClick={handleClick}
+      className={clsx("z-20 block md:hidden", {
+        "text-white": isLanding,
+        "text-black dark:text-white": !isLanding,
+      })}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="2em"
-        height="2em"
-        fill="none"
+        className="h-10 w-10 stroke-current fill-transparent"
         viewBox="0 0 24 24"
-        stroke="currentColor"
       >
         <path
           strokeLinecap="round"

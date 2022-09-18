@@ -17,12 +17,22 @@ If you are not familiar with the different technologies used in this project, pl
 - [TailwindCSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io) (using @next version? [see v10 docs here](https://alpha.trpc.io))
 
-Also checkout these awesome tutorials on `create-t3-app`.
+## What learning resources are currently available?
+
+Checkout these awesome tutorials on `create-t3-app`.
+
+### Articles
+
+- [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
+
+### Videos
 
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
-- [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [An overview of the create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
 ## Why are there `.js` files in the project?
 

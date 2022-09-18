@@ -8,5 +8,11 @@ import tailwind from "@astrojs/tailwind";
  */
 export default defineConfig({
   site: `https://create.t3.gg`,
+  markdown: {
+    shikiConfig: {
+      theme: "poimandres",
+      wrap: true,
+    },
+  },
   integrations: [react(), tailwind()],
 });

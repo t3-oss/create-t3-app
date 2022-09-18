@@ -1,0 +1,21 @@
+---
+import ThemeToggleButton from "../components/navigation/ThemeToggleButton";
+import "../styles/global.css";
+---
+
+<main class="bg-base p-4 h-screen">
+  <h1 class="text-slate-50 text-2xl font-bold text-center py-4">
+    Testing Color Schemes
+  </h1>
+  <ThemeToggleButton client:load />
+  <div class="grid grid-cols-2 gap-4 mt-8 font-semibold">
+    <div class="p-4 bg-neutral text-slate-50">Neutral</div>
+    <div class="p-4 bg-primary">Primary</div>
+    <div class="p-4 bg-secondary">Secondary</div>
+    <div class="p-4 bg-accent">Accent</div>
+    <div class="p-4 bg-warning">Warning</div>
+    <div class="p-4 bg-error">Error</div>
+    <div class="p-4 bg-success">Success</div>
+    <div class="p-4 bg-info">Info</div>
+  </div>
+</main>

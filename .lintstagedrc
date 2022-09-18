@@ -5,5 +5,8 @@
   ],
   "*.{json,md,mdx}": [
     "prettier --write"
+  ],
+  "www/**/*.astro": [
+    "prettier --write"
   ]
 }
