@@ -60,8 +60,6 @@
     "eslint-plugin-react": "^7.31.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "40.1.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.3",
     "ts-node": "^10.9.1",
