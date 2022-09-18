@@ -61,15 +61,18 @@ export default function TableOfContents({ headings = [] }: TOCProps) {
       >
         {headings.map((heading, i) => {
           const { depth, slug, text } = heading;
+
           return (
-            <li key={i} className={`pl-${depth} ml-1 w-full list-none`}>
+            <li
+              key={i}
+              className={`pl-${depth * 2 - 2} ml-1 w-full list-none pb-1`}
+            >
               <a
                 className={clsx(
-                  "hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200",
+                  `hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200`,
                   {
                     "underline text-t3-purple-700 dark:text-t3-purple-100":
                       active === slug,
-                    "text-sm": depth > 2,
                   },
                 )}
                 href={`#${slug}`}

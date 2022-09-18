@@ -36,6 +36,11 @@
     @apply text-t3-purple-100 bg-default;
   }
 
+  html {
+    scroll-padding-top: 5rem; 
+    scroll-behavior: smooth;
+  }
+
   .t3-scrollbar {
     @apply scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600;
   }

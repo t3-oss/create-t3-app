@@ -16,58 +16,56 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={clsx("flex flex-col gap-4 h-full pb-4 px-2 pt-6 md:pt-0 md:h-auto", {
-    "md:pb-28": isLanding,
-    "md:pb-32 md:overflow-hidden": !isLanding,
-  })}
+  class={clsx(
+    "flex flex-col gap-4 h-full pb-4 px-2 pt-6 md:pt-0 md:h-auto",
+    {},
+  )}
 >
-  <div class="w-full mx-auto px-4 md:px-8 md:hidden shrink-0">
-    <!-- Put Searchbar on Mobile Dropdown Navbar -->
+  <div class="w-full mx-auto px-4 md:px-8 md:hidden">
     <Search client:idle />
   </div>
-  <ul
-    id="nav-groups"
-    class="p-4 md:p-8 h-screen overflow-x-visible overflow-y-scroll t3-scrollbar sm:overflow-auto pb-32 dark:text-t3-purple-50 text-slate-900"
-  >
-    {
-      Object.entries(sidebar).map(([header, children]) => (
-        <li>
-          <div>
-            <h2
-              class={clsx("text-xl sm:text-lg font-semibold py-2", {
-                // mobile menu on landing page
-                "text-slate-50": isLanding,
-              })}
-            >
-              {header}
-            </h2>
-            <ul>
-              {children.map((child) => {
-                const url = Astro.site?.pathname + child.link;
-                const isActive = currentPageMatch === child.link;
-                return (
-                  <li>
-                    <a
-                      href={url}
-                      aria-current={isActive ? "page" : false}
-                      class={clsx(
-                        "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
-                        {
-                          "font-bold": isActive,
-                          "border-t3-purple-300": isActive,
-                          "border-t3-purple-300/20": !isActive,
-                        },
-                      )}
-                    >
-                      {child.text}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="t3-scrollbar">
+    <ul class="px-4 md:px-8 dark:text-t3-purple-50 text-slate-900">
+      {
+        Object.entries(sidebar).map(([header, children]) => (
+          <li>
+            <div>
+              <h2
+                class={clsx("text-xl sm:text-lg font-semibold py-2", {
+                  // mobile menu on landing page
+                  "text-slate-50": isLanding,
+                })}
+              >
+                {header}
+              </h2>
+              <ul>
+                {children.map((child) => {
+                  const url = Astro.site?.pathname + child.link;
+                  const isActive = currentPageMatch === child.link;
+                  return (
+                    <li>
+                      <a
+                        href={url}
+                        aria-current={isActive ? "page" : false}
+                        class={clsx(
+                          "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
+                          {
+                            "font-bold": isActive,
+                            "border-t3-purple-300": isActive,
+                            "border-t3-purple-300/20": !isActive,
+                          },
+                        )}
+                      >
+                        {child.text}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
