@@ -10,7 +10,7 @@ const { path, isBlog } = Astro.props;
 
 <footer
   class={clsx(
-    "transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent",
+    "transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent w-screen",
   )}
 >
   {isBlog && <AvatarList path={path} />}
