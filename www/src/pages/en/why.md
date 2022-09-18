@@ -42,4 +42,4 @@ Additionally, with its inline-like approach, Tailwind encourages you to style wi
 
 ### NextAuth.js
 
-TODO: this too
+For when you want an authentication system in your NextJS application, NextAuth.js is a perfect solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, as well as a database adapter system to allow you to use your own database of choice.
