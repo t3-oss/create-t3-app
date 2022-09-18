@@ -18,8 +18,12 @@ jobs:
             const comment = context.payload.comment;
             const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g;
             const matches = comment.body.match(regex);
-            const previewUrl = matches[0] || "";
-            console.log('Preview url found:', previewUrl);
+            let previewUrl = "";
+            if (matches && matches.length) {
+              previewUrl = matches[0];
+              console.log('Preview url found:', previewUrl);
+            }
+            console.log("No preview url found.");
             core.setOutput('vercel_preview_url', previewUrl);
             
       - name: Add comment to PR
