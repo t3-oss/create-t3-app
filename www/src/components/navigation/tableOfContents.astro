@@ -7,7 +7,7 @@ export interface Props {
 }
 
 let { headings, title } = Astro.props;
-headings = [{ depth: 2, slug: title, text: title }, ...headings].filter(
+headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
   ({ depth }) => depth > 1 && depth < 4,
 );
 ---
