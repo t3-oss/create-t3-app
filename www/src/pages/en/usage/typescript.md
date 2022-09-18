@@ -53,10 +53,12 @@ It is, perhaps, the tool that provides the most productivity to developers; prov
 Despite most guides go into depth on _writing_ TypeScript, for the most part, developers benefit the most from the type inference it provides. There is a ton of work that library maintainers do when providing types for their library, but means we as developers can benefit from the type inference - and almost provide a documentation platform within your code editor.
 
 <a
-  href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
-  className="mx-auto"
-  target="_blank"
+href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
+className="mx-auto"
+target="\_blank"
+
 >
+
   <p align="center">
     <img
       src="/images/ts_thumbnail.jpeg"
@@ -67,10 +69,12 @@ Despite most guides go into depth on _writing_ TypeScript, for the most part, de
 </a>
 
 <a
-  href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
-  className="mx-auto"
-  target="_blank"
+href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
+className="mx-auto"
+target="\_blank"
+
 >
+
   <p align="center">Watch Theo's overview on Youtube here</p>
 </a>
 

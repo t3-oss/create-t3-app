@@ -26,9 +26,9 @@ Please note that Next.js requires a different process for buildtime (available i
 
 3.  Create a `.dockerignore` file with the following contents:
 
-          <details>
+    <details>
 
-    <summary>.dockerignore</summary>
+    &lt;summary&gt;dockerignore&lt;/summary&gt;
 
     ```
     .env
@@ -45,9 +45,9 @@ Please note that Next.js requires a different process for buildtime (available i
 
 4.  Create a `Dockerfile` with the following contents:
 
-          <details>
+    <details>
 
-    <summary>Dockerfile</summary>
+    &lt;summary&gt;dockerignore&lt;/summary&gt;
 
     ```Dockerfile
     ########################
@@ -154,9 +154,9 @@ You can also use docker compose to build the image and run the container.
 
 2.  Create a `docker-compose.yml` file with the following:
 
-          <details>
+    <details>
 
-    <summary>docker-compose.yml</summary>
+    &lt;summary&gt;dockerignore&lt;/summary&gt;
 
     ```yaml
     version: "3.9"
@@ -176,7 +176,7 @@ You can also use docker compose to build the image and run the container.
           - DATABASE_URL=database_url_goes_here
     ```
 
-          </details>
+    </details>
 
 3.  Run this using `docker compose up`.
 
