@@ -1,7 +1,7 @@
 ---
 title: Installation
 description: Installation instructions for Create T3 App
-layout: ../../layouts/blog.astro
+layout: ../../layouts/docs.astro
 ---
 
 To install `create-t3-app`, run any of the following three commands and answer the command prompt questions:

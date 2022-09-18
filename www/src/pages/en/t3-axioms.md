@@ -1,7 +1,7 @@
 ---
 title: T3 Axioms
 description: The three core beliefs we share around building and making decisions
-layout: ../../layouts/blog.astro
+layout: ../../layouts/docs.astro
 ---
 
 We'll be frank - this is an opinionated project. We share a handful of core beliefs around building and we treat them as the basis for our decisions.

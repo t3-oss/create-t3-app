@@ -67,7 +67,7 @@ export default function TableOfContents({ headings = [] }: TOCProps) {
                 className={clsx(
                   "hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200",
                   {
-                    "font-bold text-t3-purple-700 dark:text-t3-purple-100":
+                    "underline text-t3-purple-700 dark:text-t3-purple-100":
                       active === slug,
                     "text-sm": depth > 2,
                   },

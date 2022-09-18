@@ -1,7 +1,7 @@
 ---
 title: NextAuth.js
 description: Usage of NextAuth
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
 # What is NextAuth.js?
