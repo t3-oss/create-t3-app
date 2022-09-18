@@ -9,7 +9,7 @@ export default function MobileMenuButton() {
       <button
         type="button"
         aria-pressed={$isMobileMenuOpen ? "true" : "false"}
-        className="dark:text-slate-50 block md:hidden"
+        className="block dark:text-slate-50 md:hidden"
         onClick={() => {
           MobileMenuState.set(!$isMobileMenuOpen);
         }}

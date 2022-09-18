@@ -57,7 +57,7 @@ export default function ThemeToggleButton() {
   }, [theme]);
 
   return (
-    <div className="flex bg-t3-purple-200/50 dark:bg-slate-700 p-2 w-fit mx-auto rounded-lg gap-3">
+    <div className="bg-t3-purple-200/50 mx-auto flex w-fit gap-3 rounded-lg p-2 dark:bg-slate-700">
       {themes.map((t) => {
         const checked = t === theme;
         return (
@@ -73,7 +73,7 @@ export default function ThemeToggleButton() {
           >
             {t === "dark" ? <MoonIcon /> : <SunIcon />}
             <input
-              className="absolute invisible"
+              className="invisible absolute"
               type="radio"
               name="theme-toggle"
               checked={checked}

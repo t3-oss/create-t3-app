@@ -14,12 +14,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
+        <h1 className="text-5xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
           Create <span className="text-purple-300">T3</span> App
         </h1>
         <p className="text-2xl text-gray-700">This stack uses:</p>
-        <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-3 lg:w-2/3">
+        <div className="mt-3 grid gap-3 pt-3 text-center md:grid-cols-3 lg:w-2/3">
           <TechnologyCard
             name="NextJS"
             description="The React framework for production"
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             documentation="https://www.prisma.io/docs/"
           />
         </div>
-        <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
+        <div className="flex w-full items-center justify-center pt-6 text-2xl text-blue-500">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
         </div>
         <AuthShowcase />
@@ -78,7 +78,7 @@ const AuthShowcase: React.FC = () => {
         <p className="text-2xl text-blue-500">{secretMessage}</p>
       )}
       <button
-        className="px-4 py-2 border border-black text-xl rounded-md bg-violet-50 hover:bg-violet-100 shadow-lg"
+        className="rounded-md border border-black bg-violet-50 px-4 py-2 text-xl shadow-lg hover:bg-violet-100"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
@@ -99,11 +99,11 @@ const TechnologyCard = ({
   documentation,
 }: TechnologyCardProps) => {
   return (
-    <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
+    <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105">
       <h2 className="text-lg text-gray-700">{name}</h2>
       <p className="text-sm text-gray-600">{description}</p>
       <a
-        className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+        className="mt-3 text-sm text-violet-500 underline decoration-dotted underline-offset-2"
         href={documentation}
         target="_blank"
         rel="noreferrer"

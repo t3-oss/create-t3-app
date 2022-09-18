@@ -13,7 +13,7 @@ const NavLink: React.FC<{
 }> = ({ href, title, external = false }) => (
   <a
     href={href}
-    className="inline-flex items-center border font-medium relative text-base px-4 py-2 rounded-md text-white border-transparent hover:text-gray-300"
+    className="relative inline-flex items-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white hover:text-gray-300"
     {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
   >
     {title}
@@ -26,7 +26,7 @@ export default function MobileMenu() {
     <>
       <div
         className={clsx(
-          "absolute flex flex-col mt-1 transform transition-transform duration-300 ease-in-out z-50 bg-default shadow shadow-t3-purple-100",
+          "bg-default shadow-t3-purple-100 absolute z-50 mt-1 flex transform flex-col shadow transition-transform duration-300 ease-in-out",
           {
             "-mx-4 mt-1 translate-y-16 opacity-100": $isMobileMenuOpen,
             "-translate-y-96 opacity-0": !$isMobileMenuOpen,

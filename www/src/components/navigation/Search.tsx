@@ -51,7 +51,7 @@ export default function Search() {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium dark:bg-slate-700 bg-t3-purple-200/50 rounded-lg dark:text-slate-100"
+        className="bg-t3-purple-200/50 flex w-full items-center justify-between rounded-lg px-4 py-2 text-sm font-medium dark:bg-slate-700 dark:text-slate-100"
       >
         <div className="flex items-center justify-center">
           <svg className="h-6 w-6" fill="none">
@@ -67,7 +67,7 @@ export default function Search() {
           <span className="pl-1 lg:pl-3">Search</span>
         </div>
 
-        <span className="border border-current px-1 rounded-md">
+        <span className="rounded-md border border-current px-1">
           <span className="sr-only">Press </span>
           <kbd>/</kbd>
           <span className="sr-only"> to search</span>

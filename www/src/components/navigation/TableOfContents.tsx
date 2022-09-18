@@ -50,14 +50,14 @@ export default function TableOfContents({ headings = [] }: TOCProps) {
   return (
     <div>
       <h2
-        className="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+        className="dark:text-t3-purple-50 mb-4 text-lg font-semibold text-slate-900"
         id={onThisPageId}
       >
         On this page
       </h2>
       <ul
         ref={tocRef}
-        className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1 list-none"
+        className="border-t3-purple-300 marker:text-t3-purple-300 dark:border-t3-purple-200 my-1  w-full list-none border-l-2"
       >
         {headings.map((heading, i) => {
           const { depth, slug, text } = heading;
@@ -71,7 +71,7 @@ export default function TableOfContents({ headings = [] }: TOCProps) {
                 className={clsx(
                   `hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200`,
                   {
-                    "underline text-t3-purple-700 dark:text-t3-purple-100":
+                    "text-t3-purple-700 dark:text-t3-purple-100 underline":
                       active === slug,
                   },
                 )}

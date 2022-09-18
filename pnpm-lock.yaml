@@ -24,9 +24,12 @@ importers:
       lint-staged: ^13.0.3
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.5.3
+      prettier-plugin-tailwindcss: ^0.1.13
       ts-node: ^10.9.1
       turbo: ^1.4.3
       typescript: ^4.7.4
+    dependencies:
+      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
     devDependencies:
       '@changesets/changelog-github': 0.4.6
       '@changesets/cli': 2.24.3
@@ -5836,6 +5839,15 @@ packages:
       synckit: 0.7.3
     dev: true
 
+  /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
+    resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      prettier: '>=2.2.0'
+    dependencies:
+      prettier: 2.7.1
+    dev: false
+
   /prettier/1.19.1:
     resolution: {integrity: sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==}
     engines: {node: '>=4'}
@@ -5846,7 +5858,6 @@ packages:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /prismjs/1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}

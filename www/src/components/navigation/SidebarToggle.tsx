@@ -34,7 +34,7 @@ export default function SidebarToggle({
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 stroke-current fill-transparent"
+        className="h-10 w-10 fill-transparent stroke-current"
         viewBox="0 0 24 24"
       >
         <path

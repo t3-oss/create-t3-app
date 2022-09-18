@@ -3,22 +3,22 @@ import Typist from "react-typist";
 
 export default function CodeCard() {
   return (
-    <div className="md:w-[550px] w-full sm:w-[600px] mx-auto overflow-hidden my-5 rounded-lg">
+    <div className="mx-auto my-5 w-full overflow-hidden rounded-lg sm:w-[600px] md:w-[550px]">
       <div
-        className="coding inverse-toggle px-1 sm:px-2 md:px-5 shadow-lg text-green-400 text-[10px] sm:text-xs font-mono subpixel-antialiased 
-              bg-neutral pb-6 pt-4 rounded-lg leading-normal overflow-hidden h-[270px] sm:h-[290px] md:h-[350px] lg:h-[310px]"
+        className="coding inverse-toggle bg-neutral h-[270px] overflow-hidden rounded-lg px-1 pb-6 pt-4 font-mono text-[10px] 
+              leading-normal text-green-400 subpixel-antialiased shadow-lg sm:h-[290px] sm:px-2 sm:text-xs md:h-[350px] md:px-5 lg:h-[310px]"
       >
         <div className="top mb-2 flex">
-          <div className="h-3 w-3 bg-red-500 rounded-full"></div>
-          <div className="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
-          <div className="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
+          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+          <div className="ml-2 h-3 w-3 rounded-full bg-orange-300"></div>
+          <div className="ml-2 h-3 w-3 rounded-full bg-green-500"></div>
         </div>
         <Typist cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
           npx create-t3-app@latest
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
-          className="font-mono leading-1 text-transparent bg-clip-text bg-gradient-to-r text-[9px] sm:text-xs from-blue-400 via-green-300 to-pink-600"
+          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[9px] text-transparent sm:text-xs"
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
@@ -38,7 +38,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
-          <div className="whitespace-nowrap flex">
+          <div className="flex whitespace-nowrap">
             ? What will your project be called? (my-t3-app)
             <Typist.Delay ms={500} />
             <Typist
@@ -88,7 +88,7 @@ export default function CodeCard() {
           <span>
             <span className="text-blue-400">❯</span>
             <span>
-              ◯<span className="text-blue-400 pl-1">nextAuth</span>
+              ◯<span className="pl-1 text-blue-400">nextAuth</span>
             </span>
           </span>
           <br />
@@ -123,7 +123,7 @@ export default function CodeCard() {
           <span>
             <span className="text-blue-400">❯</span>
             <span>
-              ◉<span className="text-blue-400 pl-1">nextAuth</span>
+              ◉<span className="pl-1 text-blue-400">nextAuth</span>
             </span>
           </span>
           <br />
@@ -142,7 +142,7 @@ export default function CodeCard() {
           avgTypingDelay={-10000}
           className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
-          <div className="whitespace-nowrap flex">
+          <div className="flex whitespace-nowrap">
             <span>? Initialize a new git repository? (Y/n)</span>
             <Typist.Delay ms={1000} />
             <Typist
@@ -170,7 +170,7 @@ export default function CodeCard() {
           avgTypingDelay={-10000}
           className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
-          <div className="whitespace-nowrap flex">
+          <div className="flex whitespace-nowrap">
             <span>? Would you like us to run npm install? (Y/n)</span>
             <Typist.Delay ms={1000} />
             <Typist
