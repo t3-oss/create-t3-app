@@ -1,0 +1,22 @@
+tasks:
+  - init: pnpm install
+github:
+  prebuilds:
+    # enable for the master/default branch
+    master: true
+    # enable for all branches in this repo
+    branches: true
+    # enable for pull requests coming from this repo
+    pullRequests: true
+    # enable for pull requests coming from forks
+    pullRequestsFromForks: true
+    # add a "Review in Gitpod" button as a comment to pull requests
+    addComment: true
+    # add a "Review in Gitpod" button to pull requests
+    addBadge: true
+    # add a label once the prebuild is ready to pull requests
+    addLabel: gitpod-prebuilt
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - bradlc.vscode-tailwindcss
