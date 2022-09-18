@@ -41,31 +41,30 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
   </ul>
 </div>
 
-<script defer>
+<script is:inline>
   // Toggle classes when items are in view
-  document.querySelectorAll("article :is(h1,h2,h3)").forEach((h) => {
+  const observer =
+    observer ??
     new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          const heading = entry.target; // observed item
-          const tocItems = document.querySelectorAll(
-            `a[href='#${heading.id}']`,
-          ); // corresponding item in TOC
-
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          // have to do "All" here cause we render this component in pageContent for mobile too
+          const tocItem = document.querySelectorAll(`a[href="#${id}"]`).at(-1);
           const func = entry.isIntersecting ? "add" : "remove";
-          tocItems.forEach((i) =>
-            i.classList[func](
-              "font-bold",
-              "text-t3-purple-700",
-              "dark:text-t3-purple-100",
-            ),
+          tocItem.classList[func](
+            "font-bold",
+            "text-t3-purple-700",
+            "dark:text-t3-purple-100",
           );
-        }
+        });
       },
       {
         rootMargin: "-100px 0% -66%",
         threshold: 1,
       },
-    ).observe(h);
+    );
+  document.querySelectorAll("article :is(h1,h2,h3)").forEach((h) => {
+    observer.observe(h);
   });
 </script>
