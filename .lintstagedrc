@@ -1,9 +1,8 @@
 {
   "src/**/*.{ts,tsx}": [
-    "prettier --write",
-    "eslint --fix"
+    "prettier --write"
   ],
-  "*.{json,md,mdx}": [
+  "**/*.{json,md,mdx}": [
     "prettier --write"
   ],
   "www/**/*.astro": [
