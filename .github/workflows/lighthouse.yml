@@ -23,7 +23,7 @@ jobs:
             core.setOutput('vercel_preview_url', previewUrl);
             
       - name: Add comment to PR
-        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != "" }}
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Audit preview URL with Lighthouse
-        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != "" }}
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3
         with:
@@ -46,7 +46,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
       - name: Format lighthouse score
-        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != "" }}
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: format_lighthouse_score
         uses: actions/github-script@v3
         with:
@@ -76,7 +76,7 @@ jobs:
              core.setOutput("comment", comment);
              
       - name: Add comment to PR
-        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != "" }}
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
