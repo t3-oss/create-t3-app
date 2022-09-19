@@ -166,6 +166,19 @@ export const runCli = async () => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
 
+  /**
+   * @internal - used for CI E2E tests
+   */
+  let CIMode = false;
+  if (cliResults.flags.CI) {
+    CIMode = true;
+    cliResults.packages = [];
+    if (cliResults.flags.trpc) cliResults.packages.push("trpc");
+    if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
+    if (cliResults.flags.prisma) cliResults.packages.push("prisma");
+    if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+  }
+
   // Explained below why this is in a try/catch block
   try {
     // if --packages flag is set, we are running in CI mode and should not prompt the user

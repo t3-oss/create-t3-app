@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import styles from "./index.module.css";
+import styles from "./index.module.css";
 
 const Home: NextPage = () => {
   const { data } = trpc.example.hello.useQuery({ text: "from tRPC" });
@@ -14,10 +15,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.containerOuter}>
+        <div className={styles.containerInner} className={styles.containerOuter}>
         <div className={styles.containerInner}>
-          <h1 className={styles.title}>
-            Create <span className={styles.titlePink}>T3</span> App
-          </h1>
+            <h1 className={styles.title} className={styles.title}>
+              Create <span className={styles.titlePink} className={styles.titlePink}>T3</span> App
+            </h1>
 
           <h3 className={styles.subtitle}>This stack uses:</h3>
           <div className={styles.cardGrid}>
@@ -63,6 +65,33 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+type TechnologyCardProps = {
+  name: string;
+  description: string;
+  documentation: string;
+};
+
+const TechnologyCard = ({
+  name,
+  description,
+  documentation,
+}: TechnologyCardProps) => {
+  return (
+    <section className={styles.card}>
+      <h2 className={styles.cardTitle}>{name}</h2>
+      <p className={styles.cardDescription}>{description}</p>
+      <a
+        className={styles.cardDocumentation}
+        href={documentation}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Documentation
+      </a>
+    </section>
+  );
+};
 
 type TechnologyCardProps = {
   name: string;

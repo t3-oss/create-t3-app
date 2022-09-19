@@ -41,7 +41,7 @@ pnpm install
 
 ### Implement your changes
 
-This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
+This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
 
 Here are some useful scripts for when you are developing:
 
@@ -57,7 +57,11 @@ Here are some useful scripts for when you are developing:
 | `pnpm lint:fix`  | Lints the code and fixes any errors                     |
 | `pnpm check`     | Checks your code for typeerrors, formatting and linting |
 
-When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc...
+When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc... You can use `git status` to double check which files have not yet been staged for commit:
+
+```bash
+git add <file> && git commit -m "feat/fix/chore/docs: commit message"
+```
 
 ### When you're done
 

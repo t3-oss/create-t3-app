@@ -1,12 +1,16 @@
 ---
 title: Introduction
 description: Introduction to the T3 Stack
-layout: ../../layouts/blog.astro
+layout: ../../layouts/docs.astro
 ---
 
 <a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
   <p align="center">
-    <img src="https://t3.gg/random/T3%20Stack%20V4.png" alt="Video thumbnail of Theo with an indecipherable expression on his face" width="320" />
+    <img
+      src="https://t3.gg/random/T3%20Stack%20V4.png"
+      alt="Video thumbnail of Theo with an indecipherable expression on his face"
+      width="320"
+    />
   </p>
 </a>
 
@@ -34,5 +38,8 @@ So we made `create-t3-app` to do one thing: _**Simplify complex boilerplate arou
 We are selective about the packages we have included. We don't add libraries that are as simple as `npm install zustand`: If you cut an issue asking us to add your preferred libraries, we will make fun of you.
 
 <p align="center">
-  <img src="https://media4.giphy.com/media/3orieLHXgpfkKO9Iju/200.gif" alt="Nelson from the Simpsons pointing and saying ha-ha in a mocking tone" />
+  <img
+    src="https://media4.giphy.com/media/3orieLHXgpfkKO9Iju/200.gif"
+    alt="Nelson from the Simpsons pointing and saying ha-ha in a mocking tone"
+  />
 </p>

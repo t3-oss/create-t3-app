@@ -1,6 +1,3 @@
----
----
-
 <section>
   <div class="overflow-x-hidden">
     <div class="relative w-full h-full overflow-hidden py-16 xl:py-32 z-0">
@@ -19,16 +16,15 @@
       <div class="mx-auto max-w-8xl lg:px-8">
         <div class="flex flex-col items-center justify-center text-center">
           <div
-            class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:flex lg:items-center"
+            class="mx-auto max-w-md px-4 sm:max-w-2xl md:max-w-3xl sm:px-6 sm:text-center lg:px-0 lg:flex lg:items-center"
           >
             <div class="lg:py-12 flex flex-col items-start justify-between">
               <h1
                 class="mt-4 text-5xl tracking-tight font-bold text-white sm:mt-5 sm:text-6xl sm:tracking-tight lg:mt-6 xl:text-6xl xl:tracking-tight"
               >
-                <span class="block"
-                  >The best way to setup an<span
-                    class="text-t3-purple-200 text-4xl"
-                  >
+                <span class="block">
+                  The best way to setup an<br />
+                  <span class="text-t3-purple-200 text-4xl">
                     opinionated, full-stack, typesafe Next.js project
                   </span>
                 </span>
@@ -42,20 +38,24 @@
                 >
                   <a
                     href="/en/introduction"
-                    class="inline-flex items-center text-white rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer"
+                    class="inline-flex items-center rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer hover:no-underline"
                   >
                     <span
-                      class="px-3 sm:px-5 py-1.5 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full flex items-center justify-between hover:bg-t3-purple-200"
+                      class="group inline-flex items-center px-3 sm:px-5 py-1.5 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full transition justify-between hover:bg-t3-purple-200"
                     >
                       Documentation
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
-                        class="h-4 ml-2"
+                        class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
+                        fill="none"
+                        viewBox="0 0 10 10"
+                        aria-hidden="true"
                       >
                         <path
-                          d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
-                        ></path>
+                          class="opacity-0 transition group-hover:opacity-100"
+                          d="M0 5h7"></path>
+                        <path
+                          class="transition group-hover:translate-x-[3px]"
+                          d="M1 1l4 4-4 4"></path>
                       </svg>
                     </span>
                   </a>
@@ -63,16 +63,16 @@
                     href="https://github.com/t3-oss/create-t3-app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center text-white rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer bg-white/10 hover:bg-white/20"
+                    class="inline-flex items-center rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer bg-white/10 hover:bg-white/20 hover:no-underline"
                   >
                     <span
-                      class="ml-1 px-2 py-0.5 text-sm flex items-center justify-between"
+                      class="ml-1 px-2 py-0.5 text-sm flex items-center justify-between text-white"
                     >
                       Github
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 448 512"
-                        class="h-4 ml-2 fill-white"
+                        class="h-3 ml-2 fill-white"
                       >
                         <path
                           d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
@@ -82,39 +82,43 @@
                   </a>
                 </div>
                 <div class="mt-8 block h-full relative mx-auto">
-                  <code
+                  <button
+                    class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2"
+                    title="Copy the command to get started"
                     id="command"
-                    class="px-3 sm:px-5 py-1.5 text-xl text-blue-300 rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative"
-                    >npx create-t3-app@latest
-                  </code>
-
-                  <div
-                    id="toast"
-                    class="absolute items-center justify-center rounded-lg top-0 mx-auto bg-[#262626] h-10 opacity-0 px-3"
                   >
-                    <span
-                      class="flex px-3 items-center justify-center rounded-lg text-[#e8dcff]"
-                      ><svg
-                        id="checkmark"
-                        class="checkmark"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 52 52"
-                      >
-                        <circle
-                          id="checkmark__circle"
-                          class="checkmark__circle"
-                          cx="26"
-                          cy="26"
-                          r="25"
-                          fill="none"></circle>
-                        <path
-                          id="checkmark__check"
-                          class="checkmark__check"
-                          fill="none"
-                          d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                      </svg><span class="pl-1">Copied</span>
-                    </span>
-                  </div>
+                    <code id="command-text"> npx create-t3-app@latest</code>
+                    <svg
+                      id="copy-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                      ></rect><path
+                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                      ></path>
+                    </svg>
+                    <svg
+                      id="check-icon"
+                      class="hidden"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -124,21 +128,42 @@
     </div>
   </div>
   <script is:inline>
-    document.getElementById("command").addEventListener("click", () => {
-      const pre = this.parentElement;
-      let code = pre.querySelector("code");
-      let text = code.innerText;
-      navigator.clipboard.writeText(text);
-      document.getElementById("toast").className =
-        "px-3 opacity-100 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
-      document.getElementById("checkmark").style =
-        "animation-play-state: running";
-      document.getElementById("checkmark__check").style =
-        "animation-play-state: running";
-      setTimeout(() => {
-        document.getElementById("toast").className =
-          "px-3 opacity-0 transform-all duration-1000 ease-in-out absolute top-8 left-[30%] bg-[#262626] h-10 w-24 flex items-center justify-center rounded-lg";
-      }, 2500);
+    const command = document.querySelector("#command");
+    const commandText = document.querySelector("#command-text");
+    const copyIcon = document.querySelector("#copy-icon");
+    const checkIcon = document.querySelector("#check-icon");
+    let cooldown = false;
+
+    function toggleIcons() {
+      copyIcon.classList.toggle("hidden");
+      checkIcon.classList.toggle("hidden");
+    }
+
+    command.addEventListener("click", () => {
+      if (cooldown === false) {
+        cooldown = true;
+        navigator.clipboard.writeText(commandText.innerText);
+        toggleIcons();
+
+        setTimeout(() => {
+          toggleIcons();
+          cooldown = false;
+        }, 2000);
+      }
     });
   </script>
 </section>
+
+<style>
+  #check-icon {
+    stroke-dasharray: 450;
+    stroke-dashoffset: -30;
+    animation: draw 2s linear normal;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 200;
+    }
+  }
+</style>

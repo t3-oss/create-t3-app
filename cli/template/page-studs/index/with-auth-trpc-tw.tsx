@@ -54,6 +54,7 @@ const Home: NextPage = () => {
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
         </div>
         <AuthShowcase />
+        <AuthShowcase />
       </main>
     </>
   );

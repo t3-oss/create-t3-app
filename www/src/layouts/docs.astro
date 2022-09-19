@@ -1,0 +1,76 @@
+---
+import type { MarkdownHeading } from "astro";
+import PageContent from "../components/docs/pageContent.astro";
+import Footer from "../components/footer/footer.astro";
+import HeadCommon from "../components/headCommon.astro";
+import HeadSEO from "../components/headSeo.astro";
+import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import Navbar from "../components/navigation/navbar.astro";
+import RightSidebar from "../components/navigation/rightSidebar.astro";
+import * as CONFIG from "../config";
+import "../styles/global.css";
+import "@fontsource/inter/variable.css";
+import MoreMenu from "../components/navigation/moreMenu.astro";
+
+export interface Props {
+  frontmatter: CONFIG.Frontmatter;
+  headings: MarkdownHeading[];
+}
+
+const { frontmatter, headings } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.${
+  frontmatter.isMdx ? "mdx" : "md"
+}`;
+
+const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
+---
+
+<html
+  dir={frontmatter.dir ?? "ltr"}
+  lang={frontmatter.lang ?? "en-us"}
+  class="initial"
+>
+  <head>
+    <HeadCommon />
+    <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} />
+    <title>
+      {frontmatter.title} • {CONFIG.SITE.title}
+    </title>
+  </head>
+
+  <body class="bg-default">
+    <div class="bg-default sticky top-0 w-full z-50">
+      <Navbar />
+    </div>
+    <main class="md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10">
+      <aside id="grid-left" title="Site Navigation" class={"hidden md:block"}>
+        <div
+          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-base w-full bg-default overflow-y-auto"
+        >
+          <LeftSidebar currentPage={currentPage} />
+        </div>
+      </aside>
+      <div class="flex flex-col md:col-span-2">
+        <PageContent frontmatter={frontmatter} headings={headings}>
+          <slot />
+        </PageContent>
+        <nav class="flex lg:hidden mx-3">
+          <MoreMenu editHref={githubEditUrl} />
+        </nav>
+      </div>
+      <aside
+        id="grid-right"
+        title="Table of Contents"
+        class="hidden lg:block relative"
+      >
+        <div class="sticky top-20">
+          <RightSidebar headings={headings} githubEditUrl={githubEditUrl} />
+        </div>
+      </aside>
+    </main>
+    <Footer path={currentFile} isBlog={true} />
+  </body>
+</html>

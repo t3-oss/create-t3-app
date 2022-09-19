@@ -2,16 +2,14 @@
 import CliPreview from "./cli";
 ---
 
-<section>
-  <div class="w-full items-center flex flex-col justify-center">
-    <h1
-      class="text-t3-purple-100 text-lg text-center font-bold my-4 sm:text-3xl w-full hidden md:block lg:hidden pt-16"
-    >
+<section
+  class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:grid lg:gap-x-8 xl:gap-x-12 lg:py-16"
+>
+  <div class="flex flex-col gap-2 md:gap-4 max-w-[800px] xl:max-w-full mx-auto">
+    <h1 class="text-t3-purple-100 text-center font-bold text-4xl w-full mb-2">
       What is this? Some kinda template?
     </h1>
-    <span
-      class="hidden md:block lg:hidden text-t3-purple-100 text-lg text-center p-4"
-    >
+    <p class="text-t3-purple-100 text-lg text-center">
       Kind of. We love all of the technologies that create-t3-app includes -
       check out <a
         href="https://init.tips"
@@ -19,39 +17,15 @@ import CliPreview from "./cli";
         >init.tips
       </a> for even more info on topics such as state management and deployment -
       but we do not believe these are needed on every project.
-    </span>
+    </p>
+    <p class="text-t3-purple-100 text-lg text-center">
+      So we made create-t3-app to do one thing: Simplify complex boilerplate
+      around the core T3 Stack tech without compromising the pieces modularity.
+      This is NOT an all-inclusive template and we expect you to bring your own
+      libraries as well.
+    </p>
   </div>
-  <div
-    class="flex flex-col md:flex-row items-center justify-center w-full border-white px-1 sm:px-6 lg:py-16 max-w-7xl mx-auto md:space-x-10"
-  >
-    <div
-      class="text-t3-purple-100 text-lg text-center p-4 max-w-3xl flex flex-col items-center justify-center"
-    >
-      <div class="flex flex-col w-full items-center justify-center">
-        <h1
-          class="font-bold text-2xl my-4 sm:text-3xl w-full md:hidden lg:block"
-        >
-          What is this? Some kinda template?
-        </h1>
-        <span class="py-2 md:hidden lg:block">
-          Kind of. We love all of the technologies that create-t3-app includes -
-          check out <a
-            href="https://init.tips"
-            class="underline decoration-dotted underline-offset-4"
-            >init.tips
-          </a> for even more info on topics such as state management and deployment
-          - but we do not believe these are needed on every project.
-        </span>
-        <span class="my-2">
-          So we made create-t3-app to do one thing: Simplify complex boilerplate
-          around the core T3 Stack tech without compromising the pieces
-          modularity. This is NOT an all-inclusive template and we expect you to
-          bring your own libraries as well.
-        </span>
-      </div>
-    </div>
-    <div class="w-full">
-      <CliPreview client:only="react" />
-    </div>
+  <div>
+    <CliPreview client:only="react" />
   </div>
 </section>
