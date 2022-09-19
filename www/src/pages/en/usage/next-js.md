@@ -4,17 +4,9 @@ description: Usage of NextJS
 layout: ../../../layouts/docs.astro
 ---
 
-## What is NextJS?
-
 NextJS is a backend framework for your React applications.
 
-<a
-href="https://www.youtube.com/watch?v=2cB5Fh46Vi4"
-className="mx-auto"
-target="\_blank"
-
->
-
+<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
   <p align="center">
     <img
       src="/images/nextjs_thumbnail.jpg"
@@ -24,13 +16,7 @@ target="\_blank"
   </p>
 </a>
 
-<a
-href="https://www.youtube.com/watch?v=2cB5Fh46Vi4"
-className="mx-auto"
-target="\_blank"
-
->
-
+<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
   <p align="center">Watch Theo's overview on Youtube here</p>
 </a>
 

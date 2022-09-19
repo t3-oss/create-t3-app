@@ -40,8 +40,6 @@ layout: ../../../layouts/docs.astro
   </cite>
 </blockquote>
 
-## What is TypeScript?
-
 Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
 
 It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist, or you're trying to pass a value of the wrong type.
