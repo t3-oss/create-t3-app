@@ -35,7 +35,7 @@ export const dependencyVersionMap = {
   postcss: "^8.4.14",
 
   // tRPC
-  "@trpc/client": "10.0.0-beta.1",
+  "@trpc/client": "10.0.0-beta.0",
   "@trpc/server": "10.0.0-beta.1",
   "@trpc/react": "10.0.0-beta.1",
   "@trpc/next": "10.0.0-beta.1",
