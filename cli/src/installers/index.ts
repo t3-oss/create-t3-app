@@ -38,7 +38,7 @@ export const dependencyVersionMap = {
   "@trpc/client": "10.0.0-beta.0",
   "@trpc/server": "10.0.0-beta.0",
   "@trpc/react": "10.0.0-beta.0",
-  "@trpc/next": "10.0.0-beta.1",
+  "@trpc/next": "10.0.0-beta.0",
   "@tanstack/react-query": "^4.2.3",
   superjson: "^1.9.1",
 } as const;
