@@ -71,7 +71,7 @@ const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
   return (
-    <div className={styles.authShowcase} className={styles.authShowcase}>
+    <div className={styles.authShowcase}>
       {sessionData && <p>Logged in as {sessionData?.user?.name}</p>}
       {secretMessage && <p>{secretMessage}</p>}
       <button
