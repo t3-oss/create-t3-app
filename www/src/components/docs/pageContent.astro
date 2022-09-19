@@ -1,6 +1,6 @@
 ---
 import type { Frontmatter } from "../../config";
-import TableOfContents from "../navigation/TableOfContents";
+import TableOfContents from "../navigation/tableOfContents.astro";
 import type { MarkdownHeading } from "astro";
 
 export interface Props {
@@ -21,7 +21,7 @@ const title = frontmatter.title;
       {title}
     </h1>
     <nav class="flex md:hidden p-3">
-      <TableOfContents client:media="(max-width: 50em)" headings={headings} />
+      <TableOfContents headings={headings} title={title} />
     </nav>
     <article class="markdown w-full">
       <slot />

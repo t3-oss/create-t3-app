@@ -4,8 +4,6 @@ description: Deployment with Docker
 layout: ../../../layouts/docs.astro
 ---
 
-## Containerizing
-
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose.
 
 Please note that Next.js requires a different process for buildtime (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, `DATABASE_URL` (used by the server) and `NEXT_PUBLIC_CLIENTVAR` (used by the client). Pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`.
