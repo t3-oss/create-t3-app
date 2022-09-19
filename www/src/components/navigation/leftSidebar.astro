@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 import { SIDEBAR } from "../../config";
 import Search from "./Search";
 
@@ -7,6 +8,7 @@ export interface Props {
 }
 
 const { currentPage } = Astro.props;
+const isLanding = currentPage === "/";
 const currentPageMatch = currentPage.slice(1);
 const langCode = "en";
 const sidebar = SIDEBAR[langCode];
@@ -14,72 +16,56 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class={currentPage === "/"
-    ? `pt-3 pb-28 h-full`
-    : `md:overflow-hidden h-full pb-32`}
+  class={clsx(
+    "flex flex-col gap-4 h-full pb-4 px-2 pt-6 md:pt-0 md:h-auto",
+    {},
+  )}
 >
-  <div class="max-w-lg mx-auto p-3 pt-6 md:hidden">
+  <div class="w-full mx-auto px-4 md:px-8 md:hidden">
     <Search client:idle />
   </div>
-  <ul
-    class="p-8 h-full overflow-x-visible overflow-y-scroll sm:overflow-auto pb-32 dark:text-slate-50 text-slate-800"
-  >
-    {
-      Object.entries(sidebar).map(([header, children]) => (
-        <li>
-          <div>
-            <h2
-              class={
-                currentPage === "/"
-                  ? `text-2xl sm:text-xl text-slate-50`
-                  : `text-2xl sm:text-xl dark:text-slate-50 text-slate-900 `
-              }
-            >
-              {header}
-            </h2>
-            <ul>
-              {children.map((child) => {
-                const url = Astro.site?.pathname + child.link;
-                return (
-                  <li>
-                    <a
-                      href={url}
-                      aria-current={
-                        currentPageMatch === child.link ? "page" : false
-                      }
-                      class={`
-                        ${
-                          currentPageMatch === child.link
-                            ? "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 font-extrabold text-lg sm:text-base"
-                            : "hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 text-lg sm:text-base"
-                        }
-                        
-                        transition-colors
-                        font-medium
-                        block
-                        py-2
-                        px-4
-                        rounded-md
-                      `}
-                    >
-                      {child.text}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="t3-scrollbar">
+    <ul class="px-4 md:px-8 dark:text-t3-purple-50 text-slate-900">
+      {
+        Object.entries(sidebar).map(([header, children]) => (
+          <li>
+            <div>
+              <h2
+                class={clsx("text-xl sm:text-lg font-semibold py-2", {
+                  // mobile menu on landing page
+                  "text-slate-50": isLanding,
+                })}
+              >
+                {header}
+              </h2>
+              <ul>
+                {children.map((child) => {
+                  const url = Astro.site?.pathname + child.link;
+                  const isActive = currentPageMatch === child.link;
+                  return (
+                    <li>
+                      <a
+                        href={url}
+                        aria-current={isActive ? "page" : false}
+                        class={clsx(
+                          "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
+                          {
+                            "font-bold": isActive,
+                            "border-t3-purple-300": isActive,
+                            "border-t3-purple-300/20": !isActive,
+                          },
+                        )}
+                      >
+                        {child.text}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
-
-<script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    var target = document.querySelector('[aria-current="page"]');
-    if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
-    }
-  });
-</script>

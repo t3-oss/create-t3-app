@@ -56,7 +56,7 @@
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-turbo": "^0.0.3",
-    "eslint-plugin-astro": "^0.17.1",
+    "eslint-plugin-astro": "^0.19.0",
     "eslint-plugin-no-only-tests": "^2.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.0",

@@ -1,115 +1,114 @@
 ---
 title: Environment Variables
 description: Getting started with create-t3-app
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
-## Environment Variable Validation
+## Typesafe Environment Variables
 
-Create-T3-App uses [zod](https://github.com/colinhacks/zod) for environment variable validation at runtime _and_ buildtime by providing additional files (scaffolded with generic environment variables for the chosen libraries):
+Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional files in the `env`-directory:
 
 📁 src/env
-
-┣ 📄 server.mjs
 
 ┣ 📄 client.mjs
 
 ┣ 📄 schema.mjs
-<br></br>
 
-A `z.object` is used as a schema, with each object key representing an environment variable and value representing a `z` method for validation. Each time a new environment variable is needed, it must be added to _both_ .env[.local/.production etc] as well as `schema.mjs`.
+┣ 📄 server.mjs
 
-# Files
+The content of these files may seem scary at first glance, but don't worry, it's not as complicated as it looks. Let's take a look at them one by one, and walk through the process of adding additional environment variables.
+
+_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as defining the validator in `env/schema.mjs`._
 
 ## schema.mjs
 
-This is the file that contains the Zod schemas, and by default, contains two exported schemas, `serverSchema` and `clientSchema`, as well as a `clientEnv` object.
+This is the file you will actually touch. It contains two schemas, one for server-side environment variables and one for client-side as well as a `clientEnv` object.
+
+```typescript
+// src/env/schema.mjs
+
+export const serverSchema = z.object({
+  // DATABASE_URL: z.string().url(),
+});
+
+export const clientSchema = z.object({
+  // NEXT_PUBLIC_WS_KEY: z.string(),
+});
+
+export const clientEnv = {
+  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
+};
+```
 
 ### Server Schema
 
 Specify your server-side environment variables schema here.
 
-```typescript
-// src/env/schema.mjs
-
-export const serverSchema = z.object({
-  // FOO: z.string(),
-});
-```
+Make sure you do not prefix keys in here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
 
 ### Client Schema
 
 Specify your client-side environment variables schema here.
-To expose them to the client, prefix them with `NEXT_PUBLIC_`.
 
-```typescript
-// src/env/schema.mjs
-
-export const clientSchema = z.object({
-  // NEXT_PUBLIC_BAR: z.string(),
-});
-```
+To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
 
 ### clientEnv Object
 
-You can't destruct `process.env` as a regular object, so you have to do
-it manually here. This is because Next.js evaluates this at build time,
-and only used environment variables are included in the build.
+Destruct the `process.env` here.
 
-```typescript
-// src/env/schema.mjs
+We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
+Typescript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
 
-export const clientEnv = {
-  // NEXT_PUBLIC_BAR: process.env.NEXT_PUBLIC_BAR,
-};
+```ts
+// ❌ This doesn't work, we need to destruct it manually
+const schema = z.object({
+  NEXT_PUBLIC_WS_KEY: z.string(),
+});
+
+const validated = schema.parse(process.env);
 ```
 
-## server.mjs
+## server.mjs & client.mjs
 
-This is the file that performs the validation on server-only environment variables (those which aren't prefixed with `NEXT_PUBLIC`), using the `z.object` schema from `schema.mjs`. It is imported into `next.config.mjs` to use for buildtime validation. This file likely shouldn't be modified unless you know what you're doing.
+This is where the validation happens and exports the validated objects. You shouldn't need to modify these files.
 
-## client.mjs
+## Using Environment Variables
 
-Similar to `server.mjs`, this file performs the validation on client-side environment variables (those which are prefixed with `NEXT_PUBLIC`).
+When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
 
-## Add a new environment variable
+```ts twoslash
+// src/pages/api/hello.ts
+import { env } from "../../env/server.mjs";
+
+// `env` is fully typesafe and provides autocompletion
+const dbUrl = env.DATABASE_URL;
+```
+
+## Adding Environment Variables
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
 
-`.env`
+📄 `.env.*`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-Added in the regular method of `NAME=VALUE`
-
-`schema.mjs`
-
-Added inside the `clientSchema` or `serverSchema` objects depending on if they are to be consumed client-side or in your backend, defining the type as a [zod](https://github.com/colinhacks/zod) schema.
+📄 `schema.mjs`: Add the appropriate validation schema for the environment variable using Zod in the appropriate schema, e.g. `KEY: z.string()`
 
 ### Example
 
-_I need to add a new environment variable to my project, with a name of `POKEAPI_KEY` and a value of `1234ABCD`._
+_I want to add my Twitter API Token as a server-side environment variable_
 
-`.env` file:
+1. Add the environment variable to `.env`:
 
-```bash
-# .env
-
-# ... any other variables that are already here
-POKEAPI_KEY=1234ABCD
+```
+TWITTER_API_TOKEN=1234567890
 ```
 
-`schema.mjs` file:
+2. Add the environment variable to `schema.mjs`:
 
-```typescript
-// src/env/schema.mjs
-
+```ts
 export const serverSchema = z.object({
-  // ... any other variables that are already here
-  POKEAPI_KEY: z.string(),
+  // ...
+  TWITTER_API_TOKEN: z.string(),
 });
 ```
 
-Now, schema validation will occur at runtime and build time to ensure the `POKEAPI_KEY` is present in my environment variables.
-
-## Type-safe Environment Variables
-
-To utilise the schema containing environment variables in your code editor, you should import `{ env }` from either `/env/server.mjs` or `/env/client.mjs` depending where they are being used. The `env` object is a type-safe parsed result of the relevant schema, allowing for auto-completion of environment variables in your code editor.
+_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._

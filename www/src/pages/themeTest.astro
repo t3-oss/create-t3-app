@@ -1,0 +1,50 @@
+---
+import HeadCommon from "../components/headCommon.astro";
+import ThemeToggleButton from "../components/navigation/ThemeToggleButton";
+import "../styles/global.css";
+---
+
+<head>
+  <HeadCommon />
+</head>
+<main class="bg-default p-4 h-screen">
+  <div class="grid grid-cols-1 gap-2 sm:gap-4">
+    <div>
+      <h1 class="text-4xl font-bold py-4">Colors</h1>
+      <ThemeToggleButton client:load />
+      <div class="grid grid-cols-2 gap-4 mt-8 font-semibold">
+        <div class="p-4 bg-neutral">Neutral</div>
+        <div class="p-4 bg-primary">Primary</div>
+        <div class="p-4 bg-secondary">Secondary</div>
+        <div class="p-4 bg-accent">Accent</div>
+        <div class="p-4 bg-warning">Warning</div>
+        <div class="p-4 bg-error">Error</div>
+        <div class="p-4 bg-success">Success</div>
+        <div class="p-4 bg-info">Info</div>
+      </div>
+    </div>
+    <div>
+      <h1 class="text-4xl font-bold py-4">Typography</h1>
+      <p class="text-9xl">Text 9xl</p>
+      <p class="text-8xl">Text 8xl</p>
+      <p class="text-7xl">Text 7xl</p>
+      <p class="text-6xl">Text 6xl</p>
+      <p class="text-5xl">Text 5xl</p>
+      <p class="text-4xl">Text 4xl</p>
+      <p class="text-3xl">Text 3xl</p>
+      <p class="text-2xl">Text 2xl</p>
+      <p class="text-xl">Text xl</p>
+      <p class="text-lg">Text lg</p>
+      <p>Text base</p>
+      <p class="text-sm">Text sm</p>
+      <p class="text-xs">Text xs</p>
+      <p><b>bold</b></p>
+      <p><code>code</code></p>
+      <p><em>emphasized</em></p>
+      <p class="underline">underline</p>
+      <p class="overline">overline</p>
+      <p class="line-through">line-through</p>
+      <p class="no-underline">no-underline</p>
+    </div>
+  </div>
+</main>

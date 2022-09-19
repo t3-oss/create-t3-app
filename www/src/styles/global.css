@@ -3,7 +3,49 @@
 @tailwind utilities;
 
 @layer base {
-  
+  /* Design System Theming */
+  html {
+    --color-default: 236 228 236;
+    --color-neutral: 29 40 58;
+    --color-primary: 122 98 246;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 15 23 42;
+    --color-background: 236 228 236;
+
+    @apply text-slate-900 bg-default;
+  }
+
+  html.dark {
+    --color-default: 15 23 41;
+    --color-neutral: 29 40 58;
+    --color-primary: 122 98 246;
+    --color-secondary: 58 191 248;
+    --color-accent: 244 113 181;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 232 221 255;
+    --color-background: 15 23 41;
+
+    @apply text-t3-purple-100 bg-default;
+  }
+
+  html {
+    scroll-padding-top: 5rem;
+    scroll-behavior: smooth;
+  }
+
+  .t3-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600;
+  }
+
+  /* Typewriter */
   .cursor::after {
     display: block;
     content: "";
@@ -27,10 +69,61 @@
     }
   }
 
-  .markdown {
-    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3;
+  /* Base stylings */
+  *:focus:not(:focus-visible) {
+    outline: none;
   }
 
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
+  article > section :is(ul, ol) > * + * {
+    margin-top: 0.75rem;
+  }
+
+  article > section li > :is(p, pre, blockquote):not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  article > section :is(ul, ol) {
+    padding-left: 1em;
+  }
+
+  article > section nav :is(ul, ol) {
+    padding-left: inherit;
+  }
+
+  td,
+  th {
+    padding: 6px;
+    text-align: left;
+  }
+
+  .mobile-sidebar-toggle {
+    overflow: hidden;
+  }
+
+  .mobile-sidebar-toggle #grid-left {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-sidebar-toggle #grid-left {
+      display: none;
+    }
+  }
+
+  /* Markdown Styling */
+  .markdown {
+    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500;
+  }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
   }
@@ -38,7 +131,7 @@
     @apply mt-8 mb-4 text-2xl font-semibold;
   }
   .markdown h3 {
-    @apply mt-8 mb-4 text-xl font-semibold;
+    @apply mt-8 mb-0 text-xl font-semibold;
   }
   .markdown li {
     @apply list-disc;
@@ -47,28 +140,47 @@
     @apply list-decimal;
   }
   .markdown p {
-    @apply mb-4 dark:text-white
+    @apply mb-4 dark:text-white;
   }
   .markdown a > p {
     @apply mb-0 text-sm;
   }
   .markdown a {
-    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-slate-500 text-t3-purple-200;
+    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-t3-purple-700 text-t3-purple-500 dark:text-t3-purple-200;
   }
   .markdown pre {
     @apply font-mono my-3 p-2 rounded-md sm:pt-2 pl-3 mx-auto;
   }
-  .markdown h3 {
-    @apply mb-0 font-semibold;
+
+  .markdown ol {
+    @apply w-full;
   }
-  .markdown code {
-    @apply font-mono bg-[#0d1117] p-1 rounded-md text-slate-50 text-xs cursor-text selection:bg-t3-purple-100 w-full whitespace-pre-wrap mx-auto ;
+
+  .markdown details {
+    @apply w-full bg-t3-purple-200/50 dark:bg-slate-700 px-3 pb-0.5 rounded-md;
   }
+
+  .markdown summary {
+    @apply py-3;
+  }
+
   .markdown p > img {
     @apply text-sm mt-8;
   }
- .markdown table > tbody > tr > td > a {
-  @apply break-all;
- }
+  .markdown table > tbody > tr > td > a {
+    word-wrap: break-word;
+  }
+  .markdown table {
+    @apply max-w-full table-fixed;
+  }
+  .markdown blockquote a {
+    @apply text-slate-900 dark:text-t3-purple-50;
+  }
+  .DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
 
+  #DocSearch-SearchBar {
+    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+  }
 }
