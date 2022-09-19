@@ -1,9 +1,11 @@
 ---
 import CliPreview from "./cli";
+import PageSection from "./pageSection.astro";
 ---
 
-<section
-  class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:grid lg:gap-x-8 xl:gap-x-12 lg:py-16"
+<PageSection
+  className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:grid lg:gap-x-8 xl:gap-x-12"
+  size={"16"}
 >
   <div class="flex flex-col gap-2 md:gap-4 max-w-[800px] xl:max-w-full mx-auto">
     <h2 class="text-t3-purple-50 text-center font-bold text-5xl w-full mb-2">
@@ -28,4 +30,4 @@ import CliPreview from "./cli";
   <div>
     <CliPreview client:only="react" />
   </div>
-</section>
+</PageSection>
