@@ -4,7 +4,9 @@ import Footer from "../components/footer/footer.astro";
 import Navbar from "../components/navigation/navbar.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import "../styles/global.css";
-import "@docsearch/css";
+import "../styles/algolia/style.css";
+import HeadCommon from "../components/headCommon.astro";
+import "@fontsource/inter/variable.css";
 
 export interface Props {
   title: string;
@@ -16,39 +18,23 @@ const currentPage = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
->
+<html dir="ltr" lang="en-us" class="initial">
   <head>
+    <HeadCommon />
     <SEO title={title} description={description} />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/ico" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
-    <Navbar mode={"landing"} />
-    <div class="relative h-full">
-      <aside
-        id="grid-left"
-        class="hidden sticky h-[100vh] overflow-y-auto bottom-0 top-0 left-0 right-0 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 z-10"
-        title="Site Navigation"
-      >
-        <LeftSidebar currentPage={currentPage} />
+  <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
+    <Navbar />
+    <div class="relative">
+      <aside id="grid-left" class="hidden" title="Site Navigation">
+        <div
+          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
+        >
+          <LeftSidebar currentPage={currentPage} />
+        </div>
       </aside>
     </div>
     <slot />
     <Footer isBlog={false} path="/" />
-    <style>
-      :global(.mobile-sidebar-toggle) {
-        overflow: hidden;
-      }
-
-      :global(.mobile-sidebar-toggle) #grid-left {
-        display: block;
-        top: 2rem;
-      }
-    </style>
   </body>
 </html>

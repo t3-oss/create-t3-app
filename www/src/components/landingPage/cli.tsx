@@ -3,10 +3,10 @@ import Typist from "react-typist";
 
 export default function CodeCard() {
   return (
-    <div className="md:w-[550px] w-full sm:w-[600px] border border-white mx-auto overflow-hidden my-5 rounded-lg">
+    <div className="md:w-[550px] w-full sm:w-[600px] mx-auto overflow-hidden my-5 rounded-lg">
       <div
         className="coding inverse-toggle px-1 sm:px-2 md:px-5 shadow-lg text-green-400 text-[10px] sm:text-xs font-mono subpixel-antialiased 
-              bg-gray-800 pb-6 pt-4 rounded-lg leading-normal overflow-hidden h-[270px] sm:h-[290px] md:h-[350px] lg:h-[310px]"
+              bg-neutral pb-6 pt-4 rounded-lg leading-normal overflow-hidden h-[270px] sm:h-[290px] md:h-[350px] lg:h-[310px]"
       >
         <div className="top mb-2 flex">
           <div className="h-3 w-3 bg-red-500 rounded-full"></div>

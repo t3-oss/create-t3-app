@@ -9,7 +9,6 @@ export default function MobileMenuButton() {
       <button
         type="button"
         aria-pressed={$isMobileMenuOpen ? "true" : "false"}
-        id="menu-toggle"
         className="dark:text-slate-50 block md:hidden"
         onClick={() => {
           MobileMenuState.set(!$isMobileMenuOpen);

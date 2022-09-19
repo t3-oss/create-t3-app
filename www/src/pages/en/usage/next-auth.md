@@ -1,22 +1,22 @@
 ---
 title: NextAuth.js
 description: Usage of NextAuth
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
-# What is NextAuth.js?
+## What is NextAuth.js?
 
 For when you want an authentication system in your NextJS application, NextAuth.js is a perfect solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, as well as a database adapter system to allow you to use your own database of choice.
 
-# Usage with tRPC
+## Usage with tRPC
 
 When using NextAuth in combination with tRPC when scaffolding with `create-t3-app`, the context provider is already set up for you. This allows tRPC to access the NextAuth session data to be able to use it in your API routes.
 
-## Context Provider
+### Context Provider
 
 Located at `server/router/context.ts`, the context provider is setup to recieve the `req` and `res` object from NextJS, to query if a current session exists and provide it to the tRPC context. This allows you to use the `session` object in your API routes to check if a user is authenticated in middleware.
 
-## \_app.tsx
+### \_app.tsx
 
 The entrypoint to your NextJS project, `_app.tsx` is where the context provider is imported to wrap the page being rendered:
 
@@ -58,13 +58,17 @@ declare module "next-auth" {
 }
 ```
 
-# Middleware
+## Usage with Prisma
+
+TODO: what we setup, how to add more fields to user and acc tables.
+
+## Middleware
 
 **Important Note**
 
 Usage of NextAuth.js with NextJS middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, `create-t3-app` is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
 
-# Useful Resources
+## Useful Resources
 
 | Resource                          | Link                                    |
 | --------------------------------- | --------------------------------------- |

@@ -1,14 +1,14 @@
 ---
 title: Prisma
 description: Usage of Prisma
-layout: ../../../layouts/blog.astro
+layout: ../../../layouts/docs.astro
 ---
 
-# What is Prisma?
+## What is Prisma?
 
 Prisma is an ORM for Typescript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
 
-# Prisma Client
+## Prisma Client
 
 Located at `/server/db/client.ts`, the Prisma Client is instantiated as a global variable (as recommended as [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) by the team at Prisma) and exported to be used in your API routes.
 
@@ -24,7 +24,7 @@ When you select NextAuth.js in combination with Prisma, the schema file is gener
 
 The default database is a SQLite database, which is great for development and quickly spinning up a proof-of-concept, but not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
 
-# Useful Resources
+## Useful Resources
 
 | Resource                     | Link                                                                                                                                              |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |

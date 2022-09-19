@@ -1,7 +1,7 @@
 ---
 title: Why CT3A?
 description: Why you should pick Create T3 App for your next project
-layout: ../../layouts/blog.astro
+layout: ../../layouts/docs.astro
 ---
 
 ## Why TypeScript ?
@@ -26,8 +26,11 @@ tRPC delivers on GraphQL's promise of seamless client development against a type
 
 ### Prisma
 
-Prisma is to SQL what TypeScript is to JS.
-TODO: need a bit more here
+Prisma created a developer experience that didn't exist before. Generating types from a user-defined schema, It guarantees type safety the whole way, from your database to your app.
+
+Prisma also provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier, notably, the Prisma Client is responsible for querying workflows, making SQL so easy you'll barely notice you're using it.
+
+In a few words, Prisma is to SQL what TypeScript is to JS.
 
 ### Tailwind CSS
 
@@ -39,4 +42,4 @@ Additionally, with its inline-like approach, Tailwind encourages you to style wi
 
 ### NextAuth.js
 
-TODO: this too
+For when you want an authentication system in your NextJS application, NextAuth.js is a perfect solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, as well as a database adapter system to allow you to use your own database of choice.

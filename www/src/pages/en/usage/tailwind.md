@@ -1,12 +1,12 @@
 ---
-title: Tailwind
-description: Usage of TailwindCSS
-layout: ../../../layouts/blog.astro
+title: Tailwind CSS
+description: Usage of Tailwind CSS
+layout: ../../../layouts/docs.astro
 ---
 
-# What is TailwindCSS?
+## What is Tailwind CSS?
 
-TailwindCSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, while being able to switch your brain off.
+Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, while being able to switch your brain off.
 
 It makes CSS incredibly easy and quick to write, as shown by the following example:
 
@@ -53,15 +53,24 @@ Equivelent in Tailwind:
 
 Its usage along with React components is extremely powerful for quickly building UIs, however it is purely a CSS framework and does not provide any pre-built components or logic and shouldn't be compared to a component library like Material UI.
 
-TailwindCSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for an encouraged mobile-first layout. This can be extended and customised to be as restrictive or broad as you like.
+Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for an encouraged mobile-first layout. This can be extended and customised to be as restrictive or broad as you like.
 
-# Useful Resources
+## Usage
 
-| Resource                     | Link                                                    |
-| ---------------------------- | ------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup               |
-| Tailwind Playground          | https://play.tailwindcss.com/                           |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs                    |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet               |
+Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+
+- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
+- [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
+
+## Useful Resources
+
+| Resource                     | Link                                                     |
+| ---------------------------- | -------------------------------------------------------- |
+| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
+| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
+| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
+| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
+| Tailwind Playground          | https://play.tailwindcss.com/                            |

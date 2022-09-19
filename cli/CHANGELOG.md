@@ -1,5 +1,27 @@
 # Changelog
 
+## 5.12.0
+
+### Minor Changes
+
+- [#446](https://github.com/t3-oss/create-t3-app/pull/446) [`6f63ec6`](https://github.com/t3-oss/create-t3-app/commit/6f63ec65201a077e534ec89c4ef18bfa07a30331) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - feat: better cli text when scaffolding in '.'
+
+## 5.11.0
+
+### Minor Changes
+
+- [#430](https://github.com/t3-oss/create-t3-app/pull/430) [`306777a`](https://github.com/t3-oss/create-t3-app/commit/306777a5513c365dfb3525c1484459236734a289) Thanks [@benmarg](https://github.com/benmarg)! - feat: direct developer to add schema from .env to schema.mjs for zod validation
+
+### Patch Changes
+
+- [#416](https://github.com/t3-oss/create-t3-app/pull/416) [`14b6d4a`](https://github.com/t3-oss/create-t3-app/commit/14b6d4a0764f57ece45749724c5b12a85544733e) Thanks [@xpressivecode](https://github.com/xpressivecode)! - fix(template): missing ctx when using ssr with trpc
+
+## 5.10.3
+
+### Patch Changes
+
+- [#419](https://github.com/t3-oss/create-t3-app/pull/419) [`554de8f`](https://github.com/t3-oss/create-t3-app/commit/554de8f2838a8d539d81bcb520f121a7e14e3c84) Thanks [@sor4chi](https://github.com/sor4chi)! - Remove unnecessary singlequote in tailwind classname
+
 ## 5.10.2
 
 ### Patch Changes

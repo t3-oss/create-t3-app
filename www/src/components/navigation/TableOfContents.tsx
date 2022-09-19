@@ -1,94 +1,87 @@
-import { useState, useEffect, useRef } from "react";
 import type { MarkdownHeading } from "astro";
+import clsx from "clsx";
+import { useEffect, useRef, useState } from "react";
 
-type ItemOffsets = {
-  id: string;
-  topOffset: number;
-};
-
-/** FIXME: SIMPLIFY THIS PLS */
-export default function TableOfContents({
-  headings = [],
-}: {
+interface TOCProps {
   headings: MarkdownHeading[];
-}) {
-  const itemOffsets = useRef<ItemOffsets[]>([]);
-  const [activeId, setActiveId] = useState<string | undefined>(undefined);
+}
+
+export default function TableOfContents({ headings = [] }: TOCProps) {
+  headings = [
+    { depth: 2, slug: "overview", text: "Overview" },
+    ...headings,
+  ].filter(({ depth }) => depth > 1 && depth < 4);
+
+  const tocRef = useRef<HTMLUListElement>(null);
+  const [active, setActive] = useState("overview");
+  const onThisPageId = "on-this-page-heading";
+
   useEffect(() => {
-    const getItemOffsets = () => {
-      const titles = document.querySelectorAll("article :is(h1, h2, h3, h4)");
-      if (itemOffsets && itemOffsets.current) {
-        itemOffsets.current = Array.from(titles).map((title) => {
-          return {
-            id: title.id,
-            topOffset: title.getBoundingClientRect().top + window.scrollY,
-          };
-        }) as ItemOffsets[];
+    if (!tocRef.current) return;
+
+    // Thanks Astro for the IntersectionObserver:
+    // https://github.com/withastro/docs/blob/main/src/components/RightSidebar/TableOfContents.tsx
+
+    const setCurrent: IntersectionObserverCallback = (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const { id } = entry.target;
+          if (id === onThisPageId) continue;
+          setActive(entry.target.id);
+          break;
+        }
       }
     };
 
-    getItemOffsets();
-    window.addEventListener("resize", getItemOffsets);
+    const headingsObserver = new IntersectionObserver(setCurrent, {
+      rootMargin: "-100px 0% -66%",
+      threshold: 1,
+    });
 
-    return () => {
-      window.removeEventListener("resize", getItemOffsets);
-    };
-  }, []);
+    // Observe all the headings in the main page content.
+    document
+      .querySelectorAll("article :is(h1,h2,h3)")
+      .forEach((h) => headingsObserver.observe(h));
 
-  useEffect(() => {
-    setActiveId(window.location.hash.slice(1));
-    const updateActiveId = (slug: string) => {
-      setActiveId(slug);
-    };
-    window.addEventListener("hashchange", () =>
-      updateActiveId(window.location.hash.slice(1)),
-    );
-    return () => {
-      window.removeEventListener("hashchange", () =>
-        updateActiveId(window.location.hash.slice(1)),
-      );
-    };
-  }, []);
+    // Stop observing when the component is unmounted.
+    return () => headingsObserver.disconnect();
+  }, [tocRef.current]);
 
   return (
-    <div className="w-full ">
-      <h2 className="text-lg my-4 font-semibold">On this page</h2>
-      <ul className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1">
-        <li
-          className={`pl-1 ml-1 marker:bg-t3-purple-300 ${
-            activeId === "overview" ? "font-bold" : "font-normal"
-          }`.trim()}
-        >
-          <a
-            className="hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200"
-            href="#overview"
-          >
-            Overview
-          </a>
-        </li>
-        {headings
-          .filter(({ depth }) => depth > 0 && depth < 4)
-          .map((heading, i) => {
-            const padding = heading.depth;
-            return (
-              <li key={i} className={`pl-${padding} ml-1 w-full list-none`}>
-                <a
-                  className={`hover:text-t3-purple-300 dark:hover:text-t3-purple-100 text-t3-purple-300 dark:text-t3-purple-200 marker:text-t3-purple-300 ${
-                    activeId === heading.slug ? "font-bold" : "font-normal"
-                  } ${
-                    padding < 3
-                      ? "text-base"
-                      : padding >= 3
-                      ? "text-sm"
-                      : "text-sm"
-                  }`}
-                  href={`#${heading.slug}`}
-                >
-                  {heading.text}
-                </a>
-              </li>
-            );
-          })}
+    <div>
+      <h2
+        className="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+        id={onThisPageId}
+      >
+        On this page
+      </h2>
+      <ul
+        ref={tocRef}
+        className="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300  dark:border-t3-purple-200 my-1 list-none"
+      >
+        {headings.map((heading, i) => {
+          const { depth, slug, text } = heading;
+
+          return (
+            <li
+              key={i}
+              className={`pl-${depth * 2 - 2} ml-1 w-full list-none pb-1`}
+            >
+              <a
+                className={clsx(
+                  `hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200`,
+                  {
+                    "underline text-t3-purple-700 dark:text-t3-purple-100":
+                      active === slug,
+                  },
+                )}
+                href={`#${slug}`}
+              >
+                {text}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
