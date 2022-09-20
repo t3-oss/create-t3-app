@@ -19,15 +19,17 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
   >
     On this page
   </h2>
-  <ul
-    class="w-full border-l-2 border-t3-purple-300 marker:text-t3-purple-300 dark:border-t3-purple-200 my-1 list-none"
-  >
+  <ul class="w-full marker:text-t3-purple-300 mb-4 list-none">
     {
       headings.map((heading) => {
         const { depth, slug, text } = heading;
 
         return (
-          <li class={`pl-${depth * 2 - 2} ml-1 w-full list-none pb-1`}>
+          <li
+            class={`pl-${
+              depth * 2 - 2
+            } w-full list-none pb-1 border-l-2 border-t3-purple-300/20`}
+          >
             <a
               class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
               href={`#${slug}`}
@@ -54,10 +56,11 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           ).at(-1);
           const func = entry.isIntersecting ? "add" : "remove";
           tocItem.classList[func](
-            "font-bold",
+            "font-medium",
             "text-t3-purple-700",
             "dark:text-t3-purple-100",
           );
+          tocItem.parentElement.classList[func]("border-t3-purple-300/100");
         });
       },
       {
