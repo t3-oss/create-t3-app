@@ -85,12 +85,6 @@ yarn create t3-app
 pnpm dlx create-t3-app@latest
 ```
 
-If you prefer using the [v10 beta version of tRPC](https://trpc.io/docs/v10/), use `create-t3-app@next`:
-
-```bash
-npx create-t3-app@next
-```
-
 <h2 id="community">Community</h2>
 
 For help, discussion about best practices, or any other conversation that would benefit create-t3-app:
@@ -112,6 +106,12 @@ To use the beta version of `create-t3-app` (published continuously after merged 
 
 ```bash
 npx create-t3-app@beta
+```
+
+If you prefer using the [v10 beta version of tRPC](https://trpc.io/docs/v10/), use `create-t3-app@next`:
+
+```bash
+npx create-t3-app@next
 ```
 
 <h2 id="axioms">T3 Axioms</h2>
