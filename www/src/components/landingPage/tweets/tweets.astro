@@ -22,21 +22,26 @@ const fetchTweets = async (ids: string[]) => {
     "https://api.twitter.com/2/tweets" +
     `?ids=${ids.join(",")}` +
     "&tweet.fields=created_at,public_metrics" +
-    "&user.fields=name,profile_image_url,username,verified" + "&expansions=author_id";
+    "&user.fields=name,profile_image_url,username,verified" +
+    "&expansions=author_id";
 
   return await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json()).then((res) => {
+    .then((res) => res.json())
+    .then((res) => {
       // TODO: Maybe use Twitter SDK to make this typesafe in the future?
       return res.data.map((d: any) => ({
         id: d.id,
-        handle: res.includes.users.find((u: any) => u.id === d.author_id).username,
+        handle: res.includes.users.find((u: any) => u.id === d.author_id)
+          .username,
         author: res.includes.users.find((u: any) => u.id === d.author_id).name,
-        verified: res.includes.users.find((u: any) => u.id === d.author_id).verified,
-        avatar: res.includes.users.find((u: any) => u.id === d.author_id).profile_image_url,
+        verified: res.includes.users.find((u: any) => u.id === d.author_id)
+          .verified,
+        avatar: res.includes.users.find((u: any) => u.id === d.author_id)
+          .profile_image_url,
         date: new Date(d.created_at),
         text: d.text,
         likes: d.public_metrics.like_count,
