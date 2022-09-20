@@ -43,7 +43,7 @@ const fetchTweets = async (ids: string[]) => {
         avatar: res.includes.users.find((u: any) => u.id === d.author_id)
           .profile_image_url,
         date: new Date(d.created_at),
-        text: d.text,
+        text: d.text.replace(/\b(http(s|):\/\/.+)\W*$/, ''),
         likes: d.public_metrics.like_count,
         retweets: d.public_metrics.retweet_count,
         replies: d.public_metrics.reply_count,
@@ -52,7 +52,7 @@ const fetchTweets = async (ids: string[]) => {
     });
 };
 if (!token) {
-  throw new Error("TWITTER_BEARER_TOKEN is not set");
+  console.error("TWITTER_BEARER_TOKEN is not set");
 }
 
 const tweets = await fetchTweets([
