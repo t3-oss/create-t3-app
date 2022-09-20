@@ -11,34 +11,32 @@ import type { Tweet } from "./tweets.astro";
 
 export default function TweetSlider({ tweets }: { tweets: Tweet[] }) {
   return (
-    <>
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1}
-        pagination={{
-          clickable: true,
-          el: ".swiper-pagination",
-        }}
-        className="rounded-lg w-full cursor-grab"
-        modules={[Pagination, Autoplay]}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-      >
-        {tweets.map((tweet) => (
-          <SwiperSlide key={tweet.id}>
-            <div>
-              <TweetCard {...tweet} />
-            </div>
-          </SwiperSlide>
-        ))}
-        <div className="mb-10">
-          <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
-        </div>
-      </Swiper>
-    </>
+    <Swiper
+      spaceBetween={20}
+      slidesPerView={1}
+      pagination={{
+        clickable: true,
+        el: ".swiper-pagination",
+      }}
+      className="rounded-lg w-full cursor-grab"
+      modules={[Pagination, Autoplay]}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
+    >
+      {tweets.map((tweet) => (
+        <SwiperSlide key={tweet.id}>
+          <div>
+            <TweetCard {...tweet} />
+          </div>
+        </SwiperSlide>
+      ))}
+      <div className="mb-10">
+        <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+      </div>
+    </Swiper>
   );
 }
 
@@ -66,50 +64,49 @@ function TweetCard({
       />
       <div className="flex flex-wrap justify-start flex-1">
         <div className="flex-1 flex items-center">
-          <h3 className="mr-2 font-bold hover:underline">
+          <div>
+            <h3 className="mr-2 font-bold hover:underline">
+              <a
+                href={`https://twitter.com/${handle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#1da1f2] text-sm sm:text-base"
+              >
+                {author}
+              </a>
+            </h3>
+            {verified && (
+              <span className="mr-2">
+                <svg
+                  className="w-4 h-4"
+                  fill="#1da1f2"
+                  viewBox="0 0 24 24"
+                  aria-label="Verified account"
+                >
+                  <g>
+                    <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z" />
+                  </g>
+                </svg>
+              </span>
+            )}
             <a
               href={`https://twitter.com/${handle}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#1da1f2] text-sm sm:text-base"
+              className="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap mr-1 hover:text-[#1da1f2]"
             >
-              {author}
+              @{handle}
             </a>
-          </h3>
-          {verified && (
-            <span className="mr-2">
-              <svg
-                className="w-4 h-4"
-                fill="#1da1f2"
-                viewBox="0 0 24 24"
-                aria-label="Verified account"
-              >
-                <g>
-                  <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z" />
-                </g>
-              </svg>
-            </span>
-          )}
-          <a
-            href={`https://twitter.com/${handle}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap mr-1 hover:text-[#1da1f2]"
-          >
-            @{handle}
-          </a>
-          <span className="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap mr-1">
-            ·
-          </span>
-          <a
-            href={`https://twitter.com/${handle}/status/${id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap hover:text-[#1da1f2]"
-          >
-            {date.toDateString()}
-          </a>
+          </div>
         </div>
+        <a
+          href={`https://twitter.com/${handle}/status/${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-t3-purple-100 text-sm lg:text-sm whitespace-nowrap hover:text-[#1da1f2]"
+        >
+          {date.toDateString()}
+        </a>
       </div>
       <div className="w-full">
         <p className="my-1 text-sm xl:text-base whitespace-pre-line">{text}</p>
