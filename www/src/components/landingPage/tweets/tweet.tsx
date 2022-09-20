@@ -26,7 +26,7 @@ export default function Tweet(props: Props) {
   } = props;
 
   return (
-    <article className="px-4 pt-4 pb-1 flex flex-wrap items-start hover:bg-white/20 bg-white/10 bg-cover rounded-lg transition-colors hover:no-underline">
+    <article className="px-4 pt-4 pb-1 flex flex-wrap items-start hover:bg-white/20 bg-white/10 bg-cover rounded-lg transition-colors hover:no-underline border border-t3-purple-200/20 hover:border-t3-purple-300/50">
       <img
         src={avatar}
         width={48}

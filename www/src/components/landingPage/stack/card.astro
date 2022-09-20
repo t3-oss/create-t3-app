@@ -7,7 +7,9 @@ export interface Props {
 const { title, href } = Astro.props;
 ---
 
-<div class="relative bg-white/5 rounded-md flex flex-col justify-between">
+<div
+  class="relative bg-white/5 rounded-md flex flex-col justify-between border border-t3-purple-200/20 hover:border-t3-purple-300/50 transition-colors"
+>
   <a
     href={href}
     target="_blank"
