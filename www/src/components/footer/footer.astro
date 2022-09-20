@@ -1,5 +1,4 @@
 ---
-import clsx from "clsx";
 import AvatarList from "../docs/avatarList.astro";
 export interface Props {
   path: string;
@@ -8,11 +7,7 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer
-  class={clsx(
-    "transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent w-screen",
-  )}
->
+<footer class="transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent">
   {isBlog && <AvatarList path={path} />}
   <div
     class="container px-6 mx-auto space-y-3 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 pt-6"
