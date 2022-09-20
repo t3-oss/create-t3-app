@@ -19,7 +19,7 @@ export default () => {
           clickable: true,
           el: ".swiper-pagination",
         }}
-        className="rounded-lg w-full -mb-5"
+        className="rounded-lg w-full cursor-grab"
         modules={[Pagination, Autoplay]}
         autoplay={{
           delay: 3000,
@@ -28,7 +28,7 @@ export default () => {
         }}
       >
         <SwiperSlide>
-          <div className="mb-10">
+          <div>
             <Tweet
               author="Emilia Zapata"
               avatar="https://pbs.twimg.com/profile_images/1426010455055638531/xUFu5JP7_400x400.jpg"
@@ -44,7 +44,7 @@ export default () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="mb-10">
+          <div>
             <Tweet
               author="Anthony (ajcwebdev.x)"
               avatar="https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_400x400.png"
@@ -59,7 +59,9 @@ export default () => {
             />
           </div>
         </SwiperSlide>
-        <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+        <div className="mb-10">
+          <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+        </div>
       </Swiper>
     </>
   );
