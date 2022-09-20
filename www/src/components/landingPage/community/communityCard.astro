@@ -15,7 +15,7 @@ const { text, title, href } = Astro.props;
   class="rounded-lg hover:bg-white/20 bg-white/10 transition-colors cursor-pointer w-full sm:h-64 hover:no-underline"
 >
   <div
-    class="p-4 sm:p-2 md:p-4 flex flex-col items-center justify-center space-y-3"
+    class="p-4 sm:p-2 md:p-4 flex flex-col items-center justify-center space-y-3 h-full"
   >
     <div class="w-14 h-14"><slot name="icon" /></div>
     <h2 class="text-xl font-black">{title}</h2>
