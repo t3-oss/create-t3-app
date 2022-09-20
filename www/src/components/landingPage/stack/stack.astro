@@ -1,27 +1,26 @@
 ---
+import PageSection from "../pageSection.astro";
 import Feature from "./card.astro";
 import NextAuthIcon from "./nextauth.png";
 ---
 
-<section>
-  <div
-    class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:gap-x-32 text-t3-purple-100"
-  >
-    <div>
-      <h2 class="text-2xl font-semibold text-t3-purple-100">
+<PageSection size={"24"}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-t3-purple-100">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-semibold text-t3-purple-200">
         Libraries that work
       </h2>
-      <p class="mt-2 text-4xl tracking-tight font-bold text-t3-purple-200">
+      <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
         Without the complex setup
-      </p>
-      <p class="mt-4 text-xl text-t3-purple-200">
+      </h3>
+      <p class="mt-4 text-xl text-t3-purple-200 max-w-3xl mx-auto">
         create-t3-app gives you the option to install libraries that you need
         without the hassle of scaffolding it all yourself.
       </p>
     </div>
-    <div class="mt-12 lg:mt-0 lg:col-span-2">
+    <div>
       <dl
-        class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col sm:gap-x-6 sm:gap-y-14 lg:gap-x-8"
+        class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:grid-rows-3 md:grid-rows-2 sm:grid-flow-col sm:gap-x-6 sm:gap-y-14 lg:gap-x-8"
       >
         <Feature title="Next.js" href="https://nextjs.org/">
           <svg
@@ -154,4 +153,4 @@ import NextAuthIcon from "./nextauth.png";
       </dl>
     </div>
   </div>
-</section>
+</PageSection>

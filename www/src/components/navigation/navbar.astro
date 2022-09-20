@@ -1,8 +1,8 @@
 ---
 import clsx from "clsx";
 import Search from "./Search";
-import SidebarToggle from "./SidebarToggle";
-import ThemeToggleButton from "./ThemeToggleButton";
+import SidebarToggle from "./sidebarToggle.astro";
+import ThemeToggleButton from "./themeToggleButton.astro";
 
 const currentPage = Astro.url.pathname;
 const isLanding = currentPage === "/";
@@ -73,7 +73,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           hidden: isLanding,
         })}
       >
-        <ThemeToggleButton client:load />
+        <ThemeToggleButton />
       </div>
 
       <div>
