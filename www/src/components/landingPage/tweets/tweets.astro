@@ -33,22 +33,22 @@ const fetchTweets = async (ids: string[]) => {
     .then((res) => res.json())
     .then((res) => {
       // TODO: Maybe use Twitter SDK to make this typesafe in the future?
-      return res.data.map((d: any) => ({
-        id: d.id,
-        handle: res.includes.users.find((u: any) => u.id === d.author_id)
-          .username,
-        author: res.includes.users.find((u: any) => u.id === d.author_id).name,
-        verified: res.includes.users.find((u: any) => u.id === d.author_id)
-          .verified,
-        avatar: res.includes.users.find((u: any) => u.id === d.author_id)
-          .profile_image_url,
-        date: new Date(d.created_at),
-        text: d.text.replace(/\b(http(s|):\/\/.+)\W*$/, ""),
-        likes: d.public_metrics.like_count,
-        retweets: d.public_metrics.retweet_count,
-        replies: d.public_metrics.reply_count,
-        quotes: d.public_metrics.quote_count,
-      }));
+      return res.data.map((d: any) => {
+        const user = res.includes.users.find((u: any) => u.id === d.author_id);
+        return {
+          id: d.id,
+          handle: user.username,
+          author: user.name,
+          verified: user.verified,
+          avatar: user.profile_image_url,
+          date: new Date(d.created_at),
+          text: d.text.replace(/\b(http(s|):\/\/.+)\W*$/, ""), // remove trailing link
+          likes: d.public_metrics.like_count,
+          retweets: d.public_metrics.retweet_count,
+          replies: d.public_metrics.reply_count,
+          quotes: d.public_metrics.quote_count,
+        };
+      });
     });
 };
 if (!token) {
@@ -59,8 +59,7 @@ const tweets = await fetchTweets([
   "1544909672137867264",
   "1553580714591158272",
   "1571922865078915079",
-  "1570054715240763393"
-
+  "1570054715240763393",
 ]);
 ---
 
