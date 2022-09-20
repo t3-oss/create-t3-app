@@ -1,6 +1,61 @@
 ---
 import PageSection from "../pageSection.astro";
 import TweetSlider from "./tweetSlider";
+
+export interface Tweet {
+  id: string;
+  handle: string;
+  verified: boolean;
+  author: string;
+  avatar: string;
+  date: Date;
+  text: string;
+  likes: number;
+  retweets: number;
+  replies: number;
+  quotes: number;
+}
+
+const token = import.meta.env.TWITTER_BEARER_TOKEN;
+const fetchTweets = async (ids: string[]) => {
+  const url =
+    "https://api.twitter.com/2/tweets" +
+    `?ids=${ids.join(",")}` +
+    "&tweet.fields=created_at,public_metrics" +
+    "&user.fields=name,profile_image_url,username,verified" + "&expansions=author_id";
+
+  return await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json()).then((res) => {
+      // TODO: Maybe use Twitter SDK to make this typesafe in the future?
+      return res.data.map((d: any) => ({
+        id: d.id,
+        handle: res.includes.users.find((u: any) => u.id === d.author_id).username,
+        author: res.includes.users.find((u: any) => u.id === d.author_id).name,
+        verified: res.includes.users.find((u: any) => u.id === d.author_id).verified,
+        avatar: res.includes.users.find((u: any) => u.id === d.author_id).profile_image_url,
+        date: new Date(d.created_at),
+        text: d.text,
+        likes: d.public_metrics.like_count,
+        retweets: d.public_metrics.retweet_count,
+        replies: d.public_metrics.reply_count,
+        quotes: d.public_metrics.quote_count,
+      }));
+    });
+};
+if (!token) {
+  throw new Error("TWITTER_BEARER_TOKEN is not set");
+}
+
+const tweets = await fetchTweets([
+  "1544909672137867264",
+  "1553580714591158272",
+]);
+
+console.log(tweets);
 ---
 
 <PageSection
@@ -24,5 +79,5 @@ import TweetSlider from "./tweetSlider";
       > on Twitter!
     </p>
   </div>
-  <TweetSlider client:visible />
+  <TweetSlider tweets={tweets} client:visible />
 </PageSection>
