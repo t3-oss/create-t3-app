@@ -33,7 +33,7 @@ export default function TweetSlider({ tweets }: { tweets: Tweet[] }) {
           </div>
         </SwiperSlide>
       ))}
-      <div className="mb-6">
+      <div className="mb-10">
         <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
       </div>
     </Swiper>
