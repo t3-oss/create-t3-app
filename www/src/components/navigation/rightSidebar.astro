@@ -1,14 +1,15 @@
 ---
-import TableOfContents from "./TableOfContents";
+import TableOfContents from "./tableOfContents.astro";
 import MoreMenu from "./moreMenu.astro";
 import type { MarkdownHeading } from "astro";
 
 export interface Props {
   headings: MarkdownHeading[];
   githubEditUrl: string;
+  title: string;
 }
 
-const { headings, githubEditUrl } = Astro.props;
+const { headings, githubEditUrl, title } = Astro.props;
 ---
 
 <nav
@@ -16,7 +17,7 @@ const { headings, githubEditUrl } = Astro.props;
   class="hidden md:block max-w-sm w-full overflow-x-hidden"
 >
   <div class="hidden md:block">
-    <TableOfContents client:media="(min-width: 768px)" headings={headings} />
+    <TableOfContents headings={headings} title={title} />
     <MoreMenu editHref={githubEditUrl} />
   </div>
 </nav>

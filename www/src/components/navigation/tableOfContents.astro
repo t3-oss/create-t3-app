@@ -1,0 +1,72 @@
+---
+import type { MarkdownHeading } from "astro";
+
+export interface Props {
+  headings: MarkdownHeading[];
+  title: string;
+}
+
+let { headings, title } = Astro.props;
+headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
+  ({ depth }) => depth > 1 && depth < 4,
+);
+---
+
+<div>
+  <h2
+    class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+    id="toc-heading"
+  >
+    On this page
+  </h2>
+  <ul class="w-full marker:text-t3-purple-300 mb-4 list-none">
+    {
+      headings.map((heading) => {
+        const { depth, slug, text } = heading;
+
+        return (
+          <li
+            class={`pl-${
+              depth * 2 - 2
+            } w-full list-none pb-1 border-l-2 border-t3-purple-300/20`}
+          >
+            <a
+              class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+              href={`#${slug}`}
+            >
+              {text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<script is:inline>
+  // Toggle classes when items are in view
+  document.querySelectorAll("article :is(h1,h2,h3)").forEach((h) => {
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          // have to do "All" here cause we render this component in pageContent for mobile too
+          const tocItem = Array.from(
+            document.querySelectorAll(`a[href="#${id}"]`),
+          ).at(-1);
+          const func = entry.isIntersecting ? "add" : "remove";
+          tocItem.classList[func](
+            "font-medium",
+            "text-t3-purple-700",
+            "dark:text-t3-purple-100",
+          );
+          tocItem.parentElement.classList[func]("border-t3-purple-300/100");
+        });
+      },
+      {
+        rootMargin: "-100px 0% -66%",
+        threshold: 1,
+      },
+    ).observe(h);
+  });
+</script>

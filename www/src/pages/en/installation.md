@@ -35,8 +35,10 @@ pnpm dlx create-t3-app@latest
 
 ## Experimental
 
-If you prefer using the [experimental v10 version of tRPC](https://trpc.io?v10), use `create-t3-app@next`. Note that the alpha versions of tRPC that it uses may contain API changes. We will try our best to keep on top of these, please file an issue if we have missed something.
+If you prefer using the [v10 beta version of tRPC](https://trpc.io/docs/v10/), use `create-t3-app@next`:
 
 ```bash
 npx create-t3-app@next
 ```
+
+We're grateful if you report any bugs you may find while using this version.

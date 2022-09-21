@@ -1,36 +1,34 @@
 ---
+import PageSection from "../pageSection.astro";
 import Feature from "./card.astro";
 import NextAuthIcon from "./nextauth.png";
 ---
 
-<section>
-  <div
-    class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:gap-x-32 text-t3-purple-100"
-  >
-    <div>
-      <h2 class="text-2xl font-semibold text-t3-purple-100">
+<PageSection size={"24"} id="stack">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-t3-purple-100">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-semibold text-t3-purple-200">
         Libraries that work
       </h2>
-      <p class="mt-2 text-4xl tracking-tight font-bold text-t3-purple-200">
+      <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
         Without the complex setup
-      </p>
-      <p class="mt-4 text-xl text-t3-purple-200">
+      </h3>
+      <p class="mt-4 text-xl text-t3-purple-200 max-w-[40ch] mx-auto">
         create-t3-app gives you the option to install libraries that you need
         without the hassle of scaffolding it all yourself.
       </p>
     </div>
-    <div class="mt-12 lg:mt-0 lg:col-span-2">
+    <div>
       <dl
-        class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col sm:gap-x-6 sm:gap-y-14 lg:gap-x-8"
+        class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:grid-rows-3 md:grid-rows-2 sm:grid-flow-col sm:gap-x-6 sm:gap-y-14 lg:gap-x-8"
       >
         <Feature title="Next.js" href="https://nextjs.org/">
           <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
             slot="icon"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-white"
+            class="h-10 aspect-square fill-white py-1"
           >
             <title>Next.js</title>
             <path
@@ -48,96 +46,13 @@ import NextAuthIcon from "./nextauth.png";
             towards good decisions.
           </Fragment>
         </Feature>
-        <Feature title="Typescript" href="https://www.typescriptlang.org/">
-          <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
-            slot="icon"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-[#3178C6]"
-          >
-            <title>Typescript</title>
-            <path
-              d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
-            >
-            </path>
-          </svg>
-          <Fragment slot="description">
-            Javascript is hard. Why add more rules? We firmly believe the
-            experience TypeScript provides will help you be a better developer,
-            regardless of where you are in your career as an engineer. Whether
-            you're new to web development or a seasoned pro, the "strictness" of
-            TypeScript will provide a less frustrating, more consistent
-            experience than vanilla JS.
-          </Fragment>
-        </Feature>
-        <Feature title="TailwindCSS" href="https://tailwindcss.com/">
-          <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
-            slot="icon"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-[#06B6D4]"
-          >
-            <title>Tailwind CSS</title>
-            <path
-              d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-            ></path>
-          </svg>
-          <Fragment slot="description">
-            TailwindCSS is a utility-first CSS framework that helps you build
-            beautiful, responsive designs without any extra configuration. It’s
-            built with utility-first principles, and is completely customizable
-            and extendable.
-          </Fragment>
-        </Feature>
-        <Feature title="tRPC" href="https://trpc.io/">
-          <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
-            slot="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            viewBox="0 0 256 305"
-            class="h-10 aspect-square fill-[#398CCB]"
-          >
-            <title>tRPC</title>
-            <path
-              d="M28.57 244.484h21.982v11.153H28.571v25.308a16.88 16.88 0 0 0 .738 5.364 8.152 8.152 0 0 0 2.088 3.4 7.815 7.815 0 0 0 3.3 1.851c1.235.33 2.504.51 3.78.536l.547.002c1.15 0 2.338 0 3.563-.162l.727-.09 1.409-.16c.461-.054.915-.113 1.366-.188l.66-.105 1.24-.184c.401-.06.79-.124 1.175-.199l.918-.184.427-.09.79-.176.366-.087 1.476 10.39a18.505 18.505 0 0 1-3.752 1.6 35.9 35.9 0 0 1-4.513 1.113c-1.6.3-3.264.526-5.002.688a54.28 54.28 0 0 1-5.089.238 28.396 28.396 0 0 1-8.752-1.25 16.83 16.83 0 0 1-6.727-4.002 17.343 17.343 0 0 1-4.302-6.852 29.196 29.196 0 0 1-1.525-10.003v-26.758H0v-11.153h13.441v-14.417h15.13v14.417Zm53.88 29.271v29.609H67.156v-79.236h26.62a42.52 42.52 0 0 1 11.916 1.55 26.67 26.67 0 0 1 9.14 4.552 19.88 19.88 0 0 1 5.79 7.502 24.57 24.57 0 0 1 2.05 10.34 26.72 26.72 0 0 1-1.012 7.64 20.331 20.331 0 0 1-7.403 10.804 30.096 30.096 0 0 1-5.901 3.488l17.03 32.697v.713h-16.443L94.04 273.755H82.45Zm.012-12.428h11.315a17.868 17.868 0 0 0 6.252-1 10.866 10.866 0 0 0 4.39-2.914 10.528 10.528 0 0 0 2.112-3.589c.448-1.358.692-2.775.723-4.203l.002-.536a15.104 15.104 0 0 0-.95-5.576 9.865 9.865 0 0 0-2.85-4.001 12.066 12.066 0 0 0-4.14-2.176 19.143 19.143 0 0 0-4.97-.76l-11.884-.003v24.758Zm67.845 42.037H135.04v-79.236h27.095a34.41 34.41 0 0 1 11.703 1.876 26.633 26.633 0 0 1 8.928 5.201 23.307 23.307 0 0 1 5.627 8.053 26.358 26.358 0 0 1 1.988 9.723v.667a24.17 24.17 0 0 1-1.988 9.853 22.507 22.507 0 0 1-5.627 7.777 26.37 26.37 0 0 1-8.965 5.177 34.723 34.723 0 0 1-11.704 1.85h-11.803l.013 29.059Zm0-41.462h11.803a15.004 15.004 0 0 0 5.664-.988 11.553 11.553 0 0 0 4.026-2.663 11.178 11.178 0 0 0 2.364-3.889c.53-1.476.8-3.033.8-4.601a16.367 16.367 0 0 0-.8-5.164 11.966 11.966 0 0 0-2.364-4.202 11.59 11.59 0 0 0-4.026-2.825 14.267 14.267 0 0 0-5.664-1.038h-11.803v25.37Zm103.042 27.42a25.307 25.307 0 0 1-5.902 8.165 26.045 26.045 0 0 1-8.815 5.202 33.647 33.647 0 0 1-10.558 1.814l-.77-.001a30.759 30.759 0 0 1-9.053-1.25 25.345 25.345 0 0 1-7.502-3.677 25.707 25.707 0 0 1-5.414-5.389 33.672 33.672 0 0 1-4.001-6.964 41.575 41.575 0 0 1-2.413-8.378 53.408 53.408 0 0 1-.851-9.69v-10.666a53.43 53.43 0 0 1 .763-9.115 39.411 39.411 0 0 1 1.95-7.161l.338-.866a30.409 30.409 0 0 1 4.577-8.053 29.271 29.271 0 0 1 6.414-5.976 26.158 26.158 0 0 1 7.052-3.189 29.108 29.108 0 0 1 7.48-1.11l.76-.003a33.76 33.76 0 0 1 11.616 1.85 23.757 23.757 0 0 1 14.342 13.655 37.411 37.411 0 0 1 2.613 11.153h-15.23c-.09-2.12-.442-4.22-1.05-6.252a12.354 12.354 0 0 0-2.425-4.463 10.416 10.416 0 0 0-4.052-2.639 16.73 16.73 0 0 0-5.801-.9 14.242 14.242 0 0 0-3.351.388c-1 .243-1.959.626-2.851 1.137a11.328 11.328 0 0 0-3.751 3.752 21.969 21.969 0 0 0-2.501 5.639 34.01 34.01 0 0 0-1.025 5.526 58.767 58.767 0 0 0-.325 6.502v10.766a61.28 61.28 0 0 0 .512 8.465 28.92 28.92 0 0 0 1.6 6.502 15.992 15.992 0 0 0 1.826 3.376c.667.96 1.487 1.804 2.426 2.5a10.003 10.003 0 0 0 3.288 1.6 14.56 14.56 0 0 0 4.052.526 17.918 17.918 0 0 0 5.389-.763 10.303 10.303 0 0 0 4.088-2.4 11.253 11.253 0 0 0 2.664-4.19 20.969 20.969 0 0 0 1.25-6.15H256a30.396 30.396 0 0 1-2.65 10.727ZM186.38 92.402l38.486 22.22v44.462l-38.486 22.22-17.085-9.881-41.545 23.984-41.296-23.847-16.846 9.743-38.486-22.256V114.62l38.486-22.219 38.486 22.22v44.425l-11.643 6.733 31.299 18.074 31.548-18.212-11.405-6.595V114.62l38.487-22.219ZM157.896 126.2v27.12l23.482 13.555v-27.12L157.896 126.2Zm56.967-.037-23.482 13.554v27.158l23.482-13.592v-27.12Zm-173.738 0v27.12l23.481 13.554v-27.12l-23.481-13.554Zm56.966 0L74.61 139.716v27.12l23.482-13.554v-27.12Zm88.289-22.182-23.482 13.554 23.482 13.567 23.481-13.567-23.481-13.554Zm-116.772-.037-23.482 13.591 23.482 13.53 23.482-13.53-23.482-13.591Zm19.143-68.92v11.54l-35.61 20.57v34.772l-10.003 5.777V61.355L88.75 35.023ZM127.237 0l38.512 22.219v12.219l46.613 26.917v46.039l-10.003-5.777V67.132l-36.61-21.141v20.666l-38.487 22.219-38.486-22.219V22.219L127.237 0ZM98.78 33.76v27.12l23.457 13.554V47.326L98.779 33.76Zm56.942 0-23.457 13.566v27.096L155.72 60.88V33.76Zm-28.484-22.207L103.78 25.107l23.457 13.554 23.482-13.554-23.482-13.554Z"
-            ></path>
-          </svg>
-          <Fragment slot="description">
-            If you use TypeScript on both the frontend and backend, you should
-            use tRPC to infer types to create a full stack type-safe API. It can
-            be used in place or alongside Next.js' API routes, or as a
-            standalone server.
-          </Fragment>
-        </Feature>
-        <Feature title="NextAuth.js" href="https://next-auth.js.org/">
-          <img
-            slot="icon"
-            src={NextAuthIcon}
-            class="h-10 w-10"
-            alt="NextAuth.js"
-            width={100}
-            height={100}
-          />
-          <Fragment slot="description">
-            When you need a flexible, secure, and scalable authentication
-            solution, NextAuth.js is the go-to. It ties into your existing
-            database and provides a simple API to manage users and sessions, and
-            ties into NextJS and tRPC to provide a seamless experience.
-          </Fragment>
-        </Feature>
         <Feature title="Prisma" href="https://www.prisma.io/">
           <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
             slot="icon"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-10 fill-white"
+            class="h-10 fill-white py-1"
           >
             <title>Prisma</title>
             <path
@@ -151,7 +66,92 @@ import NextAuthIcon from "./nextauth.png";
             MySQL, SQL Server, and SQLite.
           </Fragment>
         </Feature>
+
+        <Feature title="tRPC" href="https://trpc.io/">
+          <svg
+            slot="icon"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-10 aspect-square fill-[#398CCB] py-1"
+          >
+            <rect width="512" height="512" rx="150" fill="#398CCB"></rect>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M255.446 75L326.523 116.008V138.556L412.554 188.238V273.224L435.631 286.546V368.608L364.6 409.615L333.065 391.378L256.392 435.646L180.178 391.634L149.085 409.615L78.0538 368.538V286.546L100.231 273.743V188.238L184.415 139.638L184.462 139.636V116.008L255.446 75ZM326.523 159.879V198.023L255.492 239.031L184.462 198.023V160.936L184.415 160.938L118.692 198.9V263.084L149.085 245.538L220.115 286.546V368.538L198.626 380.965L256.392 414.323L314.618 380.712L293.569 368.538V286.546L364.6 245.538L394.092 262.565V198.9L326.523 159.879ZM312.031 357.969V307.915L355.369 332.931V382.985L312.031 357.969ZM417.169 307.846L373.831 332.862V382.985L417.169 357.9V307.846ZM96.5154 357.9V307.846L139.854 332.862V382.915L96.5154 357.9ZM201.654 307.846L158.315 332.862V382.915L201.654 357.9V307.846ZM321.262 291.923L364.6 266.908L407.938 291.923L364.6 316.962L321.262 291.923ZM149.085 266.838L105.746 291.923L149.085 316.892L192.423 291.923L149.085 266.838ZM202.923 187.362V137.308L246.215 162.346V212.377L202.923 187.362ZM308.015 137.308L264.723 162.346V212.354L308.015 187.362V137.308ZM212.154 121.338L255.446 96.3231L298.785 121.338L255.446 146.354L212.154 121.338Z"
+              fill="white"></path>
+          </svg>
+          <Fragment slot="description">
+            If you use TypeScript on both the frontend and backend, you should
+            use tRPC to infer types to create a full stack type-safe API. It can
+            be used in place or alongside Next.js' API routes, or as a
+            standalone server.
+          </Fragment>
+        </Feature>
+        <Feature title="TailwindCSS" href="https://tailwindcss.com/">
+          <svg
+            slot="icon"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-10 aspect-square fill-[#06B6D4] py-1"
+          >
+            <title>Tailwind CSS</title>
+            <path
+              d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+            ></path>
+          </svg>
+          <Fragment slot="description">
+            TailwindCSS is a utility-first CSS framework that helps you build
+            beautiful, responsive designs without any extra configuration. It’s
+            built with utility-first principles, and is completely customizable
+            and extendable.
+          </Fragment>
+        </Feature>
+
+        <Feature title="Typescript" href="https://www.typescriptlang.org/">
+          <svg
+            slot="icon"
+            version="1.1"
+            viewBox="0 0 512 512"
+            class="h-10 aspect-square py-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>TypeScript</title>
+            <rect width="512" height="512" rx="50" fill="#3178c6"></rect>
+            <path
+              d="m317 407v50c8.1 4.2 18 7.3 29 9.4s23 3.1 35 3.1c12 0 23-1.1 34-3.4 11-2.3 20-6.1 28-11 8.1-5.3 15-12 19-21s7.1-19 7.1-32c0-9.1-1.4-17-4.1-24s-6.6-13-12-18c-5.1-5.3-11-10-18-14s-15-8.2-24-12c-6.6-2.7-12-5.3-18-7.9-5.2-2.6-9.7-5.2-13-7.8-3.7-2.7-6.5-5.5-8.5-8.4-2-3-3-6.3-3-10 0-3.4 0.89-6.5 2.7-9.3s4.3-5.1 7.5-7.1c3.2-2 7.2-3.5 12-4.6 4.7-1.1 9.9-1.6 16-1.6 4.2 0 8.6 0.31 13 0.94 4.6 0.63 9.3 1.6 14 2.9 4.7 1.3 9.3 2.9 14 4.9 4.4 2 8.5 4.3 12 6.9v-47c-7.6-2.9-16-5.1-25-6.5s-19-2.1-31-2.1c-12 0-23 1.3-34 3.8s-20 6.5-28 12c-8.1 5.4-14 12-19 21-4.7 8.4-7 18-7 30 0 15 4.3 28 13 38 8.6 11 22 19 39 27 6.9 2.8 13 5.6 19 8.3s11 5.5 15 8.4c4.3 2.9 7.7 6.1 10 9.5 2.5 3.4 3.8 7.4 3.8 12 0 3.2-0.78 6.2-2.3 9s-3.9 5.2-7.1 7.2-7.1 3.6-12 4.8c-4.7 1.1-10 1.7-17 1.7-11 0-22-1.9-32-5.7-11-3.8-21-9.5-30-17zm-84-123h64v-41h-179v41h64v183h51z"
+              clip-rule="evenodd"
+              fill="#fff"
+              fill-rule="evenodd"
+              style="fill:#fff"></path>
+          </svg>
+          <Fragment slot="description">
+            Javascript is hard. Why add more rules? We firmly believe the
+            experience TypeScript provides will help you be a better developer,
+            regardless of where you are in your career as an engineer. Whether
+            you're new to web development or a seasoned pro, the "strictness" of
+            TypeScript will provide a less frustrating, more consistent
+            experience than vanilla JS.
+          </Fragment>
+        </Feature>
+        <Feature title="NextAuth.js" href="https://next-auth.js.org/">
+          <img
+            slot="icon"
+            src={NextAuthIcon}
+            class="h-10 w-8 py-1"
+            alt="NextAuth.js"
+            width={100}
+            height={100}
+          />
+          <Fragment slot="description">
+            When you need a flexible, secure, and scalable authentication
+            solution, NextAuth.js is the go-to. It ties into your existing
+            database and provides a simple API to manage users and sessions, and
+            ties into NextJS and tRPC to provide a seamless experience.
+          </Fragment>
+        </Feature>
       </dl>
     </div>
   </div>
-</section>
+</PageSection>

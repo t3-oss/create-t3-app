@@ -22,7 +22,7 @@ const sidebar = SIDEBAR[langCode];
   )}
 >
   <div class="w-full mx-auto px-4 md:px-8 md:hidden">
-    <Search client:idle />
+    <Search isLanding={isLanding} client:idle />
   </div>
   <div class="t3-scrollbar">
     <ul class="px-4 md:px-8 dark:text-t3-purple-50 text-slate-900">
@@ -48,9 +48,9 @@ const sidebar = SIDEBAR[langCode];
                         href={url}
                         aria-current={isActive ? "page" : false}
                         class={clsx(
-                          "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
+                          "text-t3-purple-400 dark:text-t3-purple-200 transition-colors block py-2 pl-4 border-l-2 hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-lg hover:border-t3-purple-300/50",
                           {
-                            "font-bold": isActive,
+                            "font-medium": isActive,
                             "border-t3-purple-300": isActive,
                             "border-t3-purple-300/20": !isActive,
                           },

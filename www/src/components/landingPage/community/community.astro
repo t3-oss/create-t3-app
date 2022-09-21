@@ -1,21 +1,24 @@
 ---
+import PageSection from "../pageSection.astro";
 import CommunityCard from "./communityCard.astro";
 
 // eslint-disable-next-line -- need to export something to make it a module
 export interface Props {}
 ---
 
-<section>
+<PageSection size={"24"} bottomPadding={false} id="community">
   <div
-    class="flex flex-col items-center justify-center max-w-7xl text-t3-purple-100 mx-auto"
+    class="flex flex-col items-center justify-center max-w-7xl text-t3-purple-100 mx-auto px-4 sm:px-6 lg:px-8"
   >
-    <h1 class="text-3xl py-3 font-bold">Community</h1>
-    <p class="text-center pb-8 px-4">
+    <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
+      Community
+    </h3>
+    <p class="mt-4 text-xl text-t3-purple-200 mb-10 max-w-3xl text-center">
       Join our community to get help, share your projects, and even contribute
       to the project!
     </p>
     <div
-      class="flex flex-col sm:flex-row items-start justify-center space-y-4 sm:space-y-0 sm:space-x-6 mx-2 sm:mx-4 lg:mx-8"
+      class="flex flex-col sm:flex-row items-start justify-center space-y-4 sm:space-y-0 sm:space-x-6"
     >
       <CommunityCard
         title="Discord"
@@ -73,4 +76,4 @@ export interface Props {}
       </CommunityCard>
     </div>
   </div>
-</section>
+</PageSection>

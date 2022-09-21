@@ -1,61 +1,108 @@
 ---
-import Tweet from "./tweet.astro";
+import PageSection from "../pageSection.astro";
+import TweetSlider from "./tweetSlider";
+
+export interface Tweet {
+  id: string;
+  handle: string;
+  verified: boolean;
+  author: string;
+  avatar: string;
+  date: Date;
+  text: string;
+  likes: number;
+  retweets: number;
+  replies: number;
+  quotes: number;
+}
+
+const dummy: Tweet = {
+  id: "1544909672137867264",
+  handle: "ajcwebdev",
+  author: "Anthony (ajcwebdev.x)",
+  verified: false,
+  avatar:
+    "https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_normal.png",
+  date: new Date("2022-07-07T05:02:23.000Z"),
+  text: "Now that Blitz.js has pivoted and Bison has stagnated, create-t3-app will be the only framework to give Redwood a run for its money in the quest to build a legitimate fullstack React framework.",
+  likes: 18,
+  retweets: 3,
+  replies: 9,
+  quotes: 1,
+};
+
+const token = import.meta.env.TWITTER_BEARER_TOKEN;
+const fetchTweets = async (ids: string[]) => {
+  const url =
+    "https://api.twitter.com/2/tweets" +
+    `?ids=${ids.join(",")}` +
+    "&tweet.fields=created_at,public_metrics" +
+    "&user.fields=name,profile_image_url,username,verified" +
+    "&expansions=author_id";
+
+  return await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      // TODO: Maybe use Twitter SDK to make this typesafe in the future?
+      if (!res.data) {
+        return [dummy];
+      }
+      return res.data.map((d: any) => {
+        const user = res.includes.users.find((u: any) => u.id === d.author_id);
+        return {
+          id: d.id,
+          handle: user.username,
+          author: user.name,
+          verified: user.verified,
+          avatar: user.profile_image_url,
+          date: new Date(d.created_at),
+          text: d.text.replace(/\b(http(s|):\/\/.+)\W*$/, ""), // remove trailing link
+          likes: d.public_metrics.like_count,
+          retweets: d.public_metrics.retweet_count,
+          replies: d.public_metrics.reply_count,
+          quotes: d.public_metrics.quote_count,
+        };
+      });
+    });
+};
+if (!token) {
+  console.error("TWITTER_BEARER_TOKEN is not set");
+}
+
+const tweets = await fetchTweets([
+  "1544909672137867264",
+  "1553580714591158272",
+  "1553191258771841024",
+  "1571922865078915079",
+  "1570054715240763393",
+]);
 ---
 
-<section class="pb-16">
-  <div class="flex flex-col lg:flex-row items-center justify-center mx-3">
-    <div class="w-fit sm:p-2">
-      <Tweet
-        author="Emilia Zapata"
-        avatar="https://pbs.twimg.com/profile_images/1426010455055638531/xUFu5JP7_400x400.jpg"
-        comments={2}
-        handle="synecdokey"
-        likes={75}
-        retweets={9}
-        date="Jul 31"
-        text="Finally had the chance to play with @trpcio and it's scary how easy it makes to make your data flow, with full type safety and backend validation. With create-t3-app and @supabase, I was able to create a simple to-do app with auth in less than 3 hours, scary."
-        verified={false}
-        tweetId="1553580714591158272"
-      />
-    </div>
-    <div class="w-fit sm:p-2">
-      <Tweet
-        author="Antonio Pitasi"
-        avatar="https://pbs.twimg.com/profile_images/1478681149824245762/OPY0MMZX_400x400.jpg"
-        handle="pitasiantonio"
-        comments={4}
-        likes={43}
-        retweets={5}
-        date="Jul 7"
-        text={`We just launched @Pisa_Dev: https://pisa.dev/ ... 🎉🎉 
-        
-        Built using the cool kids’ stack of 2022:
-        - @nextjs
-        - @tailwindcss
-        - @trcpio
-        - @prisma
-        - @planetscaledata
-        - @PlausibleHQ
-        Built by create-t3-app, thanks @t3dotgg!
-        
-        Let me go deeper on this, a thread…🧵`}
-        verified={false}
-        tweetId="1544944058291953664"
-      />
-    </div>
-    <div class="w-fit sm:p-2">
-      <Tweet
-        author="Anthony (ajcwebdev.x)"
-        avatar="https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_400x400.png"
-        comments={9}
-        handle="ajcwebdev"
-        likes={18}
-        retweets={4}
-        date="Jul 7"
-        text="Now that Blitz.js has pivoted and Bison has stagnated, create-t3-app will be the only framework to give Redwood a run for its money in the quest to build a legitimate fullstack React framework."
-        verified={false}
-        tweetId="1544909672137867264"
-      />
-    </div>
+<PageSection
+  size={"24"}
+  className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto gap-4 md:gap-10 px-4 sm:px-6 lg:px-8"
+  id="love"
+>
+  <div
+    class="flex flex-col items-start text-left order-first md:order-last mb-10"
+  >
+    <h2 class="text-2xl font-semibold text-t3-purple-200">
+      Loved by the community
+    </h2>
+    <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
+      What others have to say about create-t3-app
+    </h3>
+    <p class="mt-4 text-xl text-t3-purple-200 max-w-3xl">
+      Want to be listed here? Mention <a
+        href="twitter.com"
+        rel="noopener noreferrer"
+        class="text-t3-purple-100">@placeholder</a
+      > on Twitter!
+    </p>
   </div>
-</section>
+  <TweetSlider tweets={tweets} client:visible />
+</PageSection>

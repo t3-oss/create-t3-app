@@ -16,10 +16,9 @@
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.2.1",
     "@fontsource/inter": "^4.5.12",
-    "@nanostores/react": "^0.3.0",
     "astro-seo": "^0.6.0",
     "clsx": "^1.2.1",
-    "nanostores": "^0.6.0",
+    "swiper": "^8.4.2",
     "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
@@ -31,7 +30,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-typist": "^2.0.3",
     "@typescript-eslint/parser": "^5.35.1",
-    "astro": "^1.1.2",
+    "astro": "^1.2.6",
     "eslint": "^8.22.0",
     "eslint-plugin-astro": "^0.17.1",
     "eslint-plugin-jsx-a11y": "^6.6.1",

@@ -41,7 +41,7 @@ pnpm install
 
 ### Implement your changes
 
-This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
+This project is a [Turborepo](https://turborepo.org/) monorepo. The code for the CLI is in the `cli` directory, and the docs is in the `www` directory. Now you're all setup and can start implementing your changes.
 
 Here are some useful scripts for when you are developing:
 
