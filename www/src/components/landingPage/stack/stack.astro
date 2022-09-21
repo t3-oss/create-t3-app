@@ -4,7 +4,7 @@ import Feature from "./card.astro";
 import NextAuthIcon from "./nextauth.png";
 ---
 
-<PageSection size={"24"}>
+<PageSection size={"24"} id="stack">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-t3-purple-100">
     <div class="text-center mb-10">
       <h2 class="text-2xl font-semibold text-t3-purple-200">
@@ -13,7 +13,7 @@ import NextAuthIcon from "./nextauth.png";
       <h3 class="mt-2 text-5xl tracking-tight font-bold text-t3-purple-50">
         Without the complex setup
       </h3>
-      <p class="mt-4 text-xl text-t3-purple-200 max-w-3xl mx-auto">
+      <p class="mt-4 text-xl text-t3-purple-200 max-w-[40ch] mx-auto">
         create-t3-app gives you the option to install libraries that you need
         without the hassle of scaffolding it all yourself.
       </p>
@@ -24,12 +24,11 @@ import NextAuthIcon from "./nextauth.png";
       >
         <Feature title="Next.js" href="https://nextjs.org/">
           <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
             slot="icon"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-white"
+            class="h-10 aspect-square fill-white py-1"
           >
             <title>Next.js</title>
             <path
@@ -47,57 +46,33 @@ import NextAuthIcon from "./nextauth.png";
             towards good decisions.
           </Fragment>
         </Feature>
-        <Feature title="Typescript" href="https://www.typescriptlang.org/">
+        <Feature title="Prisma" href="https://www.prisma.io/">
           <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
             slot="icon"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-[#3178C6]"
+            class="h-10 fill-white py-1"
           >
-            <title>Typescript</title>
+            <title>Prisma</title>
             <path
-              d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
-            >
-            </path>
-          </svg>
-          <Fragment slot="description">
-            Javascript is hard. Why add more rules? We firmly believe the
-            experience TypeScript provides will help you be a better developer,
-            regardless of where you are in your career as an engineer. Whether
-            you're new to web development or a seasoned pro, the "strictness" of
-            TypeScript will provide a less frustrating, more consistent
-            experience than vanilla JS.
-          </Fragment>
-        </Feature>
-        <Feature title="TailwindCSS" href="https://tailwindcss.com/">
-          <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
-            slot="icon"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-10 aspect-square fill-[#06B6D4]"
-          >
-            <title>Tailwind CSS</title>
-            <path
-              d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+              d="M21.8068 18.2848L13.5528.7565c-.207-.4382-.639-.7273-1.1286-.7541-.5023-.0293-.9523.213-1.2062.6253L2.266 15.1271c-.2773.4518-.2718 1.0091.0158 1.4555l4.3759 6.7786c.2608.4046.7127.6388 1.1823.6388.1332 0 .267-.0188.3987-.0577l12.7019-3.7568c.3891-.1151.7072-.3904.8737-.7553s.1633-.7828-.0075-1.1454zm-1.8481.7519L9.1814 22.2242c-.3292.0975-.6448-.1873-.5756-.5194l3.8501-18.4386c.072-.3448.5486-.3996.699-.0803l7.1288 15.138c.1344.2856-.019.6224-.325.7128z"
             ></path>
           </svg>
           <Fragment slot="description">
-            TailwindCSS is a utility-first CSS framework that helps you build
-            beautiful, responsive designs without any extra configuration. It’s
-            built with utility-first principles, and is completely customizable
-            and extendable.
+            Prisma is the best way to work with databases in your NextJS app. It
+            provides a simple, type-safe API to query your database, and it can
+            be used with a bunch of different databases, including Postgres,
+            MySQL, SQL Server, and SQLite.
           </Fragment>
         </Feature>
+
         <Feature title="tRPC" href="https://trpc.io/">
           <svg
             slot="icon"
             viewBox="0 0 512 512"
-            class="h-10 aspect-square fill-[#398CCB]"
             xmlns="http://www.w3.org/2000/svg"
+            class="h-10 aspect-square fill-[#398CCB] py-1"
           >
             <rect width="512" height="512" rx="150" fill="#398CCB"></rect>
             <path
@@ -113,11 +88,58 @@ import NextAuthIcon from "./nextauth.png";
             standalone server.
           </Fragment>
         </Feature>
+        <Feature title="TailwindCSS" href="https://tailwindcss.com/">
+          <svg
+            slot="icon"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-10 aspect-square fill-[#06B6D4] py-1"
+          >
+            <title>Tailwind CSS</title>
+            <path
+              d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+            ></path>
+          </svg>
+          <Fragment slot="description">
+            TailwindCSS is a utility-first CSS framework that helps you build
+            beautiful, responsive designs without any extra configuration. It’s
+            built with utility-first principles, and is completely customizable
+            and extendable.
+          </Fragment>
+        </Feature>
+
+        <Feature title="Typescript" href="https://www.typescriptlang.org/">
+          <svg
+            slot="icon"
+            version="1.1"
+            viewBox="0 0 512 512"
+            class="h-10 aspect-square py-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>TypeScript</title>
+            <rect width="512" height="512" rx="50" fill="#3178c6"></rect>
+            <path
+              d="m317 407v50c8.1 4.2 18 7.3 29 9.4s23 3.1 35 3.1c12 0 23-1.1 34-3.4 11-2.3 20-6.1 28-11 8.1-5.3 15-12 19-21s7.1-19 7.1-32c0-9.1-1.4-17-4.1-24s-6.6-13-12-18c-5.1-5.3-11-10-18-14s-15-8.2-24-12c-6.6-2.7-12-5.3-18-7.9-5.2-2.6-9.7-5.2-13-7.8-3.7-2.7-6.5-5.5-8.5-8.4-2-3-3-6.3-3-10 0-3.4 0.89-6.5 2.7-9.3s4.3-5.1 7.5-7.1c3.2-2 7.2-3.5 12-4.6 4.7-1.1 9.9-1.6 16-1.6 4.2 0 8.6 0.31 13 0.94 4.6 0.63 9.3 1.6 14 2.9 4.7 1.3 9.3 2.9 14 4.9 4.4 2 8.5 4.3 12 6.9v-47c-7.6-2.9-16-5.1-25-6.5s-19-2.1-31-2.1c-12 0-23 1.3-34 3.8s-20 6.5-28 12c-8.1 5.4-14 12-19 21-4.7 8.4-7 18-7 30 0 15 4.3 28 13 38 8.6 11 22 19 39 27 6.9 2.8 13 5.6 19 8.3s11 5.5 15 8.4c4.3 2.9 7.7 6.1 10 9.5 2.5 3.4 3.8 7.4 3.8 12 0 3.2-0.78 6.2-2.3 9s-3.9 5.2-7.1 7.2-7.1 3.6-12 4.8c-4.7 1.1-10 1.7-17 1.7-11 0-22-1.9-32-5.7-11-3.8-21-9.5-30-17zm-84-123h64v-41h-179v41h64v183h51z"
+              clip-rule="evenodd"
+              fill="#fff"
+              fill-rule="evenodd"
+              style="fill:#fff"></path>
+          </svg>
+          <Fragment slot="description">
+            Javascript is hard. Why add more rules? We firmly believe the
+            experience TypeScript provides will help you be a better developer,
+            regardless of where you are in your career as an engineer. Whether
+            you're new to web development or a seasoned pro, the "strictness" of
+            TypeScript will provide a less frustrating, more consistent
+            experience than vanilla JS.
+          </Fragment>
+        </Feature>
         <Feature title="NextAuth.js" href="https://next-auth.js.org/">
           <img
             slot="icon"
             src={NextAuthIcon}
-            class="h-10 w-10"
+            class="h-10 w-8 py-1"
             alt="NextAuth.js"
             width={100}
             height={100}
@@ -127,27 +149,6 @@ import NextAuthIcon from "./nextauth.png";
             solution, NextAuth.js is the go-to. It ties into your existing
             database and provides a simple API to manage users and sessions, and
             ties into NextJS and tRPC to provide a seamless experience.
-          </Fragment>
-        </Feature>
-        <Feature title="Prisma" href="https://www.prisma.io/">
-          <svg
-            {/** @eslint-ignore @ts-ignore: FIXME: THIS IS FIXED WHEN UPGRADING TO ASTRO 1.1.2 */}
-            slot="icon"
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-10 fill-white"
-          >
-            <title>Prisma</title>
-            <path
-              d="M21.8068 18.2848L13.5528.7565c-.207-.4382-.639-.7273-1.1286-.7541-.5023-.0293-.9523.213-1.2062.6253L2.266 15.1271c-.2773.4518-.2718 1.0091.0158 1.4555l4.3759 6.7786c.2608.4046.7127.6388 1.1823.6388.1332 0 .267-.0188.3987-.0577l12.7019-3.7568c.3891-.1151.7072-.3904.8737-.7553s.1633-.7828-.0075-1.1454zm-1.8481.7519L9.1814 22.2242c-.3292.0975-.6448-.1873-.5756-.5194l3.8501-18.4386c.072-.3448.5486-.3996.699-.0803l7.1288 15.138c.1344.2856-.019.6224-.325.7128z"
-            ></path>
-          </svg>
-          <Fragment slot="description">
-            Prisma is the best way to work with databases in your NextJS app. It
-            provides a simple, type-safe API to query your database, and it can
-            be used with a bunch of different databases, including Postgres,
-            MySQL, SQL Server, and SQLite.
           </Fragment>
         </Feature>
       </dl>
