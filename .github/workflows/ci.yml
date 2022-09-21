@@ -196,6 +196,6 @@ jobs:
 
       # No need to lint & typecheck here (which is otherwise done by the `check` script), done in above jobs
       - run: pnpm run --filter=www astro check
-      - run: pnpm turbo run --filter=www build
+      - run: MODE=CI pnpm turbo run --filter=www build
         env:
           PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
