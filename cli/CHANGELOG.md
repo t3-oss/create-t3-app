@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.13.0
+
+### Minor Changes
+
+- [#485](https://github.com/t3-oss/create-t3-app/pull/485) [`ecc7642`](https://github.com/t3-oss/create-t3-app/commit/ecc764264eff0cf5062fee4f7e4bd9f75975ef41) Thanks [@nexxeln](https://github.com/nexxeln)! - bump next to 12.3.1 and fix AppType
+
 ## 5.12.0
 
 ### Minor Changes
