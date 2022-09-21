@@ -4,12 +4,15 @@
 name: Release - Beta
 
 on:
-  push:
+  pull_request:
+    types: [ labeled ] 
     branches:
       - main
 jobs:
   prerelease:
-    if: ${{ github.repository_owner == 't3-oss' }}
+    if: |
+      github.repository_owner == 't3-oss' &&
+      ( contains(github.event.pull_request.labels.*.name, 'area: t3-app') || contains(github.event.pull_request.labels.*.name, 'area: cli') )
     name: Build & Publish a beta release to NPM
     runs-on: ubuntu-latest
 
