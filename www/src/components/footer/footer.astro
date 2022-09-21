@@ -1,5 +1,8 @@
 ---
+<<<<<<< HEAD
 import clsx from "clsx";
+=======
+>>>>>>> main
 import AvatarList from "../docs/avatarList.astro";
 export interface Props {
   path: string;
@@ -9,9 +12,13 @@ const { path, isBlog } = Astro.props;
 ---
 
 <footer
+<<<<<<< HEAD
   class={clsx(
     "transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent w-screen",
   )}
+=======
+  class="transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent"
+>>>>>>> main
 >
   {isBlog && <AvatarList path={path} />}
   <div

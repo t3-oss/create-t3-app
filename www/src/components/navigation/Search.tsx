@@ -5,6 +5,7 @@ import "../../styles/algolia/style.css";
 
 import { createPortal } from "react-dom";
 import * as docSearchReact from "@docsearch/react";
+import clsx from "clsx";
 
 /** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
 const DocSearchModal =
@@ -16,7 +17,7 @@ const useDocSearchKeyboardEvents =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
-export default function Search() {
+export default function Search({ isLanding }: { isLanding: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
   const [initialQuery, setInitialQuery] = useState("");
@@ -51,7 +52,14 @@ export default function Search() {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium dark:bg-slate-700 bg-t3-purple-200/50 rounded-lg dark:text-slate-100"
+        className={clsx(
+          "w-full flex items-center justify-between px-4 py-2 text-sm font-medium rounded-lg transition-all transition-500 cursor-text",
+          {
+            "bg-white/10 hover:bg-white/20": isLanding,
+            "dark:bg-slate-700 bg-t3-purple-200/50 dark:text-slate-100 dark:hover:bg-slate-800 hover:bg-t3-purple-200/75":
+              !isLanding,
+          },
+        )}
       >
         <div className="flex items-center justify-center">
           <svg className="h-6 w-6" fill="none">

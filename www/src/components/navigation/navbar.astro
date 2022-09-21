@@ -1,8 +1,8 @@
 ---
 import clsx from "clsx";
 import Search from "./Search";
-import SidebarToggle from "./SidebarToggle";
-import ThemeToggleButton from "./ThemeToggleButton";
+import SidebarToggle from "./sidebarToggle.astro";
+import ThemeToggleButton from "./themeToggleButton.astro";
 
 const currentPage = Astro.url.pathname;
 const isLanding = currentPage === "/";
@@ -34,16 +34,16 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   })}
   aria-label="Global"
 >
-  <div class="flex items-center justify-between w-full px-6">
+  <div class="flex items-center justify-between w-full px-10">
     <div class="flex justify-between items-center w-full md:w-auto">
       <div>
         <a href="/">
           <img
             src="/favicon.svg"
-            width="45"
-            height="45"
+            width="50"
+            height="50"
             alt="T3 Logo"
-            class="rounded-lg"
+            class="rounded-xl"
           />
         </a>
       </div>
@@ -73,14 +73,14 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           hidden: isLanding,
         })}
       >
-        <ThemeToggleButton client:load />
+        <ThemeToggleButton />
       </div>
 
       <div>
-        <SidebarToggle currentPage={currentPage} client:idle />
+        <SidebarToggle currentPage={currentPage} />
       </div>
       <div class="hidden md:block rounded-lg w-full max-w-xs">
-        <Search client:load />
+        <Search isLanding={currentPage === "/"} client:load />
       </div>
     </div>
   </div>
