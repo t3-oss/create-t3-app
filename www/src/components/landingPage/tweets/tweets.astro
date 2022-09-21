@@ -45,6 +45,7 @@ if (import.meta.env.MODE === "CI" || !token) {
   tweets = [dummyTweet, dummyTweet, dummyTweet];
 } else {
   tweets = await fetchTweets([
+    // Feel free to add more tweets here
     "1544909672137867264",
     "1553580714591158272",
     "1553191258771841024",
