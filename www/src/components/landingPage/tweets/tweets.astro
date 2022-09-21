@@ -17,7 +17,14 @@ const fetchTweets = async (ids: string[]) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.error(res);
+        throw new Error("Failed to fetch tweets");
+      }
+    })
     .then((res) => {
       // TODO: Maybe use Twitter SDK to make this typesafe in the future?
       return res.data.map((d: any) => {
