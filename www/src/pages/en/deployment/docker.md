@@ -56,7 +56,7 @@ README.md
 
 Include the following contents in `Dockerfile`:
 
-```Dockerfile
+```docker
 # Dockerfile
 
 ##### DEPENDENCIES
