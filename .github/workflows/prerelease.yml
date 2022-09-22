@@ -46,3 +46,15 @@ jobs:
         run: pnpm pub:beta
         env:
           NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: cli
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-package-create-t3-app@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
+          path: cli/dist/index.js
