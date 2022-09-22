@@ -29,7 +29,7 @@ export default defineNextConfig({
 
 ### 2. Remove Env Import
 
-Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs):
+Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) so it isn't pulled into the build image:
 
 ```diff
 // next.config.mjs
