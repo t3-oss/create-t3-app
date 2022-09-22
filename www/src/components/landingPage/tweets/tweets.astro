@@ -1,35 +1,7 @@
 ---
 import PageSection from "../pageSection.astro";
 import TweetSlider from "./tweetSlider";
-
-export interface Tweet {
-  id: string;
-  handle: string;
-  verified: boolean;
-  author: string;
-  avatar: string;
-  date: Date;
-  text: string;
-  likes: number;
-  retweets: number;
-  replies: number;
-  quotes: number;
-}
-
-const dummy: Tweet = {
-  id: "1544909672137867264",
-  handle: "ajcwebdev",
-  author: "Anthony (ajcwebdev.x)",
-  verified: false,
-  avatar:
-    "https://pbs.twimg.com/profile_images/1549247631867711488/hK_Qr-Dx_normal.png",
-  date: new Date("2022-07-07T05:02:23.000Z"),
-  text: "Now that Blitz.js has pivoted and Bison has stagnated, create-t3-app will be the only framework to give Redwood a run for its money in the quest to build a legitimate fullstack React framework.",
-  likes: 18,
-  retweets: 3,
-  replies: 9,
-  quotes: 1,
-};
+import { type Tweet, dummyTweet } from "./types";
 
 const token = import.meta.env.TWITTER_BEARER_TOKEN;
 const fetchTweets = async (ids: string[]) => {
@@ -45,12 +17,16 @@ const fetchTweets = async (ids: string[]) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.error(res);
+        throw new Error("Failed to fetch tweets");
+      }
+    })
     .then((res) => {
       // TODO: Maybe use Twitter SDK to make this typesafe in the future?
-      if (!res.data) {
-        return [dummy];
-      }
       return res.data.map((d: any) => {
         const user = res.includes.users.find((u: any) => u.id === d.author_id);
         return {
@@ -69,17 +45,21 @@ const fetchTweets = async (ids: string[]) => {
       });
     });
 };
-if (!token) {
-  console.error("TWITTER_BEARER_TOKEN is not set");
-}
 
-const tweets = await fetchTweets([
-  "1544909672137867264",
-  "1553580714591158272",
-  "1553191258771841024",
-  "1571922865078915079",
-  "1570054715240763393",
-]);
+let tweets: Tweet[];
+if (import.meta.env.MODE === "CI" || !token) {
+  console.warn("No Twitter token found, using dummy data");
+  tweets = [dummyTweet, dummyTweet, dummyTweet];
+} else {
+  tweets = await fetchTweets([
+    // Feel free to add more tweets here
+    "1544909672137867264",
+    "1553580714591158272",
+    "1553191258771841024",
+    "1571922865078915079",
+    "1570054715240763393",
+  ]);
+}
 ---
 
 <PageSection
