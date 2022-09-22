@@ -1,42 +1,77 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "../../../styles/swiper.css";
-import { Autoplay, Pagination } from "swiper";
 import type { Tweet } from "./types";
+import useEmblaCarousel from "embla-carousel-react";
+import autoplay from "embla-carousel-autoplay";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 export default function TweetSlider({ tweets }: { tweets: Tweet[] }) {
-  return (
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={1}
-      pagination={{
-        clickable: true,
-        el: ".swiper-pagination",
-      }}
-      className="rounded-lg w-full cursor-grab"
-      modules={[Pagination, Autoplay]}
-      autoplay={{
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [carouselRef, emblaApi] = useEmblaCarousel(
+    {
+      skipSnaps: false,
+      draggable: true,
+    },
+    [
+      autoplay({
         delay: 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
+        stopOnMouseEnter: true,
+      }),
+    ],
+  );
+
+  const handleSlideNavigation = (idx: number) => {
+    if (!emblaApi) return;
+    emblaApi.scrollTo(idx);
+  };
+
+  const slides = emblaApi?.slideNodes();
+
+  useEffect(() => {
+    emblaApi?.on("select", () => {
+      setActiveSlide(emblaApi.selectedScrollSnap);
+    });
+
+    return () => emblaApi?.destroy();
+  }, [emblaApi]);
+
+  return (
+    <div
+      className="rounded-lg w-full cursor-grab overflow-hidden"
+      ref={carouselRef}
     >
-      {tweets.map((tweet) => (
-        <SwiperSlide key={tweet.id}>
-          <div>
+      <div className="flex w-full space-x-5">
+        {tweets.map((tweet, idx) => (
+          <div
+            key={`${tweet.id}_${idx}`}
+            className="shrink-0 w-full first:ml-0 last:mr-0"
+          >
             <TweetCard {...tweet} />
           </div>
-        </SwiperSlide>
-      ))}
-      <div className="mb-10">
-        <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+        ))}
       </div>
-    </Swiper>
+
+      {/* Pagination */}
+      <div className="mb-10 flex mt-6 justify-center">
+        {slides?.map((_, idx) => (
+          // Larger click area while keeping the visual circles small
+          <button
+            onClick={() => handleSlideNavigation(idx)}
+            aria-label={`Scroll to slide ${idx}`}
+            className="p-1.5 -mx-0.5"
+          >
+            <div
+              className={clsx(
+                "h-2 aspect-square rounded-full transition-colors ease-in-out",
+                {
+                  "bg-primary": idx === activeSlide,
+                  "bg-white/20 hover:bg-white/40": idx !== activeSlide,
+                },
+              )}
+            ></div>
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -50,7 +85,6 @@ function TweetCard({
   text,
   likes,
   retweets,
-  // quotes,
   replies,
 }: Tweet) {
   return (
