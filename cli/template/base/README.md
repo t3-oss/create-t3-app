@@ -41,7 +41,7 @@ We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_cam
 
 ### Docker
 
-You can also dockerize this stack and deploy a container. See the [Docker deployment page](https://github.com/t3-oss/create-t3-app/blob/main/www/src/pages/en/deployment/docker.md) for details.
+You can also dockerize this stack and deploy a container. See the [Docker deployment page](https://create-t3-app-nu.vercel.app/en/deployment/docker) for details.
 
 ## Useful resources
 
