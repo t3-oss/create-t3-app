@@ -17,6 +17,7 @@ const Home: NextPage = () => {
           </h1>
 
           <h3 className={styles.subtitle}>This stack uses:</h3>
+          <i>If you see this you found a very special beta version</i>
           <div className={styles.cardGrid}>
             <TechnologyCard
               name="NextJS"
