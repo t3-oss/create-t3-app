@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "../../../styles/swiper.css";
 import { Autoplay, Pagination } from "swiper";
-import type { Tweet } from "./tweets.astro";
+import type { Tweet } from "./types";
 
 export default function TweetSlider({ tweets }: { tweets: Tweet[] }) {
   return (
