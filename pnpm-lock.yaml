@@ -96,7 +96,6 @@ importers:
       clsx: ^1.2.1
       embla-carousel: ^7.0.3
       embla-carousel-autoplay: ^7.0.3
-      embla-carousel-react: ^7.0.3
       eslint: ^8.22.0
       eslint-plugin-astro: ^0.17.1
       eslint-plugin-jsx-a11y: ^6.6.1
@@ -115,7 +114,6 @@ importers:
       clsx: 1.2.1
       embla-carousel: 7.0.3
       embla-carousel-autoplay: 7.0.3_embla-carousel@7.0.3
-      embla-carousel-react: 7.0.3_react@18.0.0
       tailwind-scrollbar: 2.0.1_tailwindcss@3.1.8
     devDependencies:
       '@astrojs/mdx': 0.11.1
@@ -2360,15 +2358,6 @@ packages:
       embla-carousel: 7.0.3
     dependencies:
       embla-carousel: 7.0.3
-    dev: false
-
-  /embla-carousel-react/7.0.3_react@18.0.0:
-    resolution: {integrity: sha512-nvgAAmoFuXyCPuH2rSTnSdaTSMwFX/ilXDlfMCCDfdaj4X3u25+x8lMC1bINuk+4G2Hm6SOlrZ1eGkYdBg5HAg==}
-    peerDependencies:
-      react: ^18.1.0
-    dependencies:
-      embla-carousel: 7.0.3
-      react: 18.0.0
     dev: false
 
   /embla-carousel/7.0.3:
