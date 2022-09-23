@@ -57,7 +57,7 @@ Here are some useful scripts for when you are developing:
 | `pnpm lint:fix`  | Lints the code and fixes any errors                     |
 | `pnpm check`     | Checks your code for typeerrors, formatting and linting |
 
-When making commits, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc... You can use `git status` to double check which files have not yet been staged for commit:
+When making commits, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc... You can use `git status` to double check which files have not yet been staged for commit:
 
 ```bash
 git add <file> && git commit -m "feat/fix/chore/docs: commit message"
@@ -91,7 +91,7 @@ When all that's done, it's time to file a pull request to upstream:
 gh pr create --web
 ```
 
-and fill out the title and body appropriately. Again, make sure to follow the [convential commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines for your title.
+and fill out the title and body appropriately. Again, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines for your title.
 
 ## Credits
 
