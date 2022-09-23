@@ -33,7 +33,7 @@ const { tweets } = Astro.props as Props;
         >
           <div
             class={clsx(
-              "h-2 aspect-square rounded-full transition-colors ease-in-out [&.active]:bg-primary  [&:not(.active)]:hover:bg-white/40 bg-white/20",
+              "[&.active]:bg-primary aspect-square h-2 rounded-full bg-white/20 transition-colors ease-in-out [&:not(.active)]:hover:bg-white/40",
               {
                 active: idx === 0,
               },
@@ -92,5 +92,10 @@ const { tweets } = Astro.props as Props;
     if (currentSlideButton) {
       currentSlideButton?.firstElementChild?.classList.add("active");
     }
+  });
+
+  // Disable tab navigation for tweet slides
+  sliderElement.querySelectorAll("a").forEach((a) => {
+    a.tabIndex = -1;
   });
 </script>
