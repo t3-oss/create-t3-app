@@ -18,8 +18,6 @@ Please note that Next.js requires a different process for build time (available 
 In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
-// next.config.mjs
-
 export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
@@ -32,14 +30,15 @@ export default defineNextConfig({
 Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) so it isn't pulled into the build image:
 
 ```diff
-// next.config.mjs
-
 - import { env } from "./src/env/server.mjs";
 ```
 
 ### 3. Create dockerignore file
 
-Include the following contents in `.dockerignore`:
+<details>
+    <summary>
+      Click here and include contents in <code>.dockerignore</code>:
+    </summary>
 
 ```
 .env
@@ -52,13 +51,16 @@ README.md
 .git
 ```
 
+</details>
+
 ### 4. Create Dockerfile
 
-Include the following contents in `Dockerfile`:
+<details>
+    <summary>
+      Click here and include contents in <code>Dockerfile</code>:
+    </summary>
 
 ```docker
-# Dockerfile
-
 ##### DEPENDENCIES
 
 FROM --platform=linux/amd64 node:16-alpine AS deps
@@ -127,6 +129,8 @@ CMD ["node", "server.js"]
 > - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
 > - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
 
+</details>
+
 ## Build and Run Image Locally
 
 Build and run this image locally with the following commands:
@@ -140,11 +144,14 @@ Open [localhost:3000](http://localhost:3000/) to see your running application.
 
 ## Docker Compose
 
-You can also use Docker Compose to build the image and run the container. Follow steps 1-4 above and create a `docker-compose.yml` file with the following:
+You can also use Docker Compose to build the image and run the container.
+
+<details>
+    <summary>
+      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+    </summary>
 
 ```yaml
-# docker-compose.yml
-
 version: "3.9"
 services:
   app:
@@ -170,6 +177,8 @@ docker compose up
 
 Open [localhost:3000](http://localhost:3000/) to see your running application.
 
+</details>
+
 ## Deploy to Railway
 
 You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
@@ -182,7 +191,7 @@ railway up
 railway open
 ```
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker-production.up.railway.app](https://ct3a-docker-production.up.railway.app/).
+Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
 ## Useful Resources
 
