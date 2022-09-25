@@ -18,7 +18,7 @@ export default function CodeCard() {
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
-          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[6px] text-transparent sm:text-xs"
+          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-sm text-transparent sm:text-xs md:text-sm"
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
