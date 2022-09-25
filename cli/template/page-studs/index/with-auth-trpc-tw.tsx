@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/future/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import { ReactNode } from "react";
-import Image from "next/future/image";
 
 const Home: NextPage = () => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               />
             ))}
           </div>
-          <p className="text-2xl text-t3-purple-100">
+          <p className="text-2xl text-purple-100">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
           </p>
           <AuthShowcase />
@@ -51,15 +51,15 @@ const AuthShowcase: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       {sessionData && (
-        <p className="text-2xl text-t3-purple-100">
+        <p className="text-2xl text-purple-100">
           Logged in as {sessionData?.user?.name}
         </p>
       )}
       {secretMessage && (
-        <p className="text-2xl text-t3-purple-100">{secretMessage}</p>
+        <p className="text-2xl text-purple-100">{secretMessage}</p>
       )}
       <button
-        className="bg-t3-purple-100 hover:bg-t3-purple-200 rounded-full px-5 py-3 text-slate-800 text-sm font-semibold transition sm:text-base lg:text-sm xl:text-base hover: no-underline"
+        className="bg-purple-100 hover:bg-purple-200 rounded-full px-5 py-3 text-slate-800 text-sm font-semibold transition sm:text-base lg:text-sm xl:text-base hover: no-underline"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
@@ -75,20 +75,20 @@ const TechnologyCard = ({
   icon,
 }: TechnologyCardProps) => {
   return (
-    <div className="bg-white/5 rounded-md flex flex-col justify-between border border-t3-purple-200/20 hover:border-t3-purple-300/50 transition-colors">
+    <div className="bg-white/5 rounded-md flex flex-col justify-between border border-purple-200/20 hover:border-purple-300/50 transition-colors">
       <a href={documentation} target="_blank" rel="noreferrer">
         <div className="flex space-x-4 items-center bg-white/10 p-2 pl-5 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors">
           {icon}
-          <p className="text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
+          <p className="text-lg leading-6 md:text-xl font-medium text-purple-200">
             {name}
           </p>
         </div>
       </a>
-      <p className="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full">
+      <p className="m-6 text-sm md:text-base text-purple-100 subpixel-antialiased h-full">
         {description}
       </p>
       <a
-        className="font-bold text-t3-purple-200 text-lg hover:text-t3-purple-400 transition-colors mx-6 mb-6 flex items-center"
+        className="font-bold text-purple-200 text-lg hover:text-purple-400 transition-colors mx-6 mb-6 flex items-center"
         href={documentation}
         target="_blank"
         rel="noreferrer"
