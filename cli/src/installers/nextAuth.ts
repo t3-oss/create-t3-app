@@ -10,7 +10,8 @@ export const nextAuthInstaller: Installer = async ({
 }) => {
   await runPkgManagerInstall({
     packages: [
-      "next-auth",
+      // FIXME: temp fix for `next-auth@^4.11` requiring `next@12.2.5` as a peer dependency
+      "next-auth@~4.10.3",
       packages?.prisma.inUse ? "@next-auth/prisma-adapter" : "",
     ],
   });

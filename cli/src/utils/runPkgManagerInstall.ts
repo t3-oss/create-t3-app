@@ -57,15 +57,10 @@ export const runPkgManagerInstall = async (
     return;
   }
 
-  // FIXME: temp fix for `next-auth@^4.11` requiring `next@12.2.5` as a peer dependency
-  const installPackages = packages.map((pkg) =>
-    pkg === "next-auth" ? "next-auth@~4.10.3" : pkg,
-  );
-
   const installCmd =
     pkgManager === "yarn" ? `${pkgManager} add` : `${pkgManager} install`;
   const flag = devMode ? "-D" : "";
-  const fullCmd = `${installCmd} ${flag} ${installPackages.join(" ")}`;
+  const fullCmd = `${installCmd} ${flag} ${packages.join(" ")}`;
   await execa(fullCmd, { cwd: projectDir });
 };
 
