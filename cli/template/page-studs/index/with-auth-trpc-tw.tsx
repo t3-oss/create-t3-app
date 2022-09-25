@@ -20,7 +20,6 @@ const Home: NextPage = () => {
           <h1 className="text-5xl md:text-[5rem] font-extrabold text-white tracking-teight">
             Create <span className="text-purple-300">T3</span> App
           </h1>
-          {/* <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-3 lg:w-2/3"> */}
           <div className="sm:space-y-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 sm:gap-x-6 sm:gap-y-6 lg:gap-x-8 lg:gap-y-8">
             {technologyCards.map((technology, idx) => (
               <TechnologyCard
