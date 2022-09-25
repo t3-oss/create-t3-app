@@ -1,6 +1,6 @@
 ---
 import PageSection from "../pageSection.astro";
-import TweetSlider from "./tweetSlider";
+import TweetSlider from "./tweetSlider.astro";
 import { type Tweet, dummyTweet } from "./types";
 
 const token = import.meta.env.TWITTER_BEARER_TOKEN;
@@ -84,5 +84,5 @@ if (import.meta.env.MODE === "CI" || !token) {
       > on Twitter!
     </p>
   </div>
-  <TweetSlider tweets={tweets} client:visible />
+  <TweetSlider tweets={tweets} />
 </PageSection>
