@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.13.1
+
+### Patch Changes
+
+- [#506](https://github.com/t3-oss/create-t3-app/pull/506) [`f371ef8`](https://github.com/t3-oss/create-t3-app/commit/f371ef8f0b64205cbbfb5dc6f3416da01a673a71) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temp fix for next-auth peer deps issue
+
 ## 5.13.0
 
 ### Minor Changes
