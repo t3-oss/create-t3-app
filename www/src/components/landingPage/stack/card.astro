@@ -23,11 +23,10 @@ const { title, href } = Astro.props;
         {title}
       </p>
     </dt>
+    <dd
+      class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
+    >
+      <slot name="description" />
+    </dd>
   </a>
-
-  <dd
-    class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
-  >
-    <slot name="description" />
-  </dd>
 </div>
