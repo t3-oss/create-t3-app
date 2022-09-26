@@ -43,6 +43,11 @@ export const runPkgManagerInstall = async (
       } else {
         pkgJson.dependencies![pkgName] = `^${latestVersion.trim()}`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
+
+      // FIXME: temp fix for `next-auth@^4.11` requiring `next@12.2.5` as a peer dependency
+      if (pkg === "next-auth") {
+        pkgJson.dependencies![pkgName] = `~4.10.3`; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+      }
     }
     const sortedPkgJson = sortPackageJson(pkgJson);
 
