@@ -5,7 +5,7 @@ export default function CodeCard() {
   return (
     <div className="mx-auto w-full overflow-hidden rounded-lg sm:w-[700px] md:w-[600px]">
       <div
-        className="inverse-toggle text-t3-purple-50 border-t3-purple-200/20 h-[300px] overflow-hidden rounded-lg border bg-white/10 px-1 pb-6 
+        className="inverse-toggle border-t3-purple-200/20 text-t3-purple-50 h-[300px] overflow-hidden rounded-lg border bg-white/10 px-1 pb-6 
         pt-4 font-mono text-[10px] leading-normal subpixel-antialiased shadow-lg transition-all sm:h-[400px] sm:px-2 sm:text-xs md:h-[450px] md:px-5 lg:h-[400px]"
       >
         <div className="top mb-2 flex">
