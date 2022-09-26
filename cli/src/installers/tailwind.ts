@@ -8,13 +8,7 @@ export const tailwindInstaller: Installer = async ({
   runPkgManagerInstall,
 }) => {
   await runPkgManagerInstall({
-    packages: [
-      "tailwindcss",
-      "postcss",
-      "autoprefixer",
-      "prettier",
-      "prettier-plugin-tailwindcss",
-    ],
+    packages: ["tailwindcss", "postcss", "autoprefixer"],
     devMode: true,
   });
 
