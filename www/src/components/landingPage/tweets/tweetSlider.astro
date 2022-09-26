@@ -14,7 +14,7 @@ const { tweets } = Astro.props as Props;
   <div class="flex w-full space-x-5">
     {
       tweets.map((tweet) => (
-        <div class="shrink-0 w-full first:ml-0 last:mr-0">
+        <div class="w-full shrink-0 first:ml-0 last:mr-0">
           <TweetCard {...tweet} />
         </div>
       ))
@@ -28,7 +28,7 @@ const { tweets } = Astro.props as Props;
         // Larger click area while keeping the visual circles small
         <button
           aria-label={`Scroll to slide ${idx + 1}`}
-          class="p-1.5 -mx-0.5 0"
+          class="0 -mx-0.5 p-1.5"
           data-slider-page={idx}
         >
           <div
