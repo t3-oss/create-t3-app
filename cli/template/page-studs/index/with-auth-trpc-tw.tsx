@@ -85,7 +85,6 @@ const technologyCards: TechnologyCardProps[] = [
       'Javascript is hard. Why add more rules? We firmly believe the experience TypeScript provides will help you be a better developer, regardless of where you are in your career as an engineer. Whether you\'re new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS.',
     documentation: "https://www.typescriptlang.org/docs/",
   },
-
   {
     name: "Prisma",
     description:
