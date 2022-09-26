@@ -6,7 +6,7 @@ export default function CodeCard() {
     <div className="mx-auto w-full overflow-hidden rounded-lg sm:w-[700px] md:w-[600px]">
       <div
         className="inverse-toggle h-[300px] overflow-hidden rounded-lg border border-t3-purple-200/20 bg-white/10 px-1 pb-6 pt-4 
-        font-mono text-[10px] leading-normal text-t3-purple-50 subpixel-antialiased shadow-lg transition-all sm:h-[400px] sm:px-2 sm:text-xs md:h-[450px] md:px-5 lg:h-[400px]"
+         font-mono text-[10px] leading-normal text-t3-purple-50 subpixel-antialiased shadow-lg transition-all sm:h-[400px] sm:px-2 sm:text-xs md:h-[450px] md:px-5 lg:h-[400px]"
       >
         <div className="top mb-2 flex">
           <div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -18,7 +18,7 @@ export default function CodeCard() {
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
-          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-sm text-transparent sm:text-xs md:text-sm"
+          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[7px] text-transparent sm:text-xs md:text-sm"
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
