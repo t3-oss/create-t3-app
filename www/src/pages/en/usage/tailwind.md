@@ -45,7 +45,7 @@ Equivelent in Tailwind:
 
 ```html
 <div
-  class="flex flex-col justify-center items-center bg-white border border-gray-200 rounded p-4"
+  class="flex flex-col items-center justify-center rounded border border-gray-200 bg-white p-4"
 >
   ...
 </div>
