@@ -76,7 +76,7 @@ const TechnologyCard = ({
       <h2 className="text-lg text-gray-700">{name}</h2>
       <p className="text-sm text-gray-600">{description}</p>
       <a
-        className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+        className="mt-3 text-sm w-fit m-auto underline text-violet-500 decoration-dotted underline-offset-2"
         href={documentation}
         target="_blank"
         rel="noreferrer"
