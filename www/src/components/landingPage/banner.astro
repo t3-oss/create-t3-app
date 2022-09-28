@@ -1,3 +1,7 @@
+---
+import Button from "./button.astro";
+---
+
 <section>
   <div class="overflow-x-hidden">
     <div class="relative w-full h-full overflow-hidden py-8 md:py-16 z-0">
@@ -35,50 +39,45 @@
                 <div
                   class="flex items-center justify-center w-full gap-4 max-w-xs"
                 >
-                  <a
+                  <Button
                     href="/en/introduction"
-                    class="inline-flex items-center rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer hover:no-underline"
+                    openInNewTab={false}
+                    rounded="md"
+                    className="group"
+                    rounded="full"
                   >
-                    <span
-                      class="group inline-flex items-center px-5 py-3 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full transition justify-between hover:bg-t3-purple-200"
+                    Documentation
+                    <svg
+                      class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                      aria-hidden="true"
                     >
-                      Documentation
-                      <svg
-                        class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
-                        fill="none"
-                        viewBox="0 0 10 10"
-                        aria-hidden="true"
-                      >
-                        <path
-                          class="opacity-0 transition group-hover:opacity-100"
-                          d="M0 5h7"></path>
-                        <path
-                          class="transition group-hover:translate-x-[3px]"
-                          d="M1 1l4 4-4 4"></path>
-                      </svg>
-                    </span>
-                  </a>
-                  <a
+                      <path
+                        class="opacity-0 transition group-hover:opacity-100"
+                        d="M0 5h7"></path>
+                      <path
+                        class="transition group-hover:translate-x-[3px]"
+                        d="M1 1l4 4-4 4"></path>
+                    </svg>
+                  </Button>
+                  <Button
                     href="https://github.com/t3-oss/create-t3-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center rounded-full px-5 py-3 font-semibold sm:text-base lg:text-sm xl:text-base cursor-pointer bg-white/10 hover:bg-white/20 hover:no-underline"
+                    openInNewTab={true}
+                    variant="secondary"
+                    rounded="full"
                   >
-                    <span
-                      class="ml-1 px-2 py-0.5 text-sm flex items-center justify-between text-white"
+                    Github
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      class="h-3 ml-2 fill-white"
                     >
-                      Github
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                        class="h-3 ml-2 fill-white"
-                      >
-                        <path
-                          d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
-                        ></path>
-                      </svg>
-                    </span>
-                  </a>
+                      <path
+                        d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
+                      ></path>
+                    </svg>
+                  </Button>
                 </div>
                 <div class="mt-8 block h-full relative mx-auto">
                   <button
