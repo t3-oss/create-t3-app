@@ -59,9 +59,26 @@ Tailwind CSS has a beautiful built-in design system, that comes out of the box w
 
 Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
 
+### Extensions and Plugins
+
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
+
+### Formatting
+
+Tailwind CSS classes can easily get a bit messy, so a formatter for the classnames is a must have.
+
+- [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+- [Headwind VSCode Extension](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind)
+- [RustyWind CLI](https://github.com/avencera/rustywind)
+
+### Conditionally Applying Classes
+
+Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+
+- [clsx](https://github.com/lukeed/clsx)
+- [classnames](https://github.com/JedWatson/classnames)
 
 ## Useful Resources
 
