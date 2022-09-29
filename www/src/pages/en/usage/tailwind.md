@@ -67,11 +67,7 @@ Make sure you have editor plugins for Tailwind installed to improve your experie
 
 ### Formatting
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classnames is a must have.
-
-- [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
-- [Headwind VSCode Extension](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind)
-- [RustyWind CLI](https://github.com/avencera/rustywind)
+Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted). We already set this up for you.
 
 ### Conditionally Applying Classes
 
