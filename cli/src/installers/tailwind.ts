@@ -6,6 +6,7 @@ import { PKG_ROOT } from "~/consts.js";
 export const tailwindInstaller: Installer = async ({
   projectDir,
   runPkgManagerInstall,
+  pkgManager,
 }) => {
   await runPkgManagerInstall({
     packages: [
@@ -25,6 +26,9 @@ export const tailwindInstaller: Installer = async ({
   const postcssCfgSrc = path.join(twAssetDir, "postcss.config.cjs");
   const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");
 
+  const prettierSrc = path.join(twAssetDir, "prettier.cjs");
+  const prettierDest = path.join(projectDir, "prettier.cjs");
+
   const cssSrc = path.join(twAssetDir, "globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
@@ -34,6 +38,9 @@ export const tailwindInstaller: Installer = async ({
     fs.copy(twCfgSrc, twCfgDest),
     fs.copy(postcssCfgSrc, postcssCfgDest),
     fs.copy(cssSrc, cssDest),
+    ...(pkgManager === "pnpm" || pkgManager === "yarn"
+      ? [fs.copy(prettierSrc, prettierDest)]
+      : []),
     fs.unlink(indexModuleCss),
   ]);
 };
