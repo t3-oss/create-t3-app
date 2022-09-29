@@ -6,11 +6,11 @@ import PageSection from "./pageSection.astro";
 <PageSection size="32">
   <div class="max-w-[800px] xl:max-w-7xl mx-auto">
     <div class="max-w-8xl lg:px-8">
-      <div class="flex flex-col items-center xl:items-start">
+      <div class="flex flex-col items-center">
         <div class="max-w-md px-4 sm:max-w-2xl xl:max-w-3xl sm:px-6 lg:px-0">
           <div class="lg:py-12 flex flex-col items-start justify-between">
             <h1
-              class="text-5xl text-center xl:text-start tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight xl:text-7xl xl:tracking-tight"
+              class="text-5xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight xl:text-7xl xl:tracking-tight"
             >
               The best way to setup an
               <span class="text-purple-400"> opinionated,</span>
@@ -19,10 +19,8 @@ import PageSection from "./pageSection.astro";
               Next.js project
             </h1>
 
-            <div class="flex flex-col mt-8 w-full items-center xl:items-start">
-              <div
-                class="flex justify-center xl:justify-start w-full gap-4 max-w-xs"
-              >
+            <div class="flex flex-col mt-8 w-full items-center">
+              <div class="flex justify-center w-full gap-4 max-w-xs">
                 <Button
                   href="/en/introduction"
                   openInNewTab={false}
@@ -63,9 +61,7 @@ import PageSection from "./pageSection.astro";
                   </svg>
                 </Button>
               </div>
-              <div
-                class="flex justify-center xl:justify-start mt-4 xl:mt-8 h-full relative"
-              >
+              <div class="flex justify-center mt-4 xl:mt-8 h-full relative">
                 <button
                   class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
                   title="Copy the command to get started"
