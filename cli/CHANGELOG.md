@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.14.0
+
+### Minor Changes
+
+- [#517](https://github.com/t3-oss/create-t3-app/pull/517) [`2b434bb`](https://github.com/t3-oss/create-t3-app/commit/2b434bb181dc346f299591ddf5465d3175df5c07) Thanks [@gabrielelpidio](https://github.com/gabrielelpidio)! - Add prettier and prettier-plugin-tailwindcss
+
 ## 5.13.1
 
 ### Patch Changes
