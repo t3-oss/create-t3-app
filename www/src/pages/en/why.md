@@ -28,7 +28,7 @@ tRPC delivers on GraphQL's promise of seamless client development against a type
 
 Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees type safety the whole way, from your database to your app.
 
-While the main selling point of Prisma is its DX, it also provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying workflows, making SQL so easy you'll barely notice you're using it.
+While the main selling point of Prisma is its DX, it also provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying workflows, making SQL so easy you'll barely notice you're using it and the Prisma Studio which gives a tabular interface to easily manipulate data quickly.
 
 ### Tailwind CSS
 
