@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
  * @link https://astro.build/config
  */
 export default defineConfig({
-  site: `https://create-t3-app-ecru.vercel.app/`,
+  site: `https://beta.create.t3.gg`,
   markdown: {
     shikiConfig: {
       theme: "poimandres",
