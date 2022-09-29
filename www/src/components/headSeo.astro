@@ -8,7 +8,7 @@ export interface Props {
 
 const { frontmatter, type } = Astro.props as Props;
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.url);
 
 const formattedContentTitle = frontmatter
   ? `${frontmatter.title} 🚀 ${SITE.title}`
