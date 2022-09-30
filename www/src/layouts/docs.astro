@@ -40,11 +40,11 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   </head>
 
   <body class="bg-default">
-    <div class="bg-default sticky top-0 w-full z-50">
+    <div class="bg-default sticky top-0 w-full max-h-full z-50">
       <Navbar />
     </div>
     <main class="md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10">
-      <aside id="grid-left" title="Site Navigation" class={"hidden md:block"}>
+      <aside id="grid-left" title="Site Navigation" class="hidden md:block">
         <div
           class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-base w-full bg-default overflow-y-auto"
         >
