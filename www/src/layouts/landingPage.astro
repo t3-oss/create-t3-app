@@ -1,18 +1,14 @@
 ---
-import { SEO } from "astro-seo";
 import Footer from "../components/footer/footer.astro";
 import Navbar from "../components/navigation/navbar.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import "../styles/global.css";
 import "../styles/algolia/style.css";
 import HeadCommon from "../components/headCommon.astro";
-import "@fontsource/inter/variable.css";
+import HeadSeo from "../components/headSeo.astro";
+import { SITE } from "../config";
 
-export interface Props {
-  title: string;
-  description: string;
-}
-const { title, description } = Astro.props as Props;
+import "@fontsource/inter/variable.css";
 
 const currentPage = Astro.url.pathname;
 ---
@@ -21,7 +17,8 @@ const currentPage = Astro.url.pathname;
 <html dir="ltr" lang="en-us" class="initial">
   <head>
     <HeadCommon />
-    <SEO title={title} description={description} />
+    <HeadSeo type="website" />
+    <title>{SITE.title}</title>
   </head>
   <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
     <Navbar />
