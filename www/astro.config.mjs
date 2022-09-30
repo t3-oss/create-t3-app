@@ -10,7 +10,7 @@ export default defineConfig({
   site: `https://beta.create.t3.gg`,
   markdown: {
     shikiConfig: {
-      theme: "poimandres",
+      theme: "material-palenight",
       wrap: true,
     },
   },
