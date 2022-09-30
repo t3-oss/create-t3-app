@@ -17,7 +17,7 @@
     --color-foreground: 15 23 42;
     --color-background: 236 228 236;
 
-    @apply text-slate-900 bg-default;
+    @apply bg-default text-slate-900;
   }
 
   html.dark {
@@ -33,7 +33,7 @@
     --color-foreground: 232 221 255;
     --color-background: 15 23 41;
 
-    @apply text-t3-purple-100 bg-default;
+    @apply bg-default text-t3-purple-100;
   }
 
   html {
@@ -42,7 +42,7 @@
   }
 
   .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-track-rounded-sm scrollbar-thumb-t3-purple-300 scrollbar-track-slate-300 dark:scrollbar-thumb-t3-purple-50 dark:scrollbar-track-slate-600;
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 scrollbar-track-rounded-sm scrollbar-thumb-rounded-sm dark:scrollbar-track-slate-600 dark:scrollbar-thumb-t3-purple-50;
   }
 
   /* Typewriter */
@@ -122,7 +122,7 @@
 
   /* Markdown Styling */
   .markdown {
-    @apply text-slate-900 dark:text-t3-purple-100 flex flex-col items-start justify-start w-full px-3 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500;
+    @apply flex w-full flex-col items-start justify-start px-3 text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
@@ -146,10 +146,10 @@
     @apply mb-0 text-sm;
   }
   .markdown a {
-    @apply underline decoration-dotted underline-offset-2 dark:hover:text-t3-purple-300 dark:decoration-t3-purple-200 decoration-slate-500 hover:text-t3-purple-700 text-t3-purple-500 dark:text-t3-purple-200;
+    @apply text-t3-purple-500 underline decoration-slate-500 decoration-dotted underline-offset-2 hover:text-t3-purple-700 dark:text-t3-purple-200 dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
   }
   .markdown pre {
-    @apply font-mono my-3 p-2 rounded-md sm:pt-2 pl-3 mx-auto;
+    @apply my-3 mx-auto rounded-md p-2 pl-3 font-mono sm:pt-2;
   }
 
   .markdown ol {
@@ -157,7 +157,7 @@
   }
 
   .markdown details {
-    @apply w-full bg-t3-purple-200/50 dark:bg-slate-700 px-3 pb-0.5 rounded-md;
+    @apply w-full rounded-md bg-t3-purple-200/50 px-3 pb-0.5 dark:bg-slate-700;
   }
 
   .markdown summary {
@@ -165,7 +165,7 @@
   }
 
   .markdown p > img {
-    @apply text-sm mt-8;
+    @apply mt-8 text-sm;
   }
   .markdown table > tbody > tr > td > a {
     word-wrap: break-word;
@@ -177,10 +177,10 @@
     @apply text-slate-900 dark:text-t3-purple-50;
   }
   .DocSearch-SearchBar {
-    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+    @apply my-3 rounded-md bg-purple-400 p-2 text-sm;
   }
 
   #DocSearch-SearchBar {
-    @apply bg-purple-400 p-2 rounded-md text-sm my-3;
+    @apply my-3 rounded-md bg-purple-400 p-2 text-sm;
   }
 }

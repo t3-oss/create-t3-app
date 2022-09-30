@@ -4,6 +4,7 @@ export interface Props {
   openInNewTab?: boolean;
   rounded?: "full" | "md" | "none";
   variant?: "primary" | "secondary";
+  specialHover?: boolean;
   className?: string;
 }
 
@@ -13,6 +14,7 @@ const {
   variant = "primary",
   openInNewTab = false,
   className = "",
+  specialHover = false,
 } = Astro.props;
 
 const roundedClass =
@@ -21,13 +23,17 @@ const variantClass =
   variant === "primary"
     ? "bg-t3-purple-100 hover:bg-t3-purple-200 text-slate-800"
     : "bg-white/10 hover:bg-white/20 text-white";
+
+const specialHoverClass = specialHover
+  ? "hover:shadow hover:shadow-[#300171] duration-500"
+  : "";
 ---
 
 <a
   href={href}
   target={openInNewTab ? "_blank" : "_self"}
   rel="noopener noreferrer"
-  class={`${roundedClass} ${variantClass} ${className} inline-flex items-center px-3 md:px-5 py-2 md:py-3 text-sm md:text-base font-semibold cursor-pointer hover:no-underline transition-colors`}
+  class={`${specialHoverClass} ${roundedClass} ${variantClass} ${className} inline-flex items-center px-3 md:px-5 py-2 md:py-3 text-sm md:text-base font-semibold cursor-pointer hover:no-underline transition-all`}
 >
   <slot />
 </a>

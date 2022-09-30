@@ -3,19 +3,21 @@ import Button from "./button.astro";
 import PageSection from "./pageSection.astro";
 ---
 
-<PageSection size="32">
+<PageSection size="24">
   <div class="max-w-[800px] xl:max-w-7xl mx-auto">
     <div class="max-w-8xl lg:px-8">
       <div class="flex flex-col items-center">
-        <div class="max-w-md px-4 sm:max-w-2xl xl:max-w-3xl sm:px-6 lg:px-0">
+        <div
+          class="max-w-md px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl sm:px-6 lg:px-0"
+        >
           <div class="lg:py-12 flex flex-col items-start justify-between">
             <h1
-              class="text-5xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight xl:text-7xl xl:tracking-tight"
+              class="text-5xl text-center tracking-tight font-semibold text-white sm:text-6xl sm:tracking-tight lg:text-7xl xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
             >
               The best way to setup an
-              <span class="text-purple-400"> opinionated,</span>
-              <span class="text-purple-600"> full-stack,</span>
-              <span class="text-t3-purple-400"> typesafe</span>
+              <span class="text-[#b61bd9]"> opinionated,</span>
+              <span class="text-[#920dff]"> full-stack,</span>
+              <span class="text-[#5b1aff]"> typesafe</span>
               Next.js project
             </h1>
 
@@ -27,6 +29,7 @@ import PageSection from "./pageSection.astro";
                   rounded="md"
                   className="group"
                   rounded="full"
+                  specialHover={true}
                 >
                   Documentation
                   <svg
