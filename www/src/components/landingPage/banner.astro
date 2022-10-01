@@ -3,6 +3,20 @@ import Button from "./button.astro";
 import PageSection from "./pageSection.astro";
 ---
 
+<style>
+  .opinionated {
+    color: hsl(200, 100%, 60%);
+  }
+
+  .fullstack {
+    color: hsl(240, 100%, 70%);
+  }
+
+  .typesafe {
+    color: hsl(280, 100%, 60%);
+  }
+</style>
+
 <PageSection size="16">
   <div class="max-w-[800px] xl:max-w-7xl mx-auto">
     <div class="max-w-8xl lg:px-8">
@@ -15,9 +29,9 @@ import PageSection from "./pageSection.astro";
               class="text-5xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-7xl xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
             >
               The best way to setup an
-              <span class="text-primary"> opinionated,</span>
-              <span class="text-accent whitespace-nowrap"> full-stack,</span>
-              <span class="text-info"> typesafe</span>
+              <span class="opinionated"> opinionated,</span>
+              <span class="fullstack whitespace-nowrap"> full-stack,</span>
+              <span class="typesafe"> typesafe</span>
               Next.js project
             </h1>
 
