@@ -3,20 +3,6 @@ import Button from "./button.astro";
 import PageSection from "./pageSection.astro";
 ---
 
-<style>
-  .opinionated {
-    color: hsl(200, 100%, 60%);
-  }
-
-  .fullstack {
-    color: hsl(240, 100%, 70%);
-  }
-
-  .typesafe {
-    color: hsl(280, 100%, 60%);
-  }
-</style>
-
 <PageSection size="16">
   <div class="max-w-[800px] xl:max-w-7xl mx-auto">
     <div class="max-w-8xl lg:px-8">
@@ -29,9 +15,11 @@ import PageSection from "./pageSection.astro";
               class="text-5xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-7xl xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
             >
               The best way to setup an
-              <span class="opinionated"> opinionated,</span>
-              <span class="fullstack whitespace-nowrap"> full-stack,</span>
-              <span class="typesafe"> typesafe</span>
+              <span class="text-[hsl(200,100%,60%)]"> opinionated,</span>
+              <span class="text-[hsl(240,100%,70%)] whitespace-nowrap">
+                full-stack,</span
+              >
+              <span class="text-[hsl(280,100%,60%)]"> typesafe</span>
               Next.js project
             </h1>
 
@@ -80,7 +68,7 @@ import PageSection from "./pageSection.astro";
               </div>
               <div class="flex justify-center mt-4 xl:mt-8 h-full relative">
                 <button
-                  class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
+                  class="px-3 py-3 text-base md:text-lg md:px-3 md:py-3 lg:px-5 lg:py-4 lg:text-xl rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
                   title="Copy the command to get started"
                   id="command"
                 >
