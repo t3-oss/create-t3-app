@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.14.1
+
+### Patch Changes
+
+- [#510](https://github.com/t3-oss/create-t3-app/pull/510) [`39d766d`](https://github.com/t3-oss/create-t3-app/commit/39d766d3b384c3420c6c058c27be775e961a9319) Thanks [@EkkoKo](https://github.com/EkkoKo)! - fix: resolve target area of `Documentation` links in TechnologyCard
+
 ## 5.14.0
 
 ### Minor Changes
