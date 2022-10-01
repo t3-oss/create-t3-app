@@ -94,7 +94,6 @@ importers:
       '@types/react-typist': ^2.0.3
       '@typescript-eslint/parser': ^5.35.1
       astro: ^1.2.6
-      astro-seo: ^0.6.0
       clsx: ^1.2.1
       embla-carousel: ^7.0.3
       embla-carousel-autoplay: ^7.0.3
@@ -112,7 +111,6 @@ importers:
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.1_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
-      astro-seo: 0.6.0
       clsx: 1.2.1
       embla-carousel: 7.0.3
       embla-carousel-autoplay: 7.0.3_embla-carousel@7.0.3
@@ -1742,10 +1740,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /astro-seo/0.6.0:
-    resolution: {integrity: sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==}
-    dev: false
 
   /astro/1.2.6:
     resolution: {integrity: sha512-u6s5EH6+F/IpNkjJJ2RAKMWmBIOVz4AozjyW7aD0hsiGkVF0VYu7AqNWO3TTG6WQ6c9YbosDpfj+JKTT+S/JhA==}
