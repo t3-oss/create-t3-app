@@ -35,11 +35,11 @@ export const dependencyVersionMap = {
   postcss: "^8.4.14",
 
   // tRPC
-  "@trpc/client": "10.0.0-proxy-beta.2",
-  "@trpc/server": "10.0.0-proxy-beta.2",
-  "@trpc/react": "10.0.0-proxy-beta.2",
-  "@trpc/next": "10.0.0-proxy-beta.2",
-  "@tanstack/react-query": "^4.3.9",
+  "@trpc/client": "10.0.0-proxy-beta.11",
+  "@trpc/server": "10.0.0-proxy-beta.11",
+  "@trpc/react": "10.0.0-proxy-beta.11",
+  "@trpc/next": "10.0.0-proxy-beta.11",
+  "@tanstack/react-query": "^4.8.0",
   superjson: "1.9.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
