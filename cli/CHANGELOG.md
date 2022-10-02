@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.15.0
+
+### Minor Changes
+
+- [#533](https://github.com/t3-oss/create-t3-app/pull/533) [`a3a168a`](https://github.com/t3-oss/create-t3-app/commit/a3a168a5a2c54a51e841b2fce5786ec94d72b0fb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Tailor .env to only include relevant keys
+
 ## 5.14.1
 
 ### Patch Changes
