@@ -20,13 +20,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   labeler:
+    name: Label PR
     permissions:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: Label PR
-        uses: actions/labeler@v4
+      - uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
