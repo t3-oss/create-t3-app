@@ -42,6 +42,8 @@ const defaultOptions: CliResults = {
 };
 
 export const runCli = async () => {
+  console.log("TODO: delete me");
+
   const cliResults = defaultOptions;
 
   const program = new Command().name(CREATE_T3_APP);
