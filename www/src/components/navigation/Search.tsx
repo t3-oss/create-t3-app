@@ -55,7 +55,8 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
         className={clsx(
           "transition-500 flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium transition-all",
           {
-            "bg-white/10 hover:bg-white/20": isLanding,
+            "border border-t3-purple-200/20 bg-white/10 hover:border-t3-purple-300/50 hover:bg-white/20":
+              isLanding,
             "bg-t3-purple-200/50 hover:bg-t3-purple-200/75 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-800":
               !isLanding,
           },
