@@ -16,6 +16,7 @@
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.2.1",
     "@fontsource/inter": "^4.5.12",
+    "@fontsource/jetbrains-mono": "^4.5.10",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.3",
     "embla-carousel-autoplay": "^7.0.3",
