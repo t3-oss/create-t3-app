@@ -3,6 +3,8 @@ name: Vercel Preview URL Lighthouse Audit
 on:
   issue_comment:
     types: [created, edited]
+    paths:
+      - "www/**"
 
 jobs:
   generate_lighthouse_audit:
@@ -25,7 +27,7 @@ jobs:
             }
             console.log("No preview url found.");
             core.setOutput('vercel_preview_url', previewUrl);
-            
+
       - name: Add comment to PR
         if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: loading_comment_to_pr
@@ -79,7 +81,7 @@ jobs:
             ].join('\n')
 
              core.setOutput("comment", comment);
-             
+
       - name: Add comment to PR
         if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
         id: comment_to_pr
