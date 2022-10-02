@@ -5,9 +5,6 @@ name: CI-www
 on:
   pull_request:
     branches: ["*"]
-    paths:
-      - "www/**"
-      # - ".github/**"
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -15,6 +12,9 @@ env:
 
 jobs:
   build-www:
+    if: |
+      github.repository_owner == 't3-oss' &&
+      contains(github.event.pull_request.labels.*.name, 'documentation')
     runs-on: ubuntu-latest
     name: Build and Check Astro
     steps:
