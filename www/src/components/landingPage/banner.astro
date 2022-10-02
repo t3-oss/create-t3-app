@@ -1,16 +1,15 @@
 ---
 import Button from "./button.astro";
-import PageSection from "./pageSection.astro";
 ---
 
-<PageSection size="16">
+<div class="py-4 sm:py-8 md:py-12 lg:py-14 xl:py-12 2xl:py-28">
   <div class="max-w-[800px] xl:max-w-7xl mx-auto">
     <div class="lg:px-8">
       <div class="flex flex-col items-center">
         <div
           class="max-w-md px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl sm:px-6 lg:px-0"
         >
-          <div class="lg:py-12 flex flex-col items-start justify-between">
+          <div class="flex flex-col items-start justify-between">
             <h1
               class="text-5xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
             >
@@ -136,7 +135,7 @@ import PageSection from "./pageSection.astro";
       }
     });
   </script>
-</PageSection>
+</div>
 
 <style>
   #check-icon {
