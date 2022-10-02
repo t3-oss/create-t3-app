@@ -88,6 +88,7 @@ importers:
       '@docsearch/css': ^3.2.1
       '@docsearch/react': ^3.2.1
       '@fontsource/inter': ^4.5.12
+      '@fontsource/jetbrains-mono': ^4.5.10
       '@types/node': ^18.7.13
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -111,6 +112,7 @@ importers:
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.1_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
+      '@fontsource/jetbrains-mono': 4.5.10
       clsx: 1.2.1
       embla-carousel: 7.0.3
       embla-carousel-autoplay: 7.0.3_embla-carousel@7.0.3
@@ -957,6 +959,10 @@ packages:
 
   /@fontsource/inter/4.5.12:
     resolution: {integrity: sha512-bGKk4/8tube/nCk8hav0ZDBVbzJzc7m0Vt4xF5p15IN4YImwGdtKG38Oq5bU8xHNS+VfvbFFCepgQNj7Pr/Lvg==}
+    dev: false
+
+  /@fontsource/jetbrains-mono/4.5.10:
+    resolution: {integrity: sha512-dylbkBmAWL0fkjDpDoDbQCwTQ/W3DzLtVXmwGyAyttfKliPGSP2WpAmmMFYp9NpqFMF7CLprFyzppe8u39Orkw==}
     dev: false
 
   /@humanwhocodes/config-array/0.10.4:
