@@ -7,7 +7,7 @@ on:
     branches: ["*"]
     paths:
       - "www/**"
-      - ".github/**"
+      # - ".github/**"
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}

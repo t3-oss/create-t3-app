@@ -8,7 +8,7 @@ on:
     paths:
       - "cli/**"
       - "pnpm-lock.json"
-      - ".github/**"
+      # - ".github/**"
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
