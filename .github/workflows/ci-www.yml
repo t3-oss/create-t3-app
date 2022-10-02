@@ -5,8 +5,8 @@ name: CI-www
 on:
   pull_request:
     branches: ["*"]
-  paths-ignore:
-    - "cli/**"
+  paths:
+    - "www/**"
 
   build-www:
     runs-on: ubuntu-latest

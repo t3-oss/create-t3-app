@@ -5,8 +5,9 @@ name: CI-cli
 on:
   pull_request:
     branches: ["*"]
-  paths-ignore:
-    - "www/**"
+  paths:
+    - "cli/**"
+    - "pnpm-lock.json"
 
   build-t3-app:
     runs-on: ubuntu-latest
