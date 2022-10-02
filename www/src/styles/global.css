@@ -7,7 +7,7 @@
   html {
     --color-default: 236 228 236;
     --color-neutral: 29 40 58;
-    --color-primary: 122 98 246;
+    --color-primary: 112 64 255;
     --color-secondary: 58 191 248;
     --color-accent: 244 113 181;
     --color-warning: 244 193 82;
@@ -23,7 +23,7 @@
   html.dark {
     --color-default: 15 23 41;
     --color-neutral: 29 40 58;
-    --color-primary: 122 98 246;
+    --color-primary: 112 64 255;
     --color-secondary: 58 191 248;
     --color-accent: 244 113 181;
     --color-warning: 244 193 82;

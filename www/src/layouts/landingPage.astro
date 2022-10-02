@@ -21,17 +21,23 @@ const currentPage = Astro.url.pathname;
     <title>{SITE.title}</title>
   </head>
   <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
-    <Navbar />
+    <img
+      src="/images/background-pattern.svg"
+      class="absolute inset-0 opacity-5 h-max w-max object-cover"
+    />
     <div class="relative">
-      <aside id="grid-left" class="hidden" title="Site Navigation">
-        <div
-          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
-        >
-          <LeftSidebar currentPage={currentPage} />
-        </div>
-      </aside>
+      <Navbar />
+      <main class="relative">
+        <aside id="grid-left" class="hidden" title="Site Navigation">
+          <div
+            class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
+          >
+            <LeftSidebar currentPage={currentPage} />
+          </div>
+        </aside>
+      </main>
+      <slot />
+      <Footer isBlog={false} path="/" />
     </div>
-    <slot />
-    <Footer isBlog={false} path="/" />
   </body>
 </html>

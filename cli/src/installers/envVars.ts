@@ -13,6 +13,8 @@ export const envVariablesInstaller: Installer = async ({
   const envAssetDir = path.join(PKG_ROOT, "template/addons/env");
 
   let envFile = "";
+  let envContent =
+    "# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly\n";
 
   switch (true) {
     case usingAuth && usingPrisma:
@@ -26,16 +28,33 @@ export const envVariablesInstaller: Installer = async ({
       break;
   }
 
+  if (usingPrisma) {
+    envContent += `
+# Prisma
+DATABASE_URL=file:./db.sqlite
+`;
+  }
+  if (usingAuth) {
+    envContent += `
+# Next Auth
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+
+# Next Auth Discord Provider
+DISCORD_CLIENT_ID=
+DISCORD_CLIENT_SECRET=
+`;
+  }
+
   if (!envFile) return;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
   const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
-  const envExampleSrc = path.join(projectDir, ".env-example");
   const envDest = path.join(projectDir, ".env");
 
   await Promise.all([
     fs.copy(envSchemaSrc, envSchemaDest, { overwrite: true }),
-    fs.rename(envExampleSrc, envDest),
+    fs.writeFileSync(envDest, envContent, "utf-8"),
   ]);
 };
