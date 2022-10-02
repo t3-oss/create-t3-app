@@ -42,7 +42,7 @@
   }
 
   .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 scrollbar-track-rounded-sm scrollbar-thumb-rounded-sm dark:scrollbar-track-slate-600 dark:scrollbar-thumb-t3-purple-50;
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 scrollbar-track-rounded-sm scrollbar-thumb-rounded-sm dark:scrollbar-track-slate-600 dark:scrollbar-thumb-t3-purple-200;
   }
 
   /* Typewriter */
