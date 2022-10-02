@@ -9,6 +9,7 @@ on:
       - "cli/**"
       - "pnpm-lock.json"
 
+jobs:
   build-t3-app:
     runs-on: ubuntu-latest
     strategy:

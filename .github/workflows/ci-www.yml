@@ -8,6 +8,7 @@ on:
     paths:
       - "www/**"
 
+jobs:
   build-www:
     runs-on: ubuntu-latest
     name: Build and Check Astro
