@@ -1,7 +1,7 @@
 ---
+import { Image } from "@astrojs/image/components";
 import PageSection from "../pageSection.astro";
 import Feature from "./card.astro";
-import NextAuthIcon from "./nextauth.png";
 ---
 
 <PageSection size={"24"} id="stack">
@@ -20,7 +20,7 @@ import NextAuthIcon from "./nextauth.png";
       </p>
     </div>
     <div>
-      <dl
+      <div
         class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:grid-rows-3 md:grid-rows-2 sm:grid-flow-col sm:gap-x-6 sm:gap-y-14 lg:gap-x-8"
       >
         <Feature title="Next.js" href="https://nextjs.org/">
@@ -140,13 +140,12 @@ import NextAuthIcon from "./nextauth.png";
         </Feature>
 
         <Feature title="NextAuth.js" href="https://next-auth.js.org/">
-          <img
+          <Image
             slot="icon"
-            src={NextAuthIcon}
+            src={import("./nextauth.png")}
             class="h-10 w-8 py-1"
             alt="NextAuth.js"
-            width={100}
-            height={100}
+            format="webp"
           />
           <Fragment slot="description">
             When you need a flexible, secure, and scalable authentication
@@ -155,7 +154,7 @@ import NextAuthIcon from "./nextauth.png";
             ties into NextJS and tRPC to provide a seamless experience.
           </Fragment>
         </Feature>
-      </dl>
+      </div>
     </div>
   </div>
 </PageSection>

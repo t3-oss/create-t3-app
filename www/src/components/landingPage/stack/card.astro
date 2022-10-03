@@ -15,18 +15,18 @@ const { title, href } = Astro.props;
     target="_blank"
     rel="noopener noreferrer"
     class="hover:no-underline active:no-underline focus:no-underline"
-    ><dt
+    ><div
       class="flex space-x-4 items-center bg-white/10 p-2 pl-5 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors"
     >
       <slot name="icon" />
       <p class="text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
         {title}
       </p>
-    </dt>
-    <dd
+    </div>
+    <div
       class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
     >
       <slot name="description" />
-    </dd>
+    </div>
   </a>
 </div>
