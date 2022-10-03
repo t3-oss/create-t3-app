@@ -1,5 +1,6 @@
 ---
 import type { Tweet } from "./types";
+import { Image } from "@astrojs/image/components";
 
 const {
   id,
@@ -18,10 +19,11 @@ const {
 <article
   class="px-4 pt-4 pb-1 flex flex-wrap items-start hover:bg-white/20 bg-white/10 bg-cover rounded-lg transition-colors hover:no-underline border border-t3-purple-200/20 hover:border-t3-purple-300/50"
 >
-  <img
+  <Image
     src={avatar}
     width={48}
     height={48}
+    format="webp"
     class="rounded-full w-12 h-12 mr-3"
     alt={`@${handle}'s Avatar`}
   />
