@@ -1,7 +1,7 @@
 ---
+import { Image } from "@astrojs/image/components";
 import PageSection from "../pageSection.astro";
 import Feature from "./card.astro";
-import NextAuthIcon from "./nextauth.png";
 ---
 
 <PageSection size={"24"} id="stack">
@@ -140,11 +140,12 @@ import NextAuthIcon from "./nextauth.png";
         </Feature>
 
         <Feature title="NextAuth.js" href="https://next-auth.js.org/">
-          <img
+          <Image
             slot="icon"
-            src={NextAuthIcon}
+            src="/images/nextauth.png"
             class="h-10 w-8 py-1"
             alt="NextAuth.js"
+            format="webp"
             width={100}
             height={100}
           />
