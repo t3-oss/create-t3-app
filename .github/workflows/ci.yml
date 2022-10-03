@@ -19,6 +19,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  labeler:
+    name: Label PR
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
   lint:
     runs-on: ubuntu-latest
     name: Run ESLint
@@ -120,6 +131,10 @@ jobs:
 
   build-t3-app:
     runs-on: ubuntu-latest
+    needs: labeler
+    if: |
+      ( contains(github.event.pull_request.labels.*.name, '📌 area: cli') ||
+        contains(github.event.pull_request.labels.*.name, '📌 area: t3-app') )
     strategy:
       matrix:
         trpc: ["trpc", "nope"]
