@@ -54,6 +54,8 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           const tocItem = Array.from(
             document.querySelectorAll(`a[href="#${id}"]`),
           ).at(-1);
+          // this occurs when the id = "toc-heading"
+          if (!tocItem) return;
           const func = entry.isIntersecting ? "add" : "remove";
           tocItem.classList[func](
             "font-medium",

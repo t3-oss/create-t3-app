@@ -39,7 +39,7 @@ import "./my-class.css";
 <div class="my-class">...</div>
 ```
 
-Equivelent in Tailwind:
+Equivalent in Tailwind:
 
 1. Just write classes in your HTML
 
