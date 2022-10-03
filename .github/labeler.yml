@@ -1,11 +1,11 @@
 "📌 area: cli":
-  - any: ["cli/src/**"]
+  - any: ["cli/src/**/*"]
 
 "📌 area: t3-app":
-  - any: ["cli/template/**"]
+  - any: ["cli/template/**/*"]
 
 "📚 documentation":
-  - any: ["www/**", "**/*.md"]
+  - any: ["www/**/*", "**/*.md"]
 
 "📌 area: ci":
-  - any: [".github/workflows/**"]
+  - any: [".github/workflows/**/*"]
