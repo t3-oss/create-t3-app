@@ -39,5 +39,9 @@ const isLanding = currentPage === "/";
   button.addEventListener("click", () => {
     body.classList.toggle("mobile-sidebar-toggle");
     button.toggleAttribute("aria-pressed");
+    button.innerHTML =
+      button.getAttribute("aria-pressed") === null
+        ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span class="sr-only">Close sidebar</span>`
+        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span>`;
   });
 </script>
