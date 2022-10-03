@@ -5,7 +5,8 @@
   - any: ["cli/template/**/*"]
 
 "📚 documentation":
-  - any: ["www/**/*", "**/*.md"]
+  - any: ["www/**/*"]
+  - any: ["**/*.md"]
 
 "📌 area: ci":
   - any: [".github/workflows/**/*"]
