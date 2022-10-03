@@ -39,6 +39,7 @@
   html {
     scroll-padding-top: 7rem;
     scroll-behavior: smooth;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 scrollbar-track-rounded-sm scrollbar-thumb-rounded-sm dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-200;
   }
 
   .t3-scrollbar {
