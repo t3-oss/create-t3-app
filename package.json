@@ -55,14 +55,11 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-turbo": "^0.0.4",
-    "eslint-plugin-astro": "^0.19.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "44.0.0",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.5.5",
-    "prettier-plugin-tailwindcss": "^0.1.13",
     "turbo": "^1.5.5",
     "typescript": "^4.8.4"
   }
