@@ -204,8 +204,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # No need to lint & typecheck here (which is otherwise done by the `check` script), done in above jobs
-      - run: pnpm run --filter=www astro check
+      - run: pnpm run --filter=www check
       - run: pnpm turbo --filter=www build
         env:
           PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
