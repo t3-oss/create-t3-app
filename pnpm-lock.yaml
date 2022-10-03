@@ -96,6 +96,9 @@ importers:
       eslint: ^8.24.0
       eslint-plugin-astro: ^0.19.0
       eslint-plugin-jsx-a11y: ^6.6.1
+      prettier: ^2.7.1
+      prettier-plugin-astro: ^0.5.5
+      prettier-plugin-tailwindcss: ^0.1.13
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
@@ -124,6 +127,9 @@ importers:
       eslint: 8.24.0
       eslint-plugin-astro: 0.19.0_eslint@8.24.0
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
+      prettier: 2.7.1
+      prettier-plugin-astro: 0.5.5
+      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-typist: 2.0.5_zpnidt7m3osuk7shl3s4oenomq

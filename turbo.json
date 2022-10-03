@@ -11,7 +11,9 @@
     "lint": {
       "outputs": [".eslintcache"]
     },
-    "format:check": {},
+    "format:check": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     },
