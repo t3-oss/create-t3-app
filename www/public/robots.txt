@@ -2,4 +2,4 @@
 
 User-agent: *
 Allow: /
-Sitemap: https://create.t3.gg/sitemap-index.xml
+Sitemap: https://beta.create.t3.gg/sitemap.xml

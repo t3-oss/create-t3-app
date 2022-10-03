@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
+import image from "@astrojs/image";
 
 /**
  * @link https://astro.build/config
@@ -14,5 +15,12 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [react(), tailwind(), mdx()],
+  integrations: [
+    react(),
+    tailwind(),
+    mdx(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });
