@@ -29,6 +29,7 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
 
   lint:
     runs-on: ubuntu-latest
