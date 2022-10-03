@@ -1,5 +1,5 @@
 "📌 area: cli":
-  - any: ["cli/src/**/*"]
+  - any: ["cli/**/*"]
 
 "📌 area: t3-app":
   - any: ["cli/template/**/*"]
