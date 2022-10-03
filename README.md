@@ -31,7 +31,7 @@
   <p align="center">Watch Theo's overview on Youtube here</p>
 </a>
 
-## Table of contents
+## Table of contents 
 
 - <a href="#about">What is the T3 Stack?</a>
 - <a href="#getting-started">Getting Started</a>
