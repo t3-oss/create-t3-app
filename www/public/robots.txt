@@ -3,3 +3,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://create.t3.gg/sitemap-index.xml
+
+X-Robots-Tag: index
