@@ -105,7 +105,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
