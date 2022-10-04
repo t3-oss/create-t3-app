@@ -8,6 +8,7 @@ on:
   pull_request_target:
     branches: ["*"]
 
+jobs:
   labeler:
     name: Label PR
     permissions:
