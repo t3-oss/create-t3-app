@@ -11,7 +11,7 @@ interface CreateProjectOptions {
   packages: PkgInstallerMap;
   noInstall: boolean;
 }
-
+console.log("HEHEHEUE");
 export const createProject = async ({
   projectName,
   packages,
