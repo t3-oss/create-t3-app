@@ -1,9 +1,12 @@
 # this workflow will run on every pr to make sure the project is following the guidelines
 
+# after labeler, run other actions with strict permissions
 name: CI
 
 on:
-  pull_request:
+  workflow_run:
+    workflows: [Labeler]
+    types: [completed]
     branches: ["*"]
 
 env:
@@ -18,18 +21,6 @@ jobs:
       - uses: amannn/action-semantic-pull-request@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  labeler:
-    name: Label PR
-    permissions:
-      contents: read
-      pull-requests: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          sync-labels: true
 
   lint:
     runs-on: ubuntu-latest
