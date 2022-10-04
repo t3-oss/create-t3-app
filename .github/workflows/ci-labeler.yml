@@ -1,0 +1,20 @@
+# this workflow will run on every pr to make sure the project is following the guidelines
+
+# run labeler with elevated permissions before other actions
+name: CI-labeler
+
+on:
+  pull_request_target:
+    branches: ["*"]
+
+  labeler:
+    name: Label PR
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
