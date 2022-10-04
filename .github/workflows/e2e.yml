@@ -1,11 +1,11 @@
 # this workflow will run on every pr to make sure the project is following the guidelines
 
 # after labeler, run other actions with strict permissions
-name: CI
+name: E2E Tests
 
 on:
   workflow_run:
-    workflows: ["Labeler"]
+    workflows: ["Label PR"]
     types:
       - completed
 
