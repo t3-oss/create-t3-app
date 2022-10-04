@@ -17,7 +17,7 @@ export const availablePackages = [
 ] as const;
 
 export type AvailablePackages = typeof availablePackages[number];
-
+console.log("ship me plzzz");
 export interface InstallerOptions {
   projectDir: string;
   pkgManager: PackageManager;
