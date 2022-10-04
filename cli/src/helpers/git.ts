@@ -38,7 +38,7 @@ export const initializeGit = async (projectDir: string) => {
   logger.info("Initializing Git...");
 
   if (!isGitInstalled(projectDir)) {
-    logger.warn("Git is not installed. Skipping Git initialization.");
+    logger.warn("Git is not i   nstalled. Skipping Git initialization.");
     return;
   }
 
