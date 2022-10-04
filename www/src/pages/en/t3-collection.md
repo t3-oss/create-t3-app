@@ -11,6 +11,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Description                                                      | Repo                                                                  | Link                               |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
 | Zapdos - a QnA app for streamers                                 | [t3-oss/zapdos](https://github.com/t3-oss/zapdos)                     | [z.t3.gg](https://z.t3.gg)         |
+| Shoutify - An open source, self-hosted, and entirely free solution to social media management.                                 | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)                     | [shoutify.app](https://shoutify.app)       |
 | nexxel's personal site                                           | [nexxeln/nexxel.dev](https://github.com/nexxeln/nexxel.dev)           | [nexxel.dev](https://nexxel.dev)   |
 | Julius's personal site                                           | [juliusmarminge/jumr.dev](https://github.com/juliusmarminge/jumr.dev) | [jumr.dev](https://jumr.dev)       |
 | Me3 - Describe yourself in 3 things and share with your friends. | [hnqg/me3](https://github.com/hnqg/me3)                               | [me.hnqg.io](https://me.hnqg.io)   |
