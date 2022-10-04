@@ -40,7 +40,7 @@ With tRPC, you write Typescript functions on your backend, and then call them on
 // server/routers/user.ts
 const userRouter = t.router({
   getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
-    return ctx.prisma.user.findUnique({
+    return ctx.prisma.user.findFirst({
       where: {
         id: input,
       },
@@ -52,6 +52,7 @@ const userRouter = t.router({
 What does this snippet do you might ask? Well, it's a tRPC procedure that takes a string as input that gets validated using Zod (which is the same validation library that we used for our [environment variables](./env-variables.md)), calls our database using [Prisma](./prisma.md) and returns the user whose `id` matches the one we passed in. You define your procedures in `routers` which is a collection of procedures which by convention should be related. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
 ```ts
+// server/routers/index.ts
 const appRouter = t.router({
   users: userRouter,
   posts: postRouter,
@@ -79,3 +80,35 @@ const UserPage = () => {
 ```
 
 You'll immediately notice how good the autocompletion and typesafety is. Immediately when you have written `trpc.` your routers will show up, and eventually so will your procedures. You'll also get some red squiggly lines if your input doesn't match your validator that you defined on the backend.
+
+## Comparison to a Next.js API endpoint
+
+Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user from our database and return it to the frontend. We could write a Next.js API endpoint like this:
+
+```ts
+// pages/api/user/[id].ts
+import type { NextApiRequest, NextApiResponse } from "next";
+import { prisma } from "~/server/db/client";
+
+const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== "GET") {
+    return res.status(405).end();
+  }
+
+  const { id } = req.query;
+
+  if (!id || typeof id !== "string") {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+
+  const examples = await prisma.example.findFirst({
+    where: {
+      id,
+    },
+  });
+
+  res.status(200).json(examples);
+};
+
+export default userByIdHandler;
+```
