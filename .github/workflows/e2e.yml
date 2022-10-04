@@ -7,7 +7,7 @@ on:
   workflow_run:
     workflows: [labeler]
     types: [completed]
-    branches: ["main", "next"]
+    branches: ["*"]
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
