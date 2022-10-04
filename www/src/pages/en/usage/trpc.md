@@ -69,7 +69,7 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 ```tsx
 // pages/users/[id].tsx
 const UserPage = () => {
-  const userQuery = trpc.user.getById.useQuery('abc123');
+  const userQuery = trpc.user.getById.useQuery("abc123");
 
   return (
     <div>
