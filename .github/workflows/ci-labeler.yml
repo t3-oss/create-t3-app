@@ -2,7 +2,7 @@
 
 # run labeler with elevated permissions before other actions
 
-name: Label Pull Request
+name: Labeler
 
 on:
   pull_request_target:
