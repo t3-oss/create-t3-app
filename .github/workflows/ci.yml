@@ -4,8 +4,8 @@
 name: CI
 
 on:
-  pull_requests:
-    branches: ["main", "next"]
+  pull_request:
+    branches: ["*"]
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
