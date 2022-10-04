@@ -16,9 +16,9 @@ env:
 jobs:
   build-t3-app:
     runs-on: ubuntu-latest
-    if: |
-      contains(github.event.pull_request.labels.*.name, '📌 area: cli') ||
-      contains(github.event.pull_request.labels.*.name, '📌 area: t3-app')
+    # if: |
+    #   contains(github.event.pull_request.labels.*.name, '📌 area: cli') ||
+    #   contains(github.event.pull_request.labels.*.name, '📌 area: t3-app')
     strategy:
       matrix:
         trpc: ["trpc", "nope"]
