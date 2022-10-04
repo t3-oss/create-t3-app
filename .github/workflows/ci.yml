@@ -4,10 +4,8 @@
 name: CI
 
 on:
-  workflow_run:
-    workflows: [Labeler]
-    types: [completed]
-    branches: ["*"]
+  pull_requests:
+    branches: ["main", "next"]
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
