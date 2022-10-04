@@ -4,10 +4,10 @@
 name: E2E Tests
 
 on:
-  workflow_run:
-    workflows: ["Label PR"]
-    types:
-      - completed
+  pull_request:
+    types: [labeled]
+    branches:
+      - "*"
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
