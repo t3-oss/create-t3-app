@@ -49,7 +49,7 @@ const userRouter = t.router({
 });
 ```
 
-What does this snippet do you might ask? Well, it's a tRPC procedure that takes a string as input that gets validated using Zod (which is the same validation library that we used for our [environment variables](./env-variables.md)), calls our database using [Prisma](./prisma.md) and returns the user whose `id` matches the one we passed in. You define your procedures in `routers` which is a collection of procedures which by convention should be related. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+What does this snippet do you might ask? Well, it's a tRPC procedure that takes a string as input that gets validated using Zod (which is the same validation library that we used for our [environment variables](./env-variables)), calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in. You define your procedures in `routers` which is a collection of procedures which by convention should be related. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
 ```ts
 // server/routers/index.ts
@@ -112,3 +112,10 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 export default userByIdHandler;
 ```
+
+## Useful Resources
+
+| Resource         | Link                                                    |
+| ---------------- | ------------------------------------------------------- |
+| tRPC Docs        | https://www.trpc.io                                     |
+| React Query Docs | https://tanstack.com/query/v4/docs/adapters/react-query |
