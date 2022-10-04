@@ -5,9 +5,10 @@ name: E2E Tests
 
 on:
   pull_request:
-    types: [labeled]
     branches:
-      - main
+      - "*"
+    paths:
+      - "cli/**/*"
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
