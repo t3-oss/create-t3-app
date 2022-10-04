@@ -5,10 +5,9 @@ name: CI
 
 on:
   workflow_run:
-    workflows: ["CI-labeler"]
+    workflows: [CI-labeler]
+    types: [completed]
     branches: ["*"]
-    types:
-      - completed
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
