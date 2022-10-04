@@ -5,7 +5,7 @@ name: CI
 
 on:
   workflow_run:
-    workflows: [CI-labeler]
+    workflows: [Labeler]
     types: [completed]
     branches: ["*"]
 

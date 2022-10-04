@@ -1,7 +1,7 @@
 # this workflow will run on every pr to make sure the project is following the guidelines
 
 # run labeler with elevated permissions before other actions
-name: CI-labeler
+name: Labeler
 
 on:
   pull_request_target:
