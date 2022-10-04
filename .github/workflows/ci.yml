@@ -29,6 +29,7 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
 
   lint:
     runs-on: ubuntu-latest
@@ -41,11 +42,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.9.5
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -74,11 +74,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.9.5
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -107,11 +106,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.9.5
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -133,8 +131,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: labeler
     if: |
-      ( contains(github.event.pull_request.labels.*.name, '📌 area: cli') ||
-        contains(github.event.pull_request.labels.*.name, '📌 area: t3-app') )
+      contains(github.event.pull_request.labels.*.name, '📌 area: cli') ||
+      contains(github.event.pull_request.labels.*.name, '📌 area: t3-app')
     strategy:
       matrix:
         trpc: ["trpc", "nope"]
@@ -151,11 +149,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.9.5
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -171,7 +168,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm turbo run --filter=create-t3-app build
+      - run: pnpm turbo --filter=create-t3-app build
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
@@ -189,11 +186,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7.9.5
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -209,8 +205,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # No need to lint & typecheck here (which is otherwise done by the `check` script), done in above jobs
-      - run: pnpm run --filter=www astro check
-      - run: MODE=CI pnpm turbo run --filter=www build
+      - run: pnpm run --filter=www check
+      - run: pnpm turbo --filter=www build
         env:
           PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}

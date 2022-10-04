@@ -33,7 +33,7 @@ const { tweets } = Astro.props as Props;
         >
           <div
             class={clsx(
-              "[&.active]:bg-primary aspect-square h-2 rounded-full bg-white/20 transition-colors ease-in-out [&:not(.active)]:hover:bg-white/40",
+              "aspect-square h-2 rounded-full bg-white/20 transition-colors ease-in-out [&.active]:bg-primary [&:not(.active)]:hover:bg-white/40",
               {
                 active: idx === 0,
               },
