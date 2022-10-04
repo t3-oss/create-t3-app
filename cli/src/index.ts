@@ -29,6 +29,8 @@ const main = async () => {
 
   const usePackages = buildPkgInstallerMap(packages);
 
+  console.log("This should not get merged!!!");
+
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
 
