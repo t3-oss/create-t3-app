@@ -6,5 +6,7 @@
   "editor.formatOnSave": true,
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.documentSelectors": ["**/*.tsx", "**/*.astro"]
+  "prettier.documentSelectors": [
+    "**/*.{cjs,mjs,ts,tsx,astro,md,mdx,json,yaml,yml}"
+  ]
 }
