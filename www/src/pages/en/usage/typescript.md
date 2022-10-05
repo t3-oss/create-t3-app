@@ -14,7 +14,7 @@ layout: ../../../layouts/docs.astro
     <img
       alt="Avatar of @t3dotgg"
       className="w-12 mr-4 rounded-full bg-neutral-500"
-      src="https://pbs.twimg.com/profile_images/1570205891001192448/wtV7Iek2_400x400.jpg"
+      src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start">
       <span className="mb-1 text-sm italic font-bold">Theo</span>
