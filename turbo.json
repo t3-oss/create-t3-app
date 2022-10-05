@@ -1,5 +1,6 @@
 {
   "pipeline": {
+    "clean": {},
     "build": {
       "outputs": ["dist/**"],
       "dependsOn": ["^build"]
@@ -9,6 +10,10 @@
     },
     "lint": {
       "outputs": [".eslintcache"]
+    },
+    "format": {},
+    "format:check": {
+      "outputs": []
     },
     "dev": {
       "cache": false
