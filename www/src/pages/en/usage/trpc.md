@@ -49,7 +49,7 @@ const userRouter = t.router({
 });
 ```
 
-What does this snippet do? It's a tRPC procedure (the equivalent of a route handler in a traditional backend) that first validates the input  using Zod (the same validation library that we use for [environment variables](./env-variables)), in this case making sure that the input is a string and sending an informative error if this is not the case, then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in. 
+What does this snippet do? It's a tRPC procedure (the equivalent of a route handler in a traditional backend) that first validates the input using Zod (the same validation library that we use for [environment variables](./env-variables)), in this case making sure that the input is a string and sending an informative error if this is not the case, then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in.
 
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
@@ -116,6 +116,7 @@ export default userByIdHandler;
 ```
 
 Compare this to the tRPC example above and you can see some of the advantages of tRPC:
+
 - Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
 - You don’t need to validate which HTTP method was used.
 - You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
