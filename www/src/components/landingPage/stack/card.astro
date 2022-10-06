@@ -14,38 +14,19 @@ const { title, href } = Astro.props;
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    class="hover:no-underline"
-    ><dt
+    class="hover:no-underline active:no-underline focus:no-underline"
+    ><div
       class="flex space-x-4 items-center bg-white/10 p-2 pl-5 rounded-tr-md rounded-tl-md hover:bg-white/20 transition-colors"
     >
       <slot name="icon" />
       <p class="text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
         {title}
       </p>
-    </dt>
-  </a>
-
-  <dd
-    class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
-  >
-    <slot name="description" />
-  </dd>
-
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="font-bold text-t3-purple-200 text-lg hover:text-t3-purple-400 transition-colors mx-6 mb-6 flex items-center"
-  >
-    <span>Read more</span>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 448 512"
-      class="h-4 ml-2 fill-current"
+    </div>
+    <div
+      class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
     >
-      <path
-        d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
-      ></path>
-    </svg>
+      <slot name="description" />
+    </div>
   </a>
 </div>

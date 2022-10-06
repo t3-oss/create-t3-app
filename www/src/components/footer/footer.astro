@@ -7,16 +7,12 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer
-  class="transition-colors mt-auto pb-8 pt-16 flex flex-col bg-transparent"
->
+<footer class="transition-colors mt-auto flex flex-col bg-transparent">
   {isBlog && <AvatarList path={path} />}
-  <div
-    class="container px-6 mx-auto space-y-3 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 pt-6"
-  >
+  <div class="container px-6 mx-auto divide-gray-400 divide-opacity-50 pt-6">
     <div class="flex flex-col items-center justify-between w-full">
       <div
-        class="pb-6 mb-6 border border-x-0 border-t-0 border-b-t3-purple-100 sm:border-0"
+        class="pb-2 mb-2 border border-x-0 border-t-0 border-b-t3-purple-100 sm:border-0"
       >
         <a
           href="https://vercel.com/?utm_source=t3-oss&utm_campaign=oss"

@@ -6,25 +6,15 @@ layout: ../../../layouts/docs.astro
 
 <blockquote className="w-full max-w-sm relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
-    <span
-      className="mr-2 hidden sm:block absolute -top-1 left-0 leading-none"
-      aria-hidden="true"
-    >
-      &ldquo;
-    </span>
-    <span
-      className="mr-2 hidden sm:block absolute -right-1 top-7 leading-none"
-      aria-hidden="true"
-    >
-      &ldquo;
-    </span>
-    <p className="mb-4">Build safety nets, not guard rails</p>
+    <p className="mb-4 text-lg md:text-xl">
+      <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
+    </p>
   </div>
   <cite className="flex items-center justify-end">
     <img
       alt="Avatar of @t3dotgg"
       className="w-12 mr-4 rounded-full bg-neutral-500"
-      src="https://pbs.twimg.com/profile_images/1475643465069301763/FUR05HHs_400x400.jpg"
+      src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start">
       <span className="mb-1 text-sm italic font-bold">Theo</span>
