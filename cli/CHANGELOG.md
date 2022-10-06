@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.1
+
+### Patch Changes
+
+- [#578](https://github.com/t3-oss/create-t3-app/pull/578) [`befc7f4`](https://github.com/t3-oss/create-t3-app/commit/befc7f4f74faeb1538cb6cad6191a1849bf34987) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - upgrade trpc to beta.15 and typescript to 4.8.4
+
 ## 6.0.0
 
 ### Major Changes
