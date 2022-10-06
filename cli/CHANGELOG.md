@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- [#575](https://github.com/t3-oss/create-t3-app/pull/575) [`75fcb49`](https://github.com/t3-oss/create-t3-app/commit/75fcb49f338fbf783a1b157332a803f7c51048c6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - upgrades trpc to v10 and improves cli performance by making it synchronous
+
+### Minor Changes
+
+- [#575](https://github.com/t3-oss/create-t3-app/pull/575) [`75fcb49`](https://github.com/t3-oss/create-t3-app/commit/75fcb49f338fbf783a1b157332a803f7c51048c6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - enable vercel_url to pass default env-schema
+
 ## 5.15.0
 
 ### Minor Changes
