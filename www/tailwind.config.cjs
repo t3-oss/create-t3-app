@@ -67,6 +67,8 @@ module.exports = {
       ],
       serif: ["ui-serif", "Georgia"],
       mono: [
+        '"JetBrains Mono"',
+        "monospace",
         "ui-monospace",
         "Menlo",
         "Monaco",
@@ -79,7 +81,6 @@ module.exports = {
         '"Fira Mono"',
         '"Droid Sans Mono"',
         '"Courier New"',
-        "monospace",
       ],
     },
   },

@@ -1,18 +1,16 @@
 ---
-import { SEO } from "astro-seo";
 import Footer from "../components/footer/footer.astro";
 import Navbar from "../components/navigation/navbar.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import "../styles/global.css";
 import "../styles/algolia/style.css";
+import "../styles/accessibility.css";
 import HeadCommon from "../components/headCommon.astro";
-import "@fontsource/inter/variable.css";
+import HeadSeo from "../components/headSeo.astro";
+import { SITE } from "../config";
 
-export interface Props {
-  title: string;
-  description: string;
-}
-const { title, description } = Astro.props as Props;
+import "@fontsource/inter/variable.css";
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
 
 const currentPage = Astro.url.pathname;
 ---
@@ -21,20 +19,31 @@ const currentPage = Astro.url.pathname;
 <html dir="ltr" lang="en-us" class="initial">
   <head>
     <HeadCommon />
-    <SEO title={title} description={description} />
+    <HeadSeo type="website" />
+    <title>{SITE.title}</title>
   </head>
   <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
-    <Navbar />
+    <JumpToContent />
+    <img
+      src="/images/background-pattern.svg"
+      class="absolute inset-0 opacity-5 h-max w-max object-cover"
+      alt="background pattern"
+    />
     <div class="relative">
-      <aside id="grid-left" class="hidden" title="Site Navigation">
-        <div
-          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
-        >
-          <LeftSidebar currentPage={currentPage} />
-        </div>
-      </aside>
+      <Navbar />
+      <div class="relative">
+        <aside id="grid-left" class="hidden" title="Site Navigation">
+          <div
+            class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
+          >
+            <LeftSidebar currentPage={currentPage} />
+          </div>
+        </aside>
+      </div>
+      <main id="content">
+        <slot />
+      </main>
+      <Footer isBlog={false} path="/" />
     </div>
-    <slot />
-    <Footer isBlog={false} path="/" />
   </body>
 </html>

@@ -1,18 +1,24 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
+import image from "@astrojs/image";
 
 /**
  * @link https://astro.build/config
  */
 export default defineConfig({
-  site: `https://create.t3.gg`,
+  site: `https://beta.create.t3.gg`,
   markdown: {
     shikiConfig: {
-      theme: "poimandres",
+      theme: "material-palenight",
       wrap: true,
     },
   },
-  integrations: [react(), tailwind(), mdx()],
+  integrations: [
+    react(),
+    tailwind(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });

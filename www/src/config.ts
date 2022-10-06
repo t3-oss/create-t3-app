@@ -1,16 +1,14 @@
 export const SITE = {
   title: "Create T3 App",
   description:
-    "Create T3 App is the quickest way to start a new web app with fullstack typesafety",
+    "The best way to setup an opinionated, full-stack, typesafe Next.js project",
   defaultLanguage: "en_US",
 };
 
 export const OPEN_GRAPH = {
   image: {
-    src: "https://github.com/withastro/astro/blob/main/assets/social/banner.jpg?raw=true",
-    alt:
-      "astro logo on a starry expanse of space," +
-      " with a purple saturn-like planet floating in the right foreground",
+    src: "images/og-image.png",
+    alt: "Create T3 App: The best way to setup an opinionated, full-stack, typesafe Next.js project.",
   },
   twitter: "t3dotgg",
 };

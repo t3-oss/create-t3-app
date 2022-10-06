@@ -1,5 +1,29 @@
 # Changelog
 
+## 5.15.0
+
+### Minor Changes
+
+- [#533](https://github.com/t3-oss/create-t3-app/pull/533) [`a3a168a`](https://github.com/t3-oss/create-t3-app/commit/a3a168a5a2c54a51e841b2fce5786ec94d72b0fb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - Tailor .env to only include relevant keys
+
+## 5.14.1
+
+### Patch Changes
+
+- [#510](https://github.com/t3-oss/create-t3-app/pull/510) [`39d766d`](https://github.com/t3-oss/create-t3-app/commit/39d766d3b384c3420c6c058c27be775e961a9319) Thanks [@EkkoKo](https://github.com/EkkoKo)! - fix: resolve target area of `Documentation` links in TechnologyCard
+
+## 5.14.0
+
+### Minor Changes
+
+- [#517](https://github.com/t3-oss/create-t3-app/pull/517) [`2b434bb`](https://github.com/t3-oss/create-t3-app/commit/2b434bb181dc346f299591ddf5465d3175df5c07) Thanks [@gabrielelpidio](https://github.com/gabrielelpidio)! - Add prettier and prettier-plugin-tailwindcss
+
+## 5.13.1
+
+### Patch Changes
+
+- [#506](https://github.com/t3-oss/create-t3-app/pull/506) [`f371ef8`](https://github.com/t3-oss/create-t3-app/commit/f371ef8f0b64205cbbfb5dc6f3416da01a673a71) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temp fix for next-auth peer deps issue
+
 ## 5.13.0
 
 ### Minor Changes
