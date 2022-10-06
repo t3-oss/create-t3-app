@@ -12,7 +12,7 @@ export const serverSchema = z.object({
     // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
     // Since NextAuth automatically uses the VERCEL_URL if present.
     (str) => process.env.VERCEL_URL ?? str,
-    z.string(),
+    process.env.VERCEL ? z.string() : z.string().url(),
   ),
   DISCORD_CLIENT_ID: z.string(),
   DISCORD_CLIENT_SECRET: z.string(),
