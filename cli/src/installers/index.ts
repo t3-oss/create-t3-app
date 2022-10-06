@@ -26,8 +26,8 @@ export const dependencyVersionMap = {
   "@next-auth/prisma-adapter": "^1.0.4",
 
   // Prisma
-  prisma: "^4.1.0",
-  "@prisma/client": "^4.1.0",
+  prisma: "^4.4.0",
+  "@prisma/client": "^4.4.0",
 
   // TailwindCSS
   tailwindcss: "^3.1.6",
@@ -36,11 +36,11 @@ export const dependencyVersionMap = {
   "prettier-plugin-tailwindcss": "^0.1.13",
 
   // tRPC
-  "@trpc/client": "10.0.0-proxy-beta.11",
-  "@trpc/server": "10.0.0-proxy-beta.11",
-  "@trpc/react": "10.0.0-proxy-beta.11",
-  "@trpc/next": "10.0.0-proxy-beta.11",
-  "@tanstack/react-query": "^4.8.0",
+  "@trpc/client": "10.0.0-proxy-beta.15",
+  "@trpc/server": "10.0.0-proxy-beta.15",
+  "@trpc/react": "10.0.0-proxy-beta.15",
+  "@trpc/next": "10.0.0-proxy-beta.15",
+  "@tanstack/react-query": "^4.10.0",
   superjson: "1.9.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
