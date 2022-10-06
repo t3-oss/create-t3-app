@@ -29,6 +29,7 @@
     "typecheck": "tsc",
     "build": "tsup",
     "dev": "tsup --watch",
+    "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
     "lint": "eslint src --cache --cache-strategy content",
     "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore",
