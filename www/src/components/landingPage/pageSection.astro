@@ -5,7 +5,7 @@ export interface Props {
   size: "6" | "12" | "16" | "24" | "32";
   className?: string;
   bottomPadding?: boolean;
-  id: string;
+  id?: string;
 }
 
 const sizes = {
@@ -24,7 +24,7 @@ const sizesOnlyTop = {
   32: "pt-12 md:pt-20 lg:pt-32",
 };
 
-const { size, className, bottomPadding = true, id } = Astro.props;
+const { size, className, bottomPadding = true, id = "" } = Astro.props;
 ---
 
 <section

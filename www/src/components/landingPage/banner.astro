@@ -1,88 +1,77 @@
-<section>
-  <div class="overflow-x-hidden">
-    <div class="relative w-full h-full overflow-hidden py-8 md:py-16 z-0">
-      <div
-        class="absolute top-20 left-[10%] lg:left-[33%] w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-t3-purple-200 opacity-10 mix-blend-overlay rounded-full filter blur-xl animate-blob -z-10 select-none touch-none overflow-hidden"
-      >
-      </div>
-      <div
-        class="absolute top-16 right-[10%] lg:right-[33%] w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-t3-purple-200 opacity-10 mix-blend-overlay rounded-full filter blur-xl animate-blob animation-delay-2000 -z-10 select-none touch-none overflow-hidden"
-      >
-      </div>
-      <div
-        class="absolute bottom-32 sm:bottom-8 right-[33%] sm:right-[38%] lg:right-[42%] lg:bottom-10 w-36 h-36 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-t3-purple-200 opacity-10 mix-blend-overlay rounded-full filter blur-xl animate-blob animation-delay-4000 -z-10 select-none touch-none overflow-hidden"
-      >
-      </div>
-      <div class="mx-auto max-w-8xl lg:px-8">
-        <div class="flex flex-col items-center justify-center text-center">
-          <div
-            class="mx-auto max-w-md px-4 sm:max-w-2xl md:max-w-3xl sm:px-6 sm:text-center lg:px-0 lg:flex lg:items-center"
-          >
-            <div class="lg:py-12 flex flex-col items-start justify-between">
+---
+import Button from "./button.astro";
+---
+
+<div class="py-12 sm:py-8 md:py-12 lg:py-14 xl:py-12 2xl:py-28">
+  <div class="max-w-[800px] xl:max-w-7xl mx-auto">
+    <div class="lg:px-8">
+      <div class="flex flex-col items-center">
+        <div
+          class="max-w-md px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl sm:px-6 lg:px-0"
+        >
+          <div class="flex flex-col gap-4 w-full items-center">
+            <div class="flex flex-col items-start justify-between">
               <h1
-                class="mt-4 text-5xl tracking-tight font-bold text-white sm:mt-5 sm:text-6xl sm:tracking-tight lg:mt-6 xl:text-7xl xl:tracking-tight"
+                class="text-4xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
               >
-                The best way to setup a
-                <span class="text-purple-400"> opinionated,</span>
-                <span class="text-purple-600"> full-stack,</span>
-                <span class="text-t3-purple-400"> typesafe</span>
+                The best way to setup an
+                <span class="text-[hsl(200,100%,60%)]"> opinionated,</span>
+                <span class="text-[hsl(240,100%,70%)] whitespace-nowrap">
+                  full-stack,</span
+                >
+                <span class="text-[hsl(280,100%,60%)]"> typesafe</span>
                 Next.js project
               </h1>
 
               <div
-                class="flex flex-col items-center justify-center mt-8 w-full"
+                class="flex justify-center items-center w-full gap-4 xl:mt-8 mt-4"
               >
-                <div
-                  class="flex items-center justify-center w-full gap-4 max-w-xs"
+                <Button
+                  href="/en/introduction"
+                  openInNewTab={false}
+                  rounded="md"
+                  className="group"
+                  rounded="full"
+                  specialHover={true}
                 >
-                  <a
-                    href="/en/introduction"
-                    class="inline-flex items-center rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base cursor-pointer hover:no-underline"
+                  Documentation
+                  <svg
+                    class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
+                    fill="none"
+                    viewBox="0 0 10 10"
+                    aria-hidden="true"
                   >
-                    <span
-                      class="group inline-flex items-center px-5 py-3 text-slate-800 text-sm font-semibold leading-5 bg-t3-purple-100 rounded-full transition justify-between hover:bg-t3-purple-200"
-                    >
-                      Documentation
-                      <svg
-                        class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
-                        fill="none"
-                        viewBox="0 0 10 10"
-                        aria-hidden="true"
-                      >
-                        <path
-                          class="opacity-0 transition group-hover:opacity-100"
-                          d="M0 5h7"></path>
-                        <path
-                          class="transition group-hover:translate-x-[3px]"
-                          d="M1 1l4 4-4 4"></path>
-                      </svg>
-                    </span>
-                  </a>
-                  <a
-                    href="https://github.com/t3-oss/create-t3-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center rounded-full px-5 py-3 font-semibold sm:text-base lg:text-sm xl:text-base cursor-pointer bg-white/10 hover:bg-white/20 hover:no-underline"
+                    <path
+                      class="opacity-0 transition group-hover:opacity-100"
+                      d="M0 5h7"></path>
+                    <path
+                      class="transition group-hover:translate-x-[3px]"
+                      d="M1 1l4 4-4 4"></path>
+                  </svg>
+                </Button>
+                <Button
+                  href="https://github.com/t3-oss/create-t3-app"
+                  openInNewTab={true}
+                  variant="secondary"
+                  rounded="full"
+                >
+                  Github
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    class="h-3 ml-2 fill-white"
                   >
-                    <span
-                      class="ml-1 px-2 py-0.5 text-sm flex items-center justify-between text-white"
-                    >
-                      Github
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                        class="h-3 ml-2 fill-white"
-                      >
-                        <path
-                          d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
-                        ></path>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-                <div class="mt-8 block h-full relative mx-auto">
+                    <path
+                      d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
+                    ></path>
+                  </svg>
+                </Button>
+              </div>
+
+              <div class="flex flex-col w-full items-center">
+                <div class="flex mt-4 xl:mt-8 h-full relative">
                   <button
-                    class="px-2 py-2 text-lg sm:px-5 sm:py-4 sm:text-xl rounded-md cursor-pointer bg-white/10 hover:bg-white/20 transition-all duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
+                    class="px-2 py-2 text-sm md:text-lg md:px-3 md:py-3 lg:px-5 lg:py-4 lg:text-xl rounded-md cursor-pointer bg-t3-purple-100/10 hover:bg-t3-purple-100/20 transition-all duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
                     title="Copy the command to get started"
                     id="command"
                   >
@@ -125,44 +114,44 @@
         </div>
       </div>
     </div>
-  </div>
-  <script is:inline>
-    const command = document.querySelector("#command");
-    const commandText = document.querySelector("#command-text");
-    const copyIcon = document.querySelector("#copy-icon");
-    const checkIcon = document.querySelector("#check-icon");
-    let cooldown = false;
+    <script is:inline>
+      const command = document.querySelector("#command");
+      const commandText = document.querySelector("#command-text");
+      const copyIcon = document.querySelector("#copy-icon");
+      const checkIcon = document.querySelector("#check-icon");
+      let cooldown = false;
 
-    function toggleIcons() {
-      copyIcon.classList.toggle("hidden");
-      checkIcon.classList.toggle("hidden");
-    }
-
-    command.addEventListener("click", () => {
-      if (cooldown === false) {
-        cooldown = true;
-        navigator.clipboard.writeText(commandText.innerText);
-        toggleIcons();
-
-        setTimeout(() => {
-          toggleIcons();
-          cooldown = false;
-        }, 2000);
+      function toggleIcons() {
+        copyIcon.classList.toggle("hidden");
+        checkIcon.classList.toggle("hidden");
       }
-    });
-  </script>
-</section>
 
-<style>
-  #check-icon {
-    stroke-dasharray: 450;
-    stroke-dashoffset: -30;
-    animation: draw 2s linear normal;
-  }
+      command.addEventListener("click", () => {
+        if (cooldown === false) {
+          cooldown = true;
+          navigator.clipboard.writeText(commandText.innerText);
+          toggleIcons();
 
-  @keyframes draw {
-    to {
-      stroke-dashoffset: 200;
+          setTimeout(() => {
+            toggleIcons();
+            cooldown = false;
+          }, 2000);
+        }
+      });
+    </script>
+  </div>
+
+  <style>
+    #check-icon {
+      stroke-dasharray: 450;
+      stroke-dashoffset: -30;
+      animation: draw 2s linear normal;
     }
-  }
-</style>
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 200;
+      }
+    }
+  </style>
+</div>

@@ -39,13 +39,13 @@ import "./my-class.css";
 <div class="my-class">...</div>
 ```
 
-Equivelent in Tailwind:
+Equivalent in Tailwind:
 
 1. Just write classes in your HTML
 
 ```html
 <div
-  class="flex flex-col justify-center items-center bg-white border border-gray-200 rounded p-4"
+  class="flex flex-col items-center justify-center rounded border border-gray-200 bg-white p-4"
 >
   ...
 </div>
@@ -59,9 +59,22 @@ Tailwind CSS has a beautiful built-in design system, that comes out of the box w
 
 Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
 
+### Extensions and Plugins
+
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
+
+### Formatting
+
+Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+
+### Conditionally Applying Classes
+
+Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+
+- [clsx](https://github.com/lukeed/clsx)
+- [classnames](https://github.com/JedWatson/classnames)
 
 ## Useful Resources
 

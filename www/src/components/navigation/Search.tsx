@@ -53,10 +53,11 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
         ref={searchButtonRef}
         onClick={onOpen}
         className={clsx(
-          "w-full flex items-center justify-between px-4 py-2 text-sm font-medium rounded-lg transition-all transition-500 cursor-text",
+          "transition-500 flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium transition-all",
           {
-            "bg-white/10 hover:bg-white/20": isLanding,
-            "dark:bg-slate-700 bg-t3-purple-200/50 dark:text-slate-100 dark:hover:bg-slate-800 hover:bg-t3-purple-200/75":
+            "hover:bg-t3-purple/20 border border-t3-purple-200/20 bg-t3-purple-200/10 duration-300 hover:border-t3-purple-200/50":
+              isLanding,
+            "dark:hover:bg-t3-purple/20 border bg-t3-purple-200/50 duration-300 hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:text-slate-100 dark:hover:border-t3-purple-200/50":
               !isLanding,
           },
         )}
@@ -75,7 +76,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
           <span className="pl-1 lg:pl-3">Search</span>
         </div>
 
-        <span className="border border-current px-1 rounded-md">
+        <span className="rounded-md border border-current px-1">
           <span className="sr-only">Press </span>
           <kbd>/</kbd>
           <span className="sr-only"> to search</span>

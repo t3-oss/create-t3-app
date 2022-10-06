@@ -1,9 +1,16 @@
-name: "PR-Labeler"
+# this workflow will run on every pr to make sure the project is following the guidelines
+
+# run labeler with elevated permissions before other actions
+
+name: Label PR
+
 on:
-  - pull_request_target
+  pull_request_target:
+    branches: ["*"]
 
 jobs:
-  triage:
+  labeler:
+    name: Label PR
     permissions:
       contents: read
       pull-requests: write
@@ -12,3 +19,4 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
