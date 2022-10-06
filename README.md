@@ -6,6 +6,16 @@
   create-t3-app
 </h1>
 
+> **You are looking at the deprecated version of create-t3-app!**
+>
+> This branch is no longer maintained and should only get critical bug fixes. Please submit your PRs to the `next` branch.
+>
+> Please use the new version of create-t3-app instead:
+>
+> ```bash
+> npx create-t3-app@next
+> ```
+
 <p align="center">
   Interactive CLI to quickly set up an opinionated, full-stack, typesafe Next.js project.
 </p>
