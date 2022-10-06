@@ -90,7 +90,7 @@ Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to f
 ```ts
 // pages/api/user/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "~/server/db/client";
+import { prisma } from "../../../server/db/client";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
