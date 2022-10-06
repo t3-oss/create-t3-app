@@ -1,5 +1,5 @@
 <div
-  class="flex bg-t3-purple-200/50 dark:bg-slate-700 p-2 w-fit mx-auto rounded-lg gap-3"
+  class="flex bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 duration-300 p-2 w-fit mx-auto rounded-lg gap-3"
 >
   <label class="cursor-pointer text-t3-purple-500 dark:text-slate-50">
     <!-- Sun -->
@@ -72,8 +72,8 @@
 
   const toggleTheme = (t) => {
     localStorage.setItem("theme", t);
-    html.classList.toggle("light");
-    html.classList.toggle("dark");
+    html.classList.add(t === "dark" ? "dark" : "light");
+    html.classList.remove(t === "dark" ? "light" : "dark");
   };
 
   lightToggle.addEventListener("change", () => toggleTheme("light"));

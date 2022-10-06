@@ -7,9 +7,7 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer
-  class="transition-colors mt-auto pb-8 pt-8 flex flex-col bg-transparent"
->
+<footer class="transition-colors mt-auto flex flex-col bg-transparent">
   {isBlog && <AvatarList path={path} />}
   <div class="container px-6 mx-auto divide-gray-400 divide-opacity-50 pt-6">
     <div class="flex flex-col items-center justify-between w-full">

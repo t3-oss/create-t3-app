@@ -39,10 +39,11 @@
   html {
     scroll-padding-top: 7rem;
     scroll-behavior: smooth;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300 ;
   }
 
   .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 scrollbar-track-rounded-sm scrollbar-thumb-rounded-sm dark:scrollbar-track-slate-600 dark:scrollbar-thumb-t3-purple-50;
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
   }
 
   /* Typewriter */
