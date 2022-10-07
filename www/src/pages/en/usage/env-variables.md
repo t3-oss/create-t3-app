@@ -82,11 +82,17 @@ import { env } from "../../env/server.mjs";
 const dbUrl = env.DATABASE_URL;
 ```
 
+## .env-example
+
+Since the default `.env` file is not committed to version control, we have also included a `.env-example` file. You can duplicate your `.env`, minus any secrets, in this file so that when the repo is cloned in the future it is easy to set up the environment.
+
 ## Adding Environment Variables
 
-To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
+To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in the following locations:
 
 📄 `.env.*`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+
+📄 `.env-example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
 
 📄 `schema.mjs`: Add the appropriate validation schema for the environment variable using Zod in the appropriate schema, e.g. `KEY: z.string()`
 
@@ -100,7 +106,12 @@ _I want to add my Twitter API Token as a server-side environment variable_
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Add the environment variable to `schema.mjs`:
+2. Add the environment variable to `.env-example`, but don't include the token
+```
+TWITTER_API_TOKEN=
+```
+
+3. Add the environment variable to `schema.mjs`:
 
 ```ts
 export const serverSchema = z.object({
