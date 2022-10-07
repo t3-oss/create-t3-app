@@ -46,8 +46,11 @@ DISCORD_CLIENT_SECRET=
   }
 
   const envExampleContent =
-    `# This file will be committed to version control. Make sure not to have any secrets in it.
-# If you are cloning this repo, create a copy of this file named \`.env\` and populate it with the correct information.
+    `# Since .env is gitignored, you can use .env-example to build a new \`.env\` file when you clone the repo.
+# Keep this file up-to-date when you add new variables to \`.env\`.
+
+# This file will be committed to version control, so make sure not to have any secrets in it.
+# If you are cloning this repo, create a copy of this file named \`.env\` and populate it with your secrets.
 
 ` + envContent;
 
