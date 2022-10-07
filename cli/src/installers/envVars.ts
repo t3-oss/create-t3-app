@@ -25,6 +25,8 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
       break;
   }
 
+  if (!envFile) return;
+
   if (usingPrisma) {
     envContent += `
 # Prisma
@@ -43,13 +45,22 @@ DISCORD_CLIENT_SECRET=
 `;
   }
 
-  if (!envFile) return;
+  const envExampleContent =
+    `# Since .env is gitignored, you can use .env-example to build a new \`.env\` file when you clone the repo.
+# Keep this file up-to-date when you add new variables to \`.env\`.
+
+# This file will be committed to version control, so make sure not to have any secrets in it.
+# If you are cloning this repo, create a copy of this file named \`.env\` and populate it with your secrets.
+
+` + envContent;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
   const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
   const envDest = path.join(projectDir, ".env");
+  const envExampleDest = path.join(projectDir, ".env-example");
 
   fs.copySync(envSchemaSrc, envSchemaDest);
   fs.writeFileSync(envDest, envContent, "utf-8");
+  fs.writeFileSync(envExampleDest, envExampleContent, "utf-8");
 };
