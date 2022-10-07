@@ -25,6 +25,8 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
       break;
   }
 
+  if (!envFile) return;
+
   if (usingPrisma) {
     envContent += `
 # Prisma
@@ -43,13 +45,19 @@ DISCORD_CLIENT_SECRET=
 `;
   }
 
-  if (!envFile) return;
+  const envExampleContent =
+    `# This file will be committed to version control. Make sure not to have any secrets in it.
+# If you are cloning this repo, create a copy of this file named \`.env\` and populate it with the correct information.
+
+` + envContent;
 
   const envSchemaSrc = path.join(envAssetDir, envFile);
   const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
   const envDest = path.join(projectDir, ".env");
+  const envExampleDest = path.join(projectDir, ".env-example");
 
   fs.copySync(envSchemaSrc, envSchemaDest);
   fs.writeFileSync(envDest, envContent, "utf-8");
+  fs.writeFileSync(envExampleDest, envExampleContent, "utf-8");
 };
