@@ -1,0 +1,15 @@
+@media prefers-reduced-motion {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  @apply focus-visible:border-2 focus-visible:border-t3-purple-400 focus-visible:outline-none focus-visible:transition-none;
+}
+
+*:focus {
+  outline: none !important;
+}

@@ -28,10 +28,10 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           <li
             class={`pl-${
               depth * 2 - 2
-            } w-full list-none pb-1 border-l-2 border-t3-purple-300/20`}
+            } w-full list-none border-l-2 border-t3-purple-300/20 pb-1`}
           >
             <a
-              class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+              class="text-t3-purple-500 hover:text-t3-purple-700 dark:text-t3-purple-200 dark:hover:text-t3-purple-100"
               href={`#${slug}`}
             >
               {text}
@@ -54,6 +54,8 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           const tocItem = Array.from(
             document.querySelectorAll(`a[href="#${id}"]`),
           ).at(-1);
+          // this occurs when the id = "toc-heading"
+          if (!tocItem) return;
           const func = entry.isIntersecting ? "add" : "remove";
           tocItem.classList[func](
             "font-medium",

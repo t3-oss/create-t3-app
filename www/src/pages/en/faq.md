@@ -19,7 +19,9 @@ If you are not familiar with the different technologies used in this project, pl
 
 ## What learning resources are currently available?
 
-Checkout these awesome tutorials on `create-t3-app`.
+Although the resources listed below are some of the best that exist for the T3 Stack, the community (and [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) recommend that you just start using the stack and learn along the way by building with it. If you're looking for a solution like `create-t3-app`, chances are you might've already used some of the parts of the stack. So why not just dive headfirst and learn the other parts while you build something?!
+
+Now, we realize this path doesn't work for everyone. So, if you feel like you've tried the recommendation and would still like some resources, or you just aren't confident doing it by yourself and/or feel overwhelmed by the stack, checkout these awesome tutorials on `create-t3-app`:
 
 ### Articles
 

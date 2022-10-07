@@ -1,0 +1,101 @@
+---
+import clsx from "clsx";
+import TweetCard from "./tweetCard.astro";
+import type { Tweet } from "./types";
+
+export interface Props {
+  tweets: Tweet[];
+}
+
+const { tweets } = Astro.props as Props;
+---
+
+<div class="rounded-lg w-full cursor-grab overflow-hidden" id="tweet-slider">
+  <div class="flex w-full space-x-5">
+    {
+      tweets.map((tweet) => (
+        <div class="w-full shrink-0 first:ml-0 last:mr-0">
+          <TweetCard {...tweet} />
+        </div>
+      ))
+    }
+  </div>
+
+  {/* Pagination */}
+  <div class="mb-10 flex mt-6 justify-center">
+    {
+      tweets.map((_, idx) => (
+        // Larger click area while keeping the visual circles small
+        <button
+          aria-label={`Scroll to slide ${idx + 1}`}
+          class="0 -mx-0.5 p-1.5"
+          data-slider-page={idx}
+        >
+          <div
+            class={clsx(
+              "aspect-square h-2 rounded-full bg-white/20 transition-colors ease-in-out [&.active]:bg-primary [&:not(.active)]:hover:bg-white/40",
+              {
+                active: idx === 0,
+              },
+            )}
+          />
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import Embla from "embla-carousel";
+  import autoplay from "embla-carousel-autoplay";
+
+  const sliderElement = document.getElementById("tweet-slider");
+
+  if (!sliderElement) throw new Error("Slider is missing");
+
+  const embla = Embla(
+    sliderElement,
+    {
+      skipSnaps: false,
+    },
+    [
+      autoplay({
+        delay: 3000,
+        stopOnMouseEnter: true,
+      }),
+    ],
+  );
+
+  const paginationButtons = document.querySelectorAll("[data-slider-page]");
+
+  paginationButtons.forEach((paginationButton) => {
+    const page = paginationButton.getAttribute("data-slider-page");
+
+    if (!page) return;
+
+    paginationButton.addEventListener("click", () => {
+      embla.scrollTo(+page);
+    });
+  });
+
+  embla.on("select", () => {
+    const previousSlideIndex = embla.previousScrollSnap();
+    const previousSlideButton = paginationButtons[previousSlideIndex];
+
+    if (previousSlideButton) {
+      previousSlideButton?.firstElementChild?.classList.remove("active");
+    }
+
+    const currentSlideIndex = embla.selectedScrollSnap();
+    const currentSlideButton = paginationButtons[currentSlideIndex];
+
+    if (currentSlideButton) {
+      currentSlideButton?.firstElementChild?.classList.add("active");
+    }
+  });
+
+  // Disable tab navigation for tweet slides
+  sliderElement.querySelectorAll("a").forEach((a) => {
+    a.tabIndex = -1;
+  });
+</script>

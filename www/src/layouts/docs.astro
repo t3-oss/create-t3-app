@@ -9,8 +9,10 @@ import Navbar from "../components/navigation/navbar.astro";
 import RightSidebar from "../components/navigation/rightSidebar.astro";
 import * as CONFIG from "../config";
 import "../styles/global.css";
+import "../styles/accessibility.css";
 import "@fontsource/inter/variable.css";
 import MoreMenu from "../components/navigation/moreMenu.astro";
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
 
 export interface Props {
   frontmatter: CONFIG.Frontmatter;
@@ -18,9 +20,7 @@ export interface Props {
 }
 
 const { frontmatter, headings } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
-
 const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.${
   frontmatter.isMdx ? "mdx" : "md"
 }`;
@@ -35,25 +35,28 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
 >
   <head>
     <HeadCommon />
-    <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} />
+    <HeadSEO frontmatter={frontmatter} />
     <title>
       {frontmatter.title} • {CONFIG.SITE.title}
     </title>
   </head>
 
-  <body class="bg-default">
-    <div class="bg-default sticky top-0 w-full z-50">
+  <body class="bg-default min-h-screen flex flex-col">
+    <JumpToContent />
+    <div class="bg-default sticky top-0 w-full max-h-full z-40">
       <Navbar />
     </div>
-    <main class="md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10">
-      <aside id="grid-left" title="Site Navigation" class={"hidden md:block"}>
+    <main
+      class="flex-1 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10"
+    >
+      <aside id="grid-left" title="Site Navigation" class="hidden md:block">
         <div
-          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-40 bg-base w-full bg-default overflow-y-auto"
+          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-base w-full bg-default overflow-y-auto"
         >
           <LeftSidebar currentPage={currentPage} />
         </div>
       </aside>
-      <div class="flex flex-col md:col-span-2">
+      <div class="flex flex-col md:col-span-2" id="content">
         <PageContent frontmatter={frontmatter} headings={headings}>
           <slot />
         </PageContent>

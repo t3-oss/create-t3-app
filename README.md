@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npx create-t3-app</code>
+  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npx create-t3-app@latest</code>
 </p>
 
 <div align="center">
@@ -101,18 +101,6 @@ The following CLI options and flags can configure the create command with custom
 | `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
 | `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
 | `--noInstall`     | Generate project without installing dependencies                        |
-
-To use the beta version of `create-t3-app` (published continuously after merged PRs):
-
-```bash
-npx create-t3-app@beta
-```
-
-If you prefer using the [v10 beta version of tRPC](https://trpc.io/docs/v10/), use `create-t3-app@next`:
-
-```bash
-npx create-t3-app@next
-```
 
 <h2 id="axioms">T3 Axioms</h2>
 
