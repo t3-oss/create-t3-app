@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- [#582](https://github.com/t3-oss/create-t3-app/pull/582) [`e562ee8`](https://github.com/t3-oss/create-t3-app/commit/e562ee89401307d92177573a9ead1b45373b63c7) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - move prettier from base to tailwind installer
+
+- [#587](https://github.com/t3-oss/create-t3-app/pull/587) [`8c0267f`](https://github.com/t3-oss/create-t3-app/commit/8c0267f98bb7c71e0d90644a9f6af97f1599c723) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - Add .env-example to scaffolded app
+
 ## 6.0.1
 
 ### Patch Changes
