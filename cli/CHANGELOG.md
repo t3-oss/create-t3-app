@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.1
+
+### Patch Changes
+
+- [#591](https://github.com/t3-oss/create-t3-app/pull/591) [`c90a695`](https://github.com/t3-oss/create-t3-app/commit/c90a6957de7a644e1669762c7a0d19bfbd300715) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump next-auth dependency to ^4.12
+
 ## 6.1.0
 
 ### Minor Changes
