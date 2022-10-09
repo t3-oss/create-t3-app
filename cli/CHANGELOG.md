@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.2
+
+### Patch Changes
+
+- [#593](https://github.com/t3-oss/create-t3-app/pull/593) [`c8e2753`](https://github.com/t3-oss/create-t3-app/commit/c8e2753b916d15f3ce1103e7fa89dbd046150474) Thanks [@nexxeln](https://github.com/nexxeln)! - chore(template): remove the mention of @next in template readme
+
 ## 6.1.1
 
 ### Patch Changes
