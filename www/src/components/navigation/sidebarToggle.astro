@@ -34,10 +34,10 @@ const isLanding = currentPage === "/";
 
 <script is:inline>
   const button = document.querySelector("#sidebar-toggle");
-  const body = document.querySelector("body");
 
   button.addEventListener("click", () => {
-    body.classList.toggle("mobile-sidebar-toggle");
+    // html query selector is already defined in the themeToggleButton script
+    html.classList.toggle("mobile-sidebar-toggle");
     button.toggleAttribute("aria-pressed");
     button.innerHTML =
       button.getAttribute("aria-pressed") === null

@@ -109,6 +109,7 @@
 
   .mobile-sidebar-toggle {
     overflow: hidden;
+    height: 100vh;
   }
 
   .mobile-sidebar-toggle #grid-left {
@@ -169,7 +170,7 @@
     @apply mt-8 text-sm;
   }
   .markdown table > tbody > tr > td > a {
-    word-wrap: break-word;
+    overflow-wrap: anywhere;
   }
   .markdown table {
     @apply max-w-full table-fixed;
