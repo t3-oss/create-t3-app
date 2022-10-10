@@ -22,7 +22,7 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "~4.10.2",
+  "next-auth": "^4.12.3",
   "@next-auth/prisma-adapter": "^1.0.4",
 
   // Prisma
@@ -33,6 +33,7 @@ export const dependencyVersionMap = {
   tailwindcss: "^3.1.6",
   autoprefixer: "^10.4.7",
   postcss: "^8.4.14",
+  prettier: "^2.7.1",
   "prettier-plugin-tailwindcss": "^0.1.13",
 
   // tRPC

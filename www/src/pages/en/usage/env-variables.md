@@ -55,6 +55,7 @@ To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validat
 Destruct the `process.env` here.
 
 We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
+
 Typescript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
 
 ```ts
@@ -82,6 +83,10 @@ import { env } from "../../env/server.mjs";
 const dbUrl = env.DATABASE_URL;
 ```
 
+## .env-example
+
+Since the default `.env` file is not committed to version control, we have also included a `.env-example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
+
 ## Adding Environment Variables
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
@@ -89,6 +94,10 @@ To ensure your build never completes without the environment variables the proje
 📄 `.env.*`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
 📄 `schema.mjs`: Add the appropriate validation schema for the environment variable using Zod in the appropriate schema, e.g. `KEY: z.string()`
+
+Optionally, you can also keep `.env-example` updated:
+
+📄 `.env-example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
 
 ### Example
 
@@ -110,3 +119,9 @@ export const serverSchema = z.object({
 ```
 
 _**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+
+3. optional: Add the environment variable to `.env-example`, but don't include the token
+
+```
+TWITTER_API_TOKEN=
+```
