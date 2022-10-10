@@ -1,9 +1,9 @@
 // src/server/trpc/router/index.ts
-import { createRouter } from "../trpc";
+import { router } from "../trpc";
 import { exampleRouter } from "./example";
 import { authRouter } from "./auth";
 
-export const appRouter = createRouter({
+export const appRouter = router({
   example: exampleRouter,
   auth: authRouter,
 });

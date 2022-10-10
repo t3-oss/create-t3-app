@@ -9,19 +9,30 @@ const t = initTRPC.context<Context>().create({
   },
 });
 
-export const createRouter = t.router;
+export const router = t.router;
 
-export const baseProcedure = t.procedure;
+/**
+ * Unprotected procedure
+ **/
+export const publicProcedure = t.procedure;
 
-export const authedProcedure = t.procedure.use(({ ctx, next }) => {
+/**
+ * Reusable middleware to ensure
+ * users are logged in
+ */
+const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
-      ...ctx,
-      // infers that `session` is non-nullable to downstream resolvers
+      // infers the `session` as non-nullable
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
 });
+
+/**
+ * Protected procedure
+ **/
+export const protectedProcedure = t.procedure.use(isAuthed);
