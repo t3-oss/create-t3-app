@@ -27,7 +27,6 @@ const title = frontmatter.title;
       <slot />
     </article>
   </section>
-  <script src="/animateDetails.js" async></script>
 </article>
 
 <script>
@@ -101,6 +100,8 @@ const title = frontmatter.title;
 
     block.appendChild(copyButton);
   });
+</script>
+<script is:inline>
   /**
    * Allows us to animate the details element
    * for it to work make sure the details element contains a summary element
