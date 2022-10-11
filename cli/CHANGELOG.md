@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.2.1
+
+### Patch Changes
+
+- [#602](https://github.com/t3-oss/create-t3-app/pull/602) [`9f86e39`](https://github.com/t3-oss/create-t3-app/commit/9f86e391fded7bb196ac40b83ac633d996bf035f) Thanks [@nexxeln](https://github.com/nexxeln)! - feat(template): add prettier.Config type to prettier config and resolve prettier-plugin-tailwindcss import
+
 ## 6.2.0
 
 ### Minor Changes
