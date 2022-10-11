@@ -175,6 +175,9 @@
   .markdown table {
     @apply max-w-full table-fixed;
   }
+  .markdown table > tbody > tr > td {
+    @apply align-top;
+  }
   .markdown blockquote a {
     @apply text-slate-900 dark:text-t3-purple-50;
   }
