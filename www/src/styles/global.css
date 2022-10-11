@@ -148,7 +148,10 @@
     @apply mb-0 text-sm;
   }
   .markdown a {
-    @apply text-t3-purple-500 underline decoration-slate-500 decoration-dotted underline-offset-2 hover:text-t3-purple-700 dark:text-t3-purple-200 dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
+    @apply text-t3-purple-500 underline decoration-slate-500 
+          decoration-dotted underline-offset-2  
+          hover:text-t3-purple-700 dark:text-t3-purple-200 
+          dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
   }
   .markdown pre {
     @apply my-3 mx-auto rounded-md p-2 pl-3 font-mono sm:pt-2;
@@ -159,9 +162,16 @@
   }
 
   .markdown details {
-    @apply w-full rounded-md bg-t3-purple-200/50 px-3 pb-0.5 dark:bg-slate-700;
+    @apply mt-2 w-full rounded-md bg-t3-purple-200/50 px-3 pb-0.5 ring 
+          ring-t3-purple-200 transition-all duration-75 ease-in-out
+          dark:bg-slate-700 dark:ring-slate-500;
   }
-
+  .markdown details > summary {
+    @apply cursor-pointer text-t3-purple-700 dark:text-slate-300;
+  }
+  .markdown details[open] > summary {
+    @apply border-b-2 border-t3-purple-200 dark:border-slate-500;
+  }
   .markdown summary {
     @apply py-3;
   }
