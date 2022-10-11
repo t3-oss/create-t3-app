@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.2.0
+
+### Minor Changes
+
+- [#581](https://github.com/t3-oss/create-t3-app/pull/581) [`dd0e172`](https://github.com/t3-oss/create-t3-app/commit/dd0e172579d0436f5bdb5d29b721dd55362f620e) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - export helper procedures for trpc instead of the `t`-object
+
+## 6.1.2
+
+### Patch Changes
+
+- [#593](https://github.com/t3-oss/create-t3-app/pull/593) [`c8e2753`](https://github.com/t3-oss/create-t3-app/commit/c8e2753b916d15f3ce1103e7fa89dbd046150474) Thanks [@nexxeln](https://github.com/nexxeln)! - chore(template): remove the mention of @next in template readme
+
 ## 6.1.1
 
 ### Patch Changes
