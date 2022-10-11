@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.2.0
+
+### Minor Changes
+
+- [#581](https://github.com/t3-oss/create-t3-app/pull/581) [`dd0e172`](https://github.com/t3-oss/create-t3-app/commit/dd0e172579d0436f5bdb5d29b721dd55362f620e) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - export helper procedures for trpc instead of the `t`-object
+
 ## 6.1.2
 
 ### Patch Changes
