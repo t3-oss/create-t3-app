@@ -37,10 +37,10 @@ export const dependencyVersionMap = {
   "prettier-plugin-tailwindcss": "^0.1.13",
 
   // tRPC
-  "@trpc/client": "10.0.0-proxy-beta.15",
-  "@trpc/server": "10.0.0-proxy-beta.15",
-  "@trpc/react": "10.0.0-proxy-beta.15",
-  "@trpc/next": "10.0.0-proxy-beta.15",
+  "@trpc/client": "10.0.0-proxy-beta.17",
+  "@trpc/server": "10.0.0-proxy-beta.17",
+  "@trpc/react": "10.0.0-proxy-beta.17",
+  "@trpc/next": "10.0.0-proxy-beta.17",
   "@tanstack/react-query": "^4.10.0",
   superjson: "1.9.1",
 } as const;
