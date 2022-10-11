@@ -39,6 +39,7 @@ Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/creat
     <summary>
       Click here and include contents in <code>.dockerignore</code>:
     </summary>
+<div class="content">
 
 ```
 .env
@@ -51,6 +52,8 @@ README.md
 .git
 ```
 
+</div>
+
 </details>
 
 ### 4. Create Dockerfile
@@ -59,6 +62,7 @@ README.md
     <summary>
       Click here and include contents in <code>Dockerfile</code>:
     </summary>
+<div class="content">
 
 ```docker
 ##### DEPENDENCIES
@@ -68,17 +72,19 @@ RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
+
 COPY prisma ./
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+ if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+ elif [ -f package-lock.json ]; then npm ci; \
+ elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+ else echo "Lockfile not found." && exit 1; \
+ fi
 
 ##### BUILDER
 
@@ -92,11 +98,11 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
-  if [ -f yarn.lock ]; then yarn build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+ if [ -f yarn.lock ]; then yarn build; \
+ elif [ -f package-lock.json ]; then npm run build; \
+ elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm run build; \
+ else echo "Lockfile not found." && exit 1; \
+ fi
 
 ##### RUNNER
 
@@ -104,6 +110,7 @@ FROM --platform=linux/amd64 node:16-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
@@ -121,6 +128,7 @@ EXPOSE 3000
 ENV PORT 3000
 
 CMD ["node", "server.js"]
+
 ```
 
 > **_Notes_**
@@ -129,6 +137,7 @@ CMD ["node", "server.js"]
 > - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
 > - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
 
+</div>
 </details>
 
 ## Build and Run Image Locally
@@ -150,6 +159,7 @@ You can also use Docker Compose to build the image and run the container.
     <summary>
       Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
     </summary>
+<div class="content">
 
 ```yaml
 version: "3.9"
@@ -177,6 +187,7 @@ docker compose up
 
 Open [localhost:3000](http://localhost:3000/) to see your running application.
 
+</div>
 </details>
 
 ## Deploy to Railway
