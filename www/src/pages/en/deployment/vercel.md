@@ -37,11 +37,13 @@ Vercel will likely configure your build command and publish directory automatica
 
 ## Using the Vercel CLI
 
-To deploy from the command line you can either:
+To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
 
-- [Install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli) with `pnpm i -g vercel`.
+```bash
+npm i -g vercel
+```
 
-- Add the CLI as a dependency to your project with `pnpm add -D vercel` and run commands with `pnpm vercel`.
+Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
 
 ```bash
 vercel
