@@ -12,10 +12,10 @@ Vercel will likely configure your build command and publish directory automatica
 
 ```json
 {
-  "buildCommand": "pnpm build",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "devCommand": "pnpm dev",
-  "installCommand": "pnpm install"
+  "devCommand": "npm run dev",
+  "installCommand": "npm install"
 }
 ```
 
@@ -43,10 +43,14 @@ To deploy from the command line you can either:
 
 - Add the CLI as a dependency to your project with `pnpm add -D vercel` and run commands with `pnpm vercel`.
 
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--confirm` if you want to skip the deployment questions and give the default answer for each.
-
 ```bash
 vercel
+```
+
+Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+
+```bash
+vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
 After the first deployment this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
