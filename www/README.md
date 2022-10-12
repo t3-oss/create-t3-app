@@ -8,15 +8,15 @@ Based on the [Astro Starter Kit: Docs Site](https://github.com/withastro/astro/t
 
 ## Outline
 
-* [Features](#features)
-* [Run Site Locally](#run-site-locally)
-* [Command Cheat Sheet](#command-cheat-sheet)
-* [Customize This Theme](#customize-this-theme)
-  * [Site Metadata](#site-metadata)
-  * [CSS Styling](#css-styling)
-  * [Page Metadata](#page-metadata)
-  * [Sidebar Navigation](#sidebar-navigation)
-  * [Multiple Languages Support](#multiple-languages-support)
+- [Features](#features)
+- [Run Site Locally](#run-site-locally)
+- [Command Cheat Sheet](#command-cheat-sheet)
+- [Customize This Theme](#customize-this-theme)
+  - [Site Metadata](#site-metadata)
+  - [CSS Styling](#css-styling)
+  - [Page Metadata](#page-metadata)
+  - [Sidebar Navigation](#sidebar-navigation)
+  - [Multiple Languages Support](#multiple-languages-support)
 
 ## Features
 
