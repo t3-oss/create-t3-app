@@ -50,13 +50,11 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
     "src/server/trpc/router/auth.ts",
   );
 
-  const indexRouterFile = usingAuth
-    ? "auth-index-router.ts"
-    : "index-router.ts";
+  const indexRouterFile = usingAuth ? "auth-app-router.ts" : "app-router.ts";
   const indexRouterSrc = path.join(trpcAssetDir, indexRouterFile);
   const indexRouterDest = path.join(
     projectDir,
-    "src/server/trpc/router/index.ts",
+    "src/server/trpc/router/_app.ts",
   );
 
   const exampleRouterFile = usingPrisma
