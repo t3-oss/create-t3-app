@@ -54,7 +54,7 @@ What does this snippet do? It's a tRPC procedure (the equivalent of a route hand
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
 ```ts
-// server/routers/index.ts
+// server/routers/_app.ts
 const appRouter = t.router({
   users: userRouter,
   posts: postRouter,
