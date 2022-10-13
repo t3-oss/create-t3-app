@@ -47,7 +47,7 @@ target="_blank">
 
   <p align="center">
     <img
-      src="/images/ts_thumbnail.jpeg"
+      src="/images/ts_thumbnail.webp"
       alt="You might be using TypeScript wrong..."
       width="320"
     />
