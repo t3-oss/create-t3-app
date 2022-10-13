@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.0
+
+### Minor Changes
+
+- [#606](https://github.com/t3-oss/create-t3-app/pull/606) [`7f73518`](https://github.com/t3-oss/create-t3-app/commit/7f73518b488b0391f19c8d4d31f583e2be71195a) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - rename index.ts to \_app.ts
+
 ## 6.2.1
 
 ### Patch Changes
