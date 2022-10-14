@@ -1,4 +1,4 @@
-import type { AvailablePackages } from "~/installers/index.js";
+import type { AvailablePackages, TRPCVersion } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
@@ -15,7 +15,7 @@ interface CliFlags {
   default: boolean;
   CI: boolean /** @internal - used in CI */;
   tailwind: boolean /** @internal - used in CI */;
-  trpc: boolean /** @internal - used in CI */;
+  trpc: TRPCVersion | boolean /** @internal - used in CI */;
   prisma: boolean /** @internal - used in CI */;
   nextAuth: boolean /** @internal - used in CI */;
 }
@@ -107,9 +107,15 @@ export const runCli = async () => {
      * If any of the following option-flags are provided, we skip prompting
      */
     .option(
-      "--trpc <boolean>",
-      "Boolean value if we should install trpc",
-      (value) => value === "trpc",
+      "--trpc <string>",
+      "tRPC version if we should install trpc",
+      (value) => {
+        if (value !== "9" && value !== "10") {
+          logger.error("Invalid tRPC version. Must be 9 or 10");
+          return process.exit(1);
+        }
+        return value;
+      },
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -174,13 +180,17 @@ export const runCli = async () => {
       if (!cliProvidedName) {
         cliResults.appName = await promptAppName();
       }
-
       await promptLanguage();
-      cliResults.packages = await promptPackages();
+      const [packages, trpcVersion] = await promptPackages(
+        cliResults.flags.trpc,
+      );
+      cliResults.packages = packages;
+      if (!cliResults.flags.trpc && trpcVersion) {
+        cliResults.flags.trpc = trpcVersion;
+      }
       if (!cliResults.flags.noGit) {
         cliResults.flags.noGit = !(await promptGit());
       }
-
       if (!cliResults.flags.noInstall) {
         cliResults.flags.noInstall = !(await promptInstall());
       }
@@ -236,7 +246,9 @@ const promptLanguage = async (): Promise<void> => {
   }
 };
 
-const promptPackages = async (): Promise<AvailablePackages[]> => {
+const promptPackages = async (
+  trpcFlag: CliFlags["trpc"],
+): Promise<[AvailablePackages[], TRPCVersion?]> => {
   const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
     name: "packages",
     type: "checkbox",
@@ -253,8 +265,21 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
             : false,
       })),
   });
-
-  return packages;
+  if (!trpcFlag && packages.findIndex((pkg) => pkg === "trpc") > -1) {
+    const { trpcVersion } = await inquirer.prompt<{ trpcVersion: TRPCVersion }>(
+      {
+        name: "trpcVersion",
+        type: "list",
+        message: "Which version of trpc would you like to use?",
+        choices: [
+          { name: "V9 (trpc@latest)", value: "9" },
+          { name: "V10 (trpc@next)", value: "10" },
+        ],
+      },
+    );
+    return [packages, trpcVersion];
+  }
+  return [packages];
 };
 
 const promptGit = async (): Promise<boolean> => {

@@ -15,7 +15,7 @@ export const availablePackages = [
   "envVariables",
 ] as const;
 export type AvailablePackages = typeof availablePackages[number];
-
+export type TRPCVersion = "9" | "10";
 /*
  * This maps the necessary packages to a version.
  * This improves performance significantly over fetching it from the npm registry.
@@ -35,17 +35,26 @@ export const dependencyVersionMap = {
   postcss: "^8.4.14",
   prettier: "^2.7.1",
   "prettier-plugin-tailwindcss": "^0.1.13",
-
-  // tRPC
-  "@trpc/client": "10.0.0-proxy-beta.17",
-  "@trpc/server": "10.0.0-proxy-beta.17",
-  "@trpc/react": "10.0.0-proxy-beta.17",
-  "@trpc/next": "10.0.0-proxy-beta.17",
-  "@tanstack/react-query": "^4.10.0",
   superjson: "1.9.1",
 } as const;
-export type AvailableDependencies = keyof typeof dependencyVersionMap;
 
+export const getDependencyVersionMap = (trpcVersion?: TRPCVersion) =>
+  ({
+    ...dependencyVersionMap,
+    "@trpc/client": getTrpcVersion(trpcVersion),
+    "@trpc/server": getTrpcVersion(trpcVersion),
+    "@trpc/react": getTrpcVersion(trpcVersion),
+    "@trpc/next": getTrpcVersion(trpcVersion),
+    "@tanstack/react-query": "^4.10.0",
+    superjson: "1.9.1",
+  } as const);
+
+export const getTrpcVersion = (version?: TRPCVersion) =>
+  version === "9" ? "9.27.2" : "10.0.0-proxy-beta.17";
+
+export type AvailableDependencies = keyof ReturnType<
+  typeof getDependencyVersionMap
+>;
 export interface InstallerOptions {
   projectDir: string;
   pkgManager: PackageManager;
@@ -57,14 +66,17 @@ export interface InstallerOptions {
 export type Installer = (opts: InstallerOptions) => void;
 
 export type PkgInstallerMap = {
-  [pkg in AvailablePackages]: {
-    inUse: boolean;
-    installer: Installer;
-  };
+  [pkg in AvailablePackages]: pkg extends "trpc"
+    ? { version?: TRPCVersion; inUse: boolean; installer: Installer }
+    : {
+        inUse: boolean;
+        installer: Installer;
+      };
 };
 
 export const buildPkgInstallerMap = (
   packages: AvailablePackages[],
+  trpc: boolean | TRPCVersion,
 ): PkgInstallerMap => ({
   nextAuth: {
     inUse: packages.includes("nextAuth"),
@@ -81,6 +93,7 @@ export const buildPkgInstallerMap = (
   trpc: {
     inUse: packages.includes("trpc"),
     installer: trpcInstaller,
+    version: typeof trpc === "boolean" ? (trpc ? "10" : undefined) : trpc,
   },
   envVariables: {
     inUse: packages.includes("prisma") || packages.includes("nextAuth"),

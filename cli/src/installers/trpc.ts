@@ -5,6 +5,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import type { Installer } from "~/installers/index.js";
 
 export const trpcInstaller: Installer = ({ projectDir, packages }) => {
+  const version = packages?.trpc?.version ?? "10";
   addPackageDependency({
     projectDir,
     dependencies: [
@@ -16,8 +17,8 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       "@trpc/react",
     ],
     devMode: false,
+    trpcVersion: version,
   });
-
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
@@ -26,10 +27,12 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
 
-  const utilsSrc = path.join(trpcAssetDir, "utils.ts");
+  const utilsSrc = path.join(trpcAssetDir, `utils-${version}.ts`);
   const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
 
-  const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
+  const serverUtilFile = usingAuth
+    ? `auth-server-utils-${version}.ts`
+    : `server-utils-${version}.ts`;
   const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
   const serverUtilDest = path.join(projectDir, "src/server/trpc/trpc.ts");
 
@@ -44,13 +47,15 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const contextSrc = path.join(trpcAssetDir, contextFile);
   const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
 
-  const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
+  const authRouterSrc = path.join(trpcAssetDir, `auth-router-${version}.ts`);
   const authRouterDest = path.join(
     projectDir,
     "src/server/trpc/router/auth.ts",
   );
 
-  const indexRouterFile = usingAuth ? "auth-app-router.ts" : "app-router.ts";
+  const indexRouterFile = usingAuth
+    ? `auth-app-router-${version}.ts`
+    : `app-router-${version}.ts`;
   const indexRouterSrc = path.join(trpcAssetDir, indexRouterFile);
   const indexRouterDest = path.join(
     projectDir,
@@ -58,8 +63,8 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   );
 
   const exampleRouterFile = usingPrisma
-    ? "example-prisma-router.ts"
-    : "example-router.ts";
+    ? `example-prisma-router-${version}.ts`
+    : `example-router-${version}.ts`;
   const exampleRouterSrc = path.join(trpcAssetDir, exampleRouterFile);
   const exampleRouterDest = path.join(
     projectDir,

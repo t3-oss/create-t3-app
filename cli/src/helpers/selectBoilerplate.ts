@@ -11,6 +11,7 @@ export const selectAppFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
+  const trpcVersion = packages?.trpc?.version ?? "10";
   const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
 
   const usingTrpc = packages.trpc.inUse;
@@ -18,11 +19,11 @@ export const selectAppFile = ({
 
   let appFile = "";
   if (usingNextAuth && usingTrpc) {
-    appFile = "with-auth-trpc.tsx";
+    appFile = `with-auth-trpc-${trpcVersion}.tsx`;
   } else if (usingNextAuth && !usingTrpc) {
     appFile = "with-auth.tsx";
   } else if (!usingNextAuth && usingTrpc) {
-    appFile = "with-trpc.tsx";
+    appFile = `with-trpc-${trpcVersion}.tsx`;
   }
 
   if (appFile !== "") {
@@ -37,6 +38,7 @@ export const selectIndexFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
+  const trpcVersion = packages?.trpc?.version ?? "10";
   const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
 
   const usingTrpc = packages.trpc.inUse;
@@ -45,13 +47,13 @@ export const selectIndexFile = ({
 
   let indexFile = "";
   if (usingTrpc && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
+    indexFile = `with-auth-trpc-tw-${trpcVersion}.tsx`;
   } else if (usingTrpc && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
+    indexFile = `with-auth-trpc-${trpcVersion}.tsx`;
   } else if (usingTrpc && usingTw) {
-    indexFile = "with-trpc-tw.tsx";
+    indexFile = `with-trpc-tw-${trpcVersion}.tsx`;
   } else if (usingTrpc && !usingTw) {
-    indexFile = "with-trpc.tsx";
+    indexFile = `with-trpc-${trpcVersion}.tsx`;
   } else if (!usingTrpc && usingTw) {
     indexFile = "with-tw.tsx";
   }
