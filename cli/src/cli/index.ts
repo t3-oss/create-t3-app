@@ -111,8 +111,9 @@ export const runCli = async () => {
       "tRPC version if we should install trpc",
       (value) => {
         if (value !== "9" && value !== "10") {
-          logger.error("Invalid tRPC version. Must be 9 or 10");
-          return process.exit(1);
+          // logger.error("Invalid tRPC version. Must be 9 or 10");
+          // return process.exit(1);
+          return "10";
         }
         return value;
       },
