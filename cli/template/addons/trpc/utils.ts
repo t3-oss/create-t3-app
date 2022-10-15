@@ -1,3 +1,4 @@
+// src/utils/trpc.ts
 import superjson from "superjson";
 
 import {
@@ -5,7 +6,6 @@ import {
   loggerLink,
 } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
-// src/utils/trpc.ts
 import type { GetInferenceHelpers } from "@trpc/server";
 
 import type { AppRouter } from "../server/trpc/router/_app";
