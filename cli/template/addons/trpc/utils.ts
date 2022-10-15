@@ -1,10 +1,7 @@
 // src/utils/trpc.ts
 import superjson from "superjson";
 
-import {
-  httpBatchLink,
-  loggerLink,
-} from "@trpc/client";
+import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import type { GetInferenceHelpers } from "@trpc/server";
 
