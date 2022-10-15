@@ -50,3 +50,15 @@ jobs:
             ```sh
             npx create-t3-app@${{ env.BETA_PACKAGE_VERSION }}
             ```
+
+      - name: "Remove the autorelease label once published"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ env.WORKFLOW_RUN_PR }},
+              name: '🚀 autorelease',
+            });
