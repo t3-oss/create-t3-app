@@ -99,10 +99,12 @@ export const initializeGit = async (projectDir: string) => {
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
     if (major < 2 || minor < 28) {
-      execa("git", ["init"], { cwd: projectDir });
-      execa("git", ["branch", "-m", "main"], { cwd: projectDir });
+      await execa("git", ["init"], { cwd: projectDir });
+      await execa("git", ["branch", "-m", "main"], { cwd: projectDir });
     } else {
-      execa("git", ["init", "--initial-branch=main"], { cwd: projectDir });
+      await execa("git", ["init", "--initial-branch=main"], {
+        cwd: projectDir,
+      });
     }
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
