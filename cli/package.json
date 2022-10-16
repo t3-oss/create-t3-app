@@ -42,6 +42,7 @@
   "dependencies": {
     "chalk": "5.0.1",
     "commander": "^9.4.1",
+    "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.1.2",

@@ -40,7 +40,7 @@ const main = async () => {
   });
 
   if (!noInstall) {
-    installDependencies(projectDir);
+    await installDependencies(projectDir);
   }
 
   if (!noGit) {
