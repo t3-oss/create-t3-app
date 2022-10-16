@@ -1,10 +1,11 @@
 import chalk from "chalk";
-import ora from "ora";
 import { execSync } from "child_process";
-import { logger } from "~/utils/logger.js";
+import { execa } from "execa";
 import fs from "fs-extra";
-import path from "path";
 import inquirer from "inquirer";
+import ora from "ora";
+import path from "path";
+import { logger } from "~/utils/logger.js";
 
 const isGitInstalled = (dir: string): boolean => {
   try {
@@ -30,6 +31,14 @@ const isInsideGitRepo = (dir: string): boolean => {
   } catch (_e) {
     return false;
   }
+};
+
+const getGitVersion = () => {
+  const stdout = execSync("git --version").toString().trim();
+  const gitVersionTag = stdout.split(" ")[2];
+  const major = gitVersionTag?.split(".")[0];
+  const minor = gitVersionTag?.split(".")[1];
+  return { major: Number(major), minor: Number(minor) };
 };
 
 // This initializes the Git-repository for the project
@@ -87,17 +96,16 @@ export const initializeGit = async (projectDir: string) => {
 
   // We're good to go, initializing the git repo
   try {
-    let initCmd = "git init --initial-branch=main";
     // --initial-branch flag was added in git v2.28.0
-    const gitVersionOutput = execSync("git --version").toString(); // git version 2.32.0 ...
-    const gitVersionTag = gitVersionOutput.split(" ")[2];
-    const major = gitVersionTag?.split(".")[0];
-    const minor = gitVersionTag?.split(".")[1];
-    if (Number(major) < 2 || Number(minor) < 28) {
-      initCmd = "git init && git branch -m main";
+    const { major, minor } = getGitVersion();
+    if (major < 2 || minor < 28) {
+      await execa("git", ["init"], { cwd: projectDir });
+      await execa("git", ["branch", "-m", "main"], { cwd: projectDir });
+    } else {
+      await execa("git", ["init", "--initial-branch=main"], {
+        cwd: projectDir,
+      });
     }
-
-    execSync(initCmd, { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
     );
