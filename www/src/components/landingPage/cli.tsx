@@ -29,7 +29,7 @@ export default function CodeCard() {
           <br />
           &nbsp;&nbsp;|&nbsp;(__|&nbsp;&nbsp;&nbsp;/&nbsp;_|&nbsp;/&nbsp;/\&nbsp;\|&nbsp;|&nbsp;|&nbsp;_|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;|_&nbsp;\&nbsp;&nbsp;/&nbsp;/\&nbsp;\|&nbsp;&nbsp;_/&nbsp;&nbsp;_/&nbsp;
           <br />
-          &nbsp;&nbsp;&nbsp;\___|_|_\___|_/‾‾\_\_|&nbsp;|___|&nbsp;&nbsp;&nbsp;|_|&nbsp;|___/&nbsp;/_/‾‾\_\_|&nbsp;|_|&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;\___|_|_\___|_/¯¯\_\_|&nbsp;|___|&nbsp;&nbsp;&nbsp;|_|&nbsp;|___/&nbsp;/_/¯¯\_\_|&nbsp;|_|&nbsp;&nbsp;
           <br />
         </Typist>
         <Typist
@@ -38,13 +38,13 @@ export default function CodeCard() {
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
-          <div className="flex whitespace-nowrap">
+          <div>
             ? What will your project be called? (my-t3-app)
             <Typist.Delay ms={500} />
             <Typist
               cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
               avgTypingDelay={50}
-              className="pl-1 text-blue-400"
+              className="inline pl-1 text-blue-400"
             >
               my-t3-app
             </Typist>
@@ -170,16 +170,18 @@ export default function CodeCard() {
           avgTypingDelay={-10000}
           className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
-          <div className="flex whitespace-nowrap">
-            <span>? Would you like us to run npm install? (Y/n)</span>
+          <div>
+            <span className="whitespace">
+              ? Would you like us to run npm install? (Y/n)
+            </span>
             <Typist.Delay ms={1000} />
             <Typist
               cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
-              className="pl-2 text-blue-400"
+              className="inline pl-2 text-blue-400"
               avgTypingDelay={-10000}
             >
               y
-              <Typist.Backspace count={1} delay={1000} />
+              <Typist.Backspace count={1} delay={500} />
               <span className="text-blue-400">Yes</span>
             </Typist>
           </div>
