@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#613](https://github.com/t3-oss/create-t3-app/pull/613) [`135ee5b`](https://github.com/t3-oss/create-t3-app/commit/135ee5b469c575e3fa0d7729a9a545811cc9cf74) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - add inference helper for v10
+
+### Patch Changes
+
+- [#611](https://github.com/t3-oss/create-t3-app/pull/611) [`78a0da3`](https://github.com/t3-oss/create-t3-app/commit/78a0da3d08b9e4468fecbae29cccde7ec43801ab) Thanks [@nexxeln](https://github.com/nexxeln)! - fix(cli): make `installDependencies` step async to make loader spin
+
 ## 6.3.0
 
 ### Minor Changes
