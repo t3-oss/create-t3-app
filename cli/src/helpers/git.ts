@@ -61,7 +61,7 @@ export const initializeGit = async (projectDir: string) => {
 
   if (isInside && isRoot) {
     // Dir is a root git repo
-    spinner.stopAndPersist();
+    spinner.stop();
     const { overwriteGit } = await inquirer.prompt<{
       overwriteGit: boolean;
     }>({
@@ -80,7 +80,7 @@ export const initializeGit = async (projectDir: string) => {
     fs.removeSync(path.join(projectDir, ".git"));
   } else if (isInside && !isRoot) {
     // Dir is inside a git worktree
-    spinner.stopAndPersist();
+    spinner.stop();
     const { initializeChildGitRepo } = await inquirer.prompt<{
       initializeChildGitRepo: boolean;
     }>({
@@ -99,7 +99,7 @@ export const initializeGit = async (projectDir: string) => {
 
   // We're good to go, initializing the git repo
   try {
-    spinner.stopAndPersist();
+    spinner.stop();
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
     if (major < 2 || minor < 28) {
