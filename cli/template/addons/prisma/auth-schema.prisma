@@ -15,8 +15,11 @@ datasource db {
 }
 
 model Example {
-    id String @id @default(cuid())
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+
 
 // Necessary for Next auth
 model Account {
