@@ -22,13 +22,16 @@ const isRootGitRepo = (dir: string): boolean => {
 };
 
 /** If dir is inside a git worktree, meaning a parent directory has `.git` */
-const isInsideGitRepo = (dir: string): boolean => {
+const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
-    const stdout = execSync("git rev-parse --is-inside-work-tree", {
+    // If this command succeeds, we're inside a git repo
+    await execa("git", ["rev-parse", "--is-inside-work-tree"], {
       cwd: dir,
-    }).toString();
-    return stdout.trim() === "true";
+      stdout: "ignore",
+    });
+    return true;
   } catch (_e) {
+    // Else, it will throw a git-error and we return false
     return false;
   }
 };
@@ -53,12 +56,12 @@ export const initializeGit = async (projectDir: string) => {
   const spinner = ora("Creating a new git repo...\n").start();
 
   const isRoot = isRootGitRepo(projectDir);
-  const isInside = isInsideGitRepo(projectDir);
+  const isInside = await isInsideGitRepo(projectDir);
   const dirName = path.parse(projectDir).name; // skip full path for logging
 
   if (isInside && isRoot) {
     // Dir is a root git repo
-    spinner.stop();
+    spinner.stopAndPersist();
     const { overwriteGit } = await inquirer.prompt<{
       overwriteGit: boolean;
     }>({
@@ -77,7 +80,7 @@ export const initializeGit = async (projectDir: string) => {
     fs.removeSync(path.join(projectDir, ".git"));
   } else if (isInside && !isRoot) {
     // Dir is inside a git worktree
-    spinner.stop();
+    spinner.stopAndPersist();
     const { initializeChildGitRepo } = await inquirer.prompt<{
       initializeChildGitRepo: boolean;
     }>({
@@ -96,7 +99,7 @@ export const initializeGit = async (projectDir: string) => {
 
   // We're good to go, initializing the git repo
   try {
-    spinner.stop();
+    spinner.stopAndPersist();
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
     if (major < 2 || minor < 28) {
