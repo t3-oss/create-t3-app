@@ -99,7 +99,6 @@ export const initializeGit = async (projectDir: string) => {
 
   // We're good to go, initializing the git repo
   try {
-    spinner.stop();
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
     if (major < 2 || minor < 28) {
