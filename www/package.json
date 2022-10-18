@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.13.1",
-    "@astrojs/image": "^0.9.1",
+    "@astrojs/image": "^0.10.0",
     "@docsearch/css": "^3.2.1",
     "@docsearch/react": "^3.2.1",
     "@fontsource/inter": "^4.5.12",
@@ -36,7 +36,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-typist": "^2.0.3",
     "@typescript-eslint/parser": "^5.39.0",
-    "astro": "^1.4.3",
+    "astro": "^1.5.0",
     "eslint": "^8.24.0",
     "eslint-plugin-astro": "^0.19.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
