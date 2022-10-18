@@ -210,7 +210,7 @@ const MyComponent = () => {
 Here's a sample integration test that uses checks that your tRPC router is working as expected, and that the returned data matches the expected output.
 
 ```ts
-import type { inferProcedureInput } from "@trpc/server";
+import { type inferProcedureInput } from "@trpc/server";
 import { createContextInner } from "~/server/router/context";
 import { appRouter, type AppRouter } from "~/server/router/_app";
 
