@@ -244,7 +244,7 @@ Here is a sample integration test that uses vitest to check that your tRPC route
 import { type inferProcedureInput } from "@trpc/server";
 import { createContextInner } from "~/server/router/context";
 import { appRouter, type AppRouter } from "~/server/router/_app";
-import { expect, text } from "vitest";
+import { expect, test } from "vitest";
 
 test("example router", async () => {
   const ctx = await createContextInner({ session: null });
