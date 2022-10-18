@@ -137,12 +137,31 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default userByIdHandler;
 ```
 
+```ts
+// pages/users/[id].tsx
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
+const UserPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    fetch(`/api/user/${id}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+  }, [id]);
+};
+```
+
 Compare this to the tRPC example above and you can see some of the advantages of tRPC:
 
 - Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
 - You don’t need to validate which HTTP method was used.
 - You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
 - Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
+- Calling the procedure on the frontend doesn't provide and autocompletion or type safety.
 
 ## Useful snippets
 
