@@ -198,7 +198,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create and call the tRPC handler
   return createNextApiHandler({
     router: appRouter,
-    createContext: createContext,
+    createContext,
   })(req, res);
 };
 
