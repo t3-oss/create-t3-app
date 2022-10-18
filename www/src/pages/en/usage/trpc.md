@@ -187,7 +187,8 @@ If you need to consume your API from a different domain, for example in a monore
 // pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
-import { appRouter, createContext } from "";
+import { appRouter } from "~/server/trpc/router/_app";
+import { createContext } from "~/server/trpc/context";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
