@@ -4,7 +4,7 @@ description: Usage of tRPC
 layout: ../../../layouts/docs.astro
 ---
 
-tRPC allows us to write end to end, typesafe APIs without any code generation or runtime bloat. It uses Typescript's great inference to infer your API router's type definitions and lets you safely call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
+tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
 <blockquote className="w-full relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
