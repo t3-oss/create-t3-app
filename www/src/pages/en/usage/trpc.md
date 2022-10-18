@@ -38,14 +38,15 @@ tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. L
 
 ### `pages/api/trpc/[trpc].ts`
 
-This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object which means you can wrap the `createNextApiHandler` in any middleware you want.
+This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object which means you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
 
 ### `server/trpc/context.ts`
 
 This file is where you define the context that is passed to your tRPC procedures. The context is a great place to put things like database connections, authentication information, etc. We create 2 functions for you:
 
-- `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](https://github.com/trpc/examples-next-prisma-starter/blob/next/src/server/routers/post.test.ts) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
-- `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
+#### `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](https://github.com/trpc/examples-next-prisma-starter/blob/next/src/server/routers/post.test.ts) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+
+#### `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
 
 ### `server/trpc/trpc.ts`
 
@@ -142,6 +143,91 @@ Compare this to the tRPC example above and you can see some of the advantages of
 - You don’t need to validate which HTTP method was used.
 - You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
 - Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
+
+## Useful snippets
+
+Here are some useful snippets that you might find useful for certain use cases.
+
+### Enabling CORS
+
+If you need to consume your API from a different domain, say you create a monorepo and add a Vite app, you might need to enable CORS:
+
+```ts
+// pages/api/trpc/[trpc].ts
+import type { NextApiRequest, NextApiResponse } from "next";
+import { createNextApiHandler } from "@trpc/server/adapters/next";
+import { appRouter, createContext } from "";
+import cors from "nextjs-cors";
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Enable cors
+  await cors(req, res);
+
+  // Create and call the tRPC handler
+  return createNextApiHandler({
+    router: appRouter,
+    createContext: createContext,
+  })(req, res);
+};
+
+export default handler;
+```
+
+### Optimistic updates
+
+Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience, because they don't have to wait for the API call to finish before they can see the result of their action. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+
+```tsx
+const MyComponent = () => {
+  const listPostQuery = trpc.post.list.useQuery();
+
+  const utils = trpc.useContext();
+  const postCreate = trpc.post.create.useMutation({
+    async onMutate(newPost) {
+      // Cancel outgoing fetches (so they don't overwrite our optimistic update)
+      await utils.post.list.cancel();
+      // Get the data from the queryCache
+      const prevData = utils.post.list.getData();
+      // Optimistically update the data with our new post
+      utils.post.list.setData([...prevData, newPost ]);
+      // Return the previous data so we can revert if something goes wrong
+      return { prevData };
+    },
+    onError(err, newPost, ctx) {
+      // If the mutation fails, use the context-value from onMutate
+      utils.post.list.setData(ctx.prevData);
+    }
+    onSettled() {
+      // Sync with server once mutation has settled
+      utils.post.list.invalidate();
+    },
+  });
+};
+```
+
+### Sample Integration Test
+
+Here's a sample integration test that uses checks that your tRPC router is working as expected, and that the returned data matches the expected output.
+
+```ts
+import type { inferProcedureInput } from "@trpc/server";
+import { createContextInner } from "~/server/router/context";
+import { appRouter, type AppRouter } from "~/server/router/_app";
+
+test("example router", async () => {
+  const ctx = await createContextInner({});
+  const caller = appRouter.createCaller(ctx);
+
+  type Input = inferProcedureInput<AppRouter["example"]["hello"]>;
+  const input: Input = {
+    text: "test",
+  };
+
+  const example = await caller.example.hello(input);
+
+  expect(example).toMatchObject({ greeting: "Hello test" });
+});
+```
 
 ## Useful Resources
 
