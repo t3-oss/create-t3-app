@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { execa } from "execa";
 import ora from "ora";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
@@ -10,5 +11,5 @@ export const installDependencies = async (projectDir: string) => {
 
   await execa(pkgManager, ["install"], { cwd: projectDir });
 
-  spinner.succeed("Successfully installed dependencies!\n");
+  spinner.succeed(chalk.green("Successfully installed dependencies!\n"));
 };
