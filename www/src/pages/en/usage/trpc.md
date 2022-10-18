@@ -36,11 +36,11 @@ tRPC allows us to write end to end, typesafe APIs without any code generation or
 
 tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
 
-### `pages/api/trpc/[trpc].ts`
+### 📄 `pages/api/trpc/[trpc].ts`
 
 This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object which means you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
 
-### `server/trpc/context.ts`
+### 📄 `server/trpc/context.ts`
 
 This file is where you define the context that is passed to your tRPC procedures. The context is a great place to put things like database connections, authentication information, etc. We create 2 functions for you:
 
@@ -48,7 +48,7 @@ This file is where you define the context that is passed to your tRPC procedures
 
 #### `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
 
-### `server/trpc/trpc.ts`
+### 📄 `server/trpc/trpc.ts`
 
 This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead create reusable procedures and middlewares and export those.
 
