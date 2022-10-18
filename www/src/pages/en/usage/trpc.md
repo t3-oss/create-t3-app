@@ -231,7 +231,8 @@ test("example router", async () => {
 
 ## Useful Resources
 
-| Resource         | Link                                                    |
-| ---------------- | ------------------------------------------------------- |
-| tRPC Docs        | https://www.trpc.io                                     |
-| React Query Docs | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Resource               | Link                                                    |
+| ---------------------- | ------------------------------------------------------- |
+| tRPC Docs              | https://www.trpc.io                                     |
+| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
+| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
