@@ -34,7 +34,7 @@ tRPC allows us to write end to end, typesafe APIs without any code generation or
 
 ## Files
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated for you:
+tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
 
 ### `pages/api/trpc/[trpc].ts`
 
@@ -49,7 +49,9 @@ This file is where you define the context that is passed to your tRPC procedures
 
 ### `server/trpc/trpc.ts`
 
-This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead create reusable procedures and middlewares and export those. You'll notice we use `superjson` for [data transforming](https://trpc.io/docs/v10/data-transformers). This makes it so that your datatypes are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date`, and not a string which is the case for most APIs.
+This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead create reusable procedures and middlewares and export those.
+
+You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date`, and not a string which is the case for most APIs.
 
 ## How do I use tRPC?
 
