@@ -239,7 +239,7 @@ const MyComponent = () => {
 
 ### Sample Integration Test
 
-Here is a sample integration test that uses vitest to check that your tRPC router is working as expected, and that the returned data matches the expected output.
+Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
