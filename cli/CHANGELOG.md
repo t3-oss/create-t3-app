@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.5.0
+
+### Minor Changes
+
+- [#623](https://github.com/t3-oss/create-t3-app/pull/623) [`cf99211`](https://github.com/t3-oss/create-t3-app/commit/cf992110e7d7e741e56561a728ee0f2dee6fc614) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - consistent cli text color
+
+### Patch Changes
+
+- [#619](https://github.com/t3-oss/create-t3-app/pull/619) [`1122720`](https://github.com/t3-oss/create-t3-app/commit/112272083e6130209bfbac0cd350e985dcd9f19f) Thanks [@nexxeln](https://github.com/nexxeln)! - Added `createdAt` and `updatedAt` fields to the Example model in the Prisma schema.
+
+- [#621](https://github.com/t3-oss/create-t3-app/pull/621) [`1cc6735`](https://github.com/t3-oss/create-t3-app/commit/1cc67350c626db3c67f012a84d1a73a7a0f03a91) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix git spinner
+
 ## 6.4.0
 
 ### Minor Changes
