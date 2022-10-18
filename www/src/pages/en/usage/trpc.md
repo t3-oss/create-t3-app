@@ -44,7 +44,7 @@ This is the entrypoint for your API and exposes the tRPC router. Normally, you w
 
 This file is where you define the context that is passed to your tRPC procedures. The context is a great place to put things like database connections, authentication information, etc. We create 2 functions for you:
 
-#### `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](https://github.com/trpc/examples-next-prisma-starter/blob/next/src/server/routers/post.test.ts) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+#### `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
 
 #### `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
 
@@ -215,7 +215,7 @@ import { createContextInner } from "~/server/router/context";
 import { appRouter, type AppRouter } from "~/server/router/_app";
 
 test("example router", async () => {
-  const ctx = await createContextInner({});
+  const ctx = await createContextInner({ session: null });
   const caller = appRouter.createCaller(ctx);
 
   type Input = inferProcedureInput<AppRouter["example"]["hello"]>;
