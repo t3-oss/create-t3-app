@@ -177,11 +177,11 @@ Compare this to the tRPC example above and you can see some of the advantages of
 
 ## Useful snippets
 
-Here are some useful snippets that you might find useful for certain use cases.
+Here are some snippets that might come in handy.
 
 ### Enabling CORS
 
-If you need to consume your API from a different domain, say you create a monorepo and add a Vite app, you might need to enable CORS:
+If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
 ```ts
 // pages/api/trpc/[trpc].ts
@@ -206,7 +206,7 @@ export default handler;
 
 ### Optimistic updates
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience, because they don't have to wait for the API call to finish before they can see the result of their action. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience, because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -238,12 +238,13 @@ const MyComponent = () => {
 
 ### Sample Integration Test
 
-Here's a sample integration test that uses checks that your tRPC router is working as expected, and that the returned data matches the expected output.
+Here is a sample integration test that uses vitest to check that your tRPC router is working as expected, and that the returned data matches the expected output.
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
 import { createContextInner } from "~/server/router/context";
 import { appRouter, type AppRouter } from "~/server/router/_app";
+import { expect, text } from "vitest";
 
 test("example router", async () => {
   const ctx = await createContextInner({ session: null });
