@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.6.0
+
+### Minor Changes
+
+- [#629](https://github.com/t3-oss/create-t3-app/pull/629) [`a3d7148`](https://github.com/t3-oss/create-t3-app/commit/a3d7148c1f63acaf2f0022ea445adb765d8f0ff8) Thanks [@anOatFlake](https://github.com/anOatFlake)! - docs: rephrased code description in trpc.md
+
 ## 6.5.0
 
 ### Minor Changes
