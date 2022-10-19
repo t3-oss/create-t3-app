@@ -85,22 +85,13 @@ yarn create t3-app
 pnpm dlx create-t3-app@latest
 ```
 
+For more advanced usage, check out the [CLI docs](https://beta.create.t3.gg/en/installation).
+
 <h2 id="community">Community</h2>
 
 For help, discussion about best practices, or any other conversation that would benefit create-t3-app:
 
 [Join the T3 Discord Server](https://t3.gg/discord)
-
-<h2 id="cli">CLI Docs</h2>
-
-The following CLI options and flags can configure the create command with custom behavior:
-
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
-| `--noInstall`     | Generate project without installing dependencies                        |
 
 <h2 id="axioms">T3 Axioms</h2>
 
