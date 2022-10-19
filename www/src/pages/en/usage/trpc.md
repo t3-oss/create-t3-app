@@ -49,7 +49,6 @@ const userRouter = t.router({
 });
 ```
 
-What does this snippet do?
 It’s a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (validation library that we use for [environment variables](./env-variables)).
 In this case it's making sure that the input is a string and then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in. If the input is not a string it will send an informative error instead.
 
