@@ -13,6 +13,8 @@ If you are not familiar with the different technologies used in this project, pl
 - [TailwindCSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+We also [roll our own docs](https://beta.create.t3.gg) with some summary information and links to the respective documentation.
+
 Also checkout these awesome tutorials on `create-t3-app`.
 
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
@@ -23,7 +25,3 @@ Also checkout these awesome tutorials on `create-t3-app`.
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://beta.create.t3.gg/en/deployment/vercel) and [Docker](https://beta.create.t3.gg/en/deployment/docker) for more information.
-
-## Further reading
-
-For more information, check out [our documentation](https://beta.create.t3.gg).
