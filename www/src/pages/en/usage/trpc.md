@@ -49,7 +49,8 @@ const userRouter = t.router({
 });
 ```
 
-What does this snippet do? It's a tRPC procedure (the equivalent of a route handler in a traditional backend) that first validates the input using Zod (the same validation library that we use for [environment variables](./env-variables)), in this case making sure that the input is a string and sending an informative error if this is not the case, then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in.
+It’s a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (validation library that we use for [environment variables](./env-variables)).
+In this case it's making sure that the input is a string and then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in. If the input is not a string it will send an informative error instead.
 
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
@@ -81,7 +82,7 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.` your routers will show up in autocomplete, when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc`. Your routers will show up in autocomplete, when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
 
 ## Comparison to a Next.js API endpoint
 
