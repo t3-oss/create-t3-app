@@ -41,3 +41,9 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 As per [T3-Axiom #3](/docs/t3-axioms#typesafety-isnt-optional), we take typesafety as a first class citizen. Unfortunately, not all frameworks and plugins support TypeScript which means some of the configuration files have to be `.js` files.
 
 We try to emphasize that these files are javascript for a reason, by explicitly declaring its type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
+
+## I'm struggling to add i18n to my app. Is there any reference I can use?
+
+We have decided against including i18n by default in `create-t3-app` because it's a very opinionated topic and there are many ways to implement it.
+
+However, if you struggle to implement it and want to see a reference project, we have a [reference repo](https://github.com/juliusmarminge/t3-i18n) that shows how you can add i18n to a T3 App using [next-i18next](https://github.com/i18next/next-i18next).
