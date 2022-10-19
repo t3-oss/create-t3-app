@@ -32,3 +32,23 @@ pnpm dlx create-t3-app@latest
 | `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
 | `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
 | `--noInstall`     | Generate project without installing dependencies                        |
+
+## Experimental usage
+
+For our CI, we have some experimental flags that allows you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future.
+
+| Flag                  | Description                        |
+| --------------------- | ---------------------------------- |
+| `--CI`                | Let the CLI know you're in CI mode |
+| `--trpc=trpc`         | Include `trpc` in the project      |
+| `--prisma=prisma`     | Include `prisma` in the project    |
+| `--nextAuth=nextAuth` | Include `nextAuth` in the project  |
+| `--tailwind=tailwind` | Include `tailwind` in the project  |
+
+**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+
+### Example
+
+```bash
+pnpm dlx create-t3-app@latest --CI --trpc=trpc  --tailwind=tailwind
+```
