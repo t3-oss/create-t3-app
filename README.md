@@ -36,7 +36,6 @@
 - <a href="#about">What is the T3 Stack?</a>
 - <a href="#getting-started">Getting Started</a>
 - <a href="#community">Community</a>
-- <a href="#cli">CLI Docs</a>
 - <a href="#axioms">T3 Axioms</a>
 - <a href="#contributors">Contributors</a>
 
