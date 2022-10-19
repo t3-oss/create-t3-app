@@ -80,7 +80,7 @@ importers:
   www:
     specifiers:
       '@algolia/client-search': ^4.13.1
-      '@astrojs/image': ^0.9.1
+      '@astrojs/image': ^0.10.0
       '@astrojs/react': ^1.1.4
       '@astrojs/tailwind': ^2.0.2
       '@docsearch/css': ^3.2.1
@@ -92,7 +92,7 @@ importers:
       '@types/react-dom': ^18.0.0
       '@types/react-typist': ^2.0.3
       '@typescript-eslint/parser': ^5.39.0
-      astro: ^1.4.3
+      astro: ^1.5.0
       clsx: ^1.2.1
       embla-carousel: ^7.0.3
       embla-carousel-autoplay: ^7.0.3
@@ -111,7 +111,7 @@ importers:
       typescript: ^4.8.4
     dependencies:
       '@algolia/client-search': 4.14.2
-      '@astrojs/image': 0.9.1_sharp@0.31.1
+      '@astrojs/image': 0.10.0_sharp@0.31.1
       '@docsearch/css': 3.2.1
       '@docsearch/react': 3.2.1_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
@@ -129,7 +129,7 @@ importers:
       '@types/react-dom': 18.0.6
       '@types/react-typist': 2.0.3
       '@typescript-eslint/parser': 5.39.0_ypn2ylkkyfa5i233caldtndbqa
-      astro: 1.4.3
+      astro: 1.5.0
       eslint: 8.24.0
       eslint-plugin-astro: 0.19.0_eslint@8.24.0
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
@@ -275,12 +275,12 @@ packages:
     resolution: {integrity: sha512-xZ81C/oMfExdF18I1Tyd2BKKzBqO+qYYctSy4iCwH4UWSo/4Y8A8MAzV1hG67uuE7hFRourSl6H5KUbhyChv/A==}
     dev: true
 
-  /@astrojs/compiler/0.25.2:
-    resolution: {integrity: sha512-GE7uLvH7rSHuTHdMun+867TWsgYNYsaGuhvXsywcaabl4W4n/3b1kzgzrIsrXYBo51J0k6qD33mVdsHdvwv5rw==}
+  /@astrojs/compiler/0.27.2:
+    resolution: {integrity: sha512-VG4X87cUkcmT40HqEwShQzUgl0VSnVTszobbmnhAOkHzdoWMxhwAm61A2o5fEsv6eEK8M0lW/fGwkSofYM5GcQ==}
     dev: true
 
-  /@astrojs/image/0.9.1_sharp@0.31.1:
-    resolution: {integrity: sha512-tnrL9tL539gIzkM9oqRd+asOePPUE/ehtQjmrcsTjJtQx8aPhKHEteJIMuDhby94wRhV6vMK1Wqt4u5DBf6GQQ==}
+  /@astrojs/image/0.10.0_sharp@0.31.1:
+    resolution: {integrity: sha512-/lkQ8YbqwHEA3bU6W7igEHqqQs6V6sx4rMbhkur4qWQP61kAOnvacSSKN7GJ+YswZOiUhPGY9DTtyLRqLFLv5g==}
     peerDependencies:
       sharp: '>=0.31.0'
     peerDependenciesMeta:
@@ -290,6 +290,7 @@ packages:
       '@altano/tiny-async-pool': 1.0.2
       http-cache-semantics: 4.1.0
       image-size: 1.0.2
+      kleur: 4.1.5
       magic-string: 0.25.9
       mime: 3.0.0
       sharp: 0.31.1
@@ -1647,12 +1648,12 @@ packages:
       - supports-color
     dev: true
 
-  /astro/1.4.3:
-    resolution: {integrity: sha512-5MhBoBn/MsDF8uzfr0ZwaMqzcWzmLnTcpxWHlNGQiEy92PqnwaE6mZ16JO/swv5EoABUGtm6yC6cMo4JZU2scg==}
+  /astro/1.5.0:
+    resolution: {integrity: sha512-xwneXjRT4FChouSe/cj6oJVU6Ux7Fd/7rfnh3mPlB9PTbN5UwnfCI5MjR7rTc93i169Jjh93FndrxmGX45sQBw==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 0.25.2
+      '@astrojs/compiler': 0.27.2
       '@astrojs/language-server': 0.26.2
       '@astrojs/markdown-remark': 1.1.3
       '@astrojs/telemetry': 1.0.1
@@ -1673,6 +1674,7 @@ packages:
       common-ancestor-path: 1.0.1
       cookie: 0.5.0
       debug: 4.3.4
+      deepmerge-ts: 4.2.2
       diff: 5.1.0
       eol: 0.9.1
       es-module-lexer: 0.10.5
@@ -1683,6 +1685,7 @@ packages:
       gray-matter: 4.0.3
       html-entities: 2.3.3
       html-escaper: 3.0.3
+      import-meta-resolve: 2.1.0
       kleur: 4.1.5
       magic-string: 0.25.9
       mime: 3.0.0
@@ -2226,6 +2229,11 @@ packages:
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+
+  /deepmerge-ts/4.2.2:
+    resolution: {integrity: sha512-Ka3Kb21tiWjvQvS9U+1Dx+aqFAHsdTnMdYptLTmC2VAmDFMugWMY1e15aTODstipmCun8iNuqeSfcx6rsUUk0Q==}
+    engines: {node: '>=12.4.0'}
+    dev: true
 
   /deepmerge/4.2.2:
     resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}

@@ -22,6 +22,52 @@ When you select NextAuth.js in combination with Prisma, the schema file is gener
 
 The default database is a SQLite database, which is great for development and quickly spinning up a proof-of-concept, but not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
 
+## Seeding your Database
+
+[Seeding your database](https://www.prisma.io/docs/guides/database/seed-database) is a great way to quickly populate your database with test data to help you get started. In order to setup seeding, you will need to create a `seed.ts` file in the `/prisma` directory, and then add a `seed` script to your `package.json` file. You'll also need some TypeScript runner that can execute the seed-script. We recommend [tsx](https://github.com/esbuild/tsx), which is a very performant TypeScript runner that uses esbuild and doesn't require any ESM configuration, but `ts-node` or other runners will work as well.
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    "db-seed": "NODE_ENV=development prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}
+```
+
+```ts
+// prisma/seed.ts
+import { prisma } from "../src/server/db/client";
+
+async function main() {
+  const id = "cl9ebqhxk00003b600tymydho";
+  await prisma.example.upsert({
+    where: {
+      id,
+    },
+    create: {
+      id,
+    },
+    update: {},
+  });
+}
+
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
+```
+
+Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
+
 ## Useful Resources
 
 | Resource                     | Link                                                                                                                                              |
