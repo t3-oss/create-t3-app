@@ -1,21 +1,21 @@
 ---
 title: Docker
-description: Deployment with Docker
+description: Развертывание с помощью Docker
 layout: ../../../layouts/docs.astro
 ---
 
-You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
+Вы можете контеинеризировать этот стек и развернуть его как один контейнер с помощью Docker, или как часть группы контейнеров с помощью docker-compose. Смотрите [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) для примера репозитория на основе этой документации.
 
-## Docker Project Configuration
+## Конфигурация проекта Docker
 
-Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
+Пожалуйста обратите внимание, что Next.js требует различные процессы для сборки (доступных во фронтенде, с префиксом `NEXT_PUBLIC`) и переменных окружения, доступных только на стороне сервера. В этом примере мы используем две переменные, обратите внимание на их позиции в `Dockerfile`, аргументы командной строки и `docker-compose.yml`:
 
-- `DATABASE_URL` (used by the server)
-- `NEXT_PUBLIC_CLIENTVAR` (used by the client)
+- `DATABASE_URL` (используется сервером)
+- `NEXT_PUBLIC_CLIENTVAR` (используется клиентом)
 
-### 1. Next Configuration
+### 1. Конфигурация Next 
 
-In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
+В вашем [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), добавьте конфигурацию опции `standalone` для [уменьшения размера образа, автоматически используя трассировку вывода](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -25,19 +25,19 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Remove Env Import
+### 2. Удалить импорт переменных окружения
 
-Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) so it isn't pulled into the build image:
+Удалите импорт `env` из [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) чтобы он не был включен в образ сборки:
 
 ```diff
 - import { env } from "./src/env/server.mjs";
 ```
 
-### 3. Create dockerignore file
+### 3. Создайте файл dockerignore
 
 <details>
     <summary>
-      Click here and include contents in <code>.dockerignore</code>:
+      Нажмите здесь и включите содержимое в <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
@@ -56,11 +56,11 @@ README.md
 
 </details>
 
-### 4. Create Dockerfile
+### 4. Создайте Dockerfile
 
 <details>
     <summary>
-      Click here and include contents in <code>Dockerfile</code>:
+      Нажмите здесь и включите содержимое в <code>Dockerfile</code>:
     </summary>
 <div class="content">
 
@@ -133,31 +133,31 @@ CMD ["node", "server.js"]
 
 > **_Notes_**
 >
-> - _Emulation of `--platform=linux/amd64` may not be necessary after moving to Node 18._
-> - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
-> - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
+> - _Эмуляция `--platform=linux/amd64` может не быть необходимой после перехода на Node 18._ 
+> - _Посмотрите [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) чтобы понять, почему `libc6-compat` может быть необходим._
+> - _Next.js собирает [анонимные данные о телеметрии общего использования](https://nextjs.org/telemetry). Раскомментируйте первый экземпляр `ENV NEXT_TELEMETRY_DISABLED 1`, чтобы отключить телеметрию во время сборки. Раскомментируйте второй экземпляр, чтобы отключить телеметрию во время выполнения._
 
 </div>
 </details>
 
-## Build and Run Image Locally
+## Сборка и запуск образа локально
 
-Build and run this image locally with the following commands:
+Соберите и запустите этот образ локально с помощью следующих команд:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Откройте [localhost:3000](http://localhost:3000/) для просмотра запущенного приложения.
 
 ## Docker Compose
 
-You can also use Docker Compose to build the image and run the container.
+Вы также можете использовать Docker Compose для сборки образа и запуска контейнера.
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+      Следуйте шагам 1-4 выше, нажмите здесь и включите содержимое в <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
@@ -179,20 +179,20 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-Run this using the `docker compose up` command:
+Запустите это с помощью команды `docker compose up`:
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Откройте [localhost:3000](http://localhost:3000/) для просмотра запущенного приложения.
 
 </div>
 </details>
 
-## Deploy to Railway
+## Развертывание на Railway
 
-You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
+Вы можете использовать PaaS, как автоматическое [развертывание Dockerfule](https://docs.railway.app/deploy/dockerfiles) [Railway](https://railway.app), чтобы развернуть свое приложение. Если у вас установлен [Railway CLI](https://docs.railway.app/develop/cli#install), вы можете развернуть свое приложение с помощью следующих команд:
 
 ```bash
 railway login
@@ -202,9 +202,9 @@ railway up
 railway open
 ```
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
+Перейдтие к "Variables" и включите ваш `DATABASE_URL`. Затем перейдите к "Settings" и выберите "Generate Domain". Чтобы просмотреть работающий пример на Railway, перейдите к [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-## Useful Resources
+## Полезные ресурсы
 
 | Resource                             | Link                                                                 |
 | ------------------------------------ | -------------------------------------------------------------------- |
