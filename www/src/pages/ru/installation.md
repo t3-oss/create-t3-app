@@ -1,10 +1,10 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Установка
+description: Инструкция по установкк Create T3 App
 layout: ../../layouts/docs.astro
 ---
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+Для создания приложения с помощью `create-t3-app`, запустите одну из следующих трех команд и ответьте на вопросы командной строки:
 
 ### npm
 
@@ -26,9 +26,9 @@ pnpm dlx create-t3-app@latest
 
 ## Advanced usage
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Option/Flag       | Description                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| `[dir]`           | Включите аргумент каталога с именем для проекта                                    |
+| `--noGit`         | Явно сообщите CLI, не инициализировать новый git репозиторий в проекте             |
+| `-y`, `--default` | Обойти CLI и использовать все параметры по умолчанию для создания нового t3-app    |
+| `--noInstall`     | Создание проекта без установки зависимостей                                        |
