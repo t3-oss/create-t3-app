@@ -1,6 +1,6 @@
 ---
 title: Vercel
-description: Развертование на Vercel
+description: Развертование с помощью Vercel
 layout: ../../../layouts/docs.astro
 ---
 
