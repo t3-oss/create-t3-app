@@ -19,7 +19,7 @@ Vercel скорее всего настроит вашу команду сбор
 }
 ```
 
-## Используя Vercel Dashboard 
+## Используя Vercel Dashboard
 
 1. После того, как вы запушили код в репозиторий GitHub, зарегистрируйтесь на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) с GitHub и нажмите **Add New Project**.
 
@@ -35,7 +35,7 @@ Vercel скорее всего настроит вашу команду сбор
 
 4. Нажмите **Deploy**. Теперь каждый раз, когда вы пушите изменения в репозиторий, Vercel автоматически развертывает ваш сайт!
 
-## Используя Vercel CLI 
+## Используя Vercel CLI
 
 Для того чтобы развернуть ваш сайт из командной строки, вам необходимо [установить Vercel CLI глобально](https://vercel.com/docs/cli#installing-vercel-cli).
 

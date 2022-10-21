@@ -13,7 +13,7 @@ layout: ../../../layouts/docs.astro
 - `DATABASE_URL` (используется сервером)
 - `NEXT_PUBLIC_CLIENTVAR` (используется клиентом)
 
-### 1. Конфигурация Next 
+### 1. Конфигурация Next
 
 В вашем [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), добавьте конфигурацию опции `standalone` для [уменьшения размера образа, автоматически используя трассировку вывода](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
@@ -133,7 +133,7 @@ CMD ["node", "server.js"]
 
 > **_Notes_**
 >
-> - _Эмуляция `--platform=linux/amd64` может не быть необходимой после перехода на Node 18._ 
+> - _Эмуляция `--platform=linux/amd64` может не быть необходимой после перехода на Node 18._
 > - _Посмотрите [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) чтобы понять, почему `libc6-compat` может быть необходим._
 > - _Next.js собирает [анонимные данные о телеметрии общего использования](https://nextjs.org/telemetry). Раскомментируйте первый экземпляр `ENV NEXT_TELEMETRY_DISABLED 1`, чтобы отключить телеметрию во время сборки. Раскомментируйте второй экземпляр, чтобы отключить телеметрию во время выполнения._
 
