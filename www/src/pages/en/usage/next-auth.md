@@ -73,9 +73,7 @@ When using NextAuth.js with tRPC, you can create reusable, protected procedures 
 
 This is done in a two step process:
 
-1. Grab the session from the request headers using the [unstable_getServerSession](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function (don't worry, its not unstable cause of security reasons, but cause of its API might change). The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that its a server-side only function and doesn't trigger unnecessary fetch calls.
-
-`create-t3-app` has a helper function to make this process easier:
+1. Grab the session from the request headers using the [unstable_getServerSession](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function (don't worry, its not unstable cause of security reasons, but cause of its API might change). The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that its a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function to make this process easier:
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -100,7 +98,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-1. Create a tRPC middleware that checks if the user is authenticated. The middleware is then passed to the `protectedProcedure`, meaning that callers must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+1. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
 
 ```ts:server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
@@ -118,7 +116,20 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
-Located at `server/router/context.ts`, the context provider is setup to recieve the `req` and `res` object from NextJS, to query if a current session exists and provide it to the tRPC context. This allows you to use the `session` object in your API routes to check if a user is authenticated in middleware.
+The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
+
+```ts:server/trpc/router/user.ts
+const userRouter = router({
+  me: protectedProcedure.query(({ ctx }) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+    return user;
+  }),
+});
+```
 
 ## Usage with Prisma
 
@@ -136,3 +147,7 @@ Usage of NextAuth.js with NextJS middleware [requires the use of the JWT session
 | NextAuth Docs                     | https://next-auth.js.org/               |
 | NextAuth Github                   | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
+
+```
+
+```
