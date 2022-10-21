@@ -43,7 +43,6 @@ Vercel скорее всего настроит вашу команду сбор
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
 Запустите команду [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) для развертывания вашего проекта.
 
 ```bash
