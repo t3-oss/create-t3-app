@@ -1,5 +1,27 @@
 # Changelog
 
+## 6.5.0
+
+### Minor Changes
+
+- [#623](https://github.com/t3-oss/create-t3-app/pull/623) [`cf99211`](https://github.com/t3-oss/create-t3-app/commit/cf992110e7d7e741e56561a728ee0f2dee6fc614) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - consistent cli text color
+
+### Patch Changes
+
+- [#619](https://github.com/t3-oss/create-t3-app/pull/619) [`1122720`](https://github.com/t3-oss/create-t3-app/commit/112272083e6130209bfbac0cd350e985dcd9f19f) Thanks [@nexxeln](https://github.com/nexxeln)! - Added `createdAt` and `updatedAt` fields to the Example model in the Prisma schema.
+
+- [#621](https://github.com/t3-oss/create-t3-app/pull/621) [`1cc6735`](https://github.com/t3-oss/create-t3-app/commit/1cc67350c626db3c67f012a84d1a73a7a0f03a91) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix git spinner
+
+## 6.4.0
+
+### Minor Changes
+
+- [#613](https://github.com/t3-oss/create-t3-app/pull/613) [`135ee5b`](https://github.com/t3-oss/create-t3-app/commit/135ee5b469c575e3fa0d7729a9a545811cc9cf74) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - add inference helper for v10
+
+### Patch Changes
+
+- [#611](https://github.com/t3-oss/create-t3-app/pull/611) [`78a0da3`](https://github.com/t3-oss/create-t3-app/commit/78a0da3d08b9e4468fecbae29cccde7ec43801ab) Thanks [@nexxeln](https://github.com/nexxeln)! - fix(cli): make `installDependencies` step async to make loader spin
+
 ## 6.3.0
 
 ### Minor Changes

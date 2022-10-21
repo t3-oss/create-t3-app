@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "6.3.0",
+  "version": "6.5.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -42,6 +42,7 @@
   "dependencies": {
     "chalk": "5.0.1",
     "commander": "^9.4.1",
+    "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.1.2",
