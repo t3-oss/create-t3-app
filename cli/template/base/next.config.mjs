@@ -1,5 +1,7 @@
 // @ts-check
-import { env } from "./src/env/server.mjs";
+process.env.NODE_ENV === "development"
+  ? await import("./src/env/server.mjs")
+  : null;
 
 /**
  * Don't be scared of the generics here.
