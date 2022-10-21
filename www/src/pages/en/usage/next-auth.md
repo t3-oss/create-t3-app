@@ -4,31 +4,40 @@ description: Usage of NextAuth
 layout: ../../../layouts/docs.astro
 ---
 
-For when you want an authentication system in your NextJS application, NextAuth.js is a perfect solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, as well as a database adapter system to allow you to use your own database of choice.
+For when you want an authentication system in your Next.js application, NextAuth.js is a perfect solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, as well as a database adapter system to allow you to use your own database of choice.
 
-## Usage with tRPC
+## Context Provider
 
-When using NextAuth in combination with tRPC when scaffolding with `create-t3-app`, the context provider is already set up for you. This allows tRPC to access the NextAuth session data to be able to use it in your API routes.
+In your app's entrypoint, you'll see that your application is wrapped in a [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
-### Context Provider
-
-Located at `server/router/context.ts`, the context provider is setup to recieve the `req` and `res` object from NextJS, to query if a current session exists and provide it to the tRPC context. This allows you to use the `session` object in your API routes to check if a user is authenticated in middleware.
-
-### \_app.tsx
-
-The entrypoint to your NextJS project, `_app.tsx` is where the context provider is imported to wrap the page being rendered:
-
-```tsx
+```tsx:pages/_app.tsx
 <SessionProvider session={session}>
   <Component {...pageProps} />
 </SessionProvider>
 ```
 
-### Session ID
+The context provider allows your application to access the session data from anywhere in your application, without having to pass it down as props:
 
-`create-t3-app` is configured to utilise the `session` callback in the NextAuth config to include the user's ID within the `session` object.
+```tsx:pages/users/[id].tsx
+import { useSession } from "next-auth/react";
 
-```ts
+const User = () => {
+  const { data: session } = useSession();
+
+  if (!session) {
+    // Handle unauthenticated state, e.g. render a SignIn component
+    return <SignIn />;
+  }
+
+  return <p>Welcome {session.user.name}!</p>;
+};
+```
+
+## Session ID
+
+`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth config to include the user's ID within the `session` object.
+
+```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -39,9 +48,9 @@ callbacks: {
   },
 ```
 
-This is coupled with a types file located at `/types/next-auth.d.ts` to allow the `user.id` to be typed in the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
+This is coupled with a type declaration file to make sure the `user.id` is typed when accessed on the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
 
-```ts
+```ts:types/next-auth.d.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -56,11 +65,65 @@ declare module "next-auth" {
 }
 ```
 
+The same pattern can be used to add any other data to the `session` object, such as a `role` field, but **should not be misused to store sensitive data** on the client.
+
+### Usage with tRPC
+
+When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
+
+This is done in a two step process:
+
+1. Grab the session from the request headers using the [unstable_getServerSession](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function (don't worry, its not unstable cause of security reasons, but cause of its API might change). The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that its a server-side only function and doesn't trigger unnecessary fetch calls.
+
+`create-t3-app` has a helper function to make this process easier:
+
+```ts:server/common/get-server-auth-session.ts
+export const getServerAuthSession = async (ctx: {
+  req: GetServerSidePropsContext["req"];
+  res: GetServerSidePropsContext["res"];
+}) => {
+  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+};
+```
+
+Using this helper function, we can grab the session and pass it through to the tRPC context:
+
+```ts:server/trpc/context.ts
+import { getServerAuthSession } from "../common/get-server-auth-session";
+
+export const createContext = async (opts: CreateNextContextOptions) => {
+  const { req, res } = opts;
+  const session = await getServerAuthSession({ req, res });
+  return await createContextInner({
+    session,
+  });
+};
+```
+
+1. Create a tRPC middleware that checks if the user is authenticated. The middleware is then passed to the `protectedProcedure`, meaning that callers must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+
+```ts:server/trpc/trpc.ts
+const isAuthed = t.middleware(({ ctx, next }) => {
+  if (!ctx.session || !ctx.session.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      // infers the `session` as non-nullable
+      session: { ...ctx.session, user: ctx.session.user },
+    },
+  });
+});
+
+export const protectedProcedure = t.procedure.use(isAuthed);
+```
+
+Located at `server/router/context.ts`, the context provider is setup to recieve the `req` and `res` object from NextJS, to query if a current session exists and provide it to the tRPC context. This allows you to use the `session` object in your API routes to check if a user is authenticated in middleware.
+
 ## Usage with Prisma
 
 TODO: what we setup, how to add more fields to user and acc tables.
-
-## Middleware
+FIXME: FIXME: FIXME:
 
 **Important Note**
 
