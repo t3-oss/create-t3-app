@@ -16,6 +16,7 @@ export default defineConfig({
       theme: "material-palenight",
       wrap: true,
     },
+    extendDefaultPlugins: true,
   },
   integrations: [
     react(),
