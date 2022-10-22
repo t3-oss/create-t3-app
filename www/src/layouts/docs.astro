@@ -44,13 +44,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       function main() {
         const section = document.querySelector("section.w-full");
 
-        const [headings1, headings2, headings3] = [
-          section.querySelectorAll("h1"),
-          section.querySelectorAll("h2"),
-          section.querySelectorAll("h3"),
-        ];
-
-        const headings = [...headings1, ...headings2, ...headings3];
+        const headings = section.querySelectorAll("h1, h2, h3, h4, h5");
 
         headings.forEach((heading) => {
           const link = document.createElement("a");
