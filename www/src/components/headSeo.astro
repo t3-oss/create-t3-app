@@ -15,7 +15,7 @@ const formattedContentTitle = frontmatter
   : SITE.title;
 
 const imageSrc = frontmatter?.image?.src ?? OPEN_GRAPH.image.src;
-const imageUrl = new URL(imageSrc, Astro.url);
+const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
 
 const ogType = type ?? "article";
