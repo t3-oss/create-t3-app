@@ -15,7 +15,16 @@ const formattedContentTitle = frontmatter
   : SITE.title;
 
 const imageSrc = frontmatter?.image?.src ?? OPEN_GRAPH.image.src;
-const imageUrl = new URL(imageSrc, Astro.url);
+
+let imageUrl;
+
+// Check if image is a relative path or absolute URL, decide how to handle it accordingly
+if (imageSrc.startsWith("/")) {
+  imageUrl = imageSrc;
+} else {
+  imageUrl = new URL(imageSrc, Astro.site);
+}
+
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
 
 const ogType = type ?? "article";
