@@ -147,7 +147,3 @@ Usage of NextAuth.js with NextJS middleware [requires the use of the JWT session
 | NextAuth Docs                     | https://next-auth.js.org/               |
 | NextAuth Github                   | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
-
-```
-
-```
