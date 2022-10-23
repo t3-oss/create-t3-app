@@ -39,6 +39,30 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     <title>
       {frontmatter.title} • {CONFIG.SITE.title}
     </title>
+    <script type="module" defer>
+      main();
+      function main() {
+        const section = document.querySelector("section.w-full");
+
+        const headings = section.querySelectorAll("h1, h2, h3, h4, h5");
+
+        headings.forEach((heading) => {
+          const link = document.createElement("a");
+          link.href = `#${heading.id}`;
+          link.classList.add("heading-link");
+          link.classList.add("heading-link--hidden---effects");
+          link.innerHTML = heading.innerHTML;
+          heading.innerHTML = "";
+          heading.appendChild(link);
+
+          heading.addEventListener("click", () => {
+            navigator.clipboard.writeText(
+              `${window.location.href}#${heading.id}`,
+            );
+          });
+        });
+      }
+    </script>
   </head>
 
   <body class="bg-default min-h-screen flex flex-col">
