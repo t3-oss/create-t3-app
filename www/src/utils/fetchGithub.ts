@@ -12,14 +12,12 @@ export const fetchGithub = async (url: string, opts: Options) => {
   const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
 
   if (!token) {
+    const msg =
+      "No Github token found. Please set PUBLIC_GITHUB_TOKEN in .env to avoid rate limiting.";
     if (throwIfNoAuth) {
-      throw new Error(
-        'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
-      );
+      throw new Error(msg);
     }
-    console.warn(
-      "No Github token found. Please set PUBLIC_GITHUB_TOKEN in .env to avoid rate limiting.",
-    );
+    console.warn(msg);
     return fetch(url);
   }
 
@@ -35,11 +33,12 @@ export const fetchGithub = async (url: string, opts: Options) => {
   const data = await res.json();
 
   if (!res.ok) {
+    const msg = `Request to fetch ${url} failed. Reason: ${res.statusText}
+    Message: ${data.message}`;
     if (throwIfNotOk) {
-      throw new Error(`Request to fetch ${url} failed. Reason: ${res.statusText}
-      Message: ${data.message}`);
+      throw new Error(msg);
     }
-    console.warn(`Failed to fetch ${url}`);
+    console.warn(msg);
   }
 
   return data;
