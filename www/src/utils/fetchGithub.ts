@@ -32,12 +32,15 @@ export const fetchGithub = async (url: string, opts: Options) => {
     },
   });
 
+  const data = await res.json();
+
   if (!res.ok) {
     if (throwIfNotOk) {
-      throw new Error(`Failed to fetch ${url}`);
+      throw new Error(`Request to fetch ${url} failed. Reason: ${res.statusText}
+      Message: ${data.message}`);
     }
     console.warn(`Failed to fetch ${url}`);
   }
 
-  return res.json();
+  return data;
 };
