@@ -1,11 +1,18 @@
+type Options = {
+  throwIfNotOk?: boolean;
+  throwIfNoAuth?: boolean;
+};
+
 /**
  * helper to fetch the github api with auth token to avoid rate limiting
  */
-export const fetchGithub = async (url: string, shouldThrow = false) => {
+export const fetchGithub = async (url: string, opts: Options) => {
+  const { throwIfNotOk = true, throwIfNoAuth = true } = opts;
+
   const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
 
   if (!token) {
-    if (shouldThrow) {
+    if (throwIfNoAuth) {
       throw new Error(
         'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
       );
@@ -18,10 +25,19 @@ export const fetchGithub = async (url: string, shouldThrow = false) => {
 
   const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
 
-  return fetch(url, {
+  const res = await fetch(url, {
     headers: {
       Authorization: auth,
       "User-Agent": "@ct3a-www/1.0",
     },
-  }).then((res) => res.json());
+  });
+
+  if (!res.ok) {
+    if (throwIfNotOk) {
+      throw new Error(`Failed to fetch ${url}`);
+    }
+    console.warn(`Failed to fetch ${url}`);
+  }
+
+  return res.json();
 };
