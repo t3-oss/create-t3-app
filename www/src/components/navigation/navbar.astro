@@ -74,12 +74,13 @@ const githubStars =
     </div>
     <div class="flex flex-grow justify-end items-center gap-4">
       <a
+        id="github-link"
         href="https://github.com/t3-oss/create-t3-app"
-        class="flex items-center group"
+        class="flex items-center group no-underline"
       >
         <div
           id="github-stars"
-          class="hidden md:flex items-center rounded-lg no-underline bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:group-hover:border-t3-purple-200/50 transition-all duration-300 p-1"
+          class="relative mr-[.33em] hidden md:flex items-center rounded-lg no-underline bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:group-hover:border-t3-purple-200/50 transition-all duration-300 p-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -119,3 +120,14 @@ const githubStars =
     </div>
   </div>
 </nav>
+
+<style>
+  #github-link:hover {
+    text-decoration: none !important;
+  }
+  #github-stars::after {
+    /* make triangle */
+    content: "";
+    @apply absolute -right-[.5em] h-0 w-0 border-8 border-r-0 border-transparent border-l-t3-purple-200/50 transition-all duration-300 group-hover:border-l-t3-purple-200/50 dark:border-l-t3-purple-200/30;
+  }
+</style>
