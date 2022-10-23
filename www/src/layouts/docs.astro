@@ -49,7 +49,8 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         headings.forEach((heading) => {
           const link = document.createElement("a");
           link.href = `#${heading.id}`;
-          link.className = "hover:heading-link";
+          link.classList.add("heading-link");
+          link.classList.add("heading-link--hidden---effects");
           link.innerHTML = heading.innerHTML;
           heading.innerHTML = "";
           heading.appendChild(link);
@@ -59,7 +60,6 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
               `${window.location.href}#${heading.id}`,
             );
           });
-
         });
       }
     </script>
