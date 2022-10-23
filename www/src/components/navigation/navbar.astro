@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import { fetchGithub } from "../../utils/fetchGithub";
 import Search from "./Search";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
@@ -22,11 +23,9 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   },
 ];
 
-const githubStars = await fetch(
+const githubStars = await fetchGithub(
   "https://api.github.com/repos/t3-oss/create-t3-app",
-)
-  .then((res) => res.json())
-  .then((json) => json.stargazers_count);
+).then((json) => json.stargazers_count);
 ---
 
 <nav
