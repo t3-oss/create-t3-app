@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.1
+
+### Patch Changes
+
+- [#642](https://github.com/t3-oss/create-t3-app/pull/642) [`9639419`](https://github.com/t3-oss/create-t3-app/commit/9639419f1f24f8c3f5418680d9d8a214e16c8cd6) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - get next-auth to work with node 18
+
 ## 6.5.0
 
 ### Minor Changes
