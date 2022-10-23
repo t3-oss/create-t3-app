@@ -11,7 +11,10 @@ export const installDependencies = async (projectDir: string) => {
 
   // FIXME: temp fix for next-auth with node 18
   // see: https://github.com/nextauthjs/next-auth/issues/4575
-  if (process.versions.node.startsWith("18")) {
+  if (
+    process.versions.node.startsWith("18") ||
+    process.versions.node.startsWith("19")
+  ) {
     if (pkgManager === "yarn") {
       await execa(pkgManager, ["add", "--ignore-engines", "true"], {
         cwd: projectDir,
