@@ -133,18 +133,6 @@ export const runCli = async () => {
   See: https://github.com/t3-oss/create-t3-app/issues/57`);
   }
 
-  // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-  if (process.versions.node.startsWith("18")) {
-    logger.warn(`  WARNING: You are using Node.js version 18. This is currently not compatible with Next-Auth.
-  If you want to use Next-Auth, switch to a previous version of Node, e.g. 16 (LTS).
-  If you have nvm installed, use 'nvm install --lts' to switch to the latest LTS version of Node.
-    `);
-
-    cliResults.packages = cliResults.packages.filter(
-      (val) => val !== "nextAuth",
-    );
-  }
-
   // Needs to be separated outside the if statement to correctly infer the type as string | undefined
   const cliProvidedName = program.args[0];
   if (cliProvidedName) {
@@ -246,11 +234,6 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
       .map((pkgName) => ({
         name: pkgName,
         checked: false,
-        // FIXME: TEMPORARY WARNING WHEN USING NODE 18. SEE ISSUE #59
-        disabled:
-          pkgName === "nextAuth" && process.versions.node.startsWith("18")
-            ? "Node.js version 18 is currently not compatible with Next-Auth."
-            : false,
       })),
   });
 

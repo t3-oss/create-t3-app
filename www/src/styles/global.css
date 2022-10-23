@@ -147,7 +147,7 @@
   .markdown a > p {
     @apply mb-0 text-sm;
   }
-  .markdown a {
+  .markdown a:not(.heading-link--hidden---effects) {
     @apply text-t3-purple-500 underline decoration-slate-500 
           decoration-dotted underline-offset-2  
           hover:text-t3-purple-700 dark:text-t3-purple-200 
