@@ -23,10 +23,10 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   },
 ];
 
-const githubStars = await fetchGithub(
-  "https://api.github.com/repos/t3-oss/create-t3-app",
-  { throwIfNoAuth: false },
-).then((json) => json.stargazers_count);
+const githubStars =
+  (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
+    throwIfNoAuth: false,
+  }).then((json) => json.stargazers_count)) ?? 42069;
 ---
 
 <nav
