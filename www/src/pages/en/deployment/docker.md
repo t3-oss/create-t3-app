@@ -50,7 +50,7 @@ README.md
 
 ### 3. Create Dockerfile
 
-> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/environment-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
+> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
 
 <details>
     <summary>
