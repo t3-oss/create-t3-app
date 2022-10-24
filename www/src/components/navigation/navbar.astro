@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
@@ -17,12 +18,8 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     label: "FAQ",
   },
   {
-    href: "https://github.com/t3-oss/create-t3-app",
-    label: "Github",
-  },
-  {
-    href: "https://init.tips",
-    label: "T3 Stack",
+    href: "/en/t3-collection",
+    label: "T3 Collection",
   },
 ];
 ---
@@ -70,9 +67,10 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         }
       </div>
     </div>
-    <div class="flex flex-grow justify-end items-center">
+    <div class="flex flex-grow justify-end items-center gap-4">
+      <GithubIcon />
       <div
-        class={clsx("text-center mx-8", {
+        class={clsx("text-center", {
           hidden: isLanding,
         })}
       >
