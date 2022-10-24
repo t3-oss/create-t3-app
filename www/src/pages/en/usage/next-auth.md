@@ -33,7 +33,7 @@ const User = () => {
 };
 ```
 
-## Session ID
+## Inclusion of `user.id` on the Session
 
 `create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth config to include the user's ID within the `session` object.
 
@@ -67,7 +67,7 @@ declare module "next-auth" {
 
 The same pattern can be used to add any other data to the `session` object, such as a `role` field, but **should not be misused to store sensitive data** on the client.
 
-### Usage with tRPC
+## Usage with tRPC
 
 When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
 
@@ -133,10 +133,27 @@ const userRouter = router({
 
 ## Usage with Prisma
 
-TODO: what we setup, how to add more fields to user and acc tables.
-FIXME: FIXME: FIXME:
+Getting Next-Auth.js to work with Prisma is a bit of a pain and a lot of [models](https://next-auth.js.org/adapters/models/) has to be setup. `create-t3-app` handles all of this for you and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all models preconfigured. We ship your scaffolded app with a preconfigured `Discord` OAuth provider - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
 
-**Important Note**
+### Adding new fields to your models
+
+When adding new fields to any of the `User`, `Account`, `Session` or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
+
+Say for example you'd like to add a `role` to the `User` model, you'd need to add a default value to the `role` field. This is done by adding a `default` value to the `role` field in the `User` model:
+
+```diff:prisma/schema.prisma
++ enum Role {
++   USER
++   ADMIN
++ }
+
+  model User {
+    ...
++   role Role @default(USER)
+  }
+```
+
+## Usage with Next.js middleware
 
 Usage of NextAuth.js with NextJS middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, `create-t3-app` is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
 
