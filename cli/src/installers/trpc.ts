@@ -13,7 +13,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
-      "@trpc/react",
+      "@trpc/react-query",
     ],
     devMode: false,
   });
