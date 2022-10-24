@@ -1,4 +1,6 @@
 ---
+import { fetchGithub } from "../../utils/fetchGithub";
+
 // fetch all commits for just this page's path
 export interface Props {
   path: string;
@@ -17,32 +19,7 @@ type Commit = {
 
 async function getCommits(url: string) {
   try {
-    const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
-    if (!token) {
-      throw new Error(
-        'Cannot find "PUBLIC_GITHUB_TOKEN" used for escaping rate-limiting.',
-      );
-    }
-
-    const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
-
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: auth,
-        "User-Agent": "@ct3a-www/1.0",
-      },
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(
-        `Request to fetch commits failed. Reason: ${res.statusText}
-       Message: ${data.message}`,
-      );
-    }
-
+    const data = await fetchGithub(url, {});
     return data as Commit[];
   } catch (e) {
     console.warn(`[error]  /src/components/AvatarList.astro 
