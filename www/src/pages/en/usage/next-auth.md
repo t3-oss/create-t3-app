@@ -54,9 +54,6 @@ This is coupled with a type declaration file to make sure the `user.id` is typed
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
     user?: {
       id: string;
@@ -98,7 +95,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-1. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
 
 ```ts:server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
