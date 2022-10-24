@@ -14,7 +14,7 @@ const githubStars =
 >
   <div
     id="github-stars"
-    class="relative mr-[.33em] hidden md:flex items-center rounded-lg no-underline bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:group-hover:border-t3-purple-200/50 transition-all duration-300 p-1"
+    class="relative mr-[.33em] hidden md:flex items-center bg-clip-padding rounded-lg no-underline border-t3-purple-200/50 bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:group-hover:border-t3-purple-200/50 transition-all duration-300 p-1 after:absolute after:right-[calc(-0.5em-1px)] after:h-0 after:w-0 after:border-8 after:border-r-0 after:border-transparent after:border-l-t3-purple-200/50 after:transition-all after:duration-300 after:group-hover:border-l-t3-purple-200/50 dark:after:border-l-t3-purple-200/20 dark:after:group-hover:border-l-t3-purple-200/50"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -41,10 +41,5 @@ const githubStars =
 <style>
   #github-link:hover {
     text-decoration: none !important;
-  }
-  #github-stars::after {
-    /* make triangle */
-    content: "";
-    @apply absolute -right-[.5em] h-0 w-0 border-8 border-r-0 border-transparent border-l-t3-purple-200/50 transition-all duration-300 group-hover:border-l-t3-purple-200/50 dark:border-l-t3-purple-200/30;
   }
 </style>
