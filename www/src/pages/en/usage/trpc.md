@@ -154,7 +154,7 @@ export default userByIdHandler;
 
 ### Exposing every procedure as a REST endpoint
 
-If you want to expose every single procedure externally, checkout the community build plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate a OpenAPI compliant REST API from your tRPC router.
+If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
 
 ## Comparison to a Next.js API endpoint
 
