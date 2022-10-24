@@ -25,15 +25,7 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Remove Env Import
-
-Remove the `env`-import from [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) so it isn't pulled into the build image:
-
-```diff
-- import { env } from "./src/env/server.mjs";
-```
-
-### 3. Create dockerignore file
+### 2. Create dockerignore file
 
 <details>
     <summary>
@@ -56,7 +48,9 @@ README.md
 
 </details>
 
-### 4. Create Dockerfile
+### 3. Create Dockerfile
+
+> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
 
 <details>
     <summary>
@@ -98,9 +92,9 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
- if [ -f yarn.lock ]; then yarn build; \
- elif [ -f package-lock.json ]; then npm run build; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm run build; \
+ if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
+ elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
+ elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
  else echo "Lockfile not found." && exit 1; \
  fi
 
