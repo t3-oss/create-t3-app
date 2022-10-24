@@ -4,7 +4,7 @@ description: Usage of TypeScript
 layout: ../../../layouts/docs.astro
 ---
 
-<blockquote className="w-full max-w-sm relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
+<blockquote className="w-full relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg md:text-xl">
       <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
@@ -17,7 +17,7 @@ layout: ../../../layouts/docs.astro
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start">
-      <span className="mb-1 text-sm italic font-bold">Theo</span>
+      <span className="mb-1 text-sm italic font-bold">Theo - creator of the T3 Stack</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"

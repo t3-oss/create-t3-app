@@ -105,6 +105,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
+      remark-code-titles: ^0.1.2
       sharp: ^0.31.1
       tailwind-scrollbar: ^2.0.1
       tailwindcss: ^3.1.8
@@ -139,6 +140,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-typist: 2.0.5_zpnidt7m3osuk7shl3s4oenomq
+      remark-code-titles: 0.1.2
       tailwindcss: 3.1.8
       typescript: 4.8.4
 
@@ -5570,6 +5572,12 @@ packages:
       unified: 10.1.2
     dev: true
 
+  /remark-code-titles/0.1.2:
+    resolution: {integrity: sha512-KsHQbaI4FX8Ozxqk7YErxwmBiveUqloKuVqyPG2YPLHojpgomodWgRfG4B+bOtmn/5bfJ8khw4rR0lvgVFl2Uw==}
+    dependencies:
+      unist-util-visit: 1.4.1
+    dev: true
+
   /remark-gfm/3.0.1:
     resolution: {integrity: sha512-lEFDoi2PICJyNrACFOfDD3JlLkuSbOa5Wd8EPt06HUdptv8Gn0bxYTdbU/XXQ3swAPkEaGxxPN9cbnMHvVu1Ig==}
     dependencies:
@@ -6574,6 +6582,10 @@ packages:
     resolution: {integrity: sha512-TiWE6DVtVe7Ye2QxOVW9kqybs6cZexNwTwSMVgkfjEReqy/xwGpAXb99OxktoWwmL+Z+Epb0Dn8/GNDYP1wnUw==}
     dev: true
 
+  /unist-util-is/3.0.0:
+    resolution: {integrity: sha512-sVZZX3+kspVNmLWBPAB6r+7D9ZgAFPNWm66f7YNb420RlQSbn+n8rG8dGZSkrER7ZIXGQYNm5pqC3v3HopH24A==}
+    dev: true
+
   /unist-util-is/5.1.1:
     resolution: {integrity: sha512-F5CZ68eYzuSvJjGhCLPL3cYx45IxkqXSetCcRgUXtbcm50X2L9oOWQlfUfDdAf+6Pd27YDblBfdtmsThXmwpbQ==}
     dev: true
@@ -6619,11 +6631,23 @@ packages:
     resolution: {integrity: sha512-sA/nXwYRCQVRwZU2/tQWUqJ9JSFM1X3x7JIOsIgSzrFHcfVt6NkzDtKzyxg2cZWkCwGF9CO8x4QNZRJRMK8FeQ==}
     dev: true
 
+  /unist-util-visit-parents/2.1.2:
+    resolution: {integrity: sha512-DyN5vD4NE3aSeB+PXYNKxzGsfocxp6asDc2XXE3b0ekO2BaRUpBicbbUygfSvYfUz1IkmjFR1YF7dPklraMZ2g==}
+    dependencies:
+      unist-util-is: 3.0.0
+    dev: true
+
   /unist-util-visit-parents/5.1.1:
     resolution: {integrity: sha512-gks4baapT/kNRaWxuGkl5BIhoanZo7sC/cUT/JToSRNL1dYoXRFl75d++NkjYk4TAu2uv2Px+l8guMajogeuiw==}
     dependencies:
       '@types/unist': 2.0.6
       unist-util-is: 5.1.1
+    dev: true
+
+  /unist-util-visit/1.4.1:
+    resolution: {integrity: sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==}
+    dependencies:
+      unist-util-visit-parents: 2.1.2
     dev: true
 
   /unist-util-visit/4.1.1:
