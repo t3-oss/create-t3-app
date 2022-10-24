@@ -50,6 +50,8 @@ README.md
 
 ### 3. Create Dockerfile
 
+> In order to not pull the server enviroment variables to our container, we have to add a`SKIP_ENV_VALIDATION=1`flag to the build command.
+
 <details>
     <summary>
       Click here and include contents in <code>Dockerfile</code>:
