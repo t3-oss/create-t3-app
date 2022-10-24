@@ -22,9 +22,7 @@ _TLDR; If you want to add a new environment variable, you must add it to both yo
 
 This is the file you will actually touch. It contains two schemas, one for server-side environment variables and one for client-side as well as a `clientEnv` object.
 
-```typescript
-// src/env/schema.mjs
-
+```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
@@ -75,8 +73,7 @@ This is where the validation happens and exports the validated objects. You shou
 
 When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
 
-```ts twoslash
-// src/pages/api/hello.ts
+```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
 
 // `env` is fully typesafe and provides autocompletion

@@ -70,8 +70,7 @@ Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additiona
 
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
-```ts
-// server/routers/user.ts
+```ts:server/trpc/router/user.ts
 const userRouter = t.router({
   getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
@@ -83,13 +82,13 @@ const userRouter = t.router({
 });
 ```
 
-It’s a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (validation library that we use for [environment variables](./env-variables)).
-In this case it's making sure that the input is a string and then calls our database using [Prisma](./prisma) and returns the user whose `id` matches the one we passed in. If the input is not a string it will send an informative error instead.
+It’s a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+
+After the input we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations) or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client, and returns the user whose `id` matches the one we passed in.
 
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
-```ts
-// server/routers/_app.ts
+```ts:server/trpc/router/_app.ts
 const appRouter = t.router({
   users: userRouter,
   posts: postRouter,
@@ -103,8 +102,7 @@ Notice that we only need to export our router's type definitions, which means we
 
 Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures on our frontend like this:
 
-```tsx
-// pages/users/[id].tsx
+```tsx:pages/users/[id].tsx
 const UserPage = () => {
   const userQuery = trpc.user.getById.useQuery("abc123");
 
@@ -118,12 +116,51 @@ const UserPage = () => {
 
 You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc`. Your routers will show up in autocomplete, when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
 
+## How do I call my API externally?
+
+With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two ways to do it:
+
+### Expose a single procedure externally
+
+If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
+
+```ts:pages/api/users/[id].ts
+import type { NextApiRequest, NextApiResponse } from "next";
+import { appRouter } from "../../../server/trpc/router/_app";
+import { createContext } from "../../../server/trpc/context";
+
+const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Create context and caller
+  const ctx = await createContext({ req, res });
+  const caller = appRouter.createCaller(ctx);
+  try {
+    const { id } = req.query;
+    const user = await caller.user.getById(id);
+    res.status(200).json(user);
+  } catch (cause) {
+    if (cause instanceof TRPCError) {
+      // An error from tRPC occured
+      const httpCode = getHTTPStatusCodeFromError(cause);
+      return res.status(httpCode).json(cause);
+    }
+    // Another error occured
+    console.error(cause);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export default userByIdHandler;
+```
+
+### Exposing every procedure as a REST endpoint
+
+If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
+
 ## Comparison to a Next.js API endpoint
 
 Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
 
-```ts
-// pages/api/user/[id].ts
+```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../server/db/client";
 
@@ -150,8 +187,7 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default userByIdHandler;
 ```
 
-```ts
-// pages/users/[id].tsx
+```ts:pages/users/[id].tsx
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -184,8 +220,7 @@ Here are some snippets that might come in handy.
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
-```ts
-// pages/api/trpc/[trpc].ts
+```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/trpc/router/_app";
