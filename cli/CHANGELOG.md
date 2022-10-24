@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.2
+
+### Patch Changes
+
+- [#649](https://github.com/t3-oss/create-t3-app/pull/649) [`6a21032`](https://github.com/t3-oss/create-t3-app/commit/6a210329136d089d61d41acaf99519223003f606) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: version bumps
+
 ## 6.5.1
 
 ### Patch Changes
