@@ -22,25 +22,25 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.12.3",
+  "next-auth": "^4.15.0",
   "@next-auth/prisma-adapter": "^1.0.4",
 
   // Prisma
-  prisma: "^4.4.0",
-  "@prisma/client": "^4.4.0",
+  prisma: "^4.5.0",
+  "@prisma/client": "^4.5.0",
 
   // TailwindCSS
-  tailwindcss: "^3.1.6",
+  tailwindcss: "^3.2.0",
   autoprefixer: "^10.4.7",
   postcss: "^8.4.14",
   prettier: "^2.7.1",
   "prettier-plugin-tailwindcss": "^0.1.13",
 
   // tRPC
-  "@trpc/client": "10.0.0-proxy-beta.17",
-  "@trpc/server": "10.0.0-proxy-beta.17",
-  "@trpc/react": "10.0.0-proxy-beta.17",
-  "@trpc/next": "10.0.0-proxy-beta.17",
+  "@trpc/client": "10.0.0-rc.0",
+  "@trpc/server": "10.0.0-rc.0",
+  "@trpc/react-query": "10.0.0-rc.0",
+  "@trpc/next": "10.0.0-rc.0",
   "@tanstack/react-query": "^4.10.0",
   superjson: "1.9.1",
 } as const;
