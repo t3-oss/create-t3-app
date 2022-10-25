@@ -1,5 +1,6 @@
 ---
 import { fetchGithub } from "../../utils/fetchGithub";
+import clsx from "clsx"
 
 const githubStars =
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
