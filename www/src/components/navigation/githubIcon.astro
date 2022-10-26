@@ -1,10 +1,16 @@
 ---
 import { fetchGithub } from "../../utils/fetchGithub";
+import clsx from "clsx";
 
 const githubStars =
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
     throwIfNoAuth: false,
   }).then((json) => json.stargazers_count)) ?? 42069;
+const SIX_HOURS_IN_SECONDS = 6 * 60 * 60;
+Astro.response.headers.set(
+  "Cache-Control",
+  `s-max-age=${SIX_HOURS_IN_SECONDS}`,
+);
 ---
 
 <a
@@ -20,7 +26,8 @@ const githubStars =
         /** triangle arrow */
         "after:absolute after:right-[calc(-0.5em-1px)] after:h-0 after:w-0 after:border-8 after:border-r-0 after:border-transparent after:border-l-t3-purple-200/50 after:transition-all after:duration-300 after:group-hover:border-l-t3-purple-200/75 dark:after:border-l-t3-purple-200/20 dark:after:group-hover:border-l-t3-purple-200/50",
       ],
-    )}>
+    )}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"
