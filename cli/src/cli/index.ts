@@ -80,7 +80,7 @@ export const runCli = async () => {
      * If any of the following option-flags are provided, we skip prompting
      */
     .option(
-      "--tailwind <tailwind>",
+      "--tailwind <boolean>",
       "Boolean value if we should install tailwind",
       (value) => value === "tailwind",
     )
