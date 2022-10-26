@@ -1,11 +1,9 @@
-// src/utils/trpc.ts
-import superjson from "superjson";
-
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
-import type { GetInferenceHelpers } from "@trpc/server";
+import { type GetInferenceHelpers } from "@trpc/server";
+import superjson from "superjson";
 
-import type { AppRouter } from "../server/trpc/router/_app";
+import { type AppRouter } from "../server/trpc/router/_app";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
@@ -34,6 +32,6 @@ export const trpc = createTRPCNext<AppRouter>({
 
 /**
  * Inference helpers
- * @example type HelloOutput = AppRouterTypes['example']['hello']['output']
+ * @example type HelloOutput = RouterTypes['example']['hello']['output']
  **/
-export type AppRouterTypes = GetInferenceHelpers<AppRouter>;
+export type RouterTypes = GetInferenceHelpers<AppRouter>;
