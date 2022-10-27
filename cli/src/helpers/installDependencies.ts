@@ -15,15 +15,19 @@ export const installDependencies = async (projectDir: string) => {
     process.versions.node.startsWith("18") ||
     process.versions.node.startsWith("19")
   ) {
-    if (pkgManager === "yarn") {
-      await execa(pkgManager, ["add", "--ignore-engines", "true"], {
-        cwd: projectDir,
-      });
-    } else {
-      await execa(pkgManager, ["install", "--engine-strict", "false"], {
-        cwd: projectDir,
-      });
-    }
+    const engineFlag =
+      pkgManager === "yarn"
+        ? ["--ignore-engines", "true"]
+        : ["--engine-strict", "false"];
+    const peerDepFlag =
+      pkgManager === "pnpm"
+        ? ["--strict-peer-dependencies", "false"]
+        : /** npm uses strict-peer-deps=false by default, yarn unknown */
+          [];
+
+    await execa(pkgManager, ["install", ...engineFlag, ...peerDepFlag], {
+      cwd: projectDir,
+    });
   } else {
     await execa(pkgManager, ["install"], { cwd: projectDir });
   }
