@@ -37,9 +37,11 @@ export const installDependencies = async ({
   if (packages.nextAuth.inUse) {
     flags = [
       ...flags,
-      ...(pkgManager === "yarn"
-        ? ["--ignore-engines", "true"]
-        : ["--engine-strict", "false"]),
+      ...(pkgManager === "pnpm"
+        ? ["--strict-peer-dependencies", "false"]
+        : pkgManager === "npm"
+        ? ["--legacy-peer-deps", "true"]
+        : []),
     ];
   }
 
