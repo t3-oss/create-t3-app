@@ -6,13 +6,14 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
 type Options = {
+  projectDir: string;
   packages: PkgInstallerMap;
 };
 
-export const installDependencies = async (
-  projectDir: string,
-  opts: Options,
-) => {
+export const installDependencies = async ({
+  projectDir,
+  packages,
+}: Options) => {
   logger.info("Installing dependencies...");
   const pkgManager = getUserPkgManager();
   const spinner = ora(`Running ${pkgManager} install...\n`).start();
@@ -33,7 +34,7 @@ export const installDependencies = async (
   }
 
   // FIXME: temp fix for NextAuth.js with Next.js 13
-  if (opts.packages.nextAuth.inUse) {
+  if (packages.nextAuth.inUse) {
     flags = [
       ...flags,
       ...(pkgManager === "yarn"
