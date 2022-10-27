@@ -18,12 +18,12 @@ export const installDependencies = async (
   const spinner = ora(`Running ${pkgManager} install...\n`).start();
   let flags: string[] = [];
 
+  // FIXME: temp fix for NextAuth.js with node 18/19
+  // see: https://github.com/nextauthjs/next-auth/issues/4575
   if (
     process.versions.node.startsWith("18") ||
     process.versions.node.startsWith("19")
   ) {
-    // FIXME: temp fix for next-auth with node 18/19
-    // see: https://github.com/nextauthjs/next-auth/issues/4575
     flags = [
       ...flags,
       ...(pkgManager === "yarn"
@@ -31,8 +31,9 @@ export const installDependencies = async (
         : ["--engine-strict", "false"]),
     ];
   }
+
+  // FIXME: temp fix for NextAuth.js with Next.js 13
   if (opts.packages.nextAuth.inUse) {
-    // FIXME: temp fix for NextAuth.js with Next.js 13
     flags = [
       ...flags,
       ...(pkgManager === "yarn"
