@@ -11,7 +11,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Description                                                       | Repo                                                            | Link                                                                  |
 | ----------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)    | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)     |
-| Zapdos - a QnA app for streamers                                  | [t3-oss/zapdos](https://github.com/t3-oss/zapdos)               | [z.t3.gg](https://z.t3.gg)                                            |
+| Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)         | [ask.ping.gg](https://ask.ping.gg)                                    |
 | Shoutify - Free, open-source, self-hosted social media management | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify) | [shoutify.app](https://github.com/TechSquidTV/Shoutify) (coming soon) |
 | nexxel's personal site                                            | [nexxeln/nexxel.dev](https://github.com/nexxeln/nexxel.dev)     | [nexxel.dev](https://nexxel.dev)                                      |
 | Me3 - Describe yourself in 3 things and share with your friends.  | [hnqg/me3](https://github.com/hnqg/me3)                         | [me.hnqg.io](https://me.hnqg.io)                                      |
