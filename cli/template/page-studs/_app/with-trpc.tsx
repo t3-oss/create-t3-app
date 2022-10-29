@@ -1,7 +1,8 @@
-// src/pages/_app.tsx
-import "../styles/globals.css";
-import type { AppType } from "next/app";
+import { type AppType } from "next/app";
+
 import { trpc } from "../utils/trpc";
+
+import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
