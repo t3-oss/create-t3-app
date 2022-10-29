@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.6.0
+
+### Minor Changes
+
+- [#657](https://github.com/t3-oss/create-t3-app/pull/657) [`f1673eb`](https://github.com/t3-oss/create-t3-app/commit/f1673ebbf58033746b9a020b7f0b72d976988f84) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: update dependency Next.js to 13
+
 ## 6.5.2
 
 ### Patch Changes
