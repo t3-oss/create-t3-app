@@ -28,10 +28,13 @@ const sidebar = SIDEBAR[langCode];
           <li>
             <div>
               <h2
-                class={clsx("py-2 text-xl font-semibold sm:text-lg", {
-                  // mobile menu on landing page
-                  "text-slate-50": isLanding,
-                })}
+                class={clsx(
+                  "py-2 text-xl font-semibold transition-all duration-300 sm:text-lg",
+                  {
+                    // mobile menu on landing page
+                    "text-slate-50": isLanding,
+                  },
+                )}
               >
                 {header}
               </h2>

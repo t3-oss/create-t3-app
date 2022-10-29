@@ -65,9 +65,13 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     </script>
   </head>
 
-  <body class="bg-default min-h-screen flex flex-col">
+  <body
+    class="bg-default min-h-screen flex flex-col transition-all duration-300"
+  >
     <JumpToContent />
-    <div class="bg-default sticky top-0 w-full max-h-full z-40">
+    <div
+      class="bg-default sticky top-0 w-full max-h-full z-40 transition-all duration-300"
+    >
       <Navbar />
     </div>
     <main
