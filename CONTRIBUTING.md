@@ -9,7 +9,7 @@ When contributing to `create-t3-app`, whether on GitHub or in other community sp
 
 ### Prerequisites
 
-In order to not waste your time implementing changes that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/t3-oss/create-t3-app/issues/new/choose) describing the problem you would like to solve.
+In order to not waste your time implementing a change that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/t3-oss/create-t3-app/issues/new/choose) describing the problem you would like to solve.
 
 ### Setup your environment
 
