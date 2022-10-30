@@ -6,7 +6,7 @@ layout: ../../../layouts/docs.astro
 
 ## What is Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, while being able to switch your brain off.
+Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides (a very different set of benefits)[https://www.youtube.com/watch?v=CQuTF-bkOgc] compared to a component library like Material UI.
 
 It makes CSS incredibly easy and quick to write, as shown by the following example:
 
@@ -51,9 +51,9 @@ Equivalent in Tailwind:
 </div>
 ```
 
-Its usage along with React components is extremely powerful for quickly building UIs, however it is purely a CSS framework and does not provide any pre-built components or logic and shouldn't be compared to a component library like Material UI.
+When used together with React Components, it is extremely powerful for quickly building UIs.
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for an encouraged mobile-first layout. This can be extended and customised to be as restrictive or broad as you like.
+Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
 
 ## Usage
 
