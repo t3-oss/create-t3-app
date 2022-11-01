@@ -51,7 +51,7 @@ Sometimes you're building a project where you just want the UI to look decent ou
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
-### Class Variance Authority 
+### Class Variance Authority
 
 **For building UI Libraries**
 
@@ -83,7 +83,7 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 
 ## Deployments, Infrastructure, Databases and CI
 
-### Vercel 
+### Vercel
 
 **For hosting your website**
 
