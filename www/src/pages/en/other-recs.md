@@ -90,6 +90,7 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
 
 - [Vercel Homepage](https://vercel.com/)
+- [Create T3 App Vercel deployment guide](/en/deployment/vercel)
 
 ### PlanetScale
 
