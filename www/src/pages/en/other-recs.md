@@ -28,7 +28,28 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Jotai Homepage](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
-## UI and Design
+## Component Libraries
+
+Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. These libraries provide great, accessible components that you can use and customize to your liking.
+
+### Unstyled Component Libraries
+
+Also known as headless libraries, they provide great unstyled and accessible components that you can customize to your liking. Here are a few recommendations.
+
+- [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
+
+- [Headless UI](https://headlessui.com/) made by the Tailwind CSS team also provides unstyled, accessible components that integrate seamlessly with Tailwind CSS.
+
+- [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
+
+### Styled Component Libraries
+
+**For when you just want your app to look OK**
+
+Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
+
+- [Chakra UI](https://chakra-ui.com)
+- [Mantine](https://mantine.dev)
 
 ### Class Variance Authority 
 
@@ -37,6 +58,10 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
+
+## Animations
+
+For when you need animations in your app, here are our recommendations.
 
 ### AutoAnimate
 
@@ -55,21 +80,6 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
-
-### Radix UI - for unstyled, accessible UI components
-
-Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. Radix UI gives you a powerful set of convenient and accessible primitives that you can style yourself using Tailwind or CSS.
-
-- [Radix UI Homepage](https://www.radix-ui.com/)
-- [Radix UI GitHub](https://github.com/radix-ui/primitives)
-
-### Component Libraries - for when you just want your app to look OK
-
-Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
-
-- [Chakra UI](https://chakra-ui.com/)
-- [Mantine UI](https://ui.mantine.dev/)
-- [MUI](https://mui.com/)
 
 ## Deployments, Infrastructure, Databases and CI
 
