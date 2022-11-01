@@ -10,14 +10,18 @@ We recognize that the libraries included in `create-t3-app` don't solve every pr
 
 _**Editor's Note**_: State management libraries can be great, but often aren't necessary. tRPC's React Query hooks should be able to take care of your server state. For client state, start with React's `useState`, and reach for one of these options when you need more.
 
-### Zustand - for never using Redux again
+### Zustand
+
+**For never using Redux again**
 
 The "modern, simple Redux" you didn't know you needed. [Poimandres](https://github.com/pmndrs) can always be trusted. You can build everything from video call apps to games to servers with this little library.
 
 - [Zustand Homepage](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
 
-### Jotai - for never using Context again
+### Jotai
+
+**For never using Context again**
 
 For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Great option for stateful behaviors that don't need a state machine just yet.
 
@@ -26,24 +30,28 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 
 ## UI and Design
 
-### clsx - for conditionally adding Tailwind or CSS classes
+### Class Variance Authority 
 
-We love `clsx` because it provides an easy to read syntax for conditionally applying Tailwind or CSS classes, and doesn't try to do anything else.
+**For building UI Libraries**
 
-- [clsx GitHub](https://github.com/lukeed/clsx)
-
-### Class Variance Authority - for building UI Libraries
-
-Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants, CVA is a great tool.
+Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
-### AutoAnimate - for animations with a single line of code
+### AutoAnimate
+
+**For animations with a single line of code**
 
 Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
+
+### Framer Motion
+
+**For complex animations with declarative code**
+
+Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
 
 ### Radix UI - for unstyled, accessible UI components
 
