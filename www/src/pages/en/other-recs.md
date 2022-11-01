@@ -71,6 +71,7 @@ Most animation libraries try to satisfy every possible use case, and become clun
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
+- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
@@ -147,3 +148,11 @@ Umami is a self-hostable, simple, fast, privacy-focused alternative to Google An
 
 - [Umami Homepage](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
+
+## Other
+
+### Next Bundle Analyzer
+
+It can sometimes be difficult to determine what will be included in the build output for your app. Next Bundle Analyzer is an easy way to visualize and analyze the JavaScript bundles that are generated.
+
+- [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
