@@ -83,40 +83,66 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 
 ## Deployments, Infrastructure, Databases and CI
 
-### Vercel - for hosting your website
+### Vercel 
+
+**For hosting your website**
 
 Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
 
 - [Vercel Homepage](https://vercel.com/)
 
-### PlanetScale - for databases without the worry
+### PlanetScale
+
+**For databases without the worry**
 
 PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
 
 - [PlanetScale Homepage](https://planetscale.com/)
 
-### Railway - for hosting your infra
+### Railway
+
+**For hosting your infra**
 
 "Modern Heroku". Easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
 
 - [Railway Homepage](https://railway.app/)
 
-### Upstash - for serverless Redis
+### Upstash
+
+**For serverless Redis**
 
 We love Prisma and PlanetScale, but some projects require a more performant solution. Upstash allows you to get the in-memory performance of Redis in your serverless project, without having to manage the infrastructure and scaling yourself.
 
 - [Upstash Homepage](https://upstash.com/)
 
-### Pusher - for serverless WebSockets
+### Pusher
+
+**For serverless WebSockets**
 
 If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
 
 - [Pusher Homepage](https://pusher.com/)
 
+### Soketi
+
+Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
+
+- [Soketi Homepage](https://soketi.app)
+- [Soketi GitHub](https://github.com/soketi/soketi)
+
 ## Analytics
 
-### Plausible - for user data
+User data is very valuable when you're building an app. Here are some analytics providers we recommend.
+
+### Plausible
 
 Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
 - [Plausible Homepage](https://plausible.io/)
+
+### Umami
+
+Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database.
+
+- [Umami Homepage](https://umami.is/)
+- [Umami GitHub](https://github.com/umami-software/umami)
