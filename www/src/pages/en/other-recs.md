@@ -53,6 +53,9 @@ Most animation libraries try to satisfy every possible use case, and become clun
 
 Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
 
+- [Framer Motion Homepage](https://framer.com/motion)
+- [Framer Motion Documentation](https://www.framer.com/docs/)
+
 ### Radix UI - for unstyled, accessible UI components
 
 Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. Radix UI gives you a powerful set of convenient and accessible primitives that you can style yourself using Tailwind or CSS.
