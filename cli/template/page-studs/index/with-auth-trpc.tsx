@@ -72,7 +72,7 @@ const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
   const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
-    undefined,
+    undefined, // no input
     { enabled: sessionData?.user !== undefined },
   );
 
