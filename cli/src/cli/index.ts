@@ -77,38 +77,38 @@ export const runCli = async () => {
     .option("--CI", "Boolean value if we're running in CI", false)
     /**
      * @internal - used for CI E2E tests
-     * If any of the following option-flags are provided, we skip prompting
+     * Used in conjunction with `--CI` to skip prompting
      */
     .option(
       "--tailwind <boolean>",
-      "Boolean value if we should install tailwind",
+      "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
-     * If any of the following option-flags are provided, we skip prompting
+     * Used in conjunction with `--CI` to skip prompting
      */
     .option(
       "--nextAuth <boolean>",
-      "Boolean value if we should install nextAuth",
+      "Experimental: Boolean value if we should install Next-Auth.js. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
-     * If any of the following option-flags are provided, we skip prompting
+     * Used in conjunction with `--CI` to skip prompting
      */
     .option(
       "--prisma <boolean>",
-      "Boolean value if we should install prisma",
+      "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
-     * If any of the following option-flags are provided, we skip prompting
+     * Used in conjunction with `--CI` to skip prompting
      */
     .option(
       "--trpc <boolean>",
-      "Boolean value if we should install trpc",
+      "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
     /** END CI-FLAGS */
