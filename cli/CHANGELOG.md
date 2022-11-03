@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.7.0
+
+### Minor Changes
+
+- [#667](https://github.com/t3-oss/create-t3-app/pull/667) [`fde5b76`](https://github.com/t3-oss/create-t3-app/commit/fde5b7628860b305c95f70f5cc42ae3c37ad59a9) Thanks [@Pegasust](https://github.com/Pegasust)! - Add documentation on how to generate NEXTAUTH_SECRET in .env file for clarity
+
+- [#675](https://github.com/t3-oss/create-t3-app/pull/675) [`5d20745`](https://github.com/t3-oss/create-t3-app/commit/5d207453497c327b5c54cd3a55c824d59b80effe) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - only try to get secret message if there is a user
+
+### Patch Changes
+
+- [#676](https://github.com/t3-oss/create-t3-app/pull/676) [`a497e47`](https://github.com/t3-oss/create-t3-app/commit/a497e4765b17e686482ef5b5701766b2299ea0b2) Thanks [@nexxeln](https://github.com/nexxeln)! - update next to 13.0.1
+
+- [#654](https://github.com/t3-oss/create-t3-app/pull/654) [`3dfc27d`](https://github.com/t3-oss/create-t3-app/commit/3dfc27d7edc8dfedee6ed06e9b381cbd791ae0e7) Thanks [@nexxeln](https://github.com/nexxeln)! - Make experimental flags booleans and not require the name to be "double passed"
+
 ## 6.6.0
 
 ### Minor Changes
