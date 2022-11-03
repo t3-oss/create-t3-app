@@ -1,6 +1,8 @@
-import type { NextPage } from "next";
+import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
+
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
@@ -62,9 +64,12 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery();
-
   const { data: sessionData } = useSession();
+
+  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
+    undefined, // no input
+    { enabled: sessionData?.user !== undefined },
+  );
 
   return (
     <div className="flex flex-col items-center justify-center gap-2">
@@ -101,14 +106,14 @@ const TechnologyCard = ({
     <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105">
       <h2 className="text-lg text-gray-700">{name}</h2>
       <p className="text-sm text-gray-600">{description}</p>
-      <a
+      <Link
         className="m-auto mt-3 w-fit text-sm text-violet-500 underline decoration-dotted underline-offset-2"
         href={documentation}
         target="_blank"
         rel="noreferrer"
       >
         Documentation
-      </a>
+      </Link>
     </section>
   );
 };

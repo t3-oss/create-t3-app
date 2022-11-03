@@ -1,10 +1,13 @@
-import type { NextPage } from "next";
+import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
+
 import { trpc } from "../utils/trpc";
+
 import styles from "./index.module.css";
 
 const Home: NextPage = () => {
-  const { data } = trpc.example.hello.useQuery({ text: "from tRPC" });
+  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
@@ -54,7 +57,7 @@ const Home: NextPage = () => {
           </div>
 
           <div className={styles.helloFrom}>
-            {data ? <p>{data.greeting}</p> : <p>Loading...</p>}
+            {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading...</p>}
           </div>
         </div>
       </div>
@@ -79,14 +82,14 @@ const TechnologyCard = ({
     <section className={styles.card}>
       <h2 className={styles.cardTitle}>{name}</h2>
       <p className={styles.cardDescription}>{description}</p>
-      <a
+      <Link
         className={styles.cardDocumentation}
         href={documentation}
         target="_blank"
         rel="noreferrer"
       >
         Documentation
-      </a>
+      </Link>
     </section>
   );
 };

@@ -24,10 +24,10 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 
 - [**Next.js**](https://nextjs.org/)
 - [**tRPC**](https://trpc.io/)
-- [**Tailwind CSS**](<(https://tailwindcss.com/)>)
+- [**Tailwind CSS**](https://tailwindcss.com/)
 - [**TypeScript**](https://typescriptlang.org/)
 - [**Prisma**](https://prisma.io/)
-- [**NextAuth.js**](https://prisma.io/)
+- [**NextAuth.js**](https://next-auth.js.org/)
 
 ## What is this? Some kinda template?
 
