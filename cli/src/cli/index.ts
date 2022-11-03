@@ -71,12 +71,12 @@ export const runCli = async () => {
     )
     /** START CI-FLAGS */
     /**
-     * @internal - used for CI E2E tests
+     * @experimental - used for CI E2E tests
      * If any of the following option-flags are provided, we skip prompting
      */
     .option("--CI", "Boolean value if we're running in CI", false)
     /**
-     * @internal - used for CI E2E tests
+     * @experimental - used for CI E2E tests
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
@@ -85,7 +85,7 @@ export const runCli = async () => {
       (value) => !!value && value !== "false",
     )
     /**
-     * @internal - used for CI E2E tests
+     * @experimental - used for CI E2E tests
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
@@ -94,7 +94,7 @@ export const runCli = async () => {
       (value) => !!value && value !== "false",
     )
     /**
-     * @internal - used for CI E2E tests
+     * @experimental - used for CI E2E tests
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
@@ -103,7 +103,7 @@ export const runCli = async () => {
       (value) => !!value && value !== "false",
     )
     /**
-     * @internal - used for CI E2E tests
+     * @experimental - used for CI E2E tests
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
