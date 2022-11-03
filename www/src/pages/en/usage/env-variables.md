@@ -38,13 +38,13 @@ export const clientEnv = {
 
 ### Server Schema
 
-Specify your server-side environment variables schema here.
+Define your server-side environment variables schema here.
 
 Make sure you do not prefix keys in here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
 
 ### Client Schema
 
-Specify your client-side environment variables schema here.
+Define your client-side environment variables schema here.
 
 To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
 
@@ -88,9 +88,9 @@ Since the default `.env` file is not committed to version control, we have also 
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
 
-📄 `.env.*`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+📄 `.env`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-📄 `schema.mjs`: Add the appropriate validation schema for the environment variable using Zod in the appropriate schema, e.g. `KEY: z.string()`
+📄 `schema.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`
 
 Optionally, you can also keep `.env-example` updated:
 

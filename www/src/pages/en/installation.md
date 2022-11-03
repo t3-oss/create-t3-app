@@ -21,7 +21,7 @@ yarn create t3-app
 ### pnpm
 
 ```bash
-pnpm dlx create-t3-app@latest
+pnpm create t3-app@latest
 ```
 
 ## Advanced usage
@@ -30,12 +30,12 @@ pnpm dlx create-t3-app@latest
 | ----------------- | ----------------------------------------------------------------------- |
 | `[dir]`           | Include a directory argument with a name for the project                |
 | `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and use all default options to bootstrap a new t3-app    |
+| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
 | `--noInstall`     | Generate project without installing dependencies                        |
 
 ## Experimental usage
 
-For our CI, we have some experimental flags that allows you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future.
+For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future.
 
 | Flag         | Description                         |
 | ------------ | ----------------------------------- |

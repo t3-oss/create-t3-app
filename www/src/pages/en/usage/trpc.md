@@ -14,7 +14,7 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   </div>
   <cite className="flex items-center justify-end">
     <img
-      alt="Avatar of @t3dotgg"
+      alt="Avatar of @alexdotjs"
       className="w-12 mr-4 rounded-full bg-neutral-500"
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
@@ -38,11 +38,11 @@ tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. L
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object which means you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
 
 ### 📄 `server/trpc/context.ts`
 
-This file is where you define the context that is passed to your tRPC procedures. The context is a great place to put things like database connections, authentication information, etc. We create 2 functions for you:
+This file is where you define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
 
 - `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
 
@@ -56,7 +56,7 @@ You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/
 
 ### 📄 `server/trpc/router/*.ts`
 
-This is where you define your APIs router definition. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
+This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
 
 ### 📄 `utils/trpc.ts`
 
@@ -82,7 +82,7 @@ const userRouter = t.router({
 });
 ```
 
-It’s a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
 
 After the input we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations) or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client, and returns the user whose `id` matches the one we passed in.
 
@@ -100,7 +100,7 @@ export type AppRouter = typeof appRouter;
 
 Notice that we only need to export our router's type definitions, which means we are never importing any server code on our client.
 
-Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures on our frontend like this:
+Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
 
 ```tsx:pages/users/[id].tsx
 const UserPage = () => {
@@ -114,11 +114,11 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc`. Your routers will show up in autocomplete, when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
 
 ## How do I call my API externally?
 
-With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two ways to do it:
+With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two recommended ways to do it:
 
 ### Expose a single procedure externally
 
@@ -155,6 +155,10 @@ export default userByIdHandler;
 ### Exposing every procedure as a REST endpoint
 
 If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
+
+### It's just HTTP Requests
+
+tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/v10/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
 
 ## Comparison to a Next.js API endpoint
 
