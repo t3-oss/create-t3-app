@@ -16,7 +16,10 @@ export const installDependencies = async ({
 }: Options) => {
   logger.info("Installing dependencies...");
   const pkgManager = getUserPkgManager();
-  const spinner = ora(`Running ${pkgManager} install...\n`).start();
+  const spinner =
+    pkgManager === "yarn"
+      ? ora(`Running ${pkgManager} add...\n`).start()
+      : ora(`Running ${pkgManager} install...\n`).start();
   let flags: string[] = [];
 
   // FIXME: temp fix for NextAuth.js with node 18/19
@@ -45,7 +48,11 @@ export const installDependencies = async ({
     ];
   }
 
-  await execa(pkgManager, ["install", ...flags], { cwd: projectDir });
+  if (pkgManager === "yarn") {
+    await execa(pkgManager, ["add", ...flags], { cwd: projectDir });
+  } else {
+    await execa(pkgManager, ["install", ...flags], { cwd: projectDir });
+  }
 
   spinner.succeed(chalk.green("Successfully installed dependencies!\n"));
 };
