@@ -50,8 +50,6 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
       (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.id;
-          // do nothing if id is toc-heading
-          if (id === "toc-heading") return;
           // have to do "All" here cause we render this component in pageContent for mobile too
           const tocItem = Array.from(
             document.querySelectorAll(`a[href="#${id}"]`),
