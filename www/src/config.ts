@@ -54,6 +54,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Installation", link: "en/installation" },
       { text: "FAQ", link: "en/faq" },
       { text: "T3 Collection", link: "en/t3-collection" },
+      { text: "Other Recommendations", link: "en/other-recs" },
     ],
     Usage: [
       { text: "Next.js", link: "en/usage/next-js" },
