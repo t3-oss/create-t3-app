@@ -82,7 +82,7 @@ export const runCli = async () => {
     .option(
       "--tailwind <boolean>",
       "Boolean value if we should install tailwind",
-      (value) => value === "tailwind",
+      (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
@@ -91,7 +91,7 @@ export const runCli = async () => {
     .option(
       "--nextAuth <boolean>",
       "Boolean value if we should install nextAuth",
-      (value) => value === "nextAuth",
+      (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
@@ -100,7 +100,7 @@ export const runCli = async () => {
     .option(
       "--prisma <boolean>",
       "Boolean value if we should install prisma",
-      (value) => value === "prisma",
+      (value) => !!value && value !== "false",
     )
     /**
      * @internal - used for CI E2E tests
@@ -109,7 +109,7 @@ export const runCli = async () => {
     .option(
       "--trpc <boolean>",
       "Boolean value if we should install trpc",
-      (value) => value === "trpc",
+      (value) => !!value && value !== "false",
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")

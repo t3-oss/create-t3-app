@@ -2,4 +2,4 @@
 "create-t3-app": patch
 ---
 
-Fixed tailwind flag typo in help command
+Make experimental flags booleans and not require the name to be "double passed"

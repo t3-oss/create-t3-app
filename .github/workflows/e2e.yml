@@ -22,10 +22,10 @@ jobs:
     #   contains(github.event.pull_request.labels.*.name, '📌 area: t3-app')
     strategy:
       matrix:
-        trpc: ["trpc", "nope"]
-        tailwind: ["tailwind", "nope"]
-        nextAuth: ["nextAuth", "nope"]
-        prisma: ["prisma", "nope"]
+        trpc: ["true", "false"]
+        tailwind: ["true", "false"]
+        nextAuth: ["true", "false"]
+        prisma: ["true", "false"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}"
     steps:
