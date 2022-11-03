@@ -80,7 +80,7 @@ export const runCli = async () => {
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
-      "--tailwind <boolean>",
+      "--tailwind [boolean]",
       "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
@@ -89,7 +89,7 @@ export const runCli = async () => {
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
-      "--nextAuth <boolean>",
+      "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install Next-Auth.js. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
@@ -98,7 +98,7 @@ export const runCli = async () => {
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
-      "--prisma <boolean>",
+      "--prisma [boolean]",
       "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
@@ -107,7 +107,7 @@ export const runCli = async () => {
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
-      "--trpc <boolean>",
+      "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
