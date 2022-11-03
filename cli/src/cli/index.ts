@@ -156,7 +156,7 @@ export const runCli = async () => {
 
   // Explained below why this is in a try/catch block
   try {
-    // if --packages flag is set, we are running in CI mode and should not prompt the user
+    // if --CI flag is set, we are running in CI mode and should not prompt the user
     // if --default flag is set, we should not prompt the user
     if (!cliResults.flags.default && !CIMode) {
       if (!cliProvidedName) {
