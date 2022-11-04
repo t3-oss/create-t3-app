@@ -1,16 +1,16 @@
 ---
-title: NextJS
-description: Usage of NextJS
+title: Next.js
+description: Usage of Next.js
 layout: ../../../layouts/docs.astro
 ---
 
-NextJS is a backend framework for your React applications.
+Next.js is a backend framework for your React applications.
 
 <a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
   <p align="center">
     <img
       src="/images/nextjs_thumbnail.jpg"
-      alt="NextJS is a backend framework"
+      alt="Next.js is a backend framework"
       width="320"
     />
   </p>
@@ -24,7 +24,7 @@ NextJS is a backend framework for your React applications.
 
 We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating a website using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.
 
-Pairing NextJS with [Vercel](https://vercel.com/) makes developing and deploying web apps easier than ever before. Their extremely generous free-tier and super intuitive interface provides a point and click solution to deploy your site (We ❤️ Vercel)
+Pairing Next.js with [Vercel](https://vercel.com/) makes developing and deploying web apps easier than ever before. Their extremely generous free-tier and super intuitive interface provides a point and click solution to deploy your site (We ❤️ Vercel)
 
 ## Get Static/Server Props
 
