@@ -53,9 +53,9 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                 {
                   "bg-t3-purple-200/10 text-t3-purple-300":
                     navbarLink.href === currentPage,
-                  "rounded-lg text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300":
+                  "text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300 rounded-lg":
                     isLanding,
-                  "rounded-lg text-t3-purple-500 hover:bg-t3-purple-200/30 hover:text-t3-purple-400 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300":
+                  "text-t3-purple-500 hover:bg-t3-purple-200/30 hover:text-t3-purple-400 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300 rounded-lg":
                     !isLanding,
                 },
               )}
@@ -77,7 +77,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         <ThemeToggleButton />
       </div>
 
-      <div class="lg:block hidden">
+      <div class="block md:hidden">
         <SidebarToggle currentPage={currentPage} />
       </div>
       <div class="hidden md:block rounded-lg w-full max-w-xs">
