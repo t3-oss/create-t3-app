@@ -73,11 +73,11 @@ type TechnologyCardProps = {
   documentation: string;
 };
 
-const TechnologyCard = ({
+const TechnologyCard: React.FC<TechnologyCardProps> = ({
   name,
   description,
   documentation,
-}: TechnologyCardProps) => {
+}) => {
   return (
     <section className={styles.card}>
       <h2 className={styles.cardTitle}>{name}</h2>
