@@ -73,7 +73,7 @@ const AuthShowcase: React.FC = () => {
 
   const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined },
+    { enabled: sessionData?.user !== undefined }
   );
 
   return (
@@ -96,11 +96,11 @@ type TechnologyCardProps = {
   documentation: string;
 };
 
-const TechnologyCard = ({
+const TechnologyCard: React.FC<TechnologyCardProps> = ({
   name,
   description,
   documentation,
-}: TechnologyCardProps) => {
+}) => {
   return (
     <section className={styles.card}>
       <h2 className={styles.cardTitle}>{name}</h2>
