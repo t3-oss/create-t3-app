@@ -56,13 +56,58 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           ).at(-1);
           // this occurs when the id = "toc-heading"
           if (!tocItem) return;
-          const func = entry.isIntersecting ? "add" : "remove";
-          tocItem.classList[func](
-            "font-medium",
-            "text-t3-purple-700",
-            "dark:text-t3-purple-100",
-          );
-          tocItem.parentElement.classList[func]("border-t3-purple-300/100");
+
+          if (entry.isIntersecting) {
+            // get current all active elements
+            const currentActiveElements = Array.from(
+              document.querySelectorAll(
+                `[data-current-active-tab-content-item="true"]`,
+              ),
+            );
+
+            // get current all parent active elements
+            const currentActiveParentElements = Array.from(
+              document.querySelectorAll(
+                `[data-current-active-parent-tab-content-item="true"]`,
+              ),
+            );
+
+            // if has active elements
+            if (currentActiveElements.length) {
+              // loop through all elements and remove class and attr
+              for (const el of currentActiveElements) {
+                el.classList.remove(
+                  "font-medium",
+                  "text-t3-purple-700",
+                  "dark:text-t3-purple-100",
+                );
+                el.removeAttribute("data-current-active-tab-content-item");
+              }
+            }
+            // if has active parent elements
+            if (currentActiveParentElements.length) {
+              // loop through all parent elements and remove class and attr
+              for (const parentEl of currentActiveParentElements) {
+                parentEl.classList.remove("border-t3-purple-300/100");
+                parentEl.removeAttribute(
+                  "data-current-active-parent-tab-content-item",
+                );
+              }
+            }
+
+            tocItem.classList.add(
+              "font-medium",
+              "text-t3-purple-700",
+              "dark:text-t3-purple-100",
+            );
+            tocItem.parentElement.classList.add("border-t3-purple-300/100");
+            // set data attr to active element also will helpful when need to remove active state
+            tocItem.setAttribute("data-current-active-tab-content-item", true);
+            tocItem.parentElement.setAttribute(
+              "data-current-active-parent-tab-content-item",
+              true,
+            );
+          }
         });
       },
       {
