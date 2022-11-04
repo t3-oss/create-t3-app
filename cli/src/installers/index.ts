@@ -22,7 +22,7 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.15.0",
+  "next-auth": "^4.15.1",
   "@next-auth/prisma-adapter": "^1.0.4",
 
   // Prisma
