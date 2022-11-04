@@ -35,7 +35,7 @@ pnpm create t3-app@latest
 
 ## Experimental usage
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future.
+For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
 
 | Flag         | Description                         |
 | ------------ | ----------------------------------- |
@@ -47,7 +47,11 @@ For our CI, we have some experimental flags that allow you to scaffold any app w
 
 **Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
 
+You don't need to explicitely opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+
 ### Example
+
+The following would scaffold a T3 App with tRPC and Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
