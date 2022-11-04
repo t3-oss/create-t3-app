@@ -46,15 +46,6 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
     "src/types/next-auth.d.ts",
   );
 
-  // FIXME: temp fix for next-auth with node 18
-  // see: https://github.com/nextauthjs/next-auth/issues/4575
-  const npmrcSrc = path.join(nextAuthAssetDir, "_npmrc");
-  const npmrcDest = path.join(projectDir, ".npmrc");
-  const yarnrcSrc = path.join(nextAuthAssetDir, "_yarnrc");
-  const yarnrcDest = path.join(projectDir, ".yarnrc");
-  fs.copySync(npmrcSrc, npmrcDest);
-  fs.copySync(yarnrcSrc, yarnrcDest);
-
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(getServerAuthSessionSrc, getServerAuthSessionDest);
   fs.copySync(restrictedApiSrc, restrictedApiDest);

@@ -40,7 +40,7 @@ const main = async () => {
   });
 
   if (!noInstall) {
-    await installDependencies({ projectDir, packages: usePackages });
+    await installDependencies({ projectDir });
   }
 
   if (!noGit) {
