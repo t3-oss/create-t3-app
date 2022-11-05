@@ -13,7 +13,7 @@ export const installDependencies = async ({ projectDir }: Options) => {
   const pkgManager = getUserPkgManager();
   const spinner =
     pkgManager === "yarn"
-      ? ora(`Running ${pkgManager}\n`).start()
+      ? ora("Running yarn...\n").start()
       : ora(`Running ${pkgManager} install...\n`).start();
 
   // If the package manager is yarn, use yarn's default behavior to install dependencies
