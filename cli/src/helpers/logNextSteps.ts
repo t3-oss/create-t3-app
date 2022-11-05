@@ -14,7 +14,12 @@ export const logNextSteps = ({
   logger.info("Next steps:");
   projectName !== "." && logger.info(`  cd ${projectName}`);
   if (noInstall) {
-    logger.info(`  ${pkgManager} install`);
+    // To reflect yarn's default behavior of installing packages when no additional args provided
+    if (pkgManager === "yarn") {
+      logger.info(`  ${pkgManager}`);
+    } else {
+      logger.info(`  ${pkgManager} install`);
+    }
   }
 
   if (packages?.prisma.inUse) {
