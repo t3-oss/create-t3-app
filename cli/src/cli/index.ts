@@ -258,21 +258,29 @@ const promptGit = async (): Promise<boolean> => {
 };
 
 const promptInstall = async (): Promise<boolean> => {
-  const packageManager = getUserPkgManager();
+  const pkgManager = getUserPkgManager();
 
   const { install } = await inquirer.prompt<{ install: boolean }>({
     name: "install",
     type: "confirm",
-    message: `Would you like us to run '${packageManager} install'?`,
+    message:
+      `Would you like us to run '${pkgManager}` +
+      (pkgManager === "yarn" ? `'?` : ` install'?`),
     default: true,
   });
 
   if (install) {
     logger.success("Alright. We'll install the dependencies for you!");
   } else {
-    logger.info(
-      `No worries. You can run '${packageManager} install' later to install the dependencies.`,
-    );
+    if (pkgManager === "yarn") {
+      logger.info(
+        `No worries. You can run '${pkgManager}' later to install the dependencies.`,
+      );
+    } else {
+      logger.info(
+        `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
+      );
+    }
   }
 
   return install;
