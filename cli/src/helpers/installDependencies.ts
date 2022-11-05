@@ -13,14 +13,15 @@ export const installDependencies = async ({ projectDir }: Options) => {
   const pkgManager = getUserPkgManager();
   const spinner =
     pkgManager === "yarn"
-      ? ora(`Running ${pkgManager} add...\n`).start()
+      ? ora(`Running ${pkgManager}\n`).start()
       : ora(`Running ${pkgManager} install...\n`).start();
 
-    if (pkgManager === "yarn") {
-      await execa(pkgManager, ["add"], { cwd: projectDir });
-    } else {
-      await execa(pkgManager, ["install"], { cwd: projectDir });
-    }
+  // If the package manager is yarn, use yarn's default behavior to install dependencies
+  if (pkgManager === "yarn") {
+    await execa(pkgManager, [], { cwd: projectDir });
+  } else {
+    await execa(pkgManager, ["install"], { cwd: projectDir });
+  }
 
   spinner.succeed(chalk.green("Successfully installed dependencies!\n"));
 };

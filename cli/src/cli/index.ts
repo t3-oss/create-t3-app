@@ -264,8 +264,8 @@ const promptInstall = async (): Promise<boolean> => {
     name: "install",
     type: "confirm",
     message:
-      `Would you like us to run '${packageManager} ` +
-      (packageManager === "yarn" ? `add'?` : `install'?`),
+      `Would you like us to run '${packageManager}` +
+      (packageManager === "yarn" ? `'?` : ` install'?`),
     default: true,
   });
 
