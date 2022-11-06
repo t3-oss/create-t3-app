@@ -17,7 +17,7 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Desribe alternate solutions
+      label: Describe alternate solutions
       description: A clear and concise description of any alternative solutions or features you've considered.
     validations:
       required: true

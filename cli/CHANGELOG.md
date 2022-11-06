@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.8.0
+
+### Minor Changes
+
+- [#673](https://github.com/t3-oss/create-t3-app/pull/673) [`44a107b`](https://github.com/t3-oss/create-t3-app/commit/44a107b8d5345023bafc8a773322e5ee39ba8580) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - remove node 18 and next 13 checks
+
+### Patch Changes
+
+- [#684](https://github.com/t3-oss/create-t3-app/pull/684) [`a707c4b`](https://github.com/t3-oss/create-t3-app/commit/a707c4ba9ffedb8991fc14976e352ff83f4502ac) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: version bumps
+
 ## 6.7.0
 
 ### Minor Changes
