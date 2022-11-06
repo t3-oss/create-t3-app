@@ -8,7 +8,7 @@ export interface Props {
 const { path } = Astro.props;
 const resolvedPath = `www/${path}`;
 const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
-const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/main/${resolvedPath}`;
+const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/next/${resolvedPath}`;
 
 type Commit = {
   author: {
@@ -56,7 +56,8 @@ const additionalContributors = unique.length - recentContributors.length; // lis
             <img
               class="h-8 w-8 rounded-full sm:h-10 sm:w-10"
               alt={`Contributor ${item.login}`}
-              title={`Contributor ${item.login}`}
+              title={`Contributor
+          ${item.login}`}
               width="64"
               height="64"
               src={`https://avatars.githubusercontent.com/u/${item.id}`}
