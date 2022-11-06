@@ -32,7 +32,9 @@ const { isNotFound } = Astro.props;
     <JumpToContent />
     <img
       src="/images/background-pattern.svg"
-      class="absolute inset-0 opacity-5 h-max w-max min-w-full object-cover"
+      class={`absolute inset-0 opacity-5 w-max min-w-full object-cover ${
+        !isNotFound ? "h-max" : "h-screen"
+      }`}
       alt="background pattern"
     />
     <div class="relative">
