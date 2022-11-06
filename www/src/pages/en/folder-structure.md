@@ -56,7 +56,6 @@ layout: ../../layouts/docs.astro
 ├─ next-env.d.ts
 ├─ next.config.mjs
 ├─ package.json
-├─ pnpm-lock.yaml
 ├─ postcss.config.cjs
 ├─ prettier.config.cjs
 ├─ tailwind.config.cjs
