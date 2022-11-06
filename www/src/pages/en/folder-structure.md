@@ -1,0 +1,228 @@
+---
+title: Folder Structure
+description: Folder structure of a newly scaffolded Create T3 App
+layout: ../../layouts/docs.astro
+---
+
+```
+.
+├─ prisma
+│  └─ schema.prisma
+├─ public
+│  └─ favicon.ico
+└─ src
+   ├─ env
+   │  ├─ client.mjs
+   │  ├─ schema.mjs
+   │  └─ server.mjs
+   ├─ pages
+   │  ├─ _app.tsx
+   │  └─ index.tsx
+   ├─ styles
+   │  └─ globals.css
+   ├─ types
+   │  └─ next-auth.d.ts
+   ├─ utils
+   │  └─ trpc.ts
+   ├─ pages
+   │  └─ api
+   │     ├─ examples.ts
+   │     └─ restricted.ts
+   ├─ server
+   │  ├─ common
+   │  │  └─ get-server-auth-session.ts
+   │  ├─ db
+   │  │  └─ client.ts
+   │  └─ trpc
+   │     ├─ context.ts
+   │     └─ trpc.ts
+   ├─ pages
+   │  └─ api
+   │     ├─ auth
+   │     │  └─ [...nextauth].ts
+   │     └─ trpc
+   │        └─ [trpc].ts
+   └─ server
+      └─ trpc
+         └─ router
+            ├─ _app.ts
+            ├─ auth.ts
+            └─ example.ts
+├─ .env
+├─ .env-example
+├─ .eslintrc.json
+├─ .gitignore
+├─ README.md
+├─ next-env.d.ts
+├─ next.config.mjs
+├─ package.json
+├─ pnpm-lock.yaml
+├─ postcss.config.cjs
+├─ prettier.config.cjs
+├─ tailwind.config.cjs
+├─ tsconfig.json
+```
+
+## `prisma`
+
+The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema.
+
+## `public`
+
+The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+
+## `src`
+
+The `src` folder contains all the source code of the application.
+
+## `src/env`
+
+Used for environment variable validation and type definitions - see [Environment Variables](/en/usage/env-variables).
+
+### `src/env/client.mjs`
+
+[See the client.mjs documentation](/en/usage/env-variables#servermjs--clientmjs)
+
+### `src/env/server.mjs`
+
+[See the server.mjs documentation](/en/usage/env-variables#servermjs--clientmjs)
+
+### `src/env/schema.mjs`
+
+[See the schema.mjs documentation](/en/usage/env-variables#schemamjs)
+
+## `src/pages`
+
+The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+
+## `src/pages/api`
+
+The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file (with Prisma) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file (with Next-Auth) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
+
+<sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
+
+## `src/pages/api/auth`
+
+The `auth` folder contains the NextAuth.js authentication slug route.
+
+<sub>(With NextAuth.js)</sub>
+
+### `src/pages/api/auth/[...nextauth].ts`
+
+The `[[...nextauth]].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](/en/usage/next-auth) for more information.
+
+<sub>(with NextAuth.js)</sub>
+
+## `src/pages/api/trpc`
+
+The `trpc` folder contains the tRPC API entry point.
+
+<sub>(with tRPC)</sub>
+
+### `src/pages/api/trpc/[trpc].ts`
+
+The `[[trpc]].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](en/usage/trpc#-pagesapitrpctrpcts) for more information.
+
+<sub>(with tRPC)</sub>
+
+## `src/server`
+
+The `server` folder is used to clearly seperate server-side code from client-side code.
+
+<sub>(with tRPC and/or Prisma)</sub>
+
+## `src/server/common`
+
+The `common` folder contains commonly re-used server-side code.
+
+<sub>(with NextAuth.js + tRPC)</sub>
+
+### `src/server/common/get-server-auth-session.ts`
+
+The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](/en/usage/next-auth#usage-with-trpc) for more information.
+
+<sub>(with NextAuth.js + tRPC)</sub>
+
+## `src/server/db`
+
+The `db` folder contains the Prisma client.
+
+<sub>(with Prisma)</sub>
+
+### `src/server/db/client.ts`
+
+The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](/en/usage/prisma#prisma-client) for more information.
+
+<sub>(with Prisma)</sub>
+
+## `src/server/trpc`
+
+The `trpc` folder contains the tRPC server-side code.
+
+<sub>(with tRPC)</sub>
+
+### `src/server/trpc/context.ts`
+
+The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](/en/usage/trpc#-servertrpccontextts) for more information.
+
+<sub>(with tRPC)</sub>
+
+### `src/server/trpc/trpc.ts`
+
+The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](/en/usage/trpc#-servertrpctrpcts) for more information.
+
+<sub>(with tRPC)</sub>
+
+## `src/server/trpc/router`
+
+The `router` folder contains the tRPC routers.
+
+<sub>(with tRPC)</sub>
+
+### `src/server/trpc/router/_app.ts`
+
+The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](/en/usage/trpc#-servertrpcrouterts) for more information.
+
+<sub>(with tRPC)</sub>
+
+### `src/server/trpc/router/auth.ts`
+
+The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` helper to demonstrate how to protect a tRPC route with NextAuth.js.
+
+<sub>(with NextAuth.js + tRPC)</sub>
+
+### `src/server/trpc/router/example.ts`
+
+The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+
+<sub>(with tRPC)</sub>
+
+## `src/styles`
+
+The `styles` folder contains the global styles of the application, used by TailwindCSS.
+
+<sub>(with TailwindCSS)</sub>
+
+## `src/types`
+
+The `types` folder is used to store reused types or type declarations.
+
+<sub>(with NextAuth.js)</sub>
+
+### `src/types/next-auth.d.ts`
+
+The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](/en/usage/next-auth#inclusion-of-userid-on-the-session) for more information.
+
+<sub>(with NextAuth.js)</sub>
+
+## `src/utils`
+
+The `utils` folder is used to store commonly re-used utility functions.
+
+<sub>(with tRPC)</sub>
+
+### `src/utils/trpc.ts`
+
+The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](/en/usage/trpc#-utilstrpcts) for more information.
+
+<sub>(with tRPC)</sub>

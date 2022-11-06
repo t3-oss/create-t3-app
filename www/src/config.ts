@@ -52,6 +52,7 @@ export const SIDEBAR: Sidebar = {
       { text: "T3 Axioms", link: "en/t3-axioms" },
       { text: "Why CT3A?", link: "en/why" },
       { text: "Installation", link: "en/installation" },
+      { text: "Folder Structure", link: "en/folder-structure" },
       { text: "FAQ", link: "en/faq" },
       { text: "T3 Collection", link: "en/t3-collection" },
       { text: "Other Recommendations", link: "en/other-recs" },
