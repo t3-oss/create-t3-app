@@ -2,10 +2,18 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
+{{#if withTRPC}}
 import { trpc } from "../utils/trpc";
+{{/if}}
+
+{{#if withNextAuth}}
+import { type Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+{{/if}}
 
 import "../styles/globals.css";
 
+{{#if withNextAuth}}
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
@@ -16,5 +24,15 @@ const MyApp: AppType<{ session: Session | null }> = ({
     </SessionProvider>
   );
 };
+{{else}}
+const MyApp: AppType = ({ Component, pageProps }) => {
+  return <Component {...pageProps} />;
+};
+{{/if}}
 
+
+{{#if withTRPC}}
 export default trpc.withTRPC(MyApp);
+{{else}}
+export default MyApp;
+{{/if}}

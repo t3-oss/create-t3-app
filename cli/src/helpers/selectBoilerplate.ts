@@ -2,6 +2,7 @@ import type { InstallerOptions } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
+import Handlebars from "handlebars";
 
 type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "projectDir" | "packages">
@@ -11,25 +12,17 @@ export const selectAppFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
+  const withTRPC = packages.trpc.inUse;
+  const withNextAuth = packages.nextAuth.inUse;
 
-  const usingTrpc = packages.trpc.inUse;
-  const usingNextAuth = packages.nextAuth.inUse;
+  const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app/base.hbs");
 
-  let appFile = "";
-  if (usingNextAuth && usingTrpc) {
-    appFile = "with-auth-trpc.tsx";
-  } else if (usingNextAuth && !usingTrpc) {
-    appFile = "with-auth.tsx";
-  } else if (!usingNextAuth && usingTrpc) {
-    appFile = "with-trpc.tsx";
-  }
+  const studFile = fs.readFileSync(appFileDir, "utf-8");
 
-  if (appFile !== "") {
-    const appSrc = path.join(appFileDir, appFile);
-    const appDest = path.join(projectDir, "src/pages/_app.tsx");
-    fs.copySync(appSrc, appDest);
-  }
+  const template = Handlebars.compile(studFile);
+
+  const appDest = path.join(projectDir, "src/pages/_app.tsx");
+  fs.writeFileSync(appDest, template({ withTRPC, withNextAuth }));
 };
 
 // This selects the proper index.tsx to be used that showcases the chosen tech
@@ -37,28 +30,20 @@ export const selectIndexFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
+  const withTRPC = packages.trpc.inUse;
+  const withTailwind = packages.tailwind.inUse;
+  const withNextAuth = packages.nextAuth.inUse;
 
-  const usingTrpc = packages.trpc.inUse;
-  const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  const indexFileDir = path.join(
+    PKG_ROOT,
+    "template/page-studs/index",
+    withTailwind ? "with-tw.hbs" : "base.hbs",
+  );
 
-  let indexFile = "";
-  if (usingTrpc && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTrpc && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
-  } else if (usingTrpc && usingTw) {
-    indexFile = "with-trpc-tw.tsx";
-  } else if (usingTrpc && !usingTw) {
-    indexFile = "with-trpc.tsx";
-  } else if (!usingTrpc && usingTw) {
-    indexFile = "with-tw.tsx";
-  }
+  const studFile = fs.readFileSync(indexFileDir, "utf-8");
 
-  if (indexFile !== "") {
-    const indexSrc = path.join(indexFileDir, indexFile);
-    const indexDest = path.join(projectDir, "src/pages/index.tsx");
-    fs.copySync(indexSrc, indexDest);
-  }
+  const template = Handlebars.compile(studFile);
+
+  const appDest = path.join(projectDir, "src/pages/_app.tsx");
+  fs.writeFileSync(appDest, template({ withTRPC, withNextAuth }));
 };
