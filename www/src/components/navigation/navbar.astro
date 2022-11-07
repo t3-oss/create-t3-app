@@ -5,7 +5,9 @@ import Search from "./Search";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
-const currentPage = Astro.url.pathname;
+const { pathname } = Astro.url;
+const hasTrailing = pathname.endsWith("/");
+const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
 const isLanding = currentPage === "/";
 
 const navbarLinks: Array<{ href: string; label: string }> = [
@@ -77,7 +79,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         <ThemeToggleButton />
       </div>
 
-      <div>
+      <div class="block md:hidden">
         <SidebarToggle currentPage={currentPage} />
       </div>
       <div class="hidden md:block rounded-lg w-full max-w-xs">
