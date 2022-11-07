@@ -45,6 +45,7 @@
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.2",
+    "handlebars": "^4.7.7",
     "inquirer": "^9.1.2",
     "ora": "6.1.2",
     "sort-package-json": "^2.0.0"
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
+    "@types/handlebars": "^4.1.0",
     "@types/inquirer": "^9.0.2",
     "@types/node": "^18.8.0",
     "prettier": "^2.7.1",
