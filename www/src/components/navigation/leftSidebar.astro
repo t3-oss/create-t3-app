@@ -9,7 +9,11 @@ export interface Props {
 
 const { currentPage } = Astro.props;
 const isLanding = currentPage === "/";
-const currentPageMatch = currentPage.slice(1);
+const hasTrailing = currentPage.endsWith("/");
+const currentPageMatch = currentPage.slice(
+  1,
+  hasTrailing ? -1 : currentPage.length,
+);
 const langCode = "en";
 const sidebar = SIDEBAR[langCode];
 ---
