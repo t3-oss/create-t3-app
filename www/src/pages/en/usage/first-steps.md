@@ -1,0 +1,31 @@
+---
+title: First Steps
+description: Getting started with your new T3 App
+layout: ../../../layouts/docs.astro
+---
+
+You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+
+## Database
+
+If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. Note that you need to restart the dev server after doing this.
+
+## Authentication
+
+If your app includes Next-Auth, we get you started with the `DiscordProvider`. This is one of the simplest providers that Next-Auth offers, but it still requires a bit of initial setup on your part.
+
+Of course if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that Next-Auth offers.
+
+1. You will need a Discord account, so register one if you haven't already.
+2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
+3. Once your application has been created, navigate to "Settings → OAuth2 → General".
+4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
+5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
+6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
+7. Save Changes. You should now be able to log in. Note that you need to restart the dev server for changes in environment variables to be reflected in your app.
+
+## Next Steps
+
+* If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/trpc/router/example.ts` to see how tRPC queries work.
+* Have a look around the `create-t3-app` docs, as well as the docs of the packages that your app includes.
+* Join the [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app) :^)
