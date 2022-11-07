@@ -6,9 +6,9 @@ import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 const { pathname } = Astro.url;
+const isLanding = pathname === "/";
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
-const isLanding = currentPage === "/";
 
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
@@ -55,9 +55,9 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                 {
                   "bg-t3-purple-200/10 text-t3-purple-300":
                     navbarLink.href === currentPage,
-                  "rounded-lg text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300":
+                  "text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300 rounded-lg":
                     isLanding,
-                  "rounded-lg text-t3-purple-500 hover:bg-t3-purple-200/30 hover:text-t3-purple-400 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300":
+                  "text-t3-purple-500 hover:bg-t3-purple-200/30 hover:text-t3-purple-400 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300 rounded-lg":
                     !isLanding,
                 },
               )}
