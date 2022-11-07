@@ -170,5 +170,5 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 | Resource                          | Link                                    |
 | --------------------------------- | --------------------------------------- |
 | NextAuth Docs                     | https://next-auth.js.org/               |
-| NextAuth Github                   | https://github.com/nextauthjs/next-auth |
+| NextAuth GitHub                   | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
