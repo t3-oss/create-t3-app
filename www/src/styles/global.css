@@ -136,7 +136,7 @@
     @apply mt-8 mb-0 text-xl font-semibold;
   }
   .markdown li {
-    @apply list-disc;
+    @apply list-disc break-all lg:break-normal;
   }
   .markdown ol > li {
     @apply list-decimal;
