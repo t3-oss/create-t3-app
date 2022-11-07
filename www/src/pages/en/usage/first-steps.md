@@ -26,6 +26,6 @@ Of course if you prefer to use a different auth provider, you can also use one o
 
 ## Next Steps
 
-* If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/trpc/router/example.ts` to see how tRPC queries work.
-* Have a look around the `create-t3-app` docs, as well as the docs of the packages that your app includes.
-* Join the [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app) :^)
+- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/trpc/router/example.ts` to see how tRPC queries work.
+- Have a look around the `create-t3-app` docs, as well as the docs of the packages that your app includes.
+- Join the [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app) :^)
