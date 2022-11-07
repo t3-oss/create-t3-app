@@ -6,9 +6,9 @@ import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 const { pathname } = Astro.url;
+const isLanding = pathname === "/";
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
-const isLanding = currentPage === "/";
 
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
