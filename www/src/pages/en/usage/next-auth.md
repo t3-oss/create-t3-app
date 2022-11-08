@@ -1,6 +1,6 @@
 ---
 title: NextAuth.js
-description: Usage of NextAuth
+description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
 ---
 
@@ -35,7 +35,7 @@ const User = () => {
 
 ## Inclusion of `user.id` on the Session
 
-`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth config to include the user's ID within the `session` object.
+`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -130,7 +130,7 @@ const userRouter = router({
 
 ## Usage with Prisma
 
-Getting Next-Auth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
+Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
 
 ### Adding new fields to your models
 
@@ -169,6 +169,6 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 
 | Resource                          | Link                                    |
 | --------------------------------- | --------------------------------------- |
-| NextAuth Docs                     | https://next-auth.js.org/               |
-| NextAuth GitHub                   | https://github.com/nextauthjs/next-auth |
+| NextAuth.js Docs                  | https://next-auth.js.org/               |
+| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
