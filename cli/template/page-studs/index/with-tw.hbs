@@ -63,7 +63,9 @@ const Home: NextPage = () => {
         </div>
         {{/if}}
         {{#if withNextAuth}}
+        {{#if withTRPC}}
         <AuthShowcase />
+        {{/if}}
         {{/if}}
       </main>
     </>
