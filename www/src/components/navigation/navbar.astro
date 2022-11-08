@@ -5,8 +5,12 @@ import Search from "./Search";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
+export interface Props {
+  isNotFound?: boolean;
+}
+
 const { pathname } = Astro.url;
-const isLanding = pathname === "/";
+const isLanding = pathname === "/" || !!Astro.props.isNotFound;
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
 
@@ -80,12 +84,11 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       >
         <ThemeToggleButton />
       </div>
-
       <div class="block md:hidden">
-        <SidebarToggle currentPage={currentPage} />
+        <SidebarToggle isLanding={isLanding} />
       </div>
       <div class="hidden md:block rounded-lg w-full max-w-xs">
-        <Search isLanding={currentPage === "/"} client:load />
+        <Search isLanding={isLanding} client:load />
       </div>
     </div>
   </div>

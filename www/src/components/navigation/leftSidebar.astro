@@ -5,10 +5,11 @@ import Search from "./Search";
 
 export interface Props {
   currentPage: string;
+  isNotFound?: boolean;
 }
 
-const { currentPage } = Astro.props;
-const isLanding = currentPage === "/";
+const { currentPage, isNotFound } = Astro.props;
+const isLanding = currentPage === "/" || !!isNotFound;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
