@@ -20,7 +20,6 @@ export const selectAppFile = ({
   const studFile = fs.readFileSync(appFileDir, "utf-8");
 
   const template = Handlebars.compile(studFile);
-  console.log("APPPPPP", template({ withTRPC, withNextAuth }));
 
   const appDest = path.join(projectDir, "src/pages/_app.tsx");
   fs.writeFileSync(appDest, template({ withTRPC, withNextAuth }));
@@ -44,7 +43,6 @@ export const selectIndexFile = ({
   const studFile = fs.readFileSync(indexFileDir, "utf-8");
 
   const template = Handlebars.compile(studFile);
-  console.log("INDEXXXXXXXXX", template({ withTRPC, withNextAuth }));
 
   const appDest = path.join(projectDir, "src/pages/index.tsx");
   fs.writeFileSync(appDest, template({ withTRPC, withNextAuth }));
