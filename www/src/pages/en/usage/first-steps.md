@@ -12,7 +12,7 @@ If your app includes Prisma, make sure to run `npx prisma db push` from the root
 
 ## Authentication
 
-If your app includes Next-Auth, we get you started with the `DiscordProvider`. This is one of the simplest providers that Next-Auth offers, but it still requires a bit of initial setup on your part.
+If your app includes NextAuth, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth offers, but it still requires a bit of initial setup on your part.
 
 Of course if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that Next-Auth offers.
 
