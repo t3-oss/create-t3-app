@@ -1,6 +1,6 @@
 ---
 title: NextAuth.js
-description: Usage of NextAuth
+description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
 ---
 
@@ -35,7 +35,7 @@ const User = () => {
 
 ## Inclusion of `user.id` on the Session
 
-`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth config to include the user's ID within the `session` object.
+`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -169,6 +169,6 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 
 | Resource                          | Link                                    |
 | --------------------------------- | --------------------------------------- |
-| NextAuth Docs                     | https://next-auth.js.org/               |
-| NextAuth GitHub                   | https://github.com/nextauthjs/next-auth |
+| NextAuth.js Docs                  | https://next-auth.js.org/               |
+| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
