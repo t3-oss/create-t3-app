@@ -57,6 +57,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Other Recommendations", link: "en/other-recs" },
     ],
     Usage: [
+      { text: "First Steps", link: "en/usage/first-steps" },
       { text: "Next.js", link: "en/usage/next-js" },
       { text: "TypeScript", link: "en/usage/typescript" },
       { text: "tRPC", link: "en/usage/trpc" },
