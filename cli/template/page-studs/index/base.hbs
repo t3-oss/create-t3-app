@@ -77,6 +77,7 @@ const Home: NextPage = () => {
 export default Home;
 
 {{#if withNextAuth}}
+{{#if withTRPC}}
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
@@ -99,6 +100,7 @@ const AuthShowcase: React.FC = () => {
   );
 };
 
+{{/if}}
 {{/if}}
 type TechnologyCardProps = {
   name: string;
