@@ -8,12 +8,16 @@ export interface Props {
 const { editHref } = Astro.props;
 ---
 
-<div class="flex flex-col">
-  <h2 class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900">
+<div class="flex flex-col my-4 lg:mt-0 w-full md:text-left text-center">
+  <h2
+    class="text-xl lg:text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+  >
     More
   </h2>
 
-  <ul>
+  <ul
+    class="space-y-4 md:space-y-2 lg:space-y-0 flex md:block items-center flex-col"
+  >
     <li
       class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
     >
