@@ -55,7 +55,11 @@
   html.classList.remove("dark");
   html.classList.remove("light");
 
-  if (window.location.pathname === "/") {
+  if (
+    window.location.pathname === "/" ||
+    html.classList.contains("not-found")
+  ) {
+    html.classList.remove("not-found");
     html.classList.add("dark");
   } else {
     const theme = lsItem ?? (sysPref ? "dark" : "light");
