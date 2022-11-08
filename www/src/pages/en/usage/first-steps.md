@@ -22,7 +22,7 @@ Of course, if you prefer to use a different auth provider, you can also use one 
 4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
 5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
 6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-7. Save Changes. You should now be able to log in. Note that you need to restart the dev server for changes in environment variables to be reflected in your app.
+7. Save Changes. You should now be able to log in.
 
 ## Next Steps
 
