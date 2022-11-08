@@ -14,7 +14,7 @@ If your app includes Prisma, make sure to run `npx prisma db push` from the root
 
 If your app includes NextAuth, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth offers, but it still requires a bit of initial setup on your part.
 
-Of course if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that Next-Auth offers.
+Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth offers.
 
 1. You will need a Discord account, so register one if you haven't already.
 2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
