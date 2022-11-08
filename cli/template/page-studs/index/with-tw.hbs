@@ -1,11 +1,9 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-
 {{#if withNextAuth}}
 import { signIn, signOut, useSession } from "next-auth/react";
 {{/if}}
-
 {{#if withTRPC}}
 import { trpc } from "../utils/trpc";
 {{/if}}
@@ -13,8 +11,8 @@ import { trpc } from "../utils/trpc";
 const Home: NextPage = () => {
   {{#if withTRPC}}
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
-  {{/if}}
 
+  {{/if}}
   return (
     <>
       <Head>
@@ -63,12 +61,11 @@ const Home: NextPage = () => {
         <div className="flex w-full items-center justify-center pt-6 text-2xl text-blue-500">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading...</p>}
         </div>
-        {/if}
+        {{/if}}
         {{#if withNextAuth}}
         <AuthShowcase />
         {{/if}}
-        </div>
-      </div>
+      </main>
     </>
   );
 };
@@ -97,8 +94,8 @@ const AuthShowcase: React.FC = () => {
     </div>
   );
 };
-{{/if}}
 
+{{/if}}
 type TechnologyCardProps = {
   name: string;
   description: string;
