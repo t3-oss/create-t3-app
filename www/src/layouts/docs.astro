@@ -66,7 +66,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   </head>
 
   <body
-    class="bg-default min-h-screen flex flex-col transition-all duration-300"
+    class="bg-default min-h-screen w-screen flex flex-col items-center transition-all duration-300"
   >
     <JumpToContent />
     <div
@@ -75,7 +75,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <Navbar />
     </div>
     <main
-      class="flex-1 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10"
+      class="flex-1 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10 w-full max-w-7xl"
     >
       <aside id="grid-left" title="Site Navigation" class="hidden md:block">
         <div
