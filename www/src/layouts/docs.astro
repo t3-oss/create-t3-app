@@ -75,13 +75,13 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     <main
       class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 mt-5 w-full max-w-7xl px-4"
     >
-      <aside
+      <nav
         id="grid-left"
         title="Site Navigation"
-        class="t3-scrollbar flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
+        class="bg-default t3-scrollbar hidden md:flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] top-[100px]"
       >
         <LeftSidebar currentPage={currentPage} />
-      </aside>
+      </nav>
 
       <div class="w-full min-h-full col-span-1 flex flex-col" id="content">
         <PageContent frontmatter={frontmatter} headings={headings}>
