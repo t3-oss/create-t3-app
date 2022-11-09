@@ -29,7 +29,7 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 - [**Prisma**](https://prisma.io/)
 - [**NextAuth.js**](https://next-auth.js.org/)
 
-## What is this? Some kinda template?
+## What is `create-t3-app`? Some kinda template?
 
 Kind of. We love the technologies that the T3 Stack includes but we do not believe that all of them are needed in every project. So we made `create-t3-app` to do one thing: _**Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity.**_
 
