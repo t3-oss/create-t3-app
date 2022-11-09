@@ -12,11 +12,17 @@ import { SITE } from "../config";
 import "@fontsource/inter/variable.css";
 import JumpToContent from "../components/accessibility/jumpToContent.astro";
 
+export interface Props {
+  isNotFound?: boolean;
+}
+
 const currentPage = Astro.url.pathname;
+
+const { isNotFound } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en-us" class="initial">
+<html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
   <head>
     <HeadCommon />
     <HeadSeo type="website" />
@@ -26,17 +32,22 @@ const currentPage = Astro.url.pathname;
     <JumpToContent />
     <img
       src="/images/background-pattern.svg"
-      class="absolute inset-0 opacity-5 h-max w-max min-w-full object-cover"
+      class={`absolute inset-0 opacity-5 w-max min-w-full object-cover ${
+        !isNotFound ? "h-max" : "h-screen"
+      }`}
       alt="background pattern"
     />
     <div class="relative">
-      <Navbar />
+      <Navbar isNotFound={isNotFound || false} />
       <div class="relative">
         <aside id="grid-left" class="hidden" title="Site Navigation">
           <div
             class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
           >
-            <LeftSidebar currentPage={currentPage} />
+            <LeftSidebar
+              currentPage={currentPage}
+              isNotFound={isNotFound || false}
+            />
           </div>
         </aside>
       </div>
