@@ -47,4 +47,4 @@ We love our bleeding edge tech. The amount of speed and, honestly, fun that come
 
 ### Typesafety Isn't Optional
 
-Two of the three T's are typesafe (TypeScript, tRPC). We take typesafety seriously in these parts. Any decision that compromises the full-stack, typesafe nature of `create-t3-app` is a decision that should be made in a different project. The stated goal of `create-t3-app` is to provide the quickest way to start a new fullstack, type safe web application.
+The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, typesafe web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project. 
