@@ -75,7 +75,14 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     <main
       class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 mt-5 w-full max-w-7xl px-4"
     >
-      <div class="w-full h-full col-span-1 bg-red-500">nav</div>
+      <aside
+        id="grid-left"
+        title="Site Navigation"
+        class="t3-scrollbar flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
+      >
+        <LeftSidebar currentPage={currentPage} />
+      </aside>
+
       <div class="w-full min-h-full col-span-1 flex flex-col" id="content">
         <PageContent frontmatter={frontmatter} headings={headings}>
           <slot />
@@ -88,7 +95,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] overflow-y-scroll pr-4 top-[100px]"
+        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
       >
         <RightSidebar
           headings={headings}
@@ -96,14 +103,6 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
           title={frontmatter.title}
         />
       </aside>
-      <!-- <aside id="grid-left" title="Site Navigation" class="hidden md:block">
-        <div
-          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-base w-full bg-default overflow-y-auto transition-all duration-300"
-        >
-          <LeftSidebar currentPage={currentPage} />
-        </div>
-      </aside>
-       -->
     </main>
   </body>
 </html>
