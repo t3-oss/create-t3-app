@@ -21,7 +21,7 @@ const sidebar = SIDEBAR[langCode];
 
 <nav
   aria-labelledby="grid-left"
-  class="flex w-full flex-col gap-4 pb-4 pt-6 md:pt-0 max-h-full overflow-y-hidden hover:overflow-y-auto fixed top-20 bottom-0"
+  class="flex flex-col gap-4 pb-4 pt-6 md:pt-0 w-full md:w-auto max-h-full overflow-y-hidden hover:overflow-y-auto fixed top-20 bottom-0"
 >
   <div class="w-full mx-auto px-6 md:px-8 md:hidden">
     <Search isLanding={isLanding} client:idle />
@@ -53,7 +53,7 @@ const sidebar = SIDEBAR[langCode];
                         href={url}
                         aria-current={isActive ? "page" : false}
                         class={clsx(
-                          "text-t3-purple-400 hover:border-t3-purple-300/50 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100 block border-l-2 py-2 pl-4 text-lg transition-colors",
+                          "block border-l-2 py-2 pl-4 text-lg text-t3-purple-400 transition-colors hover:border-t3-purple-300/50 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100",
                           {
                             "font-medium": isActive,
                             "border-t3-purple-300": isActive,
