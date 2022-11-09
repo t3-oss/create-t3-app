@@ -68,7 +68,7 @@ We love our bleeding edge tech. The amount of speed and, honestly, _fun_ that co
 
 ### 3. Typesafety Isn't Optional
 
-The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, typesafe web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project. 
+The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, typesafe web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project.
 
 <h2 id="getting-started">Getting Started</h2>
 
@@ -99,8 +99,6 @@ For more advanced usage, check out the [CLI docs](https://beta.create.t3.gg/en/i
 For help, discussion about best practices, or any other conversation that would benefit create-t3-app:
 
 [Join the T3 Discord Server](https://t3.gg/discord)
-
-
 
 <h2 id="contributors">Contributors</h2>
 
