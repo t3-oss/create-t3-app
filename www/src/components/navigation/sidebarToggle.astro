@@ -2,11 +2,10 @@
 import clsx from "clsx";
 
 export interface Props {
-  currentPage: string;
+  isLanding: boolean;
 }
 
-const { currentPage } = Astro.props;
-const isLanding = currentPage === "/";
+const { isLanding } = Astro.props;
 ---
 
 <button
