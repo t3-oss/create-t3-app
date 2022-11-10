@@ -8,14 +8,16 @@ export interface Props {
 const { editHref } = Astro.props;
 ---
 
-<div class="flex flex-col">
-  <h2 class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900">
+<div class="flex flex-col pt-8 lg:py-0 w-full md:text-left text-center">
+  <h2
+    class="hidden lg:block text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+  >
     More
   </h2>
 
-  <ul>
+  <ul class="flex md:block items-center flex-col">
     <li
-      class="hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+      class="hidden lg:block hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
     >
       <a class="flex items-center gap-2" href={editHref} target="_blank">
         <svg
@@ -64,7 +66,7 @@ const { editHref } = Astro.props;
             d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"
           ></path>
         </svg>
-        <span>Join our community</span>
+        <span>Join Our Discord Community</span>
       </a>
     </li>
   </ul>
