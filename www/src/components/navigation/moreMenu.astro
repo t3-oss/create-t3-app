@@ -10,14 +10,14 @@ const { editHref } = Astro.props;
 
 <div class="flex flex-col pt-8 lg:py-0 w-full md:text-left text-center">
   <h2
-    class="hidden lg:block text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+    class="hidden md:block text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
   >
     More
   </h2>
 
-  <ul class="flex md:block items-center flex-col">
+  <ul class="flex items-center md:items-start flex-col gap-2">
     <li
-      class="hidden lg:block hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
+      class="hidden md:block hover:text-t3-purple-700 dark:hover:text-t3-purple-100 text-t3-purple-500 dark:text-t3-purple-200"
     >
       <a class="flex items-center gap-2" href={editHref} target="_blank">
         <svg
