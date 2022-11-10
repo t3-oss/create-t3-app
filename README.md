@@ -60,7 +60,7 @@ We'll be frank - this is an _opinionated project_. We share a handful of core be
 
 ### 1. Solve Problems
 
-It's easy to fall in the trap of "adding everything" - we explicitly _don't_ want to do that. Everything added to `create-t3-app` should solve a _specific_ problem that exists within the core technologies included. This means we **won't** add things like state libraries (`zustand`, `redux`) but we **will** add things like NextAuth.js and integrate Prisma and tRPC for you.
+It's easy to fall into the trap of "adding everything" - we explicitly _don't_ want to do that. Everything added to `create-t3-app` should solve a _specific_ problem that exists within the core technologies included. This means we **won't** add things like state libraries (`zustand`, `redux`) but we **will** add things like NextAuth.js and integrate Prisma and tRPC for you.
 
 ### 2. Bleed Responsibly
 
