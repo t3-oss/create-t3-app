@@ -85,27 +85,29 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
 
       {isOpen &&
         createPortal(
-          <DocSearchModal
-            initialQuery={initialQuery}
-            initialScrollY={window.scrollY}
-            onClose={onClose}
-            indexName={ALGOLIA.indexName}
-            appId={ALGOLIA.appId}
-            apiKey={ALGOLIA.apiKey}
-            transformItems={(items) => {
-              return items.map((item) => {
-                // We transform the absolute URL into a relative URL to
-                // work better on localhost, preview URLS.
-                const a = document.createElement("a");
-                a.href = item.url;
-                const hash = a.hash === "#overview" ? "" : a.hash;
-                return {
-                  ...item,
-                  url: `${a.pathname}${hash}`,
-                };
-              });
-            }}
-          />,
+          <div className="z-50">
+            <DocSearchModal
+              initialQuery={initialQuery}
+              initialScrollY={window.scrollY}
+              onClose={onClose}
+              indexName={ALGOLIA.indexName}
+              appId={ALGOLIA.appId}
+              apiKey={ALGOLIA.apiKey}
+              transformItems={(items) => {
+                return items.map((item) => {
+                  // We transform the absolute URL into a relative URL to
+                  // work better on localhost, preview URLS.
+                  const a = document.createElement("a");
+                  a.href = item.url;
+                  const hash = a.hash === "#overview" ? "" : a.hash;
+                  return {
+                    ...item,
+                    url: `${a.pathname}${hash}`,
+                  };
+                });
+              }}
+            />
+          </div>,
           document.body,
         )}
     </>

@@ -117,7 +117,7 @@
     .mobile-sidebar-toggle #grid-left {
       margin: -999px -16px 0 -16px;
       padding-left: 16px;
-      z-index: 999;
+      z-index: 20;
       display: flex;
       width: 100vw;
       height: 100vh;
