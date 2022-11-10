@@ -107,22 +107,20 @@
     text-align: left;
   }
 
-  .mobile-sidebar-toggle {
-    overflow: hidden;
-    height: 100vh;
-  }
+  /* only at less than md */
+  @media (max-width: 767px) {
+    .mobile-sidebar-toggle {
+      overflow: hidden;
+      height: 100vh;
+    }
 
-  .mobile-sidebar-toggle #grid-left {
-    margin: -999px -16px 0 -16px;
-    padding-left: 16px;
-    z-index: 999;
-    display: flex;
-    width: 100vw;
-  }
-
-  @media (min-width: 768px) {
     .mobile-sidebar-toggle #grid-left {
-      display: none;
+      margin: -999px -16px 0 -16px;
+      padding-left: 16px;
+      z-index: 999;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
     }
   }
 
