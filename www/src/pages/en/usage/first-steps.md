@@ -23,7 +23,8 @@ Of course, if you prefer to use a different auth provider, you can also use one 
 5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
 6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
    - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes. You should now be able to log in.
+7. Save Changes.
+8. Set the NEXTAUTH_SECRET as some random string too. You should now be able to log in.
 
 ## Next Steps
 
