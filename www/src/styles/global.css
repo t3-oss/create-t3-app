@@ -18,6 +18,9 @@
     --color-background: 236 228 236;
 
     @apply bg-default text-slate-900;
+
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 
   html.dark {
