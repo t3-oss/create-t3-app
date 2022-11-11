@@ -54,7 +54,7 @@ Destruct the `process.env` here.
 
 We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
 
-Typescript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
+TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually

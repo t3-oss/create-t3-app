@@ -49,7 +49,6 @@ export const SIDEBAR: Sidebar = {
   en: {
     "Create T3 App": [
       { text: "Introduction", link: "en/introduction" },
-      { text: "T3 Axioms", link: "en/t3-axioms" },
       { text: "Why CT3A?", link: "en/why" },
       { text: "Installation", link: "en/installation" },
       { text: "FAQ", link: "en/faq" },
