@@ -28,5 +28,9 @@ export const logNextSteps = ({
     );
   }
 
+  if (packages?.nextAuth.inUse) {
+    logger.warn("set NEXTAUTH_SECRET in .env");
+  }
+
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 };
