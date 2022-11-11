@@ -120,7 +120,6 @@
 
     .mobile-sidebar-toggle #grid-left {
       margin: 0 -16px 0 -16px;
-      padding-left: 16px;
       z-index: 20;
       display: flex;
       width: 100vw;

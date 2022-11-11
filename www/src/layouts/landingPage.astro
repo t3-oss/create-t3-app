@@ -39,18 +39,16 @@ const { isNotFound } = Astro.props;
     />
     <div class="relative">
       <Navbar isNotFound={isNotFound || false} />
-      <div class="relative">
-        <aside id="grid-left" class="hidden" title="Site Navigation">
-          <div
-            class="fixed pl-4 top-24 h-[calc(100%-96px)] md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-default w-full overflow-y-hidden"
-          >
+      <aside id="grid-left" class="hidden" title="Site Navigation">
+        <div class="fixed left-0 top-0 h-screen w-screen z-30 bg-default">
+          <div class="fixed top-24 h-[calc(100%-96px)] pb-16 w-full">
             <LeftSidebar
               currentPage={currentPage}
               isNotFound={isNotFound || false}
             />
           </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
       <main id="content">
         <slot />
       </main>
