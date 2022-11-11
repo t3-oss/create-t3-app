@@ -80,13 +80,9 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       >
         <ThemeToggleButton />
       </div>
-      {
-        !isLanding && (
-          <div class="block md:hidden">
-            <SidebarToggle isLanding={isLanding} />
-          </div>
-        )
-      }
+      <div class="block md:hidden">
+        <SidebarToggle isLanding={isLanding} />
+      </div>
       <div class="hidden md:block rounded-lg w-full max-w-xs">
         <Search isLanding={isLanding} client:load />
       </div>
