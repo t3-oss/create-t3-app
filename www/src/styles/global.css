@@ -136,7 +136,7 @@
     @apply mt-4 mb-0 text-xl font-semibold;
   }
   .markdown li {
-    @apply list-disc break-all lg:break-normal;
+    @apply list-disc;
   }
   .markdown ol > li {
     @apply list-decimal;
@@ -152,6 +152,10 @@
           decoration-dotted underline-offset-2  
           hover:text-t3-purple-700 dark:text-t3-purple-200 
           dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
+  }
+
+  .markdown code {
+    @apply break-all lg:break-normal;
   }
 
   .markdown .remark-code-title {
