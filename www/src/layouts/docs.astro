@@ -73,7 +73,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <Navbar />
     </div>
     <main
-      class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 mt-5 w-full max-w-7xl px-4"
+      class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 w-full max-w-7xl px-4"
     >
       <nav
         id="grid-left"
@@ -83,7 +83,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         <LeftSidebar currentPage={currentPage} />
       </nav>
 
-      <div class="w-full min-h-full col-span-1 flex flex-col" id="content">
+      <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
         <PageContent frontmatter={frontmatter} headings={headings}>
           <slot />
         </PageContent>
