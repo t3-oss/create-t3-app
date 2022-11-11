@@ -22,7 +22,7 @@ const sidebar = SIDEBAR[langCode];
 <div class="w-full mb-6 mx-auto px-6 md:px-8 md:hidden">
   <Search isLanding={isLanding} client:idle />
 </div>
-<div class="t3-scrollbar w-full">
+<div class="pb-8 md:pb-0 t3-scrollbar w-full">
   <ul class="dark:text-t3-purple-50 text-slate-900">
     {
       Object.entries(sidebar).map(([header, children]) => (
