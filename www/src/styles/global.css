@@ -5,7 +5,7 @@
 @layer base {
   /* Design System Theming */
   html {
-    --color-default: 236 228 236;
+    --color-default: 245 241 245;
     --color-neutral: 29 40 58;
     --color-primary: 112 64 255;
     --color-secondary: 58 191 248;
@@ -15,7 +15,7 @@
     --color-success: 43 212 189;
     --color-info: 12 166 233;
     --color-foreground: 15 23 42;
-    --color-background: 236 228 236;
+    --color-background: 245 241 245;
 
     @apply bg-default text-slate-900;
   }
