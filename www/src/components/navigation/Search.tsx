@@ -53,7 +53,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
         ref={searchButtonRef}
         onClick={onOpen}
         className={clsx(
-          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-all duration-300 dark:text-slate-100",
+          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-colors duration-300 dark:text-slate-100",
           {
             "hover:bg-t3-purple/20 border border-t3-purple-200/20 bg-t3-purple-200/10 duration-300 hover:border-t3-purple-200/50":
               isLanding,
@@ -85,27 +85,29 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
 
       {isOpen &&
         createPortal(
-          <DocSearchModal
-            initialQuery={initialQuery}
-            initialScrollY={window.scrollY}
-            onClose={onClose}
-            indexName={ALGOLIA.indexName}
-            appId={ALGOLIA.appId}
-            apiKey={ALGOLIA.apiKey}
-            transformItems={(items) => {
-              return items.map((item) => {
-                // We transform the absolute URL into a relative URL to
-                // work better on localhost, preview URLS.
-                const a = document.createElement("a");
-                a.href = item.url;
-                const hash = a.hash === "#overview" ? "" : a.hash;
-                return {
-                  ...item,
-                  url: `${a.pathname}${hash}`,
-                };
-              });
-            }}
-          />,
+          <div className="z-50">
+            <DocSearchModal
+              initialQuery={initialQuery}
+              initialScrollY={window.scrollY}
+              onClose={onClose}
+              indexName={ALGOLIA.indexName}
+              appId={ALGOLIA.appId}
+              apiKey={ALGOLIA.apiKey}
+              transformItems={(items) => {
+                return items.map((item) => {
+                  // We transform the absolute URL into a relative URL to
+                  // work better on localhost, preview URLS.
+                  const a = document.createElement("a");
+                  a.href = item.url;
+                  const hash = a.hash === "#overview" ? "" : a.hash;
+                  return {
+                    ...item,
+                    url: `${a.pathname}${hash}`,
+                  };
+                });
+              }}
+            />
+          </div>,
           document.body,
         )}
     </>

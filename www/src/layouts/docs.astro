@@ -66,46 +66,45 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   </head>
 
   <body
-    class="bg-default min-h-screen w-screen flex flex-col items-center transition-all duration-300"
+    class="bg-default min-h-screen flex flex-col items-center transition-all duration-300"
   >
     <JumpToContent />
     <div
-      class="bg-default sticky top-0 w-full max-h-full z-40 transition-all duration-300"
+      class="bg-default sticky top-0 w-full max-h-full z-40 transition-colors duration-300"
     >
       <Navbar />
     </div>
     <main
-      class="flex-1 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 lg:gap-8 mt-10 w-full max-w-7xl"
+      class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 w-full max-w-7xl"
     >
-      <aside id="grid-left" title="Site Navigation" class="hidden md:block">
-        <div
-          class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-base w-full bg-default overflow-y-auto transition-all duration-300"
-        >
-          <LeftSidebar currentPage={currentPage} />
-        </div>
-      </aside>
-      <div class="flex flex-col md:col-span-2" id="content">
+      <nav
+        id="grid-left"
+        title="Site Navigation"
+        class="bg-default t3-scrollbar hidden md:flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-96px)] top-20 pt-4 md:pt-0 md:top-24 transition-colors duration-300"
+      >
+        <LeftSidebar currentPage={currentPage} />
+      </nav>
+
+      <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
         <PageContent frontmatter={frontmatter} headings={headings}>
           <slot />
         </PageContent>
         <nav class="flex lg:hidden mx-3">
           <MoreMenu editHref={githubEditUrl} />
         </nav>
+        <Footer path={currentFile} isBlog={true} />
       </div>
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="hidden lg:block relative"
+        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
       >
-        <div class="sticky top-20">
-          <RightSidebar
-            headings={headings}
-            githubEditUrl={githubEditUrl}
-            title={frontmatter.title}
-          />
-        </div>
+        <RightSidebar
+          headings={headings}
+          githubEditUrl={githubEditUrl}
+          title={frontmatter.title}
+        />
       </aside>
     </main>
-    <Footer path={currentFile} isBlog={true} />
   </body>
 </html>
