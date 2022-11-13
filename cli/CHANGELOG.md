@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.8.1
+
+### Patch Changes
+
+- [#717](https://github.com/t3-oss/create-t3-app/pull/717) [`7f8e706`](https://github.com/t3-oss/create-t3-app/commit/7f8e70643c3de0ba8c457833a54c4700bd974816) Thanks [@robotkutya](https://github.com/robotkutya)! - feat: update NEXTAUTH_SECRET validator and set a default
+
+- [#719](https://github.com/t3-oss/create-t3-app/pull/719) [`b359802`](https://github.com/t3-oss/create-t3-app/commit/b359802f128297f0048ae587453031d05e49b566) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - fix: update NEXTAUTH_SECRET validator to be optional in dev
+
 ## 6.8.0
 
 ### Minor Changes
