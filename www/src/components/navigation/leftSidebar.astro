@@ -51,10 +51,10 @@ const sidebar = SIDEBAR[langCode];
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "block border-l-2 py-2 pl-4 text-lg text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100",
+                        "text-md block border-l-2 py-2 pl-4 text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:bg-t3-purple-300/25 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/5 dark:hover:text-t3-purple-100",
                         {
-                          "font-medium": isActive,
-                          "border-t3-purple-300": isActive,
+                          "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/10":
+                            isActive,
                           "border-t3-purple-300/20": !isActive,
                         },
                       )}
