@@ -42,10 +42,6 @@
     @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
   }
 
-  .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
-  }
-
   /* Typewriter */
   .cursor::after {
     display: block;
@@ -107,24 +103,28 @@
     text-align: left;
   }
 
-  .mobile-sidebar-toggle {
-    overflow: hidden;
-    height: 100vh;
+  .t3-scrollbar {
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
   }
 
-  .mobile-sidebar-toggle #grid-left {
-    display: block;
-  }
+  /* only at less than md */
+  @media (max-width: 767px) {
+    .mobile-sidebar-toggle {
+      overflow: hidden;
+      height: 100vh;
+    }
 
-  @media (min-width: 768px) {
     .mobile-sidebar-toggle #grid-left {
-      display: none;
+      z-index: 20;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
     }
   }
 
   /* Markdown Styling */
   .markdown {
-    @apply flex w-full flex-col items-start justify-start px-3 text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
+    @apply flex w-full flex-col items-start justify-start px-4 text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
@@ -136,7 +136,7 @@
     @apply mt-4 mb-0 text-xl font-semibold;
   }
   .markdown li {
-    @apply list-disc break-all lg:break-normal;
+    @apply list-disc;
   }
   .markdown ol > li {
     @apply list-decimal;
@@ -154,6 +154,10 @@
           dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
   }
 
+  .markdown code {
+    @apply break-all lg:break-normal;
+  }
+
   .markdown .remark-code-title {
     @apply z-10 -mb-1 mt-3 w-full rounded-t-md border-b-2 border-t3-purple-200 bg-[#292D3E] px-2 py-1 font-mono text-t3-purple-200;
   }
@@ -167,15 +171,13 @@
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md bg-t3-purple-200/50 px-3 pb-0.5 ring 
-          ring-t3-purple-200 transition-all duration-75 ease-in-out
-          dark:bg-slate-700 dark:ring-slate-500;
+    @apply mt-2 w-full rounded-md  bg-[#292D3E] px-3 transition-all duration-75 ease-in-out;
   }
   .markdown details > summary {
-    @apply cursor-pointer text-t3-purple-700 dark:text-slate-300;
+    @apply cursor-pointer text-[#A6ACCD];
   }
   .markdown details[open] > summary {
-    @apply border-b-2 border-t3-purple-200 dark:border-slate-500;
+    @apply border-b-2 border-[#A6ACCD];
   }
   .markdown summary {
     @apply py-3;
