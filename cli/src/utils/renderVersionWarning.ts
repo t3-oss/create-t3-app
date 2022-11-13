@@ -8,10 +8,10 @@ export const renderVersionWarning = () => {
     .toString()
     .trim();
 
-  if (currentVersion.includes("@beta")) {
+  if (currentVersion.includes("beta")) {
     logger.warn("You are using a beta version of create-t3-app.");
     logger.warn("Please report any bugs you encounter.");
-  } else if (currentVersion.includes("@next")) {
+  } else if (currentVersion.includes("next")) {
     logger.warn(
       "You are running create-t3-app with the @next tag which is no longer maintained.",
     );
