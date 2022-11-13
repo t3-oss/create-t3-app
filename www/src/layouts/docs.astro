@@ -80,7 +80,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <nav
         id="grid-left"
         title="Site Navigation"
-        class="bg-default t3-scrollbar hidden md:flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-96px)] top-20 pt-4 md:pt-0 md:top-24 transition-colors duration-300"
+        class="bg-default t3-scrollbar hidden md:flex flex-col justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-80px)] md:max-h-[calc(100vh-96px)] top-20 pt-4 md:pt-0 md:top-24 transition-colors duration-300 overflow-y-auto"
       >
         <LeftSidebar currentPage={currentPage} />
       </nav>
@@ -97,7 +97,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
+        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 pb-4 top-[100px] overflow-y-auto"
       >
         <RightSidebar
           headings={headings}
