@@ -1,12 +1,9 @@
-// import { execSync } from "child_process";
-import { execa } from "execa";
+import { execSync } from "child_process";
 import { getVersion } from "./getT3Version.js";
 import { logger } from "./logger.js";
 
-export const getNpmVersion = async () =>
-  await execa("npm", ["view", "create-t3-app", "version"]).then(
-    (v) => v.stdout,
-  );
+export const getNpmVersion = () =>
+  execSync("npm view create-t3-app version").toString().trim();
 
 export const renderVersionWarning = (npmVersion: string) => {
   const currentVersion = getVersion();

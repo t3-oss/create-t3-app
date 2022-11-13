@@ -24,7 +24,7 @@ type CT3APackageJSON = PackageJson & {
 };
 
 const main = async () => {
-  const npmVersion = await getNpmVersion();
+  const npmVersion = getNpmVersion();
   renderTitle();
   renderVersionWarning(npmVersion);
 
