@@ -121,8 +121,9 @@
 
 .showcaseText {
   color: white;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .authContainer {
@@ -136,7 +137,7 @@
 .loginButton {
   border-radius: 9999px;
   background-color: rgb(255 255 255 / 0.1);
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 2.5rem;
   font-weight: 600;
   color: white;
   text-decoration-line: none;
