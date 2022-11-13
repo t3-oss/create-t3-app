@@ -179,7 +179,7 @@
     @apply cursor-pointer text-[#A6ACCD];
   }
   .markdown details[open] > summary {
-    @apply border-b-2 border-t3-purple-200 dark:border-slate-500;
+    @apply border-b-2 border-[#A6ACCD];
   }
   .markdown summary {
     @apply py-3;
