@@ -183,8 +183,7 @@ export const runCli = async () => {
       );
       logger.info(`Bootstrapping a default t3 app in ./${cliResults.appName}`);
     } else {
-      console.log("Error here", err);
-      // throw err;
+      throw err;
     }
   }
 
