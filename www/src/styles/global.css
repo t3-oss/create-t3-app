@@ -171,9 +171,7 @@
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md  bg-[#292D3E] px-3 
-          transition-all duration-75
-          ease-in-out;
+    @apply mt-2 w-full rounded-md  bg-[#292D3E] px-3 transition-all duration-75 ease-in-out;
   }
   .markdown details > summary {
     @apply cursor-pointer text-[#A6ACCD];
