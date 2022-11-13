@@ -9,22 +9,22 @@ export const renderVersionWarning = () => {
     .trim();
 
   if (currentVersion.includes("beta")) {
-    logger.warn("You are using a beta version of create-t3-app.");
-    logger.warn("Please report any bugs you encounter.");
+    logger.warn("  You are using a beta version of create-t3-app.");
+    logger.warn("  Please report any bugs you encounter.");
   } else if (currentVersion.includes("next")) {
     logger.warn(
-      "You are running create-t3-app with the @next tag which is no longer maintained.",
+      "  You are running create-t3-app with the @next tag which is no longer maintained.",
     );
-    logger.warn("Please run the CLI with @latest instead.");
+    logger.warn("  Please run the CLI with @latest instead.");
   } else if (currentVersion !== npmVersion) {
-    logger.warn("You are using an outdated version of create-t3-app.");
+    logger.warn("  You are using an outdated version of create-t3-app.");
     logger.warn(
-      "Your version:",
+      "  Your version:",
       currentVersion + ".",
       "Latest version in the npm registry:",
       npmVersion,
     );
-    logger.warn("Please run the CLI with @latest to get the latest updates.");
+    logger.warn("  Please run the CLI with @latest to get the latest updates.");
   }
   console.log("");
 };
