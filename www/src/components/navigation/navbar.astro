@@ -55,11 +55,11 @@ const navbarLinks: Array<{ href: string; label: string }> = [
               class={clsx(
                 "relative inline-flex items-center rounded-md border border-transparent px-3 py-2 transition-colors hover:no-underline",
                 {
-                  "bg-t3-purple-200/10 text-t3-purple-300":
+                  "bg-t3-purple-200/50 text-t3-purple-800 dark:bg-t3-purple-200/10":
                     navbarLink.href === currentPage,
-                  "rounded-lg text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300":
+                  "text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300 rounded-lg":
                     isLanding,
-                  "rounded-lg text-t3-purple-800 hover:bg-t3-purple-200/30 hover:text-t3-purple-400 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300":
+                  "text-t3-purple-800 hover:bg-t3-purple-200/50 hover:text-t3-purple-800 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300 rounded-lg":
                     !isLanding,
                 },
               )}
