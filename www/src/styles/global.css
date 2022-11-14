@@ -139,7 +139,7 @@
     @apply list-disc;
   }
   .markdown ol > li {
-    @apply list-decimal;
+    @apply list-decimal mb-2;
   }
   .markdown p {
     @apply mb-4 dark:text-white;
@@ -175,9 +175,6 @@
   }
   .markdown details > summary {
     @apply cursor-pointer text-[#A6ACCD];
-  }
-  .markdown details[open] > summary {
-    @apply border-b-2 border-[#A6ACCD];
   }
   .markdown summary {
     @apply py-3;
