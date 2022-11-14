@@ -1,0 +1,62 @@
+---
+import LandingPage from "../layouts/landingPage.astro";
+import Button from "../components/landingPage/button.astro";
+---
+
+<LandingPage isNotFound={true}>
+  <main>
+    <div>
+      <div
+        class="py-12 sm:py-8 md:py-12 lg:py-14 xl:py-12 2xl:py-28 h-[calc(100vh-200px)]"
+      >
+        <div class="max-w-[800px] xl:max-w-7xl mx-auto">
+          <div class="lg:px-8">
+            <div class="flex flex-col items-center">
+              <div
+                class="max-w-md px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl sm:px-6 lg:px-0"
+              >
+                <div class="flex flex-col gap-4 w-full items-center">
+                  <div class="flex flex-col items-start justify-between">
+                    <h1
+                      class="text-4xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
+                    >
+                      Page not found...
+                      <span class="text-[hsl(200,100%,60%)]"> 404!</span>
+                    </h1>
+                    <div
+                      class="flex justify-center items-center w-full gap-4 xl:mt-8 mt-4"
+                    >
+                      <Button
+                        href="/"
+                        openInNewTab={false}
+                        rounded="md"
+                        className="group"
+                        rounded="full"
+                        specialHover={true}
+                      >
+                        Return to the homepage
+                        <svg
+                          class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
+                          fill="none"
+                          viewBox="0 0 10 10"
+                          aria-hidden="true"
+                        >
+                          <path
+                            class="opacity-0 transition group-hover:opacity-100"
+                            d="M0 5h7"></path>
+                          <path
+                            class="transition group-hover:translate-x-[3px]"
+                            d="M1 1l4 4-4 4"></path>
+                        </svg>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</LandingPage>

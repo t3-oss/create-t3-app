@@ -12,34 +12,45 @@ import { SITE } from "../config";
 import "@fontsource/inter/variable.css";
 import JumpToContent from "../components/accessibility/jumpToContent.astro";
 
+export interface Props {
+  isNotFound?: boolean;
+}
+
 const currentPage = Astro.url.pathname;
+
+const { isNotFound } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en-us" class="initial">
+<html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
   <head>
     <HeadCommon />
     <HeadSeo type="website" />
     <title>{SITE.title}</title>
   </head>
-  <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
+  <body
+    class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
+  >
     <JumpToContent />
     <img
       src="/images/background-pattern.svg"
-      class="absolute inset-0 opacity-5 h-max w-max min-w-full object-cover"
+      class={`absolute inset-0 opacity-5 w-max min-w-full object-cover ${
+        !isNotFound ? "h-max" : "h-screen"
+      }`}
       alt="background pattern"
     />
     <div class="relative">
-      <Navbar />
-      <div class="relative">
-        <aside id="grid-left" class="hidden" title="Site Navigation">
-          <div
-            class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
-          >
-            <LeftSidebar currentPage={currentPage} />
+      <Navbar isNotFound={isNotFound || false} />
+      <aside id="grid-left" class="hidden" title="Site Navigation">
+        <div class="fixed left-0 top-0 h-screen w-screen z-30 bg-default">
+          <div class="fixed top-24 h-[calc(100%-96px)] pb-16 w-full">
+            <LeftSidebar
+              currentPage={currentPage}
+              isNotFound={isNotFound || false}
+            />
           </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
       <main id="content">
         <slot />
       </main>
