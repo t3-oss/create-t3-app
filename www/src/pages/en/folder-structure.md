@@ -4,6 +4,10 @@ description: Folder structure of a newly scaffolded Create T3 App
 layout: ../../layouts/docs.astro
 ---
 
+The following is the folder structure of a newly scaffolded Create T3 App, with all options selected.
+
+Further down, the description of each folder indicates its purpose and if it is only included with selected libraries.
+
 ```
 .
 ├─ prisma
@@ -65,6 +69,8 @@ layout: ../../layouts/docs.astro
 ## `prisma`
 
 The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema.
+
+<sub>(With Prisma)</sub>
 
 ## `public`
 
@@ -225,3 +231,51 @@ The `utils` folder is used to store commonly re-used utility functions.
 The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](/en/usage/trpc#-utilstrpcts) for more information.
 
 <sub>(with tRPC)</sub>
+
+## `.env`
+
+The `.env` file is used to store environment variables. See [Environment variables](/en/usage/environment-variables) for more information.
+
+## `.env.example`
+
+The `.env.example` file shows example environment variables based on the chosen libraries. See [Environment variables](/en/usage/environment-variables) for more information.
+
+## `.eslintrc.json`
+
+The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+
+## `.gitignore`
+
+The `.gitignore` file is used to tell Git which files to ignore. See [Git Docs](https://git-scm.com/docs/gitignore) for more information.
+
+## `README.md`
+
+The `README.md` file is used to document the project. See [Markdown Docs](https://www.markdownguide.org/basic-syntax) for more information.
+
+## `next-env.d.ts`
+
+The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+
+## `next.config.mjs`
+
+The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+
+## `package.json`
+
+The `package.json` file is used to configure the project details, dependencies, and scripts. See [npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json) for more information.
+
+## `postcss.config.cjs`
+
+The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+
+<sub>(with TailwindCSS)</sub>
+
+## `prettier.config.cjs`
+
+The `prettier.config.cjs` file is used to configure Prettier to include the Prettier-TailwindCSS plugin. See [the Tailwind blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+
+<sub>(with TailwindCSS)</sub>
+
+## `tsconfig.json`
+
+The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](/en/usage/typescript) for more information.
