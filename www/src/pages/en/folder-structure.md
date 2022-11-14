@@ -82,19 +82,19 @@ The `src` folder contains all the source code of the application.
 
 ## `src/env`
 
-Used for environment variable validation and type definitions - see [Environment Variables](/en/usage/env-variables).
+Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
 
 ### `src/env/client.mjs`
 
-[See the client.mjs documentation](/en/usage/env-variables#servermjs--clientmjs)
+[See the client.mjs documentation](usage/env-variables#servermjs--clientmjs)
 
 ### `src/env/server.mjs`
 
-[See the server.mjs documentation](/en/usage/env-variables#servermjs--clientmjs)
+[See the server.mjs documentation](usage/env-variables#servermjs--clientmjs)
 
 ### `src/env/schema.mjs`
 
-[See the schema.mjs documentation](/en/usage/env-variables#schemamjs)
+[See the schema.mjs documentation](usage/env-variables#schemamjs)
 
 ## `src/pages`
 
@@ -114,7 +114,7 @@ The `auth` folder contains the NextAuth.js authentication slug route.
 
 ### `src/pages/api/auth/[...nextauth].ts`
 
-The `[[...nextauth]].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](/en/usage/next-auth) for more information.
+The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information.
 
 <sub>(with NextAuth.js)</sub>
 
@@ -126,7 +126,7 @@ The `trpc` folder contains the tRPC API entry point.
 
 ### `src/pages/api/trpc/[trpc].ts`
 
-The `[[trpc]].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](en/usage/trpc#-pagesapitrpctrpcts) for more information.
+The `[trpc].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information.
 
 <sub>(with tRPC)</sub>
 
@@ -144,7 +144,7 @@ The `common` folder contains commonly re-used server-side code.
 
 ### `src/server/common/get-server-auth-session.ts`
 
-The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](/en/usage/next-auth#usage-with-trpc) for more information.
+The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 <sub>(with NextAuth.js + tRPC)</sub>
 
@@ -156,7 +156,7 @@ The `db` folder contains the Prisma client.
 
 ### `src/server/db/client.ts`
 
-The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](/en/usage/prisma#prisma-client) for more information.
+The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
 
 <sub>(with Prisma)</sub>
 
@@ -168,13 +168,13 @@ The `trpc` folder contains the tRPC server-side code.
 
 ### `src/server/trpc/context.ts`
 
-The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](/en/usage/trpc#-servertrpccontextts) for more information.
+The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
 
 <sub>(with tRPC)</sub>
 
 ### `src/server/trpc/trpc.ts`
 
-The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](/en/usage/trpc#-servertrpctrpcts) for more information.
+The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
 
 <sub>(with tRPC)</sub>
 
@@ -186,7 +186,7 @@ The `router` folder contains the tRPC routers.
 
 ### `src/server/trpc/router/_app.ts`
 
-The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](/en/usage/trpc#-servertrpcrouterts) for more information.
+The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
 
 <sub>(with tRPC)</sub>
 
@@ -216,7 +216,7 @@ The `types` folder is used to store reused types or type declarations.
 
 ### `src/types/next-auth.d.ts`
 
-The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](/en/usage/next-auth#inclusion-of-userid-on-the-session) for more information.
+The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
 
 <sub>(with NextAuth.js)</sub>
 
@@ -228,17 +228,17 @@ The `utils` folder is used to store commonly re-used utility functions.
 
 ### `src/utils/trpc.ts`
 
-The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](/en/usage/trpc#-utilstrpcts) for more information.
+The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
 
 <sub>(with tRPC)</sub>
 
 ## `.env`
 
-The `.env` file is used to store environment variables. See [Environment variables](/en/usage/environment-variables) for more information.
+The `.env` file is used to store environment variables. See [Environment variables](usage/env-variables) for more information.
 
 ## `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. See [Environment variables](/en/usage/environment-variables) for more information.
+The `.env.example` file shows example environment variables based on the chosen libraries. See [Environment variables](usage/env-variables) for more information.
 
 ## `.eslintrc.json`
 
@@ -278,4 +278,4 @@ The `prettier.config.cjs` file is used to configure Prettier to include the Pret
 
 ## `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](/en/usage/typescript) for more information.
+The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
