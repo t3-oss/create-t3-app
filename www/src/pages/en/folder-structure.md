@@ -132,7 +132,7 @@ The `[trpc].ts` file is the tRPC API entry point. It is used to handle tRPC requ
 
 ## `src/server`
 
-The `server` folder is used to clearly seperate server-side code from client-side code.
+The `server` folder is used to clearly separate server-side code from client-side code.
 
 <sub>(with tRPC and/or Prisma)</sub>
 
