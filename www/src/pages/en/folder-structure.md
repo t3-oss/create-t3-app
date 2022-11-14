@@ -114,7 +114,7 @@ The `auth` folder contains the NextAuth.js authentication slug route.
 
 ### `src/pages/api/auth/[...nextauth].ts`
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information.
+The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with NextAuth.js)</sub>
 
@@ -126,7 +126,7 @@ The `trpc` folder contains the tRPC API entry point.
 
 ### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information.
+The `[trpc].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with tRPC)</sub>
 
