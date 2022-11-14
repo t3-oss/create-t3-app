@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.9.0
+
+### Minor Changes
+
+- [#727](https://github.com/t3-oss/create-t3-app/pull/727) [`57cb2b5`](https://github.com/t3-oss/create-t3-app/commit/57cb2b5881c31182acc6918cf86330dda26d0586) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add warning message when not using latest
+
 ## 6.8.1
 
 ### Patch Changes
