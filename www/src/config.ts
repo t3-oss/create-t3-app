@@ -49,7 +49,6 @@ export const SIDEBAR: Sidebar = {
   en: {
     "Create T3 App": [
       { text: "Introduction", link: "en/introduction" },
-      { text: "T3 Axioms", link: "en/t3-axioms" },
       { text: "Why CT3A?", link: "en/why" },
       { text: "Installation", link: "en/installation" },
       { text: "Folder Structure", link: "en/folder-structure" },
@@ -58,6 +57,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Other Recommendations", link: "en/other-recs" },
     ],
     Usage: [
+      { text: "First Steps", link: "en/usage/first-steps" },
       { text: "Next.js", link: "en/usage/next-js" },
       { text: "TypeScript", link: "en/usage/typescript" },
       { text: "tRPC", link: "en/usage/trpc" },
