@@ -15,12 +15,14 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Shoutify - Free, open-source, self-hosted social media management | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)           | [shoutify.app](https://github.com/TechSquidTV/Shoutify) (coming soon)             |
 | Me3 - Describe yourself in 3 things and share with your friends.  | [hnqg/me3](https://github.com/hnqg/me3)                                   | [me.hnqg.io](https://me.hnqg.io)                                                  |
 | Josh's personal site                                              | [joshhyde9/portfolio](https://github.com/JoshHyde9/portfolio)             | [joshhyde.me](https://joshhyde.me)                                                |
-| Cal.com - A scheduling service for streamers                      | [calcom/cal.com](https://github.com/calcom/cal.com)                       | [cal.com](https://cal.com)                                                        |
+| Cal.com - Scheduling infrastructure for absolutely everyone.      | [calcom/cal.com](https://github.com/calcom/cal.com)                       | [cal.com](https://cal.com)                                                        |
 | My FAQ Page - An FAQ Page generator                               | [ronanru/myfaq.page](https://github.com/ronanru/myfaq.page)               | [MyFAQ.page](https://myfaq.page)                                                  |
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                 | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook) | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 
 ## Companies using the T3 Stack
+
+We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
 
 | Company | Link                       |
 | ------- | -------------------------- |
