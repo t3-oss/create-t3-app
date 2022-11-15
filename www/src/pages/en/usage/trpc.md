@@ -70,7 +70,7 @@ Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additiona
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p class="w-[560px] italic pt-1 pb-4" >tRPC contributor <a href="https://twitter.com/trashh_dev">trashh_dev</a> made <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">a killer talk at Next.js Conf</a> about tRPC. We highly recommend you watch it if you haven't already.
+<p class="w-[560px] pt-1 pb-4" >tRPC contributor <a href="https://twitter.com/trashh_dev">trashh_dev</a> made <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">a killer talk at Next.js Conf</a> about tRPC. We highly recommend you watch it if you haven't already.
 
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
