@@ -18,7 +18,7 @@ export default function CodeCard() {
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
-          className="leading-1 bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[7px] text-transparent sm:text-xs md:text-sm"
+          className="leading-1 translate-y-[-0.2rem] bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[7px] text-transparent sm:text-xs md:translate-y-[-0.4rem] md:text-sm"
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
@@ -65,7 +65,7 @@ export default function CodeCard() {
           <Typist
             cursor={{ show: false }}
             avgTypingDelay={-10000}
-            className="translate-y-[-2rem]"
+            className="translate-y-[-1.8rem] md:translate-y-[-2.0rem]"
           >
             <span>
               <span>? Will you be using JavaScript or TypeScript?</span>
@@ -77,7 +77,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={6300}
           avgTypingDelay={-10000}
-          className="translate-y-[-2.2rem]"
+          className="translate-y-[-1.8rem] md:translate-y-[-2.0rem]"
         >
           Good choice! Using TypeScript!
           <br />
@@ -88,7 +88,7 @@ export default function CodeCard() {
           <span>
             <span className="text-blue-400">❯</span>
             <span>
-              ◯<span className="pl-1 text-blue-400">nextAuth</span>
+              ◯<span className="pl-[.4em] text-blue-400">nextAuth</span>
             </span>
           </span>
           <br />
@@ -107,7 +107,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={10000}
           avgTypingDelay={-10000}
-          className="translate-y-[-6.2rem] sm:translate-y-[-6.4rem] md:translate-y-[-6.2rem] lg:translate-y-[-6.2rem]"
+          className="translate-y-[-5.6rem] sm:translate-y-[-5.8rem] md:translate-y-[-6.0rem] lg:translate-y-[-6.0rem]"
         >
           <span>? Which packages would you like to enable?</span>
           <span className="pl-1 text-blue-400">
@@ -117,13 +117,13 @@ export default function CodeCard() {
         <Typist
           cursor={{ show: false }}
           avgTypingDelay={-20000}
-          className="translate-y-[-5rem] sm:translate-y-[-5.2rem] md:translate-y-[-5.5rem] lg:translate-y-[-5.2rem]"
+          className="translate-y-[-4.6rem] sm:translate-y-[-5.2rem] md:translate-y-[-5.0rem] lg:translate-y-[-5.0rem]"
           startDelay={8700}
         >
           <span>
             <span className="text-blue-400">❯</span>
             <span>
-              ◉<span className="pl-1 text-blue-400">nextAuth</span>
+              ◉<span className="pl-[.4em] text-blue-400">nextAuth</span>
             </span>
           </span>
           <br />
@@ -140,7 +140,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={10500}
           avgTypingDelay={-10000}
-          className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           <div className="flex whitespace-nowrap">
             <span>? Initialize a new git repository? (Y/n)</span>
@@ -160,7 +160,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={13000}
           avgTypingDelay={-10000}
-          className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           Sounds good! You can come back and run git init later.
         </Typist>
@@ -168,7 +168,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={14500}
           avgTypingDelay={-10000}
-          className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           <div>
             <span className="whitespace">
@@ -190,7 +190,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={16000}
           avgTypingDelay={-10000}
-          className="translate-y-[-10rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           Alright. We&apos;ll install the dependencies for you!
         </Typist>
