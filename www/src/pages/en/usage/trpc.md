@@ -270,7 +270,7 @@ const MyComponent = () => {
     },
     onError(err, newPost, ctx) {
       // If the mutation fails, use the context-value from onMutate
-      utils.post.list.setData(ctx.prevData);
+      utils.post.list.setData(undefined, ctx.prevData);
     }
     onSettled() {
       // Sync with server once mutation has settled
