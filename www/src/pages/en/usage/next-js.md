@@ -6,19 +6,9 @@ layout: ../../../layouts/docs.astro
 
 Next.js is a backend framework for your React applications.
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
-  <p align="center">
-    <img
-      src="/images/nextjs_thumbnail.jpg"
-      alt="Next.js is a backend framework"
-      width="320"
-    />
-  </p>
-</a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
-  <p align="center">Watch Theo's overview on Youtube here</p>
-</a>
+<p class="w-[560px] italic pt-1" >Check out Theo's <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">Next.js Conf talk</a> to get a better understanding of what Next.js is and how it works._</p>
 
 ## Why should I use it?
 
