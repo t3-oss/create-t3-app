@@ -258,10 +258,13 @@ const MyComponent = () => {
     async onMutate(newPost) {
       // Cancel outgoing fetches (so they don't overwrite our optimistic update)
       await utils.post.list.cancel();
+
       // Get the data from the queryCache
       const prevData = utils.post.list.getData();
+
       // Optimistically update the data with our new post
-      utils.post.list.setData([...prevData, newPost ]);
+      utils.post.list.setData(undefined, old => [...old, newPost ]);
+
       // Return the previous data so we can revert if something goes wrong
       return { prevData };
     },
