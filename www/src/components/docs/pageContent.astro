@@ -31,7 +31,7 @@ const title = frontmatter.title;
     block.className = "relative flex w-full h-full";
     let copyButton = document.createElement("button");
     copyButton.className =
-      "inline-flex absolute right-2 bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
+      "inline-flex absolute right-[.45em] top-[.5em] bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
     copyButton.innerHTML = copySVG;
     copyButton.addEventListener("click", () => {
       let text = "";
@@ -51,7 +51,7 @@ const title = frontmatter.title;
         } catch (err) {
           console.error("Failed to copy: ", err);
         }
-        copyButton.innerHTML = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M104 192a8.5 8.5 0 0 1-5.7-2.3l-56-56a8.1 8.1 0 0 1 11.4-11.4l50.3 50.4L210.3 66.3a8.1 8.1 0 0 1 11.4 11.4l-112 112a8.5 8.5 0 0 1-5.7 2.3Z"/></svg>`;
+        copyButton.innerHTML = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="#22c55e" d="M104 192a8.5 8.5 0 0 1-5.7-2.3l-56-56a8.1 8.1 0 0 1 11.4-11.4l50.3 50.4L210.3 66.3a8.1 8.1 0 0 1 11.4 11.4l-112 112a8.5 8.5 0 0 1-5.7 2.3Z"/></svg>`;
 
         setTimeout(() => {
           copyButton.innerHTML = copySVG;
