@@ -1,14 +1,11 @@
 ---
 import type { Frontmatter } from "../../config";
-import TableOfContents from "../navigation/tableOfContents.astro";
-import type { MarkdownHeading } from "astro";
 
 export interface Props {
   frontmatter: Frontmatter;
-  headings: MarkdownHeading[];
 }
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter } = Astro.props;
 const title = frontmatter.title;
 ---
 
@@ -20,9 +17,6 @@ const title = frontmatter.title;
     >
       {title}
     </h1>
-    <nav class="flex md:hidden p-3">
-      <TableOfContents headings={headings} title={title} />
-    </nav>
     <article class="markdown w-full">
       <slot />
     </article>
@@ -30,30 +24,14 @@ const title = frontmatter.title;
 </article>
 
 <script>
-  const copySVG = `<svg
-    stroke="currentColor"
-    fill="none"
-    strokeWidth={0}
-    viewBox="0 0 24 24"
-    height="1.3em"
-    width="1.3em"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1M8 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M8 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m0 0h2a2 2 0 0 1 2 2v3m2 4H10m0 0 3-3m-3 3 3 3"
-    />
-  </svg>`;
+  const copySVG = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M216 36H88a4 4 0 0 0-4 4v44H40a4 4 0 0 0-4 4v128a4 4 0 0 0 4 4h128a4 4 0 0 0 4-4v-44h44a4 4 0 0 0 4-4V40a4 4 0 0 0-4-4Zm-52 176H44V92h120Zm48-48h-40V88a4 4 0 0 0-4-4H92V44h120Z"/></svg>`;
 
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
-    block.className = "relative flex w-full h-full hover:cursor-pointer";
+    block.className = "relative flex w-full h-full";
     let copyButton = document.createElement("button");
     copyButton.className =
-      "inline-flex absolute right-[.45em] top-[.45em]  rounded-lg p-1 text-sm text-slate-50 hover:bg-slate-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
+      "inline-flex absolute right-[.45em] top-[.5em] bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
     copyButton.innerHTML = copySVG;
     copyButton.addEventListener("click", () => {
       let text = "";
@@ -73,25 +51,8 @@ const title = frontmatter.title;
         } catch (err) {
           console.error("Failed to copy: ", err);
         }
-        copyButton.innerHTML = `<svg
-    stroke="#22c55e"
-    fill="#22c55e"
-    strokeWidth={0}
-    viewBox="0 0 1024 1024"
-    height="1.3em"
-    width="1.3em"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0 0 51.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
-      stroke="none"
-    />
-    <path
-      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-      stroke="none"
-    />
-  </svg>`;
+        copyButton.innerHTML = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="#22c55e" d="M104 192a8.5 8.5 0 0 1-5.7-2.3l-56-56a8.1 8.1 0 0 1 11.4-11.4l50.3 50.4L210.3 66.3a8.1 8.1 0 0 1 11.4 11.4l-112 112a8.5 8.5 0 0 1-5.7 2.3Z"/></svg>`;
+
         setTimeout(() => {
           copyButton.innerHTML = copySVG;
         }, 1000);
