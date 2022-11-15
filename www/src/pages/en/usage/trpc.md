@@ -263,7 +263,7 @@ const MyComponent = () => {
       const prevData = utils.post.list.getData();
 
       // Optimistically update the data with our new post
-      utils.post.list.setData(undefined, old => [...old, newPost ]);
+      utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
       // Return the previous data so we can revert if something goes wrong
       return { prevData };
