@@ -14,7 +14,7 @@ We firmly believe the experience TypeScript provides will help you be a better d
 
 We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths.
 
-Next.js offers a lightly opinionated, heavily optimized approach to creating a website using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
+Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
 
 ## Why tRPC/Prisma/Tailwind/etc?
 
