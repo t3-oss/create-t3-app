@@ -171,7 +171,7 @@
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md bg-[#191724] border border-t3-purple-300/80 px-3 transition-all duration-75 ease-in-out;
+    @apply mt-2 w-full rounded-md bg-[#191724] border border-t3-purple-300/80 px-3 transition-all duration-300 ease-in-out;
   }
   .markdown details[open]{
     @apply bg-t3-purple-200/10;
