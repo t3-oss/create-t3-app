@@ -28,7 +28,7 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
           <li
             class={`pl-${
               depth * 2 - 2
-            } w-full list-none border-l-2 border-t3-purple-300/20 pb-1 transition-colors duration-300 hover:border-t3-purple-300/50`}
+            } w-full list-none border-l-2 border-t3-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-t3-purple-300/50`}
           >
             <a
               class="text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100"
@@ -78,6 +78,7 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
               for (const el of currentActiveElements) {
                 el.classList.remove(
                   "font-medium",
+                  "bg-t3-purple-300/20",
                   "text-t3-purple-700",
                   "dark:text-t3-purple-100",
                 );
@@ -88,7 +89,11 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
             if (currentActiveParentElements.length) {
               // loop through all parent elements and remove class and attr
               for (const parentEl of currentActiveParentElements) {
-                parentEl.classList.remove("border-t3-purple-300/100");
+                parentEl.classList.remove(
+                  "dark:bg-t3-purple-300/20",
+                  "bg-t3-purple-300/30",
+                  "border-t3-purple-300/100",
+                );
                 parentEl.removeAttribute(
                   "data-current-active-parent-tab-content-item",
                 );
@@ -100,7 +105,11 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
               "text-t3-purple-700",
               "dark:text-t3-purple-100",
             );
-            tocItem.parentElement.classList.add("border-t3-purple-300/100");
+            tocItem.parentElement.classList.add(
+              "border-t3-purple-300/100",
+              "dark:bg-t3-purple-300/20",
+              "bg-t3-purple-300/30",
+            );
             // set data attr to active element also will helpful when need to remove active state
             tocItem.setAttribute("data-current-active-tab-content-item", true);
             tocItem.parentElement.setAttribute(

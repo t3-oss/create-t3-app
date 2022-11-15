@@ -22,7 +22,9 @@ const sidebar = SIDEBAR[langCode];
 <div class="w-full ml--40 md:ml-0 mb-6 mx-auto px-6 md:px-8 md:hidden">
   <Search isLanding={isLanding} client:idle />
 </div>
-<div class="w-full h-full bg-default transition-colors duration-300">
+<div
+  class="t3-scrollbar w-full lg:mb-12 h-full bg-default transition-colors duration-300"
+>
   <ul class="pb-28 pr-4 pl-4 md:pb-0 dark:text-t3-purple-50 text-slate-900">
     {
       Object.entries(sidebar).map(([header, children]) => (
@@ -30,7 +32,7 @@ const sidebar = SIDEBAR[langCode];
           <div>
             <h2
               class={clsx(
-                "py-2 text-xl font-semibold transition-colors duration-300 sm:text-lg",
+                "pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg",
                 {
                   // mobile menu on landing page
                   "text-slate-50": isLanding,
@@ -39,7 +41,7 @@ const sidebar = SIDEBAR[langCode];
             >
               {header}
             </h2>
-            <ul>
+            <ul class="mb-2">
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;
                 const isActive = currentPageMatch === child.link;
@@ -49,10 +51,10 @@ const sidebar = SIDEBAR[langCode];
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "block border-l-2 py-2 pl-4 text-lg text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100",
+                        "text-md block border-l-2 py-2 pl-4 text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
                         {
-                          "font-medium": isActive,
-                          "border-t3-purple-300": isActive,
+                          "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20":
+                            isActive,
                           "border-t3-purple-300/20": !isActive,
                         },
                       )}

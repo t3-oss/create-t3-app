@@ -6,20 +6,20 @@ layout: ../../../layouts/docs.astro
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
-<blockquote className="w-full relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
+<blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
-    <p className="mb-4 text-lg md:text-xl">
+    <p className="mb-4 text-lg">
       <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span>
     </p>
   </div>
-  <cite className="flex items-center justify-end">
+  <cite className="flex items-center justify-end pr-4 pb-2">
     <img
       alt="Avatar of @alexdotjs"
       className="w-12 mr-4 rounded-full bg-neutral-500"
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
-    <div className="flex flex-col items-start">
-      <span className="mb-1 text-sm italic font-bold">Alex - creator of tRPC</span>
+    <div className="flex flex-col items-start not-italic">
+      <span className=" text-sm font-semibold">Alex - creator of tRPC</span>
       <a
         href="https://twitter.com/alexdotjs"
         target="_blank"
