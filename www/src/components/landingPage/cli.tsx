@@ -77,26 +77,22 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={6300}
           avgTypingDelay={-10000}
-          className="translate-y-[-1.8rem] md:translate-y-[-2.0rem]"
+          className="translate-y-[-1.8rem] text-green-400 md:translate-y-[-2.0rem]"
         >
           Good choice! Using TypeScript!
           <br />
           <Typist.Delay ms={1000} />
-          {`? Which packages would you like to enable? (Press <space> to select, <a> to toggle all, <i> to invert selection, and
-<enter> to proceed)`}
+          <span className="text-white">{`? Which packages would you like to enable? (Press <space> to select, <a> to toggle all, <i> to invert selection, and
+<enter> to proceed)`}</span>
           <br />
-          <span>
-            <span className="text-blue-400">❯</span>
-            <span>
-              ◯<span className="pl-[.4em] text-blue-400">nextAuth</span>
-            </span>
-          </span>
+          <span className="text-blue-400">❯</span>
+          <span className="text-blue-400">◯ nextAuth</span>
           <br />
-          &nbsp;◯ prisma
+          <span className="text-white">&nbsp;◯ prisma</span>
           <br />
-          &nbsp;◯ tailwind
+          <span className="text-white">&nbsp;◯ tailwind</span>
           <br />
-          &nbsp;◯ trpc
+          <span className="text-white">&nbsp;◯ trpc</span>
           <Typist.Delay ms={900} />
           <Typist.Backspace count={38} />
           <Typist.Delay ms={1200} />
@@ -120,12 +116,8 @@ export default function CodeCard() {
           className="translate-y-[-4.6rem] sm:translate-y-[-5.2rem] md:translate-y-[-5.0rem] lg:translate-y-[-5.0rem]"
           startDelay={8700}
         >
-          <span>
-            <span className="text-blue-400">❯</span>
-            <span>
-              ◉<span className="pl-[.4em] text-blue-400">nextAuth</span>
-            </span>
-          </span>
+          <span className="text-blue-400">❯</span>
+          <span className="text-blue-400">◉ nextAuth</span>
           <br />
           &nbsp;◉ prisma
           <br />
@@ -160,7 +152,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={13000}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           Sounds good! You can come back and run git init later.
         </Typist>
@@ -190,7 +182,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={16000}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
         >
           Alright. We&apos;ll install the dependencies for you!
         </Typist>
