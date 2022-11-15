@@ -28,7 +28,9 @@ const { isNotFound } = Astro.props;
     <HeadSeo type="website" />
     <title>{SITE.title}</title>
   </head>
-  <body class="bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900">
+  <body
+    class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
+  >
     <JumpToContent />
     <img
       src="/images/background-pattern.svg"
@@ -39,18 +41,16 @@ const { isNotFound } = Astro.props;
     />
     <div class="relative">
       <Navbar isNotFound={isNotFound || false} />
-      <div class="relative">
-        <aside id="grid-left" class="hidden" title="Site Navigation">
-          <div
-            class="fixed top-0 pt-16 h-screen md:pt-0 md:h-auto md:sticky md:top-20 z-30 bg-gradient-to-b via-[#300171] from-gray-900 to-slate-900 w-full overflow-y-auto"
-          >
+      <aside id="grid-left" class="hidden" title="Site Navigation">
+        <div class="fixed left-0 top-0 h-screen w-screen z-30 bg-default">
+          <div class="fixed top-24 h-[calc(100%-96px)] pb-16 w-full">
             <LeftSidebar
               currentPage={currentPage}
               isNotFound={isNotFound || false}
             />
           </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
       <main id="content">
         <slot />
       </main>
