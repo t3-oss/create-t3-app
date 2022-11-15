@@ -28,7 +28,7 @@ const title = frontmatter.title;
 
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
-    block.className = "relative flex w-full h-full hover:cursor-pointer";
+    block.className = "relative flex w-full h-full";
     let copyButton = document.createElement("button");
     copyButton.className =
       "inline-flex absolute right-2 bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
