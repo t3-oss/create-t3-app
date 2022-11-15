@@ -139,7 +139,7 @@
     @apply list-disc;
   }
   .markdown ol > li {
-    @apply list-decimal mb-2;
+    @apply mb-2 list-decimal;
   }
   .markdown p {
     @apply mb-4 dark:text-white;
@@ -163,7 +163,7 @@
   }
 
   .markdown pre {
-    @apply mx-auto mb-3 rounded border border-t3-purple-300/80 shadow-xl p-2 pl-3 font-mono sm:pt-2;
+    @apply mx-auto mb-3 rounded border border-t3-purple-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
   }
 
   .markdown ol {

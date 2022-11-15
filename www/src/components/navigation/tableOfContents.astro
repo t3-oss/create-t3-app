@@ -78,7 +78,7 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
               for (const el of currentActiveElements) {
                 el.classList.remove(
                   "font-medium",
-                  "bg-t3-purple-300/10",
+                  "bg-t3-purple-300/20",
                   "text-t3-purple-700",
                   "dark:text-t3-purple-100",
                 );
@@ -90,8 +90,9 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
               // loop through all parent elements and remove class and attr
               for (const parentEl of currentActiveParentElements) {
                 parentEl.classList.remove(
-                  "dark:bg-t3-purple-300/10",
+                  "dark:bg-t3-purple-300/20",
                   "bg-t3-purple-300/30",
+                  "border-t3-purple-300/100",
                 );
                 parentEl.removeAttribute(
                   "data-current-active-parent-tab-content-item",
@@ -106,7 +107,7 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
             );
             tocItem.parentElement.classList.add(
               "border-t3-purple-300/100",
-              "dark:bg-t3-purple-300/10",
+              "dark:bg-t3-purple-300/20",
               "bg-t3-purple-300/30",
             );
             // set data attr to active element also will helpful when need to remove active state
