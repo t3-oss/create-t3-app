@@ -24,6 +24,8 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
+After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+
 ## Advanced usage
 
 | Option/Flag       | Description                                                             |
