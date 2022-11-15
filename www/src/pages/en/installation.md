@@ -9,7 +9,7 @@ To scaffold an app using `create-t3-app`, run any of the following three command
 ### npm
 
 ```bash
-npx create-t3-app@latest
+npm create t3-app@latest
 ```
 
 ### yarn
