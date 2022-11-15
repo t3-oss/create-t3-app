@@ -53,7 +53,7 @@ const title = frontmatter.title;
     block.className = "relative flex w-full h-full hover:cursor-pointer";
     let copyButton = document.createElement("button");
     copyButton.className =
-      "inline-flex absolute right-1 top-1  rounded-lg px-2 py-1 text-sm text-slate-50 hover:bg-slate-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
+      "inline-flex absolute right-[.45em] top-[.45em]  rounded-lg p-1 text-sm text-slate-50 hover:bg-slate-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
     copyButton.innerHTML = copySVG;
     copyButton.addEventListener("click", () => {
       let text = "";
@@ -74,8 +74,8 @@ const title = frontmatter.title;
           console.error("Failed to copy: ", err);
         }
         copyButton.innerHTML = `<svg
-    stroke="currentColor"
-    fill="currentColor"
+    stroke="#22c55e"
+    fill="#22c55e"
     strokeWidth={0}
     viewBox="0 0 1024 1024"
     height="1.3em"
