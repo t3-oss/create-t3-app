@@ -60,7 +60,7 @@ DISCORD_CLIENT_SECRET=
   const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
 
   const envDest = path.join(projectDir, ".env");
-  const envExampleDest = path.join(projectDir, ".env-example");
+  const envExampleDest = path.join(projectDir, ".env.example");
 
   fs.copySync(envSchemaSrc, envSchemaDest);
   fs.writeFileSync(envDest, envContent, "utf-8");
