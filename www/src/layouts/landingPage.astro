@@ -27,6 +27,17 @@ const { isNotFound } = Astro.props;
     <HeadCommon />
     <HeadSeo type="website" />
     <title>{SITE.title}</title>
+
+    <script is:inline>
+      const html = document.documentElement;
+      if (
+        window.location.pathname === "/" ||
+        html.classList.contains("not-found")
+      ) {
+        html.classList.remove("not-found");
+        html.classList.add("dark");
+      }
+    </script>
   </head>
   <body
     class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
