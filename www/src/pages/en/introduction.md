@@ -4,7 +4,9 @@ description: Introduction to the T3 Stack
 layout: ../../layouts/docs.astro
 ---
 
+<div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## What is the T3 Stack?
 
