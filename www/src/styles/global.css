@@ -136,7 +136,7 @@
     @apply mt-4 mb-2 text-xl font-semibold;
   }
   .markdown li {
-    @apply list-disc text-white;
+    @apply list-disc text-slate-900 dark:text-white;
   }
   .markdown ol > li {
     @apply mb-2 list-decimal;
