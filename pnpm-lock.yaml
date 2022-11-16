@@ -18,7 +18,6 @@ importers:
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-unicorn: 44.0.0
       prettier: ^2.7.1
-      rehype-external-links: ^2.0.1
       turbo: ^1.5.5
       typescript: ^4.8.4
     dependencies:
@@ -38,8 +37,6 @@ importers:
       prettier: 2.7.1
       turbo: 1.5.5
       typescript: 4.8.4
-    devDependencies:
-      rehype-external-links: 2.0.1
 
   cli:
     specifiers:
@@ -108,6 +105,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
+      rehype-external-links: ^2.0.1
       remark-code-titles: ^0.1.2
       sharp: ^0.31.1
       tailwind-scrollbar: ^2.0.1
@@ -143,6 +141,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-typist: 2.0.5_zpnidt7m3osuk7shl3s4oenomq
+      rehype-external-links: 2.0.1
       remark-code-titles: 0.1.2
       tailwindcss: 3.1.8
       typescript: 4.8.4
