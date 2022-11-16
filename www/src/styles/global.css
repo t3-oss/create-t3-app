@@ -155,7 +155,7 @@
   }
 
   .markdown code {
-    @apply break-words lg:break-normal;
+    @apply break-all lg:break-normal;
   }
 
   .markdown .remark-code-title {
