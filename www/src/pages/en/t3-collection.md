@@ -20,6 +20,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                 | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook) | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                           | [slug.vercel.app](https://slug.vercel.app)                                        |
+| AI TTS Donations - FOSS AI Text To Speach service for Streamers. | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)
 
 ## Companies using the T3 Stack
 
