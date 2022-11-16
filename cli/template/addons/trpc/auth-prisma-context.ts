@@ -12,7 +12,7 @@ type CreateContextOptions = {
 /** Use this helper for:
  * - testing, so we dont have to mock Next.js' req/res
  * - trpc's `createSSGHelpers` where we don't have req/res
- * @see https://beta.create.t3.gg/en/usage/trpc#-servertrpccontextts
+ * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  **/
 export const createContextInner = async (opts: CreateContextOptions) => {
   return {

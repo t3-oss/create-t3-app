@@ -9,7 +9,7 @@ import remarkCodeTitles from "remark-code-titles";
  * @link https://astro.build/config
  */
 export default defineConfig({
-  site: `https://beta.create.t3.gg`,
+  site: `https://create.t3.gg`,
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
