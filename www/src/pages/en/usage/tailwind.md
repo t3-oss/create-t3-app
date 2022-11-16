@@ -61,7 +61,6 @@ Tailwind CSS has a beautiful built-in design system, that comes out of the box w
 
 Tru Narula better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-
 ## Usage
 
 Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
