@@ -16,7 +16,6 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  └─ favicon.ico
 └─ src
    ├─ env
-   ├─ env
    │  ├─ client.mjs
    │  ├─ schema.mjs
    │  └─ server.mjs
