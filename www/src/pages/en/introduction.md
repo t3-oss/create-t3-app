@@ -8,9 +8,9 @@ layout: ../../layouts/docs.astro
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## What is the T3 Stack?
+## The T3 Stack
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety. It consists of:
+The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety. The core pieces are...
 
 - [**Next.js**](https://nextjs.org/)
 - [**tRPC**](https://trpc.io/)
@@ -19,11 +19,13 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 - [**Prisma**](https://prisma.io/)
 - [**NextAuth.js**](https://next-auth.js.org/)
 
-## What is `create-t3-app`? Some kinda template?
+## So...what is create-t3-app? A template?
 
-Kind of. We love all of the technologies that create-t3-app includes, but they are a bit annoying to get started with and connect them together. So we made `create-t3-app` to do one thing: _**Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity.**_
+Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
 
-This is **NOT** an all-inclusive template and we expect you to bring your own libraries as well. Check out [our other recommendations](/en/other-recs) for even more info on topics such as state management and deployment - but we do not believe these are needed on every project.
+After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+
+This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
 
 ## T3 Axioms
 
