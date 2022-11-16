@@ -16,6 +16,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  └─ favicon.ico
 └─ src
    ├─ env
+   ├─ env
    │  ├─ client.mjs
    │  ├─ schema.mjs
    │  └─ server.mjs
@@ -84,18 +85,6 @@ The `src` folder contains all the source code of the application.
 
 Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
 
-### `src/env/client.mjs`
-
-[See the client.mjs documentation](usage/env-variables#servermjs--clientmjs)
-
-### `src/env/server.mjs`
-
-[See the server.mjs documentation](usage/env-variables#servermjs--clientmjs)
-
-### `src/env/schema.mjs`
-
-[See the schema.mjs documentation](usage/env-variables#schemamjs)
-
 ## `src/pages`
 
 The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
@@ -106,23 +95,11 @@ The `api` folder contains all the API routes of the Next.js application. The `ex
 
 <sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
-## `src/pages/api/auth`
-
-The `auth` folder contains the NextAuth.js authentication slug route.
-
-<sub>(With NextAuth.js)</sub>
-
 ### `src/pages/api/auth/[...nextauth].ts`
 
 The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with NextAuth.js)</sub>
-
-## `src/pages/api/trpc`
-
-The `trpc` folder contains the tRPC API entry point.
-
-<sub>(with tRPC)</sub>
 
 ### `src/pages/api/trpc/[trpc].ts`
 
@@ -147,12 +124,6 @@ The `common` folder contains commonly re-used server-side code.
 The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 <sub>(with NextAuth.js + tRPC)</sub>
-
-## `src/server/db`
-
-The `db` folder contains the Prisma client.
-
-<sub>(with Prisma)</sub>
 
 ### `src/server/db/client.ts`
 
@@ -204,9 +175,9 @@ The `example.ts` file is an example tRPC router utilizing the `publicProcedure` 
 
 ## `src/styles`
 
-The `styles` folder contains the global styles of the application, used by TailwindCSS.
+The `styles` folder contains the global styles of the application.
 
-<sub>(with TailwindCSS)</sub>
+<sub>(with Tailwind CSS)</sub>
 
 ## `src/types`
 
@@ -234,23 +205,15 @@ The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](usage/
 
 ## `.env`
 
-The `.env` file is used to store environment variables. See [Environment variables](usage/env-variables) for more information.
+The `.env` file is used to store environment variables. See [Environment variables](usage/env-variables) for more information. This file should **not** be commited to git history.
 
 ## `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. See [Environment variables](usage/env-variables) for more information.
+The `.env.example` file shows example environment variables based on the chosen libraries. This file should be commited to git history.
 
 ## `.eslintrc.json`
 
 The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
-
-## `.gitignore`
-
-The `.gitignore` file is used to tell Git which files to ignore. See [Git Docs](https://git-scm.com/docs/gitignore) for more information.
-
-## `README.md`
-
-The `README.md` file is used to document the project. See [Markdown Docs](https://www.markdownguide.org/basic-syntax) for more information.
 
 ## `next-env.d.ts`
 
@@ -260,21 +223,17 @@ The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript c
 
 The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
 
-## `package.json`
-
-The `package.json` file is used to configure the project details, dependencies, and scripts. See [npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json) for more information.
-
 ## `postcss.config.cjs`
 
 The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
 
-<sub>(with TailwindCSS)</sub>
+<sub>(with Tailwind CSS)</sub>
 
 ## `prettier.config.cjs`
 
-The `prettier.config.cjs` file is used to configure Prettier to include the Prettier-TailwindCSS plugin. See [the Tailwind blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
 
-<sub>(with TailwindCSS)</sub>
+<sub>(with Tailwind CSS)</sub>
 
 ## `tsconfig.json`
 
