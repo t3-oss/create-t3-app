@@ -1,5 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
 import PageSection from "../pageSection.astro";
 import Feature from "./card.astro";
 ---
@@ -135,12 +134,12 @@ import Feature from "./card.astro";
         </Feature>
 
         <Feature title="NextAuth.js" href="https://next-auth.js.org/">
-          <Image
+          <img
+            src="/images/nextauth.webp"
             slot="icon"
-            src={import("./nextauth.png")}
-            class="h-10 w-8 py-1"
+            height={40}
+            width={32}
             alt="NextAuth.js"
-            format="webp"
           />
           <Fragment slot="description">
             When you need flexible, secure, and scalable auth, NextAuth.js is
