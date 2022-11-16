@@ -124,7 +124,7 @@
 
   /* Markdown Styling */
   .markdown {
-    @apply flex w-full flex-col items-start justify-start px-4 text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
+    @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-t3-purple-200 selection:text-t3-purple-500 dark:text-t3-purple-100 dark:selection:bg-t3-purple-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
@@ -136,7 +136,7 @@
     @apply mt-4 mb-2 text-xl font-semibold;
   }
   .markdown li {
-    @apply list-disc;
+    @apply list-disc text-slate-900 dark:text-white;
   }
   .markdown ol > li {
     @apply mb-2 list-decimal;
@@ -156,6 +156,10 @@
 
   .markdown code {
     @apply break-words lg:break-normal;
+  }
+
+  .markdown code:not(.markdown pre code) {
+    @apply rounded border border-t3-purple-200 bg-t3-purple-200/40 px-0.5 py-[0.5px] dark:border-t3-purple-400 dark:bg-t3-purple-400/20;
   }
 
   .markdown .remark-code-title {
