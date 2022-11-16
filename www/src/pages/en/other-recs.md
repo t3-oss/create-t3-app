@@ -88,7 +88,7 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 
 ### Vercel
 
-**For hosting your website**
+**For hosting your app**
 
 Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
 

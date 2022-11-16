@@ -6,23 +6,15 @@ layout: ../../../layouts/docs.astro
 
 Next.js is a backend framework for your React applications.
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
-  <p align="center">
-    <img
-      src="/images/nextjs_thumbnail.jpg"
-      alt="Next.js is a backend framework"
-      width="320"
-    />
-  </p>
-</a>
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
-<a href="https://www.youtube.com/watch?v=2cB5Fh46Vi4" className="mx-auto" target="\_blank">
-  <p align="center">Watch Theo's overview on Youtube here</p>
-</a>
+Check out [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) to get a better understanding of what Next.js is and how it works.</p>
 
 ## Why should I use it?
 
-We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating a website using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.
+We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.
 
 Pairing Next.js with [Vercel](https://vercel.com/) makes developing and deploying web apps easier than ever before. Their extremely generous free-tier and super intuitive interface provides a point and click solution to deploy your site (We ❤️ Vercel)
 

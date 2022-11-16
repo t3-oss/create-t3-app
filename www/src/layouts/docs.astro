@@ -39,6 +39,30 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
     <title>
       {frontmatter.title} • {CONFIG.SITE.title}
     </title>
+
+    <script is:inline>
+      const html = document.documentElement;
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+      }
+    </script>
+
     <script type="module" defer>
       main();
       function main() {
@@ -86,7 +110,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       </nav>
 
       <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
-        <PageContent frontmatter={frontmatter} headings={headings}>
+        <PageContent frontmatter={frontmatter}>
           <slot />
         </PageContent>
         <nav class="flex lg:hidden mx-3">
@@ -97,7 +121,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       <aside
         id="grid-right"
         title="Table of Contents"
-        class="t3-scrollbar hidden lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 pb-4 top-[100px] overflow-y-auto"
+        class="t3-scrollbar hidden lg:mb-12 lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
       >
         <RightSidebar
           headings={headings}

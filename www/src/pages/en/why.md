@@ -4,17 +4,23 @@ description: Why you should pick Create T3 App for your next project
 layout: ../../layouts/docs.astro
 ---
 
+We started create-t3-app because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build) and a general love for typesafety, the create-t3-app team worked hard to build the best possible starting point for new T3 Stack projects.
+
+If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
+
 ## Why TypeScript ?
 
 Javascript is hard. Why add more rules?
 
 We firmly believe the experience TypeScript provides will help you be a better developer. It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your editor or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line. Whether you're new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS.
 
+Typesafety makes you faster. If you're not convinced, you [might be using TypeScript wrong...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
+
 ## Why Next.js ?
 
 We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths.
 
-Next.js offers a lightly opinionated, heavily optimized approach to creating a website using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
+Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
 
 ## Why tRPC/Prisma/Tailwind/etc?
 
