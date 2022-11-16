@@ -10,14 +10,11 @@ layout: ../../layouts/docs.astro
 
 ## The T3 Stack
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety. The core pieces are...
+The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
 
-- [**Next.js**](https://nextjs.org/)
-- [**tRPC**](https://trpc.io/)
-- [**Tailwind CSS**](https://tailwindcss.com/)
-- [**TypeScript**](https://typescriptlang.org/)
-- [**Prisma**](https://prisma.io/)
-- [**NextAuth.js**](https://next-auth.js.org/)
+The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+
+You may have noticed that there's a...lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at it's core :)
 
 ## So...what is create-t3-app? A template?
 
