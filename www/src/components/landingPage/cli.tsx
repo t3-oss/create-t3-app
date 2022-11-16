@@ -3,10 +3,10 @@ import Typist from "react-typist";
 
 export default function CodeCard() {
   return (
-    <div className="mx-auto w-full overflow-hidden rounded-lg sm:w-[700px] md:w-[600px]">
+    <div className="mx-auto w-full overflow-hidden rounded-lg sm:w-[600px]">
       <div
         className="inverse-toggle h-[300px] overflow-hidden rounded-lg border border-t3-purple-200/20 bg-white/10 px-1 pb-6 pt-4 
-         font-mono text-[10px] leading-normal text-t3-purple-50 subpixel-antialiased shadow-lg transition-all sm:h-[400px] sm:px-2 sm:text-xs md:h-[450px] md:px-5 lg:h-[400px]"
+         font-mono text-[10px] leading-normal text-t3-purple-50 subpixel-antialiased shadow-lg transition-all sm:h-[400px] sm:px-2 sm:text-xs md:px-5"
       >
         <div className="top mb-2 flex">
           <div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -18,7 +18,7 @@ export default function CodeCard() {
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
-          className="leading-1 translate-y-[-0.2rem] bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[7px] text-transparent sm:text-xs md:translate-y-[-0.4rem] md:text-sm"
+          className="leading-1 translate-y-[-0.2rem] bg-gradient-to-r from-blue-400 via-green-300 to-pink-600 bg-clip-text font-mono text-[7px] text-transparent sm:text-sm md:translate-y-[-0.4rem]"
           cursor={{ show: false }}
           avgTypingDelay={-500}
         >
@@ -96,14 +96,14 @@ export default function CodeCard() {
           <Typist.Delay ms={900} />
           <Typist.Backspace count={38} />
           <Typist.Delay ms={1200} />
-          <Typist.Backspace count={135} />
+          <Typist.Backspace count={136} />
           <span></span>
         </Typist>
         <Typist
           cursor={{ show: false }}
           startDelay={10000}
           avgTypingDelay={-10000}
-          className="translate-y-[-5.6rem] sm:translate-y-[-5.8rem] md:translate-y-[-6.0rem] lg:translate-y-[-6.0rem]"
+          className="translate-y-[-5.6rem] sm:translate-y-[-6.0rem]"
         >
           <span>? Which packages would you like to enable?</span>
           <span className="pl-1 text-blue-400">
@@ -113,7 +113,7 @@ export default function CodeCard() {
         <Typist
           cursor={{ show: false }}
           avgTypingDelay={-20000}
-          className="translate-y-[-4.6rem] sm:translate-y-[-5.2rem] md:translate-y-[-5.0rem] lg:translate-y-[-5.0rem]"
+          className="translate-y-[-4.6rem] sm:translate-y-[-5.0rem]"
           startDelay={8700}
         >
           <span className="text-blue-400">❯</span>
@@ -132,7 +132,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={10500}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10rem]"
         >
           <div className="flex whitespace-nowrap">
             <span>? Initialize a new git repository? (Y/n)</span>
@@ -152,7 +152,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={13000}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10rem]"
         >
           Sounds good! You can come back and run git init later.
         </Typist>
@@ -160,7 +160,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={14500}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] sm:translate-y-[-10rem]"
         >
           <div>
             <span className="whitespace">
@@ -182,7 +182,7 @@ export default function CodeCard() {
           cursor={{ show: false }}
           startDelay={16000}
           avgTypingDelay={-10000}
-          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10.5rem] md:translate-y-[-10rem] lg:translate-y-[-10rem]"
+          className="translate-y-[-9.4rem] text-green-400 sm:translate-y-[-10rem]"
         >
           Alright. We&apos;ll install the dependencies for you!
         </Typist>
