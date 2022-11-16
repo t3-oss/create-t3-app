@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
-
+import rehypeExternalLinks from "rehype-external-links";
 import remarkCodeTitles from "remark-code-titles";
 
 /**
@@ -12,6 +12,15 @@ export default defineConfig({
   site: `https://beta.create.t3.gg`,
   markdown: {
     remarkPlugins: [remarkCodeTitles],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["noreferrer noopener"],
+        },
+      ],
+    ],
     shikiConfig: {
       theme: "rose-pine",
       wrap: true,
