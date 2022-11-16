@@ -171,9 +171,9 @@
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md bg-[#191724] border border-t3-purple-300/80 px-3 transition-all duration-300 ease-in-out;
+    @apply mt-2 w-full rounded-md border border-t3-purple-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
   }
-  .markdown details[open]{
+  .markdown details[open] {
     @apply bg-t3-purple-200/10;
   }
   .markdown details pre {
@@ -207,5 +207,13 @@
 
   #DocSearch-SearchBar {
     @apply my-3 rounded-md bg-purple-400 p-2 text-sm;
+  }
+
+  .embed {
+    @apply relative mb-2 h-0 w-full pb-[56.25%];
+  }
+
+  .embed iframe {
+    @apply absolute top-0 left-0 h-full w-full;
   }
 }
