@@ -15,41 +15,41 @@ Further down, the description of each folder indicates its purpose and if it is 
 ├─ public
 │  └─ favicon.ico
 ├─ src
-│    ├─ env
-│    │  ├─ client.mjs
-│    │  ├─ schema.mjs
-│    │  └─ server.mjs
-│    ├─ pages
-│    │  ├─ _app.tsx
-│    │  └─ index.tsx
-│    ├─ styles
-│    │  └─ globals.css
-│    ├─ types
-│    │  └─ next-auth.d.ts
-│    ├─ utils
-│    │  └─ trpc.ts
-│    ├─ pages
-│    │  └─ api
-│    │     ├─ examples.ts
-│    │     └─ restricted.ts
-│    ├─ server
-│    │  ├─ common
-│    │  │  └─ get-server-auth-session.ts
-│    │  ├─ db
-│    │  │  └─ client.ts
-│    │  └─ trpc
-│    │     ├─ router
-│    │     │  ├─ _app.ts
-│    │     │  ├─ auth.ts
-│    │     │  └─ example.ts
-│    │     ├─ context.ts
-│    │     └─ trpc.ts
-│    ├─ pages
-│    │  └─ api
-│    │     ├─ auth
-│    │     │  └─ [...nextauth].ts
-│    │     └─ trpc
-│    │        └─ [trpc].ts
+│  ├─ env
+│  │  ├─ client.mjs
+│  │  ├─ schema.mjs
+│  │  └─ server.mjs
+│  ├─ pages
+│  │  ├─ _app.tsx
+│  │  └─ index.tsx
+│  ├─ styles
+│  │  └─ globals.css
+│  ├─ types
+│  │  └─ next-auth.d.ts
+│  ├─ utils
+│  │  └─ trpc.ts
+│  ├─ pages
+│  │  └─ api
+│  │     ├─ examples.ts
+│  │     └─ restricted.ts
+│  ├─ server
+│  │  ├─ common
+│  │  │  └─ get-server-auth-session.ts
+│  │  ├─ db
+│  │  │  └─ client.ts
+│  │  └─ trpc
+│  │     ├─ router
+│  │     │  ├─ _app.ts
+│  │     │  ├─ auth.ts
+│  │     │  └─ example.ts
+│  │     ├─ context.ts
+│  │     └─ trpc.ts
+│  └─ pages
+│     └─ api
+│        ├─ auth
+│        │  └─ [...nextauth].ts
+│        └─ trpc
+│           └─ [trpc].ts
 ├─ .env
 ├─ .env-example
 ├─ .eslintrc.json
