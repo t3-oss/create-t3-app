@@ -63,7 +63,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 
 ## `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/www/src/pages/en/usage/prisma) for more information.
+The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
 
 <sub>(With Prisma)</sub>
 
@@ -195,7 +195,7 @@ The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/t
 
 ## `.env`
 
-The `.env` file is used to store environment variables. See [Environment variables](usage/env-variables) for more information. This file should **not** be commited to git history.
+The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be commited to git history.
 
 ## `.env.example`
 
