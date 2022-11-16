@@ -20,6 +20,17 @@ export default defineConfig({
           rel: ["noreferrer noopener"],
         },
       ],
+      "rehype-slug",
+      [
+        "rehype-autolink-headings",
+        {
+          properties: {
+            class: "heading-link heading-link--hidden---effects",
+            "data-heading-link": true,
+          },
+          behavior: "wrap",
+        },
+      ],
     ],
     shikiConfig: {
       theme: "rose-pine",
