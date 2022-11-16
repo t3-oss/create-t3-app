@@ -54,7 +54,7 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 
 Kind of. We love all of the technologies that create-t3-app includes, but they are a bit annoying to get started with and connect them together. So we made `create-t3-app` to do one thing: _**Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity.**_
 
-This is **NOT** an all-inclusive template and we expect you to bring your own libraries as well. Check out [our other recommendations](https://beta.create.t3.gg/en/other-recs) for even more info on topics such as state management and deployment - but we do not believe these are needed on every project.
+This is **NOT** an all-inclusive template and we expect you to bring your own libraries as well. Check out [our other recommendations](https://create.t3.gg/en/other-recs) for even more info on topics such as state management and deployment - but we do not believe these are needed on every project.
 
 <h2 id="axioms">T3 Axioms</h2>
 
@@ -94,7 +94,7 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-For more advanced usage, check out the [CLI docs](https://beta.create.t3.gg/en/installation).
+For more advanced usage, check out the [CLI docs](https://create.t3.gg/en/installation).
 
 <h2 id="community">Community</h2>
 
