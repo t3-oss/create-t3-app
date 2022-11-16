@@ -1,10 +1,10 @@
 ---
 title: Folder Structure
-description: Folder structure of a newly scaffolded Create T3 App
+description: Folder structure of a newly scaffolded T3 App
 layout: ../../layouts/docs.astro
 ---
 
-The following is the folder structure of a newly scaffolded Create T3 App, with all options selected.
+The following is the folder structure of a newly scaffolded T3 App, with all options selected.
 
 Further down, the description of each folder indicates its purpose and if it is only included with selected libraries.
 
