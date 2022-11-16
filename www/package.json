@@ -22,6 +22,7 @@
     "@docsearch/react": "^3.2.1",
     "@fontsource/inter": "^4.5.12",
     "@fontsource/jetbrains-mono": "^4.5.10",
+    "@vercel/analytics": "^0.1.5",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.3",
     "embla-carousel-autoplay": "^7.0.3",
@@ -46,6 +47,7 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-typist": "^2.0.5",
+    "rehype-external-links": "^2.0.1",
     "remark-code-titles": "^0.1.2",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.4"

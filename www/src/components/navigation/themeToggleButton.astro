@@ -1,5 +1,5 @@
 <div
-  class="flex bg-t3-purple-200/50 hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 duration-300 p-2 w-fit mx-auto rounded-lg gap-3"
+  class="flex bg-t3-purple-200/50 hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 p-2 w-fit mx-auto rounded-lg gap-3"
 >
   <label class="cursor-pointer text-t3-purple-500 dark:text-slate-50">
     <!-- Sun -->
@@ -46,27 +46,9 @@
   </label>
 </div>
 
-<script is:inline>
-  // Set initial theme
-  const html = document.querySelector("html");
-  const lsItem = localStorage.getItem("theme");
-  const sysPref = window.matchMedia("(prefers-color-scheme: dark)").matches;
+<script>
+  const html = document.documentElement;
 
-  html.classList.remove("dark");
-  html.classList.remove("light");
-
-  if (
-    window.location.pathname === "/" ||
-    html.classList.contains("not-found")
-  ) {
-    html.classList.remove("not-found");
-    html.classList.add("dark");
-  } else {
-    const theme = lsItem ?? (sysPref ? "dark" : "light");
-    html.classList.add(theme);
-  }
-
-  // Toggle theme
   const lightToggle = document.querySelector(
     'input[name="theme-toggle"][value="light"]',
   );
@@ -74,12 +56,12 @@
     'input[name="theme-toggle"][value="dark"]',
   );
 
-  const toggleTheme = (t) => {
+  const toggleTheme = (t: "light" | "dark") => {
     localStorage.setItem("theme", t);
     html.classList.add(t === "dark" ? "dark" : "light");
     html.classList.remove(t === "dark" ? "light" : "dark");
   };
 
-  lightToggle.addEventListener("change", () => toggleTheme("light"));
-  darkToggle.addEventListener("change", () => toggleTheme("dark"));
+  lightToggle!.addEventListener("change", () => toggleTheme("light"));
+  darkToggle!.addEventListener("change", () => toggleTheme("dark"));
 </script>
