@@ -8,7 +8,7 @@ Next.js is a backend framework for your React applications.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p class="w-[560px] italic pt-1" >Check out Theo's <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">Next.js Conf talk</a> to get a better understanding of what Next.js is and how it works._</p>
+<p class="w-[560px] pt-1" >Check out Theo's <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">Next.js Conf talk</a> to get a better understanding of what Next.js is and how it works.</p>
 
 ## Why should I use it?
 

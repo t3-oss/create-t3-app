@@ -4,19 +4,7 @@ description: Introduction to the T3 Stack
 layout: ../../layouts/docs.astro
 ---
 
-<a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
-  <p align="center">
-    <img
-      src="https://t3.gg/random/T3%20Stack%20V4.png"
-      alt="Video thumbnail of Theo with an indecipherable expression on his face"
-      width="320"
-    />
-  </p>
-</a>
-
-<a href="http://www.youtube.com/watch?v=PbjHxIuHduU" target="_blank">
-  <p align="center">Watch Theo's overview on Youtube here</p>
-</a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## What is the T3 Stack?
 

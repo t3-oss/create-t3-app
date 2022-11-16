@@ -42,12 +42,7 @@ While many new TypeScript developers are concerned with _writing_ TypeScript, ma
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<a
-href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
-target="_blank">
-
-Watch Theo's overview on Youtube here
-</a>
+<p class="w-[560px] pt-1" >Check out Theo's video on how<a href="https://www.youtube.com/watch?v=RmGHnYUqQ4k">you might be using TypeScript wrong.</a></p>
 
 ## Powerful uses of type inference
 
