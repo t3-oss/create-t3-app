@@ -19,6 +19,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | My FAQ Page - An FAQ Page generator                               | [ronanru/myfaq.page](https://github.com/ronanru/myfaq.page)               | [MyFAQ.page](https://myfaq.page)                                                  |
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                 | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook) | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
+| Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                           | [slug.vercel.app](https://slug.vercel.app)                                        |
 
 ## Companies using the T3 Stack
 
