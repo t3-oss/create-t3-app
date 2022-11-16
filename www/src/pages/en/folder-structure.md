@@ -64,7 +64,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 ├─ postcss.config.cjs
 ├─ prettier.config.cjs
 ├─ tailwind.config.cjs
-├─ tsconfig.json
+└─ tsconfig.json
 ```
 
 ## `prisma`
