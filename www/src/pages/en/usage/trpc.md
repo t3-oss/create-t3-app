@@ -6,20 +6,20 @@ layout: ../../../layouts/docs.astro
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
-<blockquote className="w-full relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
+<blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
-    <p className="mb-4 text-lg md:text-xl">
+    <p className="mb-4 text-lg">
       <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span>
     </p>
   </div>
-  <cite className="flex items-center justify-end">
+  <cite className="flex items-center justify-end pr-4 pb-2">
     <img
       alt="Avatar of @alexdotjs"
       className="w-12 mr-4 rounded-full bg-neutral-500"
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
-    <div className="flex flex-col items-start">
-      <span className="mb-1 text-sm italic font-bold">Alex - creator of tRPC</span>
+    <div className="flex flex-col items-start not-italic">
+      <span className=" text-sm font-semibold">Alex - creator of tRPC</span>
       <a
         href="https://twitter.com/alexdotjs"
         target="_blank"
@@ -67,6 +67,10 @@ You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which dete
 Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
 
 ## How do I use tRPC?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p class="w-[560px] italic pt-1 pb-4" >tRPC contributor <a href="https://twitter.com/trashh_dev">trashh_dev</a> made <a href="https://www.youtube.com/watch?v=W4UhNo3HAMw">a killer talk at Next.js Conf</a> about tRPC. We highly recommend you watch it if you haven't already.
 
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 

@@ -4,20 +4,20 @@ description: Usage of TypeScript
 layout: ../../../layouts/docs.astro
 ---
 
-<blockquote className="w-full relative italic border-l-4 bg-t3-purple-100 dark:text-t3-purple-50 text-slate-900 dark:bg-slate-700 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
+<blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
-    <p className="mb-4 text-lg md:text-xl">
+    <p className="mb-4 text-lg">
       <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
     </p>
   </div>
-  <cite className="flex items-center justify-end">
+  <cite className="flex items-center justify-end pr-4 pb-2">
     <img
-      alt="Avatar of @t3dotgg"
+      alt="Avatar of @alexdotjs"
       className="w-12 mr-4 rounded-full bg-neutral-500"
       src="/images/theo_300x300.webp"
     />
-    <div className="flex flex-col items-start">
-      <span className="mb-1 text-sm italic font-bold">Theo - creator of the T3 Stack</span>
+    <div className="flex flex-col items-start not-italic">
+      <span className=" text-sm font-semibold">Theo - creator of the T3 Stack</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"
@@ -40,26 +40,13 @@ It is, perhaps, the tool that provides the most productivity to developers; prov
 
 While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
 
-<a
-href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
-className="mx-auto"
-target="_blank">
-
-  <p align="center">
-    <img
-      src="/images/ts_thumbnail.webp"
-      alt="You might be using TypeScript wrong..."
-      width="320"
-    />
-  </p>
-</a>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <a
 href="https://www.youtube.com/watch?v=RmGHnYUqQ4k"
-className="mx-auto"
 target="_blank">
 
-  <p align="center">Watch Theo's overview on Youtube here</p>
+Watch Theo's overview on Youtube here
 </a>
 
 ## Powerful uses of type inference

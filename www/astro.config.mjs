@@ -13,7 +13,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     shikiConfig: {
-      theme: "material-palenight",
+      theme: "rose-pine",
       wrap: true,
     },
     extendDefaultPlugins: true,
