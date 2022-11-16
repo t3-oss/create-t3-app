@@ -63,7 +63,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 
 ## `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/www/src/pages/en/usage/prisma) for more information.
+The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
 
 <sub>(With Prisma)</sub>
 
