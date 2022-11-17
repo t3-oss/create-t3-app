@@ -1,6 +1,6 @@
 ---
-title: Introduction
-description: Introduction to the T3 Stack
+title: Wstęp
+description: Wstęp do T3 Stacka
 layout: ../../layouts/docs.astro
 ---
 
@@ -8,34 +8,34 @@ layout: ../../layouts/docs.astro
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## The T3 Stack
+## T3 Stack
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
+_"T3 Stack"_, to stack do web developmentu stworzony przez Theo [Theo](https://twitter.com/t3dotgg) i mający na celu prostotę, modularność oraz typesafety całego projektu.
 
-The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+Jego głównymi elementami są [**Next.js**](https://nextjs.org/) oraz [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) również jest prawie zawsze dołączony. Jeżeli budujesz cokolwiek wspólnego z backendem, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) oraz [**NextAuth.js**](https://next-auth.js.org/) mogą być dobrymi dodatkami.
 
-You may have noticed that there are a… lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at it's core :)
+Mogłeś dostrzec już, iż jest tu... dużo elementów. Jest to celowe. Zmieniaj elementy jak tylko chcesz - stack ten jest tak modularny, jak tylko możliwe.
 
-## So... what is create-t3-app? A template?
+## A więc... co to create-t3-app? Jakiś szablon?
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
+Może? `create-t3-app` to narzędzie CLI zbudowane przez doświadczonych deweloperów T3 stacka aby usprawnić zakładanie w nim nowych, modularnych projektów. Oznacza to, iż każdy element jest opcjonalny a "szablon" generowany jest bazując na twoich szczegółowych potrzebach.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+Po niezliczonych projektach i wielu latach w tej technologii, nabyliśmy wiele opinii i wewnętrznych doświadczeń. Zrobiliśmy, co tylko się dało, aby zawrzeć je w naszym CLI.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+**NIE** jest to szablon all-inclusive. **Oczekujemy** od Ciebie trochę wkładu, dodając biblioteki rozwiązujące problemy, które posiada **TWOJA** aplikacja. Nie chcemy zapisywać rozwiązań na bardziej specyficzne problemy, takie jak state management lub deployment. [Mamy jednak tutaj parę rekomendacji](/pl/other-recs).
 
-## T3 Axioms
+## Aksjomaty T3
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść założeń dotyczących budowania aplikacji i traktujemy je jako bazę naszych decyzji.
 
-### Solve Problems
+### Rozwiązuj Problemy
 
-It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
+Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wsszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
 
 ### Bleed Responsibly
 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zabawa, jaka wynika z ich zastosowania - jest na prawdę super. Uważamy jednak za ważne odpowiedzialne korzystanie z powyższych elementów. Oznacza to, iż nie ⛔️ postawimy na nowy rodzaj bazy danych (SQL jest dobry!). Z radością ✅ stawiamy jednak na tRPC - są to tylko funkcje, które łatwo można zamienić na coś innego.
 
-### Typesafety Isn't Optional
+### Typesafety NIE Jest Opcjonalne
 
-The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project.
+Celem `create-t3-app` jest zapewnienie jak najszybszego sposobu na stworzenie nowego projektu full-stack z pełnym **typesafety**. Typesafety traktujemy poważnie - pozwala ono poprawić naszą produktywność i pomaga nam w dostarczaniu mniejszej ilości bugów. Jakakolwiek decyzja która naraża naturę typesafety jest decyzją, która powinna zostać podjęta w innym projekcie.
