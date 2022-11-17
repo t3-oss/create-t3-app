@@ -9,6 +9,8 @@ const { path } = Astro.props;
 const [_1, _2, _3, ...rest] = path.split("/");
 
 const englishPath = `src/pages/en/${rest.join("/")}`;
+const engHref = `/en/${rest}`.replace(/(.*)\.[^.]+$/, "");
+
 const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${path}&per_page=1`;
 const engUrl = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${englishPath}&per_page=1`;
 
@@ -29,11 +31,21 @@ Astro.response.headers.set("Cache-Control", `s-max-age=${ONE_WEEK}`);
 {
   diffInDays > 0 && (
     <div class="bg-t3-purple-200/50 dark:bg-t3-purple-200/10 mb-8 w-full rounded-lg p-4 font-medium">
-      Attention: This page is{" "}
-      <span class="font-extrabold">{diffInDays} days</span>
-      older than the English version, and might be outdated. If you're a native
-      speaker of this language, and would like to contribute to the project,
-      please consider updating this page to match the latest English version.
+      <p>
+        Attention: This page is{" "}
+        <span class="font-extrabold">{diffInDays} days</span>
+        older than the English version, and might be outdated. If you're a
+        native speaker of this language, and would like to contribute to the
+        project, please consider updating this page to match the latest English
+        version.
+      </p>
+      <p class="mt-3">
+        You can also{" "}
+        <a class="text-t3-purple-400" href={engHref}>
+          to go to the English version
+        </a>{" "}
+        of this page.
+      </p>
     </div>
   )
 }
