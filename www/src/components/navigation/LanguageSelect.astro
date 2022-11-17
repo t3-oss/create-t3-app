@@ -22,14 +22,17 @@ const { language } = Astro.props;
   >
     <select
       id="language-select"
-      class="appearance-none bg-transparent outline-none h-6 focus:outline-none"
+      class="appearance-none bg-transparent border-none"
       value={language}
       aria-label="Select language"
     >
       {
-        Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
-          <option value={code} class="appearance-none outline-none">
-            <span>{name}&nbsp;&nbsp;&nbsp;</span>
+        Object.entries(KNOWN_LANGUAGES).map(([name, code]) => (
+          <option
+            value={code}
+            class="cursor-pointer appearance-none outline-none"
+          >
+            {name} ({code})
           </option>
         ))
       }
@@ -52,11 +55,9 @@ const { language } = Astro.props;
     "#language-select",
   ) as HTMLSelectElement;
   select?.addEventListener("change", (e) => {
-    console.log("change", e);
-    const newLang = e.target.value;
-    const [_leadingSlash, _oldLang, ...rest] =
-      window.location.pathname.split("/");
-    const slug = rest.join("/");
-    window.location.pathname = `/${newLang}/${slug}`;
+    // @ts-ignore - Why is this not typed?
+    const newLang = e.currentTarget.value;
+    const [_1, _2, ...slug] = window.location.pathname.split("/");
+    window.location.pathname = `/${newLang}/${slug.join("/")}`;
   });
 </script>
