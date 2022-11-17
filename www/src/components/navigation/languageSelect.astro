@@ -9,7 +9,11 @@ const languageName = KNOWN_LANGUAGES[language];
 ---
 
 <div class="flex items-center gap-2">
-  <svg viewBox="0 0 88.6 77.3" class="h-6 w-6 text-t3-purple-100" role="img">
+  <svg
+    viewBox="0 0 88.6 77.3"
+    class="h-6 w-6 dark:text-t3-purple-100 text-slate-900"
+    role="img"
+  >
     <path
       fill="currentColor"
       d="M61 24.6h7.9l18.7 51.6h-7.7l-5.4-15.5H54.3l-5.6 15.5h-7.2L61 24.6zM72.6 55l-8-22.8L56.3 55h16.3z"
@@ -29,7 +33,10 @@ const languageName = KNOWN_LANGUAGES[language];
       aria-expanded="true"
       aria-labelledby="listbox-label"
     >
-      <span class="truncate">{languageName}</span>
+      <span
+        class="truncate transition-none text-slate-900 dark:text-t3-purple-100"
+        >{languageName}</span
+      >
       <span
         class="pointer-events-none absolute inset-y-0 right-0 pl-3 flex items-center pr-2"
       >
@@ -48,7 +55,7 @@ const languageName = KNOWN_LANGUAGES[language];
     </button>
 
     <ul
-      class="absolute h-0 transform bg-default dark:border-t3-purple-200/50 transition-transform z-10 mt-1 max-h-56 w-full overflow-auto rounded-lg"
+      class="absolute bg-default transform dark:border-t3-purple-200/50 transition-all origin-top ease-in-out duration-300 z-10 mt-1 scale-y-0 w-full overflow-auto rounded-lg"
       tabindex="-1"
       role="listbox"
       aria-labelledby="listbox-label"
@@ -75,7 +82,7 @@ const languageName = KNOWN_LANGUAGES[language];
   ) as HTMLButtonElement;
   const list = button.nextElementSibling as HTMLUListElement;
   button?.addEventListener("click", () => {
-    list.classList.toggle("h-0");
+    list.classList.toggle("scale-y-0");
     list.classList.toggle("border");
   });
 
