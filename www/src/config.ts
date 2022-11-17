@@ -31,7 +31,6 @@ export const KNOWN_LANGUAGES = {
   de: "🇩🇪 Deutsch",
   fr: "🇫🇷 Français",
 } as const;
-export const KNOWN_LANGUAGE_CODES = Object.keys(KNOWN_LANGUAGES);
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
 export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/next/www`;
@@ -46,7 +45,7 @@ export const ALGOLIA = {
 };
 
 export type Sidebar = Record<
-  typeof KNOWN_LANGUAGE_CODES[number],
+  KnownLanguageCode,
   Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
