@@ -1,10 +1,10 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Instalacja
+description: Instrukcje instalacji dla Create T3 App.
 layout: ../../layouts/docs.astro
 ---
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+Aby zacząć używać szablonu `create-t3-app`, uruchom którąkolwiek z poniższych trzech komend i odpowiedz na pytania w konsoli:
 
 ### npm
 
@@ -24,36 +24,36 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Po tym, jak szablon aplikacji zostanie utworzony, sprawdź [pierwsze kroki](/pl/usage/first-steps) aby zacząć budować swoją nową aplikację.
 
-## Advanced usage
+## Zaawansowane użycie
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Opcja/Flaga       | Opis                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `[dir]`           | Argument z nazwą dla projektu                                                        |
+| `--noGit`         | Wyraźnie poinformuj narzędzie, aby nie inicjalizować nowego repozytorium w projekcie |
+| `-y`, `--default` | Pomiń CLI i stwórz nową aplikację z wszystkimi wybranymi opcjami                     |
+| `--noInstall`     | Wygeneruj projekt bez instalowania zależności (npm)                                  |
 
-## Experimental usage
+## Eksperymentalne użycie
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+Z powodu naszej integracji CI, posiadamy eksperymentalne flagi pozwalające skorzystać z szablonu bez żadnych informacji w konsoli. Jeżeli przemawia do ciebie któraś z poniższych opcji, możesz z jakiejś flagi skorzystać. Pamiętaj, że są to opcje eksperymentalne - mogą się one zmienić bez względu na system wersji semver.
 
-| Flag         | Description                         |
-| ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| Flaga        | Opis                                        |
+| ------------ | ------------------------------------------- |
+| `--CI`       | Poinformuj narzędzie, że jesteś w trybie CI |
+| `--trpc`     | Zawrzyj tRPC w projekcie                    |
+| `--prisma`   | Zawrzyj Prisma w projekcie                  |
+| `--nextAuth` | Zawrzyj NextAuth.js w projekcie             |
+| `--tailwind` | Zawrzyj Tailwind CSS w projekcie            |
 
-**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+**Uwaga: Jeżeli nie podasz flagi `CI`, pozostałe flagi nie zostaną użyte.**
 
-You don't need to explicitely opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżeli jednak wolisz jasno wskazać czego używasz, możesz podać wartość `false` - np. `--nextAuth false`.
 
-### Example
+### Przykład
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Poniższy przykłąd stworzy aplikację T3 z bibliotekami tRPC oraz Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
