@@ -16,7 +16,7 @@ Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your 
 
 The content of these files may seem scary at first glance, but don't worry, it's not as complicated as it looks. Let's take a look at them one by one, and walk through the process of adding additional environment variables.
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as defining the validator in `env/schema.mjs`._
+_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `env/schema.mjs`._
 
 ## schema.mjs
 
@@ -40,7 +40,7 @@ export const clientEnv = {
 
 Define your server-side environment variables schema here.
 
-Make sure you do not prefix keys in here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
+Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
 
 ### Client Schema
 
@@ -88,7 +88,7 @@ Since the default `.env` file is not committed to version control, we have also 
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
 
-📄 `.env`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
 📄 `schema.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`
 
