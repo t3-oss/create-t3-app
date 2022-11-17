@@ -26,8 +26,10 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  English: "en",
-  Swedish: "sv",
+  "🇺🇸 English": "en",
+  "🇸🇪 Svenska": "sv",
+  "🇩🇪 Deutsch": "de",
+  "🇫🇷 Français": "fr",
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
