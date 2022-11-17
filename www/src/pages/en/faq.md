@@ -53,6 +53,6 @@ However, if you struggle to implement it and want to see a reference project, we
 
 ## Why are we using `/pages` and not `/app` from Next.js 13?
 
-As per [T3-Axiom #2](/en/introduction#bleed-responsibly), we love bleeding edge stuff but value stability, especialy in parts as crucial as the router. While `/app` is a glimpse into the future, it's not ready for production; The API is in beta and expected to have breaking changes.
+As per [T3-Axiom #2](/en/introduction#bleed-responsibly), we love bleeding edge stuff but value stability, especialy in parts as crucial as the router. While `/app` is [a glimpse into the future](https://youtu.be/rnsC-12PVlM?t=818), it's not ready for production; The API is in beta and expected to have breaking changes.
 
 For a list of supported, planned, and worked on features in the `/app` dir, visit the [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
