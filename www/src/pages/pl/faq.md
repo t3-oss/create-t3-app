@@ -4,7 +4,7 @@ description: Najczęściej zadawane pytania dotyczące Create T3 App
 layout: ../../layouts/docs.astro
 ---
 
-Tu znajdziesz najczęściej zadawane pytania dotyczące  `create-t3-app`.
+Tu znajdziesz najczęściej zadawane pytania dotyczące `create-t3-app`.
 
 ## Co dalej? Jak mam napisać aplikację?
 
