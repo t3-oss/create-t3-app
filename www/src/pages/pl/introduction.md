@@ -10,7 +10,7 @@ layout: ../../layouts/docs.astro
 
 ## T3 Stack
 
-_"T3 Stack"_, to stack do web developmentu stworzony przez Theo [Theo](https://twitter.com/t3dotgg) i mający na celu prostotę, modularność oraz typesafety całego projektu.
+_"T3 Stack"_, to stack do web developmentu stworzony przez [Theo](https://twitter.com/t3dotgg) i mający na celu prostotę, modularność oraz typesafety całego projektu.
 
 Jego głównymi elementami są [**Next.js**](https://nextjs.org/) oraz [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) również jest prawie zawsze dołączony. Jeżeli budujesz cokolwiek wspólnego z backendem, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) oraz [**NextAuth.js**](https://next-auth.js.org/) mogą być dobrymi dodatkami.
 
