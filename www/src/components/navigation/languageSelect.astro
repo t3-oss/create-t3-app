@@ -5,7 +5,10 @@ export interface Props {
   language: typeof KNOWN_LANGUAGE_CODES[number];
 }
 const { language } = Astro.props;
-const languageName = KNOWN_LANGUAGES[language];
+// const languageName = KNOWN_LANGUAGES[language];
+const languageName = Object.entries(KNOWN_LANGUAGES).find(
+  ([, code]) => code === language,
+)?.[0];
 ---
 
 <div class="flex items-center gap-2">
