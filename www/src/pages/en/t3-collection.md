@@ -22,5 +22,6 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Company | Link                       |
 | ------- | -------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg) |
+| Nexiona | [nexiona.com](https://nexiona.com) |
 
 _Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/main/www/src/pages/en/t3-collection.md) and it here!_
