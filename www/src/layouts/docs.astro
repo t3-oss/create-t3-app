@@ -85,7 +85,7 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       </nav>
 
       <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
-        <PageContent frontmatter={frontmatter}>
+        <PageContent frontmatter={frontmatter} path={currentFile}>
           <slot />
         </PageContent>
         <nav class="flex lg:hidden mx-3">

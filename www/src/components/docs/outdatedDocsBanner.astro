@@ -1,0 +1,39 @@
+---
+import { fetchGithub } from "../../utils/fetchGithub";
+
+export interface Props {
+  path: string;
+}
+const { path } = Astro.props;
+
+const [_1, _2, _3, ...rest] = path.split("/");
+
+const englishPath = `src/pages/en/${rest.join("/")}`;
+const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${path}&per_page=1`;
+const engUrl = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${englishPath}&per_page=1`;
+
+const thisLangCommit = await fetchGithub(url, { throwIfNotOk: true });
+const englishCommit = await fetchGithub(engUrl, { throwIfNotOk: true });
+
+const thisLangDate = new Date(thisLangCommit[0].commit.author.date);
+const englishDate = new Date(englishCommit[0].commit.author.date);
+
+const diffInDays = Math.round(
+  Math.abs(thisLangDate.getTime() - englishDate.getTime()) / (1000 * 3600 * 24),
+);
+
+const ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+Astro.response.headers.set("Cache-Control", `s-max-age=${ONE_WEEK}`);
+---
+
+{
+  diffInDays > 0 && (
+    <div class="bg-t3-purple-200/50 dark:bg-t3-purple-200/10 mb-8 w-full rounded-lg p-4 font-medium">
+      Attention: This page is{" "}
+      <span class="font-extrabold">{diffInDays} days</span>
+      older than the English version, and might be outdated. If you're a native
+      speaker of this language, and would like to contribute to the project,
+      please consider updating this page to match the latest English version.
+    </div>
+  )
+}
