@@ -8,7 +8,7 @@ Tu znajdziesz najczęściej zadawane pytania dotyczące `create-t3-app`.
 
 ## Co dalej? Jak mam napisać aplikację?
 
-Staramy się, aby projekt ten był jak najprostszy - możesz zacząć już korzystać z zawartego w nim szablonu a następnie stopniowo dodawać potrzebne ci rzeczy.
+Staramy się, aby projekt ten był jak najprostszy - możesz zacząć już korzystać z zawartego w nim szablonu a następnie stopniowo dodawać potrzebne Ci rzeczy.
 
 Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z odnośników do odpowiednich stron z dokumentacjami. Jeżeli dalej nie jesteś co do nich pewien, możesz dołączyć do naszego [serwera Discord](https://t3.gg/discord) i poprosić o pomoc.
 
@@ -22,7 +22,7 @@ Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z 
 
 Poniższe elementy to jedne z najlepszych zasobów dla T3 Stacka, jednak społeczność oraz [Theo](https://youtu.be/rzwaaWH0ksk?t=1436) polecają Ci zacząć po prostu z niego korzystać. W ten sposób podczas pisania aplikacji zdobędziesz potrzebną wiedzę.
 
-Jeżeli zastanawiasz się nad korzystaniem z `create-t3-app`, mogłeś już używać poszczególnych jego składowych w przeszłości. W takim przyadku spróbuj wskoczyć na głęboką wodę i nauczyć się innych jego częsci po drodze!
+Jeżeli zastanawiasz się nad korzystaniem z `create-t3-app`, mogłeś już używać poszczególnych jego składowych w przeszłości. W takim przyadku spróbuj wskoczyć na głęboką wodę i nauczyć się innych jego części po drodze!
 
 Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego najlepszy. Jeżeli więc w dalszym ciągu czujesz potrzebę skorzystania z innych źródeł (lub jeżeli nie jesteś wystarczająco pewny siebie / czujesz się przytłoczony stackiem), sprawdź te poradniki dotyczące `create-t3-app` (pamiętaj, że są one w języku angielskim):
 
@@ -45,7 +45,7 @@ Tak jak opisano w [aksjomacie #3](/pl/introduction#typesafety-isnt-optional), tr
 
 Staramy się podkreślić, iż pliki te korzystają z TypeScripta nie bez powodu. Wyraźnie określamy rozszerzenia plików jako `cjs` lub `mjs`, zależnie od wsparcia przez daną bibliotekę. Dodatkowo, wszystkie pliki `.js` w naszym projekcie są w dalszym ciągu sprawdzane pod kątem poprawności typów - korzystamy do tego z komentarza `@ts-check` na górze pików.
 
-## Mam problem z dodaniem i18n do aplikacji. Czy istnieje jakiś projekt, do którego mógłbym się odnieść przy budowaniu mojej aplikacji?
+## Mam problem z dodaniem i18n do aplikacji. Czy istnieje jakiś projekt, do którego mógłbym się odnieść przy jej budowaniu?
 
 Zdecydowaliśmy się nie umieszczać i18n w `create-t3-app`, ponieważ jest to bardzo kontrowersyjny temat i istnieje wiele sposobów, aby element ten zaimplementować.
 
@@ -55,4 +55,4 @@ Jeżeli jednak nie wiesz jak wygląda poprawna interpretacja internacjonalizacji
 
 Tak jak opisano w [aksjomacie #2](/pl/introduction#bleed-responsibly), kochamy technologie "bleeding edge", jednak ważna jest dla nas stabilność. Ciężko jest zmienić cały `router` w aplikacji ([not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662)). Folder `/app` to [wgląd na przyszłość](https://youtu.be/rnsC-12PVlM?t=818), jednak nie jest on gotowy na wersję produkcyjną. API jest w becie i oczekiwać można zmian wpływających na działanie całej aplikacji (niekoniecznie pozytywnie!).
 
-Zby poznać listę wspieranych, zaplanowanych i tych, nad którymi prace trwają funkcji, odwiedź [dokumentację Next.js beta](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+Żeby poznać listę wspieranych, zaplanowanych i tych, nad którymi prace trwają funkcji, odwiedź [dokumentację Next.js beta](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).

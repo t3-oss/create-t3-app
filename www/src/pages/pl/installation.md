@@ -37,7 +37,7 @@ Po tym, jak szablon aplikacji zostanie utworzony, sprawdź [pierwsze kroki](/pl/
 
 ## Eksperymentalne użycie
 
-Z powodu naszej integracji CI, posiadamy eksperymentalne flagi pozwalające skorzystać z szablonu bez żadnych informacji w konsoli. Jeżeli przemawia do ciebie któraś z poniższych opcji, możesz z jakiejś flagi skorzystać. Pamiętaj, że są to opcje eksperymentalne - mogą się one zmienić bez względu na system wersji semver.
+Z powodu naszej integracji CI, posiadamy eksperymentalne flagi pozwalające skorzystać z szablonu bez żadnych informacji w konsoli. Jeżeli przemawia do Ciebie któraś z poniższych opcji, możesz z jakiejś flagi skorzystać. Pamiętaj, że są to opcje eksperymentalne - mogą się one zmienić bez względu na system wersji semver.
 
 | Flaga        | Opis                                        |
 | ------------ | ------------------------------------------- |
@@ -53,7 +53,7 @@ Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżel
 
 ### Przykład
 
-Poniższy przykłąd stworzy aplikację T3 z bibliotekami tRPC oraz Tailwind CSS.
+Poniższy przykład stworzy aplikację T3 z bibliotekami tRPC oraz Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind

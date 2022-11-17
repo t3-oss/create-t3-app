@@ -6,7 +6,7 @@ layout: ../../layouts/docs.astro
 
 Poniżej przedstawiona jest struktura projektu nowej aplikacji T3, zawierającej wszystkie możliwe opcje instalacji.
 
-Poniżej diagramu znajdują się opisy każdego folderu wraz z jego celem oraz informacją, czy zawarty jest tylko po wybraniu danej bilbioteki.
+Poniżej diagramu znajdują się opisy każdego folderu wraz z jego celem oraz informacją, czy zawarty jest tylko po wybraniu danej biblioteki.
 
 ```
 .
