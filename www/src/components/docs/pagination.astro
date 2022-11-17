@@ -13,13 +13,13 @@ const { next, prev } = paginate(langCode, currentPageMatch);
 ---
 
 <div
-  class="lg:px-8 px-4 pt-8 mt-16 mb-8 border-t-2 border-t3-purple-300/20 flex flex-row items-center justify-between text-t3-purple-800 dark:text-t3-purple-200 font-medium"
+  class="lg:px-8 px-4 pt-4 mt-16 mb-8 flex flex-row items-center justify-between text-t3-purple-800 dark:text-t3-purple-200 font-medium"
 >
   <div class="flex-1 min-w-0">
     {
       prev ? (
         <a
-          class="hover:text-t3-purple-400 dark:hover:text-t3-purple-100"
+          class="underline-offset-2 hover:underline"
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
@@ -47,7 +47,7 @@ const { next, prev } = paginate(langCode, currentPageMatch);
       next ? (
         <a
           rel="next"
-          class="hover:text-t3-purple-400 dark:hover:text-t3-purple-100"
+          class="underline-offset-2 hover:underline"
           href={Astro.site?.pathname + next.link}
         >
           {next.text}
@@ -70,3 +70,5 @@ const { next, prev } = paginate(langCode, currentPageMatch);
     }
   </div>
 </div>
+
+<hr class="border-t-2 border-t3-purple-300/20" />
