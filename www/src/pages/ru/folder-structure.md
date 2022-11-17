@@ -6,7 +6,6 @@ layout: ../../layouts/docs.astro
 
 Так выглядит файловая структура нового T3 приложения, с выбранными всеми опциями.
 
-Further down, the description of each folder indicates its purpose and if it is only included with selected libraries.
 Ниже - описание каждой папки, указывающее на её назначение и когда она добавляется.
 
 ```
@@ -93,8 +92,6 @@ Further down, the description of each folder indicates its purpose and if it is 
 <sub>(с NextAuth.js)</sub>
 
 ### `src/pages/api/trpc/[trpc].ts`
-
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [Документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
 
