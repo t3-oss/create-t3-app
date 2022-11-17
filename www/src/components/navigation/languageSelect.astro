@@ -48,7 +48,7 @@ const languageName = KNOWN_LANGUAGES[language];
     </button>
 
     <ul
-      class="absolute h-0 transform dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 transition-transform z-10 mt-1 max-h-56 w-full overflow-auto rounded-lg bg-t3-purple-200/50 dark:bg-t3-purple-200/10"
+      class="absolute h-0 transform bg-default dark:border-t3-purple-200/50 transition-transform z-10 mt-1 max-h-56 w-full overflow-auto rounded-lg"
       tabindex="-1"
       role="listbox"
       aria-labelledby="listbox-label"
@@ -76,6 +76,7 @@ const languageName = KNOWN_LANGUAGES[language];
   const list = button.nextElementSibling as HTMLUListElement;
   button?.addEventListener("click", () => {
     list.classList.toggle("h-0");
+    list.classList.toggle("border");
   });
 
   const listItems = list.querySelectorAll("li");
