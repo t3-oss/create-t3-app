@@ -26,12 +26,13 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  "🇺🇸 English": "en",
-  "🇸🇪 Svenska": "sv",
-  "🇩🇪 Deutsch": "de",
-  "🇫🇷 Français": "fr",
+  en: "🇺🇸 English",
+  sv: "🇸🇪 Svenska",
+  de: "🇩🇪 Deutsch",
+  fr: "🇫🇷 Français",
 } as const;
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
+export const KNOWN_LANGUAGE_CODES = Object.keys(KNOWN_LANGUAGES);
+export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
 export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/next/www`;
 

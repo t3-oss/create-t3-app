@@ -5,10 +5,7 @@ export interface Props {
   language: typeof KNOWN_LANGUAGE_CODES[number];
 }
 const { language } = Astro.props;
-// const languageName = KNOWN_LANGUAGES[language];
-const languageName = Object.entries(KNOWN_LANGUAGES).find(
-  ([, code]) => code === language,
-)?.[0];
+const languageName = KNOWN_LANGUAGES[language];
 ---
 
 <div class="flex items-center gap-2">
@@ -58,7 +55,7 @@ const languageName = Object.entries(KNOWN_LANGUAGES).find(
       aria-activedescendant="listbox-option-3"
     >
       {
-        Object.entries(KNOWN_LANGUAGES).map(([name, code]) => (
+        Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
           <li
             class="cursor-pointer bg-t3-purple-200/50 py-1 pl-3 text-slate-900 hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20"
             role="option"
