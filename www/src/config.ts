@@ -80,4 +80,10 @@ export const SIDEBAR: Sidebar = {
   sv: {
     "Create T3 App": [],
   },
+  de: {
+    "Create T3 App": [],
+  },
+  fr: {
+    "Create T3 App": [],
+  },
 };
