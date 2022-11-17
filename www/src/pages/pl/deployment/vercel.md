@@ -1,14 +1,14 @@
 ---
 title: Vercel
-description: Deploying to Vercel
+description: Deployment na platformie Vercel
 layout: ../../../layouts/docs.astro
 ---
 
-We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
+Polecamy wykonywać deployment twojej aplikacji na platformę [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Pozwala ona w bardzo prosty sposób wrzucać do siecie aplikacje Next.js.
 
-## Project Configuration
+## Konfiguracja Projektu
 
-Vercel will likely configure your build command and publish directory automatically. However, you can also specify this information along with other configuration by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands:
+Vercel prawdopodobnie automatycznie skonfiguruje za Ciebie komendy budowania i folder publikacji aplikacji. Jeśli jednak chcesz, możesz skonfigurować projekt tworząc plik [`vercel.json`](https://vercel.com/docs/project-configuration) zawierający poniższą treść:
 
 ```json
 {
@@ -19,43 +19,43 @@ Vercel will likely configure your build command and publish directory automatica
 }
 ```
 
-## Using the Vercel Dashboard
+## Korzystanie z Dashboardu Vercela
 
-1. After pushing your code to a GitHub repository, sign up for [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) with GitHub and click on **Add New Project**.
+1. Po wrzuceniu kodu do repozytorium GitHuba, zarejestruj się na stronie [Vercela](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) z tym kontem GitHub i kliknij na **Dodaj Nowy Projekt**.
 
-![New project on Vercel](/images/vercel-new-project.webp)
+![Nowy projekt na stronie Vercel](/images/vercel-new-project.webp)
 
-2. Import the GitHub repository with your project.
+1. Importuj repozytorium z GitHuba z projektem.
 
-![Import repository](/images/vercel-import-project.webp)
+![Importuj repozytorium](/images/vercel-import-project.webp)
 
-3. Add your environment variables.
+1. Dodaj zmienne środowiskowe.
 
-![Add environment variables](/images/vercel-env-vars.webp)
+![Dodaj zmienne środowiskowe](/images/vercel-env-vars.webp)
 
-4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
+1. Kliknij **Deploy**. Od teraz, kiedykolwiek wrzucisz zmianę w kodzie w repozytorium, Vercel automatycznie opublikuje twoją aplikację!
 
-## Using the Vercel CLI
+## Korzystanie z Vercel CLI
 
-To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
+Aby wykonać deploy z konsoli, musisz najpierw [zainstalować Vercel CLI globalnie](https://vercel.com/docs/cli#installing-vercel-cli).
 
 ```bash
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
+Uruchom komendę [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) aby opublikować swój projekt.
 
 ```bash
 vercel
 ```
 
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+Dołącz `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` aby dodać zmienne środowiskowe, jakie jak link do bazy danych. Użyj `--yes`, jeżeli chcesz pominąć pytania podczas publikowania projektu i pozostawić ustawienia domyślne dla każdego z nich.
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
-After the first deployment this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
+Po pierwszym opublikowaniu, komenta ta publikować będzie do gałęzi poglądowej. Będziesz musiał dołączyć `--prod`, aby wrzucić zmiany bezpośrednio do aktywnej strony.
 
 ```bash
 vercel --prod

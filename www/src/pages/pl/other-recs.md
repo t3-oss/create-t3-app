@@ -1,6 +1,6 @@
 ---
-title: Other Recommendations
-description: Libraries and Services that we recommend for many projects
+title: Inne Rekomendacje
+description: Biblioteki i Usługi, które polecamy dla wielu projektów
 layout: ../../layouts/docs.astro
 ---
 
