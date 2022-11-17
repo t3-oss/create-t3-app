@@ -19,7 +19,7 @@ const { next, prev } = paginate(langCode, currentPageMatch);
     {
       prev ? (
         <a
-          class="underline-offset-2 hover:underline"
+          class="hover:text-t3-purple-400 dark:hover:text-t3-purple-100 underline-offset-2 hover:underline"
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
@@ -47,7 +47,7 @@ const { next, prev } = paginate(langCode, currentPageMatch);
       next ? (
         <a
           rel="next"
-          class="underline-offset-2 hover:underline"
+          class="hover:text-t3-purple-400 dark:hover:text-t3-purple-100 underline-offset-2 hover:underline"
           href={Astro.site?.pathname + next.link}
         >
           {next.text}
