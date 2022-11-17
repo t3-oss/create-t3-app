@@ -27,6 +27,7 @@ export type Frontmatter = {
 
 export const KNOWN_LANGUAGES = {
   English: "en",
+  Swedish: "sv",
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
@@ -73,5 +74,8 @@ export const SIDEBAR: Sidebar = {
       { text: "Vercel", link: "en/deployment/vercel" },
       { text: "Docker", link: "en/deployment/docker" },
     ],
+  },
+  sv: {
+    "Create T3 App": [],
   },
 };
