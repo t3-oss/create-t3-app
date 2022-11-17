@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.10.0
+
+### Minor Changes
+
+- [#711](https://github.com/t3-oss/create-t3-app/pull/711) [`da760c7`](https://github.com/t3-oss/create-t3-app/commit/da760c7d4b96fb783ca1621aed933d63f0d51d4e) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - create new index pages
+
+### Patch Changes
+
+- [#754](https://github.com/t3-oss/create-t3-app/pull/754) [`b6cdcb3`](https://github.com/t3-oss/create-t3-app/commit/b6cdcb3f21feeec6153601d420177b0ada490f2e) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: rename example env file
+
 ## 6.9.0
 
 ### Minor Changes
