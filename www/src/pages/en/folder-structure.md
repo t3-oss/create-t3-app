@@ -51,7 +51,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 │        └─ trpc
 │           └─ [trpc].ts
 ├─ .env
-├─ .env-example
+├─ .env.example
 ├─ .eslintrc.json
 ├─ next-env.d.ts
 ├─ next.config.mjs
