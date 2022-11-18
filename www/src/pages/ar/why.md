@@ -1,0 +1,56 @@
+---
+title: لماذا CT3A?
+description: لماذا يجب عليك اخيار Create T3 App لمشروعك المقبل
+layout: ../../layouts/docs.astro
+---
+
+لقد بدأنا `create-t3-app` لان [Theo](https://twitter.com/t3dotgg) رفض أن يقوم بصنع قالب جاهز لتقنيته المفضلة .   
+حبنا لـ Typescript جنبا إلى جنب مع create-next-app و  [Astro's CLI](https://astro.build) هو ما الهم فريق create-t3-app للعمل على قدم وساق لنصنع أفضل نقطة بداية ممكنة لمشاريع T3.
+
+
+إذا كنت مهتمًا باستخدام Next.js بطريقة آمنة ، فهذا هو المكان المناسب للبدء. إذا كنت مهتمًا بأي من الخيارات التقنية المحددة التي اتخذناها ، فاقرأ :)
+
+## لماذا TypeScript ؟
+جافا سكريبت صعب. لماذا نضيف المزيد من القواعد؟  
+لأننا نعتقد اعتقادًا راسخًا أن التجربة التي توفرها TypeScript ستدفعك إلى أن تكون مبرمجا أفضل، فتوفر لك الملاحظات مباشرة أثناء كتابة الكود من خلال تحديد أنواع البيانات المتوقعة(Types) ، هذا إلى جانب ميزة الإكمال التلقائي، و ينبهك في حال ارتكبت خطأَ كأن تحاول مثلا الوصول إلى خاصية غير موجودة أو  تمرير قيمة من النوع الخطأ فيجبرك أن تصححها . سواء كنت مبتدئًا في تطوير الويب أو محترفًا متمرسًا ، فإن "صرامة" TypeScript ستوفر تجربة أقل إحباطًا وأكثر اتساقًا من Vanilla JS.
+
+هل لازلت غير مقتنع بـ Typesafety ؟ اذا شاهد هذا  [أنت تستخدم Typescript بشكل خاطئ](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
+
+
+
+
+
+ 
+## لماذا Next.js ؟
+نحن نحب React، بفضلها اصبح تطوير واجهات المستخدم UI سهل المنال بطريقة لم نكن نتخيلها. لقد أخذت بيد المطور وعبرت به أودية سحيقة صعبة.
+
+علي الرغم أن Next.js تقنية عنيدة قليلاَ، إلا أنها تقدم تجربة أقرب إلى الكمال في شتى النواحي routing و API  حتي عرض الصور، فنحن نثق تمام الثقة أن Next.js ستقود المصورين الي الامام بقراراتها الحكيمة.
+
+## لماذا tRPC/Prisma/Tailwind  وغيرها ؟
+
+
+بينما نؤمن بالحفاظ على بساطة الأشياء قدر الإمكان، فإن هناك قطع برمجية صغيرة تتكرر في كل تطبيق، `create-t3-app` يسمح لك بتبني هذه القطع بصورة رائعة.
+
+### لما ذا tRPC ؟
+
+توفر tRPC تجربة سلسلة في تطوير تطبيقات المستخدم (Client Side) كما في GraphQl، فإنها تتحايل علي TypeScript لتوفر تجربة ممتازة للمطور.
+
+### Prisma
+
+Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees end-to-end typesafety from your database to your app.
+
+Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
+
+### Tailwind CSS
+
+Tailwind feels like "zen-mode CSS".
+
+By providing building blocks in the form of good default colors, spacing, and other primitives, Tailwind makes it easy to create a good-looking app. And unlike component libraries, it does not hold you back when you want to take your app to the next level and create something beautiful and unique.
+
+Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve.
+
+### NextAuth.js
+
+When you want an authentication system in your NextJS application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
+
+
