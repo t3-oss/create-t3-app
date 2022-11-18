@@ -44,7 +44,14 @@ layout: ../../layouts/docs.astro
 
 
 
-Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
+ توفر Prisma  [مجموعة كاملة من الأدوات](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) التي تجعل التفاعلات اليومية مع قاعدة البيانات أسهل.
+ 
+  والجدير بالذكر أن Prisma Client مسؤول عن الاستعلام عن SQL وجعله أمرًا سهلاً للغاية لدرجة أنك بالكاد ستلاحظ أنك تستخدمه .
+ 
+و Prisma Studio هو واجهة مستخدم رسومية ملائمة لقاعدة البيانات الخاصة بك والتي تتيح لك قراءة بياناتك ومعالجتها بسرعة دون الحاجة إلى كتابة التعليمات البرمجية.
+
+
+
 
 ### لماذا Tailwind CSS ؟
 
