@@ -33,11 +33,16 @@ layout: ../../layouts/docs.astro
 
 ### لما ذا tRPC ؟
 
-توفر tRPC تجربة سلسلة في تطوير تطبيقات المستخدم (Client Side) كما في GraphQl، فإنها تتحايل علي TypeScript لتوفر تجربة ممتازة للمطور.
+توفر tRPC تجربة سلسلة في تطوير تطبيقات المستخدم (Client Side) كما في GraphQl، فإنها تتحايل علي TypeScript لتوفر تجربة ممتازة للمطور.  
+  
+
 
 ### لماذا Prisma ؟
 
-Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees end-to-end typesafety from your database to your app.
+إن Prisma بالنسبة لـ SQL كـ Typescript بالنسبة لـ Javascript، فإنها تخلق تجربة مستخدم لم تكن موجودة من قبل، فتقوم بتوليد الانواع (Types) من Schema يقوم المطور بوضعها، ذلك الي جانب توافقها مع [العديد من قواعد البيانات](https://www.prisma.io/docs/concepts/database-connectors)
+فبذلك تضمن Prisma  الـ TypeSafety بين التطبيق وقاعدة البيانات
+
+
 
 Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
 
