@@ -12,7 +12,7 @@ It makes CSS incredibly easy and quick to write, as shown by the following examp
 
 Old CSS:
 
-1. Write CSS, often in a seperate file
+1. Write CSS, often in a separate file
 
 ```css
 .my-class {
