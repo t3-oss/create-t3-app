@@ -9,14 +9,15 @@ layout: ../../layouts/docs.astro
 نحن نحاول ان نبقي هذا المشروع بسيطاًً قدر الامكان، لذلك فقد وضعنا حجز الاساس لك، ويمكن اضافة ما تريد وقت الحاجه عندما يكون ضرورياَ.
 
 اذا كنت غير ملم ببعض التقنيات المستخدمة في هذا المشروع الرجاء الاتجاة الي الـ Docs المعنيه بها، ذإذا ؤاجهتك مشاكل اخري فالرجاء الانضمام الي سيرفر الديسكور الخاص بنا [Discord](https://t3.gg/discord) and ask for help
+- موقع [Next.js](https://nextjs.org/)
+- موقع [NextAuth.js](https://next-auth.js.org)
+- موقع [Prisma](https://prisma.io)
+- موقع [TailwindCSS](https://tailwindcss.com)
+-  موقع [tRPC](https://trpc.io)
+Lh id lwh]v hgjugdl hgljhpi td hg,rj hgphgdUse the `Bahij` front for Arabic docs <a href="https://arabfonts.net/fonts/bahij-thesansarabic-bold">Bahij</a>
+Use the `Dana` front for Farsi docs <a href="https://wikiarticle.xyz/i-post.php?ua=wga5n2gnylfontsara.ir/sq1ko4pdm/farsi-font/dana//tp9xw3nqs">Dana</a>
 
-موقع [Next.js](https://nextjs.org/)  
-موقع [NextAuth.js](https://next-auth.js.org)  
-موقع [Prisma](https://prisma.io)  
-موقع [TailwindCSS](https://tailwindcss.com)  
-موقع [tRPC](https://trpc.io)  
-
-
+(I'm not aware of the type License for these fonts, I will appreciate your help on this point.
 
 ما هي مصادر اتعليم المتاحه في الوقت الحالي ؟
 بالرغم من ان المصادر المذكوره في الاسفل هي من افضل المصادر الموجوده لتعلم مسار T3، فان مجتمعنا و (and [Theo](https://youtu.be/rzwaaWH0ksk?t=1436))ينصحوك انا تبدأ باستخدام الـ Stack وتعلمه عن طريق ان تبني شيئاَ به.
@@ -41,9 +42,10 @@ layout: ../../layouts/docs.astro
 ##لماذا هناك ملفات بامتداد `.js` في هذا المشروع ؟ 
 
 
-As per [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), we take typesafety as a first class citizen. Unfortunately, not all frameworks and plugins support TypeScript which means some of the configuration files have to be `.js` files.
+وفقًا لـ [T3-Axiom #3](/en/introduction#typesafety-isnt-optional) ، نحن نعتبر Typesafety كمواطن من الدرجة الأولى. لسوء الحظ ، لا تدعم جميع الـ Frameworks والاضافات TypeScript مما يعني أن بعض ملفات التكوين يجب أن تكون ملفات JS.
 
-We try to emphasize that these files are javascript for a reason, by explicitly declaring each file's type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
+نحن نحاول التأكيد على أن هذه الملفات هي Javascript لاسباب خارجة عن ارادتنا ، من خلال التصريح صراحةً عن نوع كل ملف (cjs أو mjs) اعتمادًا على ما تدعمه المكتبة التي تستخدمها. أيضًا ، لكن لا تزال جميع ملفات js في هذا المشروع تخضع لفحص Types باستخدام تعليق `@ts-check` في الأعلى.
+
 
 ## I'm struggling to add i18n to my app. Is there any reference I can use?
 
