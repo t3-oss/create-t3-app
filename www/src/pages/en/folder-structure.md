@@ -20,10 +20,10 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  │  ├─ schema.mjs
 │  │  └─ server.mjs
 │  ├─ pages
-│  │  └─ api
+│  │  ├─ api
 │  │  │  ├─ auth
 │  │  │  │  └─ [...nextauth].ts
-│  │  │  └─ trpc
+│  │  │  ├─ trpc
 │  │  │  │  └─ [trpc].ts
 │  │  │  ├─ examples.ts
 │  │  │  └─ restricted.ts
