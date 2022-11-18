@@ -29,4 +29,4 @@ We'd love to know of companies that use the T3 stack for their apps. Is your com
 | ------- | -------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg) |
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/main/www/src/pages/en/t3-collection.md) and add it here!_
+_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
