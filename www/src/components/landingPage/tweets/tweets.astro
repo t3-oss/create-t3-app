@@ -60,6 +60,11 @@ if (import.meta.env.MODE === "CI" || !token) {
     "1570054715240763393",
   ]);
 }
+const SIX_HOURS_IN_SECONDS = 6 * 60 * 60;
+Astro.response.headers.set(
+  "Cache-Control",
+  `s-max-age=${SIX_HOURS_IN_SECONDS}`,
+);
 ---
 
 <PageSection
