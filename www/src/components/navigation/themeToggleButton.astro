@@ -35,13 +35,13 @@
 
   const themeToggle = document.querySelector('[name="theme-toggle"]');
 
-  const message = () => {
+  const getMessage = () => {
     const theme = html.classList.contains("dark") ? "light" : "dark";
     return `Use ${theme}-mode`;
   };
 
-  themeToggle!.setAttribute("title", message());
-  themeToggle!.setAttribute("aria-label", message());
+  themeToggle!.setAttribute("title", getMessage());
+  themeToggle!.setAttribute("aria-label", getMessage());
   themeToggle!.setAttribute(
     "value",
     html.classList.contains("dark") ? "dark" : "light",
@@ -51,8 +51,8 @@
     localStorage.setItem("theme", t);
     html.classList.add(t === "dark" ? "dark" : "light");
     html.classList.remove(t === "dark" ? "light" : "dark");
-    themeToggle!.setAttribute("title", message());
-    themeToggle!.setAttribute("aria-label", message());
+    themeToggle!.setAttribute("title", getMessage());
+    themeToggle!.setAttribute("aria-label", getMessage());
     themeToggle!.setAttribute("value", t);
   };
 
