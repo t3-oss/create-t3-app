@@ -46,13 +46,10 @@ layout: ../../layouts/docs.astro
 
 Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
 
-### Tailwind CSS
+### لماذا Tailwind CSS ؟
 
-Tailwind feels like "zen-mode CSS".
+توفر لك Tailwind  العناصر الانشائيه اللازمة من الوان وتباعد وغيرها، فتُسهل انشاء تطبيق جيد المظهر؟ وعلي عكس المكتبات الاخري فانها لاتعيقك عندما تريد نقل تطبيقك الي مستوي اعلي و انشاء شئ جميل وفريد من نوعه فتحمل عنك عبئ اختيار اسماء للـ Classes و تنظيم الملفات.
 
-By providing building blocks in the form of good default colors, spacing, and other primitives, Tailwind makes it easy to create a good-looking app. And unlike component libraries, it does not hold you back when you want to take your app to the next level and create something beautiful and unique.
-
-Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve.
 
 ### لماذا NextAuth.js ؟
 اذا كنت تريد نظام مصادقة في تطبيق NextJS الخاص بك ، فإن NextAuth.js يعد حلاً ممتازًا دون الحاجة إلى إنشاءه بنفسك. فيأتي مزودًا بقائمة واسعة من الموفرين (Providers) لإضافة مصادقة OAuth بسرعة ويوفر محولات (Adapters) للعديد من قواعد البيانات و ORMs.
