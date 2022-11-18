@@ -1,0 +1,74 @@
+---
+import { paginate } from "../../utils/pagination";
+const langCode = "en";
+
+const currentPage = Astro.url.pathname;
+const hasTrailing = currentPage.endsWith("/");
+const currentPageMatch = currentPage.slice(
+  1,
+  hasTrailing ? -1 : currentPage.length,
+);
+
+const { next, prev } = paginate(langCode, currentPageMatch);
+---
+
+<div
+  class="lg:px-8 px-4 pt-4 mt-16 mb-8 flex flex-row items-center justify-between text-t3-purple-800 dark:text-t3-purple-200 font-medium"
+>
+  <div class="flex-1 min-w-0">
+    {
+      prev ? (
+        <a
+          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          rel="prev"
+          href={Astro.site?.pathname + prev.link}
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            height={24}
+            class="mr-1 inline flex-shrink-0 rotate-180 transform"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+          {prev.text}
+        </a>
+      ) : null
+    }
+  </div>
+  <div class="flex-1 min-w-0 text-right">
+    {
+      next ? (
+        <a
+          rel="next"
+          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          href={Astro.site?.pathname + next.link}
+        >
+          {next.text}
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            height={24}
+            class="ml-1 inline flex-shrink-0 transform"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      ) : null
+    }
+  </div>
+</div>
+
+<hr class="border-t-2 border-t3-purple-300/20" />
