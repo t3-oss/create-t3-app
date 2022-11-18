@@ -35,7 +35,7 @@ layout: ../../layouts/docs.astro
 
 توفر tRPC تجربة سلسلة في تطوير تطبيقات المستخدم (Client Side) كما في GraphQl، فإنها تتحايل علي TypeScript لتوفر تجربة ممتازة للمطور.
 
-### Prisma
+### لماذا Prisma ؟
 
 Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees end-to-end typesafety from your database to your app.
 
