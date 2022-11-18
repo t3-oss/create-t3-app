@@ -1,50 +1,51 @@
 ---
 title: Inne Rekomendacje
-description: Biblioteki i Usługi, które polecamy dla wielu projektów
+description: Biblioteki i usługi, które polecamy dla wielu projektów
 layout: ../../layouts/docs.astro
 ---
 
-We recognize that the libraries included in `create-t3-app` don't solve every problem. While we encourage you to begin your project with the things that we provide, there will come a time when you need to bring in other packages. Only you can know what your project needs, but here are some things that we find ourselves recommending frequently.
+Zdajemy sobie sprawę z tego, że biblioteki które zawiera `create-t3-app` nie są lekarstwem na wszystko. Polecamy zaczynać projekty z rzeczami, które są już dołączone - przyjdzie jednak czas, kiedy będziesz musiał dodać swoje paczki. Tylko ty wiesz, czego twój projekt potrzebuje. Polecamy przejrzeć jednak poniższą listę naszych rekomendacji.
 
-These are recommendations by individual create-t3-app contributors and should not be seen as "official" endorsements by the create-t3-app team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
+Są to rekomendacje pojedynczych kontrybutorów i nie powinny być postrzegane jako "oficjalne" sposoby na rowiązywanie danych problemów od zespołu `create-t3-app` czy też T3-OSS.
+_**Zrób swój research, szczególnie zanim skorzystasz z płatnych usług**_.
 
 ## State Management
 
-_**Editor's Note**_: State management libraries can be great, but often aren't necessary. tRPC's React Query hooks should be able to take care of your server state. For client state, start with React's `useState`, and reach for one of these options when you need more.
+_**Uwaga Edytora**_: Biblioteki do state managementu mogą być niezłe, jednak często nie są one potrzebne. Hooki od tRPC (a dokładniej od React Query) powinny być w stanie zarządzać statem od strony serwera. W przypadku state'a klienta, zacznij od hooka `useState` oferowanego przez Reacta i skorzystaj z poniższych opcji jeśli będziesz potrzebować czegoś więcej.
 
 ### Zustand
 
-**For never using Redux again**
+**Aby nigdy więcej nie używać Reduxa**
 
-The "modern, simple Redux" you didn't know you needed. [Poimandres](https://github.com/pmndrs) can always be trusted. You can build everything from video call apps to games to servers with this little library.
+"Nowoczesny, prosty Redux", o którym nie wiedziałeś, że go potrzebujesz. [Poimandresowi](https://github.com/pmndrs) zawsze można zaufać. Zbudować możesz wszystko, począwszy od aplikacji do rozmów wideo a skończywszy na grach czy też serwerach.
 
-- [Zustand Homepage](https://zustand-demo.pmnd.rs/)
-- [Zustand GitHub](https://github.com/pmndrs/zustand)
+- [Strona główna Zustanda](https://zustand-demo.pmnd.rs/)
+- [GitHub Zustanda](https://github.com/pmndrs/zustand)
 
 ### Jotai
 
-**For never using Context again**
+**Aby nigdy więcej nie używać kontekstu**
 
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Great option for stateful behaviors that don't need a state machine just yet.
+Przy bardziej "niepodzielnym" podejściu, ciężko jest pobić Jotai. Także wykonana przez [Poimandres](https://github.com/pmndrs), Jotai pozwala ci definiować singletony które sprawiają wrażenie, jakby były globalnym hookiem `useState`. Świetna opcja do zachowań wymagających zachowania ze statem i takich, które jeszcze nie potrzebują maszyny state'a.
 
-- [Jotai Homepage](https://jotai.org/)
-- [Jotai GitHub](https://github.com/pmndrs/jotai)
+- [Strona główna Jotai](https://jotai.org/)
+- [GitHub Jotai](https://github.com/pmndrs/jotai)
 
-## Component Libraries
+## Biblioteki Komponentów
 
-Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. These libraries provide great, accessible components that you can use and customize to your liking.
+Wiele aplikacji wymaga tej samej garści komponentów - przełączników, dropdownów czy też modali. Biblioteki te zaopatrzą cię w znakmite i przystępne componenty, z których możesz korzystać i które możesz dostosowywać jak tylko chcesz.
 
-### Unstyled Component Libraries
+### Biblioteki Komponentów Bez Narzuconych Stylów
 
-Also known as headless libraries, they provide great unstyled and accessible components that you can customize to your liking. Here are a few recommendations.
+Znane także jako biblioteki "headless", zapoatrzą cię w znakomite, przystępne komponenty bez narzuconych stylów, które będziesz mógł dostosować jak tylko chcesz. Tu znajdziesz kilka rekomendacji.
 
-- [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
+- [Radix UI](https://www.radix-ui.com/) zaopatrzy cię w olbrzymi zestaw praktycznych i przystępnych prymitywów, które będziesz mógł dostosować do swoich potrzeb z czystym CSSem lub Tailwind CSS.
 
-- [Headless UI](https://headlessui.com/) made by the Tailwind CSS team also provides unstyled, accessible components that integrate seamlessly with Tailwind CSS.
+- [Headless UI](https://headlessui.com/) wykonane przez zespół stojący za Tailwind CSS, przekazuje ci przystępne komponenty bez narzuconych stylów, które bezproblemowo integrują się z Tailwind CSS.
 
-- [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
+- [React Aria](https://react-spectrum.adobe.com/react-aria/) zaopatrzy cię w przystępne prymitywy do UI dla twojego design systemu.
 
-### Styled Component Libraries
+### Biblioteki Komponentów Z Gotowymi Stylami
 
 **For when you just want your app to look OK**
 

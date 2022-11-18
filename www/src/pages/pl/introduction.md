@@ -32,7 +32,7 @@ Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść
 
 Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wsszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
 
-### Bleed Responsibly
+### "Bleed Responsibly"
 
 Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zabawa, jaka wynika z ich zastosowania - jest na prawdę super. Uważamy jednak za ważne odpowiedzialne korzystanie z powyższych elementów. Oznacza to, iż nie ⛔️ postawimy na nowy rodzaj bazy danych (SQL jest dobry!). Z radością ✅ stawiamy jednak na tRPC - są to tylko funkcje, które łatwo można zamienić na coś innego.
 
