@@ -20,6 +20,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                 | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook) | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                           | [slug.vercel.app](https://slug.vercel.app)                                        |
+| The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                 | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
 ## Companies using the T3 Stack
 
