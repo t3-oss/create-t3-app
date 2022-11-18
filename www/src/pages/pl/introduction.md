@@ -30,7 +30,7 @@ Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść
 
 ### Rozwiązuj Problemy
 
-Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wsszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
+Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
 
 ### "Bleed Responsibly"
 
