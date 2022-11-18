@@ -15,6 +15,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Julius's personal site                                           | [juliusmarminge/jumr.dev](https://github.com/juliusmarminge/jumr.dev) | [jumr.dev](https://jumr.dev)       |
 | Me3 - Describe yourself in 3 things and share with your friends. | [hnqg/me3](https://github.com/hnqg/me3)                               | [me.hnqg.io](https://me.hnqg.io)   |
 | Josh's personal site                                             | [joshhyde9/portfolio](https://github.com/JoshHyde9/portfolio)         | [joshhyde.me](https://joshhyde.me) |
+| The Doom                                                         | [moltivie/the-t3-stack](https://github.com/Moltivie/the-t3-stack)     | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app/) |
 
 ## Companies using the T3 Stack
 
