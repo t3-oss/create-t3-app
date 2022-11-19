@@ -15,7 +15,7 @@ Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z 
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
-- [TailwindCSS](https://tailwindcss.com)
+- [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
 ## Jakie zasoby do nauki są dostępne?
