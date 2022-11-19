@@ -20,6 +20,13 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  │  ├─ schema.mjs
 │  │  └─ server.mjs
 │  ├─ pages
+│  │  ├─ api
+│  │  │  ├─ auth
+│  │  │  │  └─ [...nextauth].ts
+│  │  │  ├─ trpc
+│  │  │  │  └─ [trpc].ts
+│  │  │  ├─ examples.ts
+│  │  │  └─ restricted.ts
 │  │  ├─ _app.tsx
 │  │  └─ index.tsx
 │  ├─ styles
@@ -28,10 +35,6 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  │  └─ next-auth.d.ts
 │  ├─ utils
 │  │  └─ trpc.ts
-│  ├─ pages
-│  │  └─ api
-│  │     ├─ examples.ts
-│  │     └─ restricted.ts
 │  ├─ server
 │  │  ├─ common
 │  │  │  └─ get-server-auth-session.ts
@@ -44,12 +47,6 @@ Further down, the description of each folder indicates its purpose and if it is 
 │  │     │  └─ example.ts
 │  │     ├─ context.ts
 │  │     └─ trpc.ts
-│  └─ pages
-│     └─ api
-│        ├─ auth
-│        │  └─ [...nextauth].ts
-│        └─ trpc
-│           └─ [trpc].ts
 ├─ .env
 ├─ .env.example
 ├─ .eslintrc.json

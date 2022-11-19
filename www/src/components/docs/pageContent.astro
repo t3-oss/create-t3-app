@@ -36,6 +36,7 @@ const title = frontmatter.title;
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
     block.className = "relative flex w-full h-full";
+
     let copyButton = document.createElement("button");
     copyButton.className =
       "inline-flex absolute right-[.45em] top-[.5em] bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
@@ -67,6 +68,7 @@ const title = frontmatter.title;
     });
 
     block.appendChild(copyButton);
+    block.setAttribute("tabindex", "0");
   });
 </script>
 <script is:inline>
