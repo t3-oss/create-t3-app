@@ -11,7 +11,7 @@ _**Zrób swój research, szczególnie zanim skorzystasz z płatnych usług**_.
 
 ## State Management
 
-_**Uwaga Edytora**_: Biblioteki do state managementu mogą być niezłe, jednak często nie są one potrzebne. Hooki od tRPC (a dokładniej od React Query) powinny być w stanie zarządzać statem od strony serwera. W przypadku state'a klienta, zacznij od hooka `useState` oferowanego przez Reacta i skorzystaj z poniższych opcji jeśli będziesz potrzebować czegoś więcej.
+_**Informacja**_: Biblioteki do state managementu mogą być niezłe, jednak często nie są one potrzebne. Hooki od tRPC (a dokładniej od React Query) powinny być w stanie zarządzać statem od strony serwera. W przypadku state'a klienta, zacznij od hooka `useState` oferowanego przez Reacta i skorzystaj z poniższych opcji jeśli będziesz potrzebować czegoś więcej.
 
 ### Zustand
 
@@ -47,115 +47,115 @@ Znane także jako biblioteki "headless", zapoatrzą cię w znakomite, przystępn
 
 ### Biblioteki Komponentów Z Gotowymi Stylami
 
-**For when you just want your app to look OK**
+**W przypadku, kiedy chcesz żeby twoja aplikacja wyglądała OK**
 
-Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
+Czasem budując projekt, chcesz aby Ui wyglądało po prostu przyzwoicie. Do projektów takich jak panele administratora i podobnych, każda z tych bibliotek da sobie doskonale radę.
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
 ### Class Variance Authority
 
-**For building UI Libraries**
+**Gdy budujesz własną bibliotekę UI**
 
-Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
+Zbuduj bibliotekę UI z różnymi kolorami, rozmiarami, wariantami itp. Gdy twój projekt osiągnie skalę na tyle dużą, że będziesz musiał skorzystać z ustandaryzowanego zestawu komponentów z wieloma wariantami (korzystając przy tym z Tailwind CSS), CVA stanie się doskonałym narzędziem.
 
-- [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
+- [GitHub Class Variance Authority](https://github.com/joe-bell/cva)
 
-## Animations
+## Animacje
 
-For when you need animations in your app, here are our recommendations.
+Rekomendacje na sytuacje, kiedy w aplikacji potrzebować będziesz animacji :)
 
 ### AutoAnimate
 
-**For animations with a single line of code**
+**Aby animacje były pojedynczą linią kodu**
 
-Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
+Wiele bibliotek od animacji stara się rozwiązać każdy możliwy problem, stając się przy tym uciężałe i niezbyt praktyczne. AutoAnimate to narzędzie niewymagające konfiguracji, które pozwoli ci uzyskać znaczącą poprawę w UX twojej aplikacji bez dodatkowego wysiłku.
 
-- [AutoAnimate Homepage](https://auto-animate.formkit.com/)
-- [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
-- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
+- [Strona główna AutoAnimate](https://auto-animate.formkit.com/)
+- [GitHub AutoAnimate](https://github.com/formkit/auto-animate)
+- [Snippet komponentu AutoAnimate](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
-**For complex animations with declarative code**
+**Złożone animacje z deklaracyjnym kodem**
 
-Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
+Framer Motion pozwala Ci w prosty sposób i z deklaracyjną składnią napisać mało kodu a w zamian zaopatrzy twoją aplikację w złożone animacji czy nawet reakcje na gesty.
 
-- [Framer Motion Homepage](https://framer.com/motion)
-- [Framer Motion Documentation](https://www.framer.com/docs/)
+- [Strona główna Framer Motion](https://framer.com/motion)
+- [Dokumentacja Framer Motion](https://www.framer.com/docs/)
 
-## Deployments, Infrastructure, Databases and CI
+## Wdrażanie, Infrastruktura, Bazy Danych i CI
 
 ### Vercel
 
-**For hosting your app**
+**Aby zahostować swoją aplikację**
 
-Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
+Vercel zamienił prawdziwe piekło wdrażania aplikacji w łatwą integrację z GitHubem. Przeskalowaliśmy się do setek tysięcy użytkowników bez problemu. Napędzany przez AWS, o wiele lepszy interfejs :)
 
-- [Vercel Homepage](https://vercel.com/)
-- [Create T3 App Vercel deployment guide](/en/deployment/vercel)
+- [Strona główna Vercel](https://vercel.com/)
+- [Poradnik wdrażania aplikacji T3 z Vercelem](/pl/deployment/vercel)
 
 ### PlanetScale
 
-**For databases without the worry**
+**Bazy danych bez obaw**
 
-PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
+PlanetScale to najlepsza platforma "serverless" do baz danych, z której kiedykolwiek korzystaliśmy. Znakomicie się skaluje, dostarcza świetny DX, zawiera doskonałe ceny. Jeżeli korzystasz z SQLa (i miejmy nadzieję z Prismy), ciężko jest tą usługę pobić.
 
-- [PlanetScale Homepage](https://planetscale.com/)
+- [Strona główna PlanetScale](https://planetscale.com/)
 
 ### Railway
 
-**For hosting your infra**
+**Aby hostować swoją infrastrukturę**
 
-"Modern Heroku". Easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
+"Nowoczesne Heroku". Najłatwiejszy sposób aby uzyskać prawdziwy działający serwer. Jeżeli Vercel i PlanetScale nie są dla Ciebie wystarczające, prawdopodobnie Railway będzie. Połącz go z repozytorium GitHuba i gotowe.
 
-- [Railway Homepage](https://railway.app/)
+- [Strona główna Railway](https://railway.app/)
 
 ### Upstash
 
-**For serverless Redis**
+**Redis dla aplikacji "serverless"**
 
-We love Prisma and PlanetScale, but some projects require a more performant solution. Upstash allows you to get the in-memory performance of Redis in your serverless project, without having to manage the infrastructure and scaling yourself.
+Kochamy Prismę i PlanetScale, ale niektóre projekty wymagają bardziej wydajnego rozwiązania. Upstash pozwala na prędkość bliską tej przy bezpośrednim odczycie z pamięci w twoim projekcie "serverless", przy tym nie obciążając Cię zarządzaniem infrastruktury i skalowania.
 
-- [Upstash Homepage](https://upstash.com/)
+- [Strona główna Upstash](https://upstash.com/)
 
 ### Pusher
 
-**For serverless WebSockets**
+**WebSockety "serverless"**
 
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
+Jeżeli WebSockety stanowią główną część projektu, możesz chcieć rozważyć bardziej tradycyjny backend taki jak [Fastify](https://www.fastify.io/) ([który również działa z tRPC!](https://trpc.io/docs/v10/fastify)). Jesli jednak chcesz szybko dodać WebSockety do aplikacji T3, Pusher to doskonały wybór.
 
-- [Pusher Homepage](https://pusher.com/)
+- [Strona głowna Pushera](https://pusher.com/)
 
 ### Soketi
 
-Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
+Socketi to prosta w użyciu alternatywa do Pushera, którą hostuje się samemu. Jest w pełni kompatybilna z SDK Pushera, z którego korzystać możesz aby połączyć się z serwerem. Wersja "serverless" Socketi jest w becie.
 
-- [Soketi Homepage](https://soketi.app)
-- [Soketi GitHub](https://github.com/soketi/soketi)
+- [Strona główna Soketi](https://soketi.app)
+- [GitHub Soketi](https://github.com/soketi/soketi)
 
-## Analytics
+## Statystyki Stron (Analytics)
 
-User data is very valuable when you're building an app. Here are some analytics providers we recommend.
+Budując aplikację, dane użytkowników są bardzo cenne. Znajdziesz tu parę serwisów do ich zbierania, które polecamy.
 
 ### Plausible
 
-Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
+Potrzebujesz zbierać statystyki? Plausible to jedna z najszybszych opcji aby to zrobić. Bardzo minimalna. Posiada nawet [prosty plugin dla Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
-- [Plausible Homepage](https://plausible.io/)
+- [Strona główna Plausible](https://plausible.io/)
 
 ### Umami
 
-Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database.
+Umami to prosta w użyciu, szybka i skupiająca się na prywatności alternatywa dla Google Analytics, którą hostuje się samemu. Możesz ją wdrożyć dzięki serwisom, takim jak Vercel, Railway itp., korzystając przy tym z PlanetScale jako bazy danych.
 
-- [Umami Homepage](https://umami.is/)
-- [Umami GitHub](https://github.com/umami-software/umami)
+- [Strona główna Umami](https://umami.is/)
+- [GitHub Umami](https://github.com/umami-software/umami)
 
-## Other
+## Inne
 
 ### Next Bundle Analyzer
 
-It can sometimes be difficult to determine what will be included in the build output for your app. Next Bundle Analyzer is an easy way to visualize and analyze the JavaScript bundles that are generated.
+Określenie co znajdzie się w finalnym buildzie aplikacji może czasem stanowić problem. Next Bundle Analyzer to łatwy sposób na wizualizację i analizę kodu JavaScript, który zostaje wygenerowany.
 
-- [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
+- [@next/bundle-analyzer na npm](https://www.npmjs.com/package/@next/bundle-analyzer)
