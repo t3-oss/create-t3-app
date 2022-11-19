@@ -1,14 +1,15 @@
 ---
-title: T3 Коллекция 
+title: T3 Коллекция
 description: Крутые open source проекты и компании использующие T3 стек
 layout: ../../layouts/docs.astro
+lang: ru
 ---
 
 Сделали проект использующий T3 стек и хотите поделиться им? Добавьте его в список!
 
 ## Open Source приложения сделанные с использованием T3 стека
 
-| Описание                                                       | Репозиторий                                                                      | Ссылка                                                                              |
+| Описание                                                          | Репозиторий                                                               | Ссылка                                                                            |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)              | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                   | [ask.ping.gg](https://ask.ping.gg)                                                |

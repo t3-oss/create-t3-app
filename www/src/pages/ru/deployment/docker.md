@@ -2,6 +2,7 @@
 title: Docker
 description: Развертывание в Docker
 layout: ../../../layouts/docs.astro
+lang: ru
 ---
 
 Вы можете контейнеризировать этот стек и развернуть его как один контейнер с помощью Docker или как часть группы контейнеров с помощью docker-compose. Смотрите [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) для примера репозитория на основе этой документации.
@@ -187,7 +188,6 @@ docker compose up
 ## Развертывание на Railway
 
 Вы можете использовать PaaS такой как [Railway's](https://railway.app) автоматическое [развертывание Dockerfile](https://docs.railway.app/deploy/dockerfiles) для развертывания вашего приложения. Если у вас установлен [Railway CLI](https://docs.railway.app/develop/cli#install), вы можете развернуть свое приложение с помощью следующих команд:
-
 
 ```bash
 railway login

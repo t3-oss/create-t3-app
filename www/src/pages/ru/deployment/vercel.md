@@ -2,6 +2,7 @@
 title: Vercel
 description: Развертывание на Vercel
 layout: ../../../layouts/docs.astro
+lang: ru
 ---
 
 Мы рекомендуем развертывать ваше приложение на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Это позволяет легко развернуть приложение Next.js.
@@ -39,10 +40,10 @@ layout: ../../../layouts/docs.astro
 
 Для того, чтобы развернуть приложение из командной строки, вам сначала нужно [установить Vercel CLI глобально](https://vercel.com/docs/cli#installing-vercel-cli).
 
-
 ```bash
 npm i -g vercel
 ```
+
 Запустите команду [`vercel`](https://vercel.com/docs/cli/deploying-from-cli), чтобы развернуть ваш проект.
 
 ```bash

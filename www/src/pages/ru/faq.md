@@ -2,6 +2,7 @@
 title: FAQ
 description: Часто задаваемые вопросы про Create T3 App
 layout: ../../layouts/docs.astro
+lang: ru
 ---
 
 Это некоторые часто задаваемые вопросы о `create-t3-app`.
@@ -26,7 +27,7 @@ layout: ../../layouts/docs.astro
 
 Мы понимаем, что этот путь не подходит для каждого. Поэтому, если вы чувствуете, что рекомендации не достаточно, и вам все еще нужны ресурсы, или вы просто не уверены в своих силах, и/или чувствуете себя перегруженным стеком, ознакомьтесь с этими потрясающими учебными ресурсами по `create-t3-app`:
 
-### Статьи 
+### Статьи
 
 - [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
