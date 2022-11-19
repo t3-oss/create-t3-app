@@ -21,32 +21,23 @@ layout: ../../layouts/docs.astro
 
 ### Jotai
 
-**For never using Context again**
-
+**حتي لا تستخدم Context مرة أخري**
 For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Great option for stateful behaviors that don't need a state machine just yet.
 
 - [Jotai Homepage](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
 ## Component Libraries
-
-Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. These libraries provide great, accessible components that you can use and customize to your liking.
+تحتاج معظم التطبيقات إلى نفس مجموعة المكونات - أزرار التبديل والقوائم المنسدلة والشروط وما إلى ذلك. توفر هذه المكتبات مكونات رائعة يمكن الوصول إليها يمكنك استخدامها وتخصيصها حسب رغبتك.
 
 ### Unstyled Component Libraries
+تُعرف أيضًا باسمHeadless libraries  ، فهي توفر مكونات رائعة غير منظمة , Accessible و يمكنك تخصيصها حسب رغبتك. هنا بعض التوصيات.
+- [Radix UI](https://www.radix-ui.com/)
+- [Headless UI](https://headlessui.com/)
+- [React Aria](https://react-spectrum.adobe.com/react-aria/) 
 
-Also known as headless libraries, they provide great unstyled and accessible components that you can customize to your liking. Here are a few recommendations.
-
-- [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
-
-- [Headless UI](https://headlessui.com/) made by the Tailwind CSS team also provides unstyled, accessible components that integrate seamlessly with Tailwind CSS.
-
-- [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
-
-### Styled Component Libraries
-
-**For when you just want your app to look OK**
-
-Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
+### Styled Component Libraries**
+في بعض الأحيان تقوم ببناء مشروع حيث تريد فقط أن تبدو واجهة المستخدم جيدة. كـ لوحات التحكم والمشروعات المماثلة الأخرى ، ستنجز أي هذة المكتبات  هذه المهمة علي اكمل وجة
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
