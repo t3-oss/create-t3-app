@@ -15,7 +15,7 @@ _"T3 Stack"_, to stack do web developmentu stworzony przez [Theo](https://twitte
 
 Jego głównymi elementami są [**Next.js**](https://nextjs.org/) oraz [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) również jest prawie zawsze dołączony. Jeżeli budujesz cokolwiek wspólnego z backendem, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) oraz [**NextAuth.js**](https://next-auth.js.org/) mogą być dobrymi dodatkami.
 
-Mogłeś dostrzec już, iż jest tu... dużo elementów. Jest to celowe. Zmieniaj elementy jak tylko chcesz - stack ten jest tak modularny, jak tylko możliwe.
+Mogłeś dostrzec już, iż jest tu... dużo elementów. Jest to celowe. Zmieniaj elementy jak tylko chcesz - stack ten jest tak modularny, jak to tylko możliwe.
 
 ## A więc... co to create-t3-app? Jakiś szablon?
 
@@ -33,7 +33,7 @@ Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść
 
 Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
 
-### "Bleed Responsibly"
+### "Bleed Responsibly" (Korzystaj Rozważnie z Nowych Technologii)
 
 Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zabawa, jaka wynika z ich zastosowania - jest na prawdę super. Uważamy jednak za ważne odpowiedzialne korzystanie z powyższych elementów. Oznacza to, iż nie ⛔️ postawimy na nowy rodzaj bazy danych (SQL jest dobry!). Z radością ✅ stawiamy jednak na tRPC - są to tylko funkcje, które łatwo można zamienić na coś innego.
 
