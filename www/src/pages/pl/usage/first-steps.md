@@ -1,6 +1,6 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Pierwsze Kroki
+description: Jak zacząć z nową aplikacją T3
 layout: ../../../layouts/docs.astro
 lang: pl
 ---

@@ -1,6 +1,6 @@
 ---
-title: Environment Variables
-description: Getting started with create-t3-app
+title: Zmienne Środowiskowe
+description: Jak zacząć z create-t3-app
 layout: ../../../layouts/docs.astro
 lang: pl
 ---

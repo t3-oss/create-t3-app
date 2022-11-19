@@ -1,6 +1,6 @@
 ---
 title: Tailwind CSS
-description: Usage of Tailwind CSS
+description: Korzystanie z Tailwind CSS
 layout: ../../../layouts/docs.astro
 lang: pl
 ---

@@ -1,6 +1,6 @@
 ---
 title: TypeScript
-description: Usage of TypeScript
+description: Korzystanie z TypeScripta
 layout: ../../../layouts/docs.astro
 lang: pl
 ---

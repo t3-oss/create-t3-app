@@ -1,6 +1,6 @@
 ---
 title: Prisma
-description: Usage of Prisma
+description: Korzystanie z Prismy
 layout: ../../../layouts/docs.astro
 lang: pl
 ---
