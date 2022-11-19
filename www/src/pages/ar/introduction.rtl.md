@@ -2,6 +2,7 @@
 title: مقدمة
 description: مقدمة الي the T3 Stack
 layout: ../../layouts/docs.astro
+language: ar
 ---
 
 <div class="embed">
@@ -20,22 +21,22 @@ layout: ../../layouts/docs.astro
 ## حسنا .. ما هو create-t3-app ? اهو قالب؟ 
 
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+نوعا من؟ create-t3-app هو CLI تم إنشاؤه بواسطة مطوري T3 Stack المخضرمين لتبسيط إعداد تطبيق T3 Stack. هذا يعني أن كل قطعة اختيارية ، ويتم إنشاء "القالب" بناءً على احتياجاتك الخاصة.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+هذا **ليس** قلباََ كالماََ. فيجب عليك ان تضيف مكتبتك الخاصه لحل المشاكل التي ستواجهك في مشروعاتك. علي الرغم من اننا لا نريد ان  نصف حلولا اكثر تحديد  [لكن لدينا بعض الترشيحات لك](/en/other-recs).
+
 
 ## T3 Axioms
+سنكون صريحين - هذا مشروع  عنيد (opinionated). نتشارك في عدد قليل من المعتقدات الأساسية حول البناء ونتعامل معها كأساس لقراراتنا.
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
 
 ### Solve Problems
 
 It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
 
 ### Bleed Responsibly
-
+نحن نحب التقنيات الحديثة، كمية السعاده التي من الاشياء الحديثة أمر رائع، 
 We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
 
 ### Typesafety Isn't Optional
