@@ -1,15 +1,15 @@
 ---
-title: T3 Collection
-description: Cool open source projects and companies using the T3 stack
+title: Kolekcja T3
+description: CIekawe projekty open source oraz firmy korzystające z T3 stacka
 layout: ../../layouts/docs.astro
 lang: pl
 ---
 
-Made a project using the T3 stack and want to share it? Add it to the list!
+Zrobiłeś projekt korzystając z T3 stacka i chcesz się nim podzielić? Dodaj go do listy!
 
-## Open Source apps made using the T3 Stack
+## Aplikacje open source wykonane z T3 Stackiem
 
-| Description                                                       | Repo                                                                        | Link                                                                              |
+| Opis                                                              | Repozytorium                                                                | Link                                                                              |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -24,12 +24,12 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
-## Companies using the T3 Stack
+## Firmy korzystające z T3 Stacka
 
-We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
+Bardzo chcielibyśmy poznać firmy korzystające z T3 stacka do budowania swoich aplikacji. Czy twoja firma korzysta z T3 stacka i chciałaby się tym podzielić? Dodaj tą informację do listy poniżej!
 
-| Company | Link                       |
+| Firma   | Link                       |
 | ------- | -------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg) |
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+_Posiadasz ciekawy projekt korzystający z T3 stacka? Zrób [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) i dodaj go tutaj!_

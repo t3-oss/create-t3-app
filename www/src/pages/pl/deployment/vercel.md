@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Polecamy wykonywać deployment twojej aplikacji na platformę [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Pozwala ona w bardzo prosty sposób wrzucać do siecie aplikacje Next.js.
+Polecamy wykonywać deployment twojej aplikacji na platformę [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Pozwala ona w bardzo prosty sposób wrzucać do sieci aplikacje Next.js.
 
 ## Konfiguracja Projektu
 
