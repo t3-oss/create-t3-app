@@ -2,6 +2,7 @@
 title: Struktura projektu
 description: Struktura projektu nowej aplikacji T3
 layout: ../../layouts/docs.astro
+lang: pl
 ---
 
 Poniżej przedstawiona jest struktura projektu nowej aplikacji T3, zawierającej wszystkie możliwe opcje instalacji.

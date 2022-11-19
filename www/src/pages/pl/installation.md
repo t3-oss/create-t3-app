@@ -2,6 +2,7 @@
 title: Instalacja
 description: Instrukcje instalacji dla Create T3 App.
 layout: ../../layouts/docs.astro
+lang: pl
 ---
 
 Aby zacząć używać szablonu `create-t3-app`, uruchom którąkolwiek z poniższych trzech komend i odpowiedz na pytania w konsoli:

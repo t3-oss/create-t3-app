@@ -2,6 +2,7 @@
 title: Inne Rekomendacje
 description: Biblioteki i usługi, które polecamy dla wielu projektów
 layout: ../../layouts/docs.astro
+lang: pl
 ---
 
 Zdajemy sobie sprawę z tego, że biblioteki które zawiera `create-t3-app` nie są lekarstwem na wszystko. Polecamy zaczynać projekty z rzeczami, które są już dołączone - przyjdzie jednak czas, kiedy będziesz musiał dodać swoje paczki. Tylko ty wiesz, czego twój projekt potrzebuje. Polecamy przejrzeć jednak poniższą listę naszych rekomendacji.

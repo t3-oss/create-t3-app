@@ -2,6 +2,7 @@
 title: Wstęp
 description: Wstęp do T3 Stacka
 layout: ../../layouts/docs.astro
+lang: pl
 ---
 
 <div class="embed">
