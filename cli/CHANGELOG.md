@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.10.1
+
+### Patch Changes
+
+- [#784](https://github.com/t3-oss/create-t3-app/pull/784) [`f10ce0e`](https://github.com/t3-oss/create-t3-app/commit/f10ce0e9badd3ad6ed45b8dca272bdfc5fbfbff6) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - fix(t3-app): fix broken links
+
+- [#786](https://github.com/t3-oss/create-t3-app/pull/786) [`4d70f04`](https://github.com/t3-oss/create-t3-app/commit/4d70f048955cd75aa67f0ba91fd5cec5d0311d08) Thanks [@skuridin](https://github.com/skuridin)! - Add next-env.d.ts to .gitignore
+
+- [#800](https://github.com/t3-oss/create-t3-app/pull/800) [`d5d5a2f`](https://github.com/t3-oss/create-t3-app/commit/d5d5a2f7503cf9d7c3bfab4609aeb6a0188d6af1) Thanks [@HatulaPro](https://github.com/HatulaPro)! - fix: removing redundant optional chaining in templates
+
 ## 6.10.0
 
 ### Minor Changes
