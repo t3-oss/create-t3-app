@@ -44,14 +44,14 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
-### Class Variance Authority
+### سلطة التباين الطبقي
 
 **For building UI Libraries**
-
-Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
+إنشاء مكتبة واجهة مستخدم بشكل تصريحي(Declarative) بألوان وأحجام مختلفة ومتغيرات مختلفة. عندما يصل مشروعك إلى نطاق تريد فيه مجموعة موحدة من مكونات الـ UI مع متغيرات متعددة باستخدام Tailwind CSS ، فإن CVA هي أداة رائعة.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
+# الانميشن
 ## Animations
 
 For when you need animations in your app, here are our recommendations.
@@ -59,8 +59,9 @@ For when you need animations in your app, here are our recommendations.
 ### AutoAnimate
 
 **For animations with a single line of code**
+**الانميشن بسطر كود واحد**
 
-Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
+تحاول معظم المكتبات المتحركة إرضاء كل حالة استخدام ممكنة ، نتيجة لذلك تصبح غير مرغوب فيها. AutoAnimate هي أداة لا تحتاج الي تكوين توفر تحسينًا كبيرًا في UX دون بذل جهد إضافي من المطور.
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
@@ -69,8 +70,8 @@ Most animation libraries try to satisfy every possible use case, and become clun
 ### Framer Motion
 
 **For complex animations with declarative code**
-
-Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
+**للرسوم المتحركة المعقدة**
+يوفر FramerMotion اسلوبا بسيطا لكتابة الكود، فيسمع لك بكتابة رسوميات معقدة بكود أقل
 
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
