@@ -21,6 +21,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
 | AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
+| The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
 ## Companies using the T3 Stack
 
