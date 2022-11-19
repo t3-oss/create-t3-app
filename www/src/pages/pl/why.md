@@ -47,4 +47,4 @@ Dodatkowo, z podejściem "inline", Tailwind zachęca cię do stylizowania aplika
 
 ### NextAuth.js
 
-Kiedy chcesz dodać system kont do swojej aplikacji Next.js, NextAuth.js to znakomite rozwiązanie. Pozwala ono wdrożyć złożone systemy bezpieczeństwa nie zmuszając Cię przy tym do pisania ich własnoręcznie. NextAuth.js zawiera rozległą listę providerów, które zapewnią Ci szybki sposób na dodatkie OAutha. Paczka ta posiada również wiele adapterów dla baz danych i ORMów.
+Kiedy chcesz dodać system kont do swojej aplikacji Next.js, NextAuth.js to znakomite rozwiązanie. Pozwala ono wdrożyć złożone systemy bezpieczeństwa nie zmuszając Cię przy tym do pisania ich własnoręcznie. NextAuth.js zawiera rozległą listę providerów, które zapewnią Ci szybki sposób na dodanie OAutha. Paczka ta posiada również wiele adapterów dla baz danych i ORMów.
