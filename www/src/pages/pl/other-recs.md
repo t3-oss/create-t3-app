@@ -92,10 +92,10 @@ Framer Motion pozwala Ci w prosty sposób i z deklaracyjną składnią napisać 
 
 **Aby zahostować swoją aplikację**
 
-Vercel zamienił prawdziwe piekło wdrażania aplikacji w łatwą integrację z GitHubem. Przeskalowaliśmy się do setek tysięcy użytkowników bez problemu. Napędzany przez AWS, o wiele lepszy interfejs :)
+Vercel zamienił prawdziwe piekło deploymentu aplikacji w łatwą integrację z GitHubem. Przeskalowaliśmy się do setek tysięcy użytkowników bez problemu. Napędzany przez AWS, o wiele lepszy interfejs :)
 
 - [Strona główna Vercel](https://vercel.com/)
-- [Poradnik wdrażania aplikacji T3 z Vercelem](/pl/deployment/vercel)
+- [Poradnik deploymentu aplikacji T3 z Vercelem](/pl/deployment/vercel)
 
 ### PlanetScale
 
@@ -148,7 +148,7 @@ Potrzebujesz zbierać statystyki? Plausible to jedna z najszybszych opcji aby to
 
 ### Umami
 
-Umami to prosta w użyciu, szybka i skupiająca się na prywatności alternatywa dla Google Analytics, którą hostuje się samemu. Możesz ją wdrożyć dzięki serwisom, takim jak Vercel, Railway itp., korzystając przy tym z PlanetScale jako bazy danych.
+Umami to prosta w użyciu, szybka i skupiająca się na prywatności alternatywa dla Google Analytics, którą hostuje się samemu. Możesz go zdeploy'ować dzięki serwisom, takim jak Vercel, Railway itp., korzystając przy tym z PlanetScale jako bazy danych.
 
 - [Strona główna Umami](https://umami.is/)
 - [GitHub Umami](https://github.com/umami-software/umami)

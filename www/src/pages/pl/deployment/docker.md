@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Stack ten możesz skonteneryzować i wdrożyć do jako pojedynczy kontener korzystając z Dockera, czy też jako część grupy kontenerów korzystając z docker-compose. Po przykładowe repozytorium bazowane na tym dokumencie, zobacz [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker).
+Stack ten możesz skonteneryzować i zdeploy'ować jako pojedynczy kontener korzystając z Dockera, czy też jako część grupy kontenerów korzystając z docker-compose. Po przykładowe repozytorium bazowane na tym dokumencie, zobacz [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker).
 
 ## Konfiguracja Projektu z Dockerem
 
@@ -187,7 +187,7 @@ Otwórz [localhost:3000](http://localhost:3000/) aby zobaczyć uruchomioną apli
 
 ## Deployment do Railway'a
 
-Możesz użyć usługi PaaS ("platforma jako usługa"), takiej jak [zautomatyzowane wdrażanie Dockerfile](https://docs.railway.app/deploy/dockerfiles) od [Railway'a](https://railway.app), aby wdrożyć swoją aplikację. Jeżeli zainstalowałeś [CLI Railway'a](https://docs.railway.app/develop/cli#install), możesz wdrożyć aplikację korzystając z poniższych komend.
+Możesz użyć usługi PaaS ("platforma jako usługa"), takiej jak [zautomatyzowany deployment Dockerfile'a](https://docs.railway.app/deploy/dockerfiles) od [Railway'a](https://railway.app), aby zdeploy'ować swoją aplikację. Jeżeli zainstalowałeś [CLI Railway'a](https://docs.railway.app/develop/cli#install), możesz zdeploy'ować aplikację korzystając z poniższych komend.
 
 ```bash
 railway login

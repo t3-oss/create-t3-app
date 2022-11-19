@@ -79,13 +79,13 @@ Folder `pages` zawiera wszystkie strony aplikacji Next.js. Plik `index.tsx` w g�
 
 #### `src/pages/api`
 
-Folder `api` zawiera wszystkie API route'y aplikacji Next.js. Plik `examples.ts` (z Prismą) zawiera przykład takiego route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) oraz z Prismy. Plik `restricted.ts` (z Next-Auth) zawiera przykład route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) i jest on chroniony przez [NextAuth.js](https://next-auth.js.org/).
+Folder `api` zawiera wszystkie API route'y aplikacji Next.js. Plik `examples.ts` (z Prismą) zawiera przykład takiego route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) oraz z Prismy. Plik `restricted.ts` (z Next-Auth) zawiera przykład route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) i jest on chroniony ("authenticated") poprzez [NextAuth.js](https://next-auth.js.org/).
 
 <sub>(Z NextAuth.js, tRPC lub tRPC + Prisma)</sub>
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-Plik `[...nextauth].ts` jest slug routem używanym do uwierzytelniania poprzez NextAuth.js. Pomaga on przetwarzać zapytania o uwierzytelnianie. Po więcej informacji o kolejno NextAuth.js i slug route'ach, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth) oraz [dokumentację dynamicznych route'ów Next.js](https://nextjs.org/docs/routing/dynamic-routes).
+Plik `[...nextauth].ts` jest slug routem używanym do uwierzytelniania ("authentication") poprzez NextAuth.js. Pomaga on przetwarzać zapytania o uwierzytelnianie. Po więcej informacji o kolejno NextAuth.js i slug route'ach, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth) oraz [dokumentację dynamicznych route'ów Next.js](https://nextjs.org/docs/routing/dynamic-routes).
 
 <sub>(Z NextAuth.js)</sub>
 

@@ -1,6 +1,6 @@
 ---
 title: Pierwsze Kroki
-description: Jak zacząć z nową aplikacją T3
+description: Jak zacząć pracę z nową aplikacją T3
 layout: ../../../layouts/docs.astro
 lang: pl
 ---
