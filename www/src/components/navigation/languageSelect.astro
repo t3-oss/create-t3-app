@@ -45,7 +45,7 @@ const { language } = Astro.props;
         Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
           <li
             class={clsx(
-              "cursor-pointer bg-t3-purple-200/50 px-3 py-1 text-slate-900 hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20",
+              "bg-t3-purple-200/50 hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 cursor-pointer px-3 py-1 text-slate-900",
               {
                 "bg-t3-purple-200/75 dark:bg-t3-purple-200/20":
                   code === language,

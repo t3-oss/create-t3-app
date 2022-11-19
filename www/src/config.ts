@@ -91,3 +91,23 @@ export const SIDEBAR: Sidebar = {
     "Create T3 App": [],
   },
 };
+export const SIDEBAR_HEADER_MAP: Record<
+  Exclude<KnownLanguageCode, "en">,
+  Record<keyof Sidebar["en"], string>
+> = {
+  sv: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Användarguide",
+    Deployment: "Deployment",
+  },
+  de: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Anleitung",
+    Deployment: "Deployment",
+  },
+  fr: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Guide d'utilisation",
+    Deployment: "Déploiement",
+  },
+};

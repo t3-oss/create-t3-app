@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-import { Frontmatter, SIDEBAR } from "../../config";
+import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
 import Search from "./Search";
 
 export interface Props {
@@ -16,8 +16,39 @@ const currentPageMatch = currentPage.slice(
   1,
   hasTrailing ? -1 : currentPage.length,
 );
+
 const langCode = frontmatter?.lang ?? "en";
-const sidebar = SIDEBAR[langCode];
+const englishSidebar = SIDEBAR["en"];
+const nativeSidebar = SIDEBAR[langCode];
+let sidebar: Record<
+  string,
+  { text: string; link: string; isTranslated?: boolean }[]
+> = englishSidebar;
+if (langCode !== "en") {
+  sidebar = Object.fromEntries(
+    Object.entries(englishSidebar).map(([header, items]) => {
+      // Set header to translated one if it exists
+      const nativeHeader = SIDEBAR_HEADER_MAP[langCode][header] ?? header;
+
+      const nativeItems = items.map((item) => {
+        const match = Object.values(nativeSidebar)
+          .flat()
+          .find(
+            ({ link: nativeLink }) =>
+              // trailing slash + language code = 3 characters
+              nativeLink.slice(3) === item.link.slice(3),
+          );
+        return {
+          text: match?.text ?? item.text,
+          link: match?.link ?? item.link,
+          isTranslated: !!match,
+        };
+      });
+
+      return [nativeHeader, nativeItems];
+    }),
+  );
+}
 ---
 
 <div class="w-full ml--40 md:ml-0 mb-6 mx-auto px-6 md:px-8 md:hidden">
@@ -60,7 +91,12 @@ const sidebar = SIDEBAR[langCode];
                         },
                       )}
                     >
-                      {child.text}
+                      <span>{child.text}</span>
+                      {!child.isTranslated && (
+                        <span class="text-t3-purple-400 dark:text-t3-purple-300 ml-1 text-xs">
+                          EN
+                        </span>
+                      )}
                     </a>
                   </li>
                 );
