@@ -109,8 +109,11 @@ Notice that we only need to export our router's type definitions, which means we
 Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
 
 ```tsx:pages/users/[id].tsx
+import { useRouter } from "next/router";
+
 const UserPage = () => {
-  const userQuery = trpc.user.getById.useQuery("abc123");
+  const { query } = useRouter();
+  const userQuery = trpc.user.getById.useQuery(query.id);
 
   return (
     <div>
@@ -277,7 +280,7 @@ const MyComponent = () => {
     onError(err, newPost, ctx) {
       // If the mutation fails, use the context-value from onMutate
       utils.post.list.setData(undefined, ctx.prevData);
-    }
+    },
     onSettled() {
       // Sync with server once mutation has settled
       utils.post.list.invalidate();
