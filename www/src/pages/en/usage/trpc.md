@@ -114,6 +114,7 @@ import { useRouter } from "next/router";
 const UserPage = () => {
   const router = useRouter();
   const { id } = router.query;
+  // "pages/users/abc123"
   const userQuery = trpc.user.getById.useQuery(id);
 
   return (
