@@ -21,7 +21,7 @@ export type Frontmatter = {
   image?: { src: string; alt: string };
   dir?: "ltr" | "rtl";
   ogLocale?: string;
-  lang?: string;
+  lang?: KnownLanguageCode;
   isMdx?: boolean;
 };
 
@@ -78,7 +78,11 @@ export const SIDEBAR: Sidebar = {
     ],
   },
   sv: {
-    "Create T3 App": [],
+    "Create T3 App": [
+      { text: "Introduktion", link: "sv/introduction" },
+      { text: "Installation", link: "sv/installation" },
+    ],
+    Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
   },
   de: {
     "Create T3 App": [],

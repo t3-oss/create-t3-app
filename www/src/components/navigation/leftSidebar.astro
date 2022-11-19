@@ -1,21 +1,22 @@
 ---
 import clsx from "clsx";
-import { SIDEBAR } from "../../config";
+import { Frontmatter, SIDEBAR } from "../../config";
 import Search from "./Search";
 
 export interface Props {
+  frontmatter?: Frontmatter;
   currentPage: string;
   isNotFound?: boolean;
 }
 
-const { currentPage, isNotFound } = Astro.props;
+const { frontmatter, currentPage, isNotFound } = Astro.props;
 const isLanding = currentPage === "/" || !!isNotFound;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
   hasTrailing ? -1 : currentPage.length,
 );
-const langCode = "en";
+const langCode = frontmatter?.lang ?? "en";
 const sidebar = SIDEBAR[langCode];
 ---
 
@@ -51,9 +52,9 @@ const sidebar = SIDEBAR[langCode];
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "text-md block border-l-2 py-2 pl-4 text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
+                        "text-md text-t3-purple-800 hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100 block border-l-2 py-2 pl-4 transition-colors",
                         {
-                          "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20":
+                          "border-t3-purple-300 bg-t3-purple-300/30 dark:bg-t3-purple-300/20 font-medium":
                             isActive,
                           "border-t3-purple-300/20": !isActive,
                         },
