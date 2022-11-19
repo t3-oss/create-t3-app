@@ -1,5 +1,5 @@
 ---
-title: DLaczego CT3A?
+title: Dlaczego CT3A?
 description: Dlaczego powinieneś wybrać Create T3 App dla swojego następnego projektu
 layout: ../../layouts/docs.astro
 lang: pl
