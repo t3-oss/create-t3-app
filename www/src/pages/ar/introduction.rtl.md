@@ -36,9 +36,8 @@ language: ar
 It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
 
 ### Bleed Responsibly
-نحن نحب التقنيات الحديثة، كمية السعاده التي من الاشياء الحديثة أمر رائع، 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+نحن نحب التقنيات الحديثة، كمية السعاده التي من الاشياء الحديثة أمر رائع، لكن تجب عليك ان تتوخي الحذر وان تستخدم التقنيات الغير مستقرة في الاماكن الاقل حساسية، فمثلا نحن لن نراهن علي قواعد بيانات حديثه، فـ SQL تكفي وزيادة، لكننا سنراهين علي tRPC لانها مجرد Functions ومن السه الاستغناء عنها.
 
-### Typesafety Isn't Optional
-
-The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project.
+# # الـ Typesafety ليس خياراََ.
+قد حددنا مسبقاَ ان الهدف الاوحد من `create-t3-app` هو ان نوفر بدائة سريعة لتطوير تطبيقات الويب مع أخذ Tyesafety في الاعتبار فهو امر لابد منه لتطور فعاليتك كمطور عن طريق تقليل عدد الـ Bugs قدر الامكان.
+أي قرار يضر بالطبيعة الآمنة لـ "create-t3-app" هو قرار يجب اتخاذه في مشروع مختلف.
