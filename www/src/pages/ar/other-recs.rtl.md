@@ -4,20 +4,17 @@ description: Libraries and Services that we recommend for many projects
 layout: ../../layouts/docs.astro
 ---
 
-نحن ندرك ان المكتبات التي ضمنناها في `create-t3-app` لا تحل كل مشكلة، علي الرغم من ذلك فنحن ننصحك ان تبدأ بالاشياء التي نقدمهاـ، فسيحل عليك وقت تحتاج فيه أن تستخدم مكتبات حارجية فأنت وحك من تدري ماذا يحتاج مشروعك، ها هي بعض المضادر التي ينمن انلتي تشجعك علي ان تتبعها
-
-
-These are recommendations by individual create-t3-app contributors and should not be seen as "official" endorsements by the create-t3-app team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
+نحن ندرك ان المكتبات التي ضمنناها في `create-t3-app` لا تحل كل مشكلة، علي الرغم من ذلك فنحن ننصحك ان تبدأ بالاشياء التي نقدمهاـ، فسيحل عليك وقت تحتاج فيه أن تستخدم مكتبات حارجية فأنت وحك من تدري ماذا يحتاج مشروعك، ها هي بعض المضادر التي ينمن انلتي تشجعك علي ان تتبعها.
+هناك بعض الترشيحات التي قدمها مساهمون منفردون فلا يجب أن تُؤخذ علي انها رسمية من فريق t3 أو t3-OSS، لذلك **نرجوا ان تقوم بالبحث، خاصة قبل ان تشترك في خدمات مدفوعة**
 
 ## State Management
-
-_**Editor's Note**_: State management libraries can be great, but often aren't necessary. tRPC's React Query hooks should be able to take care of your server state. For client state, start with React's `useState`, and reach for one of these options when you need more.
+**ملحوظة المحرر**: مكتبات الـ State Management هي شئ رائع لكنها في معظم الحلالت ليست ضرورية، فـ tRPC و ReactQuery تقوم بهة الوظيفة بشكل جيد، لذلك إبدا  بـ`useState` وانتقل الي احد البدائي فقط عندما يلزم الامر.
 
 ### Zustand
 
-**For never using Redux again**
+**حتي لا تستعمل Redux أأبداََ مرة اخري**
+بديل Redux الذي لم تكن تعلم إنك تحتاجة، غير أنك بمكنك الوثوق ب، [Poimandres](https://github.com/pmndrs) دائما فيمكنك ان تصنع بها كل شي من تطبيقات المكالمات الي الالعاب فقط بهذة المكتبة الصغيرة.
 
-The "modern, simple Redux" you didn't know you needed. [Poimandres](https://github.com/pmndrs) can always be trusted. You can build everything from video call apps to games to servers with this little library.
 
 - [Zustand Homepage](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
