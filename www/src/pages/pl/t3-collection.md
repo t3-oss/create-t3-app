@@ -1,6 +1,6 @@
 ---
 title: Kolekcja T3
-description: CIekawe projekty open source oraz firmy korzystające z T3 stacka
+description: Ciekawe projekty open source oraz firmy korzystające z T3 stacka
 layout: ../../layouts/docs.astro
 lang: pl
 ---

@@ -1,50 +1,50 @@
 ---
-title: Why CT3A?
-description: Why you should pick Create T3 App for your next project
+title: DLaczego CT3A?
+description: Dlaczego powinieneś wybrać Create T3 App dla swojego następnego projektu
 layout: ../../layouts/docs.astro
 lang: pl
 ---
 
-We started create-t3-app because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build) and a general love for typesafety, the create-t3-app team worked hard to build the best possible starting point for new T3 Stack projects.
+Stworzyliśmy create-t3-app, ponieważ [Theo](https://twitter.com/t3dotgg) nie chciał przygotować szablonu składającego się ze swoich ulubionych technologii. Zainspirowany przez create-next-app, [CLI od Astro](https://astro.build) oraz ogólne zamiłowanie do typesafety, zespół create-t3-app ciężko pracował budując najlepszy możliwy punkt startowy dla nowych projektów korzystających z T3 Stacka.
 
-If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
+Jeżeli jesteś zainteresowany korzystaniem z Next.jsa w sposób, w który nie stracisz na typesafety, jest to znakomite miejsce, aby zacząć. Jeśli jesteś ciekawy co do poszczególnych technologii wybranych przez nas dla tego narzędzia, czytaj dalej :)
 
-## Why TypeScript ?
+## Dlaczego TypeScript?
 
-Javascript is hard. Why add more rules?
+JavaScript jest ciężki. Dlaczego dodajemy więcej zasad?
 
-We firmly believe the experience TypeScript provides will help you be a better developer. It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your editor or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line. Whether you're new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS.
+Stanowczo wierzymy, że TypeScript pomoże ci być lepszym deweloperem. Zaopatruje Cię on w feedback na żywo definiując oczekiwane typy danych. Dostarcza także pomocnego autouzupełniania w edytorze lub krzyczy na ciebie czerwonymi podkreśleniami, jeżeli próbujesz uzyskać dostęp do właściwości, która nie istnieje, lub jesli próbujesz przesłać wartość złego typu - co skutkowałoby dłuższym debugowaniem w razie błędu. Bez względu na to, czy jesteś nowy w świecie web developmentu, czy też doświadczonym programistą, "surowość" jaką daje ci TypeScript pozwala na mniej frustrujące i bardziej konsekwentne doświadczenie niż czysty JS.
 
-Typesafety makes you faster. If you're not convinced, you [might be using TypeScript wrong...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
+Typesafety pozwala ci być szybszym. Jeżeli dalej nie jesteś przekonany, może się okazać, że [korzystasz z TypeScripta źle...](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Why Next.js ?
+## Dlaczego Next.js?
 
-We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths.
+Kochamy Reacta. Pozwolił on na o wiele bardziej przystępne tworzenie interfejsów, niż kiedykolwiek mogło nam się śnić. Pomaga także deweloperom w cięższych sytuacjach.
 
-Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
+Next.js oferuje lekko kontrowersyjne, mocno zoptymalizowane podejście do tworzenia aplikacji z użyciem Reacta. Od routingu przez API do renderowania zdjęć, ufamy Next.jsowi i wierzymy, że prowadzi on nas do dobrych decyzji.
 
-## Why tRPC/Prisma/Tailwind/etc?
+## Dlaczego tRPC/Prisma/Tailwind/itp.?
 
-While we believe in keeping things as simple as possible, we find these pieces being used in every "app" like project we build. `create-t3-app` does a great job of letting you adopt the pieces you need.
+Staramy się utrzymać projekty w tak prosty sposób, jak tylko się da. Okazuje się jednak, że korzystamy z tych narzędzi w każdym "projekcie-aplikacji" jaki tylko budujemy. `create-t3-app` robi znakomitą robotę pozwalając ci zaadoptować te części, których potrzebujesz.
 
 ### tRPC
 
-tRPC delivers on GraphQL's promise of seamless client development against a typesafe server without all of the boilerplate. It's a clever abuse of TypeScript that provides an incredible dev experience.
+tRPC spełnia obietnice GraphQLa o bezproblemowej integracji klienta z serwerem bez niepotrzebnego boilerplate'a. Jest to przemyślane wykorzystanie TypeScripta które zaopatrzy Cię w niespotykane doświadczenie przy programowaniu.
 
 ### Prisma
 
-Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees end-to-end typesafety from your database to your app.
+Prisma dla SQLa to jak TypeScript dla JSa. Pozwala na DX jaki wcześniej nie istniał. Generując typy ze schematu zdefiniowanego przez użytkownika i kompatybilnego z [wieloma bazami danych](https://www.prisma.io/docs/concepts/database-connectors), Prisma gwarantuje typesafety na każdym kroku od bazy danych do twojej aplikacji.
 
-Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
+Prisma oddaje ci w ręce cały [zestaw narzędzi](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) ułatwiając codzienne integracje z bazą danych. Prisma Client odpowiedzialny za wykonywanie zapytań do bazy danych jest tak łatwy w użyciu, że nawet nie zorientujesz się, kiedy będziesz z niego korzystać. Prisma Studio natomiast to przystępny interfejs graficzny dla twojej bazy danych, który pozwala ci odczytywać z niej dane i manipulować nimi bez potrzeby pisania kodu.
 
 ### Tailwind CSS
 
-Tailwind feels like "zen-mode CSS".
+Tailwind sprawia wrażenie "CSSa w trybie zen".
 
-By providing building blocks in the form of good default colors, spacing, and other primitives, Tailwind makes it easy to create a good-looking app. And unlike component libraries, it does not hold you back when you want to take your app to the next level and create something beautiful and unique.
+Zaopatrując Cię w narzędzia do budowania, takie jak świetne domyślne kolory, spacingi oraz inne prymitywy, Tailwind w znaczny sposób ułatwia stworzenie dobrze wyglądającej aplikacji. W przeciwieństwie do bibliotek komponentów, nie sprawia niepotrzebnych problemów, kiedy chcesz stworzyć coś unikalnego i pięknego.
 
-Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve.
+Dodatkowo, z podejściem "inline", Tailwind zachęca cię do stylizowania aplikacji bez martwienia się o nazywanie klas, organizowanie struktury plików czy rozwiązywanie innych problemów niekoniecznie mających coś wspólnego z tym, co chcesz właśnie stworzyć.
 
 ### NextAuth.js
 
-When you want an authentication system in your NextJS application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
+Kiedy chcesz dodać system kont do swojej aplikacji Next.js, NextAuth.js to znakomite rozwiązanie. Pozwala ono wdrożyć złożone systemy bezpieczeństwa nie zmuszając Cię przy tym do pisania ich własnoręcznie. NextAuth.js zawiera rozległą listę providerów, które zapewnią Ci szybki sposób na dodatkie OAutha. Paczka ta posiada również wiele adapterów dla baz danych i ORMów.
