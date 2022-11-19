@@ -20,7 +20,7 @@ When you select NextAuth.js in combination with Prisma, the schema file is gener
 
 ## Default Database
 
-The default database is an SQLite database, which is great for development and quickly spinning up a proof-of-concept but is not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
+The default database is a SQLite database, which is great for development and quickly spinning up a proof-of-concept but is not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
 
 ## Seeding your Database
 
