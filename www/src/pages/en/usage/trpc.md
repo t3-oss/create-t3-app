@@ -112,10 +112,8 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 import { useRouter } from "next/router";
 
 const UserPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  // "pages/users/abc123"
-  const userQuery = trpc.user.getById.useQuery(id);
+  const { query } = useRouter();
+  const userQuery = trpc.user.getById.useQuery(query.id);
 
   return (
     <div>
