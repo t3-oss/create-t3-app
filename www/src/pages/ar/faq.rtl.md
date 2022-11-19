@@ -2,6 +2,8 @@
 title: الأسئلة الشائعة
 description: الأسئلة المتكررة حول إنشاء تطبيق T3
 layout: ../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
 ها هي بعض الأسئلة التي يكثر سؤالها عن `create-t3-app`.

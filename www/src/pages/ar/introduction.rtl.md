@@ -2,7 +2,8 @@
 title: مقدمة
 description: مقدمة الي the T3 Stack
 layout: ../../layouts/docs.astro
-language: ar
+lang: ar
+dir: rtl
 ---
 
 <div class="embed">

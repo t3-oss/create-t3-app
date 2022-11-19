@@ -2,6 +2,8 @@
 title: Other Recommendations
 description: Libraries and Services that we recommend for many projects
 layout: ../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
 نحن ندرك ان المكتبات التي ضمنناها في `create-t3-app` لا تحل كل مشكلة، علي الرغم من ذلك فنحن ننصحك ان تبدأ بالاشياء التي نقدمهاـ، فسيحل عليك وقت تحتاج فيه أن تستخدم مكتبات حارجية فأنت وحك من تدري ماذا يحتاج مشروعك، ها هي بعض المضادر التي ينمن انلتي تشجعك علي ان تتبعها.

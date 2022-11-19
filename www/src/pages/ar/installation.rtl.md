@@ -2,6 +2,8 @@
 title: التنزيل
 description: تعليمات التنزيل لـ Create T3 App
 layout: ../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
 لعمل تطبيق باستخدام create-t3-app ، قم بتشغيل أي من الأوامر الثلاثة التالية وأجب عن أسئلة موجه الأوامر:
