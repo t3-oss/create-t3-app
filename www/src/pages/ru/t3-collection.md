@@ -22,15 +22,15 @@ lang: ru
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
 | AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
-
-add
+| The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
 ## Компании использующие T3 стек
 
 Нам бы очень хотелось узнать о компаниях использующих T3 стек для своих приложений. Ваша компания использует T3 стек и вы хотите поделиться им? Добавьте его в список!
 
-| Компания | Ссылка                     |
-| -------- | -------------------------- |
-| Ping.gg  | [ping.gg](https://ping.gg) |
+| Компания | Ссылка                             |
+| -------- | ---------------------------------- |
+| Ping.gg  | [ping.gg](https://ping.gg)         |
+| Nexiona  | [nexiona.com](https://nexiona.com) |
 
 _Крутой проект использующий T3 стек? Сделайте [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) и добавьте его в список!_
