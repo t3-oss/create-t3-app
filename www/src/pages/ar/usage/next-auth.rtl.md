@@ -2,6 +2,8 @@
 title: NextAuth.js
 description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
 
@@ -62,12 +64,11 @@ declare module "next-auth" {
 بنفس الطريقة يمكن اضافة اي بيانات الي الـ Session Object
 
 ## Usage with tRPC
-
-When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
-
+عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام Middleware، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها الا بواسطه اشخاص معينين
 This is done in a two step process:
 
-1. Grab the session from the request headers using the [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function. Don't worry, this function is safe to use - the name includes `unstable` only because the API implementation might change in the future. The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away.
+1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
+نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب    فيه ، قد تحملت `create-t3-app` عناء انشاء هذة الادة عنك : 
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -77,8 +78,7 @@ export const getServerAuthSession = async (ctx: {
   return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
 };
 ```
-
-Using this helper function, we can grab the session and pass it through to the tRPC context:
+باستخدام هذة الاداة يمكنك الحصول علي الـ Session وتمريرها الي الـ tRPC Contxt
 
 ```ts:server/trpc/context.ts
 import { getServerAuthSession } from "../common/get-server-auth-session";
@@ -91,8 +91,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
   });
 };
 ```
-
-2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+2. أنشئ tRPC Middleware وتأكد ما اذا كان هذا المستخدم يمتلك الصلاحيات اللازمة ام لا.
 
 ```ts:server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
