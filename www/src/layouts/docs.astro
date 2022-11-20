@@ -93,17 +93,19 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         </nav>
         <Footer path={currentFile} isBlog={true} />
       </div>
-      <aside
-        id="grid-right"
-        title="Table of Contents"
-        class="t3-scrollbar hidden lg:mb-12 lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
-      >
-        <RightSidebar
-          headings={headings}
-          githubEditUrl={githubEditUrl}
-          title={frontmatter.title}
-        />
-      </aside>
+      <div class="md:mr-4">
+        <aside
+          id="grid-right"
+          title="Table of Contents"
+          class="t3-scrollbar hidden lg:mb-12 lg:flex lg:flex-col lg:justify-start sticky col-span-1 w-full h-auto max-h-[calc(100vh-100px)] pr-4 top-[100px]"
+        >
+          <RightSidebar
+            headings={headings}
+            githubEditUrl={githubEditUrl}
+            title={frontmatter.title}
+          />
+        </aside>
+      </div>
     </main>
     <script defer>
       const matches = document.querySelectorAll("[data-heading-link]");
