@@ -2,6 +2,7 @@
 title: Введение
 description: Введение в T3 стек
 layout: ../../layouts/docs.astro
+lang: ru
 ---
 
 <div class="embed">
