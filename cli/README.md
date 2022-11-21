@@ -106,7 +106,7 @@ For help, discussion about best practices, or any other conversation that would 
 
 <h2 id="contributors">Contributors</h2>
 
-We 💖 contributors! Feel free to contribute to this project but **please read the [Contributing Guidelines](CONTRIBUTING.md) before opening an issue or PR** so you understand the branching strategy and local development environment. We also welcome you to join our [Discord](https://discord.gg/tEAQjDseSX) community for either support or contributing guidance.
+We 💖 contributors! Feel free to contribute to this project but **please read the [Contributing Guidelines](CONTRIBUTING.md) before opening an issue or PR;** so you understand the branching strategy and local development environment. We also welcome you to join our [Discord](https://discord.gg/tEAQjDseSX) community for either support or contributing guidance.
 
 <a href="https://github.com/t3-oss/create-t3-app/graphs/contributors">
   <p align="center">
