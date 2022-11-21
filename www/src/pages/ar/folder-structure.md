@@ -144,17 +144,13 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 <sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/router/_app.ts`
-
-The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
+ملف `_app.ts` يُستخدم لدمج tRPC routers في router واحد كما هو الحل في الـ types، إقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts)
 
 <sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/router/auth.ts`
-
-The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` helper to demonstrate how to protect a tRPC route with NextAuth.js.
-
+ملف `auth.ts` هو مثال لاستخدام `protectedProcedure helper` في حماية route معين.
 <sub>(في حالة NextAuth.js + tRPC)</sub>
-
 #### ملف `src/server/trpc/router/example.ts`
 
 The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
@@ -163,31 +159,28 @@ The `example.ts` file is an example tRPC router utilizing the `publicProcedure` 
 
 ###  ملف `src/styles`
 
-The `styles` folder contains the global styles of the application.
+مجلد `styles` يحتوي علي الـ stylesheets
 
 <sub>(في حالة Tailwind CSS)</sub>
 
 ###  ملف `src/types`
 
-The `types` folder is used to store reused types or type declarations.
+مجلد `types` يحتوي علي الـ Types
 
 <sub>(في حالة NextAuth.js)</sub>
 
 #### ملف  `src/types/next-auth.d.ts`
-
-The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
+ملف  `next-auth.d.ts` يُسنخدم للتعديل علي إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
 
 <sub>(في حالة NextAuth.js)</sub>
 
 ###  ملف `src/utils`
-
-The `utils` folder is used to store commonly re-used utility functions.
+مجلد `utils` يُستخدم للـ functions التي يكثر إستخدامها.
 
 <sub>(في حالة tRPC)</sub>
 
 #### ملف  `src/utils/trpc.ts`
-
-The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+ملف `trpc.ts` يُسخدم كـ entrypoint لـ tRPC، إقرأ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts)
 
 <sub>(في حالة tRPC)</sub>
 
