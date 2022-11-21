@@ -207,7 +207,7 @@ railway open
 | Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
 | Референс Docker CLI                  | https://docs.docker.com/engine/reference/commandline/docker/         |
 | Референс Docker Compose CLI         | https://docs.docker.com/compose/reference/                           |
-| Next.js Deployment with Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
+| Развертывание Next.js с Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
 | Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Next.js with Docker Example          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
