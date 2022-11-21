@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-  Interactive CLI to quickly set up an opinionated, full-stack, typesafe Next.js project.
+  Interactive CLI to start a full-stack, typesafe Next.js app.
 </p>
 
 <p align="center">
@@ -33,13 +33,13 @@
 
 ## Table of contents
 
-- <a href="#about">What is the T3 Stack?</a>
+- <a href="#about">The T3 Stack</a>
 - <a href="#axioms">T3 Axioms</a>
 - <a href="#getting-started">Getting Started</a>
 - <a href="#community">Community</a>
 - <a href="#contributors">Contributors</a>
 
-<h2 id="about">What is the T3 Stack?</h2>
+<h2 id="about">The T3 Stack</h2>
 
 The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on **simplicity**, **modularity**, and **full-stack typesafety**. It consists of:
 
@@ -50,11 +50,13 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 - [Prisma](https://prisma.io)
 - [NextAuth.js](https://next-auth.js.org)
 
-### What is `create-t3-app`? Some kinda template?
+### So... what is `create-t3-app`? A template?
 
-Kind of. We love all of the technologies that create-t3-app includes, but they are a bit annoying to get started with and connect them together. So we made `create-t3-app` to do one thing: _**Simplify complex boilerplate around the core T3 Stack tech without compromising the pieces modularity.**_
+Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
 
-This is **NOT** an all-inclusive template and we expect you to bring your own libraries as well. Check out [our other recommendations](https://create.t3.gg/en/other-recs) for even more info on topics such as state management and deployment - but we do not believe these are needed on every project.
+After countless projects and many years on this tech, we have lots of opinions and insights. We’ve done our best to encode them into this CLI.
+
+This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don’t want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](https://create.t3.gg/en/other-recs).
 
 <h2 id="axioms">T3 Axioms</h2>
 
@@ -74,7 +76,7 @@ The stated goal of `create-t3-app` is to provide the quickest way to start a new
 
 <h2 id="getting-started">Getting Started</h2>
 
-To get started with `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
 
 ### npm
 
