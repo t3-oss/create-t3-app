@@ -8,10 +8,10 @@ dir:rtl
 
 ## What is Tailwind CSS?
 
-مكتبة TailwindCSS هي مكتبة صغيرة، تعتمد علي فلسفة[utility first](https://tailwindcss.com/docs/utility-first)، وتُستخدم في تصميم وبناء دون الحاجة الي إستخدام Pure CSS، فهي مكتية نقية لا تقدم اي Components مُسية التصميم، غير انها توفر مزايا عديدة بالمقارنة بباقي المكتبات، لمزيد من المعلومات شاهد a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc)
+مكتبة Tailwind CSS هي مكتبة صغيرة، تعتمد على فلسفة[utility first](https://tailwindcss.com/docs/utility-first)، وتُستخدم في تصميم وبناء دون الحاجة إلي إستخدام Pure CSS، فهي مكتبة نقية لا تقدم أي Components مُسية التصميم، غير أنها توفر مزايا عديدة بالمقارنة بباقي المكتبات، لمزيد من المعلومات شاهد a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc)
 فهي تجعل عملية التصميم سريعة بشكل لا يُصدق.
 
-1. فيالماضي كنا نكتب css في ملفات منفصلة
+1. في الماضي كنا نكتب css في ملفات منفصلة
 
 ```css
 .my-class {
@@ -26,7 +26,7 @@ dir:rtl
 }
 ```
 
-2. ثم نقوم بإستدعائها في مكان أخر
+2. ثم نقوم استدعائها في مكان آخر
 
 ```jsx
 import "./my-class.css";
@@ -38,9 +38,9 @@ import "./my-class.css";
 <div class="my-class">...</div>
 ```
 
-المقابل لكل الخطوات السابقة في TailwindCSS
+المقابل لكل الخطوات السابقة في Tailwind CSS
 
-1. فقط اكتب الـ Class في HTML وانتهي الموضوع
+1. فقط اكتب الـ Class في HTML وانتهى الموضوع
 
 ```html
 <div
@@ -50,7 +50,7 @@ import "./my-class.css";
 </div>
 ```
 
-إستخدام هذة الخصائص جنبا الي جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
+إستخدام هذة الخصائص جنبا إلى جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
 
 Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
 
@@ -92,3 +92,6 @@ Conditionally adding classes using ternaries can get very messy and hard to read
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
+
+
+
