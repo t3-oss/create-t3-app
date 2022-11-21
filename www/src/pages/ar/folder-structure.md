@@ -194,22 +194,18 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 ملف  `.eslintrc.json` يٌستخدم لإعداد ESLint، إقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)
 
 ### ملف `next-env.d.ts`
-
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+وظيفة `next-env.d.ts`  هي التاكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تعدل عليها ولا تحذفها**، لمذيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
 
 ### ملف `next.config.mjs`
-
-The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+وظيفة `next.config.mjs` هي إعداد Next.js، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)
 
 ### ملف `postcss.config.cjs`
-
-The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+ملف `postcss.config.cjs` هو ضروري لـ TailwindCSS لمزيد من المعلومات [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss).
 
 <sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `prettier.config.cjs`
-
-The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+ملف `prettier.config.cjs` يُسخدم لإعداد Prettierولإضافة prettier-plugin-tailwindcss لعمل `formatting` لـ TailwindCSS classes، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
 
 <sub>(في حالة Tailwind CSS)</sub>
 
