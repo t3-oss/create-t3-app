@@ -63,7 +63,7 @@ dir: rtl
 مجلد prisma يحتوي علي `prisma.schema` والذي بدور يحتوي ملف تكوين الاتصال الي قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا الي جانب  ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma) 
 
 
-<sub>(With Prisma)</sub>
+<sub>(في حالة Prisma)</sub>
 
 ### ملف `public`
 مجلد Public يحتوي علي الـ assets التي يقوم الخادمبتقديمها، ملف `favicon.ico` هو مثال علي ذلك.
@@ -81,7 +81,7 @@ dir: rtl
 ملف `restricted.ts`يحتوي علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/). 
 
 
-<sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
+<sub>(في حالة NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
 #### ملف `src/pages/api/auth/[...nextauth].ts`
 ملف `[...nextauth].ts` هو ملف تابع لمكتبة NextAuth.js، ويتم إستخدامة في طلبات التوثيق authentication، إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات.
@@ -134,7 +134,7 @@ The `context.ts` file is used to create the context used in tRPC requests. See [
 
 The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 ### ملف `src/server/trpc/router`
 
@@ -158,13 +158,13 @@ The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` 
 
 The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 ###  ملف `src/styles`
 
 The `styles` folder contains the global styles of the application.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(في حالة Tailwind CSS)</sub>
 
 ###  ملف `src/types`
 
