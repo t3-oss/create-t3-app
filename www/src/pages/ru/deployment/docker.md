@@ -210,4 +210,4 @@ railway open
 | Развертывание Next.js с Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
 | Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Пример Next.js с Docker          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Создание Docker образа для Next.js приложения | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
