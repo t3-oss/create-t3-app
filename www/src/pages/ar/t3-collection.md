@@ -1,5 +1,5 @@
 ---
-title: T3 امثلة علي
+title: T3 أمثلة علي
 description: مشاريع مفتوحة المصدر  صنعت باستخدام Stack T3
 layout: ../../layouts/docs.astro
 lang: ar
@@ -33,3 +33,7 @@ dir: rtl
 | Ping.gg | [ping.gg](https://ping.gg) |
 
 أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!\_
+
+
+
+

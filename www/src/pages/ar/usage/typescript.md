@@ -32,14 +32,14 @@ dir: rtl
   </cite>
 </blockquote>
 
-سواء كنت مطورًا جديدًا أو متمرسًا ، نعتقد أن TypeScript أمر لا بد منه. قد يبدو الأمر مخيفًا في البداية ، ولكنه يشبه الكثير من الأدوات الاخري، وهو شيء لا ينظر فية الكثيرون أبدًا بعد البدء في استخدامها.
+سواء كنت مطورًا جديدًا أو متمرسًا ، نعتقد أن TypeScript أمر لا بد منه. قد يبدو الأمر مخيفًا في البداية ، ولكنه يشبه الكثير من الأدوات الأخرى، وهو شيء لا ينظر فية الكثيرون أبدًا بعد البدء في استخدامها.
 
 يوفر ملاحظات مباشرة أثناء كتابة كودك عن طريق تحديد أنواع البيانات المتوقعة ، وأيضا يوفر الإكمال التلقائي المفيد في الـ Editor الخاص بك ، أو يصرخ عليك بخطوط متعرجة حمراء إذا كنت تحاول الوصول إلى خاصية غير موجودة أو إذا قمت بتمرير قيمة من النوع الخطأ ، التي قد تضطر إلى تصحيحها.
 
 ## الـ Type Inference
 
-يميل كثير من مطوري Typescript الي كتابة الكثير من الـ types وفي واقع الامر هذا حقا امر غير ضروري أبداََخاصتة مع وجود الـ Inference.
-لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا الـ Inference هو تتبع الـ Types لك في كل مكان في الكود، فيفيدك في أنه يُغنيك عن تكرار كتابة الـ Types في أماكن أخري.
+يميل كثير من مطوري Typescript إلى كتابة الكثير من الـ types وفي واقع الأمر هذا حقا أمر غير ضروري أبداََخاصتة مع وجود الـ Inference.
+لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا الـ Inference هو تتبع الـ Types لك في كل مكان في الكود، يفيدك في أنه يُغنيك عن تكرار كتابة الـ Types في أماكن أخرى.
 
 <div class="embed">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -65,3 +65,6 @@ dir: rtl
 | Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
 | Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
 | Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
+
+
+

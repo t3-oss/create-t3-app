@@ -1,12 +1,12 @@
 ---
 title: NextAuth.js
-description: Usage of NextAuth.js
+description: إستخدام  NextAuth.js
 layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
 
-عندما تريد نظام مصادقة في تطبيقك Next.js ، فإن NextAuth.js يعد حلاً ممتازًا دون الحاجة إلى إنشاءه بنفسك. يأتي مزودًا بقائمة واسعة من الموفرين لإضافة مصادقة OAuth بسرعة ويوفر Adapters للعديد من قواعد البيانات و ORMs.
+عندما تريد نظام مصادقة في تطبيقك Next.js ، فإن NextAuth.js يعد حلاً ممتازًا دون الحاجة إلى إنشاء بنفسك. يأتي مزودًا بقائمة واسعة من الموفرين لإضافة مصادقة OAuth بسرعة ويوفر Adapters للعديد من قواعد البيانات و ORMs.
 
 ## Context Provider
 
@@ -18,7 +18,7 @@ dir: rtl
 </SessionProvider>
 ```
 
-يسمح الـ context Provider لـ تطبيقك ان يصل الي بيانات المستخدم دون الحاجة الي ادخال اي بينات اضافة
+يسمح الـ context Provider لـ تطبيقك ان يصل إلى بيانات المستخدم دون الحاجة الى ادخال اي بيانات اضافيه
 
 ```tsx:pages/users/[id].tsx
 import { useSession } from "next-auth/react";
@@ -62,15 +62,15 @@ declare module "next-auth" {
 }
 ```
 
-بنفس الطريقة يمكن اضافة اي بيانات الي الـ Session Object
+بنفس الطريقة يمكن اضافة اي بيانات الى الـ Session Object
 
 ## Usage with tRPC
 
-عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها الا بواسطه اشخاص معينين
+عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها إلا بواسطة أشخاص معينين
 This is done in a two step process:
 
 1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
-   نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء انشاء هذة الادة عنك :
+   نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء إنشاء هذه المادة عنك :
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -81,7 +81,7 @@ export const getServerAuthSession = async (ctx: {
 };
 ```
 
-باستخدام هذة الاداة يمكنك الحصول علي الـ Session وتمريرها الي الـ tRPC Contxt
+باستخدام هذه الاداة يمكنك الحصول علي الـ Session وتمريرها إلى الـ tRPC Context
 
 ```ts:server/trpc/context.ts
 import { getServerAuthSession } from "../common/get-server-auth-session";
@@ -95,7 +95,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-2. أنشئ tRPC Middleware وتأكد ما اذا كان هذا المستخدم يمتلك الصلاحيات اللازمة ام لا.
+2. أنشئ tRPC Middleware وتأكد ما اذا كان هذا المستخدم يملك الصلاحيات اللازمة أم لا.
 
 ```ts:server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
@@ -113,7 +113,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
-الـ Session Object صغير يحتوي علي عدد قليل من الخانات، وعند استخدامك لـ `protectedProcedures`يمنك الوصول الي هذة البيانات منها الـ UserId وعندها يمكنك عمل fetch لبيانات اخري من قاعدة البيانات.
+الـ Session Object صغير يحتوي علي عدد قليل من الخانات، وعند استخدامك لـ `protectedProcedures`يمكنك الوصول الى هذة البيانات منها الـ UserId وعندها يمكنك عمل fetch لبيانات اخرى من قاعدة البيانات.
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
@@ -136,9 +136,9 @@ const userRouter = router({
 
 ### Adding new fields to your models
 
-### إضافة المزيد من الحقول الي الـ models
+### إضافة المزيد من الحقول إلى الـ models
 
-عند الحاجة الي إضافة حقول إضافية الي `User` أو `Account` أو `Session` -علي اغلب الظن انك لن تحتاج الي تعديل شئ غير `User` اَ بق في بالك أنPrisma Adapter سيشئ هذا الحقل تلقائيا مع كل مستخدم جديد لذ عليك أن ت ضيف قيمة افتراضية Default Value.
+عند الحاجة إلى إضافة حقول إضافية الي `User` أو `Account` أو `Session` -على اغلب الظن انك لن تحتاج الى تعديل شئ غير `User` اَ بق في بالك أن Prisma Adapter سينشئ هذا الحقل تلقائيا مع كل مستخدم جديد لذا عليك أن تضيف قيمة افتراضية Default Value.
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -154,22 +154,22 @@ const userRouter = router({
 
 ## الاستخدام مع Next.js Middleware.
 
-يتطلب استخدام NextAuth.js مع Middleware Next.js استخدام [JWT Session Stratigy](https://next-auth.js.org/configuration/nextjs#caveats). هذا لأن الـ Middleware قادرة فقط على الوصول إلى ملف تعريف ارتباط JWT
+يتطلب استخدام NextAuth.js مع Middleware Next.js استخدام [JWT Session Strategy](https://next-auth.js.org/configuration/nextjs#caveats). هذا لأن الـ Middleware قادرة فقط على الوصول إلى ملف تعريف ارتباط JWT
 
-بشكل افتراضي ، يتم تكوين التطبيق create-t3-app لاستخدام استراتيجية قاعدة البيانات Database Stratigy ، بالاشتراك مع Prisma كـ Adapter لـقاعدة البيانات.
+بشكل افتراضي ، يتم تكوين التطبيق create-t3-app لاستخدام استراتيجية قاعدة البيانات Database Strategy ، بالاشتراك مع Prisma كـ Adapter لـ قاعدة البيانات.
 
 ## Setting up the default DiscordProvider
 
-1. إتجة الي [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications) واضغط علي New Application.
+1. اتجه الى [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications) واضغط على New Application.
 
-2. في settings menu اضغط علي OAuth2 ثم General
+2. في settings menu اضغط على OAuth2 ثم General
 
 3. إنسخ الـ Client ID وضعة في `.env` كـ DISCORD_CLIENT_ID
 
-4. تحت Client Secret إضغط علي "Reset Secret" وإنسخ النص الجديد وضعة في `.env` كـ `DISCORD_CLIENT_SECRET `.
-   كن حذرًا لأنك لن تتمكن من رؤية هذا كلمة السر مرة أخرى ، وستؤدي إعادة تعيينها إلى انتهاء صلاحية كلمة السر الحالية
-5. اضغط علي Add Redirect واضف رابط إعادة التوجية`http://localhost:3000/api/auth/callback/discord` كمثال
-6. إحفظ التعديلات
+4. تحت Client Secret اضغط على "Reset Secret" ونسخ النص الجديد وضعه في `.env` كـ `DISCORD_CLIENT_SECRET `.
+   كن حذرًا لأنك لن تتمكن من رؤية هذا كلمة السر مرة أخرى ، ستؤدي إعادة تعيينها إلى انتهاء صلاحية كلمة السر الحالية
+5. اضغط على Add Redirect واضف رابط إعادة التوجيه`http://localhost:3000/api/auth/callback/discord` كمثال
+6. احفظ التعديلات
 
 - It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
 
@@ -180,3 +180,6 @@ const userRouter = router({
 | NextAuth.js Docs                  | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
+
+
+

@@ -6,13 +6,12 @@ dir: rtl
 layout: ../../../layouts/docs.astro
 ---
 
-Next.js is a backend framework for your React applications.
-
+Next.js هو إطار عمل لـ Backend لتطبيقات React 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) to get a better understanding of what Next.js is and how it works.</p>
+شاهد هذا الفديو لتعرف المزيد عن [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw)
 
 ## Why should I use it?
 
