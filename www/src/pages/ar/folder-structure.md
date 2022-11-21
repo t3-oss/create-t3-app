@@ -62,13 +62,13 @@ dir: rtl
 
 ### مجلد `prisma`
 
-مجلد prisma يحتوي علي `prisma.schema` والذي بدور يحتوي ملف تكوين الاتصال الي قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا الي جانب ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma)
+مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال الي قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma)
 
 <sub>(في حالة Prisma)</sub>
 
 ### ملف `public`
 
-مجلد Public يحتوي علي الـ assets التي يقوم الخادمبتقديمها، ملف `favicon.ico` هو مثال علي ذلك.
+مجلد Public يحتوي على الـ assets التي يقوم الخادم بتقديمها، ملف `favicon.ico` هو مثال على ذلك.
 
 ### ملف `src/env`
 
@@ -76,19 +76,19 @@ dir: rtl
 
 ### ملف `src/pages`
 
-مجلد pages يحتوي علي كل الصفحات التي سيحتوي عليها تطبيق Next.js، ملف `index.tsx`هو الـ root او بمعني أخر (الصفحة الرئيسية)
+مجلد pages يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، ملف `index.tsx`هو الـ root او بمعني أخر (الصفحة الرئيسية)
 ملف `__app.tsx` بعمل كـ Global لتضع فية الـ Scripts التي ستحتاجها في كل أجزاء التطبيق [Next.js documentation](https://nextjs.org/docs/basic-features/pages)
 
 #### ملف `src/pages/api`
 
-مجلد `api` يحتوي علي كل الـ Api Endpoints التي سيحتويها تطبيقك، مثال علي ذلك هو `example.ts` إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction)
+مجلد `api` يحتوي علي كل الـ Api Endpoints التي يحتويها تطبيقك، مثال على ذلك هو `example.ts` إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction)
 ملف `restricted.ts`يحتوي علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/).
 
 <sub>(في حالة NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
 #### ملف `src/pages/api/auth/[...nextauth].ts`
 
-ملف `[...nextauth].ts` هو ملف تابع لمكتبة NextAuth.js، ويتم إستخدامة في طلبات التوثيق authentication، إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات.
+ملف `[...nextauth].ts` هو ملف تابع لمكتبة NextAuth.js، ويتم إستخدامه في طلبات التوثيق authentication، إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات.
 
 <sub>(في حالة NextAuth.js)</sub>
 
@@ -100,19 +100,19 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/server`
 
-يُستخدم مجلد `server` للفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side),>
+يُستخدم مجلد `server` الفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side),>
 
 <sub>(في حالة tRPC and/or Prisma)</sub>
 
 ### ملف `src/server/common`
 
-مجلد `common` يستخم للـ Functions التي يكثر إستخدامها.
+مجلد `common` يستخدم للـ Functions التي يكثر إستخدامها.
 
 <sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/common/get-server-auth-session.ts`
 
-ملف `get-server-auth-session.ts` يتم إستحدامة لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
+ملف `get-server-auth-session.ts` يتم استخدامها لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
 
 <sub>(في حالة NextAuth.js + tRPC)</sub>
 
@@ -124,7 +124,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/server/trpc`
 
-مجلد tRPC يحتوي علي كود tRPC سيرفره
+مجلد tRPC يحتوي على كود tRPC سيرفر
 
 <sub>(في حالة tRPC)</sub>
 
@@ -142,7 +142,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/server/trpc/router`
 
-يحتوي علي `tRPC routers`
+يحتوي على `tRPC routers`
 
 <sub>(في حالة tRPC)</sub>
 
@@ -165,19 +165,19 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/styles`
 
-مجلد `styles` يحتوي علي الـ stylesheets
+مجلد `styles` يحتوي على الـ stylesheets
 
 <sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `src/types`
 
-مجلد `types` يحتوي علي الـ Types
+مجلد `types` يحتوي على الـ Types
 
 <sub>(في حالة NextAuth.js)</sub>
 
 #### ملف `src/types/next-auth.d.ts`
 
-ملف `next-auth.d.ts` يُسنخدم للتعديل علي إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
+ملف `next-auth.d.ts` يُسنخدم للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
 
 <sub>(في حالة NextAuth.js)</sub>
 
@@ -207,7 +207,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `next-env.d.ts`
 
-وظيفة `next-env.d.ts` هي التاكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تعدل عليها ولا تحذفها**، لمذيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
+وظيفة `next-env.d.ts` هي التأكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تعدل عليها ولا تحذفها**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
 
 ### ملف `next.config.mjs`
 
@@ -221,10 +221,10 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `prettier.config.cjs`
 
-ملف `prettier.config.cjs` يُسخدم لإعداد Prettierولإضافة prettier-plugin-tailwindcss لعمل `formatting` لـ TailwindCSS classes، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+ملف `prettier.config.cjs` يُسخدم لإعداد Prettier ولإضافة prettier-plugin-tailwindcss لعمل `formatting` لـ Tailwind CSS classes، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
 
 <sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `tsconfig.json`
 
-وظيفة `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرا [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
+وظيفة `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
