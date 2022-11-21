@@ -51,20 +51,19 @@ import "./my-class.css";
 ```
 
 إستخدام هذة الخصائص جنبا إلى جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
-
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+تأتي Tailwind CSS بنظام مُدمج وجميل مُزود بمجموعة الوان واحجام و styles  مُختارة بعناية كالطول والعرض والحواف، كما أيضا تاني مع breakpoints لإنشاء تصميم متوافق.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+أعطي [mewtru](https://twitter.com/trunarla) خطابا رائعا عن [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+## الاستخدام
+تأكد من تثبيت إضافة Tailwind CSS لمحرر اكوادك لتُحسن جودة العمل.
 
-### Extensions and Plugins
+### الاضافات
 
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
@@ -74,16 +73,15 @@ Make sure you have editor plugins for Tailwind installed to improve your experie
 
 Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
 
-### Conditionally Applying Classes
+### إضافة الـ classes  إختبارياَ
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## مصادر مفيدة
 
-| Resource                     | Link                                                     |
+| المصدر                     | الرابط                                                     |
 | ---------------------------- | -------------------------------------------------------- |
 | Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
 | Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
@@ -92,6 +90,8 @@ Conditionally adding classes using ternaries can get very messy and hard to read
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
+
+
 
 
 
