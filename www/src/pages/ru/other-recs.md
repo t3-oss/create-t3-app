@@ -74,7 +74,7 @@ _**Примечание редактора**_: Библиотеки управл
 
 - [Главная страница AutoAnimate](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
-- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
+- [Компонент для AutoAnimate](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
