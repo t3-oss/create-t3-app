@@ -113,32 +113,33 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 <sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/db/client.ts`
+ملف `client.ts` يستخدم لإنشاء مثيل لـ Prisma Client علي مستوي التطبيق كلة، إقرأ المزيد [Prisma usage](usage/prisma#prisma-client) 
 
-The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
 
 <sub>(في حالة Prisma)</sub>
 
 ### ملف `src/server/trpc`
-
-The `trpc` folder contains the tRPC server-side code.
+مجلد tRPC يحتوي علي كود tRPC الخاص بالخادم
 
 <sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/context.ts`
 
-The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
+ملف `context.ts` يُستخدم لإنشاء context في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts)****
 
-<sub>(with tRPC)</sub>
+
+<sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/trpc.ts`
+إقرأ [tRPC usage](usage/trpc#-servertrpctrpcts)
 
-The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+
 
 <sub>(في حالة tRPC)</sub>
 
 ### ملف `src/server/trpc/router`
+يحتوي علي `tRPC routers` 
 
-The `router` folder contains the tRPC routers.
 
 <sub>(في حالة tRPC)</sub>
 
