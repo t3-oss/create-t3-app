@@ -1,13 +1,14 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: بنية المشروع
+description: بنية مشروع T3 App
 layout: ../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
+المٌخطط التالي هو مثال لمشروع T3 مع كل الخيارات
 
-The following is the folder structure of a newly scaffolded T3 App, with all options selected.
 
-Further down, the description of each folder indicates its purpose and if it is only included with selected libraries.
-
+علاوة على ذلك ، يشير وصف كل مجلد إلى الغرض منه وما إذا كان متضمنًا فقط مع المكتبات المحددة.
 ```
 .
 ├─ prisma
@@ -64,85 +65,85 @@ The `prisma` folder contains the `schema.prisma` file which is used to configure
 
 <sub>(With Prisma)</sub>
 
-### `public`
+### ملف `public`
 
 The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
 
-### `src/env`
+### ملف `src/env`
 
 Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
 
-### `src/pages`
+### ملف `src/pages`
 
 The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
 
-#### `src/pages/api`
+#### ملف `src/pages/api`
 
 The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file (with Prisma) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file (with Next-Auth) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
 
 <sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
-#### `src/pages/api/auth/[...nextauth].ts`
+#### ملف `src/pages/api/auth/[...nextauth].ts`
 
 The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with NextAuth.js)</sub>
 
-#### `src/pages/api/trpc/[trpc].ts`
+#### ملف `src/pages/api/trpc/[trpc].ts`
 
 The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with tRPC)</sub>
 
-### `src/server`
+### ملف `src/server`
 
 The `server` folder is used to clearly separate server-side code from client-side code.
 
 <sub>(with tRPC and/or Prisma)</sub>
 
-### `src/server/common`
+### ملف `src/server/common`
 
 The `common` folder contains commonly re-used server-side code.
 
 <sub>(with NextAuth.js + tRPC)</sub>
 
-#### `src/server/common/get-server-auth-session.ts`
+#### ملف `src/server/common/get-server-auth-session.ts`
 
 The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 <sub>(with NextAuth.js + tRPC)</sub>
 
-#### `src/server/db/client.ts`
+#### ملف `src/server/db/client.ts`
 
 The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
 
 <sub>(with Prisma)</sub>
 
-### `src/server/trpc`
+### ملف `src/server/trpc`
 
 The `trpc` folder contains the tRPC server-side code.
 
 <sub>(with tRPC)</sub>
 
-#### `src/server/trpc/context.ts`
+#### ملف `src/server/trpc/context.ts`
 
 The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
 
 <sub>(with tRPC)</sub>
 
-#### `src/server/trpc/trpc.ts`
+#### ملف `src/server/trpc/trpc.ts`
 
 The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
 
 <sub>(with tRPC)</sub>
 
-### `src/server/trpc/router`
+### ملف `src/server/trpc/router`
 
 The `router` folder contains the tRPC routers.
 
 <sub>(with tRPC)</sub>
 
-#### `src/server/trpc/router/_app.ts`
+#### ملف `src/server/trpc/router/_app.ts`
 
 The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
 
