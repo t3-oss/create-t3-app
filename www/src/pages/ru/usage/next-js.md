@@ -25,11 +25,11 @@ Next.js это бэкенд фреймворк для ваших React прил�
 
 ## Полезные ресурсы
 
-| Ресурс                         | Ссылка                             |
-| ------------------------------ | ---------------------------------- |
-| Документация Next.js          | https://nextjs.org/docs            |
-| Next.js GitHub                 | https://github.com/vercel/next.js  |
+| Ресурс                          | Ссылка                             |
+| ------------------------------- | ---------------------------------- |
+| Документация Next.js            | https://nextjs.org/docs            |
+| Next.js GitHub                  | https://github.com/vercel/next.js  |
 | Блог Next.js                    | https://nextjs.org/blog            |
-| Next.js Discord                | https://nextjs.org/discord         |
-| Next.js Twitter                | https://twitter.com/nextjs         |
+| Next.js Discord                 | https://nextjs.org/discord         |
+| Next.js Twitter                 | https://twitter.com/nextjs         |
 | Канал Vercel/Next.js на YouTube | https://www.youtube.com/c/VercelHQ |

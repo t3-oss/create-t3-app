@@ -85,12 +85,12 @@ Tru Narla лучше известна как [mewtru](https://twitter.com/trunar
 
 ## Полезные ресурсы
 
-| Ресурс                       | Ссылка                                                   |
-| ---------------------------- | -------------------------------------------------------- |
-| Документация Tailwind                 | https://tailwindcss.com/docs/editor-setup/               |
-| Шпаргалка по Tailwind          | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Сервер Tailwind в Discord       | https://tailwindcss.com/discord/                         |
+| Ресурс                        | Ссылка                                                   |
+| ----------------------------- | -------------------------------------------------------- |
+| Документация Tailwind         | https://tailwindcss.com/docs/editor-setup/               |
+| Шпаргалка по Tailwind         | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss           | https://github.com/aniftyco/awesome-tailwindcss/         |
+| Tailwind Community            | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Сервер Tailwind в Discord     | https://tailwindcss.com/discord/                         |
 | Канал TailwindLabs на Youtube | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| Tailwind Playground           | https://play.tailwindcss.com/                            |

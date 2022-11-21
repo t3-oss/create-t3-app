@@ -69,9 +69,9 @@ main()
 
 ## Полезные ресурсы
 
-| Ресурс                       | Ссылка                                                                                                                                            |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Документация Prisma                   | https://www.prisma.io/docs/                                                                                                                       |
-| Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
-| NextAuth.JS Адаптер для Prisma    | https://next-auth.js.org/adapters/prisma                                                                                                          |
+| Ресурс                          | Ссылка                                                                                                                                            |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Документация Prisma             | https://www.prisma.io/docs/                                                                                                                       |
+| Prisma GitHub                   | https://github.com/prisma/prisma                                                                                                                  |
+| NextAuth.JS Адаптер для Prisma  | https://next-auth.js.org/adapters/prisma                                                                                                          |
 | Гайд по подключению PlanetScale | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |

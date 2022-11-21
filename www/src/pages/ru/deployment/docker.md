@@ -201,13 +201,13 @@ railway open
 
 ## Полезные ресурсы
 
-| Ресурс                               | Ссылка                                                               |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| Референс для Dockerfile                  | https://docs.docker.com/engine/reference/builder/                    |
-| Референс для файла Compose 3 версии      | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
-| Референс Docker CLI                  | https://docs.docker.com/engine/reference/commandline/docker/         |
-| Референс Docker Compose CLI         | https://docs.docker.com/compose/reference/                           |
-| Развертывание Next.js с Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Пример Next.js с Docker          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
+| Ресурс                                        | Ссылка                                                               |
+| --------------------------------------------- | -------------------------------------------------------------------- |
+| Референс для Dockerfile                       | https://docs.docker.com/engine/reference/builder/                    |
+| Референс для файла Compose 3 версии           | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
+| Референс Docker CLI                           | https://docs.docker.com/engine/reference/commandline/docker/         |
+| Референс Docker Compose CLI                   | https://docs.docker.com/compose/reference/                           |
+| Развертывание Next.js с Docker Image          | https://nextjs.org/docs/deployment#docker-image                      |
+| Next.js in Docker                             | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Пример Next.js с Docker                       | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | Создание Docker образа для Next.js приложения | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
