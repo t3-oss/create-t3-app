@@ -45,20 +45,15 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Mantine](https://mantine.dev)
 
 ### سلطة التباين الطبقي
-
-**For building UI Libraries**
+** لبناء مكتبات UI **
 إنشاء مكتبة واجهة مستخدم بشكل تصريحي(Declarative) بألوان وأحجام مختلفة ومتغيرات مختلفة. عندما يصل مشروعك إلى نطاق تريد فيه مجموعة موحدة من مكونات الـ UI مع متغيرات متعددة باستخدام Tailwind CSS ، فإن CVA هي أداة رائعة.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
 # الانميشن
-## Animations
-
-For when you need animations in your app, here are our recommendations.
 
 ### AutoAnimate
 
-**For animations with a single line of code**
 **الانميشن بسطر كود واحد**
 
 تحاول معظم المكتبات المتحركة إرضاء كل حالة استخدام ممكنة ، نتيجة لذلك تصبح غير مرغوب فيها. AutoAnimate هي أداة لا تحتاج الي تكوين توفر تحسينًا كبيرًا في UX دون بذل جهد إضافي من المطور.
@@ -67,9 +62,7 @@ For when you need animations in your app, here are our recommendations.
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
 - [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
-### Framer Motion
-
-**For complex animations with declarative code**
+### ـ Framer Motion
 **للرسوم المتحركة المعقدة**
 يوفر FramerMotion اسلوبا بسيطا لكتابة الكود، فيسمع لك بكتابة رسوميات معقدة بكود أقل
 
@@ -80,28 +73,25 @@ For when you need animations in your app, here are our recommendations.
 
 ### Vercel
 
-**For hosting your app**
+**إستضافة تعليقك**
+قامت Vervel بتسهيل اسضافة موقعك بعد أن كان جحيما في الماضي، فاعامد علي AWS لكن مع واحهة أفضل.
 
-Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
-
-- [Vercel Homepage](https://vercel.com/)
-- [Create T3 App Vercel deployment guide](/en/deployment/vercel)
+- [Vercel موقع](https://vercel.com/)
+- [Create T3 App Vercel كتيب تعليمات](/en/deployment/vercel)
 
 ### PlanetScale
 
-**For databases without the worry**
-
-PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
+**حتي لا تقلق علي قواعد بياناتك بعد الان**
+تعد PlanetScale أحد أفضل مزودي خدمة قواعد البانات علي الاطلاق فبقدرتها علي التوسع وتجربة المطور الممتازة والاسعار المعقولة.
 
 - [PlanetScale Homepage](https://planetscale.com/)
 
 ### Railway
 
-**For hosting your infra**
+**لإستضافة البنية التحتية لبموقعك**
+فهي Heroku العصر الحديث، إذا كانVercel , PlanetScale غير كافيين لك، فـ Railway ستكون خيارك المناسب.
 
-"Modern Heroku". Easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
-
-- [Railway Homepage](https://railway.app/)
+- [Railway موقع](https://railway.app/)
 
 ### Upstash
 
@@ -114,9 +104,7 @@ We love Prisma and PlanetScale, but some projects require a more performant solu
 ### Pusher
 
 **For serverless WebSockets**
-
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
-
+إذا كان الـ WebSockets مهمة بالنسبة لك، فإنة من الافضل الاعتماد علي سيرفر تقليدي مثل [Fastify](https://www.fastify.io/) والتي أيضا تدعم(which [also works with tRPC!](https://trpc.io/docs/v10/fastify) لكن اذا كانت السرعة مهمه فأن Pusher هو الخيار المناسب لك.
 - [Pusher Homepage](https://pusher.com/)
 
 ### Soketi
