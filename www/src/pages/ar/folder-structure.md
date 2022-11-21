@@ -100,7 +100,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/server`
 
-يُستخدم مجلد `server` الفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side),>
+يُستخدم مجلد `server` للفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side)
 
 <sub>(في حالة tRPC and/or Prisma)</sub>
 
