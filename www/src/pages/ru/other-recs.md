@@ -72,7 +72,7 @@ _**Примечание редактора**_: Библиотеки управл
 
 Большенство библиотек анимации пытаются удовлетворить каждый возможный случай использования и в результате становятся громоздкими. AutoAnimate - это инструмент без конфигурации, который даст вам значительное улучшение UX без дополнительных усилий разработчика.
 
-- [AutoAnimate Homepage](https://auto-animate.formkit.com/)
+- [Главная страница AutoAnimate](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
 - [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
