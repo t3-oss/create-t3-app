@@ -2,17 +2,16 @@
 title: Tailwind CSS
 description: Usage of Tailwind CSS
 layout: ../../../layouts/docs.astro
+lang: ar
+dir:rtl
 ---
 
 ## What is Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+مكتبة TailwindCSS هي مكتبة صغيرة، تعتمد علي فلسفة[utility first](https://tailwindcss.com/docs/utility-first)، وتُستخدم في تصميم وبناء دون الحاجة الي إستخدام Pure CSS، فهي مكتية نقية لا تقدم اي Components مُسية التصميم، غير انها توفر مزايا عديدة بالمقارنة بباقي المكتبات، لمزيد من المعلومات شاهد a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc)
+فهي تجعل عملية التصميم سريعة بشكل لا يُصدق.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
-
-Old CSS:
-
-1. Write CSS, often in a separate file
+1. فيالماضي كنا نكتب css في ملفات منفصلة
 
 ```css
 .my-class {
@@ -27,21 +26,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. ثم نقوم بإستدعائها في مكان أخر
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. ثم نُضيف الـ class الي HTML
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+المقابل لكل الخطوات السابقة في TailwindCSS
 
-1. Just write classes in your HTML
+1. فقط اكتب الـ Class في HTML وانتهي الموضوع
 
 ```html
 <div
@@ -51,7 +50,7 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+إستخدام هذة الخصائص جنبا الي جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
 
 Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
 
