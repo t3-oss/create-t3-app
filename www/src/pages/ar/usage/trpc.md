@@ -2,9 +2,10 @@
 title: tRPC
 description: Usage of tRPC
 layout: ../../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
-
-tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
+إن tRPC تسمح لك بكتابة typesafe api دون الحاجة الي توليد كود أو حدوث أخطاء مفاجئة أثناء الـ rumtime، إنها تستغل خاصية الـ inference في Typescript حتي تضمن الـ typesafety في ال Api عند ندائة من الـ Frontend 
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
@@ -33,8 +34,8 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
 </blockquote>
 
 ## Files
+لسوء الحظ فإن tRPC تتطلب قليلاً من الـ boilerplate ولكن لحسن الحظ فان `create-t3-app` تحمل عنك هذا العبئ.
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
