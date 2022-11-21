@@ -84,46 +84,45 @@ dir: rtl
 <sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
 #### ملف `src/pages/api/auth/[...nextauth].ts`
+ملف `[...nextauth].ts` هو ملف تابع لمكتبة NextAuth.js، ويتم إستخدامة في طلبات التوثيق authentication، إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات.
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(في حالة NextAuth.js)</sub>
 
 #### ملف `src/pages/api/trpc/[trpc].ts`
 
 The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 ### ملف `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+يُستخدم مجلد `server` للفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side),>
 
-<sub>(with tRPC and/or Prisma)</sub>
+<sub>(في حالة tRPC and/or Prisma)</sub>
 
 ### ملف `src/server/common`
 
-The `common` folder contains commonly re-used server-side code.
+مجلد `common` يستخم للـ Functions التي يكثر إستخدامها.
 
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/common/get-server-auth-session.ts`
+ملف `get-server-auth-session.ts` يتم إستحدامة لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
 
-The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
-
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/db/client.ts`
 
 The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
 
-<sub>(with Prisma)</sub>
+<sub>(في حالة Prisma)</sub>
 
 ### ملف `src/server/trpc`
 
 The `trpc` folder contains the tRPC server-side code.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/context.ts`
 
@@ -141,19 +140,19 @@ The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/t
 
 The `router` folder contains the tRPC routers.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/router/_app.ts`
 
 The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/router/auth.ts`
 
 The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` helper to demonstrate how to protect a tRPC route with NextAuth.js.
 
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/trpc/router/example.ts`
 
@@ -171,25 +170,25 @@ The `styles` folder contains the global styles of the application.
 
 The `types` folder is used to store reused types or type declarations.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(في حالة NextAuth.js)</sub>
 
 #### ملف  `src/types/next-auth.d.ts`
 
 The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(في حالة NextAuth.js)</sub>
 
 ###  ملف `src/utils`
 
 The `utils` folder is used to store commonly re-used utility functions.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 #### ملف  `src/utils/trpc.ts`
 
 The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
 
-<sub>(with tRPC)</sub>
+<sub>(في حالة tRPC)</sub>
 
 ### ملف `.env`
 
@@ -215,13 +214,13 @@ The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](http
 
 The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `prettier.config.cjs`
 
 The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `tsconfig.json`
 
