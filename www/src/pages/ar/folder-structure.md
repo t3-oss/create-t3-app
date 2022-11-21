@@ -210,5 +210,4 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 <sub>(في حالة Tailwind CSS)</sub>
 
 ### ملف `tsconfig.json`
-
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+وظيفة  `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرا [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
