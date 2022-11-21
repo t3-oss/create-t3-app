@@ -9,7 +9,7 @@ dir: rtl
 
 ## Context Provider
 
-في نقطة دخول تطبيقك ، سترى أن تطبيقك في [SessionProvider](https://):
+في نقطة دخول تطبيقك ، سترى أن تطبيقك في [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 
 ```tsx:pages/_app.tsx
@@ -35,8 +35,7 @@ const User = () => {
 };
 ```
 
-## Inclusion of `user.id` on the Session
-
+## تضمين `user.id` في الـ Session
 يستخدم `create-t3-app` الـ Session callback الموجودة في ملف تكوين NextAuth.js ليضيف الـ User ID الي Session Object.
 
 ```ts:pages/api/auth/[...nextauth].ts
@@ -66,7 +65,7 @@ declare module "next-auth" {
 
 ## Usage with tRPC
 
-عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام Middleware، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها الا بواسطه اشخاص معينين
+عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها الا بواسطه اشخاص معينين
 This is done in a two step process:
 
 1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
