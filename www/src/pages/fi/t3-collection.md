@@ -2,13 +2,14 @@
 title: T3 Collection
 description: Cool open source projects and companies using the T3 stack
 layout: ../../layouts/docs.astro
+lang: fi
 ---
 
-Made a project using the T3 stack and want to share it? Add it to the list!
+Oletko tehnyt projektin T3-stackin avulla ja haluat jakaa sen? Lisää se listalle!
 
-## Open Source apps made using the T3 Stack
+## Avoimen lähdekoodin projekteja jotka on tehty käyttäen T3 Stackkiä
 
-| Description                                                       | Repo                                                                        | Link                                                                              |
+| Kuvaus                                                            | Säilytyspaikka (Repo)                                                       | Linkki                                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -23,13 +24,13 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
-## Companies using the T3 Stack
+## T3-stackkiä käyttävät yritykset
 
-We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
+Haluaisimme tietää yrityksistä, jotka käyttävät T3-Stackkiä sovelluksissaan. Käyttääkö yrityksesi T3-Stackkiä ja haluaisi jakaa sen? Lisää se listalle!
 
-| Company | Link                               |
+| Yritys  | Linkki                             |
 | ------- | ---------------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg)         |
 | Nexiona | [nexiona.com](https://nexiona.com) |
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+_Onko sinulla projekti joka on rakennettu käyttäen T3 stackkiä? Tee uusi [lisäys pyyntö (pull request)](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) ja lisää se tänne!_
