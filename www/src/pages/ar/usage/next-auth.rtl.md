@@ -127,13 +127,9 @@ const userRouter = router({
 ## الاستخدام مع Prisma
 يتطلب إستخدام NextAuth.js للعمل مع Prisma الكثير من الإعداد الأولي. يتعامل تطبيق create-t3-app مع كل هذا من أجلك ، وإذا حددت كل من Prisma و NextAuth.js ، فستحصل على نظام مصادقة يعمل بكامل طاقته مع جميع النماذج المطلوبة التي تم تكوينها مسبقًا. نقوم بشحن تطبيقك الاولي مع مزود Discord OAuth المكون مسبقًا ، والذي اخترناه لأنه من أسهل البدء معة - ما عليك سوى توفير الرموز المميزة في .env وستكون جاهزًا للبدء. ومع ذلك ، يمكنك بسهولة إضافة المزيد من مقدمي الخدمة باتباع NextAuth.js Docs. لاحظ أن بعض مقدمي الخدمة يطلبون إضافة حقول إضافية إلى نماذج معينة. نوصيك بقراءة الـ Docs الخاصة بالموفر الذي ترغب في استخدامه للتأكد من أن لديك جميع الحقول المطلوبة.
 
-Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
-
 ### Adding new fields to your models
-
-When adding new fields to any of the `User`, `Account`, `Session`, or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
-
-If for example, you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
+### إضافة المزيد من الحقول الي الـ models 
+عند الحاجة الي إضافة حقول إضافية الي `User` أو `Account` أو `Session` -علي اغلب الظن انك لن تحتاج الي تعديل شئ غير `User` اَ بق في بالك أنPrisma Adapter سيشئ هذا الحقل تلقائيا مع كل مستخدم جديد لذ عليك أن ت ضيف قيمة افتراضية Default Value.
 
 ```diff:prisma/schema.prisma
 + enum Role {
