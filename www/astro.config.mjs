@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkCodeTitles from "remark-code-titles";
-
+import sitemap from "@astrojs/sitemap";
 /**
  * @link https://astro.build/config
  */
@@ -44,5 +44,6 @@ export default defineConfig({
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
+    sitemap(),
   ],
 });
