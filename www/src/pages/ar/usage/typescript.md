@@ -36,18 +36,14 @@ layout: rtl
 
 يوفر ملاحظات مباشرة أثناء كتابة الكود الخاصة بك عن طريق تحديد أنواع البيانات المتوقعة ، وأيضا يوفر الإكمال التلقائي المفيد في الـ Editor الخاص بك ، أو يصرخ عليك بخطوط متعرجة حمراء إذا كنت تحاول الوصول إلى خاصية غير موجودة او إذا قمت بتمرير قيمة من النوع الخطأ ، والتي قد تضطر إلى تصحيحها.
 
-
 ## الـ Type Inference
 
 يميل كثير من مطوري Typescript الي كتابة الكثير من الـ types وفي واقع الامر هذا حقا امر غير ضروري أبداََخاصتة مع وجود الـ Inference.
 لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا الـ Inference هو تتبع الـ Types لك في كل مكان في الكود، فيفيدك في أنه يُغنيك عن تكرار كتابة الـ Types في أماكن أخري.
 
-
 <div class="embed">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
-
 
 الق نظرة علي [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
@@ -56,13 +52,14 @@ layout: rtl
 ### مكتبة Zod
 
 مكتبة [Zod](https://github.com/colinhacks/zod) هي schema validation library تم بنائوها بـ Typescript. اكتب الـ Schema التي تمثل مصدر الحقيقة الاساسي single source of truth ودع الباقي لـ zod وهي ستتكفل بة.
+
 ### مكتبة Tanstack Query
 
 [Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
 
 ## مصادر مفيدة
 
-| المصدر                                                  | الرابط                                                              |
+| المصدر                                                    | الرابط                                                            |
 | --------------------------------------------------------- | ----------------------------------------------------------------- |
 | TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
 | Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
