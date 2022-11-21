@@ -59,27 +59,27 @@ dir: rtl
 └─ tsconfig.json
 ```
 
-### `prisma`
+### مجلد `prisma`
+مجلد prisma يحتوي علي `prisma.schema` والذي بدور يحتوي ملف تكوين الاتصال الي قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا الي جانب  ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma) 
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
 
 <sub>(With Prisma)</sub>
 
 ### ملف `public`
-
-The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+مجلد Public يحتوي علي الـ assets التي يقوم الخادمبتقديمها، ملف `favicon.ico` هو مثال علي ذلك.
 
 ### ملف `src/env`
-
-Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
+يتم إستخدامة لـ environment variable إقرأ المزيد [Environment Variables](usage/env-variables)
 
 ### ملف `src/pages`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+مجلد pages يحتوي علي كل الصفحات التي سيحتوي عليها تطبيق Next.js، ملف `index.tsx`هو الـ root او بمعني أخر (الصفحة الرئيسية)
+ملف `__app.tsx` بعمل كـ Global لتضع فية الـ Scripts التي ستحتاجها في كل أجزاء التطبيق [Next.js documentation](https://nextjs.org/docs/basic-features/pages) 
 
 #### ملف `src/pages/api`
+مجلد `api` يحتوي علي كل الـ Api Endpoints التي سيحتويها تطبيقك، مثال علي ذلك هو `example.ts` إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction)
+ملف `restricted.ts`يحتوي علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/). 
 
-The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file (with Prisma) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file (with Next-Auth) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
 
 <sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
