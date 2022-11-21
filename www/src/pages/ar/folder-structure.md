@@ -124,7 +124,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `src/server/trpc`
 
-مجلد tRPC يحتوي علي كود tRPC الخاص بالخادم
+مجلد tRPC يحتوي علي كود tRPC سيرفره
 
 <sub>(في حالة tRPC)</sub>
 
