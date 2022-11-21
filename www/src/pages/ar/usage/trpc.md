@@ -45,10 +45,8 @@ dir: rtl
 ### ملف 📄 `server/trpc/context.ts`
 في هذا الملف تقوم بانشاء الـ Context التي سيتم تمريرة الي tRPC Procedure ، الـ Context هو عبارة عن بيانات التي سيكون لكل الـ Procedures وضول لها وهي ممكان ممتاز لتضه أشياء مثل database connections معلومات المصادقة وغيرها.
 
-
-- `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
-
-- `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
+- ما هو `createContextInner`: هنا حيث تقوم بإنشاء الـ Context الذي لا يعتمد علي الـ request مثل إتصال قاعهدة البيانات ويمكنك إستخدام function لـ [integration testing](#sample-integration-test) او [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) 
+- ما هو `createContext` ؟ هنا حيث توم بإنشاء الـ Context الذي يعتمد علي الـ request فيمكنك الوصول الي الـ req Object عن طريق `opts.req` ومن ثم تمريرة الي `createContextInner`لإنشاء الـ Context النهائي 
 
 ### 📄 `server/trpc/trpc.ts`
 
