@@ -59,9 +59,9 @@ lang: ru
 
 ## Полезные ресурсы
 
-| Ресурс                                                    | Ссылка                                                            |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| Руководство по TypeScript                                        | https://www.typescriptlang.org/docs/handbook/                     |
-| Гайд по TypeScript для новичков                             | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
-| Канал Родни Маллена от мира TypeScript (Matt Pocock) на YouTube | https://www.youtube.com/c/MattPocockUk/videos                     |
+| Ресурс                                                          | Ссылка                                                            |
+| --------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Руководство по TypeScript                                       | https://www.typescriptlang.org/docs/handbook/                     |
+| Гайд по TypeScript для новичков                                 | https://github.com/total-typescript/beginners-typescript-tutorial |
+| Type Challenges                                                 | https://github.com/type-challenges/type-challenges                |
+| Канал Родни Маллена из мира TypeScript (Matt Pocock) на YouTube | https://www.youtube.com/c/MattPocockUk/videos                     |
