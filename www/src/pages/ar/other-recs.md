@@ -73,7 +73,7 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 
 ### Vercel
 
-**إستضافة تعليقك**
+**إستضافة موقعك**
 قامت Vervel بتسهيل اسضافة موقعك بعد أن كان جحيما في الماضي، فاعامد علي AWS لكن مع واحهة أفضل.
 
 - [Vercel موقع](https://vercel.com/)
@@ -94,12 +94,8 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Railway موقع](https://railway.app/)
 
 ### Upstash
-
-**For serverless Redis**
-
-We love Prisma and PlanetScale, but some projects require a more performant solution. Upstash allows you to get the in-memory performance of Redis in your serverless project, without having to manage the infrastructure and scaling yourself.
-
-- [Upstash Homepage](https://upstash.com/)
+نحن نحب Prisma و PlanetScale لكن بعض المشاريع تتطلب حلولا أكثر سرعة Upstash باستخدام Redis في مشورعك دون الحاجة أن تٌدير البنية التحتية.
+- [Upstash موقع](https://upstash.com/)
 
 ### Pusher
 
@@ -116,25 +112,23 @@ Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully c
 
 ## Analytics
 
-User data is very valuable when you're building an app. Here are some analytics providers we recommend.
-
+تعتبر بيانات المستخدم ذات قيمة كبيرة عند إنشاء تطبيق. فيما يلي بعض موفري التحليلات الذين نوصي بهم.
 ### Plausible
+هل تحتاج إلى تحليلات؟ Plausible هو أحد أسرع الطرق للحصول عليها [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
-Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
-
-- [Plausible Homepage](https://plausible.io/)
+- [Plausible موق](https://plausible.io/)
 
 ### Umami
 
-Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database.
+يعد Umami بديلًا بسيطًا وسريعًا لبرنامج Google Analytics. يمكنك إستخدامة بسهولة في Vercel و Railway وما إلى ذلك باستخدام PlanetScale كقاعدة بيانات.
 
-- [Umami Homepage](https://umami.is/)
+
+- [Umami موفع](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
 
 ## Other
 
 ### Next Bundle Analyzer
-
-It can sometimes be difficult to determine what will be included in the build output for your app. Next Bundle Analyzer is an easy way to visualize and analyze the JavaScript bundles that are generated.
+قد يكون من الصعب أحيانًا تحديد ما سيتم تضمينه في  الإصدار النهائي لتطبيقك. يُعد Next Bundle Analyzer طريقة سهلة لتصور وتحليل حزم JavaScript التي تم إنشاؤها.
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
