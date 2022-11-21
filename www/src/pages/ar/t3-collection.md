@@ -1,5 +1,5 @@
 ---
-title: T3 امثلة علي 
+title: T3 امثلة علي
 description: مشاريع مفتوحة المصدر  صنعت باستخدام Stack T3
 layout: ../../layouts/docs.astro
 lang: ar
@@ -8,10 +8,9 @@ dir: rtl
 
 هل قمت بعمل مشروع باستخدام ستاك T3 وتريد مشاركته؟ إضافته إلى القائمة!
 
-
 ## تطبيقات مفتوحة المصدر صنعت بواسطة T3
 
-| الوصف                                                       | Repo                                                                        | الرابط                                                                              |
+| الوصف                                                             | Repo                                                                        | الرابط                                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -29,8 +28,8 @@ dir: rtl
 ## شركات تستخدم T3 Stack
 
 نود معرفة الشركات التي تستخدم Stack T3 لتطبيقاتها. هل شركتك تستخدم Stack T3 وترغب في مشاركته؟ إضافته إلى القائمة!
-| Company | Link                       |
+| Company | Link |
 | ------- | -------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg) |
 
-أصنعت مشروعاً باستخدام T3 Stack  [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!\_

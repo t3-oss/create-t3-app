@@ -10,13 +10,13 @@ dir: rtl
 هناك بعض الترشيحات التي قدمها مساهمون منفردون فلا يجب أن تُؤخذ علي انها رسمية من فريق t3 أو t3-OSS، لذلك **نرجوا ان تقوم بالبحث، خاصة قبل ان تشترك في خدمات مدفوعة**
 
 ## State Management
-**ملحوظة المحرر**: مكتبات الـ State Management هي شئ رائع لكنها في معظم الحلالت ليست ضرورية، فـ tRPC و ReactQuery تقوم بهة الوظيفة بشكل جيد، لذلك إبدا  بـ`useState` وانتقل الي احد البدائي فقط عندما يلزم الامر.
+
+**ملحوظة المحرر**: مكتبات الـ State Management هي شئ رائع لكنها في معظم الحلالت ليست ضرورية، فـ tRPC و ReactQuery تقوم بهة الوظيفة بشكل جيد، لذلك إبدا بـ`useState` وانتقل الي احد البدائي فقط عندما يلزم الامر.
 
 ### Zustand
 
 **حتي لا تستعمل Redux أأبداََ مرة اخري**
 بديل Redux الذي لم تكن تعلم إنك تحتاجة، غير أنك بمكنك الوثوق ب، [Poimandres](https://github.com/pmndrs) دائما فيمكنك ان تصنع بها كل شي من تطبيقات المكالمات الي الالعاب فقط بهذة المكتبة الصغيرة.
-
 
 - [Zustand Homepage](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
@@ -30,21 +30,26 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
 ## Component Libraries
+
 تحتاج معظم التطبيقات إلى نفس مجموعة المكونات - أزرار التبديل والقوائم المنسدلة والشروط وما إلى ذلك. توفر هذه المكتبات مكونات رائعة يمكن الوصول إليها يمكنك استخدامها وتخصيصها حسب رغبتك.
 
 ### Unstyled Component Libraries
-تُعرف أيضًا باسمHeadless libraries  ، فهي توفر مكونات رائعة غير منظمة , Accessible و يمكنك تخصيصها حسب رغبتك. هنا بعض التوصيات.
+
+تُعرف أيضًا باسمHeadless libraries ، فهي توفر مكونات رائعة غير منظمة , Accessible و يمكنك تخصيصها حسب رغبتك. هنا بعض التوصيات.
+
 - [Radix UI](https://www.radix-ui.com/)
 - [Headless UI](https://headlessui.com/)
-- [React Aria](https://react-spectrum.adobe.com/react-aria/) 
+- [React Aria](https://react-spectrum.adobe.com/react-aria/)
 
-### Styled Component Libraries**
-في بعض الأحيان تقوم ببناء مشروع حيث تريد فقط أن تبدو واجهة المستخدم جيدة. كـ لوحات التحكم والمشروعات المماثلة الأخرى ، ستنجز أي هذة المكتبات  هذه المهمة علي اكمل وجة
+### Styled Component Libraries\*\*
+
+في بعض الأحيان تقوم ببناء مشروع حيث تريد فقط أن تبدو واجهة المستخدم جيدة. كـ لوحات التحكم والمشروعات المماثلة الأخرى ، ستنجز أي هذة المكتبات هذه المهمة علي اكمل وجة
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
 ### سلطة التباين الطبقي
+
 ** لبناء مكتبات UI **
 إنشاء مكتبة واجهة مستخدم بشكل تصريحي(Declarative) بألوان وأحجام مختلفة ومتغيرات مختلفة. عندما يصل مشروعك إلى نطاق تريد فيه مجموعة موحدة من مكونات الـ UI مع متغيرات متعددة باستخدام Tailwind CSS ، فإن CVA هي أداة رائعة.
 
@@ -63,6 +68,7 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### ـ Framer Motion
+
 **للرسوم المتحركة المعقدة**
 يوفر FramerMotion اسلوبا بسيطا لكتابة الكود، فيسمع لك بكتابة رسوميات معقدة بكود أقل
 
@@ -94,13 +100,16 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 - [Railway موقع](https://railway.app/)
 
 ### Upstash
+
 نحن نحب Prisma و PlanetScale لكن بعض المشاريع تتطلب حلولا أكثر سرعة Upstash باستخدام Redis في مشورعك دون الحاجة أن تٌدير البنية التحتية.
+
 - [Upstash موقع](https://upstash.com/)
 
 ### Pusher
 
 **For serverless WebSockets**
 إذا كان الـ WebSockets مهمة بالنسبة لك، فإنة من الافضل الاعتماد علي سيرفر تقليدي مثل [Fastify](https://www.fastify.io/) والتي أيضا تدعم(which [also works with tRPC!](https://trpc.io/docs/v10/fastify) لكن اذا كانت السرعة مهمه فأن Pusher هو الخيار المناسب لك.
+
 - [Pusher Homepage](https://pusher.com/)
 
 ### Soketi
@@ -113,7 +122,9 @@ Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully c
 ## Analytics
 
 تعتبر بيانات المستخدم ذات قيمة كبيرة عند إنشاء تطبيق. فيما يلي بعض موفري التحليلات الذين نوصي بهم.
+
 ### Plausible
+
 هل تحتاج إلى تحليلات؟ Plausible هو أحد أسرع الطرق للحصول عليها [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
 - [Plausible موق](https://plausible.io/)
@@ -122,13 +133,13 @@ Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully c
 
 يعد Umami بديلًا بسيطًا وسريعًا لبرنامج Google Analytics. يمكنك إستخدامة بسهولة في Vercel و Railway وما إلى ذلك باستخدام PlanetScale كقاعدة بيانات.
 
-
 - [Umami موفع](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
 
 ## Other
 
 ### Next Bundle Analyzer
-قد يكون من الصعب أحيانًا تحديد ما سيتم تضمينه في  الإصدار النهائي لتطبيقك. يُعد Next Bundle Analyzer طريقة سهلة لتصور وتحليل حزم JavaScript التي تم إنشاؤها.
+
+قد يكون من الصعب أحيانًا تحديد ما سيتم تضمينه في الإصدار النهائي لتطبيقك. يُعد Next Bundle Analyzer طريقة سهلة لتصور وتحليل حزم JavaScript التي تم إنشاؤها.
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)

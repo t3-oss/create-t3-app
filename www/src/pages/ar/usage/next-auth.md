@@ -5,12 +5,12 @@ layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
+
 عندما تريد نظام مصادقة في تطبيق Next.js الخاص بك ، فإن NextAuth.js يعد حلاً ممتازًا دون الحاجة إلى إنشاءه بنفسك. يأتي مزودًا بقائمة واسعة من الموفرين لإضافة مصادقة OAuth بسرعة ويوفر Adapters للعديد من قواعد البيانات و ORMs.
 
 ## Context Provider
 
 في نقطة دخول تطبيقك ، سترى أن تطبيقك في [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
-
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -36,6 +36,7 @@ const User = () => {
 ```
 
 ## تضمين `user.id` في الـ Session
+
 يستخدم `create-t3-app` الـ Session callback الموجودة في ملف تكوين NextAuth.js ليضيف الـ User ID الي Session Object.
 
 ```ts:pages/api/auth/[...nextauth].ts
@@ -69,7 +70,7 @@ declare module "next-auth" {
 This is done in a two step process:
 
 1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
-   نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب    فيه ، قد تحملت `create-t3-app` عناء انشاء هذة الادة عنك :
+   نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء انشاء هذة الادة عنك :
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -153,11 +154,12 @@ const userRouter = router({
 
 ## الاستخدام مع Next.js Middleware.
 
-يتطلب استخدام NextAuth.js مع  Middleware Next.js استخدام [JWT Session Stratigy](https://next-auth.js.org/configuration/nextjs#caveats). هذا لأن الـ Middleware قادرة فقط على الوصول إلى ملف تعريف ارتباط  JWT
+يتطلب استخدام NextAuth.js مع Middleware Next.js استخدام [JWT Session Stratigy](https://next-auth.js.org/configuration/nextjs#caveats). هذا لأن الـ Middleware قادرة فقط على الوصول إلى ملف تعريف ارتباط JWT
 
- بشكل افتراضي ، يتم تكوين التطبيق create-t3-app لاستخدام استراتيجية قاعدة البيانات Database Stratigy ، بالاشتراك مع Prisma كـ Adapter لـقاعدة البيانات.
+بشكل افتراضي ، يتم تكوين التطبيق create-t3-app لاستخدام استراتيجية قاعدة البيانات Database Stratigy ، بالاشتراك مع Prisma كـ Adapter لـقاعدة البيانات.
 
 ## Setting up the default DiscordProvider
+
 1. إتجة الي [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications) واضغط علي New Application.
 
 2. في settings menu اضغط علي OAuth2 ثم General
@@ -165,17 +167,16 @@ const userRouter = router({
 3. إنسخ الـ Client ID وضعة في `.env` كـ DISCORD_CLIENT_ID
 
 4. تحت Client Secret إضغط علي "Reset Secret" وإنسخ النص الجديد وضعة في `.env` كـ `DISCORD_CLIENT_SECRET `.
-كن حذرًا لأنك لن تتمكن من رؤية هذا كلمة السر مرة أخرى ، وستؤدي إعادة تعيينها إلى انتهاء صلاحية كلمة السر الحالية
-5. اضغط علي Add  Redirect واضف رابط إعادة التوجية`http://localhost:3000/api/auth/callback/discord` كمثال
+   كن حذرًا لأنك لن تتمكن من رؤية هذا كلمة السر مرة أخرى ، وستؤدي إعادة تعيينها إلى انتهاء صلاحية كلمة السر الحالية
+5. اضغط علي Add Redirect واضف رابط إعادة التوجية`http://localhost:3000/api/auth/callback/discord` كمثال
 6. إحفظ التعديلات
 
 - It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
 
 ## Useful Resources
 
-
 | Resource                          | Link                                    |
-| ----------------------------------- | ----------------------------------------- |
+| --------------------------------- | --------------------------------------- |
 | NextAuth.js Docs                  | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
