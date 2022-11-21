@@ -71,7 +71,7 @@ main()
 
 | Ресурс                       | Ссылка                                                                                                                                            |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Prisma Docs                  | https://www.prisma.io/docs/                                                                                                                       |
+| Документация Prisma                   | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
-| NextAuth.JS Prisma Adapter   | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Planetscale Connection Guide | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| NextAuth.JS Адаптер для Prisma    | https://next-auth.js.org/adapters/prisma                                                                                                          |
+| Гайд по подключению PlanetScale | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |

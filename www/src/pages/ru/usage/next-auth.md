@@ -9,7 +9,6 @@ lang: ru
 
 ## Context Provider (Провайдер контекста)
 
-In your app's entrypoint, you'll see that your application is wrapped in a [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 В точке входа (entrypoint) вашего приложения вы увидите, что ваше приложение обернуто в [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 ```tsx:pages/_app.tsx
@@ -37,7 +36,6 @@ const User = () => {
 
 ## Включение `user.id` в сессию
 
-`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
 `create-t3-app` настроен для использования [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) в конфигурации NextAuth.js для включения ID пользователя в объект `session`.
 
 ```ts:pages/api/auth/[...nextauth].ts
@@ -65,7 +63,6 @@ declare module "next-auth" {
 }
 ```
 
-The same pattern can be used to add any other data to the `session` object, such as a `role` field, but **should not be misused to store sensitive data** on the client.
 Такой же шаблон может быть использован для добавления любых других данных в объект `session`, например, поля `role`, но **не следует злоупотреблять для хранения конфиденциальных данных** на клиенте.
 
 ## Использование с tRPC
@@ -138,10 +135,8 @@ const userRouter = router({
 
 ### Добавление новых полей в ваши модели
 
-When adding new fields to any of the `User`, `Account`, `Session`, or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
 Когда вы добавляете новые поля в любую из моделей `User`, `Account`, `Session` или `VerificationToken` (в большинстве случаев вам потребуется только изменить модель `User`), вам нужно иметь в виду, что [адаптер Prisma](https://next-auth.js.org/adapters/prisma) автоматически создает поля в этих моделях при регистрации новых пользователей и входе в систему. Поэтому, добавляя новые поля в эти модели, вы должны предоставить значения по умолчанию для них, поскольку адаптер не знает о них.
 
-If for example, you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
 Если например, вы хотите добавить `role` в модель `User`, вам нужно будет предоставить значение по умолчанию для поля `role`. Это делается путем добавления значения `@default` к полю `role` в модели `User`:
 
 ```diff:prisma/schema.prisma
@@ -176,6 +171,6 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 | Ресурс                            | Ссылка                                  |
 | --------------------------------- | --------------------------------------- |
-| NextAuth.js Docs                  | https://next-auth.js.org/               |
+| Документация NextAuth.js                   | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |

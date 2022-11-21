@@ -5,19 +5,19 @@ layout: ../../../layouts/docs.astro
 lang: ru
 ---
 
-Next.js это фреймворк для бэкенда для ваших React приложений.
+Next.js это бэкенд фреймворк для ваших React приложений.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Посмотрите [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) чтобы получить более подробное понимание того, что такое Next.js и как он работает.
+Посмотрите [выступление Theo на Next.js Conf](https://www.youtube.com/watch?v=W4UhNo3HAMw) чтобы получить более подробное понимание того, что такое Next.js и как он работает.
 
 ## Почему я должен это использовать?
 
-Мы любим React. Он сделал разработку UI доступной в том смысле, в котором мы раньше этого не могли себе представить. Он также может привести разработчиков по некоторым тернистым тропам. Next.js предлагает слабо субъективный, но очень оптимизированный подход к созданию приложений с использованием React. От маршрутизации до определений API до рендеринга изображений, мы доверяем Next.js, чтобы вести разработчиков к правильным решениям.
+Мы любим React. Он сделал разработку UI доступной в том смысле, в котором мы раньше этого не могли себе представить. Он также может провести разработчиков по некоторым тернистым тропам. Next.js предлагает слегка субъективный, но очень оптимизированный подход к созданию приложений с использованием React. От маршрутизации до определений API до рендеринга изображений, мы доверяем Next.js, чтобы вести разработчиков к правильным решениям.
 
-Совмещая Next.js с [Vercel](https://vercel.com/) вы можете разрабатывать и разворачивать веб-приложения легче, чем когда-либо. Их чрезвычайно щедрый бесплатный тариф и супер интуитивный интерфейс предоставляют решение в один клик для развертывания вашего сайта (Мы ❤️ Vercel)
+Совмещая Next.js с [Vercel](https://vercel.com/), вы можете разрабатывать и разворачивать веб-приложения легче, чем когда-либо. Их чрезвычайно щедрый бесплатный тариф и супер интуитивный интерфейс предоставляют решение в один клик для развертывания вашего сайта (Мы ❤️ Vercel)
 
 ## Get Static/Server Props
 
@@ -27,9 +27,9 @@ Next.js это фреймворк для бэкенда для ваших React 
 
 | Ресурс                         | Ссылка                             |
 | ------------------------------ | ---------------------------------- |
-| Next.js Documentation          | https://nextjs.org/docs            |
+| Документация Next.js          | https://nextjs.org/docs            |
 | Next.js GitHub                 | https://github.com/vercel/next.js  |
-| Next.js Blog                   | https://nextjs.org/blog            |
+| Блог Next.js                    | https://nextjs.org/blog            |
 | Next.js Discord                | https://nextjs.org/discord         |
 | Next.js Twitter                | https://twitter.com/nextjs         |
-| Vercel/Next.js YouTube Channel | https://www.youtube.com/c/VercelHQ |
+| Канал Vercel/Next.js на YouTube | https://www.youtube.com/c/VercelHQ |

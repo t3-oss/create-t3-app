@@ -7,7 +7,7 @@ lang: ru
 
 ## Что такое Tailwind CSS?
 
-Tailwind CSS - это малюсенький, [utility first](https://tailwindcss.com/docs/utility-first) CSS фреймворк для создания собственного дизайна, без переключения контекста, которое требуется для обычного CSS. Это чисто CSS фреймворк и не предоставляет никаких предварительно собранных компонентов или логики, и предоставляет [совершенно другой набор преимуществ](https://www.youtube.com/watch?v=CQuTF-bkOgc) по сравнению с библиотекой компонентов, такой как Material UI.
+Tailwind CSS - это небольшой, [utility first](https://tailwindcss.com/docs/utility-first) CSS фреймворк для создания собственного дизайна, без переключения контекста, которое требуется для обычного CSS. Это чисто CSS фреймворк и не предоставляет никаких предварительно собранных компонентов или логики, и предоставляет [принципиально иной набор преимуществ](https://www.youtube.com/watch?v=CQuTF-bkOgc) по сравнению с библиотекой компонентов, такой как Material UI.
 
 Он делает CSS невероятно легким и быстрым для написания, как показано в следующем примере:
 
@@ -68,7 +68,7 @@ Tru Narla лучше известна как [mewtru](https://twitter.com/trunar
 
 ### Расширения и плагины
 
-- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [Расширение для VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
@@ -87,10 +87,10 @@ Tru Narla лучше известна как [mewtru](https://twitter.com/trunar
 
 | Ресурс                       | Ссылка                                                   |
 | ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
+| Документация Tailwind                 | https://tailwindcss.com/docs/editor-setup/               |
+| Шпаргалка по Tailwind          | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
 | Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
+| Сервер Tailwind в Discord       | https://tailwindcss.com/discord/                         |
+| Канал TailwindLabs на Youtube | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |

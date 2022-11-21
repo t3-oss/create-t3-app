@@ -203,8 +203,8 @@ railway open
 
 | Ресурс                               | Ссылка                                                               |
 | ------------------------------------ | -------------------------------------------------------------------- |
-| Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
-| Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
+| Референс для Dockerfile                  | https://docs.docker.com/engine/reference/builder/                    |
+| Референс для файла Compose 3 версии      | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
 | Референс Docker CLI                  | https://docs.docker.com/engine/reference/commandline/docker/         |
 | Референс Docker Compose CLI         | https://docs.docker.com/compose/reference/                           |
 | Развертывание Next.js с Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
