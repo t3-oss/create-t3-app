@@ -4,15 +4,15 @@ description: Usage of Tailwind CSS
 layout: ../../../layouts/docs.astro
 ---
 
-## What is Tailwind CSS?
+## ما هو Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+يكون Tailwind CSS صغير الحجم, [الأداة لمساعدة أولا](https://tailwindcss.com/docs/utility-first) ل CSS تسمح ببناء تصميم حسب المطلوب, دون تبديل المحتوى الذي يطلبه نظام CSS العادي. تكون أداة CSS خالصة ولا توفير مركبات أو منطق منشئاً مسبقاً, وتوفير [مجموعة من الميزية المختلفة](https://www.youtube.com/watch?v=CQuTF-bkOgc) مختلفة عن أدوات لأنشاء المركب مثل Material UI.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
+تسهل من كتابة CSS وتجعل سريعاً, مثل ما يوضح في المثال القادم:
 
-Old CSS:
+القديم CSS:
 
-1. Write CSS, often in a separate file
+1. كتابة CSS في ملف منفصل:
 
 ```css
 .my-class {
@@ -27,21 +27,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. أشمال CSS في مركبك
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. أضافة فئة في HTML الخاص بك
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+ما يساويه في Tailwind:
 
-1. Just write classes in your HTML
+1. أكتب فئاتك في HTML الخاص بك
 
 ```html
 <div
@@ -51,19 +51,19 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+يكون من القوي جداً لبناء UI, عندما تستخدم مع مركبات React
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+يملك Tailwind CSS نظام لتصميم منشئ فعلاً, الذي يأتي مع نظام لأختيار اللون للوحة مختار بعناية, وأنماط للحجم مثل width/height و padding/margin لتصميم متساوي, ومقياسات لحجم الشاشة لأنشاء تخطيط متجاوب. يمكن تعديل هذا النظام لتصميم حسب الطلب والأضافة أليه, لأنشاء الأدوات لقضاء حاجة مشروعك من التصميمات.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+أعطت Tru Narla المعروفة باسم [mewtru](https://twitter.com/trunarla) محادثة ممتازة عن [أنشاء نظام لتصميم باستعمال Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
+## استخدام
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+تأكد من وجود plugins في editor خاص بيك, لقضاء وقت أفضل في كتابة Tailwind.
 
 ### Extensions and Plugins
 
@@ -71,25 +71,25 @@ Make sure you have editor plugins for Tailwind installed to improve your experie
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
+### تشكيل
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+يمكن أن تصبح فيئات Tailwind CSS فوضوية, لذلك تشكيل تلك الفئات واجب. يحل [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) ذلك, فأنه يرتب الفيئات في [الترتيب المنصح بيه](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) لتتساوة الفيئات مع حزمة CSS المنتجة. عند أختيار Tailwind في CLI, سوف نركب ونحدد طريقة ترتيبه من أجلك.
 
-### Conditionally Applying Classes
+### أضافة فئات بشروط
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+يمكن أن يصبح الأمر فوضاوي عند أضافة فيئات باستعمال شروط Ternaries ويكون من الصعب قرأته. ستساعدك تلك ال packages في ترتيب فئاتك عند أستخدام المنطق المشروط.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## مفيدة مصادر
 
-| Resource                     | Link                                                     |
-| ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| مصدر                     | رابط                                                     |
+| ------------------------ | -------------------------------------------------------- |
+| مستندات Tailwind         | https://tailwindcss.com/docs/editor-setup/               |
+| ورقة الغيش Tailwind      | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss      | https://github.com/aniftyco/awesome-tailwindcss/         |
+| منتدي Tailwind           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| ديسكورد سيرفر Tailwind   | https://tailwindcss.com/discord/                         |
+| صفحة TailwindLabs ليتيوب | https://www.youtube.com/tailwindlabs/                    |
+| ملعب Tailwind            | https://play.tailwindcss.com/                            |
