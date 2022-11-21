@@ -56,5 +56,5 @@ dir: rtl
 وفقًا لـ [T3-Axiom #2](/en/introduction#bleed-responsibly)، نحن نحب الأشياء المتطورة ولكننا نقدر الاستقرار ، من الصعب تحويل الـ router الي الي النظام الجديد شاهد [not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662).
 فـ `/app` هو لمحة عن المستقبل ، فهو ليس جاهزًا للإنتاج ؛ غير ان الـ (API) في مرحلة تجريبية ومن المتوقع أن تحدث له تغييرات جذرية.
 
-
+  
 لمعرفة الميزات المدعومة والمخطط العمل عليها في / app dir ، قم بزيارة [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features)
