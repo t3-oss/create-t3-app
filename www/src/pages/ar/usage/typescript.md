@@ -39,28 +39,30 @@ layout: rtl
 
 ## الـ Type Inference
 
+يميل كثير من مطوري Typescript الي كتابة الكثير من الـ types وفي واقع الامر هذا حقا امر غير ضروري أبداََخاصتة مع وجود الـ Inference.
+لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا الـ Inference هو تتبع الـ Types لك في كل مكان في الكود، فيفيدك في أنه يُغنيك عن تكرار كتابة الـ Types في أماكن أخري.
 
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Powerful uses of type inference
 
-### Zod
+الق نظرة علي [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
+## إستخدامات الـ type inference
 
-### Tanstack Query
+### مكتبة Zod
+
+مكتبة [Zod](https://github.com/colinhacks/zod) هي schema validation library تم بنائوها بـ Typescript. اكتب الـ Schema التي تمثل مصدر الحقيقة الاساسي single source of truth ودع الباقي لـ zod وهي ستتكفل بة.
+### مكتبة Tanstack Query
 
 [Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
 
-## Useful Resources
+## مصادر مفيدة
 
-| Resource                                                  | Link                                                              |
+| المصدر                                                  | الرابط                                                              |
 | --------------------------------------------------------- | ----------------------------------------------------------------- |
 | TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
 | Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
