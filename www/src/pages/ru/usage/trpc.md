@@ -317,8 +317,8 @@ test("example router", async () => {
 
 ## Полезные ресурсы
 
-| Ресурс                 | Ссылка                                                  |
-| ---------------------- | ------------------------------------------------------- |
-| Документация по tRPC              | https://www.trpc.io                                     |
+| Ресурс                                | Ссылка                                                  |
+| ------------------------------------- | ------------------------------------------------------- |
+| Документация по tRPC                  | https://www.trpc.io                                     |
 | Несколько примеров использования tRPC | https://github.com/trpc/trpc/tree/next/examples         |
-| Документация React Query        | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Документация React Query              | https://tanstack.com/query/v4/docs/adapters/react-query |
