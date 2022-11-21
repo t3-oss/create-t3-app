@@ -152,8 +152,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 ملف `auth.ts` هو مثال لاستخدام `protectedProcedure helper` في حماية route معين.
 <sub>(في حالة NextAuth.js + tRPC)</sub>
 #### ملف `src/server/trpc/router/example.ts`
-
-The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+ملف `example.ts` هو مثال لإستخدام `publicProcedure` لانشاءpublic tRPC route  
 
 <sub>(في حالة tRPC)</sub>
 
@@ -185,16 +184,14 @@ The `example.ts` file is an example tRPC router utilizing the `publicProcedure` 
 <sub>(في حالة tRPC)</sub>
 
 ### ملف `.env`
-
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be commited to git history.
+ملف `.env` يُستخدم لتخزين `environment variables`، إقرأ المزيد [Environment Variables](usage/env-variables)
 
 ### ملف `.env.example`
-
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be commited to git history.
+ملف `.env.example` هو مثال لإستخدام `example environment`.
 
 ### ملف `.eslintrc.json`
 
-The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+ملف  `.eslintrc.json` يٌستخدم لإعداد ESLint، إقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)
 
 ### ملف `next-env.d.ts`
 
