@@ -3,15 +3,19 @@ title: Prisma
 description: Usage of Prisma
 layout: ../../../layouts/docs.astro
 ---
+
 مكتبة Prisma هي ORM مكتوب لغة TypeScript والتي تسمح للمطور ان يُخصص Schema لقاعدة البيانات في ملف `shema.prisma` من ثَم يقوم بتوليدtype-safe client والذي بدورة بيتفاعل مع قاعدة البيانات.
 
 ## ما هو Prisma Client
+
 يقع في `/server/db/client.ts` ويعمل كـ global variable كما تنصح الـ docs الرسمية [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) ,وننصحك باستخدامها كذلك بدلا من ندائها في ملف بشكل منفرد [Context](/en/usage/trpc#-servertrpccontextts)
 
 ## الـ Schema
+
 سوف تجد الـ Schema في `/prisma/schema.prisma` حيث تقوم بتخصيص الـ scheam الخاص بقاعدة البيانات والتي يتم إستخدامها لتوليد Prisma Client.
 
 ### مع NextAuth.js
+
 عندما تستخدم Prisma مع NextAuth فان الـ Adapter يتحمل عنك عناء توليد الـ `User`, `Session`, `Account`, and `VerificationToken` mo، إقرأ المزيد هنا [NextAuth.js documentation](https://next-auth.js.org/adapters/prisma).
 
 ## Default Database
