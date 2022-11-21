@@ -158,4 +158,4 @@ Umami - это само-развертываемая, простая, быстр
 
 Бывает сложно определить, что будет включено в сборку выходных данных для вашего приложения. Next Bundle Analyzer - это простой способ визуализировать и анализировать JavaScript-бандлы, которые генерируются.
 
-- [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
+- [@next/bundle-analyzer на npm](https://www.npmjs.com/package/@next/bundle-analyzer)
