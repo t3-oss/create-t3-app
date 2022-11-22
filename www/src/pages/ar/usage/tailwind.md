@@ -51,7 +51,7 @@ import "./my-class.css";
 ```
 
 إستخدام هذة الخصائص جنبا إلى جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
-تأتي Tailwind CSS بنظام مُدمج وجميل مُزود بمجموعة الوان واحجام و styles  مُختارة بعناية كالطول والعرض والحواف، كما أيضا تاني مع breakpoints لإنشاء تصميم متوافق.
+تأتي Tailwind CSS بنظام مُدمج وجميل مُزود بمجموعة الوان واحجام و styles مُختارة بعناية كالطول والعرض والحواف، كما أيضا تاني مع breakpoints لإنشاء تصميم متوافق.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -59,8 +59,8 @@ import "./my-class.css";
 
 أعطي [mewtru](https://twitter.com/trunarla) خطابا رائعا عن [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-
 ## الاستخدام
+
 تأكد من تثبيت إضافة Tailwind CSS لمحرر اكوادك لتُحسن جودة العمل.
 
 ### الاضافات
@@ -70,17 +70,17 @@ import "./my-class.css";
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
 ### الـ Formatting
-الـ Classes في TailwindCSS يمكن أن تصبح فوضوية بسهولة، لذلك الـ Formating هو أمر لابد منه،  إضافة [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) تحم لعناك هَم تنظيمها، لمزسد من المعلومات إقرأ [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
 
-### إضافة الـ classes  إختبارياَ
+الـ Classes في TailwindCSS يمكن أن تصبح فوضوية بسهولة، لذلك الـ Formating هو أمر لابد منه، إضافة [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) تحم لعناك هَم تنظيمها، لمزسد من المعلومات إقرأ [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
 
+### إضافة الـ classes إختبارياَ
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
 ## مصادر مفيدة
 
-| المصدر                     | الرابط                                                     |
+| المصدر                       | الرابط                                                   |
 | ---------------------------- | -------------------------------------------------------- |
 | Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
 | Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
@@ -89,8 +89,3 @@ import "./my-class.css";
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
-
-
-
-
-

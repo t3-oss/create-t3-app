@@ -5,6 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
+
 إن tRPC تسمح لك بكتابة type safe api دون الحاجة إلى توليد كود أو حدوث أخطاء مفاجئة أثناء الـ runtime، إنها تستغل خاصية الـ inference في Typescript حتى تضمن الـ type safety في الـ Api عند ندائه من الـ Frontend
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
@@ -34,28 +35,31 @@ dir: rtl
 </blockquote>
 
 ## Files
+
 لسوء الحظ فإن tRPC تتطلب قليلاً من الـ boilerplate ولكن لحسن الحظ فان `create-t3-app` تحمل عنك هذا العبء.
 
-
 ### 📄 ملف `pages/api/trpc/[trpc].ts`
-هذة هي نقطة دخولك الي tRPC Api في الأوضاع الطبيعية فلن تَمس هذا الملف كثيرا لكن اذا اردت مثلا فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler`  [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE)
- 
+
+هذة هي نقطة دخولك الي tRPC Api في الأوضاع الطبيعية فلن تَمس هذا الملف كثيرا لكن اذا اردت مثلا فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler` [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE)
+
 مما يعني أنك قادر على استخدام `createNextApiHandler` في أي middleware تريده، إقرأ [example snippet](#enabling-cors)
 
 ### ملف 📄 `server/trpc/context.ts`
+
 في هذا الملف تقوم بانشاء الـ Context التي سيتم تمريره الي tRPC Procedure ، الـ Context هو عبارة عن بيانات التي سيكون لكل الـ Procedures وصول لها وهي مكان ممتاز لتضع أشياء مثل database connections معلومات المصادقة وغيرها.
 
 - ما هو `createContextInner`: هنا حيث تقوم بإنشاء الـ Context الذي لا يعتمد على الـ request مثل اتصال قاعدة البيانات ويمكنك إستخدام function لـ [integration testing](#sample-integration-test) او [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers)
 - ما هو `createContext` ؟ هنا حيث تقوم بإنشاء الـ Context الذي يعتمد على الـ request فيمكنك الوصول الى الـ req Object عن طريق `opts.req` ومن ثم تمريرة الي `createContextInner`لإنشاء الـ Context النهائي
 
 ### 📄ملف `server/trpc/trpc.ts`
+
 في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/procedures) و [middlewares](https://trpc.io/docs/v10)، من الافضل ان لا تقوم بعمل export لـ t Object كاملا
-/middlewares) بل قم بتصدير  procedures و middlewares
+/middlewares) بل قم بتصدير procedures و middlewares
 ستلاحظ أننا نستخدم `superjson` كـ [data transformer](https://trpc.io/docs/v10/data-transformers)، ذلك حتى نحفظ الـ Types لحين إستخدامها في في الـ client، فمثلا إذا كان الـ Type هو Date فإن الـ client سَيُعيد Date ,gds string
 
 ### 📄 ملف `server/trpc/router/*.ts`
-هنا يمكنك تحديد الـ route ,والـ procedure للـ API، من الافضل [أن تُنشئ routers](https://trpc.io/docs/v10/router) مُنفصلة للـ procedures المتقاربة ومن ثَم [دمجها](https://trpc.io/docs/v10/merging-routers) في router واحد في `server/trpc/router/_app.ts`
 
+هنا يمكنك تحديد الـ route ,والـ procedure للـ API، من الافضل [أن تُنشئ routers](https://trpc.io/docs/v10/router) مُنفصلة للـ procedures المتقاربة ومن ثَم [دمجها](https://trpc.io/docs/v10/merging-routers) في router واحد في `server/trpc/router/_app.ts`
 
 ### 📄 ملف `utils/trpc.ts`
 
@@ -63,7 +67,7 @@ dir: rtl
 جنب مع react query hooks. نظرًا لأننا قمنا بتفعيل "superjson" في الواجهة الخلفية
 فنحن بحاجة إلى تفعيلة على الواجهة الأمامية أيضًا. هذا لان البيانات التي يحدث لها serialized في الـ client يتم عمل deserialized لها في الـ client.
 
-هنا تقوم بتحديد [روابط](https://trpc.io/docs/v10/links)  الـ tRPC  حيث تُُحدد المسار الذي سيمر به الـ request من الـ client إلى الـ server
+هنا تقوم بتحديد [روابط](https://trpc.io/docs/v10/links) الـ tRPC حيث تُُحدد المسار الذي سيمر به الـ request من الـ client إلى الـ server
 نحن نستخدم [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) بشكل إفتراضي مع تفعيل [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch) و [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink)
 
 وفي الاخير نقوم بتصدير [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) حتى نستعمل الـ type infre في الـ frontend
@@ -75,7 +79,6 @@ dir: rtl
 </div>
 
 ننصحك بمشاهدة هذا[a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) من [trashh_dev](https://twitter.com/trashh_dev)
-
 
 مع tRPCتكتب Function في الـ backend والتي يمكن مناداتها من الـ frontend
 
@@ -90,8 +93,9 @@ const userRouter = t.router({
   }),
 });
 ```
+
 في نهاية الأمر تتحول tRPC procedure الي backend عادي فيقوم بفحص الـ input ويمرر الـ request إذا كان صحيحاًويعيد رسالة خطأ إذا كانت المدخلات غير صحيحة.
-بعد التأكد من صحة البيانات يتم نداء function والتي إما لجلب بيانات ([query](https://trpc.io/docs/v10/react-queries)) أو أن تغير في  البانات  ([mutation](https://trpc.io/docs/v10/react-mutations))
+بعد التأكد من صحة البيانات يتم نداء function والتي إما لجلب بيانات ([query](https://trpc.io/docs/v10/react-queries)) أو أن تغير في البانات ([mutation](https://trpc.io/docs/v10/react-mutations))
 أنت
 
 ```ts:server/trpc/router/_app.ts
@@ -106,6 +110,7 @@ export type AppRouter = typeof appRouter;
 
 لاحظ أننا فقط نقوم بعمل export لـ router's type أننا لا نستخدم اي من الـ server code في الـ client
 الان دعنا ننادي الـ procedure من الـ frontend ، tRPC توفر wrapper لمكتبة `@tanstack/react-query` مما يسمح لك بإستخدام المكتبة بكامل قوتها.
+
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
 
@@ -120,15 +125,19 @@ const UserPage = () => {
   );
 };
 ```
+
 ستلاحظ على الفور مدى جودة الإكمال التلقائي والـ typesafety. بمجرد كتابة "trpc." ، ستظهر `router` الخاصة بك في الإكمال التلقائي ، وعندما تحدد الـ `router`،
 ستظهر الـ procedures. وستحصل أيضًا على خطأ TypeScript إذا كانت المُدخلات الخاص بك لا يتطابق مع الـ schema الذي حددته مسبقا.
 
 ## كيف اُنادي API خارجي ؟
+
 باستخدام الـ API العادية ، يمكنك استدعاء الـ End point الخاصة بك باستخدام أي عميل HTTP مثل `curl` أو` Postman` أو `fetch` أو مباشرة من متصفحك.
 مع tRPC ، الأمر مختلف بعض الشيء. إذا كنت ترغب في الاتصال بالـ procedure بدون عميل tRPC ، فهناك طريقتان موصى بهما للقيام بذلك:
 
 ### Expose a single procedure externally
+
 إذا أردت أن تُتيح procedure للـ Apis الخارجية الق نظرة علي [server side calls](https://trpc.io/docs/v10/server-side-calls)، مما سيسمح لك بعمل Next.js Api إعتيادية
+
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { appRouter } from "../../../server/trpc/router/_app";
@@ -158,7 +167,9 @@ export default userByIdHandler;
 ```
 
 ### تحول كل الـ Procedures الي REST endpoint ؟
+
 إذا كنت ترغب في كشف كل الـ ؛قخؤثيعقثس ، الق نظرة علي [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master).
+
 ### It's just HTTP Requests
 
 tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/v10/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
@@ -214,10 +225,10 @@ const UserPage = () => {
 
 قارن هذا بمثال tRPC أعلاه ويمكنك رؤية بعض مزايا tRPC:
 
-- بدلاً من تحديد عنوان url لكل مسار ، والذي يمكن أن يصبح مزعجًا إذا حاولت  نقل شيء ما ، فإن الـ `router`  بأكمله عبارة عن `Object`  مع الإكمال التلقائي.
+- بدلاً من تحديد عنوان url لكل مسار ، والذي يمكن أن يصبح مزعجًا إذا حاولت نقل شيء ما ، فإن الـ `router` بأكمله عبارة عن `Object` مع الإكمال التلقائي.
 - لست بحاجة إلى التحقق من HTTP method التي تم استخدامها.
-- لا تحتاج إلى التحقق من أن  الطلب أو الـ `query` ، لأن Zod يعتني بذلك.
-- بدلاً من إنشاء الـ responde object ، يمكنك إرجاع أخطاء او  قيمة أو Object كما تفعل في أي function.
+- لا تحتاج إلى التحقق من أن الطلب أو الـ `query` ، لأن Zod يعتني بذلك.
+- بدلاً من إنشاء الـ responde object ، يمكنك إرجاع أخطاء او قيمة أو Object كما تفعل في أي function.
 
 ## snippets مفيدة
 
@@ -246,7 +257,7 @@ export default handler;
 
 ### Optimistic updates
 
-الـ Optimistic updates هي تحديثات تحديث واجهة المستخدم قبل أن ينتهي الـ Request  مما يُحسن تجربة المستخدم، لكن التطبيقات التي تُفضل دقة المعلومات يجب أن تتجنب الـ Optimistic updates، للمزيد من المعلومات إقرا [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+الـ Optimistic updates هي تحديثات تحديث واجهة المستخدم قبل أن ينتهي الـ Request مما يُحسن تجربة المستخدم، لكن التطبيقات التي تُفضل دقة المعلومات يجب أن تتجنب الـ Optimistic updates، للمزيد من المعلومات إقرا [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -281,7 +292,7 @@ const MyComponent = () => {
 
 ### عينة من Integration Test
 
-إقرأ  [Vitest](https://vitest.dev)
+إقرأ [Vitest](https://vitest.dev)
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
@@ -311,5 +322,3 @@ test("example router", async () => {
 | tRPC Docs              | https://www.trpc.io                                     |
 | Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
 | React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
-
-

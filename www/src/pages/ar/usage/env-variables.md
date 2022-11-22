@@ -3,6 +3,7 @@ title: Environment Variables
 description: Getting started with create-t3-app
 layout: ../../../layouts/docs.astro
 ---
+
 إن `Create-T3-App` تستخدم [Zod](https://github.com/colinhacks/zod) للتأكد من صلاحية الـ environment variablesأثناء الـ runtime عن طريق توفير بعض الملفات الاضافة
 
 📁 src/env
@@ -14,10 +15,10 @@ layout: ../../../layouts/docs.astro
 ┣ 📄 server.mjs
 قد يبدو محتوى هذه الملفات مخيفًا للوهلة الأولى ، لكن لا تقلق ، فهو ليس معقدًا كما يبدو. دعنا نلقي نظرة عليها واحدة تلو الأخرى ، ونسير خلال عملية إضافة environment variables إضافية.
 
-إذا كنت تريد إضافةenvironment variable جديد ، فيجب عليك إضافته إلى كل من ".env" وكذلك في `env / schema.mjs`._
-
+إذا كنت تريد إضافةenvironment variable جديد ، فيجب عليك إضافته إلى كل من ".env" وكذلك في `env / schema.mjs`.\_
 
 ## ملف schema.mjs
+
 هذا هو الملف الذي سوف تلمسه بالفعل. يحتوي على مُخططين ، أحدهماenvironment variables من جانب الخادم والآخر من جانب العميل بالإضافة إلى Object الـ "clientEnv".
 
 ```ts:env/schema.mjs
@@ -35,6 +36,7 @@ export const clientEnv = {
 ```
 
 ### الـ Server Schema
+
 حدد environment variables schema من جانب الخادم هنا.
 
 Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
