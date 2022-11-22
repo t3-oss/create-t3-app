@@ -69,9 +69,8 @@ import "./my-class.css";
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
-
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+### الـ Formatting
+الـ Classes في TailwindCSS يمكن أن تصبح فوضوية بسهولة، لذلك الـ Formating هو أمر لابد منه،  إضافة [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) تحم لعناك هَم تنظيمها، لمزسد من المعلومات إقرأ [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
 
 ### إضافة الـ classes  إختبارياَ
 
