@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npm create t3-app@latest</code>
+  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://create.t3.gg/en/installation">T3 Stack</a> by running <code>npm create t3-app@latest</code>
 </p>
 
 <div align="center">
