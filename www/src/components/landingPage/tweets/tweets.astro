@@ -1,7 +1,7 @@
 ---
 import PageSection from "../pageSection.astro";
 import TweetSlider from "./tweetSlider.astro";
-import { type Tweet, dummyTweet } from "./types";
+import { dummyTweet,type Tweet } from "./types";
 
 const token = import.meta.env.TWITTER_BEARER_TOKEN;
 const fetchTweets = async (ids: string[]) => {
@@ -26,7 +26,7 @@ const fetchTweets = async (ids: string[]) => {
       }
     })
     .then((res) => {
-      // TODO: Maybe use Twitter SDK to make this typesafe in the future?
+      // TODO: Maybe use Twitter SDK to make this type-safe in the future?
       return res.data.map((d: any) => {
         const user = res.includes.users.find((u: any) => u.id === d.author_id);
         return {

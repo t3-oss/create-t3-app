@@ -47,9 +47,9 @@ For our CI, we have some experimental flags that allow you to scaffold any app w
 | `--nextAuth` | Include NextAuth.js in the project  |
 | `--tailwind` | Include Tailwind CSS in the project |
 
-**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+**Note: If you don't provide the `CI` flag, the rest of these flags have no effect.**
 
-You don't need to explicitely opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+You don't need to explicitly opt out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
 
 ### Example
 

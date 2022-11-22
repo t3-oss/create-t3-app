@@ -60,7 +60,7 @@ Further down, the description of each folder indicates its purpose and if it is 
 
 ### `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
+The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts if used. See [Prisma usage](/en/usage/prisma) for more information.
 
 <sub>(With Prisma)</sub>
 
@@ -90,7 +90,7 @@ The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is 
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+The `[trpc].ts` file is the tRPC API entry point. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 <sub>(with tRPC)</sub>
 
@@ -108,7 +108,7 @@ The `common` folder contains commonly re-used server-side code.
 
 #### `src/server/common/get-server-auth-session.ts`
 
-The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 <sub>(with NextAuth.js + tRPC)</sub>
 
@@ -186,17 +186,17 @@ The `utils` folder is used to store commonly re-used utility functions.
 
 #### `src/utils/trpc.ts`
 
-The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+The `trpc.ts` file is the front-end entry point to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
 
 <sub>(with tRPC)</sub>
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be commited to git history.
+The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be commited to git history.
+The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
 
 ### `.eslintrc.json`
 

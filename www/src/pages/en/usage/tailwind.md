@@ -73,7 +73,7 @@ Make sure you have editor plugins for Tailwind installed to improve your experie
 
 ### Formatting
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+Tailwind CSS classes can easily get a bit messy, so a plugin for formatting the classes is a must-have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted CSS bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
 
 ### Conditionally Applying Classes
 
@@ -93,3 +93,5 @@ Conditionally adding classes using ternaries can get very messy and hard to read
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
+
+  

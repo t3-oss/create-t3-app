@@ -36,7 +36,7 @@ Most apps need the same handful of components - toggle buttons, dropdown menus, 
 
 ### Unstyled Component Libraries
 
-Also known as headless libraries, they provide great unstyled, and accessible components that you can customize to your liking. Here are a few recommendations.
+Also known as headless libraries, they provide great unstyled and accessible components that you can customize to your liking. Here are a few recommendations.
 
 - [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
 
@@ -69,7 +69,7 @@ For when you need animations in your app, here are our recommendations.
 
 **For animations with a single line of code**
 
-Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
+Most animation libraries try to satisfy every possible use case and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
@@ -84,7 +84,7 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
 
-## Deployments, Infrastructure, Databases and CI
+## Deployments, Infrastructure, Databases, and CI
 
 ### Vercel
 
@@ -123,7 +123,7 @@ We love Prisma and PlanetScale, but some projects require a more performant solu
 
 **For serverless WebSockets**
 
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
+If WebSockets are the primary focus of your project, you may want to consider a more traditional back-end such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
 
 - [Pusher Homepage](https://pusher.com/)
 
@@ -146,7 +146,7 @@ Need analytics? Plausible is one of the quickest ways to get them. Super minimal
 
 ### Umami
 
-Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database.
+Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easy to Vercel, Railway, etc. with PlanetScale as your database.
 
 - [Umami Homepage](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)

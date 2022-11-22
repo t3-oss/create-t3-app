@@ -40,13 +40,13 @@ export const clientEnv = {
 
 Define your server-side environment variables schema here.
 
-Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
+Make sure you do not prefix keys here with `NEXT_PUBLIC`, if you do so the configuration validation will say it's invalid.
 
 ### Client Schema
 
 Define your client-side environment variables schema here.
 
-To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
+To expose them to the client you need to prefix them with `NEXT_PUBLIC`, if you don't do so the configuration validation will say it's invalid.
 
 ### clientEnv Object
 
@@ -76,7 +76,7 @@ When you want to use your environment variables, you can import them from `env/c
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
 
-// `env` is fully typesafe and provides autocompletion
+// `env` is fully type-safe and provides autocompletion
 const dbUrl = env.DATABASE_URL;
 ```
 
