@@ -68,15 +68,16 @@ dir: rtl
 
 وفي الاخير نقوم بتصدير [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) حتي نستعمل الـ type infre في الـ frontend
 
-## How do I use tRPC?
+## كيف أستخدم tRPC ؟
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) about tRPC. We highly recommend you watch it if you haven't already.
+ننصحك مبشاهج هذا[a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) من [trashh_dev](https://twitter.com/trashh_dev) 
 
-With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
+
+مع tRPCتكتب Function في الـ backend والتي يمكنك مناداتها من الـ frontend
 
 ```ts:server/trpc/router/user.ts
 const userRouter = t.router({
@@ -89,12 +90,9 @@ const userRouter = t.router({
   }),
 });
 ```
-
-This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
-
-After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
-
-You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+في نهاية الامر تتحول tRPC procedure الي backend عادي فيقوم بفحص الـ input ويمرر الـ request إذا كان صحيحاًويعيد رسالة خطأ إذا كانت المدخلات غير صحيحة.
+بعد التأكد من صحة البيانات يتم نداء function والتي إما تجلب بيانات ([query](https://trpc.io/docs/v10/react-queries)) او ان تغير في  البانات  ([mutation](https://trpc.io/docs/v10/react-mutations)) 
+أنت
 
 ```ts:server/trpc/router/_app.ts
 const appRouter = t.router({
