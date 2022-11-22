@@ -49,12 +49,11 @@ dir: rtl
 - ما هو `createContext` ؟ هنا حيث توم بإنشاء الـ Context الذي يعتمد علي الـ request فيمكنك الوصول الي الـ req Object عن طريق `opts.req` ومن ثم تمريرة الي `createContextInner`لإنشاء الـ Context النهائي 
 
 ### 📄ملف `server/trpc/trpc.ts`
-في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/procedures) و [middlewares](https://trpc.io/docs/v10، من الافضل ان لا تقوم بعمل export لـ t Object كاملا 
-/middlewares) بدل قم بتصدير  procedures و middlewares
+في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/procedures) و [middlewares](https://trpc.io/docs/v10)، من الافضل ان لا تقوم بعمل export لـ t Object كاملا 
+/middlewares) بل قم بتصدير  procedures و middlewares
+ستلاحظ أننا نستخدم `superjson` كـ [data transformer](https://trpc.io/docs/v10/data-transformers)، ذلك حتي نحفظ الـ Types لحين إستخدامها في في الـ client، فمثلا إذا كان الـ Type هو Date فإن الـ client سَيُعيد Date ,gds سفقهىل
 
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
-
-### 📄 `server/trpc/router/*.ts`
+### 📄ملف  `server/trpc/router/*.ts`
 
 This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
 
