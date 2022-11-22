@@ -65,6 +65,3 @@ dir: rtl
 | Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
 | Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
 | Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
-
-
-

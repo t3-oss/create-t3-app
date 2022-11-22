@@ -5,6 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
+
 لقد أنشأت للتو مشروعا باستخدام T3 Stack ، هذة أقل ما يمكن فعله قبل أن تتمكن من تشغيل المشروع.
 
 قواعد البيانات
@@ -24,7 +25,3 @@ dir: rtl
 اضف NEXTAUTH_SECRET الي .env كـ String، في الـ Production اضف كلمة سر قوية.
 
 Join our Discord and give us a star on GitHub! :)
-
-
-
-

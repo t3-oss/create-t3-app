@@ -180,6 +180,3 @@ const userRouter = router({
 | NextAuth.js Docs                  | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
-
-
-
