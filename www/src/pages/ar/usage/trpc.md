@@ -53,9 +53,9 @@ dir: rtl
 /middlewares) بل قم بتصدير  procedures و middlewares
 ستلاحظ أننا نستخدم `superjson` كـ [data transformer](https://trpc.io/docs/v10/data-transformers)، ذلك حتي نحفظ الـ Types لحين إستخدامها في في الـ client، فمثلا إذا كان الـ Type هو Date فإن الـ client سَيُعيد Date ,gds سفقهىل
 
-### 📄ملف  `server/trpc/router/*.ts`
+### 📄 ملف `server/trpc/router/*.ts`
+هنا يمكنك تحديد الـ routs ,والـ procedure للـ API، من الافضل [أن تُنشئ routers](https://trpc.io/docs/v10/router) مُنفصلة للـ procedures المتقاربة ومن ثَم [دمجهم](https://trpc.io/docs/v10/merging-routers) في router واحد في `server/trpc/router/_app.ts` 
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
 
 ### 📄 `utils/trpc.ts`
 
