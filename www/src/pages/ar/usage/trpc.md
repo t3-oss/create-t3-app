@@ -104,7 +104,7 @@ const appRouter = t.router({
 export type AppRouter = typeof appRouter;
 ```
 
-Notice that we only need to export our router's type definitions, which means we are never importing any server code on our client.
+لاحظ أننا فقط نقوم بعمل export لـ router's type أننا لا نستخدم اي من الـ server code في الـ client
 
 Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
 
