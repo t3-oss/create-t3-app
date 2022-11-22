@@ -128,9 +128,7 @@ const UserPage = () => {
 مع tRPC ، الأمر مختلف بعض الشيء. إذا كنت ترغب في الاتصال بالـ procedure بدون عميل tRPC ، فهناك طريقتان موصى بهما للقيام بذلك:
 
 ### Expose a single procedure externally
-
-If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
-
+إذا أردت أن تُتيح procedure للـ Apis الخارجية الف نظرة علي [server side calls](https://trpc.io/docs/v10/server-side-calls)، مما سيسمح لك بعمل Next.js Api إعتيادية
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { appRouter } from "../../../server/trpc/router/_app";
@@ -159,17 +157,16 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default userByIdHandler;
 ```
 
-### Exposing every procedure as a REST endpoint
-
-If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
-
+### تحول كل الـ Procedures الي REST endpoint ؟
+إذا كنت ترغب في كشف كل الـ ؛قخؤثيعقثس ، الق نظرة علي [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master).
 ### It's just HTTP Requests
 
 tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/v10/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
 
 ## Comparison to a Next.js API endpoint
 
-Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
+دعنا نقارن " Next.js Endpoint" بـ "tRPC procedure". لنفترض أننا نريد جلب "Object" مستخدم معين من قاعدة بياناتنا وإعادته إلى الواجهة الأمامية.
+يمكننا كتابة Next.js API Endpoint مثل هذا:
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -215,19 +212,16 @@ const UserPage = () => {
 };
 ```
 
-Compare this to the tRPC example above and you can see some of the advantages of tRPC:
+قارن هذا بمثال tRPC أعلاه ويمكنك رؤية بعض مزايا tRPC:
 
-- Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
-- You don’t need to validate which HTTP method was used.
-- You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
-- Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend doesn't provide any autocompletion or type safety.
+- بدلاً من تحديد عنوان url لكل مسار ، والذي يمكن أن يصبح مزعجًا إذا حاولت  نقل شيء ما ، فإن الـ `router`  بأكمله عبارة عن `Object`  مع الإكمال التلقائي.
+- لست بحاجة إلى التحقق من HTTP method التي تم استخدامها.
+- لا تحتاج إلى التحقق من أن  الطلب أو الـ `query` ، لأن Zod يعتني بذلك.
+- بدلاً من إنشاء الـ responde object ، يمكنك إرجاع أخطاء او  قيمة أو Object كما تفعل في أي function.
 
-## Useful snippets
+## snippets مفيدة
 
-Here are some snippets that might come in handy.
-
-### Enabling CORS
+### تفعيل CORS
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
