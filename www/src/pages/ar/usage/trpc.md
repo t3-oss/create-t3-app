@@ -223,8 +223,6 @@ const UserPage = () => {
 
 ### تفعيل CORS
 
-If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
-
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
@@ -248,7 +246,7 @@ export default handler;
 
 ### Optimistic updates
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+الـ Optimistic updates هيي تحديثات تحدث لوجهة المستخدم قبل أن ينتهي الـ Request  مما يُحسن تجرية المستخدم، لكن التطبيات التي تُفضل دقة المعلومات يجب أن تتجنب الـ Optimistic updates، للمزيد من المعلومات إقرا [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -281,9 +279,9 @@ const MyComponent = () => {
 };
 ```
 
-### Sample Integration Test
+### عينة من Integration Test
 
-Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
+إقرأ  [Vitest](https://vitest.dev)
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
