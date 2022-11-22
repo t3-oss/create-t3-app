@@ -51,11 +51,8 @@ export const clientEnv = {
 
 ### الـ clientEnv Object
 
-Destruct the `process.env` here.
-
-We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
-
-TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
+ هُنا حيثُ تقوم بعمل Destruct لـ `process.env`ز
+ تحتاج Zod الي Object لتكون قادة علي تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب فعل ذلك يدويا، لا تقلق فـ  Typescript ستقوم بتحذيرك إذا إرتكبت خطاّ.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -66,13 +63,13 @@ const schema = z.object({
 const validated = schema.parse(process.env);
 ```
 
-## server.mjs & client.mjs
+## الـ server.mjs & client.mjs
+هذا هو المكان الذي يتم فيه التحقق من الـ Object ومن ثم تصديرها. لن تحتاج إلى تعديل هذه الملفات.
 
-This is where the validation happens and exports the validated objects. You shouldn't need to modify these files.
 
-## Using Environment Variables
 
-When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
+## إستخدامالـ Environment Variables
+إذا أردت إستخدام الـ env vars فيمكنك إستيراد` env/client.mjs` و `env/server.mjs` في المكان الذي تريد
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
