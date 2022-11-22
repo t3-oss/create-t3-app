@@ -105,9 +105,7 @@ export type AppRouter = typeof appRouter;
 ```
 
 لاحظ أننا فقط نقوم بعمل export لـ router's type أننا لا نستخدم اي من الـ server code في الـ client
-
-Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
-
+الان دعنا ننادي الـ procedure من الـ frontend ، tRPC توفر wrapper لمكتبة `@tanstack/react-query` مما يسمح لك بإستخدام المكتبة بكامل قوتها.
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
 
@@ -122,12 +120,12 @@ const UserPage = () => {
   );
 };
 ```
+ستلاحظ على الفور مدى جودة الإكمال التلقائي والـ typesafety. بمجرد كتابة "trpc." ، ستظهر `router` الخاصة بك في الإكمال التلقائي ، وعندما تحدد الـ `router`،
+ستظهر الـ procedures. وستحصل أيضًا على خطأ TypeScript إذا كانت المُدخلات الخاص بك لا يتطابق مع الـ schema الذي حددته مسبقا.
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
-
-## How do I call my API externally?
-
-With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two recommended ways to do it:
+## كيف اُنادي API خارجي ؟
+باستخدام الـ API العادية ، يمكنك استدعاء الـ End point الخاصة بك باستخدام أي عميل HTTP مثل `curl` أو` Postman` أو `fetch` أو مباشرة من متصفحك.
+مع tRPC ، الأمر مختلف بعض الشيء. إذا كنت ترغب في الاتصال بالـ procedure بدون عميل tRPC ، فهناك طريقتان موصى بهما للقيام بذلك:
 
 ### Expose a single procedure externally
 
