@@ -82,7 +82,6 @@ const dbUrl = env.DATABASE_URL;
 بما أن ملف `.env` ليس مُضمناَ في الـ version control، فقد أضفنا ملف `.env.example` والذي يمكنك أن تتركه، وأضياََ ننصحك أن تُبقي هذا الملف متزامنا مع الملف الاساسي حتي تحصل علي أفضل تجربة تطوير ممكنة
 ## أضف Environment Variables
 
-To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
 حتى نتأكد من أنك ستضيف الـ environment variables، يجب عليك أن تضيفها في مكانين مختلفين
 
 📄 ملف `.env`: هنا نضيف المتغيرات بشكل طبيعي كانك تتعامل مع ملف `.env` عادي
