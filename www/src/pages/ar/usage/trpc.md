@@ -48,9 +48,9 @@ dir: rtl
 - ما هو `createContextInner`: هنا حيث تقوم بإنشاء الـ Context الذي لا يعتمد علي الـ request مثل إتصال قاعهدة البيانات ويمكنك إستخدام function لـ [integration testing](#sample-integration-test) او [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) 
 - ما هو `createContext` ؟ هنا حيث توم بإنشاء الـ Context الذي يعتمد علي الـ request فيمكنك الوصول الي الـ req Object عن طريق `opts.req` ومن ثم تمريرة الي `createContextInner`لإنشاء الـ Context النهائي 
 
-### 📄 `server/trpc/trpc.ts`
-
-This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
+### 📄ملف `server/trpc/trpc.ts`
+في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/procedures) و [middlewares](https://trpc.io/docs/v10، من الافضل ان لا تقوم بعمل export لـ t Object كاملا 
+/middlewares) بدل قم بتصدير  procedures و middlewares
 
 You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
 
