@@ -3,10 +3,9 @@ title: Docker
 description: Deployment with Docker
 layout: ../../../layouts/docs.astro
 ---
+يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers بإستخدام docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
 
-You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
-
-## Docker Project Configuration
+## تهيئة مشروع Docker
 
 Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
 
