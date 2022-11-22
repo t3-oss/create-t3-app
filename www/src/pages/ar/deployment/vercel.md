@@ -2,13 +2,15 @@
 title: Vercel
 description: Deploying to Vercel
 layout: ../../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
-We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
+ننصحك بنشر تطبيقك عبر [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) فهو أسهل خاصة لتطبيقات Next.js.
 
-## Project Configuration
+## إعداد المشروغ
 
-Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands:
+بطبيعة الامر فإن vervel ستقوم بإعداد المشورع عنكـ لكنك يمكنك التعديل علية من خلال إنشاء ملف  [`vercel.json`](https://vercel.com/docs/project-configuration)
 
 ```json
 {
@@ -19,37 +21,35 @@ Vercel will likely configure your build command and publish the directory automa
 }
 ```
 
-## Using the Vercel Dashboard
-
-1. After pushing your code to a GitHub repository, sign up for [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) with GitHub and click on **Add New Project**.
+## إستخدام لوحة تحكم vercel
+1. بعد دفع مشوعك الي Github سجل الدخول الي [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) عن طريق Github واضغط علي **Add New Project**
 
 ![New project on Vercel](/images/vercel-new-project.webp)
 
-2. Import the GitHub repository with your project.
+2. قم بإستيراد GitHub repository
 
 ![Import repository](/images/vercel-import-project.webp)
 
-3. Add your environment variables.
+3. إضف environment variables.
 
 ![Add environment variables](/images/vercel-env-vars.webp)
 
-4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
+4. إضغط علي **Deploy** الان مع كل مرة تعمل فيها Push ستقوم vercel بإعادة بناء المشوع تلقائيا
 
-## Using the Vercel CLI
+## إستخدام Vercel CLI
 
-To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
+حتي تنشر مشروع عن طريق CLI [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
 
 ```bash
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
+شَغل أمر [`vercel`](https://vercel.com/docs/cli/deploying-from-cli)
 
 ```bash
 vercel
 ```
-
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+لا تنس اضافة environment variables  مثل `--env DATABASE_URL=YOUR_DATABASE_URL_HERE`، أضف عَلم `--yes` لتخطي كل الاسئلة
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
