@@ -223,7 +223,7 @@ Compare this to the tRPC example above and you can see some of the advantages of
 - You don’t need to validate which HTTP method was used.
 - You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
 - Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend doesn't provide any autocompletion or type safety.
+- Calling the procedure on the frontend provides autocompletion and type safety.
 
 ## Useful snippets
 
