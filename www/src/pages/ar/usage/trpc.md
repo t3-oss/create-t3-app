@@ -58,8 +58,10 @@ dir: rtl
 
 
 ### 📄 ملف `utils/trpc.ts`
-هذا هو مدخل الـ frontend لـ tRPC هنا 
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+
+هذه هي نقطة دخول الواجهة الأمامية لـ tRPC. هذا هو المكان الذي ستقوم فيه باستيراد **type definition** الخاص بالـ procedure وإنشاء tRPC client الخاص بك جنبًا إلى 
+جنب مع react query hooks. نظرًا لأننا قمنا بتفعيل "superjson" في الواجهة الخلفية 
+فنحن بحاجة إلى تفعيلة على الواجهة الأمامية أيضًا. هذا لان البيانات التي يحدث لها serialized في الـ client يتم عمل deserialized لها في الـ client.
 
 You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
 
