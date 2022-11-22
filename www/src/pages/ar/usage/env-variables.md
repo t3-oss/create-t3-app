@@ -40,16 +40,14 @@ export const clientEnv = {
 ### الـ Server Schema
 
 حدد environment variables schema من جانب الخادم هنا.
+تأكد أن لا تضيف `NEXT_PUBLIC` قبل إسم المتتغير، الـ Validation سيفشل أذا ما فعلت هذا.
 
-Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
 
-### Client Schema
+### الـ Client Schema
+حدد الـ client-side environment variables هنا، حتي تجعلهم متاحيت للـ client أضف `NEXT_PUBLIC` قبل الاسم.
 
-Define your client-side environment variables schema here.
 
-To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
-
-### clientEnv Object
+### الـ clientEnv Object
 
 Destruct the `process.env` here.
 
