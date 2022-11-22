@@ -63,9 +63,10 @@ dir: rtl
 جنب مع react query hooks. نظرًا لأننا قمنا بتفعيل "superjson" في الواجهة الخلفية 
 فنحن بحاجة إلى تفعيلة على الواجهة الأمامية أيضًا. هذا لان البيانات التي يحدث لها serialized في الـ client يتم عمل deserialized لها في الـ client.
 
-You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+هنا تقوم بتحديد [روابط](https://trpc.io/docs/v10/links)  الـ tRPC  حيث تُُحدد المسار الذي سيمر به الـ request من الـ client الي الـ server
+نحن نستخدم [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) بشكل إفتراضي مع تفعيل [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch) و [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) 
 
-Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
+وفي الاخير نقوم بتصدير [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) حتي نستعمل الـ type infre في الـ frontend
 
 ## How do I use tRPC?
 
