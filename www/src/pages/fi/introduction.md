@@ -13,7 +13,7 @@ lang: fi
 
 _"T3 Stack"_ on web-kehitys stack, jonka on tehnyt [Theo](https://twitter.com/t3dotgg) keskittyy yksinkertaisuuteen, modulaarisuuteen ja full-stackin tyyppiturvallisuuteen.
 
-Ydinkappaleet ovat [**Next.js**](https://nextjs.org/) ja [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) on melkein aina mukana. Jos teet jotain back-endiä muistuttavaa, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) ja [**NextAuth .js**](https://next-auth.js.org/) ovat myös hienoja lisäyksiä.
+Ydinkappaleet ovat [**Next.js**](https://nextjs.org/) ja [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) ovat melkein aina mukana. Jos teet jotain back-endiä muistuttavaa, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) ja [**NextAuth .js**](https://next-auth.js.org/) ovat myös hienoja lisäyksiä.
 
 Olet ehkä huomannut, että eri osia on… paljon. Se on osa suunnittelua. Vaihda eri osia sisään ja ulos tarpeen mukaan - tämä stack on ytimessään modulaarinen :)
 
@@ -23,7 +23,7 @@ Jollain tavoin? "create-t3-app" on kokeneiden T3 Stack -kehittäjien rakentama C
 
 Lukemattomien projektien ja tämän tekniikan vuosien jälkeen meillä on paljon mielipiteitä ja oivalluksia. Olemme tehneet parhaamme koodataksemme ne tähän CLI:hen.
 
-Tämä **EI** all inclusive -malli. **Odotamme** sinun tuovan mukanasi omat kirjastosi, jotka ratkaisevat **SINUN** sovelluksesi tarpeet. Vaikka emme halua määrätä ratkaisuja tarkempiin ongelmiin, kuten tilanhallintaan ja käyttöönottoon, meillä [on tässä lueteltu joitain suosituksia](/en/other-recs).
+Tämä **EI** ole all inclusive -malli. **Odotamme** sinun tuovan mukanasi omat kirjastosi, jotka ratkaisevat **SINUN** sovelluksesi tarpeet. Vaikka emme halua määrätä ratkaisuja tarkempiin ongelmiin, kuten tilanhallintaan ja käyttöönottoon, meillä [on tässä lueteltu joitain suosituksia](/en/other-recs).
 
 ## T3 Axioms
 
