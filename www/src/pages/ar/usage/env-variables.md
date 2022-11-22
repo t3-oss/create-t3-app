@@ -2,6 +2,8 @@
 title: Environment Variables
 description: Getting started with create-t3-app
 layout: ../../../layouts/docs.astro
+lang: ar
+dir: rtl
 ---
 
 إن `Create-T3-App` تستخدم [Zod](https://github.com/colinhacks/zod) للتأكد من صلاحية الـ environment variablesأثناء الـ runtime عن طريق توفير بعض الملفات الاضافة

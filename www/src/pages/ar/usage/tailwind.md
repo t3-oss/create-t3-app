@@ -3,7 +3,7 @@ title: Tailwind CSS
 description: إستخدام Tailwind CSS
 layout: ../../../layouts/docs.astro
 lang: ar
-dir:rtl
+dir: rtl
 ---
 
 ## What is Tailwind CSS?
