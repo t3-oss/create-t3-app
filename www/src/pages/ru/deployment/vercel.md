@@ -20,7 +20,7 @@ lang: ru
 }
 ```
 
-## Использование панели Vercel
+## Использование Vercel Dashboard
 
 1. После отправки вашего кода в репозиторий GitHub зарегистрируйтесь на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) с GitHub и нажмите **Add New Project**.
 
