@@ -61,9 +61,9 @@ const isRtl = getIsRtlFromUrl(currentPage);
                         "text-md text-t3-purple-800 hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100 block py-2 transition-colors",
                         isActive &&
                           "border-t3-purple-300 bg-t3-purple-300/30 dark:bg-t3-purple-300/20 font-medium",
-                        isActive && "border-t3-purple-300/20",
-                        !isRtl && "pl-4",
+                        !isActive && "border-t3-purple-300/20",
                         isRtl && "pr-4",
+                        !isRtl && "pl-4",
                       ])}
                     >
                       {child.text}
