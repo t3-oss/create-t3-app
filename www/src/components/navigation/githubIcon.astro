@@ -7,20 +7,11 @@ const githubStars =
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
     throwIfNoAuth: false,
   }).then((json) => json.stargazers_count)) ?? 42069;
-<<<<<<< HEAD
-const SIX_HOURS_IN_SECONDS = 6 * 60 * 60;
-Astro.response.headers.set(
-  "Cache-Control",
-  `s-max-age=${SIX_HOURS_IN_SECONDS}`,
-);
+const ONE_HOUR = 1 * 60 * 60;
+Astro.response.headers.set("Cache-Control", `public, max-age=${ONE_HOUR}`);
 
 const { pathname } = Astro.url;
 const isRtl = getIsRtlFromUrl(pathname);
-const isLtr = !isRtl;
-=======
-const ONE_HOUR = 1 * 60 * 60;
-Astro.response.headers.set("Cache-Control", `public, max-age=${ONE_HOUR}`);
->>>>>>> 7afb49395a3bf00f191cb559a3283634eef212ac
 ---
 
 <a
@@ -36,10 +27,10 @@ Astro.response.headers.set("Cache-Control", `public, max-age=${ONE_HOUR}`);
       [
         /** triangle arrow */
         "after:absolute after:h-0 after:w-0 after:border-8 after:border-transparent after:transition-colors after:duration-300",
-        isLtr &&
-          "after:right-[calc(-0.5em-1px)] after:border-r-0 after:border-l-t3-purple-200/50 after:group-hover:border-l-t3-purple-200/75 dark:after:border-l-t3-purple-200/20 dark:after:group-hover:border-l-t3-purple-200/50",
         isRtl &&
           "after:left-[calc(-0.5em-1px)] after:border-l-0 after:border-r-t3-purple-200/50 after:group-hover:border-r-t3-purple-200/75 dark:after:border-r-t3-purple-200/20 dark:after:group-hover:border-r-t3-purple-200/50",
+        !isRtl &&
+          "after:right-[calc(-0.5em-1px)] after:border-r-0 after:border-l-t3-purple-200/50 after:group-hover:border-l-t3-purple-200/75 dark:after:border-l-t3-purple-200/20 dark:after:group-hover:border-l-t3-purple-200/50",
       ],
     )}
   >
