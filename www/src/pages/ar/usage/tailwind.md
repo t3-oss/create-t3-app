@@ -71,7 +71,7 @@ import "./my-class.css";
 
 ### الـ Formatting
 
-الـ Classes في TailwindCSS يمكن أن تصبح فوضوية بسهولة، لذلك الـ Formating هو أمر لابد منه، إضافة [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) تحم لعناك هَم تنظيمها، لمزسد من المعلومات إقرأ [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
+الـ Classes في TailwindCSS يمكن أن تصبح فوضوية بسهولة، لذلك الـ Formating هو أمر لابد منه، إضافة [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) تحمل عنك هَم تنظيمها، لمزيد من المعلومات إقرأ [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
 
 ### إضافة الـ classes إختبارياَ
 
@@ -89,3 +89,6 @@ import "./my-class.css";
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
+
+
+
