@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
+import LanguageSelect from "./languageSelect.astro";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
@@ -71,6 +72,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     </div>
     <div class="flex flex-grow justify-end items-center gap-4">
       <GithubIcon />
+      {!isLanding && <LanguageSelect language={"en"} />}
       <div
         class={clsx("text-center", {
           hidden: isLanding,
