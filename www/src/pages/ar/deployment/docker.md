@@ -2,19 +2,20 @@
 title: Docker
 description: Deployment with Docker
 layout: ../../../layouts/docs.astro
+lang: ar
 ---
 يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers بإستخدام docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
 
 ## تهيئة مشروع Docker
+يَجد أن تضع في حسبانك أن Next.js يتطلب process مُنفصلة لـ buildtime و runtime.
+يمكنك الوصول لـ runtime environment فقط في الـ Serverـ في هذا المثال نستخدم مُتغيرين فقط لذلك عليك أن تٌبقي في بالك موقعها في 
+الـ `Dockerfile`والـ  command-line arguments, والـ `docker-compose.yml`:
 
-Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
+- `DATABASE_URL` (تُستخدم في الـ server)
+- `NEXT_PUBLIC_CLIENTVAR` (تُستخدم في الـ client)
 
-- `DATABASE_URL` (used by the server)
-- `NEXT_PUBLIC_CLIENTVAR` (used by the client)
-
-### 1. Next Configuration
-
-In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
+### 1. إعداد Next
+في ملف [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs)  قم بإضافة `standalone` حتي [تُقلل حجم الصور تلقائيا](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -24,7 +25,7 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Create dockerignore file
+### 2. إنشاء ملف dockerignore
 
 <details>
     <summary>
@@ -47,7 +48,7 @@ README.md
 
 </details>
 
-### 3. Create Dockerfile
+### 3. إنشاء Dockerfile
 
 > Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
 
