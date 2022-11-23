@@ -9,7 +9,7 @@ lang: ru
 
 ## Context Provider (Провайдер контекста)
 
-В точке входа (entrypoint) вашего приложения вы увидите, что ваше приложение обернуто в [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
+В точке входа вашего приложения вы увидите, что ваше приложение обернуто в [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>

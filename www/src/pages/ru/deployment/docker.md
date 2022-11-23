@@ -16,7 +16,7 @@ lang: ru
 
 ### 1. Конфигурация Next
 
-В вашем [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), добавьте конфигурацию опции `standalone` для [уменьшения размера образа с помощью автоматического использования трассировок вывода](https://nextjs.org/docs/advanced-features/output-file-tracing):
+В вашем [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), добавьте конфигурацию `output` со значением `standalone` для [уменьшения размера образа с помощью автоматического использования трассировок вывода](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -26,11 +26,11 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Создайте Dockerfile
+### 2. Создайте dockerignore file
 
 <details>
     <summary>
-      Нажмите здесь и включите содержимое в <code>.dockerignore</code>:
+      Нажмите здесь и вставьте содержимое в <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
@@ -49,13 +49,13 @@ README.md
 
 </details>
 
-### 3. Создайте файл Dockerfile
+### 3. Создайте Dockerfile
 
-> Из-за того, что мы не извлекаем переменные окружения сервера в наш контейнер, проверка схемы окружения [environment schema validation](/en/usage/env-variables) не пройдет. Чтобы этого избежать, мы должны добавить флаг `SKIP_ENV_VALIDATION=1` к команде сборки, чтобы схемы окружения не проверялись во время сборки.
+> Из-за того, что мы не извлекаем переменные окружения сервера в наш контейнер, [проверка схемы окружения](/ru/usage/env-variables) не пройдет. Чтобы этого избежать, мы должны добавить флаг `SKIP_ENV_VALIDATION=1` к команде сборки, чтобы схемы окружения не проверялись во время сборки.
 
 <details>
     <summary>
-      Нажмите здесь и включите содержимое в <code>Dockerfile</code>:
+      Нажмите здесь и вставьте содержимое в <code>Dockerfile</code>:
     </summary>
 <div class="content">
 
@@ -129,7 +129,7 @@ CMD ["node", "server.js"]
 > **_Заметки_**
 >
 > - _Эмуляция `--platform=linux/amd64` может не быть необходимой после перехода на Node 18._
-> - _Посмотрите [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) что бы понять, почему `libc6-compat` может быть необходим._
+> - _Посмотрите [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) чтобы понять, почему `libc6-compat` может быть необходим._
 > - _Next.js собирает [анонимные данные о телеметрии общего использования](https://nextjs.org/telemetry). Раскомментируйте первый экземпляр `ENV NEXT_TELEMETRY_DISABLED 1`, чтобы отключить телеметрию во время сборки. Раскомментируйте второй экземпляр, чтобы отключить телеметрию во время выполнения._
 
 </div>
@@ -152,7 +152,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 
 <details>
     <summary>
-      Проследуйте шагам 1-4 выше, нажмите здесь и включите содержимое в <code>docker-compose.yml</code>:
+      Проследуйте шагам 1-4 выше, нажмите здесь и добавьте содержимое в <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
@@ -187,7 +187,7 @@ docker compose up
 
 ## Развертывание на Railway
 
-Вы можете использовать PaaS такой как [Railway's](https://railway.app) автоматическое [развертывание Dockerfile](https://docs.railway.app/deploy/dockerfiles) для развертывания вашего приложения. Если у вас установлен [Railway CLI](https://docs.railway.app/develop/cli#install), вы можете развернуть свое приложение с помощью следующих команд:
+Вы можете использовать такой PaaS как автоматическое [развертывание Dockerfile](https://docs.railway.app/deploy/dockerfiles) от [Railway's](https://railway.app) для развертывания вашего приложения. Если у вас [установлен Railway CLI](https://docs.railway.app/develop/cli#install), вы можете развернуть свое приложение с помощью следующих команд:
 
 ```bash
 railway login
@@ -208,6 +208,6 @@ railway open
 | Референс Docker CLI                           | https://docs.docker.com/engine/reference/commandline/docker/         |
 | Референс Docker Compose CLI                   | https://docs.docker.com/compose/reference/                           |
 | Развертывание Next.js с Docker Image          | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                             | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Next.js в Docker'е                           | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Пример Next.js с Docker                       | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Создание Docker образа для Next.js приложения | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Создание Docker образа Next.js приложения | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |

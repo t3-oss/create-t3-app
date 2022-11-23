@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: ru
 ---
 
-Так выглядит файловая структура нового T3 приложения, с выбранными всеми опциями.
+Так выглядит файловая структура нового T3 приложения со всеми выбранными опциями.
 
 Ниже - описание каждой папки, указывающее на её назначение и когда она добавляется.
 
@@ -85,13 +85,13 @@ lang: ru
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-Файл `[...nextauth].ts` - это слаг-маршрут NextAuth.js для аутентификации. Он используется для обработки запросов аутентификации. Смотрите [Использование NextAuth.js](/ru/usage/next-auth) для получения дополнительной информации о NextAuth.js и [Документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
+Файл `[...nextauth].ts` - это слаг-маршрут NextAuth.js для аутентификации. Он используется для обработки запросов аутентификации. Смотрите [Использование NextAuth.js](/ru/usage/next-auth) для получения дополнительной информации о NextAuth.js и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
 
 <sub>(с NextAuth.js)</sub>
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [Документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
+Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
 
 <sub>(c tRPC)</sub>
 
@@ -151,13 +151,13 @@ lang: ru
 
 #### `src/server/trpc/router/auth.ts`
 
-Файл `auth.ts` является примером маршрутизатора tRPC, использующего помощник `protectedProcedure` для демонстрации защиты маршрута tRPC с помощью NextAuth.js.
+Файл `auth.ts` является примером маршрутизатора tRPC, использующего вспомогательную функцию `protectedProcedure` для демонстрации защиты маршрута tRPC с помощью NextAuth.js.
 
 <sub>(с NextAuth.js + tRPC)</sub>
 
 #### `src/server/trpc/router/example.ts`
 
-Файл `example.ts` является примером маршрутизатора tRPC, использующего помощник `publicProcedure` для демонстрации создания публичного маршрута tRPC.
+Файл `example.ts` является примером маршрутизатора tRPC, использующего вспомогательую функцию `publicProcedure` для демонстрации создания публичного маршрута tRPC.
 
 <sub>(с tRPC)</sub>
 
@@ -201,11 +201,11 @@ lang: ru
 
 ### `.eslintrc.json`
 
-Файл `.eslintrc.json` используется для настройки ESLint. Смотрите [Документацию ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для получения дополнительной информации.
+Файл `.eslintrc.json` используется для настройки ESLint. Смотрите [документацию ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для получения дополнительной информации.
 
 ### `next-env.d.ts`
 
-Файл `next-env.d.ts` гарантирует, что типы Next.js будут обнаружены компилятором TypeScript. **Вы не должны удалять его или редактировать, поскольку он может измениться в любое время.** Смотрите [Документацию Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) для получения дополнительной информации.
+Файл `next-env.d.ts` гарантирует, что типы Next.js будут обнаружены компилятором TypeScript. **Вы не должны удалять его или редактировать, поскольку он может измениться в любое время.** Смотрите [документацию Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) для получения дополнительной информации.
 
 ### `next.config.mjs`
 
@@ -213,16 +213,16 @@ lang: ru
 
 ### `postcss.config.cjs`
 
-Файл `postcss.config.cjs` используется для использования Tailwind PostCSS. Смотрите [Документацию Taiwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) для получения дополнительной информации.
+Файл `postcss.config.cjs` используется для использования Tailwind PostCSS. Смотрите [документацию Taiwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) для получения дополнительной информации.
 
 <sub>(с Tailwind CSS)</sub>
 
 ### `prettier.config.cjs`
 
-Файл `prettier.config.cjs` используется для настройки Prettier для включения prettier-plugin-tailwindcss для форматирования классов Tailwind CSS. Смотрите [Пост блога Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) для получения дополнительной информации.
+Файл `prettier.config.cjs` используется для настройки Prettier для включения prettier-plugin-tailwindcss для форматирования классов Tailwind CSS. Смотрите [пост блога Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) для получения дополнительной информации.
 
 <sub>(с Tailwind CSS)</sub>
 
 ### `tsconfig.json`
 
-Файл `tsconfig.json` используется для настройки TypeScript. Некоторые значения по умолчанию, такие как `strict mode`, были включены для обеспечения лучшего использования TypeScript для create-t3-app и его библиотек. Смотрите [Документацию TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) или [Использование TypeScript](usage/typescript) для получения дополнительной информации.
+Файл `tsconfig.json` используется для настройки TypeScript. Некоторые значения по умолчанию, такие как `strict mode`, были включены для обеспечения лучшего использования TypeScript для create-t3-app и его библиотек. Смотрите [документацию TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) или [Использование TypeScript](usage/typescript) для получения дополнительной информации.

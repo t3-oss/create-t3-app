@@ -1,5 +1,5 @@
 ---
-title: T3 Коллекция
+title: T3 коллекция
 description: Крутые open source проекты и компании использующие T3 стек
 layout: ../../layouts/docs.astro
 lang: ru

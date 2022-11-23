@@ -24,17 +24,17 @@ lang: ru
 
 1. После отправки вашего кода в репозиторий GitHub зарегистрируйтесь на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) с GitHub и нажмите **Add New Project**.
 
-![New project on Vercel](/images/vercel-new-project.webp)
+![Новый проект на Vercel](/images/vercel-new-project.webp)
 
 2. Импортируйте репозиторий GitHub с вашим проектом.
 
-![Import repository](/images/vercel-import-project.webp)
+![Импортируйте репозитоpий](/images/vercel-import-project.webp)
 
-3. Добавьте переменные среды.
+3. Добавьте ваши переменные среды.
 
-![Add environment variables](/images/vercel-env-vars.webp)
+![Добавьте ваши переменные среды](/images/vercel-env-vars.webp)
 
-4. Нажмите **Deploy**. Теперь каждый раз, когда вы отправляете изменения в репозиторий, Vercel автоматически развернет ваше приложение!
+4. Нажмите **Deploy**. Теперь каждый раз, когда вы отправляете изменение в ваш репозиторий, Vercel автоматически переразвернет ваше приложение!
 
 ## Использование Vercel CLI
 
