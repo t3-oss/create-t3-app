@@ -93,23 +93,23 @@ Framer Motion fornisce una sintassi semplice e dichiarativa e ti consente di scr
 Vercel ha preso l'inferno delle distribuzioni web e ne ha fatto un'integrazione GitHub imposta e dimentica. Siamo passati a centinaia di migliaia di utenti senza problemi. Alimentato da AWS, solo un'interfaccia decisamente migliore :)
 
 - [Home page di Vercel](https://vercel.com/)
-- [Crea la guida all'implementazione di Vercel App T3](/en/deployment/vercel)
+- [App T3 su Vercel](/distribuzione/vercel)
 
 ### PlanetScale
 
 **Per i database senza problemi**
 
-PlanetScale è la migliore "piattaforma di database senza server" che abbiamo utilizzato di gran lunga. Scala folle, ottima esperienza di sviluppo e prezzi fantastici. Se stai usando SQL (e si spera Prisma), questo è difficile da battere.
+PlanetScale è la migliore "piattaforma di database senza server" che abbiamo utilizzato di gran lunga. Distribuzione folle, ottima esperienza di sviluppo e prezzi fantastici. Se stai usando SQL (e si spera Prisma), questo è difficile da battere.
 
 - [Home page di PlanetScale](https://planetscale.com/)
 
-### Ferrovia
+### Railway
 
 **Per l'hosting della tua infra**
 
 "Heroku moderno". Il modo più semplice per far funzionare un vero server. Se Vercel e PlanetScale non sono abbastanza, Railway probabilmente lo è. Puntalo su un repository GitHub e vai.
 
-- [Home page ferroviaria](https://railway.app/)
+- [Home page di railway](https://railway.app/)
 
 ### Upstash
 
@@ -119,11 +119,11 @@ Amiamo Prisma e PlanetScale, ma alcuni progetti richiedono una soluzione più pe
 
 - [Home page di Upstash](https://upstash.com/)
 
-### Spingitore
+### Pusher
 
 **Per WebSocket serverless**
 
-Se i WebSocket sono l'obiettivo principale del tuo progetto, potresti prendere in considerazione un backend più tradizionale come [Fastify](https://www.fastify.io/) (che [funziona anche con tRPC!](https:// trpc.io/docs/v10/fastify)). Ma per aggiungere rapidamente WebSocket a un'app T3, Pusher è una scelta eccellente.
+Se i WebSocket sono l'obiettivo principale del tuo progetto, potresti prendere in considerazione un backend più tradizionale come [Fastify](https://www.fastify.io/) (che [funziona anche con tRPC!](https://trpc.io/docs/v10/fastify)). Ma per aggiungere rapidamente WebSocket a un'app T3, Pusher è una scelta eccellente.
 
 - [Home page di Pusher](https://pusher.com/)
 
@@ -146,7 +146,7 @@ Hai bisogno di analisi? Plausibile è uno dei modi più rapidi per ottenerli. Su
 
 ### Ummami
 
-Umami è un'alternativa self-hostable, semplice, veloce e incentrata sulla privacy a Google Analytics. Puoi distribuirlo molto facilmente a Vercel, Railway, ecc. Con PlanetScale come database.
+Umami è un'alternativa self-hostable, semplice, veloce e incentrata sulla privacy a Google Analytics. Puoi distribuirlo molto facilmente con Vercel, Railway, ecc. E con PlanetScale come database.
 
 - [Home page di Umami](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
