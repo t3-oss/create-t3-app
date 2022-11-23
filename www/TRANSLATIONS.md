@@ -30,4 +30,4 @@ We'd highly appreciate it if you knew someone who speaks the language you're tra
 
 ### Maintaining
 
-Naturally, the english docs will move faster than the translated ones. We've implemented a feature that alerts visitors if a translated version of a page is outdated. If you see that a page is outdated, and you're able to update it, please do so!
+Naturally, the English docs will move faster than the translated ones. We've implemented a feature that alerts visitors if a translated version of a page is outdated. If you see that a page is outdated and you're able to update it, please do so!
