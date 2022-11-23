@@ -2,6 +2,7 @@
 title: T3 Collection
 description: Cool open source projects and companies using the T3 stack
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 Made a project using the T3 stack and want to share it? Add it to the list!

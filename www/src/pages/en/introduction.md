@@ -2,6 +2,7 @@
 title: Introduction
 description: Introduction to the T3 Stack
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 <div class="embed">
