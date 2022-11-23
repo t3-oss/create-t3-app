@@ -1,22 +1,54 @@
 ---
 import clsx from "clsx";
-import { SIDEBAR } from "../../config";
+import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
 import Search from "./Search";
 
 export interface Props {
+  frontmatter?: Frontmatter;
   currentPage: string;
   isNotFound?: boolean;
 }
 
-const { currentPage, isNotFound } = Astro.props;
+const { frontmatter, currentPage, isNotFound } = Astro.props;
 const isLanding = currentPage === "/" || !!isNotFound;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
   hasTrailing ? -1 : currentPage.length,
 );
-const langCode = "en";
-const sidebar = SIDEBAR[langCode];
+
+const langCode = frontmatter?.lang ?? "en";
+const englishSidebar = SIDEBAR["en"];
+const nativeSidebar = SIDEBAR[langCode];
+let sidebar: Record<
+  string,
+  { text: string; link: string; isTranslated?: boolean }[]
+> = englishSidebar;
+if (langCode !== "en") {
+  sidebar = Object.fromEntries(
+    Object.entries(englishSidebar).map(([header, items]) => {
+      // Set header to translated one if it exists
+      const nativeHeader = SIDEBAR_HEADER_MAP[langCode][header] ?? header;
+
+      const nativeItems = items.map((item) => {
+        const match = Object.values(nativeSidebar)
+          .flat()
+          .find(
+            ({ link: nativeLink }) =>
+              // trailing slash + language code = 3 characters
+              nativeLink.slice(3) === item.link.slice(3),
+          );
+        return {
+          text: match?.text ?? item.text,
+          link: match?.link ?? item.link,
+          isTranslated: !!match,
+        };
+      });
+
+      return [nativeHeader, nativeItems];
+    }),
+  );
+}
 ---
 
 <div class="w-full ml--40 md:ml-0 mb-6 mx-auto px-6 md:px-8 md:hidden">
@@ -59,7 +91,12 @@ const sidebar = SIDEBAR[langCode];
                         },
                       )}
                     >
-                      {child.text}
+                      <span>{child.text}</span>
+                      {!child.isTranslated && langCode !== "en" && (
+                        <span class="ml-1 text-xs text-t3-purple-400 dark:text-t3-purple-300">
+                          EN
+                        </span>
+                      )}
                     </a>
                   </li>
                 );
