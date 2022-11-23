@@ -19,7 +19,8 @@ If you want to translate the docs, you can do so by following these steps:
 4. Update the `lang` attribute in the frontmatter of the files translated to your language. If there are any files you haven't translated yet, that's fine. Just leave the `lang: en` attribute in the frontmatter.
 
 5. If the language you are translating into is read right-to-left (for example Arabic or Hebrew), also add `dir: rtl` to the frontmatter.
-5. When you're done, mark the pull request as ready for review.
+
+6. When you're done, mark the pull request as ready for review.
 
 ### Reviewing
 
