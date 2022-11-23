@@ -2,6 +2,7 @@
 title: Other Recommendations
 description: Libraries and Services that we recommend for many projects
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 We recognize that the libraries included in `create-t3-app` don't solve every problem. While we encourage you to begin your project with the things that we provide, there will come a time when you need to bring in other packages. Only you can know what your project needs, but here are some things that we find ourselves recommending frequently.

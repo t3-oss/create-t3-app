@@ -2,6 +2,7 @@
 title: Folder Structure
 description: Folder structure of a newly scaffolded T3 App
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 The following is the folder structure of a newly scaffolded T3 App, with all options selected.

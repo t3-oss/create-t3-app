@@ -2,6 +2,7 @@
 title: FAQ
 description: Frequently asked questions about Create T3 App
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 Here are some commonly asked questions about `create-t3-app`.
