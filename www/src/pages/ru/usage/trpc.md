@@ -171,7 +171,6 @@ tRPC взаимодействует через HTTP, поэтому также �
 
 ## Сравнение с конечной точкой (enpoint) Next.js API
 
-Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
 Давайте сравним конечную точку (endpoint) Next.js API с процедурой tRPC. Допустим, мы хотим получить объект пользователя из нашей базы данных и вернуть его на фронтенд. Мы могли бы написать конечную точку (endpoint) Next.js API следующим образом:
 
 ```ts:pages/api/users/[id].ts
