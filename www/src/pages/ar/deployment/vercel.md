@@ -10,7 +10,7 @@ dir: rtl
 
 ## إعداد المشروغ
 
-بطبيعة الامر فإن vervel ستقوم بإعداد المشورع عنكـ لكنك يمكنك التعديل علية من خلال إنشاء ملف  [`vercel.json`](https://vercel.com/docs/project-configuration)
+بطبيعة الامر فإن vervel ستقوم بإعداد المشورع عنكـ لكنك يمكنك التعديل علية من خلال إنشاء ملف [`vercel.json`](https://vercel.com/docs/project-configuration)
 
 ```json
 {
@@ -22,6 +22,7 @@ dir: rtl
 ```
 
 ## إستخدام لوحة تحكم vercel
+
 1. بعد دفع مشوعك الي Github سجل الدخول الي [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) عن طريق Github واضغط علي **Add New Project**
 
 ![New project on Vercel](/images/vercel-new-project.webp)
@@ -49,7 +50,8 @@ npm i -g vercel
 ```bash
 vercel
 ```
-لا تنس اضافة environment variables  مثل `--env DATABASE_URL=YOUR_DATABASE_URL_HERE`، أضف عَلم `--yes` لتخطي كل الاسئلة
+
+لا تنس اضافة environment variables مثل `--env DATABASE_URL=YOUR_DATABASE_URL_HERE`، أضف عَلم `--yes` لتخطي كل الاسئلة
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes

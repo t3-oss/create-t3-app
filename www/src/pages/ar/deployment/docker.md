@@ -5,18 +5,21 @@ layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
+
 يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers بإستخدام docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
 
 ## تهيئة مشروع Docker
+
 يَجد أن تضع في حسبانك أن Next.js يتطلب process مُنفصلة لـ buildtime و runtime.
 يمكنك الوصول لـ runtime environment فقط في الـ Server ـ في هذا المثال نستخدم مُتغيرين فقط لذلك عليك أن تٌبقي في بالك موقعها في
-الـ `Dockerfile`والـ  command-line arguments, والـ `docker-compose.yml`:
+الـ `Dockerfile`والـ command-line arguments, والـ `docker-compose.yml`:
 
 - `DATABASE_URL` (تُستخدم في الـ server)
 - `NEXT_PUBLIC_CLIENTVAR` (تُستخدم في الـ client)
 
 ### 1. إعداد Next
-في ملف [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs)  قم بإضافة `standalone` حتى [تُقلل حجم الصور تلقائيا](https://nextjs.org/docs/advanced-features/output-file-tracing):
+
+في ملف [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) قم بإضافة `standalone` حتى [تُقلل حجم الصور تلقائيا](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -50,6 +53,7 @@ README.md
 </details>
 
 ### 3. إنشاء Dockerfile
+
 > بما أننا لا نقوم بجلب الـ server environment variables إلى داخل الـ container، فإن [environment schema validation](/en/usage/env-variables) سيفشل لتجنب هذا أضف علم `SKIP_ENV_VALIDATION=1` الي الـ command حتى تُوقف عملية الـ validation
 
 <details>
@@ -134,9 +138,10 @@ CMD ["node", "server.js"]
 </div>
 </details>
 
-##  بناء وتشغيل الـ Image locally
+## بناء وتشغيل الـ Image locally
 
 قم ببناء وتشغيل هذه الصورة Locally باستخدام الأوامر التالية:
+
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
@@ -145,6 +150,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 Open [localhost:3000](http://localhost:3000/) to see your running application.
 
 ## الـ Docker Compose
+
 يُمكنك أيضا إستخدام Docker Compose لبناء وتشغيل الـ Container
 
 <details>
@@ -172,7 +178,6 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-
 قٌم بتشغيل أمر `docker compose up`
 
 ```bash
@@ -185,8 +190,9 @@ docker compose up
 </details>
 
 ## الـ Deploy علي Railway
-يُمكنك أن تستخدم PaaS كـ [Railway's](https://railway.app) كـ [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles)   
-إذا أردت أن تستخدم [Railway CLI installed](https://docs.railway.app/develop/cli#install)  يُمكنك أن تُشغل هذا الأمر:
+
+يُمكنك أن تستخدم PaaS كـ [Railway's](https://railway.app) كـ [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles)  
+إذا أردت أن تستخدم [Railway CLI installed](https://docs.railway.app/develop/cli#install) يُمكنك أن تُشغل هذا الأمر:
 
 ```bash
 railway login
@@ -210,5 +216,3 @@ Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and sel
 | Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Next.js with Docker Example          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
-
-
