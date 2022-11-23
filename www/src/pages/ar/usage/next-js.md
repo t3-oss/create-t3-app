@@ -12,11 +12,11 @@ Next.js هو إطار عمل لـ Backend لتطبيقات React
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-شاهد هذا الفديو لتعرف المزيد عن [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw)
+شاهد هذا الفيديو لتعرف المزيد عن [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw)
 
 ## Why should I use it?
 
-نحن نحب React. لقد جعلت تطوير واجهة المستخدم سهلا بطرية لم نتخيلها من قبل. لكنها يمكن أن تؤدي بالمطورين إلى ان يتبع بعض المسارات الصعبة. تقدم Next.js أسلوبًا سلساََ لإنشاء التطبيقات باستخدام React. بداية بالـ Routing إنتقالا الي الـ Api ومن ثم الصور ، نضع ثقتنا في Next.js لتقود المطورين نحو قرارات جيدة.
+نحن نحب React. لقد جعلت تطوير واجهة المستخدم سهلا بطرية لم نتخيلها من قبل. لكنها يمكن أن تؤدي بالمطورين إلى أن يتبع بعض المسارات الصعبة. تقدم Next.js أسلوبًا سلساََ لإنشاء التطبيقات باستخدام React. بداية بالـ Routing انتقالا إلى الـ Api ومن ثم الصور ، نضع ثقتنا فى Next.js لتقود المطورين نحو قرارات جيدة.
 
 إقران Next.js مع Vercel يجعل تطوير تطبيقات الويب ونشرها أسهل من أي وقت مضى. فتوفر طرية مجانية لنشر موقعك (نحن ❤️ Vercel)
 
@@ -34,3 +34,6 @@ Next.js هو إطار عمل لـ Backend لتطبيقات React
 | Next.js Discord                | https://nextjs.org/discord         |
 | Next.js Twitter                | https://twitter.com/nextjs         |
 | Vercel/Next.js YouTube Channel | https://www.youtube.com/c/VercelHQ |
+
+
+
