@@ -38,9 +38,7 @@ const isRtl = getIsRtlFromUrl(pathname);
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"
       class={clsx([
-        "h-4 w-4 dark:fill-t3-purple-100 fill-slate-900 transition-colors duration-300",
-        isRtl && "ml-1",
-        !isRtl && "mr-1",
+        "[margin-end:4px] h-4 w-4 dark:fill-t3-purple-100 fill-slate-900 transition-colors duration-300",
       ])}
     >
       <path
