@@ -2,6 +2,7 @@
 title: tRPC
 description: Usage of tRPC
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.

@@ -2,6 +2,7 @@
 title: Docker
 description: Deployment with Docker
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
