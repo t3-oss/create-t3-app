@@ -95,13 +95,13 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 ### Railway
 
 **لإستضافة البنية التحتية للموقع**
-فهي Heroku العصر الحديث، إذا كانVercel , PlanetScale غير كافيين لك، فـ Railway ستكون خيارك المناسب.
+فهي Heroku العصر الحديث، إذا كان Vercelli , PlanetScale غير كافيين لك، فـ Railway ستكون خيارك المناسب.
 
 - [Railway موقع](https://railway.app/)
 
 ### Upstash
 
-نحن نحب Prisma و PlanetScale لكن بعض المشاريع تتطلب حلولا أكثر سرعة Upstash باستخدام Redis في مشروعك دون الحاجة أن تٌدير البنية التحتية.
+نحن نحب Prisma و Planet Scale لكن بعض المشاريع تتطلب حلولا أكثر سرعة Upstash باستخدام Redis في مشروعك دون الحاجة أن تٌدير البنية التحتية.
 
 - [Upstash موقع](https://upstash.com/)
 
@@ -143,3 +143,6 @@ Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully c
 قد يكون من الصعب أحيانًا تحديد ما سيتم تضمينه في الإصدار النهائي لتطبيقك. يُعد Next Bundle Analyzer طريقة سهلة لتصور وتحليل حزم JavaScript التي تم إنشاؤها.
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
+
+
+
