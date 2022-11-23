@@ -6,11 +6,8 @@ const githubStars =
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
     throwIfNoAuth: false,
   }).then((json) => json.stargazers_count)) ?? 42069;
-const SIX_HOURS_IN_SECONDS = 6 * 60 * 60;
-Astro.response.headers.set(
-  "Cache-Control",
-  `s-max-age=${SIX_HOURS_IN_SECONDS}`,
-);
+const ONE_HOUR = 1 * 60 * 60;
+Astro.response.headers.set("Cache-Control", `public, max-age=${ONE_HOUR}`);
 ---
 
 <a
