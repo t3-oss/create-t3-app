@@ -26,7 +26,7 @@ If you want to translate the docs, you can do so by following these steps:
 
 We aim to have 1-2 reviews on each PR before merging. This allows for some back and forth and ensures that the quality of the docs is high, and the tone is consistent.
 
-We'd highly appreciate if you know of someone who speaks the language you're translating to, to review your PR. This can help speed up the process in getting your contribution merged.
+We'd highly appreciate it if you knew someone who speaks the language you're translating into to review your PR. This can help speed up the process of getting your contribution merged.
 
 ### Maintaining
 
