@@ -159,7 +159,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 #### ملف `src/server/trpc/router/example.ts`
 
-ملف `example.ts` هو مثال لإستخدام `publicProcedure` لانشاءpublic tRPC route
+ملف `example.ts` هو مثال لإستخدام `publicProcedure` لإنشاء public tRPC route
 
 <sub>(في حالة tRPC)</sub>
 
@@ -228,3 +228,6 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 ### ملف `tsconfig.json`
 
 وظيفة `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
+
+
+
