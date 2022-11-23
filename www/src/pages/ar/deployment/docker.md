@@ -29,7 +29,7 @@ export default defineNextConfig({
 
 <details>
     <summary>
-      Click here and include contents in <code>.dockerignore</code>:
+      إضغط هنا لتقرأ محتوي الملف  <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
@@ -53,7 +53,7 @@ README.md
 
 <details>
     <summary>
-      Click here and include contents in <code>Dockerfile</code>:
+      إضغط هنا لتقرأ محتوي الملف  <code>Dockerfile</code>:
     </summary>
 <div class="content">
 
@@ -64,11 +64,11 @@ FROM --platform=linux/amd64 node:16-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
-# Install Prisma Client - remove if not using Prisma
+# تثبيت Prisma Client - أزلها إن لم تكن تُستخدم Prisma
 
 COPY prisma ./
 
-# Install dependencies based on the preferred package manager
+# تثبيت المتطلبات وفقا للـ package manager الذي تُفضلة
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
@@ -133,10 +133,9 @@ CMD ["node", "server.js"]
 </div>
 </details>
 
-## Build and Run Image Locally
+##  بناء وشغيل الـ Image locally
 
-Build and run this image locally with the following commands:
-
+قم ببناء وتشغيل هذه الصورة Locally باستخدام الأوامر التالية:
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
@@ -144,13 +143,13 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 
 Open [localhost:3000](http://localhost:3000/) to see your running application.
 
-## Docker Compose
-
-You can also use Docker Compose to build the image and run the container.
+## الـ Docker Compose
+يُمكنك أيضا إستخدام Docker Compose لبناء وتشغيل الـ Container
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+      بعد إتباع الخطوات من 1 الي 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
+      
     </summary>
 <div class="content">
 
@@ -172,20 +171,21 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-Run this using the `docker compose up` command:
+
+قٌم بتشغيل أمر `docker compose up` 
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+الان إفتح [localhost:3000](http://localhost:3000/) لتري تطبيقك يُعمل.
 
 </div>
 </details>
 
-## Deploy to Railway
-
-You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
+## الـ Deploy علي Railway
+يُمكنك أن تستخدم PaaS كـ [Railway's](https://railway.app) كـ [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles)   
+إذا أردت أن تستخدم [Railway CLI installed](https://docs.railway.app/develop/cli#install)  يُمكنك أن تُشغل هذا الامر:
 
 ```bash
 railway login
