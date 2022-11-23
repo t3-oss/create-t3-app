@@ -16,7 +16,7 @@ dir: rtl
   <cite className="flex items-center justify-end pr-4 pb-2">
     <img
       alt="Avatar of @alexdotjs"
-      className="w-12 mr-4 rounded-full bg-neutral-500"
+      className="w-12 rounded-full bg-neutral-500 [margin-inline-end:16px]"
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start not-italic">
