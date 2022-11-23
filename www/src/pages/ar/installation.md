@@ -44,7 +44,7 @@ pnpm create t3-app@latest
 | الخيار       | الوظيفة                      |
 | ------------ | ---------------------------- |
 | `--CI`       | دع CLI يعرف أنك في وضع CI    |
-| `--trpc`     | أضف tRPC الي المشروع         |
+| `--trpc`     | أضف tRPC إلى المشروع         |
 | `--prisma`   | أضف Prisma إلى المشروع       |
 | `--nextAuth` | أضف NextAuth.js الي المشروع  |
 | `--tailwind` | أضف Tailwind CSS الي المشروع |
@@ -59,3 +59,6 @@ You don't need to explicitly opt-out of the packages you don't want. However, if
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
 ```
+
+
+
