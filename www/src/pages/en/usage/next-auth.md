@@ -2,9 +2,10 @@
 title: NextAuth.js
 description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
-When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication, and provides adapters for many databases and ORMs.
+When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
 
 ## Context Provider
 
@@ -70,7 +71,7 @@ When using NextAuth.js with tRPC, you can create reusable, protected procedures 
 
 This is done in a two step process:
 
-1. Grab the session from the request headers using the [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function. Don't worry, this function is safe to use - the name includes `unstable` only because the API implementation might change in the future. The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that its a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away.
+1. Grab the session from the request headers using the [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function. Don't worry, this function is safe to use - the name includes `unstable` only because the API implementation might change in the future. The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -134,9 +135,9 @@ Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https:
 
 ### Adding new fields to your models
 
-When adding new fields to any of the `User`, `Account`, `Session` or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
+When adding new fields to any of the `User`, `Account`, `Session`, or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
 
-If for example you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
+If for example, you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -163,7 +164,7 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 - Under Client Secret, click "Reset Secret" and copy that string to `DISCORD_CLIENT_SECRET` in `.env`. Be careful as you won't be able to see this secret again, and resetting it will cause the existing one to expire.
 - Click "Add Redirect" and paste in `<app url>/api/auth/callback/discord` (example for local development: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Save your changes
-- It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
+- It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
 
 ## Useful Resources
 

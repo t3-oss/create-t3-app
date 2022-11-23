@@ -2,13 +2,14 @@
 title: Vercel
 description: Deploying to Vercel
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
 
 ## Project Configuration
 
-Vercel will likely configure your build command and publish directory automatically. However, you can also specify this information along with other configuration by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands:
+Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands:
 
 ```json
 {

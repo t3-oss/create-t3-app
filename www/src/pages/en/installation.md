@@ -2,6 +2,7 @@
 title: Installation
 description: Installation instructions for Create T3 App
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:

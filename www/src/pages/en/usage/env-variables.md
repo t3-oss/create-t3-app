@@ -2,6 +2,7 @@
 title: Environment Variables
 description: Getting started with create-t3-app
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional files in the `env`-directory:
@@ -16,7 +17,7 @@ Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your 
 
 The content of these files may seem scary at first glance, but don't worry, it's not as complicated as it looks. Let's take a look at them one by one, and walk through the process of adding additional environment variables.
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as defining the validator in `env/schema.mjs`._
+_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `env/schema.mjs`._
 
 ## schema.mjs
 
@@ -40,7 +41,7 @@ export const clientEnv = {
 
 Define your server-side environment variables schema here.
 
-Make sure you do not prefix keys in here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
+Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
 
 ### Client Schema
 
@@ -80,21 +81,21 @@ import { env } from "../../env/server.mjs";
 const dbUrl = env.DATABASE_URL;
 ```
 
-## .env-example
+## .env.example
 
-Since the default `.env` file is not committed to version control, we have also included a `.env-example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
+Since the default `.env` file is not committed to version control, we have also included a `.env.example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
 
 ## Adding Environment Variables
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
 
-📄 `.env`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
 📄 `schema.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`
 
-Optionally, you can also keep `.env-example` updated:
+Optionally, you can also keep `.env.example` updated:
 
-📄 `.env-example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
+📄 `.env.example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
 
 ### Example
 
@@ -117,7 +118,7 @@ export const serverSchema = z.object({
 
 _**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
 
-3. optional: Add the environment variable to `.env-example`, but don't include the token
+3. optional: Add the environment variable to `.env.example`, but don't include the token
 
 ```
 TWITTER_API_TOKEN=

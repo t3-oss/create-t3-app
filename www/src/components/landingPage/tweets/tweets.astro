@@ -60,6 +60,8 @@ if (import.meta.env.MODE === "CI" || !token) {
     "1570054715240763393",
   ]);
 }
+const THREE_HOURS = 3 * 60 * 60;
+Astro.response.headers.set("Cache-Control", `public, max-age=${THREE_HOURS}`);
 ---
 
 <PageSection
@@ -86,7 +88,7 @@ if (import.meta.env.MODE === "CI" || !token) {
       Mention <a
         href="https://twitter.com/search?q=create-t3-app"
         rel="noopener noreferrer"
-        class="text-t3-purple-100">#create-t3-app</a
+        class="text-t3-purple-100">create-t3-app</a
       > if you want to pop up here ;)
     </p>
   </div>

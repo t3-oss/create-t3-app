@@ -2,6 +2,7 @@
 title: FAQ
 description: Frequently asked questions about Create T3 App
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 Here are some commonly asked questions about `create-t3-app`.
@@ -15,7 +16,7 @@ If you are not familiar with the different technologies used in this project, pl
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
-- [TailwindCSS](https://tailwindcss.com)
+- [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
 ## What learning resources are currently available?

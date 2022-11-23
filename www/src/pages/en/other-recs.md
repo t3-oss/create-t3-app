@@ -2,6 +2,7 @@
 title: Other Recommendations
 description: Libraries and Services that we recommend for many projects
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 We recognize that the libraries included in `create-t3-app` don't solve every problem. While we encourage you to begin your project with the things that we provide, there will come a time when you need to bring in other packages. Only you can know what your project needs, but here are some things that we find ourselves recommending frequently.
@@ -25,7 +26,7 @@ The "modern, simple Redux" you didn't know you needed. [Poimandres](https://gith
 
 **For never using Context again**
 
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Great option for stateful behaviors that don't need a state machine just yet.
+For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. A great option for stateful behaviors that don't need a state machine just yet.
 
 - [Jotai Homepage](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
@@ -36,7 +37,7 @@ Most apps need the same handful of components - toggle buttons, dropdown menus, 
 
 ### Unstyled Component Libraries
 
-Also known as headless libraries, they provide great unstyled and accessible components that you can customize to your liking. Here are a few recommendations.
+Also known as headless libraries, they provide great unstyled, and accessible components that you can customize to your liking. Here are a few recommendations.
 
 - [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
 
@@ -99,7 +100,7 @@ Vercel took the hell of web deployments and made it a set-and-forget GitHub inte
 
 **For databases without the worry**
 
-PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
+PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, and fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
 
 - [PlanetScale Homepage](https://planetscale.com/)
 
@@ -107,7 +108,7 @@ PlanetScale is the best "serverless database platform" we've used by far. Insane
 
 **For hosting your infra**
 
-"Modern Heroku". Easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
+"Modern Heroku". The easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
 
 - [Railway Homepage](https://railway.app/)
 
@@ -129,7 +130,7 @@ If WebSockets are the primary focus of your project, you may want to consider a 
 
 ### Soketi
 
-Soketi is an self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
+Soketi is a self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
 
 - [Soketi Homepage](https://soketi.app)
 - [Soketi GitHub](https://github.com/soketi/soketi)
