@@ -8,9 +8,9 @@ dir: rtl
 
 ننصحك بنشر تطبيقك عبر [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) فهو أسهل خاصة لتطبيقات Next.js.
 
-## إعداد المشروغ
+## إعداد المشروع
 
-بطبيعة الامر فإن vervel ستقوم بإعداد المشورع عنكـ لكنك يمكنك التعديل علية من خلال إنشاء ملف [`vercel.json`](https://vercel.com/docs/project-configuration)
+بطبيعة الأمر فإن vervel ستقوم بإعداد المشروع عنك لكنك يمكنك التعديل عليها من خلال إنشاء ملف [`vercel.json`](https://vercel.com/docs/project-configuration)
 
 ```json
 {
@@ -21,9 +21,9 @@ dir: rtl
 }
 ```
 
-## إستخدام لوحة تحكم vercel
+## استخدام لوحة تحكم vercelli
 
-1. بعد دفع مشوعك الي Github سجل الدخول الي [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) عن طريق Github واضغط علي **Add New Project**
+1. بعد دفع مشروعك الي Github سجل الدخول إلى [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) عن طريق Github واضغط علي **Add New Project**
 
 ![New project on Vercel](/images/vercel-new-project.webp)
 
@@ -62,3 +62,5 @@ After the first deployment this command will deploy to a preview branch. You wil
 ```bash
 vercel --prod
 ```
+
+
