@@ -26,9 +26,8 @@ export type Frontmatter = {
 
 export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
-  sv: "🇸🇪 Svenska",
-  de: "🇩🇪 Deutsch",
-  fr: "🇫🇷 Français",
+  // Add more languages here
+  // sv: "🇸🇪 Svenska",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
@@ -76,37 +75,27 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
-  sv: {
-    "Create T3 App": [
-      { text: "Introduktion", link: "sv/introduction" },
-      { text: "Installation", link: "sv/installation" },
-    ],
-    Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
-  },
-  de: {
-    "Create T3 App": [],
-  },
-  fr: {
-    "Create T3 App": [],
-  },
+  // For Translations:
+  // Keep the "outer headers" in English so we can match them.
+  // Translate the "inner headers" to the language you're translating to.
+  // Omit any files you haven't translated, they'll fallback to English.
+  // Example:
+  // sv: {
+  //   "Create T3 App": [
+  //     { text: "Introduktion", link: "sv/introduction" },
+  //     { text: "Installation", link: "sv/installation" },
+  //   ],
+  //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
+  // },
 };
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
   Record<keyof Sidebar["en"], string>
 > = {
-  sv: {
-    "Create T3 App": "Create T3 App",
-    Usage: "Användarguide",
-    Deployment: "Deployment",
-  },
-  de: {
-    "Create T3 App": "Create T3 App",
-    Usage: "Anleitung",
-    Deployment: "Deployment",
-  },
-  fr: {
-    "Create T3 App": "Create T3 App",
-    Usage: "Guide d'utilisation",
-    Deployment: "Déploiement",
-  },
+  // Translate the sidebar's "outer headers" here
+  // sv: {
+  //   "Create T3 App": "Create T3 App",
+  //   Usage: "Användarguide",
+  //   Deployment: "Deployment",
+  // },
 };
