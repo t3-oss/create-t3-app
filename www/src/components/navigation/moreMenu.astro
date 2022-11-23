@@ -1,14 +1,20 @@
 ---
 import * as CONFIG from "../../config";
+import { getIsRtlFromUrl } from "../../languages";
 
 export interface Props {
   editHref: string;
 }
 
 const { editHref } = Astro.props;
+const { pathname } = Astro.url;
+const isRtl = getIsRtlFromUrl(pathname);
 ---
 
-<div class="flex flex-col pt-8 lg:py-0 w-full md:text-left text-center">
+<div
+  dir={isRtl ? "rtl" : "ltr"}
+  class="flex flex-col pt-8 lg:py-0 w-full md:text-start text-center"
+>
   <h2
     class="hidden md:block text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
   >
