@@ -60,7 +60,7 @@ Più in basso, la descrizione di ciascuna cartella indica il suo scopo e se è i
 
 ### `prisma`
 
-La cartella `prisma` contiene il file `schema.prisma` utilizzato per configurare la connessione al database e lo schema del database. È anche la posizione in cui archiviare i file di migrazione e/o gli script di inizializzazione, se utilizzati. Vedi [Utilizzo di Prisma](/it/utilizzo/prisma) per maggiori informazioni.
+La cartella `prisma` contiene il file `schema.prisma` utilizzato per configurare la connessione al database e lo schema del database. È anche la posizione in cui archiviare i file di migrazione e/o gli script di inizializzazione, se utilizzati. Vedi [Utilizzo di Prisma](/uso/prisma) per maggiori informazioni.
 
 <sub>(Con Prisma)</sub>
 
@@ -70,7 +70,7 @@ La cartella "public" contiene risorse statiche servite dal server web. Il file `
 
 ### `src/env`
 
-Utilizzato per la convalida delle variabili di ambiente e le definizioni dei tipi - vedere [Variabili d'ambiente](it/utilizzo/variabili-di-ambiente/).
+Utilizzato per la convalida delle variabili di ambiente e le definizioni dei tipi - vedere [Variabili d'ambiente](uso/variabili-di-ambiente/).
 
 ### `src/pages`
 
@@ -84,13 +84,13 @@ La cartella `api` contiene tutte le route API dell'applicazione Next.js. Il file
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-Il file `[...nextauth].ts` è il percorso slug di autenticazione NextAuth.js. Viene utilizzato per gestire le richieste di autenticazione. Vedi [Utilizzo di NextAuth.js](utilizzo/next-auth) per ulteriori informazioni su NextAuth.js e [Documentazione sui percorsi dinamici Next.js](https://nextjs.org/docs/routing/dynamic-routes) per informazioni sulle rotte catch-all/slug.
+Il file `[...nextauth].ts` è il percorso slug di autenticazione NextAuth.js. Viene utilizzato per gestire le richieste di autenticazione. Vedi [Usare di NextAuth.js](uso/next-auth) per ulteriori informazioni su NextAuth.js e [Documentazione sui percorsi dinamici Next.js](https://nextjs.org/docs/routing/dynamic-routes) per informazioni sulle rotte catch-all/slug.
 
 <sub>(con NextAuth.js)</sub>
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-Il file `[trpc].ts` è il punto di ingresso dell'API tRPC. Viene utilizzato per gestire le richieste tRPC. Vedi [utilizzo di tRPC](it/utilizzo/trpc#-pagesapitrpctrpcts) per ulteriori informazioni su questo file e la [Documentazione su Next.js Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) per informazioni su catturare le rotte/slug.
+Il file `[trpc].ts` è il punto di ingresso dell'API tRPC. Viene utilizzato per gestire le richieste tRPC. Vedi [usare tRPC](uso/trpc#-pagesapitrpctrpcts) per ulteriori informazioni su questo file e la [Documentazione su Next.js Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) per informazioni su catturare le rotte/slug.
 
 <sub>(con tRPC)</sub>
 
@@ -108,13 +108,13 @@ La cartella `common` contiene il codice lato server comunemente riutilizzato.
 
 #### `src/server/common/get-server-auth-session.ts`
 
-Il file `get-server-auth-session.ts` viene utilizzato per ottenere la sessione NextAuth.js sul lato server. Per ulteriori informazioni, consulta [Utilizzo di NextAuth.js](it/utilizzo/next-auth#utilizzo-con-tRPC).
+Il file `get-server-auth-session.ts` viene utilizzato per ottenere la sessione NextAuth.js sul lato server. Per ulteriori informazioni, vedi [usare NextAuth.js](uso/next-auth#utilizzo-con-tRPC).
 
 <sub>(con NextAuth.js + tRPC)</sub>
 
 #### `src/server/db/client.ts`
 
-Il file `client.ts` viene utilizzato per istanziare il client Prisma a livello globale. Vedere [Utilizzo di Prisma](utilizzo/prisma#client-prisma) per ulteriori informazioni.
+Il file `client.ts` viene utilizzato per istanziare il client Prisma a livello globale. Vedi [usare Prisma](uso/prisma#client-prisma) per ulteriori informazioni.
 
 <sub>(con Prisma)</sub>
 
@@ -126,13 +126,13 @@ La cartella `trpc` contiene il codice lato server tRPC.
 
 #### `src/server/trpc/context.ts`
 
-Il file `context.ts` viene utilizzato per creare il contesto utilizzato nelle richieste tRPC. Vedi [utilizzo di tRPC](utilizzo/trpc#-servertrpccontextts) per maggiori informazioni.
+Il file `context.ts` viene utilizzato per creare il contesto utilizzato nelle richieste tRPC. Vedi [usare tRPC](uso/trpc#-servertrpccontextts) per maggiori informazioni.
 
 <sub>(con tRPC)</sub>
 
 #### `src/server/trpc/trpc.ts`
 
-Il file `trpc.ts` viene utilizzato per esportare gli helper delle procedure. Vedi [usare tRPC](utilizzo/trpc#-servtrpctrpcts) per maggiori informazioni.
+Il file `trpc.ts` viene utilizzato per esportare gli helper delle procedure. Vedi [usare tRPC](uso/trpc#-servtrpctrpcts) per maggiori informazioni.
 
 <sub>(con tRPC)</sub>
 
@@ -144,7 +144,7 @@ La cartella `router` contiene i router tRPC.
 
 #### `src/server/trpc/router/_app.ts`
 
-Il file `_app.ts` viene utilizzato per unire i router tRPC ed esportarli come un singolo router, così come le definizioni dei tipi. Vedi [usare il router trpc](utilizzo/trpc#-servtrpcrouterts) per ulteriori informazioni.
+Il file `_app.ts` viene utilizzato per unire i router tRPC ed esportarli come un singolo router, così come le definizioni dei tipi. Vedi [usare il router trpc](uso/trpc#-servtrpcrouterts) per ulteriori informazioni.
 
 <sub>(con tRPC)</sub>
 
@@ -174,7 +174,7 @@ La cartella `types` viene utilizzata per memorizzare i tipi riutilizzati o le di
 
 #### `src/types/next-auth.d.ts`
 
-Il file `next-auth.d.ts` viene utilizzato per estendere il tipo di sessione predefinito NextAuth per includere l'ID utente. Per ulteriori informazioni, consulta [Utilizzo di NextAuth.js](utilizzo/next-auth#inclusione-di-user.id-nella-sessione).
+Il file `next-auth.d.ts` viene utilizzato per estendere il tipo di sessione predefinito NextAuth per includere l'ID utente. Per ulteriori informazioni, consulta [usare NextAuth.js](uso/next-auth#inclusione-di-user.id-nella-sessione).
 
 <sub>(con NextAuth.js)</sub>
 
@@ -186,13 +186,13 @@ La cartella `utils` viene utilizzata per memorizzare le funzioni di utilità com
 
 #### `src/utils/trpc.ts`
 
-Il file `trpc.ts` è il punto di accesso front-end a tRPC. Vedi [utilizzo di tRPC](usage/trpc#-utilstrpcts) per maggiori informazioni.
+Il file `trpc.ts` è il punto di accesso front-end a tRPC. Vedi [usare tRPC](uso/trpc#-utilstrpcts) per maggiori informazioni.
 
 <sub>(con tRPC)</sub>
 
 ### `.env`
 
-Il file `.env` viene utilizzato per memorizzare le variabili di ambiente. Vedere [Variabili d'ambiente](usage/env-variables) per ulteriori informazioni. Questo file **non** dovrebbe essere inserito nella cronologia di git.
+Il file `.env` viene utilizzato per memorizzare le variabili di ambiente. Vedere [Variabili d'ambiente](uso/variabili-di-ambiente) per ulteriori informazioni. Questo file **non** dovrebbe essere inserito nella cronologia di git.
 
 ### `.env.example`
 
@@ -200,19 +200,19 @@ Il file `.env.example` mostra variabili d'ambiente di esempio basate sulle libre
 
 ### `.eslintrc.json`
 
-Il file `.eslintrc.json` viene utilizzato per configurare ESLint. Vedere [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) per ulteriori informazioni.
+Il file `.eslintrc.json` viene utilizzato per configurare ESLint. Vedere la [Documentazione di ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) per ulteriori informazioni.
 
 ### `next-env.d.ts`
 
-Il file `next-env.d.ts` garantisce che i tipi Next.js vengano rilevati dal compilatore TypeScript. **Non dovresti rimuoverlo o modificarlo poiché può cambiare in qualsiasi momento.** Vedi [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) per ulteriori informazioni informazione.
+Il file `next-env.d.ts` garantisce che i tipi Next.js vengano rilevati dal compilatore TypeScript. **Non dovresti rimuoverlo o modificarlo poiché può cambiare in qualsiasi momento.** Vedi la [documentazione di Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) per ulteriori informazioni.
 
 ### `next.config.mjs`
 
-Il file `next.config.mjs` viene utilizzato per configurare Next.js. Vedere [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) per ulteriori informazioni. Nota: l'estensione .mjs viene utilizzata per consentire le importazioni ESM.
+Il file `next.config.mjs` viene utilizzato per configurare Next.js. Vedi la [documentazione Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) per ulteriori informazioni. Nota: l'estensione .mjs viene utilizzata per consentire le importazioni ESM.
 
 ### `postcss.config.cjs`
 
-Il file `postcss.config.cjs` viene utilizzato per l'utilizzo di Tailwind PostCSS. Consulta [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) per ulteriori informazioni.
+Il file `postcss.config.cjs` viene utilizzato per l'utilizzo di Tailwind con PostCSS. Consulta la [documentazione di Tailwind con PostCSS](https://tailwindcss.com/docs/installation/using-postcss) per ulteriori informazioni.
 
 <sub>(con Tailwind CSS)</sub>
 
@@ -224,4 +224,4 @@ Il file `prettier.config.cjs` viene utilizzato per configurare Prettier in modo 
 
 ### `tsconfig.json`
 
-Il file `tsconfig.json` viene utilizzato per configurare TypeScript. Alcuni non predefiniti, come `strict mode`, sono stati abilitati per garantire il miglior utilizzo di TypeScript per create-t3-app e le sue librerie. Vedere [Documentazione TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) o [Utilizzo TypeScript](usage/typescript) per ulteriori informazioni.
+Il file `tsconfig.json` viene utilizzato per configurare TypeScript. Alcuni non predefiniti, come `strict mode`, sono stati abilitati per garantire il miglior utilizzo di TypeScript per create-t3-app e le sue librerie. Consulta la [Documentazione TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) o [Utilizare TypeScript](uso/typescript) per ulteriori informazioni.

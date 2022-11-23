@@ -4,57 +4,57 @@ description: Installation instructions for Create T3 App
 layout: ../../layouts/docs.astro
 ---
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+Per eseguire la creazione di un'app utilizzando "create-t3-app", esegui uno dei seguenti tre comandi e rispondi alle domande del prompt dei comandi:
 
 ### npm
 
-```bash
+``` bash
 npm create t3-app@latest
 ```
 
 ### yarn
 
-```bash
+``` bash
 yarn create t3-app
 ```
 
 ### pnpm
 
-```bash
+``` bash
 pnpm create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Dopo che la tua app è stata create, dai un'occhiata ai [primi passaggi](uso/primi-passi) per iniziare con la tua nuova applicazione.
 
-## Advanced usage
+## Utilizzo avanzato
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Opzione/Bandiera | Descrizione |
+| ----------------- | -------------------------------------------------- --------------------- |
+| `[dir]` | Includere un argomento di directory con un nome per il progetto |
+| `--noGit` | Indica esplicitamente alla CLI di non inizializzare un nuovo repository git nel progetto |
+| `-y`, `--default` | Ignora la CLI e avvia una nuova app t3 con tutte le opzioni selezionate |
+| `--noInstall` | Genera progetto senza installare niente |
 
-## Experimental usage
+## Uso sperimentale
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+Per il nostro CI, abbiamo alcuni flag sperimentali che ti consentono di eseguire lo scaffolding di qualsiasi app senza alcuna richiesta. Se questo caso d'uso si applica a te, puoi utilizzare questi flag. Si prega di notare che questi flag sono sperimentali e potrebbero cambiare in futuro senza seguire il controllo delle versioni semver.
 
-| Flag         | Description                         |
+| Bandiera | Descrizione |
 | ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| `--CI` | Fai sapere alla CLI che sei in modalità CI |
+| `--trpc` | Includi tRPC nel progetto |
+| `--prisma` | Includere Prisma nel progetto |
+| `--nextAuth` | Includi NextAuth.js nel progetto |
+| `--tailwind` | Includi Tailwind CSS nel progetto |
 
-**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+**Nota: se non fornisci il flag `CI`, il resto di questi flag non ha effetto.**
 
-You don't need to explicitely opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Non è necessario rinunciare esplicitamente ai pacchetti che non si desidera. Tuttavia, se preferisci essere esplicito, puoi passare `false`, ad es. `--nextAuth false`.
 
-### Example
+### Esempio
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Quanto segue creara un'app T3 con tRPC e Tailwind CSS.
 
-```bash
+``` bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
 ```
