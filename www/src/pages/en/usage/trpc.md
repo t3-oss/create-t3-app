@@ -2,6 +2,7 @@
 title: tRPC
 description: Usage of tRPC
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
@@ -223,7 +224,7 @@ Compare this to the tRPC example above and you can see some of the advantages of
 - You don’t need to validate which HTTP method was used.
 - You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
 - Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend doesn't provide any autocompletion or type safety.
+- Calling the procedure on the frontend provides autocompletion and type safety.
 
 ## Useful snippets
 

@@ -108,7 +108,7 @@
   }
 
   /* only at less than md */
-  @media (max-width: 767px) {
+  @media (max-width: 767.5px) {
     .mobile-sidebar-toggle {
       overflow: hidden;
       height: 100vh;

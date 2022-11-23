@@ -2,6 +2,7 @@
 title: Next.js
 description: Usage of Next.js
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 Next.js is a backend framework for your React applications.
