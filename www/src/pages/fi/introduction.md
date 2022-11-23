@@ -19,7 +19,7 @@ Olet ehkä huomannut, että eri osia on… paljon. Se on osa suunnittelua. Vaihd
 
 ## Joten... mikä on create-t3-app? Jokin malli?
 
-Jollain tavoin? "create-t3-app" on kokeneiden T3 Stack -kehittäjien rakentama CLI (command line interface) virtaviivaistamaan modulaarisen T3 Stack -sovelluksen asennusta. Tämä tarkoittaa, että jokainen osa on valinnainen, ja "malli" luodaan erityistarpeidesi perusteella.
+Jollain tavoin? `create-t3-app` on kokeneiden T3 Stack -kehittäjien rakentama CLI (command line interface) virtaviivaistamaan modulaarisen T3 Stack -sovelluksen asennusta. Tämä tarkoittaa, että jokainen osa on valinnainen, ja "malli" luodaan erityistarpeidesi perusteella.
 
 Lukemattomien projektien ja tämän tekniikan vuosien jälkeen meillä on paljon mielipiteitä ja oivalluksia. Olemme tehneet parhaamme koodataksemme ne tähän CLI:hen.
 
@@ -31,7 +31,7 @@ Olemme rehellisiä - tämä projekti _perustuu mielipiteisiimme_. Meillä on kou
 
 ### Ratkaise eri ongelmia
 
-On helppo pudota "kaiken lisääminen" ansaan - emme nimenomaisesti halua tehdä niin. Kaiken "create-t3-app" -sovellukseen lisätyn pitäisi ratkaista tietty ongelma, joka esiintyy mukana tulevissa ydintekniikoissa. Tämä tarkoittaa, että emme lisää asioita, kuten tila kirjastoja (`zustand`, `redux`) (state libraries), mutta lisäämme asioita, kuten NextAuth.js ja integroimme Prisman ja tRPC:n puolestasi.
+On helppo pudota "kaiken lisääminen" ansaan - emme nimenomaisesti halua tehdä niin. Kaiken `create-t3-app` -sovellukseen lisätyn pitäisi ratkaista tietty ongelma, joka esiintyy mukana tulevissa ydintekniikoissa. Tämä tarkoittaa, että emme lisää asioita, kuten tila kirjastoja (`zustand`, `redux`) (state libraries), mutta lisäämme asioita, kuten NextAuth.js ja integroimme Prisman ja tRPC:n puolestasi.
 
 ### Tulevaisuuden vastuu (Bleed Responsibly)
 
@@ -39,4 +39,4 @@ Rakastamme uusinta teknologiaa. Se nopeus ja rehellisesti sanottuna hauskuus, jo
 
 ### Tyyppiturvallisuus ei ole valinnaista
 
-"create-t3-app" -sovelluksen tavoite on tarjota nopein tapa aloittaa uusi full-stack, **tyyppiturvallinen** -verkkosovellus. Otamme tyyppiturvallisuuden vakavasti näissä osissa, koska se parantaa tuottavuuttamme ja auttaa meitä toimittamaan vähemmän virheitä. Kaikki päätökset, jotka vaarantavat "create-t3-app" tyyppiturvallisuuden, on päätös, joka tulisi tehdä eri projektissa.
+`create-t3-app` -sovelluksen tavoite on tarjota nopein tapa aloittaa uusi full-stack, **tyyppiturvallinen** -verkkosovellus. Otamme tyyppiturvallisuuden vakavasti näissä osissa, koska se parantaa tuottavuuttamme ja auttaa meitä toimittamaan vähemmän virheitä. Kaikki päätökset, jotka vaarantavat `create-t3-app` tyyppiturvallisuuden, on päätös, joka tulisi tehdä eri projektissa.
