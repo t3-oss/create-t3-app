@@ -88,6 +88,7 @@ importers:
       '@docsearch/react': ^3.3.0
       '@fontsource/inter': ^4.5.12
       '@fontsource/jetbrains-mono': ^4.5.10
+      '@headlessui/react': ^1.7.4
       '@types/node': ^18.8.0
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -123,6 +124,7 @@ importers:
       '@docsearch/react': 3.3.0_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
       '@fontsource/jetbrains-mono': 4.5.10
+      '@headlessui/react': 1.7.4_zpnidt7m3osuk7shl3s4oenomq
       '@vercel/analytics': 0.1.5_react@18.0.0
       clsx: 1.2.1
       embla-carousel: 7.0.3
@@ -991,6 +993,18 @@ packages:
 
   /@fontsource/jetbrains-mono/4.5.10:
     resolution: {integrity: sha512-dylbkBmAWL0fkjDpDoDbQCwTQ/W3DzLtVXmwGyAyttfKliPGSP2WpAmmMFYp9NpqFMF7CLprFyzppe8u39Orkw==}
+    dev: false
+
+  /@headlessui/react/1.7.4_zpnidt7m3osuk7shl3s4oenomq:
+    resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
     dev: false
 
   /@humanwhocodes/config-array/0.10.7:
@@ -2074,6 +2088,10 @@ packages:
   /cli-width/4.0.0:
     resolution: {integrity: sha512-ZksGS2xpa/bYkNzN3BAw1wEjsLV/ZKOf/CCrJ/QOBsxx6fOARIkwTutxp1XIOIohi6HKmOFjMoK/XaqDVUpEEw==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /client-only/0.0.1:
+    resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
 
   /cliui/6.0.0:
