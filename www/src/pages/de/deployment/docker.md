@@ -1,22 +1,22 @@
 ---
 title: Docker
-description: Deployment with Docker
+description: Deployment mit Docker
 layout: ../../../layouts/docs.astro
-lang: en
+lang: de
 ---
 
-You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
+Der Stack kann mit Docker deployed werden. Entweder als einzelner Container oder als Gruppe von Containern mit `docker-compose`. Ein Beispiel lässt sich in dem Repository [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) finden, welches auf dieser Dokumentation basiert.
 
-## Docker Project Configuration
+## Docker Projekt Konfiguration
 
-Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
+Next.js benötigt unterschiedliche Vorgehensweisen für Variablen, die zur "Build time" gesetzt werden (verfügbar im Frontend, gepräfixt durch `NEXT_PUBLIC`) und Variablen, die nur serverseitig verfügbar sein sollen. Bitte beachte also die Anordnung der Variablen in der Befehlszeile, der `Dockerfile` und der `docker-compose.yml` Datei.
 
-- `DATABASE_URL` (used by the server)
-- `NEXT_PUBLIC_CLIENTVAR` (used by the client)
+- `DATABASE_URL` (wird vom Server verwendet)
+- `NEXT_PUBLIC_CLIENTVAR` (wird vom Client verwendet)
 
-### 1. Next Configuration
+### 1. Next.js Konfiguration
 
-In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
+In der [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), muss die output-Option auf `standalone` gesetzt werden, um die Größe vom Docker-Image zu reduzieren und Gebrauch von ["Output File Tracing"](https://nextjs.org/docs/advanced-features/output-file-tracing) zu machen:
 
 ```diff
 export default defineNextConfig({
@@ -26,11 +26,11 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Create dockerignore file
+### 2. Erstelle eine dockerignore Datei
 
 <details>
     <summary>
-      Click here and include contents in <code>.dockerignore</code>:
+    Klick hier und kopiere den Inhalt in <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
@@ -49,28 +49,28 @@ README.md
 
 </details>
 
-### 3. Create Dockerfile
+### 3. Dockerfile erstellen
 
-> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
+> Da wir die Umgebungsvariablen des Servers nicht in den Container ziehen, wird die [Validierung der Umgebungsvariablen](/de/usage/env-variables) fehlschlagen. Um dies zu verhindern, müssen wir dem Build-Befehl `SKIP_ENV_VALIDATION=1` hinzufügen, damit die Umgebungsvariablen-Schemas nicht zur "Build time" validiert werden.
 
 <details>
     <summary>
-      Click here and include contents in <code>Dockerfile</code>:
+    Klick hier und kopiere den Inhalt in <code>Dockerfile</code>:
     </summary>
 <div class="content">
 
 ```docker
-##### DEPENDENCIES
+##### Abhängigkeiten
 
 FROM --platform=linux/amd64 node:16-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
-# Install Prisma Client - remove if not using Prisma
+# Installiere Prisma Client - Entferne diese Zeile wenn du Prisma nicht verwendest
 
 COPY prisma ./
 
-# Install dependencies based on the preferred package manager
+# Installiere die Abhängigkeiten basierend auf dem bevorzugten Paketmanager
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
@@ -126,33 +126,33 @@ CMD ["node", "server.js"]
 
 ```
 
-> **_Notes_**
+> **_Notizen_**
 >
-> - _Emulation of `--platform=linux/amd64` may not be necessary after moving to Node 18._
-> - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
-> - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
+> - _Emulation von `--platform=linux/amd64` ist gegebenfalls nicht mehr notwendig mit Node 18._
+> - _Siehe [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) um zu verstehen warum `libc6-compat` eventuell benötigt wird._
+> - _Next.js erfasst [anonyme Daten zur Nutzung](https://nextjs.org/telemetry). In der obenstehenden `Dockerfile` befinden sich bereits zwei auskommentierte Zeilen mit dem Befehl `ENV NEXT_TELEMETRY_DISABLED 1`. Entferne die Kommentare der ersten Zeile um die Datenerfassung während des Builds zu deaktivieren. Die zweite Zeile deaktiviert die Datenerfassung zur Laufzeit._
 
 </div>
 </details>
 
-## Build and Run Image Locally
+## Erstellung und lokale Ausführung des Images
 
-Build and run this image locally with the following commands:
+Erstelle und starte das Image lokal mit folgenden Befehlen:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
-docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
+docker run -p 3000:3000 -e DATABASE_URL="hier_datenbank_url_einfügen" ct3a-docker
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Öffne [localhost:3000](http://localhost:3000/) um die laufende Anwendung zu sehen.
 
 ## Docker Compose
 
-You can also use Docker Compose to build the image and run the container.
+Du kannst auch Docker Compose verwenden, um deine Anwendung zu starten.
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+      Verfolge die obenstehenden Schritte 1-4, klicke hier und füge den Inhalt in <code>docker-compose.yml</code> ein:
     </summary>
 <div class="content">
 
@@ -171,23 +171,23 @@ services:
       - "3000:3000"
     image: t3-app
     environment:
-      - DATABASE_URL=database_url_goes_here
+      - DATABASE_URL=hier_datenbank_url_einfügen
 ```
 
-Run this using the `docker compose up` command:
+Führe den Befehl `docker compose up` aus:
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Öffne [localhost:3000](http://localhost:3000/) um die laufende Anwendung zu sehen.
 
 </div>
 </details>
 
-## Deploy to Railway
+## Deploy nach Railway
 
-You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
+Du kannst einen PaaS wie [Railway's](https://railway.app) automatisierte [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) verwenden um deine Anwendung zu deployen. Wenn du die [Railway CLI installiert hast](https://docs.railway.app/develop/cli#install) kannst du deine Anwendung mit folgenden Befehlen deployen:
 
 ```bash
 railway login
@@ -197,17 +197,17 @@ railway up
 railway open
 ```
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
+Gehe zu "Variables" und füge deine `DATABASE_URL` ein. Anschließend gehe zu "Settings" und wähle "Generate Domain". Um ein laufendes Beispiel auf Railway zu sehen, besuche [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-## Useful Resources
+## Nützliche Ressourcen
 
-| Resource                             | Link                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
-| Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
-| Docker CLI reference                 | https://docs.docker.com/engine/reference/commandline/docker/         |
-| Docker Compose CLI reference         | https://docs.docker.com/compose/reference/                           |
-| Next.js Deployment with Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Next.js with Docker Example          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Resource                                        | Link                                                                 |
+| ----------------------------------------------- | -------------------------------------------------------------------- |
+| Dockerfile Referenz                             | https://docs.docker.com/engine/reference/builder/                    |
+| Compose file version 3 Referenz                 | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
+| Docker CLI Referenz                             | https://docs.docker.com/engine/reference/commandline/docker/         |
+| Docker Compose CLI Referenz                     | https://docs.docker.com/compose/reference/                           |
+| Next.js Deployment mit Docker Image             | https://nextjs.org/docs/deployment#docker-image                      |
+| Next.js in Docker                               | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Next.js mit Docker Beispiel                     | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
+| Erstelle ein Docker Image von einer Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
