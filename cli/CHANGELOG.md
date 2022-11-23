@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.10.2
+
+### Patch Changes
+
+- [#834](https://github.com/t3-oss/create-t3-app/pull/834) [`3ace6c8`](https://github.com/t3-oss/create-t3-app/commit/3ace6c8149b01d68c1503c6b3087f2a8e5ebc865) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - use trpc 10.0.0
+
 ## 6.10.1
 
 ### Patch Changes
