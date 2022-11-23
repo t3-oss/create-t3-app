@@ -2,6 +2,7 @@
 title: Tailwind CSS
 description: Usage of Tailwind CSS
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 ## What is Tailwind CSS?

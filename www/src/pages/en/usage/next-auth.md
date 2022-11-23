@@ -2,6 +2,7 @@
 title: NextAuth.js
 description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
