@@ -3,6 +3,7 @@ title: Docker
 description: Deployment with Docker
 layout: ../../../layouts/docs.astro
 lang: ar
+dir: rtl
 ---
 يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers بإستخدام docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
 
