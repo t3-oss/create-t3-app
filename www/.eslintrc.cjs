@@ -26,6 +26,10 @@ module.exports = {
       },
       rules: {
         "prettier/prettier": "off",
+        "no-unused-vars": [
+          "error",
+          { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
+        ],
       },
     },
     {

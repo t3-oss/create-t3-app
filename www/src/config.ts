@@ -20,14 +20,16 @@ export type Frontmatter = {
   image?: { src: string; alt: string };
   dir?: "ltr" | "rtl";
   ogLocale?: string;
-  lang?: string;
+  lang?: KnownLanguageCode;
   isMdx?: boolean;
 };
 
 export const KNOWN_LANGUAGES = {
-  English: "en",
+  en: "🇺🇸 English",
+  // Add more languages here
+  // sv: "🇸🇪 Svenska",
 } as const;
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
+export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
 export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/next/www`;
 
@@ -41,7 +43,7 @@ export const ALGOLIA = {
 };
 
 export type Sidebar = Record<
-  typeof KNOWN_LANGUAGE_CODES[number],
+  KnownLanguageCode,
   Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
@@ -73,4 +75,27 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
+  // For Translations:
+  // Keep the "outer headers" in English so we can match them.
+  // Translate the "inner headers" to the language you're translating to.
+  // Omit any files you haven't translated, they'll fallback to English.
+  // Example:
+  // sv: {
+  //   "Create T3 App": [
+  //     { text: "Introduktion", link: "sv/introduction" },
+  //     { text: "Installation", link: "sv/installation" },
+  //   ],
+  //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
+  // },
+};
+export const SIDEBAR_HEADER_MAP: Record<
+  Exclude<KnownLanguageCode, "en">,
+  Record<keyof Sidebar["en"], string>
+> = {
+  // Translate the sidebar's "outer headers" here
+  // sv: {
+  //   "Create T3 App": "Create T3 App",
+  //   Usage: "Användarguide",
+  //   Deployment: "Deployment",
+  // },
 };
