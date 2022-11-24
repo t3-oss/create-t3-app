@@ -11,11 +11,11 @@ dir: rtl
 </div>
 
 ## T3 Stack
-الـ T3 Stack هو Stack لتطوير تطبيقات الويب صَعنة Theo يَهدف الي البساطة، إعادة الاستخدام والـ Type Safety
+الـ T3 Stack هو Stack لتطوير تطبيقات الويب  بُني علي فَلسفة ( البساطة، قابلية إعادة الاستخدام والـ   Type Safety )
 
-القطع الأساسية هي [**Next.js**](https://nextjs.org/) , [**TypeScript**](https://typescriptlang.org/) , [**Tailwind CSS**](https://tailwindcss.com/) وهي دائما مضافة، إذا كنت تصنع شيئا يتطلب Backend فيمكنك إضافة [**tRPC**](https://trpc.io/) , [**Prisma**](https://prisma.io/) و [**NextAuth.js**](https://next-auth.js.org/)
+القطع الأساسية هي [**Next.js**](https://nextjs.org/) , [**TypeScript**](https://typescriptlang.org/) , [**Tailwind CSS**](https://tailwindcss.com/) و دائما ما تَكون مُضافة، إذا كان مشروعك يتطلب Backend فَيُمكنك إضافة [**tRPC**](https://trpc.io/) , [**Prisma**](https://prisma.io/) و [**NextAuth.js**](https://next-auth.js.org/)
 
-لعلك لاحظت أن هناك الكثير من القطع! هذا صحيح، فَلك مُطلق الحرية أن تُضف قطعا وتَحذف أُخرى كما تشاء.
+لعلك لاحظت أن هناك الكثير من القطع!، إن مُطلق الحرية أن تُضف قطعا وتَحذف أُخرى كما تشاء.
 
 ## حسنا … ما هو create-t3-app؟ أهو قالب (template)؟
 
