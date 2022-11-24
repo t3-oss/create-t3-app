@@ -49,8 +49,9 @@ pnpm create t3-app@latest
 | `--nextAuth` | أضف NextAuth.js الي المشروع  |
 | `--tailwind` | أضف Tailwind CSS الي المشروع |
 
-**ملاحظة: إذا لم تقدم علامة `CI` ، فلن يكون لبقية هذه العلامات أي تأثير.**
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+**ملاحظة: إذا لم تضع علامة `CI` ، فلن يكون لبقية هذه العلامات أي تأثير.**
+
+يمكنك الا تُضيف خيارات الـ `` في حالم لم تكن تريد، لكن في حال أردت أن تكون دقيقا فعليك تمرير `false` مثل `--nextAuth false`.
 
 ### أمثلة
 
