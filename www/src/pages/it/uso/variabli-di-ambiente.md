@@ -1,6 +1,6 @@
 ---
-title: Environment Variables
-description: Getting started with create-t3-app
+title: Variabili di ambiente
+description: Variabili di Ambiente con create-t3-app
 layout: ../../../layouts/docs.astro
 ---
 

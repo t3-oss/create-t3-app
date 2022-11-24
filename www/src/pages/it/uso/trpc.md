@@ -1,6 +1,6 @@
 ---
 title: tRPC
-description: Usage of tRPC
+description: Usare tRPC
 layout: ../../../layouts/docs.astro
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Introduction
-description: Introduction to the T3 Stack
+title: Introduzione
+description: Introduzione alla stack T3.
 layout: ../../layouts/docs.astro
 ---
 

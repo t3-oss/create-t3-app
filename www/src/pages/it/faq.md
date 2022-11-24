@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Frequently asked questions about Create T3 App
+description: Domande chieste frequentamente su Create T3 App
 layout: ../../layouts/docs.astro
 ---
 

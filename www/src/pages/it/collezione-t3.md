@@ -1,6 +1,6 @@
 ---
-title: T3 Collection
-description: Cool open source projects and companies using the T3 stack
+title: Collezione T3 
+description: Progetti open source fighi e compagnie che usano la stack T3.
 layout: ../../layouts/docs.astro
 ---
 

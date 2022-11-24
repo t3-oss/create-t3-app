@@ -1,6 +1,6 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Primi Passi
+description: Inizia con la tua nuova app T3
 layout: ../../../layouts/docs.astro
 ---
 

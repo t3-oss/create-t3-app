@@ -1,6 +1,6 @@
 ---
 title: Vercel
-description: Deploying to Vercel
+description: Distribuire Vercel
 layout: ../../../layouts/docs.astro
 ---
 

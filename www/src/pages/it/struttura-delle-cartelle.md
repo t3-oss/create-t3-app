@@ -1,6 +1,6 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: Struttura delle cartelle
+description: Struttura delle cartelle di una nuova app T3
 layout: ../../layouts/docs.astro
 ---
 

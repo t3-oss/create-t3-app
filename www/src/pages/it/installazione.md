@@ -1,6 +1,6 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Installazione
+description: Istruzioni di Installazione per Create T3 App
 layout: ../../layouts/docs.astro
 ---
 

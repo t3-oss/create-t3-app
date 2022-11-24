@@ -1,6 +1,6 @@
 ---
 title: NextAuth.js
-description: Usage of NextAuth.js
+description: Usare NextAuth.js
 layout: ../../../layouts/docs.astro
 ---
 
