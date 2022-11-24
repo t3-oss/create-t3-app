@@ -34,8 +34,8 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   })}
   aria-label="Global"
 >
-  <div class="flex items-center justify-between w-full px-4 max-w-7xl">
-    <div class="flex justify-between items-center w-full md:w-auto">
+  <div class="flex w-full max-w-7xl items-center justify-between px-4">
+    <div class="flex w-full items-center justify-between md:w-auto">
       <div>
         <a href="/">
           <img
@@ -47,7 +47,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           />
         </a>
       </div>
-      <div class="hidden -space-x-1 md:flex md:ml-10 gap-2">
+      <div class="hidden gap-2 -space-x-1 md:ml-10 md:flex">
         {
           navbarLinks.map((navbarLink) => (
             <a
@@ -70,7 +70,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         }
       </div>
     </div>
-    <div class="flex flex-grow justify-end items-center gap-4">
+    <div class="flex flex-grow items-center justify-end gap-4">
       <GithubIcon />
       {!isLanding && <LanguageSelect language={"en"} client:load />}
       <div
@@ -83,7 +83,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       <div class="block md:hidden">
         <SidebarToggle isLanding={isLanding} />
       </div>
-      <div class="hidden md:block rounded-lg w-full max-w-xs">
+      <div class="hidden w-full max-w-xs rounded-lg md:block">
         <Search isLanding={isLanding} client:load />
       </div>
     </div>
