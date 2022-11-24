@@ -104,7 +104,7 @@ importers:
       eslint-plugin-jsx-a11y: ^6.6.1
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.7.0
-      prettier-plugin-tailwindcss: ^0.1.13
+      prettier-plugin-tailwindcss: 0.2.0-beta.3
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
@@ -145,7 +145,7 @@ importers:
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
       prettier: 2.7.1
       prettier-plugin-astro: 0.7.0
-      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+      prettier-plugin-tailwindcss: 0.2.0-beta.3_prettier@2.7.1
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-typist: 2.0.5_zpnidt7m3osuk7shl3s4oenomq
@@ -5670,6 +5670,15 @@ packages:
 
   /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
     resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      prettier: '>=2.2.0'
+    dependencies:
+      prettier: 2.7.1
+    dev: true
+
+  /prettier-plugin-tailwindcss/0.2.0-beta.3_prettier@2.7.1:
+    resolution: {integrity: sha512-aq8gjelLGg/XGSHgxcJJhw4uaxvy7Ikdd6fcYE4X4I6wkDSiaPmnuSik+lkW4R9xbuTcekdZAkxXh7TeOl+eXg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       prettier: '>=2.2.0'
