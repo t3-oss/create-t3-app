@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte 
+title: Erste Schritte
 description: Erste Schritte mit deiner neuen T3 App
 layout: ../../../layouts/docs.astro
 lang: de
