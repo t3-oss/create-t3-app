@@ -9,7 +9,7 @@ Der Stack kann mit Docker deployed werden. Entweder als einzelner Container oder
 
 ## Docker Projektkonfiguration
 
-Next.js benötigt unterschiedliche Vorgehensweisen für Variablen, die zur "Build time" gesetzt werden (verfügbar im Frontend, gepräfixt durch `NEXT_PUBLIC`) und Variablen, die nur serverseitig verfügbar sein sollen. Bitte beachte also die Anordnung der Variablen in der Befehlszeile, der `Dockerfile` und der `docker-compose.yml` Datei.
+Next.js benötigt unterschiedliche Vorgehensweisen für Variablen, die zur "Build time" gesetzt werden (verfügbar im Frontend, gepräfixt durch `NEXT_PUBLIC`) und Variablen, die nur serverseitig zur Laufzeit verfügbar sein sollen. Bitte beachte also die Anordnung der Variablen in der Befehlszeile, der `Dockerfile` und der `docker-compose.yml` Datei.
 
 - `DATABASE_URL` (wird vom Server verwendet)
 - `NEXT_PUBLIC_CLIENTVAR` (wird vom Client verwendet)
