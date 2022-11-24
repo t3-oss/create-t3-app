@@ -26,7 +26,7 @@ Nach unzähligen Projekten und vielen Jahren auf diesem Gebiet haben wir viele M
 
 Das hier ist **KEINE** allumfassende Vorlage. Wir **erwarten**, dass du deine eigenen Bibliotheken einbringst, die die Anforderungen **DEINER** Anwendung erfüllen. Wir wollen zwar keine Lösungen für spezifischere Probleme wie Zustandsverwaltung und Deployment vorschreiben, aber wir [haben hier einige Empfehlungen aufgelistet](/de/other-recs).
 
-## T3 Gründsätze
+## T3 Grundsätze
 
 Das Projekt wurde nach _unseren Vorstellungen_ gestaltet. Wir teilen eine Reihe an Überzeugungen für das Bauen von Web-Applikationen und nutzen diese als Basis für unsere Entscheidungen.
 
