@@ -51,13 +51,13 @@ if (langCode !== "en") {
 }
 ---
 
-<div class="w-full ml--40 md:ml-0 mb-6 mx-auto px-6 md:px-8 md:hidden">
+<div class="mx-auto ml--40 mb-6 w-full px-6 md:ml-0 md:hidden md:px-8">
   <Search isLanding={isLanding} client:idle />
 </div>
 <div
-  class="t3-scrollbar w-full lg:mb-12 h-full bg-default transition-colors duration-300"
+  class="t3-scrollbar h-full w-full bg-default transition-colors duration-300 lg:mb-12"
 >
-  <ul class="pb-28 pr-4 pl-4 md:pb-0 dark:text-t3-purple-50 text-slate-900">
+  <ul class="pb-28 pr-4 pl-4 text-slate-900 dark:text-t3-purple-50 md:pb-0">
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
