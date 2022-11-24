@@ -95,7 +95,7 @@ export const SIDEBAR: Sidebar = {
 };
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
-  Record<keyof Sidebar["en"], string>
+  Record<OuterHeaders, string>
 > = {
   // Translate the sidebar's "outer headers" here
   // sv: {
