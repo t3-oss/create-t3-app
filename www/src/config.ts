@@ -26,6 +26,7 @@ export type Frontmatter = {
 
 export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
+  pt: "Portuguese",
   // Add more languages here
   // sv: "🇸🇪 Svenska",
 } as const;
@@ -75,6 +76,34 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
+  pt: {
+    "Create T3 App": [
+      { text: "Introdução", link: "pt-BR/introduction" },
+      { text: "Por que o CT3A?", link: "pt-BR/why" },
+      { text: "Instalação", link: "pt-BR/installation" },
+      { text: "Estrutura de Pastas", link: "pt-BR/folder-structure" },
+      { text: "Perguntas Frequentes", link: "pt-BR/faq" },
+      { text: "Coleção T3", link: "pt-BR/t3-collection" },
+      { text: "Outras Recomendações", link: "pt-BR/other-recs" },
+    ],
+    Usage: [
+      { text: "Primeiros Passos", link: "pt-BR/usage/first-steps" },
+      { text: "Next.js", link: "pt-BR/usage/next-js" },
+      { text: "TypeScript", link: "pt-BR/usage/typescript" },
+      { text: "tRPC", link: "pt-BR/usage/trpc" },
+      { text: "Prisma", link: "pt-BR/usage/prisma" },
+      { text: "NextAuth.js", link: "pt-BR/usage/next-auth" },
+      {
+        text: "Variáveis Ambiente",
+        link: "pt-BR/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "pt-BR/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "pt-BR/deployment/vercel" },
+      { text: "Docker", link: "pt-BR/deployment/docker" },
+    ],
+  },
   // For Translations:
   // Keep the "outer headers" in English so we can match them.
   // Translate the "inner headers" to the language you're translating to.
@@ -92,6 +121,11 @@ export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
   Record<keyof Sidebar["en"], string>
 > = {
+  pt: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Uso",
+    Deployment: "Deploy",
+  },
   // Translate the sidebar's "outer headers" here
   // sv: {
   //   "Create T3 App": "Create T3 App",
