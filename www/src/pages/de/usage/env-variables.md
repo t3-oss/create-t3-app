@@ -15,7 +15,6 @@ lang: de
 
 ┣ 📄 server.mjs
 
-
 Der Inhalt dieser Dateien mag auf den ersten Blick beängstigend sein, aber keine Sorge, es ist nicht so kompliziert wie es aussieht. Schauen wir uns diese nacheinander an und wie man zusätzliche Umgebungsvariablen hinzufügt.
 
 _TLDR; Wenn du eine neue Umgebungsvariable hinzufügen möchtest, musst du sie sowohl in deiner `.env` als auch in `env/schema.mjs` definieren._
@@ -40,7 +39,7 @@ export const clientEnv = {
 
 ### Server Schema
 
-Definiere hier dein Server-Umgebungsvariablen-Schema. 
+Definiere hier dein Server-Umgebungsvariablen-Schema.
 
 Stell sicher, dass du hier keine Schlüssel mit dem `NEXT_PUBLIC`-Präfix verwendest. Die Validierung wird fehlschlagen, wenn du das tust, um dir bei der Erkennung einer ungültigen Konfiguration zu helfen.
 
@@ -52,7 +51,7 @@ Um sie dem Client zugänglich zu machen, musst du sie mit `NEXT_PUBLIC` präfixe
 
 ### clientEnv Object
 
-In dieser Datei müssen wir auf die Werte vom `process.env`-Objekt zugreifen. 
+In dieser Datei müssen wir auf die Werte vom `process.env`-Objekt zugreifen.
 
 Wir benötigen ein JavaScript-Objekt, welches wir durch die Zod-Schemata parsen können und aufgrund der Art, wie Next.js Umgebungsvariablen behandelt. Da wir das `process.env`-Objekt nicht wie ein normales Objekt zerlegen ("destruct") können, müssen wir dies manuell machen.
 
@@ -78,7 +77,7 @@ Wenn du deine Umgebungsvariablen verwenden möchtest, kannst du sie aus `env/cli
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
 
-// `env` ist vollständig typisiert und ermöglicht Autovervollständigung 
+// `env` ist vollständig typisiert und ermöglicht Autovervollständigung
 const dbUrl = env.DATABASE_URL;
 ```
 
