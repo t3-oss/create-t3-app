@@ -1,6 +1,6 @@
 ---
 title: مقدمة
-description: مقدمة إلى T3 Stack
+description: مقدمة إلى the T3 Stack
 layout: ../../layouts/docs.astro
 lang: ar
 dir: rtl
@@ -11,11 +11,9 @@ dir: rtl
 </div>
 
 ## T3 Stack
+الـ T3 Stack هو Stack لتطوير تطبيقات الويب صَعنة Theo يَهدف الي البساطة، إعادة الاستخدام والـ Type Safety
 
-الـ T3 Stack هو Stack لتطوير تطبيقات الويب صنع بواسطة Theo ويركز على البساطة، إعادة الاستخدام، الـ Type Safety
-
-القطع الأساسية هي [**Next.js**](https://nextjs.org/) , [**TypeScript**](https://typescriptlang.org/) , [**Tailwind CSS**](https://tailwindcss.com/) وهي دائما مضافة، إذا كنت تصنع شيئا يت
-لب Backend فيمكنك اضافة [**tRPC**](https://trpc.io/) , [**Prisma**](https://prisma.io/) و [**NextAuth.js**](https://next-auth.js.org/)
+القطع الأساسية هي [**Next.js**](https://nextjs.org/) , [**TypeScript**](https://typescriptlang.org/) , [**Tailwind CSS**](https://tailwindcss.com/) وهي دائما مضافة، إذا كنت تصنع شيئا يتطلب Backend فيمكنك إضافة [**tRPC**](https://trpc.io/) , [**Prisma**](https://prisma.io/) و [**NextAuth.js**](https://next-auth.js.org/)
 
 لعلك لاحظت أن هناك الكثير من القطع! هذا صحيح، فَلك مُطلق الحرية أن تُضف قطعا وتَحذف أُخرى كما تشاء.
 
@@ -30,11 +28,8 @@ dir: rtl
 بَصراحة - هذا مشروع عنيد (opinionated). نتشارك جميعاََ في عدد قليل من المعتقدات الأساسية حَول كيفية البناء ونتخذها كأساس قراراتنا.
 
 ### Solve Problems
-
 من السهل أن تَقع في فخ أن تُضيف كل شئ لكننا لا نريد ذَلك، يَجب أن يكون لكل شئ مَغزي وهدف مُحدد كما هو الحال في كل ما أضفناه مُسبقا ويَترتب علي ذلك عدم إضافة مكتبات مِثل (`zustand`, `redux`)، لكننا نُضيف مكتبات أُخري مُثل `NextAuth`, `Prisma` و `tRPC`.
-
 ### الإستخدام بِحذر.
-
 نحن نحب التقنيات الحديثة، كَمَيَّة السعادة التي تأتي من تجرِبة الأشياء الجديدة أمر رائع، لكن تَتوخى الحذر فعليك إستخدام التقنيات الغير مستقرة في الأماكن الأقل حساسية، فمثلا نحن لا نراهن على قواعد بيانات حديثة، SQL تكفي وزيادة، لكننا سنراهن علي tRPC لأنها مجرد Functions ومن السهل الاستغناء عنها.
 
 # # الـ Type Safety ليس خياراََ.
