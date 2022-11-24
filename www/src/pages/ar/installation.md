@@ -52,9 +52,9 @@ pnpm create t3-app@latest
 **ملاحظة: إذا لم تقدم علامة `CI` ، فلن يكون لبقية هذه العلامات أي تأثير.**
 You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
 
-### مثالث
+### أمثلة
 
-الامر التالي سيصنع تطبيق T3 باستخدام tRPC و Tailwind CSS.
+الامر التالي سينشئ تطبيق T3 باستخدام tRPC و Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
