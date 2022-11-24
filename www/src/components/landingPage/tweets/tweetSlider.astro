@@ -10,7 +10,7 @@ export interface Props {
 const { tweets } = Astro.props as Props;
 ---
 
-<div class="rounded-lg w-full cursor-grab overflow-hidden" id="tweet-slider">
+<div class="w-full cursor-grab overflow-hidden rounded-lg" id="tweet-slider">
   <div class="flex w-full space-x-5">
     {
       tweets.map((tweet) => (
@@ -22,7 +22,7 @@ const { tweets } = Astro.props as Props;
   </div>
 
   {/* Pagination */}
-  <div class="mb-10 flex mt-6 justify-center">
+  <div class="mb-10 mt-6 flex justify-center">
     {
       tweets.map((_, idx) => (
         // Larger click area while keeping the visual circles small
