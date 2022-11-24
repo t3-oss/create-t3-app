@@ -187,7 +187,7 @@ docker compose up
 
 ## Deploy nach Railway
 
-Du kannst einen PaaS wie [Railway's](https://railway.app) automatisierte [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) verwenden um deine Anwendung zu deployen. Wenn du die [Railway CLI installiert hast](https://docs.railway.app/develop/cli#install) kannst du deine Anwendung mit folgenden Befehlen deployen:
+Du kannst einen PaaS wie [Railway's](https://railway.app) automatisierte [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) verwenden um deine Anwendung zu deployen. Wenn du die [Railway CLI installiert hast](https://docs.railway.app/develop/cli#install), kannst du deine Anwendung mit folgenden Befehlen deployen:
 
 ```bash
 railway login
