@@ -7,7 +7,7 @@ lang: de
 
 Der Stack kann mit Docker deployed werden. Entweder als einzelner Container oder als Gruppe von Containern mit `docker-compose`. Ein Beispiel lässt sich in dem Repository [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) finden, welches auf dieser Dokumentation basiert.
 
-## Docker Projekt Konfiguration
+## Docker Projektkonfiguration
 
 Next.js benötigt unterschiedliche Vorgehensweisen für Variablen, die zur "Build time" gesetzt werden (verfügbar im Frontend, gepräfixt durch `NEXT_PUBLIC`) und Variablen, die nur serverseitig verfügbar sein sollen. Bitte beachte also die Anordnung der Variablen in der Befehlszeile, der `Dockerfile` und der `docker-compose.yml` Datei.
 
