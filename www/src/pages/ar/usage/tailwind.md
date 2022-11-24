@@ -89,6 +89,3 @@ import "./my-class.css";
 | Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
-
-
-

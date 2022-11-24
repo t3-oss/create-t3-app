@@ -58,5 +58,3 @@ dir: rtl
 فـ `/app` هو لمحة عن المستقبل ، فهو ليس جاهزًا للإنتاج ؛ غير ان الـ (API) في مرحلة تجريبية ومن المتوقع أن تحدث له تغييرات جذرية.
 
 لمعرفة الميزات المدعومة والمخطط العمل عليها في / app dir ، قم بزيارة [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features)
-
-

@@ -62,5 +62,3 @@ After the first deployment this command will deploy to a preview branch. You wil
 ```bash
 vercel --prod
 ```
-
-

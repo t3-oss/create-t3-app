@@ -34,6 +34,3 @@ Next.js هو إطار عمل لـ Backend لتطبيقات React
 | Next.js Discord                | https://nextjs.org/discord         |
 | Next.js Twitter                | https://twitter.com/nextjs         |
 | Vercel/Next.js YouTube Channel | https://www.youtube.com/c/VercelHQ |
-
-
-

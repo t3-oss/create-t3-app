@@ -228,6 +228,3 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 ### ملف `tsconfig.json`
 
 وظيفة `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
-
-
-
