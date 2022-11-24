@@ -8,24 +8,24 @@ const { title, href } = Astro.props;
 ---
 
 <div
-  class="relative bg-white/5 rounded-md overflow-hidden flex flex-col justify-between border border-t3-purple-200/20 hover:border-t3-purple-300/50 transition-colors"
+  class="relative flex flex-col justify-between overflow-hidden rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors hover:border-t3-purple-300/50"
 >
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    class="hover:no-underline active:no-underline focus:no-underline"
+    class="focus:no-underline hover:no-underline active:no-underline"
   >
     <div
-      class="flex space-x-4 items-center bg-white/10 p-2 pl-5 hover:bg-white/20 transition-colors"
+      class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
     >
       <slot name="icon" />
-      <p class="text-lg leading-6 md:text-xl font-medium text-t3-purple-200">
+      <p class="text-lg font-medium leading-6 text-t3-purple-200 md:text-xl">
         {title}
       </p>
     </div>
     <div
-      class="m-6 text-sm md:text-base text-t3-purple-100 subpixel-antialiased h-full"
+      class="m-6 h-full text-sm text-t3-purple-100 subpixel-antialiased md:text-base"
     >
       <slot name="description" />
     </div>

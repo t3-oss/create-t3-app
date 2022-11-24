@@ -12,12 +12,12 @@ const { text, title, href } = Astro.props;
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class="rounded-lg hover:bg-t3-purple-200/20 bg-t3-purple-200/10 transition-colors cursor-pointer w-full sm:h-64 hover:no-underline border border-t3-purple-200/20 hover:border-t3-purple-300/50"
+  class="w-full cursor-pointer rounded-lg border border-t3-purple-200/20 bg-t3-purple-200/10 transition-colors hover:border-t3-purple-300/50 hover:bg-t3-purple-200/20 hover:no-underline sm:h-64"
 >
   <div
-    class="p-4 sm:p-2 md:p-4 flex flex-col items-center justify-center space-y-3 h-full"
+    class="flex h-full flex-col items-center justify-center space-y-3 p-4 sm:p-2 md:p-4"
   >
-    <div class="w-14 h-14"><slot name="icon" /></div>
+    <div class="h-14 w-14"><slot name="icon" /></div>
     <h2 class="text-xl font-black">{title}</h2>
     <p class="text-center">
       {text}
