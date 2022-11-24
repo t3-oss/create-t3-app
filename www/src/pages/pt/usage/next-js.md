@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: Usage of Next.js
+description: Uso do Next.js
 layout: ../../../layouts/docs.astro
 lang: pt
 ---
