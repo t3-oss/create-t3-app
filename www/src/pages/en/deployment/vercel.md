@@ -39,6 +39,7 @@ Vercel will likely configure your build command and publish the directory automa
 ![Add environment variables](/images/vercel-env-vars.webp)
 
 <br />
+
 4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
 
 ## Using the Vercel CLI
