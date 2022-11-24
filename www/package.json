@@ -23,6 +23,7 @@
     "@docsearch/react": "^3.3.0",
     "@fontsource/inter": "^4.5.12",
     "@fontsource/jetbrains-mono": "^4.5.10",
+    "@headlessui/react": "^1.7.4",
     "@vercel/analytics": "^0.1.5",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.3",

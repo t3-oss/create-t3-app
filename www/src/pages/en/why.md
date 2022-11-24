@@ -2,6 +2,7 @@
 title: Why CT3A?
 description: Why you should pick Create T3 App for your next project
 layout: ../../layouts/docs.astro
+lang: en
 ---
 
 We started create-t3-app because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build) and a general love for typesafety, the create-t3-app team worked hard to build the best possible starting point for new T3 Stack projects.

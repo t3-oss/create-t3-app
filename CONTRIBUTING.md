@@ -95,6 +95,10 @@ gh pr create --web
 
 and fill out the title and body appropriately. Again, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines for your title.
 
+## Translations
+
+For more information on how to help with translation, please see the [contributing guidelines for our docs](https://github.com/t3-oss/create-t3-app/blob/next/www/TRANSLATIONS.md).
+
 ## Credits
 
 This documented was inspired by the contributing guidelines for [cloudflare/wrangler2](https://github.com/cloudflare/wrangler2/blob/main/CONTRIBUTING.md).

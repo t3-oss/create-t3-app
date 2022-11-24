@@ -1,16 +1,21 @@
 ---
 import type { Frontmatter } from "../../config";
+import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import Pagination from "./pagination.astro";
 
 export interface Props {
   frontmatter: Frontmatter;
+  path: string;
 }
 
-const { frontmatter } = Astro.props;
+const { frontmatter, path } = Astro.props;
 const title = frontmatter.title;
+
+const [_1, _2, lang] = path.split("/");
 ---
 
 <article id="article" class="flex flex-col w-full max-w-screen-lg">
+  {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
   <section class="w-full">
     <h1
       id="overview"
