@@ -32,7 +32,7 @@ dir: rtl
 
 توفر tRPC تجربة سلسة في تطوير تطبيقات المستخدم (Client Side) كما في GraphQl، فإنها تتحايل على TypeScript لتوفر تجربة ممتازة للمطور.
 
-### لماذا Prisma ؟
+### لماذا Prisma؟
 
 إن Prisma بالنسبة لـ SQL كـ Typescript بالنسبة لـ Javascript، فإنها تخلق تجربة مستخدم لم تكن موجودة من قبل، فتقوم بتوليد الانواع (Types) من Schema يقوم المطور بوضعها، ذلك إلى جانب توافقها مع [العديد من قواعد البيانات](https://www.prisma.io/docs/concepts/database-connectors)
 فبذلك تضمن Prisma الـ TypeSafety بين التطبيق وقاعدة البيانات
