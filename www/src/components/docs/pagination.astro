@@ -13,9 +13,9 @@ const { next, prev } = paginate(langCode, currentPageMatch);
 ---
 
 <div
-  class="lg:px-8 px-4 pt-4 mt-16 mb-8 flex flex-row items-center justify-between text-t3-purple-800 dark:text-t3-purple-200 font-medium"
+  class="mt-16 mb-8 flex flex-row items-center justify-between px-4 pt-4 font-medium text-t3-purple-800 dark:text-t3-purple-200 lg:px-8"
 >
-  <div class="flex-1 min-w-0">
+  <div class="min-w-0 flex-1">
     {
       prev ? (
         <a
@@ -42,7 +42,7 @@ const { next, prev } = paginate(langCode, currentPageMatch);
       ) : null
     }
   </div>
-  <div class="flex-1 min-w-0 text-right">
+  <div class="min-w-0 flex-1 text-right">
     {
       next ? (
         <a
