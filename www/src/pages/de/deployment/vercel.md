@@ -7,7 +7,7 @@ lang: de
 
 Wir empfehlen, deine App auf [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) zu deployen. Es macht es super einfach, Next.js Apps zu deployen.
 
-## Projekt Konfiguration
+## Projektkonfiguration
 
 Vercel wird sehr wahrscheinlich automatisch deinen Build-Befehl konfigurieren und das Verzeichnis veröffentlichen. Du kannst dies aber auch, zusammen mit anderen Konfigurationen, in einer Datei namens [`vercel.json`](https://vercel.com/docs/project-configuration) angeben und folgende Befehle einfügen:
 
