@@ -3,27 +3,27 @@ import Button from "./button.astro";
 ---
 
 <div class="py-12 sm:py-8 md:py-12 lg:py-14 xl:py-12 2xl:py-28">
-  <div class="max-w-[800px] xl:max-w-7xl mx-auto">
+  <div class="mx-auto max-w-[800px] xl:max-w-7xl">
     <div class="lg:px-8">
       <div class="flex flex-col items-center">
         <div
-          class="max-w-md px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl sm:px-6 lg:px-0"
+          class="max-w-md px-4 sm:max-w-2xl sm:px-6 md:max-w-3xl lg:max-w-4xl lg:px-0 xl:max-w-5xl 2xl:max-w-6xl"
         >
-          <div class="flex flex-col gap-4 w-full items-center">
+          <div class="flex w-full flex-col items-center gap-4">
             <div class="flex flex-col items-start justify-between">
               <h1
-                class="text-4xl text-center tracking-tight font-bold text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] 2xl:text-[6.5rem] xl:tracking-tight"
+                class="text-center text-4xl font-bold tracking-tight text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] xl:tracking-tight 2xl:text-[6.5rem]"
               >
                 The best way to start a
                 <span class="text-[hsl(200,100%,60%)]"> full-stack,</span>
-                <span class="text-[hsl(240,100%,70%)] whitespace-nowrap">
+                <span class="whitespace-nowrap text-[hsl(240,100%,70%)]">
                   typesafe</span
                 >
                 <span class="text-[hsl(280,100%,60%)]">Next.js</span> app
               </h1>
 
               <div
-                class="flex justify-center items-center w-full gap-4 xl:mt-8 mt-4"
+                class="mt-4 flex w-full items-center justify-center gap-4 xl:mt-8"
               >
                 <Button
                   href="/en/introduction"
@@ -35,7 +35,7 @@ import Button from "./button.astro";
                 >
                   Documentation
                   <svg
-                    class="mt-0.5 h-3 ml-2 -mr-1 stroke-current stroke stroke-2"
+                    class="stroke mt-0.5 ml-2 -mr-1 h-3 stroke-current stroke-2"
                     fill="none"
                     viewBox="0 0 10 10"
                     aria-hidden="true"
@@ -58,7 +58,7 @@ import Button from "./button.astro";
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
-                    class="h-3 ml-2 fill-white"
+                    class="ml-2 h-3 fill-white"
                   >
                     <path
                       d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"
@@ -67,10 +67,10 @@ import Button from "./button.astro";
                 </Button>
               </div>
 
-              <div class="flex flex-col w-full items-center">
-                <div class="flex mt-4 xl:mt-8 h-full relative">
+              <div class="flex w-full flex-col items-center">
+                <div class="relative mt-4 flex h-full xl:mt-8">
                   <button
-                    class="px-2 py-2 text-sm md:text-lg md:px-3 md:py-3 lg:px-5 lg:py-4 lg:text-xl rounded-md cursor-pointer bg-t3-purple-100/10 hover:bg-t3-purple-100/20 transition-colors duration-300 relative flex flex-row items-center gap-2 border border-t3-purple-200/20 hover:border-t3-purple-300/50"
+                    class="relative flex cursor-pointer flex-row items-center gap-2 rounded-md border border-t3-purple-200/20 bg-t3-purple-100/10 px-2 py-2 text-sm transition-colors duration-300 hover:border-t3-purple-300/50 hover:bg-t3-purple-100/20 md:px-3 md:py-3 md:text-lg lg:px-5 lg:py-4 lg:text-xl"
                     title="Copy the command to get started"
                     id="command"
                   >

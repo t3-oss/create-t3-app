@@ -2,6 +2,7 @@
 title: TypeScript
 description: Usage of TypeScript
 layout: ../../../layouts/docs.astro
+lang: en
 ---
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
@@ -12,7 +13,7 @@ layout: ../../../layouts/docs.astro
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
     <img
-      alt="Avatar of @alexdotjs"
+      alt="Avatar of @t3dotgg"
       className="w-12 mr-4 rounded-full bg-neutral-500"
       src="/images/theo_300x300.webp"
     />

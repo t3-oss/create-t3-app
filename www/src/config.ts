@@ -1,14 +1,13 @@
 export const SITE = {
   title: "Create T3 App",
-  description:
-    "The best way to setup an opinionated, full-stack, typesafe Next.js project",
+  description: "The best way to start a full-stack, typesafe Next.js app.",
   defaultLanguage: "en_US",
 };
 
 export const OPEN_GRAPH = {
   image: {
     src: "images/og-image.png",
-    alt: "Create T3 App: The best way to setup an opinionated, full-stack, typesafe Next.js project.",
+    alt: "Create T3 App: The best way to start a full-stack, typesafe Next.js app.",
   },
   twitter: "t3dotgg",
 };
@@ -21,14 +20,16 @@ export type Frontmatter = {
   image?: { src: string; alt: string };
   dir?: "ltr" | "rtl";
   ogLocale?: string;
-  lang?: string;
+  lang?: KnownLanguageCode;
   isMdx?: boolean;
 };
 
 export const KNOWN_LANGUAGES = {
-  English: "en",
+  en: "🇺🇸 English",
+  // Add more languages here
+  // sv: "🇸🇪 Svenska",
 } as const;
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
+export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
 export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/next/www`;
 
@@ -41,10 +42,15 @@ export const ALGOLIA = {
   apiKey: "892c4647b96fe1b3d0b7d8de1c5b5e40",
 };
 
-export type Sidebar = Record<
-  typeof KNOWN_LANGUAGE_CODES[number],
-  Record<string, { text: string; link: string }[]>
->;
+type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+export type Sidebar = {
+  [TCode in KnownLanguageCode]: {
+    [THeader in OuterHeaders]?: {
+      text: string;
+      link: `${TCode}/${string}`;
+    }[];
+  };
+};
 export const SIDEBAR: Sidebar = {
   en: {
     "Create T3 App": [
@@ -74,4 +80,27 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
+  // For Translations:
+  // Keep the "outer headers" in English so we can match them.
+  // Translate the "inner headers" to the language you're translating to.
+  // Omit any files you haven't translated, they'll fallback to English.
+  // Example:
+  // sv: {
+  //   "Create T3 App": [
+  //     { text: "Introduktion", link: "sv/introduction" },
+  //     { text: "Installation", link: "sv/installation" },
+  //   ],
+  //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
+  // },
+};
+export const SIDEBAR_HEADER_MAP: Record<
+  Exclude<KnownLanguageCode, "en">,
+  Record<OuterHeaders, string>
+> = {
+  // Translate the sidebar's "outer headers" here
+  // sv: {
+  //   "Create T3 App": "Create T3 App",
+  //   Usage: "Användarguide",
+  //   Deployment: "Deployment",
+  // },
 };

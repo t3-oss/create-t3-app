@@ -52,7 +52,7 @@ importers:
       inquirer: ^9.1.2
       ora: 6.1.2
       prettier: ^2.7.1
-      prettier-plugin-tailwindcss: ^0.1.13
+      prettier-plugin-tailwindcss: 0.2.0-beta.3
       sort-package-json: ^2.0.0
       tsup: ^6.2.3
       type-fest: ^3.0.0
@@ -72,7 +72,7 @@ importers:
       '@types/inquirer': 9.0.2
       '@types/node': 18.8.0
       prettier: 2.7.1
-      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+      prettier-plugin-tailwindcss: 0.2.0-beta.3_prettier@2.7.1
       tsup: 6.2.3_typescript@4.9.3
       type-fest: 3.0.0
       typescript: 4.9.3
@@ -82,11 +82,13 @@ importers:
       '@algolia/client-search': ^4.14.2
       '@astrojs/image': ^0.10.0
       '@astrojs/react': ^1.2.2
+      '@astrojs/sitemap': ^1.0.0
       '@astrojs/tailwind': ^2.1.2
       '@docsearch/css': ^3.3.0
       '@docsearch/react': ^3.3.0
       '@fontsource/inter': ^4.5.12
       '@fontsource/jetbrains-mono': ^4.5.10
+      '@headlessui/react': ^1.7.4
       '@types/node': ^18.8.0
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -102,7 +104,7 @@ importers:
       eslint-plugin-jsx-a11y: ^6.6.1
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.7.0
-      prettier-plugin-tailwindcss: ^0.1.13
+      prettier-plugin-tailwindcss: 0.2.0-beta.3
       react: 18.0.0
       react-dom: 18.0.0
       react-typist: ^2.0.5
@@ -117,10 +119,12 @@ importers:
     dependencies:
       '@algolia/client-search': 4.14.2
       '@astrojs/image': 0.10.0_sharp@0.31.1
+      '@astrojs/sitemap': 1.0.0
       '@docsearch/css': 3.3.0
       '@docsearch/react': 3.3.0_yfbvrhpbhfpiewzab37lntawvq
       '@fontsource/inter': 4.5.12
       '@fontsource/jetbrains-mono': 4.5.10
+      '@headlessui/react': 1.7.4_zpnidt7m3osuk7shl3s4oenomq
       '@vercel/analytics': 0.1.5_react@18.0.0
       clsx: 1.2.1
       embla-carousel: 7.0.3
@@ -141,7 +145,7 @@ importers:
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
       prettier: 2.7.1
       prettier-plugin-astro: 0.7.0
-      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+      prettier-plugin-tailwindcss: 0.2.0-beta.3_prettier@2.7.1
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-typist: 2.0.5_zpnidt7m3osuk7shl3s4oenomq
@@ -391,6 +395,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@astrojs/sitemap/1.0.0:
+    resolution: {integrity: sha512-42GxuF5FP7RaKXZrwGLBLOX3hPv+Wl7ExJC43O0J5e34ojJkLeKf7QfwN1UwrJlqH0Ywi0Fm4/xGe482G09+wg==}
+    dependencies:
+      sitemap: 7.1.1
+      zod: 3.18.0
+    dev: false
 
   /@astrojs/tailwind/2.1.2_tailwindcss@3.2.4:
     resolution: {integrity: sha512-nIrlT+WWp/Wv2VQ29Nvncq608E+j3qB9k1f7yiAjY2ijxizZo4OnQzdRPQcIjIZHL5YxPtzbcoSP2u3v+Domqw==}
@@ -984,6 +995,18 @@ packages:
     resolution: {integrity: sha512-dylbkBmAWL0fkjDpDoDbQCwTQ/W3DzLtVXmwGyAyttfKliPGSP2WpAmmMFYp9NpqFMF7CLprFyzppe8u39Orkw==}
     dev: false
 
+  /@headlessui/react/1.7.4_zpnidt7m3osuk7shl3s4oenomq:
+    resolution: {integrity: sha512-D8n5yGCF3WIkPsjEYeM8knn9jQ70bigGGb5aUvN6y4BGxcT3OcOQOKcM3zRGllRCZCFxCZyQvYJF6ZE7bQUOyQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
+    dev: false
+
   /@humanwhocodes/config-array/0.10.7:
     resolution: {integrity: sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w==}
     engines: {node: '>=10.10.0'}
@@ -1282,6 +1305,10 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
 
+  /@types/node/17.0.45:
+    resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+    dev: false
+
   /@types/node/18.8.0:
     resolution: {integrity: sha512-u+h43R6U8xXDt2vzUaVP3VwjjLyOJk6uEciZS8OSyziUQGOwmk+l+4drxcsDboHXwyTaqS1INebghmWMRxq3LA==}
 
@@ -1321,6 +1348,12 @@ packages:
 
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
+    dependencies:
+      '@types/node': 18.8.0
+    dev: false
+
+  /@types/sax/1.2.4:
+    resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
       '@types/node': 18.8.0
     dev: false
@@ -2055,6 +2088,10 @@ packages:
   /cli-width/4.0.0:
     resolution: {integrity: sha512-ZksGS2xpa/bYkNzN3BAw1wEjsLV/ZKOf/CCrJ/QOBsxx6fOARIkwTutxp1XIOIohi6HKmOFjMoK/XaqDVUpEEw==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /client-only/0.0.1:
+    resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
 
   /cliui/6.0.0:
@@ -5631,8 +5668,8 @@ packages:
       synckit: 0.8.4
     dev: true
 
-  /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
-    resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
+  /prettier-plugin-tailwindcss/0.2.0-beta.3_prettier@2.7.1:
+    resolution: {integrity: sha512-aq8gjelLGg/XGSHgxcJJhw4uaxvy7Ikdd6fcYE4X4I6wkDSiaPmnuSik+lkW4R9xbuTcekdZAkxXh7TeOl+eXg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       prettier: '>=2.2.0'
@@ -6124,6 +6161,10 @@ packages:
       suf-log: 2.5.3
     dev: true
 
+  /sax/1.2.4:
+    resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
   /scheduler/0.21.0:
     resolution: {integrity: sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==}
     dependencies:
@@ -6260,6 +6301,17 @@ packages:
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
+
+  /sitemap/7.1.1:
+    resolution: {integrity: sha512-mK3aFtjz4VdJN0igpIJrinf3EO8U8mxOPsTBzSsy06UtjZQJ3YY3o3Xa7zSc5nMqcMrRwlChHZ18Kxg0caiPBg==}
+    engines: {node: '>=12.0.0', npm: '>=5.6.0'}
+    hasBin: true
+    dependencies:
+      '@types/node': 17.0.45
+      '@types/sax': 1.2.4
+      arg: 5.0.2
+      sax: 1.2.4
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -7378,7 +7430,6 @@ packages:
 
   /zod/3.18.0:
     resolution: {integrity: sha512-gwTm8RfUCe8l9rDwN5r2A17DkAa8Ez4Yl4yXqc5VqeGaXaJahzYYXbTwvhroZi0SNBqTwh/bKm2N0mpCzuw4bA==}
-    dev: true
 
   /zwitch/2.0.2:
     resolution: {integrity: sha512-JZxotl7SxAJH0j7dN4pxsTV6ZLXoLdGME+PsjkL/DaBrVryK9kTGq06GfKrwcSOqypP+fdXGoCHE36b99fWVoA==}
