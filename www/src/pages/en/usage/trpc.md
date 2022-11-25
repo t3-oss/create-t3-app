@@ -114,7 +114,7 @@ import { useRouter } from "next/router";
 
 const UserPage = () => {
   const { query } = useRouter();
-  const userQuery = trpc.user.getById.useQuery(query.id);
+  const userQuery = trpc.users.getById.useQuery(query.id);
 
   return (
     <div>
