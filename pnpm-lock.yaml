@@ -52,7 +52,7 @@ importers:
       inquirer: ^9.1.2
       ora: 6.1.2
       prettier: ^2.7.1
-      prettier-plugin-tailwindcss: ^0.1.13
+      prettier-plugin-tailwindcss: 0.2.0-beta.3
       sort-package-json: ^2.0.0
       tsup: ^6.2.3
       type-fest: ^3.0.0
@@ -72,7 +72,7 @@ importers:
       '@types/inquirer': 9.0.2
       '@types/node': 18.8.0
       prettier: 2.7.1
-      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+      prettier-plugin-tailwindcss: 0.2.0-beta.3_prettier@2.7.1
       tsup: 6.2.3_typescript@4.9.3
       type-fest: 3.0.0
       typescript: 4.9.3
@@ -5666,15 +5666,6 @@ packages:
       prettier: 2.7.1
       sass-formatter: 0.7.5
       synckit: 0.8.4
-    dev: true
-
-  /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
-    resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
-    engines: {node: '>=12.17.0'}
-    peerDependencies:
-      prettier: '>=2.2.0'
-    dependencies:
-      prettier: 2.7.1
     dev: true
 
   /prettier-plugin-tailwindcss/0.2.0-beta.3_prettier@2.7.1:
