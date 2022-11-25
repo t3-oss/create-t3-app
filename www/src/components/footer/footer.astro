@@ -7,10 +7,10 @@ export interface Props {
 const { path, isBlog } = Astro.props;
 ---
 
-<footer class="py-12 transition-colors mt-auto flex flex-col bg-transparent">
+<footer class="mt-auto flex flex-col bg-transparent py-12 transition-colors">
   {isBlog && <AvatarList path={path} />}
-  <div class="container px-6 mx-auto divide-gray-400 divide-opacity-50 pt-6">
-    <div class="flex flex-col items-center justify-between w-full">
+  <div class="container mx-auto divide-gray-400 divide-opacity-50 px-6 pt-6">
+    <div class="flex w-full flex-col items-center justify-between">
       <div class="pb-2">
         <a
           href="https://vercel.com/?utm_source=t3-oss&utm_campaign=oss"
@@ -19,7 +19,7 @@ const { path, isBlog } = Astro.props;
         >
           <img
             src="/images/powered-by-vercel.svg"
-            class="w-full h-10 mt-6"
+            class="mt-6 h-10 w-full"
             alt="Powered by Vercel"
           />
         </a>

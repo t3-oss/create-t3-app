@@ -65,16 +65,16 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
   </head>
 
   <body
-    class="bg-default min-h-screen flex flex-col items-center transition-colors duration-300"
+    class="flex min-h-screen flex-col items-center bg-default transition-colors duration-300"
   >
     <JumpToContent />
     <div
-      class="bg-default sticky top-0 w-full max-h-full z-40 transition-colors duration-300"
+      class="sticky top-0 z-40 max-h-full w-full bg-default transition-colors duration-300"
     >
       <Navbar />
     </div>
     <main
-      class="flex-1 grid grid-cols-1 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px] gap-4 w-full max-w-7xl"
+      class="grid w-full max-w-7xl flex-1 grid-cols-1 gap-4 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px]"
     >
       <nav
         id="grid-left"
@@ -84,11 +84,11 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         <LeftSidebar frontmatter={frontmatter} currentPage={currentPage} />
       </nav>
 
-      <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
+      <div class="col-span-1 flex min-h-full w-full flex-col pt-5" id="content">
         <PageContent frontmatter={frontmatter} path={currentFile}>
           <slot />
         </PageContent>
-        <nav class="flex lg:hidden mx-3">
+        <nav class="mx-3 flex lg:hidden">
           <MoreMenu editHref={githubEditUrl} />
         </nav>
         <Footer path={currentFile} isBlog={true} />

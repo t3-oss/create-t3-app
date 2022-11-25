@@ -16,19 +16,19 @@ const isRtl = getIsRtlFromUrl(pathname);
   class="flex flex-col pt-8 lg:py-0 w-full md:text-start text-center"
 >
   <h2
-    class="hidden md:block text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+    class="mb-4 hidden text-lg font-semibold text-slate-900 dark:text-t3-purple-50 md:block"
   >
     More
   </h2>
 
-  <ul class="flex items-center md:items-start flex-col gap-2 text-sm">
+  <ul class="flex flex-col items-center gap-2 text-sm md:items-start">
     <li
-      class="hidden md:block hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-t3-purple-800 dark:text-t3-purple-200"
+      class="hidden text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100 md:block"
     >
       <a class="flex items-center gap-2" href={editHref} target="_blank">
         <span>
           <svg
-            class="inline svg-inline--fa fa-pen fa-w-16"
+            class="svg-inline--fa fa-pen fa-w-16 inline"
             aria-hidden="true"
             focusable="false"
             data-prefix="fas"
@@ -50,16 +50,16 @@ const isRtl = getIsRtlFromUrl(pathname);
     </li>
 
     <li
-      class="hover:text-t3-purple-400 dark:hover:text-t3-purple-100 text-t3-purple-800 dark:text-t3-purple-200"
+      class="text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100"
     >
       <a
-        class="flex items-top gap-2"
+        class="items-top flex gap-2"
         href={CONFIG.COMMUNITY_INVITE_URL}
         target="_blank"
       >
         <span>
           <svg
-            class="inline svg-inline--fa fa-comment-alt fa-w-16"
+            class="svg-inline--fa fa-comment-alt fa-w-16 inline"
             aria-hidden="true"
             focusable="false"
             data-prefix="fas"

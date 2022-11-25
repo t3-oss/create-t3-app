@@ -30,7 +30,10 @@ if (langCode !== "en") {
   sidebar = Object.fromEntries(
     Object.entries(englishSidebar).map(([header, items]) => {
       // Set header to translated one if it exists
-      const nativeHeader = SIDEBAR_HEADER_MAP[langCode][header] ?? header;
+      const nativeHeader =
+        // TODO: type this properly at the source
+        SIDEBAR_HEADER_MAP[langCode][header as keyof typeof englishSidebar] ??
+        header;
 
       const nativeItems = items.map((item) => {
         const match = Object.values(nativeSidebar)
@@ -53,7 +56,7 @@ if (langCode !== "en") {
 }
 ---
 
-<div class="w-full ml--40 md:ml-0 mb-6 mx-auto px-6 md:px-8 md:hidden">
+<div class="mx-auto ml--40 mb-6 w-full px-6 md:ml-0 md:hidden md:px-8">
   <Search isLanding={isLanding} client:idle />
 </div>
 <div
@@ -89,16 +92,16 @@ if (langCode !== "en") {
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx([
-                        "text-md block py-2 text-t3-purple-800 transition-colors [padding-inline-start:16px] hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
+                        "text-md text-t3-purple-800 hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100 block py-2 transition-colors [padding-inline-start:16px]",
                         isActive
-                          ? "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20"
+                          ? "border-t3-purple-300 bg-t3-purple-300/30 dark:bg-t3-purple-300/20 font-medium"
                           : "border-t3-purple-300/20",
                         isRtl ? "border-r-2" : "border-l-2",
                       ])}
                     >
                       <span>{child.text}</span>
                       {!child.isTranslated && langCode !== "en" && (
-                        <span class="text-xs text-t3-purple-400 [margin-inline-start:4px] dark:text-t3-purple-300">
+                        <span class="text-t3-purple-400 dark:text-t3-purple-300 text-xs [margin-inline-start:4px]">
                           EN
                         </span>
                       )}
