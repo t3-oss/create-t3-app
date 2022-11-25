@@ -42,10 +42,15 @@ export const ALGOLIA = {
   apiKey: "892c4647b96fe1b3d0b7d8de1c5b5e40",
 };
 
-export type Sidebar = Record<
-  KnownLanguageCode,
-  Record<string, { text: string; link: string }[]>
->;
+type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+export type Sidebar = {
+  [TCode in KnownLanguageCode]: {
+    [THeader in OuterHeaders]?: {
+      text: string;
+      link: `${TCode}/${string}`;
+    }[];
+  };
+};
 export const SIDEBAR: Sidebar = {
   en: {
     "Create T3 App": [
@@ -90,7 +95,7 @@ export const SIDEBAR: Sidebar = {
 };
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
-  Record<keyof Sidebar["en"], string>
+  Record<OuterHeaders, string>
 > = {
   // Translate the sidebar's "outer headers" here
   // sv: {
