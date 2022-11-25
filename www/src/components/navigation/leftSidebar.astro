@@ -61,11 +61,11 @@ if (langCode !== "en") {
 </div>
 <div
   dir="ltr"
-  class="t3-scrollbar w-full lg:mb-12 h-full bg-default transition-colors duration-300"
+  class="t3-scrollbar h-full w-full bg-default transition-colors duration-300 lg:mb-12"
 >
   <ul
     dir={isRtl ? "rtl" : "ltr"}
-    class="pb-28 px-4 md:pb-0 dark:text-t3-purple-50 text-slate-900"
+    class="px-4 pb-28 text-slate-900 dark:text-t3-purple-50 md:pb-0"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
@@ -92,16 +92,16 @@ if (langCode !== "en") {
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx([
-                        "text-md text-t3-purple-800 hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100 block py-2 transition-colors [padding-inline-start:16px]",
+                        "text-md block py-2 text-t3-purple-800 transition-colors [padding-inline-start:16px] hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
                         isActive
-                          ? "border-t3-purple-300 bg-t3-purple-300/30 dark:bg-t3-purple-300/20 font-medium"
+                          ? "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20"
                           : "border-t3-purple-300/20",
                         isRtl ? "border-r-2" : "border-l-2",
                       ])}
                     >
                       <span>{child.text}</span>
                       {!child.isTranslated && langCode !== "en" && (
-                        <span class="text-t3-purple-400 dark:text-t3-purple-300 text-xs [margin-inline-start:4px]">
+                        <span class="text-xs text-t3-purple-400 [margin-inline-start:4px] dark:text-t3-purple-300">
                           EN
                         </span>
                       )}
