@@ -6,9 +6,9 @@ lang: ar
 dir: rtl
 ---
 
-هل قمت بعمل مشروع باستخدام ستاك T3 وتريد مشاركته؟ إضافته إلى القائمة!
+هل قٌمت بعمل مشروع بإستخدام T3 Stack وتريد مشاركته؟ أضافهُ إلى القائمة التالية!
 
-## تطبيقات مفتوحة المصدر صنعت بواسطة T3
+## تطبيقات مفتوحة المصدر صُنعت بواسطة T3
 
 | الوصف                                                             | Repo                                                                        | الرابط                                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -25,11 +25,11 @@ dir: rtl
 | AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 
-## شركات تستخدم T3 Stack
+## شركات تَستخدم T3 Stack
 
-نود معرفة الشركات التي تستخدم Stack T3 لتطبيقاتها. هل شركتك تستخدم Stack T3 وترغب في مشاركته؟ إضافته إلى القائمة!
+نَوَدٌ مَعرفة الشَركات التي تَستخدم Stack T3 لتَطبيقاتها. إذا كانت شَركتك تَستخدم Stack T3 وتَرغب في مشاركته؟ أضافه إلى القائمة التالية!
 | Company | Link |
 | ------- | -------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg) |
 
-أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!\_
+أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md)
