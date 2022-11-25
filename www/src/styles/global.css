@@ -155,7 +155,7 @@
   }
 
   .markdown code {
-    @apply break-words lg:break-normal;
+    @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
   }
 
   .markdown code:not(.markdown pre code) {
