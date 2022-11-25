@@ -82,7 +82,7 @@ export const SIDEBAR: Sidebar = {
       { text: "لماذا CT3A ؟", link: "ar/why" },
       { text: "التثبيت", link: "ar/installation" },
       { text: "بِنية المشروع", link: "ar/folder-structure" },
-      { text: "إسئلة شائعة", link: "ar/faq" },
+      { text: "أسئلة شائعة", link: "ar/faq" },
       { text: "مشروعات صُنعت براسطة T3", link: "ar/t3-collection" },
       { text: "ترشيحات أُخري", link: "ar/other-recs" },
     ],
@@ -125,7 +125,7 @@ export const SIDEBAR_HEADER_MAP: Record<
   ar: {
     "Create T3 App": "إنشاء تطبيق T3.",
     Usage: "كيفية الإستخدام؟",
-    Deployment: "نَشر المشروع",
+    Deployment: "نَشر مَوقعك",
   },
   // Translate the sidebar's "outer headers" here
   // sv: {
