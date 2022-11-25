@@ -26,19 +26,13 @@ Vercel will likely configure your build command and publish the directory automa
 
 ![New project on Vercel](/images/vercel-new-project.webp)
 
-<br />
-
 2. Import the GitHub repository with your project.
 
 ![Import repository](/images/vercel-import-project.webp)
 
-<br />
-
 3. Add your environment variables.
 
 ![Add environment variables](/images/vercel-env-vars.webp)
-
-<br />
 
 4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
 
