@@ -23,7 +23,7 @@ Basicamente. O `create-t3-app` é uma CLI (Command Line Interface) construída p
 
 Depois de incontáveis projetos e muitos anos com essas tecnologias, nós tempos muitas opiniões e percepções. Nós fizemos o nosso melhor para introduzi-las nessa CLI.
 
-Isto **NÃO** é um modelo completo. Nós **esperamos** que você traga suas próprias bibliotecas que resolvam as necessidades da **SUA** aplicação. Enquanto nós não queremos prescrever soluções para problemas específicos como gerenciamento de estado e deploy, nós [possuímos algumas recomendações listadas aqui](/pt-BR/other-recs).
+Isto **NÃO** é um modelo completo. Nós **esperamos** que você traga suas próprias bibliotecas que resolvam as necessidades da **SUA** aplicação. Enquanto nós não queremos prescrever soluções para problemas específicos como gerenciamento de estado e deploy, nós [possuímos algumas recomendações listadas aqui](/pt/other-recs).
 
 ## Axiomas T3
 
