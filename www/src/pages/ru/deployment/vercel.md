@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: ru
 ---
 
-Мы рекомендуем развертывать ваше приложение на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Это позволяет легко развернуть приложение Next.js.
+Мы рекомендуем развертывать ваше приложение на [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Он позволяет очень легко развертывать Next.js приложения.
 
 ## Конфигурация проекта
 
