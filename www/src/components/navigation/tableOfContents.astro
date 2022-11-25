@@ -14,12 +14,12 @@ headings = [{ depth: 2, slug: "overview", text: title }, ...headings].filter(
 
 <div>
   <h2
-    class="text-lg mb-4 font-semibold dark:text-t3-purple-50 text-slate-900"
+    class="mb-4 text-lg font-semibold text-slate-900 dark:text-t3-purple-50"
     id="toc-heading"
   >
     On this page
   </h2>
-  <ul class="w-full marker:text-t3-purple-300 mb-4 list-none">
+  <ul class="mb-4 w-full list-none marker:text-t3-purple-300">
     {
       headings.map((heading) => {
         const { depth, slug, text } = heading;
