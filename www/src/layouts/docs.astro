@@ -86,14 +86,16 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       </nav>
 
       <div class="w-full min-h-full col-span-1 flex flex-col pt-5" id="content">
-        <OnThisPageLinks
-          client:media="(max-width: 1024px)"
-          headings={headings}
-          title={frontmatter.title}
-        />
-        <PageContent frontmatter={frontmatter} path={currentFile}>
-          <slot />
-        </PageContent>
+        <div>
+          <OnThisPageLinks
+            client:media="(max-width: 1024px)"
+            headings={headings}
+            title={frontmatter.title}
+          />
+          <PageContent frontmatter={frontmatter} path={currentFile}>
+            <slot />
+          </PageContent>
+        </div>
         <nav class="flex lg:hidden mx-3">
           <MoreMenu editHref={githubEditUrl} />
         </nav>
