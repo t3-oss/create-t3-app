@@ -19,9 +19,9 @@ Typesafety pozwala ci być szybszym. Jeżeli dalej nie jesteś przekonany, może
 
 ## Dlaczego Next.js?
 
-Kochamy Reacta. Pozwolił on na o wiele bardziej przystępne tworzenie interfejsów, niż kiedykolwiek mogło nam się śnić. Pomaga także deweloperom w cięższych sytuacjach.
+Kochamy Reacta. Zmienił on sposób tworzenia interfejsów na niewyobrażalnie bardziej przystępny. Może on także prowadzić dewelopera za rękę z miejscach, mogących sprawiać problemy.
 
-Next.js oferuje lekko kontrowersyjne, mocno zoptymalizowane podejście do tworzenia aplikacji z użyciem Reacta. Od routingu przez API do renderowania zdjęć, ufamy Next.jsowi i wierzymy, że prowadzi on nas do dobrych decyzji.
+Next.js oferuje lekko kontrowersyjne, bardzo zoptymalizowane podejście do tworzenia aplikacji z pomocą Reacta. Od routingu przez API do renderowania zdjęć, ufamy Next.jsowi i wierzymy, że prowadzi on nas do dobrych decyzji.
 
 ## Dlaczego tRPC/Prisma/Tailwind/itp.?
 
