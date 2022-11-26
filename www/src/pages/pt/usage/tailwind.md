@@ -52,9 +52,9 @@ Equivalente com Tailwind:
 </div>
 ```
 
-Quando usado em conjunto com React Components, é extremamente poderoso para construir UIs rapidamente.
+Quando usado em conjunto com Componentes React, é extremamente poderoso para construir UIs rapidamente.
 
-O Tailwind CSS possui um belo sistema de design integrado, que vem pronto para uso com uma paleta de cores cuidadosamente escolhida, padrões de dimensionamento para estilos como largura/altura e preenchimento/margem para um design uniforme, bem como pontos de interrupção de mídia para criar responsivos layouts. Este sistema de design pode ser personalizado e estendido para criar a caixa de ferramentas exata de estilos que seu projeto precisa.
+O Tailwind CSS possui um belo design system integrado, que vem pronto para uso com uma paleta de cores cuidadosamente escolhida, padrões de dimensionamento para estilos como largura/altura e preenchimento/margem para um design uniforme, bem como breakpoints para criar layouts responsivos. Este design system pode ser personalizado e estendido para criar a caixa de ferramentas exata de estilos que seu projeto precisa.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -90,7 +90,7 @@ Adicionar classes condicionalmente usando ternários pode ficar muito confuso e 
 | Documentação Tailwind         | https://tailwindcss.com/docs/editor-setup/               |
 | Tailwind Cheat Sheet          | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss           | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Community do Tailwind         | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Comunidade do Tailwind         | https://github.com/tailwindlabs/tailwindcss/discussions/ |
 | Servidor Discord do Tailwind  | https://tailwindcss.com/discord/                         |
 | Canal do Youtube TailwindLabs | https://www.youtube.com/tailwindlabs/                    |
 | Playground do Tailwind        | https://play.tailwindcss.com/                            |
