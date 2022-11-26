@@ -28,7 +28,9 @@ if (langCode !== "en") {
   sidebar = Object.fromEntries(
     Object.entries(englishSidebar).map(([header, items]) => {
       // Set header to translated one if it exists
-      const nativeHeader = SIDEBAR_HEADER_MAP[langCode][header] ?? header;
+      const nativeHeader =
+        SIDEBAR_HEADER_MAP[langCode][header as keyof typeof englishSidebar] ??
+        header;
 
       const nativeItems = items.map((item) => {
         const match = Object.values(nativeSidebar)
