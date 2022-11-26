@@ -11,7 +11,6 @@ Wenn du ein Authentifizierungssystem in deiner Next.js-Anwendung haben möchtest
 
 In den Einstiegspunkt deiner Anwendung, wirst du sehen, dass deine Anwendung von einem [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider) umschlossen wird.
 
-
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
   <Component {...pageProps} />
@@ -51,7 +50,6 @@ callbacks: {
 ```
 
 Dies ist mit einer Typdeklarationsdatei gekoppelt, um sicherzustellen, dass die `user.id` beim Zugriff auf das `session`-Objekt richtig getyped wird. Erfahre mehr über [`"Module Augmentation"`](https://next-auth.js.org/getting-started/typescript#module-augmentation) in den Dokumentationen von NextAuth.js.
-
 
 ```ts:types/next-auth.d.ts
 import { DefaultSession } from "next-auth";
@@ -171,8 +169,8 @@ Die Verwendung von NextAuth.js mit Next.js-Middleware [erfordert die Verwendung 
 
 ## Nützliche Ressourcen
 
-| Resource                          | Link                                    |
-| --------------------------------- | --------------------------------------- |
-| NextAuth.js Docs                  | https://next-auth.js.org/               |
-| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
+| Resource                         | Link                                    |
+| -------------------------------- | --------------------------------------- |
+| NextAuth.js Docs                 | https://next-auth.js.org/               |
+| NextAuth.js GitHub               | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - mit NextAuth | https://kitchen-sink.trpc.io/next-auth  |
