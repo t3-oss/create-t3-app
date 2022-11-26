@@ -44,12 +44,12 @@ const { isNotFound } = Astro.props;
   >
     <JumpToContent />
     <div
-      class="relative before:block before:absolute before:inset-0 before:w-full before:h-full before:opacity-5 before:bg-[url('/images/background-pattern.svg')] before:bg-no-repeat before:bg-cover before:pointer-events-none"
+      class="relative before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/images/background-pattern.svg')] before:bg-cover before:bg-no-repeat before:opacity-5"
     >
       <Navbar isNotFound={isNotFound || false} />
       <aside id="grid-left" class="hidden" title="Site Navigation">
-        <div class="fixed left-0 top-0 h-screen w-screen z-30 bg-default">
-          <div class="fixed top-24 h-[calc(100%-96px)] pb-16 w-full">
+        <div class="fixed left-0 top-0 z-30 h-screen w-screen bg-default">
+          <div class="fixed top-24 h-[calc(100%-96px)] w-full pb-16">
             <LeftSidebar
               currentPage={currentPage}
               isNotFound={isNotFound || false}
