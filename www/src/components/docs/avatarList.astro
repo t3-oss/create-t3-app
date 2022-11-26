@@ -28,7 +28,10 @@ async function getCommits(url: string) {
   }
 }
 
-function removeDups(arr: Commit[]) {
+function removeDups(arr: Commit[]): Commit["author"][] {
+  if (!arr || !Array.isArray(arr) || !arr.length) {
+    return [];
+  }
   const map = new Map<string, Commit["author"]>();
 
   for (let item of arr) {
@@ -41,6 +44,7 @@ function removeDups(arr: Commit[]) {
 }
 
 const data = await getCommits(url);
+console.log(data, "data");
 const unique = removeDups(data);
 const recentContributors = unique.slice(0, 3); // only show avatars for the 3 most recent contributors
 const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
