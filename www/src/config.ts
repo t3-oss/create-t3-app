@@ -26,7 +26,7 @@ export type Frontmatter = {
 
 export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
-  pt: "🇧🇷 Portuguese",
+  pt: "🇧🇷 Português",
   // Add more languages here
   // sv: "🇸🇪 Svenska",
 } as const;
