@@ -10,7 +10,7 @@ lang: pl
     <p className="mb-4 text-lg">
       <span aria-hidden="true">&quot;</span>Buduj siatki bezpieczeństwa, nie barierki<span aria-hidden="true">&quot;</span>
       <br />
-      <span aria-hidden="true">&quot;</span>Oryginał: Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true" className="text-xs opacity-70">&quot;</span>Oryginał: Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
