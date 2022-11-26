@@ -21,7 +21,7 @@ Połączenie Next.jsa z [Vercelem](https://vercel.com/) sprawia, iż pisanie i d
 
 ## Get Static/Server Props
 
-A key feature of Next.js is its data fetching capabilities. We highly recommend reading through the [official documentation](https://nextjs.org/docs/basic-features/data-fetching) to understand how to use each method and how they differ. `getServerSideProps` is generally discouraged unless there is a good reason for it, due to the fact that it is a blocking call and will slow down your site. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) is a great alternative to `getServerSideProps` when the data is dynamic and can be fetched incrementally.
+Kluczową funkcją Next.jsa są jego możliwości fetchowania danych. Bardzo polecamy przejrzenie jego [oficjalnej dokumentacji](https://nextjs.org/docs/basic-features/data-fetching), aby zrozumieć jak korzystać z każdej z tych metod i poznać ich różnice. `getServerSideProps` jest ogólnie odradzane (chyba, że jest dla metody tej BARDZO dobry argument za), z powodu blokowania renderu strony - i przez to jej spowalniania. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) to dobra anternatywa dla `getServerSideProps`, jeżeli dane są dynamiczne i mogą być pobierane "przyrostowo".
 
 ## Przydatne Zasoby
 
