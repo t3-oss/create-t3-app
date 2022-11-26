@@ -28,7 +28,9 @@ if (langCode !== "en") {
   sidebar = Object.fromEntries(
     Object.entries(englishSidebar).map(([header, items]) => {
       // Set header to translated one if it exists
-      const nativeHeader = SIDEBAR_HEADER_MAP[langCode][header] ?? header;
+      const nativeHeader =
+        SIDEBAR_HEADER_MAP[langCode][header as keyof typeof englishSidebar] ??
+        header;
 
       const nativeItems = items.map((item) => {
         const match = Object.values(nativeSidebar)
@@ -83,9 +85,9 @@ if (langCode !== "en") {
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx(
-                        "text-md block border-l-2 py-2 pl-4 text-t3-purple-800 transition-colors hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
+                        "text-md text-t3-purple-800 hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100 block border-l-2 py-2 pl-4 transition-colors",
                         {
-                          "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20":
+                          "border-t3-purple-300 bg-t3-purple-300/30 dark:bg-t3-purple-300/20 font-medium":
                             isActive,
                           "border-t3-purple-300/20": !isActive,
                         },
@@ -93,7 +95,7 @@ if (langCode !== "en") {
                     >
                       <span>{child.text}</span>
                       {!child.isTranslated && langCode !== "en" && (
-                        <span class="ml-1 text-xs text-t3-purple-400 dark:text-t3-purple-300">
+                        <span class="text-t3-purple-400 dark:text-t3-purple-300 ml-1 text-xs">
                           EN
                         </span>
                       )}
