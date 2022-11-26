@@ -24,7 +24,13 @@ async function getCommits(url: string) {
   } catch (e) {
     console.warn(`[error]  /src/components/AvatarList.astro 
     ${(e as any)?.message ?? e}`);
-    return [] as Commit[];
+    return [
+      { author: { id: "95541290", login: "testLogin1" } },
+      { author: { id: "51714798", login: "testLogin2" } },
+      { author: { id: "8353666", login: "testLogin3" } },
+      { author: { id: "46245123", login: "testLogin4" } },
+      { author: { id: "23621561", login: "testLogin5" } },
+    ] as Commit[];
   }
 }
 
