@@ -18,15 +18,15 @@
     },
     {
       "source": "/docs",
-      "destination": "en/introduction"
+      "destination": "/en/introduction"
     },
     {
       "source": "/usage",
-      "destination": "/usage/first-steps"
+      "destination": "/en/usage/first-steps"
     },
     {
       "source": "/deployment",
-      "destination": "deployment/vercel"
+      "destination": "/en/deployment/vercel"
     },
     {
       "source": "/discord",
