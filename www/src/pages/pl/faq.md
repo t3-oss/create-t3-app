@@ -42,7 +42,7 @@ Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego n
 
 ## Dlaczego w projekcie są pliki `.js`?
 
-Tak jak opisano w [aksjomacie #3](/pl/introduction#typesafety-isnt-optional), traktujemy typesafety za pierwszorzędną rzecz. Niestety nie wszystkie frameworki i pluginy posiadają wsparcie do TypeScripta, dlatego też niektóre pliki konfiguracyjne muszą mieć powyższe rozszerzenie.
+Tak jak opisano w [aksjomacie #3](/pl/introduction#typesafety-nie-jest-opcjonalne), traktujemy typesafety za pierwszorzędną rzecz. Niestety nie wszystkie frameworki i pluginy posiadają wsparcie do TypeScripta, dlatego też niektóre pliki konfiguracyjne muszą mieć powyższe rozszerzenie.
 
 Staramy się podkreślić, iż pliki te korzystają z TypeScripta nie bez powodu. Wyraźnie określamy rozszerzenia plików jako `cjs` lub `mjs`, zależnie od wsparcia przez daną bibliotekę. Dodatkowo, wszystkie pliki `.js` w naszym projekcie są w dalszym ciągu sprawdzane pod kątem poprawności typów - korzystamy do tego z komentarza `@ts-check` na górze pików.
 
@@ -54,6 +54,6 @@ Jeżeli jednak nie wiesz jak wygląda poprawna interpretacja internacjonalizacji
 
 ## Dlaczego korzystamy z folderu `/pages` a nie `/app` z Next.js 13?
 
-Tak jak opisano w [aksjomacie #2](/pl/introduction#bleed-responsibly), kochamy technologie "bleeding edge", jednak ważna jest dla nas stabilność. Ciężko jest zmienić cały `router` w aplikacji ([not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662)). Folder `/app` to [wgląd na przyszłość](https://youtu.be/rnsC-12PVlM?t=818), jednak nie jest on gotowy na wersję produkcyjną. API jest w becie i oczekiwać można zmian wpływających na działanie całej aplikacji (niekoniecznie pozytywnie!).
+Tak jak opisano w [aksjomacie #2](/pl/introduction#bleed-responsibly-korzystaj-rozważnie-z-nowych-technologii), kochamy technologie "bleeding edge", jednak ważna jest dla nas stabilność. Ciężko jest zmienić cały `router` w aplikacji ([not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662)). Folder `/app` to [wgląd na przyszłość](https://youtu.be/rnsC-12PVlM?t=818), jednak nie jest on gotowy na wersję produkcyjną. API jest w becie i oczekiwać można zmian wpływających na działanie całej aplikacji (niekoniecznie pozytywnie!).
 
 Żeby poznać listę wspieranych, zaplanowanych i tych, nad którymi prace trwają funkcji, odwiedź [dokumentację Next.js beta](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
