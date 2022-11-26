@@ -28,13 +28,13 @@ CSS Antigo:
 }
 ```
 
-2. Import CSS into your component
+2. Importe o CSS no seu componente
 
 ```jsx
 import "./minha-classe.css";
 ```
 
-3. Add the class to your HTML
+3. Adicione a classe no seu HTML
 
 ```html
 <div class="minha-classe">...</div>
