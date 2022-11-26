@@ -21,15 +21,18 @@ Zrobiłeś projekt korzystając z T3 stacka i chcesz się nim podzielić? Dodaj 
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                   | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
-| AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
+| AI TTS Donations - FOSS AI Text To Speech service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
+| Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 
 ## Firmy korzystające z T3 Stacka
 
 Bardzo chcielibyśmy poznać firmy korzystające z T3 stacka do budowania swoich aplikacji. Czy twoja firma korzysta z T3 stacka i chciałaby się tym podzielić? Dodaj tą informację do listy poniżej!
 
-| Firma   | Link                       |
-| ------- | -------------------------- |
-| Ping.gg | [ping.gg](https://ping.gg) |
+| Firma   | Link                               |
+| ------- | ---------------------------------- |
+| Ping.gg | [ping.gg](https://ping.gg)         |
+| Nexiona | [nexiona.com](https://nexiona.com) |
+| Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
 _Posiadasz ciekawy projekt korzystający z T3 stacka? Zrób [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) i dodaj go tutaj!_

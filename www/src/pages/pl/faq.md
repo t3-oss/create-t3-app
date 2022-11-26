@@ -32,6 +32,7 @@ Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego n
 - [Zbuduj aplikację full stack z create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [Pierwsze spojrzenie na create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrowanie aplikacji T3 do Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrowanie Stripe'a z Aplikacją T3](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Filmy
 
