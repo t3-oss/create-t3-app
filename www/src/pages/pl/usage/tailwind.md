@@ -5,15 +5,15 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-## What is Tailwind CSS?
+## Co to Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+TailwindCSS to mały, ["utility first"](https://tailwindcss.com/docs/utility-first) framework CSS służący do budowania własnych designów, nie wymagając przy tym zmiany kontekstu, tak jak to robi zwykły CSS. Jest to tylko i wyłącznie framework CSS, który nie oferuje gotowych komponentów czy też logiki. Zawiera on natomiast [wiele różnych benefitów](https://www.youtube.com/watch?v=CQuTF-bkOgc) w porównaniu do biblioteki komponentów, takiej jak Material UI.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
+Sprawia on, iż pisanie CSSa staje się wyjątkowo łatwe i szybkie, jak widać z resztą na poniższym przykładzie:
 
-Old CSS:
+Stary CSS:
 
-1. Write CSS, often in a seperate file
+1. Napisz kod CSSa, często w osobnym pliku
 
 ```css
 .my-class {
@@ -28,21 +28,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. Zaimportuj CSSa do swojego komponentu
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. Dodaj klasę do swojego kodu HTMLa
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+Odpowiednik z Tailwindem:
 
-1. Just write classes in your HTML
+1. Po prostu dodaj klasy do HTMLa
 
 ```html
 <div
@@ -52,45 +52,45 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+Kiedy korzystasz z Tailwinda w połączeniu z komponentami Reacta, staje się on niezwykle silnym sposobem na szybkie pisanie interfejsów użytkownika (UI).
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+Tailwind CSS posiada piękny, wbudowany design system, który zawiera uważnie dobraną paletę kolorów, wzorce rozmiarów dla stylów, takich wysokość i szerokość czy też padding i margines. Zawiera też breakpointy pomocne przy tworzeniu responsywnego layoutu. Design system ten może być dostosowywany i poszerzany, aby stworzyć dokładnie ten zestaw narzędzi i stylów, którego twój projekt potrzebuje.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+Tru Narla, lepiej znana jako [mewtru](https://twitter.com/trunarla), wygłosiła niezwykłą rozmowę na temat [budowania design systemu korzystając z Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
+## Korzystanie z Tailwinda
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+Upewnij się, że zainstalowałeś pluginy dla Tailwinda. Zwięszą one komfort pisania kodu korzystając z tego narzędzia.
 
-### Extensions and Plugins
+### Rozszerzenia i Pluginy
 
-- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [Rozszerzenie dla VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
+### Formatowanie
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+Klasy Tailwinda mogą łatwo stać się nieczytelne, więc formater to "must-have". [Prettier Plugin dla Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sortuje klasy używając [rekomendowanej kolejności](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) tak, że kolejność klas jest zgodna z ich kolejnością w zbudowanej aplikacji. Wybierając Tailwind w naszym CLI, automatycznie zainstalujemy i skonfigurujemy plugin ten za Ciebie.
 
-### Conditionally Applying Classes
+### Warunkowe Dodawanie Klas
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+Warunkowe dodawanie klas korzystając z "ternary operators" może stać się nieczytelne i niechlujne. Paczki te pomogą w organizowaniu twoich klas korzystając z logiki warunkowej.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## Przydatne Zasoby
 
-| Resource                     | Link                                                     |
-| ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| Zasób                      | Link                                                     |
+| -------------------------- | -------------------------------------------------------- |
+| Dokumentacja Tailwinda     | https://tailwindcss.com/docs/editor-setup/               |
+| Tailwind Cheat Sheet       | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss        | https://github.com/aniftyco/awesome-tailwindcss/         |
+| Tailwind Community         | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Serwer Discrod Tailwinda   | https://tailwindcss.com/discord/                         |
+| Kanał Youtube TailwindLabs | https://www.youtube.com/tailwindlabs/                    |
+| Tailwind Playground        | https://play.tailwindcss.com/                            |
