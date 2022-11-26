@@ -7,7 +7,7 @@ lang: pt
 
 A seguir temos a estrutura de pastas de um novo T3 App inicializado, com todas as opções selecionadas.
 
-Mais abaixo, a descrição de cada pasta indica seu propósito e se é apenas incluída com bibliotecas selecionadas.
+A seguir, temos a estrutura de pastas de um novo T3 app inicializado, com todas as opções selecionadas. A descrição de cada pasta indica seu propósito e se é apenas incluída com bibliotecas selecionadas.
 
 ```
 .
