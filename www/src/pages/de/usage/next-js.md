@@ -1,29 +1,30 @@
 ---
 title: Next.js
-description: Usage of Next.js
+description: Verwendung von Next.js
 layout: ../../../layouts/docs.astro
-lang: en
+lang: de
 ---
 
-Next.js is a backend framework for your React applications.
+Next.js ist ein Backend-Framework für deine React-Anwendungen.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) to get a better understanding of what Next.js is and how it works.</p>
+Schau dir [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) um ein besseres Verständnis dafür zu bekommen, was Next.js ist und wie es funktioniert.
 
-## Why should I use it?
+## Warum sollte ich es benutzen?
 
-We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.
+Wir lieben React. Es hat die Entwicklung von UIs zugänglich gemacht, auf eine Art und Weise, die wir uns vorher niemals hätten vorstellen können. Es kann Entwickler jedoch auch
+auf einige holprige Pfade führen. Next.js bietet einen leicht von Meinung geprägten, jedoch stark optimierten Ansatz, um Anwendungen mit React zu erstellen. Von Routing über API-Definitionen bis hin zum Rendern von Bildern vertrauen wir darauf, dass Next.js Entwickler zu guten Entscheidungen führt.
 
-Pairing Next.js with [Vercel](https://vercel.com/) makes developing and deploying web apps easier than ever before. Their extremely generous free-tier and super intuitive interface provides a point and click solution to deploy your site (We ❤️ Vercel)
+Next.js in Kombination mit [Vercel](https://vercel.com/) macht das Entwickeln und Bereitstellen von Webanwendungen einfacher als je zuvor. Deren extrem großzügiges Free-Tier und die extrem intuitive Benutzeroberfläche ermöglicht es dir, deine Seite innerhalb weniger Klicks zu veröffentlichen. (Wir ❤️ Vercel)
 
 ## Get Static/Server Props
 
-A key feature of Next.js is its data fetching capabilities. We highly recommend reading through the [official documentation](https://nextjs.org/docs/basic-features/data-fetching) to understand how to use each method and how they differ. `getServerSideProps` is generally discouraged unless there is a good reason for it, due to the fact that it is a blocking call and will slow down your site. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) is a great alternative to `getServerSideProps` when the data is dynamic and can be fetched incrementally.
+Ein Hauptmerkmal von Next.js sind die Fähigkeiten zur Datenabfrage. Wir empfehlen dringend, die [offizielle Dokumentation](https://nextjs.org/docs/basic-features/data-fetching) zu lesen, um zu verstehen, wie die Funktionen funktionieren und wie sie sich unterscheiden. `getServerSideProps` wird in der Regel nur dann empfohlen, wenn es einen guten Grund dafür gibt, da es sich um einen blockierenden Aufruf handelt und die Seite verlangsamt. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) ist eine gute Alternative zu `getServerSideProps`, wenn die Daten dynamisch sind und inkrementell abgerufen werden können.
 
-## Useful Resources
+## Nützliche Ressourcen
 
 | Resource                       | Link                               |
 | ------------------------------ | ---------------------------------- |
