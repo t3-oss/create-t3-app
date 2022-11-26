@@ -90,7 +90,7 @@ Adicionar classes condicionalmente usando ternários pode ficar muito confuso e 
 | Documentação Tailwind         | https://tailwindcss.com/docs/editor-setup/               |
 | Tailwind Cheat Sheet          | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss           | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Comunidade do Tailwind         | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Comunidade do Tailwind        | https://github.com/tailwindlabs/tailwindcss/discussions/ |
 | Servidor Discord do Tailwind  | https://tailwindcss.com/discord/                         |
 | Canal do Youtube TailwindLabs | https://www.youtube.com/tailwindlabs/                    |
 | Playground do Tailwind        | https://play.tailwindcss.com/                            |
