@@ -37,6 +37,6 @@ Nós seremos francos - este é um _projeto opinado_. Nós compartilhamos um punh
 
 Nós amamos tecnologia de ponta. A quantidade de velocidade e honestamente, diversão que vem com essas coisas novas é realmente muito legal. Nós pensamos que é importante agir com responsabilidade, usando tecnologias mais arriscadas nas partes menos arriscadas. Isso significa que não iríamos ⛔️ apostar em uma nova tecnologia de banco de dados arriscada (SQL é bom!). Porém felizmente ✅ apostar no tRPC uma vez que são só funções triviais de se mover.
 
-## Segurança de tipo Não é Opcional
+## Tipos seguros e bem definidos não são opcionais
 
 O objetivo declarado do `create-t3-app` é providenciar a maneira mais rápida de se começar uma aplicação web full-stack e **typesafe**. Nós levamos segurança de tipo muito a sério nessas partes, já que melhora nossa produtividade e nos ajuda a entregar menos bugs. Qualquer decisão que comprometa a natureza de segurança de tipo do `create-t3-app` é uma decisão que deve ser feita em um projeto diferente.
