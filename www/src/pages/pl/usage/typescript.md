@@ -8,7 +8,9 @@ lang: pl
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>Buduj siatki bezpieczeństwa, nie barierki<span aria-hidden="true">&quot;</span>
+      <br />
+      <span aria-hidden="true">&quot;</span>Oryginał: Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -18,7 +20,7 @@ lang: pl
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Theo - creator of the T3 Stack</span>
+      <span className=" text-sm font-semibold">Theo - twórca T3 Stacka</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"
@@ -31,37 +33,37 @@ lang: pl
   </cite>
 </blockquote>
 
-Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
+Bez względu na to, czy jesteś nowym deweloperem, czy doświadczonym programistą, uważamy, iż TypeScript jest w tych czasach obowiązkiem. Początkowo może wyglądać strasznie, ale tak jak z większością narzędzi, z czasem nie będziesz chciał już z niego z rezygnować.
 
-It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line.
+Zaopatruje Cię on w feedback na żywo definiując oczekiwane typy danych. Dostarcza także pomocnego autouzupełniania w edytorze lub krzyczy na ciebie czerwonymi podkreśleniami, jeżeli próbujesz uzyskać dostęp do właściwości, która nie istnieje, lub jesli próbujesz przesłać wartość złego typu - co skutkowałoby dłuższym debugowaniem w razie błędu.
 
-It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
+Jest to prawdopodobnie narzędzie, które pozwala na największy wzrost produktywności dewelopera; dostarczanie dokumentacji kodu który piszesz, czy też z którego bezpośrednio korzystasz, a także posiadanie nagłego feedbacku w razie nieuniknionych błędów jest bezcenne.
 
 ## Type Inference
 
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
+Podczas gdy wielu nowych deweloperów korzystających z TypeScripta martwi się o mus jego _pisania_, wiele benefitów wynikających z korzystania z tego języka, nie wymaga od ciebie praktycznie żadnej zmiany w kodzie - jednym z tych benefitów jest tzw. "inference". Oznacza to, iż jeśli coś posiada własny typ, typ ten przechodzić będzie przez całe flow aplikacji bez potrzeby jego ponownego definiowania w innych jej miejscach. Jeżeli na przykład zdefiniujesz w jednym miejscu typy argumentów przyjmowanych przez daną funkcję, reszta funkcji będzie typesafe bez potrzeby pisania kodu specyficznego dla TypeScripta. Deweloperzy tworzący biblioteki wkładają dużo wysiłku w utrzymywanie typów dla swoich projektów, co skutkuje tym, iż twórcy aplikacji mogą benefitować zarówno z type inference, jak i z wbudowanej dokumentacji w edytorze kodu, którą typy te dostarczają.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
+Sprawdź film od Theo - [korzystasz z TypeScripta źle...](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Powerful uses of type inference
+## Wykorzystanie mocnych stron type inference w projektach
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
+[Zod](https://github.com/colinhacks/zod) to biblioteka walidacji bazująca na schematach, zbudowania z pomocą TypeScripta. Napisz schemat reprezentujący pojedyncze źródło prawdy, a Zod zapewni poprawność danych w całej aplikacji - nawet wśród zapytań do zewnętrznych API.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
+[Tanstack Query](https://tanstack.com/query/v4/) dostarcza deklaratywne, zawsze aktualne automatycznie zarządzane zapytania i mutacje, które bezpośrednio wspomagają zarówno Ciebie jako dewelopera i UX.
 
-## Useful Resources
+## Przydatne Zasoby
 
-| Resource                                                  | Link                                                              |
+| Zasób                                                     | Link                                                              |
 | --------------------------------------------------------- | ----------------------------------------------------------------- |
 | TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
-| Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
+| Poradnik TypeScripta dla Początkujących                   | https://github.com/total-typescript/beginners-typescript-tutorial |
 | Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
-| Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
+| Kanał YouTube - Rodney Mullen of TypeScript (Matt Pocock) | https://www.youtube.com/c/MattPocockUk/videos                     |
