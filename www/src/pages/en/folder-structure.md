@@ -213,7 +213,7 @@ The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](http
 
 ### `postcss.config.cjs`
 
-The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
 
 <sub>(with Tailwind CSS)</sub>
 
