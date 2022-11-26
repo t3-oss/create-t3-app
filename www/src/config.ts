@@ -128,7 +128,7 @@ export const SIDEBAR_HEADER_MAP: Record<
 > = {
   pl: {
     "Create T3 App": "Crete T3 App",
-    Usage: "Korzystanie z narzędzia",
+    Usage: "Korzystanie Z Narzędzia",
     Deployment: "Deployment",
   },
   // Translate the sidebar's "outer headers" here

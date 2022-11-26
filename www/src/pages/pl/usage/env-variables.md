@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional files in the `env`-directory:
+Create-T3-App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe pliki w folderze `env`:
 
 📁 src/env
 
@@ -15,13 +15,13 @@ Create-T3-App uses [Zod](https://github.com/colinhacks/zod) for validating your 
 
 ┣ 📄 server.mjs
 
-The content of these files may seem scary at first glance, but don't worry, it's not as complicated as it looks. Let's take a look at them one by one, and walk through the process of adding additional environment variables.
+Ich zawartość może na początku wyglądać strasznie, ale nie martw się. Nie jest to tak skomplikowane, jak może Ci się wydawać. Przyjrzyjmy się każdemu z nich po kolei i przejdźmy przez proces dodawania nowej zmiennej środowiskowej.
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as defining the validator in `env/schema.mjs`._
+_TLDR; Jeżeli chcesz dodać nową zmienną środowiskową, musisz dodać ją zarówno do pliku `.env` jak i zdefiniować walidator w pliku `env/schema.mjs`._
 
 ## schema.mjs
 
-This is the file you will actually touch. It contains two schemas, one for server-side environment variables and one for client-side as well as a `clientEnv` object.
+Jest to plik, który faktycznie będziesz edytować. Zawiera dwa schematy, jeden dla zmiennych środ. po stronie serwera, a drugi dla tych po stronie klienta (obiekt `clientEnv`).
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -37,28 +37,28 @@ export const clientEnv = {
 };
 ```
 
-### Server Schema
+### Schemat Dla Serwera
 
-Define your server-side environment variables schema here.
+Zdefiniuj tutaj zmienne środ. dla serwera.
 
-Make sure you do not prefix keys in here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
+Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
-### Client Schema
+### Schemat Dla Klienta
 
-Define your client-side environment variables schema here.
+Zdefiniuj tutaj zmienne środ. dla klienta.
 
-To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
+Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
-### clientEnv Object
+### Obiekt `clientEnv`
 
-Destruct the `process.env` here.
+"Rozbij" tutaj obiekt `process.env`.
 
-We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
+Potrzebujemy obiektu JavaScripta, który będzie możliwy do parse'owania przez nasze schematy Zod. Z powodu sposobu, w jaki Next.js wchodzi w interakcje ze zmiennymi środ., nie można skorzystać z `process.env`, jak z normalnego obiektu.
 
-TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
+TypeScript pomoże ci upewnić się, że wprowadziłeś klucze zmiennych do zarówno obiektu `clientEnv`, jak i `clientSchema`.
 
 ```ts
-// ❌ This doesn't work, we need to destruct it manually
+// ❌ To nie zadziała, musimy ręcznie "rozbić" `process.env`
 const schema = z.object({
   NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -68,46 +68,46 @@ const validated = schema.parse(process.env);
 
 ## server.mjs & client.mjs
 
-This is where the validation happens and exports the validated objects. You shouldn't need to modify these files.
+To tutaj zachodzi walidacja i eksport poprawnych obiektów. Nie powinna zajść potrzeba ich edycji.
 
-## Using Environment Variables
+## Korzystanie Ze Zmiennych Środowiskowych
 
-When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
+Jeżeli chcesz skorzystać ze swoich zmiennych środ., możesz zaimportować je z pliku `env/client.mjs` lub `env/server.mjs`, w zależności od tego, gdzie zmiennych tych chcesz używać:
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
 
-// `env` is fully typesafe and provides autocompletion
+// `env` jest w pełni typesafe i pozwala na autouzupełnianie
 const dbUrl = env.DATABASE_URL;
 ```
 
 ## .env.example
 
-Since the default `.env` file is not committed to version control, we have also included a `.env.example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
+Ponieważ plik `.env` nie jest wrzucany na system kontroli wersji, dołączamy także plik `.env.example`, w którym - jesli chcesz - możesz zawrzeć kopię pliku `.env` z usuniętymi secretami. Nie jest to wymagane, jednak polecamy trzymać aktualną kopię przykładowego pliku, aby ułatwić potencjalnym kontrybutorom rozpoczęcie pracy w ich środowisku.
 
-## Adding Environment Variables
+## Dodawanie Zmiennych Środowiskowych
 
-To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
+Aby upewnić się, że twój projekt nie zbuduje się bez wymaganych zmiennych środ., będziesz musiał dodać nową zmienną w **dwóch** miejscach:
 
-📄 `.env`: Enter your environement variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+📄 `.env`: Wprowadź swoją zmienną środ. tak, jak to zwykle robisz (np. `KLUCZ=WARTOŚĆ`)
 
-📄 `schema.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`
+📄 `schema.mjs`: Dodaj odpowiadającą jej logikę walidacji definiując schemat Zod, np. `KLUCZ: z.string()`
 
-Optionally, you can also keep `.env.example` updated:
+Opcjonalnie możesz zaktualizować plik `.env.example`:
 
-📄 `.env.example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
+📄 `.env.example`: Wprowadź swoją zmienną środ., upewnij się jednak że nie nie posiada ona wartości, która jest sekretna, np. `KLUCZ=WARTOŚĆ` lub `KLUCZ=`
 
-### Example
+### Przykład
 
-_I want to add my Twitter API Token as a server-side environment variable_
+_Chcę dodać mój token do API Twittera jako zmienną środowiskową po stronie serwera_
 
-1. Add the environment variable to `.env`:
+1. Dodaj zmienną środ. do pliku `.env`:
 
 ```
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Add the environment variable to `schema.mjs`:
+2. Dodaj zmienną środ. do pliku `schema.mjs`:
 
 ```ts
 export const serverSchema = z.object({
@@ -116,9 +116,9 @@ export const serverSchema = z.object({
 });
 ```
 
-_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+_**UWAGA:** Pusty string to dalej string, więc `z.string()` zaakceptuje każdy pusty tekst jako poprawną wartość. Jeżeli chcesz, by wartość była wymagana (i nie pusta!), możesz użyć `z.string().min(1)`._
 
-3. optional: Add the environment variable to `.env.example`, but don't include the token
+1. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
 
 ```
 TWITTER_API_TOKEN=
