@@ -1,15 +1,15 @@
 ---
-title: T3 Collection
-description: Cool open source projects and companies using the T3 stack
+title: T3 Sammlung
+description: Coole Open Source Projekte und Unternehmen, die den T3-Stack verwenden
 layout: ../../layouts/docs.astro
-lang: en
+lang: de
 ---
 
-Made a project using the T3 stack and want to share it? Add it to the list!
+Du hast ein Projekt mit dem T3 Stack erstellt und möchtest es teilen? Füg es der Liste hinzu!
 
-## Open Source apps made using the T3 Stack
+## Open Source Projekte die mit dem T3 Stack erstellt wurden
 
-| Description                                                       | Repo                                                                        | Link                                                                              |
+| Beschreibung                                                      | Repo                                                                        | Link                                                                              |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -25,9 +25,9 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 | Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 
-## Companies using the T3 Stack
+## Unternehmen die den T3 Stack verwenden
 
-We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
+Wir würden gerne wissen, welche Unternehmen den T3 Stack für ihre Apps verwenden. Nutzt ihr den T3 Stack und möchtet es teilen? Fügt es der Liste hinzu!
 
 | Company | Link                               |
 | ------- | ---------------------------------- |
@@ -35,4 +35,4 @@ We'd love to know of companies that use the T3 stack for their apps. Is your com
 | Nexiona | [nexiona.com](https://nexiona.com) |
 | Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+_Du hast ein cooles Projekt mit dem T3 Stack erstellt? Erstelle einen [Pull Request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/de/t3-collection.md) und füge es hier hinzu!_
