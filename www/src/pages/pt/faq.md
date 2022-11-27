@@ -25,7 +25,7 @@ Por mais que os recursos listados abaixo são alguns dos melhores que existem pa
 
 Se você está cogitando usar o `create-t3-app`, há altas chances que você já esteja usando algumas partes da stack. Então por que não se jogar de cabeça e aprender outras partes enquanto constrói algo?
 
-Agora, nós percebemos que essa parte não funciona para todos. Então, se você sente que testou as recomendações e ainda assim gostaria de alguns recursos, or só não está confiante em fazer por conta própria e/ou se sente sobrecarregado com a stack, confira esses incríveis tutoriais (infelizmente, só em inglês até o momento) sobre o `create-t3-app`:
+Agora, nós percebemos que essa parte não funciona para todos. Então, se você sente que testou as recomendações e ainda assim gostaria de alguns recursos extras, ou só não está confiante em fazer por conta própria e/ou se sente sobrecarregado com a stack, confira esses incríveis tutoriais (infelizmente, só em inglês até o momento) sobre o `create-t3-app`:
 
 ### Artigos
 
