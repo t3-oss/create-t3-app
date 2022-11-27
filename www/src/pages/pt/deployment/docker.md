@@ -14,7 +14,7 @@ Por favor, note que o Next.js requer um processo diferente para tempo de build (
 - `DATABASE_URL` (usado pelo servidor)
 - `NEXT_PUBLIC_CLIENTVAR` (usado pelo cliente)
 
-### 1. Próxima configuração
+### 1. Configuração do Next
 
 Em seu [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), adicione a ` configuração de opção de saída autônoma para [reduzir o tamanho da imagem aproveitando automaticamente os rastreamentos de saída](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
