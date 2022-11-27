@@ -6,9 +6,9 @@ lang: ar
 dir: rtl
 ---
 
-المٌخطط التالي هو مثال لمشروع T3 مع كل الخيارات
+المٌخطط التالي هو مثال لمشروع T3 مع كل الخيارات الممكنة
 
-علاوة على ذلك ، يشير وصف كل مجلد إلى الغرض منه وما إذا كان متضمنًا فقط مع المكتبات المحددة.
+علاوة على ذلك ، يشير وصف كل مجلد وملف الى الغرض منه وما إذا كان متضمنًا علي شئ مع المكتبات المذكورة.
 
 ```
 .
@@ -62,13 +62,13 @@ dir: rtl
 
 ### مجلد `prisma`
 
-مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال الي قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma)
+مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma)
 
 <sub>(في حالة Prisma)</sub>
 
 ### ملف `public`
 
-مجلد Public يحتوي على الـ assets التي يقوم الخادم بتقديمها، ملف `favicon.ico` هو مثال على ذلك.
+مُجلد Public يحتوي على الـ assets التي يقوم الخادم بتقديمها، ملف `favicon.ico` هو مثال على ذلك.
 
 ### ملف `src/env`
 
@@ -77,7 +77,7 @@ dir: rtl
 ### ملف `src/pages`
 
 مجلد pages يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، ملف `index.tsx`هو الـ root او بمعني أخر (الصفحة الرئيسية)
-ملف `__app.tsx` بعمل كـ Global لتضع فية الـ Scripts التي ستحتاجها في كل أجزاء التطبيق [Next.js documentation](https://nextjs.org/docs/basic-features/pages)
+ملف `__app.tsx` يعمل كـ Global لتضع فية الـ Scripts التي ستحتاجها في كل أجزاء التطبيق [Next.js documentation](https://nextjs.org/docs/basic-features/pages)
 
 #### ملف `src/pages/api`
 
@@ -93,8 +93,9 @@ dir: rtl
 <sub>(في حالة NextAuth.js)</sub>
 
 #### ملف `src/pages/api/trpc/[trpc].ts`
-
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+ملف  `[trpc].ts` يُعتبر المدخلي الـ tRPC، ,وتُستخدم لتنفيذ  طلبات tRPC.
+إقرأ  [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و
+[tRPC usage](usage/trpc#-pagesapitrpctrpcts)
 
 <sub>(في حالة tRPC)</sub>
 
@@ -112,25 +113,25 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 #### ملف `src/server/common/get-server-auth-session.ts`
 
-ملف `get-server-auth-session.ts` يتم استخدامها لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
+ملف `get-server-auth-session.ts` يتم استخدامه لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
 
 <sub>(في حالة NextAuth.js + tRPC)</sub>
 
 #### ملف `src/server/db/client.ts`
 
-ملف `client.ts` يستخدم لإنشاء مثيل لـ Prisma Client علي مستوي التطبيق كلة، إقرأ المزيد [Prisma usage](usage/prisma#prisma-client)
+ملف `client.ts` يستخدم لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، إقرأ المزيد [Prisma usage](usage/prisma#prisma-client)
 
 <sub>(في حالة Prisma)</sub>
 
 ### ملف `src/server/trpc`
 
-مجلد tRPC يحتوي على كود tRPC سيرفر
+مجلد tRPC يحتوي على كود tRPC للسيرفر
 
 <sub>(في حالة tRPC)</sub>
 
 #### ملف `src/server/trpc/context.ts`
 
-ملف `context.ts` يُستخدم لإنشاء context في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts)\*\*\*\*
+ملف `context.ts` يُستخدم لإنشاء context في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts)
 
 <sub>(في حالة tRPC)</sub>
 
@@ -207,7 +208,7 @@ The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC reque
 
 ### ملف `next-env.d.ts`
 
-وظيفة `next-env.d.ts` هي التأكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تعدل عليها ولا تحذفها**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
+وظيفة `next-env.d.ts` هي التأكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تُعدل عليها ولا تحذفها**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
 
 ### ملف `next.config.mjs`
 
