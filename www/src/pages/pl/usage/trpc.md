@@ -5,12 +5,14 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
+tRPC pozwala nam pisanie API będących w pełni typesafe bez żadnego generowania kodu czy też zaśmiecania runtime'u. Korzysta on ze świetnego type inference od Typecripta aby przekazywać definicje routerów oraz pozwala Ci na korzystanie z procedur API na frontendzie z pełnym tyepsafety i autouzupełnianiem. Jeśli korzystasz z tRPC, twój front- i backend będą sprawiały wrażenie bycia bardziej połączonymi niż kiedykolwiek, pozwalając na niespotykany DX (developer experience).
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>Zbudowałem tRPC aby umożliwić każdemu szybsze robienie postępów, usuwając przy tym potrzebę korzystania z tradycyjnej wartswy API oraz zachowując pewność, iż nasze aplikacje nie zepsują się nadążając za własnym rozwojem.<span aria-hidden="true">&quot;</span>
+      <br />
+      <span className="text-xs opacity-70"><span aria-hidden="true">&quot;</span>Oryginał: I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span></span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -20,7 +22,7 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Alex - creator of tRPC</span>
+      <span className=" text-sm font-semibold">Alex - twórca tRPC</span>
       <a
         href="https://twitter.com/alexdotjs"
         target="_blank"
@@ -33,13 +35,13 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   </cite>
 </blockquote>
 
-## Files
+## Pliki
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
+tRPC wymaga dużo boilerplate'u, który `create-t3-app` przygotowuje za Ciebie. Przejdźmy więc po kolei po plikach, które są generowane:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-This is the entrypoint for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty aplikacji twój router od tRPC. Prawdopodobnie nie będziesz musiał edytować tego pliku, ale jeżeli zajdzie taka potrzeba (np. do włączenia CORSa), warto wiedzieć o tym, iż eksportowany `createNextApiHandler` to [Next.js API handler](https://nextjs.org/docs/api-routes/introduction), który pobiera obiekt [zapytania](https://developer.mozilla.org/en-US/docs/Web/API/Request) i [odpowiedzi](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) serwera. Oznacza to, iż możesz zawrzeć `createNextApiHandler` w middleware'rze, w jakim tylko chcesz. Poniżej znajdziesz [przykładowy kod](#aktywacja-cors), dzięki któremu dodasz CORS.
 
 ### 📄 `server/trpc/context.ts`
 
@@ -230,7 +232,7 @@ Compare this to the tRPC example above and you can see some of the advantages of
 
 Here are some snippets that might come in handy.
 
-### Enabling CORS
+### Aktywacja CORS
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
@@ -315,10 +317,10 @@ test("example router", async () => {
 });
 ```
 
-## Useful Resources
+## Przydatne Zasoby
 
-| Resource               | Link                                                    |
-| ---------------------- | ------------------------------------------------------- |
-| tRPC Docs              | https://www.trpc.io                                     |
-| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Zasób                    | Link                                                    |
+| ------------------------ | ------------------------------------------------------- |
+| Dokumentacja tRPC        | https://www.trpc.io                                     |
+| Parę przykładów z tRPC   | https://github.com/trpc/trpc/tree/next/examples         |
+| Dokumentacja React Query | https://tanstack.com/query/v4/docs/adapters/react-query |
