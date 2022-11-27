@@ -47,6 +47,14 @@
     {
       "source": "/awesome",
       "destination": "/en/t3-collection"
+    },
+    {
+      "source": "/en/usage",
+      "destination": "/en/usage/first-steps"
+    },
+    {
+      "source": "/en/deployment",
+      "destination": "/en/deployment/vercel"
     }
   ]
 }

@@ -36,7 +36,7 @@ export default function BreadCrumbs() {
             href={crumb.href}
             className="rounded-lg bg-t3-purple-500/10 p-1 dark:bg-t3-purple-500/20"
           >
-            {crumb.text}
+            {crumb.text[0]?.toUpperCase() + crumb.text.slice(1)}
           </a>
           {index < breadcrumbs.length - 1 && (
             <svg width="16" height="16" viewBox="0 0 24 24">
