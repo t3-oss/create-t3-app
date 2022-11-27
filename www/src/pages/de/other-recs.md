@@ -1,76 +1,78 @@
 ---
-title: Other Recommendations
-description: Libraries and Services that we recommend for many projects
+title: Weitere Empfehlungen
+description: Bibliotheken und Dienste, die wir für viele Projekte empfehlen
 layout: ../../layouts/docs.astro
-lang: en
+lang: de
 ---
 
-We recognize that the libraries included in `create-t3-app` don't solve every problem. While we encourage you to begin your project with the things that we provide, there will come a time when you need to bring in other packages. Only you can know what your project needs, but here are some things that we find ourselves recommending frequently.
+Wir sind uns bewusst darüber, dass die Bibliotheken, die in `create-t3-app` enthalten sind, nicht jedes Problem lösen.
+Während wir dich dazu ermutigen möchten dein Projekt mit den Dingen zu beginnen, die wir zur Verfügung stellen, wird es sicherlich ein Zeitpunkt kommen, an dem du andere Pakete einbinden musst. Nur du kannst wissen, was dein Projekt braucht, aber hier sind einige Dinge, die wir uns häufig empfehlen.
 
-These are recommendations by individual create-t3-app contributors and should not be seen as "official" endorsements by the create-t3-app team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
+Diese Empfehlungen stammen von einzelnen create-t3-app Mitwirkenden und sollte nicht als "offizielle" Bekanntmachung
+durch das create-t3-app Team oder T3-OSS gesehen werden. _**Bitte führe deine eigene Recherche durch, insbesondere bevor du dich für kostenpflichtige Dienste entscheidest**_.
 
 ## State Management
 
-_**Editor's Note**_: State management libraries can be great, but often aren't necessary. tRPC's React Query hooks should be able to take care of your server state. For client state, start with React's `useState`, and reach for one of these options when you need more.
+_**Hinweis**_: State Management Bibliotheken können großartig sein sind aber oft nicht notwendig. Die tRPC's React Query Hooks sollten in der Lage sein deinen Server State zu verwalten. Für Client State solltest du mit `useState` von React beginnen und auf einer dieser Optionen zurückgreifen, wenn du mehr brauchst.
 
 ### Zustand
 
-**For never using Redux again**
+**Um nie wieder Redux zu verwenden zu müssen**
 
-The "modern, simple Redux" you didn't know you needed. [Poimandres](https://github.com/pmndrs) can always be trusted. You can build everything from video call apps to games to servers with this little library.
+Das "moderne, einfache Redux" von dem du nicht wusstest, dass du es brauchst. [Poimandres](https://github.com/pmndrs) kann immer vertraut werden. Mit dieser kleinen Bibliothek kannst du alles von Videokonferenz-Apps bis hin zu Spielen und Servern erstellen.
 
 - [Zustand Homepage](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
 
 ### Jotai
 
-**For never using Context again**
+**Um nie wieder Context zu verwenden zu müssen**
 
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. A great option for stateful behaviors that don't need a state machine just yet.
+Jotai ist schwer zu schlagen, wenn ein atomarer Ansatz bevorzugt wird. Ebenfalls von [Poimandres](https://github.com/pmndrs). Jotai ermöglicht es dir, Singletons zu definieren, die sich wie globale useState anfühlen. Eine großartige Option für States, die noch nicht eine State Machine benötigen.
 
 - [Jotai Homepage](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
-## Component Libraries
+## Komponentenbibliotheken
 
-Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. These libraries provide great, accessible components that you can use and customize to your liking.
+Die meisten Apps benötigen die gleichen ähnlichen Komponenten - Toggle Buttons, Dropdown Menüs, Modals usw. Diese Bibliotheken bieten großartige, barrierefreie Komponenten, die du verwenden und an deine Bedürfnisse anpassen kannst.
 
-### Unstyled Component Libraries
+### Ungestaltete Komponentenbibliotheken
 
-Also known as headless libraries, they provide great unstyled, and accessible components that you can customize to your liking. Here are a few recommendations.
+Solche Bibliotheken sind auch bekannt als Headless Libraries. Sie bieten großartige, ungestylte und barrierefreie Komponenten, die du nach deinem Geschmack anpassen kannst. Hier sind ein paar Empfehlungen.
 
-- [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
+- [Radix UI](https://www.radix-ui.com/) bietet dir ein mächtiges Set an praktischen und barrierefreien primitiven Komponenten, die du mit Vanilla CSS oder Tailwind CSS stylen kannst.
 
-- [Headless UI](https://headlessui.com/) made by the Tailwind CSS team also provides unstyled, accessible components that integrate seamlessly with Tailwind CSS.
+- [Headless UI](https://headlessui.com/) wurde von dem Tailwind CSS Team erstellt und bietet ebenfalls ungestylte, barrierefreie Komponenten, die problemlos mit Tailwind CSS werden können.
 
-- [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
+- [React Aria](https://react-spectrum.adobe.com/react-aria/) eine große Sammlung an React Hooks um barrierefrei Komponente erstellen zu können. Deren Date Picker ist top.
 
-### Styled Component Libraries
+### Gestaltete Komponentenbibliotheken
 
-**For when you just want your app to look OK**
+**Wenn du einfach nur eine App haben willst, die OK aussieht**
 
-Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
+Manchmal möchtest du ein Projekt erstellen, bei dem die UI direkt in Ordnung aussieht. Das könnte zum Beispiel der Fall bei Admin Dashboards oder ähnlichen Projekten sein. Für solche Projekte sind alle diese Komponentenbibliotheken eine gute Wahl.
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
 ### Class Variance Authority
 
-**For building UI Libraries**
+**Um UI Bibliotheken zu erstellen**
 
-Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
+Ermöglicht es dir deklarativ eine UI Bibliothek mit verschiedenen Farben, Größen usw. Varianten zu erstellen. Wenn dein Projekt eine Größe erreicht hat, bei der du ein standardisiertes Set an UI Komponenten mit mehreren Varianten mit Tailwind CSS haben möchtest, ist CVA ein großartiges Tool.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
-## Animations
+## Animationen
 
-For when you need animations in your app, here are our recommendations.
+Hier sind unsere Empfehlungen, wenn du du Animationen in deiner App benötigst.
 
 ### AutoAnimate
 
-**For animations with a single line of code**
+**Für Animationen mit nur einer Zeile Code**
 
-Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
+Die meisten Animation Bibliotheken versuchen alle möglichen Anwendungsfälle zu erfüllen und werden dadurch unhandlich. AutoAnimate ist ein Tool ohne Konfiguration, das dir eine signifikanten UX-Verbesserung ohne zusätzlichen Entwickleraufwand bringt.
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
@@ -78,76 +80,76 @@ Most animation libraries try to satisfy every possible use case, and become clun
 
 ### Framer Motion
 
-**For complex animations with declarative code**
+**Für komplexe Animationen mit deklarativem Code**
 
-Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
+Framer Motion bietet eine einfache, deklarative Syntax und ermöglicht es dir mit wenig Zeilen an Code komplexe Animationen bis hin zu Gesten zu erstellen.
 
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
 
-## Deployments, Infrastructure, Databases and CI
+## Deployments, Infrastruktur, Datenbanken und CI
 
 ### Vercel
 
-**For hosting your app**
+**Um deine App zu hosten**
 
-Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
+Vercel hat das Hosting von Web Apps zu einem Kinderspiel gemacht. Wir haben unsere App auf Hunderttausende von Nutzern hochskaliert und es gab nie Probleme. Getrieben durch AWS und mit einer viel besseren Benutzeroberfläche.
 
 - [Vercel Homepage](https://vercel.com/)
 - [Create T3 App Vercel deployment guide](/en/deployment/vercel)
 
 ### PlanetScale
 
-**For databases without the worry**
+**Für Datenbanken ohne sich Sorgen machen zu müssen**
 
-PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, and fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
+PlanetScale ist die beste "serverless Datenbank Plattform" die wir bisher verwendet haben. Wahnsinnige Skalierbarkeit, großartige Entwicklerzufriedenheit und fantastische Preise. Wenn du SQL verwendest (und hoffentlich Prisma) ist es schwer dies zu schlagen.
 
 - [PlanetScale Homepage](https://planetscale.com/)
 
 ### Railway
 
-**For hosting your infra**
+**Um deine Infrastruktur zu hosten**
 
-"Modern Heroku". The easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
+"Das moderne Heroku". Die einfachste Möglichkeit einen echten Server hochzufahren. Wenn Vercel und PlanetScale nicht ausreichen, ist Railway wahrscheinlich die beste Wahl. Einfaach auf ein GitHub Repo zeigen lassen und loslegen.
 
 - [Railway Homepage](https://railway.app/)
 
 ### Upstash
 
-**For serverless Redis**
+**Für serverless Redis**
 
-We love Prisma and PlanetScale, but some projects require a more performant solution. Upstash allows you to get the in-memory performance of Redis in your serverless project, without having to manage the infrastructure and scaling yourself.
+Wir lieber Prisma und PlanetScale aber manche Projekt benötigte manchmal eine performantere Lösung. Upstash ermöglicht es die in-memory Performance von Redis in deinem serverless Projekt zu nutzen, ohne sich um die Infrastruktur und Skalierung kümmern zu müssen.
 
 - [Upstash Homepage](https://upstash.com/)
 
 ### Pusher
 
-**For serverless WebSockets**
+**Für serverless WebSockets**
 
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
+Wenn WebSockets der Hauptfokus deines Projekts sind, solltest du vielleicht eine traditionellere Backend Lösung wie [Fastify](https://www.fastify.io/) (welche [auch mit tRPC funktioniert!](https://trpc.io/docs/v10/fastify)) in Betracht ziehen. Für das schnelle Hinzufügen von WebSockets zu einer T3 App ist Pusher eine ausgezeichnete Wahl.
 
 - [Pusher Homepage](https://pusher.com/)
 
 ### Soketi
 
-Soketi is a self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
+Soketi ist eine selbsthostbare, einfache und schnelle Alternative zu Pusher. Es ist vollständig kompatibel mit der Pusher SDK, welches du verwenden kannst um dich mit dem Server zu verbinden. Soketi serverless befindet sich aktuell noch in der Beta.
 
 - [Soketi Homepage](https://soketi.app)
 - [Soketi GitHub](https://github.com/soketi/soketi)
 
 ## Analytics
 
-User data is very valuable when you're building an app. Here are some analytics providers we recommend.
+Benutzerdaten sind sehr wertvoll, wenn du eine App entwickelst. Hier sind einige Analytics Provider die wir empfehlen.
 
 ### Plausible
 
-Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
+Du benötigst Analytics? Plausible ist einer der schnellsten Wege. Super minimal und es gibt sogar ein [einfaches Plugin für Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
 - [Plausible Homepage](https://plausible.io/)
 
 ### Umami
 
-Umami is a self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database.
+Umami ist eine selbsthostbare, einfache, schnelle und datenschutzfreundliche Alternative zu Google Analytics. Du kannst es sehr einfach auf Vercel, Railway, etc. mit PlanetScale als Datenbank hosten.
 
 - [Umami Homepage](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
@@ -156,6 +158,6 @@ Umami is a self-hostable, simple, fast, privacy-focused alternative to Google An
 
 ### Next Bundle Analyzer
 
-It can sometimes be difficult to determine what will be included in the build output for your app. Next Bundle Analyzer is an easy way to visualize and analyze the JavaScript bundles that are generated.
+Manchmal ist es schwierig herauszufinden welcher Code in dem Build Output deiner App enthalten ist. Next Bundle Analyzer ist eine einfache Möglichkeit die JavaScript Bundles zu visualisieren und zu analysieren.
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
