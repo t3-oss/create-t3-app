@@ -152,7 +152,7 @@ Você também pode usar o Docker Compose para criar a imagem e executar o contê
 
 <details>
     <summary>
-      Siga as etapas 1 a 4 acima, clique aqui e inclua o conteúdo em <code>docker-compose.yml</code>:
+      Siga as etapas 1 a 4 acima, clique aqui e inclua o conteúdo no arquivo <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
