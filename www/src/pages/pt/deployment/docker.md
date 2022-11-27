@@ -49,7 +49,7 @@ README.md
 
 </details>
 
-### 3. Crie o Dockerfile
+### 3. Criação do arquivo Dockerfile
 
 > Como não estamos puxando as variáveis de ambiente do servidor para nosso contêiner, a [validação do esquema do ambiente](/en/usage/env-variables) falhará. Para evitar isso, temos que adicionar a flag `SKIP_ENV_VALIDATION=1` ao comando de compilação para que os schemas env não sejam validados no momento da compilação.
 
@@ -78,7 +78,7 @@ RUN \
  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
  elif [ -f package-lock.json ]; then npm ci; \
  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
- else echo "Lockfile not found." && exit 1; \
+ else echo "Lockfile não encontrado." && exit 1; \
  fi
 
 ##### BUILDER
@@ -126,11 +126,11 @@ CMD ["node", "server.js"]
 
 ```
 
-> **_Notas_**
+> **_Observações_**
 >
 > - _A emulação de `--platform=linux/amd64` pode não ser necessária após a mudança para o Node 18._
 > - _Consulte [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) para entender por que `libc6-compat` pode ser necessário._
-> - _Next.js coleta [dados anônimos de telemetria sobre uso geral](https://nextjs.org/telemetry). Remova o comentário da primeira instância de `ENV NEXT_TELEMETRY_DISABLED 1` para desabilitar a telemetria durante a compilação. Remova o comentário da segunda instância para desabilitar a telemetria durante o tempo de execução._
+> - _Next.js coleta [dados anônimos de telemetria sobre uso geral](https://nextjs.org/telemetry). Remova o primeiro comentário de `ENV NEXT_TELEMETRY_DISABLED 1` para desabilitar a telemetria durante o build. Remova o segundo comentário para desabilitar a telemetria durante o tempo de execução._
 
 </div>
 </details>
@@ -187,7 +187,7 @@ Abra [localhost:3000](http://localhost:3000/) para ver sua aplicação rodando.
 
 ## Deploy na Railway
 
-Você pode usar uma PaaS como [Railway's](https://railway.app) e seus [deploys de Dockerfile](https://docs.railway.app/deploy/dockerfiles) automáticos para fazer deploy das suas aplicações. Se você tiver o [CLI da Railway instalada](https://docs.railway.app/develop/cli#install), poderá implantar sua aplicação com os seguintes comandos:
+Você pode usar [deploys automáticos de Dockerfile](https://docs.railway.app/deploy/dockerfiles) em uma PaaS como a [Railway](https://railway.app) para fazer deploy das suas aplicações. Se você tiver o [CLI da Railway instalado](https://docs.railway.app/develop/cli#install), poderá fazer deploy da sua aplicação com os seguintes comandos:
 
 ```bash
 railway login
@@ -197,7 +197,7 @@ railway up
 railway open
 ```
 
-Vá para "Variáveis" e inclua seu `DATABASE_URL`. Em seguida, vá para "Configurações" e selecione "Gerar domínio". Para ver um exemplo em execução no Railway, visite [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
+Vá para "Variables" e inclua seu `DATABASE_URL`. Em seguida, vá para "Settings" e selecione "Generate Domain". Para ver um exemplo em execução no Railway, visite [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
 ## Recursos Úteis
 
