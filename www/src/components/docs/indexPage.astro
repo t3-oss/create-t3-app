@@ -10,7 +10,7 @@ const { sidebarEntries, frontmatter, files } = Astro.props;
 ---
 
 <p>{frontmatter.description}</p>
-<ul class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+<ul class="grid w-full grid-cols-1 gap-4 p-0 md:grid-cols-2 lg:grid-cols-3">
   {
     sidebarEntries.map(({ text, link }) => {
       const frontmatter = files.find((file) => file.url === `/${link}`)
@@ -18,7 +18,7 @@ const { sidebarEntries, frontmatter, files } = Astro.props;
 
       return (
         <li
-          class="m-0 w-full rounded border p-4 dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50"
+          class="dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 m-0 w-full rounded border p-4"
           style={{ "list-style-type": "none" }}
         >
           <a href={`/${link}`}>{text}</a>
