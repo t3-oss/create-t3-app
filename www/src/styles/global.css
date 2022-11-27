@@ -113,6 +113,15 @@
     -webkit-line-clamp: 1;
   }
 
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  #content {
+    @apply scroll-mt-24;
+  }
+
   /* only at less than md */
   @media (max-width: 767.5px) {
     .mobile-sidebar-toggle {
