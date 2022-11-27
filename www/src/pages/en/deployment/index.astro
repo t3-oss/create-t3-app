@@ -1,0 +1,45 @@
+---
+import Layout from "../../../layouts/docs.astro";
+import { Frontmatter, SIDEBAR } from "../../../config";
+import { getLanguageFromURL } from "../../../languages";
+
+const frontmatter: Frontmatter = {
+  title: "Deployment",
+  layout: "docs",
+  description: "Learn how to deploy your T3 app to production.",
+};
+
+const lang = getLanguageFromURL(Astro.url.pathname);
+const sidebarEntries = SIDEBAR[lang]["Deployment"];
+
+const files = await Astro.glob("./*.{md,astro}");
+const urls = files.map((file) => file.url);
+console.log("urls", urls);
+---
+
+<Layout frontmatter={frontmatter} headings={[]}>
+  <p>{frontmatter.description}</p>
+  <ul class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      sidebarEntries?.map(({ text, link }) => {
+        console.log("link", link);
+        const frontmatter = files.find((file) => file.url === `/${link}`)
+          ?.frontmatter as Frontmatter;
+
+        return (
+          <li
+            class="dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 m-0 w-full rounded border p-4"
+            style={{ "list-style-type": "none" }} /* must be style (not tw) to override global? */
+          >
+            <a href={`/${link}`}>{text}</a>
+            {frontmatter?.description && (
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                {frontmatter.description}
+              </p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>
