@@ -42,7 +42,7 @@ Agora, nós percebemos que essa parte não funciona para todos. Então, se você
 
 ## Por que tem arquivos `.js` no projeto?
 
-Conforme o axioma [Axioma T3 #3](/pt/introduction#segurança-de-tipo-não-é-opcional) nós consideramos *typesafety* como um cidadão de primeira classe. Infelizmente, nem todos os frameworks e plugins suportam TypeScript, o que significa que alguns arquivos tiveram que ser arquivos `.js`.
+Conforme o axioma [Axioma T3 #3](/pt/introduction#segurança-de-tipo-não-é-opcional) nós consideramos _typesafety_ como um cidadão de primeira classe. Infelizmente, nem todos os frameworks e plugins suportam TypeScript, o que significa que alguns arquivos tiveram que ser arquivos `.js`.
 
 Nós buscamos enfatizar que esses arquivos são JavaScript por uma razão, explicitamente declarando cada tipo de arquivo (`cjs` ou `mjs`) dependendo do que é suportado pela biblioteca que o usa. Também, todos os arquivos `js` nesse projeto ainda assim são checados em relação à tipo, usando o comentário `@ts-check` no topo.
 
@@ -54,6 +54,6 @@ De qualquer forma, se você tiver dificuldades de implementá-lo e quiser ver um
 
 ## Por que nós estamos usando `/pages` e não `/app` do Next.js 13?
 
-Conforme o [Axioma T3 #2](/pt/introduction#agir-com-responsabilidade), nós amamos *bleeding edge* (tecnologias de ponta), porém valorizamos a estabilidade, nosso roteador inteiro é díficil de mover, [não é um bom lugar para utilizar features *bleeding edge*](https://youtu.be/mnwUbtieOuI?t=1662). Enquanto `/app` é [um vislumbre do futuro](https://youtu.be/rnsC-12PVlM?t=818), não está pronto para produçãp; a API está em beta e é esperado que possua *breaking changes* (mudanças que podem quebrar sua aplicação no futuro).
+Conforme o [Axioma T3 #2](/pt/introduction#agir-com-responsabilidade), nós amamos _bleeding edge_ (tecnologias de ponta), porém valorizamos a estabilidade, nosso roteador inteiro é díficil de mover, [não é um bom lugar para utilizar features _bleeding edge_](https://youtu.be/mnwUbtieOuI?t=1662). Enquanto `/app` é [um vislumbre do futuro](https://youtu.be/rnsC-12PVlM?t=818), não está pronto para produçãp; a API está em beta e é esperado que possua _breaking changes_ (mudanças que podem quebrar sua aplicação no futuro).
 
 Para obter uma lista de recursos suportados, planejados e trabalhados no diretório `/app`, visite a [Documentação beta do Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
