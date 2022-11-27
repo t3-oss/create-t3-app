@@ -19,7 +19,7 @@ Caso você não esteja familiarizado com as diferentes tecnologias usadas neste 
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
-## Quais são as formas de aprender disponíveis?
+## Onde aprender sobre a stack?
 
 Por mais que os recursos listados abaixo são alguns dos melhores que existem para a T3 Stack, a comunidade (e o [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) recomendam que você comece apenas usando a stack e aprendendo enquanto desenvolve e constrói com ela.
 
@@ -42,18 +42,18 @@ Agora, nós percebemos que essa parte não funciona para todos. Então, se você
 
 ## Por que tem arquivos `.js` no projeto?
 
-Conforme o axioma [Axioma T3 #3](/pt/introduction#segurança-de-tipo-não-é-opcional) nós consideramos a segurança de tipos como um cidadão de primeira classe. Infelizmente, nem todos os frameworks e plugins suportam TypeScript, o que significa que alguns arquivos tiveram que ser arquivos `.js`.
+Conforme o axioma [Axioma T3 #3](/pt/introduction#segurança-de-tipo-não-é-opcional) nós consideramos *typesafety* como um cidadão de primeira classe. Infelizmente, nem todos os frameworks e plugins suportam TypeScript, o que significa que alguns arquivos tiveram que ser arquivos `.js`.
 
-Nós buscamos enfatizar que esses arquivos são JavaScript por uma razão, explicitamente declarando cada tipo de arquivo (`cjs` ou `mjs`) dependendo do que é suportado pela biblioteca que o usa. Também, todos os arquivos `js` nesse projeto ainda assim são checados em relação a tipo, usando o comentário `@ts-check` ao topo.
+Nós buscamos enfatizar que esses arquivos são JavaScript por uma razão, explicitamente declarando cada tipo de arquivo (`cjs` ou `mjs`) dependendo do que é suportado pela biblioteca que o usa. Também, todos os arquivos `js` nesse projeto ainda assim são checados em relação à tipo, usando o comentário `@ts-check` no topo.
 
 ## Estou tendo dificuldades em adicionar o i18n ao meu projeto. Existe alguma referência que eu possa usar?
 
 Nós decidimos não incluir o i18n por padrão no `create-t3-app` por conta de ser um tópico muito opinado e haverem muitas maneiras de implementá-lo.
 
-De qualquer forma, se você tiver dificuldades de implementá-lo e quiser ver um projeto de referência, nós temos um [repositório referência](https://github.com/juliusmarminge/t3-i18n) que mostra como você pode adicionar o i18n a um T3 app usando [next-i18next](https://github.com/i18next/next-i18next).
+De qualquer forma, se você tiver dificuldades de implementá-lo e quiser ver um projeto de referência, nós temos um [repositório exemplo](https://github.com/juliusmarminge/t3-i18n) que mostra como você pode adicionar o i18n a um T3 app usando [next-i18next](https://github.com/i18next/next-i18next).
 
 ## Por que nós estamos usando `/pages` e não `/app` do Next.js 13?
 
-Conforme o [Axioma T3 #2](/pt/introduction#agir-com-responsabilidade), nós amamos tecnologia de ponta, porém valorizamos a estabilidade, nosso roteador inteiro é díficil de mover, [não é um bom lugar para "sangrar"](https://youtu.be/mnwUbtieOuI?t=1662). Enquanto `/app` é [um vislumbre do futuro](https://youtu.be/rnsC-12PVlM?t=818), não está pronto para produçãp; a API está em beta e é esperado que possua mudanças que quebrem.
+Conforme o [Axioma T3 #2](/pt/introduction#agir-com-responsabilidade), nós amamos *bleeding edge* (tecnologias de ponta), porém valorizamos a estabilidade, nosso roteador inteiro é díficil de mover, [não é um bom lugar para utilizar features *bleeding edge*](https://youtu.be/mnwUbtieOuI?t=1662). Enquanto `/app` é [um vislumbre do futuro](https://youtu.be/rnsC-12PVlM?t=818), não está pronto para produçãp; a API está em beta e é esperado que possua *breaking changes* (mudanças que podem quebrar sua aplicação no futuro).
 
 Para obter uma lista de recursos suportados, planejados e trabalhados no diretório `/app`, visite a [Documentação beta do Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
