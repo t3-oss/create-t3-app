@@ -111,9 +111,9 @@ export default function OnThisPageLinks({
                           "line-clamp-1 block w-full py-1 text-sm text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
                           `pl-${heading.depth * 2 - 2}`,
                           {
-                            "hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100":
+                            "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
                               active,
-                            "font-bold dark:text-t3-purple-50":
+                            "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
                               heading.isVisible,
                           },
                         )}
