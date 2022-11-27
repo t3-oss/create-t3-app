@@ -135,7 +135,7 @@ CMD ["node", "server.js"]
 </div>
 </details>
 
-## Crie e execute a imagem localmente
+## Execute build e run da imagem localmente
 
 Crie e execute esta imagem localmente com os seguintes comandos:
 
