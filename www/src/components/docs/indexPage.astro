@@ -10,25 +10,31 @@ const { sidebarEntries, frontmatter, files } = Astro.props;
 ---
 
 <p>{frontmatter.description}</p>
-<ul class="grid w-full grid-cols-1 gap-4 p-0 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid w-full grid-cols-1 gap-4 p-0 md:grid-cols-2">
   {
-    sidebarEntries.map(({ text, link }) => {
+    sidebarEntries.map(({ text, link }, index) => {
       const frontmatter = files.find((file) => file.url === `/${link}`)
         ?.frontmatter as Frontmatter;
 
       return (
-        <li
-          class="m-0 w-full rounded border p-4 dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50"
-          style={{ "list-style-type": "none" }}
+        <a
+          href={`/${link}`}
+          class="m-0 w-full rounded-lg border p-4 cursor-pointer dark:border-t3-purple-200/20 border-t3-purple-500/20 dark:hover:border-t3-purple-200/50 hover:border-t3-purple-500/50 duration-300 hover:shadow-lg"
+          style={{ "list-style-type": "none", "text-decoration": "none" }}
         >
-          <a href={`/${link}`}>{text}</a>
+          <h2
+            class="leading-none"
+            style={{ "margin-top": "0", "margin-bottom": "1.5rem" }}
+          >
+            <span class="text-base">#{index + 1}</span> {text}
+          </h2>
           {frontmatter?.description && (
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
               {frontmatter.description}
             </p>
           )}
-        </li>
+        </a>
       );
     })
   }
-</ul>
+</div>
