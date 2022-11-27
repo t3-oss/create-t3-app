@@ -8,7 +8,7 @@
 
 - [#878](https://github.com/t3-oss/create-t3-app/pull/878) [`9abaf80`](https://github.com/t3-oss/create-t3-app/commit/9abaf80d20620e3399c3a1ae51e06a41e2990e28) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - feat: update scaffolded README.md
 
-- [#889](https://github.com/t3-oss/create-t3-app/pull/889) [`c387187`](https://github.com/t3-oss/create-t3-app/commit/c38718768661944807daee92b21aae2789649ecb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: typo in env-schema comments
+- [#845](https://github.com/t3-oss/create-t3-app/pull/845) [`c387187`](https://github.com/t3-oss/create-t3-app/commit/c38718768661944807daee92b21aae2789649ecb) Thanks [@GabrielPedroza](https://github.com/gabrielpedroza)! - fix: typo in env-schema comments
 
 ## 6.10.2
 
