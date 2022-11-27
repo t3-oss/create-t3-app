@@ -85,6 +85,8 @@ const dbUrl = env.DATABASE_URL;
 
 Since the default `.env` file is not committed to version control, we have also included a `.env.example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
 
+Some frameworks and build tools, like Next.js, suggest that you store secrets an `.env.local` file and commit `.env` files to your project. This is not recommended, as it could make it easy to accidentally commit secrets to your project. Instead, we recommend that you store secrets in `.env`, keep your `.env` file in your `.gitignore` and only commit `.env.example` files to your project.
+
 ## Adding Environment Variables
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
