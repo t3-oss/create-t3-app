@@ -137,7 +137,7 @@ CMD ["node", "server.js"]
 
 ## Execute build e run da imagem localmente
 
-Crie e execute esta imagem localmente com os seguintes comandos:
+Execute `build` e `run` desta imagem localmente com os seguintes comandos:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
