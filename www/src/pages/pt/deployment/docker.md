@@ -30,7 +30,7 @@ export default defineNextConfig({
 
 <details>
     <summary>
-      Clique aqui e inclua esse conteúdos no <code>.dockerignore</code>:
+      Clique aqui e inclua esse conteúdo no arquivo <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
