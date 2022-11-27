@@ -2,7 +2,7 @@
 import type { Frontmatter } from "../../config";
 
 export interface Props {
-  sidebarEntries: { text: string, link: string }[];
+  sidebarEntries: { text: string; link: string }[];
   frontmatter: Frontmatter;
   files: Record<string, any>[];
 }
@@ -11,24 +11,24 @@ const { sidebarEntries, frontmatter, files } = Astro.props;
 
 <p>{frontmatter.description}</p>
 <ul class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-{
+  {
     sidebarEntries.map(({ text, link }) => {
-    const frontmatter = files.find((file) => file.url === `/${link}`)
+      const frontmatter = files.find((file) => file.url === `/${link}`)
         ?.frontmatter as Frontmatter;
 
-    return (
+      return (
         <li
-        class="dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50 m-0 w-full rounded border p-4"
-        style={{ "list-style-type": "none" }} /* must be style (not tw) to override global? */
+          class="m-0 w-full rounded border p-4 dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50"
+          style={{ "list-style-type": "none" }}
         >
-        <a href={`/${link}`}>{text}</a>
-        {frontmatter?.description && (
+          <a href={`/${link}`}>{text}</a>
+          {frontmatter?.description && (
             <p class="text-sm text-gray-500 dark:text-gray-400">
-            {frontmatter.description}
+              {frontmatter.description}
             </p>
-        )}
+          )}
         </li>
-    );
+      );
     })
-}
+  }
 </ul>
