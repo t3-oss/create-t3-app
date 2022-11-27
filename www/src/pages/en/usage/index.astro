@@ -5,13 +5,13 @@ import { Frontmatter, SIDEBAR } from "../../../config";
 import { getLanguageFromURL } from "../../../languages";
 
 const frontmatter: Frontmatter = {
-  title: "Deployment",
+  title: "Usage",
   layout: "docs",
-  description: "Learn how to deploy your T3 app to production.",
+  description: "Learn how to use the different technology from the T3 Stack.",
 };
 
 const lang = getLanguageFromURL(Astro.url.pathname);
-const sidebarEntries = SIDEBAR[lang]["Deployment"]!;
+const sidebarEntries = SIDEBAR[lang]["Usage"]!;
 const files = await Astro.glob("./*.{md,mdx,astro}");
 ---
 
