@@ -1,8 +1,8 @@
 ---
 title: TypeScript
-description: Usage of TypeScript
+description: Verwendung von TypeScriot
 layout: ../../../layouts/docs.astro
-lang: en
+lang: de
 ---
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
@@ -31,33 +31,33 @@ lang: en
   </cite>
 </blockquote>
 
-Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
+Egal ob du ein neuer oder erfahrener Entwickler bist, wir denken, dass TypeScript ein Muss ist. Es kann zu Beginn etwas abschreckend wirken, aber wie bei vielen Tools, ist es etwas, das viele nie wieder missen wollen, nachdem sie damit angefangen haben es zu verwenden.
 
-It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line.
+Es bietet Live-Feedback während du deinen Code schreibst. Die erwarteten Datentypen werden definiert und entweder erhalten wir hilfreiche Autovervollständigung in unserem Code-Editor oder es wird uns mit roten Unterstrichen auf ein Problem aufmerksam gemacht z.B. wenn wir versuchen auf eine Eigenschaft zuzugreifen, die nicht existiert oder wenn wir versuchen einen Wert eines falschen Typs zu übergeben. Dadurch können wir Fehler frühzeitig erkennen und beheben ohne erst im Nachhinein debuggen zu müssen.
 
-It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
+Es ist wohlmöglich das Werkzeug, das Entwicklern die größte Produktivität bietet; es bietet Dokumentation des geschriebenen Codes direkt in deinem Editor und gibt dir sofortiges Feedback, wenn du unweigerlich Fehler machst. Das ist absolut unbezahlbar.
 
 ## Type Inference
 
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
+Während viele neue TypeScript Entwickler sich mit dem _Schreiben_ von TypeScript beschäftigt, bieten viele der Vorteile von TypeScript gar nicht die Notwendigkeit, deinen Code zu ändern. Insbesondere die Typinferenz. Typinferenz bedeutet, dass wenn etwas typisiert ist, sich dieser Typ durch die gesamte Anwendung bewegt, ohne dass dieser in anderen Teilen der Anwendung erneut deklariert werden muss. Das bedeutet, dass z.B. wenn du die Typen der Argumente einer Funktion definiert hast, der Rest der Funktion in der Regel typesafe ist, ohne dass zusätzlicher TypeScript-spezifischer Code erforderlich ist. Entwickler von Bibliotheken investieren viel Arbeit in die Wartung der Typen ihrer Bibliotheken, was bedeutet, dass wir als Anwender von der Inferenz und der integrierten Dokumentation in deinem Code-Editor profitieren können, die durch diese Typen bereitgestellt werden.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
+Schau dir das Video von Theo an, warum [du TypeScript wohlmöglich falsch benutzt](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Powerful uses of type inference
+## Mächtige Verwendung von Typinferenz
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
+[Zod](https://github.com/colinhacks/zod) ist eine Schema-Validierungs-Bibliothek, die auf TypeScript aufbaut. Schreibe ein Schema, das die einzige Quelle der Wahrheit ("single source of truth") für deine Daten darstellt, und Zod wird sicherstellen, dass deine Daten überall in deiner Anwendung gültig sind. Sogar über Netzwerkgrenzen und externe APIs hinweg.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
+[Tanstack Query](https://tanstack.com/query/v4/) bietet dir deklarative, immer aktuelle, automatisch verwaltete "Queries" und "Mutations", die direkt die Entwickler- und Benutzerzufriedenheit verbessern.
 
-## Useful Resources
+## Nützliche Ressourcen
 
 | Resource                                                  | Link                                                              |
 | --------------------------------------------------------- | ----------------------------------------------------------------- |
