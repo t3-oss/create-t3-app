@@ -15,6 +15,30 @@
     {
       "source": "/en",
       "destination": "/"
+    },
+    {
+      "source": "/docs",
+      "destination": "/en/introduction"
+    },
+    {
+      "source": "/discord",
+      "destination": "https://discord.gg/t3dotgg"
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/t3-oss/create-t3-app"
+    },
+    {
+      "source": "/showcase",
+      "destination": "/en/t3-collection"
+    },
+    {
+      "source": "/collection",
+      "destination": "/en/t3-collection"
+    },
+    {
+      "source": "/awesome",
+      "destination": "/en/t3-collection"
     }
   ]
 }
