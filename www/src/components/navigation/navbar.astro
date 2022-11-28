@@ -63,6 +63,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                 },
               )}
               href={navbarLink.href}
+              aria-current={navbarLink.href === currentPage}
             >
               {navbarLink.label}
             </a>
