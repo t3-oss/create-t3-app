@@ -18,6 +18,10 @@ export default defineConfig({
         {
           target: "_blank",
           rel: ["noreferrer noopener"],
+          content: {
+            type: "text",
+            value: "↗",
+          },
         },
       ],
       "rehype-slug",
