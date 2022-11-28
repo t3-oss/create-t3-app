@@ -85,6 +85,8 @@ const dbUrl = env.DATABASE_URL;
 
 Ponieważ plik `.env` nie jest wrzucany na system kontroli wersji, dołączamy także plik `.env.example`, w którym - jesli chcesz - możesz zawrzeć kopię pliku `.env` z usuniętymi secretami. Nie jest to wymagane, jednak polecamy trzymać aktualną kopię przykładowego pliku, aby ułatwić potencjalnym kontrybutorom rozpoczęcie pracy w ich środowisku.
 
+Niektóre frameworki i narzędzia do budowania, takie jak Next.js, zalecają przechowywanie sekretnych wartości w pliku `.env.local` i commitowanie plików `.env` do projektu. Nie jest to przez nas jednak rekomendowane, ponieważ może to łatwo prowadzić do przypadkowego ujawnienia tych wartości. Polecamy natomiast przechowywanie sekretnych wartości w pliku `.env`, trzymanie pliku tego w `.gitignore` i commitowanie jedynie plików `.env.example`.
+
 ## Dodawanie Zmiennych Środowiskowych
 
 Aby upewnić się, że twój projekt nie zbuduje się bez wymaganych zmiennych środ., będziesz musiał dodać nową zmienną w **dwóch** miejscach:

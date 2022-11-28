@@ -41,15 +41,15 @@ tRPC wymaga dużo boilerplate'u, który `create-t3-app` przygotowuje za Ciebie. 
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty aplikacji twój router od tRPC. Prawdopodobnie nie będziesz musiał edytować tego pliku, ale jeżeli zajdzie taka potrzeba (np. do włączenia CORSa), warto wiedzieć o tym, iż eksportowany `createNextApiHandler` to [Next.js API handler](https://nextjs.org/docs/api-routes/introduction), który pobiera obiekt [zapytania](https://developer.mozilla.org/en-US/docs/Web/API/Request) i [odpowiedzi](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) serwera. Oznacza to, iż możesz zawrzeć `createNextApiHandler` w middleware'rze, w jakim tylko chcesz. Poniżej znajdziesz [przykładowy kod](#aktywacja-cors), dzięki któremu dodasz CORS.
+Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty aplikacji twój router od tRPC. Prawdopodobnie nie będziesz musiał edytować tego pliku, ale jeżeli zajdzie taka potrzeba (np. do włączenia CORSa), warto wiedzieć o tym, iż eksportowany `createNextApiHandler` to [Next.js API handler](https://nextjs.org/docs/api-routes/introduction), który pobiera obiekt [zapytania](https://developer.mozilla.org/en-US/docs/Web/API/Request) i [odpowiedzi](https://developer.mozilla.org/en-US/docs/Web/API/Response) serwera. Oznacza to, iż możesz zawrzeć `createNextApiHandler` w middleware'rze, w jakim tylko chcesz. Poniżej znajdziesz [przykładowy kod](#aktywacja-cors), dzięki któremu dodasz CORS.
 
 ### 📄 `server/trpc/context.ts`
 
-This file is where you define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
+Plik ten to miejsce, gdzie definiujesz kontekst przesyłany do swoich procedur tRPC. Kontekst to dane, do których dostęp mieć będą wszystkie procedury tRPC. To także świetne miejsce to umieszczenia rzeczy takich jak połączenie z bazą danych, informacje o "authentication", itp. W `create-t3-app` korzystamy z dwóch funkcji, aby umożliwić korzystanie z kontekstu bez dostępu do obiektu zapytania.
 
-- `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+- `createContextInner`: To miejsce, w którym definiujesz kontekst niezależny od zapytania - przykładowo, połączenie z bazą danych. Możesz skorzystać z ten funkcji dla [testowania integracji](#przykładowy-test-integracji) czy też [sgg-helperów](https://trpc.io/docs/v10/ssg-helpers), gdzie nie musisz posiadać obiektu zapytania.
 
-- `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
+- `createContext`: To miejsce, w którym definiujesz kontekst zależny od zapytania - przykładowo, sesję użytkownika. Zapytanie o sesję wykonujesz z użyciem obiektu `opts.req`, a następnie przesyłasz ją do funkcji `createContextInner`, aby utworzyć finalny kontekst.
 
 ### 📄 `server/trpc/trpc.ts`
 
