@@ -6,28 +6,26 @@ html {
   --docsearch-icon-stroke-width: 1.4;
   --docsearch-highlight-color: var(--docsearch-primary-color);
   --docsearch-muted-color: #969faf;
-  --docsearch-container-background: rgba(101, 108, 133, 0.5);
+  --docsearch-container-background: rgba(22, 24, 30, 0.1);
   --docsearch-logo-color: #e8ddff;
+  --docsearch-modal-border: rgb(63, 65, 95, 0.25);
   --docsearch-modal-width: 560px;
   --docsearch-modal-height: 600px;
   --docsearch-modal-background: rgb(var(--color-background));
   --docsearch-modal-shadow: none;
-  --docsearch-searchbox-height: 56px;
-  --docsearch-searchbox-background: rgb(var(--color-background));
-  --docsearch-searchbox-focus-background: rgb(var(--color-background));
+  --docsearch-searchbox-height: 45px;
+  --docsearch-searchbox-background: rgba(0, 0, 0, 0);
+  --docsearch-searchbox-focus-background: rgba(0, 0, 0, 0);
   --docsearch-searchbox-shadow: none;
   --docsearch-hit-height: 56px;
   --docsearch-hit-color: rgb(var(--color-foreground));
   --docsearch-hit-active-color: rgb(232 221 255);
-  --docsearch-hit-background: rgb(var(--color-background));
+  --docsearch-hit-background: rgba(0, 0, 0, 0);
   --docsearch-hit-shadow: none;
-  --docsearch-key-gradient: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
-  --docsearch-key-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px rgb(var(--color-foreground)),
-    0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --docsearch-key-background: rgb(var(--color-background));
   --docsearch-footer-height: 44px;
-  --docsearch-footer-background: rgb(var(--color-background));
-  --docsearch-footer-shadow: 0 -1px 0 0 #e0e3e8,
-    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+  --docsearch-footer-background: rgba(0, 0, 0, 0);
+  --docsearch-footer-shadow: none, 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 .DocSearch-Button {
   align-items: center;
@@ -72,9 +70,10 @@ html {
 }
 .DocSearch-Button-Key {
   align-items: center;
-  background: var(--docsearch-key-gradient);
+  background-color: var(--docsearch-key-background);
   border-radius: 3px;
-  box-shadow: var(--docsearch-key-shadow);
+  box-shadow: none;
+  border: none;
   color: var(--docsearch-muted-color);
   display: flex;
   height: 18px;
@@ -92,9 +91,6 @@ html {
     display: none;
   }
 }
-.DocSearch--active {
-  overflow: hidden !important;
-}
 .DocSearch-Container,
 .DocSearch-Container * {
   box-sizing: border-box;
@@ -106,11 +102,13 @@ html {
   background-color: var(--docsearch-container-background);
   backdrop-filter: blur(5px);
   height: 100vh;
-  left: 0;
   position: fixed;
+  left: 0;
   top: 0;
   width: 100vw;
   z-index: 200;
+  display: flex;
+  justify-content: center;
 }
 .DocSearch-Container a {
   text-decoration: none;
@@ -130,9 +128,12 @@ html {
   border-radius: 6px;
   box-shadow: var(--docsearch-modal-shadow);
   flex-direction: column;
-  margin: 60px auto auto;
-  max-width: var(--docsearch-modal-width);
+  margin-top: 60px;
+  width: var(--docsearch-modal-width);
+  height: fit-content;
   position: relative;
+  border: 1px solid var(--docsearch-modal-border);
+  cursor: default;
 }
 .DocSearch-SearchBar {
   display: flex;
@@ -345,12 +346,12 @@ html {
 }
 .DocSearch-Hit-source {
   background: var(--docsearch-modal-background);
-  color: var(--docsearch-highlight-color);
-  font-size: 0.85em;
-  font-weight: 600;
+  color: rgb(var(--color-foreground));
+  font-size: 1em;
+  font-weight: 500;
   line-height: 32px;
   margin: 0 -4px;
-  padding: 8px 4px 0;
+  padding: 8px 4px 8px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -541,9 +542,8 @@ svg.DocSearch-Hit-Select-Icon {
 }
 .DocSearch-Commands-Key {
   align-items: center;
-  background: var(--docsearch-key-gradient);
+  background-color: var(--docsearch-key-background);
   border-radius: 2px;
-  box-shadow: var(--docsearch-key-shadow);
   display: flex;
   height: 18px;
   justify-content: center;
@@ -565,7 +565,6 @@ svg.DocSearch-Hit-Select-Icon {
     height: 100vh;
     height: -webkit-fill-available;
     height: calc(var(--docsearch-vh, 1vh) * 100);
-    position: absolute;
   }
   .DocSearch-Footer {
     border-radius: 0;
