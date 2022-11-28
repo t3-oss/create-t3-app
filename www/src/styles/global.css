@@ -162,10 +162,6 @@
           dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
   }
 
-  .markdown a[rel~="noreferrer"] > span {
-    @apply pl-1;
-  }
-
   .markdown code {
     @apply break-words lg:break-normal;
   }
