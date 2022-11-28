@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.10.3
+
+### Patch Changes
+
+- [#869](https://github.com/t3-oss/create-t3-app/pull/869) [`cd93b98`](https://github.com/t3-oss/create-t3-app/commit/cd93b98d00e559721da0674b81978a00870e68ff) Thanks [@meech-ward](https://github.com/meech-ward)! - docs: add notes about env vars
+
+- [#878](https://github.com/t3-oss/create-t3-app/pull/878) [`9abaf80`](https://github.com/t3-oss/create-t3-app/commit/9abaf80d20620e3399c3a1ae51e06a41e2990e28) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - feat: update scaffolded README.md
+
+- [#845](https://github.com/t3-oss/create-t3-app/pull/845) [`c387187`](https://github.com/t3-oss/create-t3-app/commit/c38718768661944807daee92b21aae2789649ecb) Thanks [@GabrielPedroza](https://github.com/gabrielpedroza)! - fix: typo in env-schema comments
+
 ## 6.10.2
 
 ### Patch Changes
