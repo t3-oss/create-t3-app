@@ -40,7 +40,9 @@ export default function BreadCrumbs() {
         .join("/");
       return {
         href,
-        text: getPathNameFromLink(href.slice(href.indexOf("en"))) || crumb,
+        text:
+          getPathNameFromLink(href.slice(href.indexOf("en"))) ||
+          crumb[0]?.toUpperCase() + crumb.slice(1),
       };
     });
 
@@ -48,7 +50,7 @@ export default function BreadCrumbs() {
     <div className="mb-4 flex items-center gap-2 px-2 text-sm">
       <a
         href="/"
-        className="rounded-lg bg-t3-purple-500/10 p-1 dark:bg-t3-purple-500/20"
+        className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
       >
         <svg width="20" height="20" viewBox="0 0 24 24">
           <path
@@ -68,9 +70,9 @@ export default function BreadCrumbs() {
         <div className="flex items-center gap-2">
           <a
             href={crumb.href}
-            className="rounded-lg bg-t3-purple-500/10 p-1 dark:bg-t3-purple-500/20"
+            className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
           >
-            {crumb.text[0]?.toUpperCase() + crumb.text.slice(1)}
+            {crumb.text}
           </a>
           {index < breadcrumbs.length - 1 && (
             <svg width="16" height="16" viewBox="0 0 24 24">
