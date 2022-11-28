@@ -28,10 +28,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
 ---
 
 <nav
-  class={clsx("flex flex-col relative justify-between items-center py-4", {
-    "z-40 text-slate-50": isLanding,
-    "transition-colors duration-300": !isLanding,
-  })}
+  class={clsx(
+    "navbar flex flex-col relative justify-between items-center py-4",
+    {
+      "z-40 text-slate-50": isLanding,
+      "transition-colors duration-300": !isLanding,
+    },
+  )}
   aria-label="Global"
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
@@ -54,7 +57,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
               class={clsx(
                 "relative inline-flex items-center rounded-md border border-transparent px-3 py-2 transition-colors hover:no-underline",
                 {
-                  "bg-t3-purple-200/50 text-t3-purple-800 dark:bg-t3-purple-200/10":
+                  "border bg-t3-purple-200/50 text-t3-purple-800 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50":
                     navbarLink.href === currentPage,
                   "rounded-lg text-t3-purple-100 hover:bg-t3-purple-200/10 hover:text-t3-purple-300":
                     isLanding,

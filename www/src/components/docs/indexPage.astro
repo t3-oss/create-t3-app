@@ -1,0 +1,40 @@
+---
+import type { Frontmatter } from "../../config";
+
+export interface Props {
+  sidebarEntries: { text: string; link: string }[];
+  frontmatter: Frontmatter;
+  files: Record<string, any>[];
+}
+const { sidebarEntries, frontmatter, files } = Astro.props;
+---
+
+<p>{frontmatter.description}</p>
+<div class="grid w-full grid-cols-1 gap-4 p-0 md:grid-cols-2">
+  {
+    sidebarEntries.map(({ text, link }, index) => {
+      const frontmatter = files.find((file) => file.url === `/${link}`)
+        ?.frontmatter as Frontmatter;
+
+      return (
+        <a
+          href={`/${link}`}
+          class="m-0 w-full cursor-pointer rounded-lg border border-t3-purple-500/20 p-4 duration-300 hover:border-t3-purple-500/50 hover:shadow-lg dark:border-t3-purple-200/20 dark:hover:border-t3-purple-200/50"
+          style={{ "list-style-type": "none", "text-decoration": "none" }}
+        >
+          <h2
+            class="leading-none"
+            style={{ "margin-top": "0", "margin-bottom": "1.5rem" }}
+          >
+            <span class="text-base">#{index + 1}</span> {text}
+          </h2>
+          {frontmatter?.description && (
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              {frontmatter.description}
+            </p>
+          )}
+        </a>
+      );
+    })
+  }
+</div>
