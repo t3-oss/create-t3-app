@@ -1,4 +1,35 @@
+import { SIDEBAR } from "../../config";
+import { getLanguageFromURL } from "../../languages";
+
+type SlugType = "" | "usage" | "deployment";
+
 export default function BreadCrumbs() {
+  const lang = getLanguageFromURL(window.location.href);
+  const slugToEntryPath = (slug: SlugType) => {
+    switch (slug) {
+      case "":
+        return "Create T3 App";
+      case "usage":
+        return "Usage";
+      case "deployment":
+        return "Deployment";
+    }
+  };
+  const slug =
+    window.location.pathname.slice(1).split("/").length > 2
+      ? window.location.pathname.slice(1).split("/")[1]
+      : "" || "";
+  const actualEntries =
+    SIDEBAR[lang][
+      slugToEntryPath(
+        slug === undefined || slug === "" ? "" : (slug as SlugType),
+      )
+    ];
+
+  const getPathNameFromLink = (link: string) => {
+    return actualEntries?.find((entry) => entry.link === link)?.text;
+  };
+
   const breadcrumbs = window.location.href
     .split("/")
     .slice(window.location.href.split("/").length > 5 ? -2 : -1)
@@ -9,7 +40,7 @@ export default function BreadCrumbs() {
         .join("/");
       return {
         href,
-        text: crumb,
+        text: getPathNameFromLink(href.slice(href.indexOf("en"))) || crumb,
       };
     });
 
