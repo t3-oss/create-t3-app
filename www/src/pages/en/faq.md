@@ -32,6 +32,7 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 - [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Videos
 
@@ -44,7 +45,7 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 
 As per [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), we take typesafety as a first class citizen. Unfortunately, not all frameworks and plugins support TypeScript which means some of the configuration files have to be `.js` files.
 
-We try to emphasize that these files are javascript for a reason, by explicitly declaring each file's type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
+We try to emphasize that these files are JavaScript for a reason, by explicitly declaring each file's type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
 
 ## I'm struggling to add i18n to my app. Is there any reference I can use?
 

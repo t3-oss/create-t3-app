@@ -56,6 +56,7 @@ jobs:
         run: pnpm install
 
       - run: pnpm turbo run lint
+      - run: pnpm manypkg check
 
   prettier:
     runs-on: ubuntu-latest
