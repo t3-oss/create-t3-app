@@ -12,7 +12,7 @@ html {
   --docsearch-modal-width: 560px;
   --docsearch-modal-height: 600px;
   --docsearch-modal-background: rgb(var(--color-background));
-  --docsearch-modal-shadow: none;
+  --docsearch-modal-shadow: 0px 4px 15px 6px rgba(0, 0, 0, 0.1);
   --docsearch-searchbox-height: 45px;
   --docsearch-searchbox-background: rgba(0, 0, 0, 0);
   --docsearch-searchbox-focus-background: rgba(0, 0, 0, 0);
@@ -22,10 +22,17 @@ html {
   --docsearch-hit-active-color: rgb(232 221 255);
   --docsearch-hit-background: rgba(0, 0, 0, 0);
   --docsearch-hit-shadow: none;
-  --docsearch-key-background: rgb(var(--color-background));
+  --docsearch-key-background: rgb(220, 216, 248);
+  --docsearch-key-color: rgb(152, 145, 187);
+  --docsearch-key-border: rgb(152, 145, 187);
   --docsearch-footer-height: 44px;
   --docsearch-footer-background: rgba(0, 0, 0, 0);
   --docsearch-footer-shadow: none, 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+}
+html.dark {
+  --docsearch-key-background: rgb(41, 29, 100);
+  --docsearch-key-border: rgb(14, 6, 50);
+  --docsearch-modal-border: rgba(95, 98, 146, 0.25);
 }
 .DocSearch-Button {
   align-items: center;
@@ -67,23 +74,6 @@ html {
 .DocSearch-Button-Keys {
   display: flex;
   min-width: calc(40px + 0.8em);
-}
-.DocSearch-Button-Key {
-  align-items: center;
-  background-color: var(--docsearch-key-background);
-  border-radius: 3px;
-  box-shadow: none;
-  border: none;
-  color: var(--docsearch-muted-color);
-  display: flex;
-  height: 18px;
-  justify-content: center;
-  margin-right: 0.4em;
-  position: relative;
-  padding: 0 0 2px;
-  border: 0;
-  top: -1px;
-  width: 20px;
 }
 @media (max-width: 768px) {
   .DocSearch-Button-Keys,
@@ -540,7 +530,8 @@ svg.DocSearch-Hit-Select-Icon {
 .DocSearch-Commands li:not(:last-of-type) {
   margin-right: 0.8em;
 }
-.DocSearch-Commands-Key {
+.DocSearch-Commands-Key,
+.DocSearch-Button-Key {
   align-items: center;
   background-color: var(--docsearch-key-background);
   border-radius: 2px;
@@ -549,8 +540,8 @@ svg.DocSearch-Hit-Select-Icon {
   justify-content: center;
   margin-right: 0.4em;
   padding: 0 0 1px;
-  color: var(--docsearch-muted-color);
-  border: 0;
+  color: var(--docsearch-key-color);
+  border: 1px solid var(--docsearch-key-border);
   width: 20px;
 }
 @media (max-width: 768px) {
