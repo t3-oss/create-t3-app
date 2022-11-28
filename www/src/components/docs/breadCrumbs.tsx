@@ -46,7 +46,10 @@ export default function BreadCrumbs() {
 
   return (
     <div className="mb-4 flex items-center gap-2 px-2 text-sm">
-      <a href="/">
+      <a
+        href="/"
+        className="rounded-lg bg-t3-purple-500/10 p-1 dark:bg-t3-purple-500/20"
+      >
         <svg width="20" height="20" viewBox="0 0 24 24">
           <path
             fill="currentColor"
