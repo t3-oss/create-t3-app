@@ -38,7 +38,7 @@
 
   html {
     scroll-behavior: smooth;
-    @apply scroll-pt-36 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300 lg:scroll-pt-28;
+    @apply scroll-pt-12 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300 lg:scroll-pt-0;
   }
 
   /* Typewriter */

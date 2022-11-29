@@ -13,7 +13,6 @@ import "../styles/accessibility.css";
 import "@fontsource/inter/variable.css";
 import MoreMenu from "../components/navigation/moreMenu.astro";
 import JumpToContent from "../components/accessibility/jumpToContent.astro";
-import OnThisPageLinks from "../components/navigation/OnThisPageLinks";
 
 export interface Props {
   frontmatter: CONFIG.Frontmatter;
@@ -86,16 +85,13 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
       </nav>
 
       <div class="col-span-1 flex min-h-full w-full flex-col pt-5" id="content">
-        <div>
-          <OnThisPageLinks
-            client:media="(max-width: 1024px)"
-            headings={headings}
-            title={frontmatter.title}
-          />
-          <PageContent frontmatter={frontmatter} path={currentFile}>
-            <slot />
-          </PageContent>
-        </div>
+        <PageContent
+          frontmatter={frontmatter}
+          path={currentFile}
+          headings={headings}
+        >
+          <slot />
+        </PageContent>
         <nav class="mx-3 flex lg:hidden">
           <MoreMenu editHref={githubEditUrl} />
         </nav>
