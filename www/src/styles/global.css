@@ -80,6 +80,11 @@
     outline-offset: 0.25em;
   }
 
+  button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
   article > section :is(ul, ol) > * + * {
     margin-top: 0.75rem;
   }
