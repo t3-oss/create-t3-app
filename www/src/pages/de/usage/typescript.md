@@ -31,7 +31,7 @@ lang: de
   </cite>
 </blockquote>
 
-Egal ob du ein neuer oder erfahrener Entwickler bist, wir denken, dass TypeScript ein Muss ist. Es kann zu Beginn etwas abschreckend wirken, aber wie bei vielen Tools, ist es etwas, das viele nie wieder missen wollen, nachdem sie damit angefangen haben es zu verwenden.
+Unabhängig davon, ob du ein neuer oder erfahrener Entwickler bist, denken wir, dass TypeScript ein Muss ist. Es kann auf den ersten Blick einschüchternd wirken, aber wie bei vielen Tools ist es etwas, das man nicht missen möchte, nachdem man angefangen hat, es zu benutzen.
 
 Es bietet Live-Feedback während du deinen Code schreibst. Die erwarteten Datentypen werden definiert und entweder erhalten wir hilfreiche Autovervollständigung in unserem Code-Editor oder es wird uns mit roten Unterstrichen auf ein Problem aufmerksam gemacht z.B. wenn wir versuchen auf eine Eigenschaft zuzugreifen, die nicht existiert oder wenn wir versuchen einen Wert eines falschen Typs zu übergeben. Dadurch können wir Fehler frühzeitig erkennen und beheben ohne erst im Nachhinein debuggen zu müssen.
 
