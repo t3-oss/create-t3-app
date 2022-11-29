@@ -11,7 +11,7 @@ If you're interested in using Next.js in a typesafe way, this is the place to st
 
 ## Why TypeScript ?
 
-Javascript is hard. Why add more rules?
+JavaScript is hard. Why add more rules?
 
 We firmly believe the experience TypeScript provides will help you be a better developer. It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your editor or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line. Whether you're new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS.
 

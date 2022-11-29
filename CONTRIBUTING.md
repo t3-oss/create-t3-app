@@ -4,6 +4,7 @@ When contributing to `create-t3-app`, whether on GitHub or in other community sp
 
 - Be respectful, civil, and open-minded.
 - Before opening a new pull request, try searching through the [issue tracker](https://github.com/nexxeln/create-t3-app/issues) for known issues or fixes.
+- If you want to make code changes based on your personal opinion(s), make sure you open an issue first describing the changes you want to make, and open a pull request only when your suggestions get approved by maintainers.
 
 ## How to Contribute
 
