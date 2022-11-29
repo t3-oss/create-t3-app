@@ -44,11 +44,13 @@ const getGitVersion = () => {
   return { major: Number(major), minor: Number(minor) };
 };
 
+/** If git config value 'init.defaultBranch' is set return value else 'main' */
 const getDefaultBranch = () => {
-  const stdout = execSync("git config --global init.defaultBranch")
+  const stdout = execSync("git config --global init.defaultBranch || echo main")
     .toString()
     .trim();
-  return stdout || "main";
+
+  return stdout;
 };
 
 // This initializes the Git-repository for the project
