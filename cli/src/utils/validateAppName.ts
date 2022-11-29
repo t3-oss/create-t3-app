@@ -16,6 +16,6 @@ export const validateAppName = (input: string) => {
   if (validationRegExp.test(appName ?? "")) {
     return true;
   } else {
-    return "App name must be lowercase, alphanumeric, and only use -, _, and @";
+    return "App name must consist of only lowercase alphanumeric characters, '-', and '_'";
   }
 };
