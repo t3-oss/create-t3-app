@@ -32,14 +32,14 @@ dir: rtl
   </cite>
 </blockquote>
 
-سواء كنت مطورًا جديدًا أو متمرسًا ، نعتقد أن TypeScript أمر لا بد منه. قد يبدو الأمر مخيفًا في البداية ، ولكنه يشبه الكثير من الأدوات الأخرى، وهو شيء لا ينظر فية الكثيرون أبدًا بعد البدء في استخدامها.
+سواءََ كُنت مُبرمجا مُبتدئاََ أو مُتمرسًا ، فعلبك أن تتأكد تمام الثقة  أن TypeScript أمر لا بد منه. قد تبدو مخيفتاََ في البداية ، ولكنها في الواقع فحالها كحال الأدوات الأخرى، وهي شيء لا يَنظر فية الكثيرون أبدًا بعد البدء في استخدامها.
 
-يوفر ملاحظات مباشرة أثناء كتابة كودك عن طريق تحديد أنواع البيانات المتوقعة ، وأيضا يوفر الإكمال التلقائي المفيد في الـ Editor الخاص بك ، أو يصرخ عليك بخطوط متعرجة حمراء إذا كنت تحاول الوصول إلى خاصية غير موجودة أو إذا قمت بتمرير قيمة من النوع الخطأ ، التي قد تضطر إلى تصحيحها.
+فتُوفر مٌلاحظات مٌباشرة أثناء كِتابة الكود عَن طَريق تَحديد أنواع البيانات المتوقعة ، وأيضا تٌوفر خاصية الإكمال التلقائي في الـ Editor الخاص بك ، أو ربما ستصرخ عَليك بِخطوط مُتعرجة حمراء إذا حاولت الوصول إلى خاصية غير موجودة أو إذا قمت بتمرير قيمة من النوع الخطأ ، التي قد تضطر إلى تصحيحها.
 
 ## الـ Type Inference
 
-يميل كثير من مطوري Typescript إلى كتابة الكثير من الـ types وفي واقع الأمر هذا حقا أمر غير ضروري أبداََخاصتة مع وجود الـ Inference.
-لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا الـ Inference هو تتبع الـ Types لك في كل مكان في الكود، يفيدك في أنه يُغنيك عن تكرار كتابة الـ Types في أماكن أخرى.
+يميل الكثير من مٌطوري Typescript إلى كِتابة الكثير من الـ types وفي واقع الامر أن هذا ليس ضرورياََ أبداََخاصتاََ مع وجود الـ Inference.
+لكن ... إنتظر لحظة .. ، ما هو الـ Inference اصلا ؟ حسنا .. الـ Inference هو تَتَبُع الـ Types لك في كل مكان في الكود، يُفيدك في أنه يُغنيك عن تِكرار كتابة الـ Types في أماكن أخرى.
 
 <div class="embed">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -51,12 +51,10 @@ dir: rtl
 
 ### مكتبة Zod
 
-مكتبة [Zod](https://github.com/colinhacks/zod) هي schema validation library تم بنائوها بـ Typescript. اكتب الـ Schema التي تمثل مصدر الحقيقة الاساسي single source of truth ودع الباقي لـ zod وهي ستتكفل بة.
+مكتبة [Zod](https://github.com/colinhacks/zod) هي schema validation library تم بِنائوها بـ Typescript. فَقط اٌكتب الـ Schema التي تٌمثل مَصدر الحقيقة الاساسي single source of truth ودع الباقي لـ zod وهي ستتكفل بة.
 
 ### مكتبة Tanstack Query
-
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
-
+تُسهل عليك كِتابة وإدارة الـ queries و الـ mutations مما يٌدوي الي تحسين تجربة المٌطور والمستخدم.
 ## مصادر مفيدة
 
 | المصدر                                                    | الرابط                                                            |
