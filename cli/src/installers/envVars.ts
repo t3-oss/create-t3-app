@@ -23,6 +23,8 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     case usingPrisma:
       envFile = "prisma-schema.mjs";
       break;
+    default:
+      envFile = "base-schema.mjs";
   }
 
   if (!envFile) return;
