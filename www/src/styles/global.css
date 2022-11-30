@@ -38,7 +38,7 @@
 
   html {
     scroll-behavior: smooth;
-    @apply scroll-pt-12 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300 lg:scroll-pt-0;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
   }
 
   /* Typewriter */
@@ -124,7 +124,7 @@
   h4[id],
   h5[id],
   #content {
-    @apply scroll-mt-24;
+    @apply scroll-mt-36 lg:scroll-mt-24;
   }
 
   /* only at less than md */
