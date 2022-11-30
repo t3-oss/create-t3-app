@@ -44,6 +44,15 @@ const getGitVersion = () => {
   return { major: Number(major), minor: Number(minor) };
 };
 
+/** If git config value 'init.defaultBranch' is set return value else 'main' */
+const getDefaultBranch = () => {
+  const stdout = execSync("git config --global init.defaultBranch || echo main")
+    .toString()
+    .trim();
+
+  return stdout;
+};
+
 // This initializes the Git-repository for the project
 export const initializeGit = async (projectDir: string) => {
   logger.info("Initializing Git...");
@@ -99,13 +108,15 @@ export const initializeGit = async (projectDir: string) => {
 
   // We're good to go, initializing the git repo
   try {
+    const branchName = getDefaultBranch();
+
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
     if (major < 2 || minor < 28) {
       await execa("git", ["init"], { cwd: projectDir });
-      await execa("git", ["branch", "-m", "main"], { cwd: projectDir });
+      await execa("git", ["branch", "-m", branchName], { cwd: projectDir });
     } else {
-      await execa("git", ["init", "--initial-branch=main"], {
+      await execa("git", ["init", `--initial-branch=${branchName}`], {
         cwd: projectDir,
       });
     }
