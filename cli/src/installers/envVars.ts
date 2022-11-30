@@ -49,6 +49,13 @@ DISCORD_CLIENT_SECRET=
 `;
   }
 
+  if (!usingAuth && !usingPrisma) {
+    envContent += `
+# SERVERVAR=foo
+# NEXT_PUBLIC_CLIENTVAR=bar
+`;
+  }
+
   const envExampleContent =
     `# Since .env is gitignored, you can use .env.example to build a new \`.env\` file when you clone the repo.
 # Keep this file up-to-date when you add new variables to \`.env\`.
