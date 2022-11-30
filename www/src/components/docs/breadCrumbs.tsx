@@ -20,6 +20,7 @@ export default function BreadCrumbs() {
     window.location.pathname.slice(1).split("/").length > 2
       ? window.location.pathname.slice(1).split("/")[1]
       : "" || "";
+  // TODO: find a way to use inference here to gain better typesafety
   const actualEntries = SIDEBAR[lang][
     slugToEntryPath(slug === undefined || slug === "" ? "" : (slug as SlugType))
   ] as Entry[] | undefined;
