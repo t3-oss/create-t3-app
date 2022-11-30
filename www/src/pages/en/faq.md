@@ -36,6 +36,7 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 
 ### Videos
 
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
 - [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
