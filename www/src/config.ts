@@ -26,6 +26,7 @@ export type Frontmatter = {
 
 export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
+  nl: "🇳🇱 Dutch",
   // Add more languages here
   // sv: "🇸🇪 Svenska",
 } as const;
@@ -80,6 +81,12 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
+  nl: {
+    "Create T3 App": [
+      { text: "Waarom CT3A?", link: "nl/why" },
+      { text: "T3 Collectie", link: "nl/t3-collection" },
+    ],
+  },
   // For Translations:
   // Keep the "outer headers" in English so we can match them.
   // Translate the "inner headers" to the language you're translating to.
@@ -97,6 +104,11 @@ export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
   Record<OuterHeaders, string>
 > = {
+  nl: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Gebruik",
+    Deployment: "Deployment",
+  },
   // Translate the sidebar's "outer headers" here
   // sv: {
   //   "Create T3 App": "Create T3 App",
