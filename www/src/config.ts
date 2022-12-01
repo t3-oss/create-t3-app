@@ -25,7 +25,6 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  ar: "Arabic", // not using a flag here because arabic is spoken in many countries
   en: "🇺🇸 English",
   // Add more languages here
   // sv: "🇸🇪 Svenska",
@@ -65,14 +64,6 @@ export const SIDEBAR: Sidebar = {
   //   ],
   //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
   // },
-  ar: {
-    "Create T3 App": [
-      { text: "استبدل هذا", link: "ar/introduction" },
-      { text: "استبدل هذا", link: "ar/other-recs" },
-    ],
-    Usage: [{ text: "tRPC", link: "ar/usage/trpc" }],
-    Deployment: [],
-  },
   en: {
     "Create T3 App": [
       { text: "Introduction", link: "en/introduction" },
@@ -112,9 +103,4 @@ export const SIDEBAR_HEADER_MAP: Record<
   //   Usage: "Användarguide",
   //   Deployment: "Deployment",
   // },
-  ar: {
-    "Create T3 App": "استبدل هذا",
-    Usage: "1استبدل هذا",
-    Deployment: "2استبدل هذا",
-  },
 };
