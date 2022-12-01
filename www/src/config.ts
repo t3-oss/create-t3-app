@@ -86,6 +86,9 @@ export const SIDEBAR: Sidebar = {
       { text: "Waarom CT3A?", link: "nl/why" },
       { text: "T3 Collectie", link: "nl/t3-collection" },
     ],
+    Usage: [
+      { text: "Tailwind CSS", link: "nl/usage/tailwind" },
+    ],
   },
   // For Translations:
   // Keep the "outer headers" in English so we can match them.
