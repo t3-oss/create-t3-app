@@ -111,13 +111,20 @@
     @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
   }
 
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
   h1[id],
   h2[id],
   h3[id],
   h4[id],
   h5[id],
   #content {
-    @apply scroll-mt-24;
+    @apply scroll-mt-36 lg:scroll-mt-24;
   }
 
   /* only at less than md */

@@ -1,15 +1,18 @@
 ---
+import type { MarkdownHeading } from "astro";
 import type { Frontmatter } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import BreadCrumbs from "./breadCrumbs";
 import Pagination from "./pagination.astro";
+import OnThisPageLinks from "../navigation/OnThisPageLinks";
 
 export interface Props {
   frontmatter: Frontmatter;
   path: string;
+  headings: MarkdownHeading[];
 }
 
-const { frontmatter, path } = Astro.props;
+const { frontmatter, path, headings } = Astro.props;
 const title = frontmatter.title;
 
 const [_1, _2, lang] = path.split("/");
@@ -18,6 +21,11 @@ const [_1, _2, lang] = path.split("/");
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
   {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
   <BreadCrumbs client:only />
+  <OnThisPageLinks
+    client:media="(max-width: 1024px)"
+    headings={headings}
+    title={title}
+  />
   <section class="w-full">
     <h1
       id="overview"
