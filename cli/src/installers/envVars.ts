@@ -9,25 +9,21 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
   const envAssetDir = path.join(PKG_ROOT, "template/addons/env");
 
-  let envFile = "";
+  let envSchemaFile = "";
   let envContent =
     "# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly\n";
 
   switch (true) {
     case usingAuth && usingPrisma:
-      envFile = "auth-prisma-schema.mjs";
+      envSchemaFile = "auth-prisma-schema.mjs";
       break;
     case usingAuth:
-      envFile = "auth-schema.mjs";
+      envSchemaFile = "auth-schema.mjs";
       break;
     case usingPrisma:
-      envFile = "prisma-schema.mjs";
+      envSchemaFile = "prisma-schema.mjs";
       break;
-    default:
-      envFile = "base-schema.mjs";
   }
-
-  if (!envFile) return;
 
   if (usingPrisma) {
     envContent += `
@@ -49,8 +45,9 @@ DISCORD_CLIENT_SECRET=
 `;
   }
 
-  if (!usingAuth && !usingPrisma) {
+  if (!envSchemaFile) {
     envContent += `
+# Example:
 # SERVERVAR=foo
 # NEXT_PUBLIC_CLIENTVAR=bar
 `;
@@ -65,13 +62,15 @@ DISCORD_CLIENT_SECRET=
 
 ` + envContent;
 
-  const envSchemaSrc = path.join(envAssetDir, envFile);
-  const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
+  if (envSchemaFile) {
+    const envSchemaSrc = path.join(envAssetDir, envSchemaFile);
+    const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
+    fs.copySync(envSchemaSrc, envSchemaDest);
+  }
 
   const envDest = path.join(projectDir, ".env");
   const envExampleDest = path.join(projectDir, ".env.example");
 
-  fs.copySync(envSchemaSrc, envSchemaDest);
   fs.writeFileSync(envDest, envContent, "utf-8");
   fs.writeFileSync(envExampleDest, envExampleContent, "utf-8");
 };
