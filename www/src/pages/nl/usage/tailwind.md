@@ -7,13 +7,13 @@ lang: nl
 
 ## Wat is Tailwind CSS?
 
-Tailwind is een klein, [gebruik voorop](https://tailwindcss.com/docs/utility-first) CSS framework om designs op maat te bouwen, zonder heen en weer te gaan tussen bestanden. Het is puur een CSS framework en het heeft geen ingebouwde componenten of logica. Het bied [compleet andere voordelen](https://www.youtube.com/watch?v=CQuTF-bkOgc) tenopzichte van een componenten library zoals Material UI.
+Tailwind is een klein, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework om designs op maat te bouwen zonder heen en weer te gaan tussen verschillende bestanden. Het is puur een CSS framework en het heeft geen ingebouwde componenten of logica. Ook bied het [compleet andere voordelen](https://www.youtube.com/watch?v=CQuTF-bkOgc) tenopzichte van een componenten library zoals Material UI.
 
-Het maakt CSS extreem makkelijk om te schrijven, zoals je in het volgende voorbeeld kan zien:
+Het maakt CSS ongeloofelijk makkelijk om te schrijven, zoals je in het volgende voorbeeld kan zien:
 
 Oude CSS:
 
-1. Schrijf CSS, vaak in een ander bestand
+1. Schrijf CSS (vaak in een ander bestand)
 
 ```css
 .my-class {
@@ -42,7 +42,7 @@ import "./my-class.css";
 
 Hetzelfde in tailwind:
 
-1. Schrijf de CSS gewoon in je html!
+1. Voeg de classes toe in je html
 
 ```html
 <div
@@ -54,13 +54,13 @@ Hetzelfde in tailwind:
 
 In combinatie met React Componenten is het extreem krachtig om snel UIs te bouwen.
 
-Tailwind CSS heeft een geweldig ingebouwd design systeem. Out of the box komt het met een met veel zorg gekozen kleurenpallet, sizing patronen voor width/height en padding/margin voor een samenhangend design en media breakpoints om responsive layouts te bouwen. Dit design systeem kan veranderd of uitgebreid worden om de perfecte collectie van hulpmiddelen te maken voor jouw project.
+Tailwind CSS heeft een geweldig ingebouwd design systeem. Out of the box komt het met een met voorzichtig gekozen kleurenpallet, maat specificaties voor width/height en padding/margin voor een samenhangend design, en media breakpoints om responsive layouts te bouwen. Dit design systeem kan veranderd of uitgebreid worden om de perfecte gereedschapskist te maken voor jouw project.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla, ook wel bekent als [mewtru](https://twitter.com/trunarla) heeft een geweldige talk gedaan over [een design systeem maken met Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+Tru Narla, beter bekent als [mewtru](https://twitter.com/trunarla) heeft een geweldige presentatie gedaan over [een design systeem maken met Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
 ## Gebruik
 
