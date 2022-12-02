@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import { getIsRtlFromUrl } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
 import LanguageSelect from "./LanguageSelect";
@@ -11,6 +12,8 @@ export interface Props {
 }
 
 const { pathname } = Astro.url;
+const isRtl = getIsRtlFromUrl(pathname);
+const isLtr = !isRtl;
 const isLanding = pathname === "/" || !!Astro.props.isNotFound;
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
@@ -50,7 +53,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           />
         </a>
       </div>
-      <div class="hidden gap-2 -space-x-1 md:ml-10 md:flex">
+      <div
+        class={clsx([
+          "hidden -space-x-1 md:flex gap-2",
+          isLtr && "md:ml-10",
+          isRtl && "md:mr-10",
+        ])}
+      >
         {
           navbarLinks.map((navbarLink) => (
             <a

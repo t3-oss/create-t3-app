@@ -94,17 +94,17 @@
   }
 
   article > section :is(ul, ol) {
-    padding-left: 1em;
+    padding-inline-start: 1em;
   }
 
   article > section nav :is(ul, ol) {
-    padding-left: inherit;
+    padding-inline-start: inherit;
   }
 
   td,
   th {
     padding: 6px;
-    text-align: left;
+    text-align: inline-start;
   }
 
   .t3-scrollbar {
@@ -175,7 +175,7 @@
   }
 
   .markdown code {
-    @apply break-words lg:break-normal;
+    @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
   }
 
   .markdown code:not(.markdown pre code) {

@@ -2,6 +2,7 @@ import { SIDEBAR } from "../../config";
 import { getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
+type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
@@ -19,12 +20,10 @@ export default function BreadCrumbs() {
     window.location.pathname.slice(1).split("/").length > 2
       ? window.location.pathname.slice(1).split("/")[1]
       : "" || "";
-  const actualEntries =
-    SIDEBAR[lang][
-      slugToEntryPath(
-        slug === undefined || slug === "" ? "" : (slug as SlugType),
-      )
-    ];
+  // TODO: find a way to use inference here to gain better typesafety
+  const actualEntries = SIDEBAR[lang][
+    slugToEntryPath(slug === undefined || slug === "" ? "" : (slug as SlugType))
+  ] as Entry[] | undefined;
 
   const getPathNameFromLink = (link: string) => {
     return actualEntries?.find((entry) => entry.link === link)?.text;
