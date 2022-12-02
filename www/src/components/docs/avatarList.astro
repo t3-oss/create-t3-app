@@ -22,7 +22,7 @@ async function getCommits(url: string) {
     const data = await fetchGithub(url, {});
     return data as Commit[];
   } catch (e) {
-    console.warn(`[error]  /src/components/AvatarList.astro 
+    console.warn(`[warn]  /src/components/AvatarList.astro 
     ${(e as any)?.message ?? e}`);
     return [] as Commit[];
   }
@@ -44,7 +44,6 @@ function removeDups(arr: Commit[]): Commit["author"][] {
 }
 
 const data = await getCommits(url);
-console.log(data, "data");
 const unique = removeDups(data);
 const recentContributors = unique.slice(0, 3); // only show avatars for the 3 most recent contributors
 const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
