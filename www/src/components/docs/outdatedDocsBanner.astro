@@ -35,7 +35,8 @@ async function getCommitDiff() {
   } catch (e) {
     console.warn(`[warn]  /src/components/outDatedDocsBanner.astro 
     ${(e as any)?.message ?? e}
-      If you're in production, this is a problem. If you're in dev, it's probably fine.`);
+    If you're in production, this is a problem. If you're in dev, it's probably fine.
+    If this warning appears on a translated file that's not yet on origin, it's fine.`);
 
     return 0;
   }
