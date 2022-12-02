@@ -6,7 +6,7 @@ lang: ar
 dir: rtl
 ---
 
-إن tRPC تسمح لك بكتابة type safe api دون الحاجة إلى توليد كود أو حدوث أخطاء مفاجئة أثناء الـ runtime، إنها تستغل خاصية الـ inference في Typescript حتى تضمن الـ type safety في الـ Api عند ندائه من الـ Frontend
+تسمح لك tRPC بكتابة type safe api دُون الحَاجة إلى تَوليد كود فتُنحي عنك حَدوث أخطاء مفاجئة أثناء الـ runtime، حيث إنها تَستغل خاصية الـ inference في Typescript حتى تضمن الـ type safety عِند نداء الـ Api من الـ Frontend
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
@@ -40,16 +40,16 @@ dir: rtl
 
 ### 📄 ملف `pages/api/trpc/[trpc].ts`
 
-هذة هي نقطة دخولك الي tRPC Api في الأوضاع الطبيعية فلن تَمس هذا الملف كثيرا لكن اذا اردت مثلا فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler` [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE)
+هذة هي نقطة دخولك الي tRPC Api، في الأوضاع الطبيعية لن تحتاج الي أن تَمس هذا الملف كثيرا. فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler` [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE)
 
 مما يعني أنك قادر على استخدام `createNextApiHandler` في أي middleware تريده، إقرأ [example snippet](#enabling-cors)
 
 ### ملف 📄 `server/trpc/context.ts`
 
-في هذا الملف تقوم بانشاء الـ Context التي سيتم تمريره الي tRPC Procedure ، الـ Context هو عبارة عن بيانات التي سيكون لكل الـ Procedures وصول لها وهي مكان ممتاز لتضع أشياء مثل database connections معلومات المصادقة وغيرها.
+في هذا الملف تقوم بانشاء الـ Context التي سيتم تمريره الي tRPC Procedure ، الـ Context هو عبارة عن البيانات التي سيكون لكل الـ Procedures وصول لها وهي مكان مُناسب لتضع أشياء مثل database connections ومعلومات المصادقة وغيرها.
 
-- ما هو `createContextInner`: هنا حيث تقوم بإنشاء الـ Context الذي لا يعتمد على الـ request مثل اتصال قاعدة البيانات ويمكنك إستخدام function لـ [integration testing](#sample-integration-test) او [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers)
-- ما هو `createContext` ؟ هنا حيث تقوم بإنشاء الـ Context الذي يعتمد على الـ request فيمكنك الوصول الى الـ req Object عن طريق `opts.req` ومن ثم تمريرة الي `createContextInner`لإنشاء الـ Context النهائي
+- ما هو `createContextInner`: هُنا تَقوم بإنشاء الـ Context الذي لا يَعتمد عَلى الـ request مِثل إتصال قاعدة البيانات. ويمكنك إستخدام function لـ [integration testing](#sample-integration-test) او [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers)
+- ما هو `createContext` ؟ هُنا حَيث تَقوم بإنشاء الـ Context الذي يعتمد على الـ request فيمكنك الوصول الى الـ `req Object` عن طريق `opts.req` ومن ثُم تَمريرة الي `createContextInner`لإنشاء الـ Context النهائي
 
 ### 📄ملف `server/trpc/trpc.ts`
 
@@ -108,7 +108,7 @@ const appRouter = t.router({
 export type AppRouter = typeof appRouter;
 ```
 
-لاحظ أننا فقط نقوم بعمل export لـ router's type أننا لا نستخدم اي من الـ server code في الـ client
+لاحظ أننا  نقوم بعمل export فقط لـ router's type أي أننا لا نستخدم اي من الـ server code في الـ client
 الان دعنا ننادي الـ procedure من الـ frontend ، tRPC توفر wrapper لمكتبة `@tanstack/react-query` مما يسمح لك بإستخدام المكتبة بكامل قوتها.
 
 ```tsx:pages/users/[id].tsx
