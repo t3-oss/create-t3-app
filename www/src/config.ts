@@ -28,6 +28,7 @@ export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
   // Add more languages here
   // sv: "🇸🇪 Svenska",
+  ru: "🇷🇺 Русский",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
@@ -92,6 +93,9 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "en/deployment/docker" },
     ],
   },
+  ru: {
+    Deployment: [{ text: "Vercel", link: "ru/deployment/vercel" }],
+  },
 };
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
@@ -103,4 +107,9 @@ export const SIDEBAR_HEADER_MAP: Record<
   //   Usage: "Användarguide",
   //   Deployment: "Deployment",
   // },
+  ru: {
+    "Create T3 App": "Создать T3 App",
+    Usage: "Использование",
+    Deployment: "Развертывание",
+  },
 };
