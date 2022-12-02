@@ -42,7 +42,10 @@ Astro.response.headers.set("Cache-Control", `s-max-age=${ONE_WEEK}`);
 
 {
   diffInDays > 0 && (
-    <div class="mb-8 w-full rounded-lg bg-t3-purple-200/50 p-4 font-medium dark:bg-t3-purple-200/10">
+    <div
+      dir="ltr"
+      class="mx-2 mb-8 w-full rounded-lg bg-t3-purple-200/50 p-4 font-medium dark:bg-t3-purple-200/10"
+    >
       <p>
         Attention: This page is{" "}
         <span class="font-extrabold">
