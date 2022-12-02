@@ -15,26 +15,33 @@ const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/
 const engUrl = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${englishPath}&per_page=1`;
 
 // File may not be on Github yet, so we only throw an error if we're in production
-const isProduction = process.env.NODE_ENV === "production";
-const thisLangCommit = await fetchGithub(url, {
-  throwIfNoAuth: isProduction,
-  throwIfNotOk: isProduction,
-});
-const englishCommit = await fetchGithub(engUrl, {
-  throwIfNoAuth: isProduction,
-  throwIfNotOk: isProduction,
-});
+async function getCommitDiff() {
+  try {
+    const thisLangCommit = await fetchGithub(url, {});
+    const englishCommit = await fetchGithub(engUrl, {});
 
-const thisLangDate = thisLangCommit.length
-  ? new Date(thisLangCommit[0].commit.author.date)
-  : new Date();
-const englishDate = englishCommit.length
-  ? new Date(englishCommit[0].commit.author.date)
-  : new Date();
+    const thisLangDate = thisLangCommit.length
+      ? new Date(thisLangCommit[0].commit.author.date)
+      : new Date();
+    const englishDate = englishCommit.length
+      ? new Date(englishCommit[0].commit.author.date)
+      : new Date();
 
-const diffInDays = Math.round(
-  Math.abs(thisLangDate.getTime() - englishDate.getTime()) / (1000 * 3600 * 24),
-);
+    const diffInDays = Math.round(
+      Math.abs(thisLangDate.getTime() - englishDate.getTime()) /
+        (1000 * 3600 * 24),
+    );
+    return diffInDays;
+  } catch (e) {
+    console.warn(`[warn]  /src/components/outDatedDocsBanner.astro 
+    ${(e as any)?.message ?? e}
+      If you're in production, this is a problem. If you're in dev, it's probably fine.`);
+
+    return 0;
+  }
+}
+
+const diffInDays = await getCommitDiff();
 
 const ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
 Astro.response.headers.set("Cache-Control", `s-max-age=${ONE_WEEK}`);
