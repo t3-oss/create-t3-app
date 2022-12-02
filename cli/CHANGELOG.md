@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.11.0
+
+### Minor Changes
+
+- [#901](https://github.com/t3-oss/create-t3-app/pull/901) [`9b6ae5c`](https://github.com/t3-oss/create-t3-app/commit/9b6ae5cc1c8fe85becd367d36b61828b06a0a6a9) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - include env files in all apps
+
+### Patch Changes
+
+- [#895](https://github.com/t3-oss/create-t3-app/pull/895) [`91362db`](https://github.com/t3-oss/create-t3-app/commit/91362db87a50fe7f09807aa9950acc5c60ba80dc) Thanks [@Mvmo](https://github.com/Mvmo)! - When initializing a new git repo the git config value 'init.defaultBranch' will be used as the branch name
+
+- [#897](https://github.com/t3-oss/create-t3-app/pull/897) [`272b954`](https://github.com/t3-oss/create-t3-app/commit/272b9547f42f70df3c24dc9d438a7cd88a244773) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - fix(cli): fix wrong prompt when setting up project name
+
 ## 6.10.3
 
 ### Patch Changes
