@@ -48,9 +48,17 @@ const [_1, _2, lang] = path.split("/");
 <script>
   const copySVG = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M216 36H88a4 4 0 0 0-4 4v44H40a4 4 0 0 0-4 4v128a4 4 0 0 0 4 4h128a4 4 0 0 0 4-4v-44h44a4 4 0 0 0 4-4V40a4 4 0 0 0-4-4Zm-52 176H44V92h120Zm48-48h-40V88a4 4 0 0 0-4-4H92V44h120Z"/></svg>`;
 
+  let titles = document.querySelectorAll(
+    ".remark-code-title",
+  ) as NodeListOf<HTMLDivElement>;
+  titles.forEach((title) => {
+    title.dir = "ltr";
+  });
+
   let blocks = document.querySelectorAll("pre");
   blocks.forEach((block) => {
     block.className = "relative flex w-full h-full";
+    block.dir = "ltr";
 
     let copyButton = document.createElement("button");
     copyButton.className =
