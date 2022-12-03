@@ -28,7 +28,7 @@ If the docs are not available in your language yet and you would like to transla
 
 Naturally, the English docs will move faster than the translated ones. We've implemented a feature that alerts visitors if a translated version of a page is outdated. If you see that a page is outdated and you're able to update it, please do so!
 
-In the medium to long term we would like to have code owners for each language. If you have several contributions, either in translating yourself or reviewing the translations of others, and would like to be become a code owner for your language, please let us know in the `create-t3-translation` channel on [Discord](https://create.t3.gg/discord).
+In the medium to long term, we would like to have code owners for each language. If you have several contributions, either in translating yourself or reviewing the translations of others and would like to become a code owner for your language, please let us know in the `create-t3-translation` channel on [Discord](https://create.t3.gg/discord).
 
 ### Reviewing
 
