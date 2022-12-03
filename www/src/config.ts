@@ -43,7 +43,7 @@ export const ALGOLIA = {
   apiKey: "892c4647b96fe1b3d0b7d8de1c5b5e40",
 };
 
-type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+export type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
     [THeader in OuterHeaders]?: {
