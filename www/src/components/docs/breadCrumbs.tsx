@@ -1,4 +1,4 @@
-import { SIDEBAR } from "../../config";
+import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
@@ -29,6 +29,11 @@ export default function BreadCrumbs() {
     return actualEntries?.find((entry) => entry.link === link)?.text;
   };
 
+  const getHeaderName = (header: OuterHeaders) => {
+    if (lang === "en") return header;
+    return SIDEBAR_HEADER_MAP[lang][header];
+  };
+
   const breadcrumbs = window.location.href
     .split("/")
     .slice(window.location.href.split("/").length > 5 ? -2 : -1)
@@ -39,9 +44,12 @@ export default function BreadCrumbs() {
         .join("/");
       return {
         href,
+        key: crumb,
         text:
-          getPathNameFromLink(href.slice(href.indexOf("en"))) ||
-          crumb[0]?.toUpperCase() + crumb.slice(1),
+          getPathNameFromLink(href.slice(href.indexOf(lang))) ||
+          getHeaderName(
+            (crumb[0]?.toUpperCase() + crumb.slice(1)) as OuterHeaders,
+          ),
       };
     });
 
@@ -61,12 +69,12 @@ export default function BreadCrumbs() {
       <svg width="16" height="16" viewBox="0 0 24 24">
         <path
           fill="currentColor"
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
         />
       </svg>
       {breadcrumbs.map((crumb, index) => (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" key={crumb.key}>
           <a
             href={crumb.href}
             className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 hover:no-underline dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
@@ -77,7 +85,7 @@ export default function BreadCrumbs() {
             <svg width="16" height="16" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
               />
             </svg>

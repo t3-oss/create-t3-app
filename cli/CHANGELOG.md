@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.1
+
+### Patch Changes
+
+- [#914](https://github.com/t3-oss/create-t3-app/pull/914) [`1037d14`](https://github.com/t3-oss/create-t3-app/commit/1037d1472764080a5641d657cac75adec2bbd3f1) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next-auth
+
 ## 6.11.0
 
 ### Minor Changes
