@@ -34,7 +34,7 @@ lang: pt
 
 Seja você um desenvolvedor novo ou experiente, achamos que o TypeScript é obrigatório. Pode parecer intimidador no começo, mas, assim como muitas ferramentas, é algo que muitos nunca voltam atrás depois de começar a usá-lo.
 
-Ele fornece feedback ao vivo enquanto você escreve seu código definindo os tipos de dados esperados e fornece preenchimento automático útil em seu editor de código ou grita com você com linhas onduladas vermelhas se você estiver tentando acessar uma propriedade que não existe ou tentando passe um valor do tipo errado, que de outra forma você teria que depurar mais adiante.
+Ele fornece feedback instantâneo enquanto você escreve seu código definindo os tipos de dados esperados e fornece autocomplete em seu editor de código ou grita com você com linhas onduladas vermelhas se você estiver tentando acessar uma propriedade que não existe ou tentando passe um valor do tipo errado, que de outra forma você teria que depurar mais adiante.
 
 É, talvez, a ferramenta que mais produtividade oferece aos desenvolvedores; fornecer documentação do código que você está escrevendo ou consumindo diretamente em seu editor e ter feedback instantâneo quando você inevitavelmente cometer erros é absolutamente inestimável.
 
@@ -56,7 +56,7 @@ O [Zod](https://github.com/colinhacks/zod) é uma biblioteca de validação de e
 
 ### Tanstack Query
 
-O [Tanstack Query](https://tanstack.com/query/v4/) fornece consultas e mutações declarativas e sempre atualizadas e autogerenciadas que melhoram diretamente as experiências do desenvolvedor e do usuário.
+O [Tanstack Query](https://tanstack.com/query/v4/) fornece consultas (queries) e mutações (mutations) declarativas, sempre atualizadas e autogerenciadas que melhoram diretamente as experiências do desenvolvedor e do usuário.
 
 ## Recursos Úteis
 
