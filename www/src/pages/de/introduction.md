@@ -40,4 +40,4 @@ Wir lieben unsere modernen Technologien. Die Geschwindigkeit und, ehrlich gesagt
 
 ### Typsicherheit ist nicht optional
 
-Das erklärte Ziel von `create-t3-app` ist es, den schnellsten Weg zu einer neuen vollwertigen, **typsicheren** Webanwendung zu bieten. Wir nehmen die Typsicherheit, da sie unsere Produktivität verbessert und uns hilft, weniger Fehler auszuliefern. Jede Entscheidung, die die Typsicherheit von `create-t3-app` gefährdet, sollte in einem anderen Projekt getroffen werden.
+Das erklärte Ziel von `create-t3-app` ist es, den schnellsten Weg zu einer neuen, **typsicheren** Full-Stack Webanwendung zu bieten. Wir nehmen die Typsicherheit ernst, da sie unsere Produktivität verbessert und uns hilft, weniger Fehler auszuliefern. Jede Entscheidung, die die Typsicherheit von `create-t3-app` gefährdet, sollte in einem anderen Projekt getroffen werden.
