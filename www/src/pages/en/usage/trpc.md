@@ -16,7 +16,7 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   <cite className="flex items-center justify-end pr-4 pb-2">
     <img
       alt="Avatar of @alexdotjs"
-      className="w-12 mr-4 rounded-full bg-neutral-500"
+      className="w-12 rounded-full bg-neutral-500 [margin-inline-end:16px]"
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
     <div className="flex flex-col items-start not-italic">

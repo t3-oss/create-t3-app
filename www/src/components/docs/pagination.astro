@@ -1,6 +1,6 @@
 ---
+import { getLanguageFromURL } from "../../languages";
 import { paginate } from "../../utils/pagination";
-const langCode = "en";
 
 const currentPage = Astro.url.pathname;
 const hasTrailing = currentPage.endsWith("/");
@@ -9,6 +9,7 @@ const currentPageMatch = currentPage.slice(
   hasTrailing ? -1 : currentPage.length,
 );
 
+const langCode = getLanguageFromURL(currentPage);
 const { next, prev } = paginate(langCode, currentPageMatch);
 ---
 

@@ -1,7 +1,8 @@
-import { SIDEBAR } from "../../config";
+import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
+type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
@@ -19,15 +20,18 @@ export default function BreadCrumbs() {
     window.location.pathname.slice(1).split("/").length > 2
       ? window.location.pathname.slice(1).split("/")[1]
       : "" || "";
-  const actualEntries =
-    SIDEBAR[lang][
-      slugToEntryPath(
-        slug === undefined || slug === "" ? "" : (slug as SlugType),
-      )
-    ];
+  // TODO: find a way to use inference here to gain better typesafety
+  const actualEntries = SIDEBAR[lang][
+    slugToEntryPath(slug === undefined || slug === "" ? "" : (slug as SlugType))
+  ] as Entry[] | undefined;
 
   const getPathNameFromLink = (link: string) => {
     return actualEntries?.find((entry) => entry.link === link)?.text;
+  };
+
+  const getHeaderName = (header: OuterHeaders) => {
+    if (lang === "en") return header;
+    return SIDEBAR_HEADER_MAP[lang][header];
   };
 
   const breadcrumbs = window.location.href
@@ -40,9 +44,12 @@ export default function BreadCrumbs() {
         .join("/");
       return {
         href,
+        key: crumb,
         text:
-          getPathNameFromLink(href.slice(href.indexOf("en"))) ||
-          crumb[0]?.toUpperCase() + crumb.slice(1),
+          getPathNameFromLink(href.slice(href.indexOf(lang))) ||
+          getHeaderName(
+            (crumb[0]?.toUpperCase() + crumb.slice(1)) as OuterHeaders,
+          ),
       };
     });
 
@@ -50,7 +57,7 @@ export default function BreadCrumbs() {
     <div className="mb-4 flex items-center gap-2 px-2 text-sm">
       <a
         href="/"
-        className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
+        className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 hover:no-underline dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
       >
         <svg width="20" height="20" viewBox="0 0 24 24">
           <path
@@ -62,15 +69,15 @@ export default function BreadCrumbs() {
       <svg width="16" height="16" viewBox="0 0 24 24">
         <path
           fill="currentColor"
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
         />
       </svg>
       {breadcrumbs.map((crumb, index) => (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" key={crumb.key}>
           <a
             href={crumb.href}
-            className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
+            className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 hover:no-underline dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
           >
             {crumb.text}
           </a>
@@ -78,7 +85,7 @@ export default function BreadCrumbs() {
             <svg width="16" height="16" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
               />
             </svg>
