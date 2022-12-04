@@ -141,7 +141,7 @@ import { appRouter } from "../../../server/trpc/router/_app";
 import { createContext } from "../../../server/trpc/context";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Create context and caller
+  // Criar contexto e chamador (caller)
   const ctx = await createContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
@@ -150,11 +150,11 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(user);
   } catch (cause) {
     if (cause instanceof TRPCError) {
-      // An error from tRPC occured
+      // Ocorreu um erro do tRPC
       const httpCode = getHTTPStatusCodeFromError(cause);
       return res.status(httpCode).json(cause);
     }
-    // Another error occured
+    // Ocorreu outro erro
     console.error(cause);
     res.status(500).json({ message: "Internal server error" });
   }
@@ -243,10 +243,10 @@ import { createContext } from "~/server/trpc/context";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Enable cors
+  // Ativar CORS
   await cors(req, res);
 
-  // Create and call the tRPC handler
+  // Criar e chamar o handler do tRPC
   return createNextApiHandler({
     router: appRouter,
     createContext,
@@ -267,24 +267,24 @@ const MyComponent = () => {
   const utils = trpc.useContext();
   const postCreate = trpc.post.create.useMutation({
     async onMutate(newPost) {
-      // Cancel outgoing fetches (so they don't overwrite our optimistic update)
+      // Cancele as buscas de saída (para que não substituam nossa atualização otimista)
       await utils.post.list.cancel();
 
-      // Get the data from the queryCache
+      // Obtenha os dados do queryCache
       const prevData = utils.post.list.getData();
 
-      // Optimistically update the data with our new post
+      // Atualizar os dados de forma otimista com nosso novo post
       utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
-      // Return the previous data so we can revert if something goes wrong
+      // Retornar os dados anteriores para que possamos reverter se algo der errado
       return { prevData };
     },
     onError(err, newPost, ctx) {
-      // If the mutation fails, use the context-value from onMutate
+      // Se a mutation falhar, usar o valor de contexto de onMutate
       utils.post.list.setData(undefined, ctx.prevData);
     },
     onSettled() {
-      // Sync with server once mutation has settled
+      // Sincronizar com o servidor assim que a mutação for estabelecida
       utils.post.list.invalidate();
     },
   });
