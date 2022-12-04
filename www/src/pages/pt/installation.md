@@ -27,14 +27,14 @@ pnpm create t3-app@latest
 
 Após sua aplicação ter sido estruturada, verifique os [Primeiros Passos](/pt/usage/first-steps) para começar a usar sua nova aplicação.
 
-## Advanced usage
+## Uso avançado
 
-| Opção/Flag        | Descrição                                                                        |
-| ----------------- | -------------------------------------------------------------------------------- |
-| `[dir]`           | Inclua um argumento de diretório com um nome para o projeto                      |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project          |
-| `-y`, `--default` | Ignore a CLI e inicialize um novo aplicativo t3 com todas as opções selecionadas |
-| `--noInstall`     | Gera um projeto sem instalar as dependências                                     |
+| Opção/Flag        | Descrição                                                                         |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `[dir]`           | Inclua um argumento de diretório com um nome para o projeto                       |
+| `--noGit`         | Diga explicitamente à CLI para não inicializar um novo repositório git no projeto |
+| `-y`, `--default` | Ignore a CLI e inicialize um novo aplicativo t3 com todas as opções selecionadas  |
+| `--noInstall`     | Gera um projeto sem instalar as dependências                                      |
 
 ## Uso experimental
 
