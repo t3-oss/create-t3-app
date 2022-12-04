@@ -66,11 +66,11 @@ FROM --platform=linux/amd64 node:16-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
-# Instale o Prisma Client - remova se não estiver usando o Prisma
+# Instalação do Prisma Client - remova se não estiver usando o Prisma
 
 COPY prisma ./
 
-# Instale dependências com base no gerenciador de pacotes preferido
+# Instalação de dependências com base no package manager padrão
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
