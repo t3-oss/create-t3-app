@@ -5,9 +5,7 @@ layout: ../../layouts/docs.astro
 lang: pt
 ---
 
-A seguir temos a estrutura de pastas de um novo T3 App inicializado, com todas as opções selecionadas.
-
-A seguir, temos a estrutura de pastas de um novo T3 app inicializado, com todas as opções selecionadas. A descrição de cada pasta indica seu propósito e se é apenas incluída com bibliotecas selecionadas.
+A seguir, temos a estrutura de pastas de um novo T3 app inicializado, com todas as opções selecionadas. A descrição de cada pasta indica seu propósito e se é apenas incluída com determinada biblioteca selecionada.
 
 ```
 .
@@ -79,7 +77,7 @@ A pasta `pages` contém todas as páginas da aplicação Next.js. O arquivo `ind
 
 #### `src/pages/api`
 
-A pasta `api` contém todas as rotas API da aplicação Next.js. O arquivo `examples.ts` (com o Prisma) contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) junto com o prisma. O arquvio `restricted.ts` (com Next-Auth) contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) e é protegido pelo [NextAuth.js](https://next-auth.js.org/).
+A pasta `api` contém todas as rotas API da aplicação Next.js. O arquivo `examples.ts` (com o Prisma) contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) junto com o prisma. O arquivo `restricted.ts` (com Next-Auth) contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) e é protegido pelo [NextAuth.js](https://next-auth.js.org/).
 
 <sub>(com NextAuth.js, tRPC or tRPC + Prisma)</sub>
 
@@ -116,7 +114,6 @@ O arquivo `get-server-auth-session.ts` é usado para obter a sessão do NextAuth
 #### `src/server/db/client.ts`
 
 O arquivo `client.ts` é usado para instanciar o cliente do Prisma em escopo globa. Veja [Uso do Prisma](usage/prisma#prisma-client) para mais informações.
-The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
 
 <sub>(com Prisma)</sub>
 
@@ -176,7 +173,7 @@ A pasta `types` é usada para guardar tipos ou definições de tipos reutilizáv
 
 #### `src/types/next-auth.d.ts`
 
-O arquivo `next-auth.d.ts` é usado para estender o tipo padrão de sessão do NextAuth para incluir o ID de usuário. Veja [Uso do NextAuth.js](usage/next-auth#inclusão-do-userid-na-sessão) para mais informações <!-- FIXME: broken link :( --->
+O arquivo `next-auth.d.ts` é usado para estender o tipo padrão de sessão do NextAuth para incluir o ID de usuário. Veja [Uso do NextAuth.js](usage/next-auth#inclusão-do-userid-na-sessão) para mais informações.
 
 <sub>(com NextAuth.js)</sub>
 
@@ -220,7 +217,7 @@ O arquivo `postcss.config.cjs` é usado para o uso do Tailwind PostCSS. Veja [Do
 
 ### `prettier.config.cjs`
 
-O arquivo `prettier.config.cjs` é usado para configura o Prettier e incluir o prettier-plugin-tailwindcss ára formatação das classes CSS. Veja o post no [Blog do Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais informações.
+O arquivo `prettier.config.cjs` é usado para configura o Prettier e incluir o prettier-plugin-tailwindcss para a formatação das classes CSS. Veja o post no [Blog do Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais informações.
 
 <sub>(com Tailwind CSS)</sub>
 
