@@ -121,6 +121,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Vercel", link: "pt/deployment/vercel" },
       { text: "Docker", link: "pt/deployment/docker" },
     ],
+  },
   ru: {
     "Create T3 App": [
       { text: "Введение", link: "ru/introduction" },
