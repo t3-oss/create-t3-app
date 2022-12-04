@@ -20,7 +20,7 @@ A Vercel provavelmente configurará seu comando de build e publicará o diretór
 }
 ```
 
-## Usando o Painel Vercel
+## Usando o painel de controle da Vercel
 
 1. Depois de enviar seu código para um repositório GitHub, faça login na [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) com o GitHub e clique em **Add New Project**.
 
@@ -56,7 +56,7 @@ Inclua `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` para variáveis de ambiente c
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
-Após a primeiro deploy, esse comando fara o deploy em uma ramificação de visualização. Você precisará incluir `--prod` para enviar alterações diretamente para o site ao vivo para implantações futuras.
+Após o primeiro deploy, esse comando o fará em um branch de preview. Você precisará incluir `--prod` para enviar alterações diretamente para a produção.
 
 ```bash
 vercel --prod
