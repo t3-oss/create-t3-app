@@ -11,7 +11,7 @@ Next.js é um framework back-end para suas aplicações React.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Veja a [Fala di Theo na Next.js Conf](https://www.youtube.com/watch?v=W4UhNo3HAMw) para entender melhor o que é Next.js e como ele funciona.</p>
+Veja a [Fala do Theo na Next.js Conf](https://www.youtube.com/watch?v=W4UhNo3HAMw) para entender melhor o que é Next.js e como ele funciona.</p>
 
 ## Por que devo usá-lo?
 
@@ -23,7 +23,7 @@ Juntando o Next.js com a [Vercel](https://vercel.com/) torna o desenvolvimento e
 
 Um recurso chave do Next.js são seus recursos de busca de dados. É altamente recomendável ler a [documentação oficial](https://nextjs.org/docs/basic-features/data-fetching) para entender como usar cada método e como eles diferem. `getServerSideProps` geralmente é desencorajado, a menos que haja uma boa razão para isso, devido ao fato de que é uma chamada de bloqueio e deixará seu site lento. [Regeneração estática incremental (ISR)](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) é uma ótima alternativa para `getServerSideProps` quando os dados são dinâmicos e podem ser buscados de forma incremental.
 
-## Useful Resources
+## Recursos Úteis
 
 | Recurso                            | Link                               |
 | ---------------------------------- | ---------------------------------- |
