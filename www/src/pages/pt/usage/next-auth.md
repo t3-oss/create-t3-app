@@ -30,13 +30,13 @@ const User = () => {
     return <SignIn />;
   }
 
-  return <p>Welcome {session.user.name}!</p>;
+  return <p>Bem-vindo {session.user.name}!</p>;
 };
 ```
 
 ## Inclusão do `user.id` na Sessão
 
-`create-t3-app` está configurado para utilizar o [retorno de chamada de sessão (sesion callback)](https://next-auth.js.org/configuration/callbacks#session-callback) na configuração NextAuth.js para incluir o ID do usuário dentro do objeto `sessão`.
+`create-t3-app` está configurado para utilizar o [retorno de chamada de sessão (sesion callback)](https://next-auth.js.org/configuration/callbacks#session-callback) na configuração NextAuth.js para incluir o ID do usuário dentro do objeto `session`.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -105,7 +105,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
+      // Infere `session` como não-nulo
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
