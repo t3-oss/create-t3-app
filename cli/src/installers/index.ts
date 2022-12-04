@@ -22,8 +22,10 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.15.1",
-  "@next-auth/prisma-adapter": "^1.0.4",
+  // FIXME: next-auth and @next-auth/prisma-adapter pinned temporarily due to breaking changes
+  // need to fix the actual problem and then unpin
+  "next-auth": "4.17.0",
+  "@next-auth/prisma-adapter": "1.0.5",
 
   // Prisma
   prisma: "^4.5.0",
