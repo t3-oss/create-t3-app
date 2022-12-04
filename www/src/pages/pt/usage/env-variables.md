@@ -1,11 +1,11 @@
 ---
-title: Variáveis Ambiente
+title: Variáveis de Ambiente
 description: Getting started with create-t3-app
 layout: ../../../layouts/docs.astro
 lang: pt
 ---
 
-O Create-T3-App usa [Zod](https://github.com/colinhacks/zod) para validar suas variáveis de ambiente em runtime _and_ buildtime fornecendo alguns arquivos adicionais no diretório `env`:
+O Create-T3-App usa [Zod](https://github.com/colinhacks/zod) para validar suas variáveis de ambiente em runtime _e_ buildtime fornecendo alguns arquivos adicionais no diretório `env`:
 
 📁 src/env
 
