@@ -9,7 +9,7 @@ const { path } = Astro.props;
 const [_1, _2, _3, ...rest] = path.split("/");
 
 const englishPath = `src/pages/en/${rest.join("/")}`;
-const engHref = `/en/${rest}`.replace(/(.*)\.[^.]+$/, "");
+const engHref = `/en/${rest.join("/").replace(/\.[^/.]+$/, "")}`;
 
 const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${path}&per_page=1`;
 const engUrl = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=www/${englishPath}&per_page=1`;
@@ -52,7 +52,7 @@ Astro.response.headers.set("Cache-Control", `s-max-age=${ONE_WEEK}`);
   diffInDays > 0 && (
     <div
       dir="ltr"
-      class="mx-2 mb-8 rounded-lg bg-t3-purple-200/50 p-4 font-medium dark:bg-t3-purple-200/10 lg:w-full"
+      class="mx-4 mb-4 rounded-lg bg-t3-purple-200/50 p-4 font-medium dark:bg-t3-purple-200/10 lg:w-full"
     >
       <p>
         Attention: This page is{" "}
