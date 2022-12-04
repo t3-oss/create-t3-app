@@ -15,15 +15,13 @@ Javascript é difícil. Pra quê mais regras?
 
 Nos firmemente acreditamos que a experiência que o Typescript proporciona irá te ajudar a ser um desenvolvedor melhor. Ele proporciona feedback instantâneo conforme você escreve seu código definindo os tipos esperados de data, e ou te fornece um autocomplete muito útil no seu editor ou grita por meio de linhas onduladas vermelhas se você está tentando acessar uma propriedade que não existe ou tentando passar um valor do tipo errado, o qual por outro lado você deveria debugar mais adiante. Se você é novo no desenvolvimento web ou um profissional experiente, o "rigor" do TypeScript vai te providenciar uma experiência menos frustrante, e mais consistente que o Javascript padrão.
 
-Segurança de tipo te faz mais rápido. Se você ainda não está convencido, você
-
-Typesafety makes you faster. If you're not convinced, you [pode estar usando TypeScript errado...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
+Segurança de tipo te faz mais rápido. Se você ainda não está convencido, você [deve estar usando o TypeScript errado...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
 ## Por que Next.js ?
 
 Nós amamos React. Ele tornou o desenvolvimento de interfaces mais acessível de maneira que nunca imaginávamos antes. Ele também pode levar os desenvolvedores para caminhos difíceis.
 
-o Next.js oferece uma abordagem levemente opinada e altamente otimizada de criar aplicações usando React. Desde roteamento até definições de API até renderizações de images, nós confiamos que o Next.js levará os desenvolvedores tomarem boas decisões.
+o Next.js oferece uma abordagem levemente opinada e altamente otimizada de criar aplicações usando React. Desde roteamento até definições de API até renderizações de imagens, nós confiamos que o Next.js levará os desenvolvedores tomarem boas decisões.
 
 ## Por que tRPC/Prisma/Tailwind/etc?
 
