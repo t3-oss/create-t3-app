@@ -1,18 +1,19 @@
 ---
 title: Docker
-description: Deployment with Docker
+description: النشر مع Docker
 layout: ../../../layouts/docs.astro
 lang: ar
 dir: rtl
 ---
 
-يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers بإستخدام docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
+يمكنك إستخدام الـ Stack داخل Docker Container أو كجزء من مجموعة containers عن طريق docker-compose، إقرأ المزيد هنا [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker)
 
 ## تهيئة مشروع Docker
 
-يَجد أن تضع في حسبانك أن Next.js يتطلب process مُنفصلة لـ buildtime و runtime.
-يمكنك الوصول لـ runtime environment فقط في الـ Server ـ في هذا المثال نستخدم مُتغيرين فقط لذلك عليك أن تٌبقي في بالك موقعها في
-الـ `Dockerfile`والـ command-line arguments, والـ `docker-compose.yml`:
+يَجب أن تضع في حُسبانك أن Next.js يتطلب process مُنفصلة لـ buildtime و runtime.
+يمكنك الوصول لـ runtime environment فقط في الـ Server.
+
+في هذا المثال نستخدم مُتغيرين فقط لذلك عليك أن تٌبقي في بالك موقعها في الـ `Dockerfile` والـ command-line arguments, والـ `docker-compose.yml`:
 
 - `DATABASE_URL` (تُستخدم في الـ server)
 - `NEXT_PUBLIC_CLIENTVAR` (تُستخدم في الـ client)
@@ -138,7 +139,7 @@ CMD ["node", "server.js"]
 </div>
 </details>
 
-## بناء وتشغيل الـ Image locally
+## البناء والتشغيل locally
 
 قم ببناء وتشغيل هذه الصورة Locally باستخدام الأوامر التالية:
 
@@ -146,20 +147,16 @@ CMD ["node", "server.js"]
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 ```
-
-Open [localhost:3000](http://localhost:3000/) to see your running application.
-
+إفتح  [localhost:3000](http://localhost:3000/) لتري تطبيقك يَعمل
 ## الـ Docker Compose
 
 يُمكنك أيضا إستخدام Docker Compose لبناء وتشغيل الـ Container
-
-<details>
-    <summary>
-      بعد إتباع الخطوات من 1 إلى 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
-      
-    </summary>
-<div class="content">
-
+    <details>
+        <summary>
+            بعد إتباع الخطوات من 1 إلى 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
+        </summary>
+        <div class="content">
+            
 ```yaml
 version: "3.9"
 services:
@@ -186,9 +183,8 @@ docker compose up
 
 الآن إفتح [localhost:3000](http://localhost:3000/) لترى تطبيقك يُعمل.
 
-</div>
+	 </div>
 </details>
-
 ## الـ Deploy علي Railway
 
 يُمكنك أن تستخدم PaaS كـ [Railway's](https://railway.app) كـ [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles)  
@@ -201,12 +197,13 @@ railway link
 railway up
 railway open
 ```
+إذهب الي "Variables" وأضف `DATABASE_URL` ثُم الي "Settings"  واختر "Generate Domain." لتري أمثلة علي  Railway زُر  [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-## Useful Resources
 
-| Resource                             | Link                                                                 |
+## مصدر مُفيدة
+
+| المصدر                             | الرابط                                                                 |
 | ------------------------------------ | -------------------------------------------------------------------- |
 | Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
 | Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
