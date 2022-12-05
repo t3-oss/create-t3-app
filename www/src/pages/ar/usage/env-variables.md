@@ -22,7 +22,7 @@ dir: rtl
 
 ## ملف schema.mjs
 
-هذا هو الملف الذي سوف تلمسه بالفعل. يحتوي على مُخططين ، أحدهما environment variables من جانب الخادم والآخر من جانب العميل بالإضافة إلى Object الـ "clientEnv".
+هذا هو الملف الذي ستعمل علية. يَحتوي على مُخططين ، أحدهما environment variables من جانب الخادم والآخر من جانب العميل بالإضافة إلى Object الـ "clientEnv".
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -40,17 +40,17 @@ export const clientEnv = {
 
 ### الـ Server Schema
 
-حدد environment variables schema من جانب الخادم هنا.
-تأكد أن لا تضيف `NEXT_PUBLIC` قبل اسم المتغير، الـ Validation سيفشل أذا ما فعلت هذا.
+أنشئ الـ environment variables schema من جانب الخادم هنا.
+تأكد أن لا تضيف `NEXT_PUBLIC` قبل اسم المتغير، سيفشل الـ Validation  إذا ما فعلت هذا.
 
 ### الـ Client Schema
 
-حدد الـ client-side environment variables هنا، حتى تجعلهم متاحيت للـ client أضف `NEXT_PUBLIC` قبل الاسم.
+أنشئ الـ client-side environment variables هنا، حتى تجعلهم متاحيت للـ client أضف `NEXT_PUBLIC` قبل الاسم.
 
 ### الـ clientEnv Object
 
-هُنا حيثُ تقوم بعمل Destruct لـ `process.env`ز
-تحتاج Zod الي Object لتكون قادرة على تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب فعل ذلك يدويا، لا تقلق فـ Typescript تقوم بتحذيرك إذا ارتكبت خطاّ.
+هُنا حيثُ تقوم بعمل Destruct لـ `process.env`
+تحتاج Zod الي Object لتكون قادرة على تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب أن تتم هذة العملية  يدويا، لا تقلق فـ Typescript تقوم بتحذيرك إذا ارتكبت خطاّ.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -106,10 +106,10 @@ export const serverSchema = z.object({
   TWITTER_API_TOKEN: z.string(),
 });
 ```
+**ملحوطة:** النص الفارغ تتعامل معة zod علي أنه نص صحيح، إذا ما اردت ان تُغيّر هذا الاسلوب فإستخدم  `z.string().min(1)`
 
-_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+**ملحوطة:** أضف إسم المُتغيير `TWITTER_API_TOKEN` في example.env ولكن لا تُضف الـ token 
 
-3. optional: Add the environment variable to `.env.example`, but don't include the token
 
 ```
 TWITTER_API_TOKEN=
