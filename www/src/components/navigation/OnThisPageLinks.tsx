@@ -76,7 +76,7 @@ export default function OnThisPageLinks({
         {({ open }) => (
           <div className="relative w-full">
             <div className="">
-              <Menu.Button className="inline-flex cursor-pointer items-center whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-2 py-1.5 text-sm font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
+              <Menu.Button className="text-md inline-flex cursor-pointer items-center whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
                 On this page
                 <span className="ml-1.5">
                   <svg
@@ -102,7 +102,7 @@ export default function OnThisPageLinks({
             </div>
             <Menu.Items
               as="ul"
-              className="t3-scrollbar absolute top-full z-10 mt-3 max-h-80 w-full overflow-y-auto rounded-md border-2 border-primary bg-default py-1.5 shadow-md dark:border-t3-purple-200/20 dark:bg-default"
+              className="t3-scrollbar absolute top-full z-10 mt-3 max-h-[45vh] w-full overflow-y-auto rounded-md border-2 border-primary bg-default py-1.5 shadow-md dark:border-t3-purple-200/20 dark:bg-default"
             >
               {headingWithIsVisible.map((heading) => (
                 <li key={heading.slug} className="w-full">
@@ -110,8 +110,8 @@ export default function OnThisPageLinks({
                     {({ active }) => (
                       <a
                         className={clsx(
-                          "line-clamp-1 block w-full py-1 text-sm text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
-                          `pl-${heading.depth * 2 - 2}`,
+                          "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
+                          heading.depth === 2 ? "pl-3" : "pl-8",
                           {
                             "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
                               active,
