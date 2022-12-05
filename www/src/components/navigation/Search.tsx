@@ -62,7 +62,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
           },
         )}
       >
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center gap-1 lg:gap-3">
           <svg className="h-6 w-6" fill="none">
             <path
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
@@ -73,7 +73,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
             />
           </svg>
 
-          <span className="pl-1 lg:pl-3">Search</span>
+          <span>Search</span>
         </div>
 
         <span className="rounded-md border border-current px-1">
