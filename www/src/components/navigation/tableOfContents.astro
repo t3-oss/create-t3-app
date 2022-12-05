@@ -34,8 +34,8 @@ const isRtl = getIsRtlFromUrl(pathname);
             class={clsx(
               "w-full list-none border-t3-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-t3-purple-300/50",
               isRtl
-                ? `border-r-2 pr-${depth * 2 - 2}`
-                : `border-l-2 pl-${depth * 2 - 2}`,
+                ? ["border-r-2", depth === 2 ? "pr-2" : "pr-4"]
+                : ["border-l-2", depth === 2 ? "pl-2" : "pl-4"],
             )}
           >
             <a
