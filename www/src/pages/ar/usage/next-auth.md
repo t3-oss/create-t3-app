@@ -6,11 +6,11 @@ lang: ar
 dir: rtl
 ---
 
-عندما تريد نظام مصادقة في تطبيقك Next.js ، فإن NextAuth.js يعد حلاً ممتازًا دون الحاجة إلى إنشاء بنفسك. يأتي مزودًا بقائمة واسعة من الموفرين لإضافة مصادقة OAuth بسرعة ويوفر Adapters للعديد من قواعد البيانات و ORMs.
+عندما تُريد نِظام مُصادقة في تَطبيق Next.js ، فإن NextAuth.js يُعد حلاً ممتازًا دون الحاجة إلى إنشائة بنفسك. يأتي مزودًا بقائمة واسعة من الموفرين لإضافة مصادقة OAuth بسرعة ويوفر Adapters للعديد من قواعد البيانات و ORMs.
 
 ## Context Provider
 
-في نقطة دخول تطبيقك ، سترى أن تطبيقك في [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
+في نقطة الدُخول إلي تطبيقك ، سترى أن تطبيقك في [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -37,7 +37,7 @@ const User = () => {
 
 ## تضمين `user.id` في الـ Session
 
-يستخدم `create-t3-app` الـ Session callback الموجودة في ملف تكوين NextAuth.js ليضيف الـ User ID الي Session Object.
+يُستخدم `create-t3-app` الـ Session callback الموجودة في ملف تكوين NextAuth.js ليضيف الـ User ID الي Session Object.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -67,7 +67,8 @@ declare module "next-auth" {
 ## Usage with tRPC
 
 عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها إلا بواسطة أشخاص معينين
-This is done in a two step process:
+
+يُمكن فَعل هذا في خطوتين:
 
 1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
    نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء إنشاء هذه المادة عنك :
@@ -113,7 +114,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
-الـ Session Object صغير يحتوي علي عدد قليل من الخانات، وعند استخدامك لـ `protectedProcedures`يمكنك الوصول الى هذة البيانات منها الـ UserId وعندها يمكنك عمل fetch لبيانات اخرى من قاعدة البيانات.
+الـ Session Object صغير ويحتوي علي عدد قليل من الخانات، وعند استخدامك لـ `protectedProcedures`يمكنك الوصول الى هذة البيانات منها الـ UserId وعندها يمكنك عمل fetch لبيانات اخرى من قاعدة البيانات.
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
@@ -127,14 +128,9 @@ const userRouter = router({
   }),
 });
 ```
-
-## Usage with Prisma
-
 ## الاستخدام مع Prisma
 
 يتطلب إستخدام NextAuth.js للعمل مع Prisma الكثير من الإعداد الأولي. يتعامل تطبيق create-t3-app مع كل هذا من أجلك ، وإذا حددت كل من Prisma و NextAuth.js ، فستحصل على نظام مصادقة يعمل بكامل طاقته مع جميع النماذج المطلوبة التي تم تكوينها مسبقًا. نقوم بشحن تطبيقك الاولي مع مزود Discord OAuth المكون مسبقًا ، والذي اخترناه لأنه من أسهل البدء معة - ما عليك سوى توفير الرموز المميزة في .env وستكون جاهزًا للبدء. ومع ذلك ، يمكنك بسهولة إضافة المزيد من مقدمي الخدمة باتباع NextAuth.js Docs. لاحظ أن بعض مقدمي الخدمة يطلبون إضافة حقول إضافية إلى نماذج معينة. نوصيك بقراءة الـ Docs الخاصة بالموفر الذي ترغب في استخدامه للتأكد من أن لديك جميع الحقول المطلوبة.
-
-### Adding new fields to your models
 
 ### إضافة المزيد من الحقول إلى الـ models
 
@@ -158,7 +154,7 @@ const userRouter = router({
 
 بشكل افتراضي ، يتم تكوين التطبيق create-t3-app لاستخدام استراتيجية قاعدة البيانات Database Strategy ، بالاشتراك مع Prisma كـ Adapter لـ قاعدة البيانات.
 
-## Setting up the default DiscordProvider
+## إعداد DiscordProvider
 
 1. اتجه الى [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications) واضغط على New Application.
 
@@ -173,9 +169,9 @@ const userRouter = router({
 
 - It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
 
-## Useful Resources
+## مصادر مُفيدة
 
-| Resource                          | Link                                    |
+| المَصدر                          | الرابط                                    |
 | --------------------------------- | --------------------------------------- |
 | NextAuth.js Docs                  | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
