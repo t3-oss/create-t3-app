@@ -25,6 +25,7 @@ const Home: NextPage = () => {
             <Link
               className={styles.card}
               href="https://create.t3.gg/en/usage/first-steps"
+              target="_blank"
             >
               <h3 className={styles.cardTitle}>First Steps →</h3>
               <div className={styles.cardText}>
@@ -35,6 +36,7 @@ const Home: NextPage = () => {
             <Link
               className={styles.card}
               href="https://create.t3.gg/en/introduction"
+              target="_blank"
             >
               <h3 className={styles.cardTitle}>Documentation →</h3>
               <div className={styles.cardText}>
