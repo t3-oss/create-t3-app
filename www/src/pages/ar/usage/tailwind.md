@@ -6,9 +6,9 @@ lang: ar
 dir: rtl
 ---
 
-## What is Tailwind CSS?
+## ما هي  Tailwind CSS ؟
 
-مكتبة Tailwind CSS هي مكتبة صغيرة، تعتمد على فلسفة[utility first](https://tailwindcss.com/docs/utility-first)، وتُستخدم في تصميم وبناء دون الحاجة إلي إستخدام Pure CSS، فهي مكتبة نقية لا تقدم أي Components مُسبقة التصميم، غير أنها توفر مزايا عديدة بالمقارنة بباقي المكتبات، لمزيد من المعلومات شاهد a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc)
+مكتبة Tailwind CSS هي مكتبة صغيرة، بُنيت على فلسفة [utility first](https://tailwindcss.com/docs/utility-first)،  وتُستخدم في التصميم والبناء دون الحاجة إلي إستخدام Pure CSS، فهي مكتبة نقية لا تُقدم أي Components مُسبقة التصميم، غير أنها توفر مزايا عديدة بالمقارنة بباقي المكتبات، لمزيد من المعلومات شاهد a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc)
 فهي تجعل عملية التصميم سريعة بشكل لا يُصدق.
 
 1. في الماضي كنا نكتب css في ملفات منفصلة
@@ -50,7 +50,7 @@ import "./my-class.css";
 </div>
 ```
 
-إستخدام هذة الخصائص جنبا إلى جنب مع React Components يعطيك قوة هائلة لا مثيل لها.
+إستخدام هذة الخصائص جَنبا إلى جَنب مع React Components يُعطيك قُوة هائلة لا مَثيل لها.
 تأتي Tailwind CSS بنظام مُدمج وجميل مُزود بمجموعة الوان واحجام و styles مُختارة بعناية كالطول والعرض والحواف، كما أيضا تاني مع breakpoints لإنشاء تصميم متوافق.
 
 <div class="embed">
