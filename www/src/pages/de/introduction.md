@@ -36,7 +36,7 @@ Es ist leicht, in die Falle zu tappen, "alles hinzuzufügen" - das wollen wir au
 
 ### Modern und verantwortungsbewusst
 
-Wir lieben unsere modernen Technologien. Die Geschwindigkeit und, ehrlich gesagt, der Spaß, der aus dem neuen Zeug entsteht, ist wirklich cool. Wir denken, dass es wichtig ist, verantwortungsvoll zu sein und riskantere Technologien in den weniger riskanten Teilen zu verwenden. Das bedeutet, dass wir nicht ⛔️ auf riskante neue Datenbanktechnologien setzen würden (SQL ist toll!). Aber wir setzen gerne ✅ auf tRPC, da es sich nur um Funktionen handelt, die trivial zu verlagern sind.
+Wir lieben moderne Technologien. Die Arbeitsgeschwindigkeit und der Spaß aus der Arbeit mit ihnen, ist wirklich cool. Wir denken aber, dass es wichtig ist, verantwortungsvoll zu sein und riskantere Technologien in den weniger riskanten Teilen des Stacks zu verwenden. Das bedeutet, dass wir nicht ⛔️ auf riskante neue Datenbanktechnologien setzen (SQL ist toll!). Aber wir setzen gerne ✅ auf tRPC, da es sich nur auf Funktionen bezieht, die trivial zu verlagern sind.
 
 ### Typsicherheit ist nicht optional
 
