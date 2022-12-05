@@ -25,8 +25,9 @@ dir: rtl
 قاعدة البيانات الافتراضية هي قاعدة بيانات SQLite ، وهي رائعة لتطوير وتسريع عملية proof-of-concept ولكن لا يوصى بها للإنتاج. يمكنك تغيير قاعدة البيانات لاستخدامها عن طريق تغيير `provider` في الـ DataSource Object إلى `postgresql` أو `mysql` ، ثم تحديث URL داخل `.env` إلى قاعدة البيانات الخاصة بك.
 
 ## Seeding your Database
-
-[Seeding your database](https://www.prisma.io/docs/guides/database/seed-database) is a great way to quickly populate your database with test data to help you get started. In order to setup seeding, you will need to create a `seed.ts` file in the `/prisma` directory, and then add a `seed` script to your `package.json` file. You'll also need some TypeScript runner that can execute the seed-script. We recommend [tsx](https://github.com/esbuild-kit/tsx), which is a very performant TypeScript runner that uses esbuild and doesn't require any ESM configuration, but `ts-node` or other runners will work as well.
+[يُعد زرع قاعدة البيانات](https://www.prisma.io/docs/guides/database/seed-database)
+ طريقة رائعة لملء قاعدة البيانات بسرعة ببيانات الاختبار لمساعدتك على البدء. من أجل إعداد البذور 
+من أجل إعداد البذر ، ستحتاج إلى إنشاء `seed.ts` في مُجلد `prisma/` ، ثم قم بإضافة `seed` script  إلى ملف package.json الخاص بك. ستحتاج أيضًا إلى مُشغل TypeScript  يمكنه تنفيذ الـ script. نحن نُوصي بـ tsx ، وهو عِبارة عَن مُشغل TypeScript عالي الأداء يَستخدم esbuild ولا يتطلب أي تكوين ESM ، ولكن ts-node أو أي من المُشغلين الاخرين سيفي بالغرض.
 
 ```jsonc:package.json
 {
@@ -66,11 +67,11 @@ main()
   });
 ```
 
-Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
+ثُم قُم بتشغيل  `pnpm db-seed` او `npm` او `yarn`
 
-## Useful Resources
+## مصادر مُفيدة
 
-| Resource                     | Link                                                                                                                                              |
+| المَصدر                     | الرابط                                                                                                                                              |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Prisma Docs                  | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
