@@ -17,12 +17,10 @@
 import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
-
 /**
  * Replace this with an object if you want to pass things to createContextInner
  */
 type CreateContextOptions = Record<string, never>;
-
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -43,7 +41,7 @@ const createContextInner = async (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createInternalTrpcContext = async (
-  opts: CreateNextContextOptions
+  opts: CreateNextContextOptions,
 ) => {
   return await createContextInner({});
 };
@@ -54,7 +52,7 @@ export const createInternalTrpcContext = async (
  * This is where the trpc api is initialized, connecting the context and
  * transformer
  */
-import { initTRPC, TRPCError } from "@trpc/server";
+import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 
 const t = initTRPC
