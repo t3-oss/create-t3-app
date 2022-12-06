@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.2
+
+### Patch Changes
+
+- [#917](https://github.com/t3-oss/create-t3-app/pull/917) [`eb55d19`](https://github.com/t3-oss/create-t3-app/commit/eb55d19ae0204f6e61fb65b82057b93ed485e880) Thanks [@sharkby7e](https://github.com/sharkby7e)! - feat: add blank target to base template
+
 ## 6.11.1
 
 ### Patch Changes
