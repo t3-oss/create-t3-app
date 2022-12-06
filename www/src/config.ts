@@ -25,10 +25,10 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  en: "🇺🇸 English",
+  en: "English",
   // Add more languages here
-  // sv: "🇸🇪 Svenska",
-  ru: "🇷🇺 Русский",
+  // sv: "Svenska",
+  ru: "Русский",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
