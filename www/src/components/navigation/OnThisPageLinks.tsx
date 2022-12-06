@@ -71,7 +71,7 @@ export default function OnThisPageLinks({
   }, [headings, title]);
 
   return (
-    <div className="sticky inset-x-0 top-20 z-[2] block w-full bg-default px-3 py-4 lg:hidden">
+    <div className="sticky inset-x-0 top-20 z-[2] block w-full bg-default px-4 pb-2 lg:hidden">
       <Menu>
         {({ open }) => (
           <div className="relative w-full">
