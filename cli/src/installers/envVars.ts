@@ -7,7 +7,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
-  const envSchemaDir = path.join(PKG_ROOT, "template/extras/env/schema");
+  const envSchemaDir = path.join(PKG_ROOT, "template/extras/src/env/schema");
 
   let envSchemaFile = "";
   let envContent =
