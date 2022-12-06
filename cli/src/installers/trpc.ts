@@ -21,56 +21,50 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
-  const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
+  const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerSrc = path.join(trpcAssetDir, "api-handler.ts");
+  const apiHandlerSrc = path.join(extrasDir, "src/pages/api/trpc/[trpc].ts");
   const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
 
-  const utilsSrc = path.join(trpcAssetDir, "utils.ts");
-  const utilsDest = path.join(projectDir, "src/utils/trpc.ts");
+  const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
+  const utilsDest = path.join(projectDir, "src/utils/api.ts");
 
-  const serverUtilFile = usingAuth ? "auth-server-utils.ts" : "server-utils.ts";
-  const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
-  const serverUtilDest = path.join(projectDir, "src/server/trpc/trpc.ts");
-
-  const contextFile =
+  const trpcFile =
     usingAuth && usingPrisma
-      ? "auth-prisma-context.ts"
-      : usingAuth && !usingPrisma
-      ? "auth-context.ts"
-      : !usingAuth && usingPrisma
-      ? "prisma-context.ts"
-      : "base-context.ts";
-  const contextSrc = path.join(trpcAssetDir, contextFile);
-  const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
+      ? "with-auth-prisma.ts"
+      : usingAuth
+      ? "with-auth.ts"
+      : usingPrisma
+      ? "with-prisma.ts"
+      : "base.ts";
+  const trpcSrc = path.join(extrasDir, "src/server/api/trpc", trpcFile);
+  const trpcDest = path.join(projectDir, "src/server/api/trpc.ts");
 
-  const authRouterSrc = path.join(trpcAssetDir, "auth-router.ts");
-  const authRouterDest = path.join(
-    projectDir,
-    "src/server/trpc/router/auth.ts",
+  const rootRouterSrc = path.join(extrasDir, "src/server/api/root.ts");
+  const rootRouterDest = path.join(projectDir, "src/server/api/root.ts");
+
+  const exampleRouterFile =
+    usingAuth && usingPrisma
+      ? "with-auth-prisma.ts"
+      : usingAuth
+      ? "with-auth.ts"
+      : usingPrisma
+      ? "with-prisma.ts"
+      : "base.ts";
+
+  const exampleRouterSrc = path.join(
+    extrasDir,
+    "src/server/api/routers/example",
+    exampleRouterFile,
   );
-
-  const indexRouterFile = usingAuth ? "auth-app-router.ts" : "app-router.ts";
-  const indexRouterSrc = path.join(trpcAssetDir, indexRouterFile);
-  const indexRouterDest = path.join(
-    projectDir,
-    "src/server/trpc/router/_app.ts",
-  );
-
-  const exampleRouterFile = usingPrisma
-    ? "example-prisma-router.ts"
-    : "example-router.ts";
-  const exampleRouterSrc = path.join(trpcAssetDir, exampleRouterFile);
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/trpc/router/example.ts",
+    "src/server/api/routers/example.ts",
   );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(utilsSrc, utilsDest);
-  fs.copySync(serverUtilSrc, serverUtilDest);
-  fs.copySync(contextSrc, contextDest);
-  fs.copySync(indexRouterSrc, indexRouterDest);
+  fs.copySync(trpcSrc, trpcDest);
+  fs.copySync(rootRouterSrc, rootRouterDest);
   fs.copySync(exampleRouterSrc, exampleRouterDest);
-  usingAuth && fs.copySync(authRouterSrc, authRouterDest);
 };

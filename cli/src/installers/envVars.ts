@@ -7,7 +7,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
 
-  const envAssetDir = path.join(PKG_ROOT, "template/addons/env");
+  const envSchemaDir = path.join(PKG_ROOT, "template/extras/env/schema");
 
   let envSchemaFile = "";
   let envContent =
@@ -15,13 +15,13 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
   switch (true) {
     case usingAuth && usingPrisma:
-      envSchemaFile = "auth-prisma-schema.mjs";
+      envSchemaFile = "with-auth-prisma.mjs";
       break;
     case usingAuth:
-      envSchemaFile = "auth-schema.mjs";
+      envSchemaFile = "with-auth.mjs";
       break;
     case usingPrisma:
-      envSchemaFile = "prisma-schema.mjs";
+      envSchemaFile = "with-prisma.mjs";
       break;
   }
 
@@ -63,7 +63,7 @@ DISCORD_CLIENT_SECRET=
 ` + envContent;
 
   if (envSchemaFile) {
-    const envSchemaSrc = path.join(envAssetDir, envSchemaFile);
+    const envSchemaSrc = path.join(envSchemaDir, envSchemaFile);
     const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);
   }
