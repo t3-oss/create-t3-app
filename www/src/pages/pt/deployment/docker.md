@@ -9,7 +9,7 @@ Você pode colocar essa stack em contêineres e fazer deploy dela como um único
 
 ## Configuração do Projeto Docker
 
-Por favor, note que o Next.js requer um processo diferente para variáveis de ambiente em *build time* (disponível no frontend, prefixado por `NEXT_PUBLIC`) e *runtime*, somente do lado do servidor. Nesta demonstração estamos usando duas variáveis. Preste atenção em suas posições no `Dockerfile`, argumentos de linha de comando e `docker-compose.yml`:
+Por favor, note que o Next.js requer um processo diferente para variáveis de ambiente em _build time_ (disponível no frontend, prefixado por `NEXT_PUBLIC`) e _runtime_, somente do lado do servidor. Nesta demonstração estamos usando duas variáveis. Preste atenção em suas posições no `Dockerfile`, argumentos de linha de comando e `docker-compose.yml`:
 
 - `DATABASE_URL` (usado pelo servidor)
 - `NEXT_PUBLIC_CLIENTVAR` (usado pelo cliente)
