@@ -45,7 +45,7 @@ const createContextInner = async (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createInternalTrpcContext = async (
-  opts: CreateNextContextOptions
+  opts: CreateNextContextOptions,
 ) => {
   const { req, res } = opts;
 
