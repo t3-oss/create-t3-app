@@ -130,11 +130,12 @@ CMD ["node", "server.js"]
 
 ```
 
-> **_Notes_**
+> **_مُلاحظات_**
 >
-> - _Emulation of `--platform=linux/amd64` may not be necessary after moving to Node 18._
-> - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
-> - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
+> - مُحاكاة `--platform=linux/amd64`  قد لا تكون ضرورية في Node 18
+> - إقرأ [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine)  لتعلم لماذا قد تحتاج `libc6-compat`.
+> - تقوم Next.js بجمع [بيانات خفية عن الاستختدام](https://nextjs.org/telemetry). 
+> - قٌم بإالغاء تعليق الـ instance الاولي من ENV NEXT_TELEMETRY_DISABLED 1 حتي تُعيق الـ telemetry  أثناء الـ build، قٌم بإلغاء تعليق الـ instance الثانية تٌعيق الـ telemetry أثناء الـ runtime 
 
 </div>
 </details>
