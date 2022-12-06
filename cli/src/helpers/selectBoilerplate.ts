@@ -11,7 +11,7 @@ export const selectAppFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
+  const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
 
   const usingTrpc = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
@@ -37,7 +37,7 @@ export const selectIndexFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
+  const indexFileDir = path.join(PKG_ROOT, "template/extras/src/pages/index");
 
   const usingTrpc = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
