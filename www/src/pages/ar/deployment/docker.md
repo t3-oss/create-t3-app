@@ -154,6 +154,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 ## الـ Docker Compose
 
 يُمكنك أيضا إستخدام Docker Compose لبناء وتشغيل الـ Container
+
 <details>
 <summary>
 بعد إتباع الخطوات من 1 إلى 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
