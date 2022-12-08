@@ -25,10 +25,10 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  ar: "العربية",
-  en: "English",
   // Add more languages here
   // sv: "Svenska",
+  ar: "العربية",
+  en: "English",
   ru: "Русский",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
@@ -170,17 +170,16 @@ export const SIDEBAR_HEADER_MAP: Record<
   Record<OuterHeaders, string>
 > = {
   // Translate the sidebar's "outer headers" here
-  ar: {
-    "Create T3 App": "إنشاء تطبيق T3.",
-    Usage: "كيفية الإستخدام؟",
-    Deployment: "نَشر مَوقعك",
-  },
-  // Translate the sidebar's "outer headers" here
   // sv: {
   //   "Create T3 App": "Create T3 App",
   //   Usage: "Användarguide",
   //   Deployment: "Deployment",
   // },
+  ar: {
+    "Create T3 App": "إنشاء تطبيق T3.",
+    Usage: "كيفية الإستخدام؟",
+    Deployment: "نَشر مَوقعك",
+  },
   ru: {
     "Create T3 App": "Create T3 App",
     Usage: "Использование",
