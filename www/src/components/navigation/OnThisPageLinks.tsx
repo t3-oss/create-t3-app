@@ -14,6 +14,8 @@ export default function OnThisPageLinks({
   title,
   isRtl,
 }: OnThisPageLinksProps) {
+  const isLtr = !isRtl;
+
   const memoedHeadings = useMemo(() => {
     // add isVisible flag in headers
     const headers = [
@@ -104,32 +106,35 @@ export default function OnThisPageLinks({
               </Menu.Button>
             </div>
             <Menu.Items
-              as="ul"
+              dir="ltr"
               className="t3-scrollbar absolute top-full z-10 mt-3 max-h-[45vh] w-full overflow-y-auto rounded-md border-2 border-primary bg-default py-1.5 shadow-md dark:border-t3-purple-200/20 dark:bg-default"
             >
-              {headingWithIsVisible.map((heading) => (
-                <li key={heading.slug} className="w-full">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        className={clsx(
-                          "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
-                          heading.depth === 2 ? "pl-3" : "pl-8",
-                          {
-                            "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
-                              active,
-                            "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
-                              heading.isVisible,
-                          },
-                        )}
-                        href={`#${heading.slug}`}
-                      >
-                        {heading.text}
-                      </a>
-                    )}
-                  </Menu.Item>
-                </li>
-              ))}
+              <ul dir={isLtr ? "ltr" : "rtl"}>
+                {headingWithIsVisible.map((heading) => (
+                  <li key={heading.slug} className="w-full">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          className={clsx(
+                            "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
+                            isLtr && (heading.depth === 2 ? "pl-3" : "pl-8"),
+                            isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
+                            {
+                              "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
+                                active,
+                              "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
+                                heading.isVisible,
+                            },
+                          )}
+                          href={`#${heading.slug}`}
+                        >
+                          {heading.text}
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </li>
+                ))}
+              </ul>
             </Menu.Items>
           </div>
         )}
