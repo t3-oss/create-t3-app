@@ -1,15 +1,16 @@
 ---
-title: T3 Collection
-description: Cool open source projects and companies using the T3 stack
+title: T3 أمثلة علي
+description: مشاريع مفتوحة المصدر  صنعت باستخدام Stack T3
 layout: ../../layouts/docs.astro
-lang: en
+lang: ar
+dir: rtl
 ---
 
-Made a project using the T3 stack and want to share it? Add it to the list!
+هل قٌمت بعمل مشروع بإستخدام T3 Stack وتريد مشاركته؟ أضافهُ إلى القائمة التالية!
 
-## Open Source apps made using the T3 Stack
+## تطبيقات مفتوحة المصدر صُنعت بواسطة T3
 
-| Description                                                       | Repo                                                                        | Link                                                                              |
+| الوصف                                                             | Repo                                                                        | الرابط                                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -21,20 +22,14 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                   | [tincy.pics](https://tincy.pics)                                                  |
 | Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
 | Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
-| AI TTS Donations - FOSS AI Text To Speech service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
+| AI TTS Donations - FOSS AI Text To Speach service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
-| Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
-| KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
-| Tauri T3 App - Tauri App using T3 Stack                           | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
 
-## Companies using the T3 Stack
+## شركات تَستخدم T3 Stack
 
-We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
+نَوَدٌ مَعرفة الشَركات التي تَستخدم Stack T3 لتَطبيقاتها. إذا كانت شَركتك تَستخدم Stack T3 وتَرغب في مشاركته؟ أضافه إلى القائمة التالية!
+| Company | Link |
+| ------- | -------------------------- |
+| Ping.gg | [ping.gg](https://ping.gg) |
 
-| Company | Link                               |
-| ------- | ---------------------------------- |
-| Ping.gg | [ping.gg](https://ping.gg)         |
-| Nexiona | [nexiona.com](https://nexiona.com) |
-| Layer3  | [layer3.xyz](https://layer3.xyz)   |
-
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md)
