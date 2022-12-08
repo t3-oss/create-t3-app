@@ -25,6 +25,7 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 | The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 | Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 | KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
+| Tauri T3 App - Tauri App using T3 Stack                           | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
 
 ## Companies using the T3 Stack
 
