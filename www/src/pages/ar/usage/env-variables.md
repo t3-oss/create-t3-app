@@ -41,7 +41,7 @@ export const clientEnv = {
 ### الـ Server Schema
 
 أنشئ الـ environment variables schema من جانب الخادم هنا.
-تأكد أن لا تضيف `NEXT_PUBLIC` قبل اسم المتغير، سيفشل الـ Validation  إذا ما فعلت هذا.
+تأكد أن لا تضيف `NEXT_PUBLIC` قبل اسم المتغير، سيفشل الـ Validation إذا ما فعلت هذا.
 
 ### الـ Client Schema
 
@@ -50,7 +50,7 @@ export const clientEnv = {
 ### الـ clientEnv Object
 
 هُنا حيثُ تقوم بعمل Destruct لـ `process.env`
-تحتاج Zod الي Object لتكون قادرة على تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب أن تتم هذة العملية  يدويا، لا تقلق فـ Typescript تقوم بتحذيرك إذا ارتكبت خطاّ.
+تحتاج Zod الي Object لتكون قادرة على تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب أن تتم هذة العملية يدويا، لا تقلق فـ Typescript تقوم بتحذيرك إذا ارتكبت خطاّ.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -106,10 +106,10 @@ export const serverSchema = z.object({
   TWITTER_API_TOKEN: z.string(),
 });
 ```
-**ملحوطة:** النص الفارغ تتعامل معة zod علي أنه نص صحيح، إذا ما اردت ان تُغيّر هذا الاسلوب فإستخدم  `z.string().min(1)`
 
-**ملحوطة:** أضف إسم المُتغيير `TWITTER_API_TOKEN` في example.env ولكن لا تُضف الـ token 
+**ملحوطة:** النص الفارغ تتعامل معة zod علي أنه نص صحيح، إذا ما اردت ان تُغيّر هذا الاسلوب فإستخدم `z.string().min(1)`
 
+**ملحوطة:** أضف إسم المُتغيير `TWITTER_API_TOKEN` في example.env ولكن لا تُضف الـ token
 
 ```
 TWITTER_API_TOKEN=

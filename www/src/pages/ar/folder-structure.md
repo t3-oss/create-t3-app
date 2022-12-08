@@ -93,8 +93,9 @@ dir: rtl
 <sub>(في حالة NextAuth.js)</sub>
 
 #### ملف `src/pages/api/trpc/[trpc].ts`
-ملف  `[trpc].ts` يُعتبر المدخلي الـ tRPC، ,وتُستخدم لتنفيذ  طلبات tRPC.
-إقرأ  [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و
+
+ملف `[trpc].ts` يُعتبر المدخلي الـ tRPC، ,وتُستخدم لتنفيذ طلبات tRPC.
+إقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و
 [tRPC usage](usage/trpc#-pagesapitrpctrpcts)
 
 <sub>(في حالة tRPC)</sub>

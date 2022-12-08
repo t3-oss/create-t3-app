@@ -132,10 +132,10 @@ CMD ["node", "server.js"]
 
 > **_مُلاحظات_**
 >
-> - مُحاكاة `--platform=linux/amd64`  قد لا تكون ضرورية في Node 18
-> - إقرأ [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine)  لتعلم لماذا قد تحتاج `libc6-compat`.
-> - تقوم Next.js بجمع [بيانات خفية عن الاستختدام](https://nextjs.org/telemetry). 
-> - قٌم بإالغاء تعليق الـ instance الاولي من ENV NEXT_TELEMETRY_DISABLED 1 حتي تُعيق الـ telemetry  أثناء الـ build، قٌم بإلغاء تعليق الـ instance الثانية تٌعيق الـ telemetry أثناء الـ runtime 
+> - مُحاكاة `--platform=linux/amd64` قد لا تكون ضرورية في Node 18
+> - إقرأ [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) لتعلم لماذا قد تحتاج `libc6-compat`.
+> - تقوم Next.js بجمع [بيانات خفية عن الاستختدام](https://nextjs.org/telemetry).
+> - قٌم بإالغاء تعليق الـ instance الاولي من ENV NEXT_TELEMETRY_DISABLED 1 حتي تُعيق الـ telemetry أثناء الـ build، قٌم بإلغاء تعليق الـ instance الثانية تٌعيق الـ telemetry أثناء الـ runtime
 
 </div>
 </details>
@@ -148,16 +148,18 @@ CMD ["node", "server.js"]
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 ```
-إفتح  [localhost:3000](http://localhost:3000/) لتري تطبيقك يَعمل
+
+إفتح [localhost:3000](http://localhost:3000/) لتري تطبيقك يَعمل
+
 ## الـ Docker Compose
 
 يُمكنك أيضا إستخدام Docker Compose لبناء وتشغيل الـ Container
-    <details>
-        <summary>
-            بعد إتباع الخطوات من 1 إلى 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
-        </summary>
-        <div class="content">
-            
+<details>
+<summary>
+بعد إتباع الخطوات من 1 إلى 4 في الاعلي إضغط هنا وأضف الملفات الي <code>docker-compose.yml</code>:
+</summary>
+<div class="content">
+
 ```yaml
 version: "3.9"
 services:
@@ -184,7 +186,8 @@ docker compose up
 
 الآن إفتح [localhost:3000](http://localhost:3000/) لترى تطبيقك يُعمل.
 
-	 </div>
+     </div>
+
 </details>
 ## الـ Deploy علي Railway
 
@@ -198,13 +201,12 @@ railway link
 railway up
 railway open
 ```
-إذهب الي "Variables" وأضف `DATABASE_URL` ثُم الي "Settings"  واختر "Generate Domain." لتري أمثلة علي  Railway زُر  [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-
+إذهب الي "Variables" وأضف `DATABASE_URL` ثُم الي "Settings" واختر "Generate Domain." لتري أمثلة علي Railway زُر [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
 ## مصدر مُفيدة
 
-| المصدر                             | الرابط                                                                 |
+| المصدر                               | الرابط                                                               |
 | ------------------------------------ | -------------------------------------------------------------------- |
 | Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
 | Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |

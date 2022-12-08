@@ -108,7 +108,7 @@ const appRouter = t.router({
 export type AppRouter = typeof appRouter;
 ```
 
-لاحظ أننا  نقوم بعمل export فقط لـ router's type أي أننا لا نستخدم اي من الـ server code في الـ client
+لاحظ أننا نقوم بعمل export فقط لـ router's type أي أننا لا نستخدم اي من الـ server code في الـ client
 الان دعنا ننادي الـ procedure من الـ frontend ، tRPC توفر wrapper لمكتبة `@tanstack/react-query` مما يسمح لك بإستخدام المكتبة بكامل قوتها.
 
 ```tsx:pages/users/[id].tsx

@@ -120,7 +120,7 @@ export const SIDEBAR: Sidebar = {
     Deployment: [
       { text: "Vercel", link: "ru/deployment/vercel" },
       { text: "Docker", link: "ru/deployment/docker" },
-    ]
+    ],
   },
   ar: {
     "Create T3 App": [
@@ -148,10 +148,8 @@ export const SIDEBAR: Sidebar = {
     Deployment: [
       { text: "Vercel", link: "ar/deployment/vercel" },
       { text: "Docker", link: "ar/deployment/docker" },
-
     ],
   },
-
 };
 
 export const SIDEBAR_HEADER_MAP: Record<

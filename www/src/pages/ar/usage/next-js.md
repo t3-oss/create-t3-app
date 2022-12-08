@@ -26,7 +26,7 @@ Next.js هو إطار عمل Backend لتطبيقات React
 
 ## مصادر مفيدة
 
-| المَصدر                       | الرابط                               |
+| المَصدر                        | الرابط                             |
 | ------------------------------ | ---------------------------------- |
 | Next.js Documentation          | https://nextjs.org/docs            |
 | Next.js GitHub                 | https://github.com/vercel/next.js  |

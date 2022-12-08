@@ -56,6 +56,7 @@ vercel
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
+
 بطبيعة الامر فإن النشر سيطون علي `preview branch` لكن إذا ما كُنت تريد النشر الي `production` فقُم بإضافة علم `--prod`
 
 ```bash
