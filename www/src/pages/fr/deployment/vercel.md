@@ -1,15 +1,15 @@
 ---
 title: Vercel
-description: Deploying to Vercel
+description: Déploiement sur Vercel
 layout: ../../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
-We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
+Nous vous recommandons de déployer votre application sur [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Ce service facilite le déploiement d'application Next.js.
 
-## Project Configuration
+## Configuration du projet
 
-Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands. **This is not required for most projects.**
+Vercel configurera plus que probablement les commandes de génération et publiera le répertoire automatiquement. Cependant, vous pouvez également spécifier ces informations manuellement avec d'autres configurations en créant un fichier appelé [`vercel.json`](https://vercel.com/docs/project-configuration) et en incluant les informations suivantes. **La plus part des projets ne le requiert pas.**
 
 ```json
 {
@@ -20,43 +20,43 @@ Vercel will likely configure your build command and publish the directory automa
 }
 ```
 
-## Using the Vercel Dashboard
+## Utilisation du tableau de bord Vercel
 
-1. After pushing your code to a GitHub repository, sign up for [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) with GitHub and click on **Add New Project**.
+1. Après avoir envoyer votre code sur GitHub, Inscrivez-vous sur [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) avec GitHub et cliquez ensuite sur **Add New Project**.
 
-![New project on Vercel](/images/vercel-new-project.webp)
+![Nouveau projet sur Vercel](/images/vercel-new-project.webp)
 
-2. Import the GitHub repository with your project.
+2. Importez votre projet GitHub.
 
-![Import repository](/images/vercel-import-project.webp)
+![Importation de votre projet](/images/vercel-import-project.webp)
 
-3. Add your environment variables.
+3. Ajoutez vos variables d'environnement.
 
-![Add environment variables](/images/vercel-env-vars.webp)
+![Ajoutez vos variables d'environnement](/images/vercel-env-vars.webp)
 
-4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
+4. Cliquez sur **Deploy**. À partir de maintenant,à chaque fois que vous pousserez une modification, Vercel redéploiera automatiquement votre application !
 
-## Using the Vercel CLI
+## Utilisation de Vercel CLI
 
-To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
+Pour déployer à partir de la ligne de commande, vous devez d'abord [installer la CLI Vercel globalement](https://vercel.com/docs/cli#installing-vercel-cli).
 
 ```bash
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
+Exécutez la commande [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) pour déployer votre projet.
 
 ```bash
 vercel
 ```
 
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+Ajoutez l'argument `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` pour ajouter une variable d'environnement comme la chaîne de connexion à la base de données. Utilisez `--yes` si vous souhaitez ignorer les questions lors des déploiements et donner une réponse par défaut.
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
-After the first deployment this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
+Après le premier déploiement, cette commande déploiera sur une branche de prévisualisation. Vous deverez ajouter l'argument `--prod` pour pousser votre changement directement sur la production.
 
 ```bash
 vercel --prod
