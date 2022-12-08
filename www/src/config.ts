@@ -129,7 +129,7 @@ export const SIDEBAR: Sidebar = {
       { text: "التثبيت", link: "ar/installation" },
       { text: "بِنية المشروع", link: "ar/folder-structure" },
       { text: "أسئلة شائعة", link: "ar/faq" },
-      { text: "مشروعات صُنعت براسطة T3", link: "ar/t3-collection" },
+      { text: "مشروعات صُنعت بواسطة T3", link: "ar/t3-collection" },
       { text: "ترشيحات أُخري", link: "ar/other-recs" },
     ],
     Usage: [
