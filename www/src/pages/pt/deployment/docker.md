@@ -16,7 +16,7 @@ Por favor, note que o Next.js requer um processo diferente para variáveis de am
 
 ### 1. Configuração do Next
 
-Em seu arquivo [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), configure a opção `output` como `standalone` para [reduzir o tamanho de imagens aproveitando automaticamente os rastreamentos de saída](https://nextjs.org/docs/advanced-features/output-file-tracing):
+Em seu arquivo [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), configure a opção `output` como `standalone` para [reduzir o tamanho de imagens](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
