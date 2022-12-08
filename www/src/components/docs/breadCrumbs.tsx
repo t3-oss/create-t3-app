@@ -1,11 +1,13 @@
+import clsx from "clsx";
 import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
-import { getLanguageFromURL } from "../../languages";
+import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
 type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
+  const isRtl = getIsRtlFromUrl(window.location.href);
   const slugToEntryPath = (slug: SlugType) => {
     switch (slug) {
       case "":
@@ -66,13 +68,7 @@ export default function BreadCrumbs() {
           />
         </svg>
       </a>
-      <svg width="16" height="16" viewBox="0 0 24 24">
-        <path
-          fill="currentColor"
-          fillRule="evenodd"
-          d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
-        />
-      </svg>
+      <BreadCrumbsArrow isRtl={isRtl} />
       {breadcrumbs.map((crumb, index) => (
         <div className="flex items-center gap-2" key={crumb.key}>
           <a
@@ -81,17 +77,26 @@ export default function BreadCrumbs() {
           >
             {crumb.text}
           </a>
-          {index < breadcrumbs.length - 1 && (
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                fillRule="evenodd"
-                d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
-              />
-            </svg>
-          )}
+          {index < breadcrumbs.length - 1 && <BreadCrumbsArrow isRtl={isRtl} />}
         </div>
       ))}
     </div>
+  );
+}
+
+function BreadCrumbsArrow(props: { isRtl: boolean }) {
+  return (
+    <svg
+      className={clsx(props.isRtl && "rotate-180")}
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"
+      />
+    </svg>
   );
 }
