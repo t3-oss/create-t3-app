@@ -151,18 +151,7 @@ export const SIDEBAR: Sidebar = {
 
     ],
   },
-  // For Translations:
-  // Keep the "outer headers" in English so we can match them.
-  // Translate the "inner headers" to the language you're translating to.
-  // Omit any files you haven't translated, they'll fallback to English.
-  // Example:
-  // sv: {
-  //   "Create T3 App": [
-  //     { text: "Introduktion", link: "sv/introduction" },
-  //     { text: "Installation", link: "sv/installation" },
-  //   ],
-  //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
-  // },
+
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
