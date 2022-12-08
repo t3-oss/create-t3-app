@@ -11,7 +11,5 @@ export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  // next-auth 4.18.0 introduced a breaking change to unstable_getServerSession
-  // FIXME: find a better solution than spreading authOptions into a new object
-  return await unstable_getServerSession(ctx.req, ctx.res, { ...authOptions });
+  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 };
