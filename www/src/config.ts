@@ -28,7 +28,6 @@ export const KNOWN_LANGUAGES = {
   en: "🇺🇸 English",
   pt: "🇧🇷 Português",
   ar: "العربية",
-  en: "English",
   ru: "Русский",
   // Add more languages here
   // sv: "Svenska",
