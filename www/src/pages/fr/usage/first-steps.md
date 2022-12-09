@@ -1,36 +1,37 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Premiers pas
+description: Premiers pas avec votre nouvelle application T3
 layout: ../../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+Vous venez de créer une nouvelle application T3 et vous êtes prêt à démarrer. Voici le strict minimum pour que votre application puisse fonctionner.
 
-## Database
+## Base de données
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to restart the TypeScript server after doing this so that it can detect the generated types.
+Si votre application inclut Prisma, assurez vous de lancer la commande `npx prisma db push` depuis la racine de votre application
+Cette commande va synchroniser votre schéma Prisma avec votre base de données et va générer les types TypeScript sur lequel se base le client Prisma. Notez que vous devez redémarrer le serveur TypeScript afin qu'il puisse détecter les nouveaux types générés.
 
-## Authentication
+## Authentification
 
-If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
+Si votre application inclut NextAuth.js, nous vous aidons à démarrer avec le `DiscordProvider`. C'est l'un des fournisseurs les plus simples proposés par NextAuth.js, mais il nécessite encore un peu de configuration initiale de votre part.
 
-Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth.js offers.
+Bien sûr, si vous préférez utiliser un autre fournisseur d'authentification, vous pouvez également utiliser l'un des [nombreux fournisseurs](https://next-auth.js.org/providers/) proposés par NextAuth.js.
 
-1. You will need a Discord account, so register one if you haven't already.
-2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
-3. Once your application has been created, navigate to "Settings → OAuth2 → General".
-4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
-5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
-6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-   - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes.
-8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
+1. Vous aurez besoin d'un compte Discord, créez-en un si vous ne l'avez pas déjà fait.
+2. Accédez à https://discord.com/developers/applications et cliquez sur "New Application" dans le coin supérieur droit. Nommez votre application et acceptez les conditions d'utilisation.
+3. Une fois votre application créée, accédez à "Settings → OAuth2 → General".
+4. Copiez le "Client ID" et ajoutez-le à votre `.env` en tant que `DISCORD_CLIENT_ID`.
+5. Cliquez sur "Reset Secret", copiez le nouveau secret et ajoutez-le à votre `.env` en tant que `DISCORD CLIENT_SECRET`.
+6. Cliquez sur "Add Redirect" et saisissez `http://localhost:3000/api/auth/callback/discord`.
+   - Pour le déploiement en production, suivez les étapes précédentes pour créer une autre application Discord, mais cette fois remplacez `http://localhost:3000` par l'URL vers laquelle vous déployez.
+7. Sauvegarder les modifications.
+8. Définissez `NEXTAUTH_SECRET` dans `.env`. En développement, n'importe quelle chaîne fonctionnera, pour la production, voir la note dans `.env` sur la génération d'un secret sécurisé.
 
-You should now be able to log in.
+Vous devriez maintenant pouvoir vous connecter.
 
-## Next Steps
+## Prochaines étapes
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/trpc/router/example.ts` to see how tRPC queries work.
-- Have a look around the `create-t3-app` docs, as well as the docs of the packages that your app includes.
-- Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+- Si votre application inclut tRPC, consultez `src/pages/index.tsx` et `src/server/trpc/router/example.ts` pour voir comment fonctionnent les requêtes tRPC.
+- Consultez la documentation `create-t3-app`, ainsi que la documentation des packages inclus dans votre application.
+- Rejoignez notre [Discord](https://t3.gg/discord) et donnez-nous une étoile sur [GitHub](https://github.com/t3-oss/create-t3-app) ! :)
