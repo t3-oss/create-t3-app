@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-import { getIsRtlFromUrl } from "../../languages";
+import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
 import LanguageSelect from "./LanguageSelect";
@@ -17,6 +17,7 @@ const isLtr = !isRtl;
 const isLanding = pathname === "/" || !!Astro.props.isNotFound;
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
+const langCode = getLanguageFromURL(pathname);
 
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
@@ -84,7 +85,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     </div>
     <div class="flex flex-grow items-center justify-end gap-4">
       <GithubIcon />
-      {!isLanding && <LanguageSelect language={"en"} client:load />}
+      {!isLanding && <LanguageSelect language={langCode} client:load />}
       <div
         class={clsx("text-center", {
           hidden: isLanding,
