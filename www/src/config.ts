@@ -29,6 +29,7 @@ export const KNOWN_LANGUAGES = {
   // sv: "Svenska",
   ar: "العربية",
   en: "English",
+  pt: "Português",
   ru: "Русский",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
@@ -66,6 +67,34 @@ export const SIDEBAR: Sidebar = {
   //   ],
   //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
   // },
+  ar: {
+    "Create T3 App": [
+      { text: "مُقدمة", link: "ar/introduction" },
+      { text: "لماذا CT3A ؟", link: "ar/why" },
+      { text: "التثبيت", link: "ar/installation" },
+      { text: "بِنية المشروع", link: "ar/folder-structure" },
+      { text: "أسئلة شائعة", link: "ar/faq" },
+      { text: "مشروعات صُنعت بواسطة T3", link: "ar/t3-collection" },
+      { text: "ترشيحات أُخري", link: "ar/other-recs" },
+    ],
+    Usage: [
+      { text: "الخُطوات الأُولي", link: "ar/usage/first-steps" },
+      { text: "Next.js", link: "ar/usage/next-js" },
+      { text: "TypeScript", link: "ar/usage/typescript" },
+      { text: "tRPC", link: "ar/usage/trpc" },
+      { text: "Prisma", link: "ar/usage/prisma" },
+      { text: "NextAuth.js", link: "ar/usage/next-auth" },
+      {
+        text: "الـ Environment Variables",
+        link: "ar/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "ar/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "ar/deployment/vercel" },
+      { text: "Docker", link: "ar/deployment/docker" },
+    ],
+  },
   en: {
     "Create T3 App": [
       { text: "Introduction", link: "en/introduction" },
@@ -92,6 +121,34 @@ export const SIDEBAR: Sidebar = {
     Deployment: [
       { text: "Vercel", link: "en/deployment/vercel" },
       { text: "Docker", link: "en/deployment/docker" },
+    ],
+  },
+  pt: {
+    "Create T3 App": [
+      { text: "Introdução", link: "pt/introduction" },
+      { text: "Por que o CT3A?", link: "pt/why" },
+      { text: "Instalação", link: "pt/installation" },
+      { text: "Estrutura de Pastas", link: "pt/folder-structure" },
+      { text: "Perguntas Frequentes", link: "pt/faq" },
+      { text: "Coleção T3", link: "pt/t3-collection" },
+      { text: "Outras Recomendações", link: "pt/other-recs" },
+    ],
+    Usage: [
+      { text: "Primeiros Passos", link: "pt/usage/first-steps" },
+      { text: "Next.js", link: "pt/usage/next-js" },
+      { text: "TypeScript", link: "pt/usage/typescript" },
+      { text: "tRPC", link: "pt/usage/trpc" },
+      { text: "Prisma", link: "pt/usage/prisma" },
+      { text: "NextAuth.js", link: "pt/usage/next-auth" },
+      {
+        text: "Variáveis de Ambiente",
+        link: "pt/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "pt/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "pt/deployment/vercel" },
+      { text: "Docker", link: "pt/deployment/docker" },
     ],
   },
   ru: {
@@ -122,34 +179,6 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "ru/deployment/docker" },
     ],
   },
-  ar: {
-    "Create T3 App": [
-      { text: "مُقدمة", link: "ar/introduction" },
-      { text: "لماذا CT3A ؟", link: "ar/why" },
-      { text: "التثبيت", link: "ar/installation" },
-      { text: "بِنية المشروع", link: "ar/folder-structure" },
-      { text: "أسئلة شائعة", link: "ar/faq" },
-      { text: "مشروعات صُنعت بواسطة T3", link: "ar/t3-collection" },
-      { text: "ترشيحات أُخري", link: "ar/other-recs" },
-    ],
-    Usage: [
-      { text: "الخُطوات الأُولي", link: "ar/usage/first-steps" },
-      { text: "Next.js", link: "ar/usage/next-js" },
-      { text: "TypeScript", link: "ar/usage/typescript" },
-      { text: "tRPC", link: "ar/usage/trpc" },
-      { text: "Prisma", link: "ar/usage/prisma" },
-      { text: "NextAuth.js", link: "ar/usage/next-auth" },
-      {
-        text: "الـ Environment Variables",
-        link: "ar/usage/env-variables",
-      },
-      { text: "Tailwind CSS", link: "ar/usage/tailwind" },
-    ],
-    Deployment: [
-      { text: "Vercel", link: "ar/deployment/vercel" },
-      { text: "Docker", link: "ar/deployment/docker" },
-    ],
-  },
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
@@ -166,6 +195,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "إنشاء تطبيق T3.",
     Usage: "كيفية الإستخدام؟",
     Deployment: "نَشر مَوقعك",
+  },
+  pt: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Uso",
+    Deployment: "Deploy",
   },
   ru: {
     "Create T3 App": "Create T3 App",
