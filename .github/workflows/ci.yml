@@ -169,5 +169,5 @@ jobs:
 
       - run: pnpm run --filter=www check
       - run: pnpm turbo --filter=www build
-        env:
-          PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
+        # env:
+        #   PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
