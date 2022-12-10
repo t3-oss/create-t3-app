@@ -3,27 +3,30 @@ export interface Props {
   title: string;
   href: string;
 }
-
 const { title, href } = Astro.props;
 ---
 
 <div
-  class="relative flex flex-col justify-between rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors focus-within:outline hover:border-t3-purple-300/50"
+  class="relative flex flex-col justify-between overflow-hidden rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors hover:border-t3-purple-300/50"
 >
-  <div
-    class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="focus:no-underline hover:no-underline active:no-underline"
   >
-    <slot name="icon" />
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="text-lg font-medium leading-6 text-t3-purple-200 !outline-none before:absolute before:inset-0 focus:no-underline hover:no-underline active:no-underline md:text-xl"
+    <div
+      class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
     >
-      {title}
-    </a>
-  </div>
-  <div class="m-6 text-sm text-t3-purple-100 subpixel-antialiased md:text-base">
-    <slot name="description" />
-  </div>
+      <slot name="icon" />
+      <p class="text-lg font-medium leading-6 text-t3-purple-200 md:text-xl">
+        {title}
+      </p>
+    </div>
+    <div
+      class="m-6 h-full text-sm text-t3-purple-100 subpixel-antialiased md:text-base"
+    >
+      <slot name="description" />
+    </div>
+  </a>
 </div>

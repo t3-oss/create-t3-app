@@ -80,7 +80,6 @@ const { tweets } = Astro.props as Props;
   });
 
   embla.on("select", () => {
-    const nodes = embla.slideNodes();
     const previousSlideIndex = embla.previousScrollSnap();
     const previousSlideButton = paginationButtons[previousSlideIndex];
 
@@ -94,15 +93,10 @@ const { tweets } = Astro.props as Props;
     if (currentSlideButton) {
       currentSlideButton?.firstElementChild?.classList.add("active");
     }
+  });
 
-    // Enable tab navigation for visible tweet only
-    const previousSlideNode = nodes[previousSlideIndex];
-    const currentSlideNode = nodes[currentSlideIndex];
-    previousSlideNode?.querySelectorAll("a").forEach((a) => {
-      a.tabIndex = -1;
-    });
-    currentSlideNode?.querySelectorAll("a").forEach((a) => {
-      a.tabIndex = 0;
-    });
+  // Disable tab navigation for tweet slides
+  sliderElement.querySelectorAll("a").forEach((a) => {
+    a.tabIndex = -1;
   });
 </script>
