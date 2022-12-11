@@ -22,7 +22,9 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
   {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
-  <BreadCrumbs client:only />
+  <div class="h-10">
+    <BreadCrumbs client:only />
+  </div>
   <OnThisPageLinks
     client:media="(max-width: 1024px)"
     headings={headings}
