@@ -83,6 +83,7 @@ export const SIDEBAR: Sidebar = {
   },
   nl: {
     "Create T3 App": [
+      { text: "Introductie", link: "nl/introduction" },
       { text: "Waarom CT3A?", link: "nl/why" },
       { text: "T3 Collectie", link: "nl/t3-collection" },
     ],
