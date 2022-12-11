@@ -10,11 +10,11 @@ dir: rtl
 
 📁 src/env
 
-┣ 📄 client.mjs
+┫ 📄 client.mjs
 
-┣ 📄 schema.mjs
+┫ 📄 schema.mjs
 
-┣ 📄 server.mjs
+┫ 📄 server.mjs
 
 قد يبدو محتوى هذه الملفات مخيفًا للوهلة الأولى ، لكن لا تقلق ، فهو ليس معقدًا كما يبدو. دعنا نلقي نظرة عليها واحدة تلو الأخرى ، ونسير خلال عملية إضافة environment variables إضافية.
 

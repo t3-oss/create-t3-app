@@ -1,10 +1,11 @@
 ---
 import type { MarkdownHeading } from "astro";
-import type { Frontmatter } from "../../config";
+import type { Frontmatter, KnownLanguageCode } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import BreadCrumbs from "./breadCrumbs";
 import Pagination from "./pagination.astro";
 import OnThisPageLinks from "../navigation/OnThisPageLinks";
+import { getIsRtlFromLangCode } from "../../languages";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -16,6 +17,7 @@ const { frontmatter, path, headings } = Astro.props;
 const title = frontmatter.title;
 
 const [_1, _2, lang] = path.split("/");
+const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 ---
 
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
@@ -25,6 +27,7 @@ const [_1, _2, lang] = path.split("/");
     client:media="(max-width: 1024px)"
     headings={headings}
     title={title}
+    isRtl={isRtl}
   />
   <section class="w-full">
     <h1
