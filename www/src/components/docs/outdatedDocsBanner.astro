@@ -28,7 +28,7 @@ async function getCommitDiff() {
       : new Date();
 
     const diffInDays = Math.round(
-      englishDate.getTime() - thisLangDate.getTime() / (1000 * 3600 * 24),
+      (englishDate.getTime() - thisLangDate.getTime()) / (1000 * 3600 * 24),
     );
     return diffInDays;
   } catch (e) {
