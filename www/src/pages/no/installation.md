@@ -1,11 +1,11 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Installasjon
+description: Installasjonsveiledning for Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+For å lage en app med `create-t3-app`, kjør en av følgende tre kommandoer og svar på spørsmålene i veiviseren:
 
 ### npm
 
@@ -25,36 +25,36 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Etter at appen din har blitt opprettet, sjekk ut [første steg](/no/usage/first-steps) for å begynne å utvikle den nye applikasjonen.
 
-## Advanced usage
+## Avansert bruk
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Alternativ/Flagg  | Beskrivelse                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------- |
+| `[dir]`           | Inkluder et mappeargument med navnet på prosjektet                                     |
+| `--noGit`         | Eksplisitt be CLI om ikke å initialisere et nytt git-repo i prosjektet                 |
+| `-y`, `--default` | CLI vil bli hoppet over og en ny t3-app vil bli opprettet med alle alternativene valgt |
+| `--noInstall`     | Bygger prosjektet uten å installere avhengigheter                                      |
 
-## Experimental usage
+## Eksperimentell bruk
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+For vår CI (Kontinuerlig Integrasjon) har vi noen eksperimentelle flagg som lar deg opprette skjelett for hvilken som helst app uten noen spørsmål. Hvis denne _use casen_ gjelder deg, kan du bruke disse flaggene. Vær oppmerksom på at disse flaggene er eksperimentelle og kan bli endret i fremtiden uten å følge noen semver-versjonering.
 
-| Flag         | Description                         |
-| ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| Flagg        | Beskrivelse                        |
+| ------------ | ---------------------------------- |
+| `--CI`       | La CLI vite at du er i CI-modus    |
+| `--trpc`     | Inkluder tRPC i prosjektet         |
+| `--prisma`   | Inkluder Prisma i prosjektet       |
+| `--nextAuth` | Inkluder NextAuth.js i prosjektet  |
+| `--tailwind` | Inkluder Tailwind CSS i prosjektet |
 
-**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+**Merk: Hvis du utelater CI-flagget har resten flaggene ingen effekt.**
 
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Du trenger ikke å eksplisitt velge bort pakkene du ikke vil ha. Men hvis du vil være eksplisitt, kan du sende `false`, f.eks. `--nextAuth false`.
 
-### Example
+### Eksempel
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Følgende vil lage en T3-app med både tRPC og Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
