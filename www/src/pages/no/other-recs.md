@@ -8,7 +8,7 @@ lang: no
 Vi er klar over at bibliotekene som er inkludert i `create-t3-app` ikke løser alle problemer.
 Selv om vi oppfordrer deg til å starte prosjektet med tingene vi tilbyr, vil det garantert komme en tid da du må inkludere andre pakker. Bare du kan vite hva prosjektet ditt trenger, men her er noen ting vi ofte anbefaler å bruke.
 
-Disse anbefalingene er laget av individuelle create-t3-app-bidragsytere og skal ikke tas som "offisiell" godkjenninger av create-t3-app-teamet eller T3-OSS. _**Vennligst gjør din egen undersøkelse, spesielt før du velger betaltingstjenester**_.
+Disse anbefalingene er gitt av individuelle create-t3-app-bidragsytere og skal ikke tas som "offisielle" godkjenninger gitt av create-t3-app-teamet eller T3-OSS. _**Vennligst gjør din egen undersøkelse, spesielt før du velger betaltingstjenester**_.
 
 ## Statehåndtering
 
@@ -18,7 +18,7 @@ _**Merk**_: Statehåndteringsbiblioteker kan være flotte, men er ofte ikke nød
 
 **For aldri å måtte bruke Redux igjen**
 
-Den "moderne, enkle Reduxen" du ikke visste du trengte. [Poimandres](https://github.com/pmndrs) kan alltid stole på. Med dette lille biblioteket kan du bygge alt fra videokonferanseapper til spill og servere.
+Den "moderne, enkle Reduxen" du ikke visste du trengte. [Poimandres](https://github.com/pmndrs) kan du alltid stole på. Med dette lille biblioteket kan du bygge alt fra videokonferanseapper til spill og servere.
 
 - [Zustand Hjemmeside](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
@@ -27,20 +27,20 @@ Den "moderne, enkle Reduxen" du ikke visste du trengte. [Poimandres](https://git
 
 **For aldri å måtte bruke Context igjen**
 
-Jotai er vanskelig å slå når en atomær tilnærming er foretrukket. Også av [Poimandres](https://github.com/pmndrs). Jotai lar deg definere _singletons_ som føles som global useState. Et flott alternativ for stateful adfærd som ennå ikke trenger en statemaskin.
+Jotai er vanskelig å slå når en atomær tilnærming er foretrukket. Også av [Poimandres](https://github.com/pmndrs). Jotai lar deg definere _singletons_ som føles som global `useState`. Et flott alternativ for stateful adfærd som ennå ikke trenger en statemaskin.
 
 - [Jotai Hjemmeside](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
 ## Komponentbibliotek
 
-De fleste apper krever den samme håndfullen komponentene – toggleknapper, dropdownmenyer, modaler osv. Disse bibliotekene gir flotte, tilgjengelige komponenter som du kan bruke og tilpasse etter dine egne behov.
+De fleste apper krever den samme håndfullen komponenter – toggleknapper, dropdownmenyer, modaler osv. Disse bibliotekene gir flotte, tilgjengelige komponenter som du kan bruke og tilpasse etter dine egne behov.
 
 ### Ustilte Komponentbiblioteker
 
 Slike biblioteker er også kjent som hodeløse biblioteker. De tilbyr flotte, ustilte og tilgjengelige komponenter som du kan tilpasse etter din smak. Her er noen anbefalinger.
 
-- [Radix UI](https://www.radix-ui.com/) tilbyr deg et kraftig sett med praktiske og tilgjengelige, primitive komponenter som du kan style med vanilla CSS eller Tailwind CSS.
+- [Radix UI](https://www.radix-ui.com/) tilbyr deg et kraftig sett med praktiske og tilgjengelige primitive komponenter som du kan style med vanilla CSS eller Tailwind CSS.
 
 – [Headless UI](https://headlessui.com/) ble opprettet av Tailwind CSS-teamet og tilbyr også ustilte, tilgjengelige komponenter som enkelt kan lages med Tailwind CSS.
 
@@ -50,7 +50,7 @@ Slike biblioteker er også kjent som hodeløse biblioteker. De tilbyr flotte, us
 
 **Hvis du bare vil ha en app som ser helt OK ut**
 
-Noen ganger vil du lage et prosjekt der brukergrensesnittet helt ordinært ut. Dette kan være tilfelle med f.eks. admin dashboards eller lignende prosjekter. For slike prosjekter er alle disse komponentbibliotekene gode valg.
+Noen ganger vil du lage et prosjekt der brukergrensesnittet ser helt ordinært ut. Dette kan være tilfelle med f.eks. admin dashboards eller lignende prosjekter. For slike prosjekter er alle disse komponentbibliotekene gode valg.
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
@@ -75,7 +75,7 @@ De fleste animasjonsbiblioteker forsøker å oppfylle alle mulige brukstilfeller
 
 - [AutoAnimate Hjemmeside](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
-- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
+- [AutoAnimate Komponentkodebit](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
@@ -84,15 +84,15 @@ De fleste animasjonsbiblioteker forsøker å oppfylle alle mulige brukstilfeller
 Framer Motion tilbyr en enkel, deklarativ syntaks og lar deg lage komplekse animasjoner og til og med gestikuleringer med bare noen få linjer kode.
 
 - [Framer Motion Hjemmeside](https://framer.com/motion)
-  – [Framer Motion Documentation](https://www.framer.com/docs/)
+- [Framer Motion Dokumentasjon](https://www.framer.com/docs/)
 
-## Implementeringer, infrastruktur, Databaser og CI
+## Implementeringer, Infrastruktur, Databaser og CI
 
 ### Vercel
 
 **For å hoste appen din**
 
-Vercel har gjort web-app-hosting til en lek. Vi har skalert appen vår til hundretusenvis av brukere, og vi har aldri støtt på noen problemer. Drevet av AWS og med et mye bedre brukergrensesnitt.
+Vercel har gjort web-app-hosting til en lek. Vi har skalert appen vår til hundretusenvis av brukere, og vi har aldri støtt på noen problemer. Vercel bruker AWS-teknologi, og tilbyr et mye bedre brukergrensesnitt enn mange andre tjenester.
 
 - [Vercels Hjemmeside](https://vercel.com/)
 - [Create T3 App Vercel-utrullingsveiledning](/no/deployment/vercel)
@@ -117,7 +117,7 @@ PlanetScale er den beste "serverløse databaseplattformen" vi har brukt så lang
 
 **For serverløse Redis**
 
-Vi elsker Prisma og PlanetScale, men enkelte prosjekter trengte noen ganger en mer effektiv løsning. Upstash lar deg bruke minneytelsen til Redis i ditt serverløse prosjekt uten å måtte bekymre deg for infrastruktur og skalering.
+Vi elsker Prisma og PlanetScale, men enkelte prosjekter tremger noen ganger en mer effektiv løsning. Upstash lar deg bruke minneytelsen til Redis i ditt serverløse prosjekt uten å måtte bekymre deg for infrastruktur og skalering.
 
 - [Upstash hjemmeside](https://upstash.com/)
 
@@ -127,11 +127,11 @@ Vi elsker Prisma og PlanetScale, men enkelte prosjekter trengte noen ganger en m
 
 Hvis WebSockets er hovedfokuset for prosjektet ditt, kan det være lurt å vurdere en mer tradisjonell backend-løsning som [Fastify](https://www.fastify.io/) (som [også fungerer med tRPC!](https://trpc.io/docs/v10/fastify)). For raskt å legge til WebSockets i en T3-app er Pusher et utmerket valg.
 
-- [Pusher-hjemmeside](https://pusher.com/)
+- [Pusher Hjemmeside](https://pusher.com/)
 
 ### Soketi
 
-Soketi er et selvhostende, enkelt og raskt alternativ til Pusher. Det er fullt kompatibel med Pusher SDK, som du kan bruke til å koble til serveren. Soketi serverless er for øyeblikket fortsatt i beta.
+Soketi er et selvhostende, enkelt og raskt alternativ til Pusher. Det er helt kompatibel med Pusher SDK, som du kan bruke til å koble til serveren. Soketi serverless er fortsatt i beta.
 
 - [Soketi Hjemmeside](https://soketi.app)
 - [Soketi GitHub](https://github.com/soketi/soketi)
