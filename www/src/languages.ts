@@ -27,6 +27,10 @@ const rtlLanguages = [
 
 export function getIsRtlFromUrl(pathname: string) {
   const language = getLanguageFromURL(pathname);
+  return getIsRtlFromLangCode(language);
+}
+
+export function getIsRtlFromLangCode(language: KnownLanguageCode) {
   if (rtlLanguages.indexOf(language) !== -1) {
     return true;
   }
