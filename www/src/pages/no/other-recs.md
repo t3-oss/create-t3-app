@@ -34,7 +34,7 @@ Jotai er vanskelig å slå når en atomær tilnærming er foretrukket. Også av 
 
 ## Komponentbibliotek
 
-De fleste apper krever den samme håndfullen komponenter – toggleknapper, dropdownmenyer, modaler osv. Disse bibliotekene gir flotte, tilgjengelige komponenter som du kan bruke og tilpasse etter dine egne behov.
+De fleste applikasjoner krever den samme håndfullen komponenter – toggleknapper, dropdownmenyer, modaler osv. Disse bibliotekene gir flotte, tilgjengelige komponenter som du kan bruke og tilpasse etter dine egne behov.
 
 ### Ustilte Komponentbiblioteker
 
@@ -65,13 +65,13 @@ Lar deg deklarativt lage et brukergrensesnittbibliotek med forskjellige variante
 
 ## Animasjoner
 
-Her er våre anbefalinger hvis du trenger animasjoner i appen din.
+Her er våre anbefalinger hvis du trenger animasjoner i applikasjon din.
 
 ### AutoAnimate
 
 **For animasjoner med bare én kodelinje**
 
-De fleste animasjonsbiblioteker forsøker å oppfylle alle mulige brukstilfeller og blir dermed uhåndterlige. AutoAnimate er et nullkonfigurasjonsverktøy som gir deg betydelige UX-forbedringer uten ytterligere utviklerinnsats.
+De fleste animasjonsbiblioteker forsøker å oppfylle alle mulige brukstilfeller og blir dermed uhåndterlig. AutoAnimate er et nullkonfigurasjonsverktøy som gir deg betydelige UX-forbedringer uten ytterligere utviklerinnsats.
 
 - [AutoAnimate Hjemmeside](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
@@ -90,9 +90,9 @@ Framer Motion tilbyr en enkel, deklarativ syntaks og lar deg lage komplekse anim
 
 ### Vercel
 
-**For å hoste appen din**
+**For å hoste applikasjonen din**
 
-Vercel har gjort web-app-hosting til en lek. Vi har skalert appen vår til hundretusenvis av brukere, og vi har aldri støtt på noen problemer. Vercel bruker AWS-teknologi, og tilbyr et mye bedre brukergrensesnitt enn mange andre tjenester.
+Vercel har gjort web-app-hosting til en lek. Vi har skalert applikasjonen vår til hundretusenvis av brukere, og vi har aldri støtt på noen problemer. Vercel bruker AWS-teknologi, og tilbyr et mye bedre brukergrensesnitt enn mange andre tjenester.
 
 - [Vercels Hjemmeside](https://vercel.com/)
 - [Create T3 App Vercel-utrullingsveiledning](/no/deployment/vercel)
@@ -157,6 +157,6 @@ Umami er et selvhostende, enkelt, raskt og personvernvennlig alternativ til Goog
 
 ### Neste Bundle Analyzer
 
-Noen ganger er det vanskelig å finne ut hvilken kode som inkluderes i byggeutdataen til appen din. Next Bundle Analyzer er en enkel måte å visualisere og analysere JavaScript-bundler på.
+Noen ganger er det vanskelig å finne ut hvilken kode som inkluderes i byggeutdataen til applikasjonen din. Next Bundle Analyzer er en enkel måte å visualisere og analysere JavaScript-bundler på.
 
 - [@next/bundle-analyzer på npm](https://www.npmjs.com/package/@next/bundle-analyzer)

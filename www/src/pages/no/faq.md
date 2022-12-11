@@ -31,8 +31,8 @@ Nå har vi forståelse for at denne metoden ikke fungerer for alle. Så hvis du 
 
 - [Bygg en full stakk-app med create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [En første titt på create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
-- [Migrering av T3-appen din til et Turborepo](https://www.jumr.dev/blog/t3-turbo)
-- [Integrering av Stripe i T3-appen din](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+- [Migrering av T3-applikasjonen din til et Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrering av Stripe i T3-applikasjonen din](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Videoer
 

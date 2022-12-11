@@ -9,7 +9,7 @@ Du har nettopp opprettet en ny T3-app, og du er klar til å sette igang. Her er 
 
 ## Database
 
-Hvis appen din bruker Prisma, må du kjøre `npx prisma db push` fra rotmappen av applikasjonen. Denne kommandoen synkroniserer Prisma-skjemaet til databasen og genererer TypeScript-typene for Prisma-klienten basert på skjemaet ditt. Merk at du må starte TypeScript-serveren på nytt etter denne handlingen for at de genererte typene skal gjenkjennes.
+Hvis applikasjonen din bruker Prisma, må du kjøre `npx prisma db push` fra rotmappen av applikasjonen. Denne kommandoen synkroniserer Prisma-skjemaet til databasen og genererer TypeScript-typene for Prisma-klienten basert på skjemaet ditt. Merk at du må starte TypeScript-serveren på nytt etter denne handlingen for at de genererte typene skal gjenkjennes.
 
 ## Autentisering
 

@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: no
 ---
 
-Vi anbefaler at du ruller ut appen din til [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Det gjør det superenkelt å rulle ut Next.js-applikasjoner.
+Vi anbefaler at du ruller ut applikasjonen din til [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Det gjør det superenkelt å rulle ut Next.js-applikasjoner.
 
 ## Prosjektkonfigurasjon
 

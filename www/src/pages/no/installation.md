@@ -25,7 +25,7 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-Etter at appen din har blitt opprettet, sjekk ut [første steg](/no/usage/first-steps) for å begynne å utvikle den nye applikasjonen.
+Etter at applikasjonen din har blitt opprettet, sjekk ut [første steg](/no/usage/first-steps) for å begynne å utvikle den nye applikasjonen.
 
 ## Avansert bruk
 

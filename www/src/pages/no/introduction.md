@@ -11,7 +11,7 @@ lang: no
 
 ## T3-stakken
 
-_"T3 Stacken"_ er en webutviklingsstakk inspirert av [Theo](https://twitter.com/t3dotgg) som fokuserer på enkelhet, modularitet og full typesikkerhet.
+_"T3-Stakken"_ er en webutviklingsstakk inspirert av [Theo](https://twitter.com/t3dotgg) som fokuserer på enkelhet, modularitet og full typesikkerhet.
 
 I kjernen består den av [**Next.js**](https://nextjs.org/) og [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) brukes også nesten alltid. Dersom backend-funksjonalitet er nødvendig så er [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) og [**NextAuth.js**](https://next-auth.js.org/) også gode tillegg.
 
