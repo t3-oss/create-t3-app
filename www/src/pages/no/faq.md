@@ -21,9 +21,9 @@ Hvis du ikke er kjent med de forskjellige teknologiene som brukes i dette prosje
 
 ## Hvilke læringsressurser er tilgjengelige for øyeblikket?
 
-Selv om ressursene som er oppført nedenfor, er noen av de beste som finnes For T3-Stakken, anbefaler vårt samfunn (og [Theo] (https://youtu.be/rzwaaWH0ksk?t=1436)) at du bare begynner å bruke stakken og bygger med den mens du lærer.
+Selv om ressursene som er oppført nedenfor, er noen av de beste som finnes for T3-Stakken, anbefaler vårt samfunn (og [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) at du bare begynner å bruke stakken og bygger med den mens du lærer.
 
-Hvis du vurderer "create-t3-app", er sjansen stor for at du allerede har brukt noen av delene av stakken. Så hvorfor ikke bare hoppe inn i den dype enden og lære de andre delene mens du bygger noe?
+Hvis du vurderer "create-t3-app", er sjansen stor for at du allerede har brukt noen av delene av stakken. Så hvorfor ikke bare hoppe inn i det og lære de andre delene mens du bygger noe?
 
 Nå har vi forståelse for at denne metoden ikke fungerer for alle. Så hvis du føler at du har prøvd anbefalingen og fortsatt vil ha noen ressurser, eller du bare ikke er sikker på hvordan å gjøre det selv og/eller føler deg overveldet av stakken, så sjekk ut disse fantastiske veiledningene på `create-t3-app `:
 
@@ -44,11 +44,11 @@ Nå har vi forståelse for at denne metoden ikke fungerer for alle. Så hvis du 
 
 ## Hvorfor er det `.js`-filer i prosjektet?
 
-I henhold til [3. T3-Prinsipp](/no/introduction#typesafety-isnt-optional), anser vi _typesafety_ som en førsteklasses borger. Dessverre støtter ikke alle rammeverk og plugins TypeScript, noe som betyr at noen av konfigurasjonsfilene må være `.js`-filer.
+I henhold til [3. T3-Prinsipp](/no/introduction#typesafety-isnt-optional), anser vi _typesafety_ som en førsteklasses borger. Dessverre støtter ikke alle rammeverk og plugins TypeScript, noe som betyr at noen av konfigurasjonsfilene nødvendigvis må være `.js`-filer.
 
-Vi forsøker å understreke at disse filene er JavaScript av en grunn, ved å eksplisitt deklarere hver filtype (`cjs` eller `mjs`) avhengig av hva som støttes av biblioteket den brukes av. Dessuten er alle `js`-filene i dette prosjektet fortsatt typesjekket med en `@ts-check`-kommentar øverst.
+Vi forsøker å understreke at disse filene er JavaScript for en grunn, ved å eksplisitt deklarere hver filtype (`cjs` eller `mjs`) avhengig av hva som støttes av biblioteket den brukes av. Dessuten er alle `js`-filene i dette prosjektet fortsatt typesjekket med en `@ts-check`-kommentar øverst.
 
-## Jeg sliter med å legge til i18n i appen min. Er det noen referanse jeg kan bruke?
+## Jeg sliter med å legge til i18n i applikasjonen min. Er det noen referanse jeg kan bruke?
 
 Vi har bestemt oss for å ikke inkludere i18n som standard i `create-t3-app` fordi det er et emne omgitt av mange meninger og det er mange måter å implementere det på.
 
@@ -56,6 +56,6 @@ Men hvis du sliter med å implementere det og ønsker å se et referanseprosjekt
 
 ## Hvorfor bruker vi `/pages` og ikke `/app` fra Next.js 13?
 
-I henhold til [2. T3-Prinsipp](/no/introduction#bleed-responsibly), elsker vi _bleeding edge_-ting, men verdsetter stabilitet, hele ruteren din er vanskelig å portere, [ikke et flott sted å blø](https:// youtu.be/mnwUbtieOuI?t=1662). Mens `/app` er [et glimt inn i fremtiden](https://youtu.be/rnsC-12PVlM?t=818), er den ikke klar for produksjon; API-et er i beta og forventes å ha _breaking changes_.
+I henhold til [2. T3-Prinsipp](/no/introduction#bleed-responsibly), elsker vi ny teknologi, men verdsetter stabilitet. Det er vanskelig flytte hele ruteren og det er ikke en god idé å ta disse risikoene der, [se: Moderne og Ansvarsbevisst](https://youtu.be/mnwUbtieOuI?t=1662). Mens `/app` er [et glimt inn i fremtiden](https://youtu.be/rnsC-12PVlM?t=818), er det ikke klart for produksjon; API-et er i beta og forventes å ha _breaking changes_.
 
 For en liste over støttede, planlagte og funksjoner under arbeid i `/app`-katalogen, gå til [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
