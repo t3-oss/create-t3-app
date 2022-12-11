@@ -277,9 +277,15 @@ html.dark {
 .DocSearch-Logo a {
   display: flex;
 }
+[dir='rtl'] .DocSearch-Logo a {
+  flex-direction: row-reverse;
+}
 .DocSearch-Logo svg {
   color: var(--docsearch-logo-color);
   margin-inline-start: 8px;
+}
+[dir='rtl'] .DocSearch-Logo svg {
+  margin-inline-end: 8px;
 }
 .DocSearch-Hits:last-of-type {
   margin-bottom: 24px;
