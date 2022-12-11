@@ -151,7 +151,7 @@ html.dark {
   font-size: 1.2em;
   height: 100%;
   outline: none;
-  padding: 0 0 0 8px;
+  padding-inline-start: 8px;
   width: 80%;
 }
 .DocSearch-Input::placeholder {
