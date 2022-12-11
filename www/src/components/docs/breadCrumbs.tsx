@@ -41,19 +41,19 @@ export default function BreadCrumbs() {
     return SIDEBAR_HEADER_MAP[lang][header];
   };
 
-  const breadcrumbs = window.location.href
+  const breadcrumbs = window.location.pathname
     .split("/")
-    .slice(window.location.href.split("/").length > 5 ? -2 : -1)
+    .slice(window.location.pathname.split("/").length > 3 ? -2 : -1)
     .map((crumb) => {
-      const href = window.location.href
+      const path = window.location.pathname
         .split("/")
-        .slice(0, window.location.href.split("/").indexOf(crumb) + 1)
+        .slice(0, window.location.pathname.split("/").indexOf(crumb) + 1)
         .join("/");
       return {
-        href,
+        href: `${window.location.protocol}//${window.location.host}${path}`,
         key: crumb,
         text:
-          getPathNameFromLink(href.slice(href.indexOf(lang))) ||
+          getPathNameFromLink(path.slice(path.indexOf(lang))) ||
           getHeaderName(
             (crumb[0]?.toUpperCase() + crumb.slice(1)) as OuterHeaders,
           ),
