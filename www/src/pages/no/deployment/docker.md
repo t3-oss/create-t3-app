@@ -1,22 +1,22 @@
 ---
 title: Docker
-description: Deployment with Docker
+description: Utrulling med Docker
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
+Stakken kan rulles ut med Docker. Enten som en enkelt beholder eller som en gruppe beholdere ved hjelp av `docker-compose`. Se [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for et eksempel-_repo_ som er basert på denne dokumentasjonen.
 
-## Docker Project Configuration
+## Docker-prosjektkonfigurasjon
 
-Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
+Vær klar over at Next.js krever forskjellig håndtering av variabler som er satt til "build time" (tilgjengelig i frontend, prefikset av `NEXT_PUBLIC`) og variabler som bare skal være tilgjengelige på serversiden under kjøring. I denne demonstrasjonen bruker vi to variabler. Så vær oppmerksom på rekkefølgen på kommandolinjeargumentene i `Dockerfile` og i `docker-compose.yml`-filen.
 
-- `DATABASE_URL` (used by the server)
-- `NEXT_PUBLIC_CLIENTVAR` (used by the client)
+- `DATABASE_URL` (brukes av serveren)
+- `NEXT_PUBLIC_CLIENTVAR` (brukes av klienten)
 
-### 1. Next Configuration
+### 1. Next.js-konfigurasjon
 
-In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
+I [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), legg til _output_-alternativet `standalone` for å redusere størrelsen på Docker-_imaget_ ved å benytte ["Output File Tracing"](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -26,12 +26,12 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Create dockerignore file
+### 2. Lag en dockerignore-fil
 
 <details>
-    <summary>
-      Click here and include contents in <code>.dockerignore</code>:
-    </summary>
+     <summary>
+     Klikk her og kopier innholdet til <code>.dockerignore</code>:
+     </summary>
 <div class="content">
 
 ```
@@ -49,28 +49,28 @@ README.md
 
 </details>
 
-### 3. Create Dockerfile
+### 3. Lag Dockerfile
 
-> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
+> Siden vi ikke drar serverens miljøvariabler inn i beholderen, vil [skjema for validering av miljøvariabler](/no/usage/env-variables) feile. For å forhindre dette må vi legge til `SKIP_ENV_VALIDATION=1` i byggkommandoen slik at miljøvariabelskjemaene ikke valideres ved "build time".
 
 <details>
-    <summary>
-      Click here and include contents in <code>Dockerfile</code>:
-    </summary>
+     <summary>
+     Klikk her og kopier innholdet til <code>Dockerfile</code>:
+     </summary>
 <div class="content">
 
 ```docker
-##### DEPENDENCIES
+##### AVHENGIGHETER
 
 FROM --platform=linux/amd64 node:16-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
-# Install Prisma Client - remove if not using Prisma
+# Installer Prisma-klienten - Fjern denne linjen hvis du ikke bruker Prisma
 
 COPY prisma ./
 
-# Install dependencies based on the preferred package manager
+# Installer avhengigheter basert på foretrukket pakkebehandler
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
@@ -126,33 +126,33 @@ CMD ["node", "server.js"]
 
 ```
 
-> **_Notes_**
+> **_Notater_**
 >
-> - _Emulation of `--platform=linux/amd64` may not be necessary after moving to Node 18._
-> - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
-> - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
+> - _Emulering av `--platform=linux/amd64` er kanskje ikke lenger nødvendig dersom man bruker Node 18._
+> - \_Se [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) for å forstå hvorfor `libc6-compat` kan være nødvendig.
+> - _Next.js samler inn [anonym bruksdata](https://nextjs.org/telemetry). I `Dockerfile` ovenfor er det allerede to kommenterte linjer med kommandoen `ENV NEXT_TELEMETRY_DISABLED 1`. Fjern kommentarer på den første linjen for å deaktivere datainnsamling under bygging. Den andre linjen deaktiverer datainnsamling under kjøring._
 
 </div>
 </details>
 
-## Build and Run Image Locally
+## Bygg og Kjør Bildet Lokalt
 
-Build and run this image locally with the following commands:
+Bygg og start opp bildet lokalt med følgende kommandoer:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
-docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
+docker run -p 3000:3000 -e DATABASE_URL="database_url_her" ct3a-docker
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Åpne [localhost:3000](http://localhost:3000/) for å se programmet som kjøres.
 
 ## Docker Compose
 
-You can also use Docker Compose to build the image and run the container.
+Du kan også bruke Docker Compose for å bygge bildet og kjøre det i beholderen.
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+       Følg trinn 1-4 ovenfor, klikk her og lim inn innholdet i <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
@@ -171,23 +171,23 @@ services:
       - "3000:3000"
     image: t3-app
     environment:
-      - DATABASE_URL=database_url_goes_here
+      - DATABASE_URL=database_url_her
 ```
 
-Run this using the `docker compose up` command:
+Kjør kommandoen `docker compose up`:
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Åpne [localhost:3000](http://localhost:3000/) for å se programmet som kjører.
 
 </div>
 </details>
 
-## Deploy to Railway
+## Rull ut til Railway
 
-You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
+Du kan bruke en PaaS slik som [Railways](https://railway.app) automatiserte [Dockerfile-utrullinger](https://docs.railway.app/deploy/dockerfiles) for å rulle ut applikasjonen din. Hvis du har installert [Railway CLI](https://docs.railway.app/develop/cli#install), kan du rulle ut applikasjonen din med følgende kommandoer:
 
 ```bash
 railway login
@@ -197,17 +197,17 @@ railway up
 railway open
 ```
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
+Gå til "Variables" og lim inn `DATABASE_URL`. Gå deretter til "Settings" og velg "Generate Domain". For å se et kjørende eksempel på Railway, besøk [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-## Useful Resources
+## Nyttige Ressurser
 
-| Resource                             | Link                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
-| Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
-| Docker CLI reference                 | https://docs.docker.com/engine/reference/commandline/docker/         |
-| Docker Compose CLI reference         | https://docs.docker.com/compose/reference/                           |
-| Next.js Deployment with Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Next.js with Docker Example          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Ressurser                              | Link                                                                 |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| Dockerfile-referanse                   | https://docs.docker.com/engine/reference/builder/                    |
+| Compose file versjon 3-Referanse       | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
+| Docker CLI-referanse                   | https://docs.docker.com/engine/reference/commandline/docker/         |
+| Docker Compose CLI-referanse           | https://docs.docker.com/compose/reference/                           |
+| Rulle ut Next.js med Docker Image      | https://nextjs.org/docs/deployment#docker-image                      |
+| Next.js i Docker                       | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Next.js med Docker-Eksempel            | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
+| Lag et Docker-bilde fra en Next.js-app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
