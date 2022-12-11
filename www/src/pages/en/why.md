@@ -9,7 +9,7 @@ We started create-t3-app because [Theo](https://twitter.com/t3dotgg) refused to 
 
 If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
 
-## Why TypeScript ?
+## Why TypeScript?
 
 JavaScript is hard. Why add more rules?
 
@@ -17,7 +17,7 @@ We firmly believe the experience TypeScript provides will help you be a better d
 
 Typesafety makes you faster. If you're not convinced, you [might be using TypeScript wrong...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
-## Why Next.js ?
+## Why Next.js?
 
 We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths.
 
