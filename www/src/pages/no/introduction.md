@@ -1,42 +1,42 @@
 ---
-title: Introduction
-description: Introduction to the T3 Stack
+title: Introduksjon
+description: Introduksjon til T3-stakken
 layout: ../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stakk for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## The T3 Stack
+## T3-stakken
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
+_"T3 Stacken"_ er en webutviklingsstakk inspirert av [Theo](https://twitter.com/t3dotgg) som fokuserer på enkelhet, modularitet og full typesikkerhet.
 
-The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+I kjernen består den av [**Next.js**](https://nextjs.org/) og [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) brukes også nesten alltid. Så snart backend-funksjonalitet er nødvendig, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) og [**NextAuth.js **](https://next-auth.js.org/) også gode tillegg.
 
-You may have noticed that there are a… lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at its core :)
+Du har kanskje lagt merke til at T3-stakken har mange komponenter. Det er med vilje. Bytt ut delene hvis du trenger dem - stakken er modulær i kjernen :)
 
-## So... what is create-t3-app? A template?
+## Så... hva er create-t3-app? En mal?
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
+På en måte? `create-t3-app` er en CLI utviklet av erfarne T3-stakk-utviklere for å forenkle oppsettet av en modulær T3-stakk-app. Dette betyr at hver komponent er valgfri og "malen" lages basert på dine spesifikke krav.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+Etter å ha jobbet med mange prosjekter og mange år med denne teknologien, har vi mange meninger og mye innsikt. Vi har gjort vårt beste for inkludere dette i dette CLI-et.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+Dette er **IKKE** en altomfattende mal. Vi **forventer** at du tar inn dine egne biblioteker som oppfyller behovene til **DIN** applikasjon. Selv om vi ikke ønsker å foreskrive løsninger for mer spesifikke problemer som _state_-administrasjon og utrulling, har vi [laget en liste over noen anbefalinger her](/no/other-recs).
 
-## T3 Axioms
+## T3-Prinsippet
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+Vi skal være ærlige - Dette prosjektet ble designet i henhold til _våre ideer_. Vi deler et sett med oppfatninger om å bygge webapplikasjoner og bruker disse som grunnlag for våre beslutninger.
 
-### Solve Problems
+### Løs Problemer
 
-It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
+Det er lett å gå i fellen med "å legg til alt" – det ønsker vi spesifikt ikke å gjøre. Alt som legges til 'create-t3-app' bør løse et spesifikt problem som finnes innenfor de inkluderte kjerneteknologiene. Dette betyr at vi ikke vil legge til ting som state-biblioteker (`zustand`, `redux`). Vi vil imidlertid integrere ting som NextAuth.js, Prisma og tRPC.
 
-### Bleed Responsibly
+### Moderne og Ansvarsbevisst
 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+Vi elsker moderne teknologi. Arbeidshastigheten og, ærlig talt, hvor moro det er å jobbe med de er skikkelig kult. Imidlertid synes vi det er viktig å være ansvarlig og bruke mer risikofylte teknologier i de mindre risikofylte delene av stakken. Dette betyr at vi ikke ⛔️ stoler på risikable nye databaseteknologier (SQL er flott!). Men vi liker å ✅ stole på tRPC da det kun gjelder funksjonalitet som er trivielt å endre.
 
-### Typesafety Isn't Optional
+### Typesikkerhet Er Ikke Valgfritt
 
-The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project.
+Det uttalte målet med `create-t3-app` er å gi den raskeste ruten til en ny, **typesikker** fullstakk-webapplikasjon. Vi tar typesikkerhet på alvor fordi det forbedrer produktiviteten vår og hjelper oss å sende færre feil ut i produksjonsmiljø. Enhver beslutning som svekker typesikkerheten til `create-t3-app` er en beslutning som bør tas i et annet prosjekt.
