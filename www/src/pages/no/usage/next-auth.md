@@ -1,15 +1,15 @@
 ---
 title: NextAuth.js
-description: Usage of NextAuth.js
+description: Bruk av NextAuth.js
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
+Hvis du vil ha et autentiseringssystem i Next.js-applikasjonen din, er NextAuth.js en utmerket løsning for å unngå kompleksiteten med å bygge det selv. Den kommer med en omfattende liste leverandører for raskt å legge til OAuth-autentisering og tilbyr adaptere for mange databaser og ORM-er.
 
-## Context Provider
+## Kontekstleverandør
 
-In your app's entrypoint, you'll see that your application is wrapped in a [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
+I applikasjonens inngangspunkt vil du se at applikasjonen er pakket inn av en [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider).
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -17,7 +17,7 @@ In your app's entrypoint, you'll see that your application is wrapped in a [Sess
 </SessionProvider>
 ```
 
-This context provider allows your application to access the session data from anywhere in your application, without having to pass it down as props:
+Denne kontekstleverandøren lar applikasjonen din få tilgang til din `session`-data fra hvor som helst i applikasjonen din uten å måtte sende dem som _props_:
 
 ```tsx:pages/users/[id].tsx
 import { useSession } from "next-auth/react";
@@ -26,7 +26,7 @@ const User = () => {
   const { data: session } = useSession();
 
   if (!session) {
-    // Handle unauthenticated state, e.g. render a SignIn component
+    // Håndter uautentisert state f.eks. Vis en påloggingskomponent
     return <SignIn />;
   }
 
@@ -34,9 +34,9 @@ const User = () => {
 };
 ```
 
-## Inclusion of `user.id` on the Session
+## Inkluder `user.id` i din Session
 
-`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
+`create-t3-app` er konfigurert til å bruke [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) i NextAuth.js-konfigurasjonen for å inkludere bruker-ID i 'session'-objektet.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -49,7 +49,7 @@ callbacks: {
   },
 ```
 
-This is coupled with a type declaration file to make sure the `user.id` is typed when accessed on the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
+Dette er kombinert med en typedeklarasjonsfil for å sikre at `user.id` er riktig skrevet når du får tilgang til `session`-objektet. Les mer om [`"Module Augmentation"`](https://next-auth.js.org/getting-started/typescript#module-augmentation) i NextAuth.js-dokumentasjonen.
 
 ```ts:types/next-auth.d.ts
 import { DefaultSession } from "next-auth";
@@ -63,15 +63,15 @@ declare module "next-auth" {
 }
 ```
 
-The same pattern can be used to add any other data to the `session` object, such as a `role` field, but **should not be misused to store sensitive data** on the client.
+Det samme mønsteret kan brukes til å legge til flere data til `session`-objektet, som f.eks et `role`-felt, men **skal ikke misbrukes til å lagre sensitive data på klienten**.
 
-## Usage with tRPC
+## Bruk med tRPC
 
-When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
+Hvis du bruker NextAuth.js med tRPC, kan du opprette gjenbrukbare beskyttede prosedyrer med [Middlewares](https://trpc.io/docs/v10/middlewares). Dette lar deg lage prosedyrer som bare er tilgjengelige for autentiserte brukere. `create-t3-app` gir deg allerede dette, slik at du enkelt kan få tilgang til session-objektet i autentiserte prosedyrer.
 
-This is done in a two step process:
+Dette skjer i to trinn:
 
-1. Grab the session from the request headers using the [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function. Don't worry, this function is safe to use - the name includes `unstable` only because the API implementation might change in the future. The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away.
+1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Ikke bekymre deg, denne funksjonen er trygg å bruke - navnet inneholder bare `ustabil` fordi API-implementeringen kan endres i fremtiden. Fordelen med `unstable_getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og unødvendige henteanrop utløses ikke. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -82,7 +82,7 @@ export const getServerAuthSession = async (ctx: {
 };
 ```
 
-Using this helper function, we can grab the session and pass it through to the tRPC context:
+Med denne hjelpefunksjonen kan vi hente sesjonen og sende den videre til tRPC-konteksten:
 
 ```ts:server/trpc/context.ts
 import { getServerAuthSession } from "../common/get-server-auth-session";
@@ -96,7 +96,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+2. Lag en tRPC-middleware som sjekker om brukeren er autentisert. Vi bruker deretter middlewaren i en `protectedProcedure`. Hvert kall av disse prosedyrene må autentiseres, ellers kastes en feilmelding, som kan håndteres av klienten.
 
 ```ts:server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
@@ -114,7 +114,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
-The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
+'Session'-objektet er en minimal representasjon av brukeren og inneholder bare noen få felt. Hvis du bruker `protectedProcedures`, har du tilgang til brukerens ID, som kan brukes til å hente ut mer data fra databasen.
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
@@ -129,15 +129,15 @@ const userRouter = router({
 });
 ```
 
-## Usage with Prisma
+## Bruk med Prisma
 
-Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
+Mye [førstegangsoppsett](https://next-auth.js.org/adapters/models/) kreves for å bruke NextAuth.js med Prisma. `create-t3-app` vil gjøre dette for deg, og hvis du velger både Prisma og NextAuth.js, får du et fullt funksjonelt autentiseringssystem med alle nødvendige modeller forhåndskonfigurert. Vi oppretter appen din med en forhåndskonfigurert Discord OAuth-leverandør, som vi valgte siden den er en av de enkleste leverandørene å komme i gang med – du trenger bare å legge inn tokens i `.env`-filen og du er i gang. Du kan imidlertid enkelt legge til flere leverandører ved å følge [NextAuth.js-dokumentasjonen](https://next-auth.js.org/providers/). Vær oppmerksom på at enkelte leverandører krever at du legger til flere felt i enkelte modeller. Vi anbefaler å lese dokumentasjonen for leverandøren du planlegger å bruke for å sikre at alle obligatoriske felt er til stede.
 
-### Adding new fields to your models
+### Legger til nye felt i modellene dine
 
-When adding new fields to any of the `User`, `Account`, `Session`, or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
+Hvis du legger til nye felt i noen av modellene `User`, `Account`, `Session` eller `VerificationToken` (du trenger sannsynligvis bare å justere `User`-modellen), må du huske på at [Prisma-adapter](https://next-auth.js.org/adapters/prisma) automatisk legger til felt i disse modellene når nye brukere registrerer seg og logger på. Så når du legger til nye felt i disse modellene, må du oppgi standardverdier for dem fordi adapteren ikke vet om disse feltene.
 
-If for example, you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
+Hvis du for eksempel vil legge til et `role`-felt i `User`-modellen, må du angi en standardverdi for feltet. Dette oppnås ved å legge til en `@default`-verdi i `role`-feltet i `User`-modellen:
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -151,25 +151,26 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
   }
 ```
 
-## Usage with Next.js middleware
+## Bruk med Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, `create-t3-app` is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
+Bruk av NextAuth.js med Next.js middleware [krever bruk av "JWT session strategy"](https://next-auth.js.org/configuration/nextjs#caveats) for autentisering. Dette er fordi middlewaren bare kan få tilgang til session-informasjonskapslene når den er en JWT. Som standard er `create-t3-app` konfigurert til å bruke **default**-databasestrategien, i kombinasjon med Prisma som databaseadapter.
 
-## Setting up the default DiscordProvider
+## Oppsett av DiscordProvider (standard)
 
-1. Head to [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications), and click on "New Application"
-2. In the settings menu, go to "OAuth2 => General"
+1. Naviger til [Applications-delen i Discord Developer Portal](https://discord.com/developers/applications) og klikk på "New Application"
 
-- Copy the Client ID and paste it in `DISCORD_CLIENT_ID` in `.env`.
-- Under Client Secret, click "Reset Secret" and copy that string to `DISCORD_CLIENT_SECRET` in `.env`. Be careful as you won't be able to see this secret again, and resetting it will cause the existing one to expire.
-- Click "Add Redirect" and paste in `<app url>/api/auth/callback/discord` (example for local development: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
-- Save your changes
-- It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
+2. Bytt til "OAuth2 => Generelt" i settings-menyen
 
-## Useful Resources
+- Kopier klient-ID-en og lim den inn i `DISCORD_CLIENT_ID` i `.env`.
+- Under Client Secret, klikk på "Reset Secret" og kopier denne strengen til `DISCORD_CLIENT_SECRET` i `.env`. Vær forsiktig siden du ikke lenger vil kunne se denne hemmeligheten og tilbakestilling av den vil føre til at den eksisterende hemmeligheten utløper.
+- Klikk på "Add Redirect" og lim inn `<app url>/api/auth/callback/discord` (eksempel for utvikling i lokal miljø: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
+- Lagre endringene dine
+- Det er mulig, men ikke anbefalt, å bruke samme Dismcord-applikasjon for utvikling og produksjon. Du kan også vurdere å [Mocke leverandøren](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) under utviklingen.
 
-| Resource                          | Link                                    |
-| --------------------------------- | --------------------------------------- |
-| NextAuth.js Docs                  | https://next-auth.js.org/               |
-| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
-| tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
+## Nyttige Ressurser
+
+| Ressurser                        | Link                                    |
+| -------------------------------- | --------------------------------------- |
+| NextAuth.js Dokumentasjon        | https://next-auth.js.org/               |
+| NextAuth.js GitHub               | https://github.com/nextauthjs/next-auth |
+| tRPC Kitchen Sink - med NextAuth | https://kitchen-sink.trpc.io/next-auth  |
