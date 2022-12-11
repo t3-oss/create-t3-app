@@ -1,19 +1,19 @@
 ---
 title: Tailwind CSS
-description: Usage of Tailwind CSS
+description: Bruk av TailwindCSS
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-## What is Tailwind CSS?
+## Hva er Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+Tailwind CSS er et lite, [utility first](https://tailwindcss.com/docs/utility-first) CSS-rammeverk for å lage tilpassede temaer uten å måtte bytte mellom ulike kontekster. Det er et rent CSS-rammeverk og tilbyr ingen forhåndsbygde komponenter eller logikk. Det tilbyr også [et helt annet sett med fordeler](https://www.youtube.com/watch?v=CQuTF-bkOgc) sammenlignet med et komponentbibliotek som Material UI.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
+Det gjør det utrolig enkelt og raskt å skrive CSS, som vist i eksemplet nedenfor:
 
-Old CSS:
+Gammel CSS:
 
-1. Write CSS, often in a separate file
+1. Skriv CSS (ofte i en egen fil)
 
 ```css
 .my-class {
@@ -28,21 +28,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. Importer CSS til komponenten din
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. Legg til klassen i HTML-koden din
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+Tilsvarende i Tailwind:
 
-1. Just write classes in your HTML
+1. Bare skriv klassen i HTML-koden din
 
 ```html
 <div
@@ -52,45 +52,45 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+React-komponenter er en sterk kombinasjon for å raskt lage brukergrensesnitt.
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+Tailwind CSS har et veldig fint innebygd temasystem som kommer med en nøye utvalgt fargepalett, dimensjonsstiler for bredde/høyde og padding/margin, og mediabrytepunkter for responsive layouter. Dette designsystemet kan tilpasses og utvides for å lage det nøyaktige settet med stiler som prosjektet ditt trenger.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+Tru Narla, bedre kjent som [mewtru](https://twitter.com/trunarla), har en flott presentasjon om hvordan å [bygge et temasystem med Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
+## Bruk
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+Sørg for at du har installert editor-plugins for Tailwind for å forbedre utvikleropplevelsen.
 
-### Extensions and Plugins
+### Utvidelser og plugins
 
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-- [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
+- [JetBrains-integrasjon](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
+### Formatering
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+Tailwind CSS-klasser kan fort bli forvirrende, så en klasseformaterer er et must. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorterer klassene i [anbefalt rekkefølge](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) slik at klassene samsvarer med utdata-CSS-bundlen. Hvis du velger Tailwind i CLI, vil vi installere og konfigurere det for deg.
 
-### Conditionally Applying Classes
+### Betinget Bruk av Klasser
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+Å legge til klasser under forhold med "ternærer" kan bli veldig rotete og vanskelig å lese. Disse pakkene hjelper deg med å organisere klassene dine når du bruker betinget logikk.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## Nyttige Ressurser
 
-| Resource                     | Link                                                     |
-| ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| Ressurser                  | Link                                                     |
+| -------------------------- | -------------------------------------------------------- |
+| Tailwind Dokumentasjon     | https://tailwindcss.com/docs/editor-setup/               |
+| Tailwind Cheat Sheet       | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss        | https://github.com/aniftyco/awesome-tailwindcss/         |
+| Tailwind Community         | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Tailwind Discord-server    | https://tailwindcss.com/discord/                         |
+| TailwindLabs Youtube-kanal | https://www.youtube.com/tailwindlabs/                    |
+| Tailwind Playground        | https://play.tailwindcss.com/                            |
