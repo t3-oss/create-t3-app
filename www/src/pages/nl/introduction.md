@@ -35,6 +35,8 @@ Het is makkelijk om "alles toe te voegen" - dat willen wij uitdrukkelijk niet. A
 
 ### Modern en Verantwoord
 
+We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+
 Wij houden van bleeding edge technologie. De snelheid en, eerlijk gezegd, lol die uit nieuwe shit komt is heel cool. Wij vinden dat het belangrijk is om modern en verantwoord te blijven, dus riskante technologie gebruiken in de minder riskante gedeeltes. Dit betekent dat we niet ⛔️ de nieuwe database technologie gaan gebruiken (SQL is prima!). Maar we integreren graag ✅ tRPC omdat het gewoon functies zijn die triviaal zijn om te veranderen.
 
 ### Typesafety is niet optioneel
