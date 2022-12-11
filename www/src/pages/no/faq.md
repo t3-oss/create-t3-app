@@ -1,17 +1,17 @@
 ---
 title: FAQ
-description: Frequently asked questions about Create T3 App
+description: Ofte stilte spørsmål om Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-Here are some commonly asked questions about `create-t3-app`.
+Her er noen ofte stilte spørsmål om "create-t3-app".
 
-## What's next? How do I make an app with this?
+## Hva nå? Hvordan lager jeg en app med dette?
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Vi prøver å holde dette prosjektet så enkelt som mulig, slik at du kan starte med bare det grunnleggende rammeverket vi har laget for deg. Du kan legge til flere ting senere etter hvert som de blir nødvendige.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Hvis du ikke er kjent med de forskjellige teknologiene som brukes i dette prosjektet, vennligst se den relevante dokumentasjonen. Hvis du har flere spørsmål kan du bli med i vår [Discord](https://t3.gg/discord) og be om hjelp.
 
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org)
@@ -19,43 +19,43 @@ If you are not familiar with the different technologies used in this project, pl
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
-## What learning resources are currently available?
+## Hvilke læringsressurser er tilgjengelige for øyeblikket?
 
-Although the resources listed below are some of the best that exist for the T3 Stack, the community (and [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) recommend that you just start using the stack and learn along the way by building with it.
+Selv om ressursene som er oppført nedenfor, er noen av de beste som finnes For T3-Stakken, anbefaler vårt samfunn (og [Theo] (https://youtu.be/rzwaaWH0ksk?t=1436)) at du bare begynner å bruke stakken og bygger med den mens du lærer.
 
-If you are considering `create-t3-app`, chances are you might have already used some of the parts of the stack. So why not just dive in head first and learn the other parts while you build something?
+Hvis du vurderer "create-t3-app", er sjansen stor for at du allerede har brukt noen av delene av stakken. Så hvorfor ikke bare hoppe inn i den dype enden og lære de andre delene mens du bygger noe?
 
-Now, we realize this path doesn't work for everyone. So, if you feel like you've tried the recommendation and would still like some resources, or you just aren't confident doing it by yourself and/or feel overwhelmed by the stack, checkout these awesome tutorials on `create-t3-app`:
+Nå har vi forståelse for at denne metoden ikke fungerer for alle. Så hvis du føler at du har prøvd anbefalingen og fortsatt vil ha noen ressurser, eller du bare ikke er sikker på hvordan å gjøre det selv og/eller føler deg overveldet av stakken, så sjekk ut disse fantastiske veiledningene på `create-t3-app `:
 
-### Articles
+### Artikler
 
-- [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
-- [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
-- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+- [Bygg en full stakk-app med create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [En første titt på create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrering av T3-appen din til et Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrering av Stripe i T3-appen din](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
-### Videos
+### Videoer
 
-- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
-- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
-- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
-- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
-- [An overview of the create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+- [Bygg en Twitter-klone med T3-stakken - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+  – [Bygg en Blogg Med T3-stakken – tRPC, TypeScript, Next.js, Prisma og Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Bygg en Live Chat-applikasjon med T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [T3-stakken - Hvordan Vi Bygget Den](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [En oversikt over create-T3-app (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
-## Why are there `.js` files in the project?
+## Hvorfor er det `.js`-filer i prosjektet?
 
-As per [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), we take typesafety as a first class citizen. Unfortunately, not all frameworks and plugins support TypeScript which means some of the configuration files have to be `.js` files.
+I henhold til [3. T3-Prinsipp](/no/introduction#typesafety-isnt-optional), anser vi _typesafety_ som en førsteklasses borger. Dessverre støtter ikke alle rammeverk og plugins TypeScript, noe som betyr at noen av konfigurasjonsfilene må være `.js`-filer.
 
-We try to emphasize that these files are JavaScript for a reason, by explicitly declaring each file's type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
+Vi forsøker å understreke at disse filene er JavaScript av en grunn, ved å eksplisitt deklarere hver filtype (`cjs` eller `mjs`) avhengig av hva som støttes av biblioteket den brukes av. Dessuten er alle `js`-filene i dette prosjektet fortsatt typesjekket med en `@ts-check`-kommentar øverst.
 
-## I'm struggling to add i18n to my app. Is there any reference I can use?
+## Jeg sliter med å legge til i18n i appen min. Er det noen referanse jeg kan bruke?
 
-We have decided against including i18n by default in `create-t3-app` because it's a very opinionated topic and there are many ways to implement it.
+Vi har bestemt oss for å ikke inkludere i18n som standard i `create-t3-app` fordi det er et emne omgitt av mange meninger og det er mange måter å implementere det på.
 
-However, if you struggle to implement it and want to see a reference project, we have a [reference repo](https://github.com/juliusmarminge/t3-i18n) that shows how you can add i18n to a T3 App using [next-i18next](https://github.com/i18next/next-i18next).
+Men hvis du sliter med å implementere det og ønsker å se et referanseprosjekt, så har vi et [referanserepo](https://github.com/juliusmarminge/t3-i18n) som viser hvordan du kan legge til i18n i en T3-app ved å bruke [next-i18next](https://github.com/i18next/next-i18next).
 
-## Why are we using `/pages` and not `/app` from Next.js 13?
+## Hvorfor bruker vi `/pages` og ikke `/app` fra Next.js 13?
 
-As per [T3-Axiom #2](/en/introduction#bleed-responsibly), we love bleeding edge stuff but value stability, your entire router is hard to port, [not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662). While `/app` is [a glimpse into the future](https://youtu.be/rnsC-12PVlM?t=818), it's not ready for production; The API is in beta and expected to have breaking changes.
+I henhold til [2. T3-Prinsipp](/no/introduction#bleed-responsibly), elsker vi _bleeding edge_-ting, men verdsetter stabilitet, hele ruteren din er vanskelig å portere, [ikke et flott sted å blø](https:// youtu.be/mnwUbtieOuI?t=1662). Mens `/app` er [et glimt inn i fremtiden](https://youtu.be/rnsC-12PVlM?t=818), er den ikke klar for produksjon; API-et er i beta og forventes å ha _breaking changes_.
 
-For a list of supported, planned, and worked on features in the `/app` dir, visit the [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+For en liste over støttede, planlagte og funksjoner under arbeid i `/app`-katalogen, gå til [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
