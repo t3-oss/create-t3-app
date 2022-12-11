@@ -193,11 +193,11 @@ The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/t
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be commited to git history.
+The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be commited to git history.
+The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
 
 ### `.eslintrc.json`
 
