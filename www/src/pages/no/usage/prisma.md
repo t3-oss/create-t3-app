@@ -1,31 +1,31 @@
 ---
-title: Prisma
-description: Usage of Prisma
+title: Prisme
+description: Bruk av Prism
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-Prisma is an ORM for TypeScript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
+Prisma er en ORM (Object Relational Mapper) for TypeScript, som gir deg muligheten til å definere databasens skjema og modeller i en schema.prisma-fil. Deretter genereres en typesikker klient som kan brukes til å kommunisere med databasen din fra backend. Dette gir en enklere og mer sikker måte å utvikle databaserelaterte applikasjoner med TypeScript.
 
-## Prisma Client
+## Prism Client
 
-Located at `/server/db/client.ts`, the Prisma Client is instantiated as a global variable (as recommended as [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) by the team at Prisma) and exported to be used in your API routes. We include the Prisma Client in [Context](/en/usage/trpc#-servertrpccontextts) by default and recommend using this instead of importing it separately in each file.
+Prisma-klienten blir instansiert i `/server/db/client.ts` og eksporteres som en global variabel, anbefalt av Prisma-teamet som [beste praksis](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem). Vi gir Prisma-klienten via [Context](/de/usage/trpc#-servertrpccontextts) og anbefaler å bruke klienten fra konteksten i stedet for å importere den i hver fil.
 
 ## Schema
 
-You will find the Prisma schema file at `/prisma/schema.prisma`. This file is where you define your database schema and models, and is used when generating the Prisma Client.
+Prisma-skjemafilen finner du i `/prisma/schema.prisma`. I denne filen definerer du databasens skjema og modeller. Denne filen brukes til å generere Prisma Client.
 
-### With NextAuth.js
+### Med NextAuth.js
 
-When you select NextAuth.js in combination with Prisma, the schema file is generated and set up for you with the recommended values for the `User`, `Session`, `Account`, and `VerificationToken` models, as per the [NextAuth.js documentation](https://next-auth.js.org/adapters/prisma).
+Hvis du velger å bruke NextAuth.js sammen med Prisma, vil skjemafilen bli generert for deg og forberedt med de anbefalte verdiene for modellene `User`, `Session`, `Account` og `VerificationToken` i henhold til [NextAuth. js-dokumentasjonen](https://next-auth.js.org/adapters/prisma).
 
-## Default Database
+## Standard Database
 
-The default database is an SQLite database, which is great for development and quickly spinning up a proof-of-concept but is not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
+Standarddatabasen er en SQLite-database, som er meget godt egnet for utvikling og rask oppretting av et proof-of-concept. Imidlertid anbefaler vi ikke å bruke det i produksjonsmiljøer. Du kan endre databasen ved å endre `provider` i `datasource`-blokken til `postgresql` eller `mysql` og deretter justere URL for database i miljøvariablene slik at den peker på databasen din.
 
-## Seeding your Database
+## Fyll Databasen ("Seeding")
 
-[Seeding your database](https://www.prisma.io/docs/guides/database/seed-database) is a great way to quickly populate your database with test data to help you get started. In order to setup seeding, you will need to create a `seed.ts` file in the `/prisma` directory, and then add a `seed` script to your `package.json` file. You'll also need some TypeScript runner that can execute the seed-script. We recommend [tsx](https://github.com/esbuild-kit/tsx), which is a very performant TypeScript runner that uses esbuild and doesn't require any ESM configuration, but `ts-node` or other runners will work as well.
+["Seeding"](https://www.prisma.io/docs/guides/database/seed-database) er en god måte å fylle databasen med testdata. For å konfigurere fyllingen må du lage en `seed.ts`-fil i `/prisma`-katalogen og deretter legge inn et `seed`-skript i `package.json`-filen. Du trenger også en TypeScript runner som kan kjøre startskriptet. Vi anbefaler [tsx](https://github.com/esbuild-kit/tsx) som er en meget effektiv TypeScript-runner som bruker esbuild og ikke trenger noen ESM-konfigurasjon. `ts-node` eller andre runners vil også fungere.
 
 ```jsonc:package.json
 {
@@ -65,13 +65,13 @@ main()
   });
 ```
 
-Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
+Deretter kan du kjøre `pnpm db-seed` (eller `npm`/`yarn`) for å fylle inn databasen.
 
-## Useful Resources
+## Nyttige Ressurser
 
-| Resource                     | Link                                                                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Prisma Docs                  | https://www.prisma.io/docs/                                                                                                                       |
-| Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
-| NextAuth.JS Prisma Adapter   | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Planetscale Connection Guide | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| Ressurser                         | Link                                                                                                                                              |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Prisma Dokumentasjon              | https://www.prisma.io/docs/                                                                                                                       |
+| Prisma GitHub                     | https://github.com/prisma/prisma                                                                                                                  |
+| NextAuth.JS Prisma Adapter        | https://next-auth.js.org/adapters/prism                                                                                                           |
+| Planetscale Tilkoblingsveiledning | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
