@@ -1,6 +1,8 @@
 ---
-import { getLanguageFromURL } from "../../languages";
+import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { paginate } from "../../utils/pagination";
+import LeftArrow from "../icons/leftArrow.astro";
+import RightArrow from "../icons/rightArrow.astro";
 
 const currentPage = Astro.url.pathname;
 const hasTrailing = currentPage.endsWith("/");
@@ -11,12 +13,15 @@ const currentPageMatch = currentPage.slice(
 
 const langCode = getLanguageFromURL(currentPage);
 const { next, prev } = paginate(langCode, currentPageMatch);
+
+const { pathname } = Astro.url;
+const isRtl = getIsRtlFromUrl(pathname);
 ---
 
 <div
   class="mt-16 mb-8 flex flex-row items-center justify-between px-4 pt-4 font-medium text-t3-purple-800 dark:text-t3-purple-200 lg:px-8"
 >
-  <div class="min-w-0 flex-1">
+  <div>
     {
       prev ? (
         <a
@@ -24,26 +29,13 @@ const { next, prev } = paginate(langCode, currentPageMatch);
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            height={24}
-            class="mr-1 inline flex-shrink-0 rotate-180 transform"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          {isRtl ? <RightArrow /> : <LeftArrow />}
           {prev.text}
         </a>
       ) : null
     }
   </div>
-  <div class="min-w-0 flex-1 text-right">
+  <div>
     {
       next ? (
         <a
@@ -52,20 +44,7 @@ const { next, prev } = paginate(langCode, currentPageMatch);
           href={Astro.site?.pathname + next.link}
         >
           {next.text}
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            height={24}
-            class="ml-1 inline flex-shrink-0 transform"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          {isRtl ? <LeftArrow /> : <RightArrow />}
         </a>
       ) : null
     }
