@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: no
 ---
 
-Har du laget et prosjekt med T3-staken og ønsker dele det? Legg det til listen!
+Har du laget et prosjekt med T3-staken og ønsker dele det? Legg det til lista!
 
 ## Åpen kildekode-prosjekter bygget med T3-stabelen
 
@@ -29,7 +29,7 @@ Har du laget et prosjekt med T3-staken og ønsker dele det? Legg det til listen!
 
 ## Selskaper som bruker T3-stakken
 
-Vi vil gjerne vite hvilke selskaper som bruker T3-stakken for appene sine. Bruker du T3-stakken og vil dele den? Legg den til listen!
+Vi vil gjerne vite hvilke selskaper som bruker T3-stakken for applikasjonene sine. Bruker du T3-stakken og vil dele den? Legg den til lista!
 
 | Bedrift | Link                               |
 | ------- | ---------------------------------- |
