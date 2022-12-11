@@ -1,36 +1,36 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Komme i gang
+description: De første stegene med din nye T3-app
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+Du har nettopp opprettet en ny T3-app, og du er klar til å sette igang. Her er det minste du må gjøre for å få applikasjonen din i gang.
 
 ## Database
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to restart the TypeScript server after doing this so that it can detect the generated types.
+Hvis appen din bruker Prisma, må du kjøre `npx prisma db push` fra rotmappen av applikasjonen. Denne kommandoen synkroniserer Prisma-skjemaet til databasen og genererer TypeScript-typene for Prisma-klienten basert på skjemaet ditt. Merk at du må starte TypeScript-serveren på nytt etter denne handlingen for at de genererte typene skal gjenkjennes.
 
-## Authentication
+## Autentisering
 
-If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
+Hvis applikasjonen din bruker NextAuth.js, starter vi med `DiscordProvider`. Dette er en av de enkleste leverandørene som NextAuth.js tilbyr, men det krever fortsatt litt oppsett fra din side.
 
-Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth.js offers.
+Hvis du foretrekker en annen autentiseringsleverandør, kan du også bruke en av de [mange leverandørene](https://next-auth.js.org/providers/) som NextAuth.js tilbyr.
 
-1. You will need a Discord account, so register one if you haven't already.
-2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
-3. Once your application has been created, navigate to "Settings → OAuth2 → General".
-4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
-5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
-6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-   - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes.
-8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
+1. Du trenger en Discord-konto. Meld deg på hvis du ikke har en ennå.
+2. Naviger til https://discord.com/developers/applications og klikk "New Application" øverst til høyre. Gi søknaden din et navn og godta vilkårene for bruk.
+3. Når applikasjonen din er opprettet, naviger til "Settings → OAuth2 → General".
+4. Kopier "Client ID" og lim den inn i `.env` som `DISCORD_CLIENT_ID`.
+5. Klikk "Reset Secret", kopier den nye hemmeligheten og lim inn verdien i `.env` som `DISCORD_CLIENT_SECRET`.
+6. Klikk "Add Redirect" og skriv inn `http://localhost:3000/api/auth/callback/discord`.
+   - For utrulling i produksjonsmiljø må de foregående trinnene følges på nytt for å lage en annen Discord-applikasjon. Denne gangen erstatt `http://localhost:3000` med URL-en du publiserer til.
+7. Lagre endringene.
+8. Skriv `NEXTAUTH_SECRET` i `.env`. Enhver streng vil fungere under utviklingen. For produktiv bruk, ta en titt på notatet i `.env` for å lage en sikker hemmelighet.
 
-You should now be able to log in.
+Du skal nå kunne logge på.
 
-## Next Steps
+## Neste Steg
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/trpc/router/example.ts` to see how tRPC queries work.
-- Have a look around the `create-t3-app` docs, as well as the docs of the packages that your app includes.
-- Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+- Hvis applikasjonen din bruker tRPC, ta en titt på `src/pages/index.tsx` og `src/server/trpc/router/example.ts` for å se hvordan tRPC-spørringer fungerer.
+- Ta en titt på dokumentasjonen for `create-t3-app` samt dokumentasjonen for pakkene applikasjonen din inkluderer.
+- Bli med i [Discord](https://t3.gg/discord) og gi oss en stjerne på [GitHub](https://github.com/t3-oss/create-t3-app)! :)
