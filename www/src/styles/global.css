@@ -37,8 +37,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
-    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
   }
 
   /* Typewriter */
