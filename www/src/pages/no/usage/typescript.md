@@ -1,24 +1,24 @@
 ---
 title: TypeScript
-description: Usage of TypeScript
+description: Bruk av TypeScript
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>Bygg sikkerhetsnett, ikke rekkverk<span aria-hidden="true">&quot;</span>
     </p>
   </div>
-  <cite className="flex items-center justify-end pr-4 pb-2">
-    <img
-      alt="Avatar of @t3dotgg"
+<cite className="flex items-center justify-end pr-4 pb-2">
+  <img
+      alt="Avatar av @t3dotgg"
       className="w-12 rounded-full bg-neutral-500 [margin-inline-end:16px]"
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Theo - creator of the T3 Stack</span>
+      <span className="text-sm font-semibold">Theo – skaperen av T3-stakken</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"
@@ -31,37 +31,37 @@ lang: en
   </cite>
 </blockquote>
 
-Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
+Enten du er en ny eller erfaren utvikler, synes vi TypeScript er et must. Det kan virke skremmende i begynnelsen, men som mange verktøy, når du først begynner å bruke det, er det noe du ikke vil være foruten.
 
-It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line.
+Det tilbyr live tilbakemeldinger mens du skriver koden din. De forventede datatypene er definert, og vi får nyttig autofullføring i koderedigeringsprogrammet vårt, eller rødt understrek dersom det er et problem, for eksempel når vi prøver å få tilgang til en attributt som ikke eksisterer eller når vi prøver å angi en verdi av feil type. Dette lar oss identifisere og fikse feil tidlig uten å måtte feilsøke etterpå.
 
-It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
+Det er uten tvil verktøyet som gir utviklere mest produktivitet; man får dokumentasjon på at koden man skriver er riktig rett i editoren og gir umiddelbar tilbakemelding når du uunngåelig gjør noen feil. Dette er helt uvurderlig.
 
 ## Type Inference
 
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
+Mange nye TypeScript-utviklere blir veldig opptatt av å _skrive_ TypeScript, men mange av fordelene med TypeScript kommer av at man ikke trenger å endre koden sin i det hele tatt. Spesielt vha. typeinferens. Typeinferens betyr at når noe skrives, beveger den typen seg gjennom hele applikasjonen uten å måtte redeklareres i andre deler av applikasjonen. Dette betyr at, for eksempel, når du har definert typene av en funksjons argumenter, er resten av funksjonen typisk typesikker, uten ekstra TypeScript-spesifikk kode. Bibliotekutviklere legger mye arbeid i å vedlikeholde typene eksponert i bibliotekene deres, noe som betyr at vi som brukere kan dra nytte av inferens og den innebygde dokumentasjonen i koderedigeringsprogrammet som tilbys av disse typene.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
+Se videoen av Theo, hvorfor [det kan hende at du bruker TypeScript feil](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Powerful uses of type inference
+## Gode bruksområder for typeinference
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
+[Zod](https://github.com/colinhacks/zod) er et skjemavalideringsbibliotek bygd på TypeScript. Skriv et skjema som representerer den eneste kilden til sannhet ("single source of truth") for din data, og Zod vil sørge for at din data er gyldig gjennom hele applikasjonen din. Selv på tvers av nettverksgrenser og eksterne API.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
+[Tanstack Query](https://tanstack.com/query/v4/) gir deg deklarative, alltid oppdaterte, automatisk administrerte `queries` og `mutations` som direkte forbedrer utvikler- og brukeropplevelsen.
 
-## Useful Resources
+## Nyttige Ressurser
 
-| Resource                                                  | Link                                                              |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
-| Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
-| Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
+| Ressurser                                                | Link                                                              |
+| -------------------------------------------------------- | ----------------------------------------------------------------- |
+| TypeScript håndbok                                       | https://www.typescriptlang.org/docs/handbook/                     |
+| TypeScript opplæring for nybegynnere                     | https://github.com/total-typescript/beginners-typescript-tutorial |
+| Type-utfordringer                                        | https://github.com/type-challenges/type-challenges                |
+| Rodney Mullen fra TypeScript (Matt Pocock) Youtube-kanal | https://www.youtube.com/c/MattPocockUk/videos                     |
