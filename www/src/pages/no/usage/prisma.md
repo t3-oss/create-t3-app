@@ -1,27 +1,27 @@
 ---
-title: Prisme
-description: Bruk av Prism
+title: Prisma
+description: Bruk av Prisma
 layout: ../../../layouts/docs.astro
 lang: no
 ---
 
-Prisma er en ORM (Object Relational Mapper) for TypeScript, som gir deg muligheten til å definere databasens skjema og modeller i en schema.prisma-fil. Deretter genereres en typesikker klient som kan brukes til å kommunisere med databasen din fra backend. Dette gir en enklere og mer sikker måte å utvikle databaserelaterte applikasjoner med TypeScript.
+Prisma er en ORM (Object Relational Mapper) for TypeScript, som gir deg muligheten til å definere databasens skjema og modeller i en schema.prisma-fil. Deretter genereres en typesikker klient som kan brukes til å kommunisere med databasen din fra backend. Dette gir en enklere og mer sikker måte å utvikle databaserelaterte applikasjoner med TypeScript på.
 
-## Prism Client
+## Prisma Client
 
-Prisma-klienten blir instansiert i `/server/db/client.ts` og eksporteres som en global variabel, anbefalt av Prisma-teamet som [beste praksis](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem). Vi gir Prisma-klienten via [Context](/de/usage/trpc#-servertrpccontextts) og anbefaler å bruke klienten fra konteksten i stedet for å importere den i hver fil.
+Prisma-klienten blir instansiert i `/server/db/client.ts` og eksporteres som en global variabel. Som anbefalt av Prisma-teamet som [beste praksis](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem). Vi angir, som standard, Prisma-klienten i [context](/no/usage/trpc#-servertrpccontextts). Vi anbefaler å bruke klienten via konteksten i stedet for å importere klienten i hver fil.
 
-## Schema
+## Skjema
 
-Prisma-skjemafilen finner du i `/prisma/schema.prisma`. I denne filen definerer du databasens skjema og modeller. Denne filen brukes til å generere Prisma Client.
+Prisma-skjemafilen finner du i `/prisma/schema.prisma`. I denne filen definerer du databasens skjema og modeller. Denne filen brukes til å generere Prisma-klienten.
 
 ### Med NextAuth.js
 
-Hvis du velger å bruke NextAuth.js sammen med Prisma, vil skjemafilen bli generert for deg og forberedt med de anbefalte verdiene for modellene `User`, `Session`, `Account` og `VerificationToken` i henhold til [NextAuth. js-dokumentasjonen](https://next-auth.js.org/adapters/prisma).
+Hvis du velger å bruke NextAuth.js sammen med Prisma, vil skjemafilen bli generert for deg og satt opp med de anbefalte verdiene for modellene `User`, `Session`, `Account` og `VerificationToken` i henhold til [NextAuth. js-dokumentasjonen](https://next-auth.js.org/adapters/prisma).
 
 ## Standard Database
 
-Standarddatabasen er en SQLite-database, som er meget godt egnet for utvikling og rask oppretting av et proof-of-concept. Imidlertid anbefaler vi ikke å bruke det i produksjonsmiljøer. Du kan endre databasen ved å endre `provider` i `datasource`-blokken til `postgresql` eller `mysql` og deretter justere URL for database i miljøvariablene slik at den peker på databasen din.
+Standarddatabasen er en SQLite-database, som er meget godt egnet for utvikling og rask oppretting av et proof-of-concept. Imidlertid anbefaler vi ikke å bruke SQLite i produksjonsmiljøer. Du kan endre databasen ved å endre `provider` i `datasource`-blokken til `postgresql` eller `mysql` og deretter justere URL for database i miljøvariablene slik at den peker på databasen din.
 
 ## Fyll Databasen ("Seeding")
 
@@ -73,5 +73,5 @@ Deretter kan du kjøre `pnpm db-seed` (eller `npm`/`yarn`) for å fylle inn data
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Prisma Dokumentasjon              | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub                     | https://github.com/prisma/prisma                                                                                                                  |
-| NextAuth.JS Prisma Adapter        | https://next-auth.js.org/adapters/prism                                                                                                           |
+| NextAuth.JS Prisma Adapter        | https://next-auth.js.org/adapters/prisma                                                                                                          |
 | Planetscale Tilkoblingsveiledning | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |

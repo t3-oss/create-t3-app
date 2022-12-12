@@ -15,7 +15,7 @@ lang: no
 
 ┣ 📄 server.mjs
 
-Innholdet i disse filene kan virke skummelt til å begynne med, men ikke til bekymring, det er ikke så komplisert som det ser ut. La oss se på disse en etter en og hvordan du legger til flere miljøvariabler.
+Innholdet i disse filene kan virke skummelt til å begynne med, men ikke til bekymring, det er ikke så komplisert som det ser ut til. La oss se på disse en etter en og på hvordan du legger til flere miljøvariabler.
 
 _TLDR; Hvis du vil legge til en ny miljøvariabel, må du definere den i både `.env` og `env/schema.mjs`._
 
@@ -53,12 +53,12 @@ For å gjøre dem tilgjengelige for klienten, _må_ du prefiksere dem med `NEXT_
 
 I denne filen må vi få tilgang til verdiene fra `process.env`-objektet.
 
-Vi trenger et JavaScript-objekt som vi kan analysere gjennom Zod-skjemaene og på grunn av måten Next.js håndterer miljøvariabler kan vi ikke "destruere" `process.env`-objektet som et normalt objekt. Derfor må vi gjøre det manuelt.
+Vi trenger et JavaScript-objekt som vi kan analysere gjennom Zod-skjemaene og på grunn av måten Next.js håndterer miljøvariabler kan vi ikke destrukturere `process.env`-objektet som et normalt objekt. Derfor må vi gjøre det manuelt.
 
-TypeScript vil hjelpe deg å sørge for at du legger nøklene i både `clientEnv` og `clientSchema`.
+TypeScript vil hjelpe deg med å sørge for at du legger nøklene i både `clientEnv` og `clientSchema`.
 
 ```ts
-// ❌ Dette fungerer ikke. Vi må demontere den manuelt.
+// ❌ Dette fungerer ikke. Vi må destrukturere den manuelt.
 const schema = z.object({
   NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -118,7 +118,7 @@ export const serverSchema = z.object({
 
 _**MERK:** En tom streng er fortsatt en streng, så `z.string()` vil godta en tom streng som en gyldig verdi. Hvis du vil forsikre deg om at miljøvariabelen ikke er tom, kan du bruke `z.string().min(1)`._
 
-3. valgfritt: Inkluder miljøvariabelen i `.env.example`, men ikke glem å fjerne verdien
+3. Valgfritt: Inkluder miljøvariabelen i `.env.example`, men ikke glem å fjerne verdien
 
 ```
 TWITTER_API_TOKEN=

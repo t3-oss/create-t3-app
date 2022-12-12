@@ -187,7 +187,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Installasjon", link: "no/installation" },
       { text: "Mappestruktur", link: "no/folder-structure" },
       { text: "FAQ", link: "no/faq" },
-      { text: "T3 Kolleksjon", link: "no/t3-collection" },
+      { text: "T3-Kolleksjonen", link: "no/t3-collection" },
       { text: "Andre Anbefalinger", link: "no/other-recs" },
     ],
     Usage: [

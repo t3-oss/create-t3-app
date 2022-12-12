@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: no
 ---
 
-Du har nettopp opprettet en ny T3-app, og du er klar til å sette igang. Her er det minste du må gjøre for å få applikasjonen din i gang.
+Du har nettopp opprettet en ny T3-app, og du er klar til å sette i gang. Her er det minste du må gjøre for å få applikasjonen din til å kjøre.
 
 ## Database
 
@@ -18,14 +18,14 @@ Hvis applikasjonen din bruker NextAuth.js, starter vi med `DiscordProvider`. Det
 Hvis du foretrekker en annen autentiseringsleverandør, kan du også bruke en av de [mange leverandørene](https://next-auth.js.org/providers/) som NextAuth.js tilbyr.
 
 1. Du trenger en Discord-konto. Meld deg på hvis du ikke har en ennå.
-2. Naviger til https://discord.com/developers/applications og klikk "New Application" øverst til høyre. Gi søknaden din et navn og godta vilkårene for bruk.
+2. Naviger til https://discord.com/developers/applications og klikk "New Application" øverst til høyre. Gi applikasjonen din et navn og godta vilkårene for bruk.
 3. Når applikasjonen din er opprettet, naviger til "Settings → OAuth2 → General".
 4. Kopier "Client ID" og lim den inn i `.env` som `DISCORD_CLIENT_ID`.
 5. Klikk "Reset Secret", kopier den nye hemmeligheten og lim inn verdien i `.env` som `DISCORD_CLIENT_SECRET`.
 6. Klikk "Add Redirect" og skriv inn `http://localhost:3000/api/auth/callback/discord`.
    - For utrulling i produksjonsmiljø må de foregående trinnene følges på nytt for å lage en annen Discord-applikasjon. Denne gangen erstatt `http://localhost:3000` med URL-en du publiserer til.
 7. Lagre endringene.
-8. Skriv `NEXTAUTH_SECRET` i `.env`. Enhver streng vil fungere under utviklingen. For produktiv bruk, ta en titt på notatet i `.env` for å lage en sikker hemmelighet.
+8. Skriv `NEXTAUTH_SECRET` i `.env`. Hvilken som helst streng vil fungere under utviklingen. For bruk i produksjonsmiljø, ta en titt på notatet i `.env` for å lage en sikker hemmelighetvariabel.
 
 Du skal nå kunne logge på.
 

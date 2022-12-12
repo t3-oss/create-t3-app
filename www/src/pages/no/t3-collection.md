@@ -1,13 +1,13 @@
 ---
-title: T3 Samling
-description: Kule åpen kildekode-prosjekter og selskaper som bruker T3-stakken
+title: T3-Kolleksjon
+description: Kule open source-prosjekter og selskaper som bruker T3-stakken
 layout: ../../layouts/docs.astro
 lang: no
 ---
 
-Har du laget et prosjekt med T3-staken og ønsker dele det? Legg det til lista!
+Har du laget et prosjekt med T3-stakken og ønsker å dele det? Legg det til lista!
 
-## Åpen kildekode-prosjekter bygget med T3-stabelen
+## Open source-prosjekter bygget med T3-stakken
 
 | Beskrivelse                                                       | Repo                                                                        | Link                                                                              |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |

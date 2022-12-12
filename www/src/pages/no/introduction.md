@@ -9,7 +9,7 @@ lang: no
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stakk for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## T3-stakken
+## T3-Stakken
 
 _"T3-Stakken"_ er en webutviklingsstakk inspirert av [Theo](https://twitter.com/t3dotgg) som fokuserer på enkelhet, modularitet og full typesikkerhet.
 
@@ -25,7 +25,7 @@ Etter å ha jobbet med mange prosjekter og mange år med denne teknologien, har 
 
 Dette er **IKKE** en altomfattende mal. Vi **forventer** at du tar inn dine egne biblioteker som oppfyller behovene til **DIN** applikasjon. Selv om vi ikke ønsker å foreskrive løsninger for mer spesifikke problemer som _state_-administrasjon og utrulling, har vi [laget en liste over noen anbefalinger her](/no/other-recs).
 
-## T3-Prinsippet
+## T3-Prinsipper
 
 Vi skal være ærlige - Dette prosjektet ble designet i henhold til _våre ideer_. Vi deler et sett med oppfatninger om å bygge webapplikasjoner og bruker disse som grunnlag for våre beslutninger.
 
@@ -37,6 +37,6 @@ Det er lett å gå i fellen med "å legg til alt" – det ønsker vi spesifikt _
 
 Vi elsker moderne teknologi. Arbeidshastigheten og, ærlig talt, hvor moro det er å jobbe med disse teknologiene er fantastisk. Imidlertid synes vi det er viktig å være ansvarsbevisst når det gjelder å bruke noe risikofylte teknologier i de mindre risikofylte delene av stakken. Dette betyr at vi ikke ⛔️ stoler på risikable nye databaseteknologier (SQL er flott!). Men vi liker å ✅ stole på tRPC da det kun gjelder funksjonalitet som er trivielt å endre.
 
-### Typesikkerhet Er Ikke Valgfritt
+### Typesikkerhet er ikke valgfritt
 
 Det uttalte målet med `create-t3-app` er å gi den raskeste ruten til en ny, **typesikker** fullstakk-webapplikasjon. Vi tar typesikkerhet på alvor fordi det forbedrer produktiviteten vår og hjelper oss å sende færre feil ut i produksjonsmiljø. Enhver beslutning som svekker typesikkerheten til `create-t3-app` er en beslutning som bør tas i et annet prosjekt.

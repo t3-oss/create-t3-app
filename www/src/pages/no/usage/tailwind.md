@@ -54,7 +54,7 @@ Tilsvarende i Tailwind:
 
 React-komponenter er en sterk kombinasjon for å raskt lage brukergrensesnitt.
 
-Tailwind CSS har et veldig fint innebygd temasystem som kommer med en nøye utvalgt fargepalett, dimensjonsstiler for bredde/høyde og padding/margin, og mediabrytepunkter for responsive layouter. Dette designsystemet kan tilpasses og utvides for å lage det nøyaktige settet med stiler som prosjektet ditt trenger.
+Tailwind CSS har et veldig fint innebygd temasystem som kommer med en nøye utvalgt fargepalett, dimensjonsstiler for bredde/høyde og padding/margin, og mediabrytepunkter for responsive layouter. Dette designsystemet kan tilpasses og utvides for å lage nøyaktig det settet med stiler som prosjektet ditt trenger.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
