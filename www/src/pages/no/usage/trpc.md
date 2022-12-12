@@ -1,16 +1,17 @@
 ---
 title: tRPC
-description: Usage of tRPC
+description: Bruk av tRPC
 layout: ../../../layouts/docs.astro
-lang: en
+lang: no
 ---
 
-tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
+tRPC lar oss skrive ende-til-ende typesikre APIer, helt uten kodegenerering eller runtime-bloat.
+Det bruker TypeScripts _inference_ for å _infere_ API-ruterens typedefinisjoner og lar deg kalle API-prosedyrene dine fra frontend med full typesikkerhet og autofullføring. Når du bruker tRPC, føles frontend og backend nærmere enn noen gang, noe som resulterer i enestående utvikleropplevelse.
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>"Jeg bygde tRPC for å forbedre hastigheten på utviklingen av applikasjoner ved å fjerne behovet for et tradisjonelt API-lag. Samtidig kan vi fortsatt stole på at de vil være stabile når man itererer raskt.<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -33,49 +34,49 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   </cite>
 </blockquote>
 
-## Files
+## Filer
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
+tRPC krever mye _boilerplate_, som `create-t3-app` setter opp for deg. La oss gå gjennom filene som vil bli opprettet:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+Dette er inngangspunktet for API-et ditt og eksponerer tRPC-ruteren. Normalt vil du ikke være borti denne filen så ofte. Men hvis du f.eks. trenger en _middleware_ for CORS eller lignende, er det nyttig å vite at den eksporterte funksjonen `createNextApiHandler` er en [Next.js API-Handler](https://nextjs.org/docs/api-routes/introduction) som mottar et [request-](https://developer.mozilla.org/en-US/docs/Web/API/Request) og et [response](https://developer.mozilla.org/en-US/docs/Web/API/Response)-objekt. Dette betyr at du kan _wrappe_ `createNextApiHandler` med hvilken som helst middleware. Se under for et [eksempel](#enabling-cors) for å legge til CORS.
 
 ### 📄 `server/trpc/context.ts`
 
-This file is where you define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
+I denne filen definerer du konteksten som sendes til tRPC-prosedyrene dine. Konteksten er data som alle dine tRPC-prosedyrer har tilgang til og er et godt sted å lagre ting som databasetilkoblinger, autentiseringsdata, etc. I `create-t3-app` bruker vi to funksjoner for å bruke en del av konteksten når vi ikke har tilgang til request-objektet.
 
-- `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+- `createContextInner`: Her definerer du konteksten som ikke er avhengig av requesten, f.eks. din databaseforbindelse. Du kan bruke denne funksjonen for [integrasjonstester](#sample-integration-test) eller [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) der du ikke har et request-objekt.
 
-- `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
+- `createContext`: Her definerer du konteksten som avhenger av requesten, f.eks. brukerens session. Du henter den med `opts.req`-objektet og sender den deretter til 'createContextInner'-funksjonen for å opprette den endelige konteksten.
 
 ### 📄 `server/trpc/trpc.ts`
 
-This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
+Dette er hvor man initialiserer tRPC og definerer gjenbrukbare [prosedyrer](https://trpc.io/docs/v10/procedures) og [middlewares](https://trpc.io/docs/v10/middlewares). Av konvensjon bør du ikke eksponere hele `t`-objektet, men i stedet lage gjenbrukbare prosedyrer og middleware og eksportere de.
 
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
+Du har sikkert lagt merke til at vi bruker `superjson` som [datatransformator](https://trpc.io/docs/v10/data-transformers). Dette sikrer at datatypene dine blir bevart når de når klienten, så hvis du for eksempel sender et `Date`-objekt til klienten så returneres et `Date`-objekt og ikke en streng slik de fleste API gjør.
 
 ### 📄 `server/trpc/router/*.ts`
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
+Det er her du definerer rutene og prosedyrene for API-et din. Konvensjon tilsier at du bør [opprette separate rutere](https://trpc.io/docs/v10/router) for relaterte prosedyrer og deretter [slå de sammen](https://trpc.io/docs/v10/merging-routers) til en enkelt app-ruter i `server/trpc/router/_app.ts`.
 
 ### 📄 `utils/trpc.ts`
 
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+Dette er inngangspunktet for tRPC på klientsiden. Her importerer du ruterens **typedefinisjonen** og oppretter tRPC-klienten, samt hooks for react-query. Ettersom vi har aktivert `superjson` som vår datatransformator på serversiden, må vi aktivere den på klientsiden også. Dette er fordi serialisert data fra _backend_ blir deserialisert på _frontend_.
 
-You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+Du definerer tRPC [lenker](https://trpc.io/docs/v10/links) her, som kartlegger request-flyten fra klienten til serveren. Vi bruker "standard" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) som muliggjør [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), samt en [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) som gir ut request-logger som kan være nyttige under utviklingsprosessen.
 
-Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
+Til slutt eksporterer vi en [hjelpertype](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) som du kan bruke til å utlede typene dine på klientsiden.
 
-## How do I use tRPC?
+## Hvordan bruker jeg tRPC?
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) about tRPC. We highly recommend you watch it if you haven't already.
+tRPC-bidragsyter [trashh_dev](https://twitter.com/trashh_dev) holdt [en flott tale på Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) om tRPC. Vi anbefaler deg å se den hvis du ikke allerede har gjort det.
 
-With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
+Med tRPC skriver du TypeScript-funksjoner i backend, og kaller dem deretter fra frontend. En enkel tRPC-prosedyre kan se slik ut:
 
 ```ts:server/trpc/router/user.ts
 const userRouter = t.router({
@@ -89,11 +90,11 @@ const userRouter = t.router({
 });
 ```
 
-This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+Dette er tRPC-prosedyre (tilsvarer en rutebehandler i en tradisjonell backend) som først validerer inndataene ved å bruke Zod (som er det samme valideringsbiblioteket vi bruker for [miljøvariablene](./env-variables).) - i dette tilfellet forsikres det at _input_ er en streng. Hvis input ikke er en streng, returneres en detaljert feil.
 
-After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
+Etter input følger en resolver-funksjon som enten utfører en [query](https://trpc.io/docs/v10/react-queries), [mutasjon](https://trpc.io/docs/v10/react-mutations) eller en [subscription](https://trpc.io/docs/v10/subscriptions). I vårt eksempel kaller resolver-funksjonen vår database med vår [prisma](./prisma)-klient og returnerer brukeren hvis `id` samsvarer med den vi sendte inn.
 
-You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+Du definerer prosedyrene dine i `rutere` som er en samling av relaterte prosedyrer innenfor et felles _namespace_. Du kan ha en ruter for `users`, en for `posts` og en for `messages`. Disse ruterne kan deretter slås sammen til en enkelt, sentral `appRouter`:
 
 ```ts:server/trpc/router/_app.ts
 const appRouter = t.router({
@@ -105,9 +106,9 @@ const appRouter = t.router({
 export type AppRouter = typeof appRouter;
 ```
 
-Notice that we only need to export our router's type definitions, which means we are never importing any server code on our client.
+Merk at vi bare trenger å eksportere vår ruters typedefinisjoneer, noe som betyr at vi aldri importerer noen serverkode i klienten vår.
 
-Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
+La oss nå påkalle prosedyren i frontenden vår. tRPC tilbyr en _wrapper_ for `@tanstack/react-query` hvor det er definert noen hooks som gjør at du kan påkalle ditt API med definerte typer som er "inferred", det vil at TypeScript-kompilatoren automatisk har gjettet hvilken type API-kallene dine har. Vi kan kalle prosedyrene våre fra vår frontend slik:
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
@@ -124,15 +125,15 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+Du vil umiddelbart legge merke til hvor god autofullføringen og typesikkerheten er. Så snart du skriver inn `trpc.` vil ruterne dine automatisk bli foreslått. Hvis du nå velger en ruter, vil prosedyrene også vises. Hvis inndataene dine ikke samsvarer med validatoren du definerte i backend, får du en TypeScript-feil.
 
-## How do I call my API externally?
+## Hvordan påkaller jeg API-et mitt eksternt?
 
-With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two recommended ways to do it:
+Med vanlige API-er kan du bruke hvilken som helst HTTP-klient som `curl`, `Postman`, `fetch` eller bare nettleseren din. Med tRPC er det litt annerledes. Hvis du vil kalle opp prosedyrene dine uten tRPC-klienten, er det to anbefalte måter:
 
-### Expose a single procedure externally
+### Gjør en enkelt prosedyre tilgjengelig eksternt
 
-If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
+Hvis du ønsker å eksponere en enkel prosedyre eksternt, er du avhengig av [server-side-kall](https://trpc.io/docs/v10/server-side-calls). Dette vil tillate deg å opprette et normalt Next.js API-endepunkt, men gjenbruke resolver-delen av tRPC-prosedyren.
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -140,7 +141,7 @@ import { appRouter } from "../../../server/trpc/router/_app";
 import { createContext } from "../../../server/trpc/context";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Create context and caller
+  // Lag kontekst og caller
   const ctx = await createContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
@@ -149,30 +150,28 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(user);
   } catch (cause) {
     if (cause instanceof TRPCError) {
-      // An error from tRPC occured
+      // Det oppstod en feil fra tRPC
       const httpCode = getHTTPStatusCodeFromError(cause);
       return res.status(httpCode).json(cause);
     }
-    // Another error occured
+    // En annen feil oppstod
     console.error(cause);
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-export default userByIdHandler;
 ```
 
-### Exposing every procedure as a REST endpoint
+### Vis alle prosedyrer som et REST-endepunkt
 
-If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
+Hvis du vil gjøre hver enkelt prosedyre tilgjengelig eksternt, sjekk ut den community-skapte plugin-modulen [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). Den lar deg generere et OpenAPI-kompatibelt REST API fra tRPC-ruteren din, ved å legge til ytterligere metadata i prosedyrene dine.
 
-### It's just HTTP Requests
+### Dette er kun HTTP-requests
 
-tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/v10/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
+tRPC kommuniserer via HTTP, så det er også mulig å starte tRPC-prosedyrene dine med "normale" HTTP-requests. Syntaksen kan imidlertid være vanskelig på grunn av [RPC-protokollen](https://trpc.io/docs/v10/rpc) som tRPC bruker. Hvis du er nysgjerrig, sjekk nettleserens nettverksfane for å se hvordan tRPC-requestene og -responsene ser ut. Vi anbefaler imidlertid dette kun for pedagogiske formål og vil råde deg til generelt å bruke en av løsningene ovenfor.
 
-## Comparison to a Next.js API endpoint
+## Sammenligning med et Next.js API-endepunkt
 
-Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
+La oss sammenligne et Next.js API-endepunkt med en tRPC-prosedyre. Anta at vi ønsker å hente et brukerobjekt fra databasen vår og returnere det til frontend. Vi kan skrive et Next.js API-endepunkt slik:
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -218,21 +217,22 @@ const UserPage = () => {
 };
 ```
 
-Compare this to the tRPC example above and you can see some of the advantages of tRPC:
+Hvis vi nå sammenligner dette med tRPC-eksemplet fra lenger opp i dokumentasjonen, kan følgende fordeler med tRPC sees:
 
-- Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
-- You don’t need to validate which HTTP method was used.
-- You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
-- Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend provides autocompletion and type safety.
+– I stedet for å spesifisere en URL for hver rute, som kan forårsake feil ved endring av prosjektets struktur, er hele ruteren et objekt med autofullføring.
 
-## Useful snippets
+- Du trenger ikke å validere hvilken HTTP-metode som ble brukt.
+- Du trenger ikke å validere at request eller _body_ inneholder riktige data i prosedyren, fordi Zod tar seg av dette.
+- I stedet for å opprette en response, kan du kaste en error og returnere en verdi eller et objekt som du ville gjort i en hvilken som helst annen TypeScript-funksjon.
+- Å kalle prosedyren på frontend gir autofullføring og typesikkerhet.
 
-Here are some snippets that might come in handy.
+## Nyttige Kodeutdrag
 
-### Enabling CORS
+Her er noen kodeutdrag som kan være nyttige.
 
-If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
+### Aktivering av CORS
+
+Hvis du trenger å konsumere API-et ditt fra et annet domene, for eksempel i en monorepo som inneholder en React Native-app, må du antageligvis aktivere CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -242,10 +242,10 @@ import { createContext } from "~/server/trpc/context";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Enable cors
+  // Aktiver cors
   await cors(req, res);
 
-  // Create and call the tRPC handler
+  // Oprett og påkall tRPC-handler
   return createNextApiHandler({
     router: appRouter,
     createContext,
@@ -255,44 +255,44 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default handler;
 ```
 
-### Optimistic updates
+### Optimistiske oppdateringer
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Optimistiske oppdateringer er oppdateringer vi gjør før API-forespørselen fullføres. Dette gir en bedre opplevelse for brukeren siden de ikke trenger å vente på at API-forespørselen skal fullføres før brukergrensesnittet reflekterer resultatet av handlingen deres. Imidlertid bør applikasjoner som verdsetter riktigheten av dataen unngå optimistiske oppdateringer, da de ikke gjenspeiler de "sanne" dataene til backend. Du kan lese mer om det i [React Query-dokumentasjonen](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
-  const listPostQuery = trpc.post.list.useQuery();
+   const listPostQuery = trpc.post.list.useQuery();
 
-  const utils = trpc.useContext();
-  const postCreate = trpc.post.create.useMutation({
-    async onMutate(newPost) {
-      // Cancel outgoing fetches (so they don't overwrite our optimistic update)
-      await utils.post.list.cancel();
+   const utils = trpc.useContext();
+   const postCreate = trpc.post.create.useMutation({
+     async onMutate(newPost) {
+       // Avbryt utgående henting (slik at de ikke overskriver vår optimistiske oppdatering)
+       vent utils.post.list.cancel();
 
-      // Get the data from the queryCache
-      const prevData = utils.post.list.getData();
+       // Få dataene fra queryCache
+       const prevData = utils.post.list.getData();
 
-      // Optimistically update the data with our new post
-      utils.post.list.setData(undefined, (old) => [...old, newPost]);
+       // Oppdater dataene optimistisk med vårt nye innlegg
+       utils.post.list.setData(udefinert, (gammel) => [...gammel, nyinnlegg]);
 
-      // Return the previous data so we can revert if something goes wrong
-      return { prevData };
-    },
-    onError(err, newPost, ctx) {
-      // If the mutation fails, use the context-value from onMutate
-      utils.post.list.setData(undefined, ctx.prevData);
-    },
-    onSettled() {
-      // Sync with server once mutation has settled
-      utils.post.list.invalidate();
-    },
-  });
+       // Returner de forrige dataene slik at vi kan gå tilbake hvis noe går galt
+       return { prevData };
+     },
+     onError(err, newPost, ctx) {
+       // Hvis mutasjonen mislykkes, bruk kontekstverdien fra onMutate
+       utils.post.list.setData(udefinert, ctx.prevData);
+     },
+     onSettled() {
+       // Synkroniser med server når mutasjonen har avgjort
+       utils.post.list.invalidate();
+     },
+   });
 };
 ```
 
-### Sample Integration Test
+### Eksempel på Integrasjonstest
 
-Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
+Her er et eksempel på en integrasjonstest som bruker [Vitest](https://vitest.dev) for å bekrefte at tRPC-ruteren din fungerer som forventet, at input-parseren _inferrer_ riktig type, og at returnert data samsvarer med forventet output.
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
@@ -315,10 +315,10 @@ test("example router", async () => {
 });
 ```
 
-## Useful Resources
+## Nyttige Ressurser
 
-| Resource               | Link                                                    |
-| ---------------------- | ------------------------------------------------------- |
-| tRPC Docs              | https://www.trpc.io                                     |
-| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Ressurser           | Link                                                    |
+| ------------------- | ------------------------------------------------------- |
+| tRPC Dokumenasjon   | https://www.trpc.io                                     |
+| Noen tRPC-eksempler | https://github.com/trpc/trpc/tree/next/examples         |
+| Reager Query Docs   | https://tanstack.com/query/v4/docs/adapters/react-query |
