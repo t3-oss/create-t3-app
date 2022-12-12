@@ -1,13 +1,14 @@
 ---
-import Layout from "../../../layouts/docs.astro";
 import IndexPage from "../../../components/docs/indexPage.astro";
 import { Frontmatter, SIDEBAR } from "../../../config";
 import { getLanguageFromURL } from "../../../languages";
+import Layout from "../../../layouts/docs.astro";
 
 const frontmatter: Frontmatter = {
-  title: "Deployment",
+  title: "Utrulling",
   layout: "docs",
-  description: "Learn how to deploy your T3 app to production.",
+  description:
+    "Lær hvordan man ruller ut T3-applikasjonen til produksjonsmiljø.",
 };
 
 const lang = getLanguageFromURL(Astro.url.pathname);
