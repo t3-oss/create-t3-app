@@ -29,8 +29,10 @@ const isRtl = getIsRtlFromUrl(pathname);
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
-          {isRtl ? <RightArrow /> : <LeftArrow />}
-          {prev.text}
+          <>
+            {isRtl ? <RightArrow /> : <LeftArrow />}
+            {prev.text}
+          </>
         </a>
       ) : null
     }
@@ -43,8 +45,10 @@ const isRtl = getIsRtlFromUrl(pathname);
           class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
           href={Astro.site?.pathname + next.link}
         >
-          {next.text}
-          {isRtl ? <LeftArrow /> : <RightArrow />}
+          <>
+            {next.text}
+            {isRtl ? <LeftArrow /> : <RightArrow />}
+          </>
         </a>
       ) : null
     }

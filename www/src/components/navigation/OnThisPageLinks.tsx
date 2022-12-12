@@ -6,12 +6,16 @@ import clsx from "clsx";
 type OnThisPageLinksProps = {
   headings: MarkdownHeading[];
   title: string;
+  isRtl: boolean;
 };
 
 export default function OnThisPageLinks({
   headings,
   title,
+  isRtl,
 }: OnThisPageLinksProps) {
+  const isLtr = !isRtl;
+
   const memoedHeadings = useMemo(() => {
     // add isVisible flag in headers
     const headers = [
@@ -76,57 +80,61 @@ export default function OnThisPageLinks({
         {({ open }) => (
           <div className="relative w-full">
             <div className="">
-              <Menu.Button className="text-md inline-flex cursor-pointer items-center whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
+              <Menu.Button className="text-md inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
                 On this page
-                <span className="ml-1.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-3 w-3 sm:h-4 sm:w-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d={
-                        open
-                          ? "M19.5 8.25l-7.5 7.5-7.5-7.5"
-                          : "M8.25 4.5l7.5 7.5-7.5 7.5"
-                      }
-                    />
-                  </svg>
-                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={clsx(
+                    "h-3 w-3 sm:h-4 sm:w-4",
+                    isRtl && "-scale-x-100",
+                  )}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d={
+                      open
+                        ? "M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        : "M8.25 4.5l7.5 7.5-7.5 7.5"
+                    }
+                  />
+                </svg>
               </Menu.Button>
             </div>
             <Menu.Items
-              as="ul"
+              dir="ltr"
               className="t3-scrollbar absolute top-full z-10 mt-3 max-h-[45vh] w-full overflow-y-auto rounded-md border-2 border-primary bg-default py-1.5 shadow-md dark:border-t3-purple-200/20 dark:bg-default"
             >
-              {headingWithIsVisible.map((heading) => (
-                <li key={heading.slug} className="w-full">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        className={clsx(
-                          "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
-                          heading.depth === 2 ? "pl-3" : "pl-8",
-                          {
-                            "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
-                              active,
-                            "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
-                              heading.isVisible,
-                          },
-                        )}
-                        href={`#${heading.slug}`}
-                      >
-                        {heading.text}
-                      </a>
-                    )}
-                  </Menu.Item>
-                </li>
-              ))}
+              <ul dir={isLtr ? "ltr" : "rtl"}>
+                {headingWithIsVisible.map((heading) => (
+                  <li key={heading.slug} className="w-full">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          className={clsx(
+                            "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
+                            isLtr && (heading.depth === 2 ? "pl-3" : "pl-8"),
+                            isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
+                            {
+                              "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
+                                active,
+                              "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
+                                heading.isVisible,
+                            },
+                          )}
+                          href={`#${heading.slug}`}
+                        >
+                          {heading.text}
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </li>
+                ))}
+              </ul>
             </Menu.Items>
           </div>
         )}

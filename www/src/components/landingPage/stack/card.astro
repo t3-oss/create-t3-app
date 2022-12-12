@@ -3,18 +3,17 @@ export interface Props {
   title: string;
   href: string;
 }
-
 const { title, href } = Astro.props;
 ---
 
 <div
-  class="relative flex flex-col justify-between overflow-hidden rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors hover:border-t3-purple-300/50"
+  class="relative flex flex-col justify-between rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors hover:border-t3-purple-300/50"
 >
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    class="focus:no-underline hover:no-underline active:no-underline"
+    class="h-full rounded-md focus:no-underline hover:no-underline active:no-underline"
   >
     <div
       class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
