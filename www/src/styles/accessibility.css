@@ -7,9 +7,9 @@
 }
 
 * {
-  @apply focus-visible:border-2 focus-visible:border-t3-purple-400 focus-visible:outline-none focus-visible:transition-none;
+  @apply outline-2 outline-offset-2 !outline-t3-purple-400 transition-[outline-offset] focus-visible:outline;
 }
 
-*:focus {
-  outline: none !important;
+*:not(:active):focus-visible {
+  @apply outline-offset-4;
 }
