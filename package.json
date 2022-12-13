@@ -1,5 +1,5 @@
 {
-  "name": "@ct3a/root",
+  "name": "@bsmnt/hydra",
   "version": "0.0.0",
   "description": "Quickest way to start a new web app with full stack typesafety",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
@@ -10,30 +10,19 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/t3-oss/create-t3-app.git"
+    "url": "https://github.com/basementstudio/hydra.git"
   },
-  "keywords": [
-    "create-t3-app",
-    "init.tips",
-    "next.js",
-    "t3-stack",
-    "tailwind",
-    "tRPC",
-    "typescript"
-  ],
+  "keywords": [],
   "engines": {
-    "node": ">=14.16"
+    "node": "16.x"
   },
   "packageManager": "pnpm@7.13.0",
   "scripts": {
     "typecheck": "turbo typecheck",
     "build:cli": "turbo --filter=create-t3-app build",
-    "build:www": "turbo --filter=www build",
     "build": "turbo build",
     "start:cli": "turbo --filter=create-t3-app start",
-    "start:www": "turbo --filter=www start",
     "dev:cli": "turbo --filter=create-t3-app dev",
-    "dev:www": "turbo --filter=www dev",
     "clean": "turbo clean && rm -rf node_modules",
     "lint": "turbo lint",
     "format": "turbo format && prettier --write *.{cjs,md,json}",
