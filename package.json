@@ -19,10 +19,10 @@
   "packageManager": "pnpm@7.13.0",
   "scripts": {
     "typecheck": "turbo typecheck",
-    "build:cli": "turbo --filter=create-t3-app build",
+    "build:cli": "turbo --filter=create-bsmnt-app build",
     "build": "turbo build",
-    "start:cli": "turbo --filter=create-t3-app start",
-    "dev:cli": "turbo --filter=create-t3-app dev",
+    "start:cli": "turbo --filter=create-bsmnt-app start",
+    "dev:cli": "turbo --filter=create-bsmnt-app dev",
     "clean": "turbo clean && rm -rf node_modules",
     "lint": "turbo lint",
     "format": "turbo format && prettier --write *.{cjs,md,json}",

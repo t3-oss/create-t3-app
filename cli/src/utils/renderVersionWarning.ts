@@ -41,7 +41,7 @@ function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https
       .get(
-        "https://registry.npmjs.org/-/package/create-t3-app/dist-tags",
+        "https://registry.npmjs.org/-/package/create-bsmnt-app/dist-tags",
         (res) => {
           if (res.statusCode === 200) {
             let body = "";
@@ -65,7 +65,7 @@ export const getNpmVersion = () =>
   // `fetch` to the registry is faster than `npm view` so we try that first
   checkForLatestVersion().catch(() => {
     try {
-      return execSync("npm view create-t3-app version").toString().trim();
+      return execSync("npm view create-bsmnt-app version").toString().trim();
     } catch {
       return null;
     }
