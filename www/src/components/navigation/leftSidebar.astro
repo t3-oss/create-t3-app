@@ -40,8 +40,8 @@ if (langCode !== "en") {
           .flat()
           .find(
             ({ link: nativeLink }) =>
-              // trailing slash + language code = 3 characters
-              nativeLink.slice(3) === item.link.slice(3),
+              // trailing slash + language code
+              nativeLink.slice(langCode.length + 1) === item.link.slice(3),
           );
         return {
           text: match?.text ?? item.text,
