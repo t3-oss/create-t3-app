@@ -2,7 +2,7 @@
 title: Introduction
 description: Introduction à la stack T3
 layout: ../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
 <div class="embed">
