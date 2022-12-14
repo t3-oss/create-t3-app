@@ -17,7 +17,7 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
     <div className="flex items-center gap-2">
       <Listbox value={language} onChange={handleSelect}>
         <div className="relative">
-          <Listbox.Button className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left focus:outline-none hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50 sm:text-sm">
+          <Listbox.Button className="focus-none relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left focus:outline-none hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50 sm:text-sm">
             <svg
               viewBox="0 0 88.6 77.3"
               className="h-6 w-6 text-slate-900 dark:text-t3-purple-100"
@@ -39,12 +39,12 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
             enterFrom={"transform opacity-0 -translate-y-1"}
             enterTo={"transform opacity-100 -translate-y-0"}
           >
-            <Listbox.Options className="shadow-l absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
+            <Listbox.Options className="focus-none shadow-l absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
               {Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
                 <Listbox.Option
                   key={code}
                   className={({ selected, active }) =>
-                    `relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
+                    `focus-none relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
                       (selected || active) &&
                       "bg-t3-purple-200/75 dark:bg-t3-purple-200/20"
                     }`
