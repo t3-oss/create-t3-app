@@ -1,34 +1,34 @@
 ---
-title: T3 Collection
-description: Cool open source projects and companies using the T3 stack
+title: Collection T3
+description: Projets open source sympas et d'entreprises utilisant la stack T3
 layout: ../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
-Made a project using the T3 stack and want to share it? Add it to the list!
+Vous avez réalisé un projet à l'aide de la stack T3 et souhaitez le partager ? Ajoutez-le à la liste !
 
-## Open Source apps made using the T3 Stack
+## Applications Open Source créées à l'aide de la stack T3
 
-| Description                                                       | Repo                                                                        | Link                                                                              |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
-| Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
-| Shoutify - Free, open-source, self-hosted social media management | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)             | [shoutify.app](https://github.com/TechSquidTV/Shoutify) (coming soon)             |
-| Me3 - Describe yourself in 3 things and share with your friends.  | [hnqg/me3](https://github.com/hnqg/me3)                                     | [me3.hnqg.io](https://me3.hnqg.io)                                                |
-| Josh's personal site                                              | [joshhyde9/portfolio](https://github.com/JoshHyde9/portfolio)               | [joshhyde.me](https://joshhyde.me)                                                |
-| Cal.com - Scheduling infrastructure for absolutely everyone.      | [calcom/cal.com](https://github.com/calcom/cal.com)                         | [cal.com](https://cal.com)                                                        |
-| My FAQ Page - An FAQ Page generator                               | [ronanru/myfaq.page](https://github.com/ronanru/myfaq.page)                 | [MyFAQ.page](https://myfaq.page)                                                  |
-| Tincy Pics - A tincy wincy image host                             | [mozzius/tincypics](https://github.com/mozzius/tincypics)                   | [tincy.pics](https://tincy.pics)                                                  |
-| Ayanava's Guestbook                                               | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
-| Slug - URL Shortener                                              | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
-| AI TTS Donations - FOSS AI Text To Speech service for Streamers.  | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
-| The Doom                                                          | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
-| Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
-| KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
+| Description                                                                  | Repo                                                                        | Lien                                                                              |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Create T3 Turbo - Stack T3 utilisant Turborepo                               | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
+| Zapdos - une application de questions-réponses pour les streamers            | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
+| Shoutify - Gestion des médias sociaux gratuite, open source et auto-hébergée | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)             | [shoutify.app](https://github.com/TechSquidTV/Shoutify) (coming soon)             |
+| Me3 - Décrivez-vous en 3 choses et partagez avec vos amis.                   | [hnqg/me3](https://github.com/hnqg/me3)                                     | [me3.hnqg.io](https://me3.hnqg.io)                                                |
+| Le site personnel de Josh                                                    | [joshhyde9/portfolio](https://github.com/JoshHyde9/portfolio)               | [joshhyde.me](https://joshhyde.me)                                                |
+| Cal.com - Infrastructure de planification pour absolument tout le monde.     | [calcom/cal.com](https://github.com/calcom/cal.com)                         | [cal.com](https://cal.com)                                                        |
+| My FAQ Page - Un générateur de page FAQ                                      | [ronanru/myfaq.page](https://github.com/ronanru/myfaq.page)                 | [MyFAQ.page](https://myfaq.page)                                                  |
+| Tincy Pics - Un hébergeur d'images minuscule                                 | [mozzius/tincypics](https://github.com/mozzius/tincypics)                   | [tincy.pics](https://tincy.pics)                                                  |
+| Ayanava's Livre d'or                                                         | [AyanavaKarmakar/Guestbook](https://github.com/AyanavaKarmakar/Guestbook)   | [guestbook.ayanavakarmakar.software](https://guestbook.ayanavakarmakar.software/) |
+| Slug - Raccourcisseur d'URL                                                  | [pheralb/slug](https://github.com/pheralb/slug)                             | [slug.vercel.app](https://slug.vercel.app)                                        |
+| AI TTS Donations - Service de synthèse vocale FOSS AI pour les streamers.    | [mmattDonk/AI-TTS-Donations](https://github.com/mmattDonk/AI-TTS-Donations) | [staging.solrock.mmattDonk.com](https://staging.solrock.mmattDonk.com)            |
+| The Doom                                                                     | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
+| Railtrack                                                                    | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
+| Boutique KARA - Site e-commerce                                              | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 
-## Companies using the T3 Stack
+## Entreprises utilisant la stack T3
 
-We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
+Nous aimerions connaître les entreprises qui utilisent la stack T3 pour leurs applications. Votre entreprise utilise la stack T3 et souhaite la partager ? Ajoutez-le à la liste !
 
 | Company | Link                               |
 | ------- | ---------------------------------- |
@@ -36,4 +36,4 @@ We'd love to know of companies that use the T3 stack for their apps. Is your com
 | Nexiona | [nexiona.com](https://nexiona.com) |
 | Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) and add it here!_
+_Vous avez un projet sympa utilisant la stack T3 ? Faites une [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) et ajoutez-la ici !_
