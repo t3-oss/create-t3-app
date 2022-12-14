@@ -40,7 +40,7 @@ dir: rtl
 
 ### 📄 ملف `pages/api/trpc/[trpc].ts`
 
-هذة هي نقطة دخولك الي tRPC Api، في الأوضاع الطبيعية لن تحتاج الي أن تَمس هذا الملف كثيرا. فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler` [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE)
+هذة هي نقطة دخولك الي tRPC Api، في الأوضاع الطبيعية لن تحتاج الي أن تَمس هذا الملف كثيرا. فيمكنك تغييره عند تفعيل CORS Middleware او شئ من هذا القبيل ويقوم بعمل export لـ `createNextHandler` [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) والذي يقبل [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) و [response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
 مما يعني أنك قادر على استخدام `createNextApiHandler` في أي middleware تريده، إقرأ [example snippet](#enabling-cors)
 
