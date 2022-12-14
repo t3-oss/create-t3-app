@@ -36,4 +36,4 @@ Nous aimerions connaître les entreprises qui utilisent la stack T3 pour leurs a
 | Nexiona | [nexiona.com](https://nexiona.com) |
 | Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
-_Vous avez un projet sympa utilisant la stack T3 ? Faites une [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) et ajoutez-la ici !_
+_Vous avez un projet sympa utilisant la stack T3 ? Faites une [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/fr/t3-collection.md) et ajoutez-la ici !_
