@@ -39,7 +39,7 @@ tRPC nécessite beaucoup de configuration que `create-t3-app` fait pour vous. Pa
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-Il s'agit du point d'entrée de votre API et expose le routeur tRPC. Normalement, vous ne toucherez pas beaucoup à ce fichier, mais si vous devez, par exemple, activer le middleware CORS ou similaire, il est utile de savoir que le `createNextApiHandler` exporté est un [gestionnaire d'API Next.js](https://nextjs.org/docs/api-routes/introduction) qui prend une [requête](https://developer.mozilla.org/en-US/docs/Web/API/Request) et [réponse](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE). Cela signifie que vous pouvez envelopper le `createNextApiHandler` dans n'importe quel middleware de votre choix. Voir ci-dessous pour un [exemple] (#enabling-cors) d'ajout de CORS.
+Il s'agit du point d'entrée de votre API et expose le routeur tRPC. Normalement, vous ne toucherez pas beaucoup à ce fichier, mais si vous devez, par exemple, activer le middleware CORS ou similaire, il est utile de savoir que le `createNextApiHandler` exporté est un [gestionnaire d'API Next.js](https://nextjs.org/docs/api-routes/introduction) qui prend une [requête](https://developer.mozilla.org/en-US/docs/Web/API/Request) et [réponse](https://developer.mozilla.org/en-US/docs/Web/API/Response). Cela signifie que vous pouvez envelopper le `createNextApiHandler` dans n'importe quel middleware de votre choix. Voir ci-dessous pour un [exemple] (#enabling-cors) d'ajout de CORS.
 
 ### 📄 `server/trpc/context.ts`
 
