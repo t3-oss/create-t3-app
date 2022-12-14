@@ -155,6 +155,9 @@
   .markdown h3 {
     @apply mt-4 mb-2 text-xl font-semibold;
   }
+  .markdown h4 {
+    @apply mt-2 mb-1 text-base font-medium;
+  }
   .markdown li {
     @apply list-disc text-slate-900 dark:text-white;
   }
