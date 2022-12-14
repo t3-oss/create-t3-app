@@ -14,11 +14,11 @@ dir: rtl
 
 إذا كًنت غير مُلم ببعض التقنيات المُستخدمة في هذا المَشروع فاتجة إلى الـ Docs المَعنية بها، فإذا واجهتك مُشكلة ما فالرجاء الانضمام إلى سيرفر الديسكورد [Discord](https://t3.gg/discord) وأطلب المُساعدة.
 
-موقع [Next.js](https://nextjs.org/)  
-موقع [NextAuth.js](https://next-auth.js.org)  
-موقع [Prisma](https://prisma.io)  
-موقع [TailwindCSS](https://tailwindcss.com)  
-موقع [tRPC](https://trpc.io)
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [TailwindCSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
 
 ## ما هي مصادر التعلم المتاحة في الوقت الحالي ؟
 
