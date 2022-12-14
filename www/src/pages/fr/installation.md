@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: Installation instructions for Create T3 App
+description: Instructions d'installation pour Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+Pour configurer une application à l'aide de `create-t3-app`, exécutez l'une des trois commandes suivantes et répondez aux questions de l'invite de commande :
 
 ### npm
 
@@ -25,36 +25,36 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Une fois votre application configuré, consultez les [premières étapes](/en/usage/first-steps) pour démarrer sur votre nouvelle application.
 
-## Advanced usage
+## Utilisation avancée
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Option            | Description                                                                                     |
+| ----------------- | ----------------------------------------------------------------------------------------------- |
+| `[dir]`           | Inclure un argument de répertoire avec un nom pour le projet                                    |
+| `--noGit`         | Dites explicitement à la CLI de ne pas initialiser un nouveau dépôt git dans le projet          |
+| `-y`, `--default` | Contourner la CLI et démarrer une nouvelle application t3 avec toutes les options sélectionnées |
+| `--noInstall`     | Générer un projet sans installer de dépendances                                                 |
 
-## Experimental usage
+## Utilisation expérimentale
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+Pour notre CI, nous avons des options expérimentaux qui vous permettent de configurer n'importe quelle application sans aucune invite. Si ce cas d'utilisation s'applique à vous, vous pouvez utiliser ces options. Veuillez noter que ces options sont expérimentaux et peuvent changer à l'avenir sans suivre la version de Semver.
 
-| Flag         | Description                         |
-| ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| Flag         | Description                                     |
+| ------------ | ----------------------------------------------- |
+| `--CI`       | Faites savoir à la CLI que vous êtes en mode CI |
+| `--trpc`     | Inclure tRPC dans le projet                     |
+| `--prisma`   | Inclure Prisma dans le projet                   |
+| `--nextAuth` | Inclure NextAuth.js dans le projet              |
+| `--tailwind` | Inclure Tailwind CSS dans le projet             |
 
-**Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
+**Remarque : Si vous ne fournissez pas l'option "CI", le reste de ces options n'a aucun effet.**
 
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Vous n'avez pas besoin de vous désinscrire explicitement des packages que vous ne voulez pas.Cependant, si vous préférez être explicite, vous pouvez passer `false`, par exemple `--nextAuth false`.
 
-### Example
+### Exemple
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Ce qui suit configurera une application T3 avec tRPC et Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
