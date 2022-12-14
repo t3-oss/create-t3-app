@@ -1,42 +1,42 @@
 ---
 title: Introduction
-description: Introduction to the T3 Stack
+description: Introduction à la stack T3
 layout: ../../layouts/docs.astro
 lang: en
 ---
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="La meilleure stack pour votre prochain projet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## The T3 Stack
+## La stack T3
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
+La _"T3 Stack"_ est une stack de développement Web créée par [Theo](https://twitter.com/t3dotgg) axée sur la simplicité, la modularité et la sécurité de typage complète.
 
-The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+Les éléments principaux sont [**Next.js**](https://nextjs.org/) et [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) est presque toujours inclus. Si vous faites quelque chose qui ressemble a du backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) et [**NextAuth .js**](https://next-auth.js.org/) sont également d'excellents ajouts.
 
-You may have noticed that there are a… lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at its core :)
+Vous avez peut-être remarqué qu'il y a beaucoup… beaucoup de pièces. C'est par conception. Échangez les pièces selon vos besoins - cette stack est modulaire à la base :)
 
-## So... what is create-t3-app? A template?
+## Alors... qu'est-ce que create-t3-app ? Un modèle?
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
+Sorte de? `create-t3-app` est une CLI conçue par des développeurs chevronnés de T3 Stack pour rationaliser la configuration d'une application modulaire T3 Stack. TCela signifie que chaque pièce est facultative et que le "modèle" est généré en fonction de vos besoins spécifiques.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+Après d'innombrables projets et de nombreuses années sur cette technologie, nous avons beaucoup d'opinions et d'idées. Nous avons fait de notre mieux pour les encoder dans cette CLI.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+Ce n'est **PAS** un modèle tout compris. Nous **attendons** que vous apportiez vos propres bibliothèques qui répondent aux besoins de **VOTRE** application. Bien que nous ne souhaitions pas prescrire de solutions à des problèmes plus spécifiques tels que la gestion de l'état et le déploiement, nous [avons quelques recommandations répertoriées ici](/fr/other-recs).
 
 ## T3 Axioms
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+Nous allons être francs - c'est un _projet opiniâtre_. Nous partageons une poignée de croyances fondamentales autour de la création et nous les traitons comme la base de nos décisions.
 
-### Solve Problems
+### Résoudre des problèmes
 
-It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
+Il est facile de tomber dans le piège de "tout ajouter" - nous ne voulons explicitement pas le faire. Tout ce qui est ajouté à "create-t3-app" devrait résoudre un problème spécifique qui existe dans les technologies de base incluses. Cela signifie que nous n'ajouterons pas des choses comme des bibliothèques d'état (`zustand`, `redux`) mais nous ajouterons des choses comme NextAuth.js et intégrerons Prisma et tRPC pour vous.
 
-### Bleed Responsibly
+### Saigner de façon responsable
 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+Nous aimons notre technologie de pointe. La vitesse et honnêtement le fun qui apportent de nouvelles choses est vraiment cool. Nous pensons qu'il est important de saigner de manière responsable, en utilisant des technologies plus risquées dans les parties les moins risquées. Cela signifie que nous ne parierions pas ⛔️ sur une nouvelle technologie de base de données risquée (SQL est génial !). Mais nous parions volontiers ✅ sur tRPC car ce ne sont que des fonctions triviales à déplacer.
 
-### Typesafety Isn't Optional
+### La sécurité de typage n'est pas facultative
 
-The stated goal of `create-t3-app` is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of `create-t3-app` is a decision that should be made in a different project.
+L'objectif déclaré de `create-t3-app` est de fournir le moyen le plus rapide de démarrer une nouvelle application Web **typesafe** complète. Nous prenons la sécurité des caractères au sérieux dans ces parties, car elle améliore notre productivité et nous aide à expédier moins de bogues. Toute décision qui compromet la nature typesafe de `create-t3-app` est une décision qui doit être prise dans un projet différent.
