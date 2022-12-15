@@ -1,13 +1,13 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: Structure des dossiers
+description: Structure des dossiers d'une application T3 nouvellement créée
 layout: ../../layouts/docs.astro
-lang: en
+lang: fr
 ---
 
-The following is the folder structure of a newly scaffolded T3 App, with all options selected.
+Voici la structure des dossiers d'une application T3 nouvellement créée, avec toutes les options sélectionnées.
 
-Further down, the description of each folder indicates its purpose and if it is only included with selected libraries.
+Plus bas, la description de chaque dossier indique son objectif et s'il n'est inclus qu'avec les bibliothèques sélectionnées.
 
 ```
 .
@@ -61,168 +61,168 @@ Further down, the description of each folder indicates its purpose and if it is 
 
 ### `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
+Le dossier `prisma` contient le fichier `schema.prisma` qui est utilisé pour configurer la connexion à la base de données et le schéma de la base de données. C'est également l'emplacement où stocker les fichiers de migration et/ou les scripts de départ, s'ils sont utilisés. Voir [Utilisation de Prisma](/fr/usage/prisma) pour plus d'informations.
 
-<sub>(With Prisma)</sub>
+<sub>(Avec Prisma)</sub>
 
 ### `public`
 
-The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+Le dossier "public" contient des fichiers statiques qui sont servis par le serveur Web. Le fichier `favicon.ico` est un exemple de fichier statique.
 
 ### `src/env`
 
-Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
+Utilisé pour la validation des variables d'environnement et les définitions de types - voir [Variables d'environnement](usage/env-variables).
 
 ### `src/pages`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+Le dossier `pages` contient toutes les pages de l'application Next.js. Le fichier `index.tsx` dans le répertoire racine de `/pages` est la page d'accueil de l'application. Le fichier `_app.tsx` est utilisé pour envelopper l'application avec des fournisseurs. Voir [Documentation Next.js](https://nextjs.org/docs/basic-features/pages) pour plus d'informations.
 
 #### `src/pages/api`
 
-The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file (with Prisma) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file (with Next-Auth) contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
+Le dossier `api` contient toutes les routes API de l'application Next.js. Le fichier `examples.ts` (avec Prisma) contient un exemple de route qui utilise la fonctionnalité [Next.js API route](https://nextjs.org/docs/api-routes/introduction) avec Prisma. Le fichier `restricted.ts` (avec Next-Auth) contient un exemple de route qui utilise la fonctionnalité [Next.js API route](https://nextjs.org/docs/api-routes/introduction) et est protégé par [NextAuth.js](https://next-auth.js.org/).
 
-<sub>(With NextAuth.js, tRPC or tRPC + Prisma)</sub>
+<sub>(Avec NextAuth.js, tRPC ou tRPC + Prisma)</sub>
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+Le fichier `[...nextauth].ts` est la route d'authentification NextAuth.js. Il est utilisé pour gérer les demandes d'authentification. Voir [utilisation de NextAuth.js](usage/next-auth) pour plus d'informations sur NextAuth.js, et la [documentation Next.js sur les routes dynamiques](https://nextjs.org/docs/routing/dynamic-routes) pour plus d'informations sur les routes fourre-tout / slug.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(Avec NextAuth.js)</sub>
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+Le fichier `[trpc].ts` est le point d'entrée de l'API tRPC. Il est utilisé pour gérer les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-pagesapitrpctrpcts) pour plus d'informations sur ce fichier, et la [documentation Next.js sur les routes dynamiques](https://nextjs.org/docs/routing/dynamic-routes) pour plus d'informations sur les routes fourre-tout / slug.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 ### `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+Le dossier `server` est utilisé pour séparer clairement le code côté serveur du code côté client.
 
-<sub>(with tRPC and/or Prisma)</sub>
+<sub>(Avec tRPC et/ou Prisma)</sub>
 
 ### `src/server/common`
 
-The `common` folder contains commonly re-used server-side code.
+Le dossier "common" contient du code côté serveur couramment réutilisé.
 
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(Avec NextAuth.js + tRPC)</sub>
 
 #### `src/server/common/get-server-auth-session.ts`
 
-The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+Le fichier `get-server-auth-session.ts` est utilisé pour obtenir la session NextAuth.js côté serveur. Voir [utilisation de NextAuth.js](usage/next-auth#utilisation-avec-trpc) pour plus d'informations.
 
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(Avec NextAuth.js + tRPC)</sub>
 
 #### `src/server/db/client.ts`
 
-The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
+Le fichier `client.ts` est utilisé pour instancier le client Prisma au niveau global. Voir [Utilisation de Prisma](usage/prisma#prisma-client) pour plus d'informations.
 
-<sub>(with Prisma)</sub>
+<sub>(Avec Prisma)</sub>
 
 ### `src/server/trpc`
 
-The `trpc` folder contains the tRPC server-side code.
+Le dossier `trpc` contient le code côté serveur de tRPC.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 #### `src/server/trpc/context.ts`
 
-The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
+Le fichier `context.ts` est utilisé pour créer le contexte utilisé dans les requêtes tRPC. Voir [utilisation du tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 #### `src/server/trpc/trpc.ts`
 
-The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+Le fichier `trpc.ts` est utilisé pour exporter les assistants de procédure. Voir [utilisation du tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 ### `src/server/trpc/router`
 
-The `router` folder contains the tRPC routers.
+Le dossier `router` contient les routeurs tRPC.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 #### `src/server/trpc/router/_app.ts`
 
-The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
+Le fichier `_app.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que les définitions de type. Voir [utilisation du tRPC](usage/trpc#-servertrpcrourts) pour plus d'informations.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 #### `src/server/trpc/router/auth.ts`
 
-The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` helper to demonstrate how to protect a tRPC route with NextAuth.js.
+Le fichier `auth.ts` est un exemple de routeur tRPC utilisant l'assistant `protectedProcedure` pour montrer comment protéger une route tRPC avec NextAuth.js.
 
-<sub>(with NextAuth.js + tRPC)</sub>
+<sub>(Avec NextAuth.js + tRPC)</sub>
 
 #### `src/server/trpc/router/example.ts`
 
-The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+Le fichier `example.ts` est un exemple de routeur tRPC utilisant l'assistant `publicProcedure` pour montrer comment créer une route tRPC publique.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 ### `src/styles`
 
-The `styles` folder contains the global styles of the application.
+Le dossier `styles` contient les styles globaux de l'application.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(Avec Tailwind CSS)</sub>
 
 ### `src/types`
 
-The `types` folder is used to store reused types or type declarations.
+Le dossier `types` est utilisé pour stocker les types réutilisés ou les déclarations de type.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(Avec NextAuth.js)</sub>
 
 #### `src/types/next-auth.d.ts`
 
-The `next-auth.d.ts` file is used to extend the NextAuth default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
+Le fichier `next-auth.d.ts` est utilisé pour étendre le type de session par défaut NextAuth afin d'inclure l'ID utilisateur. Voir [utilisation de NextAuth.js](usage/next-auth#inclusion-de-userid-dans-la-session) pour plus d'informations.
 
-<sub>(with NextAuth.js)</sub>
+<sub>(Avec NextAuth.js)</sub>
 
 ### `src/utils`
 
-The `utils` folder is used to store commonly re-used utility functions.
+Le dossier `utils` est utilisé pour stocker les fonctions utilitaires couramment réutilisées.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 #### `src/utils/trpc.ts`
 
-The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+Le fichier `trpc.ts` est le point d'entrée frontal de tRPC. Voir [utilisation du tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
 
-<sub>(with tRPC)</sub>
+<sub>(Avec tRPC)</sub>
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be commited to git history.
+Le fichier `.env` est utilisé pour stocker les variables d'environnement. Voir [Variables d'environnement](usage/env-variables) pour plus d'informations. Ce fichier ne doit **pas** être commité dans l'historique de git.
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be commited to git history.
+Le fichier `.env.example` montre des exemples de variables d'environnement basées sur les bibliothèques choisies. Ce fichier doit être commité dans l'historique de git.
 
 ### `.eslintrc.json`
 
-The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+Le fichier `.eslintrc.json` est utilisé pour configurer ESLint. Voir la [documentation de ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) pour plus d'informations.
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+Le fichier `next-env.d.ts` garantit que les types Next.js sont récupérés par le compilateur TypeScript. **Vous ne devez pas le supprimer ou le modifier car il peut changer à tout moment.** Voir la [documentation de Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) pour plus informations.
 
 ### `next.config.mjs`
 
-The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+Le fichier `next.config.mjs` est utilisé pour configurer Next.js. Voir la [documentation de Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) pour plus d'informations. Remarque : L'extension .mjs est utilisée pour autoriser les importations ESM.
 
 ### `postcss.config.cjs`
 
-The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+Le fichier `postcss.config.cjs` est utilisé pour l'utilisation de Tailwind PostCSS. Voir la [documentation de Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) pour plus d'informations.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(Avec Tailwind CSS)</sub>
 
 ### `prettier.config.cjs`
 
-The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+Le fichier `prettier.config.cjs` est utilisé pour configurer Prettier afin d'inclure le prettier-plugin-tailwindcss pour le formatage des classes CSS Tailwind. Consultez l'[article de blog Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) pour plus d'informations.
 
-<sub>(with Tailwind CSS)</sub>
+<sub>(Avec Tailwind CSS)</sub>
 
 ### `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+Le fichier `tsconfig.json` est utilisé pour configurer TypeScript. Certaines valeurs autres que celles par défaut, telles que le `strict mode`, ont été activées pour garantir la meilleure utilisation de TypeScript pour create-t3-app et ses bibliothèques. Voir la [documentation de TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) ou [Utilisation de TypeScript](usage/typescript) pour plus d'informations.
