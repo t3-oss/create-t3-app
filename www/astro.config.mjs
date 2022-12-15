@@ -2,8 +2,11 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
+import mdx from "@astrojs/mdx";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkCodeTitles from "remark-code-titles";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
 /**
  * @link https://astro.build/config
@@ -24,9 +27,9 @@ export default defineConfig({
           },
         },
       ],
-      "rehype-slug",
+      rehypeSlug,
       [
-        "rehype-autolink-headings",
+        rehypeAutolinkHeadings,
         {
           properties: {
             class: "heading-link heading-link--hidden---effects",
@@ -49,5 +52,6 @@ export default defineConfig({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
     sitemap(),
+    mdx(),
   ],
 });
