@@ -2,8 +2,15 @@
   import { asTree, type TreeObject } from "treeify";
 
   const element = document.getElementById("fileStructure");
-  const searchParams = new URLSearchParams(location.search.slice(1));
-  const selected = searchParams.getAll("conf");
+
+  // Get new selection from the form
+  //@ts-ignore
+  document.addEventListener(
+    "fileStructureComponentsChange",
+    (event: CustomEvent<{ selected: string[] }>) => {
+      renderDiagram(event.detail.selected);
+    },
+  );
 
   const allFiles = {
     "public/favicon.ico": [], // This file is included in every configuration
@@ -41,30 +48,34 @@
     "tsconfig.json": [],
   };
 
-  // Files to display (according to the selection)
-  const files = Object.entries(allFiles)
-    .map(([filename, components]) => {
-      if (components.length === 0) return filename;
-      return components.some((component) =>
-        component.split("+").every((option) => selected.includes(option)),
-      )
-        ? filename
-        : null;
-    })
-    .filter((file) => file) as string[];
+  const renderDiagram = (selected: string[]) => {
+    // Filter files based on selected components
+    const files = Object.entries(allFiles)
+      .map(([filename, components]) => {
+        if (components.length === 0) return filename;
+        return components.some((component) =>
+          component.split("+").every((option) => selected.includes(option)),
+        )
+          ? filename
+          : null;
+      })
+      .filter((file) => file) as string[];
 
-  // Transform files to a tree object for the treeify library
-  const filesTree: TreeObject = {};
-  files.forEach((file) => {
-    const path = file.split("/");
-    let folder = filesTree;
-    path.forEach((name) => {
-      if (!folder[name]) folder[name] = {};
-      folder = folder[name] as TreeObject;
+    // Transform files to a tree object for the treeify library
+    const filesTree: TreeObject = {};
+    files.forEach((file) => {
+      const path = file.split("/");
+      let folder = filesTree;
+      path.forEach((name) => {
+        if (!folder[name]) folder[name] = {};
+        folder = folder[name] as TreeObject;
+      });
     });
-  });
 
-  if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
+    if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
+  };
+
+  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
 </script>
 
 <pre style="background-color: #191724">

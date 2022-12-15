@@ -5,27 +5,45 @@ const options = {
   tailwind: "Tailwind CSS",
   trpc: "tRPC",
 };
-
-const { buttonText = "Continue" } = Astro.props;
 ---
 
 <script>
-  const form = document.getElementById("componentForm") as HTMLFormElement;
-  const searchParams = new URLSearchParams(location.search.slice(1));
-  const selected = searchParams.getAll("conf");
-  form
-    .querySelectorAll("input")
-    .forEach((input) => (input.checked = selected.includes(input.value)));
-  document.querySelectorAll<HTMLElement>("*[data-components]").forEach((el) => {
-    if (
-      !el.dataset.components
-        ?.split(" ")
-        .some((components) =>
-          components.split("+").every((option) => selected.includes(option)),
-        )
-    )
-      el.style.display = "none";
-  });
+  const inputs = document
+    .getElementById("componentForm")
+    ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+
+  inputs.forEach((input) =>
+    input.addEventListener("change", () => {
+      const selected = Array.from(inputs).flatMap(({ value, checked }) =>
+        checked ? [value] : [],
+      );
+
+      // Rerender the diagram
+      document.dispatchEvent(
+        new CustomEvent("fileStructureComponentsChange", {
+          detail: { selected },
+        }),
+      );
+
+      hideUnselectedDocs(selected);
+    }),
+  );
+
+  const hideUnselectedDocs = (selected: string[]) => {
+    document
+      .querySelectorAll<HTMLElement>("*[data-components]")
+      .forEach((el) => {
+        el.style.display = !el.dataset.components
+          ?.split(" ")
+          .some((components) =>
+            components.split("+").every((option) => selected.includes(option)),
+          )
+          ? "none"
+          : "unset";
+      });
+  };
+
+  hideUnselectedDocs(["nextauth", "prisma", "tailwind", "trpc"]);
 </script>
 
 <form
@@ -40,6 +58,7 @@ const { buttonText = "Continue" } = Astro.props;
           id={code}
           type="checkbox"
           name="conf"
+          checked
           value={code}
           class="h-4 w-4"
         />
@@ -47,9 +66,4 @@ const { buttonText = "Continue" } = Astro.props;
       </div>
     ))
   }
-  <button
-    class="mt-2 rounded-md bg-t3-purple-400 px-4 py-1 text-default transition-colors hover:bg-t3-purple-500 dark:bg-t3-purple-100 dark:hover:bg-t3-purple-50"
-  >
-    {buttonText}
-  </button>
 </form>
