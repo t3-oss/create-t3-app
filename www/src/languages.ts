@@ -1,7 +1,7 @@
 import type { KnownLanguageCode } from "./config";
 export { KNOWN_LANGUAGES, type KnownLanguageCode } from "./config";
 
-export const langPathRegex = /\/([a-z]{2}-?[A-Z]{0,2})\//;
+export const langPathRegex = /\/([a-z]{2,3}-?[a-zA-Z]{0,4})\//;
 
 export function getLanguageFromURL(pathname: string) {
   const langCodeMatch = pathname.match(langPathRegex);
@@ -27,6 +27,10 @@ const rtlLanguages = [
 
 export function getIsRtlFromUrl(pathname: string) {
   const language = getLanguageFromURL(pathname);
+  return getIsRtlFromLangCode(language);
+}
+
+export function getIsRtlFromLangCode(language: KnownLanguageCode) {
   if (rtlLanguages.indexOf(language) !== -1) {
     return true;
   }
