@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: no
 ---
 
-Stakken kan rulles ut med Docker. Enten som en enkel beholder eller som en gruppe beholdere ved hjelp av `docker-compose`. Se [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for et eksempel-_repo_ som er basert på denne dokumentasjonen.
+Stakken kan rulles ut med Docker. Enten som en enkel kontainer eller som en gruppe kontainere ved hjelp av `docker-compose`. Se [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for et eksempel-_repo_ som er basert på denne dokumentasjonen.
 
 ## Docker-prosjektkonfigurasjon
 
