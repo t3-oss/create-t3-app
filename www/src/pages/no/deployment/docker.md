@@ -148,7 +148,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_her" ct3a-docker
 
 ## Docker Compose
 
-Du kan også bruke Docker Compose for å bygge bildet og kjøre det i beholderen.
+Du kan også bruke Docker Compose for å bygge bildet og kjøre det i kontaineren.
 
 <details>
     <summary>
