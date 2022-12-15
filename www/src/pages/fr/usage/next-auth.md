@@ -34,7 +34,7 @@ const User = () => {
 };
 ```
 
-## Inclusion de `user.id` sur la Session
+## Inclusion de `user.id` dans la Session
 
 `create-t3-app` est configuré pour utiliser le [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) dans la configuration NextAuth.js pour inclure l'ID de l'utilisateur dans le objet "session".
 
