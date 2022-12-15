@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: no
 ---
 
-Stakken kan rulles ut med Docker. Enten som en enkel beholder eller som en gruppe beholdere ved hjelp av `docker-compose`. Se [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for et eksempel-_repo_ som er basert på denne dokumentasjonen.
+Stakken kan rulles ut med Docker. Enten som en enkel kontainer eller som en gruppe kontainere ved hjelp av `docker-compose`. Se [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for et eksempel-_repo_ som er basert på denne dokumentasjonen.
 
 ## Docker-prosjektkonfigurasjon
 
@@ -51,7 +51,7 @@ README.md
 
 ### 3. Lag Dockerfile
 
-> Siden vi ikke drar serverens miljøvariabler inn i beholderen, vil [skjema for validering av miljøvariabler](/no/usage/env-variables) feile. For å forhindre dette må vi legge til `SKIP_ENV_VALIDATION=1` i byggkommandoen slik at miljøvariabelskjemaene ikke valideres ved "build time".
+> Siden vi ikke drar serverens miljøvariabler inn i kontaineren, vil [skjema for validering av miljøvariabler](/no/usage/env-variables) feile. For å forhindre dette må vi legge til `SKIP_ENV_VALIDATION=1` i byggkommandoen slik at miljøvariabelskjemaene ikke valideres ved "build time".
 
 <details>
      <summary>
@@ -148,7 +148,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_her" ct3a-docker
 
 ## Docker Compose
 
-Du kan også bruke Docker Compose for å bygge bildet og kjøre det i beholderen.
+Du kan også bruke Docker Compose for å bygge bildet og kjøre det i kontaineren.
 
 <details>
     <summary>
