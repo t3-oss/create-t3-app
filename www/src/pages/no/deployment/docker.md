@@ -51,7 +51,7 @@ README.md
 
 ### 3. Lag Dockerfile
 
-> Siden vi ikke drar serverens miljøvariabler inn i beholderen, vil [skjema for validering av miljøvariabler](/no/usage/env-variables) feile. For å forhindre dette må vi legge til `SKIP_ENV_VALIDATION=1` i byggkommandoen slik at miljøvariabelskjemaene ikke valideres ved "build time".
+> Siden vi ikke drar serverens miljøvariabler inn i kontaineren, vil [skjema for validering av miljøvariabler](/no/usage/env-variables) feile. For å forhindre dette må vi legge til `SKIP_ENV_VALIDATION=1` i byggkommandoen slik at miljøvariabelskjemaene ikke valideres ved "build time".
 
 <details>
      <summary>
