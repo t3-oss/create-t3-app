@@ -40,7 +40,7 @@ O tRPC requer bastante do template que o `create-t3-app` configura para você. V
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-Este é o ponto de entrada para sua API que expõe o roteador tRPC. Normalmente, você não mexerá muito nesse arquivo, mas se precisar, por exemplo, habilitar o middleware CORS ou similar, é útil saber que o `createNextApiHandler` exportado é um [handler da API do Next.js](https://nextjs.org/docs/api-routes/introduction) que recebe uma [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) e [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE). Isso significa que você pode agrupar o `createNextApiHandler` em qualquer middleware que desejar. Veja abaixo um [trecho de exemplo](#ativando-o-cors) da adição de CORS.
+Este é o ponto de entrada para sua API que expõe o roteador tRPC. Normalmente, você não mexerá muito nesse arquivo, mas se precisar, por exemplo, habilitar o middleware CORS ou similar, é útil saber que o `createNextApiHandler` exportado é um [handler da API do Next.js](https://nextjs.org/docs/api-routes/introduction) que recebe uma [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) e [response](https://developer.mozilla.org/en-US/docs/Web/API/Response). Isso significa que você pode agrupar o `createNextApiHandler` em qualquer middleware que desejar. Veja abaixo um [trecho de exemplo](#ativando-o-cors) da adição de CORS.
 
 ### 📄 `server/trpc/context.ts`
 
