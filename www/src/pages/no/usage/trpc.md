@@ -227,7 +227,7 @@ Hvis vi nå sammenligner dette med tRPC-eksemplet fra lenger opp i dokumentasjon
 
 ## Nyttige Kodeutdrag
 
-Her er noen kodeutdrag som kan være nyttige.
+Her er noen kodesnutter som kan hjelpe deg.
 
 ### Aktivering av CORS
 

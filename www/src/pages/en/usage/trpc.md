@@ -230,7 +230,7 @@ Compare this to the tRPC example above and you can see some of the advantages of
 
 Here are some snippets that might come in handy.
 
-### Aktivering av CORS
+### Enabling CORS
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
