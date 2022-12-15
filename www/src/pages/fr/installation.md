@@ -25,7 +25,7 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-Une fois votre application configuré, consultez les [premières étapes](/en/usage/first-steps) pour démarrer sur votre nouvelle application.
+Une fois votre application configuré, consultez les [premières étapes](/fr/usage/first-steps) pour démarrer sur votre nouvelle application.
 
 ## Utilisation avancée
 

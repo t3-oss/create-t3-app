@@ -127,13 +127,13 @@ Le dossier `trpc` contient le code côté serveur de tRPC.
 
 #### `src/server/trpc/context.ts`
 
-Le fichier `context.ts` est utilisé pour créer le contexte utilisé dans les requêtes tRPC. Voir [utilisation du tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
+Le fichier `context.ts` est utilisé pour créer le contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
 
 <sub>(Avec tRPC)</sub>
 
 #### `src/server/trpc/trpc.ts`
 
-Le fichier `trpc.ts` est utilisé pour exporter les assistants de procédure. Voir [utilisation du tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
+Le fichier `trpc.ts` est utilisé pour exporter les assistants de procédure. Voir [utilisation de tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
 
 <sub>(Avec tRPC)</sub>
 
@@ -145,7 +145,7 @@ Le dossier `router` contient les routeurs tRPC.
 
 #### `src/server/trpc/router/_app.ts`
 
-Le fichier `_app.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que les définitions de type. Voir [utilisation du tRPC](usage/trpc#-servertrpcrourts) pour plus d'informations.
+Le fichier `_app.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que les définitions de type. Voir [utilisation de tRPC](usage/trpc#-servertrpcrouterts) pour plus d'informations.
 
 <sub>(Avec tRPC)</sub>
 
@@ -187,7 +187,7 @@ Le dossier `utils` est utilisé pour stocker les fonctions utilitaires courammen
 
 #### `src/utils/trpc.ts`
 
-Le fichier `trpc.ts` est le point d'entrée frontal de tRPC. Voir [utilisation du tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
+Le fichier `trpc.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
 
 <sub>(Avec tRPC)</sub>
 

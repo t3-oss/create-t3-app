@@ -174,13 +174,13 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-Run this using the `docker compose up` command:
+Exécutez ceci à l'aide de la commande `docker compose up` :
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Ouvrez [localhost:3000](http://localhost:3000/) pour voir votre application en cours d'exécution.
 
 </div>
 </details>

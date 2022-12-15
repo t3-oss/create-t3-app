@@ -94,7 +94,7 @@ Framer Motion fournit une syntaxe déclarative simple et vous permet d'écrire m
 Vercel a pris l'enfer des déploiements Web et en a fait une intégration GitHub prête à l'emploi. Nous sommes passés à des centaines de milliers d'utilisateurs sans problème. Alimenté par AWS, juste une meilleure interface :)
 
 - [Page d'accueil Vercel](https://vercel.com/)
-- [Guide de déploiement de Create T3 App sur Vercel](/en/deployment/vercel)
+- [Guide de déploiement de Create T3 App sur Vercel](/fr/deployment/vercel)
 
 ### PlanetScale
 

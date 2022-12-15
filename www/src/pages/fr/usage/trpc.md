@@ -45,7 +45,7 @@ Il s'agit du point d'entrée de votre API et expose le routeur tRPC. Normalement
 
 Ce fichier est l'endroit où vous définissez le contexte qui est transmis à vos procédures tRPC. Le contexte est une donnée à laquelle toutes vos procédures tRPC auront accès, et c'est un endroit idéal pour mettre des choses comme les connexions à la base de données, les informations d'authentification, etc. Dans create-t3-app, nous utilisons deux fonctions, pour activer l'utilisation d'un sous-ensemble du contexte lorsque nous n'avons pas accès à l'objet de requête.
 
-- `createContextInner`: C'est ici que vous définissez le contexte qui ne dépend pas de la requête, par ex. votre connexion à la base de données. YVous pouvez utiliser cette fonction pour les [tests d'intégration](#sample-integration-test) ou [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) où vous n'avez pas d'objet de requête.
+- `createContextInner`: C'est ici que vous définissez le contexte qui ne dépend pas de la requête, par ex. votre connexion à la base de données. YVous pouvez utiliser cette fonction pour les [tests d'intégration](#exemple-de-test-dintégration) ou [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) où vous n'avez pas d'objet de requête.
 
 - `createContext`: C'est ici que vous définissez le contexte qui dépend de la requête, par ex. la session de l'utilisateur.Vous demandez la session à l'aide de l'objet `opts.req`, puis transmettez la session à la fonction `createContextInner` pour créer le contexte final.
 
@@ -63,7 +63,7 @@ C'est ici que vous définissez les routes et les procédures de votre API.Par co
 
 Il s'agit du point d'entrée frontend pour tRPC. C'est ici que vous allez importer la **définition de type** du routeur et créer votre client tRPC avec les hooks de react-query. Depuis que nous avons activé `superjson` comme transformateur de données sur le backend, nous devons également l'activer sur le frontend. En effet, les données sérialisées du backend sont désérialisées sur le frontend.
 
-Vous définirez ici vos [liens](https://trpc.io/docs/v10/links) tRPC, qui détermine le flux de requêtes du client vers le serveur. Nous utilisons le [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) "par défaut" qui active [le traitement par lot des requêtes](https://cloud.google.com/compute/docs/api /how-tos/batch), ainsi qu'un [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) qui génère des journaux de requêtes utiles pendant le développement.
+Vous définirez ici vos [liens](https://trpc.io/docs/v10/links) tRPC, qui détermine le flux de requêtes du client vers le serveur. Nous utilisons le [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) "par défaut" qui active [le traitement par lot des requêtes](https://cloud.google.com/compute/docs/api/how-tos/batch), ainsi qu'un [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) qui génère des journaux de requêtes utiles pendant le développement.
 
 Enfin, nous exportons un [helper de type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) que vous pouvez utiliser pour déduire vos types sur le frontend.
 
