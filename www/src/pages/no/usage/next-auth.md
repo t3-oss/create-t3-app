@@ -71,7 +71,7 @@ Hvis du bruker NextAuth.js med tRPC, kan du opprette gjenbrukbare beskyttede pro
 
 Dette skjer i to trinn:
 
-1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Ikke bekymre deg, denne funksjonen er trygg å bruke - navnet inneholder bare `ustabil` fordi API-implementeringen kan endres i fremtiden. Fordelen med `unstable_getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et.
+1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Ikke bekymre deg, denne funksjonen er trygg å bruke - navnet inneholder bare `unstable` fordi API-implementeringen kan endres i fremtiden. Fordelen med `unstable_getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -105,7 +105,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   }
   return next({
     ctx: {
-      // inferer `session` somm ikke-nullbar
+      // inferer `session` som ikke-nullbar
       session: { ...ctx.session, user: ctx.session.user },
     },
   });

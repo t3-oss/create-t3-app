@@ -9,7 +9,7 @@ lang: no
 
 📁 src/env
 
-┣ 📄 klient.mjs
+┣ 📄 client.mjs
 
 ┣ 📄 schema.mjs
 
