@@ -44,10 +44,15 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
                 <Listbox.Option
                   key={code}
                   className={({ selected, active }) =>
-                    `focus-none relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
-                      (selected || active) &&
-                      "bg-t3-purple-200/75 dark:bg-t3-purple-200/20"
-                    }`
+                    `focus-none relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-300/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
+                      selected && "bg-t3-purple-400/75 dark:bg-t3-purple-400/20"
+                    }
+                    ${
+                      active &&
+                      !selected &&
+                      "bg-t3-purple-300/75 dark:bg-t3-purple-200/20"
+                    }
+                    `
                   }
                   value={code}
                 >
