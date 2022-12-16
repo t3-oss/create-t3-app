@@ -1,0 +1,84 @@
+<script>
+  import { asTree, type TreeObject } from "treeify";
+
+  const element = document.getElementById("fileStructure");
+
+  // Get new selection from the form
+  //@ts-ignore
+  document.addEventListener(
+    "fileStructureComponentsChange",
+    (event: CustomEvent<{ selected: string[] }>) => {
+      renderDiagram(event.detail.selected);
+    },
+  );
+
+  const allFiles = {
+    "public/favicon.ico": [], // This file is included in every configuration
+    "prisma/schema.prisma": ["prisma"], // This file is included with prisma
+    "src/env/client.mjs": [],
+    "src/env/schema.mjs": [],
+    "src/env/server.mjs": [],
+    "src/pages/api/auth/[...nextauth].ts": ["nextauth"],
+    "src/pages/api/trpc/[trpc].ts": ["trpc"],
+    "src/pages/api/example.ts": ["trpc", "nextauth"],
+    "src/pages/api/restricted.ts": ["trpc", "nextauth"], // This file is included with trpc OR nextauth
+    "src/pages/_app.tsx": [],
+    "src/pages/index.tsx": [],
+    "src/styles/globals.css": [],
+    "src/types/next-auth.d.ts": ["nextauth"],
+    "src/utils/trpc.ts": ["trpc"],
+    "src/server/common/get-server-auth-session.ts": ["nextauth+trpc"], // This file is included with prisma AND trpc
+    "src/server/db/client.ts": ["prisma"],
+    "src/server/trpc/router/_app.ts": ["trpc"],
+    "src/server/trpc/router/auth.ts": ["trpc"],
+    "src/server/trpc/router/example.ts": ["trpc"],
+    "src/server/trpc/router/context.ts": ["trpc"],
+    "src/server/trpc/router/trpc.ts": ["trpc"],
+    ".env": [],
+    ".env.example": [],
+    ".eslintrc.json": [],
+    ".gitignore": [],
+    "next-env.d.ts": [],
+    "next.config.mjs": [],
+    "package.json": [],
+    "postcss.config.cjs": ["tailwind"],
+    "prettier.config.cjs": ["tailwind"],
+    "README.md": [],
+    "tailwind.config.cjs": ["tailwind"],
+    "tsconfig.json": [],
+  };
+
+  const renderDiagram = (selected: string[]) => {
+    // Filter files based on selected components
+    const files = Object.entries(allFiles)
+      .map(([filename, components]) => {
+        if (components.length === 0) return filename;
+        return components.some((component) =>
+          component.split("+").every((option) => selected.includes(option)),
+        )
+          ? filename
+          : null;
+      })
+      .filter((file) => file) as string[];
+
+    // Transform files to a tree object for the treeify library
+    const filesTree: TreeObject = {};
+    files.forEach((file) => {
+      const path = file.split("/");
+      let folder = filesTree;
+      path.forEach((name) => {
+        if (!folder[name]) folder[name] = {};
+        folder = folder[name] as TreeObject;
+      });
+    });
+
+    if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
+  };
+
+  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
+</script>
+
+<pre
+  style="background-color: #191724; color: #e8ddff;">
+  <code id="fileStructure" />
+</pre>
