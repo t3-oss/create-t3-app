@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.4
+
+### Patch Changes
+
+- [#981](https://github.com/t3-oss/create-t3-app/pull/981) [`ac32b6d`](https://github.com/t3-oss/create-t3-app/commit/ac32b6d09df6d7b3620a41ace8cd2612bd909cc8) Thanks [@balazsorban44](https://github.com/balazsorban44)! - fix(cli): prompt TS first
+
 ## 6.11.3
 
 ### Patch Changes
