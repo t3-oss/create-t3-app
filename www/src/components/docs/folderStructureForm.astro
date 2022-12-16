@@ -1,0 +1,69 @@
+---
+const options = {
+  nextauth: "NextAuth",
+  prisma: "Prisma",
+  tailwind: "Tailwind CSS",
+  trpc: "tRPC",
+};
+---
+
+<script>
+  const inputs = document
+    .getElementById("componentForm")
+    ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+
+  inputs.forEach((input) =>
+    input.addEventListener("change", () => {
+      const selected = Array.from(inputs).flatMap(({ value, checked }) =>
+        checked ? [value] : [],
+      );
+
+      // Rerender the diagram
+      document.dispatchEvent(
+        new CustomEvent("fileStructureComponentsChange", {
+          detail: { selected },
+        }),
+      );
+
+      hideUnselectedDocs(selected);
+    }),
+  );
+
+  const hideUnselectedDocs = (selected: string[]) => {
+    document
+      .querySelectorAll<HTMLElement>("*[data-components]")
+      .forEach((el) => {
+        el.style.display = !el.dataset.components
+          ?.split(" ")
+          .some((components) =>
+            components.split("+").every((option) => selected.includes(option)),
+          )
+          ? "none"
+          : "unset";
+      });
+  };
+
+  hideUnselectedDocs(["nextauth", "prisma", "tailwind", "trpc"]);
+</script>
+
+<form
+  method="get"
+  id="componentForm"
+  class="mb-4 w-full rounded border border-t3-purple-300 p-4 text-lg"
+>
+  {
+    Object.entries(options).map(([code, name]) => (
+      <div>
+        <input
+          id={code}
+          type="checkbox"
+          name="conf"
+          checked
+          value={code}
+          class="h-4 w-4"
+        />
+        <label for={code}>{name}</label>
+      </div>
+    ))
+  }
+</form>

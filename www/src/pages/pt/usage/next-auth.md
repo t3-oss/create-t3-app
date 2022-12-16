@@ -118,7 +118,7 @@ O objeto de sessão é uma representação leve e mínima do usuário e contém 
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
-  me: protectedProcedure.query(({ ctx }) => {
+  me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
       where: {
         id: ctx.session.user.id,

@@ -90,7 +90,7 @@ export const runCli = async () => {
      */
     .option(
       "--nextAuth [boolean]",
-      "Experimental: Boolean value if we should install Next-Auth.js. Must be used in conjunction with `--CI`.",
+      "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
     /**
@@ -209,7 +209,7 @@ const promptLanguage = async (): Promise<void> => {
   const { language } = await inquirer.prompt<{ language: string }>({
     name: "language",
     type: "list",
-    message: "Will you be using JavaScript or TypeScript?",
+    message: "Will you be using TypeScript or JavaScript?",
     choices: [
       { name: "TypeScript", value: "typescript", short: "TypeScript" },
       { name: "JavaScript", value: "javascript", short: "JavaScript" },
