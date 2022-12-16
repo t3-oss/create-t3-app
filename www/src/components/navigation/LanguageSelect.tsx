@@ -39,15 +39,15 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
             enterFrom={"transform opacity-0 -translate-y-1"}
             enterTo={"transform opacity-100 -translate-y-0"}
           >
-            <Listbox.Options className="shadow-l absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
+            <Listbox.Options className="focus-none shadow-l absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
               {Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
                 <Listbox.Option
                   key={code}
                   className={({ selected, active }) =>
-                    `relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-200/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
-                      (selected || active) &&
-                      "bg-t3-purple-200/75 dark:bg-t3-purple-200/20"
-                    }`
+                    `focus-none relative cursor-pointer bg-t3-purple-200/50 py-2 px-4 text-slate-900 outline-none hover:bg-t3-purple-300/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
+                      selected && "bg-t3-purple-400/75 dark:bg-t3-purple-400/20"
+                    }
+                    ${active && "bg-t3-purple-300/75 dark:bg-t3-purple-200/20"}`
                   }
                   value={code}
                 >
