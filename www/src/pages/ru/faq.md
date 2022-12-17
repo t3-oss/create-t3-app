@@ -36,6 +36,7 @@ lang: ru
 
 ### Видео
 
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
 - [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
@@ -49,7 +50,7 @@ lang: ru
 
 ## У меня не получается добавить i18n в мое приложение. Есть ли какие-либо рекомендации?
 
-Мы решили не включать i18n по умолчанию в `create-t3-app`, потому что это очень субъективная тема, и есть много способов ее реализации.
+We have decided against including i18n by default in `create-t3-app` because it's a very opinionated topic and there are many ways to implement it.
 
 В тоже время, если вы столкнулись с проблемами при реализации и хотите увидеть проект-образец, у нас есть [ссылка на репозиторий](https://github.com/juliusmarminge/t3-i18n) который показывает как вы можете добавить i18n в T3 App с помощью [next-i18next](https://github.com/i18next/next-i18next).
 
