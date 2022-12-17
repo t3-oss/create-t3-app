@@ -50,7 +50,7 @@ lang: ru
 
 ## У меня не получается добавить i18n в мое приложение. Есть ли какие-либо рекомендации?
 
-We have decided against including i18n by default in `create-t3-app` because it's a very opinionated topic and there are many ways to implement it.
+Мы решили не включать i18n по умолчанию в `create-t3-app`, потому что это очень субъективная тема, и есть много способов ее реализации.
 
 В тоже время, если вы столкнулись с проблемами при реализации и хотите увидеть проект-образец, у нас есть [ссылка на репозиторий](https://github.com/juliusmarminge/t3-i18n) который показывает как вы можете добавить i18n в T3 App с помощью [next-i18next](https://github.com/i18next/next-i18next).
 
