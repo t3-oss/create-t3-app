@@ -29,6 +29,8 @@ const isRtl = getIsRtlFromUrl(pathname);
       headings.map((heading) => {
         const { depth, slug, text } = heading;
         let dataComponentType = "";
+
+        //add data-component-type to headings to be able to filter them in the sidebar
         if (text === "prisma") dataComponentType = "prisma";
         if (text === "src/server/common") dataComponentType = "nextauth+trpc";
         if (text === "src/types") dataComponentType = "nextauth";
