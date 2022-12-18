@@ -47,7 +47,7 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    tailwind(),
+    tailwind({ config: { applyBaseStyles: false } }),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
