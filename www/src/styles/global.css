@@ -37,8 +37,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
-    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-t3-purple-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-t3-purple-300;
   }
 
   /* Typewriter */
@@ -80,6 +79,11 @@
     outline-offset: 0.25em;
   }
 
+  button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
   article > section :is(ul, ol) > * + * {
     margin-top: 0.75rem;
   }
@@ -89,21 +93,28 @@
   }
 
   article > section :is(ul, ol) {
-    padding-left: 1em;
+    padding-inline-start: 1em;
   }
 
   article > section nav :is(ul, ol) {
-    padding-left: inherit;
+    padding-inline-start: inherit;
   }
 
   td,
   th {
     padding: 6px;
-    text-align: left;
+    text-align: inline-start;
   }
 
   .t3-scrollbar {
     @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
 
   h1[id],
@@ -112,7 +123,7 @@
   h4[id],
   h5[id],
   #content {
-    @apply scroll-mt-24;
+    @apply scroll-mt-36 lg:scroll-mt-24;
   }
 
   /* only at less than md */
@@ -143,6 +154,9 @@
   .markdown h3 {
     @apply mt-4 mb-2 text-xl font-semibold;
   }
+  .markdown h4 {
+    @apply mt-2 mb-1 text-base font-medium;
+  }
   .markdown li {
     @apply list-disc text-slate-900 dark:text-white;
   }
@@ -163,7 +177,7 @@
   }
 
   .markdown code {
-    @apply break-words lg:break-normal;
+    @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
   }
 
   .markdown code:not(.markdown pre code) {

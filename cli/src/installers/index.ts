@@ -22,8 +22,8 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.15.1",
-  "@next-auth/prisma-adapter": "^1.0.4",
+  "next-auth": "^4.18.3",
+  "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
   prisma: "^4.5.0",
@@ -83,7 +83,7 @@ export const buildPkgInstallerMap = (
     installer: trpcInstaller,
   },
   envVariables: {
-    inUse: packages.includes("prisma") || packages.includes("nextAuth"),
+    inUse: true,
     installer: envVariablesInstaller,
   },
 });

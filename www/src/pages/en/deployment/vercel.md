@@ -9,7 +9,7 @@ We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-os
 
 ## Project Configuration
 
-Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands:
+Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands. **This is not required for most projects.**
 
 ```json
 {

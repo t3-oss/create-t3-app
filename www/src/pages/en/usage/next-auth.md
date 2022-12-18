@@ -78,7 +78,7 @@ export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
@@ -118,7 +118,7 @@ The session object is a light, minimal representation of the user and only conta
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
-  me: protectedProcedure.query(({ ctx }) => {
+  me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
       where: {
         id: ctx.session.user.id,

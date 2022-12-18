@@ -1,5 +1,43 @@
 # Changelog
 
+## 6.11.4
+
+### Patch Changes
+
+- [#981](https://github.com/t3-oss/create-t3-app/pull/981) [`ac32b6d`](https://github.com/t3-oss/create-t3-app/commit/ac32b6d09df6d7b3620a41ace8cd2612bd909cc8) Thanks [@balazsorban44](https://github.com/balazsorban44)! - fix(cli): prompt TS first
+
+## 6.11.3
+
+### Patch Changes
+
+- [#939](https://github.com/t3-oss/create-t3-app/pull/939) [`77cfb4b`](https://github.com/t3-oss/create-t3-app/commit/77cfb4bd156ca3d97cbb70cf51ec8e12a632bd64) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use next-auth 4.18.3 and undo hotfix
+
+- [#932](https://github.com/t3-oss/create-t3-app/pull/932) [`c04a35a`](https://github.com/t3-oss/create-t3-app/commit/c04a35a2b215c8537cf7f0d9ff9760c831720514) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix next-auth error
+
+## 6.11.2
+
+### Patch Changes
+
+- [#917](https://github.com/t3-oss/create-t3-app/pull/917) [`eb55d19`](https://github.com/t3-oss/create-t3-app/commit/eb55d19ae0204f6e61fb65b82057b93ed485e880) Thanks [@sharkby7e](https://github.com/sharkby7e)! - feat: add blank target to base template
+
+## 6.11.1
+
+### Patch Changes
+
+- [#914](https://github.com/t3-oss/create-t3-app/pull/914) [`1037d14`](https://github.com/t3-oss/create-t3-app/commit/1037d1472764080a5641d657cac75adec2bbd3f1) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next-auth
+
+## 6.11.0
+
+### Minor Changes
+
+- [#901](https://github.com/t3-oss/create-t3-app/pull/901) [`9b6ae5c`](https://github.com/t3-oss/create-t3-app/commit/9b6ae5cc1c8fe85becd367d36b61828b06a0a6a9) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - include env files in all apps
+
+### Patch Changes
+
+- [#895](https://github.com/t3-oss/create-t3-app/pull/895) [`91362db`](https://github.com/t3-oss/create-t3-app/commit/91362db87a50fe7f09807aa9950acc5c60ba80dc) Thanks [@Mvmo](https://github.com/Mvmo)! - When initializing a new git repo the git config value 'init.defaultBranch' will be used as the branch name
+
+- [#897](https://github.com/t3-oss/create-t3-app/pull/897) [`272b954`](https://github.com/t3-oss/create-t3-app/commit/272b9547f42f70df3c24dc9d438a7cd88a244773) Thanks [@AyanavaKarmakar](https://github.com/AyanavaKarmakar)! - fix(cli): fix wrong prompt when setting up project name
+
 ## 6.10.3
 
 ### Patch Changes
