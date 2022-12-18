@@ -9,7 +9,7 @@ Polecamy wykonywać deployment twojej aplikacji na platformę [Vercel](https://v
 
 ## Konfiguracja Projektu
 
-Vercel prawdopodobnie automatycznie skonfiguruje za Ciebie komendy budowania i folder publikacji aplikacji. Jeśli jednak chcesz, możesz skonfigurować projekt tworząc plik [`vercel.json`](https://vercel.com/docs/project-configuration) zawierający poniższą treść:
+Vercel prawdopodobnie automatycznie skonfiguruje za Ciebie komendy budowania i folder publikacji aplikacji. Jeśli jednak chcesz, możesz skonfigurować projekt tworząc plik [`vercel.json`](https://vercel.com/docs/project-configuration) zawierający poniższą treść. **Nie jest to wymagane przy większości projektów.**
 
 ```json
 {
