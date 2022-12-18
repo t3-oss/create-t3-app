@@ -53,6 +53,7 @@ Plik ten to miejsce, gdzie definiujesz kontekst przesyłany do swoich procedur t
 
 ### 📄 `server/trpc/trpc.ts`
 
+To właśnie tutaj inicjalizujesz tRPC i definiujesz możliwe do użycia w wielu miejscach
 This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead create reusable procedures and middlewares and export those.
 
 You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date`, and not a string which is the case for most APIs.

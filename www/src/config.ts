@@ -32,7 +32,7 @@ export const KNOWN_LANGUAGES = {
   pt: "Português",
   ru: "Русский",
   no: "Norsk",
-  pl: "Polski"
+  pl: "Polski",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
