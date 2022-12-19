@@ -26,10 +26,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "pnpm"
+          cache: pnpm
 
       - name: Install NPM Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Check for errors
         run: pnpm check
