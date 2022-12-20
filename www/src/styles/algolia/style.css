@@ -63,6 +63,7 @@ html.dark {
 }
 .DocSearch-Search-Icon {
   stroke-width: 1.6;
+  margin-right: 15px;
 }
 .DocSearch-Button .DocSearch-Search-Icon {
   color: var(--docsearch-text-color);
