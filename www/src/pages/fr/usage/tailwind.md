@@ -7,7 +7,7 @@ lang: fr
 
 ## Qu'est-ce que Tailwind CSS ?
 
-Tailwind CSS est une toute petite bibliothèque CSS, [utilitaire d'abord](https://tailwindcss.com/docs/utility-first), permettant de créer des designs personnalisées, sans le changement de contexte requis par le CSS classique. Il s'agit purement d'une bibliothèque CSS et ne fournit aucun composant ou logique prédéfini, elle offre [un ensemble d'avantages très différent](https://www.youtube.com/watch?v=CQuTF-bkOgc) par rapport à un bibliothèque de composants comme Material UI.
+Tailwind CSS est une toute petite librairie CSS, [utilitaire d'abord](https://tailwindcss.com/docs/utility-first), permettant de créer des designs personnalisées, sans le changement de contexte requis par le CSS classique. Il s'agit purement d'une librairie CSS et ne fournit aucun composant ou logique prédéfini, elle offre [un ensemble d'avantages très différent](https://www.youtube.com/watch?v=CQuTF-bkOgc) par rapport à un bibliothèque de composants comme Material UI.
 
 Cela rend le CSS incroyablement facile et rapide à écrire, comme le montre l'exemple suivant :
 
@@ -52,7 +52,7 @@ import "./my-class.css";
 
 Lorsqu'elle est utilisé avec des composantes React, cela permet de créer des interfaces utilisateur de façon extrêmement puissant et rapidement.
 
-Tailwind CSS dispose d'un magnifique système de conception intégré, qui sort de la boîte avec une palette de couleurs soigneusement choisie, des modèles de dimensionnement pour des styles tels que la width/height et le padding/margin pour une conception uniforme, ainsi que des points d'arrêt (breaking points) pour créer des mises en page. Ce système de conception peut être personnalisé et étendu pour créer la boîte à outils exacte de styles dont votre projet a besoin.
+Tailwind CSS dispose d'un magnifique système de conception intégré, qui sort de l'oeuf avec une palette de couleurs soigneusement choisie, des modèles de dimensionnement pour des styles tels que la width/height et le padding/margin pour une conception uniforme, ainsi que des points d'arrêt (breaking points) pour créer des mises en page. Ce système de conception peut être personnalisé et étendu pour créer la boîte à outils exacte de styles dont votre projet a besoin.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

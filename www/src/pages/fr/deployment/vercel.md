@@ -9,7 +9,7 @@ Nous vous recommandons de déployer votre application sur [Vercel](https://verce
 
 ## Configuration du projet
 
-Vercel configurera plus que probablement les commandes de génération et publiera le répertoire automatiquement. Cependant, vous pouvez également spécifier ces informations manuellement avec d'autres configurations en créant un fichier appelé [`vercel.json`](https://vercel.com/docs/project-configuration) et en incluant les informations suivantes. **La plus part des projets ne le requiert pas.**
+Vercel va certainement configurer les commandes de génération et publier le répertoire automatiquement. Cependant, vous pouvez également spécifier ces informations manuellement avec vos propres configurations en créant un fichier appelé [`vercel.json`](https://vercel.com/docs/project-configuration) et en incluant les informations suivantes. **La plus part des projets ne le requiert pas.**
 
 ```json
 {
@@ -34,7 +34,7 @@ Vercel configurera plus que probablement les commandes de génération et publie
 
 ![Ajoutez vos variables d'environnement](/images/vercel-env-vars.webp)
 
-4. Cliquez sur **Deploy**. À partir de maintenant,à chaque fois que vous pousserez une modification, Vercel redéploiera automatiquement votre application !
+4. Cliquez sur **Deploy**. À partir de maintenant, à chaque fois que vous pousserez une modification, Vercel redéploiera automatiquement votre application !
 
 ## Utilisation de Vercel CLI
 

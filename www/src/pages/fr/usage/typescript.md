@@ -39,7 +39,7 @@ C'est peut-être l'outil qui offre le plus de productivité aux développeurs. I
 
 ## Inférence de type
 
-Alors que de nombreux nouveaux développeurs TypeScript sont concernés par _écrire_ du TypeScript, bon nombre de ses avantages ne vous obligent pas à modifier votre code, en particulier l'inférence. L'inférence signifie que si quelque chose est typé, ce type le suivra tout au long du flux de l'application sans avoir à être redéclaré à d'autres endroits. Cela signifie que, par exemple, une fois que vous avez défini les types d'arguments qu'une fonction prend, le reste de la fonction sera généralement typesafe sans nécessiter d'autre code spécifique à TypeScript. Les développeurs de bibliothèques consacrent une tonne de travail à la maintenance des types de leurs bibliothèques, ce qui signifie que nous, en tant que développeurs d'applications, pouvons bénéficier à la fois de l'inférence et de la documentation intégrée dans notre éditeur de code grâce aux types que fournissent ses bibliothèques.
+Alors que de nombreux nouveaux développeurs TypeScript sont concernés par _écrire_ du TypeScript, bon nombre de ses avantages ne vous obligent pas à modifier votre code, en particulier l'inférence. L'inférence signifie que si quelque chose est typé, ce type le suivra tout au long du flux de l'application sans avoir à être redéclaré à d'autres endroits. Cela signifie que, par exemple, une fois que vous avez défini les types d'arguments qu'une fonction prend, le reste de la fonction sera généralement typesafe sans nécessiter d'autre code spécifique à TypeScript. Les développeurs de librairies consacrent une tonne de travail à la maintenance des types de celles-ci, ce qui signifie que nous, en tant que développeurs d'applications, pouvons bénéficier à la fois de l'inférence et de la documentation intégrée dans notre éditeur de code grâce aux types que fournissent ces librairies.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="Vous utilisez peut-être mal TypeScript" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -51,7 +51,7 @@ Regardez la vidéo de Theo sur la façon dont [vous utilisez peut-être mal Type
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) est une bibliothèque de validation de schéma construite avec TypeScript. Écrivez un schéma qui représente une source unique de vérité pour vos données, et Zod s'assurera que vos données sont valides dans toute votre application, même au-delà des limites du réseau et des API externes.
+[Zod](https://github.com/colinhacks/zod) est une librairie de validation de schéma construite avec TypeScript. Écrivez un schéma qui représente une source unique de vérité pour vos données, et Zod s'assurera que vos données sont valides dans toute votre application, même au-delà des limites du réseau et des API externes.
 
 ### Tanstack Query
 

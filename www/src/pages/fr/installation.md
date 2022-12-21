@@ -25,7 +25,7 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-Une fois votre application configuré, consultez les [premières étapes](/fr/usage/first-steps) pour démarrer sur votre nouvelle application.
+Une fois votre application configurée, consultez les [premières étapes](/fr/usage/first-steps) pour démarrer sur votre nouvelle application.
 
 ## Utilisation avancée
 
@@ -38,7 +38,7 @@ Une fois votre application configuré, consultez les [premières étapes](/fr/us
 
 ## Utilisation expérimentale
 
-Pour notre CI, nous avons des options expérimentaux qui vous permettent de configurer n'importe quelle application sans aucune invite. Si ce cas d'utilisation s'applique à vous, vous pouvez utiliser ces options. Veuillez noter que ces options sont expérimentaux et peuvent changer à l'avenir sans suivre la version de Semver.
+Pour notre CI, nous avons des options expérimentales qui vous permettent de configurer n'importe quelle application sans aucun invite. Si ce cas d'utilisation s'applique à vous, vous pouvez utiliser ces options. Veuillez noter que ces options sont expérimentales et peuvent changer à l'avenir sans suivre la version de Semver.
 
 | Flag         | Description                                     |
 | ------------ | ----------------------------------------------- |

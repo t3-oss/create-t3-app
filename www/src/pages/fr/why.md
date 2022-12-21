@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: fr
 ---
 
-Nous avons lancé create-t3-app parce que [Theo](https://twitter.com/t3dotgg) a refusé de créer un modèle de ses technologies préférées. Inspirée par create-next-app, [Astro's CLI](https://astro.build) a un amour pour la sécurité des types, l'équipe create-t3-app a travaillé dur pour créer le meilleur point de départ possible pour les nouveaux projets T3 Stack.
+Nous avons lancé create-t3-app parce que [Theo](https://twitter.com/t3dotgg) a refusé de créer un modèle de ses technologies préférées. Inspirée par create-next-app, [Astro's CLI](https://astro.build) avec un amour pour la sécurité des types, l'équipe create-t3-app a travaillé dur pour créer le meilleur point de départ possible pour les nouveaux projets T3 Stack.
 
 Si vous souhaitez utiliser Next.js de manière sécurisée, c'est ici qu'il faut commencer. Si vous êtes curieux de connaître l'un des choix technologiques spécifiques que nous avons faits, lisez la suite :)
 
@@ -13,13 +13,13 @@ Si vous souhaitez utiliser Next.js de manière sécurisée, c'est ici qu'il faut
 
 JavaScript est difficile. Pourquoi ajouter plus de règles ?
 
-Nous croyons fermement que l'expérience fournie par TypeScript vous aidera à devenir un meilleur développeur. fournit des commentaires en direct lorsque vous écrivez votre code en définissant les types de données attendus, et fournit soit une saisie semi-automatique utile dans votre éditeur, soit vous crie dessus avec des lignes ondulées rouges si vous essayez d'accéder à une propriété qui n'existe pas ou essayez de passer un valeur du mauvais type, que vous auriez sinon à déboguer plus loin. Que vous soyez nouveau dans le développement Web ou un professionnel chevronné, la "strictité" de TypeScript fournira une expérience moins frustrante et plus cohérente que Vanilla JS.
+Nous croyons fermement que l'expérience fournie par TypeScript vous aidera à devenir un meilleur développeur. Il fournit des commentaires en direct lorsque vous écrivez votre code en définissant les types de données attendus, et fournit soit une saisie semi-automatique utile dans votre éditeur, soit vous crie dessus avec des lignes ondulées rouges si vous essayez d'accéder à une propriété qui n'existe pas ou essayez de passer une valeur du mauvais type, que vous auriez sinon à déboguer plus loin. Que vous soyez nouveau dans le développement Web ou un professionnel chevronné, la "strictité" de TypeScript fournira une expérience moins frustrante et plus cohérente que Vanilla JS.
 
 La sécurité de type vous rend plus rapide. Si vous n'êtes pas convaincu, vous [utilisez peut-être mal TypeScript...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
 ## Pourquoi Next.js ?
 
-Nous aimons React. Il a rendu le développement d'interface utilisateur accessible d'une manière que nous n'avions jamais imaginée auparavant. Cela peut également conduire les développeurs sur des chemins difficiles.
+Nous aimons React. Il a rendu le développement d'interface utilisateur accessible d'une manière que nous n'avions jamais imaginé auparavant. Cela peut également conduire les développeurs sur des chemins difficiles.
 
 Next.js offre une approche légèrement opiniâtre et fortement optimisée pour créer des applications à l'aide de React. Du routage aux définitions d'API en passant par le rendu d'image, nous faisons confiance à Next.js pour guider les développeurs vers de bonnes décisions.
 

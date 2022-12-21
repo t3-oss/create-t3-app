@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-Lorsque vous souhaitez un système d'authentification dans votre application Next.js, NextAuth.js est une excellente solution pour apporter la sécurité sans avoir à le construire vous-même. Il vient avec une longue liste de fournisseurs pour ajouter rapidement l'authentification OAuth et fournit des adaptateurs pour de nombreuses bases de données et ORM.
+Lorsque vous souhaitez un système d'authentification dans votre application Next.js, NextAuth.js est une excellente solution pour apporter la sécurité sans avoir à le construire vous-même. Il vient avec une longue liste de fournisseurs pour ajouter rapidement de l'authentification OAuth et fournit des adaptateurs pour de nombreuses bases de données et ORM.
 
 ## Context Provider
 
@@ -161,7 +161,7 @@ Utilisation de NextAuth.js avec le middleware Next.js [nécessite l'utilisation 
 1. Dans le menu des paramètres, allez dans "OAuth2 => General"
 
 - Copiez l'ID client et collez-le dans `DISCORD_CLIENT_ID` dans `.env`.
-- Sous Client Secret, cliquez sur "Reset Secret" et copiez cette chaîne dans `DISCORD CLIENT_SECRET` dans `.env`. Soyez prudent car vous ne pourrez plus voir ce secret et le réinitialiser entraînera l'expiration du secret existant.
+- Sous Client Secret, cliquez sur "Reset Secret" et copiez cette chaîne de caractères dans `DISCORD CLIENT_SECRET` dans `.env`. Soyez prudent car vous ne pourrez plus voir ce secret et le réinitialiser entraînera l'expiration du secret existant.
 - Cliquez sur "Add Redirect" et collez `<app url>/api/auth/callback/discord` (exemple pour le développement local : <code class="break-all">http://localhost:3000/api/auth/rappel/discord</code>)
 - Enregistrez vos modifications
 - Il est possible, mais non recommandé, d'utiliser la même application Discord pour le développement et la production. Vous pouvez également envisager [moquer le fournisseur](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) pendant le développement.

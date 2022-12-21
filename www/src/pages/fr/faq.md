@@ -21,11 +21,11 @@ Si vous n'êtes pas familier avec les différentes technologies utilisées dans 
 
 ## Quelles ressources d'apprentissage sont actuellement disponibles?
 
-Bien que les ressources répertoriées ci-dessous soient parmi les meilleures qui existent pour la stack T3, la communauté (et [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) vous recommande de commencer à utiliser la stack et d'apprendre en cours de route en codant avec elle.
+Bien que les ressources répertoriées ci-dessous soient parmi les meilleures qui existent pour la stack T3, la communauté (et [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) vous recommandent de commencer à utiliser la stack et d'apprendre en cours de route en codant avec elle.
 
-Si vous envisagez `create-t3-app`, il y a de fortes chances que vous ayez déjà utilisé certaines parties de la stack. Alors pourquoi ne pas simplement plonger la tête la première et apprendre les autres parties pendant que vous créer quelque chose ?
+Si vous envisagez `create-t3-app`, il y a de fortes chances que vous ayez déjà utilisé certaines parties de la stack. Alors pourquoi ne pas simplement plonger la tête la première et apprendre les autres parties pendant que vous créez quelque chose ?
 
-Maintenant, nous réalisons que ce chemin ne fonctionne pas pour tout le monde. Donc, si vous avez l'impression d'avoir essayé la recommandation et que vous souhaitez toujours des ressources, ou si vous n'êtes tout simplement pas sûr de le faire vous-même et/ou si vous vous sentez dépassé par la stack, consultez ces tutoriels géniaux sur `create-t3-app ` :
+Maintenant, nous comprenons que cette voie ne fonctionne pas pour tout le monde. Donc, si vous avez l'impression d'avoir suivi les recommandations et que vous êtes toujours en manque de ressources, ou si vous n'êtes tout simplement pas sûr de le faire vous-même et/ou si vous vous sentez dépassé par la stack, consultez ces tutoriels géniaux sur `create-t3-app ` :
 
 ### Articles
 
@@ -46,7 +46,7 @@ Maintenant, nous réalisons que ce chemin ne fonctionne pas pour tout le monde. 
 
 Conformément à [T3-Axiom #3](/fr/introduction#la-sécurité-de-typage-nest-pas-facultative), nous considérons la sécurité de typage comme un citoyen de première classe. Malheureusement, tous les frameworks et plugins ne prennent pas en charge TypeScript, ce qui signifie que certains des fichiers de configuration doivent être des fichiers `.js`.
 
-Nous essayons de souligner que ces fichiers sont JavaScript pour une raison, en déclarant explicitement le type de chaque fichier (`cjs` ou `mjs`) en fonction de ce qui est pris en charge par la bibliothèque par laquelle il est utilisé. De plus, tous les fichiers `js` de ce projet sont toujours vérifiés à l'aide d'un commentaire `@ts-check` en début de fichier.
+Nous essayons de souligner que ces fichiers sont JavaScript pour une raison, en déclarant explicitement le type de chaque fichier (`cjs` ou `mjs`) en fonction de ce qui est pris en charge par la librairie par laquelle il est utilisé. De plus, tous les fichiers `js` de ce projet sont vérifiés systématiquement à l'aide d'un commentaire `@ts-check` en début de fichier.
 
 ## J'ai du mal à ajouter i18n à mon application. Y a-t-il une référence que je peux utiliser?
 

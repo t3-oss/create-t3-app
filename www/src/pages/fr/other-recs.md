@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: fr
 ---
 
-Nous reconnaissons que les bibliothèques incluses dans `create-t3-app` ne résolvent pas tous les problèmes. Bien que nous vous encourageons à commencer votre projet avec les éléments que nous fournissons, il viendra un moment où vous devrez ajouter d'autres packages. Vous seul pouvez savoir ce dont votre projet a besoin, mais voici certaines choses que nous recommandons fréquemment.
+Nous reconnaissons que les librairies incluses dans `create-t3-app` ne résolvent pas tous les problèmes. Bien que nous vous encourageons à commencer votre projet avec les éléments que nous fournissons, il viendra un moment où vous devrez ajouter d'autres librairies. Vous seul pouvez savoir ce dont votre projet a besoin, mais voici certaines choses que nous recommandons fréquemment.
 
 Ce sont des recommandations de contributeurs individuels de create-t3-app et ne doivent pas être considérées comme des approbations "officielles" par l'équipe de create-t3-app ou T3-OSS. _**Veuillez faire vos propres recherches, surtout avant de vous engager dans des services payants**_.
 
@@ -37,7 +37,7 @@ La plupart des applications ont besoin de la même poignée de composants - bout
 
 ### Bibliothèques de composants sans style
 
-Aussi connues sous le nom de bibliothèques headless, elles fournissent d'excellents composants sans style et accessibles que vous pouvez personnaliser à votre guise. Voici quelques recommandations.
+Aussi connues sous le nom de librairies headless, elles fournissent d'excellents composants sans style et accessibles que vous pouvez personnaliser à votre guise. Voici quelques recommandations.
 
 - [Radix UI](https://www.radix-ui.com/) vous offre un ensemble puissant de primitives pratiques et accessibles que vous pouvez styliser avec du CSS vanilla ou Tailwind.
 
@@ -45,7 +45,7 @@ Aussi connues sous le nom de bibliothèques headless, elles fournissent d'excell
 
 - [React Aria](https://react-spectrum.adobe.com/react-aria/) fournit des primitives d'interface utilisateur accessibles pour votre design. Leur composant Date Picker est de premier plan.
 
-### Bibliothèques de composants stylisés
+### Librairies de composants stylisés
 
 **Pour quand vous voulez juste que votre application ait l'air OK**
 
@@ -56,9 +56,9 @@ Parfois, vous créez un projet où vous voulez juste que l'interface utilisateur
 
 ### Class Variance Authority
 
-**Pour créer des bibliothèques d'interface utilisateur**
+**Pour créer des librairies d'interface utilisateur**
 
-Créez de manière déclarative une bibliothèque d'interface utilisateur avec différentes variantes de couleur, de taille, etc. Lorsque votre projet atteint une échelle où vous souhaitez un ensemble standardisé de composants d'interface utilisateur avec plusieurs variantes utilisant Tailwind CSS, CVA est un excellent outil.
+Créez de manière déclarative une librairie d'interface utilisateur avec différentes variantes de couleur, de taille, etc. Lorsque votre projet atteint une échelle où vous souhaitez un ensemble normé de composants d'interface utilisateur avec plusieurs variantes utilisant Tailwind CSS, CVA est un excellent outil.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
@@ -100,7 +100,7 @@ Vercel a pris l'enfer des déploiements Web et en a fait une intégration GitHub
 
 **Pour des bases de données sans souci**
 
-PlanetScale est de loin la meilleure "plate-forme de base de données sans serveur" que nous ayons utilisée. À une échelle folle, excellente expérience de développeur et prix fantastiques. Si vous utilisez SQL (et, espérons-le, Prisma), c'est difficile à battre.
+PlanetScale est de loin la meilleure "plate-forme de base de données serverless" que nous ayons utilisée. À une échelle folle, excellente expérience de développeur et prix fantastiques. Si vous utilisez SQL (et, espérons-le, Prisma), c'est difficile à battre.
 
 - [Page d'accueil PlanetScale](https://planetscale.com/)
 
@@ -114,15 +114,15 @@ PlanetScale est de loin la meilleure "plate-forme de base de données sans serve
 
 ### Upstash
 
-**Pour du Redis sans serveur**
+**Pour du Redis serverless**
 
-Nous aimons Prisma et PlanetScale, mais certains projets nécessitent une solution plus performante. Upstash vous permet d'obtenir les performances en mémoire de Redis dans votre projet. Sans serveur, sans avoir à gérer l'infrastructure et à faire évoluer vous-même.
+Nous aimons Prisma et PlanetScale, mais certains projets nécessitent une solution plus performante. Upstash vous permet d'obtenir les performances en mémoire de Redis dans votre projet serverless, sans avoir à gérer l'infrastructure et à faire évoluer vous-même.
 
 - [Page d'accueil Upstash](https://upstash.com/)
 
 ### Pusher
 
-**our les WebSockets sans serveur**
+**Pour les WebSockets serverless**
 
 Si WebSockets est l'objectif principal de votre projet, vous pouvez envisager un backend plus traditionnel tel que [Fastify](https://www.fastify.io/) (qui [fonctionne également avec tRPC !](https:// trpc.io/docs/v10/fastify)). Mais pour ajouter rapidement des WebSockets à une application T3, Pusher est un excellent choix.
 
@@ -130,7 +130,7 @@ Si WebSockets est l'objectif principal de votre projet, vous pouvez envisager un
 
 ### Soketi
 
-Soketi est une alternative à Pusher, auto-hébergée, simple et rapide. Il est entièrement compatible avec le SDK de Pusher que vous pouvez utiliser pour vous connecter au serveur. Soketi sans serveur est également en version bêta.
+Soketi est une alternative à Pusher, auto-hébergée, simple et rapide. Il est entièrement compatible avec le SDK de Pusher que vous pouvez utiliser pour vous connecter au serveur. Soketi serverless est également en version bêta.
 
 - [Page d'accueil Soketi](https://soketi.app)
 - [Soketi GitHub](https://github.com/soketi/soketi)

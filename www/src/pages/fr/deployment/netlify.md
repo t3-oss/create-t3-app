@@ -11,11 +11,11 @@ Netlify est un fournisseur de déploiement alternatif dans la même veine que Ve
 
 La sagesse conventionnelle dit que Vercel a un support Next.js supérieur parce que Vercel développe Next.js. Ils ont tout intérêt à s'assurer que la plate-forme est réglée pour des performances optimales et DX avec Next.js. Pour la majorité des cas d'utilisation, cela sera vrai et cela n'aura aucun sens de s'écarter du chemin standard.
 
-Il existe également un sentiment commun selon lequel de nombreuses fonctionnalités de Next.js ne sont prises en charge que sur Vercel. S'il est vrai que les nouvelles fonctionnalités Next.js seront testées et prises en charge sur Vercel au moment de leurs publications, il est également vrai que d'autres fournisseurs comme Netlify [implémenteront et publieront rapidement la prise en charge](https://www.netlify.com/blog/deploy-nextjs-13/) pour les [fonctionnalités stables de Next.js](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+Il existe également un sentiment commun selon lequel de nombreuses fonctionnalités de Next.js ne sont prises en charge que sur Vercel. S'il est vrai que les nouvelles fonctionnalités Next.js seront testées et prises en charge sur Vercel au moment de leurs publications, il est également vrai que d'autres fournisseurs comme Netlify [implémenteront et publieront rapidement leur prise en charge](https://www.netlify.com/blog/deploy-nextjs-13/) pour les [fonctionnalités stables de Next.js](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
 Il existe des avantages et des inconvénients relatifs pour chaque fournisseurs de déploiement, car aucun hébergeur ne peut avoir le meilleur support pour tous les cas d'utilisation. Par exemple, Netlify a construit son propre [environnement d'exécution Next.js personnalisé](https://github.com/netlify/next-runtime) pour les fonctions Edge de Netlify (qui s'exécutent sur Deno Deploy) et [maintient un middleware unique pour accéder et modifier les réponses HTTP](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
-> _REMARQUE : Pour suivre l'état des fonctionnalités non stables de Next 13, consultez [Utilisation du répertoire "app" de Next 13 sur Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
+> _REMARQUE : Pour suivre l'état des fonctionnalités instables de Next 13, consultez [Utilisation du répertoire "app" de Next 13 sur Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
 
 ## Configurer le projet
 

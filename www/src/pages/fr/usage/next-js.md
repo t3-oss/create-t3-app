@@ -17,7 +17,7 @@ Découvrez [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAM
 
 Nous aimons React. Il a rendu le développement des interfaces utilisateur accessible d'une manière que nous n'aurions jamais imaginée auparavant. Cela peut également conduire les développeurs sur des chemins difficiles. Next.js offre une approche légèrement opiniâtre et fortement optimisée pour créer des applications à l'aide de React. Du routage aux définitions d'API en passant par le rendu d'image, nous faisons confiance à Next.js pour guider les développeurs vers de bonnes décisions.
 
-L'association de Next.js avec [Vercel](https://vercel.com/) facilite plus que jamais le développement et le déploiement d'applications Web. Leurs niveaux gratuits est extrêmement généreux et leurs interfaces sont super intuitives, fournissant une solution pointer-cliquer pour déployer votre site (Nous ❤️ Vercel)
+L'association de Next.js avec [Vercel](https://vercel.com/) facilite plus que jamais le développement et le déploiement d'applications Web. Leur offre gratuite est extrêmement généreuse et leurs interfaces sont super intuitives, fournissant une solution pointer-cliquer pour déployer votre site (Nous ❤️ Vercel)
 
 ## Get Static/Server Props
 
