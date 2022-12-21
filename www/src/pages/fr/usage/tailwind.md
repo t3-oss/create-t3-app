@@ -7,7 +7,7 @@ lang: fr
 
 ## Qu'est-ce que Tailwind CSS ?
 
-Tailwind CSS est une toute petite librairie CSS, [utilitaire d'abord](https://tailwindcss.com/docs/utility-first), permettant de créer des designs personnalisées, sans le changement de contexte requis par le CSS classique. Il s'agit purement d'une librairie CSS et ne fournit aucun composant ou logique prédéfini, elle offre [un ensemble d'avantages très différent](https://www.youtube.com/watch?v=CQuTF-bkOgc) par rapport à un bibliothèque de composants comme Material UI.
+Tailwind CSS est une toute petite librairie CSS, [utilitaire d'abord](https://tailwindcss.com/docs/utility-first), permettant de créer des designs personnalisées, sans le changement de contexte requis par le CSS classique. Il s'agit purement d'une librairie CSS et ne fournit aucun composant ou logique prédéfini, elle offre [un ensemble d'avantages très différent](https://www.youtube.com/watch?v=CQuTF-bkOgc) par rapport à une librairie de composants comme Material UI.
 
 Cela rend le CSS incroyablement facile et rapide à écrire, comme le montre l'exemple suivant :
 

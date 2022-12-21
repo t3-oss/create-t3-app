@@ -41,7 +41,7 @@ Prisma fournit toute une [suite d'outils](https://www.prisma.io/docs/concepts/ov
 
 Tailwind ressemble à un "CSS en mode zen".
 
-En fournissant des blocs de construction sous la forme de bonnes couleurs par défaut, d'un espacement et d'autres primitives, Tailwind facilite la création d'une belle application. Et contrairement aux bibliothèques de composants, cela ne vous retient pas lorsque vous souhaitez faire passer votre application au niveau supérieur et créer quelque chose de beau et d'unique.
+En fournissant des blocs de construction sous la forme de bonnes couleurs par défaut, d'un espacement et d'autres primitives, Tailwind facilite la création d'une belle application. Et contrairement aux librairies de composants, cela ne vous retient pas lorsque vous souhaitez faire passer votre application au niveau supérieur et créer quelque chose de beau et d'unique.
 
 De plus, avec son approche en ligne, Tailwind vous encourage à styliser sans vous soucier de nommer les classes, d'organiser les fichiers ou de tout autre problème non directement lié au problème que vous essayez de résoudre.
 

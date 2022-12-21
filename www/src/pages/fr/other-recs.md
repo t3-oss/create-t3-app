@@ -1,6 +1,6 @@
 ---
 title: Autres recommandations
-description: Bibliothèques et services que nous recommandons pour de nombreux projets
+description: Librairies et services que nous recommandons pour de nombreux projets
 layout: ../../layouts/docs.astro
 lang: fr
 ---
@@ -11,13 +11,13 @@ Ce sont des recommandations de contributeurs individuels de create-t3-app et ne 
 
 ## State Management
 
-_**Note de l'éditeur**_: Les bibliothèques de state management peuvent être excellentes, mais ne sont pas souvent nécessaires. Les hooks de React Query-tRPC devraient pouvoir prendre en charge le state de votre serveur. Pour le state du client, commencez par `useState` de React et utilisez l'une de ces options lorsque vous en avez besoin de plus.
+_**Note de l'éditeur**_: Les librairies de state management peuvent être excellentes, mais ne sont pas souvent nécessaires. Les hooks de React Query-tRPC devraient pouvoir prendre en charge le state de votre serveur. Pour le state du client, commencez par `useState` de React et utilisez l'une de ces options lorsque vous en avez besoin de plus.
 
 ### Zustand
 
 **Pour ne plus jamais utiliser Redux**
 
-Le "Redux moderne et simple" dont vous ne saviez pas avoir besoin. On peut toujours faire confiance à [Poimandres](https://github.com/pmndrs). Vous pouvez tout créer, des applications d'appel vidéo aux jeux en passant par les serveurs avec cette petite bibliothèque.
+Le "Redux moderne et simple" dont vous ne saviez pas avoir besoin. On peut toujours faire confiance à [Poimandres](https://github.com/pmndrs). Vous pouvez tout créer, des applications d'appel vidéo aux jeux en passant par les serveurs avec cette petite librairie.
 
 - [Page d'accueil Zustand](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
@@ -31,11 +31,11 @@ Pour une approche plus atomique, Jotai est difficile à battre. Toujours par [Po
 - [Page d'accueil Jotai](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
 
-## Bibliothèques de composants
+## Librairies de composants
 
-La plupart des applications ont besoin de la même poignée de composants - boutons, menus déroulants, modaux, etc. Ces bibliothèques fournissent d'excellents composants accessibles que vous pouvez utiliser et personnaliser à votre guise.
+La plupart des applications ont besoin de la même poignée de composants - boutons, menus déroulants, modaux, etc. Ces librairies fournissent d'excellents composants accessibles que vous pouvez utiliser et personnaliser à votre guise.
 
-### Bibliothèques de composants sans style
+### Librairies de composants sans style
 
 Aussi connues sous le nom de librairies headless, elles fournissent d'excellents composants sans style et accessibles que vous pouvez personnaliser à votre guise. Voici quelques recommandations.
 
@@ -49,7 +49,7 @@ Aussi connues sous le nom de librairies headless, elles fournissent d'excellents
 
 **Pour quand vous voulez juste que votre application ait l'air OK**
 
-Parfois, vous créez un projet où vous voulez juste que l'interface utilisateur ait l'air décente. Pour les tableaux de bord d'administration et d'autres projets similaires, n'importe laquelle de ces bibliothèques de composants fera le travail.
+Parfois, vous créez un projet où vous voulez juste que l'interface utilisateur ait l'air décente. Pour les tableaux de bord d'administration et d'autres projets similaires, n'importe laquelle de ces librairies de composants fera le travail.
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
@@ -70,7 +70,7 @@ Lorsque vous avez besoin d'animations dans votre application, voici nos recomman
 
 **Pour les animations avec une seule ligne de code**
 
-La plupart des bibliothèques d'animation essaient de satisfaire tous les cas d'utilisation possibles et deviennent lourdes. AutoAnimate est un outil sans configuration qui vous apportera une amélioration significative de l'expérience utilisateur sans effort supplémentaire du développeur.
+La plupart des librairies d'animation essaient de satisfaire tous les cas d'utilisation possibles et deviennent lourdes. AutoAnimate est un outil sans configuration qui vous apportera une amélioration significative de l'expérience utilisateur sans effort supplémentaire du développeur.
 
 - [Page d'accueil AutoAnimate](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)

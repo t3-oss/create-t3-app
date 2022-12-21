@@ -56,6 +56,6 @@ Cependant, si vous avez du mal à l'implémenter et que vous souhaitez voir un p
 
 ## Pourquoi utilisons-nous `/pages` et non `/app` de Next.js 13 ?
 
-Selon [T3-Axiom #2](/fr/introduction#saigner-de-façon-responsable), nous aimons les trucs à la pointe de la technologie, mais nous apprécions la stabilité, votre routeur entier est difficile à porter, [pas un bon endroit pour saigner](https://youtu.be/mnwUbtieOuI?t=1662). Bien que `/app` soit [un aperçu du futur](https://youtu.be/rnsC-12PVlM?t=818), il n'est pas prêt pour la production ; L'API est en version bêta et devrait subir des modifications avec changements majeurs pouvant casser le code.
+Selon [T3-Axiom #2](/fr/introduction#etre-responsable), nous aimons les trucs à la pointe de la technologie, mais nous apprécions la stabilité, l'entièreté de votre routeur est difficile à porter, [pas le meilleur lieu pour les technologies de pointes](https://youtu.be/mnwUbtieOuI?t=1662). Bien que `/app` soit [un aperçu du futur](https://youtu.be/rnsC-12PVlM?t=818), il n'est pas prêt pour la production ; L'API est en version bêta et devrait subir des modifications avec changements majeurs pouvant casser le code.
 
 Pour obtenir une liste des fonctionnalités prises en charge, planifiées et en cours de développement dans le répertoire `/app`, consultez la [documentation de la beta de Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-et-fonctionnalités-prévues).

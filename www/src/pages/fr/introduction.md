@@ -31,7 +31,7 @@ Nous allons être francs - c'est un _projet opiniâtre_. Nous partageons une poi
 
 ### Résoudre des problèmes
 
-Il est facile de tomber dans le piège de "tout ajouter" - nous ne voulons explicitement pas le faire. Tout ce qui est ajouté à "create-t3-app" devrait résoudre un problème spécifique qui existe dans les technologies de base incluses. Cela signifie que nous n'ajouterons pas des choses comme des bibliothèques d'état (`zustand`, `redux`) mais nous ajouterons des choses comme NextAuth.js et intégrerons Prisma et tRPC pour vous.
+Il est facile de tomber dans le piège de "tout ajouter" - nous ne voulons explicitement pas le faire. Tout ce qui est ajouté à "create-t3-app" devrait résoudre un problème spécifique qui existe dans les technologies de base incluses. Cela signifie que nous n'ajouterons pas des choses comme des librairies d'état (`zustand`, `redux`) mais nous ajouterons des choses comme NextAuth.js et intégrerons Prisma et tRPC pour vous.
 
 ### Être responsable
 
