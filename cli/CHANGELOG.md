@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.11.4
+
+### Patch Changes
+
+- [#981](https://github.com/t3-oss/create-t3-app/pull/981) [`ac32b6d`](https://github.com/t3-oss/create-t3-app/commit/ac32b6d09df6d7b3620a41ace8cd2612bd909cc8) Thanks [@balazsorban44](https://github.com/balazsorban44)! - fix(cli): prompt TS first
+
+## 6.11.3
+
+### Patch Changes
+
+- [#939](https://github.com/t3-oss/create-t3-app/pull/939) [`77cfb4b`](https://github.com/t3-oss/create-t3-app/commit/77cfb4bd156ca3d97cbb70cf51ec8e12a632bd64) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use next-auth 4.18.3 and undo hotfix
+
+- [#932](https://github.com/t3-oss/create-t3-app/pull/932) [`c04a35a`](https://github.com/t3-oss/create-t3-app/commit/c04a35a2b215c8537cf7f0d9ff9760c831720514) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix next-auth error
+
 ## 6.11.2
 
 ### Patch Changes

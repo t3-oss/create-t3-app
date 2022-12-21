@@ -25,10 +25,13 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-  en: "English",
   // Add more languages here
   // sv: "Svenska",
+  ar: "العربية",
+  en: "English",
+  pt: "Português",
   ru: "Русский",
+  no: "Norsk",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
@@ -65,6 +68,34 @@ export const SIDEBAR: Sidebar = {
   //   ],
   //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
   // },
+  ar: {
+    "Create T3 App": [
+      { text: "مُقدمة", link: "ar/introduction" },
+      { text: "لماذا CT3A؟", link: "ar/why" },
+      { text: "التثبيت", link: "ar/installation" },
+      { text: "بِنية المجلد", link: "ar/folder-structure" },
+      { text: "أسئلة شائعة", link: "ar/faq" },
+      { text: "تطبيقات صُنعت بواسطة T3", link: "ar/t3-collection" },
+      { text: "ترشيحات أُخري", link: "ar/other-recs" },
+    ],
+    Usage: [
+      { text: "الخُطوات الأُولي", link: "ar/usage/first-steps" },
+      { text: "Next.js", link: "ar/usage/next-js" },
+      { text: "TypeScript", link: "ar/usage/typescript" },
+      { text: "tRPC", link: "ar/usage/trpc" },
+      { text: "Prisma", link: "ar/usage/prisma" },
+      { text: "NextAuth.js", link: "ar/usage/next-auth" },
+      {
+        text: "Environment Variables",
+        link: "ar/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "ar/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "ar/deployment/vercel" },
+      { text: "Docker", link: "ar/deployment/docker" },
+    ],
+  },
   en: {
     "Create T3 App": [
       { text: "Introduction", link: "en/introduction" },
@@ -90,7 +121,36 @@ export const SIDEBAR: Sidebar = {
     ],
     Deployment: [
       { text: "Vercel", link: "en/deployment/vercel" },
+      { text: "Netlify", link: "en/deployment/netlify" },
       { text: "Docker", link: "en/deployment/docker" },
+    ],
+  },
+  pt: {
+    "Create T3 App": [
+      { text: "Introdução", link: "pt/introduction" },
+      { text: "Por que o CT3A?", link: "pt/why" },
+      { text: "Instalação", link: "pt/installation" },
+      { text: "Estrutura de Pastas", link: "pt/folder-structure" },
+      { text: "Perguntas Frequentes", link: "pt/faq" },
+      { text: "Coleção T3", link: "pt/t3-collection" },
+      { text: "Outras Recomendações", link: "pt/other-recs" },
+    ],
+    Usage: [
+      { text: "Primeiros Passos", link: "pt/usage/first-steps" },
+      { text: "Next.js", link: "pt/usage/next-js" },
+      { text: "TypeScript", link: "pt/usage/typescript" },
+      { text: "tRPC", link: "pt/usage/trpc" },
+      { text: "Prisma", link: "pt/usage/prisma" },
+      { text: "NextAuth.js", link: "pt/usage/next-auth" },
+      {
+        text: "Variáveis de Ambiente",
+        link: "pt/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "pt/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "pt/deployment/vercel" },
+      { text: "Docker", link: "pt/deployment/docker" },
     ],
   },
   ru: {
@@ -121,18 +181,34 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "ru/deployment/docker" },
     ],
   },
-  // For Translations:
-  // Keep the "outer headers" in English so we can match them.
-  // Translate the "inner headers" to the language you're translating to.
-  // Omit any files you haven't translated, they'll fallback to English.
-  // Example:
-  // sv: {
-  //   "Create T3 App": [
-  //     { text: "Introduktion", link: "sv/introduction" },
-  //     { text: "Installation", link: "sv/installation" },
-  //   ],
-  //   Usage: [{ text: "Miljövariabler", link: "sv/usage/env-variables" }],
-  // },
+  no: {
+    "Create T3 App": [
+      { text: "Introduksjon", link: "no/introduction" },
+      { text: "Hvorfor CT3A?", link: "no/why" },
+      { text: "Installasjon", link: "no/installation" },
+      { text: "Mappestruktur", link: "no/folder-structure" },
+      { text: "FAQ", link: "no/faq" },
+      { text: "T3-Kolleksjonen", link: "no/t3-collection" },
+      { text: "Andre Anbefalinger", link: "no/other-recs" },
+    ],
+    Usage: [
+      { text: "Første Steg", link: "no/usage/first-steps" },
+      { text: "Next.js", link: "no/usage/next-js" },
+      { text: "TypeScript", link: "no/usage/typescript" },
+      { text: "tRPC", link: "no/usage/trpc" },
+      { text: "Prisma", link: "no/usage/prisma" },
+      { text: "NextAuth.js", link: "no/usage/next-auth" },
+      {
+        text: "Miljøvariabler",
+        link: "no/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "no/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "no/deployment/vercel" },
+      { text: "Docker", link: "no/deployment/docker" },
+    ],
+  },
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
@@ -145,9 +221,24 @@ export const SIDEBAR_HEADER_MAP: Record<
   //   Usage: "Användarguide",
   //   Deployment: "Deployment",
   // },
+  ar: {
+    "Create T3 App": "Create T3 App",
+    Usage: "كيفية الإستخدام؟",
+    Deployment: "نَشر تطبيقك",
+  },
+  pt: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Uso",
+    Deployment: "Deploy",
+  },
   ru: {
     "Create T3 App": "Create T3 App",
     Usage: "Использование",
     Deployment: "Развертывание",
+  },
+  no: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Bruk",
+    Deployment: "Utrulling",
   },
 };

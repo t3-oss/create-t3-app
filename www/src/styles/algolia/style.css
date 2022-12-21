@@ -63,6 +63,7 @@ html.dark {
 }
 .DocSearch-Search-Icon {
   stroke-width: 1.6;
+  margin-inline-end: 15px;
 }
 .DocSearch-Button .DocSearch-Search-Icon {
   color: var(--docsearch-text-color);
@@ -151,7 +152,7 @@ html.dark {
   font-size: 1.2em;
   height: 100%;
   outline: none;
-  padding: 0 0 0 8px;
+  padding-inline-start: 8px;
   width: 80%;
 }
 .DocSearch-Input::placeholder {
@@ -169,6 +170,9 @@ html.dark {
 .DocSearch-Reset {
   margin: 0;
   padding: 0;
+}
+.DocSearch-Reset {
+  margin-inline-start: 12px;
 }
 .DocSearch-MagnifierLabel,
 .DocSearch-Reset {
@@ -230,6 +234,7 @@ html.dark {
   display: none;
 }
 .DocSearch-Dropdown {
+  margin-top: 10px;
   max-height: calc(
     var(--docsearch-modal-height) - var(--docsearch-searchbox-height) -
       var(--docsearch-spacing) - var(--docsearch-footer-height)
@@ -277,9 +282,15 @@ html.dark {
 .DocSearch-Logo a {
   display: flex;
 }
+[dir='rtl'] .DocSearch-Logo a {
+  flex-direction: row-reverse;
+}
 .DocSearch-Logo svg {
   color: var(--docsearch-logo-color);
-  margin-left: 8px;
+  margin-inline-start: 8px;
+}
+[dir='rtl'] .DocSearch-Logo svg {
+  margin-inline-end: 8px;
 }
 .DocSearch-Hits:last-of-type {
   margin-bottom: 24px;
@@ -528,7 +539,7 @@ svg.DocSearch-Hit-Select-Icon {
   display: flex;
 }
 .DocSearch-Commands li:not(:last-of-type) {
-  margin-right: 0.8em;
+  margin-inline-end: 0.8em;
 }
 .DocSearch-Commands-Key,
 .DocSearch-Button-Key {
@@ -538,7 +549,7 @@ svg.DocSearch-Hit-Select-Icon {
   display: flex;
   height: 18px;
   justify-content: center;
-  margin-right: 0.4em;
+  margin-inline-end: 0.4em;
   padding: 0 0 1px;
   color: var(--docsearch-key-color);
   border: 1px solid var(--docsearch-key-border);
