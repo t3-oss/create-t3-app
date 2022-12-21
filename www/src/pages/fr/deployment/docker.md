@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-Vous pouvez containériser cette stack et la déployer en tant que conteneur unique à l'aide de Docker, ou en tant que partie d'un group d'autres conteneurs en utilisant docker-compose. Voir [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) pour un exemple basé sur cette documentation.
+Vous pouvez containeriser cette stack et la déployer en tant que conteneur unique à l'aide de Docker, ou en tant que partie d'un ensemble de conteneurs en utilisant docker-compose. Voir [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) pour un exemple basé sur cette documentation.
 
 ## Configuration du projet sous Docker
 
