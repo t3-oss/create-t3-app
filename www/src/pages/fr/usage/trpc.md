@@ -89,7 +89,7 @@ const userRouter = t.router({
 });
 ```
 
-Il s'agit d'une procédure tRPC (équivalente à un gestionnaire de route dans un backend traditionnel) qui valide d'abord l'entrée à l'aide de Zod (qui est la même bibliothèque de validation que nous utilisons pour ;es [variables d'environnement] (./env-variables)) - dans ce cas , il s'assure que l'entrée est une chaîne. Si l'entrée n'est pas une chaîne, elle enverra une erreur informative à la place.
+Il s'agit d'une procédure tRPC (équivalente à un gestionnaire de route dans un backend traditionnel) qui valide d'abord l'entrée à l'aide de Zod (qui est la même bibliothèque de validation que nous utilisons pour les [variables d'environnement] (./env-variables)) - dans ce cas , il s'assure que l'entrée est une chaîne de caractères. Si l'entrée n'en est pas une, elle renverra une erreur informative à la place.
 
 Après l'entrée, nous enchaînons une fonction de résolveur qui peut être soit une [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), ou une [subscription](https://trpc.io/docs/v10/subscriptions). Dans notre exemple, le résolveur appelle notre base de données à l'aide de notre client [prisma](./prisma) et renvoie l'utilisateur dont l'`id` correspond à celui que nous avons transmis.
 
@@ -170,9 +170,9 @@ Si vous souhaitez exposer chaque procédure vers l'extérieur, consultez le plug
 
 tRPC communique via HTTP, il est donc également possible d'appeler vos procédures tRPC à l'aide de requêtes HTTP "régulières". Cependant, la syntaxe peut être fastidieuse en raison du [protocole RPC](https://trpc.io/docs/v10/rpc) utilisé par tRPC. Si vous êtes curieux, vous pouvez regarder à quoi ressemblent les demandes et les réponses tRPC dans l'onglet réseau de votre navigateur, mais nous vous suggérons de le faire uniquement à titre d'exercice pédagogique et de vous en tenir à l'une des solutions décrites ci-dessus.
 
-## Comparaison avec un point de terminaison d'API Next.js
+## Comparaison avec un endpoint d'API Next.js
 
-Comparons un point de terminaison d'API Next.js à une procédure tRPC. Disons que nous voulons récupérer un objet utilisateur de notre base de données et le renvoyer au frontend. Nous pourrions écrire un point de terminaison d'API Next.js comme ceci :
+Comparons un endpoint d'API Next.js à une procédure tRPC. Disons que nous voulons récupérer un objet utilisateur de notre base de données et le renvoyer au frontend. Nous pourrions écrire un endpoint d'API Next.js comme ceci :
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
