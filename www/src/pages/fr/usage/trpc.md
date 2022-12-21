@@ -70,7 +70,7 @@ Enfin, nous exportons un [helper de type](https://trpc.io/docs/v10/infer-types#a
 ## Comment utiliser tRPC ?
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Créer des APIs typesafe facilement avec tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 Le contributeur de tRPC [trashh_dev](https://twitter.com/trashh_dev) a fait [une présentation de malade à la Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) à propos de tRPC. Nous vous recommandons fortement de la regarder si vous ne l'avez pas déjà fait.
