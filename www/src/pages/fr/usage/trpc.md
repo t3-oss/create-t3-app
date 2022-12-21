@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-tRPC nous permet d'écrire des API fortement typées de bout en bout sans aucune génération de code ni surcharge d'exécution. Il utilise l'inférence de TypeScript pour déduire les définitions de type de votre routeur d'API et vous permet d'appeler vos procédures d'API à partir de votre client avec une sécurité de type complète et une saisie semi-automatique dans votre éditeur de code. Lorsque vous utilisez tRPC, votre frontend et votre backend se sentent plus proches que jamais, ce qui permet une expérience de développement exceptionnelle.
+tRPC nous permet d'écrire des API fortement typées de bout en bout sans aucune génération de code ni surcharge d'exécution. Il utilise l'inférence de TypeScript pour déduire les définitions de type de votre routeur d'API et vous permet d'appeler vos procédures d'API à partir de votre client avec une sécurité de type complète et une saisie semi-automatique dans votre éditeur de code. Lorsque vous utilisez tRPC, vous sentirez votre frontend et votre backend plus proches que jamais, ce qui permet une expérience de développement exceptionnelle.
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
@@ -45,9 +45,9 @@ Il s'agit du point d'entrée de votre API et expose le routeur tRPC. Normalement
 
 Ce fichier est l'endroit où vous définissez le contexte qui est transmis à vos procédures tRPC. Le contexte est une donnée à laquelle toutes vos procédures tRPC auront accès, et c'est un endroit idéal pour mettre des choses comme les connexions à la base de données, les informations d'authentification, etc. Dans create-t3-app, nous utilisons deux fonctions, pour activer l'utilisation d'un sous-ensemble du contexte lorsque nous n'avons pas accès à l'objet de requête.
 
-- `createContextInner`: C'est ici que vous définissez le contexte qui ne dépend pas de la requête, par ex. votre connexion à la base de données. YVous pouvez utiliser cette fonction pour les [tests d'intégration](#exemple-de-test-dintégration) ou [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) où vous n'avez pas d'objet de requête.
+- `createContextInner`: C'est ici que vous définissez le contexte qui ne dépend pas de la requête, par ex. votre connexion à la base de données. Vous pouvez utiliser cette fonction pour les [tests d'intégration](#exemple-de-test-dintégration) ou [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) où vous n'avez pas d'objet de requête.
 
-- `createContext`: C'est ici que vous définissez le contexte qui dépend de la requête, par ex. la session de l'utilisateur.Vous demandez la session à l'aide de l'objet `opts.req`, puis transmettez la session à la fonction `createContextInner` pour créer le contexte final.
+- `createContext`: C'est ici que vous définissez le contexte qui dépend de la requête, par ex. la session de l'utilisateur. Vous récupérez la session à l'aide de l'objet `opts.req`, puis transmettez la session à la fonction `createContextInner` pour créer le contexte final.
 
 ### 📄 `server/trpc/trpc.ts`
 
