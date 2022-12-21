@@ -51,7 +51,7 @@ README.md
 
 ### 3. Créer un fichier Dockerfile
 
-> Étant donné que nous ne récupérons pas les variables d'environnement du serveur dans notre conteneur, la [validation du schéma d'environnement](/fr/usage/env-variables) échouera. Pour éviter cela, nous devons ajouter l'argument `SKIP_ENV_VALIDATION=1` à la commande de génération afin que les schémas d'environnement ne soient pas validé a ce moment là.
+> Étant donné que nous ne récupérons pas les variables d'environnement du serveur dans notre conteneur, la [validation du schéma d'environnement](/fr/usage/env-variables) échouera. Pour éviter cela, nous devons ajouter l'argument `SKIP_ENV_VALIDATION=1` à la commande de génération afin que les schémas d'environnement ne soient pas validé à ce moment là.
 
 <details>
     <summary>
