@@ -128,7 +128,7 @@ CMD ["node", "server.js"]
 
 > **_Notes_**
 >
-> - _L'émulation de `--platform=linux/amd64` peut ne pas être nécessaire à partir de Node 18._
+> - _L'émulation de `--platform=linux/amd64` n'est pas nécessaire à partir de Node 18._
 > - _Voir [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) pour comprendre pourquoi `libc6-compat` pourrait être nécessaire._
 > - _Next.js receuille [des données de télémétrie sur l'utilisation générale de façon anonyme](https://nextjs.org/telemetry). Décommentez la première occurrence de `ENV NEXT_TELEMETRY_DISABLED 1` pour désactiver la télémétrie durant le processus de génération. Décommentez la seconde occurence pour désactiver la télémétrie durant l'exécution._
 
