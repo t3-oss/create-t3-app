@@ -57,7 +57,7 @@ Vous remarquerez que nous utilisons `superjson` comme [transformateur de donnée
 
 ### 📄 `server/trpc/router/*.ts`
 
-C'est ici que vous définissez les routes et les procédures de votre API.Par convention, vous [créez des routeurs séparés](https://trpc.io/docs/v10/router) pour les procédures associées, puis les [fusionnez](https://trpc.io/docs/v10/merging-routers) tous entre eux dans un seul routeur d'application via `server/trpc/router/_app.ts`.
+C'est ici que vous définissez les routes et les procédures de votre API. Par convention, vous [créez des routeurs séparés](https://trpc.io/docs/v10/router) pour les procédures associées, puis les [fusionnez](https://trpc.io/docs/v10/merging-routers) tous entre eux dans un seul routeur d'application via `server/trpc/router/_app.ts`.
 
 ### 📄 `utils/trpc.ts`
 
