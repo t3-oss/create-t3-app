@@ -25,7 +25,7 @@ Prisma 客户端位于文件 `/server/db/client.ts`， 以全局变量被初始�
 
 ## 给数据库填充初始数据
 
-[给数据库填充初始数据](https://www.prisma.io/docs/guides/database/seed-database) 是一种。。来快速给你的数据库填充测试数据来帮助你开始。为了设置填充，你将需要在目录 `/prisma` 下创建一个 `seed.ts` 脚本文件，然后在 `package.json` 文件中添加 `seed` 命令。你也会需要一个 TypeScript 执行环境来运行该数据填充脚本。我们推荐 [tsx](https://github.com/esbuild-kit/tsx)，它采用 esbuild，是一个性能很好的 TypeScript 执行环境，无需额外的 ESM 配置，不过也可以使用 `ts-node` 或其他执行环境。
+[给数据库填充初始数据](https://www.prisma.io/docs/guides/database/seed-database) 是一种很好的方法，它能快速给你的数据库填充测试数据以帮助你开始。为了设置填充，你将需要在目录 `/prisma` 下创建一个 `seed.ts` 脚本文件，然后在 `package.json` 文件中添加 `seed` 命令。你也会需要一个 TypeScript 执行环境来运行该数据填充脚本。我们推荐 [tsx](https://github.com/esbuild-kit/tsx)，它采用 esbuild，是一个性能很好的 TypeScript 执行环境，无需额外的 ESM 配置，不过也可以使用 `ts-node` 或其他执行环境。
 
 ```jsonc:package.json
 {

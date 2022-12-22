@@ -208,6 +208,6 @@ railway open
 | Docker CLI 命令行工具参考手册         | https://docs.docker.com/engine/reference/commandline/docker/         |
 | Docker Compose CLI 命令行工具参考手册 | https://docs.docker.com/compose/reference/                           |
 | 使用 Docker 镜像 部署 Next.js         | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js 搭配 Docker                   | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Docker 中的 Next.js                   | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Next.js 搭配 Docker 示例              | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | 创建一个 Next.js 应用的 Docker 镜像   | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |

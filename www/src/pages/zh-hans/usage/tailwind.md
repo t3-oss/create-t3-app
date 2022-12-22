@@ -30,11 +30,9 @@ Tailwind CSS 是一个[功能优先](https://tailwindcss.com/docs/utility-first)
 
 2. 在组件里导入 CSS 文件
 
-````jsx
-
 ```jsx
 import "./my-class.css";
-````
+```
 
 3. 将类名添加到 HTML 元素
 

@@ -67,7 +67,7 @@ declare module "next-auth" {
 
 ## 搭配 tRPC 的用法
 
-当你搭配 NextAuth.js 和 tRPC 一同使用时，你可以通过 [中间件](https://trpc.io/docs/v10/middlewares) 来创建复用的、受保护的 procedure 路由函数。只有登入后的用户才能访问这些受保护的路由。`create-t3-app` 已经为你铺好了路，使你能够在认证路由里轻松访问到 session 里的数据。
+当你搭配 NextAuth.js 和 tRPC 一同使用时，你可以通过 [中间件](https://trpc.io/docs/v10/middlewares) 来创建可复用的、受保护的 procedure 路由函数。只有登入后的用户才能访问这些受保护的路由。`create-t3-app` 已经为你铺好了路，使你能够在认证路由里轻松访问到 session 里的数据。
 
 这个过程可以被分为两步完成：
 

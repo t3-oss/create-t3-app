@@ -255,9 +255,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default handler;
 ```
 
-### 积极的界面更新
+### 乐观更新
 
-积极的界面更新是指在 API 调用完成之前更新 UI，达到前端界面快速响应用户交互的效果。这给用户带来了更好的体验，因为他们不需要等待 API 调用完成，然后 UI 来反映操作结果。然而，那些特别着重数据准确性的应用应该避免使用积极的界面更新，因为它们并不是后端数据状态的真实表达。你可以在 [React Query 文档](https://tanstack.com/query/v4/docs/guides/optimistic-updates) 阅读更多相关内容。
+乐观更新是指在 API 调用完成之前更新 UI，达到前端界面快速响应用户交互的效果。这给用户带来了更好的体验，因为他们不需要等待 API 调用完成，然后 UI 来反映操作结果。然而，那些特别着重数据准确性的应用应该避免使用乐观更新，因为它们并不是后端数据状态的真实表达。你可以在 [React Query 文档](https://tanstack.com/query/v4/docs/guides/optimistic-updates) 阅读更多相关内容。
 
 ```tsx
 const MyComponent = () => {
@@ -266,13 +266,13 @@ const MyComponent = () => {
   const utils = trpc.useContext();
   const postCreate = trpc.post.create.useMutation({
     async onMutate(newPost) {
-      // 取消发送中的 fetch 请求（所以它们不会覆盖掉我们的积极更新）
+      // 取消发送中的 fetch 请求（所以它们不会覆盖掉我们的乐观更新）
       await utils.post.list.cancel();
 
       // 从 queryCache 中获取数据
       const prevData = utils.post.list.getData();
 
-      // 用我们的新文章来做积极更新
+      // 用我们的新文章来做乐观更新
       utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
       // 返回之前的数据，这样做可以让我们在错误发生时回滚
