@@ -26,6 +26,7 @@ lang: zh-hans
 | Railtrack                                                        | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 | KARA Shop - 电商网站                                             | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 | Tauri T3 App - 搭配 T3 Stack 的 Tauri 应用                       | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
+| Azon - 电商网站                                                  | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
 
 ## 使用 T3 Stack 的公司
 
