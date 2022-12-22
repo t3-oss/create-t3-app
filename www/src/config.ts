@@ -251,7 +251,7 @@ export const SIDEBAR_HEADER_MAP: Record<
   //   Deployment: "Deployment",
   // },
   pl: {
-    "Create T3 App": "Crete T3 App",
+    "Create T3 App": "Create T3 App",
     Usage: "Korzystanie Z Narzędzia",
     Deployment: "Deployment",
   },
