@@ -19,7 +19,7 @@ Netlify 是与 Vercel 类似的托管平台服务商。参看基于本文档的�
 
 ## 项目配置
 
-有很多方法来配置你的打包部署流程，包括直接通过 Netlify CLI 命令行工具或 Netlify 管理面板。虽然说并不强求，但我们还是建议创建一个 [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) 文件，并将它放在你的项目中。这么做能使被 fork 和 clone 的项目版本都可以更便利地被重复部署。
+有很多方法来配置你应用的打包部署流程，包括直接通过 Netlify CLI 命令行工具或 Netlify 管理面板。虽然说并不强求，但我们还是建议创建一个 [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) 文件，并将它放在你的项目中。这么做能使被 fork 和 clone 的项目版本都可以更便利地被重复部署。
 
 ```toml
 [build]

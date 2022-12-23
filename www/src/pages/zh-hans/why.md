@@ -21,7 +21,7 @@ JavaScript 已经很难了。为什么还要增加更多规则？
 
 我们热爱 React。它使 UI 开发以我们从未想象过的方式进行。但它也会将开发者引向一些艰难的道路。
 
-Next.js 为使用 React 创建应用程序提供了一种轻 opinionated、高度优化的方法。从路由到 API 定义，再到图片渲染，我们都相信 Next.js 能引导开发者做出正确的决定。
+Next.js 为使用 React 创建应用程序提供了一种轻度 opinionated、高度优化的方法。从路由到 API 定义，再到图片渲染，我们都相信 Next.js 能引导开发者做出正确的决定。
 
 ## 为什么使用 tRPC / Prisma / Tailwind 等？
 
