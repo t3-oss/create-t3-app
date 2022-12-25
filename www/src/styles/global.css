@@ -114,10 +114,6 @@
     @apply rounded-full;
   }
 
-  .t3-scrollbar::-webkit-scrollbar-track {
-    @apply rounded-full;
-  }
-
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
