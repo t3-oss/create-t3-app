@@ -1,0 +1,61 @@
+---
+title: Installation
+description: Instructions d'installation pour Create T3 App
+layout: ../../layouts/docs.astro
+lang: fr
+---
+
+Pour configurer une application à l'aide de `create-t3-app`, exécutez l'une des trois commandes suivantes et répondez aux questions de l'invite de commande :
+
+### npm
+
+```bash
+npm create t3-app@latest
+```
+
+### yarn
+
+```bash
+yarn create t3-app
+```
+
+### pnpm
+
+```bash
+pnpm create t3-app@latest
+```
+
+Une fois votre application configurée, consultez les [premières étapes](/fr/usage/first-steps) pour démarrer sur votre nouvelle application.
+
+## Utilisation avancée
+
+| Option            | Description                                                                                     |
+| ----------------- | ----------------------------------------------------------------------------------------------- |
+| `[dir]`           | Inclure un argument de répertoire avec un nom pour le projet                                    |
+| `--noGit`         | Dites explicitement à la CLI de ne pas initialiser un nouveau dépôt git dans le projet          |
+| `-y`, `--default` | Contourner la CLI et démarrer une nouvelle application t3 avec toutes les options sélectionnées |
+| `--noInstall`     | Générer un projet sans installer de dépendances                                                 |
+
+## Utilisation expérimentale
+
+Pour notre CI, nous avons des options expérimentales qui vous permettent de configurer n'importe quelle application sans aucun invite. Si ce cas d'utilisation s'applique à vous, vous pouvez utiliser ces options. Veuillez noter que ces options sont expérimentales et peuvent changer à l'avenir sans suivre la version de Semver.
+
+| Flag         | Description                                     |
+| ------------ | ----------------------------------------------- |
+| `--CI`       | Faites savoir à la CLI que vous êtes en mode CI |
+| `--trpc`     | Inclure tRPC dans le projet                     |
+| `--prisma`   | Inclure Prisma dans le projet                   |
+| `--nextAuth` | Inclure NextAuth.js dans le projet              |
+| `--tailwind` | Inclure Tailwind CSS dans le projet             |
+
+**Remarque : Si vous ne fournissez pas l'option "CI", le reste de ces options n'a aucun effet.**
+
+Vous n'avez pas besoin de vous désinscrire explicitement des packages que vous ne voulez pas.Cependant, si vous préférez être explicite, vous pouvez passer `false`, par exemple `--nextAuth false`.
+
+### Exemple
+
+Ce qui suit configurera une application T3 avec tRPC et Tailwind CSS.
+
+```bash
+pnpm dlx create-t3-app@latest --CI --trpc --tailwind
+```

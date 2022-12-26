@@ -110,6 +110,10 @@
     @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
   }
 
+  .t3-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+  }
+
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
