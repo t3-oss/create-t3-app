@@ -82,7 +82,7 @@ tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer tal
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
 ```ts:server/api/routers/user.ts
-const userRouter = createTrpcRouter({
+const userRouter = createTRPCRouter({
   getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
       where: {
@@ -100,7 +100,7 @@ After the input, we chain a resolver function which can be either a [query](http
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
 ```ts:server/api/root.ts
-const appRouter = createTrpcRouter({
+const appRouter = createTRPCRouter({
   users: userRouter,
   posts: postRouter,
   messages: messageRouter,

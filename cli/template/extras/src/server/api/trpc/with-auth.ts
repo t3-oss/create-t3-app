@@ -83,7 +83,7 @@ const t = initTRPC
  * This is how you create new routers and subrouters in your tRPC API
  * @see https://trpc.io/docs/router
  */
-export const createTrpcRouter = t.router;
+export const createTRPCRouter = t.router;
 
 /**
  * Public (unauthed) procedure
