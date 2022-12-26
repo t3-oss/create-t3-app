@@ -18,9 +18,7 @@ Netlify это альтернативый провайдер развертыв�
 
 ## Конфигурация проекта
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures forked and cloned versions of the project will be easier to reproducibly deploy.
-
-Существует несколько способов настройки инструкций сборки, включая прямое использование Netlify CLI или Netlify dashboard. Хотя это не обязательно, рекомендуется создать и включить файл [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/). Это гарантирует, что форкнутые и клонированные версии проекта будут легче воспроизводимо развертываться.
+Существует несколько способов настройки инструкций сборки, включая прямое использование Netlify CLI или Netlify dashboard. Хотя это не обязательно, рекомендуется создать и включить файл [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/). Это гарантирует, что форкнутые и клонированные версии проекта будут легче повторно развернуть.
 
 ```toml
 [build]
