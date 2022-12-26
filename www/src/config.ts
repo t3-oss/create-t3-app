@@ -90,12 +90,13 @@ export const SIDEBAR: Sidebar = {
   "zh-hans": SIDEBAR_ZH_HANS,
 };
 
+export type SidebarHeaders = Record<OuterHeaders, string>;
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
-  Record<OuterHeaders, string>
+  SidebarHeaders
 > = {
   // Translate the sidebar's "outer headers"
-  // SIDEBAR_HEADER_MAP_SV: {
+  // export const SIDEBAR_HEADER_MAP_SV: SidebarHeaders = {
   //   "Create T3 App": "Create T3 App",
   //   Usage: "Användarguide",
   //   Deployment: "Deployment",

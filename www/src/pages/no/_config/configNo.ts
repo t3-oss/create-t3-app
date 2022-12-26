@@ -1,4 +1,4 @@
-import type { OuterHeaders, Sidebar } from "../../../config";
+import type { Sidebar, SidebarHeaders } from "../../../config";
 
 export const SIDEBAR_NO: Sidebar["no"] = {
   "Create T3 App": [
@@ -29,7 +29,7 @@ export const SIDEBAR_NO: Sidebar["no"] = {
   ],
 };
 
-export const SIDEBAR_HEADER_MAP_NO: Record<OuterHeaders, string> = {
+export const SIDEBAR_HEADER_MAP_NO: SidebarHeaders = {
   "Create T3 App": "Create T3 App",
   Usage: "Bruk",
   Deployment: "Utrulling",

@@ -1,4 +1,4 @@
-import type { OuterHeaders, Sidebar } from "../../../config";
+import type { Sidebar, SidebarHeaders } from "../../../config";
 
 export const SIDEBAR_ZH_HANS: Sidebar["zh-hans"] = {
   "Create T3 App": [
@@ -30,7 +30,7 @@ export const SIDEBAR_ZH_HANS: Sidebar["zh-hans"] = {
   ],
 };
 
-export const SIDEBAR_HEADER_MAP_ZH_HANS: Record<OuterHeaders, string> = {
+export const SIDEBAR_HEADER_MAP_ZH_HANS: SidebarHeaders = {
   "Create T3 App": "Create T3 App",
   Usage: "用法",
   Deployment: "部署",
