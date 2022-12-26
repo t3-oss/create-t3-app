@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.5
+
+### Patch Changes
+
+- [#1010](https://github.com/t3-oss/create-t3-app/pull/1010) [`9eddbab`](https://github.com/t3-oss/create-t3-app/commit/9eddbabb9e045b2a8a668ec1389218020360b305) Thanks [@maxmellen](https://github.com/maxmellen)! - chore(create-t3-app): add @types/prettier package to tailwind installer and bump prettier versions
+
 ## 6.11.4
 
 ### Patch Changes
