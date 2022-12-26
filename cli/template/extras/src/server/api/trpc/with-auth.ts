@@ -14,7 +14,6 @@
  * processing a request
  *
  */
-import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
 
@@ -67,7 +66,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 
 const t = initTRPC
-  .context<inferAsyncReturnType<typeof createInternalTrpcContext>>()
+  .context<Awaited<ReturnType<typeof createInternalTrpcContext>>>()
   .create({
     transformer: superjson,
     errorFormatter({ shape }) {
