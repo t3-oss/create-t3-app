@@ -32,7 +32,7 @@ type CreateContextOptions = {
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createContextInner = async (opts: CreateContextOptions) => {
+const createInnerTRPCContext = async (opts: CreateContextOptions) => {
   return {
     session: opts.session,
   };
@@ -43,15 +43,13 @@ const createContextInner = async (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createInternalTrpcContext = async (
-  opts: CreateNextContextOptions,
-) => {
+export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
 
   // Get the session from the server using the unstable_getServerSession wrapper function
   const session = await getServerAuthSession({ req, res });
 
-  return await createContextInner({
+  return await createInnerTRPCContext({
     session,
   });
 };
@@ -66,7 +64,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 
 const t = initTRPC
-  .context<Awaited<ReturnType<typeof createInternalTrpcContext>>>()
+  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
   .create({
     transformer: superjson,
     errorFormatter({ shape }) {

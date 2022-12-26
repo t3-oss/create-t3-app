@@ -29,7 +29,7 @@ type CreateContextOptions = Record<string, never>;
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createContextInner = async (_opts: CreateContextOptions) => {
+const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
   return {
     prisma,
   };
@@ -40,10 +40,8 @@ const createContextInner = async (_opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createInternalTrpcContext = async (
-  _opts: CreateNextContextOptions,
-) => {
-  return await createContextInner({});
+export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+  return await createInnerTRPCContext({});
 };
 
 /**
@@ -56,7 +54,7 @@ import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 
 const t = initTRPC
-  .context<Awaited<ReturnType<typeof createInternalTrpcContext>>>()
+  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
   .create({
     transformer: superjson,
     errorFormatter({ shape }) {
