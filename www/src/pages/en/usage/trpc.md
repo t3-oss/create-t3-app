@@ -47,9 +47,9 @@ This file is split up in two parts, context creation and tRPC initialization:
 
 1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
 
-- `createContextInner`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
 
-- `createContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createContextInner` function to create the final context.
+- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
 
 2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
 
@@ -142,11 +142,11 @@ If you want to expose a single procedure externally, you're looking for [server 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { appRouter } from "../../../server/api/root";
-import { createContext } from "../../../server/api/trpc";
+import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
-  const ctx = await createContext({ req, res });
+  const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
     const { id } = req.query;
@@ -243,7 +243,7 @@ If you need to consume your API from a different domain, for example in a monore
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/api/root";
-import { createContext } from "~/server/api/trpc";
+import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -253,7 +253,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create and call the tRPC handler
   return createNextApiHandler({
     router: appRouter,
-    createContext,
+    createContext: createTRPCContext,
   })(req, res);
 };
 
@@ -301,12 +301,12 @@ Here is a sample integration test that uses [Vitest](https://vitest.dev) to chec
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
-import { createContextInner } from "~/server/api/trpc";
+import { createInnerTRPCContext } from "~/server/api/trpc";
 import { appRouter, type AppRouter } from "~/server/api/root";
 import { expect, test } from "vitest";
 
 test("example router", async () => {
-  const ctx = await createContextInner({ session: null });
+  const ctx = await createInnerTRPCContext({ session: null });
   const caller = appRouter.createCaller(ctx);
 
   type Input = inferProcedureInput<AppRouter["example"]["hello"]>;
