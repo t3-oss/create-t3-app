@@ -82,8 +82,8 @@ tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer tal
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
 ```ts:server/api/routers/user.ts
-const userRouter = t.router({
-  getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
+const userRouter = createTrpcRouter({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
       where: {
         id: input,
@@ -100,7 +100,7 @@ After the input, we chain a resolver function which can be either a [query](http
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
 ```ts:server/api/root.ts
-const appRouter = t.router({
+const appRouter = createTrpcRouter({
   users: userRouter,
   posts: postRouter,
   messages: messageRouter,
@@ -115,10 +115,11 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
+import { api } from "../../utils/api";
 
 const UserPage = () => {
   const { query } = useRouter();
-  const userQuery = trpc.users.getById.useQuery(query.id);
+  const userQuery = api.users.getById.useQuery(query.id);
 
   return (
     <div>
@@ -265,10 +266,10 @@ Optimistic updates are when we update the UI before the API call has finished. T
 
 ```tsx
 const MyComponent = () => {
-  const listPostQuery = trpc.post.list.useQuery();
+  const listPostQuery = api.post.list.useQuery();
 
-  const utils = trpc.useContext();
-  const postCreate = trpc.post.create.useMutation({
+  const utils = api.useContext();
+  const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
       // Cancel outgoing fetches (so they don't overwrite our optimistic update)
       await utils.post.list.cancel();
