@@ -1,3 +1,8 @@
 # https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
 
 * @juliusmarminge @nexxeln @t3dotgg @c-ehrlich
+
+# Translators
+
+www/src/pages/ru/** @Yevhenii-Bakhmat @ronanru @AmadeusTwi
+www/src/pages/ar/** @Sboonny
