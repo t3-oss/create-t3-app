@@ -19,28 +19,27 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ## `prisma`
 
-مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations، إقراَ [كيفية إستخدام Prisma](/en/usage/prisma)
+مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations و/أو كود لإضافة المعلومات إلى Database، إقراَ [كيفية إستخدام Prisma](/ar/usage/prisma)
 
 ## `public`
 
-مُجلد Public يحتوي على الـ assets التي يقوم الخادم بتقديمها، ملف `favicon.ico` هو مثال على ذلك.
+يحتوي مُجلد Public على الملفات الثابتة التي يقوم السيرفر بتقديمها، يكون ملف `favicon.ico` مثال على ذلك.
 
 ## `src/env`
 
-يتم إستخدامة لـ environment variable إقرأ المزيد [Environment Variables](usage/env-variables)
+يستخدم للتحقق من صحة الـ environment variable وتحديد الأنواع (types)، إقرأ المزيد [Environment Variables](usage/env-variables)
 
 ## `src/pages`
 
-مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، ملف `index.tsx`هو الـ root او بمعني أخر (الصفحة الرئيسية)
-ملف `__app.tsx` يعمل كـ Global لتضع فية الـ Scripts التي ستحتاجها في كل أجزاء التطبيق [Next.js documentation](https://nextjs.org/docs/basic-features/pages)
+مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root (الأولي) من `/pages` كالصفحة الأساسية للتطبيق،
+يعمل ملف `__app.tsx` لامداد التطبيق بما تحتاجه من موفر، لقراءة المزيد [Next.js documentation](https://nextjs.org/docs/basic-features/pages).
 
 </div>
 <div data-components="nextauth trpc">
 
 ### `src/pages/api`
 
-مجلد `api` يحتوي علي كل الـ Api Endpoints التي يحتويها تطبيقك، مثال على ذلك هو `example.ts` إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction)
-ملف `restricted.ts`يحتوي علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/).
+يحتوي مجلد `api` علي كل الـ Api Endpoints التي يحتويها تطبيقك، يحتوي `example.ts` (مع Prisma) على مثال عن طريق (route) الذي يستخدم [Next.js API route](https://nextjs.org/docs/api-routes/introduction) مع Prisma. يحتوي ملف `restricted.ts` علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/).
 
 </div>
 <div data-components="nextauth">
@@ -63,7 +62,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ## `src/server`
 
-يُستخدم مجلد `server` للفصل بوضوح بين التعليمات البرمجية من جانب الخادم(Server Side) والتعليمات البرمجية من جانب العميل (Client Side)
+يُستخدم مجلد `server` للفصل بوضوح بين الكود من جانب السيرفر (Server Side) والكود من جانب العميل (Client Side)
 
 </div>
 <div data-components="nextauth+trpc">
