@@ -74,7 +74,7 @@ export const SIDEBAR: Sidebar = {
   // Translate the "inner headers" to the language you're translating to.
   // Omit any files you haven't translated, they'll fallback to English.
   // Example:
-  // SIDEBAR_SV: {
+  // export const SIDEBAR_SV: Sidebar["sv"] = {
   //   "Create T3 App": [
   //     { text: "Introduktion", link: "sv/introduction" },
   //     { text: "Installation", link: "sv/installation" },
