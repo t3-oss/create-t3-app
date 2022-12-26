@@ -26,6 +26,7 @@ lang: ru
 | Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 | KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 | Tauri T3 App - Tauri App using T3 Stack                           | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
+| Azon - E-Commerce website                                         | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
 
 ## Компании использующие T3 стек
 
