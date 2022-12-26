@@ -39,7 +39,7 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
             enterFrom={"transform opacity-0 -translate-y-1"}
             enterTo={"transform opacity-100 -translate-y-0"}
           >
-            <Listbox.Options className="focus-none shadow-l absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
+            <Listbox.Options className="focus-none shadow-l t3-scrollbar absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm">
               {Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
                 <Listbox.Option
                   key={code}
