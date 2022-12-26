@@ -13,6 +13,7 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "autoprefixer",
       "prettier",
       "prettier-plugin-tailwindcss",
+      "@types/prettier",
     ],
     devMode: true,
   });
