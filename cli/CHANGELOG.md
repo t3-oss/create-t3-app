@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.6
+
+### Patch Changes
+
+- [#1024](https://github.com/t3-oss/create-t3-app/pull/1024) [`fcf59b0`](https://github.com/t3-oss/create-t3-app/commit/fcf59b077d80fdf0728ab7a4ea12a4b3b5521da3) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: allow dot name in name prompt
+
 ## 6.11.5
 
 ### Patch Changes
