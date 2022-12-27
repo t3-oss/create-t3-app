@@ -50,7 +50,7 @@ DATABASE_URL=file:./db.sqlite
 # Next Auth
 # You can generate the secret via 'openssl rand -base64 32' on Linux
 # More info: https://next-auth.js.org/configuration/options#secret
-# NEXTAUTH
+# NEXTAUTH_SECRET=
 NEXTAUTH_URL=http://localhost:3000
 
 # Next Auth Discord Provider
