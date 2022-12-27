@@ -48,7 +48,7 @@ jobs:
             A new create-t3-app prerelease is available for testing. You can install this latest build in your project with:
 
             ```sh
-            npx create-t3-app@${{ env.BETA_PACKAGE_VERSION }}
+            pnpm create t3-app@${{ env.BETA_PACKAGE_VERSION }}
             ```
 
       - name: "Remove the autorelease label once published"
