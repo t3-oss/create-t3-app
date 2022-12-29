@@ -120,8 +120,11 @@ export const initializeGit = async (projectDir: string) => {
         cwd: projectDir,
       });
     }
+    await execa("git", ["add", "."], { cwd: projectDir });
     spinner.succeed(
-      `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
+      `${chalk.green("Successfully initialized and staged")} ${chalk.green.bold(
+        "git",
+      )}\n`,
     );
   } catch (error) {
     // Safeguard, should be unreachable
