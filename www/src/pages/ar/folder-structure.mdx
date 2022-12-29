@@ -31,7 +31,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ## `src/pages`
 
-مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root (الأولي) من `/pages` كالصفحة الأساسية للتطبيق،
+مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root من `/pages` كالصفحة الأساسية للتطبيق،
 يعمل ملف `__app.tsx` لامداد التطبيق بما تحتاجه من موفر، لقراءة المزيد [Next.js documentation](https://nextjs.org/docs/basic-features/pages).
 
 </div>
@@ -39,121 +39,119 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `src/pages/api`
 
-يحتوي مجلد `api` علي كل الـ Api Endpoints التي يحتويها تطبيقك، يحتوي `example.ts` (مع Prisma) على مثال عن طريق (route) الذي يستخدم [Next.js API route](https://nextjs.org/docs/api-routes/introduction) مع Prisma. يحتوي ملف `restricted.ts` علي مثال لـ Endpoint مع (Next-Auth)، إقرأ [Next.js API route](https://nextjs.org/docs/api-routes/introduction) و [NextAuth.js](https://next-auth.js.org/).
+يحتوي مجلد `api` علي كل Api routes في تطبيقك الـ Next.js، يحتوي `example.ts` على مثال عن route الذي يستخدم [Next.js API route](https://nextjs.org/docs/api-routes/introduction) مع Prisma. يحتوي ملف `restricted.ts` علي مثال عن route الذي يستخدم خاصية في [Next.js API route](https://nextjs.org/docs/api-routes/introduction) ومحمي من [NextAuth.js](https://next-auth.js.org/).
 
 </div>
 <div data-components="nextauth">
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-ملف `[...nextauth].ts` هو ملف تابع لمكتبة NextAuth.js، ويتم إستخدامه في طلبات التوثيق authentication، إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات.
+إن ملف `[...nextauth].ts` خط سير التوثيق (authentication slug route) في NextAuth.js، ويستخدم في طلبات التوثيق. إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات حول catch-all/slug.
 
 </div>
 <div data-components="trpc">
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-ملف `[trpc].ts` يُعتبر المدخلي الـ tRPC، ,وتُستخدم لتنفيذ طلبات tRPC.
-إقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و
-[tRPC usage](usage/trpc#-pagesapitrpctrpcts)
+يُعتبر ملف `[trpc].ts` المدخل لـ API في tRPC، ويكون مسئول عن تنفيذ طلبات tRPC. إقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و [tRPC usage](usage/trpc#-pagesapitrpctrpcts) لمزيد من المعلومات حول catch-all/slug.
 
 </div>
 <div data-components="trpc prisma">
 
 ## `src/server`
 
-يُستخدم مجلد `server` للفصل بوضوح بين الكود من جانب السيرفر (Server Side) والكود من جانب العميل (Client Side)
+يُستخدم مجلد `server` للفصل بوضوح بين الكود من جانب السيرفر (Server Side) والكود من جانب العميل (Client Side).
 
 </div>
 <div data-components="nextauth+trpc">
 
 ### `src/server/common`
 
-مجلد `common` يستخدم للـ Functions التي يكثر إستخدامها.
+يحتوي مجلد `common` على الوظائف (Functions) التي تكثر إستخدامها.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/common/get-server-auth-session.ts`
 
-ملف `get-server-auth-session.ts` يتم استخدامه لجلب الـ Session Object من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc)
+يستخدم ملف `get-server-auth-session.ts` لجلب الجلسة (Session) الـ NextAuth.js من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc) لمزيد من المعلومات.
 
 </div>
 <div data-components="prisma">
 
 #### `src/server/db/client.ts`
 
-ملف `client.ts` يستخدم لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، إقرأ المزيد [Prisma usage](usage/prisma#prisma-client)
+يستخدم ملف `client.ts` لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، إقرأ [Prisma usage](usage/prisma#prisma-client) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
 
 ### `src/server/trpc`
 
-مجلد tRPC يحتوي على كود tRPC للسيرفر
+مجلد tRPC يحتوي على كود tRPC للسيرفر.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/trpc/context.ts`
 
-ملف `context.ts` يُستخدم لإنشاء context في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts)
+يُستخدم ملف `context.ts` لإنشاء محتوى في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/trpc/trpc.ts`
 
-إقرأ [tRPC usage](usage/trpc#-servertrpctrpcts)
+يستخدم `trpc.ts` لنشر الإجرات المساعدة للتطبيق، إقرأ [tRPC usage](usage/trpc#-servertrpctrpcts) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
 
 ### `src/server/trpc/router`
 
-يحتوي على `tRPC routers`
+يحتوي مجلد `router` على tRPC routers.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/trpc/router/_app.ts`
 
-ملف `_app.ts` يُستخدم لدمج tRPC routers في router واحد كما هو الحل في الـ types، إقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts)
+يُستخدم ملف `_app.ts` لدمج tRPC routers إلى router واحد، وكذلك مع الـ types المحددة، إقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts).
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/trpc/router/auth.ts`
 
-ملف `auth.ts` هو مثال لاستخدام `protectedProcedure helper` في حماية route معين.
+يكون ملف `auth.ts` مثال عن استخدام مساعد `protectedProcedure` لحماية route معين.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/trpc/router/example.ts`
 
-ملف `example.ts` هو مثال لإستخدام `publicProcedure` لإنشاء public tRPC route
+يكون ملف `example.ts` مثال عن إستخدام `publicProcedure` لإنشاء tRPC route عام.
 
 </div>
 <div>
 
 ### `src/styles`
 
-مجلد `styles` يحتوي على الـ stylesheets
+يحتوي مجلد `styles` على التصميمات العامة للتطبيق.
 
 </div>
 <div data-components="nextauth">
 
 ### `src/types`
 
-مجلد `types` يحتوي على الـ Types
+يحتوي مجلد `types` على الانواع البيانات (Types) أو الأنواع المحددة (type declarations).
 
 </div>
 <div data-components="nextauth">
 
 #### `src/types/next-auth.d.ts`
 
-ملف `next-auth.d.ts` يُسنخدم للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
+يُسنخدم ملف `next-auth.d.ts` للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
 
 </div>
 <div data-components="trpc">
