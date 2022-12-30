@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.12.0
+
+### Minor Changes
+
+- [#1031](https://github.com/t3-oss/create-t3-app/pull/1031) [`61ba991`](https://github.com/t3-oss/create-t3-app/commit/61ba991ea92f5eb3e971d34769df0ba470310990) Thanks [@complexengine](https://github.com/complexengine)! - The CLI now stages the files on project initialization.
+
 ## 6.11.6
 
 ### Patch Changes
