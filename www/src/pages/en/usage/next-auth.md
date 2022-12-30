@@ -36,7 +36,7 @@ const User = () => {
 
 ## Inclusion of `user.id` on the Session
 
-`create-t3-app` is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
+Create T3 App is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -131,7 +131,7 @@ const userRouter = router({
 
 ## Usage with Prisma
 
-Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
+Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://next-auth.js.org/adapters/models/). Create T3 App handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
 
 ### Adding new fields to your models
 
@@ -153,7 +153,7 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ## Usage with Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, `create-t3-app` is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
+Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
 
 ## Setting up the default DiscordProvider
 
