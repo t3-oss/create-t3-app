@@ -158,69 +158,69 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `src/utils`
 
-مجلد `utils` يُستخدم للـ functions التي يكثر إستخدامها.
+يُستخدم مجلد `utils` لحفظ الـ functions التي يكثر إستخدامها.
 
 </div>
 <div data-components="trpc">
 
 #### `src/utils/trpc.ts`
 
-ملف `trpc.ts` يُسخدم كـ entrypoint لـ tRPC، إقرأ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts)
+يُستخدم ملف `trpc.ts` كـ entrypoint لـ front-end إلى tRPC، إقرأ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts).
 
 </div>
 <div>
 
 ### `.env`
 
-ملف `.env` يُستخدم لتخزين `environment variables`، إقرأ المزيد [Environment Variables](usage/env-variables)
+يُستخدم ملف `.env` لتخزين environment variables، إقرأ المزيد [Environment Variables](usage/env-variables). يجب ألا يضاف هذا الملف في تاريخ الـ Git.
 
 </div>
 <div>
 
 ### `.env.example`
 
-ملف `.env.example` هو مثال لإستخدام `example environment`.
+ملف `.env.example` هو مثال لإستخدام example environment مبني على المكتبات المختارة. يجب أن يضاف هذا الملف في تاريخ الـ Git.
 
 </div>
 <div>
 
 ### `.eslintrc.json`
 
-ملف `.eslintrc.json` يٌستخدم لإعداد ESLint، إقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)
+يٌستخدم ملف `.eslintrc.json` لإعداد ESLint، إقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files).
 
 </div>
 <div>
 
 ### `next-env.d.ts`
 
-وظيفة `next-env.d.ts` هي التأكد من أن Typescript تأخذ Next.js Types في الحسبان. **لا تُعدل عليها ولا تحذفها**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects)
+يأكد ملف `next-env.d.ts` أن Typescript تأخذ Types في Next.js في الحسبان. **لا تُعدل عليها ولا تحذفها لأنها تتغير باستمرار**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects).
 
 </div>
 <div>
 
 ### `next.config.mjs`
 
-وظيفة `next.config.mjs` هي إعداد Next.js، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)
+يستخدم ملف `next.config.mjs` لإعداد Next.js، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction). تلميح: يسمح تمديد `.mjx` باستخدام ESM imports.
 
 </div>
 <div data-components="tailwind">
 
 ### `postcss.config.cjs`
 
-ملف `postcss.config.cjs` هو ضروري لـ TailwindCSS لمزيد من المعلومات [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss).
+إن ملف `postcss.config.cjs` ضروري عند استخدام TailwindCSS PostCSS، لمزيد من المعلومات [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss).
 
 </div>
 <div data-components="tailwind">
 
 ### `prettier.config.cjs`
 
-ملف `prettier.config.cjs` يُسخدم لإعداد Prettier ولإضافة prettier-plugin-tailwindcss لعمل `formatting` لـ Tailwind CSS classes، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+إن ملف `prettier.config.cjs` ضروري عند استخدام  Prettier ولإضافة prettier-plugin-tailwindcss لتنظيم الفئات (classes) مع Tailwind CSS، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
 
 </div>
 <div>
 
 ### `tsconfig.json`
 
-وظيفة `tsconfig.json` هي إعداد TypeScript، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript)
+إن ملف `tsconfig.json` ضروري عند استخدام TypeScript. فعيلت بعض الإعدادات الفير افتراضية، مثل `strict mode`، لتوفير أفضل إمكانية للاستخدام الـ TypeScript في `create-t3-app` ومكتابتها، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript).
 
 </div>
