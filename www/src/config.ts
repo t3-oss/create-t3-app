@@ -55,6 +55,8 @@ export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
   link: `${TCode}/${string}`;
 };
 
+export type SidebarItemLink = SidebarItem["link"];
+
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
     [THeader in OuterHeaders]?: SidebarItem<TCode>[];

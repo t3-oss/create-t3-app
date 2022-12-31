@@ -1,6 +1,6 @@
-import { SIDEBAR, Sidebar, SidebarItem } from "../config";
+import { SIDEBAR, Sidebar, SidebarItem, SidebarItemLink } from "../config";
 
-export function paginate(lang: keyof Sidebar, path: SidebarItem["link"]) {
+export function paginate(lang: keyof Sidebar, path: SidebarItemLink) {
   const routes = Object.values(SIDEBAR[lang]).flat() as SidebarItem[];
   const index = routes.map((item) => item.link).indexOf(path);
   if (index === -1) return { prev: undefined, next: undefined };
