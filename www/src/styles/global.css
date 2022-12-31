@@ -110,6 +110,10 @@
     @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-t3-purple-300 dark:scrollbar-track-t3-purple-200/10 dark:scrollbar-thumb-t3-purple-300;
   }
 
+  .t3-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+  }
+
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -175,6 +179,10 @@
           hover:text-t3-purple-700 dark:text-t3-purple-200 
           dark:decoration-t3-purple-200 dark:hover:text-t3-purple-300;
   }
+
+  :is([dir='rtl']) .markdown a[rel~="noreferrer"] > span {
+    @apply -scale-x-100 inline-flex;
+}
 
   .markdown code {
     @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;

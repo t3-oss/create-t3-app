@@ -1,5 +1,23 @@
 # Changelog
 
+## 6.12.0
+
+### Minor Changes
+
+- [#1031](https://github.com/t3-oss/create-t3-app/pull/1031) [`61ba991`](https://github.com/t3-oss/create-t3-app/commit/61ba991ea92f5eb3e971d34769df0ba470310990) Thanks [@complexengine](https://github.com/complexengine)! - The CLI now stages the files on project initialization.
+
+## 6.11.6
+
+### Patch Changes
+
+- [#1024](https://github.com/t3-oss/create-t3-app/pull/1024) [`fcf59b0`](https://github.com/t3-oss/create-t3-app/commit/fcf59b077d80fdf0728ab7a4ea12a4b3b5521da3) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: allow dot name in name prompt
+
+## 6.11.5
+
+### Patch Changes
+
+- [#1010](https://github.com/t3-oss/create-t3-app/pull/1010) [`9eddbab`](https://github.com/t3-oss/create-t3-app/commit/9eddbabb9e045b2a8a668ec1389218020360b305) Thanks [@maxmellen](https://github.com/maxmellen)! - chore(create-t3-app): add @types/prettier package to tailwind installer and bump prettier versions
+
 ## 6.11.4
 
 ### Patch Changes
