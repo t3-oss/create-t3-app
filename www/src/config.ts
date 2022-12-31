@@ -49,12 +49,15 @@ export const ALGOLIA = {
 };
 
 export type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+
+export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
+  text: string;
+  link: `${TCode}/${string}`;
+};
+
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
-    [THeader in OuterHeaders]?: {
-      text: string;
-      link: `${TCode}/${string}`;
-    }[];
+    [THeader in OuterHeaders]?: SidebarItem<TCode>[];
   };
 };
 export const SIDEBAR: Sidebar = {

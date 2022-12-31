@@ -1,8 +1,8 @@
-import { SIDEBAR, Sidebar } from "../config";
+import { SIDEBAR, Sidebar, SidebarItem } from "../config";
 
-export function paginate(lang: keyof Sidebar, path: string) {
-  const routes = Object.values(SIDEBAR[lang]).flat();
-  const index = routes.map((item) => item.link as string).indexOf(path);
+export function paginate(lang: keyof Sidebar, path: SidebarItem["link"]) {
+  const routes = Object.values(SIDEBAR[lang]).flat() as SidebarItem[];
+  const index = routes.map((item) => item.link).indexOf(path);
   if (index === -1) return { prev: undefined, next: undefined };
   const prev = index > 0 ? routes[index - 1] : undefined;
   const next = index < routes.length - 1 ? routes[index + 1] : undefined;
