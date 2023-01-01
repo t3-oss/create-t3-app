@@ -1,5 +1,5 @@
 ---
-title: T3 أمثلة علي
+title: اعمال من T3
 description: تطبيقات مفتوحة المصدر صنعت باستخدام Stack T3
 layout: ../../layouts/docs.astro
 lang: ar
@@ -28,8 +28,11 @@ dir: rtl
 ## شركات تَستخدم T3 Stack
 
 نَوَدٌ مَعرفة الشَركات التي تَستخدم Stack T3 لتَطبيقاتها. إذا كانت شَركتك تَستخدم Stack T3 وتَرغب في مشاركته؟ أضافه إلى القائمة التالية!
-| Company | Link |
-| ------- | -------------------------- |
-| Ping.gg | [ping.gg](https://ping.gg) |
 
-أصنعت مشروعاً باستخدام T3 Stack [أضفه هنا](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md)
+| شركة | رابط                                |
+| ------- | ----------------------------------- |
+| Ping.gg | [ping.gg](https://ping.gg)          |
+| Nexiona | [nexiona.com](https://nexiona.com/) |
+| Layer3  | [layer3.xyz](https://layer3.xyz/)   |
+
+_أصنعت مشروعاً باستخدام T3 Stack؟ أنشئ [Pull Request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md). وضفه هنا!_
