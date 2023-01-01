@@ -9,7 +9,7 @@ dir: rtl
 import Form from "../../components/docs/folderStructureForm.astro";
 import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
-اختار أدواتك لترى بنية المجلد عند إنشاء تطبيقك بواسطة تلك الأختيارات. بالأسفل ستجد وصف عن غرض كلاً منهم.
+اختار أدواتك لترى بنية المجلد عند إنشاء تطبيقك بواسطة تلك ألاختيارات. بالأسفل ستجد وصف عن غرض كلاً منهم.
 
 <Form />
 
@@ -19,7 +19,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ## `prisma`
 
-مجلد prisma يحتوي على `prisma.schema` والذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي ايضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations و/أو كود لإضافة المعلومات إلى Database، إقراَ [كيفية إستخدام Prisma](/ar/usage/prisma)
+مجلد prisma يحتوي على `prisma.schema` الذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي أيضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations و/أو كود لإضافة المعلومات إلى Database، اقرآ [كيفية استخدام Prisma](/ar/usage/prisma).
 
 ## `public`
 
@@ -27,12 +27,11 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ## `src/env`
 
-يستخدم للتحقق من صحة الـ environment variable وتحديد الأنواع (types)، إقرأ المزيد [Environment Variables](usage/env-variables)
+يستخدم للتحقق من صحة الـ environment variable وتحديد الأنواع (types)، اقرأ المزيد [Environment Variables](usage/env-variables)
 
 ## `src/pages`
 
-مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root من `/pages` كالصفحة الأساسية للتطبيق،
-يعمل ملف `__app.tsx` لامداد التطبيق بما تحتاجه من موفر، لقراءة المزيد [Next.js documentation](https://nextjs.org/docs/basic-features/pages).
+مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root من `/pages` كالصفحة الأساسية للتطبيق، يعمل ملف `__app.tsx` لإمداد التطبيق بما تحتاجه من موفر، لقراءة المزيد [Next.js documentation](https://nextjs.org/docs/basic-features/pages).
 
 </div>
 <div data-components="nextauth trpc">
@@ -46,14 +45,14 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-إن ملف `[...nextauth].ts` خط سير التوثيق (authentication slug route) في NextAuth.js، ويستخدم في طلبات التوثيق. إقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات حول catch-all/slug.
+إن ملف `[...nextauth].ts` خط سير التوثيق (authentication slug route) في NextAuth.js، ويستخدم في طلبات التوثيق. اقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات حول catch-all/slug.
 
 </div>
 <div data-components="trpc">
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-يُعتبر ملف `[trpc].ts` المدخل لـ API في tRPC، ويكون مسئول عن تنفيذ طلبات tRPC. إقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و [tRPC usage](usage/trpc#-pagesapitrpctrpcts) لمزيد من المعلومات حول catch-all/slug.
+يُعتبر ملف `[trpc].ts` المدخل لـ API في tRPC، ويكون مسئول عن تنفيذ طلبات tRPC. اقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و [tRPC usage](usage/trpc#-pagesapitrpctrpcts) لمزيد من المعلومات حول catch-all/slug.
 
 </div>
 <div data-components="trpc prisma">
@@ -67,21 +66,21 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `src/server/common`
 
-يحتوي مجلد `common` على الوظائف (Functions) التي تكثر إستخدامها.
+يحتوي مجلد `common` على الوظائف (Functions) التي تكثر استخدامها.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/common/get-server-auth-session.ts`
 
-يستخدم ملف `get-server-auth-session.ts` لجلب الجلسة (Session) الـ NextAuth.js من جانب الـ Server. إقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc) لمزيد من المعلومات.
+يستخدم ملف `get-server-auth-session.ts` لجلب الجلسة (Session) الـ NextAuth.js من جانب السيرفر. اقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc) لمزيد من المعلومات.
 
 </div>
 <div data-components="prisma">
 
 #### `src/server/db/client.ts`
 
-يستخدم ملف `client.ts` لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، إقرأ [Prisma usage](usage/prisma#prisma-client) لمزيد من المعلومات.
+يستخدم ملف `client.ts` لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، اقرأ [Prisma usage](usage/prisma#prisma-client) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
@@ -95,14 +94,14 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/server/trpc/context.ts`
 
-يُستخدم ملف `context.ts` لإنشاء محتوى في كل طلب tRPC، إقرأ [tRPC usage](usage/trpc#-servertrpccontextts) لمزيد من المعلومات.
+يُستخدم ملف `context.ts` لإنشاء محتوى في كل طلب tRPC، اقرأ [tRPC usage](usage/trpc#-servertrpccontextts) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/trpc/trpc.ts`
 
-يستخدم `trpc.ts` لنشر الإجرات المساعدة للتطبيق، إقرأ [tRPC usage](usage/trpc#-servertrpctrpcts) لمزيد من المعلومات.
+يستخدم `trpc.ts` لنشر الإجرات المساعدة للتطبيق، اقرأ [tRPC usage](usage/trpc#-servertrpctrpcts) لمزيد من المعلومات.
 
 </div>
 <div data-components="trpc">
@@ -116,7 +115,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/server/trpc/router/_app.ts`
 
-يُستخدم ملف `_app.ts` لدمج tRPC routers إلى router واحد، وكذلك مع الـ types المحددة، إقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts).
+يُستخدم ملف `_app.ts` لدمج tRPC routers إلى router واحد، وكذلك مع الـ types المحددة، اقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts).
 
 </div>
 <div data-components="nextauth+trpc">
@@ -130,7 +129,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/server/trpc/router/example.ts`
 
-يكون ملف `example.ts` مثال عن إستخدام `publicProcedure` لإنشاء tRPC route عام.
+يكون ملف `example.ts` مثال عن استخدام `publicProcedure` لإنشاء tRPC route عام.
 
 </div>
 <div>
@@ -144,56 +143,56 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `src/types`
 
-يحتوي مجلد `types` على الانواع البيانات (Types) أو الأنواع المحددة (type declarations).
+يحتوي مجلد `types` على الأنواع البيانات (Types) أو الأنواع المحددة (type declarations).
 
 </div>
 <div data-components="nextauth">
 
 #### `src/types/next-auth.d.ts`
 
-يُسنخدم ملف `next-auth.d.ts` للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
+يُستخدم ملف `next-auth.d.ts` للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
 
 </div>
 <div data-components="trpc">
 
 ### `src/utils`
 
-يُستخدم مجلد `utils` لحفظ الـ functions التي يكثر إستخدامها.
+يُستخدم مجلد `utils` لحفظ الـ functions التي يكثر استخدامها.
 
 </div>
 <div data-components="trpc">
 
 #### `src/utils/trpc.ts`
 
-يُستخدم ملف `trpc.ts` كـ entrypoint لـ front-end إلى tRPC، إقرأ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts).
+يُستخدم ملف `trpc.ts` كـ entrypoint لـ front-end إلى tRPC، اقرآ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts).
 
 </div>
 <div>
 
 ### `.env`
 
-يُستخدم ملف `.env` لتخزين environment variables، إقرأ المزيد [Environment Variables](usage/env-variables). يجب ألا يضاف هذا الملف في تاريخ الـ Git.
+يُستخدم ملف `.env` لتخزين environment variables، اقرأ المزيد [Environment Variables](usage/env-variables). يجب ألا يضاف هذا الملف في تاريخ Git.
 
 </div>
 <div>
 
 ### `.env.example`
 
-ملف `.env.example` هو مثال لإستخدام example environment مبني على المكتبات المختارة. يجب أن يضاف هذا الملف في تاريخ الـ Git.
+ملف `.env.example` هو مثال لاستخدام example environment مبني على المكتبات المختارة. يجب أن يضاف هذا الملف في تاريخ Git.
 
 </div>
 <div>
 
 ### `.eslintrc.json`
 
-يٌستخدم ملف `.eslintrc.json` لإعداد ESLint، إقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files).
+يٌستخدم ملف `.eslintrc.json` لإعداد ESLint، اقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files).
 
 </div>
 <div>
 
 ### `next-env.d.ts`
 
-يأكد ملف `next-env.d.ts` أن Typescript تأخذ Types في Next.js في الحسبان. **لا تُعدل عليها ولا تحذفها لأنها تتغير باستمرار**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects).
+يحقق ملف `next-env.d.ts` أن Typescript تأخذ Types في Next.js في الحسبان. **لا تُعدل عليها ولا تحذفها لأنها تتغير باستمرار**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects).
 
 </div>
 <div>
@@ -221,6 +220,6 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `tsconfig.json`
 
-إن ملف `tsconfig.json` ضروري عند استخدام TypeScript. فعيلت بعض الإعدادات الفير افتراضية، مثل `strict mode`، لتوفير أفضل إمكانية للاستخدام الـ TypeScript في Create T3 App ومكتابتها، لمزيد من المعلومات إقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript).
+إن ملف `tsconfig.json` ضروري عند استخدام TypeScript. فعيلت بعض الإعدادات الغير افتراضية، مثل `strict mode`، لتوفير أفضل إمكانية للاستخدام الـ TypeScript في Create T3 App ومكتباتها، لمزيد من المعلومات اقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript).
 
 </div>
