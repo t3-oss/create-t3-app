@@ -22,12 +22,12 @@ export type AvailablePackages = typeof availablePackages[number];
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.18.3",
+  "next-auth": "^4.18.7",
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
-  prisma: "^4.5.0",
-  "@prisma/client": "^4.5.0",
+  prisma: "^4.8.0",
+  "@prisma/client": "^4.8.0",
 
   // TailwindCSS
   tailwindcss: "^3.2.0",
@@ -38,11 +38,11 @@ export const dependencyVersionMap = {
   "@types/prettier": "^2.7.2",
 
   // tRPC
-  "@trpc/client": "^10.0.0",
-  "@trpc/server": "^10.0.0",
-  "@trpc/react-query": "^10.0.0",
-  "@trpc/next": "^10.0.0",
-  "@tanstack/react-query": "^4.16.0",
+  "@trpc/client": "^10.7.0",
+  "@trpc/server": "^10.7.0",
+  "@trpc/react-query": "^10.7.0",
+  "@trpc/next": "^10.7.0",
+  "@tanstack/react-query": "^4.20.0",
   superjson: "1.9.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
