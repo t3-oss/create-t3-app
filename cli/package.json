@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "6.12.0",
+  "version": "7.0.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {

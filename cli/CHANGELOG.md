@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#934](https://github.com/t3-oss/create-t3-app/pull/934) [`c20ec70`](https://github.com/t3-oss/create-t3-app/commit/c20ec705a6d3d3005da24d072cc9be04370ab822) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat!: implement new folder structure
+
+  create-t3-app has decided to switch out the folder structure of the generated t3-app to, what is to us, a more minimal, logical and easier to understand structure.
+
 ## 6.12.0
 
 ### Minor Changes
