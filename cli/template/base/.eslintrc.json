@@ -7,13 +7,6 @@
       "files": ["*.ts", "*.tsx"],
       "parserOptions": {
         "project": "tsconfig.json"
-      },
-      "rules": {
-        // Consider enabling these rules if you'd like a bit more strict linting
-        "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/require-await": "off",
-        "@typescript-eslint/restrict-plus-operands": "off",
-        "@typescript-eslint/restrict-template-expressions": "off"
       }
     }
   ],
