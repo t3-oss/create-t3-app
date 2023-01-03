@@ -40,7 +40,6 @@ yarn-error.log*
 .nuxt/
 tmp/
 temp/
-.eslintcache
 .docusaurus
 
 # MAC
