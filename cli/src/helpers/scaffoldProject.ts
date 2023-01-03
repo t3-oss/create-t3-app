@@ -25,10 +25,13 @@ export const scaffoldProject = async ({
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
-    if (fs.readdirSync(projectDir).length === 0 && projectName !== ".") {
-      spinner.info(
-        `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`,
-      );
+    if (fs.readdirSync(projectDir).length === 0) {
+      if (projectName !== ".")
+        spinner.info(
+          `${chalk.cyan.bold(
+            projectName,
+          )} exists but is empty, continuing...\n`,
+        );
     } else {
       spinner.stopAndPersist();
       const { overwriteDir } = await inquirer.prompt<{
