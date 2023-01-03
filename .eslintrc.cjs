@@ -1,6 +1,6 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
-  plugins: ["unicorn", "turbo"],
+  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
+  plugins: ["turbo"],
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
@@ -34,12 +34,5 @@ module.exports = {
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
     ],
-    "unicorn/filename-case": [
-      "error",
-      {
-        case: "camelCase",
-      },
-    ],
-    "prettier/prettier": ["error", { endOfLine: "auto" }],
   },
 };

@@ -36,18 +36,6 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       extends: ["plugin:@typescript-eslint/recommended"],
-      rules: {
-        "unicorn/filename-case": [
-          "error",
-          {
-            cases: {
-              camelCase: true,
-              // FIXME: Temporarily Accepting pascalCase for React files, see https://github.com/withastro/astro/issues/4220.
-              pascalCase: true,
-            },
-          },
-        ],
-      },
     },
   ],
 };
