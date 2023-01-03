@@ -73,7 +73,7 @@ This is done in a two step process:
 
 1. Grab the session from the request headers using the [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) function. Don't worry, this function is safe to use - the name includes `unstable` only because the API implementation might change in the future. The advantage of using `unstable_getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away.
 
-```ts:server/common/get-server-auth-session.ts
+```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -84,8 +84,8 @@ export const getServerAuthSession = async (ctx: {
 
 Using this helper function, we can grab the session and pass it through to the tRPC context:
 
-```ts:server/trpc/context.ts
-import { getServerAuthSession } from "../common/get-server-auth-session";
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
@@ -98,7 +98,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +116,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({

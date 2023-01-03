@@ -1,6 +1,6 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
-  plugins: ["unicorn", "turbo"],
+  plugins: ["turbo"],
   extends: [
     "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     "plugin:prettier/recommended",
@@ -16,12 +16,14 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-floating-promises": "error",
-    "unicorn/filename-case": [
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
+    "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        case: "camelCase",
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
       },
     ],
-    "prettier/prettier": ["error", { endOfLine: "auto" }],
   },
 };
