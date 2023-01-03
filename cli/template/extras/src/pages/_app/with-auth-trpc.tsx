@@ -8,10 +8,10 @@ import "../styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps,
 }) => {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
       <Component {...pageProps} />
     </SessionProvider>
   );
