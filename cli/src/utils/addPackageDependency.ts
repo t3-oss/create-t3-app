@@ -22,10 +22,8 @@ export const addPackageDependency = (opts: {
     const version = dependencyVersionMap[pkgName];
 
     if (devMode) {
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       pkgJson.devDependencies![pkgName] = version;
     } else {
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       pkgJson.dependencies![pkgName] = version;
     }
   });
