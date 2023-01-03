@@ -25,7 +25,7 @@ export const scaffoldProject = async ({
   const spinner = ora(`Scaffolding in: ${projectDir}...\n`).start();
 
   if (fs.existsSync(projectDir)) {
-    if (fs.readdirSync(projectDir).length === 0) {
+    if (fs.readdirSync(projectDir).length === 0 && projectName !== ".") {
       spinner.info(
         `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`,
       );
@@ -60,7 +60,7 @@ export const scaffoldProject = async ({
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
-        process.exit(0);
+        process.exit(1);
       }
 
       const overwriteAction =
@@ -79,7 +79,7 @@ export const scaffoldProject = async ({
 
       if (!confirmOverwriteDir) {
         spinner.fail("Aborting installation...");
-        process.exit(0);
+        process.exit(1);
       }
 
       if (overwriteDir === "clear") {
