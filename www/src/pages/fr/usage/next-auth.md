@@ -36,7 +36,7 @@ const User = () => {
 
 ## Inclusion de `user.id` dans la Session
 
-`create-t3-app` est configuré pour utiliser le [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) dans la configuration NextAuth.js pour inclure l'ID de l'utilisateur dans le objet "session".
+Create T3 App est configuré pour utiliser le [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) dans la configuration NextAuth.js pour inclure l'ID de l'utilisateur dans le objet "session".
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -153,7 +153,7 @@ Si, par exemple, vous souhaitez ajouter un `role` au modèle `User`, vous devrez
 
 ## Utilisation avec le middleware Next.js
 
-Utilisation de NextAuth.js avec le middleware Next.js [nécessite l'utilisation de la stratégie de session JWT](https://next-auth.js.org/configuration/nextjs#caveats) pour l'authentification. En effet, le middleware ne peut accéder au cookie de session que s'il s'agit d'un JWT. Par défaut, `create-t3-app` est configuré pour utiliser la stratégie de base de données **default**, en combinaison avec Prisma comme adaptateur de base de données.
+Utilisation de NextAuth.js avec le middleware Next.js [nécessite l'utilisation de la stratégie de session JWT](https://next-auth.js.org/configuration/nextjs#caveats) pour l'authentification. En effet, le middleware ne peut accéder au cookie de session que s'il s'agit d'un JWT. Par défaut, Create T3 App est configuré pour utiliser la stratégie de base de données **default**, en combinaison avec Prisma comme adaptateur de base de données.
 
 ## Configuration du DiscordProvider par défaut
 
