@@ -37,7 +37,6 @@ export const serverEnv = {
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
 };
 
-
 /**
  * Specify your client-side environment variables schema here.
  * This way you can ensure the app isn't built with invalid env vars.
