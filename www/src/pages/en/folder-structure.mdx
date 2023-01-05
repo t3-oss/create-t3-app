@@ -63,7 +63,7 @@ The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is 
 The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 </div>
-<div data-components="trpc prisma">
+<div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
@@ -72,72 +72,57 @@ The `server` folder is used to clearly separate server-side code from client-sid
 </div>
 <div data-components="nextauth+trpc">
 
-### `src/server/common`
+#### `src/server/auth.ts`
 
-The `common` folder contains commonly re-used server-side code.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/common/get-server-auth-session.ts`
-
-The `get-server-auth-session.ts` file is used to get the NextAuth.js session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+Contains utlities for authentication such as retriving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 </div>
 <div data-components="prisma">
 
-#### `src/server/db/client.ts`
+#### `src/server/db.ts`
 
-The `client.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) for more information.
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc`
-
-The `trpc` folder contains the tRPC server-side code.
+The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/context.ts`
+### `src/server/api`
 
-The `context.ts` file is used to create the context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/trpc.ts`
-
-The `trpc.ts` file is used to export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+The `api` folder contains the tRPC server-side code.
 
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc/router`
+#### `src/server/api/routers`
 
-The `router` folder contains the tRPC routers.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/router/_app.ts`
-
-The `_app.ts` file is used to merge tRPC routers and export them as a single router, as well as the type definitions. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-The `auth.ts` file is an example tRPC router utilizing the `protectedProcedure` helper to demonstrate how to protect a tRPC route with NextAuth.js.
+The `routers` folder contains all your tRPC sub-routers.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/routers/example.ts`
 
 The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+
+Depending on your chosen packages this router contains more or less routes to best demonstrate the usage to your needs.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+The `trpc.ts` file is the main configuration file for your tRPC back-end. In here we:
+
+1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
+2. Export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
 
 </div>
 <div>
@@ -170,9 +155,9 @@ The `utils` folder is used to store commonly re-used utility functions.
 </div>
 <div data-components="trpc">
 
-#### `src/utils/trpc.ts`
+#### `src/utils/api.ts`
 
-The `trpc.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
 
 </div>
 <div>
@@ -228,6 +213,6 @@ The `prettier.config.cjs` file is used to configure Prettier to include the pret
 
 ### `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for create-t3-app and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
 
 </div>

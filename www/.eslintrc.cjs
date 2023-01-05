@@ -42,16 +42,6 @@ module.exports = {
           { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
         ],
         "@typescript-eslint/no-non-null-assertion": "off",
-        "unicorn/filename-case": [
-          "error",
-          {
-            cases: {
-              camelCase: true,
-              // FIXME: Temporarily Accepting pascalCase for React files, see https://github.com/withastro/astro/issues/4220.
-              pascalCase: true,
-            },
-          },
-        ],
       },
     },
   ],
