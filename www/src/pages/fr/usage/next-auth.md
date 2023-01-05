@@ -73,7 +73,7 @@ Cela se fait en deux étapes :
 
 1. Récupérez la session à partir des en-têtes de requête à l'aide de la fonction [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Ne vous inquiétez pas, cette fonction est sûre à utiliser - le nom inclut "unstable" uniquement parce que l'implémentation de l'API peut changer à l'avenir. L'avantage d'utiliser `unstable_getServerSession` au lieu de `getSession` est qu'il s'agit d'une fonction côté serveur uniquement et qu'elle ne déclenche pas d'appels de récupération inutiles. `create-t3-app` crée une fonction d'assistance qui résume cette API particulière.
 
-```ts:server/common/get-server-auth-session.ts
+```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -84,8 +84,8 @@ export const getServerAuthSession = async (ctx: {
 
 En utilisant cette fonction d'assistance, nous pouvons récupérer la session et la transmettre au contexte tRPC :
 
-```ts:server/trpc/context.ts
-import { getServerAuthSession } from "../common/get-server-auth-session";
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
@@ -98,7 +98,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 2. Créez un middleware tRPC qui vérifie si l'utilisateur est authentifié. Nous utilisons ensuite le middleware dans une `protectedProcedure`. Tout appelant à ces procédures doit être authentifié, sinon une erreur sera générée qui pourra être gérée de manière appropriée par le client.
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +116,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 L'objet de session est une représentation légère et minimale de l'utilisateur et ne contient que quelques champs. Lorsque vous utilisez les `protectedProcedures`, vous avez accès à l'identifiant de l'utilisateur qui peut être utilisé pour extraire plus de données de la base de données.
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
