@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- [#1043](https://github.com/t3-oss/create-t3-app/pull/1043) [`6fe7e1e`](https://github.com/t3-oss/create-t3-app/commit/6fe7e1e1025f46ea8fe6cc82bee7a68e96864078) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix(cli): exit with error code when aborting installation
+  fix(cli): don't log when scaffolding in current directory and it's empty
+
 ## 7.0.0
 
 ### Major Changes
