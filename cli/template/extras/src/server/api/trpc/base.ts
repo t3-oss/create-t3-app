@@ -39,7 +39,7 @@ const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
 /**
  * This is the actual context you'll use in your router. It will be used to
  * process every request that goes through your tRPC endpoint
- * @link https://trpc.io/docs/context
+ * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
   return await createInnerTRPCContext({});
