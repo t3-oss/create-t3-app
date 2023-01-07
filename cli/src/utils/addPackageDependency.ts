@@ -4,7 +4,7 @@ import { type PackageJson } from "type-fest";
 import {
   dependencyVersionMap,
   AvailableDependencies,
-} from "~/installers/dependencyVersionMap";
+} from "~/installers/dependencyVersionMap.js";
 import sortPackageJson from "sort-package-json";
 
 export const addPackageDependency = (opts: {
