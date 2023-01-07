@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.2
+
+### Patch Changes
+
+- [#1056](https://github.com/t3-oss/create-t3-app/pull/1056) [`c6704fb`](https://github.com/t3-oss/create-t3-app/commit/c6704fbeef1473e77ad62543770f1804645389a8) Thanks [@prashantrahul141](https://github.com/prashantrahul141)! - fix: update `package.json->name` before installing dependencies.
+
 ## 7.0.1
 
 ### Patch Changes
