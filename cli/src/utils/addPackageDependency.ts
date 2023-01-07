@@ -19,9 +19,6 @@ export const addPackageDependency = (opts: {
   ) as PackageJson;
 
   dependencies.forEach((pkgName) => {
-    // If these disables are still here after TypeScript@5, file an issue.
-    // See https://github.com/t3-oss/create-t3-app/pull/1036#discussion_r1060505136
-    /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
     const version = dependencyVersionMap[pkgName];
 
     if (devMode) {
@@ -29,7 +26,6 @@ export const addPackageDependency = (opts: {
     } else {
       pkgJson.dependencies![pkgName] = version;
     }
-    /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
   });
   const sortedPkgJson = sortPackageJson(pkgJson);
 

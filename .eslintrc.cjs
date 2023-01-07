@@ -18,6 +18,16 @@ module.exports = {
         "@typescript-eslint/require-await": "off",
         "@typescript-eslint/restrict-plus-operands": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
+
+        // These rules are only disabled because we hit a bug in linting.
+        // See https://github.com/t3-oss/create-t3-app/pull/1036#discussion_r1060505136
+        // If you still see the bug once TypeScript@5 is used, please let typescript-eslint know!
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
       },
     },
   ],
