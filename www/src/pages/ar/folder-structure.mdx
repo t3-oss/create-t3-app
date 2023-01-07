@@ -62,18 +62,18 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 يُستخدم مجلد `server` للفصل بوضوح بين الكود من جانب السيرفر (Server Side) والكود من جانب العميل (Client Side).
 
 </div>
-<div data-components="nextauth+trpc">
+<div data-components="nextauth">
 
-### `src/server/common`
+### `src/server/auth.ts`
 
-يحتوي مجلد `common` على الوظائف (Functions) التي تكثر استخدامها.
+يحتوي على الوظائف الخادمة (utlities) التي تقوم بالتوثيق مثل استرداد جلسة المستخدم (user session) من جانب السيرفر. اقرأ [NextAuth.js](https://create.t3.gg/ar/usage/next-auth#usage-with-trpc) للمزيد من المعلومات.
 
 </div>
-<div data-components="nextauth+trpc">
+<div data-components="prisma">
 
-#### `src/server/common/get-server-auth-session.ts`
+#### `src/server/db.ts`
 
-يستخدم ملف `get-server-auth-session.ts` لجلب الجلسة (Session) الـ NextAuth.js من جانب السيرفر. اقرأ [NextAuth.js usage](usage/next-auth#usage-with-trpc) لمزيد من المعلومات.
+يستخدم ملف `db.ts` ليوضح استخدام Prisma client بشكل شامل. اقرأ [استخدام Prisma](https://create.t3.gg/ar/usage/prisma#prisma-client) و[افضل الطرق لاستخدام Prisma client مع Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) لمزيد من المعلومات.
 
 </div>
 <div data-components="prisma">
@@ -85,53 +85,46 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc`
+### `src/server/api`
 
 مجلد tRPC يحتوي على كود tRPC للسيرفر.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/context.ts`
+#### `src/server/api/routers`
 
-يُستخدم ملف `context.ts` لإنشاء محتوى في كل طلب tRPC، اقرأ [tRPC usage](usage/trpc#-servertrpccontextts) لمزيد من المعلومات.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/trpc.ts`
-
-يستخدم `trpc.ts` لنشر الإجرات المساعدة للتطبيق، اقرأ [tRPC usage](usage/trpc#-servertrpctrpcts) لمزيد من المعلومات.
+يُحتوي مجلد `routers` على كل وطائفك الوصول الفرعية (sub-routers) لمكتبة tRPC.
 
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc/router`
+#### `src/server/api/routers/example.ts`
 
-يحتوي مجلد `router` على tRPC routers.
+إن ملف `example.ts` مثال عن وظيفة الوصول tRPC التي تستخدم `publicProcedure` الوطيفة المساعدة (helper) لتوضيح كيف ينشئ وظيفة وصول من tRPC.
 
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/router/_app.ts`
-
-يُستخدم ملف `_app.ts` لدمج tRPC routers إلى router واحد، وكذلك مع الـ types المحددة، اقرأ المزيد هنا [tRPC usage](usage/trpc#-servertrpcrouterts).
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-يكون ملف `auth.ts` مثال عن استخدام مساعد `protectedProcedure` لحماية route معين.
+سوف يحتوي الملف على وظائف بأعداد مختلفة طبقا لأختيراتك، لتوضيح الاستخدام حسب احتياجك.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/trpc.ts`
 
-يكون ملف `example.ts` مثال عن استخدام `publicProcedure` لإنشاء tRPC route عام.
+إن ملف `trpc.ts` الملف الرئيسي لإعدادات back-end في tRPC. هنا:
+
+1. يحدد المحتوى المستخدم في طلبات tRPC. اقرأ [استعمال tRPC](https://create.t3.gg/ar/usage/trpc#-servertrpccontextts) للمزيد من المعلومات.
+
+2. يورد (export) نهج الوطيفة المساعدة. اقرأ [استعمال tRPC](https://create.t3.gg/ar/usage/trpc#-servertrpctrpcts) للمزيد من المعلومات.
 
 </div>
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+يُستخدم ملف `root.ts` لدمج وظائف tRPC للوصول, وتوريدهم كوظيفة وصول واحدة، وكذلك أنواع بيانات الوظيفة المحددة، اقرأ المزيد هنا [tRPC usage](https://create.t3.gg/ar/usage/trpc#-servertrpcrouterts).
+
+</div>
+
 <div>
 
 ### `src/styles`
