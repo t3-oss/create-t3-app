@@ -1,5 +1,20 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- [#1043](https://github.com/t3-oss/create-t3-app/pull/1043) [`6fe7e1e`](https://github.com/t3-oss/create-t3-app/commit/6fe7e1e1025f46ea8fe6cc82bee7a68e96864078) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix(cli): exit with error code when aborting installation
+  fix(cli): don't log when scaffolding in current directory and it's empty
+
+## 7.0.0
+
+### Major Changes
+
+- [#934](https://github.com/t3-oss/create-t3-app/pull/934) [`c20ec70`](https://github.com/t3-oss/create-t3-app/commit/c20ec705a6d3d3005da24d072cc9be04370ab822) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat!: implement new folder structure
+
+  create-t3-app has decided to switch out the folder structure of the generated t3-app to, what is to us, a more minimal, logical and easier to understand structure.
+
 ## 6.12.0
 
 ### Minor Changes

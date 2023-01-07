@@ -20,6 +20,12 @@ body:
       description: A clear and concise description of the bug, as well as what you expected to happen when encountering it.
     validations:
       required: true
+  - type: input
+    attributes:
+      label: Reproduction repo
+      description: If applicable, please provide a link to a reproduction repo or a Stackblitz / CodeSandbox project. Your issue may be closed if this is not provided and we are unable to reproduce the issue. If your bug is a documentaion issue, link the appropriate page.
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: To reproduce
