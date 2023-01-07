@@ -75,7 +75,7 @@ const AuthShowcase: React.FC = () => {
       </p>
       <button
         className={styles.loginButton}
-        onClick={sessionData ? () => signOut() : () => signIn()}
+        onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>

@@ -9,7 +9,7 @@ type Options = {
 export const fetchGithub = async (url: string, opts: Options) => {
   const { throwIfNotOk = true, throwIfNoAuth = true } = opts;
 
-  const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
+  const token = import.meta.env.PUBLIC_GITHUB_TOKEN as string | undefined;
 
   if (!token) {
     const msg =
@@ -30,11 +30,15 @@ export const fetchGithub = async (url: string, opts: Options) => {
     },
   });
 
-  const data = await res.json();
+  const data = (await res.json()) as unknown;
 
   if (!res.ok) {
     const msg = `Request to fetch ${url} failed. Reason: ${res.statusText}
-    Message: ${data.message}`;
+    Message: ${
+      data && typeof data === "object" && "message" in data
+        ? data.message
+        : "unknown"
+    }`;
     if (throwIfNotOk) {
       throw new Error(msg);
     }
