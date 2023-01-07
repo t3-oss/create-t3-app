@@ -34,6 +34,29 @@ const User = () => {
 };
 ```
 
+## Récupérer la session côté serveur
+
+Parfois, vous souhaiterez demander la session côté serveur. Pour ce faire, prérécupérez la session à l'aide du helper `getServerAuthSession` fournie par `create-t3-app` et transmettez-le au client à l'aide de `getServerSideProps` :
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import type { GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+
+  ...
+}
+```
+
 ## Inclusion de `user.id` dans la Session
 
 Create T3 App est configuré pour utiliser le [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) dans la configuration NextAuth.js pour inclure l'ID de l'utilisateur dans le objet "session".
