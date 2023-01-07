@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [#1036](https://github.com/t3-oss/create-t3-app/pull/1036) [`c5ca65e`](https://github.com/t3-oss/create-t3-app/commit/c5ca65e03e2a9d1c3c7f6844eb678402b0fa8993) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - use typescript-eslint's recommended-required-type-checking
+
 ## 7.0.2
 
 ### Patch Changes
