@@ -4,7 +4,7 @@ import { type PackageJson } from "type-fest";
 import {
   dependencyVersionMap,
   AvailableDependencies,
-} from "~/installers/index.js";
+} from "~/installers/dependencyVersionMap.js";
 import sortPackageJson from "sort-package-json";
 
 export const addPackageDependency = (opts: {
@@ -22,10 +22,8 @@ export const addPackageDependency = (opts: {
     const version = dependencyVersionMap[pkgName];
 
     if (devMode) {
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       pkgJson.devDependencies![pkgName] = version;
     } else {
-      //eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       pkgJson.dependencies![pkgName] = version;
     }
   });

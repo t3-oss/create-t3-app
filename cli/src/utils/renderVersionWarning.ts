@@ -37,6 +37,11 @@ export const renderVersionWarning = (npmVersion: string) => {
  * https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/LICENSE
  */
 import https from "https";
+
+type DistTagsBody = {
+  latest: string;
+};
+
 function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https
@@ -47,7 +52,7 @@ function checkForLatestVersion(): Promise<string> {
             let body = "";
             res.on("data", (data) => (body += data));
             res.on("end", () => {
-              resolve(JSON.parse(body).latest);
+              resolve((JSON.parse(body) as DistTagsBody).latest);
             });
           } else {
             reject();
