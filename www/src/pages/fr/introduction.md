@@ -39,4 +39,4 @@ Nous aimons notre technologie de pointe. La vitesse et honnêtement le fun qu'ap
 
 ### La sécurité de typage n'est pas facultative
 
-L'objectif déclaré de `create-t3-app` est de fournir le moyen le plus rapide de démarrer une nouvelle application Web **typesafe** complète. Nous prenons la sécurité des caractères au sérieux dans ces parties, car elle améliore notre productivité et nous aide à expédier moins de bogues. Toute décision qui compromet la nature typesafe de `create-t3-app` est une décision qui doit être prise dans un projet différent.
+L'objectif déclaré de Create T3 App est de fournir le moyen le plus rapide de démarrer une nouvelle application Web **typesafe** complète. Nous prenons la sécurité des caractères au sérieux dans ces parties, car elle améliore notre productivité et nous aide à expédier moins de bogues. Toute décision qui compromet la nature typesafe de Create T3 App est une décision qui doit être prise dans un projet différent.
