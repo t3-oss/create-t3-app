@@ -20,10 +20,10 @@ export const dependencyVersionMap = {
   "@types/prettier": "^2.7.2",
 
   // tRPC
-  "@trpc/client": "^10.7.0",
-  "@trpc/server": "^10.7.0",
-  "@trpc/react-query": "^10.7.0",
-  "@trpc/next": "^10.7.0",
+  "@trpc/client": "^10.8.1",
+  "@trpc/server": "^10.8.1",
+  "@trpc/react-query": "^10.8.1",
+  "@trpc/next": "^10.8.1",
   "@tanstack/react-query": "^4.20.0",
   superjson: "1.9.1",
 } as const;
