@@ -28,6 +28,10 @@ export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -114,6 +118,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTA:** Uma string vazia ainda é uma string, então `z.string()` aceitará uma string vazia como um valor válido. Se você quiser ter certeza de que a variável de ambiente não está vazia, você pode usar `z.string().min(1)`._
