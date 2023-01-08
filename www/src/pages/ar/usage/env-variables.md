@@ -29,6 +29,10 @@ export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -105,6 +109,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 **ملحوطة:** النص الفارغ تتعامل معة zod علي أنه نص صحيح، إذا ما اردت ان تُغيّر هذا الاسلوب فإستخدم `z.string().min(1)`

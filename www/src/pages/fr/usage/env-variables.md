@@ -29,6 +29,10 @@ export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -117,6 +121,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTE:** Une chaîne vide est toujours une chaîne, donc `z.string()` acceptera une chaîne vide comme valeur valide. Si vous voulez vous assurer que la variable d'environnement n'est pas vide, vous pouvez utiliser `z.string().min(1)`._

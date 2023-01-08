@@ -21,12 +21,16 @@ _TLDR; If you want to add a new environment variable, you must add it to both yo
 
 ## schema.mjs
 
-This is the file you will actually touch. It contains two schemas, one for server-side environment variables and one for client-side as well as a `clientEnv` object.
+This is the file you will actually touch. It contains two schemas & environment objects, one for server-side environment variables and one for client-side.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
+
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
 
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
@@ -116,6 +120,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
