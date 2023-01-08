@@ -1,11 +1,11 @@
 ---
 title: Variables d'environnement
-description: Débuter avec create-t3-app
+description: Débuter avec Create T3 App
 layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-Create-T3-App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
+Create T3 App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
 
 📁 src/env
 

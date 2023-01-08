@@ -63,7 +63,7 @@ Le fichier `[...nextauth].ts` est la route d'authentification NextAuth.js. Il es
 Le fichier `[trpc].ts` est le point d'entrée de l'API tRPC. Il est utilisé pour gérer les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-pagesapitrpctrpcts) pour plus d'informations sur ce fichier, et la [documentation Next.js sur les routes dynamiques](https://nextjs.org/docs/routing/dynamic-routes) pour plus d'informations sur les routes fourre-tout / slug.
 
 </div>
-<div data-components="trpc prisma">
+<div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
@@ -72,72 +72,56 @@ Le dossier `server` est utilisé pour séparer clairement le code côté serveur
 </div>
 <div data-components="nextauth+trpc">
 
-### `src/server/common`
+### `src/server/auth.ts`
 
-Le dossier "common" contient du code côté serveur couramment réutilisé.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/common/get-server-auth-session.ts`
-
-Le fichier `get-server-auth-session.ts` est utilisé pour obtenir la session NextAuth.js côté serveur. Voir [utilisation de NextAuth.js](usage/next-auth#utilisation-avec-trpc) pour plus d'informations.
+Contient des utilitaires d'authentification tels que la récupération de la session de l'utilisateur côté serveur. Voir [utilisation de NextAuth.js](usage/next-auth#utilisation-avec-trpc) pour plus d'informations.
 
 </div>
 <div data-components="prisma">
 
-#### `src/server/db/client.ts`
+#### `src/server/db.ts`
 
-Le fichier `client.ts` est utilisé pour instancier le client Prisma au niveau global. Voir [Utilisation de Prisma](usage/prisma#prisma-client) pour plus d'informations.
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc`
-
-Le dossier `trpc` contient le code côté serveur de tRPC.
+Le fichier `db.ts` est utilisé pour instancier le client Prisma au niveau global. Voir [Utilisation de Prisma](usage/prisma#prisma-client) et [meilleures pratiques pour utiliser Prisma avec Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) pour plus d'informations.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/context.ts`
+### `src/server/api`
 
-Le fichier `context.ts` est utilisé pour créer le contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/trpc.ts`
-
-Le fichier `trpc.ts` est utilisé pour exporter les assistants de procédure. Voir [utilisation de tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
+Le dossier `api` contient le code côté serveur de tRPC.
 
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc/router`
+#### `src/server/api/routers`
 
-Le dossier `router` contient les routeurs tRPC.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/router/_app.ts`
-
-Le fichier `_app.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que les définitions de type. Voir [utilisation de tRPC](usage/trpc#-servertrpcrouterts) pour plus d'informations.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-Le fichier `auth.ts` est un exemple de routeur tRPC utilisant l'assistant `protectedProcedure` pour montrer comment protéger une route tRPC avec NextAuth.js.
+Le dossier `routers` contient tous vos sous-routeurs tRPC.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/routers/example.ts`
 
-Le fichier `example.ts` est un exemple de routeur tRPC utilisant l'assistant `publicProcedure` pour montrer comment créer une route tRPC publique.
+Le fichier `example.ts` est un exemple de routeur tRPC utilisant le helper `publicProcedure` pour montrer comment créer une route tRPC publique.
+
+En fonction des packages choisis, ce routeur contient plus ou moins de routes pour démontrer au mieux l'utilisation à vos besoins.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+Le fichier `trpc.ts` est le fichier de configuration principal de votre back-end tRPC. Ici, vous trouverez:
+
+1. La définissons du contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
+2. Le helper de procédure d'exportation. Voir [utilisation de tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que la définition du type de routeur. Voir [utilisation du tRPC](usage/trpc#-servertrpcrourts) pour plus d'informations.
 
 </div>
 <div>
@@ -170,9 +154,9 @@ Le dossier `utils` est utilisé pour stocker les fonctions utilitaires courammen
 </div>
 <div data-components="trpc">
 
-#### `src/utils/trpc.ts`
+#### `src/utils/api.ts`
 
-Le fichier `trpc.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
+Le fichier `api.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
 
 </div>
 <div>
@@ -228,6 +212,6 @@ Le fichier `prettier.config.cjs` est utilisé pour configurer Prettier afin d'in
 
 ### `tsconfig.json`
 
-Le fichier `tsconfig.json` est utilisé pour configurer TypeScript. Certaines valeurs autres que celles par défaut, telles que le `strict mode`, ont été activées pour garantir la meilleure utilisation de TypeScript pour create-t3-app et ses librairies. Voir la [documentation de TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) ou [Utilisation de TypeScript](usage/typescript) pour plus d'informations.
+Le fichier `tsconfig.json` est utilisé pour configurer TypeScript. Certaines valeurs autres que celles par défaut, telles que le `strict mode`, ont été activées pour garantir la meilleure utilisation de TypeScript pour Create T3 App et ses librairies. Voir la [documentation de TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) ou [Utilisation de TypeScript](usage/typescript) pour plus d'informations.
 
 </div>
