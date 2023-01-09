@@ -8,6 +8,7 @@
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+import type { inferReactQueryProcedureOptions } from "@trpc/react-query";
 import superjson from "superjson";
 
 import { type AppRouter } from "../server/api/root";
@@ -63,3 +64,8 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  * @example type HelloOutput = RouterOutputs['example']['hello']
  **/
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
+/**
+ * Inference helper for useQuery options
+ * @example type HelloOptions = ReactQueryOptions['example']['hello']
+ **/
+export type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
