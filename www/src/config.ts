@@ -33,6 +33,7 @@ export const KNOWN_LANGUAGES = {
   pt: "Português",
   ru: "Русский",
   no: "Norsk",
+  is: "Íslenska",
   "zh-hans": "简体中文",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
@@ -246,6 +247,35 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "no/deployment/docker" },
     ],
   },
+  is: {
+    "Create T3 App": [
+      { text: "Inngangur", link: "is/introduction" },
+      { text: "Afhverju CT3A?", link: "is/why" },
+      { text: "Uppsetning", link: "is/installation" },
+      { text: "Möppuuppbygging", link: "is/folder-structure" },
+      { text: "Algengar spurningar", link: "is/faq" },
+      { text: "T3 Safn", link: "is/t3-collection" },
+      { text: "Aðrar ráðleggingar", link: "is/other-recs" },
+    ],
+    Usage: [
+      { text: "Fyrstu Skref", link: "is/usage/first-steps" },
+      { text: "Next.js", link: "is/usage/next-js" },
+      { text: "TypeScript", link: "is/usage/typescript" },
+      { text: "tRPC", link: "is/usage/trpc" },
+      { text: "Prisma", link: "is/usage/prisma" },
+      { text: "NextAuth.js", link: "is/usage/next-auth" },
+      {
+        text: "Umhverfisbreytur",
+        link: "is/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "is/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "is/deployment/vercel" },
+      { text: "Netlify", link: "is/deployment/netlify" },
+      { text: "Docker", link: "is/deployment/docker" },
+    ],
+  },
   "zh-hans": {
     "Create T3 App": [
       { text: "简介", link: "zh-hans/introduction" },
@@ -311,6 +341,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "Bruk",
     Deployment: "Utrulling",
+  },
+  is: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Notkun",
+    Deployment: "Framtefling",
   },
   "zh-hans": {
     "Create T3 App": "Create T3 App",
