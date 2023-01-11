@@ -22,7 +22,7 @@ dir: rtl
 
 ## ملف schema.mjs
 
-هذا هو الملف الذي ستعمل علية. يَحتوي على مُخططين ، أحدهما environment variables من جانب الخادم والآخر من جانب العميل بالإضافة إلى Object الـ "clientEnv".
+هذا هو الملف الذي ستعمل علية. يَحتوي على مُخططين ، أحدهما environment variables من جانب الخادم والآخر من جانب العميل ".
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -32,10 +32,6 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### الـ Server Schema
@@ -46,8 +42,6 @@ export const clientEnv = {
 ### الـ Client Schema
 
 أنشئ الـ client-side environment variables هنا، حتى تجعلهم متاحيت للـ client أضف `NEXT_PUBLIC` قبل الاسم.
-
-### الـ clientEnv Object
 
 هُنا حيثُ تقوم بعمل Destruct لـ `process.env`
 تحتاج Zod الي Object لتكون قادرة على تصحيح المُدخلات وبسبب طريقة عمل Next.js فلن نستطيع فعل هذا تلقائيا لذلك يجب أن تتم هذة العملية يدويا، لا تقلق فـ Typescript تقوم بتحذيرك إذا ارتكبت خطاّ.

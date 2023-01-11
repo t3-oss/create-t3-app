@@ -1,10 +1,5 @@
 import clsx from "clsx";
-import {
-  KnownLanguageCode,
-  SIDEBAR,
-  SIDEBAR_HEADER_MAP,
-  type OuterHeaders,
-} from "../../config";
+import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
@@ -12,7 +7,7 @@ type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
-  const isRtl = getIsRtlFromLangCode((lang ?? "en") as KnownLanguageCode);
+  const isRtl = getIsRtlFromLangCode(lang ?? "en");
   const slugToEntryPath = (slug: SlugType) => {
     switch (slug) {
       case "":

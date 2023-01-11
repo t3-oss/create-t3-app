@@ -17,8 +17,9 @@ const engUrl = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=w
 // File may not be on Github yet, so we only throw an error if we're in production
 async function getCommitDiff() {
   try {
-    const thisLangCommit = await fetchGithub(url, {});
-    const englishCommit = await fetchGithub(engUrl, {});
+    // FIXME: type this???
+    const thisLangCommit = (await fetchGithub(url, {})) as any[];
+    const englishCommit = (await fetchGithub(engUrl, {})) as any[];
 
     const thisLangDate = thisLangCommit.length
       ? new Date(thisLangCommit[0].commit.author.date)

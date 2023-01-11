@@ -25,6 +25,9 @@ Vous avez réalisé un projet à l'aide de la stack T3 et souhaitez le partager 
 | The Doom                                                                     | [moltivie/slug](https://github.com/Moltivie/the-t3-stack)                   | [the-t3-stack.vercel.app](https://the-t3-stack.vercel.app)                        |
 | Railtrack                                                                    | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 | Boutique KARA - Site e-commerce                                              | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
+| Tauri T3 App - Application Tauri qui utilise la T3 Stack                     | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
+| Azon - Site e-commerce                                                       | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
+| Analyzemyrepo.com - Informations utiles pour **tout** GitHub repo            | [CrowdDotDev/analyzemyrepo](https://github.com/CrowdDotDev/analyzemyrepo)   | [analyzemyrepo.com](https://analyzemyrepo.com)                                    |
 
 ## Entreprises utilisant la stack T3
 

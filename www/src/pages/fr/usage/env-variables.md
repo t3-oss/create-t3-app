@@ -1,11 +1,11 @@
 ---
 title: Variables d'environnement
-description: Débuter avec create-t3-app
+description: Débuter avec Create T3 App
 layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-Create-T3-App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
+Create T3 App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
 
 📁 src/env
 
@@ -22,7 +22,7 @@ _TLDR; Si vous désirez ajouter une nouvelle variable d’environnement, vous de
 
 ## schema.mjs
 
-C'est le fichier que vous allez modifier. Il contient deux schémas, l'un est pour les variables d'environnement côté serveur et le second est pour le côté client connu sous l'objet `clientEnv`.
+C'est le fichier que vous allez modifier. Il contient deux schémas, l'un est pour les variables d'environnement côté serveur et le second est pour le côté client connu.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -32,10 +32,6 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### Schéma Serveur
@@ -49,14 +45,6 @@ Faites attention à ne pas préfixer vos clefs avec `NEXT_PUBLIC`. La validation
 Définissez votre schéma de variables d'environnement du côté client ici.
 
 Pour les exposer au client, vous devez les préfixer avec `NEXT_PUBLIC`. La validation échouera si vous ne le faites pas, afin de vous aider à détecter une configuration non valide.
-
-### Objet clientEnv
-
-Déstructurez `process.env` ici.
-
-Nous avons besoin d'un objet JavaScript avec lequel nous pouvons analyser nos schémas Zod et en raison de la façon dont Next.js gère les variables d'environnement, vous ne pouvez pas déstructurez `process.env` comme un objet régulier. Du coup nous devons le faire manuellement.
-
-TypeScript vous aidera à vous assurer que vous avez entré les clés dans `clientEnv` ainsi que `clientSchema`.
 
 ```ts
 // ❌ Cela ne fonctionne pas, nous devons le déstructurer manuellement
