@@ -1,6 +1,6 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: Möppuuppbygging
+description: Möppuuppbygging nýs T3 verkefni
 layout: ../../layouts/docs.astro
 lang: en
 ---
@@ -8,7 +8,8 @@ lang: en
 import Form from "../../components/docs/folderStructureForm.astro";
 import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
-Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
+Vinsamlegast veldu þá pakka sem þú ætlar að nota og sjáðu möppuuppbyggingu á verkefninu með þeim valkostum. Fyrir neðan finnur þú innihaldslýsingu á hverri möppu.  
+
 
 <Form />
 
@@ -18,91 +19,91 @@ Please select your packages to see the folder structure of a newly scaffolded ap
 
 ### `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
+Mappan `prisma` inniheldur skránna `schema.prisma` sem er notuð til þess að stilla gagnagrunstenginguna og til að lýsa gagnagrunninn. Hér er einnig geymdar flutningsskrárnar og/eða skrárnar sem fylla gagnagrunninn, ef notaðar. Sjá nánari upplýsingar á [Notkun á Prisma](/is/usage/prisma).
 
 </div>
 <div>
 
 ### `public`
 
-The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+Mappan `public` inniheldur kyrrstæðar skrár sem birtast í framendanum. Skráin `favicon.ico` er dæmi um kyrrstæða skrá.
 
 </div>
 <div>
 
 ### `src/env`
 
-Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
+Notuð fyrir  prófun á umhverfisbreytum og skilgreiningum á gerðum - sjá nánar [Umhverfisbreytur](usage/env-variables).
 
 </div>
 <div>
 
 ### `src/pages`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+Mappan `pages` inniheldur allar síður Next.js forritsins. Skráin `index.tsx` í rótarmöppunni `/pages` er forsíðan á forritinu. Skráin `_app.tsx` er notað til að halda utan um forritið með veitendum. Sjá [Next.js documentation](https://nextjs.org/docs/basic-features/pages) fyrir frekari upplýsingar.
 
 </div>
 <div data-components="nextauth trpc">
 
 #### `src/pages/api`
 
-The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
+Mappan `api` inniheldur allar API slóðir Next.js forritsins. Skráin `examples.ts` inniheldur dæmi um slóð sem notar eiginleika [Next.js API route](https://nextjs.org/docs/api-routes/introduction) ásamt Prisma. Skráin `restricted.ts` inniheldur dæmi um slóð sem notar eiginleika [Next.js API route](https://nextjs.org/docs/api-routes/introduction) og er vernduð af [NextAuth.js](https://next-auth.js.org/).
 
 </div>
 <div data-components="nextauth">
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+Skráin `[...nextauth].ts` er slóðin fyrir NextAuth.js auðkenningu. Það er notað til að meðhandla auðkenningarbeiðnir. Sjá [NextAuth.js usage](usage/next-auth) fyrir frekari upplýsingar um NextAuth.js, og [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) fyrir upplýsingar um catch-all/slug slóðir.
 
 </div>
 <div data-components="trpc">
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+Skáin `[trpc].ts` er tRPC API inngangspunkturinn. Hún er notað til að meðhandla tRPC beiðnir. Sjá [tRPC usage](usage/trpc#-pagesapitrpctrpcts) fyrir frekari upplýsingar um þessa skrá, og [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) fyrir upplýsingar um catch-all/slug slóðir.
 
 </div>
 <div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+Mappan `server` er notuð til að skilgreina kóða sem keyrir á vefþjónustunni frá kóða sem keyrir hjá biðlaranum.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/auth.ts`
 
-Contains utlities for authentication such as retriving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+Inniheldur hjálparföll fyrir auðkenningu og til að ná í setu notandanns á vefþjónustunni. Sjá [NextAuth.js usage](usage/next-auth#usage-with-trpc) fyrir frekari upplýsingar.
 
 </div>
 <div data-components="prisma">
 
 #### `src/server/db.ts`
 
-The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+Skráin `db.ts` er notað til að skilgreina Prisma biðlara á alþjóðlega gildisviðinu. Sjá [Prisma usage](usage/prisma#prisma-client) og [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) fyrir frekari upplýsingar.
 
 </div>
 <div data-components="trpc">
 
 ### `src/server/api`
 
-The `api` folder contains the tRPC server-side code.
+Mappan `api` inniheldur tRPC kóða sem keyrir á vefþjónustunni.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers`
 
-The `routers` folder contains all your tRPC sub-routers.
+Mappan `routers` inniheldur allar tRPC undirslóðir.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers/example.ts`
 
-The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+Skráin `example.ts` er dæmi um tRPC beini sem notar hjálparann `publicProcedure`  til að sýnda dæmi um hvernig þú getur búið til opinbera tRPC slóð.
 
 Depending on your chosen packages this router contains more or less routes to best demonstrate the usage to your needs.
 
@@ -111,10 +112,10 @@ Depending on your chosen packages this router contains more or less routes to be
 
 #### `src/server/api/trpc.ts`
 
-The `trpc.ts` file is the main configuration file for your tRPC back-end. In here we:
+Skráin `trpc.ts` er aðal stillingaskrá fyrir tRPC bakendann. Hér við:
 
-1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
-2. Export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+1. Skilgreinum samhengi sem notað er í tRPC fyrirspurnum. Sjá [tRPC usage](usage/trpc#-servertrpccontextts) fyrir frekari upplýsingar.
+2. Gefum út hjálparföll fyrir tRPC stefjur. Sjá [tRPC usage](usage/trpc#-servertrpctrpcts) fyrir frekari upplýsingar.
 
 </div>
 
@@ -122,97 +123,97 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 
 #### `src/server/api/root.ts`
 
-The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
+Skráin `root.ts` er notað til að sameina tRPC beina og gefa þá út sem einn beini, ásamt skilgreiningum á gerðum beinisins. Sjá [tRPC usage](usage/trpc#-servertrpcrouterts) fyrir frekari upplýsingar.
 
 </div>
 <div>
 
 ### `src/styles`
 
-The `styles` folder contains the global styles of the application.
+Mappan `styles` inniheldur öll alþjóðlegu útlitssniðmátin fyrir forritið.
 
 </div>
 <div data-components="nextauth">
 
 ### `src/types`
 
-The `types` folder is used to store reused types or type declarations.
+Mappan `types` er notuð til að geyma endurteknar gerðir og endurteknar skilgreiningar á gerðum.
 
 </div>
 <div data-components="nextauth">
 
 #### `src/types/next-auth.d.ts`
 
-The `next-auth.d.ts` file is used to extend the NextAuth.js default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
+Skráin `next-auth.d.ts` er notað til að útvíkja NextAuth.js sjálfgefna gerð á notendasetu til að innihalda auðkennisnúmer notendans. Sjá [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) fyrir frekari upplýsingar.
 
 </div>
 <div data-components="trpc">
 
 ### `src/utils`
 
-The `utils` folder is used to store commonly re-used utility functions.
+Mappan `utils` er notuð til að geyma algeng og endurtekin hjálparföll.
 
 </div>
 <div data-components="trpc">
 
 #### `src/utils/api.ts`
 
-The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+Skráin `api.ts` er framenda inngangspunktur fyrir tRPC. Sjá [tRPC usage](usage/trpc#-utilstrpcts) fyrir frekari upplýsingar.
 
 </div>
 <div>
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
+Skráin `.env` er notað til að geyma umhverfisbreytur. Sjá [Environment Variables](usage/env-variables) fyrir frekari upplýsingar. Skráin á **ekki** að vera í git history.
 
 </div>
 <div>
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
+Skráin `.env.example` sýnir dæmi um umhverfisbreytur sem eru byggðar á völdum pökkum. Skráin á að vera í git history.
 
 </div>
 <div>
 
 ### `.eslintrc.json`
 
-The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+Skráin `.eslintrc.json` er notað til að stilla ESLint. Sjá [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) fyrir frekari upplýsingar.
 
 </div>
 <div>
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+Skráin `next-env.d.ts` tryggir að Next.js gerðir séu valdar af TypeScript þýðandanum. **Þú ættir ekki að fjarlægja eða breyta henni því hún getur breyst hvenær sem er.** Sjá [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) fyrir frekari upplýsingar.
 
 </div>
 <div>
 
 ### `next.config.mjs`
 
-The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+Skráin `next.config.mjs` er notað til að stilla Next.js. Sjá [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) fyrir frekari upplýsingar. Athugið: .mjs skrárendingin er notað til að leyfa ESM innflutninga.
 
 </div>
 <div data-components="tailwind">
 
 ### `postcss.config.cjs`
 
-The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+Skráin `postcss.config.cjs` er notað til að stilla notkun á Tailwind PostCSS. Sjá [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) fyrir frekari upplýsingar.
 
 </div>
 <div data-components="tailwind">
 
 ### `prettier.config.cjs`
 
-The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+Skráin `prettier.config.cjs` er notað til að stilla Prettier til að innihalda prettier-plugin-tailwindcss fyrir sníða Tailwind CSS klasa. Sjá [Tailwind CSS blogg færslu](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) fyrir frekari upplýsingar.
 
 </div>
 <div>
 
 ### `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+Skráin `tsconfig.json` er notað til að stilla TypeScript. Sumar stillingar sem eru ekki sjálfgefnir, eins og `strict mode`, hafa verið virkjaðir til að tryggja besta notkun TypeScript fyrir Create T3 App og kóðasafns þess. Sjá [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) eða [TypeScript Usage](usage/typescript) fyrir frekari upplýsingar.
 
 </div>
