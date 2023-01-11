@@ -30,10 +30,10 @@ export const KNOWN_LANGUAGES = {
   ar: "العربية",
   en: "English",
   fr: "Français",
+  is: "Íslenska",
+  no: "Norsk",
   pt: "Português",
   ru: "Русский",
-  no: "Norsk",
-  is: "Íslenska",
   "zh-hans": "简体中文",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
@@ -249,10 +249,10 @@ export const SIDEBAR: Sidebar = {
   },
   is: {
     "Create T3 App": [
-      { text: "Inngangur", link: "is/introduction" },
+      { text: "Kynning", link: "is/introduction" },
       { text: "Afhverju CT3A?", link: "is/why" },
       { text: "Uppsetning", link: "is/installation" },
-      { text: "Möppuuppbygging", link: "is/folder-structure" },
+      { text: "Uppbygging mappa", link: "is/folder-structure" },
       { text: "Algengar spurningar", link: "is/faq" },
       { text: "T3 Safn", link: "is/t3-collection" },
       { text: "Aðrar ráðleggingar", link: "is/other-recs" },
