@@ -1,5 +1,17 @@
 // @ts-check
-import { clientEnv, clientSchema } from "./schema.mjs";
+import { clientSchema } from "./schema.mjs";
+
+/** @type {{ [key: string]: string | undefined; }} */
+let clientEnv = {};
+
+/**
+ * You can't destruct `process.env` as a regular object, so you have to do
+ * it manually here. This is because Next.js evaluates this at build time,
+ * and only used environment variables are included in the build.
+ */
+Object.keys(clientSchema.shape).forEach(
+  (key) => (clientEnv[key] = process.env[key]),
+);
 
 const _clientEnv = clientSchema.safeParse(clientEnv);
 
