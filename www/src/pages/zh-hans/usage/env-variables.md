@@ -21,24 +21,16 @@ _简而言之，如果你想要添加一个新的环境变量，你需要在 `.e
 
 ## schema.mjs
 
-你会在这个文件编写环境变量的验证逻辑。它包含了两个 schema，一个用于验证服务端的环境变量，一个用于验证客户端的环境变量，以及一个 `clientEnv` 对象。
+你会在这个文件编写环境变量的验证逻辑。它包含了两个 schema，一个用于验证服务端的环境变量，一个用于验证客户端的环境变量.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
-export const serverEnv = {
-  // DATABASE_URL: process.env.DATABASE_URL,
-};
-
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### 服务端 schema
@@ -52,14 +44,6 @@ export const clientEnv = {
 在这里定义你项目客户端的环境变量。
 
 为了将它们暴露出来，你需要给他们添加前缀 `NEXT_PUBLIC`。如果你没有这么做，验证会无法通过，这样可以帮助你检测到无效的配置。
-
-### clientEnv 对象
-
-在这里解构 `process.env`。
-
-由于 Next.js 处理环境变量的方法，我们需要一个 JavaScript 对象来解析 Zod schema，你不能像处理一般对象一样直接解构 `process.env`，所以我们需要手动进行解构。
-
-TypeScript 会确保你已经同时在 `clientEnv` 和 `clientSchema` 中都输入了 key。
 
 ```ts
 // ❌ 这将不会生效，我们需要手动解构
@@ -120,11 +104,6 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
-
-export const serverEnv = {
-  // ...
-  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-};
 ```
 
 _**注意:** 一个空的字符串仍然是一个字符串，所以 `z.string()` 会认为它是一个有效值。如果你想要确保环境变量的值不能为空，你可以使用 `z.string().min(1)`。_
