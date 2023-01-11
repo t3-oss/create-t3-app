@@ -21,24 +21,16 @@ _Короче; Если вы хотите добавить новую перем
 
 ## schema.mjs
 
-Это файл с которым вы будете работать. Он содержит две схемы, одну для переменных среды на стороне сервера, а другую для клиента, а также объект `clientEnv`.
+Это файл с которым вы будете работать. Он содержит две схемы, одну для переменных среды на стороне сервера, а другую для клиента.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
-export const serverEnv = {
-  // DATABASE_URL: process.env.DATABASE_URL,
-};
-
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### Схема сервера
@@ -52,14 +44,6 @@ export const clientEnv = {
 Определите схему переменных среды на стороне клиента здесь.
 
 Для того, чтобы экспортировать их клиенту, вам нужно добавить префикс `NEXT_PUBLIC`. Валидация не пройдет, если вы этого не сделаете, чтобы помочь вам обнаружить неверную конфигурацию.
-
-### Объект clientEnv
-
-Деструктурируйте `process.env` здесь.
-
-Нам нужен объект JavaScript, который мы можем деструктурировать нашими схемами Zod и из-за того, как Next.js обрабатывает переменные среды, вы не можете деструктурировать `process.env` как обычный объект, поэтому нам нужно сделать это вручную.
-
-TypeScript поможет вам убедиться, что вы ввели ключи в `clientEnv` и `clientSchema`.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -119,11 +103,6 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
-
-export const serverEnv = {
-  // ...
-  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-};
 ```
 
 _**Обратите внимание:** Пустая строка все еще является строкой, поэтому `z.string()` примет пустую строку как допустимое значение. Если вы хотите убедиться, что переменная среды не пуста, вы можете использовать `z.string().min(1)`._
