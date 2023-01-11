@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [`b6aae7c`](https://github.com/t3-oss/create-t3-app/commit/b6aae7c0b39283f5afd47a7d7267fd54a0f4d2a6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: automatically destructure env objects
+- [#1071](https://github.com/t3-oss/create-t3-app/pull/1071) [`34d6c5b`](https://github.com/t3-oss/create-t3-app/commit/34d6c5b0431ea7baa922a27768d0c82b05c12bdc) Thanks [@ JacobADevore](https://github.com/JacobADevore)! - feat: automatically destructure env objects
 
 ## 7.2.0
 
