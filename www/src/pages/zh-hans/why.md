@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: zh-hans
 ---
 
-我们创建 create-t3-app 的初衷，是因为 [Theo](https://twitter.com/t3dotgg) 拒绝将他最喜欢的几种技术做成模板。受到 create-next-app、[Astro 的 CLI 命令行工具](https://astro.build) 和对类型安全普遍热爱的启发，create-t3-app 团队努力地为创建新的 T3 Stack 项目建立了最好的起点。
+我们创建 Create T3 App 的初衷，是因为 [Theo](https://twitter.com/t3dotgg) 拒绝将他最喜欢的几种技术做成模板。受到 create-next-app、[Astro 的 CLI 命令行工具](https://astro.build) 和对类型安全普遍热爱的启发，Create T3 App 团队努力地为创建新的 T3 Stack 项目建立了最好的起点。
 
 如果你对以类型安全的方式使用 Next.js 感兴趣，这就是开始的地方。如果你对我们的具体技术选择感到好奇，请继续阅读 :)
 

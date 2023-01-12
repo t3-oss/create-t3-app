@@ -32,5 +32,5 @@ lang: zh-hans
 ## 下一步
 
 - 如果你的应用包含了 tRPC，参看 `src/pages/index.tsx` 和 `src/server/trpc/router/example.ts` 来了解 tRPC 查询是如何工作的。
-- 浏览 `create-t3-app` 的文档，以及你应用中所用到包的文档。
+- 浏览 Create T3 App 的文档，以及你应用中所用到包的文档。
 - 加入到我们的 [Discord](https://t3.gg/discord) 中，并记得在 [GitHub](https://github.com/t3-oss/create-t3-app) 上给我们的项目点颗星！ :)
