@@ -219,3 +219,20 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
     }
   });
 </script>
+<script>
+  const main= () => {
+    const codeWrapper = document.createElement('div')
+    const notACodeBlock = ":not(pre) code"
+    const codeElements = document.querySelectorAll(notACodeBlock)
+    // for(let codeElement in codeElements) {
+    //  codeElement.parentElement.insertBefore(codeWrapper, codeElement);
+    //  codeWrapper.appendChild(codeElement);
+    // }
+    codeElements.forEach((codeElement) => {
+     codeElement.parentNode.insertBefore(codeWrapper, codeElement);
+     codeWrapper.appendChild(codeElement);
+    })
+
+    }
+  main()
+</script>
