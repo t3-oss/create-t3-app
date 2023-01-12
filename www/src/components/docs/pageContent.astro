@@ -229,10 +229,6 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
       codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
 
       codeWrapper.appendChild(codeElement);
-      codeWrapper.setAttribute(
-        "class",
-        "rounded border border-t3-purple-200 dark:border-t3-purple-400/30 inline dark:bg-t3-purple-400/20 bg-t3-purple-200/40 px-0.5 py-[0.5px]",
-      );
     });
   };
   main();

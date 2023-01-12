@@ -188,6 +188,10 @@
     @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
   }
 
+  .markdown p div:has( code) {
+    @apply inline rounded border border-t3-purple-200 bg-t3-purple-200/40 px-0.5 py-[0.5px] dark:border-t3-purple-400/30 dark:bg-t3-purple-400/20;
+  }
+
   .markdown .remark-code-title {
     @apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-t3-purple-300/80 bg-[#191724] px-2 py-1 font-mono text-t3-purple-200;
   }
