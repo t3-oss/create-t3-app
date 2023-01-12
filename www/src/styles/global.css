@@ -189,7 +189,7 @@
   }
 
   .markdown code:not(.markdown pre code) {
-    @apply bg-t3-purple-200/40 px-0.5 py-[0.5px] dark:bg-t3-purple-400/20;
+    @apply rounded border border-t3-purple-200 bg-t3-purple-200/40 px-0.5 py-[0.5px] dark:border-t3-purple-400/30 dark:bg-t3-purple-400/20;
   }
 
   .markdown .remark-code-title {

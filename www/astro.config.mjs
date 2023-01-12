@@ -5,7 +5,6 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkCodeTitles from "remark-code-titles";
-import remarkCodeExtra from "remark-code-extra";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
@@ -15,20 +14,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: `https://create.t3.gg`,
   markdown: {
-    remarkPlugins: [remarkCodeTitles, remarkCodeExtra, {
-      transform: (node) => node && ({
-        after: [
-          {
-            type: 'element',
-            tagName: 'div',
-            properties: {
-              class: 'rounded border border-t3-purple-200 dark:border-t3-purple-400/30'
-            }
-          }
-        ]
-      })
-    }
-  ],
+    remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
       [
         rehypeExternalLinks,
