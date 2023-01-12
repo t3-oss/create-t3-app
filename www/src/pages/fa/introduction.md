@@ -1,42 +1,43 @@
 ---
-title: Introduction
-description: Introduction to the T3 Stack
+title: مقدمه
+description: آشنایی با T3 Stack
 layout: ../../layouts/docs.astro
-lang: en
+lang: fa
+dir: rtl
 ---
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## The T3 Stack
+## T3 Stack
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
+استکِ توسعه وب  _"T3 Stack"_ متمرکز بر سادگی، ماژولار بودن و typesaftey بین تمامی اجزا است که توسط [تئو](https://twitter.com/t3dotgg) ایجاد شده است.
 
-The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+اجزای اصلی شامل  [**Next.js**](https://nextjs.org/) و [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/)
+هستند. اگر  می خواهید Backend را هم توسعه دهید، [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), و [**NextAuth.js**](https://next-auth.js.org/) می توانند گزینه های مناسبی باشند.
 
-You may have noticed that there are a… lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at its core :)
+شاید متوجه شده باشید که اجزای زیادی وجود دارد. این به دلیل  طراحی صورت گرفته است. اجزا را در صورت نیاز عوض کنید. این استک از اساس ماژولار است.
 
-## So... what is create-t3-app? A template?
+## خب...  create-t3-app چیست؟ یک قالب (template)؟
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
+تا حدودی. `create-t3-app` یک CLI است که توسط توسعه دهندگان مجرب T3 ساخته شده است تا ایجاد یک پروژه T3  را تا حد امکان ساده کند. بدین معنی که هر جزء، اختیاری است و قالب (template) بر اساس نیاز های شما ایجاد می شود.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+بعد از پروژه های بیشمار و سالیان زیاد در این حوزه، نظرات زیادی داریم و حداکثر تلاش خود را کرده ایم تا آنها را در این CLI بگنجانیم.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+این قالب شامل همه چیز نیست و ما از شما انتظار داریم که کتابخانه  (library)  های **خودتان**، که مشکلات **شما** را حل می کند نیز اضافه کنید. با اینکه ما نمی خواهیم برای مشکلات خاص تر راه حل تجویز کنیم، [لیستی از پیشنهاداتمان اینجاست](/fa/other-recs).
 
-## T3 Axioms
+## اصول T3
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+با صراحت اعلام می کنیم که این پروژه بر اساس اعتقادات و نظرات ما ایجاد شده است و  تصمیم گیری هایمان بر حسب چند اصل انجام می شود.
 
-### Solve Problems
+### حل مشکلات
+به سادگی می توان در تله "اضافه کردن همه چیز" افتاد. ما  از قصد نمی خواهیم جزء دیگری اضافه کنیم. هر جزء `create-t3-app` باید مشکل خاصی را حل کند که هدف اصلیِ آن است. این بدین معناست که ما کتابخانه های state management مثل (`zustand` , `redux`) را اضافه نخواهیم کرد بلکه NextAuth.js را اضافه می کنیم و آن را با Prisma و tRPC ادغام می کنیم.
 
-It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
+### متعهدانه ماجراجویی کنید
 
-### Bleed Responsibly
+ما عاشق تکنولوژی های جدید هستیم. لذت امتحان کردن چیز های جدید معرکه است، ولی معتقدیم که باید متعهدانه ماجراجویی کرد؛ استفاده از تکنولوژیِ ریسکی در جاهایی که ریسک کمتری دارند. ⛔️ یعنی ما روی  تکنولوژی دیتابیس های جدید ریسک نمی کنیم (SQL فوق العادست!). ولی با کمال میل ریسک tRPC رو می پذیریم ✅ زیرا که توابعی (functions) هستند که به راحتی می توان آنها را عوض کرد.
 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+### داشتن Typesaftey اختیاری نیست
 
-### Typesafety Isn't Optional
-
-The stated goal of Create T3 App is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of Create T3 App is a decision that should be made in a different project.
+همانطور که گفتیم، هدف Create T3 App فراهم کردن سریع ترین روش برای ایجاد یک پروژه full-stack و  **typesafe** است. ما typesaftey را جدی می گیریم، چون کمک می کند بازده بیشتری داشته باشیم و باگ های کمتری را ایجاد کنیم. هر تصمیمی که طبیعت typesafe بودن  Create T3 App را به خطر بیاندازد، تصمیمی است که باید در پروژه دیگری اتخاذ شود.
