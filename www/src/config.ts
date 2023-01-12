@@ -49,12 +49,18 @@ export const ALGOLIA = {
 };
 
 export type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+
+export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
+  text: string;
+  link: `${TCode}/${string}`;
+};
+
+export type SidebarItemLink = SidebarItem["link"];
+
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
-    [THeader in OuterHeaders]?: {
-      text: string;
-      link: `${TCode}/${string}`;
-    }[];
+    // eslint-disable-next-line no-unused-vars
+    [THeader in OuterHeaders]?: SidebarItem<TCode>[];
   };
 };
 export const SIDEBAR: Sidebar = {
@@ -77,7 +83,7 @@ export const SIDEBAR: Sidebar = {
       { text: "التثبيت", link: "ar/installation" },
       { text: "بِنية المجلد", link: "ar/folder-structure" },
       { text: "أسئلة شائعة", link: "ar/faq" },
-      { text: "تطبيقات صُنعت بواسطة T3", link: "ar/t3-collection" },
+      { text: "اعمال بواسطة T3", link: "ar/t3-collection" },
       { text: "ترشيحات أُخري", link: "ar/other-recs" },
     ],
     Usage: [

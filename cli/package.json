@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.0.0",
+  "version": "7.3.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -31,7 +31,7 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
-    "lint": "eslint src --cache --cache-strategy content",
+    "lint": "eslint src --report-unused-disable-directives",
     "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore",
     "format:check": "prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore",
     "release": "changeset version",

@@ -21,7 +21,7 @@ _TLDR; If you want to add a new environment variable, you must add it to both yo
 
 ## schema.mjs
 
-This is the file you will actually touch. It contains two schemas, one for server-side environment variables and one for client-side as well as a `clientEnv` object.
+This is the file you will actually touch. It contains two schemas & environment objects, one for server-side environment variables and one for client-side.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -31,10 +31,6 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### Server Schema
@@ -48,14 +44,6 @@ Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail i
 Define your client-side environment variables schema here.
 
 To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
-
-### clientEnv Object
-
-Destruct the `process.env` here.
-
-We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
-
-TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually

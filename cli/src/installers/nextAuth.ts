@@ -1,4 +1,5 @@
-import type { Installer, AvailableDependencies } from "~/installers/index.js";
+import type { Installer } from "~/installers/index.js";
+import { AvailableDependencies } from "~/installers/dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
