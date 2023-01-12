@@ -29,6 +29,7 @@ export const KNOWN_LANGUAGES = {
   // sv: "Svenska",
   ar: "العربية",
   en: "English",
+  fa: "Farsi",
   fr: "Français",
   pt: "Português",
   ru: "Русский",
@@ -131,6 +132,11 @@ export const SIDEBAR: Sidebar = {
       { text: "Vercel", link: "en/deployment/vercel" },
       { text: "Netlify", link: "en/deployment/netlify" },
       { text: "Docker", link: "en/deployment/docker" },
+    ],
+  },
+  fa: {
+    "Create T3 App": [
+      { text: "مقدمه", link: "fa/introduction" }
     ],
   },
   fr: {
@@ -291,6 +297,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "كيفية الإستخدام؟",
     Deployment: "نَشر تطبيقك",
+  },
+  fa: {
+    "Create T3 App": "Cretea T3 App",
+    Usage: "استفاده",
+    Deployment: "دپلوی کردن",
   },
   fr: {
     "Create T3 App": "Create T3 App",
