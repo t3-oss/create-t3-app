@@ -297,7 +297,7 @@ export const SIDEBAR_HEADER_MAP: Record<
     Deployment: "نَشر تطبيقك",
   },
   fa: {
-    "Create T3 App": "Cretea T3 App",
+    "Create T3 App": "Create T3 App",
     Usage: "استفاده",
     Deployment: "دپلوی کردن",
   },
