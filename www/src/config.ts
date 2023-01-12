@@ -135,9 +135,7 @@ export const SIDEBAR: Sidebar = {
     ],
   },
   fa: {
-    "Create T3 App": [
-      { text: "مقدمه", link: "fa/introduction" }
-    ],
+    "Create T3 App": [{ text: "مقدمه", link: "fa/introduction" }],
   },
   fr: {
     "Create T3 App": [
