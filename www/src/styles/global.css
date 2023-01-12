@@ -188,7 +188,7 @@
     @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
   }
 
-  .markdown p div:has( code) {
+  .markdown div:has( > code) {
     @apply inline rounded border border-t3-purple-200 bg-t3-purple-200/40 px-0.5 py-[0.5px] dark:border-t3-purple-400/30 dark:bg-t3-purple-400/20;
   }
 
