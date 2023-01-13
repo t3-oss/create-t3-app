@@ -1,11 +1,11 @@
 ---
-title: Environment Variables
-description: Getting started with Create T3 App
+title: Umhverfisbreytur
+description: Að byrja með Create T3 App
 layout: ../../../layouts/docs.astro
-lang: en
+lang: is
 ---
 
-Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional files in the `env`-directory:
+Create T3 App notar [Zod](https://github.com/colinhacks/zod) til að fullgilda umhverfisbreyturnar þýnar í keyrslu _og_ á byggingartíma með því að bæta við auka skrár í `env` möppuna:
 
 📁 src/env
 
@@ -15,13 +15,13 @@ Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your 
 
 ┣ 📄 server.mjs
 
-The content of these files may seem scary at first glance, but don't worry, it's not as complicated as it looks. Let's take a look at them one by one, and walk through the process of adding additional environment variables.
+Innihald þessara skráa getur litið út skringilega við fyrstu sýn, en þú þarft ekki að hafa áhyggjur, þetta er ekki eins flókið og það sýnist. Skoðum þessar skár eina í einu og förum í gegnum fyrirkomulagið að bæta við auka umhverfisbreytum.
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `env/schema.mjs`._
+_Í stutt máli: ef þú vilt bæta við nýrri umhverfisbreytu þarftu að bæta henni við í `.env` og skilgreina fullgildingaraðilan í `env/schema.mjs`._
 
 ## schema.mjs
 
-This is the file you will actually touch. It contains two schemas & environment objects, one for server-side environment variables and one for client-side.
+Þetta er skráin sem þú vilt vera að vinna með. Hún inniheldur tvö skapalón og umhverfishluti, einn fyrir umhverfisbreyturnar á vefþjóninum og einn fyrir umhverfisbreyturnar hjá biðlaranum.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -41,25 +41,27 @@ export const clientEnv = {
 };
 ```
 
-### Server Schema
+### Server Schema (Skapalón hjá vefþjóninum)
 
-Define your server-side environment variables schema here.
+Tilgreindu skapalónið fyrir umhverfisbreyturnar á vefþjóninum þínum hér.
 
-Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail if you do to help you detect invalid configuration.
+Gakktu um skugga um að þú notar ekki forskeytið `NEXT_PUBLIC` hér. Fullgilding mun mistakast ef þú gerir það, þetta er gert til að hjálpa þér að greina ógildar stillingar.
 
-### Client Schema
+### Client Schema (Skapalón hjá biðlaranum)
 
-Define your client-side environment variables schema here.
+Tilgreindu skapalónið fyrir umhverfisbreyturnar hjá biðlaranum þínum hér.
 
-To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
+Til að birta þær til biðlarans þá þarft þú að forskeyta þær með `NEXT_PUBLIC`. Fullgilding mun mistakast ef þú gerir það ekki, þetta er get til að hjálpa þér að greina ógildar stillingar.
 
-### clientEnv Object
+### clientEnv Hluturinn
 
-Destruct the `process.env` here.
+Brjóttu niður `process.env` breytuna hér.
 
-We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
+Við þurfum á JavaScript hlut sem við getum notað til að greina Zod-skapalónið, við getum ekki ekki brotið niður `process.env` breytuna eins og venjulegan JavaScript hlut, svo við þurfum að gera það handvirkt.
 
-TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
+TypeScript mun aðstoða þig við að tryggja að þú sért búinn að bæta við lyklunum hjá `clientEnv` og `clientSchema`.
+
+````ts
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -68,52 +70,54 @@ const schema = z.object({
 });
 
 const validated = schema.parse(process.env);
-```
+````
 
 ## server.mjs & client.mjs
 
-This is where the validation happens and exports the validated objects. You shouldn't need to modify these files.
+Hér á sér stað fullgildingin og útflutningurinn á fullgilduðum hlutum. Þú ættir ekki að þurfa að breyta þessum skrám.
 
-## Using Environment Variables
+````ts:env/server.mjs
 
-When you want to use your environment variables, you can import them from `env/client.mjs` or `env/server.mjs` depending on where you want to use them:
+## Að nota umhverfisbreytur
+
+Þegar þú vilt nota umhverfisbreytur þá getur þú sótt þær úr `env/client.mjs` eða `env/server.mjs` eftir því hvar þú vilt nota þær:
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;
-```
+````
 
 ## .env.example
 
-Since the default `.env` file is not committed to version control, we have also included a `.env.example` file, in which you can optionally keep a copy of your `.env` file with any secrets removed. This is not required, but we recommend keeping the example up to date to make it as easy as possible for contributors to get started with their environment.
+Þar sem sjálfgefna `.env` skráin er ekki bætt við í útgáfu stjórnun, þá höfum við bætt við `.env.example` skrána sem þú getur valfrjálst haldið afrit af `.env` skránni þinni með öllum leyndum texta fjarlægðann. Þetta er ekki nauðsynlegt, en við mælum með að halda `.env.example` skránni uppfærðri til að gera það sem auðveldast fyrir þá sem vilja taka þátt í þessu verkefni.
 
-Some frameworks and build tools, like Next.js, suggest that you store secrets in a `.env.local` file and commit `.env` files to your project. This is not recommended, as it could make it easy to accidentally commit secrets to your project. Instead, we recommend that you store secrets in `.env`, keep your `.env` file in your `.gitignore` and only commit `.env.example` files to your project.
+Sumir hugbúnaðarrammar og hugbúnaðarbyggingartól, eins og Next.js, mæla með að þú geymir leynda lykla í `.env.local` skránni og kommitta síðan `.env` skránna við verkefnið þitt. Það er ekki mælt með að fylgja þessu, því það gæti gert það auðveldara að óvart að kommitta leyndu lyklunum í verkefninu þínu. Þú ættir í staðinn að geyma leynda lykla í `.env` skránni, og bæta síðan við `.env` skránni í `.gitignore` skránna og aðeins kommitta `.env.example` skránna við verkefnið þitt.
 
-## Adding Environment Variables
+## Að bæta við umhverfisbreytum
 
-To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
+Til þess að tryggja að byggingarferlið þið klárist aldrei án nauðsynlegum umhverfisbreytum, þá þarft þú að bæta við nýjum umhverfisbreytum á **tvo** staði.
 
-📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
+📄 `.env`: Eins og þú myndir gerir venjulega bættu við þinni umhverfisbreytu í `.env` skránna, t.d. `KEY=VALUE`
 
-📄 `schema.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`
+📄 `schema.mjs`: Bættu við viðeigandi fullgildungarvirkni fyrir umhverfisbreytuna með því að skilgreina Zod-skapalón, t.d. `KEY: z.string
 
-Optionally, you can also keep `.env.example` updated:
+Valkvætt, þú getur einnig haldið `.env.example` skránni uppfærðri:
 
-📄 `.env.example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
+📄 `.env.example`: Bættu við umhverfisbreytunni, en passaðu upp á að ekki setja inn gildið ef það er það er leyndur lykill t.d. `KEY=VALUE` eða `KEY=`
 
-### Example
+### Dæmi
 
-_I want to add my Twitter API Token as a server-side environment variable_
+_Mig langar að bæta við Twitter API lyklinum sem umhverfisbreytu_
 
-1. Add the environment variable to `.env`:
+1. Bættu við umhverfisbreytunni í `.env` skránna:
 
 ```
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Add the environment variable to `schema.mjs`:
+2. Bættu við umhverfisbreytunni í `schema.mjs`:
 
 ```ts
 export const serverSchema = z.object({
@@ -127,9 +131,9 @@ export const serverEnv = {
 };
 ```
 
-_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+_**ATH** Tómur strengur er enn gildur strengur, svo `z.string()` mun samþykkja tóman streng sem gildi. Ef þú vilt tryggja að umhverfisbreytan sé ekki tóm, þá getur þú notað `z.string().min(1)`._
 
-3. optional: Add the environment variable to `.env.example`, but don't include the token
+3. valkvætt: Bættu við umhverfisbreytuna í `.env.example` skránna, en passaðu upp á að ekki setja inn gildið:
 
 ```
 TWITTER_API_TOKEN=
