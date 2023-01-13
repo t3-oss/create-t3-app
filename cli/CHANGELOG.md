@@ -1,5 +1,21 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- [#1071](https://github.com/t3-oss/create-t3-app/pull/1071) [`34d6c5b`](https://github.com/t3-oss/create-t3-app/commit/34d6c5b0431ea7baa922a27768d0c82b05c12bdc) Thanks [@ JacobADevore](https://github.com/JacobADevore)! - feat: automatically destructure env objects
+
+## 7.2.0
+
+### Minor Changes
+
+- [#1021](https://github.com/t3-oss/create-t3-app/pull/1021) [`78dfdc9`](https://github.com/t3-oss/create-t3-app/commit/78dfdc9b480ea19ac90270827653400e31300e6e) Thanks [@iduuck](https://github.com/iduuck)! - construct `serverEnv`, like we do with `clientEnv` #1000
+
+### Patch Changes
+
+- [#1060](https://github.com/t3-oss/create-t3-app/pull/1060) [`a8cc106`](https://github.com/t3-oss/create-t3-app/commit/a8cc106c3ef507e275f38c09a5d6a7a14336c254) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: cleanup context type in `initTRPC`
+
 ## 7.1.0
 
 ### Minor Changes
