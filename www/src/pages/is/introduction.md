@@ -1,42 +1,50 @@
 ---
-title: Introduction
-description: Introduction to the T3 Stack
+title: Kynning
+description: Kynning á T3 stakkinum
 layout: ../../layouts/docs.astro
-lang: en
+lang: is
 ---
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PbjHxIuHduU" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/PbjHxIuHduU"
+    title="The best stack for your next project"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 </div>
 
-## The T3 Stack
+## T3 stakkurinn
 
-The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
+_T3 stakkurinn_ er vefstakkur búinn til af [Theo](https://twitter.com/t3dotgg) sem einblínir sér að vera einfaldur, með hátt einingastig, og vera með öruggar tegundir í gegnum allan stakkinn.
 
-The core pieces are [**Next.js**](https://nextjs.org/) and [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) is almost always included. If you're doing anything resembling backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), and [**NextAuth.js**](https://next-auth.js.org/) are great additions too.
+Grunnstoðirnar eru [**Next.js**](https://nextjs.org/) og [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) er oftast með. Ef þú ert að vinna með eitthvað sem nær því að vera bakendi, eru [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), og [**NextAuth.js**](https://next-auth.js.org/) góðir viðaukar.
 
-You may have noticed that there are a… lot of pieces. That's by design. Swap pieces in and out as you need - this stack is modular at its core :)
+Þú hefur líklega tekið eftir að það séu margar... einingar. Það er eftir útfærslu. Skiptu einingunum út og inn eins og þú þarft - þessi stakkur er byggður á einingum:)
 
-## So... what is create-t3-app? A template?
+## Svo.. hvað er create-t3-app? Sniðmát?
 
-Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
+Eins konar? `create-t3-app` er skipanalínuviðmót byggt af reyndum T3 stakkforriturum til að flýta uppsetningu á einingarmiðað forritað sem styður sig við T3 stakkinn. Þetta þýðir að hver eining er valfrjáls, og "sniðmátið" er búið til miðað við þínar sérstakar þarfir.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
+Eftir ótal verkefni og mörg ár í þessum geira, við höfum margar skoðanir og innisýni. Við höfum gert okkur bestu til að kóða þær í þetta skipanalínuviðmót.
 
-This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
+Þetta er **EKKI** sniðmát sem á að leysa allt. Við **búumst við** að þú bætir við þínum eigin kóða og söfnum til að leysa þínar þarfir. Þrátt fyrir að við viljum ekki mæla með ákvöðnum lausnum þá erum við með [pakka hér sem við mælum með](/en/other-recs) t.d. fyrir útgáfustjórnun og meðhöndlun staða.
 
 ## T3 Axioms
 
-We'll be frank - this is an _opinionated project_. We share a handful of core beliefs around building and we treat them as the basis for our decisions.
+Í fáum orðum - þetta er þetta _gagnrýnt verkefni_. Við höfum mjög ákveðnar skoðanir og tökum mið af þeim.
 
-### Solve Problems
+### Að leysa verkefni
 
-It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
+Það er auðvelt að detta í "að bæta við allt" gryfjuna - við viljum halda okkur frá því. Allt sem hefur verið bætt við í `create-t3-app` ætti að leysa sérstakt vandamál sem er til staðar innan í þessum stakk. Þetta þýðir að við munum ekki bæta við söfn sem meðhölda stöður (`zustand`, `redux`) en við munum bæta við pakka eins og NextAuth.js og innleiða Prisma og tRPC fyrir þig.
 
-### Bleed Responsibly
+### Ábyrgð til nýjastu tæknina
 
-We love our bleeding edge tech. The amount of speed and, honestly, fun that comes out of new shit is really cool. We think it's important to bleed responsibly, using riskier tech in the less risky parts. This means we wouldn't ⛔️ bet on risky new database tech (SQL is great!). But we happily ✅ bet on tRPC since it's just functions that are trivial to move off.
+Við elskum okkar nýjustu tækni. Satt best að segja þá er hraðinn og ánægjan sem kemur frá þessari tækni mjög " Cool " . Við teljum að það sé mikilvægt að nota nýjustu tækni, að nota áhættusamari tækni þar sem það er minna áhættu. Þetta þýðir að við munum ekki taka áhættuna á að bæta við nýjustu gagnagrunninn (SQL er nægilega gott). En við munum með ánægju bæta við tRPC þar sem það er bara hjálparföll sem er mjög auðvelt að útfæra.
 
-### Typesafety Isn't Optional
+### Öryggi tegunda eru ekki valfrjálst
 
-The stated goal of Create T3 App is to provide the quickest way to start a new full-stack, **typesafe** web application. We take typesafety seriously in these parts as it improves our productivity and helps us ship fewer bugs. Any decision that compromises the typesafe nature of Create T3 App is a decision that should be made in a different project.
+Eins og kemur fram þá er meginmarkmið Create T3 App að veita hröðustu leiðina að byrja nýtt forrit sem styður sig við öruggar tegundir. Við tökum öryggi tegunda alvarlega þar sem það geri starfið okkar auðveldara og hjálpa okkur að framkvæma færri villur. Allar ákvaðirnar sem byggjast gegn öryggi tegunda í Create T3 App ættu að vera gerðar í öðru verkefni.
