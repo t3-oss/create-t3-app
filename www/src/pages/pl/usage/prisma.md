@@ -13,7 +13,7 @@ Zlokalizowany w pliku `/server/db/client.ts`, Prisma Client to globalna zmienna 
 
 ## Schema (Schemat)
 
-Znajdziesz schemat Prismy w pliku `/prisma/schema.prisma`. Plik ten to miejsce, gdzie definiuje się schemat bazy danych i modele. Jest on także wykorzystywany podczas generowaia Prisma Clienta.
+Znajdziesz schemat Prismy w pliku `/prisma/schema.prisma`. Plik ten to miejsce, gdzie definiuje się schemat bazy danych i modele. Jest on także wykorzystywany podczas generowania Prisma Clienta.
 
 ### Z NextAuth.js
 
