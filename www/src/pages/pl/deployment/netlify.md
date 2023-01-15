@@ -4,10 +4,11 @@ description: Deployment na platformie Netlify
 layout: ../../../layouts/docs.astro
 ---
 
-Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
+Netlify, to alternatywny provider do deploymentu z podobnym założeniem do Vercela. Po przykładowe repozytorium bazujące na tej stronie, zobacz [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify).
 
-## Why Host on Netlify
+## Dlaczego hostować na Netlify'u?
 
+Racjonalizm podpowiadać może, iż Vercel ma znakomite wsparcie dla Next.jsa, ponieważ to właśnie on jest jego twórcą.
 Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases this will be true and it won't make sense to deviate from the standard path.
 
 There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
