@@ -131,7 +131,7 @@ Jeżeli WebSockety stanowią główną część projektu, możesz chcieć rozwa�
 
 ### Soketi
 
-Socketi to prosta w użyciu alternatywa do Pushera, którą hostuje się samemu. Jest w pełni kompatybilna z SDK Pushera, z którego korzystać możesz aby połączyć się z serwerem. Wersja "serverless" Socketi jest w becie.
+Soketi to prosta w użyciu alternatywa do Pushera, którą hostuje się samemu. Jest w pełni kompatybilna z SDK Pushera, z którego możesz korzystać, aby połączyć się z serwerem. Wersja "serverless" Soketi jest w becie.
 
 - [Strona główna Soketi](https://soketi.app)
 - [GitHub Soketi](https://github.com/soketi/soketi)
