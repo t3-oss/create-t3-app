@@ -45,43 +45,43 @@ Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty 
 
 ### 📄 `server/api/trpc.ts`
 
-This file is split up in two parts, context creation and tRPC initialization:
+Plik ten podzielony jest na dwie części - tworzenie kontekstu oraz inicjalizacji tRPC:
 
-1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
+1. Definiujemy kontekst przesyłany do procedur tRPC. Kontekt, to dane do których dostęp mają wszystkie twoje procedury tRPC. Jest to doskonałe miejsce do umieszczenia rzeczy, takich jak połączenia z bazą danych, informacje o uwierzytelnianiu, itp. W Create T3 App korzystamy z dwóch funkcji, aby umożliwić korzystanie z części kontekstu bez dostępu do obiektu zapytania.
 
-- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+- `createInnerTRPCContext`: Tutaj defuniujesz kontekst, który nie zależy od obiektu zapytania, np. połączenie z bazą danych. Możesz wykorzystać funkcję tą do [testów integracji](#przyklładowy-test-integracji) oraz [funkcji pomocniczych SSG](https://trpc.io/docs/v10/ssg-helpers), gdzie nie posiadasz obiektu zapytania.
 
-- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
+- `createTRPCContext`: Tutaj definiujesz kontekst, który zależny jest od zapytania, np. sesja użytkownika. Otrzymujesz sesję korzystając z obiektu `opts.req` a następnie posyłasz ją do funkcji `createInnerTRPCContext` w celu utworzenia finalnego kontekstu.
 
-2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
+2. Inicjalizujemy tRPC i definiujemy [procedury](https://trpc.io/docs/v10/procedures) oraz [middleware'y](https://trpc.io/docs/v10/middlewares). Umownie, nie powinieneś eksportować całego obiektu `t` a jedynie poszczególne procedury i middleware'y.
 
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
+Zwróć uwagę, iż korzystamy z paczki `superjson` jako [transformera danych](https://trpc.io/docs/v10/data-transformers). Umożliwia on na zachowanie typów danych, które otrzymuje klient - przykładowo, posyłając obiekt `Date`, klient również otrzyma obiekt `Date` - a nie tekst, w przeciwieństwie do wielu innych API.
 
 ### 📄 `server/api/routers/*.ts`
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures.
+Tutaj defuniujesz routery i procedury swojego API. Umownie, powinieneś tworzyć [osobne routery](https://trpc.io/docs/v10/router) dla odpowiadających im procedur.
 
 ### 📄 `server/api/root.ts`
 
-Here we merge all the sub-routers defined in `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) into a single app router.
+Tutaj [łączymy](https://trpc.io/docs/v10/merging-routers) wszystkie "sub-routery" zdefiniowane w folderze `routers/**` w jeden router aplikacji.
 
 ### 📄 `utils/api.ts`
 
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+Jest to punkt startowy tRPC po stronie frontendu. To tutaj importować będziesz wszystkie **definicje typów** i tworzyć będziesz swój client tRPC razem z hookami od react-query. Ponieważ korzystamy z paczki `superjson` jako transformera danych na backendzie, musimy go uruchomić również na frontendzie. Dzieje się tak, ponieważ dane serializowane w API muszą być dekodowane właśnie na frontendzie.
 
-You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+Zdefuniujesz tu także [linki](https://trpc.io/docs/v10/links) tRPC, które decydują o całym flow zapytania - od klienta do serwera. My korzystamy z "domyślnego" linku [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink), który umożliwia ["request batching"](https://cloud.google.com/compute/docs/api/how-tos/batch). Korzystamy też z linku [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink), pozwalającego na wyświetlanie przydatnych podczas pisania aplikacji logów.
 
-Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
+Na koniec eksportujemy [pomocniczy typ](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type), którego użyć możesz do dziedziczenia typów na frontendzie.
 
-## How do I use tRPC?
+## Jak korzystać z tRPC?
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) about tRPC. We highly recommend you watch it if you haven't already.
+Kontrybutor tRPC [trashh_dev](https://twitter.com/trashh_dev) zrobił [znakomity występ na Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) właśnie o tRPC. Jeżeli jeszcze się z nim nie zapoznałeś, bardzo polecamy Ci to zrobić.
 
-With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
+Z tRPC, piszesz funkcje w TypeScript'cie na backendzie a następnie wywołujesz je z frontendu. Prosta procedura tRPC wyglądać może tak:
 
 ```ts:server/api/routers/user.ts
 const userRouter = createTRPCRouter({
@@ -95,7 +95,7 @@ const userRouter = createTRPCRouter({
 });
 ```
 
-This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+Jest to procedura (odpowiednik handlera route'a w tradycyjnym API), która najpierw waliduje wejście/input korzystając z biblioteki Zod (jest to ta sama biblioteka, z której korzystamy podczas sprawdzania [zmiennych środowiskowych](./env-variables)) - w tym przypadku zapewnia ona, iż dane przesłane do API są w formie tekstu (stringa). Jeżeli jednak nie jest to prawda, API wyśle informatywny błąd.
 
 After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
 
@@ -237,7 +237,7 @@ Compare this to the tRPC example above and you can see some of the advantages of
 
 Here are some snippets that might come in handy.
 
-### Enabling CORS
+### Aktywacja CORS
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
@@ -297,7 +297,7 @@ const MyComponent = () => {
 };
 ```
 
-### Sample Integration Test
+### Przykładowy Test Integracji
 
 Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
 
