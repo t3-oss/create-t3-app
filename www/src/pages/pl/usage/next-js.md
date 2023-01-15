@@ -15,7 +15,7 @@ Zapoznaj się z [rozmową Theo na konferencji Next.js](https://www.youtube.com/w
 
 ## Dlaczego powinienem go używać?
 
-Kochamy Reacta. Zmienił on sposób tworzenia interfejsów na niewyobrażalnie bardziej przystępny. Może on także prowadzić dewelopera za rękę z miejscach, mogących sprawiać problemy. Next.js oferuje lekko kontrowersyjne, bardzo zoptymalizowane podejście do tworzenia aplikacji z pomocą Reacta. Od routingu przez API do renderowania zdjęć, ufamy Next.jsowi i wierzymy, że prowadzi on nas do dobrych decyzji.
+Kochamy Reacta. Zmienił on sposób tworzenia interfejsów na niewyobrażalnie bardziej przystępny. Może on także prowadzić dewelopera za rękę w miejscach, mogących sprawiać problemy. Next.js oferuje lekko kontrowersyjne, bardzo zoptymalizowane podejście do tworzenia aplikacji z pomocą Reacta. Od routingu, przez API, do renderowania zdjęć, ufamy Next.js i wierzymy, że prowadzi nas do dobrych decyzji.
 
 Połączenie Next.jsa z [Vercelem](https://vercel.com/) sprawia, iż pisanie i deploy applikacji staje się łatwieszy niż kiedykolwiek. Ich bardzo hojny darmowy tier i bardzo intuicyjny interfejs zaopatruje Cię w rozwiązanie "point and click", dzięki któremu z łatwością opublikujesz swoją stronę (Kochamy ❤️ Vercela).
 
