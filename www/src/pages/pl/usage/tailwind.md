@@ -54,7 +54,7 @@ Odpowiednik z Tailwindem:
 
 Kiedy korzystasz z Tailwinda w połączeniu z komponentami Reacta, staje się on niezwykle silnym sposobem na szybkie pisanie interfejsów użytkownika (UI).
 
-Tailwind CSS posiada piękny, wbudowany design system, który zawiera uważnie dobraną paletę kolorów, wzorce rozmiarów dla stylów, takich wysokość i szerokość czy też padding i margines. Zawiera też breakpointy pomocne przy tworzeniu responsywnego layoutu. Design system ten może być dostosowywany i poszerzany, aby stworzyć dokładnie ten zestaw narzędzi i stylów, którego twój projekt potrzebuje.
+Tailwind CSS posiada piękny, wbudowany design system, który zawiera uważnie dobraną paletę kolorów, wzorce rozmiarów dla stylów, takich jak wysokość i szerokość czy też padding i margines. Zawiera też breakpointy pomocne przy tworzeniu responsywnego layoutu. Design system może być dostosowywany i poszerzany, aby stworzyć dokładnie ten zestaw narzędzi i stylów, którego twój projekt potrzebuje.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
