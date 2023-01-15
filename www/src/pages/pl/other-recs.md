@@ -81,7 +81,7 @@ Wiele bibliotek od animacji stara się rozwiązać każdy możliwy problem, staj
 
 **Złożone animacje z deklaratywnym kodem**
 
-Framer Motion pozwala Ci w prosty sposób i z deklaracyjną składnią napisać mało kodu a w zamian zaopatrzy twoją aplikację w złożone animacji czy nawet reakcje na gesty.
+Framer Motion pozwala Ci w prosty sposób i z deklaratywną składnią napisać mało kodu, a w zamian zaopatrzy twoją aplikację w złożone animacje, czy nawet reakcje na gesty.
 
 - [Strona główna Framer Motion](https://framer.com/motion)
 - [Dokumentacja Framer Motion](https://www.framer.com/docs/)
