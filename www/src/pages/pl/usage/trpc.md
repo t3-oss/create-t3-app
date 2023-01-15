@@ -45,7 +45,7 @@ Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty 
 
 ### 📄 `server/trpc/context.ts`
 
-Plik ten to miejsce, gdzie definiujesz kontekst przesyłany do swoich procedur tRPC. Kontekst to dane, do których dostęp mieć będą wszystkie procedury tRPC. To także świetne miejsce to umieszczenia rzeczy takich jak połączenie z bazą danych, informacje o "authentication", itp. W `create-t3-app` korzystamy z dwóch funkcji, aby umożliwić korzystanie z kontekstu bez dostępu do obiektu zapytania.
+Plik ten to miejsce, gdzie definiujesz kontekst przesyłany do swoich procedur tRPC. Kontekst to dane, do których dostęp mieć będą wszystkie procedury tRPC. To także świetne miejsce to umieszczenia rzeczy takich jak połączenie z bazą danych, informacje o uwierzytelnianiu, itp. W `create-t3-app` korzystamy z dwóch funkcji, aby umożliwić korzystanie z kontekstu bez dostępu do obiektu zapytania.
 
 - `createContextInner`: To miejsce, w którym definiujesz kontekst niezależny od zapytania - przykładowo, połączenie z bazą danych. Możesz skorzystać z ten funkcji dla [testowania integracji](#przykładowy-test-integracji) czy też [sgg-helperów](https://trpc.io/docs/v10/ssg-helpers), gdzie nie musisz posiadać obiektu zapytania.
 
