@@ -37,11 +37,11 @@ tRPC pozwala nam pisanie API będących w pełni typesafe bez żadnego generowan
 
 ## Pliki
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
+tRPC wymaga dużo boilerplate'u, który `create-t3-app` przygotowuje za Ciebie. Przejdźmy więc po kolei po plikach, które są generowane:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty aplikacji twój router od tRPC. Prawdopodobnie nie będziesz musiał edytować tego pliku, ale jeżeli zajdzie taka potrzeba (np. do włączenia CORSa), warto wiedzieć o tym, iż eksportowany `createNextApiHandler` to [Next.js API handler](https://nextjs.org/docs/api-routes/introduction), który pobiera obiekt [zapytania](https://developer.mozilla.org/en-US/docs/Web/API/Request) i [odpowiedzi](https://developer.mozilla.org/en-US/docs/Web/API/Response) serwera. Oznacza to, iż możesz zawrzeć `createNextApiHandler` w middleware'rze, w jakim tylko chcesz. Poniżej znajdziesz [przykładowy kod](#aktywacja-cors), dzięki któremu dodasz CORS.
 
 ### 📄 `server/api/trpc.ts`
 
@@ -322,10 +322,10 @@ test("example router", async () => {
 });
 ```
 
-## Useful Resources
+## Przydatne Zasoby
 
-| Resource               | Link                                                    |
-| ---------------------- | ------------------------------------------------------- |
-| tRPC Docs              | https://www.trpc.io                                     |
-| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Zasób                    | Link                                                    |
+| ------------------------ | ------------------------------------------------------- |
+| Dokumentacja tRPC        | https://www.trpc.io                                     |
+| Parę przykładów z tRPC   | https://github.com/trpc/trpc/tree/next/examples         |
+| Dokumentacja React Query | https://tanstack.com/query/v4/docs/adapters/react-query |
