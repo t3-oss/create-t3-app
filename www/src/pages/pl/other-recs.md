@@ -34,7 +34,7 @@ Przy bardziej "niepodzielnym" podejściu, ciężko jest pobić Jotai. Także wyk
 
 ## Biblioteki Komponentów
 
-Wiele aplikacji wymaga tej samej garści komponentów - przełączników, dropdownów czy też modali. Biblioteki te zaopatrzą cię w znakmite i przystępne componenty, z których możesz korzystać i które możesz dostosowywać jak tylko chcesz.
+Wiele aplikacji wymaga tej samej garści komponentów - przełączników, dropdownów czy też modali. Biblioteki te zaopatrzą cię w znakomite i przystępne komponenty, z których możesz korzystać, i które możesz dostosowywać jak tylko chcesz.
 
 ### Biblioteki Komponentów Bez Narzuconych Stylów
 
