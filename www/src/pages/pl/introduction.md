@@ -39,4 +39,4 @@ Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zaba
 
 ### Typesafety NIE Jest Opcjonalne
 
-Celem `create-t3-app` jest zapewnienie jak najszybszego sposobu na stworzenie nowego projektu full-stack z pełnym **typesafety**. Typesafety traktujemy poważnie - pozwala ono poprawić naszą produktywność i pomaga nam w dostarczaniu mniejszej ilości bugów. Jakakolwiek decyzja która naraża naturę typesafety jest decyzją, która powinna zostać podjęta w innym projekcie.
+Celem `create-t3-app` jest zapewnienie jak najszybszego sposobu na stworzenie nowego projektu full-stack z pełnym **typesafety**. Typesafety traktujemy poważnie - pozwala ono poprawić naszą produktywność i pomaga nam w dostarczaniu mniejszej ilości bugów. Jakakolwiek decyzja, która naraża naturę typesafety jest decyzją, która powinna zostać podjęta w innym projekcie.
