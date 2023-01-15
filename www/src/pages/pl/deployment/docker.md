@@ -185,7 +185,7 @@ Otwórz [localhost:3000](http://localhost:3000/) aby zobaczyć uruchomioną apli
 </div>
 </details>
 
-## Deployment do Railway'a
+## Deployment na Railway'a
 
 Możesz użyć usługi PaaS ("platforma jako usługa"), takiej jak [zautomatyzowany deployment Dockerfile'a](https://docs.railway.app/deploy/dockerfiles) od [Railway'a](https://railway.app), aby zdeploy'ować swoją aplikację. Jeżeli zainstalowałeś [CLI Railway'a](https://docs.railway.app/develop/cli#install), możesz zdeploy'ować aplikację korzystając z poniższych komend.
 
