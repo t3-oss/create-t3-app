@@ -21,16 +21,24 @@ _TLDR; Hvis du vil legge til en ny miljøvariabel, må du definere den i både `
 
 ## schema.mjs
 
-Endringene skjer i denne filen. Den inneholder to skjemaer, ett for servermiljøvariabler og ett for klientmiljøvariabler.
+Endringene skjer i denne filen. Den inneholder to skjemaer, ett for servermiljøvariabler og ett for klientmiljøvariabler, og et `clientEnv`-objekt.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
+
+export const clientEnv = {
+  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
+};
 ```
 
 ### Oppsett av Serverskjema
@@ -44,6 +52,14 @@ Pass på at du _ikke_ bruker nøkler med prefikset `NEXT_PUBLIC` her. Validering
 Definer ditt skjema for klientmiljøvariabeler her.
 
 For å gjøre dem tilgjengelige for klienten, _må_ du prefiksere dem med `NEXT_PUBLIC`. Validering vil mislykkes hvis du ikke gjør det, for å hjelpe deg med å oppdage en ugyldig konfigurasjon.
+
+### clientEnv-Objektet
+
+I denne filen må vi få tilgang til verdiene fra `process.env`-objektet.
+
+Vi trenger et JavaScript-objekt som vi kan analysere gjennom Zod-skjemaene og på grunn av måten Next.js håndterer miljøvariabler kan vi ikke destrukturere `process.env`-objektet som et normalt objekt. Derfor må vi gjøre det manuelt.
+
+TypeScript vil hjelpe deg med å sørge for at du legger nøklene i både `clientEnv` og `clientSchema`.
 
 ```ts
 // ❌ Dette fungerer ikke. Vi må destrukturere den manuelt.
@@ -102,6 +118,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**MERK:** En tom streng er fortsatt en streng, så `z.string()` vil godta en tom streng som en gyldig verdi. Hvis du vil forsikre deg om at miljøvariabelen ikke er tom, kan du bruke `z.string().min(1)`._
