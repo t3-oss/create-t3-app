@@ -74,7 +74,7 @@ Upewnij się, że zainstalowałeś pluginy dla Tailwinda. Zwięszą one komfort 
 
 ### Formatowanie
 
-Klasy Tailwinda mogą łatwo stać się nieczytelne, więc formater to "must-have". [Prettier Plugin dla Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sortuje klasy używając [rekomendowanej kolejności](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) tak, że kolejność klas jest zgodna z ich kolejnością w zbudowanej aplikacji. Wybierając Tailwind w naszym CLI, automatycznie zainstalujemy i skonfigurujemy plugin ten za Ciebie.
+Klasy Tailwinda mogą łatwo stać się nieczytelne, więc formater to "must-have". [Prettier Plugin dla Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sortuje klasy używając [rekomendowanej kolejności](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) tak, że kolejność klas jest zgodna z ich kolejnością w zbudowanej aplikacji. Wybierając Tailwind w naszym CLI, automatycznie zainstalujemy i skonfigurujemy plugin za Ciebie.
 
 ### Warunkowe Dodawanie Klas
 
