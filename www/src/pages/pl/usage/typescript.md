@@ -53,7 +53,7 @@ Sprawdź film od Theo - [korzystasz z TypeScripta źle...](https://www.youtube.c
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) to biblioteka walidacji bazująca na schematach, zbudowania z pomocą TypeScripta. Napisz schemat reprezentujący pojedyncze źródło prawdy, a Zod zapewni poprawność danych w całej aplikacji - nawet wśród zapytań do zewnętrznych API.
+[Zod](https://github.com/colinhacks/zod) to biblioteka walidacji bazująca na schematach, zbudowana z pomocą TypeScripta. Napisz schemat reprezentujący pojedyncze źródło prawdy, a Zod zapewni poprawność danych w całej aplikacji - nawet wśród zapytań do zewnętrznych API.
 
 ### Tanstack Query
 
