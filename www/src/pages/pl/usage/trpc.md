@@ -97,9 +97,9 @@ const userRouter = createTRPCRouter({
 
 Jest to procedura (odpowiednik handlera route'a w tradycyjnym API), która najpierw waliduje wejście/input korzystając z biblioteki Zod (jest to ta sama biblioteka, z której korzystamy podczas sprawdzania [zmiennych środowiskowych](./env-variables)) - w tym przypadku zapewnia ona, iż dane przesłane do API są w formie tekstu (stringa). Jeżeli jednak nie jest to prawda, API wyśle informatywny błąd.
 
-After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
+Po sprawdzeniu wejścia, dołączamy funkcję, która może być albo [query](https://trpc.io/docs/v10/react-queries), albo [mutacją](https://trpc.io/docs/v10/react-mutations), albo [subscrypcją](https://trpc.io/docs/v10/subscriptions). W naszym przykładzie, funkcja ta (zwana "resolverem") wysyła zapytanie do bazy danych korzystając z naszego klienta [prisma](./prisma) i zwraca użytkownika z pasującym do wysłanego `id`.
 
-You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+Swoje procedury definiujesz w folderze `routers`, który reprezentuje kolekcję pasujących procedur ze wspólnej przestrzeni. Możesz mieć router `users`, router `posts` i router `messages`. Routery te mogą zostać następnie połączone w jeden, scentralizowany `appRouter`:
 
 ```ts:server/api/root.ts
 const appRouter = createTRPCRouter({
@@ -111,9 +111,9 @@ const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 ```
 
-Notice that we only need to export our router's type definitions, which means we are never importing any server code on our client.
+Zwróć uwagę na to, iż musimy eksportować jedynie definisje typów tego routera - oznacza to, iż nigdy nie importujemy kodu serwera po stronie klienta.
 
-Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
+Wywołajmy teraz procedurę na naszym frontendzie. tRPC dostarcza nam wrapper dla paczki `@tanstack/react-query`, który pozwala ci wykorzystać pełną moc hooków. Dodatkowo, zapytania API dostajesz w pełni "otypowane". Zapytanie do naszych procedur możemy wykonać w następujący sposób:
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
@@ -131,15 +131,15 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+Natychmiast zauważysz, jak dobrze działa type-safety i autouzupełnianie. Jak tylko napiszesz `trpc.`, twoje routery automatycznie pojawią się w opcjach autopodpowiedzi a kiedy tylko wybierzesz router, również znajdą się tam jego procedury. Otrzymasz także błąd TypeScripta, jeżeli wejście (input) nie będzie zgadzać się z tym, podanym do systemu walidacji na backendzie.
 
-## How do I call my API externally?
+## Jak wykonać zewnętrzne zapytania do mojego API?
 
-With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two recommended ways to do it:
+Korzystając z regularnego API, zapytania takie możesz wykonać korzystając z klientów HTTP takich jak `curl`, `Postman`, `fetch`, czy tez bezpośrednio z przeglądarki. Z tRPC sprawa wygląda jednak inaczej. Jeżeli chcesz wykonać takie zapytania bez klienta tRPC, możesz skorzystać z jedngo z dwóch polecanych na to sposobów:
 
-### Expose a single procedure externally
+### Ujawnianie zewnętrznie pojedynczej procedury tRPC
 
-If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
+Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" projej procedury tRPC.
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -147,7 +147,7 @@ import { appRouter } from "../../../server/api/root";
 import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Create context and caller
+  // Stwórz kontekst i obiekt zapytań
   const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
@@ -156,11 +156,11 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(user);
   } catch (cause) {
     if (cause instanceof TRPCError) {
-      // An error from tRPC occured
+      // Wystąpił błąd z tRPC
       const httpCode = getHTTPStatusCodeFromError(cause);
       return res.status(httpCode).json(cause);
     }
-    // Another error occured
+    // Wystąpił inny błąd
     console.error(cause);
     res.status(500).json({ message: "Internal server error" });
   }
@@ -169,17 +169,17 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default userByIdHandler;
 ```
 
-### Exposing every procedure as a REST endpoint
+### Ujawnianie wszystkich procedur tRPC jako endpointów REST
 
-If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
+Jeżeli chcesz ujawnić zewnętrznie wszystkie procedury tRPC, sprawdź rozszerzenie stworzone przez społeczność - [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). Dostarczając dodatkowych metadanych do twoich procedur, wygenerować możesz REST API zgodne z OpenAPI ze swoich routerów tRPC.
 
-### It's just HTTP Requests
+### To tylko zapytania HTTP
 
-tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/v10/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
+tRPC komunikuje się za pomocą HTTP, więc masz także możliwość wykonywania zapytań do swoich procedur korzystając właśnie z "regularnych" zapytań HTTP. Składnia może wydawać się jednak nieporęczna z powodu wykorzystywanego przez tRPC [protokołu RPC](https://trpc.io/docs/v10/rpc). Jeżeli jesteś ciekawy jak on działa, możesz zobaczyć jak wyglądają zapytania tRPC w zakładce "sieć" w swojej przeglądarce - polecamy robić to jednak tylko w celach edukacyjnych i skorzystać z jednego z rozwiązań przedstawionych powyżej.
 
-## Comparison to a Next.js API endpoint
+## Porównanie do endpointu API Next.js
 
-Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
+Porównajmy endpoint API Next.js z procedurą tRPC. Powiedzmy, że chcemy pobrać ubiekt użytkownika z naszej bazy danych i zwrócić go na frontend. Endpoint API Next.js napisać moglibyśmy w następujący sposób>+:
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -225,21 +225,21 @@ const UserPage = () => {
 };
 ```
 
-Compare this to the tRPC example above and you can see some of the advantages of tRPC:
+Porównaj to do powyższego przykładu z tRPC - zobaczysz zalety korzystanie właśnie z tego sposobu:
 
-- Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
-- You don’t need to validate which HTTP method was used.
-- You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
-- Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend provides autocompletion and type safety.
+- Zamiast precyzować url dla każdego route'a (co może stać się uciążliwe do debugowania, jeśli coś przeniesiesz), twój cały router jest obiekt z autouzupełnianiem.
+- Nie musisz walidować użytej metody HTTP.
+- Nie musisz walidować zawartości zapytania pod kątem pooprawności zawartych danych - zajmuje się tym Zod.
+- Zamiast tworzyć obiekt "response", możesz wyrzucać błędy i zwracać wartości lub obiekty tak, jak robiłbyś to w zwykłej funkcji TypeScripta.
+- Wywoływanie procedury na frontendzie dostarcza Ci autouzupełniania i type-safety.
 
-## Useful snippets
+## Przydatne fragmenty
 
-Here are some snippets that might come in handy.
+Znajdziesz tutaj fragmenty kodu, które mogą Ci się przydać.
 
 ### Aktywacja CORS
 
-If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
+Jeżeli chcesz korzystać z API z różnych domen, np. w monorepo zawierającym aplikację React Native, możesz chcieć włączyć CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -249,10 +249,10 @@ import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Enable cors
+  // Włącz cors
   await cors(req, res);
 
-  // Create and call the tRPC handler
+  // Stwórz i wywołaj handler tRPC
   return createNextApiHandler({
     router: appRouter,
     createContext: createTRPCContext,
@@ -262,9 +262,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default handler;
 ```
 
-### Optimistic updates
+### "Optimistic updates"
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Aktualizacje danych zwane "Optimistic updates" zachodzą wtedy, kiedy aktualizujemy UI, zanim zapytanie API zostanie ukończone. Dostarcza to lepsze doświadczenie użytkownika, ponieważ nie musi on czekać na ukończenie zapytania API, aby zobaczyć odzwierciedlenie zmian w interfejsie aplikacji. Pamiętaj jednak, że aplikacje, które cenią sobie poprawność danych, powinny za wszelką cenę unikać aktualizacji "optimisic updates" - nie są one "poprawną" reprezentacją stanu backendu. Więcej na ich temat możesz poczytać w [dokumentacji React Query](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -273,24 +273,24 @@ const MyComponent = () => {
   const utils = api.useContext();
   const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
-      // Cancel outgoing fetches (so they don't overwrite our optimistic update)
+      // Anuluj wychodzące zapytania (aby nie nadpisały one "optimistic update'u")
       await utils.post.list.cancel();
 
-      // Get the data from the queryCache
+      // Otrzymaj dane z queryCache
       const prevData = utils.post.list.getData();
 
-      // Optimistically update the data with our new post
+      // Zaktualizuj dane z naszego nowego postu
       utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
-      // Return the previous data so we can revert if something goes wrong
+      // Zwróć poprzednie dane, aby w razie błędu można było z nich przywrócić stan aplikacji
       return { prevData };
     },
     onError(err, newPost, ctx) {
-      // If the mutation fails, use the context-value from onMutate
+      // Jeżeli mutacja wyrzuci błąd, skorzystaj z wartości kontekstu z onMutate
       utils.post.list.setData(undefined, ctx.prevData);
     },
     onSettled() {
-      // Sync with server once mutation has settled
+      // Zsynchronizuj z serwerem po ukończonej mutacji
       utils.post.list.invalidate();
     },
   });
@@ -299,7 +299,7 @@ const MyComponent = () => {
 
 ### Przykładowy Test Integracji
 
-Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
+Tu znajdziesz przykładowy test integracji korzystający z paczki [Vitest](https://vitest.dev), aby sprawdzić, czy router tRPC działa poprawnie, czy parser danych wejściowych dziedziczy odpowiedni typ, oraz czy zwracane dane pasują do oczekiwanego outputu.
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
