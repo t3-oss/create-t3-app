@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.3.1
+
+### Patch Changes
+
+- [#1084](https://github.com/t3-oss/create-t3-app/pull/1084) [`7490a34`](https://github.com/t3-oss/create-t3-app/commit/7490a34a3f46d8e912f996843d27ae5933f26164) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: undo env changes
+
 ## 7.3.0
 
 ### Minor Changes
