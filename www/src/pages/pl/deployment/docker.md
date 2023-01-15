@@ -209,5 +209,5 @@ Przejdź do zakładki "Zmienne" ("Variables") i dodaj tam swój `DATABASE_URL`. 
 | Odnośnik do Docker Compose CLI                | https://docs.docker.com/compose/reference/                           |
 | Wdrażanie aplikacji Next.js z obrazem Dockera | https://nextjs.org/docs/deployment#docker-image                      |
 | Next.js z Dockerem                            | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Przykład Next.jsa z Dockerem                  | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
+| Przykład Next.js z Dockerem                  | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | Stwórz obraz Dockera aplikacji Next.js        | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
