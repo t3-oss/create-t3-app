@@ -6,7 +6,18 @@
 import { serverSchema } from "./schema.mjs";
 import { env as clientEnv, formatErrors } from "./client.mjs";
 
-const _serverEnv = serverSchema.safeParse(process.env);
+/**
+ * You can't destruct `process.env` as a regular object, so we do
+ * a workaround. This is because Next.js evaluates this at build time,
+ * and only used environment variables are included in the build.
+ * @type {{ [key: string]: string | undefined; }}
+ */
+let serverEnv = {};
+Object.keys(serverSchema.shape).forEach(
+  (key) => (serverEnv[key] = process.env[key]),
+);
+
+const _serverEnv = serverSchema.safeParse(serverEnv);
 
 if (!_serverEnv.success) {
   console.error(

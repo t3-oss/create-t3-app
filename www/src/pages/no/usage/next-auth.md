@@ -118,7 +118,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 ```ts:server/trpc/router/user.ts
 const userRouter = router({
-  me: protectedProcedure.query(({ ctx }) => {
+  me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
       where: {
         id: ctx.session.user.id,

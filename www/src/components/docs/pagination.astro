@@ -1,4 +1,5 @@
 ---
+import type { SidebarItemLink } from "../../config";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { paginate } from "../../utils/pagination";
 import LeftArrow from "../icons/leftArrow.astro";
@@ -9,7 +10,7 @@ const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
   hasTrailing ? -1 : currentPage.length,
-);
+) as SidebarItemLink;
 
 const langCode = getLanguageFromURL(currentPage);
 const { next, prev } = paginate(langCode, currentPageMatch);

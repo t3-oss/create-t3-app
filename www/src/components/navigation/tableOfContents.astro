@@ -29,8 +29,30 @@ const isRtl = getIsRtlFromUrl(pathname);
       headings.map((heading) => {
         const { depth, slug, text } = heading;
 
+        //add data-component-type to headings to be able to filter them in the sidebar
+        let dataComponentType = "";
+        switch (text) {
+          case "prisma":
+            dataComponentType = "prisma";
+            break;
+          case "src/types":
+          case "src/server/auth.ts":
+            dataComponentType = "nextauth";
+            break;
+          case "postcss.config.cjs":
+          case "prettier.config.cjs":
+            dataComponentType = "tailwind";
+            break;
+          case "src/server/api":
+          case "src/server/api/routers":
+          case "src/utils":
+            dataComponentType = "trpc";
+            break;
+        }
+
         return (
           <li
+            data-components={dataComponentType || null}
             class={clsx(
               "w-full list-none border-t3-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-t3-purple-300/50",
               isRtl

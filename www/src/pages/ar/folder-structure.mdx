@@ -1,0 +1,218 @@
+---
+title: بنية المجلد
+description: بنية مجلد T3 App
+layout: ../../layouts/docs.astro
+lang: ar
+dir: rtl
+---
+
+import Form from "../../components/docs/folderStructureForm.astro";
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+
+اختار أدواتك لترى بنية المجلد عند إنشاء تطبيقك بواسطة تلك ألاختيارات. بالأسفل ستجد وصف عن غرض كلاً منهم.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+## `prisma`
+
+مجلد prisma يحتوي على `prisma.schema` الذي بدوره يحتوي ملف تكوين الاتصال مع قاعدة البيانات كما يحتوي أيضا علي schema التي تحدد شكل الـ tables هذا إلى جانب ملفات الـ migrations و/أو كود لإضافة المعلومات إلى Database، اقرآ [كيفية استخدام Prisma](/ar/usage/prisma).
+
+## `public`
+
+يحتوي مُجلد Public على الملفات الثابتة التي يقوم السيرفر بتقديمها، يكون ملف `favicon.ico` مثال على ذلك.
+
+## `src/env`
+
+يستخدم للتحقق من صحة الـ environment variable وتحديد الأنواع (types)، اقرأ المزيد [Environment Variables](usage/env-variables)
+
+## `src/pages`
+
+مجلد `pages` يحتوي علي كل الصفحات التي يحتوي عليها تطبيق Next.js، يعمل ملف `index.tsx` في مستند root من `/pages` كالصفحة الأساسية للتطبيق، يعمل ملف `__app.tsx` لإمداد التطبيق بما تحتاجه من موفر، لقراءة المزيد [Next.js documentation](https://nextjs.org/docs/basic-features/pages).
+
+</div>
+<div data-components="nextauth trpc">
+
+### `src/pages/api`
+
+يحتوي مجلد `api` علي كل Api routes في تطبيقك الـ Next.js، يحتوي `example.ts` على مثال عن route الذي يستخدم [Next.js API route](https://nextjs.org/docs/api-routes/introduction) مع Prisma. يحتوي ملف `restricted.ts` علي مثال عن route الذي يستخدم خاصية في [Next.js API route](https://nextjs.org/docs/api-routes/introduction) ومحمي من [NextAuth.js](https://next-auth.js.org/).
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+إن ملف `[...nextauth].ts` خط سير التوثيق (authentication slug route) في NextAuth.js، ويستخدم في طلبات التوثيق. اقرأ [NextAuth.js usage](usage/next-auth) و [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) لمزيد من المعلومات حول catch-all/slug.
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+يُعتبر ملف `[trpc].ts` المدخل لـ API في tRPC، ويكون مسئول عن تنفيذ طلبات tRPC. اقرأ [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) و [tRPC usage](usage/trpc#-pagesapitrpctrpcts) لمزيد من المعلومات حول catch-all/slug.
+
+</div>
+<div data-components="trpc prisma">
+
+## `src/server`
+
+يُستخدم مجلد `server` للفصل بوضوح بين الكود من جانب السيرفر (Server Side) والكود من جانب العميل (Client Side).
+
+</div>
+<div data-components="nextauth">
+
+### `src/server/auth.ts`
+
+يحتوي على الوظائف الخادمة (utlities) التي تقوم بالتوثيق مثل استرداد جلسة المستخدم (user session) من جانب السيرفر. اقرأ [NextAuth.js](https://create.t3.gg/ar/usage/next-auth#usage-with-trpc) للمزيد من المعلومات.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+يستخدم ملف `db.ts` ليوضح استخدام Prisma client بشكل شامل. اقرأ [استخدام Prisma](https://create.t3.gg/ar/usage/prisma#prisma-client) و[افضل الطرق لاستخدام Prisma client مع Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) لمزيد من المعلومات.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db/client.ts`
+
+يستخدم ملف `client.ts` لإنشاء نُسخة لـ Prisma Client علي مستوي التطبيق كلة، اقرأ [Prisma usage](usage/prisma#prisma-client) لمزيد من المعلومات.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+مجلد tRPC يحتوي على كود tRPC للسيرفر.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+يُحتوي مجلد `routers` على كل وطائفك الوصول الفرعية (sub-routers) لمكتبة tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+إن ملف `example.ts` مثال عن وظيفة الوصول tRPC التي تستخدم `publicProcedure` الوطيفة المساعدة (helper) لتوضيح كيف ينشئ وظيفة وصول من tRPC.
+
+سوف يحتوي الملف على وظائف بأعداد مختلفة طبقا لأختيراتك، لتوضيح الاستخدام حسب احتياجك.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+إن ملف `trpc.ts` الملف الرئيسي لإعدادات back-end في tRPC. هنا:
+
+1. يحدد المحتوى المستخدم في طلبات tRPC. اقرأ [استعمال tRPC](https://create.t3.gg/ar/usage/trpc#-servertrpccontextts) للمزيد من المعلومات.
+
+2. يورد (export) نهج الوطيفة المساعدة. اقرأ [استعمال tRPC](https://create.t3.gg/ar/usage/trpc#-servertrpctrpcts) للمزيد من المعلومات.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+يُستخدم ملف `root.ts` لدمج وظائف tRPC للوصول, وتوريدهم كوظيفة وصول واحدة، وكذلك أنواع بيانات الوظيفة المحددة، اقرأ المزيد هنا [tRPC usage](https://create.t3.gg/ar/usage/trpc#-servertrpcrouterts).
+
+</div>
+
+<div>
+
+### `src/styles`
+
+يحتوي مجلد `styles` على التصميمات العامة للتطبيق.
+
+</div>
+<div data-components="nextauth">
+
+### `src/types`
+
+يحتوي مجلد `types` على الأنواع البيانات (Types) أو الأنواع المحددة (type declarations).
+
+</div>
+<div data-components="nextauth">
+
+#### `src/types/next-auth.d.ts`
+
+يُستخدم ملف `next-auth.d.ts` للتعديل على إعدادات NextAuth الافتراضية، لمزيد من المعلومات [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session).
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+يُستخدم مجلد `utils` لحفظ الـ functions التي يكثر استخدامها.
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/trpc.ts`
+
+يُستخدم ملف `trpc.ts` كـ entrypoint لـ front-end إلى tRPC، اقرآ المزيد هنا [tRPC usage](usage/trpc#-utilstrpcts).
+
+</div>
+<div>
+
+### `.env`
+
+يُستخدم ملف `.env` لتخزين environment variables، اقرأ المزيد [Environment Variables](usage/env-variables). يجب ألا يضاف هذا الملف في تاريخ Git.
+
+</div>
+<div>
+
+### `.env.example`
+
+ملف `.env.example` هو مثال لاستخدام example environment مبني على المكتبات المختارة. يجب أن يضاف هذا الملف في تاريخ Git.
+
+</div>
+<div>
+
+### `.eslintrc.json`
+
+يٌستخدم ملف `.eslintrc.json` لإعداد ESLint، اقرأ المزيد هنا [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files).
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+يحقق ملف `next-env.d.ts` أن Typescript تأخذ Types في Next.js في الحسبان. **لا تُعدل عليها ولا تحذفها لأنها تتغير باستمرار**، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects).
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+يستخدم ملف `next.config.mjs` لإعداد Next.js، لمزيد من المعلومات [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction). تلميح: يسمح تمديد `.mjx` باستخدام ESM imports.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+إن ملف `postcss.config.cjs` ضروري عند استخدام TailwindCSS PostCSS، لمزيد من المعلومات [Taiwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss).
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.cjs`
+
+إن ملف `prettier.config.cjs` ضروري عند استخدام  Prettier ولإضافة prettier-plugin-tailwindcss لتنظيم الفئات (classes) مع Tailwind CSS، لمزيد من المعلومات [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+إن ملف `tsconfig.json` ضروري عند استخدام TypeScript. فعيلت بعض الإعدادات الغير افتراضية، مثل `strict mode`، لتوفير أفضل إمكانية للاستخدام الـ TypeScript في Create T3 App ومكتباتها، لمزيد من المعلومات اقرأ [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) أو [TypeScript Usage](usage/typescript).
+
+</div>

@@ -13,29 +13,31 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "autoprefixer",
       "prettier",
       "prettier-plugin-tailwindcss",
+      "@types/prettier",
     ],
     devMode: true,
   });
 
-  const twAssetDir = path.join(PKG_ROOT, "template/addons/tailwind");
+  const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const twCfgSrc = path.join(twAssetDir, "tailwind.config.cjs");
+  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.cjs");
   const twCfgDest = path.join(projectDir, "tailwind.config.cjs");
 
-  const postcssCfgSrc = path.join(twAssetDir, "postcss.config.cjs");
+  const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.cjs");
   const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");
 
-  const prettierSrc = path.join(twAssetDir, "prettier.config.cjs");
+  const prettierSrc = path.join(extrasDir, "config/prettier.config.cjs");
   const prettierDest = path.join(projectDir, "prettier.config.cjs");
 
-  const cssSrc = path.join(twAssetDir, "globals.css");
+  const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
-
-  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
 
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
-  fs.unlinkSync(indexModuleCss);
   fs.copySync(prettierSrc, prettierDest);
+
+  // Remove vanilla css file
+  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
+  fs.unlinkSync(indexModuleCss);
 };

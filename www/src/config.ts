@@ -29,10 +29,12 @@ export const KNOWN_LANGUAGES = {
   // sv: "Svenska",
   ar: "العربية",
   en: "English",
+  fr: "Français",
   pt: "Português",
   ru: "Русский",
   no: "Norsk",
   pl: "Polski",
+  "zh-hans": "简体中文",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
@@ -48,12 +50,18 @@ export const ALGOLIA = {
 };
 
 export type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+
+export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
+  text: string;
+  link: `${TCode}/${string}`;
+};
+
+export type SidebarItemLink = SidebarItem["link"];
+
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
-    [THeader in OuterHeaders]?: {
-      text: string;
-      link: `${TCode}/${string}`;
-    }[];
+    // eslint-disable-next-line no-unused-vars
+    [THeader in OuterHeaders]?: SidebarItem<TCode>[];
   };
 };
 export const SIDEBAR: Sidebar = {
@@ -76,7 +84,7 @@ export const SIDEBAR: Sidebar = {
       { text: "التثبيت", link: "ar/installation" },
       { text: "بِنية المجلد", link: "ar/folder-structure" },
       { text: "أسئلة شائعة", link: "ar/faq" },
-      { text: "تطبيقات صُنعت بواسطة T3", link: "ar/t3-collection" },
+      { text: "اعمال بواسطة T3", link: "ar/t3-collection" },
       { text: "ترشيحات أُخري", link: "ar/other-recs" },
     ],
     Usage: [
@@ -151,7 +159,37 @@ export const SIDEBAR: Sidebar = {
     ],
     Deployment: [
       { text: "Vercel", link: "pl/deployment/vercel" },
+      { text: "Netlify", link: "fr/deployment/netlify" },
       { text: "Docker", link: "pl/deployment/docker" },
+    ],
+  },
+  fr: {
+    "Create T3 App": [
+      { text: "Introduction", link: "fr/introduction" },
+      { text: "Pourquoi CT3A?", link: "fr/why" },
+      { text: "Installation", link: "fr/installation" },
+      { text: "Structure des dossiers", link: "fr/folder-structure" },
+      { text: "FAQ", link: "fr/faq" },
+      { text: "Collection T3", link: "fr/t3-collection" },
+      { text: "Autres recommandations", link: "fr/other-recs" },
+    ],
+    Usage: [
+      { text: "Premiers pas", link: "fr/usage/first-steps" },
+      { text: "Next.js", link: "fr/usage/next-js" },
+      { text: "TypeScript", link: "fr/usage/typescript" },
+      { text: "tRPC", link: "fr/usage/trpc" },
+      { text: "Prisma", link: "fr/usage/prisma" },
+      { text: "NextAuth.js", link: "fr/usage/next-auth" },
+      {
+        text: "Variables d'environnement",
+        link: "fr/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "fr/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "fr/deployment/vercel" },
+      { text: "Netlify", link: "fr/deployment/netlify" },
+      { text: "Docker", link: "fr/deployment/docker" },
     ],
   },
   pt: {
@@ -238,6 +276,35 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "no/deployment/docker" },
     ],
   },
+  "zh-hans": {
+    "Create T3 App": [
+      { text: "简介", link: "zh-hans/introduction" },
+      { text: "为什么选择 CT3A?", link: "zh-hans/why" },
+      { text: "安装", link: "zh-hans/installation" },
+      { text: "文件夹结构", link: "zh-hans/folder-structure" },
+      { text: "常见疑问", link: "zh-hans/faq" },
+      { text: "T3 合集", link: "zh-hans/t3-collection" },
+      { text: "其他推荐", link: "zh-hans/other-recs" },
+    ],
+    Usage: [
+      { text: "第一步", link: "zh-hans/usage/first-steps" },
+      { text: "Next.js", link: "zh-hans/usage/next-js" },
+      { text: "TypeScript", link: "zh-hans/usage/typescript" },
+      { text: "tRPC", link: "zh-hans/usage/trpc" },
+      { text: "Prisma", link: "zh-hans/usage/prisma" },
+      { text: "NextAuth.js", link: "zh-hans/usage/next-auth" },
+      {
+        text: "环境变量",
+        link: "zh-hans/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "zh-hans/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "zh-hans/deployment/vercel" },
+      { text: "Netlify", link: "zh-hans/deployment/netlify" },
+      { text: "Docker", link: "zh-hans/deployment/docker" },
+    ],
+  },
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
@@ -260,6 +327,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     Usage: "كيفية الإستخدام؟",
     Deployment: "نَشر تطبيقك",
   },
+  fr: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Utilisation",
+    Deployment: "Déploiement",
+  },
   pt: {
     "Create T3 App": "Create T3 App",
     Usage: "Uso",
@@ -274,5 +346,10 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "Bruk",
     Deployment: "Utrulling",
+  },
+  "zh-hans": {
+    "Create T3 App": "Create T3 App",
+    Usage: "用法",
+    Deployment: "部署",
   },
 };

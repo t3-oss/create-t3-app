@@ -63,6 +63,7 @@ html.dark {
 }
 .DocSearch-Search-Icon {
   stroke-width: 1.6;
+  margin-inline-end: 15px;
 }
 .DocSearch-Button .DocSearch-Search-Icon {
   color: var(--docsearch-text-color);
@@ -170,6 +171,9 @@ html.dark {
   margin: 0;
   padding: 0;
 }
+.DocSearch-Reset {
+  margin-inline-start: 12px;
+}
 .DocSearch-MagnifierLabel,
 .DocSearch-Reset {
   align-items: center;
@@ -230,6 +234,7 @@ html.dark {
   display: none;
 }
 .DocSearch-Dropdown {
+  margin-top: 10px;
   max-height: calc(
     var(--docsearch-modal-height) - var(--docsearch-searchbox-height) -
       var(--docsearch-spacing) - var(--docsearch-footer-height)

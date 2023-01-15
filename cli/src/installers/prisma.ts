@@ -17,29 +17,26 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
     devMode: false,
   });
 
-  const prismaAssetDir = path.join(PKG_ROOT, "template/addons/prisma");
+  const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const schemaSrc = path.join(
-    prismaAssetDir,
-    packages?.nextAuth.inUse ? "auth-schema.prisma" : "schema.prisma",
+    extrasDir,
+    "prisma/schema",
+    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma",
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
-  const clientSrc = path.join(prismaAssetDir, "client.ts");
-  const clientDest = path.join(projectDir, "src/server/db/client.ts");
-
-  const sampleApiRouteSrc = path.join(prismaAssetDir, "sample-api.ts");
-  const sampleApiRouteDest = path.join(projectDir, "src/pages/api/examples.ts");
+  const clientSrc = path.join(extrasDir, "src/server/db.ts");
+  const clientDest = path.join(projectDir, "src/server/db.ts");
 
   // add postinstall script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
-  packageJsonContent.scripts!.postinstall = "prisma generate"; //eslint-disable-line @typescript-eslint/no-non-null-assertion
+  packageJsonContent.scripts!.postinstall = "prisma generate";
 
   fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
-  fs.copySync(sampleApiRouteSrc, sampleApiRouteDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
   });

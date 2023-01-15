@@ -45,16 +45,6 @@ const main = async () => {
     noInstall,
   });
 
-  if (!noInstall) {
-    await installDependencies({ projectDir });
-  }
-
-  if (!noGit) {
-    await initializeGit(projectDir);
-  }
-
-  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
-
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
     path.join(projectDir, "package.json"),
@@ -64,6 +54,16 @@ const main = async () => {
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
+
+  if (!noGit) {
+    await initializeGit(projectDir);
+  }
+
+  if (!noInstall) {
+    await installDependencies({ projectDir });
+  }
+
+  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
 
   process.exit(0);
 };

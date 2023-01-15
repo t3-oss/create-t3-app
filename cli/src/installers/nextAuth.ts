@@ -1,4 +1,5 @@
-import type { Installer, AvailableDependencies } from "~/installers/index.js";
+import type { Installer } from "~/installers/index.js";
+import { AvailableDependencies } from "~/installers/dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
@@ -14,40 +15,25 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
     devMode: false,
   });
 
-  const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
+  const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const apiHandlerSrc = path.join(
-    nextAuthAssetDir,
-    packages?.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts",
+    extrasDir,
+    "src/pages/api/auth/[...nextauth]",
+    packages?.prisma.inUse ? "with-prisma.ts" : "base.ts",
   );
   const apiHandlerDest = path.join(
     projectDir,
     "src/pages/api/auth/[...nextauth].ts",
   );
 
-  const getServerAuthSessionSrc = path.join(
-    nextAuthAssetDir,
-    "get-server-auth-session.ts",
-  );
-  const getServerAuthSessionDest = path.join(
-    projectDir,
-    "src/server/common/get-server-auth-session.ts",
-  );
+  const getServerAuthSessionSrc = path.join(extrasDir, "src/server/auth.ts");
+  const getServerAuthSessionDest = path.join(projectDir, "src/server/auth.ts");
 
-  const restrictedApiSrc = path.join(nextAuthAssetDir, "restricted.ts");
-  const restrictedApiDest = path.join(
-    projectDir,
-    "src/pages/api/restricted.ts",
-  );
-
-  const nextAuthDefinitionSrc = path.join(nextAuthAssetDir, "next-auth.d.ts");
-  const nextAuthDefinitionDest = path.join(
-    projectDir,
-    "src/types/next-auth.d.ts",
-  );
+  const nextAuthDTSSrc = path.join(extrasDir, "src/types/next-auth.d.ts");
+  const nextAuthDTSDest = path.join(projectDir, "src/types/next-auth.d.ts");
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(getServerAuthSessionSrc, getServerAuthSessionDest);
-  fs.copySync(restrictedApiSrc, restrictedApiDest);
-  fs.copySync(nextAuthDefinitionSrc, nextAuthDefinitionDest);
+  fs.copySync(nextAuthDTSSrc, nextAuthDTSDest);
 };

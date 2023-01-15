@@ -1,5 +1,66 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- [#1071](https://github.com/t3-oss/create-t3-app/pull/1071) [`34d6c5b`](https://github.com/t3-oss/create-t3-app/commit/34d6c5b0431ea7baa922a27768d0c82b05c12bdc) Thanks [@ JacobADevore](https://github.com/JacobADevore)! - feat: automatically destructure env objects
+
+## 7.2.0
+
+### Minor Changes
+
+- [#1021](https://github.com/t3-oss/create-t3-app/pull/1021) [`78dfdc9`](https://github.com/t3-oss/create-t3-app/commit/78dfdc9b480ea19ac90270827653400e31300e6e) Thanks [@iduuck](https://github.com/iduuck)! - construct `serverEnv`, like we do with `clientEnv` #1000
+
+### Patch Changes
+
+- [#1060](https://github.com/t3-oss/create-t3-app/pull/1060) [`a8cc106`](https://github.com/t3-oss/create-t3-app/commit/a8cc106c3ef507e275f38c09a5d6a7a14336c254) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: cleanup context type in `initTRPC`
+
+## 7.1.0
+
+### Minor Changes
+
+- [#1036](https://github.com/t3-oss/create-t3-app/pull/1036) [`c5ca65e`](https://github.com/t3-oss/create-t3-app/commit/c5ca65e03e2a9d1c3c7f6844eb678402b0fa8993) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - use typescript-eslint's recommended-required-type-checking
+
+## 7.0.2
+
+### Patch Changes
+
+- [#1056](https://github.com/t3-oss/create-t3-app/pull/1056) [`c6704fb`](https://github.com/t3-oss/create-t3-app/commit/c6704fbeef1473e77ad62543770f1804645389a8) Thanks [@prashantrahul141](https://github.com/prashantrahul141)! - fix: update `package.json->name` before installing dependencies.
+
+## 7.0.1
+
+### Patch Changes
+
+- [#1043](https://github.com/t3-oss/create-t3-app/pull/1043) [`6fe7e1e`](https://github.com/t3-oss/create-t3-app/commit/6fe7e1e1025f46ea8fe6cc82bee7a68e96864078) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix(cli): exit with error code when aborting installation
+  fix(cli): don't log when scaffolding in current directory and it's empty
+
+## 7.0.0
+
+### Major Changes
+
+- [#934](https://github.com/t3-oss/create-t3-app/pull/934) [`c20ec70`](https://github.com/t3-oss/create-t3-app/commit/c20ec705a6d3d3005da24d072cc9be04370ab822) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat!: implement new folder structure
+
+  create-t3-app has decided to switch out the folder structure of the generated t3-app to, what is to us, a more minimal, logical and easier to understand structure.
+
+## 6.12.0
+
+### Minor Changes
+
+- [#1031](https://github.com/t3-oss/create-t3-app/pull/1031) [`61ba991`](https://github.com/t3-oss/create-t3-app/commit/61ba991ea92f5eb3e971d34769df0ba470310990) Thanks [@complexengine](https://github.com/complexengine)! - The CLI now stages the files on project initialization.
+
+## 6.11.6
+
+### Patch Changes
+
+- [#1024](https://github.com/t3-oss/create-t3-app/pull/1024) [`fcf59b0`](https://github.com/t3-oss/create-t3-app/commit/fcf59b077d80fdf0728ab7a4ea12a4b3b5521da3) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: allow dot name in name prompt
+
+## 6.11.5
+
+### Patch Changes
+
+- [#1010](https://github.com/t3-oss/create-t3-app/pull/1010) [`9eddbab`](https://github.com/t3-oss/create-t3-app/commit/9eddbabb9e045b2a8a668ec1389218020360b305) Thanks [@maxmellen](https://github.com/maxmellen)! - chore(create-t3-app): add @types/prettier package to tailwind installer and bump prettier versions
+
 ## 6.11.4
 
 ### Patch Changes
