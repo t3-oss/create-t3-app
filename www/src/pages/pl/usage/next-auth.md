@@ -34,9 +34,29 @@ const User = () => {
 };
 ```
 
+## Otrzymywanie sesji po stronie serwera
+
+Czasem możesz chcieć otrzymać sesję na serwerze. Aby to zrobić, pobierz sesję korzystając z funkcji pomocniczej `getServerAuthSession` dostarczanej przez Create T3 App a następnie prześlij ją do klienta korzystając z `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import type { GetServerSideProps } from "next";
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+const User = () => {
+  const { data: session } = useSession();
+  // UWAGA: obiekt `session` nie będzie miał stanu ładowania, ponieważ jest już pobrany na serwerze
+  ...
+}
+```
+
 ## Dołączanie `user.id` do sesji
 
-`create-t3-app` jest skonfigurowany tak, aby wykorzystać [callback `session`](https://next-auth.js.org/configuration/callbacks#session-callback) w konfiguracji NextAuth.js do dodania ID użytkownika do obiektu `session`.
+Create T3 App jest skonfigurowany tak, aby wykorzystać [callback `session`](https://next-auth.js.org/configuration/callbacks#session-callback) w konfiguracji NextAuth.js do dodania ID użytkownika do obiektu `session`.
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -73,7 +93,7 @@ Konfiguracja ta zachodzi w dwóch krokach:
 
 1. Pobierz sesję z headerów zapytania korzystając z funkcji [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Nie martw się, funkcja ta jest bezpieczna do użycia - nazwa zawiera słowo `unstable` jedynie dlatego, ponieważ implementacja API w przyszłości może się zmienić. Zaletą korzystania z `unstable_getServerSession` zamiast `getSession` jest fakt, iż jest to funkcja wywoływana jedynie po stronie serwera i nie inicjuje ona żadnych niepotrzebnych zapytań. `create-t3-app` tworzy funkcję pomocniczą, która ułatwia korzystanie z `unstable_getServerSession`.
 
-```ts:server/common/get-server-auth-session.ts
+```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -84,7 +104,7 @@ export const getServerAuthSession = async (ctx: {
 
 Korzystając z tej funkcji pomocniczej, możemy otrzymać sesję i przesłać ją do kontekstu tRPC:
 
-```ts:server/trpc/context.ts
+```ts:server/api/trpc.ts
 import { getServerAuthSession } from "../common/get-server-auth-session";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
@@ -96,9 +116,9 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-1. Stwórz middleware tRPC, który sprawdza, czy użytkownik jest autoryzowany. Wykorzystamy następnie stworzony middleware w `protectedProcedure` - specjalnej, zabezpieczonej procedurze. Każda osoba wywołująca ją będzie musiała spełniać warunki autoryzacji - w przeciwnym razie wystąpi błąd, który w odpowiedni sposób będzie mógł zostać obsłużony po stronie klienta.
+2. Stwórz middleware tRPC, który sprawdza, czy użytkownik jest autoryzowany. Wykorzystamy następnie stworzony middleware w `protectedProcedure` - specjalnej, zabezpieczonej procedurze. Każda osoba wywołująca ją będzie musiała spełniać warunki autoryzacji - w przeciwnym razie wystąpi błąd, który w odpowiedni sposób będzie mógł zostać obsłużony po stronie klienta.
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +136,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 Obiekt `session` to minimalna i lekka reprezentacja użytkownika zawierająca jedynie parę pól. Jeśli korzystasz z procedur `protectedProcedure`, masz dostęp do ID użytkownika, które może zostać wykorzystane do pobrania większej ilości danych z bazy.
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
@@ -153,7 +173,7 @@ Jeżeli przykładowo chcesz dodać pole `role` (roli) do modelu `User` (użytkow
 
 ## Korzystanie wraz z middlewarem Next.js
 
-Wykorzystanie middleware'a Next.js [wymaga od Ciebie skorzystania ze strategii JWT](https://next-auth.js.org/configuration/nextjs#caveats) do autoryzacji. Dzieje się tak, ponieważ middleware jest w stanie pobierać ciasteczko sesji jedynie, gdy jest ono JWT. `create-t3-app` jest skonfigurowany tak, by wykorzystać **domyślną** strategię bazy danych, wraz z Prismą jako jej adapterem.
+Wykorzystanie middleware'a Next.js [wymaga od Ciebie skorzystania ze strategii JWT](https://next-auth.js.org/configuration/nextjs#caveats) do autoryzacji. Dzieje się tak, ponieważ middleware jest w stanie pobierać ciasteczko sesji jedynie, gdy jest ono JWT. Create T3 App jest skonfigurowany tak, by wykorzystać **domyślną** strategię bazy danych, wraz z Prismą jako jej adapterem.
 
 ## Konfigurowanie domyślnego providera Discord (`DiscordProvider`)
 

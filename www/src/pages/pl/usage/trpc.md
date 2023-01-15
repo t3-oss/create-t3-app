@@ -37,34 +37,37 @@ tRPC pozwala nam pisanie API będących w pełni typesafe bez żadnego generowan
 
 ## Pliki
 
-tRPC wymaga dużo boilerplate'u, który `create-t3-app` przygotowuje za Ciebie. Przejdźmy więc po kolei po plikach, które są generowane:
+tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-Jest to właściwy punkt początkowy dla twojego API - to on ujawnia dla reszty aplikacji twój router od tRPC. Prawdopodobnie nie będziesz musiał edytować tego pliku, ale jeżeli zajdzie taka potrzeba (np. do włączenia CORSa), warto wiedzieć o tym, iż eksportowany `createNextApiHandler` to [Next.js API handler](https://nextjs.org/docs/api-routes/introduction), który pobiera obiekt [zapytania](https://developer.mozilla.org/en-US/docs/Web/API/Request) i [odpowiedzi](https://developer.mozilla.org/en-US/docs/Web/API/Response) serwera. Oznacza to, iż możesz zawrzeć `createNextApiHandler` w middleware'rze, w jakim tylko chcesz. Poniżej znajdziesz [przykładowy kod](#aktywacja-cors), dzięki któremu dodasz CORS.
+This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
 
-### 📄 `server/trpc/context.ts`
+### 📄 `server/api/trpc.ts`
 
-Plik ten to miejsce, gdzie definiujesz kontekst przesyłany do swoich procedur tRPC. Kontekst to dane, do których dostęp mieć będą wszystkie procedury tRPC. To także świetne miejsce to umieszczenia rzeczy takich jak połączenie z bazą danych, informacje o uwierzytelnianiu, itp. W `create-t3-app` korzystamy z dwóch funkcji, aby umożliwić korzystanie z kontekstu bez dostępu do obiektu zapytania.
+This file is split up in two parts, context creation and tRPC initialization:
 
-- `createContextInner`: To miejsce, w którym definiujesz kontekst niezależny od zapytania - przykładowo, połączenie z bazą danych. Możesz skorzystać z ten funkcji dla [testowania integracji](#przykładowy-test-integracji) czy też [sgg-helperów](https://trpc.io/docs/v10/ssg-helpers), gdzie nie musisz posiadać obiektu zapytania.
+1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
 
-- `createContext`: To miejsce, w którym definiujesz kontekst zależny od zapytania - przykładowo, sesję użytkownika. Zapytanie o sesję wykonujesz z użyciem obiektu `opts.req`, a następnie przesyłasz ją do funkcji `createContextInner`, aby utworzyć finalny kontekst.
+- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
 
-### 📄 `server/trpc/trpc.ts`
+- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
 
-To właśnie tutaj inicjalizujesz tRPC i definiujesz możliwe do użycia w wielu miejscach
-This is where you initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead create reusable procedures and middlewares and export those.
+2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
 
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date`, and not a string which is the case for most APIs.
+You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
 
-### 📄 `server/trpc/router/*.ts`
+### 📄 `server/api/routers/*.ts`
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures, then [merge](https://trpc.io/docs/v10/merging-routers) all of them into a single app router in `server/trpc/router/_app.ts`.
+This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures.
 
-### 📄 `utils/trpc.ts`
+### 📄 `server/api/root.ts`
 
-This is the frontend entrypoint for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+Here we merge all the sub-routers defined in `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) into a single app router.
+
+### 📄 `utils/api.ts`
+
+This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
 
 You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
 
@@ -80,9 +83,9 @@ tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer tal
 
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
-```ts:server/trpc/router/user.ts
-const userRouter = t.router({
-  getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
+```ts:server/api/routers/user.ts
+const userRouter = createTRPCRouter({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
       where: {
         id: input,
@@ -92,14 +95,14 @@ const userRouter = t.router({
 });
 ```
 
-This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
 
-After the input we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations) or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client, and returns the user whose `id` matches the one we passed in.
+After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), or a [subscription](https://trpc.io/docs/v10/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
 
-You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts` and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
-```ts:server/trpc/router/_app.ts
-const appRouter = t.router({
+```ts:server/api/root.ts
+const appRouter = createTRPCRouter({
   users: userRouter,
   posts: postRouter,
   messages: messageRouter,
@@ -114,10 +117,11 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
+import { api } from "../../utils/api";
 
 const UserPage = () => {
   const { query } = useRouter();
-  const userQuery = trpc.users.getById.useQuery(query.id);
+  const userQuery = api.users.getById.useQuery(query.id);
 
   return (
     <div>
@@ -139,12 +143,12 @@ If you want to expose a single procedure externally, you're looking for [server 
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { appRouter } from "../../../server/trpc/router/_app";
-import { createContext } from "../../../server/trpc/context";
+import { appRouter } from "../../../server/api/root";
+import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
-  const ctx = await createContext({ req, res });
+  const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
     const { id } = req.query;
@@ -179,7 +183,7 @@ Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to f
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../server/db/client";
+import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
@@ -233,15 +237,15 @@ Compare this to the tRPC example above and you can see some of the advantages of
 
 Here are some snippets that might come in handy.
 
-### Aktywacja CORS
+### Enabling CORS
 
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
-import { appRouter } from "~/server/trpc/router/_app";
-import { createContext } from "~/server/trpc/context";
+import { appRouter } from "~/server/api/root";
+import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -251,7 +255,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create and call the tRPC handler
   return createNextApiHandler({
     router: appRouter,
-    createContext,
+    createContext: createTRPCContext,
   })(req, res);
 };
 
@@ -260,14 +264,14 @@ export default handler;
 
 ### Optimistic updates
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience, because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
-  const listPostQuery = trpc.post.list.useQuery();
+  const listPostQuery = api.post.list.useQuery();
 
-  const utils = trpc.useContext();
-  const postCreate = trpc.post.create.useMutation({
+  const utils = api.useContext();
+  const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
       // Cancel outgoing fetches (so they don't overwrite our optimistic update)
       await utils.post.list.cancel();
@@ -299,12 +303,12 @@ Here is a sample integration test that uses [Vitest](https://vitest.dev) to chec
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
-import { createContextInner } from "~/server/router/context";
-import { appRouter, type AppRouter } from "~/server/router/_app";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import { appRouter, type AppRouter } from "~/server/api/root";
 import { expect, test } from "vitest";
 
 test("example router", async () => {
-  const ctx = await createContextInner({ session: null });
+  const ctx = await createInnerTRPCContext({ session: null });
   const caller = appRouter.createCaller(ctx);
 
   type Input = inferProcedureInput<AppRouter["example"]["hello"]>;
@@ -318,10 +322,10 @@ test("example router", async () => {
 });
 ```
 
-## Przydatne Zasoby
+## Useful Resources
 
-| Zasób                    | Link                                                    |
-| ------------------------ | ------------------------------------------------------- |
-| Dokumentacja tRPC        | https://www.trpc.io                                     |
-| Parę przykładów z tRPC   | https://github.com/trpc/trpc/tree/next/examples         |
-| Dokumentacja React Query | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Resource               | Link                                                    |
+| ---------------------- | ------------------------------------------------------- |
+| tRPC Docs              | https://www.trpc.io                                     |
+| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
+| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |

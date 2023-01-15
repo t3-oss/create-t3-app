@@ -46,7 +46,7 @@ Folder `pages` zawiera wszystkie strony aplikacji Next.js. Plik `index.tsx` w g�
 
 #### `src/pages/api`
 
-Folder `api` zawiera wszystkie API route'y aplikacji Next.js. Plik `examples.ts` (z Prismą) zawiera przykład takiego route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) oraz z Prismy. Plik `restricted.ts` (z Next-Auth) zawiera przykład route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) i jest on chroniony ("authenticated") poprzez [NextAuth.js](https://next-auth.js.org/).
+Folder `api` zawiera wszystkie API route'y aplikacji Next.js. Plik `examples.ts` zawiera przykład takiego route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) oraz z Prismy. Plik `restricted.ts` zawiera przykład route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) i jest on chroniony ("authenticated") poprzez [NextAuth.js](https://next-auth.js.org/).
 
 </div>
 <div data-components="nextauth">
@@ -63,7 +63,7 @@ Plik `[...nextauth].ts` jest slug routem używanym do uwierzytelniania ("authent
 Plik `[trpc].ts` to punkt wejścia dla API (tRPC). Pomafa on przetwarzać zapytania wykonane z tRPC. Po więcej informacji o kolejno tRPC i slug route'ach, zobacz [korzystanie z tRPC](/pl/usage/trpc#-pagesapitrpctrpcts) oraz [dokumentację dynamicznych route'ów Next.js](https://nextjs.org/docs/routing/dynamic-routes).
 
 </div>
-<div data-components="trpc prisma">
+<div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
@@ -72,73 +72,57 @@ Folder `server` używany jest do stworzenia wyraźnego podziału między kodem d
 </div>
 <div data-components="nextauth+trpc">
 
-### `src/server/common`
+### `src/server/auth.ts`
 
-Folder `common` zawiera często powielający się kod działający po stronie serwera.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/common/get-server-auth-session.ts`
-
-Plik `get-server-auth-session.ts` używany jest do otrzymywania sesji NextAuth.js po stronie serwera. Po więcej informacji, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth#usage-with-trpc).
+Zawiera narzędzia do uwierzytelniania, takie jak pobieranie sesji użytkownika po stronie serwera. Po więcej informacji, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth#korzystanie-z-trpc).
 
 </div>
 <div data-components="prisma">
 
-#### `src/server/db/client.ts`
+#### `src/server/db.ts`
 
-Plik `client.ts` jest używany do tworzenia instancji klienta Prismy z globalnym zakresie. Po więcej informacji, zobacz [korzystanie z Prismy](/pl/usage/prisma#prisma-client).
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc`
-
-Folder `trpc` zawiera kod tRPC po stronie serwera.
-
-<sub>(with tRPC)</sub>
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/context.ts`
-
-Plik `context.ts` jest używany do tworzenia kontekstu w zapytaniach tRPC. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpccontextts).
+Plik `db.ts` jest używany do tworzenia instancji klienta Prismy z globalnym zakresie. Po więcej informacji, zobacz [korzystanie z Prismy](/pl/usage/prisma#prisma-client) oraz [polecane korzystanie z Prismy wraz z Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices).
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/trpc.ts`
+### `src/server/api`
 
-Plik `trpc.ts` jest używany do eksportowania helperów procedur. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpctrpcts).
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc/router`
-
-Folder `router` zawiera routery tRPC.
+Folder `api` zawiera kod tRPC po stronie serwera.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/_app.ts`
+#### `src/server/api/routers`
 
-Plik `_app.ts` używany jest do łączenia routerów tRPC i eksportowania ich jako jednego routera oraz do definiowania typów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpcrouterts).
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-Plik `auth.ts` jest przykładowym routerem tRPC korzystającym z procedury `protectedProcedure` w celu zademonstrowania, jak zabezpieczyć route'a tRPC z NextAuth.js.
+Folder `routers` zawiera wszystkie "sub-routery" tRPC.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/routers/example.ts`
 
-Plik `example.ts` jest przykładowym routerem tRPC korzystającym z procedury `publicProcedure` w celu zademonstrowania, jak stworzyć publiczny route w tRPC.
+Plik `example.ts` zawiera przykład routera tRPC wykorzystującego funkcję pomocniczą `publicProcedure` do zaprezentowania, jak stworzyć publiczny route tRPC.
+
+Zależnie od wybranych paczek, router ten zawiera więcej lub mniej route'ów, aby najlepiej zaprezentować jego sposób użycia.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+Plik `trpc.ts` jest głównym plikiem konfiguracyjnym dla tRPC po stronie serwera. W pliku tym:
+
+1. Definiujemy kontekst używany w zapytaniach tRPC. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpccontextts).
+2. Eksportujemy funkcje pomocnicze helperów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpctrpcts).
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+Plik `root.ts` jest używany do scalenia routerów tRPC i eksportowania ich jako pojedynczego routera, a także eksportowania jego definicji typów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpcrouterts).
 
 </div>
 <div>
@@ -171,9 +155,9 @@ Folder `utils` jest używany do przechowywania często powielanych funkcji pomoc
 </div>
 <div data-components="trpc">
 
-#### `src/utils/trpc.ts`
+#### `src/utils/api.ts`
 
-Plik `trpc.ts` to plik wejścia tRPC od strony klienta. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-utilstrpcts).
+Plik `api.ts` to plik wejścia tRPC od strony klienta. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-utilstrpcts).
 
 </div>
 <div>
@@ -229,6 +213,6 @@ Plik `prettier.config.cjs` jest używany do konfigurowania Prettiera. Dołącza 
 
 ### `tsconfig.json`
 
-Plik `tsconfig.json` jest używany do konfigurowania TypeScripta. Niektóre ustawienia zostały włączone (takie jak `strict mode`), aby zapewnić najlepsze użycie TypeScripta do aplikacji T3 i jej bibliotek. Po więcej informacji, zobacz [dokumentację TypeScripta](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) albo [korzystanie z TypeScripta](/pl/usage/typescript).
+Plik `tsconfig.json` jest używany do konfigurowania TypeScripta. Niektóre ustawienia zostały włączone (takie jak `strict mode`), aby zapewnić najlepsze użycie TypeScripta do Create T3 App i jej bibliotek. Po więcej informacji, zobacz [dokumentację TypeScripta](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) albo [korzystanie z TypeScripta](/pl/usage/typescript).
 
 </div>

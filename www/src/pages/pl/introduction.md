@@ -17,9 +17,9 @@ Jego głównymi elementami są [**Next.js**](https://nextjs.org/) oraz [**TypeSc
 
 Mogłeś dostrzec już, iż jest tu... dużo elementów. Jest to celowe. Zmieniaj elementy jak tylko chcesz - stack ten jest tak modularny, jak to tylko możliwe.
 
-## A więc... co to create-t3-app? Jakiś szablon?
+## A więc... co to Create T3 App? Jakiś szablon?
 
-Może? `create-t3-app` to narzędzie CLI zbudowane przez doświadczonych deweloperów T3 stacka aby usprawnić zakładanie w nim nowych, modularnych projektów. Oznacza to, iż każdy element jest opcjonalny a "szablon" generowany jest bazując na twoich szczegółowych potrzebach.
+Może? Create T3 App to narzędzie CLI zbudowane przez doświadczonych deweloperów T3 stacka aby usprawnić zakładanie w nim nowych, modularnych projektów. Oznacza to, iż każdy element jest opcjonalny a "szablon" generowany jest bazując na twoich szczegółowych potrzebach.
 
 Po niezliczonych projektach i wielu latach w tej technologii, nabyliśmy wiele opinii i wewnętrznych doświadczeń. Zrobiliśmy, co tylko się dało, aby zawrzeć je w naszym CLI.
 
@@ -31,7 +31,7 @@ Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść
 
 ### Rozwiązuj Problemy
 
-Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wszystko dodane do `create-t3-app` powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
+Łatwo jest wpaść w pułapkę "dodawania wszystkiego" - wyraźnie nie chcemy tego robić. Wszystko dodane do Create T3 App powinno rozwiązywać konkretny problem który istnieje w dołączonych technologiach. Znaczy to, że nie dodamy rzeczy, takich jak biblioteki do state managementu (`zustand`, `redux`) ale dodamy elementy takie jak NextAuth.js, Prisma i tRPC.
 
 ### "Bleed Responsibly" (Korzystaj Rozważnie z Nowych Technologii)
 
@@ -39,4 +39,4 @@ Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zaba
 
 ### Typesafety NIE Jest Opcjonalne
 
-Celem `create-t3-app` jest zapewnienie jak najszybszego sposobu na stworzenie nowego projektu full-stack z pełnym **typesafety**. Typesafety traktujemy poważnie - pozwala ono poprawić naszą produktywność i pomaga nam w dostarczaniu mniejszej ilości bugów. Jakakolwiek decyzja, która naraża naturę typesafety jest decyzją, która powinna zostać podjęta w innym projekcie.
+Celem Create T3 App jest zapewnienie jak najszybszego sposobu na stworzenie nowego projektu full-stack z pełnym **typesafety**. Typesafety traktujemy poważnie - pozwala ono poprawić naszą produktywność i pomaga nam w dostarczaniu mniejszej ilości bugów. Jakakolwiek decyzja, która naraża naturę typesafety jest decyzją, która powinna zostać podjęta w innym projekcie.

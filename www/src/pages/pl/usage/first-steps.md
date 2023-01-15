@@ -33,6 +33,6 @@ Powinieneś być w stanie się zalogować.
 
 ## Następne Kroki
 
-- Jeżeli twoja aplikacja zawiera tRPC, sprawdź pliki `src/pages/index.tsx` i `src/server/trpc/router/example.ts` aby dowiedzieć się, jak działają zapytania wykonywane przez tRPC.
-- Rozejrzyj się po dokumentacji `create-t3-app` oraz dokumentacji paczek, z których korzysta twój projekt.
+- Jeżeli twoja aplikacja zawiera tRPC, sprawdź pliki `src/pages/index.tsx` i `src/server/api/routers/example.ts` aby dowiedzieć się, jak działają zapytania wykonywane przez tRPC.
+- Rozejrzyj się po dokumentacji Create T3 App oraz dokumentacji paczek, z których korzysta twój projekt.
 - Dołącz do naszego serwera [Discord](https://t3.gg/discord) i dodaj gwiazdkę na repozytorium [GitHub](https://github.com/t3-oss/create-t3-app)! :)

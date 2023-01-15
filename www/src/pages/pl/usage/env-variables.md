@@ -1,11 +1,11 @@
 ---
 title: Zmienne Środowiskowe
-description: Jak zacząć z create-t3-app
+description: Jak zacząć z Create T3 App
 layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Create-T3-App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe pliki w folderze `env`:
+Create T3 App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe pliki w folderze `env`:
 
 📁 src/env
 
@@ -31,10 +31,6 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
-
-export const clientEnv = {
-  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
-};
 ```
 
 ### Schemat Dla Serwera
@@ -48,14 +44,6 @@ Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz
 Zdefiniuj tutaj zmienne środ. dla klienta.
 
 Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
-
-### Obiekt `clientEnv`
-
-"Rozbij" tutaj obiekt `process.env`.
-
-Potrzebujemy obiektu JavaScripta, który będzie możliwy do parse'owania przez nasze schematy Zod. Z powodu sposobu, w jaki Next.js wchodzi w interakcje ze zmiennymi środ., nie można skorzystać z `process.env`, jak z normalnego obiektu.
-
-TypeScript pomoże ci upewnić się, że wprowadziłeś klucze zmiennych do zarówno obiektu `clientEnv`, jak i `clientSchema`.
 
 ```ts
 // ❌ To nie zadziała, musimy ręcznie "rozbić" `process.env`
@@ -109,7 +97,7 @@ _Chcę dodać mój token do API Twittera jako zmienną środowiskową po stronie
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Dodaj zmienną środ. do pliku `schema.mjs`:
+2. Dodaj zmienną środowiskową do pliku `schema.mjs`:
 
 ```ts
 export const serverSchema = z.object({

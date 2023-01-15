@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: pl
 ---
 
-Stworzyliśmy create-t3-app, ponieważ [Theo](https://twitter.com/t3dotgg) nie chciał przygotować szablonu składającego się ze swoich ulubionych technologii. Zainspirowany przez create-next-app, [CLI od Astro](https://astro.build) oraz ogólne zamiłowanie do typesafety, zespół create-t3-app ciężko pracował budując najlepszy możliwy punkt startowy dla nowych projektów korzystających z T3 Stacka.
+Stworzyliśmy Create T3 App, ponieważ [Theo](https://twitter.com/t3dotgg) nie chciał przygotować szablonu składającego się ze swoich ulubionych technologii. Zainspirowany przez create-next-app, [CLI od Astro](https://astro.build) oraz ogólne zamiłowanie do typesafety, zespół Create T3 App ciężko pracował budując najlepszy możliwy punkt startowy dla nowych projektów korzystających z T3 Stacka.
 
 Jeżeli jesteś zainteresowany korzystaniem z Next.jsa w sposób, w który nie stracisz na typesafety, jest to znakomite miejsce, aby zacząć. Jeśli jesteś ciekawy co do poszczególnych technologii wybranych przez nas dla tego narzędzia, czytaj dalej :)
 

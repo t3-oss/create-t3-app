@@ -5,9 +5,9 @@ layout: ../../layouts/docs.astro
 lang: pl
 ---
 
-Zdajemy sobie sprawę z tego, że biblioteki które zawiera `create-t3-app` nie są lekarstwem na wszystko. Polecamy zaczynać projekty z rzeczami, które są już dołączone - przyjdzie jednak czas, kiedy będziesz musiał dodać swoje paczki. Tylko ty wiesz, czego twój projekt potrzebuje. Polecamy przejrzeć jednak poniższą listę naszych rekomendacji.
+Zdajemy sobie sprawę z tego, że biblioteki które zawiera Create T3 App nie są lekarstwem na wszystko. Polecamy zaczynać projekty z rzeczami, które są już dołączone - przyjdzie jednak czas, kiedy będziesz musiał dodać swoje paczki. Tylko ty wiesz, czego twój projekt potrzebuje. Polecamy przejrzeć jednak poniższą listę naszych rekomendacji.
 
-Są to rekomendacje pojedynczych kontrybutorów i nie powinny być postrzegane jako "oficjalne" sposoby na rowiązywanie danych problemów od zespołu `create-t3-app` czy też T3-OSS.
+Są to rekomendacje pojedynczych kontrybutorów i nie powinny być postrzegane jako "oficjalne" sposoby na rowiązywanie danych problemów od zespołu Create T3 App czy też T3-OSS.
 _**Zrób swój research, szczególnie zanim skorzystasz z płatnych usług**_.
 
 ## State Management

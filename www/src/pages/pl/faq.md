@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: pl
 ---
 
-Tu znajdziesz najczęściej zadawane pytania dotyczące `create-t3-app`.
+Tu znajdziesz najczęściej zadawane pytania dotyczące Create T3 App.
 
 ## Co dalej? Jak mam napisać aplikację?
 
@@ -23,14 +23,14 @@ Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z 
 
 Poniższe elementy to jedne z najlepszych zasobów dla T3 Stacka, jednak społeczność oraz [Theo](https://youtu.be/rzwaaWH0ksk?t=1436) polecają Ci zacząć po prostu z niego korzystać. W ten sposób podczas pisania aplikacji zdobędziesz potrzebną wiedzę.
 
-Jeżeli zastanawiasz się nad korzystaniem z `create-t3-app`, mogłeś już używać poszczególnych jego składowych w przeszłości. W takim przyadku spróbuj wskoczyć na głęboką wodę i nauczyć się innych jego części po drodze!
+Jeżeli zastanawiasz się nad korzystaniem z Create T3 App, mogłeś już używać poszczególnych jego składowych w przeszłości. W takim przyadku spróbuj wskoczyć na głęboką wodę i nauczyć się innych jego części po drodze!
 
-Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego najlepszy. Jeżeli więc w dalszym ciągu czujesz potrzebę skorzystania z innych źródeł (lub jeżeli nie jesteś wystarczająco pewny siebie / czujesz się przytłoczony stackiem), sprawdź te poradniki dotyczące `create-t3-app` (pamiętaj, że są one w języku angielskim):
+Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego najlepszy. Jeżeli więc w dalszym ciągu czujesz potrzebę skorzystania z innych źródeł (lub jeżeli nie jesteś wystarczająco pewny siebie / czujesz się przytłoczony stackiem), sprawdź te poradniki dotyczące Create T3 App (pamiętaj, że są one w języku angielskim):
 
 ### Artykuły
 
-- [Zbuduj aplikację full stack z create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [Pierwsze spojrzenie na create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Zbuduj aplikację full stack z Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [Pierwsze spojrzenie na Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrowanie aplikacji T3 do Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Integrowanie Stripe'a z Aplikacją T3](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
@@ -40,7 +40,7 @@ Zdajemy sobie sprawę z tego, iż opisany wyżej sposób nie jest dla każdego n
 - [Zbuduj blog z T3 Stackiem - tRPC, TypeScript, Next.js, Prisma i Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Zbuduj live chat z T3 Stackiem - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
 - [T3 Stack - Jak go zbudowaliśmy](https://www.youtube.com/watch?v=H-FXwnEjSsI)
-- [Przegląd `create T3 App` (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+- [Przegląd Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
 ## Dlaczego w projekcie są pliki `.js`?
 
