@@ -82,4 +82,4 @@ Wrzuć do sieci swój projekt korzystając z polecenia [`ntl deploy`](https://do
 ntl deploy --prod --build
 ```
 
-Aby zobaczyć działający przykład na Netlify, odwiedź stronę[ct3a.netlify.app](https://ct3a.netlify.app/).
+Aby zobaczyć działający przykład na Netlify, odwiedź stronę [ct3a.netlify.app](https://ct3a.netlify.app/).
