@@ -90,7 +90,7 @@ Framer Motion pozwala Ci w prosty sposób i z deklaratywną składnią napisać 
 
 ### Vercel
 
-**Aby zahostować swoją aplikację**
+**Aby zhostować swoją aplikację**
 
 Vercel zamienił prawdziwe piekło deploymentu aplikacji w łatwą integrację z GitHubem. Przeskalowaliśmy się do setek tysięcy użytkowników bez problemu. Napędzany przez AWS, o wiele lepszy interfejs :)
 
