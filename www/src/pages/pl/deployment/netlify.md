@@ -8,18 +8,17 @@ Netlify, to alternatywny provider do deploymentu z podobnym założeniem do Verc
 
 ## Dlaczego hostować na Netlify'u?
 
-Racjonalizm podpowiadać może, iż Vercel ma znakomite wsparcie dla Next.jsa, ponieważ to właśnie on jest jego twórcą.
-Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases this will be true and it won't make sense to deviate from the standard path.
+Racjonalizm podpowiadać może, iż Vercel ma znakomite wsparcie dla Next.js, ponieważ to właśnie on jest jego twórcą. Vercel ma duży biznes w zapewnianiu optymalnego doświadczenia i wydajności z Next.js na swojej platformie. W większości przypadków będzie to prawda i zmiana ścieżki z Vercelem nie będzie miała sensu.
 
-There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+Często powtarzane jest także to, iż wiele funkcji z Next.js ma wsparcie jedynie na Vercelu. Chociaż prawdą jest to, iż nowe funkcje Next.js testowane i wspierane będą na Vercelu od razu po wydaniu, warto pamiętać, iż inni dostawcy, tacy jak Netlify, [szybko implementują i wdrażają wsparcie](https://www.netlify.com/blog/deploy-nextjs-13/) dla [stabilnych funkcji Next.js](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
-There are relative pros and cons for all deployment providers since no single host can have the best support for all use cases. For example, Netlify built their own [custom Next.js runtime](https://github.com/netlify/next-runtime) for Netlify's Edge Functions (which run on Deno Deploy) and [maintain unique middleware to access and modify HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
+Zależnie od tego, co dana aplikacja potrzebuje, każda strona od deploymentu posiada swoje wady i zalety - żadna strona nie jest w stanie rozwiązać wszystkich problemów. Przykładowo, Netlify zbudował swój własny [runtime Next.js](https://github.com/netlify/next-runtime) dla własnych Edge Functions (które działają na Deno Deploy) i [utrzymuje unikalny middleware pozwalający na dostęp i modyfikację odpowiedzi HTTP](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
-> _NOTE: To track the status of non-stable Next 13 features see [Using the Next 13 `app` directory on Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
+> _UWAGA: Aby obserwować status niestabilnych funkcji Next.js, zobacz [Korzystanie z folderu `app` od Next 13 na Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
 
-## Project Configuration
+## Konfiguracja Projektu
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures forked and cloned versions of the project will be easier to reproducibly deploy.
+Jest wiele sposobów na konfigurację sposobu budowania aplikacji bezpośrednio poprzez narzędzie CLI od Netlify, czy też dashboard Netlify. Choć nie jest to wymagane, polecamy stworzyć i dołączyć plik [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/). Zapewnia to, iż system budowania sklonowanych i zforkowanych wersji twojego projektu będzie łatwiejszy w odwzorowaniu.
 
 ```toml
 [build]
@@ -27,60 +26,60 @@ There are numerous ways to configure your build instructions including directly 
   publish = ".next"
 ```
 
-## Using the Netlify Dashboard
+## Korzystanie z Dashboardu Netlify
 
-1. Push your code to a GitHub repository and sign up for [Netlify](https://app.netlify.com/signup). After you've created an account, click on **Add new site** and then **Import an existing project**.
+1. Wrzuć swój kod do repozytorium GitHuba i zarejestruj się na stronie [Netlify](https://app.netlify.com/signup). Po stworzeniu konta, kliknij na **Add new site** (dodaj nową stronę) a następnie na **Import an existing project** (zaimportuj istniejący projekt).
 
-![New project on Netlify](/images/netlify-01-new-project.webp)
+![Nowy projekt na Netlify](/images/netlify-01-new-project.webp)
 
-2. Connect your Git provider.
+2. Połącz swojego dostawcę Gita.
 
-![Import repository](/images/netlify-02-connect-to-git-provider.webp)
+![Importowanie repozytorium](/images/netlify-02-connect-to-git-provider.webp)
 
-3. Select your project's repository.
+3. Wybierz repozytorium swojego projektu.
 
-![Select your project's repository](/images/netlify-03-pick-a-repository-from-github.webp)
+![Wybierz repozytorium swojego projektu](/images/netlify-03-pick-a-repository-from-github.webp)
 
-4. Netlify will detect if you have a `netlify.toml` file and automatically configure your build command and publish directory.
+4. Netlify wykryje, czy posiadasz plik `netlify.toml` i automatycznie skonfiguruje polecenia budowania i publikowany folder.
 
-![Nextjs build settings](/images/netlify-04-configure-build-settings.webp)
+![Ustawienia budowania Next.js](/images/netlify-04-configure-build-settings.webp)
 
-5. Click **Show advanced** and then **New variable** to add your environment variables.
+5. Kliknij na **Show advanced** (pokaż zaawansowane) a następnie na **New variable** (nowa zmienna), aby dodać swoje zmienne środowiskowe.
 
-![Add environment variables](/images/netlify-05-env-vars.webp)
+![Dodaj zmienne środowiskowe](/images/netlify-05-env-vars.webp)
 
-6. Click **Deploy site**, wait for the build to complete, and view your new site.
+6. Kliknij na **Deploy site** (opublikuj stronę), poczekaj aż budowanie się zakończy i otwórz swoją nową stronę.
 
-## Using the Netlify CLI
+## Korzystanie z nadzędzia CLI Netlify
 
-To deploy from the command line you must first push your project to a GitHub repo and [install the Netlify CLI](https://docs.netlify.com/cli/get-started/). You can install `netlify-cli` as a project dependency or install it globally on your machine with the following command:
+Aby wrzucić stronę z konsoli, musisz najpierw opublikować swój projekt do repozytorium na GitHubie i [zainstalować narzędzie CLI od Netlify](https://docs.netlify.com/cli/get-started/). Możesz zainstalować `netlify-cli` jako zależność projektu, lub globalnie na swoim urządzeniu korzystając z polecenia:
 
 ```bash
 npm i -g netlify-cli
 ```
 
-To test your project locally, run the [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) command and open [`localhost:8888`](http://localhost:8888/) to view your locally running Netlify app:
+Aby przetestować lokalnie swój projekt, uruchom polecenie [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) i otwórz [`localhost:8888`](http://localhost:8888/), aby zobaczyć lokalnie odpaloną aplikację Netlify.
 
 ```bash
 ntl dev
 ```
 
-Run the [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) command to configure your project:
+Uruchom polecenie [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) aby skonfgurować swój projekt:
 
 ```bash
 ntl init
 ```
 
-Import your project's environment variables from your `.env` file with [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
+Zaimportuj zmienne środowiskowe swojego projektu z pliku `.env` poleceniem [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
 
 ```bash
 ntl env:import .env
 ```
 
-Deploy your project with [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). You'll need to pass the `--build` flag to run the build command before deployment and the `--prod` flag to deploy to your site's main URL:
+Wrzuć do sieci swój projekt korzystając z polecenia [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). Aby zbudować projekt przed jego publikacją, będziesz musiał dodać flagę `--build`. Aby wrzucić projekt pod główny URL aplikacji, dodaj flagę `--prod`:
 
 ```bash
 ntl deploy --prod --build
 ```
 
-To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
+Aby zobaczyć działający przykład na Netlify, odwiedź stronę[ct3a.netlify.app](https://ct3a.netlify.app/).
