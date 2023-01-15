@@ -52,7 +52,7 @@ Staramy się podkreślić, iż pliki te korzystają z TypeScripta nie bez powodu
 
 Zdecydowaliśmy się nie umieszczać i18n w `create-t3-app`, ponieważ jest to bardzo kontrowersyjny temat i istnieje wiele sposobów, aby element ten zaimplementować.
 
-Jeżeli jednak nie wiesz jak wygląda poprawna interpretacja internacjonalizacji i chciałbyś zobaczyć przykładowy projekt, sprawdź [to repozytorium](https://github.com/juliusmarminge/t3-i18n) - ukazuje ono jak dodać możesz i18n do aplikacji T3 korzystając przy tym z [next-i18next](https://github.com/i18next/next-i18next).
+Jeżeli jednak nie wiesz jak wygląda poprawna interpretacja internacjonalizacji i chciałbyś zobaczyć przykładowy projekt, sprawdź [to repozytorium](https://github.com/juliusmarminge/t3-i18n) - ukazuje ono jak możesz dodać i18n do aplikacji T3 korzystając przy tym z [next-i18next](https://github.com/i18next/next-i18next).
 
 ## Dlaczego korzystamy z folderu `/pages` a nie `/app` z Next.js 13?
 
