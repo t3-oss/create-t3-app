@@ -49,7 +49,7 @@ Plik ten podzielony jest na dwie części - tworzenie kontekstu oraz inicjalizac
 
 1. Definiujemy kontekst przesyłany do procedur tRPC. Kontekt, to dane do których dostęp mają wszystkie twoje procedury tRPC. Jest to doskonałe miejsce do umieszczenia rzeczy, takich jak połączenia z bazą danych, informacje o uwierzytelnianiu, itp. W Create T3 App korzystamy z dwóch funkcji, aby umożliwić korzystanie z części kontekstu bez dostępu do obiektu zapytania.
 
-- `createInnerTRPCContext`: Tutaj defuniujesz kontekst, który nie zależy od obiektu zapytania, np. połączenie z bazą danych. Możesz wykorzystać funkcję tą do [testów integracji](#przyklładowy-test-integracji) oraz [funkcji pomocniczych SSG](https://trpc.io/docs/v10/ssg-helpers), gdzie nie posiadasz obiektu zapytania.
+- `createInnerTRPCContext`: Tutaj defuniujesz kontekst, który nie zależy od obiektu zapytania, np. połączenie z bazą danych. Możesz wykorzystać funkcję tą do [testów integracji](#przykładowy-test-integracji) oraz [funkcji pomocniczych SSG](https://trpc.io/docs/v10/ssg-helpers), gdzie nie posiadasz obiektu zapytania.
 
 - `createTRPCContext`: Tutaj definiujesz kontekst, który zależny jest od zapytania, np. sesja użytkownika. Otrzymujesz sesję korzystając z obiektu `opts.req` a następnie posyłasz ją do funkcji `createInnerTRPCContext` w celu utworzenia finalnego kontekstu.
 
