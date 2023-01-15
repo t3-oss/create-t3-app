@@ -14,7 +14,7 @@ Należy pamiętać, że Next.js wymaga innego procesu na czas budowania (dostęp
 - `DATABASE_URL` (używany przez serwer)
 - `NEXT_PUBLIC_CLIENTVAR` (używany przez klienta)
 
-### 1. Konfigurajca Nexta.jsa
+### 1. Konfiguracja Next.js
 
 W swoim pliku [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), dodaj opcję konfiguracji outputu `standalone` aby [zredukować rozmiar zdjęć poprzez automatyczne wykorzystanie danych wyjściowych](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
