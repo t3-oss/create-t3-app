@@ -153,7 +153,7 @@ Jeżeli przykładowo chcesz dodać pole `role` (roli) do modelu `User` (użytkow
 
 ## Korzystanie wraz z middlewarem Next.js
 
-Wykorzystanie middleware'a Next.jsa [wymaga od Ciebie skorzystania ze strategii JWT](https://next-auth.js.org/configuration/nextjs#caveats) do autoryzacji. Dzieje się tak, ponieważ middleware jest w stanie pobierać ciasteczko sesji jedynie, gdy jest ono JWT. `create-t3-app` jest skonfigurowany tak, by wykorzystać **domyślną** strategię bazy danych, wraz z Prismą jako jej adapterem.
+Wykorzystanie middleware'a Next.js [wymaga od Ciebie skorzystania ze strategii JWT](https://next-auth.js.org/configuration/nextjs#caveats) do autoryzacji. Dzieje się tak, ponieważ middleware jest w stanie pobierać ciasteczko sesji jedynie, gdy jest ono JWT. `create-t3-app` jest skonfigurowany tak, by wykorzystać **domyślną** strategię bazy danych, wraz z Prismą jako jej adapterem.
 
 ## Konfigurowanie domyślnego providera Discord (`DiscordProvider`)
 
