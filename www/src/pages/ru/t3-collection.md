@@ -27,6 +27,7 @@ lang: ru
 | KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 | Tauri T3 App - Tauri App using T3 Stack                           | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
 | Azon - E-Commerce website                                         | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
+| Analyzemyrepo.com - Useful insights for **any** GitHub repo       | [CrowdDotDev/analyzemyrepo](https://github.com/CrowdDotDev/analyzemyrepo)   | [analyzemyrepo.com](https://analyzemyrepo.com)                                    |
 
 ## Компании использующие T3 стек
 
