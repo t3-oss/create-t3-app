@@ -17,7 +17,7 @@ W pliku `pages/_app.tsx` zobaczyć możesz, iż twoja aplikacja znajduje się w 
 </SessionProvider>
 ```
 
-Ten oto provider kontekstu pozwala twojej aplikacji na dostęp do danych sesji z każdego miejsca, bez potrzeby przesyłania ich po "propach":
+Ten oto provider kontekstu pozwala twojej aplikacji na dostęp do danych sesji z każdego miejsca, bez potrzeby przesyłania ich po "propsach":
 
 ```tsx:pages/users/[id].tsx
 import { useSession } from "next-auth/react";
