@@ -29,8 +29,8 @@ lang: ru
 
 ### Статьи
 
-- [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Build a full stack app with Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
@@ -40,7 +40,7 @@ lang: ru
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
 - [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
-- [An overview of the create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+- [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
 ## Почему в проекте есть файлы `.js`?
 
