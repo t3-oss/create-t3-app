@@ -35,7 +35,7 @@ Będziemy z tobą szczerzy - jest to _kontrowersyjny_ projekt. Posiadamy garść
 
 ### "Bleed Responsibly" (Korzystaj Rozważnie z Nowych Technologii)
 
-Kochamy technologie "bleeding edge". Uzyskana prędkość oraz... szczerze, zabawa, jaka wynika z ich zastosowania - jest na prawdę super. Uważamy jednak za ważne odpowiedzialne korzystanie z powyższych elementów. Oznacza to, iż nie ⛔️ postawimy na nowy rodzaj bazy danych (SQL jest dobry!). Z radością ✅ stawiamy jednak na tRPC - są to tylko funkcje, które łatwo można zamienić na coś innego.
+Kochamy technologie "bleeding edge". Uzyskana prędkość oraz szczerze mówiąc, zabawa, jaka wynika z ich zastosowania - jest naprawdę super. Uważamy jednak za ważne odpowiedzialne korzystanie z powyższych elementów. Oznacza to, iż nie ⛔️ postawimy na nowy rodzaj bazy danych (SQL jest dobry!). Z radością ✅ stawiamy jednak na tRPC - są to tylko funkcje, które łatwo można zamienić na coś innego.
 
 ### Typesafety NIE Jest Opcjonalne
 
