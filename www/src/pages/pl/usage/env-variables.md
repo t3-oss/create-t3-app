@@ -41,7 +41,7 @@ Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz
 
 ### Schemat Dla Klienta
 
-Zdefiniuj tutaj zmienne środ. dla klienta.
+Zdefiniuj tutaj zmienne środowiskowe dla klienta.
 
 Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
