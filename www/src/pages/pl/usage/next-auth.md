@@ -83,7 +83,7 @@ declare module "next-auth" {
 }
 ```
 
-Ten sam sposób wykorzystany może zostać do dodania większej ilości danych na obiekcie `session`, takich jak pole `role` (rola). **Nie powinien być on jednak wykorzystany do zapiywania wrażliwych danych** dla kienta.
+Ten sam sposób wykorzystany może zostać do dodania większej ilości danych na obiekcie `session`, takich jak pole `role` (rola). **Nie powinien być on jednak wykorzystany do zapisywania wrażliwych danych** dla klienta.
 
 ## Korzystanie wraz z tRPC
 
