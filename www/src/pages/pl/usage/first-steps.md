@@ -19,7 +19,7 @@ Oczywiście, jeżeli wolisz korzystać z innego, możesz użyć jednego z [wielu
 
 1. Potrzebować będziesz konta Discord, więc utwórz je, jeśli jeszcze tego nie zrobiłeś.
 2. Przejdź do strony https://discord.com/developers/applications i kliknij "New Appliction" w prawym górnym rogu. Nazwij ją i wyraź zgodę na warunki korzystania z serwisu.
-3. Po stworzeniu aplikacji, przedź do "Settings → OAuth2 → General".
+3. Po stworzeniu aplikacji, przejdź do "Settings → OAuth2 → General".
 4. Skopiuj "Client ID" i dodaj go do pliku `.env` pod kluczem `DISCORD_CLIENT_ID`.
 5. Kliknij "Reset Secret", skopiuj nowy secret i dodaj go do pliku `.env` pod kluczem `DISCORD_CLIENT_SECRET`.
 6. Kliknij "Add Redirect" i wpisz `http://localhost:3000/api/auth/callback/discord`.
