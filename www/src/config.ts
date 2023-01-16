@@ -246,6 +246,7 @@ export const SIDEBAR: Sidebar = {
     Deployment: [
       { text: "Vercel", link: "ru/deployment/vercel" },
       { text: "Docker", link: "ru/deployment/docker" },
+      { text: "Netlify", link: "ru/deployment/netlify" },
     ],
   },
   no: {
