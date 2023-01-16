@@ -39,7 +39,7 @@ Prisma это ORM для TypeScript, который позволяет опре�
 ```
 
 ```ts:prisma/seed.ts
-import { prisma } from "../src/server/db/client";
+import { prisma } from "../src/server/db";
 
 async function main() {
   const id = "cl9ebqhxk00003b600tymydho";
