@@ -148,7 +148,7 @@ Potrzebujesz zbierać statystyki? Plausible to jedna z najszybszych opcji aby to
 
 ### Umami
 
-Umami to prosta w użyciu, otwartoźródłowa, szybka i skupiająca się na prywatności alternatywa dla Google Analytics, którą hostuje się samemu. Możesz go zdeploy'ować dzięki serwisom, takim jak Vercel, Railway itp., korzystając przy tym z PlanetScale jako bazy danych.
+Umami to prosta w użyciu, open-source, szybka i skupiająca się na prywatności alternatywa dla Google Analytics, którą hostuje się samemu. Możesz go zdeploy'ować dzięki serwisom, takim jak Vercel, Railway itp., korzystając przy tym z PlanetScale jako bazy danych.
 
 - [Strona główna Umami](https://umami.is/)
 - [GitHub Umami](https://github.com/umami-software/umami)
