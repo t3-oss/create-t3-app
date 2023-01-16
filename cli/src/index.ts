@@ -31,7 +31,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall },
+    flags: { noGit, noInstall, twConfig, tsConfig },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -43,6 +43,8 @@ const main = async () => {
     projectName: appDir,
     packages: usePackages,
     noInstall,
+    twConfig,
+    tsConfig,
   });
 
   // Write name to package.json

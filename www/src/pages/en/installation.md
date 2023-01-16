@@ -29,12 +29,14 @@ After your app has been scaffolded, check out the [first steps](/en/usage/first-
 
 ## Advanced usage
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Option/Flag         | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| `[dir]`             | Include a directory argument with a name for the project                |
+| `--noGit`           | Explicitly tell the CLI to not initialize a new git repo in the project |
+| `-y`, `--default`   | Bypass the CLI and bootstrap a new t3-app with all options selected     |
+| `--noInstall`       | Generate project without installing dependencies                        |
+| `--tsConfig [path]` | Override default typescript config file. File path must be absolute.    |
+| `--twConfig [path]` | Override default tailwind config file. File path must be absolute.      |
 
 ## Experimental usage
 

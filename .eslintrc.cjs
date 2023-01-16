@@ -44,5 +44,11 @@ module.exports = {
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
     ],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
 };

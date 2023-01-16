@@ -18,6 +18,8 @@ interface CliFlags {
   trpc: boolean /** @internal - used in CI */;
   prisma: boolean /** @internal - used in CI */;
   nextAuth: boolean /** @internal - used in CI */;
+  twConfig: undefined | string;
+  tsConfig: undefined | string;
 }
 
 interface CliResults {
@@ -38,6 +40,8 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
+    twConfig: undefined,
+    tsConfig: undefined,
   },
 };
 
@@ -68,6 +72,17 @@ export const runCli = async () => {
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
       false,
+    )
+    .option(
+      "--twConfig [path]",
+      "Path to a custom tailwind.congif.cjs file",
+      (value) =>
+        value.match(/(tailwind\.config)\.(js|cjs)/) ? value : undefined,
+    )
+    .option(
+      "--tsConfig [path]",
+      "Path to a custom tsconfig.json file",
+      (value) => (value.includes("tsconfig.json") ? value : undefined),
     )
     /** START CI-FLAGS */
     /**
