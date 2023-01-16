@@ -20,7 +20,7 @@ lang: pl
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Theo - twórca T3 Stacka</span>
+      <span className=" text-sm font-semibold">Theo - twórca stacka T3</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"

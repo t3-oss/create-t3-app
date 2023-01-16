@@ -1,6 +1,6 @@
 ---
 title: Wstęp
-description: Wstęp do T3 Stacka
+description: Wstęp do stacka T3
 layout: ../../layouts/docs.astro
 lang: pl
 ---
@@ -19,7 +19,7 @@ Mogłeś dostrzec już, iż jest tu... dużo elementów. Jest to celowe. Zmienia
 
 ## A więc... co to Create T3 App? Jakiś szablon?
 
-Może? Create T3 App to narzędzie CLI zbudowane przez doświadczonych deweloperów T3 stacka aby usprawnić zakładanie w nim nowych, modularnych projektów. Oznacza to, iż każdy element jest opcjonalny a "szablon" generowany jest bazując na twoich szczegółowych potrzebach.
+Może? Create T3 App to narzędzie CLI zbudowane przez doświadczonych deweloperów stacka T3 aby usprawnić zakładanie w nim nowych, modularnych projektów. Oznacza to, iż każdy element jest opcjonalny a "szablon" generowany jest bazując na twoich szczegółowych potrzebach.
 
 Po niezliczonych projektach i wielu latach w tej technologii, nabyliśmy wiele opinii i wewnętrznych doświadczeń. Zrobiliśmy, co tylko się dało, aby zawrzeć je w naszym CLI.
 

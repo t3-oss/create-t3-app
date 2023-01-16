@@ -1,6 +1,6 @@
 ---
 title: Kolekcja T3
-description: Ciekawe projekty open source oraz firmy korzystające z T3 stacka
+description: Ciekawe projekty open source oraz firmy korzystające ze stacka T3
 layout: ../../layouts/docs.astro
 lang: pl
 ---
@@ -29,9 +29,9 @@ Zrobiłeś projekt korzystając z T3 stacka i chcesz się nim podzielić? Dodaj 
 | Azon - E-Commerce website                                         | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
 | Analyzemyrepo.com - Useful insights for **any** GitHub repo       | [CrowdDotDev/analyzemyrepo](https://github.com/CrowdDotDev/analyzemyrepo)   | [analyzemyrepo.com](https://analyzemyrepo.com)                                    |
 
-## Firmy korzystające z T3 Stacka
+## Firmy korzystające ze stacka T3
 
-Bardzo chcielibyśmy poznać firmy korzystające z T3 stacka do budowania swoich aplikacji. Czy twoja firma korzysta z T3 stacka i chciałaby się tym podzielić? Dodaj tą informację do listy poniżej!
+Bardzo chcielibyśmy poznać firmy korzystające ze stacka T3 do budowania swoich aplikacji. Czy twoja firma korzysta ze stacka T3 i chciałaby się tym podzielić? Dodaj tą informację do listy poniżej!
 
 | Firma   | Link                               |
 | ------- | ---------------------------------- |
@@ -39,4 +39,4 @@ Bardzo chcielibyśmy poznać firmy korzystające z T3 stacka do budowania swoich
 | Nexiona | [nexiona.com](https://nexiona.com) |
 | Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
-_Posiadasz ciekawy projekt korzystający z T3 stacka? Zrób [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) i dodaj go tutaj!_
+_Posiadasz ciekawy projekt korzystający ze stacka T3? Zrób [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) i dodaj go tutaj!_
