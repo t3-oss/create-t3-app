@@ -35,7 +35,7 @@ export const clientSchema = z.object({
 
 ### Schemat Dla Serwera
 
-Zdefiniuj tutaj zmienne środ. dla serwera.
+Zdefiniuj tutaj zmienne środowiskowe dla serwera.
 
 Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
