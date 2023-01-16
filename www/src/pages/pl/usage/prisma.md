@@ -21,11 +21,11 @@ Jeżeli wybierzesz NextAuth.js w połączeniu z Prismą, plik shcematu generowan
 
 ## Domyślna Baza Danych
 
-Domyślna baza danych to baza SQLite, która jest znakomita do szybkiego pisania aplikacji, takich jak "weryfikacja konceptu" ("proof-of-concept"), lecz nie jest ona polecana do pisaia produkcyjnych wersji projektów. Typ bazy danych zmienić możesz poprzez edycję pola `provider` w bloku `database`, na `postgresql` lub `mysql`. Następnie, aktualizując string połączenia z bazą w pliku `.env` na taki, który skieruje Prismę do twojej bazy danych.
+Domyślna baza danych to baza SQLite, która jest znakomita do szybkiego pisania aplikacji, takich jak "weryfikacja konceptu" ("proof-of-concept"), lecz nie jest ona polecana do pisania produkcyjnych wersji projektów. Typ bazy danych zmienić możesz poprzez edycję pola `provider` w bloku `database`, na `postgresql` lub `mysql`. Następnie, aktualizując string połączenia z bazą w pliku `.env` na taki, który skieruje Prismę do twojej bazy danych.
 
 ## Seedowanie Bazy Danych
 
-[Seedowanie bazy danych](https://www.prisma.io/docs/guides/database/seed-database) to dobry sposób na szybkie uzupełnienie bazy danych testową zawartością. Aby rozpocząć seedowanie, będziesz musiał stworzyć plik `seed.ts` w folderze `/prisma`, a następnie dodać skrypt `seed` do pliku `package.json`. Będzie musiał także skorzystać z jakiegoś środowiska uruchomieniowego dla TypeScripta. Polecamy [tsx](https://github.com/esbuild-kit/tsx), który jest bardzo szybkim środowiskiem korzystającym z esbuilda i niewymagającym żadnej konfiguracji ESM. Runnery, takie jak `ts-node`, także zadziałają.
+[Seedowanie bazy danych](https://www.prisma.io/docs/guides/database/seed-database) to dobry sposób na szybkie uzupełnienie bazy danych testową zawartością. Aby rozpocząć seedowanie, będziesz musiał stworzyć plik `seed.ts` w folderze `/prisma`, a następnie dodać skrypt `seed` do pliku `package.json`. Będziesz musiał także skorzystać z jakiegoś środowiska uruchomieniowego dla TypeScripta. Polecamy [tsx](https://github.com/esbuild-kit/tsx), który jest bardzo szybkim środowiskiem korzystającym z esbuilda i niewymagającym żadnej konfiguracji ESM. Runnery, takie jak `ts-node`, także zadziałają.
 
 ```jsonc:package.json
 {

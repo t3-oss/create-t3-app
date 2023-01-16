@@ -49,7 +49,7 @@ Plik ten podzielony jest na dwie części - tworzenie kontekstu oraz inicjalizac
 
 1. Definiujemy kontekst przesyłany do procedur tRPC. Kontekt, to dane do których dostęp mają wszystkie twoje procedury tRPC. Jest to doskonałe miejsce do umieszczenia rzeczy, takich jak połączenia z bazą danych, informacje o uwierzytelnianiu, itp. W Create T3 App korzystamy z dwóch funkcji, aby umożliwić korzystanie z części kontekstu bez dostępu do obiektu zapytania.
 
-- `createInnerTRPCContext`: Tutaj defuniujesz kontekst, który nie zależy od obiektu zapytania, np. połączenie z bazą danych. Możesz wykorzystać funkcję tą do [testów integracji](#przykładowy-test-integracji) oraz [funkcji pomocniczych SSG](https://trpc.io/docs/v10/ssg-helpers), gdzie nie posiadasz obiektu zapytania.
+- `createInnerTRPCContext`: Tutaj definiujesz kontekst, który nie zależy od obiektu zapytania, np. połączenie z bazą danych. Możesz wykorzystać funkcję tą do [testów integracji](#przykładowy-test-integracji) oraz [funkcji pomocniczych SSG](https://trpc.io/docs/v10/ssg-helpers), gdzie nie posiadasz obiektu zapytania.
 
 - `createTRPCContext`: Tutaj definiujesz kontekst, który zależny jest od zapytania, np. sesja użytkownika. Otrzymujesz sesję korzystając z obiektu `opts.req` a następnie posyłasz ją do funkcji `createInnerTRPCContext` w celu utworzenia finalnego kontekstu.
 
@@ -59,7 +59,7 @@ Zwróć uwagę, iż korzystamy z paczki `superjson` jako [transformera danych](h
 
 ### 📄 `server/api/routers/*.ts`
 
-Tutaj defuniujesz routery i procedury swojego API. Umownie, powinieneś tworzyć [osobne routery](https://trpc.io/docs/v10/router) dla odpowiadających im procedur.
+Tutaj definiujesz routery i procedury swojego API. Umownie, powinieneś tworzyć [osobne routery](https://trpc.io/docs/v10/router) dla odpowiadających im procedur.
 
 ### 📄 `server/api/root.ts`
 
@@ -69,7 +69,7 @@ Tutaj [łączymy](https://trpc.io/docs/v10/merging-routers) wszystkie "sub-route
 
 Jest to punkt startowy tRPC po stronie frontendu. To tutaj importować będziesz wszystkie **definicje typów** i tworzyć będziesz swój client tRPC razem z hookami od react-query. Ponieważ korzystamy z paczki `superjson` jako transformera danych na backendzie, musimy go uruchomić również na frontendzie. Dzieje się tak, ponieważ dane serializowane w API muszą być dekodowane właśnie na frontendzie.
 
-Zdefuniujesz tu także [linki](https://trpc.io/docs/v10/links) tRPC, które decydują o całym flow zapytania - od klienta do serwera. My korzystamy z "domyślnego" linku [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink), który umożliwia ["request batching"](https://cloud.google.com/compute/docs/api/how-tos/batch). Korzystamy też z linku [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink), pozwalającego na wyświetlanie przydatnych podczas pisania aplikacji logów.
+Zdefiniujesz tu także [linki](https://trpc.io/docs/v10/links) tRPC, które decydują o całym flow zapytania - od klienta do serwera. My korzystamy z "domyślnego" linku [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink), który umożliwia ["request batching"](https://cloud.google.com/compute/docs/api/how-tos/batch). Korzystamy też z linku [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink), pozwalającego na wyświetlanie przydatnych podczas pisania aplikacji logów.
 
 Na koniec eksportujemy [pomocniczy typ](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type), którego użyć możesz do dziedziczenia typów na frontendzie.
 
@@ -111,7 +111,7 @@ const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 ```
 
-Zwróć uwagę na to, iż musimy eksportować jedynie definisje typów tego routera - oznacza to, iż nigdy nie importujemy kodu serwera po stronie klienta.
+Zwróć uwagę na to, iż musimy eksportować jedynie definicje typów tego routera - oznacza to, iż nigdy nie importujemy kodu serwera po stronie klienta.
 
 Wywołajmy teraz procedurę na naszym frontendzie. tRPC dostarcza nam wrapper dla paczki `@tanstack/react-query`, który pozwala ci wykorzystać pełną moc hooków. Dodatkowo, zapytania API dostajesz w pełni "otypowane". Zapytanie do naszych procedur możemy wykonać w następujący sposób:
 
@@ -139,7 +139,7 @@ Korzystając z regularnego API, zapytania takie możesz wykonać korzystając z 
 
 ### Ujawnianie zewnętrznie pojedynczej procedury tRPC
 
-Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" projej procedury tRPC.
+Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" twojej procedury tRPC.
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -227,7 +227,7 @@ const UserPage = () => {
 
 Porównaj to do powyższego przykładu z tRPC - zobaczysz zalety korzystanie właśnie z tego sposobu:
 
-- Zamiast precyzować url dla każdego route'a (co może stać się uciążliwe do debugowania, jeśli coś przeniesiesz), twój cały router jest obiekt z autouzupełnianiem.
+- Zamiast precyzować url dla każdego route'a (co może stać się uciążliwe do debugowania, jeśli coś przeniesiesz), twój cały router jest obiektem z autouzupełnianiem.
 - Nie musisz walidować użytej metody HTTP.
 - Nie musisz walidować zawartości zapytania pod kątem pooprawności zawartych danych - zajmuje się tym Zod.
 - Zamiast tworzyć obiekt "response", możesz wyrzucać błędy i zwracać wartości lub obiekty tak, jak robiłbyś to w zwykłej funkcji TypeScripta.

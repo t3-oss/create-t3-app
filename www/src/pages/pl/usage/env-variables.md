@@ -35,13 +35,13 @@ export const clientSchema = z.object({
 
 ### Schemat Dla Serwera
 
-Zdefiniuj tutaj zmienne środ. dla serwera.
+Zdefiniuj tutaj zmienne środowiskowe dla serwera.
 
 Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
 ### Schemat Dla Klienta
 
-Zdefiniuj tutaj zmienne środ. dla klienta.
+Zdefiniuj tutaj zmienne środowiskowe dla klienta.
 
 Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
 
@@ -60,7 +60,7 @@ To tutaj zachodzi walidacja i eksport poprawnych obiektów. Nie powinna zajść 
 
 ## Korzystanie Ze Zmiennych Środowiskowych
 
-Jeżeli chcesz skorzystać ze swoich zmiennych środ., możesz zaimportować je z pliku `env/client.mjs` lub `env/server.mjs`, w zależności od tego, gdzie chcesz używać tych zmiennych:
+Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env/client.mjs` lub `env/server.mjs`, w zależności od tego, gdzie chcesz używać tych zmiennych:
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env/server.mjs";

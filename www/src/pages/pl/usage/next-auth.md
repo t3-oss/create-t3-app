@@ -17,7 +17,7 @@ W pliku `pages/_app.tsx` zobaczyć możesz, iż twoja aplikacja znajduje się w 
 </SessionProvider>
 ```
 
-Ten oto provider kontekstu pozwala twojej aplikacji na dostęp do danych sesji z każdego miejsca, bez potrzeby przesyłania ich po "propach":
+Ten oto provider kontekstu pozwala twojej aplikacji na dostęp do danych sesji z każdego miejsca, bez potrzeby przesyłania ich po "propsach":
 
 ```tsx:pages/users/[id].tsx
 import { useSession } from "next-auth/react";
@@ -83,7 +83,7 @@ declare module "next-auth" {
 }
 ```
 
-Ten sam sposób wykorzystany może zostać do dodania większej ilości danych na obiekcie `session`, takich jak pole `role` (rola). **Nie powinien być on jednak wykorzystany do zapiywania wrażliwych danych** dla kienta.
+Ten sam sposób wykorzystany może zostać do dodania większej ilości danych na obiekcie `session`, takich jak pole `role` (rola). **Nie powinien być on jednak wykorzystany do zapisywania wrażliwych danych** dla klienta.
 
 ## Korzystanie wraz z tRPC
 
@@ -155,7 +155,7 @@ Przygotowanie NextAuth.js do pracy z Prismą wymaga wiele [wstępnej konfiguracj
 
 ### Dodawanie nowych pól do modeli
 
-Kiedy dodajesz nowe pola do któregokolwiek z modeli - `User`, `Account`, `Session` lub `VerificationToken` (prawdopodobnie będziesz chciał zmieniać jedynie model `User`) - pamiętać musisz, iż [adapter dla Prismy](https://next-auth.js.org/adapters/prisma) automatycznie tworzy pola na powyższych modelach w przypadku rejestracji kont i logowania na nie. Z tego też powodu, dodając nowe pola do tychże modeli, zaopatrzyć musisz je w wartości domyślne - adapter nie jest o nich świadom.
+Kiedy dodajesz nowe pola do któregokolwiek z modeli - `User`, `Account`, `Session` lub `VerificationToken` (prawdopodobnie będziesz chciał zmieniać jedynie model `User`) - pamiętać musisz, iż [adapter dla Prismy](https://next-auth.js.org/adapters/prisma) automatycznie tworzy pola na powyższych modelach w przypadku rejestracji kont i logowania na nie. Z tego też powodu, dodając nowe pola do tychże modeli, zaopatrzyć musisz je w wartości domyślne - adapter nie jest ich świadomy.
 
 Jeżeli przykładowo chcesz dodać pole `role` (roli) do modelu `User` (użytkownika), musisz pamiętać o dołączeniu wartości domyślnej tego pola. Zrobisz to za pomocą wartości `@default` w modelu `User`:
 

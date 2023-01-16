@@ -18,8 +18,8 @@ Jeżeli twoja aplikacja zawiera NextAuth.js, posiadasz przygotowany już przez n
 Oczywiście, jeżeli wolisz korzystać z innego, możesz użyć jednego z [wielu providerów](https://next-auth.js.org/providers/) oferowanych przez NextAuth.js.
 
 1. Potrzebować będziesz konta Discord, więc utwórz je, jeśli jeszcze tego nie zrobiłeś.
-2. Przejdź to strony https://discord.com/developers/applications i kliknij "New Appliction" w prawym górnym rogu. Nazwij ją i wyraź zgodę na warunki korzystania z serwisu.
-3. Po stworzeniu aplikacji, przedź do "Settings → OAuth2 → General".
+2. Przejdź do strony https://discord.com/developers/applications i kliknij "New Appliction" w prawym górnym rogu. Nazwij ją i wyraź zgodę na warunki korzystania z serwisu.
+3. Po stworzeniu aplikacji, przejdź do "Settings → OAuth2 → General".
 4. Skopiuj "Client ID" i dodaj go do pliku `.env` pod kluczem `DISCORD_CLIENT_ID`.
 5. Kliknij "Reset Secret", skopiuj nowy secret i dodaj go do pliku `.env` pod kluczem `DISCORD_CLIENT_SECRET`.
 6. Kliknij "Add Redirect" i wpisz `http://localhost:3000/api/auth/callback/discord`.
