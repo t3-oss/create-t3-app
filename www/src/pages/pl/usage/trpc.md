@@ -111,7 +111,7 @@ const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 ```
 
-Zwróć uwagę na to, iż musimy eksportować jedynie definisje typów tego routera - oznacza to, iż nigdy nie importujemy kodu serwera po stronie klienta.
+Zwróć uwagę na to, iż musimy eksportować jedynie definicje typów tego routera - oznacza to, iż nigdy nie importujemy kodu serwera po stronie klienta.
 
 Wywołajmy teraz procedurę na naszym frontendzie. tRPC dostarcza nam wrapper dla paczki `@tanstack/react-query`, który pozwala ci wykorzystać pełną moc hooków. Dodatkowo, zapytania API dostajesz w pełni "otypowane". Zapytanie do naszych procedur możemy wykonać w następujący sposób:
 
