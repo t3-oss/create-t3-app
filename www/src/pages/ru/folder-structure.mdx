@@ -63,7 +63,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
 
 </div>
-<div data-components="trpc prisma">
+<div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
@@ -72,72 +72,57 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div data-components="nextauth+trpc">
 
-### `src/server/common`
+#### `src/server/auth.ts`
 
-Папка `common` содержит общий код, используемый на стороне сервера.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/common/get-server-auth-session.ts`
-
-Файл `get-server-auth-session.ts` используется для получения сеанса NextAuth.js на стороне сервера. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#usage-with-trpc) для получения дополнительной информации.
+Содержит утилиты для аутентификации, такие как получение сеанса пользователя на стороне сервера. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#usage-with-trpc) для получения дополнительной информации.
 
 </div>
 <div data-components="prisma">
 
-#### `src/server/db/client.ts`
+#### `src/server/db.ts`
 
-Файл `client.ts` используется для создания экземпляра клиента Prisma в глобальной области видимости. Смотрите [Использование Prisma](/ru/usage/prisma#prisma-client) для получения дополнительной информации.
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc`
-
-Папка `trpc` содержит серверный код tRPC.
+Файл `db.ts` используется для создания клиента Prisma на глобальном уровне. Смотрите [Использование Prisma](/ru/usage/prisma#prisma-client) и [лучшие практики по использованию Prisma с Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) для получения дополнительной информации.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/context.ts`
+### `src/server/api`
 
-Файл `context.ts` используется для создания контекста, используемого в запросах tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpccontextts) для получения дополнительной информации.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/trpc.ts`
-
-Файл `trpc.ts` используется для экспорта помощников процедур. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpctrpcts) для получения дополнительной информации.
+Папка `api` содержит серверный код tRPC.
 
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc/router`
+#### `src/server/api/routers`
 
-Папка `router` содержит маршрутизаторы tRPC.
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/router/_app.ts`
-
-Файл `_app.ts` используется для объединения маршрутизаторов tRPC и экспорта их в виде единого маршрутизатора, а также определений типов. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpcrouterts) для получения дополнительной информации.
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-Файл `auth.ts` является примером маршрутизатора tRPC, использующего вспомогательную функцию `protectedProcedure` для демонстрации защиты маршрута tRPC с помощью NextAuth.js.
+Папка `routers` содержит все ваши под-маршрутизаторы tRPC.
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/routers/example.ts`
 
-Файл `example.ts` является примером маршрутизатора tRPC, использующего вспомогательую функцию `publicProcedure` для демонстрации создания публичного маршрута tRPC.
+Файл `example.ts` - это пример маршрутизатора tRPC, использующий вспомогательную функцию `publicProcedure` для демонстрации того, как создать публичный маршрут tRPC.
+
+Основываясь на выбранных вами пакетах, этот маршрутизатор содержит больше или меньше маршрутов для лучшего демонстрирования использования ваших потребностей.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+Файл `trpc.ts` - это основной файл конфигурации для вашего tRPC-бэк-энда. В нем мы:
+
+1. Определяем контекст используемый в запросах tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpccontextts) для получения дополнительной информации.
+2. Экспортируем вспомогательные функции процедур. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpctrpcts) для получения дополнительной информации.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+Файл `root.ts` используется для слияния маршрутизаторов tRPC и экспорта их как единого маршрутизатора, а также определения типа маршрутизатора. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpcrouterts) для получения дополнительной информации.
 
 </div>
 <div>
@@ -170,9 +155,9 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div data-components="trpc">
 
-#### `src/utils/trpc.ts`
+#### `src/utils/api.ts`
 
-Файл `trpc.ts` является точкой входа для tRPC на стороне клиента. Смотрите [Использование tRPC](/ru/usage/trpc#-utilstrpcts) для получения дополнительной информации.
+Файл `api.ts` является точкой входа для tRPC на стороне клиента. Смотрите [Использование tRPC](/ru/usage/trpc#-utilstrpcts) для получения дополнительной информации.
 
 </div>
 <div>
