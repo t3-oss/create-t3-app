@@ -59,7 +59,7 @@ Zwróć uwagę, iż korzystamy z paczki `superjson` jako [transformera danych](h
 
 ### 📄 `server/api/routers/*.ts`
 
-Tutaj defuniujesz routery i procedury swojego API. Umownie, powinieneś tworzyć [osobne routery](https://trpc.io/docs/v10/router) dla odpowiadających im procedur.
+Tutaj definiujesz routery i procedury swojego API. Umownie, powinieneś tworzyć [osobne routery](https://trpc.io/docs/v10/router) dla odpowiadających im procedur.
 
 ### 📄 `server/api/root.ts`
 
