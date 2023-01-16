@@ -21,7 +21,7 @@ Jeżeli wybierzesz NextAuth.js w połączeniu z Prismą, plik shcematu generowan
 
 ## Domyślna Baza Danych
 
-Domyślna baza danych to baza SQLite, która jest znakomita do szybkiego pisania aplikacji, takich jak "weryfikacja konceptu" ("proof-of-concept"), lecz nie jest ona polecana do pisaia produkcyjnych wersji projektów. Typ bazy danych zmienić możesz poprzez edycję pola `provider` w bloku `database`, na `postgresql` lub `mysql`. Następnie, aktualizując string połączenia z bazą w pliku `.env` na taki, który skieruje Prismę do twojej bazy danych.
+Domyślna baza danych to baza SQLite, która jest znakomita do szybkiego pisania aplikacji, takich jak "weryfikacja konceptu" ("proof-of-concept"), lecz nie jest ona polecana do pisania produkcyjnych wersji projektów. Typ bazy danych zmienić możesz poprzez edycję pola `provider` w bloku `database`, na `postgresql` lub `mysql`. Następnie, aktualizując string połączenia z bazą w pliku `.env` na taki, który skieruje Prismę do twojej bazy danych.
 
 ## Seedowanie Bazy Danych
 
