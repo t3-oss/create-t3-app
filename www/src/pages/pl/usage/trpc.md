@@ -139,7 +139,7 @@ Korzystając z regularnego API, zapytania takie możesz wykonać korzystając z 
 
 ### Ujawnianie zewnętrznie pojedynczej procedury tRPC
 
-Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" projej procedury tRPC.
+Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" twojej procedury tRPC.
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
