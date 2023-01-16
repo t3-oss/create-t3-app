@@ -227,7 +227,7 @@ const UserPage = () => {
 
 Porównaj to do powyższego przykładu z tRPC - zobaczysz zalety korzystanie właśnie z tego sposobu:
 
-- Zamiast precyzować url dla każdego route'a (co może stać się uciążliwe do debugowania, jeśli coś przeniesiesz), twój cały router jest obiekt z autouzupełnianiem.
+- Zamiast precyzować url dla każdego route'a (co może stać się uciążliwe do debugowania, jeśli coś przeniesiesz), twój cały router jest obiektem z autouzupełnianiem.
 - Nie musisz walidować użytej metody HTTP.
 - Nie musisz walidować zawartości zapytania pod kątem pooprawności zawartych danych - zajmuje się tym Zod.
 - Zamiast tworzyć obiekt "response", możesz wyrzucać błędy i zwracać wartości lub obiekty tak, jak robiłbyś to w zwykłej funkcji TypeScripta.
