@@ -63,7 +63,7 @@ const validated = schema.parse(process.env);
 Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env/client.mjs` ou `env/server.mjs` dependendo de onde você deseja usá-las:
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;

@@ -63,7 +63,7 @@ const validated = schema.parse(process.env);
 Когда вы хотите использовать переменные среды, вы можете импортировать их из `env/client.mjs` или `env/server.mjs` в зависимости от того, где вы хотите их использовать:
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;

@@ -63,7 +63,7 @@ const validated = schema.parse(process.env);
 当你想要使用环境变量时，你可以从 `env/client.mjs` 或 `env/server.mjs` 文件中导入它们，这取决于你想在客户端还是服务端使用它们：
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` 完全类型安全并能提供自动完成
 const dbUrl = env.DATABASE_URL;

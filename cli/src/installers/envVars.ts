@@ -9,7 +9,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
   const envContent = getEnvContent(!!usingAuth, !!usingPrisma);
 
-  const envSchemaFile =
+  const envFile =
     usingAuth && usingPrisma
       ? "with-auth-prisma.mjs"
       : usingAuth
@@ -18,13 +18,13 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
       ? "with-prisma.mjs"
       : "";
 
-  if (envSchemaFile !== "") {
+  if (envFile !== "") {
     const envSchemaSrc = path.join(
       PKG_ROOT,
-      "template/extras/src/env/schema",
-      envSchemaFile,
+      "template/extras/src/env",
+      envFile,
     );
-    const envSchemaDest = path.join(projectDir, "src/env/schema.mjs");
+    const envSchemaDest = path.join(projectDir, "src/env.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);
   }
 

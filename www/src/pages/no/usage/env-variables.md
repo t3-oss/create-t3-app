@@ -63,7 +63,7 @@ Her foregår valideringen og de validerte objektene eksporteres. Du bør ikke re
 Hvis du vil bruke miljøvariablene dine, kan du importere dem fra `env/client.mjs` eller `env/server.mjs` avhengig av hvor du vil bruke dem:
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` er helt typesikker og tillater autofullføring
 const dbUrl = env.DATABASE_URL;
