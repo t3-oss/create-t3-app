@@ -39,7 +39,7 @@ tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让�
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-这里是你项目 API 的入口，它暴露了 tRPC 的路由。正常情况下，你不会去修改这个文件，但如果需要的话，例如开启 CORS 中间件或其他类似的情况，知道下面的信息是很有用的：被导出的 `createNextApiHandler` 是一个 [Next.js API 的 handler](https://nextjs.org/docs/api-routes/introduction)，它分别接受一个 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) 和一个 [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) 对象作为参数。这意味着 `createNextApiHandler` 可以被任何你想要的中间件包裹。查看下方添加 CORS 的[示例代码](#enabling-cors)。
+这里是你项目 API 的入口，它暴露了 tRPC 的路由。正常情况下，你不会去修改这个文件，但如果需要的话，例如开启 CORS 中间件或其他类似的情况，知道下面的信息是很有用的：被导出的 `createNextApiHandler` 是一个 [Next.js API 的 handler](https://nextjs.org/docs/api-routes/introduction)，它分别接受一个 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) 和一个 [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) 对象作为参数。这意味着 `createNextApiHandler` 可以被任何你想要的中间件包裹。查看下方添加 CORS 的 [示例代码](#enabling-cors)。
 
 ### 📄 `server/api/trpc.ts`
 
@@ -51,17 +51,17 @@ tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让�
 
 - `createTRPCContext`: 你可以在这里定义依赖于请求的上下文，例如用户的 session。你通过使用 `opts.req` 来获取 session，然后将它传给 `createInnerTRPCContext` 函数来创建最后完整的上下文。
 
-2. 我们初始化 tRPC，并定义可复用的 [procedure](https://trpc.io/docs/v10/procedures) 路由函数和中间件 [中间件](https://trpc.io/docs/v10/middlewares)。你不应该将整个 `t` 对象导出，而是通过转换创建复用的路由和中间件，并导出它们。
+2. 我们初始化 tRPC，并定义可复用的 [procedure](https://trpc.io/docs/v10/procedures) 路由函数和 [中间件](https://trpc.io/docs/v10/middlewares)。按照惯例，你不应该将整个 `t` 对象导出，而是通过转换创建复用的路由和中间件，并导出它们。
 
 你会注意到我们使用了 `superjson` 作为 [数据解析工具](https://trpc.io/docs/v10/data-transformers)。在数据被发送到客户端时，它会帮你保留数据类型。例如你发送了一个 `Date` 类型的对象，客户端会返回一个相同类型的 `Date`，而不是像其他大多数 API 一样返回一个字符串。
 
 ### 📄 `server/api/routers/*.ts`
 
-你可以在这里定义 API 的路由及其函数。通过转换，你可以为相关的路由函数 procedure [创建分离的路由](https://trpc.io/docs/v10/router)
+你可以在这里定义 API 的路由及其函数。按照惯例，你在这里为相关的路由函数 procedure [创建分离的路由](https://trpc.io/docs/v10/router)
 
 ### `server/api/root.ts`
 
-在这里我们把所有在 `routers/**` 中定义的子路由[合并](https://trpc.io/docs/v10/merging-routers) 到一个单一的应用路由里。
+在这里我们把所有在 `routers/**` 中定义的子路由 [合并](https://trpc.io/docs/v10/merging-routers) 到一个单一的应用路由里。
 
 ### 📄 `utils/api.ts`
 
