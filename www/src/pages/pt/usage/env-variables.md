@@ -21,16 +21,24 @@ _Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente,
 
 ## schema.mjs
 
-Este é o arquivo que você realmente tocará. Ele contém dois esquemas, um para variáveis de ambiente do lado do servidor e outro para o lado do cliente.
+Este é o arquivo que você realmente tocará. Ele contém dois esquemas, um para variáveis de ambiente do lado do servidor e outro para o lado do cliente, bem como um objeto `clientEnv`.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
+
+export const clientEnv = {
+  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
+};
 ```
 
 ### Schema do Servidor
@@ -44,6 +52,14 @@ Certifique-se de não prefixar as chaves aqui com `NEXT_PUBLIC`. A validação f
 Defina seu esquema de variáveis de ambiente do lado do cliente aqui.
 
 Para expô-los ao cliente, você precisa prefixá-los com `NEXT_PUBLIC`. A validação falhará se você não o ajudar a detectar uma configuração inválida.
+
+### Objeto clientEnv
+
+Desestruture o `process.env` aqui.
+
+Precisamos de um objeto JavaScript com o qual possamos analisar nossos esquemas Zod e devido à maneira como o Next.js lida com as variáveis de ambiente, você não pode destruir `process.env` como um objeto normal, então precisamos fazer isso manualmente.
+
+O TypeScript ajudará você a garantir que inseriu as chaves em `clientEnv` e também em `clientSchema`.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -102,6 +118,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTA:** Uma string vazia ainda é uma string, então `z.string()` aceitará uma string vazia como um valor válido. Se você quiser ter certeza de que a variável de ambiente não está vazia, você pode usar `z.string().min(1)`._

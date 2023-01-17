@@ -22,16 +22,24 @@ _TLDR; Si vous désirez ajouter une nouvelle variable d’environnement, vous de
 
 ## schema.mjs
 
-C'est le fichier que vous allez modifier. Il contient deux schémas, l'un est pour les variables d'environnement côté serveur et le second est pour le côté client connu.
+C'est le fichier que vous allez modifier. Il contient deux schémas, l'un est pour les variables d'environnement côté serveur et le second est pour le côté client connu sous l'objet `clientEnv`.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
+
+export const clientEnv = {
+  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
+};
 ```
 
 ### Schéma Serveur
@@ -45,6 +53,14 @@ Faites attention à ne pas préfixer vos clefs avec `NEXT_PUBLIC`. La validation
 Définissez votre schéma de variables d'environnement du côté client ici.
 
 Pour les exposer au client, vous devez les préfixer avec `NEXT_PUBLIC`. La validation échouera si vous ne le faites pas, afin de vous aider à détecter une configuration non valide.
+
+### Objet clientEnv
+
+Déstructurez `process.env` ici.
+
+Nous avons besoin d'un objet JavaScript avec lequel nous pouvons analyser nos schémas Zod et en raison de la façon dont Next.js gère les variables d'environnement, vous ne pouvez pas déstructurez `process.env` comme un objet régulier. Du coup nous devons le faire manuellement.
+
+TypeScript vous aidera à vous assurer que vous avez entré les clés dans `clientEnv` ainsi que `clientSchema`.
 
 ```ts
 // ❌ Cela ne fonctionne pas, nous devons le déstructurer manuellement
@@ -105,6 +121,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTE:** Une chaîne vide est toujours une chaîne, donc `z.string()` acceptera une chaîne vide comme valeur valide. Si vous voulez vous assurer que la variable d'environnement n'est pas vide, vous pouvez utiliser `z.string().min(1)`._

@@ -15,7 +15,7 @@ lang: zh-hans
 | Zapdos - 一个面向直播主的问答应用                                | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
 | Shoutify - 免费、开源、自行部署的社交管理平台                    | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)             | [shoutify.app](https://github.com/TechSquidTV/Shoutify) （即将上线）              |
 | Me3 - 用三件事物描述你自己然后分享给你的朋友                     | [hnqg/me3](https://github.com/hnqg/me3)                                     | [me3.hnqg.io](https://me3.hnqg.io)                                                |
-| Josh 的个人网站                                                  | [joshhyde9/portfolio](https://github.com/JoshHyde9/portfolio)               | [joshhyde.me](https://joshhyde.me)                                                |
+| Josh 的个人网站                                                  | [joshhyde9/t3-portfolio](https://github.com/JoshHyde9/t3-portfolio)         | [t3.joshhyde.me](https://t3.joshhyde.me)                                          |
 | Cal.com - 每个人都能使用的行程安排工具                           | [calcom/cal.com](https://github.com/calcom/cal.com)                         | [cal.com](https://cal.com)                                                        |
 | My FAQ Page - 一个常见疑问页面生成器                             | [ronanru/myfaq.page](https://github.com/ronanru/myfaq.page)                 | [MyFAQ.page](https://myfaq.page)                                                  |
 | Tincy Pics - 一个小而美的图片托管服务                            | [mozzius/tincypics](https://github.com/mozzius/tincypics)                   | [tincy.pics](https://tincy.pics)                                                  |

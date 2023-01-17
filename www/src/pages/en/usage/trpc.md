@@ -61,7 +61,7 @@ This is where you define the routes and procedures of your API. By convention, y
 
 ### 📄 `server/api/root.ts`
 
-Here we merge all the sub-routers defined in `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) into a single app router.
+Here we [merge](https://trpc.io/docs/v10/merging-routers) all the sub-routers defined in `routers/**` into a single app router.
 
 ### 📄 `utils/api.ts`
 

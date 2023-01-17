@@ -28,9 +28,17 @@ export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
+
+export const clientEnv = {
+  // NEXT_PUBLIC_WS_KEY: process.env.NEXT_PUBLIC_WS_KEY,
+};
 ```
 
 ### Server Schema
@@ -44,6 +52,14 @@ Make sure you do not prefix keys here with `NEXT_PUBLIC`. Validation will fail i
 Define your client-side environment variables schema here.
 
 To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
+
+### clientEnv Object
+
+Destruct the `process.env` here.
+
+We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
+
+TypeScript will help you make sure that you have entered the keys in both `clientEnv` as well as `clientSchema`.
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -104,6 +120,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
