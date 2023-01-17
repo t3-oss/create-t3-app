@@ -37,7 +37,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
 const getEnvContent = (usingAuth: boolean, usingPrisma: boolean) => {
   let content =
-    "# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly";
+    "# When adding additional env variables, the schema in /env.mjs as well as the `processEnv` object should be updated accordingly";
 
   if (usingPrisma)
     content += `
