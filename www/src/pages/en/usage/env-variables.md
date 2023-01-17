@@ -9,7 +9,7 @@ Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your 
 
 ## env.mjs
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `env/schema.mjs`._
+_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `src/env.mjs`._
 
 This file is split into two parts - the schema and object destructuring as well as the validation logic. The validation logic should not need to be touched.
 
