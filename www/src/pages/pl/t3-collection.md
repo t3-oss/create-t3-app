@@ -1,15 +1,15 @@
 ---
-title: T3-Kolleksjon
-description: Kule open source-prosjekter og selskaper som bruker T3-stakken
+title: Kolekcja T3
+description: Ciekawe projekty open source oraz firmy korzystające ze stacka T3
 layout: ../../layouts/docs.astro
-lang: no
+lang: pl
 ---
 
-Har du laget et prosjekt med T3-stakken og ønsker å dele det? Legg det til lista!
+Zrobiłeś projekt korzystając z T3 stacka i chcesz się nim podzielić? Dodaj go do listy!
 
-## Open source-prosjekter bygget med T3-stakken
+## Aplikacje open source wykonane z T3 Stackiem
 
-| Beskrivelse                                                       | Repo                                                                        | Link                                                                              |
+| Opis                                                              | Repozytorium                                                                | Link                                                                              |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Create T3 Turbo - T3 Stack using Turborepo                        | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - a QnA app for streamers                                  | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
@@ -26,15 +26,17 @@ Har du laget et prosjekt med T3-stakken og ønsker å dele det? Legg det til lis
 | Railtrack                                                         | [noahflk/railtrack](https://github.com/noahflk/railtrack)                   | [railtrack.flk.li](https://railtrack.flk.li)                                      |
 | KARA Shop - Ecommerce website                                     | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 | Tauri T3 App - Tauri App using T3 Stack                           | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
+| Azon - E-Commerce website                                         | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
+| Analyzemyrepo.com - Useful insights for **any** GitHub repo       | [CrowdDotDev/analyzemyrepo](https://github.com/CrowdDotDev/analyzemyrepo)   | [analyzemyrepo.com](https://analyzemyrepo.com)                                    |
 
-## Selskaper som bruker T3-stakken
+## Firmy korzystające ze stacka T3
 
-Vi vil gjerne vite hvilke selskaper som bruker T3-stakken for applikasjonene sine. Bruker du T3-stakken og vil dele den? Legg den til lista!
+Bardzo chcielibyśmy poznać firmy korzystające ze stacka T3 do budowania swoich aplikacji. Czy twoja firma korzysta ze stacka T3 i chciałaby się tym podzielić? Dodaj tą informację do listy poniżej!
 
-| Bedrift | Link                               |
+| Firma   | Link                               |
 | ------- | ---------------------------------- |
 | Ping.gg | [ping.gg](https://ping.gg)         |
 | Nexiona | [nexiona.com](https://nexiona.com) |
 | Layer3  | [layer3.xyz](https://layer3.xyz)   |
 
-_Har du et kult prosjekt som bruker T3-stakken? Opprett en [Pull Request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/no/t3-collection.md) og legg den til her!_
+_Posiadasz ciekawy projekt korzystający ze stacka T3? Zrób [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/pages/en/t3-collection.md) i dodaj go tutaj!_

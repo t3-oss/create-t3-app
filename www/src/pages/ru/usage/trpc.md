@@ -16,7 +16,7 @@ tRPC позволяет нам писать типобезопасные API о�
   <cite className="flex items-center justify-end pr-4 pb-2">
     <img
       alt="Avatar of @alexdotjs"
-      className="w-12 mr-4 rounded-full bg-neutral-500"
+      className="w-12 rounded-full bg-neutral-500 [margin-inline-end:16px]"
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
     <div className="flex flex-col items-start not-italic">
@@ -41,24 +41,29 @@ tRPC требует много шаблонного кода, который `cr
 
 Этот файл является точкой входа для вашего API и экспортирует ваш tRPC роутер. Обычно, вам не придется трогать этот файл, но если вам нужно, например, включить CORS middleware или что то подобное, полезно знать, что экспортируемый `createNextApiHandler` - это [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) который принимает [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) и [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) объект. Это означает, что вы можете обернуть `createNextApiHandler` в любой middleware, который вам нужен. См. ниже для [примера](#enabling-cors) добавления CORS.
 
-### 📄 `server/trpc/context.ts`
+### 📄 `server/api/trpc.ts`
 
-Этот файл - это то место, где вы определяете контекст, который передается вашим tRPC процедурам. Контекст - это данные, к которым у вас есть доступ во всех ваших tRPC процедурах, и это отличное место, чтобы поместить вещи, такие как соединения с базой данных, информация об аутентификации и т.д. В create-t3-app мы используем две функции, чтобы включить использование подмножества контекста, когда у нас нет доступа к объекту запроса.
+Этот файл разделен на две части: создание контекста и инициализация tRPC.
 
-- `createContextInner`: Это то место, где вы определяете контекст, который не зависит от запроса, например, ваше соединение с базой данных. Вы можете использовать эту функцию для [интеграционного тестирования](#sample-integration-test) или [ssg-помощников](https://trpc.io/docs/v10/ssg-helpers), где у вас нет объекта запроса.
-- `createContext`: Это то место, где вы определяете контекст, который зависит от запроса, например, сессия пользователя. Вы запрашиваете сессию с помощью объекта `opts.req`, а затем передаете сессию в функцию `createContextInner` для создания окончательного контекста.
+1. Мы определяем контекст, который передается вашим tRPC процедурам. Контекст - это данные, к которым у вас есть доступ во всех ваших tRPC процедурах, и это отличное место, чтобы поместить вещи, такие как соединения с базой данных, информация об аутентификации и т.д. В create-t3-app мы используем две функции, чтобы включить использование подмножества контекста, когда у нас нет доступа к объекту запроса.
 
-### 📄 `server/trpc/trpc.ts`
+- `createInnerTRPCContext`: Это то место, где вы определяете контекст, который не зависит от запроса, например, ваше соединение с базой данных. Вы можете использовать эту функцию для [интеграционного тестирования](#sample-integration-test) или [ssg-помощников](https://trpc.io/docs/v10/ssg-helpers), где у вас нет объекта запроса.
 
-Это то место где вы инициализируете tRPC и определяете повторно используемые [процедуры](https://trpc.io/docs/v10/procedures) и [посредники](https://trpc.io/docs/v10/middlewares). По соглашению, вы не должны экспортировать весь объект `t`, а вместо этого создавать повторно используемые процедуры и посредники и экспортировать их.
+- `createTRPCContext`: Здесь вы определяете контекст, который зависит от запроса: например, сессия пользователя. Вы запрашиваете сессию с помощью объекта `opts.req`, а затем передаете сессию в функцию `createInnerTRPCContext` для создания окончательного контекста.
+
+2. Мы инициализируем tRPC и определяем повторно используемые [процедуры](https://trpc.io/docs/v10/procedures) и [посредники](https://trpc.io/docs/v10/middlewares). По соглашению, вы не должны экспортировать весь объект `t`, а вместо этого создавать повторно используемые процедуры и посредники и экспортировать их.
 
 Вы заметите что мы используем `superjson` как [преобразователь данных](https://trpc.io/docs/v10/data-transformers). Это позволяет сохранять типы данных, когда они достигают клиента, поэтому если вы, например, отправляете объект `Date`, клиент вернет `Date`, а не строку, что является случаем для большинства API.
 
-### 📄 `server/trpc/router/*.ts`
+### 📄 `server/api/routers/*.ts`
 
-Это то место, где вы определяете маршруты и процедуры вашего API. Вы [создаете отдельные маршрутизаторы](https://trpc.io/docs/v10/router) для связанных процедур, а затем [сливаете](https://trpc.io/docs/v10/merging-routers) все их в единый маршрутизатор приложения в `server/trpc/router/_app.ts`.
+Это то место, где вы определяете маршруты и процедуры вашего API. Вы [создаете отдельные маршрутизаторы](https://trpc.io/docs/v10/router) для связанных процедур.
 
-### 📄 `utils/trpc.ts`
+### 📄 `server/api/root.ts`
+
+Здесь мы [объединяем](https://trpc.io/docs/v10/merging-routers) все под-маршрутизаторы, определенные в `routers/**` в единый маршрутизатор приложения.
+
+### 📄 `utils/api.ts`
 
 Это точка входа для tRPC на фронтенде. Здесь вы импортируете **определение типов** маршрутизатора и создаете клиент tRPC вместе с хуками react-query. Поскольку мы включили `superjson` в качестве преобразователя данных на бэкенде, нам также нужно включить его на фронтенде. Это связано с тем, что сериализованные данные с бэкенда десериализуются на фронтенде.
 
@@ -76,9 +81,9 @@ tRPC контрибьютор [trashh_dev](https://twitter.com/trashh_dev) [вы
 
 С tRPC вы пишете функции TypeScript на бэкенде, а затем вызываете их из фронтенда. Простая процедура tRPC может выглядеть так:
 
-```ts:server/trpc/router/user.ts
-const userRouter = t.router({
-  getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
+```ts:server/api/routers/user.ts
+const userRouter = createTRPCRouter({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
       where: {
         id: input,
@@ -94,8 +99,8 @@ const userRouter = t.router({
 
 Вы определяете свои процедуры в `роутерах` которые представляют собой коллекцию связанных процедур с общим пространством имен. У вас может быть один роутер для `пользователей`, один для `постов` и еще один для `сообщений`. Эти роутеры затем можно объединить в единый централизованный `appRouter`:
 
-```ts:server/trpc/router/_app.ts
-const appRouter = t.router({
+```ts:server/api/root.ts
+const appRouter = createTRPCRouter({
   users: userRouter,
   posts: postRouter,
   messages: messageRouter,
@@ -110,10 +115,11 @@ export type AppRouter = typeof appRouter;
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
+import { api } from "../../utils/api";
 
 const UserPage = () => {
   const { query } = useRouter();
-  const userQuery = trpc.users.getById.useQuery(query.id);
+  const userQuery = api.users.getById.useQuery(query.id);
 
   return (
     <div>
@@ -135,12 +141,12 @@ const UserPage = () => {
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { appRouter } from "../../../server/trpc/router/_app";
-import { createContext } from "../../../server/trpc/context";
+import { appRouter } from "../../../server/api/root";
+import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
-  const ctx = await createContext({ req, res });
+  const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
     const { id } = req.query;
@@ -175,7 +181,7 @@ tRPC взаимодействует через HTTP, поэтому также �
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../server/db/client";
+import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
@@ -236,8 +242,8 @@ const UserPage = () => {
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
-import { appRouter } from "~/server/trpc/router/_app";
-import { createContext } from "~/server/trpc/context";
+import { appRouter } from "~/server/api/root";
+import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -247,7 +253,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create and call the tRPC handler
   return createNextApiHandler({
     router: appRouter,
-    createContext,
+    createContext: createTRPCContext,
   })(req, res);
 };
 
@@ -260,10 +266,10 @@ export default handler;
 
 ```tsx
 const MyComponent = () => {
-  const listPostQuery = trpc.post.list.useQuery();
+  const listPostQuery = api.post.list.useQuery();
 
-  const utils = trpc.useContext();
-  const postCreate = trpc.post.create.useMutation({
+  const utils = api.useContext();
+  const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
       // Cancel outgoing fetches (so they don't overwrite our optimistic update)
       await utils.post.list.cancel();
@@ -295,12 +301,12 @@ const MyComponent = () => {
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
-import { createContextInner } from "~/server/router/context";
-import { appRouter, type AppRouter } from "~/server/router/_app";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import { appRouter, type AppRouter } from "~/server/api/root";
 import { expect, test } from "vitest";
 
 test("example router", async () => {
-  const ctx = await createContextInner({ session: null });
+  const ctx = await createInnerTRPCContext({ session: null });
   const caller = appRouter.createCaller(ctx);
 
   type Input = inferProcedureInput<AppRouter["example"]["hello"]>;
