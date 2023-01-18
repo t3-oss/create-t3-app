@@ -219,3 +219,17 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
     }
   });
 </script>
+<script>
+  const main = () => {
+    const notACodeBlock = ":not(pre) code";
+    const codeElements = document.querySelectorAll(notACodeBlock);
+
+    codeElements.forEach((codeElement) => {
+      const codeWrapper = document.createElement("div");
+      codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
+
+      codeWrapper.appendChild(codeElement);
+    });
+  };
+  main();
+</script>
