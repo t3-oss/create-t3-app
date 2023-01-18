@@ -39,27 +39,31 @@ tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让�
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-这里是你项目 API 的入口，它暴露了 tRPC 的路由。正常情况下，你不会去修改这个文件，但如果需要的话，例如开启 CORS 中间件或其他类似的情况，知道下面的信息是很有用的：被导出的 `createNextApiHandler` 是一个 [Next.js API 的 handler](https://nextjs.org/docs/api-routes/introduction)，它分别接受一个 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) 和一个 [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) 对象作为参数。这意味着 `createNextApiHandler` 可以被任何你想要的中间件包裹。查看下方添加 CORS 的[示例代码](#enabling-cors)。
+这里是你项目 API 的入口，它暴露了 tRPC 的路由。正常情况下，你不会去修改这个文件，但如果需要的话，例如开启 CORS 中间件或其他类似的情况，知道下面的信息是很有用的：被导出的 `createNextApiHandler` 是一个 [Next.js API 的 handler](https://nextjs.org/docs/api-routes/introduction)，它分别接受一个 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) 和一个 [response](https://developer.mozilla.org/en-US/docs/Web/API/Response?retiredLocale=sv-SE) 对象作为参数。这意味着 `createNextApiHandler` 可以被任何你想要的中间件包裹。查看下方添加 CORS 的 [示例代码](#enabling-cors)。
 
-### 📄 `server/trpc/context.ts`
+### 📄 `server/api/trpc.ts`
 
-你可以在这个文件里定义上下文，它会被传入到 tRPC 的路由函数里。上下文就是一个数据对象，你定义的所有 tRPC 路由函数都会访问它来获取数据，它被用来存放了一些例如数据库的连接、认证信息等数据。在 create-t3-app 里，当我们不需要获取整个请求对象时，我们分别使用两个函数来取得上下文的部分数据。
+这个文件分为两部分，上下文创建和 tRPC 初始化。
 
-- `createContextInner`: 这里你可以定义不依赖请求的上下文，例如数据库的连接。你可以使用这个函数来做 [集成测试](#sample-integration-test) 或 [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers)，这些场景下你都没有一个请求对象。
+1. 我们定义传递给你的 tRPC 路由函数的上下文。上下文就是一个数据对象，你定义的所有 tRPC 路由函数都会访问它来获取数据，它被用来存放了一些例如数据库的连接、认证信息等数据。在 create-t3-app 里，当我们不需要获取整个请求对象时，我们分别使用两个函数来取得上下文的部分数据。
 
-- `createContext`: 你可以在这里定义依赖于请求的上下文，例如用户的 session。你通过使用 `opts.req` 来获取 session，然后将它传给 `createContextInner` 函数来创建最后完整的上下文。
+- `createInnerTRPCContext`: 这里你可以定义不依赖请求的上下文，例如数据库的连接。你可以使用这个函数来做 [集成测试](#sample-integration-test) 或 [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers)，这些场景下你都没有一个请求对象。
 
-### 📄 `server/trpc/trpc.ts`
+- `createTRPCContext`: 你可以在这里定义依赖于请求的上下文，例如用户的 session。你通过使用 `opts.req` 来获取 session，然后将它传给 `createInnerTRPCContext` 函数来创建最后完整的上下文。
 
-在这里你可以初始化 tRPC，定义复用的 [procedure](https://trpc.io/docs/v10/procedures) 路由函数和中间件 [中间件](https://trpc.io/docs/v10/middlewares)。你不应该将整个 `t` 对象导出，而是通过转换创建复用的路由和中间件，并导出它们。
+2. 我们初始化 tRPC，并定义可复用的 [procedure](https://trpc.io/docs/v10/procedures) 路由函数和 [中间件](https://trpc.io/docs/v10/middlewares)。按照惯例，你不应该将整个 `t` 对象导出，而是通过转换创建复用的路由和中间件，并导出它们。
 
 你会注意到我们使用了 `superjson` 作为 [数据解析工具](https://trpc.io/docs/v10/data-transformers)。在数据被发送到客户端时，它会帮你保留数据类型。例如你发送了一个 `Date` 类型的对象，客户端会返回一个相同类型的 `Date`，而不是像其他大多数 API 一样返回一个字符串。
 
-### 📄 `server/trpc/router/*.ts`
+### 📄 `server/api/routers/*.ts`
 
-你可以在这里定义 API 的路由及其函数。通过转换，你可以为相关的路由函数 procedure [创建分离的路由](https://trpc.io/docs/v10/router)，然后在 `server/trpc/router/_app.ts` 中将它们统一 [合并](https://trpc.io/docs/v10/merging-routers) 到一个单一的应用路由里。
+你可以在这里定义 API 的路由及其函数。按照惯例，你在这里为相关的路由函数 procedure [创建分离的路由](https://trpc.io/docs/v10/router)
 
-### 📄 `utils/trpc.ts`
+### `server/api/root.ts`
+
+在这里我们把所有在 `routers/**` 中定义的子路由 [合并](https://trpc.io/docs/v10/merging-routers) 到一个单一的应用路由里。
+
+### 📄 `utils/api.ts`
 
 这里是 tRPC 的前端入口。你可以在这里导入路由的**类型定义**，创建你的 tRPC 客户端以及 react-query hooks。因为我们已经在后端将 `superjson` 设置为数据序列化工具，我们同样需要在前端开启它。这是因为从后端传入的序列化在前端还未被反序列化。
 
@@ -77,9 +81,9 @@ tRPC 贡献者 [trashh_dev](https://twitter.com/trashh_dev) 在 [Next.js Conf �
 
 通过 tRPC，你可以在后端编写 TypeScript 函数，然后从你的前端直接调用。一个简单的 tRPC 路由函数 procedure 可能长这样：
 
-```ts:server/trpc/router/user.ts
-const userRouter = t.router({
-  getById: t.procedure.input(z.string()).query(({ ctx, input }) => {
+```ts:server/api/routers/user.ts
+const userRouter = createTRPCRouter({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
       where: {
         id: input,
@@ -95,8 +99,8 @@ const userRouter = t.router({
 
 你在 `routers` 中定义许多 procedure 路由函数，它表示这些相关路由函数的公共命名空间。你可以有不同的路由，例如 `users`、`posts` 以及 `messages`。然后将这些路由统一集中合并到 `appRouter` 里：
 
-```ts:server/trpc/router/_app.ts
-const appRouter = t.router({
+```ts:server/api/root.ts
+const appRouter = createTRPCRouter({
   users: userRouter,
   posts: postRouter,
   messages: messageRouter,
@@ -111,11 +115,11 @@ export type AppRouter = typeof appRouter;
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
+import { api } from "../../utils/api";
 
 const UserPage = () => {
   const { query } = useRouter();
-  const userQuery = trpc.users.getById.useQuery(query.id);
-
+  const userQuery = api.users.getById.useQuery(query.id);
   return (
     <div>
       <h1>{userQuery.data?.name}</h1>
@@ -136,12 +140,12 @@ const UserPage = () => {
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { appRouter } from "../../../server/trpc/router/_app";
-import { createContext } from "../../../server/trpc/context";
+import { appRouter } from "../../../server/api/root";
+import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // 创建上下文和调用者
-  const ctx = await createContext({ req, res });
+  const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
   try {
     const { id } = req.query;
@@ -176,7 +180,7 @@ tRPC 通过 HTTP 协议来传输数据，因此使用“常规”的 HTTP 请求
 
 ```ts:pages/api/users/[id].ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../server/db/client";
+import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
@@ -237,8 +241,8 @@ const UserPage = () => {
 ```ts:pages/api/trpc/[trpc].ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
-import { appRouter } from "~/server/trpc/router/_app";
-import { createContext } from "~/server/trpc/context";
+import { appRouter } from "~/server/api/root";
+import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -248,7 +252,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create and call the tRPC handler
   return createNextApiHandler({
     router: appRouter,
-    createContext,
+    createContext: createTRPCContext,
   })(req, res);
 };
 
@@ -261,10 +265,10 @@ export default handler;
 
 ```tsx
 const MyComponent = () => {
-  const listPostQuery = trpc.post.list.useQuery();
+  const listPostQuery = api.post.list.useQuery();
 
-  const utils = trpc.useContext();
-  const postCreate = trpc.post.create.useMutation({
+  const utils = api.useContext();
+  const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
       // 取消发送中的 fetch 请求（所以它们不会覆盖掉我们的乐观更新）
       await utils.post.list.cancel();
@@ -296,12 +300,12 @@ const MyComponent = () => {
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
-import { createContextInner } from "~/server/router/context";
-import { appRouter, type AppRouter } from "~/server/router/_app";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import { appRouter, type AppRouter } from "~/server/api/root";
 import { expect, test } from "vitest";
 
 test("example router", async () => {
-  const ctx = await createContextInner({ session: null });
+  const ctx = await createInnerTRPCContext({ session: null });
   const caller = appRouter.createCaller(ctx);
 
   type Input = inferProcedureInput<AppRouter["example"]["hello"]>;

@@ -27,6 +27,7 @@ lang: zh-hans
 | KARA Shop - 电商网站                                             | [mehrabmp/kara-shop](https://github.com/mehrabmp/kara-shop)                 | [karashop.vercel.app](https://karashop.vercel.app/)                               |
 | Tauri T3 App - 搭配 T3 Stack 的 Tauri 应用                       | [tauri-t3-app](https://github.com/AyanavaKarmakar/tauri-t3-app)             | [tauri-t3-app.docs](https://github.com/AyanavaKarmakar/tauri-t3-app#readme)       |
 | Azon - 电商网站                                                  | [andrewsolonets/Azon-Shop](https://github.com/andrewsolonets/Azon-Shop)     | [azon-shop.vercel.app](https://azon-shop.vercel.app/)                             |
+| Analyzemyrepo.com - 对 **任何** GitHub 仓库的有用见解            | [CrowdDotDev/analyzemyrepo](https://github.com/CrowdDotDev/analyzemyrepo)   | [analyzemyrepo.com](https://analyzemyrepo.com)                                    |
 
 ## 使用 T3 Stack 的公司
 
