@@ -5,13 +5,13 @@ layout: ../../layouts/docs.astro
 lang: pt
 ---
 
-Fez um projeto usando a T3 stack e deseja comparilhar? Adicione ele na lista!
+Fez um projeto usando a T3 stack e deseja compartilhar? Adicione ele na lista!
 
 ## Aplicações Open Source desenvolvidas usando a T3 Stack
 
 | Descrição                                                                    | Repo                                                                        | Link                                                                              |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Create T3 Turbo - T3 Stack using Turborepo                                   | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
+| Create T3 Turbo - T3 Stack usando Turborepo                                  | [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)                | [create-t3-turbo.vercel.app](https://create-t3-turbo.vercel.app/)                 |
 | Zapdos - um aplicativo Q&A para streamers                                    | [pingdotgg/zapdos](https://github.com/pingdotgg/zapdos)                     | [ask.ping.gg](https://ask.ping.gg)                                                |
 | Shoutify - Gerenciador de mídias sociais gratuito, open-source e self-hosted | [techsquidtv/shoutify](https://github.com/TechSquidTV/Shoutify)             | [shoutify.app](https://github.com/TechSquidTV/Shoutify) (coming soon)             |
 | Me3 - Descreva-se em 3 coisas e compartilhe com seus amigos.                 | [hnqg/me3](https://github.com/hnqg/me3)                                     | [me3.hnqg.io](https://me3.hnqg.io)                                                |
