@@ -63,7 +63,7 @@ README.md
 ##### DEPENDENCIES
 
 FROM --platform=linux/amd64 node:16-alpine3.16 AS deps
-RUN apk add --no-cache libc6-compat openssl1.1-compat
+RUN apk add --no-cache libc6-compat openssl1.1-compat-dev
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
