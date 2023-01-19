@@ -46,8 +46,8 @@ const isServer = typeof window === "undefined";
 
 const merged = server.merge(client);
 const parsed = isServer
-  ? merged.safeParse(processEnv)
-  : client.safeParse(processEnv);
+  ? merged.safeParse(processEnv) // on server we can validate all env vars
+  : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
 
 if (parsed.success === false) {
   console.error(
@@ -58,16 +58,18 @@ if (parsed.success === false) {
 }
 
 /** @type z.infer<merged>
- *  @ts-ignore - proxy is hard in TS */
+ *  @ts-ignore - can't type this properly in jsdoc */
 export const env = new Proxy(parsed.data, {
   get(target, prop) {
     if (typeof prop !== "string") return undefined;
+    // Throw a descriptive error if a server-side env var is accessed on the client
+    // Otherwise it would just be returning `undefined` and be annoying to debug
     if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
       throw new Error(
         "❌ Attempted to access serverside environment variable on the client",
       );
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore - proxy is hard in TS
+    // @ts-ignore - can't type this properly in jsdoc
     return target[prop];
   },
 });
