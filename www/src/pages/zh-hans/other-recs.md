@@ -94,7 +94,7 @@ Framer Motion 提供了一种简单、声明式的语法，从复杂的动画，
 Vercel 帮你解决了 web 应用部署的痛点，可以让你轻松通过 GitHub 仓库部署你的应用。我们部署在 Vercel 的服务已经扩展达到数十万用户，目前还没有任何问题。Vercel 基于 AWS，不过有更好的交互界面 :)
 
 - [Vercel 官网](https://vercel.com/)
-- [Create T3 App Vercel 部署指引](/en/deployment/vercel)
+- [Create T3 App Vercel 部署指引](/zh-hans/deployment/vercel)
 
 ### PlanetScale
 
