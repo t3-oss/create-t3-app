@@ -226,6 +226,7 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 
     codeElements.forEach((codeElement) => {
       const codeWrapper = document.createElement("div");
+      codeWrapper.classList.add("inline-block");
       codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
 
       codeWrapper.appendChild(codeElement);
