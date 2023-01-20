@@ -68,7 +68,7 @@ export const env = new Proxy(parsed.data, {
     // Otherwise it would just be returning `undefined` and be annoying to debug
     if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
       throw new Error(
-        "❌ Attempted to access serverside environment variable on the client",
+        `❌ Attempted to access server-side environment variable '${prop}' on the client`,
       );
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - can't type this properly in jsdoc
