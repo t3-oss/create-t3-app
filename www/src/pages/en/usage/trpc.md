@@ -132,7 +132,7 @@ You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which dete
 Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 Create T3 App contributor [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee) made [a video about data flows in tRPC](https://www.youtube.com/watch?v=x4mu-jOiA0Q). This video is recommended if you have used tRPC but still feel a bit unclear about how it works.
