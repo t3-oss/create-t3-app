@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.3.2
+
+### Patch Changes
+
+- [#1097](https://github.com/t3-oss/create-t3-app/pull/1097) [`2ed36cd`](https://github.com/t3-oss/create-t3-app/commit/2ed36cd624cba2032ba70c465cd47c49a962bb0d) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: bump nextjs and add a note about appDir+i18n being incompat
+
 ## 7.3.1
 
 ### Patch Changes

@@ -55,12 +55,12 @@ const main = async () => {
     spaces: 2,
   });
 
-  if (!noGit) {
-    await initializeGit(projectDir);
-  }
-
   if (!noInstall) {
     await installDependencies({ projectDir });
+  }
+
+  if (!noGit) {
+    await initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
