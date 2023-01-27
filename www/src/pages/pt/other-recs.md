@@ -27,7 +27,6 @@ O "moderno e simples Redux", que você não sabia que precisava. Sempre podemos 
 **Para nunca mais usar Context**
 
 Para uma abordagem mais atômica, o Jotai é difícil de bater. Também de [Poimandres](https://github.com/pmndrs), O Jotai te permite definir singletons que parecem um useState global. Uma boa opção para
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Uma ótima opção para comportamentos de estado que ainda não precisam de uma máquina.
 
 - [Página inicial do Jotai](https://jotai.org/)
 - [GitHub do Jotai](https://github.com/pmndrs/jotai)
