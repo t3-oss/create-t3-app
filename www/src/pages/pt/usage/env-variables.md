@@ -89,6 +89,8 @@ const dbUrl = env.DATABASE_URL;
 
 Como o arquivo `.env` padrão não está comprometido com o controle de versão, também incluímos um arquivo `.env.example`, no qual você pode, opcionalmente, manter uma cópia de seu arquivo `.env` com quaisquer segredos removidos. Isso não é necessário, mas recomendamos manter o exemplo atualizado para tornar mais fácil para os contribuidores começarem a usar seu ambiente.
 
+Alguns frameworks e ferramentas de construção, como o Next.js, sugerem que você armazene segredos em um arquivo `.env.local` e commita arquivos `.env` em seu projeto. Isso não é recomendado, pois poderia facilitar o acidente de commitar segredos em seu projeto. Em vez disso, recomendamos que você armazene segredos em `.env`, mantenha seu arquivo `.env` no seu `.gitignore` e commita somente arquivos `.env.example` em seu projeto.
+
 ## Adicionando Variáveis Ambiente
 
 Para garantir que sua compilação nunca seja concluída sem as variáveis de ambiente de que o projeto precisa, você precisará adicionar novas variáveis de ambiente em **dois** locais:
