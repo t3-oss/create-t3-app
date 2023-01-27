@@ -13,9 +13,7 @@ import { authOptions } from "../pages/api/auth/[...nextauth]";
  * @see https://next-auth.js.org/configuration/nextjs
  */
 
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
-}) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
-};
+}) => unstable_getServerSession(ctx.req, ctx.res, authOptions);
