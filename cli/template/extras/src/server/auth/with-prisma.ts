@@ -20,13 +20,13 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: "ADMIN" | "USER" | "GUEST";
+      // role: UserRole;
     } & DefaultSession["user"];
   }
 
   // interface User {
   //   // ...other properties
-  //   // role: "ADMIN" | "USER" | "GUEST";
+  //   // role: UserRole;
   // }
 }
 
