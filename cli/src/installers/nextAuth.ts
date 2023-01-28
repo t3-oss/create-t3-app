@@ -30,10 +30,6 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const getServerAuthSessionSrc = path.join(extrasDir, "src/server/auth.ts");
   const getServerAuthSessionDest = path.join(projectDir, "src/server/auth.ts");
 
-  const nextAuthDTSSrc = path.join(extrasDir, "src/types/next-auth.d.ts");
-  const nextAuthDTSDest = path.join(projectDir, "src/types/next-auth.d.ts");
-
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(getServerAuthSessionSrc, getServerAuthSessionDest);
-  fs.copySync(nextAuthDTSSrc, nextAuthDTSDest);
 };
