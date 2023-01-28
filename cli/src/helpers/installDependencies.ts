@@ -11,6 +11,7 @@ type Options = {
   projectDir: string;
 };
 
+/*eslint-disable @typescript-eslint/no-floating-promises*/
 const runInstallCommand = async (
   pkgManager: PackageManager,
   projectDir: string,
@@ -26,7 +27,7 @@ const runInstallCommand = async (
       return null;
     // When using yarn or pnpm, use the stdout stream and ora spinner to show the progress
     case "pnpm":
-      const pnpmSpinner = ora().start();
+      const pnpmSpinner = ora("Running pnpm install...").start();
       const pnpmSubprocess = execa(pkgManager, ["install"], {
         cwd: projectDir,
         stdout: "pipe",
@@ -42,7 +43,7 @@ const runInstallCommand = async (
 
       return pnpmSpinner;
     case "yarn":
-      const yarnSpinner = ora().start();
+      const yarnSpinner = ora("Running yarn...").start();
       const yarnSubprocess = execa(pkgManager, [], {
         cwd: projectDir,
         stdout: "pipe",
@@ -59,6 +60,7 @@ const runInstallCommand = async (
       return yarnSpinner;
   }
 };
+/*eslint-enable @typescript-eslint/no-floating-promises*/
 
 export const installDependencies = async ({ projectDir }: Options) => {
   logger.info("Installing dependencies...");
