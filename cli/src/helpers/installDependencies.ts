@@ -1,27 +1,76 @@
 import chalk from "chalk";
 import { execa } from "execa";
-import ora from "ora";
-import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import ora, { Ora } from "ora";
+import {
+  getUserPkgManager,
+  PackageManager,
+} from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
 type Options = {
   projectDir: string;
 };
 
+/*eslint-disable @typescript-eslint/no-floating-promises*/
+const runInstallCommand = async (
+  pkgManager: PackageManager,
+  projectDir: string,
+): Promise<Ora | null> => {
+  switch (pkgManager) {
+    // When using npm, inherit the stderr stream so that the progress bar is shown
+    case "npm":
+      await execa(pkgManager, ["install"], {
+        cwd: projectDir,
+        stderr: "inherit",
+      });
+
+      return null;
+    // When using yarn or pnpm, use the stdout stream and ora spinner to show the progress
+    case "pnpm":
+      const pnpmSpinner = ora("Running pnpm install...").start();
+      const pnpmSubprocess = execa(pkgManager, ["install"], {
+        cwd: projectDir,
+        stdout: "pipe",
+      });
+
+      await new Promise<void>((res, rej) => {
+        pnpmSubprocess.stdout?.on("data", (data: Buffer) => {
+          pnpmSpinner.text = data.toString();
+        });
+        pnpmSubprocess.on("error", (e) => rej(e));
+        pnpmSubprocess.on("close", () => res());
+      });
+
+      return pnpmSpinner;
+    case "yarn":
+      const yarnSpinner = ora("Running yarn...").start();
+      const yarnSubprocess = execa(pkgManager, [], {
+        cwd: projectDir,
+        stdout: "pipe",
+      });
+
+      await new Promise<void>((res, rej) => {
+        yarnSubprocess.stdout?.on("data", (data: Buffer) => {
+          yarnSpinner.text = data.toString();
+        });
+        yarnSubprocess.on("error", (e) => rej(e));
+        yarnSubprocess.on("close", () => res());
+      });
+
+      return yarnSpinner;
+  }
+};
+/*eslint-enable @typescript-eslint/no-floating-promises*/
+
 export const installDependencies = async ({ projectDir }: Options) => {
   logger.info("Installing dependencies...");
   const pkgManager = getUserPkgManager();
-  const spinner =
-    pkgManager === "yarn"
-      ? ora("Running yarn...\n").start()
-      : ora(`Running ${pkgManager} install...\n`).start();
 
-  // If the package manager is yarn, use yarn's default behavior to install dependencies
-  if (pkgManager === "yarn") {
-    await execa(pkgManager, [], { cwd: projectDir });
-  } else {
-    await execa(pkgManager, ["install"], { cwd: projectDir });
-  }
+  const installSpinner = await runInstallCommand(pkgManager, projectDir);
 
-  spinner.succeed(chalk.green("Successfully installed dependencies!\n"));
+  // If the spinner was used to show the progress, use succeed method on it
+  // If not, use the succeed on a new spinner
+  (installSpinner || ora()).succeed(
+    chalk.green("Successfully installed dependencies!\n"),
+  );
 };
