@@ -68,9 +68,9 @@ export const authOptions: NextAuthOptions = {
  * to import the authOptions in every file.
  * @see https://next-auth.js.org/configuration/nextjs
  **/
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
