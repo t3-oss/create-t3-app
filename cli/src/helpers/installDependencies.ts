@@ -35,8 +35,12 @@ const runInstallCommand = async (
 
       await new Promise<void>((res, rej) => {
         pnpmSubprocess.stdout?.on("data", (data: Buffer) => {
-          if (data.toString().includes("Progress")) {
-            pnpmSpinner.text = data.toString().split(" | ")[1] ?? "";
+          const text = data.toString();
+
+          if (text.includes("Progress")) {
+            pnpmSpinner.text = text.includes("|")
+              ? text.split(" | ")[1] ?? ""
+              : text;
           }
         });
         pnpmSubprocess.on("error", (e) => rej(e));
