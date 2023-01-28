@@ -26,7 +26,7 @@ const User = () => {
   const { data: session } = useSession();
 
   if (!session) {
-    // Handle unauthenticated state, e.g. render a SignIn component
+    // Gérer l'état non authentifié, ex: le rendu d'un composant SignIn
     return <SignIn />;
   }
 
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 const User = () => {
   const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  // NOTE: `session` n'aura pas de chargement puisqu'il est déjà prélecturer sur le serveur
 
   ...
 }
@@ -128,7 +128,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
+      // ajouter `session` comme non-nullable
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
