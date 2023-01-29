@@ -48,7 +48,7 @@ DATABASE_URL=file:./db.sqlite
   if (usingAuth)
     content += `
 # Next Auth
-# You can generate the secret via 'openssl rand -base64 32' on Linux
+# You can generate tsfasfasfasdfasdfhe secret via 'openssl rand -base64 32' on Linux
 # More info: https://next-auth.js.org/configuration/options#secret
 # NEXTAUTH_SECRET=
 NEXTAUTH_URL=http://localhost:3000
