@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.1.2",
+    "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.20.2"
@@ -21,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",
-    "eslint-config-next": "13.1.2",
+    "eslint-config-next": "13.1.6",
     "typescript": "^4.9.4"
   }
 }
