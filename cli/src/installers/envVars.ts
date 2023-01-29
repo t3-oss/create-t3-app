@@ -56,7 +56,7 @@ DATABASE_URL="file:./db.sqlite"
 # You can generate a new secret on the command line with:
 # openssl rand -base64 32
 # https://next-auth.js.org/configuration/options#secret
-#NEXTAUTH_SECRET=""
+# NEXTAUTH_SECRET=""
 NEXTAUTH_URL="http://localhost:3000"
 
 # Next Auth Discord Provider
