@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.4.0
+
+### Minor Changes
+
+- [#1136](https://github.com/t3-oss/create-t3-app/pull/1136) [`715f6e8`](https://github.com/t3-oss/create-t3-app/commit/715f6e8e795685c054145149acff427a1b46172f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: colocate auth config/dts/session-getter into a single file
+
+- [#1134](https://github.com/t3-oss/create-t3-app/pull/1134) [`4cb2e4e`](https://github.com/t3-oss/create-t3-app/commit/4cb2e4e5020f93636889499bf71029ce7fcb5fce) Thanks [@PiotrekPKP](https://github.com/PiotrekPKP)! - feat: added package installation progress
+
+### Patch Changes
+
+- [#1131](https://github.com/t3-oss/create-t3-app/pull/1131) [`ab0790e`](https://github.com/t3-oss/create-t3-app/commit/ab0790e95194291cab65dee458982a2b637a4d15) Thanks [@bastibuck](https://github.com/bastibuck)! - fix: fix types of serverEnv and clientEnv
+
+- [#1140](https://github.com/t3-oss/create-t3-app/pull/1140) [`fc445bf`](https://github.com/t3-oss/create-t3-app/commit/fc445bfaa72e2de2880fb286cee71ff2b26a72a6) Thanks [@Zamiell](https://github.com/Zamiell)! - chore: add descriptive comments and format .env prettier
+
 ## 7.3.2
 
 ### Patch Changes
