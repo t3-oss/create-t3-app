@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [`ddc8c40`](https://github.com/t3-oss/create-t3-app/commit/ddc8c40dab5284ba899c5254e6d26e8ad4587c6d) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: colocate auth config/dts/session-getter into a single file
+- [#1136](https://github.com/t3-oss/create-t3-app/pull/1136) [`715f6e8`](https://github.com/t3-oss/create-t3-app/commit/715f6e8e795685c054145149acff427a1b46172f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: colocate auth config/dts/session-getter into a single file
 
 - [#1134](https://github.com/t3-oss/create-t3-app/pull/1134) [`4cb2e4e`](https://github.com/t3-oss/create-t3-app/commit/4cb2e4e5020f93636889499bf71029ce7fcb5fce) Thanks [@PiotrekPKP](https://github.com/PiotrekPKP)! - feat: added package installation progress
 
