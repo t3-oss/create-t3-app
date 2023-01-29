@@ -542,7 +542,7 @@
 - **cli:** use correct spelling, fix short choices ([7776aa9](https://github.com/t3-oss/create-t3-app/commit/7776aa9fc03293f27d9e27808cd03810f96ccc33))
 - conditionally run envVars installer ([#196](https://github.com/t3-oss/create-t3-app/issues/196)) ([f5f4f62](https://github.com/t3-oss/create-t3-app/commit/f5f4f6275c1a967f6de2e7c6d40d9a7731a3830b))
 - docs wrong format ([3d2dbb0](https://github.com/t3-oss/create-t3-app/commit/3d2dbb06cadb42d24f134ce09edc5a371d79aff9))
-- don't prompt for typesafe env-vars ([2faee56](https://github.com/t3-oss/create-t3-app/commit/2faee56720c39d770ebe05d15e3fb2aaacaf704e))
+- dont prompt for typesafe env-vars ([2faee56](https://github.com/t3-oss/create-t3-app/commit/2faee56720c39d770ebe05d15e3fb2aaacaf704e))
 - eslint warning (import/no-anonymous-default-export) ([a1cce55](https://github.com/t3-oss/create-t3-app/commit/a1cce5546a8fd6efb79c65a2f2b52d4c597dafd0))
 - fixed some typos ([#131](https://github.com/t3-oss/create-t3-app/issues/131)) ([a86466e](https://github.com/t3-oss/create-t3-app/commit/a86466eb0bc1ef51a1c8ba1b96938dc1bd7dfbbb))
 - format contributing.md ([4111476](https://github.com/t3-oss/create-t3-app/commit/41114766582ca33fb2a3fd0b566e609a6dd3e861))
