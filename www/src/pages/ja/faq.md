@@ -2,16 +2,16 @@
 title: FAQ
 description: Frequently asked questions about Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: ja
 ---
 
-Here are some commonly asked questions about Create T3 App.
+Create T3 App についてよくある質問をまとめています。
 
-## What's next? How do I make an app with this?
+## 次は何をしたらいいの？アプリを作るには？
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+あなたが私たちの用意した足場から始めて、後から必要になったものを追加できるよう、私たちはこのプロジェクトがなるべくシンプルであるよう努めています。
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+このプロジェクトで用いられる様々な技術に馴染みがない場合、それぞれのドキュメントを参照してください。その上でよくわからない場合は、[Discord](https://t3.gg/discord) でご相談ください。
 
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org)
@@ -19,22 +19,22 @@ If you are not familiar with the different technologies used in this project, pl
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
-## What learning resources are currently available?
+## 何か学習教材はありますか？
 
-Although the resources listed below are some of the best that exist for the T3 Stack, the community (and [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) recommend that you just start using the stack and learn along the way by building with it.
+下記のような最高のリソースが T3 Stack 向けに存在していますが、コミュニティ（と[Theo](https://youtu.be/rzwaaWH0ksk?t=1436)）は、とりあえず T3 Stack を使うことから始めて、実装しながら学ぶことを推奨しています。
 
-If you are considering Create T3 App, chances are you might have already used some of the parts of the stack. So why not just dive in head first and learn the other parts while you build something?
+Create T3 App を検討しているのであれば、既に含まれているライブラリのいくつかを使ったことがある可能性が高いです。であれば、まずは使うところから始めてみて、不慣れなものはアプリケーションを作りながら学びませんか？
 
-Now, we realize this path doesn't work for everyone. So, if you feel like you've tried the recommendation and would still like some resources, or you just aren't confident doing it by yourself and/or feel overwhelmed by the stack, checkout these awesome tutorials on Create T3 App:
+とはいえ、この方法が誰にでも通用するものではないことは認識しています。ですので、推奨された方法を試したものの、まだ何かしらのリソースが必要だと感じている場合や、あるいは自分でやってみる自信がない場合、あるいは T3 Stack に圧倒されていると感じている場合は、これらの Create T3 App の素晴らしいチュートリアルをチェックしてみてください。
 
-### Articles
+### 記事
 
 - [Build a full stack app with Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
-### Videos
+### 動画
 
 - [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
@@ -42,20 +42,20 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 - [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
 - [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
-## Why are there `.js` files in the project?
+## プロジェクトに `.js` ファイルが存在するのは何故ですか？
 
-As per [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), we take typesafety as a first class citizen. Unfortunately, not all frameworks and plugins support TypeScript which means some of the configuration files have to be `.js` files.
+[T3-Axiom #3](/en/introduction#typesafety-isnt-optional) で説明した通り、我々は型安全であることを最重要としています。しかしながら不幸なことに、フレームワークやプラグインの中には TypeScript をサポートしていないものもあるので、一部の設定ファイルが `.js` ファイルになってしまうことは避けられません。
 
-We try to emphasize that these files are JavaScript for a reason, by explicitly declaring each file's type (`cjs` or `mjs`) depending on what's supported by the library it is used by. Also, all the `js` files in this project are still typechecked using a `@ts-check` comment at the top.
+我々は、各ファイルの拡張子 (`cjs` または `mjs`) を、使用するライブラリでサポートされているものに応じて明示的に宣言することで、これらのファイルが理由があって JavaScript であることを強調するように努めています。また、本プロジェクトに含まれる全ての `js` ファイルは、先頭に `@ts-check` というコメントをつけているので、型チェックの対象となっています。
 
-## I'm struggling to add i18n to my app. Is there any reference I can use?
+## アプリの国際化対応に苦労しています。何か参考になるものはありますか？
 
-We have decided against including i18n by default in `create-t3-app` because it's a very opinionated topic and there are many ways to implement it.
+i18n は非常に意見が分かれる議題であり、複数の実装方法が考えられるため、`create-t3-app` にデフォルトで含めることは辞めました。
 
-However, if you struggle to implement it and want to see a reference project, we have a [reference repo](https://github.com/juliusmarminge/t3-i18n) that shows how you can add i18n to a T3 App using [next-i18next](https://github.com/i18next/next-i18next).
+しかしながら、もし実装に苦労していて、参考となるプロジェクトを見たい場合は、[こちらのリポジトリ](https://github.com/juliusmarminge/t3-i18n)を参照してください。[next-i18next](https://github.com/i18next/next-i18next)を使って T3 App に i18n を追加する方法を紹介しています。
 
-## Why are we using `/pages` and not `/app` from Next.js 13?
+## なぜ Next.js 13 からの `/app` ではなく `/pages` を使っているのですか？
 
-As per [T3-Axiom #2](/en/introduction#bleed-responsibly), we love bleeding edge stuff but value stability, your entire router is hard to port, [not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662). While `/app` is [a glimpse into the future](https://youtu.be/rnsC-12PVlM?t=818), it's not ready for production; The API is in beta and expected to have breaking changes.
+我々は [T3-Axiom #2](/en/introduction#bleed-responsibly)のように、最先端のものを愛していますが、同時に安定性を重視します。既存アプリの router 全体を移植するのは難しく、 [挑戦的な試みに最適な場所ではありません](https://youtu.be/mnwUbtieOuI?t=1662)。 `/app` は [画期的](https://youtu.be/rnsC-12PVlM?t=818)ですが、実運用レベルには達していません。API はベータ版であり、破壊的変更が予想されます。
 
-For a list of supported, planned, and worked on features in the `/app` dir, visit the [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+`/app` ディレクトリの、サポートされている機能・予定されている機能・開発進行中の機能の一覧については、[beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features) を参照してください。
