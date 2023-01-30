@@ -68,26 +68,6 @@
       "name": "format:check",
       "command": "pnpm format:check",
       "runAtStart": false
-    },
-    "check": {
-      "name": "check",
-      "command": "pnpm check",
-      "runAtStart": false
-    },
-    "release": {
-      "name": "release",
-      "command": "pnpm release",
-      "runAtStart": false
-    },
-    "pub:beta": {
-      "name": "pub:beta",
-      "command": "pnpm pub:beta",
-      "runAtStart": false
-    },
-    "pub:release": {
-      "name": "pub:release",
-      "command": "pnpm pub:release",
-      "runAtStart": false
     }
   }
 }
