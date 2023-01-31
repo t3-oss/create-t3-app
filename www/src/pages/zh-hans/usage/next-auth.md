@@ -94,14 +94,14 @@ declare module "next-auth" {
 
 这个过程可以被分为两步完成：
 
-1. 先通过函数 [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) 从请求头里获得 session。无需担心，这个函数可以被安全地使用 —— 它的名字包含 `unstable` 是因为这个 API 未来很可能会被修改而已。使用 `unstable_getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
+1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。无需担心，这个函数可以被安全地使用 —— 它的名字包含 `unstable` 是因为这个 API 未来很可能会被修改而已。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  return await getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
