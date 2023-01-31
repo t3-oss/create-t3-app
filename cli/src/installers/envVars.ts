@@ -38,7 +38,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 const getEnvContent = (usingAuth: boolean, usingPrisma: boolean) => {
   let content = `
 # When adding additional environment variables, the schema in "/env/schema.mjs"
-# should be updated accordingly.
+# should be updated accordingly   .
 `
     .trim()
     .concat("\n");
