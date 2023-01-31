@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-  Interactive CLI to start a full-stack, typesafe Next.js app.
+  Interactive CLI to start a full-stack, typesafe Next.js app. sdfs d
 </p>
 
 <p align="center">
