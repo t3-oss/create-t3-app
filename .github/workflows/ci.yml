@@ -58,6 +58,23 @@ jobs:
       - run: pnpm turbo run lint
       - run: pnpm manypkg check
 
+  check-changeset:
+    runs-on: ubuntu-latest
+    name: Check Changeset
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # This will use the `changedFilePatterns` to check that a changeset has been added
+      # if any matched file has been changed
+      - run: npx changeset status
+
   prettier:
     runs-on: ubuntu-latest
     name: Run Prettier
