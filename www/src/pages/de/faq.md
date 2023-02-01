@@ -44,7 +44,7 @@ Wir wissen, dass dieser Weg nicht für jeden funktioniert. Wenn du dir also sich
 
 Wie in [T3-Axiom #3](/de/introduction#typesafety-isnt-optional) beschrieben, nehmen wir Typsicherheit sehr ernst. Leider unterstützen nicht alle Frameworks und Plugins TypeScript, was bedeutet, dass einige Konfigurationsdateien `.js`-Dateien sein müssen.
 
-Wir versuchen hervorzuheben, dass diese Dateien aus einem bestimmten Grund in JavaScript geschrieben sind, indem wir den Typ (`cjs` oder `mjs`) jeder Datei explizit deklarieren (abhängig davon, was von der zugehörigen Bibliothek unterstützt wird).Außerdem werden alle `js`-Dateien in diesem Projekt weiterhin mit einem `@ts-check`-Kommentar am Anfang auf korrekte Typen geprüft.
+Wir versuchen hervorzuheben, dass diese Dateien aus einem bestimmten Grund in JavaScript geschrieben sind, indem wir den Typ (`cjs` oder `mjs`) jeder Datei explizit deklarieren (abhängig davon, was von der zugehörigen Bibliothek unterstützt wird). Außerdem werden alle `js`-Dateien in diesem Projekt weiterhin mit einem `@ts-check`-Kommentar am Anfang auf korrekte Typen geprüft.
 
 ## Ich habe Schwierigkeiten, i18n zu meiner App hinzuzufügen. Gibt es eine Referenz, die ich verwenden kann?
 
@@ -54,6 +54,6 @@ Wenn du jedoch Schwierigkeiten hast, dies zu implementieren und eine Referenzpro
 
 ## Warum verwenden wir `/pages` und nicht `/app` von Next.js 13?
 
-Wie in [T3-Axiom #2](/de/introduction#bleed-responsibly) beschrieben lieben wir neue Technologien, jeoch legen wir großen Wert auf Stabilität. Deinen gesamten Router umzuziehen ist schwierig und es ist keine gute Idee dort diese Risiken einzugehen (siehe [bleed responsibly](<(https://youtu.be/mnwUbtieOuI?t=1662)>)). Auch wenn `/app` ein [Vorgeschmack auf die Zukunft](https://youtu.be/rnsC-12PVlM?t=818) ist, ist es noch nicht für bereit dafür im Produktivbetrieb eingesetzt zu werden. Die API befindet sich noch in der Beta und wird wahrscheinlich noch Breaking Changes haben.
+Wie in [T3-Axiom #2](/de/introduction#bleed-responsibly) beschrieben lieben wir neue Technologien, jedoch legen wir großen Wert auf Stabilität. Deinen gesamten Router umzuziehen ist schwierig und es ist keine gute Idee an einer so elementaren Stelle diese Risiken einzugehen (siehe [bleed responsibly](<(https://youtu.be/mnwUbtieOuI?t=1662)>)). Auch wenn `/app` ein [Vorgeschmack auf die Zukunft](https://youtu.be/rnsC-12PVlM?t=818) ist, ist es noch nicht für bereit im Produktivbetrieb eingesetzt zu werden. Die API befindet sich noch in der Beta und wird wahrscheinlich noch Breaking Changes haben.
 
 Schau dir die [Beta Next.js Dokumentation](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features) an um eine Liste der unterstützten, geplanten und in Arbeit befindlichen Funktionen im `/app`-Verzeichnis zu sehen.

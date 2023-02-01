@@ -28,7 +28,7 @@ Ein Hauptmerkmal von Next.js sind die Fähigkeiten zur Datenabfrage. Wir empfehl
 
 | Resource                       | Link                               |
 | ------------------------------ | ---------------------------------- |
-| Next.js Documentation          | https://nextjs.org/docs            |
+| Next.js Dokumentation          | https://nextjs.org/docs            |
 | Next.js GitHub                 | https://github.com/vercel/next.js  |
 | Next.js Blog                   | https://nextjs.org/blog            |
 | Next.js Discord                | https://nextjs.org/discord         |

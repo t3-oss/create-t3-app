@@ -9,7 +9,7 @@ Wenn du ein Authentifizierungssystem in deiner Next.js-Anwendung haben möchtest
 
 ## Context Provider
 
-In den Einstiegspunkt deiner Anwendung, wirst du sehen, dass deine Anwendung von einem [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider) umschlossen wird.
+In dem Einstiegspunkt deiner Anwendung, wirst du sehen, dass deine Anwendung von einem [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider) umschlossen wird.
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -63,7 +63,7 @@ declare module "next-auth" {
 }
 ```
 
-Das gleiche Muster kann verwendet werden, um weitere Daten zum `session`-Objekt hinzuzufügen, wie z. B. ein `role`-Feld, aber **sollte nicht missbraucht werden, um sensible Daten auf dem Client zu speichern**.
+Das gleiche Muster kann verwendet werden, um weitere Daten zum `session`-Objekt hinzuzufügen, wie z. B. ein `role`-Feld, aber dies **sollte nicht missbraucht werden, um sensible Daten auf dem Client zu speichern**.
 
 ## Verwendung mit tRPC
 
@@ -71,7 +71,7 @@ Wenn du NextAuth.js mit tRPC verwendest, kannst du wiederverwendbare, geschützt
 
 Dies geschieht in zwei Schritten:
 
-1. Greife auf die Session aus den Request-Headern zu, indem du die [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)-Funktion verwendest. Mach dir keine Sorgen, diese Funktion lässt sich problemlos verwenden - der Name enthält nur `unstable`, weil die API-Implementierung in Zukunft möglicherweise geändert werden kann. Der Vorteil von `unstable_getServerSession` im Vergleich zu `getSession` ist, dass es eine serverseitige Funktion ist und unnötige Fetch-Aufrufe nicht auslöst werden. `create-t3-app` erstellt eine Hilfsfunktion, die diese eigenartige API abstrahiert.
+1. Greife auf die Session aus den Request-Headern zu, indem du die [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)-Funktion verwendest. Mach dir keine Sorgen, diese Funktion lässt sich problemlos verwenden - der Name enthält nur `unstable`, weil die API-Implementierung in Zukunft möglicherweise geändert werden kann. Der Vorteil von `unstable_getServerSession` im Vergleich zu `getSession` ist, dass es eine serverseitige Funktion ist und unnötige Fetch-Aufrufe nicht ausgelöst werden. `create-t3-app` erstellt eine Hilfsfunktion, die diese eigenartige API abstrahiert.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -162,7 +162,7 @@ Die Verwendung von NextAuth.js mit Next.js-Middleware [erfordert die Verwendung 
 2. Im Einstellungsmenü wechsel zu "OAuth2 => General"
 
 - Kopier die Client-ID und füge sie in `DISCORD_CLIENT_ID` in `.env` ein.
-- Unter Client Secret klickst du auf "Reset Secret" und kopierst diesen String in `DISCORD_CLIENT_SECRET` in `.env`. Sei vorsichtig, da du dieses Geheimnis nicht mehr sehen kannst und das Zurücksetzen es dazu führt, dass das Bestehende abläuft.
+- Unter Client Secret klickst du auf "Reset Secret" und kopierst diesen String in `DISCORD_CLIENT_SECRET` in `.env`. Sei vorsichtig, da du dieses Geheimnis nicht mehr sehen kannst und das Zurücksetzen dazu führt, dass das Bestehende abläuft.
 - Klick auf "Add Redirect" und füge `<app url>/api/auth/callback/discord` ein (Beispiel für die lokale Entwicklung: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Speicher deine Änderungen
 - Es ist möglich, aber wird nicht empfohlen, dass du die gleiche Discord-Anwendung für die Entwicklung und die Produktion verwendest. Du könntest auch in Betracht ziehen [den Provider zu mocken](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) während der Entwicklung.

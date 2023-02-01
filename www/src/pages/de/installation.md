@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: de
 ---
 
-Um eine App mit `create-t3-app` zu erstellen, führe eines der folgenden drei Kommandos aus und beantworte die Fragen des Kommandozeilen-Prompts:
+Um eine App mit `create-t3-app` zu erstellen, führe eines der folgenden drei Befehle aus und beantworte die Fragen über dein Terminal:
 
 ### npm
 
@@ -48,7 +48,7 @@ Wir haben einige experimentelle Flags, die es dir ermöglichen, eine App ohne je
 | `--nextAuth` | Fügt NextAuth.js zum Projekt hinzu                 |
 | `--tailwind` | Fügt Tailwind CSS zum Projekt hinzu                |
 
-**Hinweis: Wenn du die `CI` Flag nicht angibst, haben die restliche Flags keine Auswirkung.**
+**Hinweis: Wenn du die `CI` Flag nicht angibst, haben die restlichen Flags keine Auswirkung.**
 
 Du musst nicht explizit die Pakete ausschließen, die du nicht möchtest. Wenn du aber explizit sein möchtest, kannst du `false` übergeben, z.B. `--nextAuth false`.
 

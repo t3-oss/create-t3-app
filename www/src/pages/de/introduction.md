@@ -21,14 +21,13 @@ Du hast vielleicht bemerkt, dass der T3-Stack viele Bestandteile hat. Das ist so
 
 Irgendwie? `create-t3-app` ist eine CLI, die von erfahrenen T3-Stack-Entwicklern entwickelt wurde, um die Einrichtung einer modularen T3-Stack-App zu vereinfachen. Das bedeutet, dass jeder Bestandteil optional ist und das "Template" auf der Grundlage deiner spezifischen Anforderungen erstellt wird.
 
-After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
 Nach unzähligen Projekten und vielen Jahren auf diesem Gebiet haben wir viele Meinungen und Erkenntnisse. Wir haben unser Bestes getan, um sie in dieser CLI zu verwirklichen.
 
 Das hier ist **KEINE** allumfassende Vorlage. Wir **erwarten**, dass du deine eigenen Bibliotheken einbringst, die die Anforderungen **DEINER** Anwendung erfüllen. Wir wollen zwar keine Lösungen für spezifischere Probleme wie Zustandsverwaltung und Deployment vorschreiben, aber wir [haben hier einige Empfehlungen aufgelistet](/de/other-recs).
 
 ## T3 Grundsätze
 
-Das Projekt wurde nach _unseren Vorstellungen_ gestaltet. Wir teilen eine Reihe an Überzeugungen für das Bauen von Web-Applikationen und nutzen diese als Basis für unsere Entscheidungen.
+Das Projekt wurde nach _unseren Vorstellungen_ gestaltet. Wir teilen eine Reihe an Überzeugungen für das Erstellen von Web-Applikationen und nutzen diese als Basis für unsere Entscheidungen.
 
 ### Probleme lösen
 

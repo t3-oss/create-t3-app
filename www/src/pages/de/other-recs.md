@@ -6,7 +6,7 @@ lang: de
 ---
 
 Wir sind uns bewusst darüber, dass die Bibliotheken, die in `create-t3-app` enthalten sind, nicht jedes Problem lösen.
-Während wir dich dazu ermutigen möchten dein Projekt mit den Dingen zu beginnen, die wir zur Verfügung stellen, wird es sicherlich ein Zeitpunkt kommen, an dem du andere Pakete einbinden musst. Nur du kannst wissen, was dein Projekt braucht, aber hier sind einige Dinge, die wir uns häufig empfehlen.
+Während wir dich dazu ermutigen möchten dein Projekt mit den Dingen zu beginnen, die wir zur Verfügung stellen, wird es sicherlich zu ein Zeitpunkt kommen, an dem du andere Pakete einbinden musst. Nur du kannst wissen, was dein Projekt braucht, aber hier sind einige Dinge, die wir gerne und häufig empfehlen.
 
 Diese Empfehlungen stammen von einzelnen create-t3-app Mitwirkenden und sollte nicht als "offizielle" Bekanntmachung
 durch das create-t3-app Team oder T3-OSS gesehen werden. _**Bitte führe deine eigene Recherche durch, insbesondere bevor du dich für kostenpflichtige Dienste entscheidest**_.
@@ -17,7 +17,7 @@ _**Hinweis**_: State Management Bibliotheken können großartig sein sind aber o
 
 ### Zustand
 
-**Um nie wieder Redux zu verwenden zu müssen**
+**Um nie wieder Redux verwenden zu müssen**
 
 Das "moderne, einfache Redux" von dem du nicht wusstest, dass du es brauchst. [Poimandres](https://github.com/pmndrs) kann immer vertraut werden. Mit dieser kleinen Bibliothek kannst du alles von Videokonferenz-Apps bis hin zu Spielen und Servern erstellen.
 
@@ -26,7 +26,7 @@ Das "moderne, einfache Redux" von dem du nicht wusstest, dass du es brauchst. [P
 
 ### Jotai
 
-**Um nie wieder Context zu verwenden zu müssen**
+**Um nie wieder Context verwenden zu müssen**
 
 Jotai ist schwer zu schlagen, wenn ein atomarer Ansatz bevorzugt wird. Ebenfalls von [Poimandres](https://github.com/pmndrs). Jotai ermöglicht es dir, Singletons zu definieren, die sich wie globale useState anfühlen. Eine großartige Option für States, die noch nicht eine State Machine benötigen.
 
@@ -41,9 +41,9 @@ Die meisten Apps benötigen die gleichen ähnlichen Komponenten - Toggle Buttons
 
 Solche Bibliotheken sind auch bekannt als Headless Libraries. Sie bieten großartige, ungestylte und barrierefreie Komponenten, die du nach deinem Geschmack anpassen kannst. Hier sind ein paar Empfehlungen.
 
-- [Radix UI](https://www.radix-ui.com/) bietet dir ein mächtiges Set an praktischen und barrierefreien primitiven Komponenten, die du mit Vanilla CSS oder Tailwind CSS stylen kannst.
+- [Radix UI](https://www.radix-ui.com/) bietet dir ein mächtiges Set an praktischen und barrierefreien primitiven Komponenten, die du mit Vanilla CSS, Tailwind CSS und mehr stylen kannst.
 
-- [Headless UI](https://headlessui.com/) wurde von dem Tailwind CSS Team erstellt und bietet ebenfalls ungestylte, barrierefreie Komponenten, die problemlos mit Tailwind CSS werden können.
+- [Headless UI](https://headlessui.com/) wurde von dem Tailwind CSS Team erstellt und bietet ebenfalls ungestylte, barrierefreie Komponenten, die problemlos mit Tailwind CSS verwenden kannst.
 
 - [React Aria](https://react-spectrum.adobe.com/react-aria/) eine große Sammlung an React Hooks um barrierefrei Komponente erstellen zu können. Deren Date Picker ist top.
 
@@ -72,7 +72,7 @@ Hier sind unsere Empfehlungen, wenn du du Animationen in deiner App benötigst.
 
 **Für Animationen mit nur einer Zeile Code**
 
-Die meisten Animation Bibliotheken versuchen alle möglichen Anwendungsfälle zu erfüllen und werden dadurch unhandlich. AutoAnimate ist ein Tool ohne Konfiguration, das dir eine signifikanten UX-Verbesserung ohne zusätzlichen Entwickleraufwand bringt.
+Die meisten Animations Bibliotheken versuchen alle möglichen Anwendungsfälle zu erfüllen und werden dadurch unhandlich. AutoAnimate ist ein Tool ohne Konfiguration, das dir eine signifikante UX-Verbesserung ohne zusätzlichen Entwickleraufwand bringt.
 
 - [AutoAnimate Homepage](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
@@ -93,7 +93,7 @@ Framer Motion bietet eine einfache, deklarative Syntax und ermöglicht es dir mi
 
 **Um deine App zu hosten**
 
-Vercel hat das Hosting von Web Apps zu einem Kinderspiel gemacht. Wir haben unsere App auf Hunderttausende von Nutzern hochskaliert und es gab nie Probleme. Getrieben durch AWS und mit einer viel besseren Benutzeroberfläche.
+Vercel hat das Hosting von Web Apps zu einem Kinderspiel gemacht. Wir haben unsere App auf Hunderttausende von Nutzern hochskaliert und es gab nie Probleme. Betrieben durch AWS und mit einer viel besseren Benutzeroberfläche.
 
 - [Vercel Homepage](https://vercel.com/)
 - [Create T3 App Vercel deployment guide](/en/deployment/vercel)
@@ -110,7 +110,7 @@ PlanetScale ist die beste "serverless Datenbank Plattform" die wir bisher verwen
 
 **Um deine Infrastruktur zu hosten**
 
-"Das moderne Heroku". Die einfachste Möglichkeit einen echten Server hochzufahren. Wenn Vercel und PlanetScale nicht ausreichen, ist Railway wahrscheinlich die beste Wahl. Einfaach auf ein GitHub Repo zeigen lassen und loslegen.
+"Das moderne Heroku". Die einfachste Möglichkeit einen echten Server hochzufahren. Wenn Vercel und PlanetScale nicht ausreichen, ist Railway wahrscheinlich die beste Wahl. Einfach auf ein GitHub Repo zeigen und loslegen.
 
 - [Railway Homepage](https://railway.app/)
 
@@ -118,7 +118,7 @@ PlanetScale ist die beste "serverless Datenbank Plattform" die wir bisher verwen
 
 **Für serverless Redis**
 
-Wir lieber Prisma und PlanetScale aber manche Projekt benötigte manchmal eine performantere Lösung. Upstash ermöglicht es die in-memory Performance von Redis in deinem serverless Projekt zu nutzen, ohne sich um die Infrastruktur und Skalierung kümmern zu müssen.
+Wir lieben Prisma und PlanetScale, aber manche Projekt benötigten manchmal eine performantere Lösung. Upstash ermöglicht es die in-memory Performance von Redis in deinem serverless Projekt zu nutzen, ohne sich um die Infrastruktur und Skalierung kümmern zu müssen.
 
 - [Upstash Homepage](https://upstash.com/)
 

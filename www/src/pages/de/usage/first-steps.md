@@ -23,7 +23,7 @@ Solltest du einen anderen Authentifizierungsanbieter bevorzugen, kannst du auch 
 4. Kopiere die "Client ID" und füge sie in deine `.env` als `DISCORD_CLIENT_ID` ein.
 5. Klick "Reset Secret", kopiere das neue Secret und füge den Wert in deine `.env` als `DISCORD_CLIENT_SECRET` ein.
 6. Klick "Add Redirect" und gib `http://localhost:3000/api/auth/callback/discord` ein.
-   - Für den Produktivbetrieb müssen die vorherigen Schritte erneut verfolgt werden, um eine weitere Discord-Anwendung zu erstellen. Ersetze diesmal `http://localhost:3000` mit der URL, auf die du veröffentlichst.
+   - Für den Produktivbetrieb müssen die vorherigen Schritte erneut verfolgt werden, um eine weitere Discord-Anwendung zu erstellen. Ersetze diesmal `http://localhost:3000` mit der URL, auf die du veröffentlichen möchtest.
 7. Speicher die Änderungen.
 8. Schreib das `NEXTAUTH_SECRET` in `.env`. Während der Entwicklung funktioniert jeder String. Für den Produktivbetrieb sollte ein Blick auf die Notiz in `.env` geworfen werden, um ein sicheres Secret zu erstellen.
 

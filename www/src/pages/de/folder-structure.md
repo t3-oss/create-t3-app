@@ -7,7 +7,7 @@ lang: de
 
 Nachfolgend ist die Ordnerstruktur einer neu erstellten T3 App zu sehen, bei der alle Optionen ausgewählt wurden.
 
-Die Beschreibung jedes Ordners gibt an, welchen Zweck er erfüllt und ob er nur bei ausgewählten Bibliotheken enthalten ist.
+Die Beschreibung jedes Ordners gibt an, welchen Zweck dieser erfüllt und ob dieser nur bei ausgewählten Bibliotheken enthalten ist.
 
 ```
 .
@@ -151,13 +151,13 @@ Die `_app.ts` Datei wird verwendet, um tRPC-Routen zusammenzuführen und diese a
 
 #### `src/server/trpc/router/auth.ts`
 
-Die `auth.ts´ Datei ist ein Beispiel für eine tRPC-Routen, die die `protectedProcedure`-Hilfsfunktion verwendet, um zu demonstrieren, wie eine tRPC-Routen mit NextAuth.js geschützt werden kann.
+Die `auth.ts´ Datei ist ein Beispiel für eine tRPC-Route, die die `protectedProcedure`-Hilfsfunktion verwendet, um zu demonstrieren, wie eine tRPC-Routen mit NextAuth.js geschützt werden kann.
 
 <sub>(mit NextAuth.js + tRPC)</sub>
 
 #### `src/server/trpc/router/example.ts`
 
-Die `example.ts` Datei ist ein Beispiel für einen tRPC-Router, die die `publicProcedure`-Hilfsfunktion verwendet, um zu demonstrieren, wie eine tRPC-Routen ohne Authentifizierung erstellt werden kann.
+Die `example.ts` Datei ist ein Beispiel für einen tRPC-Router, der die `publicProcedure`-Hilfsfunktion verwendet, um zu demonstrieren, wie eine tRPC-Routen ohne Authentifizierung erstellt werden kann.
 
 <sub>(mit tRPC)</sub>
 
@@ -175,7 +175,7 @@ Der `types` Ordner wird verwendet, um wiederverwendete Typen oder Typdeklaration
 
 #### `src/types/next-auth.d.ts`
 
-Die `next-auth.d.ts` Datei wird verwendet, um den Standardtyp der NextAuth-Sitzung um die Benutzer-ID zu erweitern. Weitere Informationen findest du unter [Verwendung von NextAuth.js](/de/usage/next-auth#inclusion-of-userid-on-the-session) .
+Die `next-auth.d.ts` Datei wird verwendet, um den Standardtyp der NextAuth-Sitzung um die Benutzer-ID zu erweitern. Weitere Informationen findest du unter [Verwendung von NextAuth.js](/de/usage/next-auth#inclusion-of-userid-on-the-session).
 
 <sub>(mit NextAuth.js)</sub>
 
@@ -209,7 +209,7 @@ Die `next-env.d.ts` Datei stellt sicher, dass die Next.js Typen vom TypeScript-C
 
 ### `next.config.mjs`
 
-Die `next.config.mjs` Datei wird verwendet, um Next.js zu konfigurieren. Weitere Informationen findest du in der [Next.js Dokumentation](https://nextjs.org/docs/api-reference/next.config.js/introduction). Hinweis: Die .mjs Dateiende wird verwendet, um ESM-Importe zu ermöglichen.
+Die `next.config.mjs` Datei wird verwendet, um Next.js zu konfigurieren. Weitere Informationen findest du in der [Next.js Dokumentation](https://nextjs.org/docs/api-reference/next.config.js/introduction). Hinweis: Die .mjs Dateiendung wird verwendet, um ESM-Importe zu ermöglichen.
 
 ### `postcss.config.cjs`
 
@@ -225,4 +225,4 @@ Die `prettier.config.cjs` Datei wird verwendet, um Prettier zu konfigurieren und
 
 ### `tsconfig.json`
 
-Die `tsconfig.json` Datei wird verwendet, um TypeScript zu konfigurieren. Einige nicht-Standardwerte, wie `strict mode` wurden aktiviert, um die beste Verwendung von TypeScript für `create-t3-app` und die verwendeten Bibliotheken zu gewährleisten. Weitere Informationen findest du in der [TypeScript Dokumentation](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) oder [Verwendung von TypeScript](/de/usage/typescript).
+Die `tsconfig.json` Datei wird verwendet, um TypeScript zu konfigurieren. Einige nicht-Standardwerte, wie `strict mode` wurden aktiviert, um die beste Verwendung von TypeScript für `create-t3-app` und die verwendeten Bibliotheken zu gewährleisten. Weitere Informationen findest du in der [TypeScript Dokumentation](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) und [Verwendung von TypeScript](/de/usage/typescript).
