@@ -21,7 +21,7 @@ _TLDR; Wenn du eine neue Umgebungsvariable hinzufügen möchtest, musst du sie s
 
 ## schema.mjs
 
-In dieser Datei finden die Änderungen statt. Sie enthält zwei Schemata, eines für Server-Umgebungsvariablen und eines für Client-Umgebungsvariablen sowie ein `clientEnv`-Objekt.
+In dieser Datei finden die Änderungen statt. Sie enthält zwei Schemas, eines für Server-Umgebungsvariablen und eines für Client-Umgebungsvariablen sowie ein `clientEnv`-Objekt.
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
@@ -41,7 +41,7 @@ export const clientEnv = {
 
 Definiere hier dein Server-Umgebungsvariablen-Schema.
 
-Stell sicher, dass du hier keine Schlüssel mit dem `NEXT_PUBLIC`-Präfix verwendest. Die Validierung wird fehlschlagen, wenn du das tust, um dir bei der Erkennung einer ungültigen Konfiguration zu helfen.
+Stellt sicher, dass du hier keine Umgebungsvariablen mit dem `NEXT_PUBLIC`-Präfix verwendest. Die Validierung wird fehlschlagen, wenn du dies tust, um dir bei der Erkennung einer ungültigen Konfiguration zu helfen.
 
 ### Client Schema
 
@@ -53,7 +53,7 @@ Um sie dem Client zugänglich zu machen, musst du sie mit `NEXT_PUBLIC` präfixe
 
 In dieser Datei müssen wir auf die Werte vom `process.env`-Objekt zugreifen.
 
-Wir benötigen ein JavaScript-Objekt, welches wir durch die Zod-Schemata parsen können und aufgrund der Art, wie Next.js Umgebungsvariablen behandelt. Da wir das `process.env`-Objekt nicht wie ein normales Objekt zerlegen ("destruct") können, müssen wir dies manuell machen.
+Wir benötigen ein JavaScript-Objekt, welches wir durch das Zod-Schema validieren können und aufgrund der Art, wie Next.js Umgebungsvariablen behandelt. Da wir das `process.env`-Objekt nicht wie ein normales Objekt zerlegen ("destruct") können, müssen wir dies manuell machen.
 
 TypeScript wird dir helfen, sicherzustellen, dass du die Schlüssel sowohl in `clientEnv` als auch in `clientSchema` eingegeben hast.
 
@@ -95,7 +95,7 @@ Um sicherzustellen, dass dein Build niemals ohne die Umgebungsvariablen abgeschl
 
 Optional kannst du auch `.env.example` aktualisieren:
 
-📄 `.env.example`: Füge deine Umgebungsvariable hinzu, aber vergiss nicht, den Wert zu entfernen, wenn er geheim ist, z.B. `KEY=VALUE` oder `KEY=`
+📄 `.env.example`: Füge deine Umgebungsvariable hinzu, aber vergiss nicht, den Wert zu entfernen, wenn dieser geheim ist, z.B. `KEY=VALUE` oder `KEY=`
 
 ### Beispiel
 
