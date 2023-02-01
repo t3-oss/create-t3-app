@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: de
 ---
 
-Wir empfehlen, deine App auf [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) zu deployen. Es macht es super einfach, Next.js Apps zu deployen.
+Wir empfehlen, deine App auf [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) zu deployen da Vercel es super einfach macht, Next.js Apps zu deployen.
 
 ## Projektkonfiguration
 
