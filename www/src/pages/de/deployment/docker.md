@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: de
 ---
 
-Der Stack kann mit Docker deployed werden. Entweder als einzelner Container oder als Gruppe von Containern mit `docker-compose`. Ein Beispiel lässt sich in dem Repository [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) finden, welches auf dieser Dokumentation basiert.
+Man kann den Stack mit Docker deployen. Dies ist sowohl als einzelner Container oder als Cluster mit `docker compose` möglich. Ein Beispiel dafür findet man in dem Repository [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker), welches auf dieser Dokumentation basiert.
 
 ## Docker Projektkonfiguration
 
@@ -55,7 +55,7 @@ README.md
 
 <details>
     <summary>
-    Klick hier und kopiere den Inhalt in <code>Dockerfile</code>:
+    Klick hier und kopiere den Inhalt in dein<code>Dockerfile</code>:
     </summary>
 <div class="content">
 
@@ -128,7 +128,7 @@ CMD ["node", "server.js"]
 
 > **_Notizen_**
 >
-> - _Emulation von `--platform=linux/amd64` ist gegebenfalls nicht mehr notwendig mit Node 18._
+> - _Emulation von `--platform=linux/amd64` ist gegebenfalls mit Node 18 nicht mehr notwendig._
 > - _Siehe [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) um zu verstehen warum `libc6-compat` eventuell benötigt wird._
 > - _Next.js erfasst [anonyme Daten zur Nutzung](https://nextjs.org/telemetry). In der obenstehenden `Dockerfile` befinden sich bereits zwei auskommentierte Zeilen mit dem Befehl `ENV NEXT_TELEMETRY_DISABLED 1`. Entferne die Kommentare der ersten Zeile um die Datenerfassung während des Builds zu deaktivieren. Die zweite Zeile deaktiviert die Datenerfassung zur Laufzeit._
 
@@ -185,7 +185,7 @@ docker compose up
 </div>
 </details>
 
-## Deploy nach Railway
+## Auf Railway deployen
 
 Du kannst einen PaaS wie [Railway's](https://railway.app) automatisierte [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) verwenden um deine Anwendung zu deployen. Wenn du die [Railway CLI installiert hast](https://docs.railway.app/develop/cli#install), kannst du deine Anwendung mit folgenden Befehlen deployen:
 
