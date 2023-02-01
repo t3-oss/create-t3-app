@@ -11,5 +11,5 @@
   "baseBranch": "next",
   "updateInternalDependencies": "patch",
   "ignore": ["@ct3a/www"],
-  "changedFilePatterns": ["cli/src/**", "cli/template/**"]
+  "changedFilePatterns": ["src/**", "template/**"]
 }
