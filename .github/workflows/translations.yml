@@ -19,13 +19,32 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const files = (await github.rest.pulls.listFiles({
+            const changedFiles = (await github.rest.pulls.listFiles({
               owner: "t3-oss",
               repo: "create-t3-app",
               pull_number: context.payload.number,
             })).data.map(file => file.filename);
-            console.log("context", context);
-            console.log("changed:", files);
+
+            const changedLanguages = changedFiles
+              .filter(file => file.startsWith("www/src/pages/"))
+              .map(file => file.split("/")[3])
+              .filter(file => file !== "en");
+
+            console.log("Changed languages: " + changedLanguages.join(", "));
+
+            const CODEOWNERS = {
+              pl: "@juliusmarminge",
+              no: "@c-ehrlich", 
+            };
+
+            const codeowners = changedLanguages
+              .map(language => CODEOWNERS[language])
+              .filter(Boolean);
+
+            require("fs").appendFileSync(
+              process.env.GITHUB_ENV,
+              `\nCODEOWNERS=${codeowners.join(", ")}`
+            );
 
       - name: Write comment on the PR tagging codeowners
         uses: marocchino/sticky-pull-request-comment@v2
@@ -33,3 +52,5 @@ jobs:
           number: ${{ env.WORKFLOW_RUN_PR }}
           message: |
             Hey t3-oss/translators! This PR contains changes to your language. Please review the changes and make sure they are correct.
+
+            ${env.CODEOWNERS}
