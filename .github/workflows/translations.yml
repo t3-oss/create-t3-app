@@ -51,6 +51,8 @@ jobs:
         with:
           number: ${{ env.WORKFLOW_RUN_PR }}
           message: |
-            Hey t3-oss/translators! This PR contains changes to your language. Please review the changes and make sure they are correct.
+            Hey t3-oss/translators! 
 
-            ${env.CODEOWNERS}
+            This PR contains changes to your language. Please review the changes ❤️.
+
+            ${{ env.CODEOWNERS }}
