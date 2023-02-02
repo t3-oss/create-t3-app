@@ -19,9 +19,13 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const files = octokit.rest.pulls.listFiles({
+              owner: "t3-oss",
+              repo: "create-t3-app",
+              pull_number: context.payload.number,
+            });
             console.log("context", context);
-            const changedFiles = context.payload.pull_request.changed_files;
-            console.log("changed:", changedFiles);
+            console.log("changed:", files);
 
       - name: Write comment on the PR tagging codeowners
         uses: marocchino/sticky-pull-request-comment@v2
