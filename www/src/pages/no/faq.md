@@ -9,7 +9,7 @@ Her er noen ofte stilte spørsmål om "create-t3-app".
 
 ## Hva nå? Hvordan lager jeg en app med dette?
 
-Vi prøver å holde dette prosjektet så enkelt som mulig, slik at du kan starte med bare det grunnleggende rammeverket vi har laget for deg. Du kan legge til flere ting senere etter hvert som de blir nødvendige.
+Vi prøver å holde dette prosjektet så enkelt som mulig, slik at du kan starte med bare det grunnleggende rammeverket vi har laget for deg. Du kan legge til flere ting senere etter hvert som de blir nødvendige. testy
 
 Hvis du ikke er kjent med de forskjellige teknologiene som brukes i dette prosjektet, vennligst se den relevante dokumentasjonen. Hvis du har flere spørsmål kan du bli med i vår [Discord](https://t3.gg/discord) og be om hjelp.
 
