@@ -23,7 +23,7 @@ jobs:
               owner: "t3-oss",
               repo: "create-t3-app",
               pull_number: context.payload.number,
-            })).data;
+            })).data.map(file => file.filename);
             console.log("context", context);
             console.log("changed:", files);
 
