@@ -1,0 +1,31 @@
+name: "Notify codeowners about changes in docs"
+
+on:
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "www/src/pages/**"
+      - "!www/src/pages/en/**"
+
+jobs:
+  notify-codeowners:
+    if: |
+      github.repository_owner == 't3-oss'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse changed files and write to env
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            console.log("context", context);
+            const changedFiles = context.payload.pull_request.changed_files;
+            console.log("changed:", changedFiles);
+
+      - name: Write comment on the PR tagging codeowners
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ env.WORKFLOW_RUN_PR }}
+          message: |
+            Hey t3-oss/translators! This PR contains changes to your language. Please review the changes and make sure they are correct.
