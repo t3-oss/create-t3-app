@@ -30,20 +30,24 @@ jobs:
               .map(file => file.split("/")[3])
               .filter(file => file !== "en");
 
-            console.log("Changed languages: " + changedLanguages.join(", "));
-
             const CODEOWNERS = {
-              pl: "@juliusmarminge",
-              no: "@c-ehrlich", 
+              ar: ["a4addel", "Sboonny"],
+              fr: ["Defranos", "joachimjusth"],
+              no: ["estubmo", "josephayman"],
+              pl: ["matibox, "Infiplaya", "PiotrekPKP"],
+              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar"],
+              ru: ["AmadeusTwi", "ronanru", "Yevhenii-Bakhmat"],
+              "zh-hans": ["fernandoxu", "lodisy"],
             };
 
             const codeowners = changedLanguages
-              .map(language => CODEOWNERS[language])
-              .filter(Boolean);
+              .map(lang => CODEOWNERS[lang])
+              .filter(Boolean)
+              .flatMap(lang => lang);
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${codeowners.join(", ")}`
+              `\nCODEOWNERS=${codeowners.map(user => `${user}`).join(" ")
             );
 
       - name: Write comment on the PR tagging codeowners
