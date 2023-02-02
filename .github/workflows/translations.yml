@@ -19,7 +19,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const files = octokit.rest.pulls.listFiles({
+            const files = await github.rest.pulls.listFiles({
               owner: "t3-oss",
               repo: "create-t3-app",
               pull_number: context.payload.number,
