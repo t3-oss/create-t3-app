@@ -47,7 +47,7 @@ jobs:
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${codeowners.map(user => `${user}`).join(" ")
+              `\nCODEOWNERS=${codeowners.map(user => '_' + user).join(" ")}`
             );
 
       - name: Write comment on the PR tagging codeowners
