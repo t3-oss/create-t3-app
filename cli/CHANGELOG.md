@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.4.1
+
+### Patch Changes
+
+- [#1155](https://github.com/t3-oss/create-t3-app/pull/1155) [`90955a5`](https://github.com/t3-oss/create-t3-app/commit/90955a50390eee8a23e1c1b35e10c860e4341fed) Thanks [@christopher-kapic](https://github.com/christopher-kapic)! - Change unstable_getServerSession to match the updated getServerSession from next-auth (introduced in next-auth 4.19.0)
+
 ## 7.4.0
 
 ### Minor Changes
