@@ -176,7 +176,36 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ## Usage with Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
+Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.  
+After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.  
+The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.  
+I.e.:
+
+`diff:server/auth.ts`
+...
+export const authOptions: NextAuthOptions = {
+
+- session: {
+- strategy: "jwt",
+- },
+  callbacks: {
+
+* session({ token, user }) {
+
+- session({ token, session }) {
+
+*     if (session.user) {
+*       session.user.id = user.id;
+
+-     if (session.user && token.sub) {
+-       session.user.id = token.sub;
+        }
+        return session;
+      }
+  },
+  };
+
+```
 
 ## Setting up the default DiscordProvider
 
@@ -196,3 +225,4 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 | NextAuth.js Docs                  | https://next-auth.js.org/               |
 | NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
 | tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
+```
