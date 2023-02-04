@@ -94,14 +94,14 @@ Lorsque vous utilisez NextAuth.js avec tRPC, vous pouvez créer des procédures 
 
 Cela se fait en deux étapes :
 
-1. Récupérez la session à partir des en-têtes de requête à l'aide de la fonction [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Ne vous inquiétez pas, cette fonction est sûre à utiliser - le nom inclut "unstable" uniquement parce que l'implémentation de l'API peut changer à l'avenir. L'avantage d'utiliser `unstable_getServerSession` au lieu de `getSession` est qu'il s'agit d'une fonction côté serveur uniquement et qu'elle ne déclenche pas d'appels de récupération inutiles. `create-t3-app` crée une fonction d'assistance qui résume cette API particulière.
+1. Récupérez la session à partir des en-têtes de requête à l'aide de la fonction [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Ne vous inquiétez pas, cette fonction est sûre à utiliser - le nom inclut "unstable" uniquement parce que l'implémentation de l'API peut changer à l'avenir. L'avantage d'utiliser `getServerSession` au lieu de `getSession` est qu'il s'agit d'une fonction côté serveur uniquement et qu'elle ne déclenche pas d'appels de récupération inutiles. `create-t3-app` crée une fonction d'assistance qui résume cette API particulière.
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+  return await getServerSession(ctx.req, ctx.res, nextAuthOptions);
 };
 ```
 

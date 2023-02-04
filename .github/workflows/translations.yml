@@ -1,0 +1,62 @@
+name: "Notify codeowners about changes in docs"
+
+on:
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "www/src/pages/**"
+      - "!www/src/pages/en/**"
+
+jobs:
+  notify-codeowners:
+    if: |
+      github.repository_owner == 't3-oss'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse changed files and write to env
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const changedFiles = (await github.rest.pulls.listFiles({
+              owner: "t3-oss",
+              repo: "create-t3-app",
+              pull_number: context.payload.number,
+            })).data.map(file => file.filename);
+
+            const changedLanguages = changedFiles
+              .filter(file => file.startsWith("www/src/pages/"))
+              .map(file => file.split("/")[3])
+              .filter(file => file !== "en");
+
+            const CODEOWNERS = {
+              ar: ["a4addel", "Sboonny"],
+              fr: ["Defranos", "joachimjusth"],
+              no: ["estubmo", "josephayman"],
+              pl: ["matibox", "Infiplaya", "PiotrekPKP"],
+              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar"],
+              ru: ["AmadeusTwi", "ronanru", "Yevhenii-Bakhmat"],
+              "zh-hans": ["fernandoxu", "lodisy"],
+            };
+
+            const codeowners = changedLanguages
+              .map(lang => CODEOWNERS[lang])
+              .filter(Boolean)
+              .flatMap(lang => lang);
+
+            require("fs").appendFileSync(
+              process.env.GITHUB_ENV,
+              `\nCODEOWNERS=${codeowners.map(user => '@' + user).join(" ")}`
+            );
+
+      - name: Write comment on the PR tagging codeowners
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ env.WORKFLOW_RUN_PR }}
+          message: |
+            Hey t3-oss/translators! 
+
+            This PR contains changes to your language. Please review the changes ❤️.
+
+            ${{ env.CODEOWNERS }}
