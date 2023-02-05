@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 const User = () => {
   const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  // NOTA: `session` não terá um estado de carregamento, pois já foi pré-carregado no servidor
 
   ...
 }
