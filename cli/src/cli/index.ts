@@ -230,7 +230,7 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
     type: "checkbox",
     message: "Which packages would you like to enable?",
     choices: availablePackages
-      .filter((pkg) => pkg !== "envVariables") // dont prompt for env-vars
+      .filter((pkg) => pkg !== "envVariables") // don't prompt for env-vars
       .map((pkgName) => ({
         name: pkgName,
         checked: false,
