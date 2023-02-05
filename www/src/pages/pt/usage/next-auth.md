@@ -71,7 +71,7 @@ Ao usar NextAuth.js com tRPC, você pode criar procedimentos protegidos e reutil
 
 Isso é feito em um processo de duas etapas:
 
-1. Pegar a sessão dos cabeçalhos de solicitação usando a função [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Não se preocupe, esta função é segura de usar - o nome inclui `unstable` apenas porque a implementação da API pode mudar no futuro. A vantagem de usar `getServerSession` em vez do `getSession` regular é que é uma função somente do lado do servidor e não aciona chamadas de busca desnecessárias. `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
+1. Pegar a sessão dos cabeçalhos de solicitação usando a função [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). A vantagem de usar `getServerSession` em vez do `getSession` regular é que é uma função somente do lado do servidor e não aciona chamadas de busca desnecessárias. `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
