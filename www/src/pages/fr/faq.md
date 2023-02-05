@@ -9,7 +9,7 @@ Voici quelques questions fréquemment posées sur Create T3 App.
 
 ## Et après? Comment faire une application avec ça ?
 
-Nous essayons de garder ce projet aussi simple que possible, afin que vous puissiez commencer uniquement avec la configuration que nous avons fait pour vous, et ajouter des éléments supplémentaires plus tard, lorsqu'ils deviennent nécessaires.
+Nous essayons de garder ce projet aussi simple que possible, afin que vous puissiez commencer uniquement avec la configuration que nous avons fait pour vous, et ajouter des éléments supplémentaires plus tard, lorsqu'ils deviennent nécessaires.aaa
 
 Si vous n'êtes pas familier avec les différentes technologies utilisées dans ce projet, veuillez vous référer aux docs respectives. Si vous êtes toujours dans le brouillard, veuillez rejoindre notre [Discord](https://t3.gg/discord) et demander de l'aide.
 
