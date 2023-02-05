@@ -4,7 +4,7 @@ description: Deploy no Netlify
 layout: ../../../layouts/docs.astro
 ---
 
-Netlify é um provedor de implantação alternativo em uma linha semelhante ao Vercel. Veja [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) para um repositório de exemplo baseado neste documento.
+Netlify é um provedor de computação em nuvem remota com suporte a frameworks modernos de desenvolvimento, semelhante ao Vercel. Veja [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) para um repositório de exemplo baseado neste documento.
 
 ## Por que hospedar no Netlify
 
