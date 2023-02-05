@@ -16,7 +16,7 @@ export const server = z.object({
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 export const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
 });
 
 /**
