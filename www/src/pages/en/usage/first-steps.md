@@ -11,8 +11,6 @@ You just scaffolded a new T3 App and are ready to go. Here is the bare minimum t
 
 If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://stackoverflow.com/a/64456017) after doing this so that it can detect the generated types.
 
-You can optionally install the official [Prisma VS Code extension](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma), which adds syntax highlighting, linting, code completion, formatting, jump-to-definition and more.
-
 ## Authentication
 
 If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
@@ -30,6 +28,14 @@ Of course, if you prefer to use a different auth provider, you can also use one 
 8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
 
 You should now be able to log in.
+
+## Editor Setup
+
+The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
+
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense plugin](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension ](https://prettier.io/docs/en/editors.html)
 
 ## Next Steps
 
