@@ -11,7 +11,7 @@ Tu znajdziesz najczęściej zadawane pytania dotyczące Create T3 App.
 
 Staramy się, aby projekt ten był jak najprostszy - możesz zacząć już korzystać z zawartego w nim szablonu a następnie stopniowo dodawać potrzebne Ci rzeczy.
 
-Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z odnośników do odpowiednich stron z dokumentacjami. Jeżeli dalej nie jesteś co do nich pewien, możesz dołączyć do naszego [serwera Discord](https://t3.gg/discord) i poprosić o pomoc.aaaaaa
+Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z odnośników do odpowiednich stron z dokumentacjami. Jeżeli dalej nie jesteś co do nich pewien, możesz dołączyć do naszego [serwera Discord](https://t3.gg/discord) i poprosić o pomoc.
 
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org)
