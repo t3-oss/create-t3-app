@@ -8,7 +8,7 @@ Netlify é um provedor de computação em nuvem remota com suporte a frameworks 
 
 ## Por que hospedar no Netlify
 
-A sabedoria convencional diz que o Vercel tem suporte superior ao Next.js porque o Vercel desenvolve o Next.js. Eles têm um interesse em garantir que a plataforma seja otimizada para o melhor desempenho e DX com o Next.js. Para a maioria dos casos de uso, isso será verdade e não fará sentido desviar do caminho padrão.
+Comumente, a plataforma Vercel tem um suporte mais refinado ao Next.js porque o a mesma desenvolve o framework. Eles têm um interesse em garantir que a plataforma seja otimizada para o melhor desempenho e DX com o Next.js. Para a maioria dos casos de uso, isso será verdade e não fará sentido usar outras alternativas.
 
 Também sabe-se que muitos recursos do Next.js são suportados apenas no Vercel. Embora seja verdade que os novos recursos do Next.js serão testados e suportados no Vercel no momento do lançamento por padrão, também é o caso de que outros provedores, como o Netlify, [implementarão e lançarão rapidamente suporte](https://www.netlify.com/blog/deploy-nextjs-13/) para [recursos Next.js estáveis](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
