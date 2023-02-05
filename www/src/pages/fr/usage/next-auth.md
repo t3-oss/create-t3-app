@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 const User = () => {
   const { data: session } = useSession();
-  // NOTE: `session` n'aura pas de chargement puisqu'il est déjà prélecturer sur le serveur
+  // NOTE: `session` n'aura pas d'état de chargement car elle a déjà été préchargée sur le serveur.
 
   ...
 }
@@ -128,7 +128,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   }
   return next({
     ctx: {
-      // ajouter `session` comme non-nullable
+      // infère la session comme non nulle
       session: { ...ctx.session, user: ctx.session.user },
     },
   });

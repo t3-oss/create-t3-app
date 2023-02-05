@@ -283,7 +283,7 @@ const MyComponent = () => {
       // Récupérer les données du queryCache
       const prevData = utils.post.list.getData();
 
-      // Mettez à jour les données de manière optimiste avec notre nouveau message
+      // Mettez à jour les données de manière optimiste avec notre nouveau post
       utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
       // Renvoyer les données précédentes afin que nous puissions revenir en arrière si quelque chose ne va pas
