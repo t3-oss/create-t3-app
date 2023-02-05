@@ -1,7 +1,8 @@
 name: "Notify codeowners about changes in docs"
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, edited]
     branches:
       - "*"
     paths:
