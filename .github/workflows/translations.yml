@@ -52,7 +52,7 @@ jobs:
                   (lang) =>
                     `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
                 )
-              .join("\n")}`,
+              .join("___")}`,
             );
 
       - name: Write comment on the PR tagging codeowners
@@ -64,4 +64,4 @@ jobs:
 
             This PR contains changes to your language. Please review the changes ❤️.
 
-            ${{ env.CODEOWNERS }}
+            ${${{ env.CODEOWNERS }}.replace(/___/g, "\n")}
