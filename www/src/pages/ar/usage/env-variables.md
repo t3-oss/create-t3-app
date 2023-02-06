@@ -71,7 +71,7 @@ const validated = schema.parse(process.env);
 
 ## إستخدام الـ Environment Variables
 
-إذا أردت إستخدام الـ env vars فيمكنك إستيراد` env/client.mjs` و `env/server.mjs` في المكان الذي تريد
+إذا أردت إستخدام الـ env vars فيمكنك إستيراد` env.mjs` واستعمالهم طبيعيا. إذا إستيرادت الملف في Client وحولت استعمال قيم الserver-side، ستنذر بوجود خطأ في run-time.
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
