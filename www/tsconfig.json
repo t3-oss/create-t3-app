@@ -3,7 +3,6 @@
   "compilerOptions": {
     "jsx": "preserve",
     "types": ["@astrojs/image/client"],
-    // Skip type checking of external libraries.
-    "skipLibCheck": true
+    "skipLibCheck": true // Skip type checking of external libraries.
   }
 }

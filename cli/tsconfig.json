@@ -6,5 +6,5 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src", ".eslintrc.cjs"]
+  "include": ["src"]
 }

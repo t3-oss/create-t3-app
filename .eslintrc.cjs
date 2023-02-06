@@ -1,5 +1,7 @@
+// This is the configuration file for ESLint, the TypeScript linter:
+// https://eslint.org/docs/latest/use/configure/
 module.exports = {
-  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
+  parser: "@typescript-eslint/parser",
   plugins: [
     // Provides extra useful rules:
     // https://github.com/IsaacScript/isaacscript/tree/main/packages/eslint-plugin-isaacscript
@@ -36,9 +38,9 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of import
-    project: "./tsconfig.eslint.json", // Allows for the use of rules which require parserServices to be generated
+    ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features.
+    sourceType: "module", // Allows for the use of import.
+    project: "./tsconfig.eslint.json", // Allows for the use of rules which require parserServices to be generated.
   },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs.
