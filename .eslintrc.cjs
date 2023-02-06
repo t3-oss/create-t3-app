@@ -1,6 +1,10 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
-  plugins: ["turbo"],
+  plugins: [
+    // Provides extra useful rules:
+    // https://github.com/IsaacScript/isaacscript/tree/main/packages/eslint-plugin-isaacscript
+    "isaacscript",
+  ],
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
@@ -37,12 +41,18 @@ module.exports = {
     project: "./tsconfig.eslint.json", // Allows for the use of rules which require parserServices to be generated
   },
   rules: {
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs.
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
     ],
+
+    // These rules auto-format comments, similar to how Prettier auto-formats code. For more
+    // information, see:
+    // https://github.com/IsaacScript/isaacscript/blob/main/packages/eslint-plugin-isaacscript/docs/comments.md
+    "isaacscript/complete-sentences-jsdoc": "warn",
+    "isaacscript/format-jsdoc-comments": "warn",
   },
 };
