@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: no
 ---
 
-For å lage en app med `create-t3-app`, kjør en av følgende tre kommandoer og svar på spørsmålene i veiviseren:
+For å lage en app med `create-t3-app`, kjør en av følgende tre kommandoer og svar på spørs m ålene i veiviseren:
 
 ### npm
 

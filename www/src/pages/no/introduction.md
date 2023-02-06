@@ -15,7 +15,7 @@ _"T3-Stakken"_ er en webutviklingsstakk inspirert av [Theo](https://twitter.com/
 
 I kjernen består den av [**Next.js**](https://nextjs.org/) og [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) brukes også nesten alltid. Dersom backend-funksjonalitet er nødvendig så er [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/) og [**NextAuth.js**](https://next-auth.js.org/) også gode tillegg.
 
-Du har kanskje lagt merke til at T3-stakken har mange komponenter. Det er med vilje. Bytt ut delene hvis du trenger dem - stakken er modulær i kjernen :)
+Du har kanskje lagt merke til at T3-stakken har mange komponenter. Det er med vilje. Byt t u t delene hvis du trenger dem - stakken er modulær i kjernen :)
 
 ## Så... hva er create-t3-app? En mal?
 
