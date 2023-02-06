@@ -7,7 +7,7 @@ lang: no
 
 Det som følger er mappestrukturen til en nylig opprettet T3-app, med alle alternativer valgt.
 
-Lenger nede angis hver mappebeskrivelse formålet med mappen, og om den kun er inkludert i utvalgte biblioteker.
+Lenger nede angis hver mappebeskrivelse formålet med mappen, og om den kun er inkludert i utvalgte b iblioteker.
 
 ```
 .
