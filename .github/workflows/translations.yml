@@ -1,7 +1,8 @@
 name: "Notify codeowners about changes in docs"
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, edited, synchronize]
     branches:
       - "*"
     paths:
@@ -36,7 +37,7 @@ jobs:
               no: ["estubmo", "josephayman"],
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
               pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar"],
-              ru: ["AmadeusTwi", "ronanru", "Yevhenii-Bakhmat"],
+              ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
               "zh-hans": ["fernandoxu", "lodisy"],
             };
 
