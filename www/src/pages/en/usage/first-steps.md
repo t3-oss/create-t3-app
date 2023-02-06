@@ -9,7 +9,7 @@ You just scaffolded a new T3 App and are ready to go. Here is the bare minimum t
 
 ## Database
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://stackoverflow.com/a/64456017) after doing this so that it can detect the generated types.
+If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
 
 ## Authentication
 
