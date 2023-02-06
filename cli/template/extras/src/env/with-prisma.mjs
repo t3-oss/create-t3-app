@@ -1,4 +1,3 @@
-// @ts-check
 import { z } from "zod";
 
 /**
@@ -34,8 +33,7 @@ const processEnv = {
 // --------------------------
 
 const merged = server.merge(client);
-/** @type z.infer<merged>
- *  @ts-ignore - can't type this properly in jsdoc */
+/** @type z.infer<merged> */
 let env;
 
 if (!process.env.SKIP_ENV_VALIDATION) {
