@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { z } from "zod";
 
 /**
@@ -31,10 +32,11 @@ const processEnv = {
 // --------------------------
 
 const merged = server.merge(client);
-/** @type z.infer<merged> */
-let env;
+/** @type z.infer<merged>
+ *  @ts-ignore - can't type this properly in jsdoc */
+let env = process.env;
 
-if (!process.env.SKIP_ENV_VALIDATION) {
+if (!!process.env.SKIP_ENV_VALIDATION == false) {
   const isServer = typeof window === "undefined";
 
   const parsed = isServer
@@ -62,15 +64,10 @@ if (!process.env.SKIP_ENV_VALIDATION) {
             ? "❌ Attempted to access a server-side environment variable on the client"
             : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
         );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - can't type this properly in jsdoc
+      /*  @ts-ignore - can't type this properly in jsdoc */
       return target[prop];
     },
   });
-} else {
-  /** @type z.infer<merged>
-   *  @ts-ignore - can't type this properly in jsdoc */
-  env = processEnv;
 }
 
 export { env };
