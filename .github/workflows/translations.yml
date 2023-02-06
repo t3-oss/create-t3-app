@@ -26,14 +26,10 @@ jobs:
               pull_number: context.payload.number,
             })).data.map(file => file.filename);
 
-            const changedLanguages = [
-              ...new Set(
-                changedFiles
-                  .filter((file) => file.startsWith("www/src/pages/"))
-                  .map((file) => file.split("/")[3])
-                  .filter((file) => file !== "en"),
-              ),
-            ];
+            const changedLanguages = changedFiles
+              .filter(file => file.startsWith("www/src/pages/"))
+              .map(file => file.split("/")[3])
+              .filter(file => file !== "en");
 
             const CODEOWNERS = {
               ar: ["a4addel", "Sboonny"],
@@ -45,14 +41,14 @@ jobs:
               "zh-hans": ["fernandoxu", "lodisy"],
             };
 
+            const codeowners = changedLanguages
+              .map(lang => CODEOWNERS[lang])
+              .filter(Boolean)
+              .flatMap(lang => lang);
+
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${languages
-                .map(
-                  (lang) =>
-                    `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
-                )
-              .join("\n")}`,
+              `\nCODEOWNERS=${codeowners.map(user => '@' + user).join(" ")}`
             );
 
       - name: Write comment on the PR tagging codeowners
