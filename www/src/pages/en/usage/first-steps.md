@@ -34,7 +34,7 @@ You should now be able to log in.
 The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
 
 - [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
-- [Tailwind CSS IntelliSense plugin](https://tailwindcss.com/docs/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
 - [Prettier Extension ](https://prettier.io/docs/en/editors.html)
 
 ## Next Steps
