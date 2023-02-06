@@ -45,14 +45,18 @@ jobs:
               "zh-hans": ["fernandoxu", "lodisy"],
             };
 
+            const formattedString = changedLanguages
+              .map(
+                (lang) =>
+                  `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
+              )
+              .join("___"); // cause we can't linebreak in env vars
+
+              console.log(formattedString);
+
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${changedLanguages
-                .map(
-                  (lang) =>
-                    `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
-                )
-              .join("___")}`,
+              `\nCODEOWNERS=${formattedString}`,
             );
 
       - name: Write comment on the PR tagging codeowners
