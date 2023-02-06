@@ -4,12 +4,12 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.18.7",
+  "next-auth": "^4.19.0",
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
-  prisma: "^4.8.0",
-  "@prisma/client": "^4.8.0",
+  prisma: "^4.9.0",
+  "@prisma/client": "^4.9.0",
 
   // TailwindCSS
   tailwindcss: "^3.2.0",
@@ -20,10 +20,10 @@ export const dependencyVersionMap = {
   "@types/prettier": "^2.7.2",
 
   // tRPC
-  "@trpc/client": "^10.8.1",
-  "@trpc/server": "^10.8.1",
-  "@trpc/react-query": "^10.8.1",
-  "@trpc/next": "^10.8.1",
+  "@trpc/client": "^10.9.0",
+  "@trpc/server": "^10.9.0",
+  "@trpc/react-query": "^10.9.0",
+  "@trpc/next": "^10.9.0",
   "@tanstack/react-query": "^4.20.0",
   superjson: "1.9.1",
 } as const;

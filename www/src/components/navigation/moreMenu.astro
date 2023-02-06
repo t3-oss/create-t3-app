@@ -54,7 +54,7 @@ const isLangEN = getLanguageFromURL(pathname) === "en";
     <li
       class={clsx(
         "hidden text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100",
-        !isLangEN && "md:block",
+        isLangEN && "md:block",
       )}
     >
       <a

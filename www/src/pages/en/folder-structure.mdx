@@ -3,6 +3,7 @@ title: Folder Structure
 description: Folder structure of a newly scaffolded T3 App
 layout: ../../layouts/docs.astro
 lang: en
+isMdx: true
 ---
 
 import Form from "../../components/docs/folderStructureForm.astro";
@@ -74,7 +75,7 @@ The `server` folder is used to clearly separate server-side code from client-sid
 
 #### `src/server/auth.ts`
 
-Contains utlities for authentication such as retriving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utlities for authentication such as retriving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 </div>
 <div data-components="prisma">
@@ -130,20 +131,6 @@ The `root.ts` file is used to merge tRPC routers and export them as a single rou
 ### `src/styles`
 
 The `styles` folder contains the global styles of the application.
-
-</div>
-<div data-components="nextauth">
-
-### `src/types`
-
-The `types` folder is used to store reused types or type declarations.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/types/next-auth.d.ts`
-
-The `next-auth.d.ts` file is used to extend the NextAuth.js default session type to include the user ID. See [NextAuth.js usage](usage/next-auth#inclusion-of-userid-on-the-session) for more information.
 
 </div>
 <div data-components="trpc">
