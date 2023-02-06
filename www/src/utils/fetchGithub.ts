@@ -3,9 +3,7 @@ type Options = {
   throwIfNoAuth?: boolean;
 };
 
-/**
- * helper to fetch the github api with auth token to avoid rate limiting
- */
+/** Helper function to fetch the GitHub API with an auth token to avoid rate limiting. */
 export const fetchGithub = async (url: string, opts: Options) => {
   const { throwIfNotOk = true, throwIfNoAuth = true } = opts;
 
