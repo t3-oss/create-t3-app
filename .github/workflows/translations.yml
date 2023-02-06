@@ -47,7 +47,7 @@ jobs:
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${languages
+              `\nCODEOWNERS=${changedLanguages
                 .map(
                   (lang) =>
                     `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
