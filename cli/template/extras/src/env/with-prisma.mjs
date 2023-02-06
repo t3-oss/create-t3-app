@@ -39,17 +39,6 @@ const merged = server.merge(client);
 let env;
 
 if (!process.env.SKIP_ENV_VALIDATION) {
-  const formatErrors = (
-    /** @type {z.ZodFormattedError<Map<string,string>,string>} */
-    errors,
-  ) =>
-    Object.entries(errors)
-      .map(([name, value]) => {
-        if (value && "_errors" in value)
-          return `${name}: ${value._errors.join(", ")}\n`;
-      })
-      .filter(Boolean);
-
   const isServer = typeof window === "undefined";
 
   const parsed = isServer
@@ -58,8 +47,8 @@ if (!process.env.SKIP_ENV_VALIDATION) {
 
   if (parsed.success === false) {
     console.error(
-      "❌ Invalid environment variables:\n",
-      ...formatErrors(parsed.error.format()),
+      "❌ Invalid environment variables:",
+      parsed.error.flatten().fieldErrors,
     );
     throw new Error("Invalid environment variables");
   }
