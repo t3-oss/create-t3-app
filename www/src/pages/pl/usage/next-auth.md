@@ -91,14 +91,14 @@ Jeżeli używasz NextAuth.js oraz tRPC, stworzyć można zabezpieczone procedury
 
 Konfiguracja ta zachodzi w dwóch krokach:
 
-1. Pobierz sesję z headerów zapytania korzystając z funkcji [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Nie martw się, funkcja ta jest bezpieczna do użycia - nazwa zawiera słowo `unstable` jedynie dlatego, ponieważ implementacja API w przyszłości może się zmienić. Zaletą korzystania z `unstable_getServerSession` zamiast `getSession` jest fakt, iż jest to funkcja wywoływana jedynie po stronie serwera i nie inicjuje ona żadnych niepotrzebnych zapytań. `create-t3-app` tworzy funkcję pomocniczą, która ułatwia korzystanie z `unstable_getServerSession`.
+1. Pobierz sesję z headerów zapytania korzystając z funkcji [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Nie martw się, funkcja ta jest bezpieczna do użycia - nazwa zawiera słowo `unstable` jedynie dlatego, ponieważ implementacja API w przyszłości może się zmienić. Zaletą korzystania z `getServerSession` zamiast `getSession` jest fakt, iż jest to funkcja wywoływana jedynie po stronie serwera i nie inicjuje ona żadnych niepotrzebnych zapytań. `create-t3-app` tworzy funkcję pomocniczą, która ułatwia korzystanie z `getServerSession`.
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  return await getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 

@@ -33,44 +33,6 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   </cite>
 </blockquote>
 
-## Files
-
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
-
-### 📄 `pages/api/trpc/[trpc].ts`
-
-This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
-
-### 📄 `server/api/trpc.ts`
-
-This file is split up in two parts, context creation and tRPC initialization:
-
-1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
-
-- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
-
-- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
-
-2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
-
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
-
-### 📄 `server/api/routers/*.ts`
-
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures.
-
-### 📄 `server/api/root.ts`
-
-Here we [merge](https://trpc.io/docs/v10/merging-routers) all the sub-routers defined in `routers/**` into a single app router.
-
-### 📄 `utils/api.ts`
-
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
-
-You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
-
-Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
-
 ## How do I use tRPC?
 
 <div class="embed">
@@ -129,7 +91,51 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `trpc.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `api.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+
+## Files
+
+tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
+
+### 📄 `pages/api/trpc/[trpc].ts`
+
+This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+
+### 📄 `server/api/trpc.ts`
+
+This file is split up in two parts, context creation and tRPC initialization:
+
+1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
+
+- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) where you don't have a request object.
+
+- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
+
+2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v10/procedures) and [middlewares](https://trpc.io/docs/v10/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
+
+You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
+
+### 📄 `server/api/routers/*.ts`
+
+This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures.
+
+### 📄 `server/api/root.ts`
+
+Here we [merge](https://trpc.io/docs/v10/merging-routers) all the sub-routers defined in `routers/**` into a single app router.
+
+### 📄 `utils/api.ts`
+
+This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+
+You'll define your tRPC [links](https://trpc.io/docs/v10/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+
+Lastly, we export a [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) which you can use to infer your types on the frontend.
+
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Create T3 App contributor [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee) made [a video about data flows in tRPC](https://www.youtube.com/watch?v=x4mu-jOiA0Q). This video is recommended if you have used tRPC but still feel a bit unclear about how it works.
 
 ## How do I call my API externally?
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import type { PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
@@ -55,12 +56,12 @@ const main = async () => {
     spaces: 2,
   });
 
-  if (!noGit) {
-    await initializeGit(projectDir);
-  }
-
   if (!noInstall) {
     await installDependencies({ projectDir });
+  }
+
+  if (!noGit) {
+    await initializeGit(projectDir);
   }
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });

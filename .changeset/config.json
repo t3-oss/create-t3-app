@@ -10,5 +10,6 @@
   "access": "public",
   "baseBranch": "next",
   "updateInternalDependencies": "patch",
-  "ignore": ["@ct3a/www"]
+  "ignore": ["@ct3a/www"],
+  "changedFilePatterns": ["src/**", "template/**"]
 }

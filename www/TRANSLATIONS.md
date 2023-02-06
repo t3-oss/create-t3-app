@@ -24,14 +24,16 @@ If the docs are not available in your language yet and you would like to transla
 
 7. When you're done, mark the pull request as ready for review.
 
-### Maintaining
-
-Naturally, the English docs will move faster than the translated ones. We've implemented a feature that alerts visitors if a translated version of a page is outdated. If you see that a page is outdated and you're able to update it, please do so!
-
-In the medium to long term, we would like to have code owners for each language. If you have several contributions, either in translating yourself or reviewing the translations of others and would like to become a code owner for your language, please let us know in the `create-t3-translation` channel on [Discord](https://create.t3.gg/discord).
-
 ### Reviewing
 
 We aim to have 1-2 reviews on each PR before merging. This allows for some back and forth and ensures that the quality of the docs is high, and the tone is consistent.
 
 We'd highly appreciate it if you knew someone who speaks the language you're translating into to review your PR. This can help speed up the process of getting your contribution merged.
+
+### Maintaining
+
+Naturally, the English docs will move faster than the translated ones. We've implemented a feature that alerts visitors if a translated version of a page is outdated. If you see that a page is outdated and you're able to update it, please do so!
+
+We also have code owners for each language. Being a code owner means that you get notified when there is a PR that includes changes to the files of your language, so that you can review it.
+
+Becoming a code owner is open to anyone who has contributed to a language, either by writing translations themselves or by reviewing those of others. If would like to become a code owner, either add your GitHub username to your language in [translations.yml](https://github.com/t3-oss/create-t3-app/blob/next/.github/workflows/translations.yml) or let us know in the `create-t3-translation` channel on [Discord](https://create.t3.gg/discord).
