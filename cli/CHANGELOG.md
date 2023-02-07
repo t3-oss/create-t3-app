@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.5.0
+
+### Minor Changes
+
+- [#1092](https://github.com/t3-oss/create-t3-app/pull/1092) [`aa44574`](https://github.com/t3-oss/create-t3-app/commit/aa44574680bf380cf4cf7f255fb547e5d9ced7d7) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - single env file
+
+### Patch Changes
+
+- [#1171](https://github.com/t3-oss/create-t3-app/pull/1171) [`efe8b7f`](https://github.com/t3-oss/create-t3-app/commit/efe8b7f54cf0fe5448dc52118745668ae4913547) Thanks [@esotuvaka](https://github.com/esotuvaka)! - fix: swap `@ts-check` comments to `checkJs: true` in scaffolded app's tsconfig
+
 ## 7.4.1
 
 ### Patch Changes
