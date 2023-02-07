@@ -48,9 +48,9 @@ jobs:
             const formattedString = changedLanguages
               .map(
                 (lang) =>
-                  `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
+                  `${lang.toUpperCase()}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
               )
-              .join("  "); // cause we can't linebreak in env vars
+              .join("  |  "); // cause we can't linebreak in env vars
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
