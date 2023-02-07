@@ -13,11 +13,17 @@ interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
-  CI: boolean /** @internal - used in CI */;
-  tailwind: boolean /** @internal - used in CI */;
-  trpc: boolean /** @internal - used in CI */;
-  prisma: boolean /** @internal - used in CI */;
-  nextAuth: boolean /** @internal - used in CI */;
+
+  /** @internal Used in CI. */
+  CI: boolean;
+  /** @internal Used in CI. */
+  tailwind: boolean;
+  /** @internal Used in CI. */
+  trpc: boolean;
+  /** @internal Used in CI. */
+  prisma: boolean;
+  /** @internal Used in CI. */
+  nextAuth: boolean;
 }
 
 interface CliResults {
@@ -71,41 +77,29 @@ export const runCli = async () => {
     )
     /** START CI-FLAGS */
     /**
-     * @experimental - used for CI E2E tests
-     * If any of the following option-flags are provided, we skip prompting
+     * @experimental Used for CI E2E tests. If any of the following option-flags are provided, we
+     *               skip prompting.
      */
     .option("--CI", "Boolean value if we're running in CI", false)
-    /**
-     * @experimental - used for CI E2E tests
-     * Used in conjunction with `--CI` to skip prompting
-     */
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--tailwind [boolean]",
       "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
-    /**
-     * @experimental - used for CI E2E tests
-     * Used in conjunction with `--CI` to skip prompting
-     */
+    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
-    /**
-     * @experimental - used for CI E2E tests
-     * Used in conjunction with `--CI` to skip prompting
-     */
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--prisma [boolean]",
       "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
-    /**
-     * @experimental - used for CI E2E tests
-     * Used in conjunction with `--CI` to skip prompting
-     */
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
@@ -141,9 +135,7 @@ export const runCli = async () => {
 
   cliResults.flags = program.opts();
 
-  /**
-   * @internal - used for CI E2E tests
-   */
+  /** @internal Used for CI E2E tests. */
   let CIMode = false;
   if (cliResults.flags.CI) {
     CIMode = true;
