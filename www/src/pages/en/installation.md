@@ -10,19 +10,19 @@ To scaffold an app using `create-t3-app`, run any of the following three command
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.

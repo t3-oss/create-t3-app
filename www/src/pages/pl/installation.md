@@ -10,19 +10,19 @@ Aby zacząć używać szablonu `create-t3-app`, uruchom którąkolwiek z poniżs
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 Po tym, jak szablon aplikacji zostanie utworzony, sprawdź [pierwsze kroki](/pl/usage/first-steps) aby zacząć budować swoją nową aplikację.

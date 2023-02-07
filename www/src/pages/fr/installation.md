@@ -10,19 +10,19 @@ Pour configurer une application à l'aide de `create-t3-app`, exécutez l'une de
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 Une fois votre application configurée, consultez les [premières étapes](/fr/usage/first-steps) pour démarrer sur votre nouvelle application.

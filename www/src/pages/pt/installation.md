@@ -10,19 +10,19 @@ Para estruturar uma aplicação usando `create-t3-app`, rode qualquer um dos com
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 Após sua aplicação ter sido estruturada, verifique os [Primeiros Passos](/pt/usage/first-steps) para começar a usar sua nova aplicação.

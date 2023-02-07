@@ -11,19 +11,19 @@ dir: rtl
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 بعد أن تَنتهي عَملية إنشاء التطبيق، اَلق نَظرة عَلي [الخطوات الأولى](/ar/usage/first-steps) للبدء في تطبيقك الجديد.

@@ -10,19 +10,19 @@ For å lage en app med `create-t3-app`, kjør en av følgende tre kommandoer og 
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 Etter at applikasjonen din har blitt opprettet, sjekk ut [første steg](/no/usage/first-steps) for å begynne å utvikle den nye applikasjonen.

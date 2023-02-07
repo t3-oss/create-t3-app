@@ -10,19 +10,19 @@ lang: ru
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 После того, как приложение будет создано, ознакомьтесь с [первыми шагами](/ru/usage/first-steps), чтобы начать работу над вашим новым приложением.
