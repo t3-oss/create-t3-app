@@ -94,7 +94,7 @@ declare module "next-auth" {
 
 Это делается в два шага:
 
-1. Возьмите сессию из заголовков запроса с помощью функции [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Не беспокойтесь, эта функция безопасна для использования - имя включает `unstable` только потому, что реализация API может измениться в будущем. Преимущество использования `getServerSession` вместо обычного `getSession` заключается в том, что это server-side функция и она не вызывает ненужных вызовов fetch. `create-t3-app` создает вспомогательную функцию, которая абстрагирует этот особый API.
+1. Возьмите сессию из заголовков запроса с помощью функции [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Преимущество использования `getServerSession` вместо обычного `getSession` заключается в том, что это server-side функция и она не вызывает ненужных вызовов fetch. `create-t3-app` создает вспомогательную функцию, которая абстрагирует этот особый API.
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
