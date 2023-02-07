@@ -14,16 +14,12 @@ module.exports = {
     ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features.
     sourceType: "module", // Allows for the use of import.
     project: "./tsconfig.eslint.json", // Allows for the use of rules which require parserServices to be generated.
+    extraFileExtensions: [".astro"],
   },
-  rules: {},
   overrides: [
     {
       files: ["*.astro"],
       parser: "astro-eslint-parser",
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"],
-      },
       rules: {
         "prettier/prettier": "off",
         "no-unused-vars": [

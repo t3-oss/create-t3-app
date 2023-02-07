@@ -13,9 +13,6 @@ const frontmatter: Frontmatter = {
 const lang = getLanguageFromURL(Astro.url.pathname);
 const sidebarEntries = SIDEBAR[lang]["Usage"]!;
 const files = await Astro.glob("./*.{md,mdx,astro}");
-
-// @ts-expect-error
-alert("LOL");
 ---
 
 <Layout frontmatter={frontmatter} headings={[]}>

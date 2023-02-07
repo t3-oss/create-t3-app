@@ -5,16 +5,23 @@
   // the TypeScript output or not. Two entries for each file extension are needed because TypeScript
   // will exclude files that begin with a period from an asterisk glob by default.
   "include": [
-    "**/*.js",
-    "**/.*.js",
-    "**/*.cjs",
-    "**/.*.cjs",
-    "**/*.mjs",
-    "**/.*.mjs",
-    "**/*.ts",
-    "**/.*.ts",
-    "**/*.jsx",
-    "**/*.tsx",
-    "**/*.astro"
+    "./**/*.js",
+    "./**/.*.js",
+    "./**/*.cjs",
+    "./**/.*.cjs",
+    "./**/*.mjs",
+    "./**/.*.mjs",
+    "./**/*.jsx",
+    "./**/.*.jsx",
+    "./**/*.ts",
+    "./**/.*.ts",
+    "./**/*.cts",
+    "./**/.*.cts",
+    "./**/*.mts",
+    "./**/.*.mts",
+    "./**/*.tsx",
+    "./**/.*.tsx",
+    "./**/*.astro",
+    "./**/.*.astro"
   ]
 }

@@ -7,8 +7,24 @@
   "editor.rulers": [100],
   "editor.tabSize": 2,
 
-  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  // Inform VSCode that it should use the version of TypeScript that is installed under this project
+  // (instead of the version that comes pre-bundled with VSCode itself).
   "typescript.tsdk": "node_modules/typescript/lib",
+
+  // Convert all ESLint rules to warnings. This provides a nice delineation where all errors (red)
+  // come from the TypeScript compiler and all warnings (yellow) come from ESLint.
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+
+  // By default, the ESLint VSCode extension will not work inside of ".astro" files, so we have to
+  // customize it the file selectors.
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact", // .jsx
+    "typescript", // .ts
+    "typescriptreact", // .tsx
+    "astro" // .astro
+  ],
+
   "prettier.documentSelectors": [
     "**/*.{cjs,mjs,ts,tsx,astro,md,mdx,json,yaml,yml}"
   ],
