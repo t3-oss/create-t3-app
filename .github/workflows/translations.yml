@@ -50,9 +50,7 @@ jobs:
                 (lang) =>
                   `${lang}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
               )
-              .join("___"); // cause we can't linebreak in env vars
-
-              console.log(formattedString);
+              .join("  "); // cause we can't linebreak in env vars
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
@@ -68,4 +66,4 @@ jobs:
 
             This PR contains changes to your language. Please review the changes ❤️.
 
-            ${{ env.CODEOWNERS }.replace(/___/g, "\n")}
+            ${{ env.CODEOWNERS }}
