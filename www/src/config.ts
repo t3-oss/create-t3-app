@@ -217,6 +217,7 @@ export const SIDEBAR: Sidebar = {
     ],
     Deployment: [
       { text: "Vercel", link: "pt/deployment/vercel" },
+      { text: "Netlify", link: "pt/deployment/netlify" },
       { text: "Docker", link: "pt/deployment/docker" },
     ],
   },
