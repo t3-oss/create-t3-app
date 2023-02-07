@@ -1,15 +1,20 @@
 import pathModule from "path";
 
 /**
- *  Parses the appName and its path from the user input.
- * Returns an array of [appName, path] where appName is the name put in the package.json and
- *   path is the path to the directory where the app will be created.
- * If the appName is '.', the name of the directory will be used instead.
- * Handles the case where the input includes a scoped package name
- * in which case that is being parsed as the name, but not included as the path
- * e.g. dir/@mono/app => ["@mono/app", "dir/app"]
- * e.g. dir/app => ["app", "dir/app"]
- **/
+ * Parses the appName and its path from the user input.
+ *
+ * Returns a tuple of of `[appName, path]`, where `appName` is the name put in the "package.json"
+ * file and `path` is the path to the directory where the app will be created.
+ *
+ * If `appName` is ".", the name of the directory will be used instead. Handles the case where the
+ * input includes a scoped package name in which case that is being parsed as the name, but not
+ * included as the path.
+ *
+ * For example:
+ *
+ * - dir/@mono/app => ["@mono/app", "dir/app"]
+ * - dir/app => ["app", "dir/app"]
+ */
 export const parseNameAndPath = (input: string) => {
   const paths = input.split("/");
 
