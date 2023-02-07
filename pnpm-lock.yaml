@@ -13,7 +13,7 @@ importers:
       eslint: ^8.28.0
       eslint-config-prettier: ^8.5.0
       eslint-config-turbo: ^0.0.4
-      eslint-plugin-isaacscript: ^2.3.1
+      eslint-plugin-isaacscript: ^2.3.2
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-react: ^7.31.8
       eslint-plugin-react-hooks: ^4.6.0
@@ -30,7 +30,7 @@ importers:
       eslint: 8.28.0
       eslint-config-prettier: 8.5.0_eslint@8.28.0
       eslint-config-turbo: 0.0.4_eslint@8.28.0
-      eslint-plugin-isaacscript: 2.3.1_czs5uoqkd3podpy6vgtsxfc7au
+      eslint-plugin-isaacscript: 2.3.2_czs5uoqkd3podpy6vgtsxfc7au
       eslint-plugin-prettier: 4.2.1_cwlo2dingkvfydnaculr42urve
       eslint-plugin-react: 7.31.8_eslint@8.28.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.28.0
@@ -3577,8 +3577,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-isaacscript/2.3.1_czs5uoqkd3podpy6vgtsxfc7au:
-    resolution: {integrity: sha512-WhDguPtTkPesXoDuls2qglfnpuZob604fGL3sx8USTwNMQTh8vbt3s17jjJ+WlbWai8TfcWde0cdU0rrGgjpwA==}
+  /eslint-plugin-isaacscript/2.3.2_czs5uoqkd3podpy6vgtsxfc7au:
+    resolution: {integrity: sha512-kHbp/5BELhBOgNqAPadnHIQo4I8UXKzQYUg/Jz+fKzsiunH+YbutjiyBf8Ezo11q8jkQrHYbe3kY9sS4MfrehQ==}
     peerDependencies:
       '@typescript-eslint/parser': '>= 5.0.0'
       eslint: '>= 8.0.0'

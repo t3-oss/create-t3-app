@@ -98,6 +98,10 @@ export const scaffoldProject = async ({
 
   fs.copySync(srcDir, projectDir);
   fs.renameSync(
+    path.join(projectDir, "_eslintrc.json"),
+    path.join(projectDir, ".eslintrc.json"),
+  );
+  fs.renameSync(
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore"),
   );
