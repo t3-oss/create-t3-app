@@ -26,14 +26,14 @@ O "moderno e simples Redux", que você não sabia que precisava. Sempre podemos 
 
 **Para nunca mais usar Context**
 
-Para uma abordagem mais atômica, o Jotai é difícil de bater. Também de [Poimandres](https://github.com/pmndrs), O Jotai te permite definir singletons que parecem um useState global. Uma boa opção para
+Para uma abordagem mais atômica, o Jotai é difícil de vencer. Também da [Poimandres](https://github.com/pmndrs), Jotai te permite definir singletons que parecem um useState global. Uma boa opção para manipulações de estado que não necessariamente precisam de uma máquina de estado.
 
 - [Página inicial do Jotai](https://jotai.org/)
 - [GitHub do Jotai](https://github.com/pmndrs/jotai)
 
 ## Biblioteca de Componentes
 
-A maior parte de aplicações necessita de vários componentes - botões de toggle, menus dropdown, modais, e assim por diante. Essas bibliotecas providenciam components bons, acessíveis e que você pode customizar como achar melhor.
+A maior parte das aplicações necessitam de vários componentes - botões de toggle, menus dropdown, modais, e assim por diante. Essas bibliotecas providenciam components bons, acessíveis e que você pode customizar como achar melhor.
 
 ### Bibliotecas de Componentes não estilizados
 
