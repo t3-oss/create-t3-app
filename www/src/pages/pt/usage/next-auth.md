@@ -36,7 +36,7 @@ const User = () => {
 
 ## Recuperando a sessão do lado do servidor.
 
-Às vezes, você poderá querer solicitar a sessão no servidor. Para fazer isso, faça uma requisição usando o helper `getServerAuthSession` que `create-t3-app` fornece e passe-a para o cliente usando `getServerSideProps`:
+Às vezes, você poderá querer solicitar a sessão no servidor. Para fazer isso, faça uma requisição usando o utilitário `getServerAuthSession` que `create-t3-app` fornece e passe-a para o cliente usando `getServerSideProps`:
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
