@@ -93,7 +93,7 @@ const UserPage = () => {
 
 Você notará imediatamente como o preenchimento automático e a segurança de tipo são bons. Assim que você escrever `trpc.`, seus roteadores aparecerão no preenchimento automático, e quando você selecionar um roteador, seus procedimentos também aparecerão. Você também receberá um erro de TypeScript se sua entrada não corresponder ao validador definido no back-end.
 
-## Files
+## Arquivos
 
 O tRPC requer bastante do template que o `create-t3-app` configura para você. Vamos ver os arquivos que são gerados:
 
