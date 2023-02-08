@@ -16,7 +16,7 @@
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
 
   // By default, the ESLint VSCode extension will not work inside of ".astro" files, so we have to
-  // customize it the file selectors.
+  // customize the file selectors.
   "eslint.validate": [
     "javascript",
     "javascriptreact", // .jsx
