@@ -83,7 +83,7 @@ const {
         class="mr-8 flex items-center text-t3-purple-100 hover:text-blue-500"
       >
         <a
-          aria-label="Comment on Tweet"
+          aria-label={`Comment on ${author.split(" (")[0]}'s Tweet`}
           href={`https://twitter.com/intent/tweet?in_reply_to=${id}`}
           target="_blank"
           rel="noopener noreferrer"
