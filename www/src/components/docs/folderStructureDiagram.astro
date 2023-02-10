@@ -77,10 +77,6 @@
       return ["nextauth", "prisma", "tailwind", "trpc"];
     }
 
-    if (selectedParam === "none") {
-      return [];
-    }
-
     return selectedParam.split(",");
   };
 

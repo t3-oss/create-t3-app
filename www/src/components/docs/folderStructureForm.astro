@@ -13,7 +13,7 @@ const options = {
     ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
 
   const updatePackagesQueryParam = (selected: string[]) => {
-    const packagesQueryParam = packagesQueryParamFromSelected(selected);
+    const packagesQueryParam = selected.join(",");
 
     const url = new URL(window.location.href);
     url.searchParams.set("packages", packagesQueryParam);
@@ -29,19 +29,7 @@ const options = {
       return ["nextauth", "prisma", "tailwind", "trpc"];
     }
 
-    if (selectedParam === "none") {
-      return [];
-    }
-
     return selectedParam.split(",");
-  };
-
-  const packagesQueryParamFromSelected = (selected: string[]) => {
-    if (selected.length === 0) {
-      return "none";
-    }
-
-    return selected.join(",");
   };
 
   inputs.forEach((input) =>
