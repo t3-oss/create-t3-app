@@ -13,6 +13,7 @@ interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
+  importAlias: string;
 
   /** @internal Used in CI. */
   CI: boolean;
@@ -44,6 +45,7 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
+    importAlias: "@/",
   },
 };
 
@@ -105,6 +107,12 @@ export const runCli = async () => {
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "-i, --import-alias",
+      "Explicitly tell the CLI to use a custom import alias",
+      defaultOptions.flags.importAlias,
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -164,6 +172,8 @@ export const runCli = async () => {
       if (!cliResults.flags.noInstall) {
         cliResults.flags.noInstall = !(await promptInstall());
       }
+
+      cliResults.flags.importAlias = await promptImportAlias();
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
@@ -222,7 +232,7 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
     type: "checkbox",
     message: "Which packages would you like to enable?",
     choices: availablePackages
-      .filter((pkg) => pkg !== "envVariables") // don't prompt for env-vars
+      .filter((pkg) => !["envVariables", "importAlias"].includes(pkg)) // don't prompt for envVariables and importAlias
       .map((pkgName) => ({
         name: pkgName,
         checked: false,
@@ -276,4 +286,18 @@ const promptInstall = async (): Promise<boolean> => {
   }
 
   return install;
+};
+
+const promptImportAlias = async (): Promise<string> => {
+  const { importAlias } = await inquirer.prompt<Pick<CliFlags, "importAlias">>({
+    name: "importAlias",
+    type: "input",
+    message: "What import alias would you like configured?",
+    default: defaultOptions.flags.importAlias,
+    transformer: (input: string) => {
+      return input.trim();
+    },
+  });
+
+  return importAlias;
 };

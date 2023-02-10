@@ -32,7 +32,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall },
+    flags: { noGit, noInstall, importAlias },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -43,6 +43,7 @@ const main = async () => {
   const projectDir = await createProject({
     projectName: appDir,
     packages: usePackages,
+    importAlias: importAlias,
     noInstall,
   });
 
