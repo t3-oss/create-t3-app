@@ -40,7 +40,7 @@ jobs:
               fr: ["Defranos", "joachimjusth"],
               no: ["estubmo", "josephayman"],
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
-              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar"],
+              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18"],
               ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
               "zh-hans": ["fernandoxu", "lodisy"],
             };
