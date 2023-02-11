@@ -79,7 +79,7 @@ const validated = schema.parse(process.env);
 Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env/client.mjs` ou `env/server.mjs` dependendo de onde você deseja usá-las:
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;
@@ -88,6 +88,8 @@ const dbUrl = env.DATABASE_URL;
 ## .env.example
 
 Como o arquivo `.env` padrão não está comprometido com o controle de versão, também incluímos um arquivo `.env.example`, no qual você pode, opcionalmente, manter uma cópia de seu arquivo `.env` com quaisquer segredos removidos. Isso não é necessário, mas recomendamos manter o exemplo atualizado para tornar mais fácil para os contribuidores começarem a usar seu ambiente.
+
+Alguns frameworks e outras ferramentas, como o Next.js, sugerem que você armazene variáveis em um arquivo `.env.local` e faça commit de arquivos `.env` em seu projeto. Isso não é recomendado, pois poderia facilitar o acidente de incluir variáveis ambiente secretas em seu histórico do git. Em vez disso, recomendamos que você armazene essas variáveis no arquivo `.env`, mantenha o arquivo `.env` em seu `.gitignore` e faça commit somente de arquivos `.env.example` em seu projeto.
 
 ## Adicionando Variáveis Ambiente
 

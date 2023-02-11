@@ -5,11 +5,11 @@ layout: ../../layouts/docs.astro
 lang: pt
 ---
 
-Nós começamos o create-t3-app porque o [Theo](https://twitter.com/t3dotgg) se recusou a criar um template com suas tecnologias favoritas. Inspirado pelo create-next-app, [a CLI do Astro](https://astro.build) e um amor geral pela segurança de tipo, o time do create-t3-app trabalhou duro para construir a melhor ponto de início o possível para novos projetos com a T3 Stack.
+Nós começamos o create-t3-app porque o [Theo](https://twitter.com/t3dotgg) se recusou a criar um template com suas tecnologias favoritas. Inspirado pelo create-next-app, [a CLI do Astro](https://astro.build) e um amor geral pela segurança de tipos, o time do create-t3-app trabalhou duro para construir o melhor ponto de início possível para novos projetos com a T3 Stack.
 
 Se você está interessado em usar o Next.js de uma maneira typesafe, este é o lugar para começar. Se você está curioso sobre alguma das escolhas de tecnologias que fizemos, siga com a leitura :)
 
-## Por que TypeScript ?
+## Por que TypeScript?
 
 Javascript é difícil. Pra quê mais regras?
 
@@ -17,7 +17,7 @@ Nos firmemente acreditamos que a experiência que o Typescript proporciona irá 
 
 Segurança de tipo te faz mais rápido. Se você ainda não está convencido, você [deve estar usando o TypeScript errado...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
-## Por que Next.js ?
+## Por que Next.js?
 
 Nós amamos React. Ele tornou o desenvolvimento de interfaces mais acessível de maneira que nunca imaginávamos antes. Ele também pode levar os desenvolvedores para caminhos difíceis.
 
@@ -29,7 +29,7 @@ Enquanto nós acreditamos em manter as coisas o mais simples o possível, nós f
 
 ### tRPC
 
-O tRPC cumpre a promessa do GraphQL de desenvolvimento de cliente contínuo em um servidor typesafe sem todo o clichê. É um abuso inteligente do TypeScript que fornece uma experiência de desenvolvimento incrível.
+O tRPC cumpre a promessa do GraphQL de desenvolvimento de cliente contínuo em um servidor typesafe sem todo o boilerplate. É um abuso inteligente do TypeScript que fornece uma experiência de desenvolvimento incrível.
 
 ### Prisma
 
@@ -43,7 +43,7 @@ Tailwind é como o "CSS no modo zen".
 
 Ao fornecer blocos de construção na forma de boas cores padrão, espaçamento e outros elementos primitivos, o Tailwind facilita a criação de um aplicativo de boa aparência. E, ao contrário das bibliotecas de componentes, isso não o impede quando você deseja levar seu aplicativo para o próximo nível e criar algo bonito e único.
 
-Além disso, com sua abordagem em linha, o Tailwind incentiva você a estilizar sem se preocupar em nomear classes, organizar arquivos ou qualquer outro problema não diretamente relacionado ao problema que você está tentando resolver.
+Além disso, com sua abordagem inline, o Tailwind incentiva você a estilizar sem se preocupar em nomear classes, organizar arquivos ou qualquer outro problema não diretamente relacionado ao problema que você está tentando resolver.
 
 ### NextAuth.js
 

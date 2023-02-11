@@ -26,29 +26,35 @@ jobs:
               pull_number: context.payload.number,
             })).data.map(file => file.filename);
 
-            const changedLanguages = changedFiles
-              .filter(file => file.startsWith("www/src/pages/"))
-              .map(file => file.split("/")[3])
-              .filter(file => file !== "en");
+            const changedLanguages = [
+              ...new Set(
+                changedFiles
+                  .filter((file) => file.startsWith("www/src/pages/"))
+                  .map((file) => file.split("/")[3])
+                  .filter((file) => file !== "en"),
+              ),
+            ];
 
             const CODEOWNERS = {
               ar: ["a4addel", "Sboonny"],
               fr: ["Defranos", "joachimjusth"],
               no: ["estubmo", "josephayman"],
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
-              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar"],
+              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18"],
               ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
               "zh-hans": ["fernandoxu", "lodisy"],
             };
 
-            const codeowners = changedLanguages
-              .map(lang => CODEOWNERS[lang])
-              .filter(Boolean)
-              .flatMap(lang => lang);
+            const formattedString = changedLanguages
+              .map(
+                (lang) =>
+                  `${lang.toUpperCase()}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
+              )
+              .join("  |  "); // cause we can't linebreak in env vars
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,
-              `\nCODEOWNERS=${codeowners.map(user => '@' + user).join(" ")}`
+              `\nCODEOWNERS=${formattedString}`,
             );
 
       - name: Write comment on the PR tagging codeowners
