@@ -1,0 +1,21 @@
+# Prevent Windows systems from cloning this repository with "\r\n" line endings.
+core.autocrlf=false
+
+# Prevent people from making merge commits:
+# https://www.endoflineblog.com/gitflow-considered-harmful
+pull.rebase=true
+
+# Convert all files to use "\n" line endings.
+* text=auto eol=lf
+
+# Specify the file type for some binary files to prevent Git from changing the line endings upon
+# cloning the repository.
+*.mp3 binary
+*.png binary
+*.wav binary
+
+# Specify the file type for some files that GitHub will not automatically characterize properly.
+# https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+.vscode/extensions.json linguist-language=JSON-with-Comments
+.vscode/settings.json linguist-language=JSON-with-Comments
+tsconfig*.json linguist-language=JSON-with-Comments

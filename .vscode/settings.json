@@ -11,7 +11,7 @@
   // (instead of the version that comes pre-bundled with VSCode itself).
   "typescript.tsdk": "node_modules/typescript/lib",
 
-  // Convert all ESLint rules to warnings. This provides a nice delineation where all errors (red)
+  // Convert all ESLint errors to warnings. This provides a nice delineation where all errors (red)
   // come from the TypeScript compiler and all warnings (yellow) come from ESLint.
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
 
