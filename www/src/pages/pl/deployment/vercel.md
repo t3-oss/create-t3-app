@@ -26,15 +26,15 @@ Vercel prawdopodobnie automatycznie skonfiguruje za Ciebie komendy budowania i f
 
 ![Nowy projekt na stronie Vercel](/images/vercel-new-project.webp)
 
-1. Importuj repozytorium z GitHuba z projektem.
+2. Importuj repozytorium z GitHuba z projektem.
 
 ![Importuj repozytorium](/images/vercel-import-project.webp)
 
-1. Dodaj zmienne środowiskowe.
+3. Dodaj zmienne środowiskowe.
 
 ![Dodaj zmienne środowiskowe](/images/vercel-env-vars.webp)
 
-1. Kliknij **Deploy**. Od teraz, kiedykolwiek wrzucisz zmianę w kodzie w repozytorium, Vercel automatycznie opublikuje twoją aplikację!
+4. Kliknij **Deploy**. Od teraz, kiedykolwiek wrzucisz zmianę w kodzie w repozytorium, Vercel automatycznie opublikuje twoją aplikację!
 
 ## Korzystanie z Vercel CLI
 
