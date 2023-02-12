@@ -1,6 +1,5 @@
 ---
 import type { MarkdownHeading } from "astro";
-import clsx from "clsx";
 import { getIsRtlFromUrl } from "../../languages";
 
 export interface Props {
@@ -53,12 +52,12 @@ const isRtl = getIsRtlFromUrl(pathname);
         return (
           <li
             data-components={dataComponentType || null}
-            class={clsx(
+            class:list={[
               "w-full list-none border-t3-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-t3-purple-300/50",
               isRtl
                 ? ["border-r-2", depth === 2 ? "pr-2" : "pr-4"]
                 : ["border-l-2", depth === 2 ? "pl-2" : "pl-4"],
-            )}
+            ]}
           >
             <a
               class="text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100"
