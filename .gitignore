@@ -34,7 +34,6 @@ yarn-error.log*
 
 # MISC
 .idea
-.turbo/
 .cache/
 .next/
 .nuxt/
