@@ -1,7 +1,6 @@
 ---
 import * as CONFIG from "../../config";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
-import clsx from "clsx";
 
 export interface Props {
   editHref: string;
@@ -52,10 +51,10 @@ const isLangEN = getLanguageFromURL(pathname) === "en";
     </li>
 
     <li
-      class={clsx(
+      class:list={[
         "hidden text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100",
         isLangEN && "md:block",
-      )}
+      ]}
     >
       <a
         class="flex items-center gap-2"

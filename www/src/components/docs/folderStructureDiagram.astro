@@ -68,7 +68,19 @@
     if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
   };
 
-  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
+  const getSelectedFromPackagesQueryParam = () => {
+    const selectedParam = new URLSearchParams(window.location.search).get(
+      "packages",
+    );
+
+    if (selectedParam === null) {
+      return ["nextauth", "prisma", "tailwind", "trpc"];
+    }
+
+    return selectedParam.split(",");
+  };
+
+  renderDiagram(getSelectedFromPackagesQueryParam());
 </script>
 
 <pre
