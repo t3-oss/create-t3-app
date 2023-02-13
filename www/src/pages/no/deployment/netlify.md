@@ -1,24 +1,24 @@
 ---
 title: Netlify
-description: Deploying to Netlify
+description: Utrulling med Netlify
 layout: ../../../layouts/docs.astro
 ---
 
-Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
+Netlify er en alternativ distribusjonsleverandør på samme måte som Vercel. Se [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for et eksempel-repo basert på dette dokumentet.
 
-## Why Host on Netlify
+## Hvorfor hoste på Netlify
 
-Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases this will be true and it won't make sense to deviate from the standard path.
+Konvensjonell visdom tilsier at Vercel har en overlegen støtte for Next.js fordi Vercel utvikler Next.js. De har en egeninteresse i å sikre at plattformen er innstilt for optimal ytelse og best utvikleropplevelse med Next.js. For de fleste brukstilfeller vil dette være sant, og det vil ikke være fornuftig å avvike fra standardbanen.
 
-There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+Det er også en felles oppfatning at mange Next.js-funksjoner kun støttes på Vercel. Selv om det er sant at nye Next.js-funksjoner vil bli testet og støttet på Vercel på utgivelsestidspunktet som standard, er det også slik at andre leverandører som Netlify raskt vil [implementere og gi ut støtte](https://www.netlify.com/blog/deploy-nextjs-13/) for [stabile Next.js-funksjoner](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
-There are relative pros and cons for all deployment providers since no single host can have the best support for all use cases. For example, Netlify built their own [custom Next.js runtime](https://github.com/netlify/next-runtime) for Netlify's Edge Functions (which run on Deno Deploy) and [maintain unique middleware to access and modify HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
+Det er noen fordeler og ulemper for alle distribusjonsleverandører siden ingen enkelt leverandør kan ha den beste støtten for alle brukstilfeller. For eksempel bygde Netlify sin egen [tilpassede Next.js kjøretid](https://github.com/netlify/next-runtime) for Netlifys Edge-funksjoner (som kjører på Deno Deploy) og [opprettholder unik mellomvare for å få tilgang til og endre HTTP-responser](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
-> _NOTE: To track the status of non-stable Next 13 features see [Using the Next 13 `app` directory on Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
+> _MERK: For å følge statusen til ustabile Neste 13-funksjoner, se [Bruk av Next 13 `app` -katalogen på Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
 
-## Project Configuration
+## Prosjektkonfigurasjon
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures forked and cloned versions of the project will be easier to reproducibly deploy.
+Det er mange måter å konfigurere byggeinstruksjonene på, inkludert direkte gjennom Netlify CLI- eller Netlify-dashbordet. Selv om det ikke er nødvendig, er det tilrådelig å opprette og inkludere en [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) fil. Dette sikrer at forka og klonede versjoner av prosjektet blir enklere å rulle ut på en reproduserbar måte.
 
 ```toml
 [build]
@@ -26,60 +26,60 @@ There are numerous ways to configure your build instructions including directly 
   publish = ".next"
 ```
 
-## Using the Netlify Dashboard
+## Bruk av Netlify-dashbordet
 
-1. Push your code to a GitHub repository and sign up for [Netlify](https://app.netlify.com/signup). After you've created an account, click on **Add new site** and then **Import an existing project**.
+1. Push koden din til et GitHub-repo og registrer deg for [Netlify](https://app.netlify.com/signup). Etter at du har opprettet en konto, klikker du på **Add new site** og deretter **Import an existing project**.
 
-![New project on Netlify](/images/netlify-01-new-project.webp)
+![Nytt prosjekt på Netlify](/images/netlify-01-new-project.webp)
 
-2. Connect your Git provider.
+2. Koble til Git-leverandøren din.
 
-![Import repository](/images/netlify-02-connect-to-git-provider.webp)
+![Importer repository](/images/netlify-02-connect-to-git-provider.webp)
 
-3. Select your project's repository.
+3. Velg prosjektets repository.
 
-![Select your project's repository](/images/netlify-03-pick-a-repository-from-github.webp)
+![Velg prosjektets repository](/images/netlify-03-pick-a-repository-from-github.webp)
 
-4. Netlify will detect if you have a `netlify.toml` file and automatically configure your build command and publish directory.
+4. Netlify vil oppdage om du har en `netlify.toml`-fil og automatisk konfigurere build-kommandoen og publiseringskatalogen.
 
-![Nextjs build settings](/images/netlify-04-configure-build-settings.webp)
+![Nextjs byggeinnstillinger](/images/netlify-04-configure-build-settings.webp)
 
-5. Click **Show advanced** and then **New variable** to add your environment variables.
+5. Klikk **Show advanced** og deretter **New variable** for å legge til miljøvariablene dine.
 
-![Add environment variables](/images/netlify-05-env-vars.webp)
+![Legg til miljøvariabler](/images/netlify-05-env-vars.webp)
 
-6. Click **Deploy site**, wait for the build to complete, and view your new site.
+6. Klikk på **Deploy site**, vent til bygget er fullført, og se det nye nettstedet ditt.
 
-## Using the Netlify CLI
+## Bruk av Netlify CLI
 
-To deploy from the command line you must first push your project to a GitHub repo and [install the Netlify CLI](https://docs.netlify.com/cli/get-started/). You can install `netlify-cli` as a project dependency or install it globally on your machine with the following command:
+For å rulle ut fra kommandolinjen må du først pushe prosjektet til et GitHub-repo og [installere Netlify CLI](https://docs.netlify.com/cli/get-started/). Du kan installere `netlify-cli` som en prosjektavhengighet eller installere den globalt på maskinen din med følgende kommando:
 
 ```bash
 npm i -g netlify-cli
 ```
 
-To test your project locally, run the [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) command and open [`localhost:8888`](http://localhost:8888/) to view your locally running Netlify app:
+For å teste prosjektet ditt lokalt, kjør [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) kommando og åpne [`localhost:8888`](http://localhost:8888/) for å se din lokalt kjørende Netlify-app:
 
 ```bash
 ntl dev
 ```
 
-Run the [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) command to configure your project:
+Kjør [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) kommando for å konfigurere prosjektet:
 
 ```bash
 ntl init
 ```
 
-Import your project's environment variables from your `.env` file with [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
+Importer prosjektets miljøvariabler fra `.env`-filen din med [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
 
 ```bash
 ntl env:import .env
 ```
 
-Deploy your project with [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). You'll need to pass the `--build` flag to run the build command before deployment and the `--prod` flag to deploy to your site's main URL:
+Rull ut prosjektet ditt med [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). Du må ha med `--build`-flagget for å kjøre build-kommandoen før utrullingen og `--prod`-flagget for å rulle ut til nettstedets hoved-URL:
 
 ```bash
 ntl deploy --prod --build
 ```
 
-To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
+For å se et kjørende eksempel på Netlify, besøk [ct3a.netlify.app](https://ct3a.netlify.app/).
