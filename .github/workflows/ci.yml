@@ -6,6 +6,7 @@ name: CI
 on:
   pull_request:
     branches: ["*"]
+  merge_group:
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
