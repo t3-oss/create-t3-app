@@ -9,7 +9,7 @@ Prisma er en ORM (Object Relational Mapper) for TypeScript, som gir deg mulighet
 
 ## Prisma Client
 
-Prisma-klienten blir instansiert i `/server/db/client.ts` og eksporteres som en global variabel. Som anbefalt av Prisma-teamet som [beste praksis](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem). Vi angir, som standard, Prisma-klienten i [context](/no/usage/trpc#-servertrpccontextts). Vi anbefaler å bruke klienten via konteksten i stedet for å importere klienten i hver fil.
+Prisma-klienten blir instansiert i `/server/db.ts` og eksporteres som en global variabel. Som anbefalt av Prisma-teamet som [beste praksis](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem). Vi angir, som standard, Prisma-klienten i [context](/no/usage/trpc#-servertrpccontextts). Vi anbefaler å bruke klienten via konteksten i stedet for å importere klienten i hver fil.
 
 ## Skjema
 

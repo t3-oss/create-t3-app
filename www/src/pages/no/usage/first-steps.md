@@ -31,6 +31,6 @@ Du skal nå kunne logge på.
 
 ## Neste Steg
 
-- Hvis applikasjonen din bruker tRPC, ta en titt på `src/pages/index.tsx` og `src/server/trpc/router/example.ts` for å se hvordan tRPC-spørringer fungerer.
+- Hvis applikasjonen din bruker tRPC, ta en titt på `src/pages/index.tsx` og `src/server/api/routers/example.ts` for å se hvordan tRPC-spørringer fungerer.
 - Ta en titt på dokumentasjonen for `create-t3-app` samt dokumentasjonen for pakkene applikasjonen din inkluderer.
 - Bli med i [Discord](https://t3.gg/discord) og gi oss en stjerne på [GitHub](https://github.com/t3-oss/create-t3-app)! :)
