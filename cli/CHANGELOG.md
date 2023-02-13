@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.1
+
+### Patch Changes
+
+- [#1187](https://github.com/t3-oss/create-t3-app/pull/1187) [`e111fb5`](https://github.com/t3-oss/create-t3-app/commit/e111fb5cb816de9b2d87bdf4ffcf84f446fd2023) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - remove old env files
+
 ## 7.5.0
 
 ### Minor Changes

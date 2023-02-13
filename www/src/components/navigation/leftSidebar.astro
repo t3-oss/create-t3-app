@@ -1,5 +1,4 @@
 ---
-import clsx from "clsx";
 import { getIsRtlFromUrl } from "../../languages";
 import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
 import Search from "./Search";
@@ -71,13 +70,13 @@ if (langCode !== "en") {
         <li>
           <div>
             <h2
-              class={clsx(
+              class:list={[
                 "pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg",
                 {
                   // mobile menu on landing page
                   "text-slate-50": isLanding,
                 },
-              )}
+              ]}
             >
               {header}
             </h2>
@@ -90,13 +89,13 @@ if (langCode !== "en") {
                     <a
                       href={url}
                       aria-current={isActive ? "page" : false}
-                      class={clsx([
+                      class:list={[
                         "text-md block py-2 text-t3-purple-800 transition-colors [padding-inline-start:16px] hover:border-t3-purple-300/50 hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-100",
                         isActive
                           ? "border-t3-purple-300 bg-t3-purple-300/30 font-medium dark:bg-t3-purple-300/20"
                           : "border-t3-purple-300/20",
                         isRtl ? "border-r-2" : "border-l-2",
-                      ])}
+                      ]}
                     >
                       <span>{child.text}</span>
                       {!child.isTranslated && langCode !== "en" && (

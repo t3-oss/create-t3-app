@@ -1,6 +1,5 @@
 ---
 import { fetchGithub } from "../../utils/fetchGithub";
-import clsx from "clsx";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 
 type GithubRepoResponse = {
@@ -31,7 +30,7 @@ const isRtl = getIsRtlFromUrl(pathname);
 >
   <div
     id="github-star"
-    class={clsx(
+    class:list={[
       "relative ltr:mr-[.33em] rtl:ml-[.33em] hidden md:flex items-center bg-clip-padding rounded-lg no-underline border-t3-purple-200/50 group-hover:border-t3-purple-200/75 bg-t3-purple-200/50 dark:bg-t3-purple-200/10 border dark:border-t3-purple-200/20 dark:group-hover:bg-t3-purple-200/10 group-hover:bg-t3-purple-200/75 dark:group-hover:border-t3-purple-200/50 transition-colors duration-300 py-1 px-2 text-slate-800 dark:text-slate-100",
       [
         /** triangle arrow */
@@ -41,7 +40,7 @@ const isRtl = getIsRtlFromUrl(pathname);
         !isRtl &&
           "after:right-[calc(-0.5em-1px)] after:border-r-0 after:border-l-t3-purple-200/50 after:group-hover:border-l-t3-purple-200/75 dark:after:border-l-t3-purple-200/20 dark:after:group-hover:border-l-t3-purple-200/50",
       ],
-    )}
+    ]}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
