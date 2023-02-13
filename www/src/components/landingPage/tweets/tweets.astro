@@ -84,9 +84,6 @@ let tweets: Tweet[] = [
     quotes: 0,
   },
 ];
-
-const THREE_HOURS = 3 * 60 * 60;
-Astro.response.headers.set("Cache-Control", `public, max-age=${THREE_HOURS}`);
 ---
 
 <PageSection
