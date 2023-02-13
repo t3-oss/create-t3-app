@@ -39,15 +39,7 @@ module.exports = {
         "no-unused-vars": [
           "error",
           { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
-        ],
-        "@typescript-eslint/no-misused-promises": [
-          2,
-          {
-            "checksVoidReturn": {
-              "attributes": false
-            }
-          }
-        ]
+        ],       
       },
     },
   ],
