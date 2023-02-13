@@ -19,13 +19,14 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/no-misused-promises": [
-          2,
-          {
-            "checksVoidReturn": {
-              "attributes": false
-            }
-          }
-        ]
+      "error",
+      {
+        "checksVoidReturn": {
+          // Allow `void` return type for JSX attributes such as `onClick` / `onSubmit`
+          "attributes": false
+        }
+      }
+    ]
   }
   
 }
