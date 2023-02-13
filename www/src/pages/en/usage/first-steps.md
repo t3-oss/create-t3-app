@@ -35,7 +35,7 @@ The following extensions are recommended for an optimal developer experience. Th
 
 - [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
 - [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
-- [Prettier Extension ](https://prettier.io/docs/en/editors.html)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
 ## Next Steps
 
