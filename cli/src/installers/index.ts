@@ -4,7 +4,6 @@ import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
-import { importAliasInstaller } from "~/installers/importAlias.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
@@ -14,7 +13,6 @@ export const availablePackages = [
   "tailwind",
   "trpc",
   "envVariables",
-  "importAlias",
 ] as const;
 export type AvailablePackages = typeof availablePackages[number];
 
@@ -24,7 +22,6 @@ export interface InstallerOptions {
   noInstall: boolean;
   packages?: PkgInstallerMap;
   projectName?: string;
-  importAlias: string;
 }
 
 export type Installer = (opts: InstallerOptions) => void;
@@ -58,9 +55,5 @@ export const buildPkgInstallerMap = (
   envVariables: {
     inUse: true,
     installer: envVariablesInstaller,
-  },
-  importAlias: {
-    inUse: true,
-    installer: importAliasInstaller,
   },
 });

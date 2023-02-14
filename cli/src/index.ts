@@ -6,6 +6,7 @@ import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/git.js";
+import { setImportAlias } from "~/helpers/setImportAlias.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
@@ -56,6 +57,11 @@ const main = async () => {
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
+
+  // update import alias in any generated files if not using the default
+  if (importAlias !== "~/") {
+    await setImportAlias(projectDir, importAlias);
+  }
 
   if (!noInstall) {
     await installDependencies({ projectDir });
