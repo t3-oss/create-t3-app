@@ -45,7 +45,7 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
-    importAlias: "@/",
+    importAlias: "~/",
   },
 };
 

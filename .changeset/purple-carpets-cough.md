@@ -2,4 +2,4 @@
 "create-t3-app": patch
 ---
 
-Use @/\* import alias
+Use ~/\* import alias

@@ -8,11 +8,11 @@ export const importAliasInstaller: Installer = ({
   importAlias,
 }) => {
   const normalizedImportAlias = importAlias
-    .replace(/\*/g, "") // remove any wildcards (@/* -> @/)
-    .replace(/[^\/]$/, "$&/"); // ensure trailing slash (@ -> @/)
+    .replace(/\*/g, "") // remove any wildcards (~/* -> ~/)
+    .replace(/[^\/]$/, "$&/"); // ensure trailing slash (@ -> ~/)
 
   // update import alias in any files if not using the default
-  if (importAlias !== "@/") {
+  if (importAlias !== "~/") {
     const files = glob.sync("**/*", {
       cwd: projectDir,
       dot: true,
@@ -27,7 +27,7 @@ export const importAliasInstaller: Installer = ({
           filePath,
           fs
             .readFileSync(filePath, "utf8")
-            .replace(`@/`, normalizedImportAlias),
+            .replace(`~/`, normalizedImportAlias),
         );
       }
     });
