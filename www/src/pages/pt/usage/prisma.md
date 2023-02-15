@@ -25,7 +25,7 @@ O banco de dados padrão é um banco de dados SQLite, que é ótimo para desenvo
 
 ## Propagar seu banco de dados
 
-[Propagar seu banco de dados](https://www.prisma.io/docs/guides/database/seed-database) é uma ótima maneira de preencher rapidamente seu banco de dados com dados de teste para ajudá-lo a começar. Para configurar a propagação, você precisará criar um arquivo `seed.ts` no diretório `/prisma` e, em seguida, adicionar um script `seed` ao seu arquivo `package.json`. Você também precisará de algum executor de TypeScript que possa executar o script de semente. Recomendamos [tsx](https://github.com/esbuild-kit/tsx), que é um executor TypeScript de alto desempenho que usa esbuild e não requer nenhuma configuração ESM, mas `ts-node` ou outros executores trabalho também.
+[Propagar seu banco de dados](https://www.prisma.io/docs/guides/database/seed-database) é uma ótima maneira de preencher rapidamente seu banco de dados com dados de teste para ajudá-lo a começar. Para configurar a propagação, você precisará criar um arquivo `seed.ts` no diretório `/prisma` e, em seguida, adicionar um script `seed` ao seu arquivo `package.json`. Você também precisará de algum compilador de TypeScript que possa executar o script de seed. Recomendamos [tsx](https://github.com/esbuild-kit/tsx), que é um compilador TypeScript de alto desempenho que usa esbuild e não requer nenhuma configuração ESM, mas `ts-node` ou outros compiladores funcionam também.
 
 ```jsonc:package.json
 {
