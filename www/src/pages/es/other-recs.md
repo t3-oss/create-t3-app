@@ -15,7 +15,7 @@ _**Nota del editor**_: Las librerías de administración de estado pueden ser ex
 
 ### Zustand
 
-**Por no volver a usar Redux nunca más**
+**Para no volver a usar Redux nunca más**
 
 El "Redux moderno y simple" que no sabías que necesitabas. Siempre se puede confiar en [Poimandres](https://github.com/pmndrs). Puede crear todo, desde aplicaciones de videollamadas hasta juegos y servidores con esta pequeña librería.
 
@@ -24,7 +24,7 @@ El "Redux moderno y simple" que no sabías que necesitabas. Siempre se puede con
 
 ### Jotai
 
-**Por nunca volver a usar Context**
+**Para nunca volver a usar Context**
 
 Para un enfoque más atómico, Jotai es difícil de superar. También por [Poimandres](https://github.com/pmndrs), Jotai te permite definir singletons que se sienten como estado de uso global. Una excelente opción para comportamientos con estado que todavía no necesiten una máquina de estado.
 
@@ -66,7 +66,7 @@ Crea declarativamente una librería de interfaz de usuario con diferentes variac
 
 Para cuando necesites animaciones en tu aplicación, aquí están nuestras recomendaciones.
 
-### Animación automática
+### AutoAnimate
 
 **Para animaciones con una sola línea de código**
 
@@ -76,7 +76,7 @@ La mayoría de las librerías de animación intentan satisfacer todos los casos 
 - [GitHub de AutoAnimate](https://github.com/formkit/auto-animate)
 - [Ejemplo de un Componente con AutoAnimate](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
-### Movimiento del enmarcador
+### Framer Motion
 
 **Para animaciones complejas con código declarativo**
 
@@ -91,7 +91,7 @@ Framer Motion proporciona una sintaxis declarativa simple y te permite escribir 
 
 **Para alojar tu aplicación**
 
-Vercel tomó el infierno de los despligues web y lo convirtió en una integración de GitHub de configurar y olvidar. Hemos escalado a cientos de miles de usuarios sin problemas. Impulsado por AWS, simplemente una interfaz mucho mejor :)
+Vercel tomó el infierno de los despliegues web y lo convirtió en una integración de GitHub de configurar y olvidar. Hemos escalado a cientos de miles de usuarios sin problemas. Impulsado por AWS, simplemente una interfaz mucho mejor :)
 
 - [Página de inicio de Vercel](https://vercel.com/)
 - [Guía Create T3 App para desplegar en Vercel](/es/deployment/vercel)
@@ -141,9 +141,9 @@ Los datos de los usuarios son muy valiosos cuando creas una aplicación. Aquí h
 
 ### Plausible
 
-¿Necesitas análisis? Plausible es una de las formas más rápidas de obtenerlos. Súper mínimo. Incluso tiene un [complemento simple para Next.js](https://plausible.io/docs/proxy/guides/nextjs).
+¿Necesitas análisis? Plausible es una de las formas más rápidas de obtenerlos. Súper minimalista. Incluso tiene un [complemento simple para Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
-- [Página de inicio plausible](https://plausible.io/)
+- [Página de inicio de Plausible](https://plausible.io/)
 
 ### Umami
 

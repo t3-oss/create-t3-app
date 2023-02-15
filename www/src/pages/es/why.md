@@ -7,13 +7,13 @@ lang: es
 
 Empezamos create-t3-app porque [Theo](https://twitter.com/t3dotgg) se negó a hacer una plantilla de sus tecnologías favoritas. Inspirándose en create-next-app, [CLI de Astro](https://astro.build) y un amor general por la seguridad de tipos, el equipo de create-t3-app trabajó arduamente para crear el mejor punto de partida posible para los nuevos proyectos de T3 Stack.
 
-Si está interesado en usar Next.js de forma segura, este es el lugar para comenzar. Si tienes curiosidad acerca de alguna de las opciones tecnológicas específicas que tomamos, sigue leyendo :)
+Si estás interesado en usar Next.js de forma segura, este es el lugar para comenzar. Si tienes curiosidad acerca de alguna de las opciones tecnológicas específicas que tomamos, sigue leyendo :)
 
 ## ¿Por qué TypeScript?
 
-Javascript es difícil. ¿Por qué agregar más reglas?
+JavaScript es difícil. ¿Por qué agregar más reglas?
 
-Creemos firmemente que la experiencia que brinda TypeScript te ayudará a ser un mejor desarrollador. Proporciona retroalimentación en vivo a medida que escribes tu código definiendo los tipos de datos esperados, y proporciona un autocompletado útil en tu editor o te indica con líneas onduladas rojas si estás tratando de acceder a una propiedad que no existe o tratando de pasar un valor del tipo incorrecto, que de otro modo tendrías que depurar más adelante. Ya sea que seas nuevo en el desarrollo web o un profesional experimentado, el "rigor" de TypeScript te brindará una experiencia menos frustrante y más consistente que el estándar JS.
+Creemos firmemente que la experiencia que brinda TypeScript te ayudará a ser un mejor desarrollador. Proporciona retroalimentación en vivo a medida que escribes tu código definiendo los tipos de datos esperados, y proporciona un autocompletado útil en tu editor o te grita con líneas onduladas rojas si estás tratando de acceder a una propiedad que no existe o tratando de pasar un valor del tipo incorrecto, que de otro modo tendrías que depurar más adelante. Ya sea que seas nuevo en el desarrollo web o un profesional experimentado, el "rigor" de TypeScript te brindará una experiencia menos frustrante y más consistente que JS estándar.
 
 La seguridad de tipos te hace más rápido. Si no estás convencido, [podrías estar usando TypeScript de forma incorrecta...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 

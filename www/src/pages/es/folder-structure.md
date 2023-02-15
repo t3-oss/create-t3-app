@@ -61,7 +61,7 @@ Más abajo, la descripción de cada carpeta indica su propósito y si solo se in
 
 ### `prisma`
 
-La carpeta `prisma` contiene el archivo `schema.prisma` que se utiliza para configurar la conexión de la base de datos y el esquema de la base de datos. También es la ubicación para almacenar archivos de migración y/o scripts que inyectan valores iniciales a la base de datos (seed scripts), si se utilizan. Consulta [uso de Prisma](/es/usage/prisma) para obtener más información.
+La carpeta `prisma` contiene el archivo `schema.prisma` que se utiliza para configurar la conexión de la base de datos y su esquema. También es la ubicación para almacenar archivos de migración y/o scripts que inyectan valores iniciales a la base de datos (seed scripts), si se utilizan. Consulta [uso de Prisma](/es/usage/prisma) para obtener más información.
 
 <sub>(Con Prisma)</sub>
 

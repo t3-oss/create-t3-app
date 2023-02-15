@@ -7,17 +7,17 @@ lang: es
 
 Prisma es un ORM para TypeScript, que te permite definir el esquema de tu base de datos y los modelos en un archivo `schema.prisma`, y luego generar un cliente seguro en tipos que se puede usar para interactuar con tu base de datos desde tu backend.
 
-## Cliente Prisma
+## Prisma Client
 
-Ubicado en `/server/db/client.ts`, el cliente prisma se instancia como una variable global (como se recomienda como [mejor práctica](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) por el equipo de Prisma) y exportado para ser utilizado en sus rutas API. Incluimos el cliente Prisma en el [contexto](/es/usage/trpc#-servertrpccontextts) de tRPC de forma predeterminada y recomendamos usar esto en lugar de importarlo por separado en cada archivo.
+Ubicado en `/server/db/client.ts`, el Prisma Client se instancia como una variable global (como se recomienda como [mejor práctica](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) por el equipo de Prisma) y exportado para ser utilizado en tus rutas API. Incluimos el Prisma Client en el [contexto](/es/usage/trpc#-servertrpccontextts) de tRPC de forma predeterminada y recomendamos usar esto en lugar de importarlo por separado en cada archivo.
 
 ## Esquema
 
-Encontrarás el archivo de esquema de prisma en `/prisma/schema.prisma`. Este archivo es donde defines el esquema y los modelos de tu base de datos, y se usa al generar el cliente Prisma.
+Encontrarás el archivo de esquema de Prisma en `/prisma/schema.prisma`. Este archivo es donde defines el esquema y los modelos de tu base de datos, y se usa al generar el cliente Prisma.
 
 ### Con NextAuth.js
 
-Cuando seleccionas NextAuth.js en combinación con prisma, el archivo de esquema se genera y se configura para ti con los valores recomendados para los modelos `User`, `Session`, `Account` y `VerificationToken`, según la [documentación de NextAuth.js](https://next-auth.js.org/adapters/prisma).
+Cuando seleccionas NextAuth.js en combinación con Prisma, el archivo de esquema se genera y se configura para ti con los valores recomendados para los modelos `User`, `Session`, `Account` y `VerificationToken`, según la [documentación de NextAuth.js](https://next-auth.js.org/adapters/prisma).
 
 ## Base de datos predeterminada
 

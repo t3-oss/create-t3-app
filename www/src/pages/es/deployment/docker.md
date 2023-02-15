@@ -14,9 +14,9 @@ Ten en cuenta que Next.js requiere un proceso diferente para compilar (disponibl
 - `DATABASE_URL` (utilizado por el servidor)
 - `NEXT_PUBLIC_CLIENTVAR` (utilizado por el cliente)
 
-### 1. Siguiente configuración
+### 1. Configuración de Next.js
 
-En tu [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), agrega la configuración de salida `independiente` para [reducir el tamaño de la imagen aprovechando automáticamente los seguimientos de salida](https://nextjs.org/docs/advanced-features/output-file-tracing):
+En tu [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), agrega la configuración de output `standalone` para [reducir el tamaño de la imagen aprovechando automáticamente el output tracing](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -51,7 +51,7 @@ README.md
 
 ### 3. Crear archivo Docker
 
-> Como no estamos introduciendo las variables de entorno del servidor en nuestro contenedor, la [validación del esquema de entorno](/en/usage/env-variables) fallará. Para evitar esto, debemos agregar un indicador `SKIP_ENV_VALIDATION=1` al comando de compilación para que los esquemas env no se validen en el momento de la compilación.
+> Como no estamos introduciendo las variables de entorno del servidor en nuestro contenedor, la [validación del esquema de entorno](/en/usage/env-variables) fallará. Para evitar esto, debemos agregar un indicador `SKIP_ENV_VALIDATION=1` al comando de compilación para que las variables de entorno no se validen en el momento de la compilación.
 
 <details>
     <summary>

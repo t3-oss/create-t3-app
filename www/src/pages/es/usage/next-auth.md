@@ -71,7 +71,7 @@ Cuando utilices NextAuth.js con tRPC, puedes crear procedimientos protegidos reu
 
 Esto se hace en un proceso de dos pasos:
 
-1. Toma la sesión de los encabezados de la solicitud utilizando la función [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). No te preocupes, esta función es segura: el nombre incluye `unstable` (_inestable_) solo porque la implementación de la API podría cambiar en el futuro. La ventaja de usar `unstable_getServerSession` en lugar de la función `getSession` regular es que es una función solo del lado del servidor y no activa llamadas innecesarias. `create-t3-app` crea una función de ayuda que abstrae a esta API peculiar.
+1. Toma la sesión de las cabeceras de la solicitud utilizando la función [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). No te preocupes, esta función es segura: el nombre incluye `unstable` (_inestable_) solo porque la implementación de la API podría cambiar en el futuro. La ventaja de usar `unstable_getServerSession` en lugar de la función `getSession` regular es que es una función solo del lado del servidor y no activa llamadas innecesarias. `create-t3-app` crea una función de ayuda que abstrae a esta API peculiar.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -131,7 +131,7 @@ const userRouter = router({
 
 ## Uso con Prisma
 
-Hacer que NextAuth.js funcione con Prisma requiere una gran cantidad de [configuración inicial](https://next-auth.js.org/adapters/models/). `create-t3-app` maneja todo esto para ti, y si seleccionas Prisma y NextAuth.js, obtendrás un sistema de autenticación completamente funcional con todos los modelos requeridos preconfigurados. Creamos tu aplicación con un proveedor de Discord Oauth preconfigurado, que elegimos porque es uno de los más fáciles de comenzar, solo proporciona tus llaves en el `.env` y listo. Sin embargo, puedes agregar fácilmente más proveedores siguiendo la documentación de [NextAuth.JS](https://next-auth.js.org/providers/). Ten en cuenta que ciertos proveedores requieren que se agregen campos adicionales a ciertos modelos. Te recomendamos que leas la documentación del proveedor que deseas utilizar para asegurarte de tener todos los campos requeridos.
+Hacer que NextAuth.js funcione con Prisma requiere una gran cantidad de [configuración inicial](https://next-auth.js.org/adapters/models/). `create-t3-app` maneja todo esto para ti, y si seleccionas Prisma y NextAuth.js, obtendrás un sistema de autenticación completamente funcional con todos los modelos requeridos preconfigurados. Creamos tu aplicación con un proveedor de Discord Oauth preconfigurado, que elegimos porque es uno de los más fáciles de comenzar, solo proporciona tus tokens en el `.env` y listo. Sin embargo, puedes agregar fácilmente más proveedores siguiendo la documentación de [NextAuth.JS](https://next-auth.js.org/providers/). Ten en cuenta que ciertos proveedores requieren que se agregen campos adicionales a ciertos modelos. Te recomendamos que leas la documentación del proveedor que deseas utilizar para asegurarte de tener todos los campos requeridos.
 
 ### Agregar nuevos campos a tus modelos
 
@@ -160,7 +160,7 @@ El uso de NextAuth.js con el middleware Next.js [requiere el uso de la estrategi
 1. Dirígete a [la sección de aplicaciones en el portal del desarrollador de Discord](https://discord.com/developers/applications) y haz clic en "New Application"
 2. En el menú de configuración, dirígite a "OAuth2 => General"
 
-- Copia el ID del cliente y pégalo en `DISCORD_CLIENT_ID` en `.env`.
+- Copia el Client ID y pégalo en `DISCORD_CLIENT_ID` en `.env`.
 - En Client Secret, haz clic en "Reset Secret" y copia ese string en `DISCORD_CLIENT_SECRET` en `.env`. Ten cuidado ya que no podrás volver a ver este valor secreto, y restablecerlo hará que el existente expire.
 - Haz clic en "Add Redirect" y pega en `<app url>/api/auth/callback/discord` (Ejemplo para desarrollo local: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Guarda tus cambios

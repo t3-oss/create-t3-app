@@ -7,7 +7,7 @@ lang: es
 
 ## ¿Qué es Tailwind CSS?
 
-Tailwind CSS es un pequeño framework, con [utilidad de primero](https://tailwindcss.com/docs/utility-first), de CSS para construir diseños personalizados, sin el cambio de contexto que requiere el CSS normal. Es puramente un framework de CSS y no proporciona componentes o lógica preconstruida, y proporciona [un conjunto muy diferente de beneficios](https://www.youtube.com/watch?v=CQuTF-bkOgc) en comparación con una librería de componentes como Material UI.
+Tailwind CSS es un pequeño framework, [_utility-first_](https://tailwindcss.com/docs/utility-first), de CSS para construir diseños personalizados, sin el cambio de contexto que requiere el CSS normal. Es puramente un framework de CSS y no proporciona componentes o lógica preconstruida, y proporciona [un conjunto muy diferente de beneficios](https://www.youtube.com/watch?v=CQuTF-bkOgc) en comparación con una librería de componentes como Material UI.
 
 Hace que CSS sea increíblemente fácil y rápido de escribir, como se muestra en el siguiente ejemplo:
 
@@ -74,11 +74,11 @@ Asegúrate de tener complementos de editor para Tailwind CSS instalados para mej
 
 ### Formateo
 
-Las clases CSS de Tailwind pueden ser fácilmente desordenadas, por lo que es imprescindible un formateo para las clases. [El complemento de Prettier de Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) clasifica las clases en el [orden recomendado](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) para que las clases coincidan con el paquete (_bundle_) CSS generado. Al seleccionar Tailwind CSS en la CLI, instalaremos y configuraremos esto para ti.
+Las clases CSS de Tailwind pueden volverse un poco caóticas fácilmente, por lo que es imprescindible un formateo para las clases. [El complemento de Prettier de Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) clasifica las clases en el [orden recomendado](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) para que las clases coincidan con el paquete (_bundle_) CSS generado. Al seleccionar Tailwind CSS en la CLI, instalaremos y configuraremos esto para ti.
 
 ### Aplicando clases condicionalmente
 
-Agregar condicionalmente clases con operadores terciarios puede ser muy desordenado y difícil de leer. Estos paquetes ayudan a organizar tus clases cuando se usa lógica condicional.
+Agregar condicionalmente clases con operadores ternarios puede ser muy desordenado y difícil de leer. Estos paquetes ayudan a organizar tus clases cuando se usa lógica condicional.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
