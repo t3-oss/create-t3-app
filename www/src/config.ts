@@ -29,7 +29,7 @@ export const KNOWN_LANGUAGES = {
   // sv: "Svenska",
   ar: "العربية",
   en: "English",
-  es: "🇪🇸 Español",
+  es: "Español",
   fr: "Français",
   pt: "Português",
   ru: "Русский",
@@ -157,6 +157,7 @@ export const SIDEBAR: Sidebar = {
     ],
     Deployment: [
       { text: "Vercel", link: "es/deployment/vercel" },
+      { text: "Netlify", link: "es/deployment/netlify" },
       { text: "Docker", link: "es/deployment/docker" },
     ],
   },
