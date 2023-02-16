@@ -29,6 +29,7 @@ export const KNOWN_LANGUAGES = {
   // sv: "Svenska",
   ar: "العربية",
   en: "English",
+  es: "Español",
   fr: "Français",
   pt: "Português",
   ru: "Русский",
@@ -132,6 +133,32 @@ export const SIDEBAR: Sidebar = {
       { text: "Vercel", link: "en/deployment/vercel" },
       { text: "Netlify", link: "en/deployment/netlify" },
       { text: "Docker", link: "en/deployment/docker" },
+    ],
+  },
+  es: {
+    "Create T3 App": [
+      { text: "Introducción", link: "es/introduction" },
+      { text: "¿Por qué CT3A?", link: "es/why" },
+      { text: "Instalación", link: "es/installation" },
+      { text: "Estructura de Carpetas", link: "es/folder-structure" },
+      { text: "Preguntas Frecuentes", link: "es/faq" },
+      { text: "Colección T3", link: "es/t3-collection" },
+      { text: "Otras Recomendaciones", link: "es/other-recs" },
+    ],
+    Usage: [
+      { text: "Primeros Pasos", link: "es/usage/first-steps" },
+      { text: "Next.js", link: "es/usage/next-js" },
+      { text: "TypeScript", link: "es/usage/typescript" },
+      { text: "tRPC", link: "es/usage/trpc" },
+      { text: "Prisma", link: "es/usage/prisma" },
+      { text: "NextAuth.js", link: "es/usage/next-auth" },
+      { text: "Variables de Entorno", link: "es/usage/env-variables" },
+      { text: "Tailwind CSS", link: "es/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "es/deployment/vercel" },
+      { text: "Netlify", link: "es/deployment/netlify" },
+      { text: "Docker", link: "es/deployment/docker" },
     ],
   },
   pl: {
@@ -313,6 +340,11 @@ export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
   Record<OuterHeaders, string>
 > = {
+  es: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Uso",
+    Deployment: "Despliegue",
+  },
   // Translate the sidebar's "outer headers" here
   // sv: {
   //   "Create T3 App": "Create T3 App",

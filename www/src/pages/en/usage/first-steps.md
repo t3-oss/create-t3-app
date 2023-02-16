@@ -9,7 +9,7 @@ You just scaffolded a new T3 App and are ready to go. Here is the bare minimum t
 
 ## Database
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to restart the TypeScript server after doing this so that it can detect the generated types.
+If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
 
 ## Authentication
 
@@ -28,6 +28,14 @@ Of course, if you prefer to use a different auth provider, you can also use one 
 8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
 
 You should now be able to log in.
+
+## Editor Setup
+
+The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
+
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
 ## Next Steps
 
