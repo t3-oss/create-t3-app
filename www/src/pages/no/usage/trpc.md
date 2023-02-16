@@ -34,44 +34,6 @@ tRPC bruker TypeScripts _inferens_ for å automatisk utlede API-ruterens typedef
   </cite>
 </blockquote>
 
-## Filer
-
-tRPC krever mye _boilerplate_, som `create-t3-app` setter opp for deg. La oss gå gjennom filene som vil bli opprettet:
-
-### 📄 `pages/api/trpc/[trpc].ts`
-
-Dette er inngangspunktet for API-et ditt og eksponerer tRPC-ruteren. Normalt vil du ikke være borti denne filen så ofte. Men hvis du f.eks. trenger en _middleware_ for CORS eller lignende, er det nyttig å vite at den eksporterte funksjonen `createNextApiHandler` er en [Next.js API-Handler](https://nextjs.org/docs/api-routes/introduction) som mottar et [request-](https://developer.mozilla.org/en-US/docs/Web/API/Request) og et [response](https://developer.mozilla.org/en-US/docs/Web/API/Response)-objekt. Dette betyr at du kan _wrappe_ `createNextApiHandler` med hvilken som helst middleware. Se under for et [eksempel](#aktivering-av-cors) for å legge til CORS.
-
-### 📄 `server/api/trpc.ts`
-
-Denne filen er delt opp i to deler, kontekstoppretting og tRPC-initialisering:
-
-1. Vi definerer konteksten som videresendes til tRPC-prosedyrene dine. Kontekst er data som alle dine tRPC-prosedyrer vil ha tilgang til, og er et flott sted å plassere ting som databaseforbindelser, autentiseringsinformasjon, osv. I create-t3-app bruker vi to funksjoner, for å muliggjøre bruk av en undergruppe av konteksten når vi ikke har tilgang til forespørselsobjektet.
-
-- `createInnerTRPCContext`: Det er her du definerer konteksten som ikke avhenger av forespørselen, f.eks. databasetilkoblingen din. Du kan bruke denne funksjonen til [integrasjonstesting](#sample-integration-test) eller [ssg-hjelpere](https://trpc.io/docs/v10/ssg-helpers) der du ikke har et forespørselsobjekt.
-
-- `createTRPCContext`: Det er her du definerer konteksten som avhenger av forespørselen, f.eks. brukerens økt. Du ber om økten ved å bruke `opts.req`-objektet, og sender deretter økten ned til `createInnerTRPCContext`-funksjonen for å lage den endelige konteksten.
-
-2. Vi initialiserer tRPC og definerer gjenbrukbare [prosedyrer](https://trpc.io/docs/v10/procedures) og [middlewares](https://trpc.io/docs/v10/middlewares). Av konvensjon bør du ikke eksponere hele `t`-objektet, men i stedet lage gjenbrukbare prosedyrer og middleware og eksportere de.
-
-Du har sikkert lagt merke til at vi bruker `superjson` som [datatransformator](https://trpc.io/docs/v10/data-transformers). Dette sikrer at datatypene dine blir bevart når de når klienten, så hvis du for eksempel sender et `Date`-objekt til klienten så returneres et `Date`-objekt og ikke en streng slik de fleste API gjør.
-
-### 📄 `server/api/routers/*.ts`
-
-Det er her du definerer ruterne og prosedyrene for API-et din. Konvensjon tilsier at du bør [opprette separate rutere](https://trpc.io/docs/v10/router) for relaterte prosedyrer.
-
-### 📄 `server/api/root.ts`
-
-Her slår vi sammen alle underruterne definert i `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) til et enkelt app-ruter.
-
-### 📄 `utils/api.ts`
-
-Dette er inngangspunktet for tRPC på klientsiden. Her importerer du ruterens **typedefinisjonen** og oppretter tRPC-klienten, samt hooks for react-query. Ettersom vi har aktivert `superjson` som vår datatransformator på serversiden, må vi aktivere den på klientsiden også. Dette er fordi serialisert data fra _backend_ blir deserialisert på _frontend_.
-
-Du definerer tRPC [lenker](https://trpc.io/docs/v10/links) her, som kartlegger request-flyten fra klienten til serveren. Vi bruker "standard" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) som muliggjør [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), samt en [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) som gir ut request-logger som kan være nyttige under utviklingsprosessen.
-
-Til slutt eksporterer vi en [hjelpertype](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) som du kan bruke til å utlede typene dine på klientsiden.
-
 ## Hvordan bruker jeg tRPC?
 
 <div class="embed">
@@ -130,7 +92,45 @@ const UserPage = () => {
 };
 ```
 
-Du vil umiddelbart legge merke til hvor god autofullføringen og typesikkerheten er. Så snart du skriver inn `trpc.` vil ruterne dine automatisk bli foreslått. Hvis du nå velger en ruter, vil prosedyrene også vises. Hvis inndataene dine ikke samsvarer med validatoren du definerte i backend, får du en TypeScript-feil.
+Du vil umiddelbart legge merke til hvor god autofullføringen og typesikkerheten er. Så snart du skriver inn `api.` vil ruterne dine automatisk bli foreslått. Hvis du nå velger en ruter, vil prosedyrene også vises. Hvis inndataene dine ikke samsvarer med validatoren du definerte i backend, får du en TypeScript-feil.
+
+## Filer
+
+tRPC krever mye _boilerplate_, som `create-t3-app` setter opp for deg. La oss gå gjennom filene som vil bli opprettet:
+
+### 📄 `pages/api/trpc/[trpc].ts`
+
+Dette er inngangspunktet for API-et ditt og eksponerer tRPC-ruteren. Normalt vil du ikke være borti denne filen så ofte. Men hvis du f.eks. trenger en _middleware_ for CORS eller lignende, er det nyttig å vite at den eksporterte funksjonen `createNextApiHandler` er en [Next.js API-Handler](https://nextjs.org/docs/api-routes/introduction) som mottar et [request-](https://developer.mozilla.org/en-US/docs/Web/API/Request) og et [response](https://developer.mozilla.org/en-US/docs/Web/API/Response)-objekt. Dette betyr at du kan _wrappe_ `createNextApiHandler` med hvilken som helst middleware. Se under for et [eksempel](#aktivering-av-cors) for å legge til CORS.
+
+### 📄 `server/api/trpc.ts`
+
+Denne filen er delt opp i to deler, kontekstoppretting og tRPC-initialisering:
+
+1. Vi definerer konteksten som videresendes til tRPC-prosedyrene dine. Kontekst er data som alle dine tRPC-prosedyrer vil ha tilgang til, og er et flott sted å plassere ting som databaseforbindelser, autentiseringsinformasjon, osv. I create-t3-app bruker vi to funksjoner, for å muliggjøre bruk av en undergruppe av konteksten når vi ikke har tilgang til forespørselsobjektet.
+
+- `createInnerTRPCContext`: Det er her du definerer konteksten som ikke avhenger av forespørselen, f.eks. databasetilkoblingen din. Du kan bruke denne funksjonen til [integrasjonstesting](#sample-integration-test) eller [ssg-hjelpere](https://trpc.io/docs/v10/ssg-helpers) der du ikke har et forespørselsobjekt.
+
+- `createTRPCContext`: Det er her du definerer konteksten som avhenger av forespørselen, f.eks. brukerens økt. Du ber om økten ved å bruke `opts.req`-objektet, og sender deretter økten ned til `createInnerTRPCContext`-funksjonen for å lage den endelige konteksten.
+
+2. Vi initialiserer tRPC og definerer gjenbrukbare [prosedyrer](https://trpc.io/docs/v10/procedures) og [middlewares](https://trpc.io/docs/v10/middlewares). Av konvensjon bør du ikke eksponere hele `t`-objektet, men i stedet lage gjenbrukbare prosedyrer og middleware og eksportere de.
+
+Du har sikkert lagt merke til at vi bruker `superjson` som [datatransformator](https://trpc.io/docs/v10/data-transformers). Dette sikrer at datatypene dine blir bevart når de når klienten, så hvis du for eksempel sender et `Date`-objekt til klienten så returneres et `Date`-objekt og ikke en streng slik de fleste API gjør.
+
+### 📄 `server/api/routers/*.ts`
+
+Det er her du definerer ruterne og prosedyrene for API-et din. Konvensjon tilsier at du bør [opprette separate rutere](https://trpc.io/docs/v10/router) for relaterte prosedyrer.
+
+### 📄 `server/api/root.ts`
+
+Her slår vi sammen alle underruterne definert i `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) til et enkelt app-ruter.
+
+### 📄 `utils/api.ts`
+
+Dette er inngangspunktet for tRPC på klientsiden. Her importerer du ruterens **typedefinisjonen** og oppretter tRPC-klienten, samt hooks for react-query. Ettersom vi har aktivert `superjson` som vår datatransformator på serversiden, må vi aktivere den på klientsiden også. Dette er fordi serialisert data fra _backend_ blir deserialisert på _frontend_.
+
+Du definerer tRPC [lenker](https://trpc.io/docs/v10/links) her, som kartlegger request-flyten fra klienten til serveren. Vi bruker "standard" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) som muliggjør [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), samt en [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) som gir ut request-logger som kan være nyttige under utviklingsprosessen.
+
+Til slutt eksporterer vi en [hjelpertype](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) som du kan bruke til å utlede typene dine på klientsiden.
 
 ## Hvordan påkaller jeg API-et mitt eksternt?
 
