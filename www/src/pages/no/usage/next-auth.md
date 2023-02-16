@@ -34,11 +34,31 @@ const User = () => {
 };
 ```
 
+## Henting av session på serversiden
+
+Noen ganger vil du kanskje be om _session_ på serveren. For å gjøre dette, forhåndshenter du økten ved å bruke `getServerAuthSession`-hjelperfunksjonen som `create-t3-app` gir, sender den videre til klienten ved å bruke `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import type { GetServerSideProps } from "next";
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+const User = () => {
+  const { data: session } = useSession();
+  // MERK: `session` vil ikke ha en lastestatus siden den allerede er forhåndshentet på serveren
+  ...
+}
+```
+
 ## Inkluder `user.id` i din Session
 
 `create-t3-app` er konfigurert til å bruke [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) i NextAuth.js-konfigurasjonen for å inkludere bruker-ID i 'session'-objektet.
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -51,7 +71,7 @@ callbacks: {
 
 Dette er kombinert med en typedeklarasjonsfil for å sikre at `user.id` er riktig typet når du får tilgang til `session`-objektet. Les mer om [`"Module Augmentation"`](https://next-auth.js.org/getting-started/typescript#module-augmentation) i NextAuth.js-dokumentasjonen.
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -71,14 +91,14 @@ Hvis du bruker NextAuth.js med tRPC, kan du opprette gjenbrukbare beskyttede pro
 
 Dette skjer i to trinn:
 
-1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Fordelen med `getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et.
+1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Fordelen med `getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et, slik at du ikke trenger å importere både NextAuth.js-alternativene dine så vel som `getServerSession`-funksjonen hver gang du trenger tilgang til sesssion.
 
 ```ts:server/auth.ts
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
