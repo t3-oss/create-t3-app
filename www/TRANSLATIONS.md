@@ -36,4 +36,4 @@ Naturally, the English docs will move faster than the translated ones. We've imp
 
 We also have code owners for each language. Being a code owner means that you get notified when there is a PR that includes changes to the files of your language, so that you can review it.
 
-Becoming a code owner is open to anyone who has contributed to a language, either by writing translations themselves or by reviewing those of others. If would like to become a code owner, either add your GitHub username to your language in [translations.yml](https://github.com/t3-oss/create-t3-app/blob/next/.github/workflows/translations.yml) or let us know in the `create-t3-translation` channel on [Discord](https://create.t3.gg/discord).
+Becoming a code owner is open to anyone who has contributed to a language, either by writing translations themselves or by reviewing those of others. If would like to become a code owner, either add your GitHub username to your language in [translations.yml](https://github.com/t3-oss/create-t3-app/blob/next/.github/workflows/translations.yml) or let us know in the `create-t3-translation` channel on [Discord](https://t3.gg/discord).
