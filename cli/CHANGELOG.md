@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.3
+
+### Patch Changes
+
+- [#1213](https://github.com/t3-oss/create-t3-app/pull/1213) [`ab3c7cb`](https://github.com/t3-oss/create-t3-app/commit/ab3c7cb4d4e78ab646a645bc28b4fe3496ba7831) Thanks [@michalbundyra](https://github.com/michalbundyra)! - fix: update comment regarding schema definition of env vars
+
 ## 7.5.2
 
 ### Patch Changes
