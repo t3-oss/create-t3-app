@@ -36,7 +36,7 @@ const User = () => {
 
 ## Henting av session på serversiden
 
-Noen ganger vil du kanskje be om _session_ på serveren. For å gjøre dette, forhåndshenter du økten ved å bruke `getServerAuthSession`-hjelperfunksjonen som `create-t3-app` gir, sender den videre til klienten ved å bruke `getServerSideProps`:
+Noen ganger vil du kanskje be om _session_ på serveren. For å gjøre dette, prefetch'er du session ved å bruke `getServerAuthSession`-hjelperfunksjonen som `create-t3-app` gir, sender den videre til klienten ved å bruke `getServerSideProps`:
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 const User = () => {
   const { data: session } = useSession();
-  // MERK: `session` vil ikke ha en lastestatus siden den allerede er forhåndshentet på serveren
+  // MERK: `session` vil ikke ha en lastestatus siden den allerede er prefetched på serveren
   ...
 }
 ```
