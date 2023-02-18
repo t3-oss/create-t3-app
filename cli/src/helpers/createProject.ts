@@ -9,6 +9,7 @@ interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
   noInstall: boolean;
+  importAlias: string;
 }
 
 export const createProject = async ({
