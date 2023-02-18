@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.4
+
+### Patch Changes
+
+- [#1191](https://github.com/t3-oss/create-t3-app/pull/1191) [`aabb9a4`](https://github.com/t3-oss/create-t3-app/commit/aabb9a41aa8acce4b3b02e2341b83cd78b802924) Thanks [@bai](https://github.com/bai)! - Use ~/\* import alias
+
 ## 7.5.3
 
 ### Patch Changes
