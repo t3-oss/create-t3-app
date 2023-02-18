@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
 import {
   dependencyVersionMap,
-  AvailableDependencies,
+  type AvailableDependencies,
 } from "~/installers/dependencyVersionMap.js";
 import sortPackageJson from "sort-package-json";
 

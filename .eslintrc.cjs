@@ -48,6 +48,13 @@ module.exports = {
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
     ],
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        prefer: "type-imports",
+        fixStyle: "inline-type-imports",
+      },
+    ],
 
     // These rules auto-format comments, similar to how Prettier auto-formats code. For more
     // information, see:
