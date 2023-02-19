@@ -12,7 +12,6 @@ module.exports = {
         extraFileExtensions: [".astro"],
       },
       rules: {
-        "prettier/prettier": "off",
         "no-unused-vars": [
           "error",
           { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
