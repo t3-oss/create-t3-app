@@ -7,5 +7,5 @@
     },
     "checkJs": true
   },
-  "include": ["src", "template/base", "template/extras", "tsup.config.ts"]
+  "include": ["src", "tsup.config.ts"]
 }

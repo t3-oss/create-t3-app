@@ -15,7 +15,11 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
     tsconfigRootDir: __dirname,
-    project: ["./tsconfig.json", "./cli/tsconfig.json", "./www/tsconfig.json"],
+    project: [
+      "./tsconfig.json",
+      "./cli/tsconfig.eslint.json",
+      "./www/tsconfig.json",
+    ],
   },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs.
