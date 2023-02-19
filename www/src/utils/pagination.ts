@@ -1,4 +1,9 @@
-import { SIDEBAR, Sidebar, SidebarItem, SidebarItemLink } from "../config";
+import {
+  SIDEBAR,
+  type Sidebar,
+  type SidebarItem,
+  type SidebarItemLink,
+} from "../config";
 
 export function paginate(lang: keyof Sidebar, path: SidebarItemLink) {
   const routes = Object.values(SIDEBAR[lang]).flat() as SidebarItem[];
