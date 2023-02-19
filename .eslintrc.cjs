@@ -4,6 +4,7 @@ module.exports = {
     // Provides extra useful rules:
     // https://github.com/IsaacScript/isaacscript/tree/main/packages/eslint-plugin-isaacscript
     "isaacscript",
+    "import",
   ],
   extends: [
     "plugin:@typescript-eslint/recommended",
@@ -55,7 +56,7 @@ module.exports = {
         fixStyle: "inline-type-imports",
       },
     ],
-
+    "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
     // These rules auto-format comments, similar to how Prettier auto-formats code. For more
     // information, see:
     // https://github.com/IsaacScript/isaacscript/blob/main/packages/eslint-plugin-isaacscript/docs/comments.md

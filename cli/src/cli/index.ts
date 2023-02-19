@@ -1,4 +1,4 @@
-import type { AvailablePackages } from "~/installers/index.js";
+import { type AvailablePackages } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";

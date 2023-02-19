@@ -1,4 +1,4 @@
-import type { Installer } from "~/installers/index.js";
+import { type Installer } from "~/installers/index.js";
 import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";

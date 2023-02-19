@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import type { PackageJson } from "type-fest";
+import { type PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
