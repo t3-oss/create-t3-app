@@ -179,8 +179,7 @@ tRPC 通过 HTTP 协议来传输数据，因此使用“常规”的 HTTP 请求
 让我们将 Next.js API 和 tRPC 路由做个对比吧。假设我们想要从数据库获取用户的数据，然后在前端显示出来。我们可能会写一段如下方所示的 Next.js API 代码：
 
 ```ts:pages/api/users/[id].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 import { prisma } from "../../../server/db";
 
@@ -241,8 +240,7 @@ const UserPage = () => {
 如果你需要从不同的域来访问你的 API，例如在一个包含 React Native 应用的 monorepo 的项目里，你可能需要开启 CORS：
 
 ```ts:pages/api/trpc/[trpc].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/api/root";
