@@ -186,9 +186,7 @@ O tRPC se comunica por meio de HTTP, portanto, também é possível chamar seus 
 Vamos comparar um endpoint da API Next.js com um procedimento tRPC. Digamos que queremos buscar um objeto de usuário de nosso banco de dados e retorná-lo ao frontend. Poderíamos escrever uma rota de API Next.js como esta:
 
 ```ts:pages/api/users/[id].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "../../../server/db/client";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -248,9 +246,7 @@ Aqui estão alguns snippets que podem ser úteis.
 Se você precisar consumir sua API de um domínio diferente, por exemplo, em um monorepo que inclua um aplicativo React Native, talvez seja necessário habilitar o CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/trpc/router/_app";
 import { createContext } from "~/server/trpc/context";

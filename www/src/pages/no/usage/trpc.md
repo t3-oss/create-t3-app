@@ -174,9 +174,7 @@ tRPC kommuniserer via HTTP, så det er også mulig å starte tRPC-prosedyrene di
 La oss sammenligne et Next.js API-endepunkt med en tRPC-prosedyre. Anta at vi ønsker å hente et brukerobjekt fra databasen vår og returnere det til frontend. Vi kan skrive et Next.js API-endepunkt slik:
 
 ```ts:pages/api/users/[id].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "../../../server/db/client";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -236,9 +234,7 @@ Her er noen kodesnutter som kan hjelpe deg.
 Hvis du trenger å konsumere API-et ditt fra et annet domene, for eksempel i en monorepo som inneholder en React Native-app, må du antageligvis aktivere CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/trpc/router/_app";
 import { createContext } from "~/server/trpc/context";

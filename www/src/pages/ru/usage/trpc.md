@@ -180,9 +180,7 @@ tRPC взаимодействует через HTTP, поэтому также �
 Давайте сравним конечную точку (endpoint) Next.js API с процедурой tRPC. Допустим, мы хотим получить объект пользователя из нашей базы данных и вернуть его на фронтенд. Мы могли бы написать конечную точку (endpoint) Next.js API следующим образом:
 
 ```ts:pages/api/users/[id].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -242,9 +240,7 @@ const UserPage = () => {
 Если вам нужно использовать ваш API с другого домена, например в монорепозитории, который включает в себя приложение React Native, вам может потребоваться включить CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
-import { type NextApiRequest,
- type NextApiResponse } from "next";
-
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
