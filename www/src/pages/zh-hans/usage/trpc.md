@@ -33,6 +33,65 @@ tRPC 能够让我们在无需代码自动生成器的帮助或在运行时额外
   </cite>
 </blockquote>
 
+## 我怎么使用 tRPC?
+
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+tRPC 贡献者 [trashh_dev](https://twitter.com/trashh_dev) 在 [Next.js Conf 上关于 tRPC 做了一个非常棒的演讲](https://www.youtube.com/watch?v=2LYM8gf184U)。若还没有看过的话，我们强烈建议你观看一下。
+
+通过 tRPC，你可以在后端编写 TypeScript 函数，然后从你的前端直接调用。一个简单的 tRPC 路由函数 procedure 可能长这样：
+
+```ts:server/api/routers/user.ts
+const userRouter = createTRPCRouter({
+  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.prisma.user.findFirst({
+      where: {
+        id: input,
+      },
+    });
+  }),
+});
+```
+
+这是一个 tRPC procedure（等同于传统后端中的路由函数），它将先通过 Zod（我们将同样用它来验证 [环境变量](/zh-hans/usage/env-variables)）来验证输入 —— 在上述的例子里，它将确保输入是合法的字符串。如果输入不是字符串，它会返回一个直观的错误信息。
+
+在输入之后，我们链式地添加了一个 resolver 函数，它可以被用于 [查询](https://trpc.io/docs/v10/react-queries)、[修改](https://trpc.io/docs/v10/react-mutations) 或 [订阅](https://trpc.io/docs/v10/subscriptions)。在我们的例子中，这个 resolver 函数通过 [Prisma](/zh-hans/usage/prisma) 客户端读取了数据库，然后返回一条 `id` 匹配传入参数的用户数据。
+
+你在 `routers` 中定义许多 procedure 路由函数，它表示这些相关路由函数的公共命名空间。你可以有不同的路由，例如 `users`、`posts` 以及 `messages`。然后将这些路由统一集中合并到 `appRouter` 里：
+
+```ts:server/api/root.ts
+const appRouter = createTRPCRouter({
+  users: userRouter,
+  posts: postRouter,
+  messages: messageRouter,
+});
+
+export type AppRouter = typeof appRouter;
+```
+
+需要注意的是我们只需要将合并后的路由的类型定义导出，这意味着我们将不会在客户端导入任何服务端的代码。
+
+现在让我们在前端调用路由函数。tRPC 为 `@tanstack/react-query` 做了一层封装，这既可以让你充分利用它所提供的各种 hooks 功能，又能在调用 API 时享受类型安全和类型推断带来的好处。我们可以这样调用后端的路由函数：
+
+```tsx:pages/users/[id].tsx
+import { useRouter } from "next/router";
+import { api } from "../../utils/api";
+
+const UserPage = () => {
+  const { query } = useRouter();
+  const userQuery = api.users.getById.useQuery(query.id);
+  return (
+    <div>
+      <h1>{userQuery.data?.name}</h1>
+    </div>
+  );
+};
+```
+
+你会立即感受到类型安全和自动补全带来的好处。只要当你输入 `api.` 时，你所定义的路由都会显示在自动补全的菜单里，然后当你选择了一个路由，它所包含的路由函数也会显示出来。如果你的输入不符合你在后端定义的验证器的要求，TypeScript 也会将错误显示出来。
+
 ## 文件
 
 tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让我们看一下这些被自动创建的文件：
@@ -71,64 +130,11 @@ tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让�
 
 最后，我们导出一个 [helper 类型](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type)，你可以通过它在前端来推断类型。
 
-## 我怎么使用 tRPC?
-
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-tRPC 贡献者 [trashh_dev](https://twitter.com/trashh_dev) 在 [Next.js Conf 上关于 tRPC 做了一个非常棒的演讲](https://www.youtube.com/watch?v=2LYM8gf184U)。若还没有看过的话，我们强烈建议你观看一下。
-
-通过 tRPC，你可以在后端编写 TypeScript 函数，然后从你的前端直接调用。一个简单的 tRPC 路由函数 procedure 可能长这样：
-
-```ts:server/api/routers/user.ts
-const userRouter = createTRPCRouter({
-  getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
-    return ctx.prisma.user.findFirst({
-      where: {
-        id: input,
-      },
-    });
-  }),
-});
-```
-
-这是一个 tRPC procedure（等同于传统后端中的路由函数），它将先通过 Zod（我们将同样用它来验证 [环境变量](/zh-hans/env-variables)）来验证输入 —— 在上述的例子里，它将确保输入是合法的字符串。如果输入不是字符串，它会返回一个直观的错误信息。
-
-在输入之后，我们链式地添加了一个 resolver 函数，它可以被用于 [查询](https://trpc.io/docs/v10/react-queries)、[修改](https://trpc.io/docs/v10/react-mutations) 或 [订阅](https://trpc.io/docs/v10/subscriptions)。在我们的例子中，这个 resolver 函数通过 [Prisma](/zh-hans/prisma) 客户端读取了数据库，然后返回一条 `id` 匹配传入参数的用户数据。
-
-你在 `routers` 中定义许多 procedure 路由函数，它表示这些相关路由函数的公共命名空间。你可以有不同的路由，例如 `users`、`posts` 以及 `messages`。然后将这些路由统一集中合并到 `appRouter` 里：
-
-```ts:server/api/root.ts
-const appRouter = createTRPCRouter({
-  users: userRouter,
-  posts: postRouter,
-  messages: messageRouter,
-});
-
-export type AppRouter = typeof appRouter;
-```
-
-需要注意的是我们只需要将合并后的路由的类型定义导出，这意味着我们将不会在客户端导入任何服务端的代码。
-
-现在让我们在前端调用路由函数。tRPC 为 `@tanstack/react-query` 做了一层封装，这既可以让你充分利用它所提供的各种 hooks 功能，又能在调用 API 时享受类型安全和类型推断带来的好处。我们可以这样调用后端的路由函数：
-
-```tsx:pages/users/[id].tsx
-import { useRouter } from "next/router";
-import { api } from "../../utils/api";
-
-const UserPage = () => {
-  const { query } = useRouter();
-  const userQuery = api.users.getById.useQuery(query.id);
-  return (
-    <div>
-      <h1>{userQuery.data?.name}</h1>
-    </div>
-  );
-};
-```
-
-你会立即感受到类型安全和自动补全带来的好处。只要当你输入 `trpc.` 时，你所定义的路由都会显示在自动补全的菜单里，然后当你选择了一个路由，它所包含的路由函数也会显示出来。如果你的输入不符合你在后端定义的验证器的要求，TypeScript 也会将错误显示出来。
+Create T3 App 的贡献者 [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee) 制作了 [一个关于 tRPC 数据流的视频](https://www.youtube.com/watch?v=x4mu-jOiA0Q)。如果你已经使用过 tRPC 但仍感到有些不清楚它的工作原理，我们建议你观看这个视频。
 
 ## 如何从外部调用我的 API？
 

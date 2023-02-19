@@ -17,7 +17,7 @@ Prisma 客户端位于文件 `/server/db.ts`， 以全局变量被初始化（�
 
 ### 搭配 NextAuth.js
 
-当你选择 NextAuth.js 搭配 Prisma 使用时，根据 [NextAuth.js 文档](https://next-auth.js.org/adapters/prisma)，schema 文件会被自动生成，其中默认包含了 `User`、`Sessiong`、`Acount` 和 `VerificationToken` 模型，并已经自动添加了推荐的字段。
+当你选择 NextAuth.js 搭配 Prisma 使用时，根据 [NextAuth.js 文档](https://next-auth.js.org/adapters/prisma)，schema 文件会被自动生成，其中默认包含了 `User`、`Session`、`Account` 和 `VerificationToken` 模型，并已经自动添加了推荐的字段。
 
 ## 默认数据库
 
@@ -39,7 +39,7 @@ Prisma 客户端位于文件 `/server/db.ts`， 以全局变量被初始化（�
 ```
 
 ```ts:prisma/seed.ts
-import { prisma } from "../src/server/db/client";
+import { prisma } from "../src/server/db";
 
 async function main() {
   const id = "cl9ebqhxk00003b600tymydho";
@@ -73,5 +73,6 @@ main()
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Prisma 文档               | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub             | https://github.com/prisma/prisma                                                                                                                  |
+| Prisma Migrate 演练场     | https://playground.prisma.io/guides                                                                                                               |
 | NextAuth.JS Prisma 适配器 | https://next-auth.js.org/adapters/prisma                                                                                                          |
 | Planetscale 连接指引      | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
