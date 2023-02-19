@@ -14,7 +14,7 @@ Det er også en felles oppfatning at mange Next.js-funksjoner kun støttes på V
 
 Det er noen fordeler og ulemper for alle distribusjonsleverandører siden ingen enkelt leverandør kan ha den beste støtten for alle brukstilfeller. For eksempel bygde Netlify sin egen [tilpassede Next.js kjøretid](https://github.com/netlify/next-runtime) for Netlifys Edge-funksjoner (som kjører på Deno Deploy) og [opprettholder unik mellomvare for å få tilgang til og endre HTTP-responser](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
-> _MERK: For å følge statusen til ustabile Neste 13-funksjoner, se [Bruk av Next 13 `app` -katalogen på Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
+> _MERK: For å følge statusen til ustabile Next 13-funksjoner, se [Bruk av Next 13 `app` -katalogen på Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
 
 ## Prosjektkonfigurasjon
 
