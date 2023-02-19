@@ -160,11 +160,10 @@ export const runCli = async () => {
       process.env.SHELL?.toLowerCase().includes("git") &&
       process.env.SHELL?.includes("bash")
     ) {
-      logger.warn(`  WARNING: It looks like you are using Git Bash. This is currently not supported,
-  and likely to result in a crash. Please run create-t3-app with another
-  terminal such as Windows Terminal, PowerShell, or the Windows Command Prompt.`);
+      logger.warn(`  WARNING: It looks like you are using Git Bash which is non-interactive. Please run create-t3-app with another
+  terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
 
-      const error = new Error("Git Bash is not supported");
+      const error = new Error("Non-interactive environment");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (error as any).isTTYError = true;
       throw error;
@@ -195,16 +194,15 @@ export const runCli = async () => {
     // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (err instanceof Error && (err as any).isTTYError) {
-      logger.warn(
-        `${CREATE_T3_APP} needs an interactive terminal to provide options`,
-      );
+      logger.warn(`
+  ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
       const { shouldContinue } = await inquirer.prompt<{
         shouldContinue: boolean;
       }>({
         name: "shouldContinue",
         type: "confirm",
-        message: `Continue with default options?`,
+        message: `Continue scaffolding a default T3 app?`,
         default: true,
       });
 
