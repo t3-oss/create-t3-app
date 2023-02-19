@@ -19,8 +19,7 @@ module.exports = {
     ],
   },
   rules: {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
@@ -31,8 +30,6 @@ module.exports = {
     ],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
 
-    "@typescript-eslint/restrict-template-expressions": "off",
-
     // These rules are only disabled because we hit a bug in linting.
     // See https://github.com/t3-oss/create-t3-app/pull/1036#discussion_r1060505136
     // If you still see the bug once TypeScript@5 is used, please let typescript-eslint know!
@@ -41,6 +38,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
 
     // For educational purposes we format our comments/jsdoc nicely
     "isaacscript/complete-sentences-jsdoc": "warn",

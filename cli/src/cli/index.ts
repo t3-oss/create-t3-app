@@ -179,6 +179,7 @@ export const runCli = async () => {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
     // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (err instanceof Error && (err as any).isTTYError) {
       logger.warn(
         `${CREATE_T3_APP} needs an interactive terminal to provide options`,
