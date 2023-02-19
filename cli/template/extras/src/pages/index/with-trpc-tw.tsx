@@ -5,8 +5,6 @@ import Link from "next/link";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -43,9 +41,9 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          <div className="flex flex-col items-start gap-4 sm:flex-row md:gap-8">
+            <ApiShowcase />
+          </div>
         </div>
       </main>
     </>
@@ -53,3 +51,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+const ApiShowcase = () => {
+  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+
+  return (
+    <p className="text-2xl text-white">
+      {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+    </p>
+  );
+};

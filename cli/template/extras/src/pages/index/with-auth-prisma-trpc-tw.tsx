@@ -42,8 +42,8 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <div className="flex flex-col items-start gap-4 md:gap-8">
-            <ApiShowcase />
+          <div className="flex flex-col items-start gap-4 sm:flex-row md:gap-8">
+            <CrudShowcase />
             <AuthShowcase />
           </div>
         </div>
@@ -53,16 +53,6 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-const ApiShowcase = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
-  return (
-    <p className="text-2xl text-white">
-      {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-    </p>
-  );
-};
 
 const AuthShowcase = () => {
   const { data: sessionData } = useSession();
@@ -83,6 +73,36 @@ const AuthShowcase = () => {
       <p className="text-center text-xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
         {secretMessage && <span> - {secretMessage}</span>}
+      </p>
+    </div>
+  );
+};
+
+const CrudShowcase = () => {
+  const example = api.example.getAll.useQuery();
+  const utils = api.useContext();
+  const create = api.example.create.useMutation({
+    onSettled: () => utils.example.invalidate(),
+  });
+
+  if (!example.data) {
+    return (
+      <p className="w-screen max-w-xs text-xl text-white">
+        Loading - if this is stuck, check First Steps
+      </p>
+    );
+  }
+
+  return (
+    <div className="flex w-screen max-w-xs flex-col items-center gap-4">
+      <button
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        onClick={() => create.mutate()}
+      >
+        Create
+      </button>
+      <p className="text-xl text-white">
+        You have created {example.data.length} item(s)
       </p>
     </div>
   );
