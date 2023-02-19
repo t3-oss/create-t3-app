@@ -21,12 +21,10 @@ export const addPackageDependency = (opts: {
   dependencies.forEach((pkgName) => {
     const version = dependencyVersionMap[pkgName];
 
-    if (devMode) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      pkgJson.devDependencies![pkgName] = version;
-    } else {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      pkgJson.dependencies![pkgName] = version;
+    if (devMode && pkgJson.devDependencies) {
+      pkgJson.devDependencies[pkgName] = version;
+    } else if (pkgJson.dependencies) {
+      pkgJson.dependencies[pkgName] = version;
     }
   });
   const sortedPkgJson = sortPackageJson(pkgJson);
