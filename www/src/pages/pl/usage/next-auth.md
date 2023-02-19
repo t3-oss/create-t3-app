@@ -40,7 +40,7 @@ Czasem możesz chcieć otrzymać sesję na serwerze. Aby to zrobić, pobierz ses
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import type { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
   return {

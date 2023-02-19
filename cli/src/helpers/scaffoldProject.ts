@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "~/consts.js";
-import { InstallerOptions } from "~/installers/index.js";
+import { type InstallerOptions } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 
 // This bootstraps the base Next.js application

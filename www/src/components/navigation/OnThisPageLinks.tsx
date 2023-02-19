@@ -1,4 +1,4 @@
-import type { MarkdownHeading } from "astro";
+import { type MarkdownHeading } from "astro";
 import { useEffect, useMemo, useState } from "react";
 import { Menu } from "@headlessui/react";
 import clsx from "clsx";

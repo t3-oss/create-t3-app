@@ -50,7 +50,7 @@ Lenger nede angis hver mappebeskrivelse formålet med mappen, og om den kun er i
 │  │     └─ trpc.ts
 ├─ .env
 ├─ .env.example
-├─ .eslintrc.json
+├─ .eslintrc.cjs
 ├─ next-env.d.ts
 ├─ next.config.mjs
 ├─ postcss.config.cjs
@@ -200,9 +200,9 @@ på.
 
 `.env.example`-filen viser noen eksempler på miljøvariabler basert på valgte bibliotek. Denne filen skal _commites_ til git-historikk.
 
-### `.eslintrc.json`
+### `.eslintrc.cjs`
 
-`.eslintrc.json`-filen brukes til å konfigurere ESLint. Se [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for mer informasjon.
+`.eslintrc.cjs`-filen brukes til å konfigurere ESLint. Se [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for mer informasjon.
 
 ### `neste-env.d.ts`
 

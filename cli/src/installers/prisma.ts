@@ -1,5 +1,5 @@
-import type { PackageJson } from "type-fest";
-import type { Installer } from "~/installers/index.js";
+import { type PackageJson } from "type-fest";
+import { type Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
@@ -33,7 +33,10 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
-  packageJsonContent.scripts!.postinstall = "prisma generate";
+  packageJsonContent.scripts = {
+    ...packageJsonContent.scripts,
+    postinstall: "prisma generate",
+  };
 
   fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
