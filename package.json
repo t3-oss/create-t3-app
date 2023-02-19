@@ -53,7 +53,6 @@
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
-    "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-turbo": "^0.0.4",
     "eslint-plugin-import": "^2.27.5",
