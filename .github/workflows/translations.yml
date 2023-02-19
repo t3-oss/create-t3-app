@@ -48,7 +48,7 @@ jobs:
             const formattedString = changedLanguages
               .map(
                 (lang) =>
-                  `${lang.toUpperCase()}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
+                  `${lang.toUpperCase()}: ${CODEOWNERS[lang]?.map((user) => `@${user}`).join(", ")}`,
               )
               .join("  |  "); // cause we can't linebreak in env vars
 
