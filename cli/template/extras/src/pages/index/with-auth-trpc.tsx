@@ -7,8 +7,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -45,10 +43,8 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <div className={styles.showcaseContainer}>
-            <p className={styles.showcaseText}>
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
+          <div className={styles.showcaseContainerColumn}>
+            <ApiShowcase />
             <AuthShowcase />
           </div>
         </div>
@@ -59,7 +55,17 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
+const ApiShowcase = () => {
+  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+
+  return (
+    <p className={styles.showcaseText}>
+      {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+    </p>
+  );
+};
+
+const AuthShowcase = () => {
   const { data: sessionData } = useSession();
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
@@ -69,16 +75,16 @@ const AuthShowcase: React.FC = () => {
 
   return (
     <div className={styles.authContainer}>
-      <p className={styles.showcaseText}>
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
       <button
         className={styles.loginButton}
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
+      <p className={styles.showcaseText}>
+        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
+      </p>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import styles from "./index.module.css";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 
@@ -42,7 +43,10 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <ApiShowcase />
+          <div className={styles.showcaseContainer}>
+            <AuthShowcase />
+            <CrudShowcase />
+          </div>
         </div>
       </main>
     </>
@@ -51,12 +55,53 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const ApiShowcase = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+const AuthShowcase = () => {
+  const { data: sessionData } = useSession();
+
+  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
+    undefined, // no input
+    { enabled: sessionData?.user !== undefined },
+  );
 
   return (
-    <p className={styles.showcaseText}>
-      {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-    </p>
+    <div className={styles.authContainer}>
+      <button
+        className={styles.loginButton}
+        onClick={sessionData ? () => void signOut() : () => void signIn()}
+      >
+        {sessionData ? "Sign out" : "Sign in"}
+      </button>
+      <p className={styles.showcaseText}>
+        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
+      </p>
+    </div>
+  );
+};
+
+const CrudShowcase = () => {
+  const example = api.example.getAll.useQuery();
+  const utils = api.useContext();
+  const create = api.example.create.useMutation({
+    onSettled: () => utils.example.invalidate(),
+  });
+
+  if (!example.data) {
+    return (
+      <p className={styles.crudNoData}>
+        Loading - if this is stuck, check First Steps
+      </p>
+    );
+  }
+
+  return (
+    <div className={styles.crudContainer}>
+      <button className={styles.crudButton} onClick={() => create.mutate()}>
+        Create
+      </button>
+      <p className={styles.crudText}>
+        You have created {example.data.length} item(s)
+      </p>
+    </div>
   );
 };

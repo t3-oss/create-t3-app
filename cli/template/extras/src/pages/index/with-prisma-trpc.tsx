@@ -42,7 +42,7 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <ApiShowcase />
+          <CrudShowcase />
         </div>
       </main>
     </>
@@ -51,12 +51,29 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const ApiShowcase = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+const CrudShowcase = () => {
+  const example = api.example.getAll.useQuery();
+  const utils = api.useContext();
+  const create = api.example.create.useMutation({
+    onSettled: () => utils.example.invalidate(),
+  });
+
+  if (!example.data) {
+    return (
+      <p className={styles.crudNoData}>
+        Loading - if this is stuck, check First Steps
+      </p>
+    );
+  }
 
   return (
-    <p className={styles.showcaseText}>
-      {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-    </p>
+    <div className={styles.crudContainer}>
+      <button className={styles.crudButton} onClick={() => create.mutate()}>
+        Create
+      </button>
+      <p className={styles.crudText}>
+        You have created {example.data.length} item(s)
+      </p>
+    </div>
   );
 };
