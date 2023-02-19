@@ -73,8 +73,8 @@ const main = async () => {
 
   // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
   fs.renameSync(
-    path.join(projectDir, "_eslintrc.json"),
-    path.join(projectDir, ".eslintrc.json"),
+    path.join(projectDir, "_eslintrc.cjs"),
+    path.join(projectDir, ".eslintrc.cjs"),
   );
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
