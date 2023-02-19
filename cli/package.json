@@ -32,7 +32,7 @@
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
     "lint": "eslint src --report-unused-disable-directives",
-    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore",
+    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown",
     "format:check": "prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore",
     "release": "changeset version",
     "pub:beta": "pnpm build && npm publish --tag beta",

@@ -36,7 +36,7 @@
     "dev:www": "turbo --filter=www dev",
     "clean": "turbo clean && rm -rf node_modules",
     "lint": "turbo lint",
-    "format": "turbo format && prettier --write *.{cjs,md,json}",
+    "format": "turbo format && prettier --write *.{cjs,md,json} --ignore-unknown --no-error-on-unmatched-pattern",
     "format:check": "turbo format:check && prettier --check *.{cjs,md,json}",
     "check": "turbo lint typecheck format:check && manypkg check",
     "release": "changeset version",
