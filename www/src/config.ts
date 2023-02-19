@@ -61,7 +61,6 @@ export type SidebarItemLink = SidebarItem["link"];
 
 export type Sidebar = {
   [TCode in KnownLanguageCode]: {
-    // eslint-disable-next-line no-unused-vars
     [THeader in OuterHeaders]?: SidebarItem<TCode>[];
   };
 };

@@ -146,7 +146,7 @@ With regular APIs, you can call your endpoints using any HTTP client such as `cu
 If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { appRouter } from "../../../server/api/root";
 import { createTRPCContext } from "../../../server/api/trpc";
 
@@ -186,7 +186,7 @@ tRPC communicates over HTTP, so it is also possible to call your tRPC procedures
 Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -246,7 +246,7 @@ Here are some snippets that might come in handy.
 If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";

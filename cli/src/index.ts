@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import type { PackageJson } from "type-fest";
+import { type PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
 import { runCli } from "~/cli/index.js";
@@ -60,7 +60,7 @@ const main = async () => {
 
   // update import alias in any generated files if not using the default
   if (importAlias !== "~/") {
-    await setImportAlias(projectDir, importAlias);
+    setImportAlias(projectDir, importAlias);
   }
 
   if (!noInstall) {
@@ -70,6 +70,12 @@ const main = async () => {
   if (!noGit) {
     await initializeGit(projectDir);
   }
+
+  // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
+  fs.renameSync(
+    path.join(projectDir, "_eslintrc.json"),
+    path.join(projectDir, ".eslintrc.json"),
+  );
 
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
 

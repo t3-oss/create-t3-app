@@ -50,7 +50,7 @@ export default function BreadCrumbs() {
         text:
           getPathNameFromLink(path.slice(path.indexOf(lang))) ||
           getHeaderName(
-            (crumb[0]?.toUpperCase() + crumb.slice(1)) as OuterHeaders,
+            `${crumb[0]?.toUpperCase()}${crumb.slice(1)}` as OuterHeaders,
           ),
       };
     });
