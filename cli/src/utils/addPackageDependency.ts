@@ -22,8 +22,10 @@ export const addPackageDependency = (opts: {
     const version = dependencyVersionMap[pkgName];
 
     if (devMode) {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       pkgJson.devDependencies![pkgName] = version;
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       pkgJson.dependencies![pkgName] = version;
     }
   });

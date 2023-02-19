@@ -1,5 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
+  root: true,
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   plugins: [
     // Provides extra useful rules:
@@ -30,13 +31,13 @@ module.exports = {
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
     ],
     "@typescript-eslint/consistent-type-imports": [
-      "warn",
+      "error",
       {
         prefer: "type-imports",
         fixStyle: "inline-type-imports",
       },
     ],
-    "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
+    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     // These rules auto-format comments, similar to how Prettier auto-formats code. For more
     // information, see:
     // https://github.com/IsaacScript/isaacscript/blob/main/packages/eslint-plugin-isaacscript/docs/comments.md
@@ -69,7 +70,6 @@ module.exports = {
         // If you still see the bug once TypeScript@5 is used, please let typescript-eslint know!
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",

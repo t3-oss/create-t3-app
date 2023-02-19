@@ -71,6 +71,12 @@ const main = async () => {
     await initializeGit(projectDir);
   }
 
+  // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
+  fs.renameSync(
+    path.join(projectDir, "_eslintrc.json"),
+    path.join(projectDir, ".eslintrc.json"),
+  );
+
   logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
 
   process.exit(0);

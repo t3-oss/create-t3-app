@@ -26,7 +26,7 @@ const isLangEN = getLanguageFromURL(pathname) === "en";
     <li
       class="hidden text-t3-purple-800 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:text-t3-purple-100 md:block"
     >
-      <a class="flex items-center gap-2" href={editHref} target="_blank">
+      <a class="flex items-center gap-2" href={editHref} target="_blank" rel="noreferrer">
         <span>
           <svg
             class="svg-inline--fa fa-pen fa-w-16 inline"
@@ -59,7 +59,7 @@ const isLangEN = getLanguageFromURL(pathname) === "en";
       <a
         class="flex items-center gap-2"
         href={"https://github.com/t3-oss/create-t3-app/blob/next/www/TRANSLATIONS.md"}
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
         <span>
           <svg
@@ -92,7 +92,7 @@ const isLangEN = getLanguageFromURL(pathname) === "en";
       <a
         class="items-top flex gap-2"
         href={CONFIG.COMMUNITY_INVITE_URL}
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
         <span>
           <svg

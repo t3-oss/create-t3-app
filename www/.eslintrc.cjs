@@ -1,21 +1,8 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
-  root: true,
-  env: {
-    node: true,
-    es2022: true,
-    browser: true,
-  },
-  extends: [
-    "../.eslintrc.cjs",
-    "eslint:recommended",
-    "plugin:astro/recommended",
-  ],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: "./tsconfig.json",
+    extraFileExtensions: [".astro"],
   },
-  rules: {},
   overrides: [
     {
       files: ["*.astro"],

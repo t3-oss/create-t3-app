@@ -1,21 +1,27 @@
 {
   "pipeline": {
-    "clean": {},
     "build": {
       "outputs": ["dist/**"],
       "dependsOn": ["^build"]
     },
+    "dev": {
+      "cache": false,
+      "persistant": true
+    },
     "start": {
       "dependsOn": ["^build"]
     },
-    "lint": {
-      "outputs": [".eslintcache"]
+    "lint": {},
+    "lint:fix": {
+      "cache": false
     },
-    "format": {},
+    "format": {
+      "cache": false
+    },
     "format:check": {
-      "outputs": []
+      "cache": false
     },
-    "dev": {
+    "clean": {
       "cache": false
     },
     "typecheck": {}

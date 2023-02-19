@@ -33,6 +33,7 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   packageJsonContent.scripts!.postinstall = "prisma generate";
 
   fs.copySync(schemaSrc, schemaDest);
