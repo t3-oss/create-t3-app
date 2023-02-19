@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.6
+
+### Patch Changes
+
+- [#1222](https://github.com/t3-oss/create-t3-app/pull/1222) [`7baa339`](https://github.com/t3-oss/create-t3-app/commit/7baa339b36b40760443083e0a378d8fe04dddb40) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: detect and handle git bash environment
+
 ## 7.5.5
 
 ### Patch Changes
