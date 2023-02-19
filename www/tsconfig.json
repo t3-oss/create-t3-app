@@ -7,5 +7,12 @@
     "skipLibCheck": true,
     "importsNotUsedAsValues": "preserve" // fixed through linting
   },
-  "include": ["src", "astro.config.mjs", ".eslintrc.cjs", "public"]
+  "include": [
+    "src",
+    "astro.config.mjs",
+    ".eslintrc.cjs",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs"
+  ]
 }
