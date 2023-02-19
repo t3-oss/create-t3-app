@@ -142,7 +142,7 @@ Korzystając z regularnego API, zapytania takie możesz wykonać korzystając z 
 Jeżeli chcesz ujawnić zewnętrznie pojedynczą procedurę, powinieneś skorzystać z [zapytań po stronie serwera](https://trpc.io/docs/v10/server-side-calls). Pozwoli Ci to na wykonanie standardowego endpointa Next.js, ale użyje części "resolvera" twojej procedury tRPC.
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { appRouter } from "../../../server/api/root";
 import { createTRPCContext } from "../../../server/api/trpc";
 
@@ -182,7 +182,9 @@ tRPC komunikuje się za pomocą HTTP, więc masz także możliwość wykonywania
 Porównajmy endpoint API Next.js z procedurą tRPC. Powiedzmy, że chcemy pobrać ubiekt użytkownika z naszej bazy danych i zwrócić go na frontend. Endpoint API Next.js napisać moglibyśmy w następujący sposób>+:
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest,
+ type NextApiResponse } from "next";
+
 import { prisma } from "../../../server/db";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -242,7 +244,9 @@ Znajdziesz tutaj fragmenty kodu, które mogą Ci się przydać.
 Jeżeli chcesz korzystać z API z różnych domen, np. w monorepo zawierającym aplikację React Native, możesz chcieć włączyć CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest,
+ type NextApiResponse } from "next";
+
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
