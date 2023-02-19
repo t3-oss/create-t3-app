@@ -8,9 +8,10 @@
     "start": "astro dev",
     "check": "astro check",
     "clean": "rm -rf node_modules .turbo dist .eslintcache",
-    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore",
-    "format:check": "prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore",
-    "lint": "eslint src --report-unused-disable-directives",
+    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
+    "format:check": "pnpm format --check",
+    "lint": "eslint . --report-unused-disable-directives",
+    "lint:fix": "pnpm lint --fix",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

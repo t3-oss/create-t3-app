@@ -1,4 +1,4 @@
-import { KnownLanguageCode, KNOWN_LANGUAGES } from "../../config";
+import { type KnownLanguageCode, KNOWN_LANGUAGES } from "../../config";
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment } from "react";
