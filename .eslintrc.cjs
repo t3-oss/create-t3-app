@@ -14,7 +14,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: [
       "./tsconfig.json",
-      "./cli/tsconfig.eslint.json",
+      "./cli/tsconfig.eslint.json", // separate eslint config for the CLI since we want to lint and typecheck differently due to template files
       "./www/tsconfig.json",
     ],
   },
@@ -27,15 +27,10 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      {
-        prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
+      { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
 
-    "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
 
     // These rules are only disabled because we hit a bug in linting.

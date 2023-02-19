@@ -20,10 +20,7 @@ function replaceTextInFiles(
   });
 }
 
-export const setImportAlias = async (
-  projectDir: string,
-  importAlias: string,
-) => {
+export const setImportAlias = (projectDir: string, importAlias: string) => {
   const normalizedImportAlias = importAlias
     .replace(/\*/g, "") // remove any wildcards (~/* -> ~/)
     .replace(/[^\/]$/, "$&/"); // ensure trailing slash (@ -> ~/)
