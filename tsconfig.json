@@ -1,5 +1,5 @@
 {
-  "include": ["cli", "www"],
+  "include": ["cli", "www", ".eslintrc.cjs"],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ES2020",
