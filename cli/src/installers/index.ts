@@ -14,7 +14,7 @@ export const availablePackages = [
   "trpc",
   "envVariables",
 ] as const;
-export type AvailablePackages = typeof availablePackages[number];
+export type AvailablePackages = (typeof availablePackages)[number];
 
 export interface InstallerOptions {
   projectDir: string;

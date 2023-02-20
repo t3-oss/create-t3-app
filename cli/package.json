@@ -60,17 +60,17 @@
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.2",
-    "@types/node": "^18.8.0",
+    "@types/node": "^18.14.0",
     "next": "^13.1.6",
     "next-auth": "^4.19.0",
-    "prettier": "^2.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "prisma": "^4.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "^1.12.1",
     "tsup": "^6.2.3",
     "type-fest": "^3.0.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.5"
   }
 }
