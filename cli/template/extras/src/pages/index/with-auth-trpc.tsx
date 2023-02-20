@@ -74,9 +74,9 @@ const AuthShowcase = () => {
   );
 
   return (
-    <div className={styles.authContainer}>
+    <div className={styles.showcaseContainer}>
       <button
-        className={styles.loginButton}
+        className={styles.showcaseButton}
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}

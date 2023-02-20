@@ -67,8 +67,8 @@ const CrudShowcase = () => {
   }
 
   return (
-    <div className={styles.crudContainer}>
-      <button className={styles.crudButton} onClick={() => create.mutate()}>
+    <div className={styles.showcaseContainer}>
+      <button className={styles.showcaseButton} onClick={() => create.mutate()}>
         Create
       </button>
       <p className={styles.crudText}>

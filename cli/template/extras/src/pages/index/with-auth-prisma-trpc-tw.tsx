@@ -87,7 +87,7 @@ const CrudShowcase = () => {
 
   if (!example.data) {
     return (
-      <p className="w-screen max-w-xs text-xl text-white">
+      <p className="w-screen max-w-xs text-center text-xl text-white">
         Loading - if this is stuck, check First Steps
       </p>
     );

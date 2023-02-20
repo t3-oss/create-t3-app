@@ -44,8 +44,8 @@ const Home: NextPage = () => {
             </Link>
           </div>
           <div className={styles.showcaseContainer}>
-            <AuthShowcase />
             <CrudShowcase />
+            <AuthShowcase />
           </div>
         </div>
       </main>
@@ -64,9 +64,9 @@ const AuthShowcase = () => {
   );
 
   return (
-    <div className={styles.authContainer}>
+    <div className={styles.showcaseContainer}>
       <button
-        className={styles.loginButton}
+        className={styles.showcaseButton}
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
@@ -95,8 +95,8 @@ const CrudShowcase = () => {
   }
 
   return (
-    <div className={styles.crudContainer}>
-      <button className={styles.crudButton} onClick={() => create.mutate()}>
+    <div className={styles.showcaseContainer}>
+      <button className={styles.showcaseButton} onClick={() => create.mutate()}>
         Create
       </button>
       <p className={styles.crudText}>

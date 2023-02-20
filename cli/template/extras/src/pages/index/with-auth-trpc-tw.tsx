@@ -42,7 +42,7 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
-          <div className="flex flex-col items-start gap-4 md:gap-8">
+          <div className="flex flex-col items-center gap-4 md:gap-8">
             <ApiShowcase />
             <AuthShowcase />
           </div>
