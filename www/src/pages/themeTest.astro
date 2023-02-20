@@ -1,6 +1,6 @@
 ---
+import ColorSchemeSelect from "../components/navigation/ColorSchemeSelect";
 import HeadCommon from "../components/headCommon.astro";
-import ThemeToggleButton from "../components/navigation/themeToggleButton.astro";
 import "../styles/global.css";
 import "../styles/accessibility.css";
 ---
@@ -12,7 +12,9 @@ import "../styles/accessibility.css";
   <div class="grid grid-cols-1 gap-2 sm:gap-4">
     <div>
       <h1 class="py-4 text-4xl font-bold">Colors</h1>
-      <ThemeToggleButton />
+      <div class="flex justify-center">
+        <ColorSchemeSelect client:load />
+      </div>
       <div class="mt-8 grid grid-cols-2 gap-4 font-semibold">
         <div class="bg-neutral p-4">Neutral</div>
         <div class="bg-primary p-4">Primary</div>

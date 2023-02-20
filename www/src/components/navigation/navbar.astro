@@ -4,7 +4,7 @@ import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
 import LanguageSelect from "./LanguageSelect";
 import SidebarToggle from "./sidebarToggle.astro";
-import ThemeToggleButton from "./themeToggleButton.astro";
+import ColorSchemeSelect from "./ColorSchemeSelect";
 
 export interface Props {
   isNotFound?: boolean;
@@ -94,7 +94,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
           },
         ]}
       >
-        <ThemeToggleButton />
+        <ColorSchemeSelect client:load />
       </div>
       <div class="block md:hidden">
         <SidebarToggle isLanding={isLanding} />
