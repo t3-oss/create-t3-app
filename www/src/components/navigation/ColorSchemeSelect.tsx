@@ -9,7 +9,7 @@ const findThemeByName = (name: ThemesNames) => {
 
 const themesOptions = [
   {
-    name: "os default",
+    name: "system",
     Icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export default function ColorSchemeSelect() {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme") as ThemesNames;
-    setSelectedTheme(theme || "os default");
+    setSelectedTheme(theme || "system");
   }, []);
 
   const changeHandler = (themeName: ThemesNames) => {
