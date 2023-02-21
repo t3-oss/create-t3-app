@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
@@ -68,3 +68,5 @@ module.exports = {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };
+
+module.exports = config;

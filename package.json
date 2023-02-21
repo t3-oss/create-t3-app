@@ -50,6 +50,7 @@
     "@manypkg/cli": "^0.20.0",
     "@types/eslint": "^8.21.1",
     "@types/node": "^18.8.0",
+    "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",

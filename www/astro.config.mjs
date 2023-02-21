@@ -8,9 +8,8 @@ import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
-/**
- * @link https://astro.build/config
- */
+
+/** @link https://astro.build/config */
 export default defineConfig({
   site: `https://create.t3.gg`,
   markdown: {
