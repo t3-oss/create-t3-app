@@ -42,7 +42,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-typist": "^2.0.3",
     "@types/treeify": "^1.0.0",
-    "@typescript-eslint/parser": "^5.52.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "astro": "^2.0.14",
     "eslint": "^8.34.0",
     "eslint-plugin-astro": "^0.23.0",
