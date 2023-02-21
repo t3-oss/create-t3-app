@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.5.5",
+  "version": "7.5.6",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -41,36 +41,36 @@
     "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
-    "chalk": "5.0.1",
-    "commander": "^9.4.1",
-    "execa": "^6.1.0",
-    "fs-extra": "^10.1.0",
+    "chalk": "5.2.0",
+    "commander": "^10.0.0",
+    "execa": "^7.0.0",
+    "fs-extra": "^11.1.0",
     "gradient-string": "^2.0.2",
-    "inquirer": "^9.1.2",
+    "inquirer": "^9.1.4",
     "ora": "6.1.2",
-    "sort-package-json": "^2.0.0"
+    "sort-package-json": "^2.4.1"
   },
   "devDependencies": {
-    "@prisma/client": "^4.9.0",
-    "@tanstack/react-query": "^4.20.4",
-    "@trpc/client": "^10.9.0",
-    "@trpc/next": "^10.9.0",
-    "@trpc/react-query": "^10.9.0",
-    "@trpc/server": "^10.9.0",
-    "@types/fs-extra": "^9.0.13",
+    "@prisma/client": "^4.10.1",
+    "@tanstack/react-query": "^4.24.9",
+    "@trpc/client": "^10.12.0",
+    "@trpc/next": "^10.12.0",
+    "@trpc/react-query": "^10.12.0",
+    "@trpc/server": "^10.12.0",
+    "@types/fs-extra": "^11.0.1",
     "@types/gradient-string": "^1.1.2",
-    "@types/inquirer": "^9.0.2",
-    "@types/node": "^18.8.0",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.14.0",
     "next": "^13.1.6",
-    "next-auth": "^4.19.0",
-    "prettier": "^2.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.0",
-    "prisma": "^4.8.0",
+    "next-auth": "^4.19.2",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "prisma": "^4.10.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "superjson": "^1.12.1",
-    "tsup": "^6.2.3",
-    "type-fest": "^3.0.0",
-    "typescript": "^4.9.3"
+    "superjson": "^1.12.2",
+    "tsup": "^6.6.3",
+    "type-fest": "^3.6.0",
+    "typescript": "^4.9.5"
   }
 }

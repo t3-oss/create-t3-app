@@ -20,11 +20,11 @@ const langCode = getLanguageFromURL(pathname);
 
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
-    href: "/en/introduction",
+    href: `/${langCode}/introduction`,
     label: "Docs",
   },
   {
-    href: "/en/faq",
+    href: `/${langCode}/faq`,
     label: "FAQ",
   },
 ];

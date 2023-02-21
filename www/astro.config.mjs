@@ -11,7 +11,7 @@ import sitemap from "@astrojs/sitemap";
 
 /** @link https://astro.build/config */
 export default defineConfig({
-  site: `https://create.t3.gg`,
+  site: `https://create.t3.gg/`,
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
@@ -42,7 +42,6 @@ export default defineConfig({
       theme: "rose-pine",
       wrap: true,
     },
-    extendDefaultPlugins: true,
   },
   integrations: [
     react(),
