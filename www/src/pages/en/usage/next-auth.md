@@ -182,29 +182,22 @@ The `user` object will be `undefined`. Instead, retrieve the user's ID from the 
 I.e.:
 
 ```diff:server/auth.ts
-...
-export const authOptions: NextAuthOptions = {
-
-- session: {
-- strategy: "jwt",
-- },
-  callbacks: {
-
-* session({ token, user }) {
-
-- session({ token, session }) {
-
-*     if (session.user) {
-*       session.user.id = user.id;
-
--     if (session.user && token.sub) {
--       session.user.id = token.sub;
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session({ session, user }) {
++     session({ session, token }) {
+-       if (session.user) {
++       if (session.user && token.sub) {
+-         session.user.id = user.id;
++         session.user.id = token.sub;
         }
         return session;
       }
-  },
+    },
   };
-
 ```
 
 ## Setting up the default DiscordProvider
