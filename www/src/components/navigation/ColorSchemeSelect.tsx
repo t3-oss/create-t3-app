@@ -1,5 +1,5 @@
 import { Listbox, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useLayoutEffect, useState } from "react";
 
 type ThemesNames = (typeof themesOptions)[number]["name"];
 
@@ -23,7 +23,6 @@ const themesOptions = [
       </svg>
     ),
     clickHandler: () => {
-      document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "");
     },
   },
@@ -70,9 +69,21 @@ const themesOptions = [
 export default function ColorSchemeSelect() {
   const [selectedTheme, setSelectedTheme] = useState<ThemesNames | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const theme = localStorage.getItem("theme") as ThemesNames;
     setSelectedTheme(theme || "system");
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        if (e.matches) {
+          findThemeByName("dark")?.clickHandler();
+          setSelectedTheme("dark");
+        } else {
+          setSelectedTheme("light");
+          findThemeByName("light")?.clickHandler();
+        }
+      });
   }, []);
 
   const changeHandler = (themeName: ThemesNames) => {
