@@ -181,7 +181,7 @@ After switching to the JWT session strategy. Make sure to update the `session` c
 The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.  
 I.e.:
 
-`diff:server/auth.ts`
+```diff:server/auth.ts
 ...
 export const authOptions: NextAuthOptions = {
 
