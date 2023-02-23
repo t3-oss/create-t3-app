@@ -28,7 +28,7 @@ export const fetchGithub = async (url: string, opts: Options) => {
     },
   });
 
-  const data = (await res.json()) as unknown;
+  const data = await res.json();
 
   if (!res.ok) {
     const msg = `Request to fetch ${url} failed. Reason: ${res.statusText}
