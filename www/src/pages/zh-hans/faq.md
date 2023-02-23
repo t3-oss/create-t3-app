@@ -36,6 +36,7 @@ lang: zh-hans
 
 ### 视频
 
+- [Jack Herrington - 使用 T3 Stack 创建一个笔记应用](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [使用 T3 Stack 创建推特克隆应用 - tRPC、Next.js、Prisma、Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [使用 T3 Stack 创建博客应用 - tRPC、TypeScript、Next.js、Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [使用 T3 Stack 来创建实时聊天应用 - TypeScript、Tailwind、tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
