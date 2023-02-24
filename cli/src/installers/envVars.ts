@@ -1,4 +1,4 @@
-import type { Installer } from "~/installers/index.js";
+import { type Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
@@ -37,7 +37,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
 const getEnvContent = (usingAuth: boolean, usingPrisma: boolean) => {
   let content = `
-# When adding additional environment variables, the schema in "/env/schema.mjs"
+# When adding additional environment variables, the schema in "/src/env.mjs"
 # should be updated accordingly.
 `
     .trim()

@@ -40,17 +40,21 @@ jobs:
               fr: ["Defranos", "joachimjusth"],
               no: ["estubmo", "josephayman"],
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
-              pt: ["claudiofreitas", "minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18"],
+              pt: ["minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18", "gilhrpenner"],
               ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
               "zh-hans": ["fernandoxu", "lodisy"],
             };
 
+            console.log("Changed languages:", changedLanguages)
+
             const formattedString = changedLanguages
               .map(
                 (lang) =>
-                  `${lang.toUpperCase()}: ${CODEOWNERS[lang].map((user) => `@${user}`).join(", ")}`,
+                  `${lang.toUpperCase()}: ${(CODEOWNERS[lang] || []).map((user) => `@${user}`).join(", ")}`,
               )
               .join("  |  "); // cause we can't linebreak in env vars
+
+            console.log("Formatted string:", formattedString)
 
             require("fs").appendFileSync(
               process.env.GITHUB_ENV,

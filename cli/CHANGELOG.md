@@ -1,5 +1,43 @@
 # Changelog
 
+## 7.5.6
+
+### Patch Changes
+
+- [#1222](https://github.com/t3-oss/create-t3-app/pull/1222) [`7baa339`](https://github.com/t3-oss/create-t3-app/commit/7baa339b36b40760443083e0a378d8fe04dddb40) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: detect and handle git bash environment
+
+## 7.5.5
+
+### Patch Changes
+
+- [#1218](https://github.com/t3-oss/create-t3-app/pull/1218) [`4f8d41a`](https://github.com/t3-oss/create-t3-app/commit/4f8d41ae2f41bef197cab13a332034e0ddffc955) Thanks [@bai](https://github.com/bai)! - feat: change eslint config to use `.cjs` format and typecheck it
+
+- [#1217](https://github.com/t3-oss/create-t3-app/pull/1217) [`55c87af`](https://github.com/t3-oss/create-t3-app/commit/55c87af37f64fbf778a5091b9cca75f9c9546468) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: add autofix to eslint type rule
+
+## 7.5.4
+
+### Patch Changes
+
+- [#1191](https://github.com/t3-oss/create-t3-app/pull/1191) [`aabb9a4`](https://github.com/t3-oss/create-t3-app/commit/aabb9a41aa8acce4b3b02e2341b83cd78b802924) Thanks [@bai](https://github.com/bai)! - Use ~/\* import alias
+
+## 7.5.3
+
+### Patch Changes
+
+- [#1213](https://github.com/t3-oss/create-t3-app/pull/1213) [`ab3c7cb`](https://github.com/t3-oss/create-t3-app/commit/ab3c7cb4d4e78ab646a645bc28b4fe3496ba7831) Thanks [@michalbundyra](https://github.com/michalbundyra)! - fix: update comment regarding schema definition of env vars
+
+## 7.5.2
+
+### Patch Changes
+
+- [#1189](https://github.com/t3-oss/create-t3-app/pull/1189) [`bf12635`](https://github.com/t3-oss/create-t3-app/commit/bf1263576866116a904f3d1fa741c5496a535cb9) Thanks [@p13lgst](https://github.com/p13lgst)! - fix: remove ts-ignores on env.mjs
+
+## 7.5.1
+
+### Patch Changes
+
+- [#1187](https://github.com/t3-oss/create-t3-app/pull/1187) [`e111fb5`](https://github.com/t3-oss/create-t3-app/commit/e111fb5cb816de9b2d87bdf4ffcf84f446fd2023) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - remove old env files
+
 ## 7.5.0
 
 ### Minor Changes

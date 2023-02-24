@@ -1,4 +1,4 @@
-import type { AvailablePackages } from "~/installers/index.js";
+import { type AvailablePackages } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import chalk from "chalk";
 import { Command } from "commander";
@@ -13,6 +13,7 @@ interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
   default: boolean;
+  importAlias: string;
 
   /** @internal Used in CI. */
   CI: boolean;
@@ -44,6 +45,7 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
+    importAlias: "~/",
   },
 };
 
@@ -105,6 +107,12 @@ export const runCli = async () => {
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
     )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "-i, --import-alias",
+      "Explicitly tell the CLI to use a custom import alias",
+      defaultOptions.flags.importAlias,
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -148,6 +156,19 @@ export const runCli = async () => {
 
   // Explained below why this is in a try/catch block
   try {
+    if (
+      process.env.SHELL?.toLowerCase().includes("git") &&
+      process.env.SHELL?.includes("bash")
+    ) {
+      logger.warn(`  WARNING: It looks like you are using Git Bash which is non-interactive. Please run create-t3-app with another
+  terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
+
+      const error = new Error("Non-interactive environment");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (error as any).isTTYError = true;
+      throw error;
+    }
+
     // if --CI flag is set, we are running in CI mode and should not prompt the user
     // if --default flag is set, we should not prompt the user
     if (!cliResults.flags.default && !CIMode) {
@@ -164,16 +185,33 @@ export const runCli = async () => {
       if (!cliResults.flags.noInstall) {
         cliResults.flags.noInstall = !(await promptInstall());
       }
+
+      cliResults.flags.importAlias = await promptImportAlias();
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
     // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (err instanceof Error && (err as any).isTTYError) {
-      logger.warn(
-        `${CREATE_T3_APP} needs an interactive terminal to provide options`,
-      );
-      logger.info(`Bootstrapping a default t3 app in ./${cliResults.appName}`);
+      logger.warn(`
+  ${CREATE_T3_APP} needs an interactive terminal to provide options`);
+
+      const { shouldContinue } = await inquirer.prompt<{
+        shouldContinue: boolean;
+      }>({
+        name: "shouldContinue",
+        type: "confirm",
+        message: `Continue scaffolding a default T3 app?`,
+        default: true,
+      });
+
+      if (!shouldContinue) {
+        logger.info("Exiting...");
+        process.exit(0);
+      }
+
+      logger.info(`Bootstrapping a default T3 app in ./${cliResults.appName}`);
     } else {
       throw err;
     }
@@ -276,4 +314,18 @@ const promptInstall = async (): Promise<boolean> => {
   }
 
   return install;
+};
+
+const promptImportAlias = async (): Promise<string> => {
+  const { importAlias } = await inquirer.prompt<Pick<CliFlags, "importAlias">>({
+    name: "importAlias",
+    type: "input",
+    message: "What import alias would you like configured?",
+    default: defaultOptions.flags.importAlias,
+    transformer: (input: string) => {
+      return input.trim();
+    },
+  });
+
+  return importAlias;
 };

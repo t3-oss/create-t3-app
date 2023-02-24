@@ -9,7 +9,7 @@ Prisma is an ORM for TypeScript, that allows you to define your database schema 
 
 ## Prisma Client
 
-Located at `/server/db.ts`, the Prisma Client is instantiated as a global variable (as recommended as [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) by the team at Prisma) and exported to be used in your API routes. We include the Prisma Client in [Context](/en/usage/trpc#-servertrpccontextts) by default and recommend using this instead of importing it separately in each file.
+Located at `src/server/db.ts`, the Prisma Client is instantiated as a global variable (as recommended as [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) by the team at Prisma) and exported to be used in your API routes. We include the Prisma Client in [Context](/en/usage/trpc#-servertrpccontextts) by default and recommend using this instead of importing it separately in each file.
 
 ## Schema
 
@@ -73,5 +73,6 @@ Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Prisma Docs                  | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
+| Prisma Migrate Playground    | https://playground.prisma.io/guides                                                                                                               |
 | NextAuth.JS Prisma Adapter   | https://next-auth.js.org/adapters/prisma                                                                                                          |
 | Planetscale Connection Guide | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |

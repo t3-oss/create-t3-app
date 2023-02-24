@@ -1,4 +1,4 @@
-import type { KnownLanguageCode } from "./config";
+import { type KnownLanguageCode } from "./config";
 export { KNOWN_LANGUAGES, type KnownLanguageCode } from "./config";
 
 export const langPathRegex = /\/([a-z]{2,3}-?[a-zA-Z]{0,4})\//;

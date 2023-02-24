@@ -1,4 +1,4 @@
-import type { PkgInstallerMap } from "~/installers/index.js";
+import { type PkgInstallerMap } from "~/installers/index.js";
 import path from "path";
 import { installPackages } from "~/helpers/installPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
@@ -9,6 +9,7 @@ interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
   noInstall: boolean;
+  importAlias: string;
 }
 
 export const createProject = async ({

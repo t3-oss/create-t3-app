@@ -36,6 +36,7 @@ lang: zh-hans
 
 ### 视频
 
+- [Jack Herrington - 使用 T3 Stack 创建一个笔记应用](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [使用 T3 Stack 创建推特克隆应用 - tRPC、Next.js、Prisma、Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [使用 T3 Stack 创建博客应用 - tRPC、TypeScript、Next.js、Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [使用 T3 Stack 来创建实时聊天应用 - TypeScript、Tailwind、tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
@@ -46,7 +47,7 @@ lang: zh-hans
 
 正如在 [T3 - 原则第三条](/zh-hans/introduction#类型安全不是可选的) 里所讲到的，我们将类型安全放在首位。不幸的是，并非所有的框架和插件都支持 TypeScript，这也就意味着有一些配置文件必须是 `.js` 格式。
 
-我们想要强调的是，这些文件是 JavaScript 是有原因的，我们通过根据它们所使用的库的支持程度来显式声明每个文件的类型（`cjs` 或 `mjs`）。而且，项目中所有的 `js` 文件也会通过使用 `@ts-check` 注解来进行类型检查。
+我们想要强调的是，这些文件是 JavaScript 是有原因的，我们通过根据它们所使用的库的支持程度来显式声明每个文件的类型（`cjs` 或 `mjs`）。而且，项目中所有的 `js` 文件也会使用编译器（tsconfig）中的 checkJs 选项进行类型检查。
 
 ## 我正努力为我的应用添加多语言功能。有我能够借鉴的吗？
 

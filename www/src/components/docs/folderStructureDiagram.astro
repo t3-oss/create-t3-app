@@ -29,7 +29,7 @@
     "src/utils/api.ts": ["trpc"],
     ".env": [],
     ".env.example": [],
-    ".eslintrc.json": [],
+    ".eslintrc.cjs": [],
     ".gitignore": [],
     "next-env.d.ts": [],
     "next.config.mjs": [],
@@ -68,7 +68,19 @@
     if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
   };
 
-  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
+  const getSelectedFromPackagesQueryParam = () => {
+    const selectedParam = new URLSearchParams(window.location.search).get(
+      "packages",
+    );
+
+    if (selectedParam === null) {
+      return ["nextauth", "prisma", "tailwind", "trpc"];
+    }
+
+    return selectedParam.split(",");
+  };
+
+  renderDiagram(getSelectedFromPackagesQueryParam());
 </script>
 
 <pre
