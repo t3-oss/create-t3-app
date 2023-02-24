@@ -171,6 +171,8 @@ services:
     ports:
       - "3000:3000"
     image: t3-app
+    env_file:
+      - .env
     environment:
       - DATABASE_URL=database_url_goes_here
 ```
