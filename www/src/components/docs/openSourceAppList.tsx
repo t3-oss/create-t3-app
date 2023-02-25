@@ -155,6 +155,13 @@ const projects: App[] = [
     linkName: "answeroverflow.com",
     link: "https://www.answeroverflow.com/",
   },
+  {
+    description: "Hitori - Serverless Discord bot template",
+    repoName: "astridlol/Hitori",
+    repo: "https://github.com/astridlol/hitori",
+    linkName: "(none)",
+    link: "https://github.com/astridlol/hitori",
+  },
 ];
 
 export default function OpenSourceAppList({
