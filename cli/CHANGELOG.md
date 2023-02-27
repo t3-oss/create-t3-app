@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.7
+
+### Patch Changes
+
+- [#1232](https://github.com/t3-oss/create-t3-app/pull/1232) [`9c82f86`](https://github.com/t3-oss/create-t3-app/commit/9c82f862f5f5227c48e355a8fc31f83d88b0baeb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: bind configs to variables before exporting to make sure typeerrors are reported
+
 ## 7.5.6
 
 ### Patch Changes
