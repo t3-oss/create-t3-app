@@ -46,7 +46,7 @@ Nå har vi forståelse for at denne metoden ikke fungerer for alle. Så hvis du 
 
 I henhold til [3. T3-Prinsipp](/no/introduction#typesafety-isnt-optional), anser vi _typesafety_ som en førsteklasses borger. Dessverre støtter ikke alle rammeverk og plugins TypeScript, noe som betyr at noen av konfigurasjonsfilene nødvendigvis må være `.js`-filer.
 
-Vi forsøker å understreke at disse filene er JavaScript for en grunn, ved å eksplisitt deklarere hver filtype (`cjs` eller `mjs`) avhengig av hva som støttes av biblioteket den brukes av. Dessuten er alle `js`-filene i dette prosjektet fortsatt typesjekket med en `@ts-check`-kommentar øverst.
+Vi forsøker å understreke at disse filene er JavaScript for en grunn, ved å eksplisitt deklarere hver filtype (`cjs` eller `mjs`) avhengig av hva som støttes av biblioteket den brukes av. Dessuten er alle `js`-filene i dette prosjektet fortsatt typesjekket ved bruk av checkJs alternativet i kompilatoren (tsconfig).
 
 ## Jeg sliter med å legge til i18n i applikasjonen min. Er det noen referanse jeg kan bruke?
 
