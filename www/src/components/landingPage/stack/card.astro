@@ -9,24 +9,22 @@ const { title, href } = Astro.props;
 <div
   class="relative flex flex-col justify-between overflow-hidden rounded-md border border-t3-purple-200/20 bg-white/5 transition-colors hover:border-t3-purple-300/50"
 >
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="h-full rounded-md focus:no-underline hover:no-underline active:no-underline"
+  <div
+    class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
   >
-    <div
-      class="flex items-center space-x-4 bg-white/10 p-2 pl-5 transition-colors hover:bg-white/20"
-    >
-      <slot name="icon" />
-      <p class="text-lg font-medium leading-6 text-t3-purple-200 md:text-xl">
+    <slot name="icon" />
+    <p class="text-lg font-medium leading-6 text-t3-purple-200 md:text-xl">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="h-full rounded-md focus:no-underline hover:no-underline active:no-underline before:content-[''] before:inset-0 before:absolute"
+      >
         {title}
-      </p>
-    </div>
-    <div
-      class="m-6 text-sm text-t3-purple-100 subpixel-antialiased md:text-base"
-    >
-      <slot name="description" />
-    </div>
-  </a>
+      </a>
+    </p>
+  </div>
+  <div class="m-6 text-sm text-t3-purple-100 subpixel-antialiased md:text-base">
+    <slot name="description" />
+  </div>
 </div>
