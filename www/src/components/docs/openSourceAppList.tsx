@@ -15,6 +15,7 @@ const projects: App[] = [
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
+
   {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
@@ -154,6 +155,22 @@ const projects: App[] = [
     repo: "https://github.com/AnswerOverflow/AnswerOverflow",
     linkName: "answeroverflow.com",
     link: "https://www.answeroverflow.com/",
+  },
+
+  {
+    description: "Hitori - Serverless Discord bot template",
+    repoName: "astridlol/Hitori",
+    repo: "https://github.com/astridlol/hitori",
+    linkName: "(none)",
+    link: "https://github.com/astridlol/hitori",
+  },
+
+  {
+    description: "CUA - Create an Universal App for web, native and desktop",
+    repoName: "chen-rn/CUA",
+    repo: "https://github.com/chen-rn/CUA",
+    linkName: "cua-demo.vercel.app",
+    link: "https://cua-demo.vercel.app/",
   },
 ];
 
