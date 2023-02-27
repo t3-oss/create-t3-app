@@ -13,7 +13,6 @@
     ".eslintrc.cjs",
     "**/*.js",
     "**/*.cjs",
-    "**/*.mjs",
-    "../reset.d.ts"
+    "**/*.mjs"
   ]
 }
