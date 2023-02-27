@@ -1,0 +1,3 @@
+{
+  "include": ["src", "template", "tsup.config.ts"]
+}

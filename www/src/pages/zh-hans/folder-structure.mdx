@@ -47,7 +47,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/pages/api`
 
-文件夹 `api` 包含了 Next.js 应用的 API 路由。文件 `examples.ts`（安装 Primsa 后会出现）包含了一段搭配 Prisma 使用 [Next.js API 路由](https://nextjs.org/docs/api-routes/introduction) 的示例代码。文件 `restricted.ts`（安装 Next-Auth 后会出现）则包含了一段受 [NextAuth.js](https://next-auth.js.org/) 保护的示例路由代码，它同样也使用了 [Next.js API 路由](https://nextjs.org/docs/api-routes/introduction)。
+文件夹 `api` 包含了 Next.js 应用的所有 API 路由。参看 [Next.js API 路由](https://nextjs.org/docs/api-routes/introduction) 来获取有关 API 路由的信息。
 
 </div>
 <div data-components="nextauth">
@@ -64,7 +64,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 文件 `[trpc].ts` 是 tRPC API 的入口。它被用于处理 tRPC 请求。参看 [tRPC 用法](/zh-hans/usage/trpc#-pagesapitrpctrpcts) 来了解更多关于这个文件的信息，以及 [Next.js 动态路由文档](https://nextjs.org/docs/routing/dynamic-routes) 来了解更多关于 catch-all 和 slug 路由的信息。
 
 </div>
-<div data-components="trpc prisma">
+<div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
@@ -73,72 +73,58 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div data-components="nextauth+trpc">
 
-### `src/server/common`
+#### `src/server/auth.ts`
 
-文件夹 `common` 包含了常用的可复用服务端代码。
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/common/get-server-auth-session.ts`
-
-文件 `get-server-auth-session.ts` 被用于在服务端获取 NextAuth.js 的 session。参看 [NextAuth.js 用法](/zh-hans/usage/next-auth#搭配-trpc-的用法) 来了解更多。
+服务器端认证逻辑的主入口。在这里，我们设置 NextAuth.js 的 [配置选项](/zh-hans/usage/next-auth)，执行 [模块扩展](/zh-hans/usage/next-auth#inclusion-of-userid-on-the-session)，并提供一些认证的 DX 工具，例如在服务器端检索用户的会话。参看 [NextAuth.js 用法](/zh-hans/usage/next-auth#搭配-trpc-的用法) 来了解更多。
 
 </div>
 <div data-components="prisma">
 
-#### `src/server/db/client.ts`
+#### `src/server/db.ts`
 
-文件 `client.ts` 被用于初始化一个全局的 Prisma 客户端。 参看 [Prisma 用法](/zh-hans/usage/prisma#prisma-客户端) 来了解更多。
-
-</div>
-<div data-components="trpc">
-
-### `src/server/trpc`
-
-文件夹 `trpc` 包含了 tRPC 服务端的代码。
+文件 `db.ts` 被用于初始化一个全局的 Prisma 客户端。 参看 [Prisma 用法](/zh-hans/usage/prisma#prisma-客户端) 和 [使用 Prisma 与 Next.js 的最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) 来了解更多。
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/context.ts`
+### `src/server/api`
 
-文件 `context.ts` 被用于创建上下文，该上下文会被用于 tRPC 的请求里。参看 [tRPC 用法](/zh-hans/usage/trpc#-servertrpccontextts) 来了解更多。
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/trpc.ts`
-
-文件 `trpc.ts` 被用于导出路由 procedure 的 helper 函数。参看 [tRPC 用法](/zh-hans/usage/trpc#-servertrpctrpcts) 来了解更多。
+文件夹 `api` 包含了 tRPC 服务端的代码。
 
 </div>
 <div data-components="trpc">
 
-### `src/server/trpc/router`
+#### `src/server/api/routers`
 
-文件夹 `router` 包含了 tRPC 的路由。
-
-</div>
-<div data-components="trpc">
-
-#### `src/server/trpc/router/_app.ts`
-
-文件 `_app.ts` 主要用于合并多个 tRPC 路由，并将它统一导出为一个路由，以及其对应的类型定义。参看 [tRPC 用法](/zh-hans/usage/trpc#-servertrpcrouterts) 来了解更多。
-
-</div>
-<div data-components="nextauth+trpc">
-
-#### `src/server/trpc/router/auth.ts`
-
-文件 `auth.ts` 包含了一段 tRPC 路由的示例代码，它利用了 `protectedProcedure` 来展示如何用 NextAuth.js 来保护 tRPC 路由。
+文件夹 `routers` 包含了你的所有 tRPC 子路由。
 
 </div>
 <div data-components="trpc">
 
-#### `src/server/trpc/router/example.ts`
+#### `src/server/api/routers/example.ts`
 
 文件 `example.ts` 包含了一段 tRPC 路由的示例代码，它利用 `publicProcedure` 来展示如何创建一个公开不受保护的 tRPC 路由。
+
+根据你选择的包，这个路由包含更多或更少的路由，以最好地展示符合你需求的用法。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+文件 `trpc.ts` 是 tRPC 后端的主要配置文件。我们在这里进行以下操作：
+
+1. 定义在 tRPC 请求中使用的上下文。 参看 [tRPC 用法](usage/trpc#-servertrpccontextts) 来了解更多。
+2. 导出 procedure。 参看 [tRPC 用法](usage/trpc#-servertrpctrpcts) 来了解更多。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+root.ts 文件用于合并 tRPC 子路由并将它们导出为一个单一的路由，同时也导出了路由的类型定义。详见 tRPC 用法。
+
+文件 `root.ts` 被用于合并 tRPC 子路由并将它们导出为一个单一的路由，同时也导出了路由的类型定义。参看 [tRPC 用法](usage/trpc#-servertrpcrouterts) 来了解更多。
 
 </div>
 <div>
@@ -146,20 +132,6 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 ### `src/styles`
 
 文件夹 `styles` 包含了应用的全局样式。
-
-</div>
-<div data-components="nextauth">
-
-### `src/types`
-
-文件夹 `types` 被用于存储复用的类型或类型声明。
-
-</div>
-<div data-components="nextauth">
-
-#### `src/types/next-auth.d.ts`
-
-文件 `next-auth.d.ts` 被用于扩展 NextAuth 的默认 session 类型，这里将用户 ID 也添加了进来。参看 [NextAuth.js 用法](/zh-hans/usage/next-auth#在-session-中添加-userid) 来查看更多。
 
 </div>
 <div data-components="trpc">
@@ -171,7 +143,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div data-components="trpc">
 
-#### `src/utils/trpc.ts`
+#### `src/utils/api.ts`
 
 文件 `trpc.ts` 是 tRPC 的前端入口。参看 [tRPC 用法](/zh-hans/usage/trpc#-utilstrpcts) 来了解更多。
 
@@ -192,9 +164,9 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div>
 
-### `.eslintrc.json`
+### `.eslintrc.cjs`
 
-文件 `.eslintrc.json` 被用于配置 ESLint。参看 [ESLint 文档](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) 来了解更多。
+文件 `.eslintrc.cjs` 被用于配置 ESLint。参看 [ESLint 文档](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) 来了解更多。
 
 </div>
 <div>
@@ -229,6 +201,6 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 ### `tsconfig.json`
 
-文件 `tsconfig.json` 被用于配置 TypeScript。一些非默认项，例如 `strict mode` 已经被启用来保证使用 create-t3-app 和它所含库时能获得最佳的 TypeScript 开发体验。参看 [TypeScript 文档](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) 或 [TypeScript 用法](/zh-hans/usage/typescript) 来了解更多。
+文件 `tsconfig.json` 被用于配置 TypeScript。一些非默认项，例如 `strict mode` 已经被启用来保证使用 Create T3 App 和它所含库时能获得最佳的 TypeScript 开发体验。参看 [TypeScript 文档](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) 或 [TypeScript 用法](/zh-hans/usage/typescript) 来了解更多。
 
 </div>

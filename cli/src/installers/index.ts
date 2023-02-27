@@ -1,4 +1,4 @@
-import type { PackageManager } from "~/utils/getUserPkgManager.js";
+import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
@@ -14,7 +14,7 @@ export const availablePackages = [
   "trpc",
   "envVariables",
 ] as const;
-export type AvailablePackages = typeof availablePackages[number];
+export type AvailablePackages = (typeof availablePackages)[number];
 
 export interface InstallerOptions {
   projectDir: string;
