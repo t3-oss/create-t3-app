@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.8
+
+### Patch Changes
+
+- [#1249](https://github.com/t3-oss/create-t3-app/pull/1249) [`2432d76`](https://github.com/t3-oss/create-t3-app/commit/2432d76acb337e215743e712d12969b141b22879) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: bump nextjs
+
 ## 7.5.7
 
 ### Patch Changes
