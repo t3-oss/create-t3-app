@@ -326,6 +326,42 @@ test("example router", async () => {
 });
 ```
 
+If you need to test a protected procedure then use a mock to unprotect the procedure:
+
+```ts
+import { type inferProcedureInput } from "@trpc/server";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import { appRouter, type AppRouter } from "~/server/api/root";
+import { expect, test } from "vitest";
+
+test("protected example router", async () => {
+  const user = await prisma.user.upsert({
+    where: { email: "test@test.com" },
+    create: { name: "test", email: "test@test.com", image: "" },
+    update: {},
+  });
+
+  const ctx = createInnerTRPCContext({
+    session: {
+      user,
+      expires: "1",
+    },
+  });
+  const caller = appRouter.createCaller(ctx);
+
+  type Input = inferProcedureInput<AppRouter["protectedExample"]["hello"]>;
+  const input: Input = {
+    text: "test",
+  };
+
+  const example = await caller.protectedExample.hello(input);
+
+  expect(example).toMatchObject({ greeting: "Hello test" });
+});
+```
+
+Check out this [repo](https://github.com/cowofevil/next-auth-cypress-example) for a real world example of testing protected procedures in T3 app.
+
 ## Useful Resources
 
 | Resource               | Link                                                    |
