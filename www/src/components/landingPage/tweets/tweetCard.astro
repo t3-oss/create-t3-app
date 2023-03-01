@@ -103,7 +103,7 @@ const {
         class="mr-8 flex items-center text-t3-purple-100 hover:text-green-500"
       >
         <a
-          aria-label="Retweet"
+          aria-label={`Retweet ${author.split(" (")[0]}'s Tweet`}
           href={`https://twitter.com/intent/retweet?tweet_id=${id}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -121,7 +121,7 @@ const {
       </div>
       <div class="mr-6 flex items-center text-t3-purple-100 hover:text-red-500">
         <a
-          aria-label="Like"
+          aria-label={`Like ${author.split(" (")[0]}'s Tweet`}
           href={`https://twitter.com/intent/like?tweet_id=${id}`}
           target="_blank"
           rel="noopener noreferrer"
