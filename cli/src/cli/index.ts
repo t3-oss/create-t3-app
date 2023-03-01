@@ -8,6 +8,7 @@ import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
+import { validatePathAlias } from "~/utils/validatePathAlias.js";
 
 interface CliFlags {
   noGit: boolean;
@@ -197,7 +198,19 @@ export const runCli = async () => {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
-      await promptShouldContinue();
+      const { shouldContinue } = await inquirer.prompt<{
+        shouldContinue: boolean;
+      }>({
+        name: "shouldContinue",
+        type: "confirm",
+        message: `Continue scaffolding a default T3 app?`,
+        default: true,
+      });
+
+      if (!shouldContinue) {
+        logger.info("Exiting...");
+        process.exit(0);
+      }
 
       logger.info(`Bootstrapping a default T3 app in ./${cliResults.appName}`);
     } else {
@@ -206,22 +219,6 @@ export const runCli = async () => {
   }
 
   return cliResults;
-};
-
-const promptShouldContinue = async () => {
-  const { shouldContinue } = await inquirer.prompt<{
-    shouldContinue: boolean;
-  }>({
-    name: "shouldContinue",
-    type: "confirm",
-    message: `Continue scaffolding a default T3 app?`,
-    default: true,
-  });
-
-  if (!shouldContinue) {
-    logger.info("Exiting...");
-    process.exit(0);
-  }
 };
 
 const promptAppName = async (): Promise<string> => {
@@ -326,19 +323,11 @@ const promptImportAlias = async (): Promise<string> => {
     type: "input",
     message: "What import alias would you like configured?",
     default: defaultOptions.flags.importAlias,
+    validate: validatePathAlias,
     transformer: (input: string) => {
       return input.trim();
     },
   });
-
-  // tsconfig-paths do not support paths starting with "." or "/"
-  if (importAlias.startsWith(".") || importAlias.startsWith("/")) {
-    logger.error("Import alias can't start with '.' or '/'.");
-
-    await promptShouldContinue();
-
-    return promptImportAlias();
-  }
 
   return importAlias;
 };
