@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.9
+
+### Patch Changes
+
+- [#1252](https://github.com/t3-oss/create-t3-app/pull/1252) [`d8be181`](https://github.com/t3-oss/create-t3-app/commit/d8be181fd71dafba8c4c1358fea38b70bca8171a) Thanks [@ggrochow](https://github.com/ggrochow)! - Rename \_eslint.cjs before intializing git repo to ensure .eslint.cjs is added by default
+
 ## 7.5.8
 
 ### Patch Changes
