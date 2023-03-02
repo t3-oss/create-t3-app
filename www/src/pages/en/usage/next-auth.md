@@ -61,7 +61,7 @@ const User = () => {
 
 Create T3 App is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
 
-```ts:server/auth.ts
+```ts:/pages/api/auth/[...nextauth].ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -74,7 +74,7 @@ callbacks: {
 
 This is coupled with a type declaration file to make sure the `user.id` is typed when accessed on the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
 
-```ts:server/auth.ts
+```ts:types/next-auth.d.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -96,7 +96,7 @@ This is done in a two step process:
 
 1. Grab the session from the request headers using the [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) function. The advantage of using `getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away so that you don't need to import both your NextAuth.js options as well as the `getServerSession` function every time you need to access the session.
 
-```ts:server/auth.ts
+```ts:server/api/trpc.ts
 export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
