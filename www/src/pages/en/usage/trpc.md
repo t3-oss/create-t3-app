@@ -326,6 +326,22 @@ test("example router", async () => {
 });
 ```
 
+If your procedure is protected, you can pass in a mocked `session` object when you create the context:
+
+```ts
+test("protected example router", async () => {
+  const ctx = await createInnerTRPCContext({
+    session: {
+      user: { id: "123", name: "John Doe" },
+      expires: "1",
+    },
+  });
+  const caller = appRouter.createCaller(ctx);
+
+  // ...
+});
+```
+
 ## Useful Resources
 
 | Resource               | Link                                                    |
