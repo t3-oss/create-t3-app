@@ -340,7 +340,7 @@ test("protected example router", async () => {
 
   // ...
 });
-wa```
+```
 
 ## Useful Resources
 
