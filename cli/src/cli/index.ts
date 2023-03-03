@@ -8,6 +8,7 @@ import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
+import { validateImportAlias } from "~/utils/validateImportAlias.js";
 
 interface CliFlags {
   noGit: boolean;
@@ -322,6 +323,7 @@ const promptImportAlias = async (): Promise<string> => {
     type: "input",
     message: "What import alias would you like configured?",
     default: defaultOptions.flags.importAlias,
+    validate: validateImportAlias,
     transformer: (input: string) => {
       return input.trim();
     },
