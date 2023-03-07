@@ -1,5 +1,5 @@
 /** @type {import('prettier').Config} */
-const config = {
+module.exports = {
   ...require("../.prettierrc.cjs"),
   plugins: [
     require.resolve("prettier-plugin-astro"),
@@ -17,5 +17,3 @@ const config = {
   astroAllowShorthand: false,
   tailwindConfig: "./tailwind.config.cjs",
 };
-
-module.exports = config;

@@ -1,8 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
-const config = {
+module.exports = {
   parserOptions: {
     extraFileExtensions: [".astro"],
   },
 };
-
-module.exports = config;
