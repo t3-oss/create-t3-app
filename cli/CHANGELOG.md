@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.6.0
+
+### Minor Changes
+
+- [#1255](https://github.com/t3-oss/create-t3-app/pull/1255) [`601cbb2`](https://github.com/t3-oss/create-t3-app/commit/601cbb23075cd33170c5b3ea2b1b0dbb0f2d5716) Thanks [@justasam](https://github.com/justasam)! - Add import alias validation
+
 ## 7.5.9
 
 ### Patch Changes
