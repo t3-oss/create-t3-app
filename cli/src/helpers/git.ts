@@ -16,12 +16,12 @@ const isGitInstalled = (dir: string): boolean => {
   }
 };
 
-/** If dir has `.git` => is the root of a git repo */
+/** @returns Whether or not the provided directory has a `.git` subdirectory in it. */
 const isRootGitRepo = (dir: string): boolean => {
   return fs.existsSync(path.join(dir, ".git"));
 };
 
-/** If dir is inside a git worktree, meaning a parent directory has `.git` */
+/** @returns Whether or not this directory or a parent directory has a `.git` directory. */
 const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
     // If this command succeeds, we're inside a git repo
@@ -44,7 +44,7 @@ const getGitVersion = () => {
   return { major: Number(major), minor: Number(minor) };
 };
 
-/** If git config value 'init.defaultBranch' is set return value else 'main' */
+/** @returns The git config value of "init.defaultBranch". If it is not set, returns "main". */
 const getDefaultBranch = () => {
   const stdout = execSync("git config --global init.defaultBranch || echo main")
     .toString()
@@ -120,8 +120,11 @@ export const initializeGit = async (projectDir: string) => {
         cwd: projectDir,
       });
     }
+    await execa("git", ["add", "."], { cwd: projectDir });
     spinner.succeed(
-      `${chalk.green("Successfully initialized")} ${chalk.green.bold("git")}\n`,
+      `${chalk.green("Successfully initialized and staged")} ${chalk.green.bold(
+        "git",
+      )}\n`,
     );
   } catch (error) {
     // Safeguard, should be unreachable

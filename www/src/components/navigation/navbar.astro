@@ -1,5 +1,4 @@
 ---
-import clsx from "clsx";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
@@ -21,24 +20,24 @@ const langCode = getLanguageFromURL(pathname);
 
 const navbarLinks: Array<{ href: string; label: string }> = [
   {
-    href: "/en/introduction",
+    href: `/${langCode}/introduction`,
     label: "Docs",
   },
   {
-    href: "/en/faq",
+    href: `/${langCode}/faq`,
     label: "FAQ",
   },
 ];
 ---
 
 <nav
-  class={clsx(
+  class:list={[
     "navbar flex flex-col relative justify-between items-center py-4",
     {
       "z-40 text-slate-50": isLanding,
       "transition-colors duration-300": !isLanding,
     },
-  )}
+  ]}
   aria-label="Global"
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
@@ -55,16 +54,16 @@ const navbarLinks: Array<{ href: string; label: string }> = [
         </a>
       </div>
       <div
-        class={clsx([
+        class:list={[
           "hidden -space-x-1 md:flex gap-2",
           isLtr && "md:ml-10",
           isRtl && "md:mr-10",
-        ])}
+        ]}
       >
         {
           navbarLinks.map((navbarLink) => (
             <a
-              class={clsx(
+              class:list={[
                 "relative inline-flex items-center rounded-md border border-transparent px-3 py-2 transition-colors hover:no-underline",
                 {
                   "border bg-t3-purple-200/50 text-t3-purple-800 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50":
@@ -74,7 +73,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                   "rounded-lg text-t3-purple-800 hover:bg-t3-purple-200/50 hover:text-t3-purple-800 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/10 dark:hover:text-t3-purple-300":
                     !isLanding,
                 },
-              )}
+              ]}
               aria-current={navbarLink.href === currentPage ? "page" : "false"}
               href={navbarLink.href}
             >
@@ -88,9 +87,12 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       <GithubIcon />
       {!isLanding && <LanguageSelect language={langCode} client:load />}
       <div
-        class={clsx("text-center", {
-          hidden: isLanding,
-        })}
+        class:list={[
+          "text-center",
+          {
+            hidden: isLanding,
+          },
+        ]}
       >
         <ThemeToggleButton />
       </div>

@@ -1,6 +1,4 @@
 ---
-import clsx from "clsx";
-
 export interface Props {
   size: "6" | "12" | "16" | "24" | "32";
   className?: string;
@@ -29,7 +27,7 @@ const { size, className, bottomPadding = true, id = "" } = Astro.props;
 
 <section
   id={id}
-  class={clsx(className, bottomPadding ? sizes[size] : sizesOnlyTop[size])}
+  class:list={[className, bottomPadding ? sizes[size] : sizesOnlyTop[size]]}
 >
   <slot />
 </section>

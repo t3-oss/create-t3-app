@@ -32,11 +32,16 @@ export const renderVersionWarning = (npmVersion: string) => {
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the MIT license found in the LICENSE file in the root
+ * directory of this source tree.
  * https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/LICENSE
  */
 import https from "https";
+
+type DistTagsBody = {
+  latest: string;
+};
+
 function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https
@@ -47,7 +52,7 @@ function checkForLatestVersion(): Promise<string> {
             let body = "";
             res.on("data", (data) => (body += data));
             res.on("end", () => {
-              resolve(JSON.parse(body).latest);
+              resolve((JSON.parse(body) as DistTagsBody).latest);
             });
           } else {
             reject();

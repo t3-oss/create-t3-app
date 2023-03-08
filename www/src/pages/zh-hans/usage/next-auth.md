@@ -34,9 +34,32 @@ const User = () => {
 };
 ```
 
+## 在服务端检索 session
+
+有时你可能想在服务端请求 session。 为此, 可以使用 `create-t3-app` 提供的`getServerAuthSession` 辅助函数来预获取 session，然后使用 `getServerSideProps` 将其传递给客户端：
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import { type GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // 注意: `session` 不会有加载状态，因为它已经在服务器上预获取了。
+
+  ...
+}
+```
+
 ## 在 session 中添加 `user.id`
 
-默认设置下， `create-t3-app` 利用了 NextAuth.js 配置里的 [session 回调函数](https://next-auth.js.org/configuration/callbacks#session-callback) 来帮你将用户的 ID 添加到 `session` 对象里。
+默认设置下， Create T3 App 利用了 NextAuth.js 配置里的 [session 回调函数](https://next-auth.js.org/configuration/callbacks#session-callback) 来帮你将用户的 ID 添加到 `session` 对象里。
 
 ```ts:pages/api/auth/[...nextauth].ts
 callbacks: {
@@ -71,21 +94,21 @@ declare module "next-auth" {
 
 这个过程可以被分为两步完成：
 
-1. 先通过函数 [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) 从请求头里获得 session。无需担心，这个函数可以被安全地使用 —— 它的名字包含 `unstable` 是因为这个 API 未来很可能会被修改而已。使用 `unstable_getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
+1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
 
-```ts:server/common/get-server-auth-session.ts
+```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  return await getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
 通过使用这个函数，我们可以获取 session，并将它传给 tRPC 的上下文：
 
-```ts:server/trpc/context.ts
-import { getServerAuthSession } from "../common/get-server-auth-session";
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
@@ -98,7 +121,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 2. 创建一个 tRPC 中间件，来检测用户是否已通过认证。然后我们可以在一个 `protectedProcedure` 里调用该中间件。任何对该路由的调用都会被要求认证，否则会抛出一个错误，由客户端妥善处理。
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +139,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 这个 session 对象是对用户数据的一个轻量、最小化表示，仅包含了少量字段。当使用 `protectedProcedures` 时，你可以借助访问用户 ID 来从数据库里读取该用户的更多数据。
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
@@ -153,7 +176,7 @@ const userRouter = router({
 
 ## 搭配 Next.js 中间件使用
 
-将 NextAuth.js 搭配 Next.js 中间件一同使用[需要采用 JWT session 策略](https://next-auth.js.org/configuration/nextjs#caveats) 来进行认证。这是因为只有当会话 cookie 为 JWT 时，中间件才能够获取到它。默认情况下，`create-t3-app` 会用 Prisma 作为数据库适配器，并采取**默认**的数据库策略。
+将 NextAuth.js 搭配 Next.js 中间件一同使用[需要采用 JWT session 策略](https://next-auth.js.org/configuration/nextjs#caveats) 来进行认证。这是因为只有当会话 cookie 为 JWT 时，中间件才能够获取到它。默认情况下，Create T3 App 会用 Prisma 作为数据库适配器，并采取**默认**的数据库策略。
 
 ## 配置默认的 DiscordProvider
 

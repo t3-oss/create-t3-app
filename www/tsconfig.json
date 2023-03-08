@@ -4,6 +4,16 @@
     "jsx": "preserve",
     "types": ["@astrojs/image/client"],
     // Skip type checking of external libraries.
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "importsNotUsedAsValues": "preserve" // fixed through linting
+  },
+  "include": [
+    "src",
+    "astro.config.mjs",
+    ".eslintrc.cjs",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "../reset.d.ts"
+  ]
 }

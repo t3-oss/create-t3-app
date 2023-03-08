@@ -1,5 +1,158 @@
 # Changelog
 
+## 7.6.0
+
+### Minor Changes
+
+- [#1255](https://github.com/t3-oss/create-t3-app/pull/1255) [`601cbb2`](https://github.com/t3-oss/create-t3-app/commit/601cbb23075cd33170c5b3ea2b1b0dbb0f2d5716) Thanks [@justasam](https://github.com/justasam)! - Add import alias validation
+
+## 7.5.9
+
+### Patch Changes
+
+- [#1252](https://github.com/t3-oss/create-t3-app/pull/1252) [`d8be181`](https://github.com/t3-oss/create-t3-app/commit/d8be181fd71dafba8c4c1358fea38b70bca8171a) Thanks [@ggrochow](https://github.com/ggrochow)! - Rename \_eslint.cjs before intializing git repo to ensure .eslint.cjs is added by default
+
+## 7.5.8
+
+### Patch Changes
+
+- [#1249](https://github.com/t3-oss/create-t3-app/pull/1249) [`2432d76`](https://github.com/t3-oss/create-t3-app/commit/2432d76acb337e215743e712d12969b141b22879) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: bump nextjs
+
+## 7.5.7
+
+### Patch Changes
+
+- [#1232](https://github.com/t3-oss/create-t3-app/pull/1232) [`9c82f86`](https://github.com/t3-oss/create-t3-app/commit/9c82f862f5f5227c48e355a8fc31f83d88b0baeb) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: bind configs to variables before exporting to make sure typeerrors are reported
+
+## 7.5.6
+
+### Patch Changes
+
+- [#1222](https://github.com/t3-oss/create-t3-app/pull/1222) [`7baa339`](https://github.com/t3-oss/create-t3-app/commit/7baa339b36b40760443083e0a378d8fe04dddb40) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: detect and handle git bash environment
+
+## 7.5.5
+
+### Patch Changes
+
+- [#1218](https://github.com/t3-oss/create-t3-app/pull/1218) [`4f8d41a`](https://github.com/t3-oss/create-t3-app/commit/4f8d41ae2f41bef197cab13a332034e0ddffc955) Thanks [@bai](https://github.com/bai)! - feat: change eslint config to use `.cjs` format and typecheck it
+
+- [#1217](https://github.com/t3-oss/create-t3-app/pull/1217) [`55c87af`](https://github.com/t3-oss/create-t3-app/commit/55c87af37f64fbf778a5091b9cca75f9c9546468) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: add autofix to eslint type rule
+
+## 7.5.4
+
+### Patch Changes
+
+- [#1191](https://github.com/t3-oss/create-t3-app/pull/1191) [`aabb9a4`](https://github.com/t3-oss/create-t3-app/commit/aabb9a41aa8acce4b3b02e2341b83cd78b802924) Thanks [@bai](https://github.com/bai)! - Use ~/\* import alias
+
+## 7.5.3
+
+### Patch Changes
+
+- [#1213](https://github.com/t3-oss/create-t3-app/pull/1213) [`ab3c7cb`](https://github.com/t3-oss/create-t3-app/commit/ab3c7cb4d4e78ab646a645bc28b4fe3496ba7831) Thanks [@michalbundyra](https://github.com/michalbundyra)! - fix: update comment regarding schema definition of env vars
+
+## 7.5.2
+
+### Patch Changes
+
+- [#1189](https://github.com/t3-oss/create-t3-app/pull/1189) [`bf12635`](https://github.com/t3-oss/create-t3-app/commit/bf1263576866116a904f3d1fa741c5496a535cb9) Thanks [@p13lgst](https://github.com/p13lgst)! - fix: remove ts-ignores on env.mjs
+
+## 7.5.1
+
+### Patch Changes
+
+- [#1187](https://github.com/t3-oss/create-t3-app/pull/1187) [`e111fb5`](https://github.com/t3-oss/create-t3-app/commit/e111fb5cb816de9b2d87bdf4ffcf84f446fd2023) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - remove old env files
+
+## 7.5.0
+
+### Minor Changes
+
+- [#1092](https://github.com/t3-oss/create-t3-app/pull/1092) [`aa44574`](https://github.com/t3-oss/create-t3-app/commit/aa44574680bf380cf4cf7f255fb547e5d9ced7d7) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - single env file
+
+### Patch Changes
+
+- [#1171](https://github.com/t3-oss/create-t3-app/pull/1171) [`efe8b7f`](https://github.com/t3-oss/create-t3-app/commit/efe8b7f54cf0fe5448dc52118745668ae4913547) Thanks [@esotuvaka](https://github.com/esotuvaka)! - fix: swap `@ts-check` comments to `checkJs: true` in scaffolded app's tsconfig
+
+## 7.4.1
+
+### Patch Changes
+
+- [#1155](https://github.com/t3-oss/create-t3-app/pull/1155) [`90955a5`](https://github.com/t3-oss/create-t3-app/commit/90955a50390eee8a23e1c1b35e10c860e4341fed) Thanks [@christopher-kapic](https://github.com/christopher-kapic)! - Change unstable_getServerSession to match the updated getServerSession from next-auth (introduced in next-auth 4.19.0)
+
+## 7.4.0
+
+### Minor Changes
+
+- [#1136](https://github.com/t3-oss/create-t3-app/pull/1136) [`715f6e8`](https://github.com/t3-oss/create-t3-app/commit/715f6e8e795685c054145149acff427a1b46172f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: colocate auth config/dts/session-getter into a single file
+
+- [#1134](https://github.com/t3-oss/create-t3-app/pull/1134) [`4cb2e4e`](https://github.com/t3-oss/create-t3-app/commit/4cb2e4e5020f93636889499bf71029ce7fcb5fce) Thanks [@PiotrekPKP](https://github.com/PiotrekPKP)! - feat: added package installation progress
+
+### Patch Changes
+
+- [#1131](https://github.com/t3-oss/create-t3-app/pull/1131) [`ab0790e`](https://github.com/t3-oss/create-t3-app/commit/ab0790e95194291cab65dee458982a2b637a4d15) Thanks [@bastibuck](https://github.com/bastibuck)! - fix: fix types of serverEnv and clientEnv
+
+- [#1140](https://github.com/t3-oss/create-t3-app/pull/1140) [`fc445bf`](https://github.com/t3-oss/create-t3-app/commit/fc445bfaa72e2de2880fb286cee71ff2b26a72a6) Thanks [@Zamiell](https://github.com/Zamiell)! - chore: add descriptive comments and format .env prettier
+
+## 7.3.2
+
+### Patch Changes
+
+- [#1097](https://github.com/t3-oss/create-t3-app/pull/1097) [`2ed36cd`](https://github.com/t3-oss/create-t3-app/commit/2ed36cd624cba2032ba70c465cd47c49a962bb0d) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: bump nextjs and add a note about appDir+i18n being incompat
+
+## 7.3.1
+
+### Patch Changes
+
+- [#1084](https://github.com/t3-oss/create-t3-app/pull/1084) [`7490a34`](https://github.com/t3-oss/create-t3-app/commit/7490a34a3f46d8e912f996843d27ae5933f26164) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: undo env changes
+
+## 7.3.0
+
+### Minor Changes
+
+- [#1071](https://github.com/t3-oss/create-t3-app/pull/1071) [`34d6c5b`](https://github.com/t3-oss/create-t3-app/commit/34d6c5b0431ea7baa922a27768d0c82b05c12bdc) Thanks [@ JacobADevore](https://github.com/JacobADevore)! - feat: automatically destructure env objects
+
+## 7.2.0
+
+### Minor Changes
+
+- [#1021](https://github.com/t3-oss/create-t3-app/pull/1021) [`78dfdc9`](https://github.com/t3-oss/create-t3-app/commit/78dfdc9b480ea19ac90270827653400e31300e6e) Thanks [@iduuck](https://github.com/iduuck)! - construct `serverEnv`, like we do with `clientEnv` #1000
+
+### Patch Changes
+
+- [#1060](https://github.com/t3-oss/create-t3-app/pull/1060) [`a8cc106`](https://github.com/t3-oss/create-t3-app/commit/a8cc106c3ef507e275f38c09a5d6a7a14336c254) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: cleanup context type in `initTRPC`
+
+## 7.1.0
+
+### Minor Changes
+
+- [#1036](https://github.com/t3-oss/create-t3-app/pull/1036) [`c5ca65e`](https://github.com/t3-oss/create-t3-app/commit/c5ca65e03e2a9d1c3c7f6844eb678402b0fa8993) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - use typescript-eslint's recommended-required-type-checking
+
+## 7.0.2
+
+### Patch Changes
+
+- [#1056](https://github.com/t3-oss/create-t3-app/pull/1056) [`c6704fb`](https://github.com/t3-oss/create-t3-app/commit/c6704fbeef1473e77ad62543770f1804645389a8) Thanks [@prashantrahul141](https://github.com/prashantrahul141)! - fix: update `package.json->name` before installing dependencies.
+
+## 7.0.1
+
+### Patch Changes
+
+- [#1043](https://github.com/t3-oss/create-t3-app/pull/1043) [`6fe7e1e`](https://github.com/t3-oss/create-t3-app/commit/6fe7e1e1025f46ea8fe6cc82bee7a68e96864078) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix(cli): exit with error code when aborting installation
+  fix(cli): don't log when scaffolding in current directory and it's empty
+
+## 7.0.0
+
+### Major Changes
+
+- [#934](https://github.com/t3-oss/create-t3-app/pull/934) [`c20ec70`](https://github.com/t3-oss/create-t3-app/commit/c20ec705a6d3d3005da24d072cc9be04370ab822) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat!: implement new folder structure
+
+  create-t3-app has decided to switch out the folder structure of the generated t3-app to, what is to us, a more minimal, logical and easier to understand structure.
+
+## 6.12.0
+
+### Minor Changes
+
+- [#1031](https://github.com/t3-oss/create-t3-app/pull/1031) [`61ba991`](https://github.com/t3-oss/create-t3-app/commit/61ba991ea92f5eb3e971d34769df0ba470310990) Thanks [@complexengine](https://github.com/complexengine)! - The CLI now stages the files on project initialization.
+
 ## 6.11.6
 
 ### Patch Changes

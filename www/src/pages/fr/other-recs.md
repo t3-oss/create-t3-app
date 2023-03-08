@@ -7,7 +7,7 @@ lang: fr
 
 Nous reconnaissons que les librairies incluses dans `create-t3-app` ne résolvent pas tous les problèmes. Bien que nous vous encourageons à commencer votre projet avec les éléments que nous fournissons, il viendra un moment où vous devrez ajouter d'autres librairies. Vous seul pouvez savoir ce dont votre projet a besoin, mais voici certaines choses que nous recommandons fréquemment.
 
-Ce sont des recommandations de contributeurs individuels de create-t3-app et ne doivent pas être considérées comme des approbations "officielles" par l'équipe de create-t3-app ou T3-OSS. _**Veuillez faire vos propres recherches, surtout avant de vous engager dans des services payants**_.
+Ce sont des recommandations de contributeurs individuels de Create T3 App et ne doivent pas être considérées comme des approbations "officielles" par l'équipe de Create T3 App ou T3-OSS. _**Veuillez faire vos propres recherches, surtout avant de vous engager dans des services payants**_.
 
 ## State Management
 

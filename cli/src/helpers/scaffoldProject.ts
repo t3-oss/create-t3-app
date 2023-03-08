@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
 import { PKG_ROOT } from "~/consts.js";
-import { InstallerOptions } from "~/installers/index.js";
+import { type InstallerOptions } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 
 // This bootstraps the base Next.js application
@@ -26,9 +26,12 @@ export const scaffoldProject = async ({
 
   if (fs.existsSync(projectDir)) {
     if (fs.readdirSync(projectDir).length === 0) {
-      spinner.info(
-        `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`,
-      );
+      if (projectName !== ".")
+        spinner.info(
+          `${chalk.cyan.bold(
+            projectName,
+          )} exists but is empty, continuing...\n`,
+        );
     } else {
       spinner.stopAndPersist();
       const { overwriteDir } = await inquirer.prompt<{
@@ -60,7 +63,7 @@ export const scaffoldProject = async ({
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
-        process.exit(0);
+        process.exit(1);
       }
 
       const overwriteAction =
@@ -79,7 +82,7 @@ export const scaffoldProject = async ({
 
       if (!confirmOverwriteDir) {
         spinner.fail("Aborting installation...");
-        process.exit(0);
+        process.exit(1);
       }
 
       if (overwriteDir === "clear") {

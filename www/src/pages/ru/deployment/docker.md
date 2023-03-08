@@ -62,7 +62,7 @@ README.md
 ```docker
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:16-alpine3.16 AS deps
+FROM --platform=linux/amd64 node:16-apline3.17 AS deps
 RUN apk add --no-cache libc6-compat openssl1.1-compat
 WORKDIR /app
 
@@ -83,7 +83,7 @@ RUN \
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:16-alpine3.16 AS builder
+FROM --platform=linux/amd64 node:16-apline3.17 AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -101,7 +101,7 @@ RUN \
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 node:16-alpine3.16 AS runner
+FROM --platform=linux/amd64 node:16-apline3.17 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -130,6 +130,7 @@ CMD ["node", "server.js"]
 >
 > - _Эмуляция `--platform=linux/amd64` может не быть необходимой после перехода на Node 18._
 > - _Посмотрите [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) чтобы понять, почему `libc6-compat` может быть необходим._
+> - _Использование образов, основанных на Alpine 3.17 [может привести к проблемам с Prisma](https://github.com/t3-oss/create-t3-app/issues/975). Установка `engineType = "binary"` решает проблему с Alpine 3.17, [но имеет связанные с этим затраты производительности](https://www.prisma.io/docs/concepts/components/prisma-engines/query-engine#the-query-engine-at-runtime)._
 > - _Next.js собирает [анонимные данные о телеметрии общего использования](https://nextjs.org/telemetry). Раскомментируйте первый экземпляр `ENV NEXT_TELEMETRY_DISABLED 1`, чтобы отключить телеметрию во время сборки. Раскомментируйте второй экземпляр, чтобы отключить телеметрию во время выполнения._
 
 </div>

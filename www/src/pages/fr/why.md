@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: fr
 ---
 
-Nous avons lancé create-t3-app parce que [Theo](https://twitter.com/t3dotgg) a refusé de créer un modèle de ses technologies préférées. Inspirée par create-next-app, [Astro's CLI](https://astro.build) avec un amour pour la sécurité des types, l'équipe create-t3-app a travaillé dur pour créer le meilleur point de départ possible pour les nouveaux projets T3 Stack.
+Nous avons lancé Create T3 App parce que [Theo](https://twitter.com/t3dotgg) a refusé de créer un modèle de ses technologies préférées. Inspirée par create-next-app, [Astro's CLI](https://astro.build) avec un amour pour la sécurité des types, l'équipe de Create T3 App a travaillé dur pour créer le meilleur point de départ possible pour les nouveaux projets T3 Stack.
 
 Si vous souhaitez utiliser Next.js de manière sécurisée, c'est ici qu'il faut commencer. Si vous êtes curieux de connaître l'un des choix technologiques spécifiques que nous avons faits, lisez la suite :)
 

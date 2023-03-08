@@ -1,11 +1,11 @@
 ---
 title: Variables d'environnement
-description: Débuter avec create-t3-app
+description: Débuter avec Create T3 App
 layout: ../../../layouts/docs.astro
 lang: fr
 ---
 
-Create-T3-App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
+Create T3 App utilise [Zod](https://github.com/colinhacks/zod) pour valider votre variables d'environnement a l'exécution _et_ a la génération de l'application en fournissant des fichiers supplémentaires dans le répertoire `env`:
 
 📁 src/env
 
@@ -28,6 +28,10 @@ C'est le fichier que vous allez modifier. Il contient deux schémas, l'un est po
 export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
+
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
 
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
@@ -76,7 +80,7 @@ C'est ici que la validation se fait et l'export des objets valider. Vous ne devr
 Lorsque vous souhaitez utiliser vos variables d'environnement, vous pouvez les importer depuis `env/client.mjs` ou `env/server.mjs` selon l'endroit où vous souhaitez les utiliser :
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` est totalement typesafe et fournit une autocomplétion
 const dbUrl = env.DATABASE_URL;
@@ -117,6 +121,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**NOTE:** Une chaîne vide est toujours une chaîne, donc `z.string()` acceptera une chaîne vide comme valeur valide. Si vous voulez vous assurer que la variable d'environnement n'est pas vide, vous pouvez utiliser `z.string().min(1)`._

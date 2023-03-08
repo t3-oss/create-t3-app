@@ -70,15 +70,15 @@ declare module "next-auth" {
 
 يُمكن فَعل هذا في خطوتين:
 
-1. للحصول علي Object الـ Session يمكنك استخدام unstable_getserversession، لا تقلق فهي امنه unstable تعني انها يمكن ان تتغير في المستقبل.
-   نفضل unstable_getserversession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء إنشاء هذه المادة عنك :
+1. للحصول علي Object الـ Session يمكنك استخدام getServerSession،
+   نفضل getServerSession عن getSession لانها تعمل علي الخام فلا يحدث invoke غير مرغوب فيه ، قد تحملت `create-t3-app` عناء إنشاء هذه المادة عنك :
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+  return await getServerSession(ctx.req, ctx.res, nextAuthOptions);
 };
 ```
 

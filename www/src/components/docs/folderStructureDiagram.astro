@@ -15,28 +15,21 @@
   const allFiles = {
     "public/favicon.ico": [], // This file is included in every configuration
     "prisma/schema.prisma": ["prisma"], // This file is included with prisma
-    "src/env/client.mjs": [],
-    "src/env/schema.mjs": [],
-    "src/env/server.mjs": [],
+    "src/env.mjs": [],
+    "src/pages/_app.tsx": [],
     "src/pages/api/auth/[...nextauth].ts": ["nextauth"],
     "src/pages/api/trpc/[trpc].ts": ["trpc"],
-    "src/pages/api/example.ts": ["trpc", "nextauth"],
-    "src/pages/api/restricted.ts": ["trpc", "nextauth"], // This file is included with trpc OR nextauth
-    "src/pages/_app.tsx": [],
     "src/pages/index.tsx": [],
+    "src/server/auth.ts": ["nextauth"],
+    "src/server/db.ts": ["prisma"],
+    "src/server/api/routers/example.ts": ["trpc"],
+    "src/server/api/trpc.ts": ["trpc"],
+    "src/server/api/root.ts": ["trpc"],
     "src/styles/globals.css": [],
-    "src/types/next-auth.d.ts": ["nextauth"],
-    "src/utils/trpc.ts": ["trpc"],
-    "src/server/common/get-server-auth-session.ts": ["nextauth+trpc"], // This file is included with prisma AND trpc
-    "src/server/db/client.ts": ["prisma"],
-    "src/server/trpc/router/_app.ts": ["trpc"],
-    "src/server/trpc/router/auth.ts": ["trpc"],
-    "src/server/trpc/router/example.ts": ["trpc"],
-    "src/server/trpc/router/context.ts": ["trpc"],
-    "src/server/trpc/router/trpc.ts": ["trpc"],
+    "src/utils/api.ts": ["trpc"],
     ".env": [],
     ".env.example": [],
-    ".eslintrc.json": [],
+    ".eslintrc.cjs": [],
     ".gitignore": [],
     "next-env.d.ts": [],
     "next.config.mjs": [],
@@ -75,7 +68,19 @@
     if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
   };
 
-  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
+  const getSelectedFromPackagesQueryParam = () => {
+    const selectedParam = new URLSearchParams(window.location.search).get(
+      "packages",
+    );
+
+    if (selectedParam === null) {
+      return ["nextauth", "prisma", "tailwind", "trpc"];
+    }
+
+    return selectedParam.split(",");
+  };
+
+  renderDiagram(getSelectedFromPackagesQueryParam());
 </script>
 
 <pre

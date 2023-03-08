@@ -28,6 +28,10 @@ export const serverSchema = z.object({
   // DATABASE_URL: z.string().url(),
 });
 
+export const serverEnv = {
+  // DATABASE_URL: process.env.DATABASE_URL,
+};
+
 export const clientSchema = z.object({
   // NEXT_PUBLIC_WS_KEY: z.string(),
 });
@@ -75,7 +79,7 @@ const validated = schema.parse(process.env);
 当你想要使用环境变量时，你可以从 `env/client.mjs` 或 `env/server.mjs` 文件中导入它们，这取决于你想在客户端还是服务端使用它们：
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` 完全类型安全并能提供自动完成
 const dbUrl = env.DATABASE_URL;
@@ -116,6 +120,11 @@ export const serverSchema = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const serverEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**注意:** 一个空的字符串仍然是一个字符串，所以 `z.string()` 会认为它是一个有效值。如果你想要确保环境变量的值不能为空，你可以使用 `z.string().min(1)`。_

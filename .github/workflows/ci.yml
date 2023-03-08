@@ -6,20 +6,13 @@ name: CI
 on:
   pull_request:
     branches: ["*"]
+  merge_group:
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  lint-pr-title:
-    runs-on: ubuntu-latest
-    name: Validate PR Title
-    steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   lint:
     runs-on: ubuntu-latest
     name: Run ESLint
@@ -57,6 +50,45 @@ jobs:
 
       - run: pnpm turbo run lint
       - run: pnpm manypkg check
+
+  check-changeset:
+    runs-on: ubuntu-latest
+    name: Check Changeset
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install root dependencies
+        run: pnpm --filter root install
+
+      # This will use the `changedFilePatterns` to check that a changeset has been added
+      # if any matched file has been changed
+      - run: pnpm changeset status --since origin/next
 
   prettier:
     runs-on: ubuntu-latest

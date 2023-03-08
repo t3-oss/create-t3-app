@@ -139,7 +139,7 @@ const UserPage = () => {
 إذا أردت أن تُتيح procedure للـ Apis الخارجية الق نظرة علي [server side calls](https://trpc.io/docs/v10/server-side-calls)، مما سيسمح لك بعمل Next.js Api إعتيادية
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { appRouter } from "../../../server/trpc/router/_app";
 import { createContext } from "../../../server/trpc/context";
 
@@ -180,7 +180,7 @@ tRPC communicates over HTTP, so it is also possible to call your tRPC procedures
 يمكننا كتابة Next.js API Endpoint مثل هذا:
 
 ```ts:pages/api/users/[id].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "../../../server/db/client";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -235,7 +235,7 @@ const UserPage = () => {
 ### تفعيل CORS
 
 ```ts:pages/api/trpc/[trpc].ts
-import type { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "~/server/trpc/router/_app";
 import { createContext } from "~/server/trpc/context";

@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: fr
 ---
 
-Voici quelques questions fréquemment posées sur `create-t3-app`.
+Voici quelques questions fréquemment posées sur Create T3 App.
 
 ## Et après? Comment faire une application avec ça ?
 
@@ -23,14 +23,14 @@ Si vous n'êtes pas familier avec les différentes technologies utilisées dans 
 
 Bien que les ressources répertoriées ci-dessous soient parmi les meilleures qui existent pour la stack T3, la communauté (et [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) vous recommandent de commencer à utiliser la stack et d'apprendre en cours de route en codant avec elle.
 
-Si vous envisagez `create-t3-app`, il y a de fortes chances que vous ayez déjà utilisé certaines parties de la stack. Alors pourquoi ne pas simplement plonger la tête la première et apprendre les autres parties pendant que vous créez quelque chose ?
+Si vous envisagez Create T3 App, il y a de fortes chances que vous ayez déjà utilisé certaines parties de la stack. Alors pourquoi ne pas simplement plonger la tête la première et apprendre les autres parties pendant que vous créez quelque chose ?
 
-Maintenant, nous comprenons que cette voie ne fonctionne pas pour tout le monde. Donc, si vous avez l'impression d'avoir suivi les recommandations et que vous êtes toujours en manque de ressources, ou si vous n'êtes tout simplement pas sûr de le faire vous-même et/ou si vous vous sentez dépassé par la stack, consultez ces tutoriels géniaux sur `create-t3-app ` :
+Maintenant, nous comprenons que cette voie ne fonctionne pas pour tout le monde. Donc, si vous avez l'impression d'avoir suivi les recommandations et que vous êtes toujours en manque de ressources, ou si vous n'êtes tout simplement pas sûr de le faire vous-même et/ou si vous vous sentez dépassé par la stack, consultez ces tutoriels géniaux sur Create T3 App :
 
 ### Articles
 
-- [Créez une application complète avec create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [Un premier aperçu de create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Créez une application complète avec Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [Un premier aperçu de Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrer votre application T3 vers un Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Intégrer Stripe dans votre application T3](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 

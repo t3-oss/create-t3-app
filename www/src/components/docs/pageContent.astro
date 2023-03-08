@@ -1,6 +1,6 @@
 ---
-import type { MarkdownHeading } from "astro";
-import type { Frontmatter, KnownLanguageCode } from "../../config";
+import { type MarkdownHeading } from "astro";
+import { type Frontmatter, type KnownLanguageCode } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import BreadCrumbs from "./breadCrumbs";
 import Pagination from "./pagination.astro";
@@ -218,4 +218,20 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
       AnimateDetails(element);
     }
   });
+</script>
+<script>
+  const main = () => {
+    const codeElements = Array.from(document.querySelectorAll("code")).filter(
+      (codeElement) => codeElement.parentNode?.nodeName !== "PRE",
+    );
+
+    codeElements.forEach((codeElement) => {
+      const codeWrapper = document.createElement("div");
+      codeWrapper.classList.add("code-wrapper");
+      codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
+
+      codeWrapper.appendChild(codeElement);
+    });
+  };
+  main();
 </script>

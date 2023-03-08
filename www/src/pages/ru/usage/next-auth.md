@@ -34,6 +34,29 @@ const User = () => {
 };
 ```
 
+## Получение сессии на сервере
+
+Иногда вам может понадобиться запросить сессию на сервере. Чтобы сделать это, предварительно получите сессию с помощью функции-помощника `getServerAuthSession`, которую предоставляет `create-t3-app`, и передайте ее на клиент с помощью `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import { type GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+
+  ...
+}
+```
+
 ## Включение `user.id` в сессию
 
 `create-t3-app` настроен для использования [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) в конфигурации NextAuth.js для включения ID пользователя в объект `session`.
@@ -71,21 +94,21 @@ declare module "next-auth" {
 
 Это делается в два шага:
 
-1. Возьмите сессию из заголовков запроса с помощью функции [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Не беспокойтесь, эта функция безопасна для использования - имя включает `unstable` только потому, что реализация API может измениться в будущем. Преимущество использования `unstable_getServerSession` вместо обычного `getSession` заключается в том, что это server-side функция и она не вызывает ненужных вызовов fetch. `create-t3-app` создает вспомогательную функцию, которая абстрагирует этот особый API.
+1. Возьмите сессию из заголовков запроса с помощью функции [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Преимущество использования `getServerSession` вместо обычного `getSession` заключается в том, что это server-side функция и она не вызывает ненужных вызовов fetch. `create-t3-app` создает вспомогательную функцию, которая абстрагирует этот особый API.
 
-```ts:server/common/get-server-auth-session.ts
+```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  return await getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
 Используя эту вспомогательную функцию, мы можем получить сессию и передать ее в контекст tRPC:
 
-```ts:server/trpc/context.ts
-import { getServerAuthSession } from "../common/get-server-auth-session";
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
@@ -98,7 +121,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 2. Создайте tRPC middleware, которое проверяет, аутентифицирован ли пользователь. Затем мы используем middleware в `protectedProcedure`. Любой вызывающий эти процедуры должен быть аутентифицирован, иначе будет сгенерирована ошибка, которую можно правильно обработать на стороне клиента.
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +139,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 Обект сессии - это легкое, минимальное представление пользователя и содержит только несколько полей. При использовании `protectedProcedures` у вас есть доступ к идентификатору пользователя, который можно использовать для получения большего количества данных из базы данных.
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
@@ -164,7 +187,6 @@ const userRouter = router({
 - Возле Client Secret нажмите "Reset Secret" и скопируйте эту строку в `DISCORD_CLIENT_SECRET` в `.env`. Будьте осторожны, поскольку вы больше не сможете увидеть этот секрет, и сброс его приведет к тому, что существующий истечет.
 - Нажмите "Add Redirect" и вставьте `<app url>/api/auth/callback/discord` (пример для локальной разработки: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Сохраните изменения
-- It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
 - Возможно, но не рекомендуется, использовать одно и то же приложение Discord для разработки и продакшена. Вы также можете рассмотреть [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) во время разработки.
 
 ## Полезные ресурсы

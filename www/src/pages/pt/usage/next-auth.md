@@ -34,6 +34,29 @@ const User = () => {
 };
 ```
 
+## Recuperando a sessão do lado do servidor.
+
+Às vezes, você poderá querer solicitar a sessão no servidor. Para fazer isso, faça uma requisição usando o utilitário `getServerAuthSession` que `create-t3-app` fornece e passe-a para o cliente usando `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import { type GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // NOTA: `session` não terá um estado de carregamento, pois já foi pré-carregado no servidor
+
+  ...
+}
+```
+
 ## Inclusão do `user.id` na Sessão
 
 `create-t3-app` está configurado para utilizar o [retorno de chamada de sessão (sesion callback)](https://next-auth.js.org/configuration/callbacks#session-callback) na configuração NextAuth.js para incluir o ID do usuário dentro do objeto `session`.
@@ -71,14 +94,14 @@ Ao usar NextAuth.js com tRPC, você pode criar procedimentos protegidos e reutil
 
 Isso é feito em um processo de duas etapas:
 
-1. Pegar a sessão dos cabeçalhos de solicitação usando a função [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession). Não se preocupe, esta função é segura de usar - o nome inclui `unstable` apenas porque a implementação da API pode mudar no futuro. A vantagem de usar `unstable_getServerSession` em vez do `getSession` regular é que é uma função somente do lado do servidor e não aciona chamadas de busca desnecessárias. `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
+1. Pegar a sessão dos headers da request usando a função [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). A vantagem de usar `getServerSession` em vez do `getSession` regular é que é uma função que é executada somente do lado do servidor e não faz chamadas de busca desnecessárias. O `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+  return await getServerSession(ctx.req, ctx.res, nextAuthOptions);
 };
 ```
 

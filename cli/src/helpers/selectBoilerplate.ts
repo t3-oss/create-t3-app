@@ -1,4 +1,4 @@
-import type { InstallerOptions } from "~/installers/index.js";
+import { type InstallerOptions } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
@@ -11,17 +11,17 @@ export const selectAppFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const appFileDir = path.join(PKG_ROOT, "template/page-studs/_app");
+  const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
 
-  const usingTrpc = packages.trpc.inUse;
+  const usingTRPC = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
 
   let appFile = "";
-  if (usingNextAuth && usingTrpc) {
+  if (usingNextAuth && usingTRPC) {
     appFile = "with-auth-trpc.tsx";
-  } else if (usingNextAuth && !usingTrpc) {
+  } else if (usingNextAuth && !usingTRPC) {
     appFile = "with-auth.tsx";
-  } else if (!usingNextAuth && usingTrpc) {
+  } else if (!usingNextAuth && usingTRPC) {
     appFile = "with-trpc.tsx";
   }
 
@@ -37,22 +37,22 @@ export const selectIndexFile = ({
   projectDir,
   packages,
 }: SelectBoilerplateProps) => {
-  const indexFileDir = path.join(PKG_ROOT, "template/page-studs/index");
+  const indexFileDir = path.join(PKG_ROOT, "template/extras/src/pages/index");
 
-  const usingTrpc = packages.trpc.inUse;
+  const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
   const usingAuth = packages.nextAuth.inUse;
 
   let indexFile = "";
-  if (usingTrpc && usingTw && usingAuth) {
+  if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTrpc && !usingTw && usingAuth) {
+  } else if (usingTRPC && !usingTw && usingAuth) {
     indexFile = "with-auth-trpc.tsx";
-  } else if (usingTrpc && usingTw) {
+  } else if (usingTRPC && usingTw) {
     indexFile = "with-trpc-tw.tsx";
-  } else if (usingTrpc && !usingTw) {
+  } else if (usingTRPC && !usingTw) {
     indexFile = "with-trpc.tsx";
-  } else if (!usingTrpc && usingTw) {
+  } else if (!usingTRPC && usingTw) {
     indexFile = "with-tw.tsx";
   }
 
