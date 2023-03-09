@@ -172,6 +172,14 @@ const projects: App[] = [
     linkName: "cua-demo.vercel.app",
     link: "https://cua-demo.vercel.app/",
   },
+
+  {
+    description: "Menufic - Digital menu generator for restaurants",
+    repoName: "kaje94/menufic",
+    repo: "https://github.com/kaje94/menufic",
+    linkName: "menufic.com",
+    link: "https://menufic.com",
+  },
 ];
 
 export default function OpenSourceAppList({
