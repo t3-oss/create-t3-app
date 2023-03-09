@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.7.0
+
+### Minor Changes
+
+- [#1268](https://github.com/t3-oss/create-t3-app/pull/1268) [`db394ed`](https://github.com/t3-oss/create-t3-app/commit/db394edf396288dd754f5743ae2fe26a39c70ef5) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - ignore unused vars that begin with underscore
+
 ## 7.6.0
 
 ### Minor Changes
