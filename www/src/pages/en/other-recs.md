@@ -45,8 +45,6 @@ Also known as headless libraries, they provide great unstyled, and accessible co
 
 - [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
 
-- [@shadcn/ui](https://ui.shadcn.com/) provides beautifully designed components built with Radix UI and Tailwind CSS.
-
 ### Styled Component Libraries
 
 **For when you just want your app to look OK**
@@ -55,6 +53,7 @@ Sometimes you're building a project where you just want the UI to look decent ou
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
+- [@shadcn/ui](https://ui.shadcn.com/)
 
 ### Class Variance Authority
 
