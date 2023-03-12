@@ -95,7 +95,7 @@ You'll immediately notice how good the autocompletion and typesafety is. As soon
 
 ## Inferring errors
 
-By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/error-formatting) that let's you infer your Zod Errors if you get validation errors on the backend.
+By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/error-formatting) that lets you infer your Zod Errors if you get validation errors on the backend.
 
 Example usage:
 
