@@ -93,6 +93,36 @@ const UserPage = () => {
 
 You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `api.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
 
+## Inferring errors
+
+By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/error-formatting) that let's you infer your Zod Errors if you get validation errors on the backend.
+
+Example usage:
+
+```tsx
+function MyComponent() {
+  const { mutate, error } = api.post.create.useMutation();
+
+  return (
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      mutate({ title: formData.get('title') });
+    }}>
+      <input name="title" />
+      {error?.data?.zodError?.fieldErrors.title && (
+        {/** `mutate` returned with an error on the `title` */}
+        <span className="mb-8 text-red-500">
+          {error.data.zodError.fieldErrors.title}
+        </span>
+      )}
+
+      ...
+    </form>
+  );
+}
+```
+
 ## Files
 
 tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
