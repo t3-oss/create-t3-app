@@ -4,8 +4,7 @@
     "jsx": "preserve",
     "types": ["@astrojs/image/client"],
     // Skip type checking of external libraries.
-    "skipLibCheck": true,
-    "importsNotUsedAsValues": "preserve" // fixed through linting
+    "skipLibCheck": true
   },
   "include": [
     "src",
