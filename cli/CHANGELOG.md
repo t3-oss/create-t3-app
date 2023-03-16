@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.8.0
+
+### Minor Changes
+
+- [#1273](https://github.com/t3-oss/create-t3-app/pull/1273) [`10a5e0b`](https://github.com/t3-oss/create-t3-app/commit/10a5e0b2fe91b887526960515c6422791a77c724) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add errorformatter for zod errors
+
+### Patch Changes
+
+- [#1263](https://github.com/t3-oss/create-t3-app/pull/1263) [`8dc6e33`](https://github.com/t3-oss/create-t3-app/commit/8dc6e33ea149851de97f84e8d8388accdd5547d9) Thanks [@mkreuzmayr](https://github.com/mkreuzmayr)! - search for tsconfig relative to eslintrc
+
+- [#1279](https://github.com/t3-oss/create-t3-app/pull/1279) [`ae5cd40`](https://github.com/t3-oss/create-t3-app/commit/ae5cd405c9d5bb672e3971c496d437a7a05b3f8f) Thanks [@arielconti10](https://github.com/arielconti10)! - fix: remove //@ts-check comment in next.config
+
 ## 7.7.0
 
 ### Minor Changes
