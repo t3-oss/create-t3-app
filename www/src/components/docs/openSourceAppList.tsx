@@ -180,6 +180,14 @@ const projects: App[] = [
     linkName: "menufic.com",
     link: "https://menufic.com",
   },
+
+  {
+    description: "Twitter clone - A simple Twitter clone",
+    repoName: "AlandSleman/t3-twitter-clone",
+    repo: "https://github.com/AlandSleman/t3-twitter-clone",
+    linkName: "twitter-clone.kurdmake.com",
+    link: "https://twitter-clone.kurdmake.com",
+  },
 ];
 
 export default function OpenSourceAppList({
