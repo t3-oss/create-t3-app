@@ -92,6 +92,36 @@ const UserPage = () => {
 
 你会立即感受到类型安全和自动补全带来的好处。只要当你输入 `api.` 时，你所定义的路由都会显示在自动补全的菜单里，然后当你选择了一个路由，它所包含的路由函数也会显示出来。如果你的输入不符合你在后端定义的验证器的要求，TypeScript 也会将错误显示出来。
 
+## 推断错误
+
+默认情况下，`create-t3-app` 设置了一个 [error formatter](https://trpc.io/docs/error-formatting)，让你在后端出现验证错误时可以推断出你的 Zod 错误。
+
+使用示例：
+
+```tsx
+function MyComponent() {
+  const { mutate, error } = api.post.create.useMutation();
+
+  return (
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      mutate({ title: formData.get('title') });
+    }}>
+      <input name="title" />
+      {error?.data?.zodError?.fieldErrors.title && (
+        {/** `mutate` returned with an error on the `title` */}
+        <span className="mb-8 text-red-500">
+          {error.data.zodError.fieldErrors.title}
+        </span>
+      )}
+
+      ...
+    </form>
+  );
+}
+```
+
 ## 文件
 
 tRPC 需要不少样板代码，不过 `create-t3-app` 已经帮你完成。让我们看一下这些被自动创建的文件：
@@ -324,6 +354,22 @@ test("example router", async () => {
   const example = await caller.example.hello(input);
 
   expect(example).toMatchObject({ greeting: "Hello test" });
+});
+```
+
+如果你的 procedure 是受保护的，你可以传入一个模拟的 `session` 对象来创建上下文：
+
+```ts
+test("protected example router", async () => {
+  const ctx = await createInnerTRPCContext({
+    session: {
+      user: { id: "123", name: "John Doe" },
+      expires: "1",
+    },
+  });
+  const caller = appRouter.createCaller(ctx);
+
+  // ...
 });
 ```
 
