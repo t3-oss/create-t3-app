@@ -15,12 +15,12 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
+    "@types/eslint": "^8.21.3",
+    "@types/node": "^18.15.5",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@types/eslint": "^8.21.3",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "typescript": "^5.0.2"
