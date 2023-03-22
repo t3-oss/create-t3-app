@@ -21,6 +21,7 @@
     "@astrojs/image": "^0.15.0",
     "@astrojs/mdx": "^0.17.0",
     "@astrojs/sitemap": "^1.0.1",
+    "@astrojs/vercel": "^3.2.1",
     "@docsearch/css": "^3.3.3",
     "@docsearch/react": "^3.3.3",
     "@fontsource/inter": "^4.5.15",
@@ -30,6 +31,7 @@
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.9",
     "embla-carousel-autoplay": "^7.0.9",
+    "satori": "^0.4.4",
     "sharp": "^0.31.3",
     "tailwind-scrollbar": "^2.1.0",
     "treeify": "^1.1.0"

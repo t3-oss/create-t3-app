@@ -8,10 +8,13 @@ import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
 
 /** @link https://astro.build/config */
 export default defineConfig({
   site: `https://create.t3.gg/`,
+  output: "server",
+  adapter: vercel(),
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
