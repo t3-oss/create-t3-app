@@ -12,7 +12,7 @@ When contributing to `create-t3-app`, whether on GitHub or in other community sp
 
 In order to not waste your time implementing a change that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/t3-oss/create-t3-app/issues/new/choose) describing the problem you would like to solve.
 
-### Contributing via Codesanbox
+### Contributing via Codesandbox
 
 You can contribute to this documentation on codesandbox which will automatically run all the setup command for you. [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/github/t3-oss/create-t3-app).
 
