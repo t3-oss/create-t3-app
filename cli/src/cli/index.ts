@@ -157,10 +157,7 @@ export const runCli = async () => {
 
   // Explained below why this is in a try/catch block
   try {
-    if (
-      process.env.SHELL?.toLowerCase().includes("git") &&
-      process.env.SHELL?.includes("bash")
-    ) {
+    if (process.env.SHELL?.includes("mintty")) {
       logger.warn(`  WARNING: It looks like you are using Git Bash which is non-interactive. Please run create-t3-app with another
   terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
 
