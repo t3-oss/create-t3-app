@@ -27,6 +27,7 @@
     "@fontsource/inter": "^4.5.15",
     "@fontsource/jetbrains-mono": "^4.5.12",
     "@headlessui/react": "^1.7.11",
+    "@resvg/resvg-js": "^2.4.1",
     "@vercel/analytics": "^0.1.10",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.9",
