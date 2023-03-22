@@ -5,7 +5,9 @@ import { Resvg } from "@resvg/resvg-js";
 
 let font: Promise<ArrayBuffer> | null = null;
 
-const URL = import.meta.env.VERCEL_URL || "http://localhost:3000";
+const URL = import.meta.env.VERCEL_URL
+  ? `https://${import.meta.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 const getFont = async () => {
   if (!font) {
