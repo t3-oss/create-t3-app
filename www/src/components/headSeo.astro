@@ -14,7 +14,13 @@ const formattedContentTitle = frontmatter
   ? `${frontmatter.title} 🚀 ${SITE.title}`
   : SITE.title;
 
-const imageSrc = frontmatter?.image?.src ?? OPEN_GRAPH.image.src;
+const ogTitle = frontmatter ? frontmatter.title : SITE.title;
+const ogDescription = frontmatter ? frontmatter.description : SITE.description;
+
+const imageSrc =
+  frontmatter?.image?.src ??
+  `${Astro.site}og?title=${ogTitle}&description=${ogDescription}`;
+
 const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
 
