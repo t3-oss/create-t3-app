@@ -55,4 +55,9 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });
