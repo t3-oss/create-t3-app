@@ -22,7 +22,7 @@ export const get: APIRoute = async (request) => {
         { name: "Inter", data: inter[400], weight: 400 },
         { name: "Inter", data: inter[700], weight: 700 },
       ],
-      debug: false,
+      debug: import.meta.env.DEBUG_OG ?? false,
     },
   );
   const resvg = new Resvg(svg, {});
