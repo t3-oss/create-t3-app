@@ -5,7 +5,7 @@
     "types": ["@astrojs/image/client"],
     // Skip type checking of external libraries.
     "skipLibCheck": true,
-    "verbatimModuleSyntax": true
+    "importsNotUsedAsValues": "preserve" // fixed through linting
   },
   "include": [
     "src",
