@@ -41,6 +41,7 @@ export const get: APIRoute = async (request) => {
   return new Response(pngBuffer, {
     headers: {
       "Content-Type": "image/png",
+      "cache-control": "public, max-age=31536000, immutable",
     },
   });
 };
