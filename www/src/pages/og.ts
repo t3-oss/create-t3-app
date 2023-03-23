@@ -2,24 +2,19 @@ import satori from "satori";
 import OpenGraph from "../components/openGraph";
 import { type APIRoute } from "astro";
 import { Resvg } from "@resvg/resvg-js";
-
-let font: Promise<ArrayBuffer> | null = null;
+import { getFont } from "../utils/og-font";
 
 const URL = import.meta.env.VERCEL_URL
   ? `https://${import.meta.env.VERCEL_URL}`
   : "http://localhost:3000";
 
-const getFont = async () => {
-  if (!font) {
-    font = (await fetch(`${URL}/inter-latin-400-normal.woff`)).arrayBuffer();
-  }
-
-  return font;
-};
-
 export const get: APIRoute = async (request) => {
   const title = request.url.searchParams.get("title") ?? "Create T3 App";
   const description = request.url.searchParams.get("description") ?? "";
+  const inter = await getFont({
+    family: "Inter",
+    weights: [400, 700] as const,
+  });
 
   const svg = await satori(
     OpenGraph({ title: title, description: description, imageBase: URL }),
@@ -27,12 +22,10 @@ export const get: APIRoute = async (request) => {
       width: 1200,
       height: 630,
       fonts: [
-        {
-          data: await getFont(),
-          name: "Inter",
-        },
+        { name: "Inter", data: inter[400], weight: 400 },
+        { name: "Inter", data: inter[700], weight: 700 },
       ],
-      debug: true,
+      debug: false,
     },
   );
   const resvg = new Resvg(svg, {});
