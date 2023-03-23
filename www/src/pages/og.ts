@@ -3,10 +3,7 @@ import OpenGraph from "../components/openGraph";
 import { type APIRoute } from "astro";
 import { Resvg } from "@resvg/resvg-js";
 import { getFont } from "../utils/og-font";
-
-const URL = import.meta.env.VERCEL_URL
-  ? `https://${import.meta.env.VERCEL_URL}`
-  : "http://localhost:3000";
+import { SITE_URL } from "../utils/siteUrl";
 
 export const get: APIRoute = async (request) => {
   const title = request.url.searchParams.get("title") ?? "Create T3 App";
@@ -17,7 +14,7 @@ export const get: APIRoute = async (request) => {
   });
 
   const svg = await satori(
-    OpenGraph({ title: title, description: description, imageBase: URL }),
+    OpenGraph({ title: title, description: description, imageBase: SITE_URL }),
     {
       width: 1200,
       height: 630,

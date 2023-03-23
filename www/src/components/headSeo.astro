@@ -1,5 +1,6 @@
 ---
 import { SITE, OPEN_GRAPH, type Frontmatter } from "../config";
+import { SITE_URL } from "../utils/siteUrl";
 
 export interface Props {
   frontmatter?: Frontmatter;
@@ -10,10 +11,6 @@ const { frontmatter, type } = Astro.props as Props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
-const VERCEL_URL = import.meta.env.VERCEL_URL
-  ? `https://${import.meta.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
 const formattedContentTitle = frontmatter
   ? `${frontmatter.title} 🚀 ${SITE.title}`
   : SITE.title;
@@ -23,7 +20,7 @@ const ogDescription = frontmatter ? frontmatter.description : SITE.description;
 
 const imageSrc =
   frontmatter?.image?.src ??
-  `${VERCEL_URL}/og?title=${ogTitle}&description=${ogDescription}`;
+  `${SITE_URL}/og?title=${ogTitle}&description=${ogDescription}`;
 
 const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
