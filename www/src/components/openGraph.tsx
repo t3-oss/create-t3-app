@@ -20,7 +20,7 @@ export default function OpenGraph({
         alignItems: "center",
         gap: "1rem",
         background:
-          "linear-gradient(180deg, rgba(17,24,39,1) 0%, rgba(48,1,113,1) 50%, rgba(15,23,42,1) 100%)",
+          "linear-gradient(180deg, rgba(48,1,113,1) 0%, rgba(17,24,39,1) 100%)",
       }}
     >
       <img
@@ -29,10 +29,10 @@ export default function OpenGraph({
           position: "absolute",
           width: "1200px",
           height: "1200px",
-          opacity: 0.05,
+          opacity: 0.15,
         }}
       />
-      <img src={`${imageBase}/logo.svg`} width={268} height={203} />
+      <Logo />
       <div
         style={{
           display: "flex",
@@ -56,11 +56,50 @@ export default function OpenGraph({
           style={{
             color: "#fff",
             fontSize: "25px",
+            fontWeight: 400,
           }}
         >
           {description}
         </h2>
       </div>
+      <h3
+        style={{
+          fontSize: "22px",
+          color: "#c3b4fc",
+          fontWeight: 400,
+          position: "absolute",
+          bottom: "15px",
+        }}
+      >
+        create.t3.gg/en/introduction • 4 Min Read
+      </h3>
     </div>
   );
 }
+
+const Logo = () => (
+  <svg
+    width="268"
+    height="203"
+    viewBox="0 0 268 203"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M152.981 29.4786L180.491 0.918945L0.850377 0.918945V29.4786H152.981Z"
+      fill="white"
+    />
+    <path
+      d="M159.664 101.527L257.947 1.29251L218.808 1.29228L137.874 83.0602L159.664 101.527Z"
+      fill="white"
+    />
+    <path
+      d="M155.638 131.857L132.692 154.803L135.035 160.378C145.494 185.262 170.104 202.762 198.823 202.762C237.023 202.762 267.99 171.795 267.99 133.595C267.99 108.277 254.171 86.3783 234.102 74.3543L228.039 70.7214L207.028 92.0006L217.746 97.6588C230.659 104.475 239.427 118.019 239.427 133.595C239.427 156.021 221.248 174.2 198.823 174.2C180.714 174.2 165.352 162.339 160.126 145.94L155.638 131.857Z"
+      fill="white"
+    />
+    <path
+      d="M98.4934 197.078L98.4934 52.2128H69.9338L69.9338 197.078H98.4934Z"
+      fill="white"
+    />
+  </svg>
+);
