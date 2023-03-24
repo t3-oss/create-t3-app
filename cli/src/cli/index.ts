@@ -157,12 +157,11 @@ export const runCli = async () => {
 
   // Explained below why this is in a try/catch block
   try {
-    if (
-      process.env.SHELL?.toLowerCase().includes("git") &&
-      process.env.SHELL?.includes("bash")
-    ) {
-      logger.warn(`  WARNING: It looks like you are using Git Bash which is non-interactive. Please run create-t3-app with another
+    if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
+      logger.warn(`  WARNING: It looks like you are using Mintty which is non-interactive. Please run create-t3-app with another
   terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
+      logger.warn(`  WARNING: If you are using Git Bash, please use Git Bash from another terminal, such as Windows Terminal 
+      or the terminal build into Visual Studio Code.`);
 
       const error = new Error("Non-interactive environment");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
