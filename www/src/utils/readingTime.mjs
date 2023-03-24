@@ -9,6 +9,6 @@ export const remarkReadingTime = () => {
       text += node.value;
     });
 
-    file.data.readingTime = getReadingTime(text);
+    file.data.astro.frontmatter.readingTime = getReadingTime(text).text;
   };
 };

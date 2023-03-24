@@ -6,11 +6,13 @@ import { getFont } from "../utils/ogFont";
 import { SITE_URL } from "../utils/siteUrl";
 import { SITE } from "../config";
 
+const removeEndingSlash = (str: string) => str.replace(/\/$/, "");
+
 export const get: APIRoute = async (request) => {
   const params = request.url.searchParams;
   const title = params.get("title") ?? SITE.title;
   const description = params.get("description") ?? SITE.description;
-  const readingTime = +(params.get("readingTime") ?? "");
+  const readingTime = params.get("readingTime") ?? "";
   const pagePath = params.get("pagePath") ?? "";
   const inter = await getFont({
     family: "Inter",
@@ -23,7 +25,8 @@ export const get: APIRoute = async (request) => {
       description,
       readingTime,
       imageBase: SITE_URL,
-      pageUrl: SITE_URL.replace(/^https?:\/\//, "") + pagePath,
+      pageUrl:
+        SITE_URL.replace(/^https?:\/\//, "") + removeEndingSlash(pagePath),
     }),
     {
       width: 1200,
