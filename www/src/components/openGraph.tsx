@@ -2,12 +2,16 @@ type OpenGraphProps = {
   title: string;
   description: string;
   imageBase: string;
+  readingTime: number;
+  pageUrl: string;
 };
 
 export default function OpenGraph({
   title,
   description,
   imageBase,
+  readingTime,
+  pageUrl,
 }: OpenGraphProps) {
   return (
     <div
@@ -74,7 +78,8 @@ export default function OpenGraph({
           bottom: "20px",
         }}
       >
-        create.t3.gg/en/introduction • 4 Min Read
+        {pageUrl}
+        {readingTime > 0 ? ` • ${readingTime} Min Read` : ""}
       </h3>
     </div>
   );

@@ -4,17 +4,27 @@ import { type APIRoute } from "astro";
 import { Resvg } from "@resvg/resvg-js";
 import { getFont } from "../utils/ogFont";
 import { SITE_URL } from "../utils/siteUrl";
+import { SITE } from "../config";
 
 export const get: APIRoute = async (request) => {
-  const title = request.url.searchParams.get("title") ?? "Create T3 App";
-  const description = request.url.searchParams.get("description") ?? "";
+  const params = request.url.searchParams;
+  const title = params.get("title") ?? SITE.title;
+  const description = params.get("description") ?? SITE.description;
+  const readingTime = +(params.get("readingTime") ?? "");
+  const pagePath = params.get("pagePath") ?? "";
   const inter = await getFont({
     family: "Inter",
     weights: [400, 700] as const,
   });
 
   const svg = await satori(
-    OpenGraph({ title: title, description: description, imageBase: SITE_URL }),
+    OpenGraph({
+      title,
+      description,
+      readingTime,
+      imageBase: SITE_URL,
+      pageUrl: SITE_URL + pagePath,
+    }),
     {
       width: 1200,
       height: 630,

@@ -18,9 +18,18 @@ const formattedContentTitle = frontmatter
 const ogTitle = frontmatter ? frontmatter.title : SITE.title;
 const ogDescription = frontmatter ? frontmatter.description : SITE.description;
 
+const ogImageData = {
+  title: ogTitle,
+  description: ogDescription,
+  readingTime: frontmatter?.readingTime ?? 0,
+  pathPathname: Astro.url.pathname,
+}
+
+console.log(ogImageData);
+console.log( `${SITE_URL}/og?${Object.entries(ogImageData).map(([key, value]) => `${key}=${value}`).join("&")}`)
 const imageSrc =
   frontmatter?.image?.src ??
-  `${SITE_URL}/og?title=${ogTitle}&description=${ogDescription}`;
+  `${SITE_URL}/og?${Object.entries(ogImageData).map(([key, value]) => `${key}=${value}`).join("&")}`;
 
 const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;

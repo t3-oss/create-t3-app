@@ -22,6 +22,7 @@ export type Frontmatter = {
   ogLocale?: string;
   lang?: KnownLanguageCode;
   isMdx?: boolean;
+  readingTime?: number;
 };
 
 export const KNOWN_LANGUAGES = {

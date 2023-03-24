@@ -32,10 +32,12 @@
     "clsx": "^1.2.1",
     "embla-carousel": "^7.0.9",
     "embla-carousel-autoplay": "^7.0.9",
+    "reading-time": "^1.5.0",
     "satori": "^0.4.4",
     "sharp": "^0.31.3",
     "tailwind-scrollbar": "^2.1.0",
-    "treeify": "^1.1.0"
+    "treeify": "^1.1.0",
+    "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
     "@astrojs/react": "^2.0.2",
