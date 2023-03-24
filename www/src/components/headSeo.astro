@@ -22,11 +22,9 @@ const ogImageData = {
   title: ogTitle,
   description: ogDescription,
   readingTime: frontmatter?.readingTime ?? 0,
-  pathPathname: Astro.url.pathname,
+  pagePath: Astro.url.pathname,
 }
 
-console.log(ogImageData);
-console.log( `${SITE_URL}/og?${Object.entries(ogImageData).map(([key, value]) => `${key}=${value}`).join("&")}`)
 const imageSrc =
   frontmatter?.image?.src ??
   `${SITE_URL}/og?${Object.entries(ogImageData).map(([key, value]) => `${key}=${value}`).join("&")}`;

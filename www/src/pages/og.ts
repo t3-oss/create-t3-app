@@ -23,7 +23,7 @@ export const get: APIRoute = async (request) => {
       description,
       readingTime,
       imageBase: SITE_URL,
-      pageUrl: SITE_URL + pagePath,
+      pageUrl: SITE_URL.replace(/^https?:\/\//, "") + pagePath,
     }),
     {
       width: 1200,
