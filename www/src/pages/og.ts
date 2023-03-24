@@ -26,7 +26,8 @@ export const get: APIRoute = async (request) => {
       readingTime,
       imageBase: SITE_URL,
       pageUrl:
-        SITE_URL.replace(/^https?:\/\//, "") + removeEndingSlash(pagePath),
+        request.site?.hostname.replace(/^https?:\/\//, "") +
+        removeEndingSlash(pagePath),
     }),
     {
       width: 1200,
