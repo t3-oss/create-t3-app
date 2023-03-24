@@ -161,7 +161,7 @@ export const runCli = async () => {
       logger.warn(`  WARNING: It looks like you are using Mintty which is non-interactive. Please run create-t3-app with another
   terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
       logger.warn(`  WARNING: If you are using Git Bash, please use Git Bash from another terminal, such as Windows Terminal 
-      or the terminal build into Visual Studio Code.`);
+  or the terminal build into Visual Studio Code.`);
 
       const error = new Error("Non-interactive environment");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
