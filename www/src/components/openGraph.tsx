@@ -37,12 +37,13 @@ export default function OpenGraph({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: "1.2rem",
         }}
       >
         <h1
           style={{
             textAlign: "center",
-            fontSize: "70px",
+            fontSize: "90px",
             lineHeight: "2.5rem",
             fontWeight: 700,
             color: "#fff",
@@ -54,7 +55,7 @@ export default function OpenGraph({
         <h2
           style={{
             color: "#F5F5F5",
-            fontSize: "30px",
+            fontSize: "40px",
             fontWeight: 400,
             maxWidth: "700px",
             textAlign: "center",
@@ -66,7 +67,7 @@ export default function OpenGraph({
       </div>
       <h3
         style={{
-          fontSize: "30px",
+          fontSize: "40px",
           color: "#c3b4fc",
           fontWeight: 400,
           position: "absolute",
