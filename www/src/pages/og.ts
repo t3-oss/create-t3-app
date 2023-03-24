@@ -2,7 +2,7 @@ import satori from "satori";
 import OpenGraph from "../components/openGraph";
 import { type APIRoute } from "astro";
 import { Resvg } from "@resvg/resvg-js";
-import { getFont } from "../utils/og-font";
+import { getFont } from "../utils/ogFont";
 import { SITE_URL } from "../utils/siteUrl";
 
 export const get: APIRoute = async (request) => {
