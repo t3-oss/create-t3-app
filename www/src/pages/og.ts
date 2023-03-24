@@ -25,9 +25,11 @@ export const get: APIRoute = async (request) => {
       debug: import.meta.env.DEBUG_OG ?? false,
     },
   );
+
   const resvg = new Resvg(svg, {});
   const pngData = resvg.render();
   const pngBuffer = pngData.asPng();
+
   return new Response(pngBuffer, {
     headers: {
       "Content-Type": "image/png",
