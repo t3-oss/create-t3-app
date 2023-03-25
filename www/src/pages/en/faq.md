@@ -36,6 +36,7 @@ Now, we realize this path doesn't work for everyone. So, if you feel like you've
 
 ### Videos
 
+- [T3 Stack Tutorial - FROM 0 TO PROD FOR $0 (Next.js, tRPC, TypeScript, Tailwind, Prisma & More)](https://www.youtube.com/watch?v=YkOSUVzOAA4)
 - [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
