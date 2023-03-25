@@ -34,7 +34,7 @@ export const get: APIRoute = async (request) => {
   });
 
   const hostname = request.site?.hostname.replace(/^https?:\/\//, "");
-  const pageLang = pagePath.split("/")![1] ?? "en";
+  const pageLang = pagePath.split("/")[1] ?? "en";
 
   const svg = await satori(
     OpenGraph({
