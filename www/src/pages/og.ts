@@ -14,8 +14,22 @@ export const get: APIRoute = async (request) => {
   const description = params.get("description") ?? SITE.description;
   const readingTime = params.get("readingTime") ?? "";
   const pagePath = params.get("pagePath") ?? "";
+
+  // Used for most languages
   const inter = await getFont({
     family: "Inter",
+    weights: [400, 700] as const,
+  });
+
+  // Used for arabic text
+  const bonaNova = await getFont({
+    family: "Bona Nova",
+    weights: [400, 700] as const,
+  });
+
+  // Used for chinese
+  const notoSans = await getFont({
+    family: "Noto Sans SC",
     weights: [400, 700] as const,
   });
 
@@ -35,6 +49,10 @@ export const get: APIRoute = async (request) => {
       fonts: [
         { name: "Inter", data: inter[400], weight: 400 },
         { name: "Inter", data: inter[700], weight: 700 },
+        { name: "Noto Sans SC", data: notoSans[400], weight: 400 },
+        { name: "Noto Sans SC", data: notoSans[700], weight: 700 },
+        { name: "Bona Nova", data: bonaNova[400], weight: 400 },
+        { name: "Bona Nova", data: bonaNova[700], weight: 700 },
       ],
       debug: import.meta.env.DEBUG_OG ?? false,
     },
