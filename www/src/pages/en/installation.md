@@ -45,7 +45,7 @@ For our CI, we have some experimental flags that allow you to scaffold any app w
 | `--CI`       | Let the CLI know you're in CI mode  |
 | `--trpc`     | Include tRPC in the project         |
 | `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
+| `--nextAuth` | Include Auth.js in the project  |
 | `--tailwind` | Include Tailwind CSS in the project |
 
 **Note: If you don't provide the `CI` flag, the rest of these flags has no effect.**
