@@ -4,6 +4,7 @@ type OpenGraphProps = {
   imageBase: string;
   readingTime: string;
   pageUrl: string;
+  rtl: boolean;
 };
 
 export default function OpenGraph({
@@ -12,6 +13,7 @@ export default function OpenGraph({
   imageBase,
   readingTime,
   pageUrl,
+  rtl,
 }: OpenGraphProps) {
   return (
     <div
@@ -22,6 +24,7 @@ export default function OpenGraph({
         justifyContent: "center",
         alignItems: "center",
         gap: "3rem",
+        flexDirection: rtl ? "row-reverse" : "row",
         background:
           "linear-gradient(180deg, rgba(48,1,113,1) 0%, rgba(17,24,39,1) 100%)",
       }}

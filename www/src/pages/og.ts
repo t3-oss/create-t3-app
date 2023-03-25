@@ -4,7 +4,7 @@ import { type APIRoute } from "astro";
 import { Resvg } from "@resvg/resvg-js";
 import { getFont } from "../utils/ogFont";
 import { SITE_URL } from "../utils/siteUrl";
-import { SITE } from "../config";
+import { SITE, RTL_LANGS } from "../config";
 
 const removeEndingSlash = (str: string) => str.replace(/\/$/, "");
 
@@ -34,6 +34,7 @@ export const get: APIRoute = async (request) => {
   });
 
   const hostname = request.site?.hostname.replace(/^https?:\/\//, "");
+  const pageLang = pagePath.split("/")![1] ?? "en";
 
   const svg = await satori(
     OpenGraph({
@@ -42,6 +43,7 @@ export const get: APIRoute = async (request) => {
       readingTime,
       imageBase: SITE_URL,
       pageUrl: `${hostname}${removeEndingSlash(pagePath)}`,
+      rtl: RTL_LANGS.includes(pageLang),
     }),
     {
       width: 1200,

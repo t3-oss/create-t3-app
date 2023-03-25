@@ -388,3 +388,5 @@ export const SIDEBAR_HEADER_MAP: Record<
     Deployment: "部署",
   },
 };
+
+export const RTL_LANGS: KnownLanguageCode[] = ["ar"];
