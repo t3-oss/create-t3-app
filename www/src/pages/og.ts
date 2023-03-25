@@ -33,15 +33,15 @@ export const get: APIRoute = async (request) => {
     weights: [400, 700] as const,
   });
 
+  const hostname = request.site?.hostname.replace(/^https?:\/\//, "");
+
   const svg = await satori(
     OpenGraph({
       title,
       description,
       readingTime,
       imageBase: SITE_URL,
-      pageUrl:
-        request.site?.hostname.replace(/^https?:\/\//, "") +
-        removeEndingSlash(pagePath),
+      pageUrl: `${hostname}${removeEndingSlash(pagePath)}`,
     }),
     {
       width: 1200,

@@ -23,11 +23,13 @@ const ogImageData = {
   description: ogDescription,
   readingTime: frontmatter?.readingTime ?? 0,
   pagePath: Astro.url.pathname,
-}
+};
 
 const imageSrc =
   frontmatter?.image?.src ??
-  `${SITE_URL}/og?${Object.entries(ogImageData).map(([key, value]) => `${key}=${value}`).join("&")}`;
+  `${SITE_URL}/og?${Object.entries(ogImageData)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&")}`;
 
 const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
