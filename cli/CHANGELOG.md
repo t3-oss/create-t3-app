@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.9.0
+
+### Minor Changes
+
+- [#1284](https://github.com/t3-oss/create-t3-app/pull/1284) [`a2af1a2`](https://github.com/t3-oss/create-t3-app/commit/a2af1a2b7d4fd3005f8efe0e297b871d6b1747ff) Thanks [@michalbundyra](https://github.com/michalbundyra)! - chore: bump typescript - 5.0.2
+
 ## 7.8.0
 
 ### Minor Changes
