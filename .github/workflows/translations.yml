@@ -42,7 +42,7 @@ jobs:
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
               pt: ["minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18", "gilhrpenner"],
               ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
-              "zh-hans": ["fernandoxu", "lodisy"],
+              "zh-hans": ["fernandoxu", "escwxyz"],
             };
 
             console.log("Changed languages:", changedLanguages)
