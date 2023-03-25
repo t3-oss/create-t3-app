@@ -54,7 +54,7 @@ export const get: APIRoute = async (request) => {
         { name: "Bona Nova", data: bonaNova[400], weight: 400 },
         { name: "Bona Nova", data: bonaNova[700], weight: 700 },
       ],
-      debug: import.meta.env.DEBUG_OG ?? false,
+      debug: import.meta.env.DEBUG_OG === "true" ?? false,
     },
   );
 
