@@ -12,7 +12,6 @@ export const get: APIRoute = async (request) => {
   const params = request.url.searchParams;
   const title = params.get("title") ?? SITE.title;
   const description = params.get("description") ?? SITE.description;
-  const readingTime = params.get("readingTime") ?? "";
   const pagePath = params.get("pagePath") ?? "";
 
   // Used for most languages
@@ -40,7 +39,6 @@ export const get: APIRoute = async (request) => {
     OpenGraph({
       title,
       description,
-      readingTime,
       imageBase: SITE_URL,
       pageUrl: `${hostname}${removeEndingSlash(pagePath)}`,
       rtl: RTL_LANGS.includes(pageLang),

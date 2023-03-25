@@ -9,7 +9,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
-import { remarkReadingTime } from "./src/utils/readingTime.mjs";
 
 /** @link https://astro.build/config */
 export default defineConfig({
@@ -17,7 +16,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   markdown: {
-    remarkPlugins: [remarkCodeTitles, remarkReadingTime],
+    remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
       [
         rehypeExternalLinks,

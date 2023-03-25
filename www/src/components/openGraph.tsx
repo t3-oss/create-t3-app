@@ -2,7 +2,6 @@ type OpenGraphProps = {
   title: string;
   description: string;
   imageBase: string;
-  readingTime: string;
   pageUrl: string;
   rtl: boolean;
 };
@@ -11,7 +10,6 @@ export default function OpenGraph({
   title,
   description,
   imageBase,
-  readingTime,
   pageUrl,
   rtl,
 }: OpenGraphProps) {
@@ -82,7 +80,6 @@ export default function OpenGraph({
         }}
       >
         {pageUrl}
-        {readingTime != "0" && ` • ${readingTime}`}
       </h3>
     </div>
   );
