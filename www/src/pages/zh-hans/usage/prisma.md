@@ -9,7 +9,7 @@ Prisma 是一个 TypeScript 的 ORM (Object-relational mapping) 工具，它允�
 
 ## Prisma 客户端
 
-Prisma 客户端位于文件 `/server/db.ts`， 以全局变量被初始化（这被推荐为 [最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem)），然后被导出用于你的各个 API 路由函数中。我们默认将 Prisma 客户端放置在 [上下文](/zh-hans/usage/trpc#-servertrpccontextts)，鼓励通过访问上下文来使用它，这样就无需在每个文件里导入了。
+Prisma 客户端位于文件 `/server/db.ts`， 以全局变量被初始化（这被推荐为 [最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem)），然后被导出用于你的各个 API 路由函数中。我们默认将 Prisma 客户端放置在 [上下文](/zh-hans/usage/trpc#-serverapitrpcts)，鼓励通过访问上下文来使用它，这样就无需在每个文件里导入了。
 
 ## Schema
 
