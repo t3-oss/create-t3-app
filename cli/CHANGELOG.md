@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.10.0
+
+### Minor Changes
+
+- [#1295](https://github.com/t3-oss/create-t3-app/pull/1295) [`d0a8143`](https://github.com/t3-oss/create-t3-app/commit/d0a8143587c935819790521533e7cfa0862d300c) Thanks [@iAverages](https://github.com/iAverages)! - Replace Git Bash check with Mintty check
+
+### Patch Changes
+
+- [#1304](https://github.com/t3-oss/create-t3-app/pull/1304) [`2cb41e6`](https://github.com/t3-oss/create-t3-app/commit/2cb41e676f01d4e8bfb8c7fc41bf0d5c4a1c0689) Thanks [@PiotrekPKP](https://github.com/PiotrekPKP)! - fix: replace trpc links
+
 ## 7.9.0
 
 ### Minor Changes
