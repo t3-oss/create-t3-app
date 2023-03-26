@@ -49,10 +49,10 @@ export default function OpenGraph({
           style={{
             textAlign: "center",
             fontSize: "90px",
-            lineHeight: "2.5rem",
+            lineHeight: "5rem",
             fontWeight: 700,
             color: "#fff",
-            maxWidth: "100%",
+            maxWidth: "700px",
           }}
         >
           {title}
