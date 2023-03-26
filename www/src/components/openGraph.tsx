@@ -48,7 +48,7 @@ export default function OpenGraph({
         <h1
           style={{
             textAlign: "center",
-            fontSize: "90px",
+            fontSize: title.length > 15 ? "70px" : "90px",
             lineHeight: "5rem",
             fontWeight: 700,
             color: "#fff",
