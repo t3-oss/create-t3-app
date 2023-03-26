@@ -114,8 +114,8 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 文件 `trpc.ts` 是 tRPC 后端的主要配置文件。我们在这里进行以下操作：
 
-1. 定义在 tRPC 请求中使用的上下文。 参看 [tRPC 用法](usage/trpc#-servertrpccontextts) 来了解更多。
-2. 导出 procedure。 参看 [tRPC 用法](usage/trpc#-servertrpctrpcts) 来了解更多。
+1. 定义在 tRPC 请求中使用的上下文。 参看 [tRPC 用法](usage/trpc#-serverapitrpcts) 来了解更多。
+2. 导出 procedure。 参看 [tRPC 用法](usage/trpc#-serverapitrpcts) 来了解更多。
 
 </div>
 <div data-components="trpc">
@@ -124,7 +124,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 root.ts 文件用于合并 tRPC 子路由并将它们导出为一个单一的路由，同时也导出了路由的类型定义。详见 tRPC 用法。
 
-文件 `root.ts` 被用于合并 tRPC 子路由并将它们导出为一个单一的路由，同时也导出了路由的类型定义。参看 [tRPC 用法](usage/trpc#-servertrpcrouterts) 来了解更多。
+文件 `root.ts` 被用于合并 tRPC 子路由并将它们导出为一个单一的路由，同时也导出了路由的类型定义。参看 [tRPC 用法](usage/trpc#-serverapirootts) 来了解更多。
 
 </div>
 <div>
@@ -145,7 +145,7 @@ root.ts 文件用于合并 tRPC 子路由并将它们导出为一个单一的路
 
 #### `src/utils/api.ts`
 
-文件 `trpc.ts` 是 tRPC 的前端入口。参看 [tRPC 用法](/zh-hans/usage/trpc#-utilstrpcts) 来了解更多。
+文件 `trpc.ts` 是 tRPC 的前端入口。参看 [tRPC 用法](/zh-hans/usage/trpc#-utilsapits) 来了解更多。
 
 </div>
 <div>
