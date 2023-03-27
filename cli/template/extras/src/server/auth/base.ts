@@ -37,7 +37,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
       if (session.user) {
-        session.user.id = user.id;
+        // Check the shape of the data returned by the providers you use
+        // before adding other properties on the session.
+        // For example Google OAuth provider does not return an id for the user.
+        // session.user.id = user.id;
         // session.user.role = user.role; <-- put other properties on the session here
       }
       return session;
