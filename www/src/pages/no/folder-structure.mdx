@@ -114,15 +114,15 @@ Basert på dine valgte pakker inneholder denne ruteren flere eller færre ruter 
 
 `trpc.ts`-filen er hovedkonfigurasjonsfilen for din tRPC-backend. Her inne vi:
 
-1. Definerer kontekst brukt i tRPC-forespørsler. Se [Bruk av tRPC](usage/trpc#-servertrpccontextts) for mer informasjon.
-2. Eksporter prosedyre hjelpere. Se [Bruk av tRPC](usage/trpc#-servertrpctrpcts) for mer informasjon.
+1. Definerer kontekst brukt i tRPC-forespørsler. Se [Bruk av tRPC](usage/trpc#-serverapitrpcts) for mer informasjon.
+2. Eksporter prosedyre hjelpere. Se [Bruk av tRPC](usage/trpc#-serverapitrpcts) for mer informasjon.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/root.ts`
 
-`root.ts`-filen brukes til å slå sammen tRPC-rutere og eksportere dem som en enkelt ruter, så vel som ruterens typedefinisjon. Se [Bruk av tRPC](usage/trpc#-servertrpcrouterts) for mer informasjon.
+`root.ts`-filen brukes til å slå sammen tRPC-rutere og eksportere dem som en enkelt ruter, så vel som ruterens typedefinisjon. Se [Bruk av tRPC](usage/trpc#-serverapirootts) for mer informasjon.
 
 </div>
 <div>
@@ -143,7 +143,7 @@ Basert på dine valgte pakker inneholder denne ruteren flere eller færre ruter 
 
 #### `src/utils/api.ts`
 
-`api.ts`-filen er frontendinngangspunktet til tRPC. Se [Bruk av tRPC](usage/trpc#-utilstrpcts) for mer informasjon.
+`api.ts`-filen er frontendinngangspunktet til tRPC. Se [Bruk av tRPC](usage/trpc#-utilsapits) for mer informasjon.
 
 </div>
 <div>

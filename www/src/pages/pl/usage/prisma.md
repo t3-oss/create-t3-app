@@ -9,7 +9,7 @@ Prisma to ORM dla TypeScripta, który pozwala na definiowanie schematu bazy dany
 
 ## Prisma Client
 
-Zlokalizowany w pliku `/server/db.ts`, Prisma Client to globalna zmienna (tak jak rekomendowane na stronie z [najlepszymi sposobami](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) przez zespół Prismy) wyeksportowana i gotowa do użycia w twoich route'ach API. Prisma Client dołączany jest przez nas w [kontekście tRPC](/en/usage/trpc#-servertrpccontextts). Polecamy tą metodę, zamiast importowania go osobno w każdym pliku.
+Zlokalizowany w pliku `/server/db.ts`, Prisma Client to globalna zmienna (tak jak rekomendowane na stronie z [najlepszymi sposobami](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) przez zespół Prismy) wyeksportowana i gotowa do użycia w twoich route'ach API. Prisma Client dołączany jest przez nas w [kontekście tRPC](/en/usage/trpc#-serverapitrpcts). Polecamy tą metodę, zamiast importowania go osobno w każdym pliku.
 
 ## Schema (Schemat)
 

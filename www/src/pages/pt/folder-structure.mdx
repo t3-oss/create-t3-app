@@ -114,8 +114,8 @@ Dependendo dos pacotes escolhidos, este roteador contém mais ou menos rotas par
 
 O arquivo `trpc.ts` é o arquivo de configuração principal para seu back-end tRPC. Aqui nós:
 
-1. Definimos o contexto usado nas solicitações tRPC. Veja [uso do tRPC](usage/trpc#-servertrpccontextts) para mais informações.
-2. Exportamos os auxiliares de procedimento. Veja [uso do tRPC](usage/trpc#-servertrpctrpcts) para mais informações.
+1. Definimos o contexto usado nas requests tRPC. Veja [uso do tRPC](usage/trpc#-serverapitrpcts) para mais informações.
+2. Exportamos os auxiliares de procedures. Veja [uso do tRPC](usage/trpc#-serverapitrpcts) para mais informações.
 
 </div>
 
@@ -123,7 +123,7 @@ O arquivo `trpc.ts` é o arquivo de configuração principal para seu back-end t
 
 #### `src/server/api/root.ts`
 
-O arquivo `root.ts` é usado para mesclar as rotas tRPC e exportá-las como um único roteador, bem como a definição de tipo da rota. Veja [uso do tRPC](usage/trpc#-servertrpcrouterts) para mais informações.
+O arquivo `root.ts` é usado para mesclar as rotas tRPC e exportá-las como um único roteador, bem como a definição de tipo da rota. Veja [uso do tRPC](usage/trpc#-serverapirootts) para mais informações.
 
 </div>
 <div>
@@ -158,7 +158,7 @@ A pasta `utils` é usada para guardar funções utilitárias comuns reutilizáve
 
 #### `src/utils/api.ts`
 
-O arquivo `api.ts` é o ponto de entrada front-end para o tRPC. Veja [uso do tRPC](usage/trpc#-utilstrpcts) para mais informações.
+O arquivo `api.ts` é o ponto de entrada front-end para o tRPC. Veja [uso do tRPC](usage/trpc#-utilsapits) para mais informações.
 
 </div>
 <div>

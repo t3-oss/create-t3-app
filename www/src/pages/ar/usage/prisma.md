@@ -10,7 +10,7 @@ dir: rtl
 
 ## ما هو Prisma Client
 
-يقع في `/server/db/client.ts` ويعمل كـ global variable كما تنصح الـ docs الرسمية [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) ,وننصحك باستخدامها كذلك بدلا من ندائها في ملف بشكل منفرد [Context](/en/usage/trpc#-servertrpccontextts)
+يقع في `/server/db/client.ts` ويعمل كـ global variable كما تنصح الـ docs الرسمية [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) ,وننصحك باستخدامها كذلك بدلا من ندائها في ملف بشكل منفرد [Context](usage/trpc#-serverapitrpcts)
 
 ## الـ Schema
 
