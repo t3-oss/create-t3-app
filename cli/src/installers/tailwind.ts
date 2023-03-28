@@ -20,7 +20,7 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.cjs");
+  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.ts");
   const twCfgDest = path.join(projectDir, "tailwind.config.ts");
 
   const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.cjs");
