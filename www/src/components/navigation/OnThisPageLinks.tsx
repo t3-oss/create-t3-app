@@ -1,7 +1,7 @@
-import { type MarkdownHeading } from "astro";
-import { useEffect, useMemo, useState } from "react";
 import { Menu } from "@headlessui/react";
+import { type MarkdownHeading } from "astro";
 import clsx from "clsx";
+import { useEffect, useMemo, useState } from "react";
 
 type OnThisPageLinksProps = {
   headings: MarkdownHeading[];

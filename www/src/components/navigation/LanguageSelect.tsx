@@ -1,7 +1,7 @@
-import { type KnownLanguageCode, KNOWN_LANGUAGES } from "../../config";
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment } from "react";
+import { KNOWN_LANGUAGES, type KnownLanguageCode } from "../../config";
 import { getIsRtlFromLangCode } from "../../languages";
 
 type LanguageSelectProps = {
