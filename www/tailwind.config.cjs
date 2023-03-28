@@ -1,6 +1,4 @@
-import { Config } from "tailwindcss";
-
-export default {
+const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
@@ -68,4 +66,6 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
-} satisfies Config;
+};
+
+module.exports = config;

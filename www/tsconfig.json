@@ -14,7 +14,6 @@
     "**/*.js",
     "**/*.cjs",
     "**/*.mjs",
-    "../reset.d.ts",
-    "tailwind.config.ts"
+    "../reset.d.ts"
   ]
 }

@@ -15,7 +15,7 @@ const config = {
     },
   ],
   astroAllowShorthand: false,
-  // tailwindConfig: "./tailwind.config.ts",
+  tailwindConfig: "./tailwind.config.cjs",
 };
 
 module.exports = config;
