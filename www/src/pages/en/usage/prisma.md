@@ -24,7 +24,7 @@ When you select NextAuth.js in combination with Prisma, the schema file is gener
 The default database is an SQLite database, which is great for development and quickly spinning up a proof-of-concept but is not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
 
 **NOTE:** Using Prisma Client with Postgres databases on Node 18 environments can cause segmentation fault crashes. It's a [known issue](https://github.com/prisma/prisma/issues/10649) and Prisma team is already working on it. There are few ways to solve this issue - you can read about them in [this comment](https://github.com/prisma/prisma/issues/14122#issuecomment-1249205365):
-- downgrading to Node version 16.x,
+- downgrading Node to version 16.x,
 - upgrading system to use OpenSSL 3,
 - changing Prisma query engine to `binary` [(docs)](https://www.prisma.io/docs/concepts/components/prisma-engines/query-engine#defining-the-query-engine-type-for-prisma-client)
 
