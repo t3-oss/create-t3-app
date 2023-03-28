@@ -146,7 +146,6 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-typist: ^2.0.5
-      reading-time: ^1.5.0
       rehype-autolink-headings: ^6.1.1
       rehype-external-links: ^2.0.1
       rehype-slug: ^5.1.0
@@ -174,7 +173,6 @@ importers:
       clsx: 1.2.1
       embla-carousel: 7.1.0
       embla-carousel-autoplay: 7.1.0_embla-carousel@7.1.0
-      reading-time: 1.5.0
       satori: 0.4.4
       sharp: 0.31.3
       tailwind-scrollbar: 2.1.0_tailwindcss@3.2.7
@@ -6855,10 +6853,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-
-  /reading-time/1.5.0:
-    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
-    dev: false
 
   /redent/3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
