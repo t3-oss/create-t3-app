@@ -68,7 +68,7 @@ importers:
       next-auth: ^4.20.1
       ora: 6.1.2
       prettier: ^2.8.6
-      prettier-plugin-tailwindcss: ^0.2.5
+      prettier-plugin-tailwindcss: ^0.2.6
       prisma: ^4.11.0
       react: 18.2.0
       react-dom: 18.2.0
@@ -101,7 +101,7 @@ importers:
       next: 13.2.4_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.20.1_ld2jel3hspngo3u5lti2kgl2sq
       prettier: 2.8.6
-      prettier-plugin-tailwindcss: 0.2.5_prettier@2.8.6
+      prettier-plugin-tailwindcss: 0.2.6_prettier@2.8.6
       prisma: 4.11.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -5813,8 +5813,8 @@ packages:
       synckit: 0.8.5
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.5_prettier@2.8.6:
-    resolution: {integrity: sha512-vZ/iKieyCx0WTxHbkf5E1rBlv/ybFk8WTT4hL5W2jlVxum2Zbe0jMUpuQdDrpa4z2vnPiJ5KIWCqL/kd16fKYg==}
+  /prettier-plugin-tailwindcss/0.2.6_prettier@2.8.6:
+    resolution: {integrity: sha512-F+7XCl9RLF/LPrGdUMHWpsT6TM31JraonAUyE6eBmpqymFvDwyl0ETHsKFHP1NG+sEfv8bmKqnTxEbWQbHPlBA==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
