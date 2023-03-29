@@ -140,7 +140,7 @@ importers:
       eslint-plugin-jsx-a11y: ^6.7.1
       prettier: ^2.8.6
       prettier-plugin-astro: ^0.8.0
-      prettier-plugin-tailwindcss: ^0.2.5
+      prettier-plugin-tailwindcss: ^0.2.6
       react: 18.2.0
       react-dom: 18.2.0
       react-typist: ^2.0.5
@@ -185,7 +185,7 @@ importers:
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.36.0
       prettier: 2.8.6
       prettier-plugin-astro: 0.8.0
-      prettier-plugin-tailwindcss: 0.2.5_so7gyrgjbeyyeii5hpsxj4hm64
+      prettier-plugin-tailwindcss: 0.2.6_so7gyrgjbeyyeii5hpsxj4hm64
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-typist: 2.0.5_biqbaboplfbrettd7655fr4n2y
@@ -5868,8 +5868,8 @@ packages:
       prettier: 2.8.6
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.5_so7gyrgjbeyyeii5hpsxj4hm64:
-    resolution: {integrity: sha512-vZ/iKieyCx0WTxHbkf5E1rBlv/ybFk8WTT4hL5W2jlVxum2Zbe0jMUpuQdDrpa4z2vnPiJ5KIWCqL/kd16fKYg==}
+  /prettier-plugin-tailwindcss/0.2.6_so7gyrgjbeyyeii5hpsxj4hm64:
+    resolution: {integrity: sha512-F+7XCl9RLF/LPrGdUMHWpsT6TM31JraonAUyE6eBmpqymFvDwyl0ETHsKFHP1NG+sEfv8bmKqnTxEbWQbHPlBA==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
