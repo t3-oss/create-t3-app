@@ -116,7 +116,7 @@ export default function OnThisPageLinks({
                       {({ active }) => (
                         <a
                           className={clsx(
-                            "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
+                            "text-md line-clamp-1 block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
                             isLtr && (heading.depth === 2 ? "pl-3" : "pl-8"),
                             isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
                             {
