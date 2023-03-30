@@ -2,7 +2,6 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -45,7 +44,6 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    tailwind({ config: { applyBaseStyles: false, path: "./tailwind.config.ts" }, }),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
