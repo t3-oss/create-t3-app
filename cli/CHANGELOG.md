@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.10.1
+
+### Patch Changes
+
+- [#1312](https://github.com/t3-oss/create-t3-app/pull/1312) [`2fb3a51`](https://github.com/t3-oss/create-t3-app/commit/2fb3a51b8b91cf2eb992a3af49ff52588f1e9c95) Thanks [@FinnDore](https://github.com/FinnDore)! - feat: bumped tailwind from 3.2.7 -> 3.3.0
+
 ## 7.10.0
 
 ### Minor Changes
