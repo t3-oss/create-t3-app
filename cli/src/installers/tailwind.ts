@@ -40,4 +40,14 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   // Remove vanilla css file
   const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
   fs.unlinkSync(indexModuleCss);
+
+  // Read tsconfig.json content
+  const tsconfigPath = path.join(projectDir, "tsconfig.json");
+  const tsconfig = fs.readJsonSync(tsconfigPath);
+
+  // Add tailwind.config.ts to tsconfig.json include
+  tsconfig.include.push("tailwind.config.ts");
+
+  // Write updated tsconfig.json
+  fs.writeJsonSync(tsconfigPath, tsconfig, { spaces: 2 });
 };
