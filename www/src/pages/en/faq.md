@@ -19,6 +19,10 @@ If you are not familiar with the different technologies used in this project, pl
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+## How do I keep my app up to date?
+
+Create T3 App is a scaffolding tool, not a framework. This means that once you initialize an app, it's yours. There is no postinstall CLI tool similar to help you stay up to date. If you want to keep track of any improvements we make to the template, you could [enable notifications for releases](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) on our repository. That being said it is not really necessary to implement every change we make to the template in your app.
+
 ## What learning resources are currently available?
 
 Although the resources listed below are some of the best that exist for the T3 Stack, the community (and [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) recommend that you just start using the stack and learn along the way by building with it.
