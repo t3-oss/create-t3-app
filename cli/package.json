@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.10.0",
+  "version": "7.10.1",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -64,7 +64,7 @@
     "next": "^13.2.4",
     "next-auth": "^4.20.1",
     "prettier": "^2.8.6",
-    "prettier-plugin-tailwindcss": "^0.2.5",
+    "prettier-plugin-tailwindcss": "^0.2.6",
     "prisma": "^4.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
