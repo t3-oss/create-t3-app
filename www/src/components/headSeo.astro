@@ -21,7 +21,6 @@ const ogDescription = frontmatter ? frontmatter.description : SITE.description;
 const ogImageData = {
   title: ogTitle,
   description: ogDescription,
-  readingTime: frontmatter?.readingTime ?? 0,
   pagePath: Astro.url.pathname,
 };
 
