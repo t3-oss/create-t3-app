@@ -1,3 +1,5 @@
+/** https://github.com/juliusmarminge/jumr.dev/blob/main/app/og-image/get-fonts.ts */
+
 export async function getFont<TWeights extends readonly number[]>({
   family,
   weights,
