@@ -8,6 +8,7 @@ import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
+import { validateImportAlias } from "~/utils/validateImportAlias.js";
 
 interface CliFlags {
   noGit: boolean;
@@ -156,12 +157,10 @@ export const runCli = async () => {
 
   // Explained below why this is in a try/catch block
   try {
-    if (
-      process.env.SHELL?.toLowerCase().includes("git") &&
-      process.env.SHELL?.includes("bash")
-    ) {
-      logger.warn(`  WARNING: It looks like you are using Git Bash which is non-interactive. Please run create-t3-app with another
-  terminal such as Windows Terminal or PowerShell if you want to use the interactive CLI.`);
+    if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
+      logger.warn(`  WARNING: It looks like you are using MinTTY, which is non-interactive. This is most likely because you are 
+  using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
+  can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
       const error = new Error("Non-interactive environment");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -322,6 +321,7 @@ const promptImportAlias = async (): Promise<string> => {
     type: "input",
     message: "What import alias would you like configured?",
     default: defaultOptions.flags.importAlias,
+    validate: validateImportAlias,
     transformer: (input: string) => {
       return input.trim();
     },

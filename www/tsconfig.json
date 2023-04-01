@@ -13,6 +13,8 @@
     ".eslintrc.cjs",
     "**/*.js",
     "**/*.cjs",
-    "**/*.mjs"
+    "**/*.mjs",
+    "../reset.d.ts",
+    "./tailwind.config.ts"
   ]
 }

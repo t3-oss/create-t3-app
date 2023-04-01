@@ -15,6 +15,7 @@ const projects: App[] = [
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
+
   {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
@@ -155,12 +156,37 @@ const projects: App[] = [
     linkName: "answeroverflow.com",
     link: "https://www.answeroverflow.com/",
   },
+
   {
     description: "Hitori - Serverless Discord bot template",
     repoName: "astridlol/Hitori",
     repo: "https://github.com/astridlol/hitori",
     linkName: "(none)",
     link: "https://github.com/astridlol/hitori",
+  },
+
+  {
+    description: "CUA - Create an Universal App for web, native and desktop",
+    repoName: "chen-rn/CUA",
+    repo: "https://github.com/chen-rn/CUA",
+    linkName: "cua-demo.vercel.app",
+    link: "https://cua-demo.vercel.app/",
+  },
+
+  {
+    description: "Menufic - Digital menu generator for restaurants",
+    repoName: "kaje94/menufic",
+    repo: "https://github.com/kaje94/menufic",
+    linkName: "menufic.com",
+    link: "https://menufic.com",
+  },
+
+  {
+    description: "Twitter clone - A simple Twitter clone",
+    repoName: "AlandSleman/t3-twitter-clone",
+    repo: "https://github.com/AlandSleman/t3-twitter-clone",
+    linkName: "twitter-clone.kurdmake.com",
+    link: "https://twitter-clone.kurdmake.com",
   },
 ];
 

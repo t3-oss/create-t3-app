@@ -1,0 +1,204 @@
+---
+title: Mappestruktur
+description: Mappestrukturen til en nylig opprettet T3 App
+layout: ../../layouts/docs.astro
+lang: no
+isMdx: true
+---
+
+import Form from "../../components/docs/folderStructureForm.astro";
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+
+Velg pakkene dine for å se mappestrukturen til en app med disse valgene. Lenger ned finner du en beskrivelse av hver oppføring.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+`prisma`-mappen inneholder `schema.prisma`-filen som brukes til å konfigurere databasetilkoblingen og databaseskjemaet. Det er også stedet for å lagre migreringsfiler og/eller _seedscript_, dersom de brukes. Se [Bruk av Prisma](/no/usage/prisma) for mer informasjon.
+
+</div>
+<div>
+
+### `public`
+
+`public`-mappen inneholder statiske ressurser som betjenes av _webserveren_. `favicon.ico`-filen er et eksempel på en statisk ressurs.
+
+</div>
+<div>
+
+### `src/env`
+
+Brukes for validering av miljøvariabler og typedefinisjoner - se [Miljøvariabler](usage/env-variables).
+
+</div>
+<div>
+
+### `src/pages`
+
+`pages`-mappen inneholder alle sidene til Next.js-applikasjonen. `index.tsx`-filen i rotkatalogen til `/pages` er hjemmesiden til applikasjonen. Filen `_app.tsx` brukes til å pakke applikasjonen sammen med _providers_. Se [Next.js-dokumentasjon](https://nextjs.org/docs/basic-features/pages) for mer informasjon.
+
+</div>
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+Mappen `api` inneholder alle API-rutene til Next.js-applikasjonen. Filen `examples.ts` inneholder et eksempel på en rute som bruker [Next.js API-rute](https://nextjs.org/docs/api-routes/introduction)-funksjonaliteten sammen med Prisma. `restricted.ts`-filen inneholder et eksempel på en rute som bruker [Next.js API-rute](https://nextjs.org/docs/api-routes/introduction)-funksjonaliteten, og er beskyttet av [NextAuth.js](https://next-auth.js.org/).
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+`[...nextauth].ts`-filen håndterer autentiseringslug ruter for NextAuth.js. Den brukes til å håndtere autentiseringsforespørsler. Se [Bruk av NextAuth.js](usage/next-auth) for mer informasjon om NextAuth.js, og [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for informasjon på catch-all/slug-ruter.
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+`[trpc].ts`-filen er inngangspunktet for tRPC-APIet. Den brukes til å håndtere tRPC-forespørsler. Se [Bruk av tRPC](usage/trpc#-pagesapitrpctrpcts) for mer informasjon om denne filen, og [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for informasjon om catch-all/slug-ruter.
+
+</div>
+<div data-components="trpc prisma nextauth">
+
+### `src/server`
+
+`server`-mappen brukes til å tydelig skille serverside-kode fra klientside-kode.
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+Hovedinngangspunktet for autentiseringslogikk på serversiden. Her setter vi opp NextAuth.js [konfigurasjonsalternativer](usage/next-auth), utfører [modulforstørrelse](usage/next-auth#inclusion-of-userid-on-the-session) samt gir utvikleropplevelsesverktøy for autentisering som for eksempel å hente brukerens økt på serversiden. Se [Bruk av NextAuth.js](usage/next-auth#usage-with-trpc) for mer informasjon.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+`db.ts` filen brukes til å instansiere Prisma-klienten i globalt omfang. Se [Bruk av Prisma](usage/prisma#prisma-client) og [beste fremgangsmåter for bruk av Prisma med Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for mer informasjon.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+`api`-mappen inneholder tRPC serverside-koden.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+`routers`-mappen inneholder alle dine tRPC-underrutere.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+`example.ts`-filen er et eksempel på en tRPC-ruter som bruker `publicProcedure`-hjelperen for å demonstrere hvordan du oppretter en offentlig tRPC-rute.
+
+Basert på dine valgte pakker inneholder denne ruteren flere eller færre ruter for best mulig å demonstrere bruken til dine behov.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+`trpc.ts`-filen er hovedkonfigurasjonsfilen for din tRPC-backend. Her inne vi:
+
+1. Definerer kontekst brukt i tRPC-forespørsler. Se [Bruk av tRPC](usage/trpc#-serverapitrpcts) for mer informasjon.
+2. Eksporter prosedyre hjelpere. Se [Bruk av tRPC](usage/trpc#-serverapitrpcts) for mer informasjon.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+`root.ts`-filen brukes til å slå sammen tRPC-rutere og eksportere dem som en enkelt ruter, så vel som ruterens typedefinisjon. Se [Bruk av tRPC](usage/trpc#-serverapirootts) for mer informasjon.
+
+</div>
+<div>
+
+### `src/styles`
+
+`stiler`-mappen inneholder det globale stilsettet til applikasjonen.
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+`utils`-mappen brukes til å lagre ofte gjenbrukte verktøyfunksjoner.
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+`api.ts`-filen er frontendinngangspunktet til tRPC. Se [Bruk av tRPC](usage/trpc#-utilsapits) for mer informasjon.
+
+</div>
+<div>
+
+### `.env`
+
+`.env`-filen brukes til å lagre miljøvariabler. Se [Miljøvariabler](usage/env-variables) for mer informasjon. Denne filen skal **ikke** _commites_ til git-historikk.
+
+</div>
+<div>
+
+### `.env.example`
+
+`.env.example`-filen viser noen eksempler på miljøvariabler basert på valgte bibliotek. Denne filen skal _commites_ til git-historikk.
+
+</div>
+<div>
+
+### `.eslintrc.json`
+
+`.eslintrc.json`-filen brukes til å konfigurere ESLint. Se [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for mer informasjon.
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+`next-env.d.ts`-filen sikrer at Next.js-typer blir plukket opp av TypeScript-kompilatoren. **Du bør ikke fjerne den eller redigere den, da den kan endres når som helst.** Se [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for mer informasjon.
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+`next.config.mjs`-filen brukes til å konfigurere Next.js. Se [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for mer informasjon. Merk: .mjs-utvidelsen brukes for å tillate ESM-import.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+`postcss.config.cjs`-filen er for bruk av Tailwind PostCSS. Se [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for mer informasjon.
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.cjs`
+
+`prettier.config.cjs`-filen brukes til å konfigurere Prettier slik at prettier-plugin-tailwindcss inkluderes for formatering av Tailwind CSS-klasser. Se [Tailwind CSS-blogginnlegget](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for mer informasjon.
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+Filen `tsconfig.json` brukes til å konfigurere TypeScript. Noen ikke-standardinnstillinger, som for eksempel `strict mode`, har blitt aktivert for å sikre best mulig bruk av TypeScript i create-t3-app og tilhørende biblioteker. Se [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) eller [TypeScript Usage](usage/typescript) for mer informasjon.
+
+</div>

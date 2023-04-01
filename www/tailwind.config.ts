@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { type Config } from "tailwindcss";
+
+export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
@@ -67,4 +68,4 @@ module.exports = {
   },
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
-};
+} satisfies Config;

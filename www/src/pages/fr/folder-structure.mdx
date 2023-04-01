@@ -114,15 +114,15 @@ En fonction des packages choisis, ce routeur contient plus ou moins de routes po
 
 Le fichier `trpc.ts` est le fichier de configuration principal de votre back-end tRPC. Ici, vous trouverez:
 
-1. La définissons du contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
-2. Le helper de procédure d'exportation. Voir [utilisation de tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
+1. La définissons du contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-serverapitrpcts) pour plus d'informations.
+2. Le helper de procédure d'exportation. Voir [utilisation de tRPC](usage/trpc#-serverapitrpcts) pour plus d'informations.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/root.ts`
 
-Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que la définition du type de routeur. Voir [utilisation du tRPC](usage/trpc#-servertrpcrourts) pour plus d'informations.
+Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que la définition du type de routeur. Voir [utilisation du tRPC](usage/trpc#-serverapirootts) pour plus d'informations.
 
 </div>
 <div>
@@ -157,7 +157,7 @@ Le dossier `utils` est utilisé pour stocker les fonctions utilitaires courammen
 
 #### `src/utils/api.ts`
 
-Le fichier `api.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
+Le fichier `api.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilsapits) pour plus d'informations.
 
 </div>
 <div>

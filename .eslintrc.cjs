@@ -1,5 +1,5 @@
 /** @type {import("eslint").Linter.Config} */
-module.exports = {
+const config = {
   root: true,
   parser: "@typescript-eslint/parser",
   plugins: ["isaacscript", "import"],
@@ -45,3 +45,5 @@ module.exports = {
     "isaacscript/format-jsdoc-comments": "warn",
   },
 };
+
+module.exports = config;

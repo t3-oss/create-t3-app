@@ -20,6 +20,11 @@ const companies: Company[] = [
     linkName: "layer3.xyz",
     link: "https://layer3.xyz",
   },
+  {
+    name: "EcoToken",
+    linkName: "ecotokens.net",
+    link: "https://ecotokens.net",
+  },
 ];
 
 export default function CompanyList({

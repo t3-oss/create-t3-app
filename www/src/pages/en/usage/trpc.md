@@ -5,7 +5,7 @@ layout: ../../../layouts/docs.astro
 lang: en
 ---
 
-tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your front- and backend feel closer together than ever before, allowing for an outstanding developer experience.
+tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your frontend and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
@@ -92,6 +92,36 @@ const UserPage = () => {
 ```
 
 You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `api.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+
+## Inferring errors
+
+By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/error-formatting) that lets you infer your Zod Errors if you get validation errors on the backend.
+
+Example usage:
+
+```tsx
+function MyComponent() {
+  const { mutate, error } = api.post.create.useMutation();
+
+  return (
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      mutate({ title: formData.get('title') });
+    }}>
+      <input name="title" />
+      {error?.data?.zodError?.fieldErrors.title && (
+        {/** `mutate` returned with an error on the `title` */}
+        <span className="mb-8 text-red-500">
+          {error.data.zodError.fieldErrors.title}
+        </span>
+      )}
+
+      ...
+    </form>
+  );
+}
+```
 
 ## Files
 
@@ -323,6 +353,22 @@ test("example router", async () => {
   const example = await caller.example.hello(input);
 
   expect(example).toMatchObject({ greeting: "Hello test" });
+});
+```
+
+If your procedure is protected, you can pass in a mocked `session` object when you create the context:
+
+```ts
+test("protected example router", async () => {
+  const ctx = await createInnerTRPCContext({
+    session: {
+      user: { id: "123", name: "John Doe" },
+      expires: "1",
+    },
+  });
+  const caller = appRouter.createCaller(ctx);
+
+  // ...
 });
 ```
 
