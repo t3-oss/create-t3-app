@@ -100,6 +100,8 @@ export const env = new Proxy(parsed.data, {
 });
 ```
 
+</details>
+
 ## Korzystanie Ze Zmiennych Środowiskowych
 
 Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env.mjs` i skorzystać z nich tak, jak normalnie byłoby to możliwe. Jeżeli zaimportujesz obiekt ten na kliencie i spróbujesz skorzystać ze zmiennych serwera, wystąpi błąd runtime.
