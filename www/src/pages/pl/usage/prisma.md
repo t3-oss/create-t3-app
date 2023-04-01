@@ -9,7 +9,7 @@ Prisma to ORM dla TypeScripta, który pozwala na definiowanie schematu bazy dany
 
 ## Prisma Client
 
-Zlokalizowany w pliku `/server/db.ts`, Prisma Client to globalna zmienna (tak jak rekomendowane na stronie z [najlepszymi sposobami](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) przez zespół Prismy) wyeksportowana i gotowa do użycia w twoich route'ach API. Prisma Client dołączany jest przez nas w [kontekście tRPC](/en/usage/trpc#-serverapitrpcts). Polecamy tą metodę, zamiast importowania go osobno w każdym pliku.
+Zlokalizowany w pliku `src/server/db.ts`, Prisma Client to globalna zmienna (tak jak rekomendowane na stronie z [najlepszymi sposobami](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) przez zespół Prismy) wyeksportowana i gotowa do użycia w twoich route'ach API. Prisma Client dołączany jest przez nas w [kontekście tRPC](/en/usage/trpc#-serverapitrpcts). Polecamy tą metodę, zamiast importowania go osobno w każdym pliku.
 
 ## Schema (Schemat)
 
@@ -73,5 +73,6 @@ Następnie uruchom po prostu `pnpm db-seed` (lub `npm`/`yarn`) aby wykonać seed
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Dokumentacja Prismy               | https://www.prisma.io/docs/                                                                                                                       |
 | GitHub Prismy                     | https://github.com/prisma/prisma                                                                                                                  |
+| Prisma Migrate Playground         | https://playground.prisma.io/guides                                                                                                               |
 | Adapter NextAuth.JS dla Prismy    | https://next-auth.js.org/adapters/prisma                                                                                                          |
 | Poradnik Połączenia z Planetscale | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
