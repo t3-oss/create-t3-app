@@ -234,7 +234,7 @@ export const fetchGithub = async <T extends "repo" | "commits">(
 
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+
     const parsed = schema.safeParse(data);
     if (!parsed.success) {
       const msg = "Could not parse GitHub API response.";
