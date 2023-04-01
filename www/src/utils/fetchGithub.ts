@@ -235,19 +235,16 @@ export const fetchGithub = async <T extends "repo" | "commits">(
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    const parsed = schema.parse(data);
+    const parsed = schema.safeParse(data);
+    if (!parsed.success) {
+      const msg = "Could not parse GitHub API response.";
+      if (throwIfNotOk) {
+        throw new Error(msg);
+      }
+      console.warn(msg);
+    }
 
-    return parsed;
-
-    // if (!parsed.success) {
-    //   const msg = "Could not parse GitHub API response.";
-    //   if (throwIfNotOk) {
-    //     throw new Error(msg);
-    //   }
-    //   console.warn(msg);
-    // }
-
-    // return parsed.success ? parsed.data : [];
+    return parsed.success ? parsed.data : [];
   }
 
   const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
