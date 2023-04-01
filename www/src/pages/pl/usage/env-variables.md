@@ -162,12 +162,12 @@ export const processEnv = {
   TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
 };
 ```
-```
 
 _**UWAGA:** Pusty string to dalej string, więc `z.string()` zaakceptuje każdy pusty tekst jako poprawną wartość. Jeżeli chcesz, by wartość była wymagana (i nie pusta!), możesz użyć `z.string().min(1)`._
 
-1. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
+3. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
 
 ```
 TWITTER_API_TOKEN=
+
 ```
