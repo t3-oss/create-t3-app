@@ -27,7 +27,11 @@ function getDownloadName(path: string) {
 ---
 
 <div class="flex w-80 flex-col overflow-hidden rounded">
-  <div class={`bg-${bg} p-4 w-full flex justify-center`}>
+  <div
+    class={`${
+      bg === "white" ? "bg-white" : "bg-black"
+    } p-4 w-full flex justify-center`}
+  >
     <img src={svg ? svg : png} />
   </div>
   <div class="flex w-full flex-1 flex-col gap-4 bg-neutral p-4">
