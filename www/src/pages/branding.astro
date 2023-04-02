@@ -1,5 +1,6 @@
 ---
 import JumpToContent from "../components/accessibility/jumpToContent.astro";
+import Asset from "../components/branding/Asset.astro";
 import LandingPage from "../layouts/landingPage.astro";
 ---
 
@@ -14,6 +15,28 @@ import LandingPage from "../layouts/landingPage.astro";
           >
             Brand assets
           </h1>
+          <div class="flex flex-wrap gap-8 w-full justify-center">
+            <Asset
+              assets={{
+                png: null,
+                svg: "https://user-images.githubusercontent.com/6751787/229332759-899b2a55-8f00-4985-bc48-e6e47a29bc00.svg",
+              }}
+              bg="white"
+              description="Please use this asset on light background"
+              title="Dark T3 Logo"
+              attribution={true}
+            />
+            <Asset
+              assets={{
+                png: null,
+                svg: "https://user-images.githubusercontent.com/6751787/229332757-90055187-e13d-45cb-9f16-01ced0367969.svg",
+              }}
+              bg="black"
+              description="Please use this asset on dark background"
+              title="Light T3 Logo"
+              attribution={true}
+            />
+          </div>
         </div>
       </div>
     </div>
