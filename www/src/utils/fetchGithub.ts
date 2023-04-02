@@ -215,9 +215,9 @@ export type Commit = z.infer<typeof commitsSchema>[number];
 export const fetchGithub = async <T extends "repo" | "commits">(
   url: string,
   opts: Options<T>,
-): Promise<
-  z.infer<T extends "repo" ? typeof repoSchema : typeof commitsSchema>
-> => {
+): Promise<z.infer<
+  T extends "repo" ? typeof repoSchema : typeof commitsSchema
+> | null> => {
   const { throwIfNotOk = true, throwIfNoAuth = true, fetchType } = opts;
 
   const schema = fetchType === "commits" ? commitsSchema : repoSchema;
@@ -242,9 +242,11 @@ export const fetchGithub = async <T extends "repo" | "commits">(
         throw new Error(msg);
       }
       console.warn(msg);
+
+      return null;
     }
 
-    return parsed.success ? parsed.data : [];
+    return parsed.data;
   }
 
   const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
@@ -279,7 +281,9 @@ export const fetchGithub = async <T extends "repo" | "commits">(
       throw new Error(msg);
     }
     console.warn(msg);
+
+    return null;
   }
 
-  return parsed.success ? parsed.data : [];
+  return parsed.data;
 };

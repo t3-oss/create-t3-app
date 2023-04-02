@@ -20,10 +20,10 @@ async function getCommitDiff() {
     const thisLangCommit = await fetchGithub(url, { fetchType: "commits" });
     const englishCommit = await fetchGithub(engUrl, { fetchType: "commits" });
 
-    const thisLangDate = thisLangCommit.length
+    const thisLangDate = thisLangCommit?.length
       ? new Date(thisLangCommit[0]?.commit.author.date ?? "")
       : new Date();
-    const englishDate = englishCommit.length
+    const englishDate = englishCommit?.length
       ? new Date(englishCommit[0]?.commit.author.date ?? "")
       : new Date();
 
@@ -33,7 +33,7 @@ async function getCommitDiff() {
     return diffInDays;
   } catch (e) {
     console.warn(`[warn]  /src/components/outDatedDocsBanner.astro 
-    ${(e as any)?.message ?? e}
+    ${(e as Error)?.message ?? e}
     If you're in production, this is a problem. If you're in dev, it's probably fine.
     If this warning appears on a translated file that's not yet on origin, it's fine.`);
 
