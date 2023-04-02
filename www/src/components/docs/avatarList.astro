@@ -16,15 +16,12 @@ async function getCommits(url: string) {
     return data;
   } catch (e) {
     console.warn(`[warn]  /src/components/AvatarList.astro 
-    ${(e as any)?.message ?? e}`);
+    ${(e as Error)?.message ?? e}`);
     return [] as Commit[];
   }
 }
 
 function removeDups(arr: Commit[]): Pick<Commit["author"], "login" | "id">[] {
-  if (!arr || !Array.isArray(arr) || !arr.length) {
-    return [];
-  }
   const map = new Map<string, Pick<Commit["author"], "login" | "id">>();
 
   for (let item of arr) {
