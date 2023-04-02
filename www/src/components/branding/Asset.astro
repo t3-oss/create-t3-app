@@ -26,17 +26,24 @@ function getDownloadName(path: string) {
 }
 ---
 
-<div class="flex flex-col rounded overflow-hidden w-80">
+<div class="flex w-80 flex-col overflow-hidden rounded">
   <div class={`bg-${bg} p-4 w-full flex justify-center`}>
     <img src={svg ? svg : png} />
   </div>
-  <div class="w-full bg-neutral p-4 flex flex-col gap-4 flex-1">
-    <div class="text-white text-xl flex flex-col">
+  <div class="flex w-full flex-1 flex-col gap-4 bg-neutral p-4">
+    <div class="flex flex-col text-xl text-white">
       <span>{title}</span>
       {
         attribution ? (
           <span class="text-sm text-t3-purple-200">
-            Designed by <a href="https://github.com/zaknaj">Zak</a>
+            Designed by{" "}
+            <a
+              href="https://github.com/zaknaj"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Zak
+            </a>
           </span>
         ) : null
       }
@@ -50,7 +57,7 @@ function getDownloadName(path: string) {
           <Button
             variant="secondary"
             rounded="md"
-            className="gap-2 w-min h-8"
+            className="h-8 w-min gap-2"
             href={svg}
             download={getDownloadName(svg)}
           >
@@ -78,7 +85,7 @@ function getDownloadName(path: string) {
           <Button
             variant="secondary"
             rounded="md"
-            className="gap-2 w-min h-8"
+            className="h-8 w-min gap-2"
             href={png}
             download={getDownloadName(png)}
           >
