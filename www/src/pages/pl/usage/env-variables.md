@@ -32,7 +32,7 @@ const processEnv = {
 
 Zdefiniuj tutaj zmienne środowiskowe dla serwera.
 
-Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`, aby nie "zleakować" ich przypadkowo do klienta.
+Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`, aby przypadkiem nie ujawnić ich do klienta.
 
 ### Schemat Dla Klienta
 
@@ -42,11 +42,11 @@ Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zr
 
 ### Obiekt `processEnv`
 
-Wykorzystaj ("destructuj") tutaj obiekt `process.env`.
+Wykorzystaj destrukturyzację obiektu `process.env`.
 
-Potrzebny jest nam obiekt, który parse'ować możemy z naszymi schematami Zoda, a z powodu sposobu w jaki Next.js przetwarza zmienne środowiskowe, nie możesz destructować obiektu `process.env` tak jak zwykłego obiektu - trzeba to zrobić manualnie.
+Potrzebny jest nam obiekt, który parse'ować możemy z naszymi schematami Zoda, a z powodu sposobu w jaki Next.js przetwarza zmienne środowiskowe, nie możesz destrukturyzować obiektu `process.env` tak jak zwykłego obiektu - trzeba to zrobić manualnie.
 
-TypeScript zapewni poprawność destrukcji obiektu i zapobiegnie sytuacji, w której zapomnisz o jakimś kluczu.
+TypeScript zapewni poprawność destrukturyzacji obiektu i zapobiegnie sytuacji, w której zapomnisz o jakimś kluczu.
 
 ```ts
 // ❌ To nie zadziała, musimy ręcznie "rozbić" `process.env`
