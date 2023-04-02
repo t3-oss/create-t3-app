@@ -237,11 +237,9 @@ export const fetchGithub = async <T extends "repo" | "commits">(
 
     const parsed = schema.safeParse(data);
     if (!parsed.success) {
-      const msg = "Could not parse GitHub API response.";
-      if (throwIfNotOk) {
-        throw new Error(msg);
-      }
-      console.warn(msg);
+      console.warn(
+        "Could not parse GitHub API response. This could be caused by rate limiting.",
+      );
 
       return null;
     }
