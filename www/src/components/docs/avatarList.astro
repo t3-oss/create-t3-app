@@ -1,5 +1,5 @@
 ---
-import { fetchGithub } from "../../utils/fetchGithub";
+import { Commit, fetchGithub } from "../../utils/fetchGithub";
 
 // fetch all commits for just this page's path
 export interface Props {
@@ -10,42 +10,32 @@ const resolvedPath = `www/${path}`;
 const url = `https://api.github.com/repos/t3-oss/create-t3-app/commits?path=${resolvedPath}`;
 const commitsURL = `https://github.com/t3-oss/create-t3-app/commits/next/${resolvedPath}`;
 
-type Commit = {
-  author: {
-    id: string;
-    login: string;
-  };
-};
-
 async function getCommits(url: string) {
   try {
-    const data = await fetchGithub(url, {});
-    return data as Commit[];
+    const data = await fetchGithub(url, { fetchType: "commits" });
+    return data;
   } catch (e) {
     console.warn(`[warn]  /src/components/AvatarList.astro 
-    ${(e as any)?.message ?? e}`);
+    ${(e as Error)?.message ?? e}`);
     return [] as Commit[];
   }
 }
 
-function removeDups(arr: Commit[]): Commit["author"][] {
-  if (!arr || !Array.isArray(arr) || !arr.length) {
-    return [];
-  }
-  const map = new Map<string, Commit["author"]>();
+function removeDups(arr: Commit[]): Pick<Commit["author"], "login" | "id">[] {
+  const map = new Map<string, Pick<Commit["author"], "login" | "id">>();
 
   for (let item of arr) {
     const author = item.author;
     if (!author || !author.id || !author.login) continue;
     // Deduplicate based on author.id
-    map.set(author.id, { login: author.login, id: author.id });
+    map.set(author.id.toString(), { login: author.login, id: author.id });
   }
 
   return [...map.values()];
 }
 
 const data = await getCommits(url);
-const unique = removeDups(data);
+const unique = removeDups(data ?? []);
 const recentContributors = unique.slice(0, 3); // only show avatars for the 3 most recent contributors
 const additionalContributors = unique.length - recentContributors.length; // list the rest of them as # of extra contributors
 ---
