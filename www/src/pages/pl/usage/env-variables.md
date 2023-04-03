@@ -64,7 +64,7 @@ _Dla zainteresowanego czytelnika:_
 <details>
 <summary>Zaawansowane: Logika walidacji</summary>
 
-W zależności od środowiska (seerwer lub klient) walidujemy albo oba schematy, albo tylko schemat klienta. Oznacza to, iż nawet jeśli zmienne środowiskowe serwera nie będą zdefiniowane, nie zostanie wyrzucony błąd walidacji - możemy więc mieć jeden punkt odniesienia do naszych zmiennych.
+W zależności od środowiska (serwer lub klient) walidujemy albo oba schematy, albo tylko schemat klienta. Oznacza to, iż nawet jeśli zmienne środowiskowe serwera nie będą zdefiniowane, nie zostanie wyrzucony błąd walidacji - możemy więc mieć jeden punkt odniesienia do naszych zmiennych.
 
 ```ts:env.mjs
 const isServer = typeof window === "undefined";
