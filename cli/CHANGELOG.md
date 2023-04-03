@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.10.2
+
+### Patch Changes
+
+- [#1329](https://github.com/t3-oss/create-t3-app/pull/1329) [`5429989`](https://github.com/t3-oss/create-t3-app/commit/54299895517d3c406637efec8f0512cf1ba2da5a) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next-auth version
+
+- [#1321](https://github.com/t3-oss/create-t3-app/pull/1321) [`7fcb41c`](https://github.com/t3-oss/create-t3-app/commit/7fcb41c95d24567040b72409a576d8c694f910a1) Thanks [@JingLi1998](https://github.com/JingLi1998)! - Update the type for global prisma instance
+
 ## 7.10.1
 
 ### Patch Changes
