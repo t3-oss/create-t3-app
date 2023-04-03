@@ -4,7 +4,7 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.20.1",
+  "next-auth": "4.20.1", // TODO: undo after https://github.com/nextauthjs/next-auth/issues/7132 is fixed
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
