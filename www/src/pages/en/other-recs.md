@@ -97,6 +97,15 @@ Vercel took the hell of web deployments and made it a set-and-forget GitHub inte
 - [Vercel Homepage](https://vercel.com/)
 - [Create T3 App Vercel deployment guide](/en/deployment/vercel)
 
+### Genezio
+
+**For deploying on serverless infrastructure**
+
+[genezio](https://genez.io/) is a platform for developers to write, deploy and use a serverless API. You just write your backend logic and genezio deploys it on a serverless infrastructure. It, also, generates you an SDK to use it to remotely call the methods of your classes in a very natural way.
+
+- [genezio homepage](https://genez.io)
+- [genezio documentation](https://genez.io/docs)
+
 ### PlanetScale
 
 **For databases without the worry**
