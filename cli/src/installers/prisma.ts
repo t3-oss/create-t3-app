@@ -8,7 +8,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["prisma"],
+    dependencies: ["prisma", "prettier-plugin-prisma"],
     devMode: true,
   });
   addPackageDependency({

@@ -4,6 +4,7 @@ import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
+import { prettierInstaller } from "~/installers/prettier.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
@@ -13,6 +14,7 @@ export const availablePackages = [
   "tailwind",
   "trpc",
   "envVariables",
+  "prettier",
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -55,5 +57,9 @@ export const buildPkgInstallerMap = (
   envVariables: {
     inUse: true,
     installer: envVariablesInstaller,
+  },
+  prettier: {
+    inUse: packages.includes("prisma") || packages.includes("tailwind"),
+    installer: prettierInstaller,
   },
 });
