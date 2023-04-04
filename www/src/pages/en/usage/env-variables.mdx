@@ -3,7 +3,10 @@ title: Environment Variables
 description: Getting started with Create T3 App
 layout: ../../../layouts/docs.astro
 lang: en
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional logic in `src/env.mjs`.
 
@@ -165,7 +168,11 @@ export const processEnv = {
 };
 ```
 
-_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+<Callout type="info">
+  An empty string is still a string, so `z.string()` will accept an empty string
+  as a valid value. If you want to make sure that the environment variable is
+  not empty, you can use `z.string().min(1)`.
+</Callout>
 
 3. _Optional:_ Add the environment variable to `.env.example`, but don't include the token
 
