@@ -28,7 +28,7 @@ export const prettierInstaller: Installer = ({ projectDir, packages }) => {
   const prettierCfgSrc = path.join(configsDir, "prettier", prettierFile);
   const prettierCfgDest = path.join(projectDir, "prettier.config.cjs");
 
-  const eslintCfgSrc = path.join(configsDir, "with-prettier.cjs");
+  const eslintCfgSrc = path.join(configsDir, "eslint", "with-prettier.cjs");
   const eslintCfgDest = path.join(projectDir, "_eslintrc.cjs");
 
   fs.copySync(prettierCfgSrc, prettierCfgDest);
