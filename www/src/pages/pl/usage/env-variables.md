@@ -5,45 +5,48 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Create T3 App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe pliki w folderze `env`:
+Create T3 App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe narzędzia w pliku `src/env.mjs`.
 
-📁 src/env
+## env.mjs
 
-┣ 📄 client.mjs
+_TLDR; Jeżeli chcesz dodać nową zmienną środowiskową, musisz dodać ją zarówno do pliku `.env`, jak i zdefiniować jej walidator w pliku `src/env.mjs`._
 
-┣ 📄 schema.mjs
+Plik ten podzielony jest na dwie części - schemat zmiennych i wykorzystywanie obiektu `process.env`, jak i logika walidacji. Logika ta nie powinna być zmieniana.
 
-┣ 📄 server.mjs
-
-Ich zawartość może na początku wyglądać strasznie, ale nie martw się. Nie jest to tak skomplikowane, jak może Ci się wydawać. Przyjrzyjmy się każdemu z nich po kolei i przejdźmy przez proces dodawania nowej zmiennej środowiskowej.
-
-_TLDR; Jeżeli chcesz dodać nową zmienną środowiskową, musisz dodać ją zarówno do pliku `.env` jak i zdefiniować walidator w pliku `env/schema.mjs`._
-
-## schema.mjs
-
-Jest to plik, który faktycznie będziesz edytować. Zawiera dwa schematy, jeden dla zmiennych środ. po stronie serwera, a drugi dla tych po stronie klienta (obiekt `clientEnv`).
-
-```ts:env/schema.mjs
-export const serverSchema = z.object({
-  // DATABASE_URL: z.string().url(),
+```ts:env.mjs
+const server = z.object({
+  NODE_ENV: z.enum(["development", "test", "production"]),
 });
 
-export const clientSchema = z.object({
-  // NEXT_PUBLIC_WS_KEY: z.string(),
+const client = z.object({
+  // NEXT_PUBLIC_CLIENTVAR: z.string(),
 });
+
+const processEnv = {
+  NODE_ENV: process.env.NODE_ENV,
+  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+};
 ```
 
 ### Schemat Dla Serwera
 
 Zdefiniuj tutaj zmienne środowiskowe dla serwera.
 
-Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`. Jeżeli to zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
+Koniecznie **nie** prefixuj tutejszych kluczy `NEXT_PUBLIC_`, aby przypadkiem nie ujawnić ich do klienta.
 
 ### Schemat Dla Klienta
 
 Zdefiniuj tutaj zmienne środowiskowe dla klienta.
 
 Aby ujawnić zmienne dla klienta dodaj prefix `NEXT_PUBLIC`. Jeżeli tego nie zrobisz, walidacja nie zadziała, pomagając ci w wykryciu niewłaściwej konfiguracji.
+
+### Obiekt `processEnv`
+
+Wykorzystaj destrukturyzację obiektu `process.env`.
+
+Potrzebny jest nam obiekt, który parse'ować możemy z naszymi schematami Zoda, a z powodu sposobu w jaki Next.js przetwarza zmienne środowiskowe, nie możesz destrukturyzować obiektu `process.env` tak jak zwykłego obiektu - trzeba to zrobić manualnie.
+
+TypeScript zapewni poprawność destrukturyzacji obiektu i zapobiegnie sytuacji, w której zapomnisz o jakimś kluczu.
 
 ```ts
 // ❌ To nie zadziała, musimy ręcznie "rozbić" `process.env`
@@ -54,19 +57,70 @@ const schema = z.object({
 const validated = schema.parse(process.env);
 ```
 
-## server.mjs & client.mjs
+### Logika Walidacji
 
-To tutaj zachodzi walidacja i eksport poprawnych obiektów. Nie powinna zajść potrzeba ich edycji.
+_Dla zainteresowanego czytelnika:_
+
+<details>
+<summary>Zaawansowane: Logika walidacji</summary>
+
+W zależności od środowiska (serwer lub klient) walidujemy albo oba schematy, albo tylko schemat klienta. Oznacza to, iż nawet jeśli zmienne środowiskowe serwera nie będą zdefiniowane, nie zostanie wyrzucony błąd walidacji - możemy więc mieć jeden punkt odniesienia do naszych zmiennych.
+
+```ts:env.mjs
+const isServer = typeof window === "undefined";
+
+const merged = server.merge(client);
+const parsed = isServer
+  ? merged.safeParse(processEnv)  // <-- na serwerze, sprawdź oba schematy
+  : client.safeParse(processEnv); // <-- na kliencie, sprawdź tylko zmienne klienta
+
+if (parsed.success === false) {
+  console.error(
+    "❌ Invalid environment variables:\n",
+    ...formatErrors(parsed.error.format()),
+  );
+  throw new Error("Invalid environment variables");
+}
+```
+
+Następnie korzystamy z obiektu proxy, aby wyrzucać błędy, jeśli chcesz skorzystać z serwerowych zmiennych środowiskowych na kliencie.
+
+```ts:env.mjs
+// proxy pozwala na zmianę gettera
+export const env = new Proxy(parsed.data, {
+  get(target, prop) {
+    if (typeof prop !== "string") return undefined;
+    // na kliencie pozwalamy jedynie na zmienne NEXT_PUBLIC_
+    if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
+      throw new Error(
+        "❌ Attempted to access serverside environment variable on the client",
+      );
+    return target[prop]; // <-- w przeciwnym razie, zwróć wartość
+  },
+});
+```
+
+</details>
 
 ## Korzystanie Ze Zmiennych Środowiskowych
 
-Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env/client.mjs` lub `env/server.mjs`, w zależności od tego, gdzie chcesz używać tych zmiennych:
+Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env.mjs` i skorzystać z nich tak, jak normalnie byłoby to możliwe. Jeżeli zaimportujesz obiekt ten na kliencie i spróbujesz skorzystać ze zmiennych serwera, wystąpi błąd runtime.
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
-// `env` jest w pełni typesafe i pozwala na autouzupełnianie
+// `env` jest w pełni typesafe i zapewnia autouzupełnianie
 const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.mjs";
+
+// ❌ Wyrzuci to błąd runtime
+const dbUrl = env.DATABASE_URL;
+
+// ✅ To jest ok
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
 ```
 
 ## .env.example
@@ -77,15 +131,15 @@ Niektóre frameworki i narzędzia do budowania, takie jak Next.js, zalecają prz
 
 ## Dodawanie Zmiennych Środowiskowych
 
-Aby upewnić się, że twój projekt nie zbuduje się bez wymaganych zmiennych środ., będziesz musiał dodać nową zmienną w **dwóch** miejscach:
+Aby upewnić się, że twój projekt nie zbuduje się bez wymaganych zmiennych środowiskowych, będziesz musiał dodać nową zmienną w **dwóch** miejscach:
 
 📄 `.env`: Wprowadź swoją zmienną środ. tak, jak to zwykle robisz (np. `KLUCZ=WARTOŚĆ`)
 
-📄 `schema.mjs`: Dodaj odpowiadającą jej logikę walidacji definiując schemat Zod, np. `KLUCZ: z.string()`
+📄 `env.mjs`: Dodaj odpowiadającą jej logikę walidacji definiując schemat Zod, np. `KLUCZ: z.string()`. Następnie wykorzystaj obiekt `process.env` w `processEnv`, np. `KEY: process.env.KEY`.
 
 Opcjonalnie możesz zaktualizować plik `.env.example`:
 
-📄 `.env.example`: Wprowadź swoją zmienną środ., upewnij się jednak że nie nie posiada ona wartości, która jest sekretna, np. `KLUCZ=WARTOŚĆ` lub `KLUCZ=`
+📄 `.env.example`: Wprowadź swoją zmienną środowiskową, upewnij się jednak że nie nie posiada ona wartości, która jest sekretna, np. `KLUCZ=WARTOŚĆ` lub `KLUCZ=`
 
 ### Przykład
 
@@ -97,18 +151,23 @@ _Chcę dodać mój token do API Twittera jako zmienną środowiskową po stronie
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Dodaj zmienną środowiskową do pliku `schema.mjs`:
+2. Dodaj zmienną środowiskową do pliku `env.mjs`:
 
 ```ts
-export const serverSchema = z.object({
+export const server = z.object({
   // ...
   TWITTER_API_TOKEN: z.string(),
 });
+
+export const processEnv = {
+  // ...
+  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+};
 ```
 
 _**UWAGA:** Pusty string to dalej string, więc `z.string()` zaakceptuje każdy pusty tekst jako poprawną wartość. Jeżeli chcesz, by wartość była wymagana (i nie pusta!), możesz użyć `z.string().min(1)`._
 
-1. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
+3. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
 
 ```
 TWITTER_API_TOKEN=
