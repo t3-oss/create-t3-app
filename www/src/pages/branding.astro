@@ -1,0 +1,44 @@
+---
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
+import Asset from "../components/branding/Asset.astro";
+import LandingPage from "../layouts/landingPage.astro";
+---
+
+<JumpToContent />
+<LandingPage isNotFound={true}>
+  <div>
+    <div class="py-12 sm:py-8 md:py-12 lg:py-14 xl:py-12">
+      <div class="max-w-3/4 mx-auto px-8">
+        <div class="flex flex-col items-center gap-8 lg:gap-12">
+          <h1
+            class="text-center text-5xl font-bold tracking-tight text-white sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[5rem] xl:tracking-tight"
+          >
+            Brand assets
+          </h1>
+          <div class="flex w-full flex-wrap justify-center gap-8">
+            <Asset
+              assets={{
+                png: null,
+                svg: "/images/t3-dark.svg",
+              }}
+              bg="white"
+              description="Please use this asset on light background"
+              title="Dark T3 Logo"
+              attribution={true}
+            />
+            <Asset
+              assets={{
+                png: null,
+                svg: "/images/t3-light.svg",
+              }}
+              bg="black"
+              description="Please use this asset on dark background"
+              title="Light T3 Logo"
+              attribution={true}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</LandingPage>

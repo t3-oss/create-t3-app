@@ -1,11 +1,41 @@
-type Options = {
+import { z } from "zod";
+
+type Options<T extends "repo" | "commits"> = {
   throwIfNotOk?: boolean;
   throwIfNoAuth?: boolean;
+  fetchType: T;
 };
 
+export const repoSchema = z.object({
+  stargazers_count: z.number(),
+});
+
+export const commitsSchema = z.array(
+  z.object({
+    commit: z.object({
+      author: z.object({
+        date: z.string(),
+      }),
+    }),
+    author: z.object({
+      login: z.string(),
+      id: z.number(),
+    }),
+  }),
+);
+
+export type Commit = z.infer<typeof commitsSchema>[number];
+
 /** Helper function to fetch the GitHub API with an auth token to avoid rate limiting. */
-export const fetchGithub = async (url: string, opts: Options) => {
-  const { throwIfNotOk = true, throwIfNoAuth = true } = opts;
+export const fetchGithub = async <T extends "repo" | "commits">(
+  url: string,
+  opts: Options<T>,
+): Promise<z.infer<
+  T extends "repo" ? typeof repoSchema : typeof commitsSchema
+> | null> => {
+  const { throwIfNotOk = true, throwIfNoAuth = true, fetchType } = opts;
+
+  const schema = fetchType === "commits" ? commitsSchema : repoSchema;
 
   const token = import.meta.env.PUBLIC_GITHUB_TOKEN as string | undefined;
 
@@ -16,7 +46,20 @@ export const fetchGithub = async (url: string, opts: Options) => {
       throw new Error(msg);
     }
     console.warn(msg);
-    return fetch(url);
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const parsed = schema.safeParse(data);
+    if (!parsed.success) {
+      console.warn(
+        "Could not parse GitHub API response. This could be caused by rate limiting.",
+      );
+
+      return null;
+    }
+
+    return parsed.data;
   }
 
   const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
@@ -43,5 +86,17 @@ export const fetchGithub = async (url: string, opts: Options) => {
     console.warn(msg);
   }
 
-  return data;
+  const parsed = schema.safeParse(data);
+
+  if (!parsed.success) {
+    const msg = "Could not parse GitHub API response.";
+    if (throwIfNotOk) {
+      throw new Error(msg);
+    }
+    console.warn(msg);
+
+    return null;
+  }
+
+  return parsed.data;
 };
