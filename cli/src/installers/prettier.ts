@@ -7,7 +7,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const prettierInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["prettier", "@types/prettier"],
+    dependencies: ["prettier", "@types/prettier", "eslint-config-prettier"],
     devMode: true,
   });
 
