@@ -71,7 +71,9 @@ export default function BreadCrumbs() {
           />
         </svg>
       </a>
-      <BreadCrumbsArrow isRtl={isRtl} />
+      <span className="flex-shrink-0">
+        <BreadCrumbsArrow isRtl={isRtl} />
+      </span>
       {breadcrumbs.map((crumb, index) => (
         <div className="flex items-center gap-2" key={crumb.key}>
           <a
@@ -80,7 +82,11 @@ export default function BreadCrumbs() {
           >
             {crumb.text}
           </a>
-          {index < breadcrumbs.length - 1 && <BreadCrumbsArrow isRtl={isRtl} />}
+          {index < breadcrumbs.length - 1 && (
+            <span className="flex-shrink-0">
+              <BreadCrumbsArrow isRtl={isRtl} />
+            </span>
+          )}
         </div>
       ))}
     </div>
