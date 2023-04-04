@@ -21,7 +21,7 @@ export default function Callout({
   return (
     <div
       className={clsx(
-        "my-4 flex gap-3 rounded-md border p-3 pb-0 text-justify",
+        "my-4 flex w-full gap-3 rounded-md border p-3 text-justify",
         {
           "border-orange-400 bg-orange-400/50 dark:border-orange-600 dark:bg-orange-600/50":
             type === "warning",
@@ -33,7 +33,7 @@ export default function Callout({
       )}
     >
       <span>{getEmoji()}</span>
-      <span>{children}</span>
+      <span className="[&>p]:mb-0">{children}</span>
     </div>
   );
 }
