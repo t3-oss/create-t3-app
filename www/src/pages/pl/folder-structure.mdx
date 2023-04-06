@@ -47,7 +47,7 @@ Folder `pages` zawiera wszystkie strony aplikacji Next.js. Plik `index.tsx` w g�
 
 #### `src/pages/api`
 
-Folder `api` zawiera wszystkie API route'y aplikacji Next.js. Plik `examples.ts` zawiera przykład takiego route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) oraz z Prismy. Plik `restricted.ts` zawiera przykład route'a korzystającego z funkcji [Next.js API route](https://nextjs.org/docs/api-routes/introduction) i jest on chroniony ("authenticated") poprzez [NextAuth.js](https://next-auth.js.org/).
+Folder `api` zawiera wszystkie route'y twojej aplikacji Next.js. Po więcej informacji o api route'ach, zobacz [ich dokumentację od Next.js](https://nextjs.org/docs/api-routes/introduction).
 
 </div>
 <div data-components="nextauth">
@@ -75,7 +75,7 @@ Folder `server` używany jest do stworzenia wyraźnego podziału między kodem d
 
 ### `src/server/auth.ts`
 
-Zawiera narzędzia do uwierzytelniania, takie jak pobieranie sesji użytkownika po stronie serwera. Po więcej informacji, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth#korzystanie-z-trpc).
+Jest to główny punkt wejścia dla systemu uwierzytelniania po stronie serwera. Ustawiamy tutaj [opcje konfiguracji](/pl/usage/next-auth), [dostosowujemy model użytkownika](/pl/usage/next-auth#inclusion-of-userid-on-the-session) oraz zapewniamy narzędzia DX dla uwierzytelniania, takie jak funkcja pobierania sesji użytkownika po stronie serwera. Po więcej informacji, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth#korzystanie-z-trpc).
 
 </div>
 <div data-components="prisma">
@@ -114,8 +114,8 @@ Zależnie od wybranych paczek, router ten zawiera więcej lub mniej route'ów, a
 
 Plik `trpc.ts` jest głównym plikiem konfiguracyjnym dla tRPC po stronie serwera. W pliku tym:
 
-1. Definiujemy kontekst używany w zapytaniach tRPC. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpccontextts).
-2. Eksportujemy funkcje pomocnicze helperów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpctrpcts).
+1. Definiujemy kontekst używany w zapytaniach tRPC. Po więcej informacji, zobacz [korzystanie z tRPC](usage/trpc#-serverapitrpcts).
+2. Eksportujemy funkcje pomocnicze helperów. Po więcej informacji, zobacz [korzystanie z tRPC](usage/trpc#-serverapitrpcts).
 
 </div>
 
@@ -123,7 +123,7 @@ Plik `trpc.ts` jest głównym plikiem konfiguracyjnym dla tRPC po stronie serwer
 
 #### `src/server/api/root.ts`
 
-Plik `root.ts` jest używany do scalenia routerów tRPC i eksportowania ich jako pojedynczego routera, a także eksportowania jego definicji typów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-servertrpcrouterts).
+Plik `root.ts` jest używany do scalenia routerów tRPC i eksportowania ich jako pojedynczego routera, a także eksportowania jego definicji typów. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-serverapirootts).
 
 </div>
 <div>
@@ -131,20 +131,6 @@ Plik `root.ts` jest używany do scalenia routerów tRPC i eksportowania ich jako
 ### `src/styles`
 
 Folder `styles` zawiera globalne style aplikacji.
-
-</div>
-<div data-components="nextauth">
-
-### `src/types`
-
-Folder `types` jest używany do przechowywania typów oraz ich deklaracji.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/types/next-auth.d.ts`
-
-Plik `next-auth.d.ts` jest używany do poszerzenia domyślnego typu sesji NextAuth.js. Dodaje on ID użytkownika. Po więcej informacji, zobacz [korzystanie z NextAuth.js](/pl/usage/next-auth#inclusion-of-userid-on-the-session).
 
 </div>
 <div data-components="trpc">
@@ -158,7 +144,7 @@ Folder `utils` jest używany do przechowywania często powielanych funkcji pomoc
 
 #### `src/utils/api.ts`
 
-Plik `api.ts` to plik wejścia tRPC od strony klienta. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-utilstrpcts).
+Plik `api.ts` to plik wejścia tRPC od strony klienta. Po więcej informacji, zobacz [korzystanie z tRPC](/pl/usage/trpc#-utilsapits).
 
 </div>
 <div>

@@ -9,7 +9,7 @@ Prisma es un ORM para TypeScript, que te permite definir el esquema de tu base d
 
 ## Prisma Client
 
-Ubicado en `/server/db/client.ts`, el Prisma Client se instancia como una variable global (como se recomienda como [mejor práctica](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) por el equipo de Prisma) y exportado para ser utilizado en tus rutas API. Incluimos el Prisma Client en el [contexto](/es/usage/trpc#-servertrpccontextts) de tRPC de forma predeterminada y recomendamos usar esto en lugar de importarlo por separado en cada archivo.
+Ubicado en `/server/db/client.ts`, el Prisma Client se instancia como una variable global (como se recomienda como [mejor práctica](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) por el equipo de Prisma) y exportado para ser utilizado en tus rutas API. Incluimos el Prisma Client en el [contexto](/es/usage/trpc#-serverapitrpcts) de tRPC de forma predeterminada y recomendamos usar esto en lugar de importarlo por separado en cada archivo.
 
 ## Esquema
 

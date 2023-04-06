@@ -1,5 +1,53 @@
 # Changelog
 
+## 7.10.2
+
+### Patch Changes
+
+- [#1329](https://github.com/t3-oss/create-t3-app/pull/1329) [`5429989`](https://github.com/t3-oss/create-t3-app/commit/54299895517d3c406637efec8f0512cf1ba2da5a) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next-auth version
+
+- [#1321](https://github.com/t3-oss/create-t3-app/pull/1321) [`7fcb41c`](https://github.com/t3-oss/create-t3-app/commit/7fcb41c95d24567040b72409a576d8c694f910a1) Thanks [@JingLi1998](https://github.com/JingLi1998)! - Update the type for global prisma instance
+
+## 7.10.1
+
+### Patch Changes
+
+- [#1312](https://github.com/t3-oss/create-t3-app/pull/1312) [`2fb3a51`](https://github.com/t3-oss/create-t3-app/commit/2fb3a51b8b91cf2eb992a3af49ff52588f1e9c95) Thanks [@FinnDore](https://github.com/FinnDore)! - feat: bumped tailwind from 3.2.7 -> 3.3.0
+
+## 7.10.0
+
+### Minor Changes
+
+- [#1295](https://github.com/t3-oss/create-t3-app/pull/1295) [`d0a8143`](https://github.com/t3-oss/create-t3-app/commit/d0a8143587c935819790521533e7cfa0862d300c) Thanks [@iAverages](https://github.com/iAverages)! - Replace Git Bash check with Mintty check
+
+### Patch Changes
+
+- [#1304](https://github.com/t3-oss/create-t3-app/pull/1304) [`2cb41e6`](https://github.com/t3-oss/create-t3-app/commit/2cb41e676f01d4e8bfb8c7fc41bf0d5c4a1c0689) Thanks [@PiotrekPKP](https://github.com/PiotrekPKP)! - fix: replace trpc links
+
+## 7.9.0
+
+### Minor Changes
+
+- [#1284](https://github.com/t3-oss/create-t3-app/pull/1284) [`a2af1a2`](https://github.com/t3-oss/create-t3-app/commit/a2af1a2b7d4fd3005f8efe0e297b871d6b1747ff) Thanks [@michalbundyra](https://github.com/michalbundyra)! - chore: bump typescript - 5.0.2
+
+## 7.8.0
+
+### Minor Changes
+
+- [#1273](https://github.com/t3-oss/create-t3-app/pull/1273) [`10a5e0b`](https://github.com/t3-oss/create-t3-app/commit/10a5e0b2fe91b887526960515c6422791a77c724) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add errorformatter for zod errors
+
+### Patch Changes
+
+- [#1263](https://github.com/t3-oss/create-t3-app/pull/1263) [`8dc6e33`](https://github.com/t3-oss/create-t3-app/commit/8dc6e33ea149851de97f84e8d8388accdd5547d9) Thanks [@mkreuzmayr](https://github.com/mkreuzmayr)! - search for tsconfig relative to eslintrc
+
+- [#1279](https://github.com/t3-oss/create-t3-app/pull/1279) [`ae5cd40`](https://github.com/t3-oss/create-t3-app/commit/ae5cd405c9d5bb672e3971c496d437a7a05b3f8f) Thanks [@arielconti10](https://github.com/arielconti10)! - fix: remove //@ts-check comment in next.config
+
+## 7.7.0
+
+### Minor Changes
+
+- [#1268](https://github.com/t3-oss/create-t3-app/pull/1268) [`db394ed`](https://github.com/t3-oss/create-t3-app/commit/db394edf396288dd754f5743ae2fe26a39c70ef5) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - ignore unused vars that begin with underscore
+
 ## 7.6.0
 
 ### Minor Changes
