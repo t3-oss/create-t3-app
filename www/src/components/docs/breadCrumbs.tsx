@@ -3,12 +3,11 @@ import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
-type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
   const isRtl = getIsRtlFromLangCode(lang ?? "en");
-  const slugToEntryPath = (slug: SlugType) => {
+  const slugToEntryPath = (slug: SlugType): OuterHeaders => {
     switch (slug) {
       case "":
         return "Create T3 App";
@@ -22,13 +21,17 @@ export default function BreadCrumbs() {
     window.location.pathname.slice(1).split("/").length > 2
       ? window.location.pathname.slice(1).split("/")[1]
       : "" || "";
-  // TODO: find a way to use inference here to gain better typesafety
-  const actualEntries = SIDEBAR[lang][
-    slugToEntryPath(slug === undefined || slug === "" ? "" : (slug as SlugType))
-  ] as Entry[] | undefined;
+
+  const actualEntries =
+    SIDEBAR[lang][
+      slugToEntryPath(
+        slug === undefined || slug === "" ? "" : (slug as SlugType),
+      )
+    ];
 
   const getPathNameFromLink = (link: string) => {
-    return actualEntries?.find((entry) => entry.link === link)?.text;
+    return [...(actualEntries ?? [])].find((entry) => entry.link === link)
+      ?.text;
   };
 
   const getHeaderName = (header: OuterHeaders) => {

@@ -2,6 +2,7 @@
 title: Netlify
 description: Deployment na platformie Netlify
 layout: ../../../layouts/docs.astro
+lang: pl
 ---
 
 Netlify, to alternatywny provider do deploymentu z podobnym założeniem do Vercela. Po przykładowe repozytorium bazujące na tej stronie, zobacz [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify).
