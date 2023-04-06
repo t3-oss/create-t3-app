@@ -73,6 +73,8 @@ _For the interested reader:_
 Depending on the environment (server or client) we validate either both or just the client schema. This means that even though the server environment variables will be undefined, they won't trigger the validation to fail - meaning we can have a single entrypoint for our environment variables.
 
 ```ts
+// src/env.mjs
+
 const isServer = typeof window === "undefined";
 
 const merged = server.merge(client);
@@ -92,6 +94,8 @@ if (parsed.success === false) {
 Then, we use a proxy object to throw errors if you try to access a server-side environment variable on the client.
 
 ```ts
+// src/env.mjs
+
 // proxy allows us to remap the getters
 export const env = new Proxy(parsed.data, {
   get(target, prop) {
