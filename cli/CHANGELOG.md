@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.10.3
+
+### Patch Changes
+
+- [#1330](https://github.com/t3-oss/create-t3-app/pull/1330) [`85997e0`](https://github.com/t3-oss/create-t3-app/commit/85997e0cc26a2ae6fbcd08458734bd6335ba467a) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: create a new object for the session callback
+
 ## 7.10.2
 
 ### Patch Changes
