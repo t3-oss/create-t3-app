@@ -154,7 +154,7 @@ const userRouter = router({
 
 ## 搭配 Prisma 使用
 
-要将 NextAuth.js 搭配 Prisma 一起使用需要非常多的 [初始化步骤](https://next-auth.js.org/adapters/models/)。`create-t3-app` 可以帮你完成这些工作，如果你在用 CLI 创建应用时同时选择了 Prisma 和 NextAuth.js，那你的应用已经集成了一个完全正常运行的认证系统，所有的数据库模型都已经预先配置好了。我们为你的应用预先配置了 Discord OAuth 认证服务，因为它是最方便实现的服务之一 —— 只需要在 `.env` 文件里提供令牌即可。然而，你也可以根据 [NextAuth.js 文档](https://next-auth.js.org/providers/) 来轻松添加更多其他第三方认证服务。要注意的是有部分特定的第三方服务需要你在数据模型上添加额外的字段。我们推荐你去阅读你想要添加的第三方验证服务的文档，以便确保你已经提供所有要求的字段了。
+要将 NextAuth.js 搭配 Prisma 一起使用需要非常多的 [初始化步骤](https://authjs.dev/reference/adapter/prisma#setup)。`create-t3-app` 可以帮你完成这些工作，如果你在用 CLI 创建应用时同时选择了 Prisma 和 NextAuth.js，那你的应用已经集成了一个完全正常运行的认证系统，所有的数据库模型都已经预先配置好了。我们为你的应用预先配置了 Discord OAuth 认证服务，因为它是最方便实现的服务之一 —— 只需要在 `.env` 文件里提供令牌即可。然而，你也可以根据 [NextAuth.js 文档](https://next-auth.js.org/providers/) 来轻松添加更多其他第三方认证服务。要注意的是有部分特定的第三方服务需要你在数据模型上添加额外的字段。我们推荐你去阅读你想要添加的第三方验证服务的文档，以便确保你已经提供所有要求的字段了。
 
 ### 给你的模型添加新的字段
 
