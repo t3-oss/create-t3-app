@@ -3,7 +3,10 @@ title: Environment Variables
 description: Getting started with Create T3 App
 layout: ../../../layouts/docs.astro
 lang: en
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional logic in `src/env.mjs`.
 
@@ -32,7 +35,10 @@ const processEnv = {
 
 Define your server-side environment variables schema here.
 
-Make sure you do not prefix keys here with `NEXT_PUBLIC` in order not to leak important secrets to the client.
+<Callout type="warning">
+  Make sure you do not prefix keys here with `NEXT_PUBLIC` in order not to leak
+  important secrets to the client.
+</Callout>
 
 ### Client Schema
 
@@ -66,12 +72,14 @@ _For the interested reader:_
 
 Depending on the environment (server or client) we validate either both or just the client schema. This means that even though the server environment variables will be undefined, they won't trigger the validation to fail - meaning we can have a single entrypoint for our environment variables.
 
-```ts:env.mjs
+```ts
+// src/env.mjs
+
 const isServer = typeof window === "undefined";
 
 const merged = server.merge(client);
 const parsed = isServer
-  ? merged.safeParse(processEnv)  // <-- on server, validate all
+  ? merged.safeParse(processEnv) // <-- on server, validate all
   : client.safeParse(processEnv); // <-- on client, validate only client
 
 if (parsed.success === false) {
@@ -85,7 +93,9 @@ if (parsed.success === false) {
 
 Then, we use a proxy object to throw errors if you try to access a server-side environment variable on the client.
 
-```ts:env.mjs
+```ts
+// src/env.mjs
+
 // proxy allows us to remap the getters
 export const env = new Proxy(parsed.data, {
   get(target, prop) {
@@ -165,7 +175,11 @@ export const processEnv = {
 };
 ```
 
-_**NOTE:** An empty string is still a string, so `z.string()` will accept an empty string as a valid value. If you want to make sure that the environment variable is not empty, you can use `z.string().min(1)`._
+<Callout type="info">
+  An empty string is still a string, so `z.string()` will accept an empty string
+  as a valid value. If you want to make sure that the environment variable is
+  not empty, you can use `z.string().min(1)`.
+</Callout>
 
 3. _Optional:_ Add the environment variable to `.env.example`, but don't include the token
 
