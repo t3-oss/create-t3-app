@@ -26,7 +26,7 @@ const isRtl = getIsRtlFromUrl(pathname);
     {
       prev ? (
         <a
-          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          class="flex items-center underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
@@ -43,7 +43,7 @@ const isRtl = getIsRtlFromUrl(pathname);
       next ? (
         <a
           rel="next"
-          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          class="flex items-center underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
           href={Astro.site?.pathname + next.link}
         >
           <>

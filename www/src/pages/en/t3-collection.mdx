@@ -5,8 +5,10 @@ layout: ../../layouts/docs.astro
 lang: en
 isMdx: true
 ---
+
 import OpenSourceAppList from "../../components/docs/openSourceAppList.tsx";
 import CompanyList from "../../components/docs/companyList.tsx";
+import Callout from "../../components/docs/callout.tsx";
 
 Made a project using the T3 stack and want to share it? Add it to the list!
 
@@ -14,11 +16,14 @@ Made a project using the T3 stack and want to share it? Add it to the list!
 
 <OpenSourceAppList />
 
-
 ## Companies using the T3 Stack
 
 We'd love to know of companies that use the T3 stack for their apps. Is your company using the T3 stack and would like to share it? Add it to the list!
 
-<CompanyList/>
+<CompanyList />
 
-_Have a cool project using the T3 stack? Make a [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/components/docs/openSourceAppList.tsx) and add it here!_
+<Callout type="tip">
+  Have a cool project using the T3 stack? Make a [pull
+  request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/components/docs/openSourceAppList.tsx)
+  and add it here!
+</Callout>
