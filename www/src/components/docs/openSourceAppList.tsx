@@ -197,6 +197,14 @@ const projects: App[] = [
     linkName: "prisma-editor.up.railway.app",
     link: "https://prisma-editor.up.railway.app",
   },
+  
+  {
+    description: "Discuss - A scuffed forum/socmed site in dark theme",
+    repoName: "discuss",
+    repo: "https://github.com/cweiqi27/discuss",
+    linkName: "discuss-forum.vercel.app",
+    link: "https://discuss-forum.vercel.app/",
+  },
 ];
 
 export default function OpenSourceAppList({
