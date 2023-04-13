@@ -1,5 +1,7 @@
 ---
-"create-t3-app": patch
+"create-t3-app": minor
 ---
 
-fix: incorrect behavior of SKIP_ENV_VALIDATION
+improve boolean coercion of `SKIP_ENV_VALIDATION` environment variable
+
+If defined, "0" and "false" are now considered falsey values, all other values are considered truthy.
