@@ -1,8 +1,8 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: フォルダ構造
+description: 初期構成として新規に生成されたT3 Appのフォルダ構造
 layout: ../../layouts/docs.astro
-lang: en
+lang: ja
 isMdx: true
 ---
 
@@ -10,6 +10,8 @@ import Form from "../../components/docs/folderStructureForm.astro";
 import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
+
+以下でパッケージを選択すると、その選択したパッケージで新たに足場を組んだアプリのフォルダ構造が表示されます。さらに下に進むと、各エントリーの説明があります。
 
 <Form />
 
@@ -21,12 +23,18 @@ Please select your packages to see the folder structure of a newly scaffolded ap
 
 The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
 
+`prisma` フォルダには、データベース接続とデータベーススキーマの設定に使用する `schema.prisma` ファイルが格納されています。
+また、マイグレーションファイルやシードスクリプトを格納する場所でもある（もし使用する場合）。
+詳しくは、[Prisma の使い方](/ja/usage/prisma)を参照してください。
+
 </div>
 <div>
 
 ### `public`
 
 The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+
+`public`フォルダには、Web サーバが提供する静的アセットが格納されています。`favicon.ico`ファイルは静的アセットの一例です。
 
 </div>
 <div>
@@ -35,12 +43,16 @@ The `public` folder contains static assets that are served by the web server. Th
 
 Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
 
+環境変数の検証や型定義に使用される - [環境変数](usage/env-variables)を参照。
+
 </div>
 <div>
 
 ### `src/pages`
 
 The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+
+`pages`フォルダには、Next.js アプリケーションのすべてのページが格納されます。`pages`のルートディレクトリにある `index.tsx` ファイルは、アプリケーションのホームページとなります。`\_app.tsx`ファイルは、アプリケーションを各種プロバイダでラップするために使用されます。詳しくは、[Next.js ドキュメント](https://nextjs.org/docs/basic-features/pages)を参照してください。
 
 </div>
 <div data-components="nextauth trpc">
@@ -49,12 +61,16 @@ The `pages` folder contains all the pages of the Next.js application. The `index
 
 The `api` folder contains all the API routes of the Next.js application. See [Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction) for info on api routes.
 
+`api`フォルダには、Next.js アプリケーションのすべての API ルーティングが格納されています。API ルートについては、[Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction)を参照してください。
+
 </div>
 <div data-components="nextauth">
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
 The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+
+`[...nextauth].ts`ファイルは、NextAuth.js の認証スラッグルートです。認証リクエストを処理するために使用されます。NextAuth.js の詳細については [NextAuth.js usage](usage/next-auth) を、キャッチオール／スラッグルートについては [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) を参照してください。
 
 </div>
 <div data-components="trpc">
@@ -63,12 +79,16 @@ The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is 
 
 The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
+`[trpc].ts`ファイルは、tRPC API のエントリポイントです。このファイルは、tRPC リクエストを処理するために使用されます。このファイルの詳細については[tRPC の使い方](usage/trpc#-pagesapitrpctrpcts)を、キャッチオール/スラッグルートの情報については[Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) を参照してください。
+
 </div>
 <div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
 The `server` folder is used to clearly separate server-side code from client-side code.
+
+`server`フォルダは、サーバサイドのコードとクライアントサイドのコードを明確に分けるために使用されます。
 
 </div>
 <div data-components="nextauth+trpc">
@@ -77,12 +97,17 @@ The `server` folder is used to clearly separate server-side code from client-sid
 
 The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
+サーバーサイドの認証ロジックのメインエントリポイントです。
+ここでは、NextAuth.js の[設定オプション](usage/next-auth)、[モジュール拡張](usage/next-auth#inclusion-of-userid-on-the-session) と、サーバサイドでユーザのセッションを取得するなどの認証に関する DX ユーティリティを提供しています。詳しくは [NextAuth.js usage](usage/next-auth#usage-with-trpc) をご覧ください。
+
 </div>
 <div data-components="prisma">
 
 #### `src/server/db.ts`
 
 The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+
+`db.ts`ファイルは、グローバルスコープで Prisma クライアントをインスタンス化するために使用されます。詳しくは、[Prisma の使い方](usage/prisma#prisma-client)と[Next.js で Prisma を使うためのベストプラクティス](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)をご覧ください。
 
 </div>
 <div data-components="trpc">
@@ -91,12 +116,16 @@ The `db.ts` file is used to instantiate the Prisma client at global scope. See [
 
 The `api` folder contains the tRPC server-side code.
 
+`api`フォルダには、tRPC のサーバーサイドのコードが格納されています。
+
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers`
 
 The `routers` folder contains all your tRPC sub-routers.
+
+`routers`フォルダには、すべての tRPC サブルーターが格納されています。
 
 </div>
 <div data-components="trpc">
@@ -106,6 +135,10 @@ The `routers` folder contains all your tRPC sub-routers.
 The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
 
 Depending on your chosen packages this router contains more or less routes to best demonstrate the usage to your needs.
+
+`example.ts`ファイルは、`publicProcedure`ヘルパーを利用した tRPC ルーターの例で、public な tRPC ルートを作成する方法を示しています。
+
+このルーターは、お客様が選択されたパッケージに応じて、より多くの、またはより少ない経路を含み、お客様のニーズに最も適した使用方法を示します。`
 
 </div>
 <div data-components="trpc">
@@ -117,6 +150,11 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
 2. Export procedure helpers. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
 
+`trpc.ts`ファイルは、tRPC バックエンドのメイン設定ファイルです。この中で我々は
+
+1. tRPC リクエストで使用するコンテキストを定義する。詳しくは[tRPC の使い方](usage/trpc#-serverapitrpcts)を参照してください。
+2. プロシージャヘルパーをエクスポートします。詳しくは、[tRPC usage](usage/trpc#-serverapitrpcts) を参照してください。
+
 </div>
 
 <div data-components="trpc">
@@ -125,12 +163,16 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 
 The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-serverapirootts) for more information.
 
+`root.ts` ファイルは、ルータの型定義と同様に、tRPC ルータをマージして 1 つのルータとしてエクスポートするために使用されます。詳しくは[tRPC の使い方](usage/trpc#-serverapirootts)を参照してください。
+
 </div>
 <div>
 
 ### `src/styles`
 
 The `styles` folder contains the global styles of the application.
+
+`styles`フォルダには、アプリケーションのグローバルスタイルが格納されます。
 
 </div>
 <div data-components="trpc">
@@ -139,12 +181,16 @@ The `styles` folder contains the global styles of the application.
 
 The `utils` folder is used to store commonly re-used utility functions.
 
+`utils`フォルダは、よく再利用されるユーティリティ関数を置いていおくために使用されます。
+
 </div>
 <div data-components="trpc">
 
 #### `src/utils/api.ts`
 
 The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+
+`api.ts`ファイルは、tRPC のフロントエンドのエントリポイントです。詳しくは[tRPC の使い方](usage/trpc#-utilsapits)を参照してください。
 
 </div>
 <div>
@@ -153,12 +199,16 @@ The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/tr
 
 The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
 
+`.env`ファイルは、環境変数を格納するために使用されます。詳しくは [環境変数](usage/env-variables) を参照してください。このファイルは、git 履歴にコミットする必要はありません。
+
 </div>
 <div>
 
 ### `.env.example`
 
 The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
+
+`.env.example` ファイルは、選択したライブラリに基づく環境変数の例を示しています。このファイルは git 履歴にコミットしておく必要があります。
 
 </div>
 <div>
@@ -167,12 +217,16 @@ The `.env.example` file shows example environment variables based on the chosen 
 
 The `.eslintrc.cjs` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
 
+`.eslintrc.cjs`ファイルは、ESLint の設定に使用されます。詳しくは[ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)を参照してください。
+
 </div>
 <div>
 
 ### `next-env.d.ts`
 
 The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+
+`next-env.d.ts`ファイルは、Next.js の型が TypeScript コンパイラに拾われるようにするためのファイルです。**いつでも変更可能なので、削除や編集はしないでください。** 詳細は [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) をご覧ください。
 
 </div>
 <div>
@@ -181,12 +235,16 @@ The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript c
 
 The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
 
+`next.config.mjs`ファイルは、Next.js を設定するためのものです。詳しくは[Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)を参照してください。注： .mjs という拡張子は、ESM のインポートを可能にするために使用されます。
+
 </div>
 <div data-components="tailwind">
 
 ### `postcss.config.cjs`
 
 The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+
+Tailwind の PostCSS の利用には、`postcss.config.cjs`ファイルが使用されます。詳しくは[Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss)を参照してください。
 
 </div>
 <div data-components="tailwind">
@@ -195,11 +253,15 @@ The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind 
 
 The `prettier.config.cjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
 
+`prettier.config.cjs`ファイルは、Tailwind CSS クラスをフォーマットするために prettier-plugin-tailwindcss を含めるように Prettier を設定するために使用します。詳しくは [Tailwind CSS ブログポスト](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) を参照してください。
+
 </div>
 <div>
 
 ### `tsconfig.json`
 
 The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+
+`tsconfig.json`ファイルは、TypeScript を設定するために使用されます。Create T3 App とそのライブラリの TypeScript を最適に利用するために、`strict mode`のようないくつかの非デフォルトが有効になっています。詳細については、[TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) または [TypeScript Usage](usage/typescript) を参照してください。
 
 </div>
