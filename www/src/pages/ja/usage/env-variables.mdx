@@ -1,8 +1,8 @@
 ---
-title: Environment Variables
-description: Getting started with Create T3 App
+title: 環境変数
+description: Create T3 Appを始めるにあたって
 layout: ../../../layouts/docs.astro
-lang: en
+lang: ja
 isMdx: true
 ---
 
@@ -10,11 +10,19 @@ import Callout from "../../../components/docs/callout.tsx";
 
 Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional logic in `src/env.mjs`.
 
+Create T3 App は、[Zod](https://github.com/colinhacks/zod)を使用して、`src/env.mjs`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行う。
+
 ## env.mjs
 
 _TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `src/env.mjs`._
 
 This file is split into two parts - the schema and object destructuring as well as the validation logic. The validation logic should not need to be touched.
+
+## env.mjs
+
+_TLDR; 環境変数を追加する場合は、`.env`に追加するとともに、`src/env.mjs`にバリデーターを定義する必要があります。_
+
+このファイルは、スキーマとオブジェクトの再構築と、検証ロジックの 2 つの部分に分かれています。検証ロジックは触る必要がないはずです。
 
 ```ts:env.mjs
 const server = z.object({
@@ -35,6 +43,10 @@ const processEnv = {
 
 Define your server-side environment variables schema here.
 
+### サーバースキーマ
+
+サーバーサイドの環境変数スキーマをここで定義します。
+
 <Callout type="warning">
   Make sure you do not prefix keys here with `NEXT_PUBLIC` in order not to leak
   important secrets to the client.
@@ -46,6 +58,12 @@ Define your client-side environment variables schema here.
 
 To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
 
+### クライアントスキーマ
+
+クライアント側の環境変数のスキーマをここで定義します。
+
+クライアントに公開するには、その前に `NEXT_PUBLIC` を付ける必要があります。無効な設定を検出するのに役立つように、そうしないとバリデーションに失敗します。
+
 ### processEnv Object
 
 Destruct the `process.env` here.
@@ -53,6 +71,14 @@ Destruct the `process.env` here.
 We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
 
 TypeScript will help you make sure that you have destructed all the keys from both schemas.
+
+### processEnv オブジェクト
+
+ここで `process.env` を分解する。
+
+Next.js では環境変数を扱う際に、通常のオブジェクトのように `process.env` を分解することができないので、手動で行う必要があります。
+
+TypeScript は、両方のスキーマからすべてのキーを分解したことを確認するのに役立ちます。
 
 ```ts
 // ❌ This doesn't work, we need to destruct it manually
@@ -65,12 +91,18 @@ const validated = schema.parse(process.env);
 
 ### Validation Logic
 
+### バリデーション・ロジック
+
 _For the interested reader:_
 
+_興味のある読者のために:_
+
 <details>
-<summary>Advanced: Validation logic</summary>
+<summary>高度な話題: バリデーションロジック</summary>
 
 Depending on the environment (server or client) we validate either both or just the client schema. This means that even though the server environment variables will be undefined, they won't trigger the validation to fail - meaning we can have a single entrypoint for our environment variables.
+
+環境（サーバーまたはクライアント）に応じて、両方のスキーマを検証するか、クライアントのスキーマだけを検証します。つまり、サーバーの環境変数が未定義であっても、バリデーションが失敗することはありません。つまり、環境変数のエントリーポイントを 1 つにすることができます。
 
 ```ts
 // src/env.mjs
@@ -92,6 +124,8 @@ if (parsed.success === false) {
 ```
 
 Then, we use a proxy object to throw errors if you try to access a server-side environment variable on the client.
+
+そして、プロキシオブジェクトを使って、クライアントでサーバーサイドの環境変数にアクセスしようとすると、エラーを投げるようにしています。
 
 ```ts
 // src/env.mjs
@@ -116,6 +150,10 @@ export const env = new Proxy(parsed.data, {
 
 When you want to use your environment variables, you can import them from `env.mjs` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
 
+## 環境変数の使用
+
+環境変数を使いたいときは、`env.mjs`からインポートして、通常と同じように使うことができます。これをクライアントでインポートして、サーバー側の環境変数にアクセスしようとすると、ランタイムエラーが発生します。
+
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
 
@@ -139,6 +177,12 @@ Since the default `.env` file is not committed to version control, we have also 
 
 Some frameworks and build tools, like Next.js, suggest that you store secrets in a `.env.local` file and commit `.env` files to your project. This is not recommended, as it could make it easy to accidentally commit secrets to your project. Instead, we recommend that you store secrets in `.env`, keep your `.env` file in your `.gitignore` and only commit `.env.example` files to your project.
 
+## .env.example
+
+デフォルトの `.env` ファイルはバージョンコントロールにコミットされないので、オプションで `.env.example` ファイルも用意しました。このファイルには、秘密情報が削除された `.env` ファイルのコピーを保存しておくことができます。これは必須ではありませんが、コントリビューターが自分の環境を使い始めるのをできるだけ簡単にするために、example を最新に保つことをお勧めします。
+
+Next.js のようなフレームワークやビルドツールでは、シークレットを `.env.local` ファイルに保存し、 `.env` ファイルをプロジェクトにコミットすることを推奨するものがあります。これは、誤ってプロジェクトにシークレットをコミットしてしまう可能性があるため、あまりお勧めできません。その代わりに、シークレットを `.env` に保存し、 `.env` ファイルを `.gitignore` に保存し、 `.env.example` ファイルのみをプロジェクトにコミットすることを推奨します。
+
 ## Adding Environment Variables
 
 To ensure your build never completes without the environment variables the project needs, you will need to add new environment variables in **two** locations:
@@ -151,17 +195,37 @@ Optionally, you can also keep `.env.example` updated:
 
 📄 `.env.example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
 
+## 環境変数を追加する
+
+プロジェクトが必要とする環境変数がない状態でビルドが完了しないようにするために、**2**箇所に新しい環境変数を追加する必要があります：
+
+📄 `.env` を入力します：`.env`ファイルに通常入力するように、環境変数を入力します（例：`KEY=VALUE`）。
+
+📄 `env.mjs`：環境変数に適切な検証ロジックを追加するために、Zod スキーマを定義します（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに分解します（例：`KEY: process.env.KEY` ）。
+
+オプションで、`.env.example`を更新しておくことも可能です：
+
+📄 `.env.example`：環境変数を入力します。ただし、値が秘密である場合は、その値を含めないように注意してください。
+
 ### Example
 
 _I want to add my Twitter API Token as a server-side environment variable_
 
 1. Add the environment variable to `.env`:
 
+### 例
+
+_サーバーサイドの環境変数として、Twitter API Token を追加したい_。
+
+1. 環境変数を `.env` に追加する：
+
 ```
 TWITTER_API_TOKEN=1234567890
 ```
 
 2. Add the environment variable to `env.mjs`:
+
+3. 環境変数を `env.mjs` に追加する：
 
 ```ts
 export const server = z.object({
@@ -181,7 +245,15 @@ export const processEnv = {
   not empty, you can use `z.string().min(1)`.
 </Callout>
 
+<Callout type="info">
+  空文字列は文字列なので、`z.string()`は空文字列を
+  を有効な値として受け入れます。もし、環境変数が
+  が空であってはならない場合は、`z.string().min(1)`のように指定します。
+</Callout>
+
 3. _Optional:_ Add the environment variable to `.env.example`, but don't include the token
+
+4. _オプション:_ 環境変数を `.env.example` に追加しますが、トークンは含めないようにします。
 
 ```
 TWITTER_API_TOKEN=
