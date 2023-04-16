@@ -1,15 +1,21 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: はじめの一歩
+description: 新しいT3アプリを使い始める
 layout: ../../../layouts/docs.astro
-lang: en
+lang: jp
 ---
 
 You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
 
+あなたは、新しい T3 アプリを足場にして、準備万端です。ここでは、アプリを動作させるために必要な最低限のことを説明します。
+
 ## Database
 
 If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
+
+## データベース
+
+アプリに Prisma が含まれている場合は、アプリのルートディレクトリから`npx prisma db push`を実行することを確認してください。このコマンドを実行すると、Prisma スキーマがデータベースと同期され、スキーマに基づいて Prisma クライアント用の TypeScript 型が生成されます。なお、生成された型を検出できるようにするため、このコマンドを実行した後に [TypeScript サーバーを再起動する](https://tinytip.co/tips/vscode-restart-ts/) 必要があります。
 
 ## Authentication
 
@@ -29,6 +35,26 @@ Of course, if you prefer to use a different auth provider, you can also use one 
 
 You should now be able to log in.
 
+## 認証
+
+アプリに NextAuth.js が含まれている場合、まず`DiscordProvider`から始めます。これは NextAuth.js が提供するプロバイダの中で最もシンプルなものの一つですが、初期設定が少し必要です。
+
+もちろん、別の認証プロバイダを使いたい場合は、NextAuth.js が提供する[多数のプロバイダ](https://next-auth.js.org/providers/)を利用することも可能です。
+
+1. Discord のアカウントが必要になりますので、まだの方は登録してください。
+2. https://discord.com/developers/applications に移動し、右上の「New Application」をクリックします。アプリケーションの名前を付け、利用規約に同意してください。
+3. アプリケーションの作成が完了したら、「設定 → OAuth2 → 一般」に移動してください。
+4. クライアント ID」をコピーし、`DISCORD_CLIENT_ID`として`.env`に追加します。
+5. Reset Secret」をクリックし、新しいシークレットをコピーし、`DISCORD_CLIENT_SECRET`として`.env`に追加します。
+6. Add Redirect "をクリックし、`http://localhost:3000/api/auth/callback/discord`と入力します。
+
+   - 本番環境でのデプロイの場合は、前の手順で別の Discord アプリケーションを作成しますが、今回は`http://localhost:3000`をデプロイ先の URL で置き換えてください。
+
+7. 変更を保存します。
+8. `.env`に`NEXTAUTH_SECRET`を設定します。開発環境ではどのような文字列でも構いませんが、本番環境では`.env`にある安全な秘密の生成に関する注意事項を参照してください。
+
+これで、ログインできるようになります。
+
 ## Editor Setup
 
 The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
@@ -37,8 +63,22 @@ The following extensions are recommended for an optimal developer experience. Th
 - [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
 - [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
+## エディターの設定
+
+最適なデベロッパーエクスペリエンスのために、以下の拡張を推奨します。以下のリンクは、エディター固有のプラグインサポートを提供します。
+
+- [Prisma 拡張](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense 拡張](https://tailwindcss.com/docs/editor-setup)
+- [Prettier 拡張](https://prettier.io/docs/en/editors.html)
+
 ## Next Steps
 
 - If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/example.ts` to see how tRPC queries work.
 - Have a look around the Create T3 App docs, as well as the docs of the packages that your app includes.
 - Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+
+## 次のステップへ
+
+- もしあなたのアプリが tRPC を含んでいるならば、`src/pages/index.tsx` と `src/server/api/routers/example.ts` をチェックして、tRPC クエリがどのように動作するかを見てください。
+- Create T3 App のドキュメントや、あなたのアプリに含まれるパッケージのドキュメントを見てみてください。
+- [Discord](https://t3.gg/discord)に参加し、[GitHub](https://github.com/t3-oss/create-t3-app)でスターを付けてください！:)
