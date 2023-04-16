@@ -3,7 +3,10 @@ title: Установка
 description: Инструкции по установке Create T3 App
 layout: ../../layouts/docs.astro
 lang: ru
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 Для создания приложения с помощью `create-t3-app`, запустите одну из следующих трёх команд и ответьте на вопросы командной строки:
 
@@ -48,7 +51,9 @@ pnpm create t3-app@latest
 | `--nextAuth` | Добавить NextAuth в проект                  |
 | `--tailwind` | Добавить Tailwind CSS в проект              |
 
-**Примечание: если вы не указываете флаг `CI`, то остальные флаги не имеют эффекта.**
+<Callout type="warning">
+  если вы не указываете флаг `CI`, то остальные флаги не имеют эффекта.
+</Callout>
 
 Вам не нужно явно отказываться от пакетов, которые вам не нужны. Однако, если вы предпочитаете быть явным, вы можете передать `false`, например `--nextAuth false`.
 
