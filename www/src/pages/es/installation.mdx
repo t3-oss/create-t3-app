@@ -3,7 +3,10 @@ title: Instalación
 description: Instrucciones de instalación para Create T3 App
 layout: ../../layouts/docs.astro
 lang: es
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 Para crear una aplicación usando `create-t3-app`, ejecuta cualquiera de los siguientes tres comandos y responde las preguntas en la línea de comandos:
 
@@ -48,8 +51,11 @@ Para nuestro CI, tenemos algunas banderas experimentales que te permiten crear c
 | `--nextAuth` | Incluir NextAuth.js en el proyecto    |
 | `--tailwind` | Incluir Tailwind CSS en el proyecto   |
 
-**Nota: si no proporcionas la bandera `CI`, el resto de estas banderas no tendrá efecto.**
+<Callout type="warning">
 
+Si no proporcionas la bandera `CI`, el resto de estas banderas no tendrá efecto.
+
+</Callout>
 No es necesario que se excluya explícitamente los paquetes que no deseas. Sin embargo, si prefieres ser explícito, puedes pasar `false`, ejemplo: `--nextAuth false`.
 
 ### Ejemplo

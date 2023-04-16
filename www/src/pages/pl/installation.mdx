@@ -3,7 +3,10 @@ title: Instalacja
 description: Instrukcje instalacji dla Create T3 App.
 layout: ../../layouts/docs.astro
 lang: pl
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 Aby zacząć używać szablonu `create-t3-app`, uruchom którąkolwiek z poniższych trzech komend i odpowiedz na pytania w konsoli:
 
@@ -48,9 +51,12 @@ Z powodu naszej integracji CI, posiadamy eksperymentalne flagi pozwalające skor
 | `--nextAuth` | Zawrzyj NextAuth.js w projekcie             |
 | `--tailwind` | Zawrzyj Tailwind CSS w projekcie            |
 
-**Uwaga: Jeżeli nie podasz flagi `CI`, pozostałe flagi nie zostaną użyte.**
-
-Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżeli jednak wolisz jasno wskazać czego używasz, możesz podać wartość `false` - np. `--nextAuth false`.
+<Callout type="warning">
+  Jeżeli nie podasz flagi `CI`, pozostałe flagi nie zostaną użyte.
+</Callout>
+Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżeli jednak
+wolisz jasno wskazać czego używasz, możesz podać wartość `false` - np. `--nextAuth
+false`.
 
 ### Przykład
 
