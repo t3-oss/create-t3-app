@@ -31,6 +31,7 @@ export const KNOWN_LANGUAGES = {
   en: "English",
   es: "Español",
   fr: "Français",
+  ja: "日本語",
   pt: "Português",
   ru: "Русский",
   no: "Norsk",
@@ -218,6 +219,35 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "fr/deployment/docker" },
     ],
   },
+  ja: {
+    "Create T3 App": [
+      { text: "はじめに", link: "ja/introduction" },
+      { text: "なぜ CT3A を選ぶのか", link: "ja/why" },
+      { text: "インストール", link: "ja/installation" },
+      { text: "フォルダ構成", link: "ja/folder-structure" },
+      { text: "FAQ", link: "ja/faq" },
+      { text: "T3 Collection", link: "ja/t3-collection" },
+      { text: "その他のおすすめ", link: "ja/other-recs" },
+    ],
+    Usage: [
+      { text: "最初の一歩", link: "ja/usage/first-steps" },
+      { text: "Next.js", link: "ja/usage/next-js" },
+      { text: "TypeScript", link: "ja/usage/typescript" },
+      { text: "tRPC", link: "ja/usage/trpc" },
+      { text: "Prisma", link: "ja/usage/prisma" },
+      { text: "NextAuth.js", link: "ja/usage/next-auth" },
+      {
+        text: "環境変数",
+        link: "ja/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "ja/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "ja/deployment/vercel" },
+      { text: "Netlify", link: "ja/deployment/netlify" },
+      { text: "Docker", link: "ja/deployment/docker" },
+    ],
+  },
   pt: {
     "Create T3 App": [
       { text: "Introdução", link: "pt/introduction" },
@@ -385,5 +415,10 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "用法",
     Deployment: "部署",
+  },
+  ja: {
+    "Create T3 App": "Create T3 App",
+    Usage: "使い方",
+    Deployment: "デプロイ",
   },
 };
