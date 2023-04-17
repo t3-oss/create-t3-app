@@ -118,7 +118,7 @@ This is done in a two step process:
 
 ## tRPC との併用
 
-NextAuth.js を tRPC で利用する場合、[middleware](https://trpc.io/docs/v10/middlewares)を使って、再利用可能で保護されたプロシージャを作成することができます。これにより、認証されたユーザーのみがアクセスできるプロシージャを作成することができます。`create-t3-app`は、認証されたプロシージャの中でセッションオブジェクトに簡単にアクセスできるように、すべてセットアップしてくれます。
+NextAuth.js を tRPC で利用する場合、[middleware](https://trpc.io/docs/v10/middlewares)を使って、再利用可能で、保護されたプロシージャを作成することができます。これにより、認証されたユーザーのみがアクセスできるプロシージャを作成することができます。`create-t3-app`は、認証されたプロシージャの中でセッションオブジェクトに簡単にアクセスできるように、すべてセットアップしてくれます。
 
 これは、2 段階のプロセスで行われます：
 
@@ -243,10 +243,10 @@ NextAuth.js を Next.js ミドルウェアで利用する場合、認証に JWT 
 2. 設定メニューの "OAuth2⇒ 一般"
 
 - Client ID をコピーして、`.env`の`DISCORD_CLIENT_ID`に貼り付けます。
-- Client Secret の下にある "Reset Secret "をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。このシークレットは二度と見ることができず、リセットすると既存のシークレットが失効してしまうので注意してください。
+- Client Secret の下にある "Reset Secret "をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。この秘密情報は二度と表示されないので、リセットすると既存の秘密情報はが失効してしまうので注意してください。
 - Add Redirect」をクリックし、`<app url>/api/auth/callback/discord` を貼り付ける(ローカル開発サーバの場合の例：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - 変更を保存する
-- 開発用と本番用で同じ Discord Application を使用することは可能ですが、推奨はしません。また、開発時に[Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)を検討するのもよいでしょう。
+- 開発用と本番用で同じ Discord Application を使用できますが、推奨はしません。また、開発時に[Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)を検討するのもよいでしょう。
 
 ## お役立ち情報
 

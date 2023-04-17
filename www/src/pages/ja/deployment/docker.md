@@ -196,7 +196,7 @@ docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 
 You can also use Docker Compose to build the image and run the container.
 
-また、Docker Compose を使用してイメージを構築し、コンテナを実行することも可能です。
+また、Docker Compose を使用してイメージを構築し、コンテナを実行することもできます。
 
 <details>
     <summary>

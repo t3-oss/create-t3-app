@@ -39,13 +39,13 @@ You should now be able to log in.
 
 アプリに NextAuth.js が含まれている場合、まず`DiscordProvider`から始めます。これは NextAuth.js が提供するプロバイダの中で最もシンプルなものの一つですが、初期設定が少し必要です。
 
-もちろん、別の認証プロバイダを使いたい場合は、NextAuth.js が提供する[多数のプロバイダ](https://next-auth.js.org/providers/)を利用することも可能です。
+もちろん、別の認証プロバイダを使いたい場合は、NextAuth.js が提供する[多数のプロバイダ](https://next-auth.js.org/providers/)を利用することができます。
 
 1. Discord のアカウントが必要になりますので、まだの方は登録してください。
 2. https://discord.com/developers/applications に移動し、右上の「New Application」をクリックします。アプリケーションの名前を付け、利用規約に同意してください。
 3. アプリケーションの作成が完了したら、「設定 → OAuth2 → 一般」に移動してください。
 4. クライアント ID」をコピーし、`DISCORD_CLIENT_ID`として`.env`に追加します。
-5. Reset Secret」をクリックし、新しいシークレットをコピーし、`DISCORD_CLIENT_SECRET`として`.env`に追加します。
+5. Reset Secret」をクリックし、新しい秘密情報をコピーし、`DISCORD_CLIENT_SECRET`として`.env`に追加します。
 6. Add Redirect "をクリックし、`http://localhost:3000/api/auth/callback/discord`と入力します。
 
    - 本番環境でのデプロイの場合は、前の手順で別の Discord アプリケーションを作成しますが、今回は`http://localhost:3000`をデプロイ先の URL で置き換えてください。

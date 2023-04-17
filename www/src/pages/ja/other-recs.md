@@ -83,7 +83,7 @@ Also known as headless libraries, they provide great unstyled, and accessible co
 
 - Tailwind CSS チームによって作られた[Headless UI](https://headlessui.com/)も、Tailwind CSS とシームレスに統合された、スタイルのないアクセシビリティを考慮したコンポーネント群を提供しています。
 
-- [React Aria](https://react-spectrum.adobe.com/react-aria/)は、デザインシステムのためのアクセス可能な UI プリミティブを提供します。彼らの Date Picker コンポーネントはトップクラスです。
+- [React Aria](https://react-spectrum.adobe.com/react-aria/)は、デザインシステムのためのアクセシビリティを考慮した UI プリミティブを提供します。彼らの Date Picker コンポーネントはトップクラスです。
 
 ### Styled Component Libraries
 
@@ -160,7 +160,7 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 
 **宣言的なコードで複雑なアニメーションを実現する**。
 
-Framer Motion は、シンプルで宣言的なシンタックスを提供し、複雑なアニメーションからジェスチャーまで、より少ないコードで作成することを可能にします。
+Framer Motion は、シンプルで宣言的なシンタックスを提供し、複雑なアニメーションからジェスチャーまで、より少ないコードで作成できるようにします。
 
 - [Framer Motion ホームページ](https://framer.com/motion)
 - [Framer Motion ドキュメント](https://www.framer.com/docs/)

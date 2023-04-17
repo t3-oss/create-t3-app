@@ -252,7 +252,7 @@ If you want to expose a single procedure externally, you're looking for [server 
 
 ### 単一のプロシージャを外部に公開する
 
-単一のプロシージャを外部に公開したい場合は、[サーバーサイドコール](https://trpc.io/docs/v10/server-side-calls)を探すことになります。これなら、通常の Next.js の API エンドポイントを作成しつつ、tRPC プロシージャのリゾルバ部分を再利用することが可能です。
+単一のプロシージャを外部に公開したい場合は、[サーバーサイドコール](https://trpc.io/docs/v10/server-side-calls)を探すことになります。これなら、通常の Next.js の API エンドポイントを作成しつつ、tRPC プロシージャのリゾルバ部分を再利用することができます。
 
 ```ts:pages/api/users/[id].ts
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -296,7 +296,7 @@ tRPC communicates over HTTP, so it is also possible to call your tRPC procedures
 
 ### HTTP Requests だけです
 
-tRPC は HTTP で通信するため、「通常の」HTTP リクエストを使って tRPC プロシージャを呼び出すことも可能です。ただし、tRPC が使用している[RPC プロトコル](https://trpc.io/docs/v10/rpc)のため、構文が煩雑になる可能性があります。もし興味があれば、ブラウザのネットワーク・タブで tRPC のリクエストとレスポンスがどのように見えるかを確認することができますが、これはあくまで教育的な練習として行い、上記のソリューションのいずれかを採用することをお勧めします。
+tRPC は HTTP で通信するため、「通常の」HTTP リクエストを使って tRPC プロシージャを呼び出すこともできます。ただし、tRPC が使用している[RPC プロトコル](https://trpc.io/docs/v10/rpc)のため、構文が煩雑になる可能性があります。もし興味があれば、ブラウザのネットワーク・タブで tRPC のリクエストとレスポンスがどのように見えるかを確認することができますが、これはあくまで教育的な練習として行い、上記のソリューションのいずれかを採用することをお勧めします。
 
 ## Comparison to a Next.js API endpoint
 

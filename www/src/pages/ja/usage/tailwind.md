@@ -76,7 +76,7 @@ Tailwind CSS has a beautiful built-in design system, that comes out of the box w
 
 React Components と併用することで、UI を素早く構築するのに非常に威力を発揮します。
 
-Tailwind CSS には美しいビルトインデザインシステムが搭載されており、厳選されたカラーパレット、均一なデザインを実現する width/height や padding/margin などのスタイルのサイズパターン、レスポンシブなレイアウトを作成するためのメディアブレイクポイントなどが箱から出された状態で提供されています。このデザインシステムは、カスタマイズや拡張が可能で、プロジェクトが必要とするスタイルのツールボックスを正確に作成することができます。
+Tailwind CSS には美しいビルトインデザインシステムが搭載されており、厳選されたカラーパレット、均一なデザインを実現する width/height や padding/margin などのスタイルのサイズパターン、レスポンシブなレイアウトを作成するためのメディアブレイクポイントなどが箱から出された状態で提供されています。このデザインシステムは、カスタマイズや拡張ができ、プロジェクトが必要とするスタイルのツールボックスを正確に作成することができます。
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
