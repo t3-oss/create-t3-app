@@ -3,7 +3,10 @@ title: 安装
 description: 创建 T3 应用程序的安装说明
 layout: ../../layouts/docs.astro
 lang: zh-hans
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 要使用 `create-t3-app` 创建一个应用程序，请运行以下任意一个命令，并回答命令提示符的问题：
 
@@ -48,7 +51,9 @@ pnpm create t3-app@latest
 | `--nextAuth` | 添加 NextAuth.js 到项目   |
 | `--tailwind` | 添加 Tailwind CSS 到项目  |
 
-**注意：如果你没有提供 `CI` 标识，那么其余的这些标识将无法生效。**
+<Callout type="warning">
+  如果你没有提供 `CI` 标识，那么其余的这些标识将无法生效。
+</Callout>
 
 你不需要明确地选择不要的依赖包。然而如果你想这样做，你可以在包名后加个 `false`，例如 `--nextAuth false`。
 

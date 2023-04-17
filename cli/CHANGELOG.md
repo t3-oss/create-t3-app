@@ -1,5 +1,23 @@
 # Changelog
 
+## 7.11.0
+
+### Minor Changes
+
+- [#1358](https://github.com/t3-oss/create-t3-app/pull/1358) [`1a8a97e`](https://github.com/t3-oss/create-t3-app/commit/1a8a97e42b8991596fc70e50dd6870c987a59075) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - improve boolean coercion of `SKIP_ENV_VALIDATION` environment variable
+
+  If defined, "0" and "false" are now considered falsey values, all other values are considered truthy.
+
+### Patch Changes
+
+- [#1352](https://github.com/t3-oss/create-t3-app/pull/1352) [`c48b38f`](https://github.com/t3-oss/create-t3-app/commit/c48b38f522b81097e2f0e883ede053dbac620c12) Thanks [@Tungetyt](https://github.com/Tungetyt)! - refactor: make destructuring consistent
+
+## 7.10.3
+
+### Patch Changes
+
+- [#1330](https://github.com/t3-oss/create-t3-app/pull/1330) [`85997e0`](https://github.com/t3-oss/create-t3-app/commit/85997e0cc26a2ae6fbcd08458734bd6335ba467a) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: create a new object for the session callback
+
 ## 7.10.2
 
 ### Patch Changes

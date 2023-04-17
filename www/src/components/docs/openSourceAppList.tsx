@@ -188,6 +188,15 @@ const projects: App[] = [
     linkName: "twitter-clone.kurdmake.com",
     link: "https://twitter-clone.kurdmake.com",
   },
+
+  {
+    description:
+      "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
+    repoName: "mohammed-bahumaish/prisma-editor",
+    repo: "https://github.com/mohammed-bahumaish/prisma-editor",
+    linkName: "prisma-editor.up.railway.app",
+    link: "https://prisma-editor.up.railway.app",
+  },
 ];
 
 export default function OpenSourceAppList({
