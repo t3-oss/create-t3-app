@@ -1,14 +1,16 @@
 ---
 title: Netlify
-description: Deploying to Netlify
+description: Netlifyへのデプロイ
 layout: ../../../layouts/docs.astro
-lang: en
+lang: ja
 isMdx: true
 ---
 
 import Callout from "../../../components/docs/callout.tsx";
 
 Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
+
+Netlify は Vercel と同じような系統、代替となるデプロイメントプロバイダです。このドキュメントに基づいたサンプルリポジトリは [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) を参照してください。
 
 ## Why Host on Netlify
 
@@ -18,15 +20,32 @@ There's also a common sentiment that many Next.js features are only supported on
 
 There are relative pros and cons for all deployment providers since no single host can have the best support for all use cases. For example, Netlify built their own [custom Next.js runtime](https://github.com/netlify/next-runtime) for Netlify's Edge Functions (which run on Deno Deploy) and [maintain unique middleware to access and modify HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
+## Netlify でホスティングする理由
+
+従来の常識では、Vercel が Next.js のサポートに優れているのは、Vercel が Next.js を開発しているからだと言われています。Vercel は、Next.js で最適なパフォーマンスと DX が得られるようにプラットフォームを調整することに既得権益を持っています。大半のユースケースにおいて、これは真実であり、標準的な道から逸脱することに意味はないでしょう。
+
+また、Next.js の多くの機能は Vercel でしかサポートされないという意見もよくあります。確かに Next.js の新機能はリリース時にデフォルトで Vercel でテスト・サポートされますが、Netlify など他のプロバイダーが[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[迅速に実装してサポートをリリース](https://www.netlify.com/blog/deploy-nextjs-13/)するケースもあります。
+
+すべてのデプロイメント先のプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）のために、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)と[HTTP 応答にアクセスし修正する独自のミドルウェアを維持](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)を構築しました。
+
 <Callout type="info">
   To track the status of non-stable Next 13 features see [Using the Next 13
   `app` directory on
   Netlify](https://github.com/netlify/next-runtime/discussions/1724).
 </Callout>
 
+<Callout type="info">
+  no-stableのNext 13の機能のステータスを追跡するには、[Next 13の`app`
+  ディレクトリをNetlify上で使う](https://github.com/netlify/next-runtime/discussions/1724)を参照してください。
+</Callout>
+
 ## Project Configuration
 
 There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures forked and cloned versions of the project will be easier to reproducibly deploy.
+
+## プロジェクト構成
+
+Netlify CLI や Netlify ダッシュボードを使って直接ビルド命令を設定するなど、多くの方法があります。必須ではありませんが、[`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/)ファイルを作成し、インクルードすることをお勧めします。これにより、プロジェクトのフォーク版やクローン版を再現性よくデプロイしやすくなります。
 
 ```toml
 [build]
@@ -57,6 +76,30 @@ There are numerous ways to configure your build instructions including directly 
 ![Add environment variables](/images/netlify-05-env-vars.webp)
 
 6. Click **Deploy site**, wait for the build to complete, and view your new site.
+
+## Netlify Dashboard を使う
+
+1. コードを GitHub リポジトリにプッシュし、[Netlify](https://app.netlify.com/signup)にサインアップしてください。アカウントを作成したら、**Add new site** から **Import an existing project** をクリックします。
+
+![Netlify の新プロジェクト](/images/netlify-01-new-project.webp)
+
+2. Git プロバイダーを接続します。
+
+![リポジトリのインポート](/images/netlify-02-connect-to-git-provider.webp)
+
+3. プロジェクトのリポジトリを選択します。
+
+![プロジェクトのリポジトリを選択する](/images/netlify-03-pick-a-repository-from-github.webp)
+
+4. Netlify は `netlify.toml` ファイルがあるかどうかを検出し、ビルドコマンドと公開ディレクトリを自動的に設定します。
+
+![Nextjs のビルド設定](/images/netlify-04-configure-build-settings.webp)
+
+5. 「**Show advanced**」→「**New variable**」をクリックして、環境変数を追加します。
+
+![環境変数の追加](/images/netlify-05-env-vars.webp)
+
+6. 「** Deploy site**」をクリックし、ビルドが完了するのを待ち、新しいサイトを表示します。
 
 ## Using the Netlify CLI
 
@@ -91,3 +134,37 @@ ntl deploy --prod --build
 ```
 
 To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
+
+## Netlify CLI を使用する
+
+コマンドラインからデプロイするには、まずプロジェクトを GitHub のリポジトリにプッシュし、[Netlify CLI をインストール](https://docs.netlify.com/cli/get-started/) する必要があります。netlify-cli` はプロジェクトの依存関係としてインストールするか、以下のコマンドであなたのマシンにグローバルにインストールすることができます：
+
+```bash
+npm i -g netlify-cli
+```
+
+ローカルでプロジェクトをテストするには、[`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) コマンドを実行し、[`localhost:8888`](http://localhost:8888/) を開いてローカルで動いている Netlify アプリを表示します：
+
+```bash
+ntl dev
+```
+
+プロジェクトの設定を行うために、[`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment)コマンドを実行します：
+
+```bash
+ntl init
+```
+
+プロジェクトの環境変数を `.env` ファイルから [`ntl env:import`](https://cli.netlify.com/commands/env#envimport) でインポートしてください：
+
+```bash
+ntl env:import .env
+```
+
+プロジェクトをデプロイするには、[`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys)を使用します。デプロイ前にビルドコマンドを実行するには `--build` フラグを、サイトのメイン URL にデプロイするには `--prod` フラグを渡す必要があります：
+
+```bash
+ntl deploy --prod --build
+```
+
+Netlify での実行例は、[ct3a.netlify.app](https://ct3a.netlify.app/)でご覧いただけます。
