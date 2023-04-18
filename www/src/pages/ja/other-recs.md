@@ -215,7 +215,7 @@ PlanetScale は、これまで使ってきた「サーバーレスデータベ�
 
 **インフラのホスティングに最適**
 
-"モダン Heroku"。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が十分でなくても、Railway なら充足するでしょう。GitHub のリポジトリを指定して、実行してみてください。
+「モダン Heroku」。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が十分でなくても、Railway なら充足するでしょう。GitHub のリポジトリを指定して、実行してみてください。
 
 - [Railway ホームページ](https://railway.app/)
 

@@ -26,7 +26,7 @@ There are relative pros and cons for all deployment providers since no single ho
 
 また、Next.js の多くの機能は Vercel でしかサポートされないという意見もよくあります。確かに Next.js の新機能はリリース時にデフォルトで Vercel でテスト・サポートされますが、Netlify など他のプロバイダーが[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[迅速に実装してサポートをリリース](https://www.netlify.com/blog/deploy-nextjs-13/)するケースもあります。
 
-すべてのデプロイメント先のプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）のために、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)と[HTTP 応答にアクセスし修正する独自のミドルウェアを維持](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)を構築しました。
+すべてのデプロイメント先のプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）のために、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)を開発し、[HTTP レスポンスにアクセスしたり変更したりするユニークなミドルウェアをメンテナンス](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)しています。
 
 <Callout type="info">
   To track the status of non-stable Next 13 features see [Using the Next 13
@@ -137,7 +137,7 @@ To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netl
 
 ## Netlify CLI を使用する
 
-コマンドラインからデプロイするには、まずプロジェクトを GitHub のリポジトリにプッシュし、[Netlify CLI をインストール](https://docs.netlify.com/cli/get-started/) する必要があります。netlify-cli` はプロジェクトの依存関係としてインストールするか、以下のコマンドであなたのマシンにグローバルにインストールすることができます：
+コマンドラインからデプロイするには、まずプロジェクトを GitHub のリポジトリにプッシュし、[Netlify CLI をインストール](https://docs.netlify.com/cli/get-started/) する必要があります。`netlify-cli` はプロジェクトの依存関係としてインストールするか、以下のコマンドであなたのマシンにグローバルにインストールすることができます：
 
 ```bash
 npm i -g netlify-cli

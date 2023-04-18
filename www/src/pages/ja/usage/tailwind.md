@@ -100,10 +100,10 @@ Tailwind の書き味を向上させるために、Tailwind 用のエディタ�
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### 拡張機能およびプラグイン
+### VSCode 拡張機能およびプラグイン
 
-- [VSCode エクステンション](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-- [JetBrains インテグレーション](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
+- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [JetBrains Extension](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
 ### Formatting

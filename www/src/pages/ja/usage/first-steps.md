@@ -48,7 +48,7 @@ You should now be able to log in.
 5. Reset Secret」をクリックし、新しい秘密情報をコピーし、`DISCORD_CLIENT_SECRET`として`.env`に追加します。
 6. Add Redirect "をクリックし、`http://localhost:3000/api/auth/callback/discord`と入力します。
 
-   - 本番環境でのデプロイの場合は、前の手順で別の Discord アプリケーションを作成しますが、今回は`http://localhost:3000`をデプロイ先の URL で置き換えてください。
+   - 本番環境でのデプロイの場合は、前述の手順で別の Discord アプリケーションを作成しますが、今回は`http://localhost:3000`をデプロイ先の URL で置き換えてください。
 
 7. 変更を保存します。
 8. `.env`に`NEXTAUTH_SECRET`を設定します。開発環境ではどのような文字列でも構いませんが、本番環境では`.env`にある安全な秘密の生成に関する注意事項を参照してください。
@@ -65,11 +65,11 @@ The following extensions are recommended for an optimal developer experience. Th
 
 ## エディターの設定
 
-最適なデベロッパーエクスペリエンスのために、以下の拡張を推奨します。以下のリンクは、エディター固有のプラグインサポートを提供します。
+最適な開発者体験のために、以下の VSCode 拡張機能(Extension)を推奨します。以下のリンクは、エディター固有のプラグインサポートを提供します。
 
-- [Prisma 拡張](https://www.prisma.io/docs/guides/development-environment/editor-setup)
-- [Tailwind CSS IntelliSense 拡張](https://tailwindcss.com/docs/editor-setup)
-- [Prettier 拡張](https://prettier.io/docs/en/editors.html)
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
 ## Next Steps
 

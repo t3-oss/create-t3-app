@@ -7,7 +7,7 @@ lang: ja
 
 You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
 
-このスタックをコンテナ化し、Docker を使用して単一のコンテナとして、または docker-compose を使用してコンテナのグループの一部としてデプロイすることができます。このドキュメントに基づいたサンプルレポは [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) をご覧ください。
+このスタックをコンテナ化し、Docker を使用して単一のコンテナとして、または docker-compose を使用してコンテナのグループの一部としてデプロイすることができます。このドキュメントに基づいたサンプルリポジトリは [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) をご覧ください。
 
 ## Docker Project Configuration
 
@@ -37,7 +37,7 @@ export default defineNextConfig({
 
 ### 1. Next の設定
 
-[`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) に、`standalone` output-option configuration を追加して、[output traces を自動的に活用して画像サイズを小さくする](https://nextjs.org/docs/advanced-features/output-file-tracing) ：
+[`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) において、`standalone`を指定する output オプション設定を追加することで、[出力ファイルのトレースを自動的に活用してイメージサイズを小さくします](https://nextjs.org/docs/advanced-features/output-file-tracing)：
 
 ```diff
 export default defineNextConfig({
@@ -243,7 +243,7 @@ You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfil
 
 ## Railway へのデプロイ
 
-アプリのデプロイには、[Railway](https://railway.app)のような自動化された[Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) などの PaaS を使用することができます。[ailway CLI をインストールしている場合](https://docs.railway.app/develop/cli#install)は、以下のコマンドでアプリをデプロイすることができます：
+アプリのデプロイには、[Railway](https://railway.app)のような自動化された[Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) などの PaaS を使用することができます。[Railway CLI をインストールしている場合](https://docs.railway.app/develop/cli#install)は、以下のコマンドでアプリをデプロイすることができます：
 
 ```bash
 railway login
@@ -255,7 +255,7 @@ railway open
 
 Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-変数」にて、`DATABASE_URL`を指定します。その後、"Settings" に行き、"Generate Domain" を選択します。Railway 上での実行例を見るには、[ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/)にアクセスしてください。
+"Variables"に行ってあなたの`DATABASE_URL`を指定します。その後、"Settings" に行き、"Generate Domain" を選択します。Railway 上での実行例を見るには[ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/)にアクセスしてください。
 
 ## Useful Resources
 
@@ -278,7 +278,7 @@ Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and sel
 | Compose file バージョン 3 リファレンス | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
 | Docker CLI リファレンス                | https://docs.docker.com/engine/reference/commandline/docker/         |
 | Docker Compose CLI リファレンス        | https://docs.docker.com/compose/reference/                           |
-| Next.js の Docker Image でのデプロイ   | https://nextjs.org/docs/deployment#docker-image                      |
+| Next.js の Docker イメージでのデプロイ | https://nextjs.org/docs/deployment#docker-image                      |
 | Next.js in Docker                      | https://benmarte.com/blog/nextjs-in-docker/                          |
 | Docker での Next.js の例               | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
 | Next.js アプリの Docker イメージの作成 | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |

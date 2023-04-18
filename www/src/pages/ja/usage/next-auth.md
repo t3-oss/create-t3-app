@@ -202,7 +202,7 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ### モデルに新しいフィールドを追加する
 
-User`、`Account`、`Session`、`VerificationToken`のいずれかのモデルに新しいフィールドを追加する場合（ほとんどの場合、`User`モデルのみを変更する必要があります）、[Prisma adapter](https://next-auth.js.org/adapters/prisma) が新しいユーザーのサインアップやログイン時に自動的にこれらのモデル上にフィールドを作成することを念頭に置いておく必要があります。したがって、これらのモデルに新しいフィールドを追加する場合は、デフォルト値を指定する必要があります。
+`User`、`Account`、`Session`、`VerificationToken`のいずれかのモデルに新しいフィールドを追加する場合（ほとんどの場合、`User`モデルのみを変更する必要があります）、[Prisma adapter](https://next-auth.js.org/adapters/prisma) が新しいユーザーのサインアップやログイン時に自動的にこれらのモデル上にフィールドを作成することを念頭に置いておく必要があります。したがって、これらのモデルに新しいフィールドを追加する場合は、デフォルト値を指定する必要があります。
 
 例えば、`User`モデルに `role` を追加したい場合、`role` フィールドにデフォルト値を指定する必要があります。これは `User` モデルの `role` フィールドに `@default` 値を追加することで実現できる：
 
@@ -239,11 +239,11 @@ NextAuth.js を Next.js ミドルウェアで利用する場合、認証に JWT 
 
 ## デフォルトの DiscordProvider を設定する
 
-1. [Discord Developer Portal のアプリケーションセクション](https://discord.com/developers/applications)に向かい、"New Application "をクリックします。
-2. 設定メニューの "OAuth2⇒ 一般"
+1. [Discord Developer Portal のアプリケーションセクション](https://discord.com/developers/applications)に向かい、「New Application」をクリックします。
+2. 設定メニューの 「OAuth2⇒ 一般」
 
 - Client ID をコピーして、`.env`の`DISCORD_CLIENT_ID`に貼り付けます。
-- Client Secret の下にある "Reset Secret "をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。この秘密情報は二度と表示されないので、リセットすると既存の秘密情報はが失効してしまうので注意してください。
+- Client Secret の下にある 「Reset Secret」をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。この秘密情報は二度と表示されないので、リセットすると既存の秘密情報はが失効してしまうので注意してください。
 - Add Redirect」をクリックし、`<app url>/api/auth/callback/discord` を貼り付ける(ローカル開発サーバの場合の例：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - 変更を保存する
 - 開発用と本番用で同じ Discord Application を使用できますが、推奨はしません。また、開発時に[Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)を検討するのもよいでしょう。
