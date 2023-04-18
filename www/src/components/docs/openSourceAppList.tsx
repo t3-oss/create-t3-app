@@ -197,6 +197,13 @@ const projects: App[] = [
     linkName: "prisma-editor.up.railway.app",
     link: "https://prisma-editor.up.railway.app",
   },
+  {
+    description: "Judge devs - website, where developers share their projects",
+    repoName: "judge-devs (gh)",
+    repo: "https://github.com/serzhan181/judge-devs",
+    linkName: "judge-devs.com",
+    link: "https://judge-devs.vercel.app/",
+  },
 ];
 
 export default function OpenSourceAppList({
