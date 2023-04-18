@@ -383,8 +383,8 @@ export const SIDEBAR_HEADER_MAP: Record<
   // },
   ja: {
     "Create T3 App": "Create T3 App",
-    Usage: "Uso",
-    Deployment: "Despliegue",
+    Usage: "使用法",
+    Deployment: "デプロイ",
   },
   pl: {
     "Create T3 App": "Create T3 App",
