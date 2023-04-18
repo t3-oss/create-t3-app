@@ -7,7 +7,7 @@ lang: ja
 
 Prisma is an ORM for TypeScript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
 
-Prisma は TypeScript 用の ORM で、`schema.prisma`ファイルでデータベーススキーマとモデルを定義し、バックエンドからデータベースと対話するために使用できるタイプセーフクライアントを生成することができます。
+Prisma は TypeScript 用の ORM で、`schema.prisma`ファイルでデータベーススキーマとモデルを定義し、バックエンドからデータベースと対話するために使用できる型安全なクライアントを生成することができます。
 
 ## Prisma Client
 

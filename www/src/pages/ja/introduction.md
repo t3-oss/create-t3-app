@@ -19,7 +19,7 @@ You may have noticed that there are a… lot of pieces. That's by design. Swap p
 
 ## T3 Stack
 
-「T3 Stack」は、[Theo](https://twitter.com/t3dotgg)が作ったウェブ開発スタックで、シンプルさ、モジュール性、フルスタックに渡る型安全性に焦点を当てています。
+「T3 Stack」は、[Theo](https://twitter.com/t3dotgg)が作った Web 開発スタックで、シンプルさ、モジュール性、フルスタックに渡っての型安全性に焦点を当てています。
 
 核となるのは[**Next.js**](https://nextjs.org/)と[**TypeScript**](https://typescriptlang.org/)です。また、[**Tailwind CSS**](https://tailwindcss.com/)は、ほぼ必ず含まれています。バックエンドに近いことをするのであれば、[**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), [**NextAuth.js**](https://next-auth.js.org/) も素晴らしい追加要素になるでしょう。
 
@@ -29,17 +29,17 @@ You may have noticed that there are a… lot of pieces. That's by design. Swap p
 
 Kind of? `create-t3-app` is a CLI built by seasoned T3 Stack devs to streamline the setup of a modular T3 Stack app. This means each piece is optional, and the "template" is generated based on your specific needs.
 
-## さて...create-t3-app とは何でしょう？テンプレート？
+## さて、create-t3-app とは何でしょう？テンプレート？
 
-一種そのようなものです。`create-t3-app`は、モジュール式の T3 Stack アプリのセットアップを効率化するために、経験豊富な T3 Stack 開発者によって作られた CLI です。つまり、各パーツがオプションであり、「テンプレート」があなたの特定のニーズに基づいて生成されることを意味します。
+一種そのようなものです。`create-t3-app`は、モジュール式の T3 Stack アプリケーションのセットアップを効率化するために、経験豊富な T3 Stack 開発者によって作られた CLI です。つまり、各パーツはオプションであり、「テンプレート」があなたの特定のニーズに基づいて生成されることを意味します。
 
 After countless projects and many years on this tech, we have lots of opinions and insights. We've done our best to encode them into this CLI.
 
-数え切れないほどのプロジェクトと長年この技術に携わってきた私たちには、たくさんの意見や洞察があります。私たちは、それらをこの CLI に反映させるために最善を尽くしました。
+長年の間、数え切れないほどのプロジェクトにおいてこの技術に携わってきた私たちには、たくさんの意見や洞察があります。私たちは、それらをこの CLI に反映させるために最善を尽くしました。
 
 This is **NOT** an all-inclusive template. We **expect** you to bring your own libraries that solve the needs of **YOUR** application. While we don't want to prescribe solutions to more specific problems like state management and deployment, we [do have some recommendations listed here](/en/other-recs).
 
-ただこれは、すべてを網羅したテンプレートでは**ありません**。私たちは、あなたが **あなたの**アプリケーションのニーズを解決する独自のライブラリを持ってくることを**期待しています**。状態管理やデプロイメントなど、より具体的な問題に対する解決策を規定するつもりはありませんが、私たちは[ここにいくつかの推奨事項を挙げています](/en/other-recs).
+ただしこれは、すべてを網羅したテンプレートでは**ありません**。私たちは、あなたが **あなたの**アプリケーションのニーズを解決する独自のライブラリを持ってくることを**期待しています**。状態管理やデプロイメントなど、より具体的な問題に対する解決策を規定するつもりはありませんが、私たちは[ここにいくつかの推奨事項を挙げています](/en/other-recs).
 
 ## T3 Axioms
 
@@ -55,7 +55,7 @@ It's easy to fall into the trap of "adding everything" - we explicitly don't wan
 
 ### 問題を解決せよ
 
-「何でもかんでも追加してしまう」という罠に容易に陥りがちですが、わたしたちは明示的にそれを避けます。`create-t3-app` に追加するものはすべて、その領域における固有の問題を解決している必要があります。したがって状態ライブラリ(Zustand、Redux 等)は含めませんが、Auth.js などは追加し、Prisma や tRPC などを統合します。
+「何でもかんでも追加してしまう」という罠に容易に陥りがちですが、わたしたちは明示的にそれを避けます。`create-t3-app` に追加するものはすべて、その領域における固有の問題を解決している必要があります。したがって状態管理ライブラリ(Zustand、Redux 等)は含めませんが、NextAuth.js などは追加し、Prisma や tRPC などを統合します。
 
 ### Bleed Responsibly
 
@@ -63,7 +63,7 @@ We love our bleeding edge tech. The amount of speed and, honestly, fun that come
 
 ### 責任を負って血を流す
 
-私たちは、最先端の技術を愛しています。正直なところ、新しい技術から生まれる開発速度と楽しさは本当に素晴しいものです。ただし、責任を持って血を流すことが重要であり、リスクが低い領域では高リスク技術を採用します。なので冒険的な新しいデータベース技術は採用しませんが(SQL は偉大なり!)。しかし、tRPC は単なる関数であり、問題があれば容易に交換できるので、私たちは喜んで賭けます。
+私たちは、最先端の技術を愛しています。正直なところ、新しい技術から生まれる開発速度と楽しさは本当に素晴しいものです。ただし、責任を持って血を流すことが重要です。リスクが低い領域では高リスク技術を採用しつつ、冒険的な新しいデータベース技術は採用しません(SQL は偉大なり！)。しかし、tRPC は単なる関数であり、問題があれば簡単に交換できるので、私たちは喜んでそれに賭けるのです。
 
 ### Typesafety Isn't Optional
 
@@ -71,4 +71,4 @@ The stated goal of Create T3 App is to provide the quickest way to start a new f
 
 ### 型安全は必須
 
-Create T3 App の目標は、**型安全な**フルスタック Web アプリケーションを新規開発するための最も迅速な方法を提供することです。生産性や品質を高めて製品を提供するのに役立つため、型安全性を真剣に考えています。Create T3 App の型安全性を損なうような妥協は他のプロジェクトで行うべき決定です。
+Create T3 App の目標は、**型安全な**フルスタック Web アプリケーションを新規開発するための最も迅速な方法を提供することです。生産性を高め、バグの少ない製品を提供するのに役立つので、型安全性を真剣に考えています。Create T3 App の型安全性を損なうような妥協は他のプロジェクトで行うべき決定です。

@@ -243,7 +243,7 @@ You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfil
 
 ## Railway へのデプロイ
 
-アプリのデプロイには、[Railway](https://railway.app)のような自動化された[Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) などの PaaS を使用することができます。[Railway CLI をインストールしている場合](https://docs.railway.app/develop/cli#install)は、以下のコマンドでアプリをデプロイすることができます：
+アプリケーションのデプロイには、[Railway](https://railway.app)のような自動化された[Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) などの PaaS を使用することができます。[Railway CLI をインストールしている場合](https://docs.railway.app/develop/cli#install)は、以下のコマンドでアプリケーションをデプロイすることができます：
 
 ```bash
 railway login

@@ -15,7 +15,7 @@ In your app's entrypoint, you'll see that your application is wrapped in a [Sess
 
 ## コンテクストプロバイダー
 
-アプリのエントリーポイントでは、アプリケーションが[SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider)でラップされていることがわかります：
+アプリケーションのエントリーポイントでは、アプリケーションが[SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider)でラップされていることがわかります：
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -122,7 +122,7 @@ NextAuth.js を tRPC で利用する場合、[middleware](https://trpc.io/docs/v
 
 これは、2 段階のプロセスで行われます：
 
-1. [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 関数を使用して、リクエストヘッダーからセッションを取得する。通常の `getSession`の代わりに`getServerSession` を使用する利点は、サーバーサイドのみの関数であるため、不要なフェッチコールが発生しないことです。`create-t3-app`は、この特殊な API を抽象化するヘルパー関数を作成するので、セッションにアクセスするたびに、NextAuth.js のオプションと`getServerSession` 関数の両方をインポートする必要がありません。
+1. [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 関数を使用して、リクエストヘッダーからセッションを取得します。通常の `getSession`の代わりに`getServerSession` を使用する利点は、サーバーサイドのみの関数であるため、不要なフェッチコールが発生しないことです。`create-t3-app`は、この特殊な API を抽象化するヘルパー関数を作成するので、セッションにアクセスするたびに、NextAuth.js のオプションと`getServerSession` 関数の両方をインポートする必要がありません。
 
 ```ts:server/auth.ts
 export const getServerAuthSession = (ctx: {

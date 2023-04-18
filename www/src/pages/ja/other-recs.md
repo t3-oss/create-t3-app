@@ -9,7 +9,7 @@ We recognize that the libraries included in `create-t3-app` don't solve every pr
 
 These are recommendations by individual Create T3 App contributors and should not be seen as "official" endorsements by the Create T3 App team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
 
-我々は、`create-t3-app`に含まれるライブラリがすべての問題を解決するわけではないことを認識しています。私たちが提供するものでプロジェクトを始めることをお勧めしますが、他パッケージ導入が必要となる時も来るでしょう。あなたのプロジェクトに何が必要かを知っているのはあなただけです。ここでは、私たちが頻繁に推奨しているものをいくつか紹介します。
+私たちは、`create-t3-app`に含まれるライブラリがすべての問題を解決するわけではないことを認識しています。私たちが提供するものでプロジェクトを始めることをお勧めしますが、他パッケージ導入が必要となる時も来るでしょう。あなたのプロジェクトに何が必要かを知っているのはあなただけです。ここでは、私たちが頻繁に推奨しているものをいくつか紹介します。
 
 これらは、個々の Create T3 App の貢献者による推奨であり、Create T3 App チームまたは T3-OSS による「公式」推奨とみなされるものではありません。 _**特に有料サービスを利用する前にはご自身で調査してください**_。
 
@@ -63,7 +63,7 @@ Most apps need the same handful of components - toggle buttons, dropdown menus, 
 
 ## コンポーネントライブラリ
 
-ほとんどのアプリは、トグルボタン、ドロップダウンメニュー、モーダルなど、同じ一握りのコンポーネントを必要とします。これらのライブラリは、あなたの好みに合わせてカスタマイズできる、アクセスしやすい優れたコンポーネントを提供しています。
+ほとんどのアプリケーションは、トグルボタン、ドロップダウンメニュー、モーダルなど、同じ一握りのコンポーネントを必要とします。これらのライブラリは、あなたの好みに合わせてカスタマイズできる、アクセスしやすい優れたコンポーネントを提供しています。
 
 ### Unstyled Component Libraries
 
@@ -97,7 +97,7 @@ Sometimes you're building a project where you just want the UI to look decent ou
 
 ### スタイルド・コンポーネント・ライブラリ
 
-**アプリの外観を整えたいときに**。
+**アプリケーションの外観を整えたいときに**。
 
 プロジェクトでは、UI がすぐにきちんと見えるようにしたい場合があります。管理者用ダッシュボードやその他の類似のプロジェクトでは、これらのコンポーネント・ライブラリのいずれかを使用すれば、仕事を完了することができます。
 
@@ -125,7 +125,7 @@ For when you need animations in your app, here are our recommendations.
 
 ## アニメーション
 
-アプリにアニメーションが必要になったときのための、おすすめのアプリを紹介します。
+アプリケーションにアニメーションが必要になったときのための、おすすめのアプリケーションを紹介します。
 
 ### AutoAnimate
 
@@ -180,7 +180,7 @@ Vercel took the hell of web deployments and made it a set-and-forget GitHub inte
 
 ### Vercel
 
-**アプリのホスティング用**
+**アプリケーションのホスティング用**
 
 Vercel は、Web デプロイメントの地獄を、セット＆フォゲットの GitHub 統合にしました。私たちは問題なく数十万人のユーザーにスケールしています。AWS の力を借りて、より良いインターフェイスを実現しました。:）
 
@@ -271,7 +271,7 @@ User data is very valuable when you're building an app. Here are some analytics 
 
 ## アナリティクス
 
-アプリを作る上で、ユーザーデータはとても貴重です。ここでは、私たちがおすすめする分析プロバイダーをご紹介します。
+アプリケーションを作る上で、ユーザーデータはとても貴重です。ここでは、私たちがおすすめする分析プロバイダーをご紹介します。
 
 ### Plausible
 
@@ -311,6 +311,6 @@ It can sometimes be difficult to determine what will be included in the build ou
 
 ### Next Bundle Analyzer
 
-アプリのビルド出力に何が含まれるかを判断するのは、時として難しい場合があります。Next Bundle Analyzer は、生成される JavaScript バンドルを簡単に視覚化し、分析する方法です。
+アプリケーションのビルド出力に何が含まれるかを判断するのは、時として難しい場合があります。Next Bundle Analyzer は、生成される JavaScript バンドルを簡単に視覚化し、分析する方法です。
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)

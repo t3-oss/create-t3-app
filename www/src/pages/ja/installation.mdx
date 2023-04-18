@@ -10,7 +10,7 @@ import Callout from "../../components/docs/callout.tsx";
 
 To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
 
-`create-t3-app`を使用してアプリの初期構成を生成するには、以下の 3 つのコマンドのいずれかを実行し、コマンドプロンプトの質問に答えてください：
+`create-t3-app`を使用してアプリケーションの初期構成を生成するには、以下の 3 つのコマンドのいずれかを実行し、コマンドプロンプトの質問に答えてください：
 
 ### npm
 
@@ -32,7 +32,7 @@ pnpm create t3-app@latest
 
 After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
 
-アプリの初期構成が生成されたら、[first steps](/ja/usage/first-steps) をチェックして、新しいアプリを開始しましょう。
+アプリケーションの初期構成が生成されたら、[first steps](/ja/usage/first-steps) をチェックして、新しいアプリケーションを開始しましょう。
 
 ## Advanced usage
 
@@ -45,12 +45,12 @@ After your app has been scaffolded, check out the [first steps](/en/usage/first-
 
 ## 高度な使用法
 
-| オプション/フラグ | 説明文                                                                                       |
-| ----------------- | -------------------------------------------------------------------------------------------- |
-| `[dir]`           | ディレクトリ引数にプロジェクト名を含める。                                                   |
-| `--noGit`         | CLI にプロジェクト内の新しい git リポジトリを初期化しないよう明示的に指示する。              |
-| `-y`, `--default` | CLI の確認をバイパスして、すべてのオプションを選択した新しい t3-app をブートストラップする。 |
-| `--noInstall`     | 依存関係をインストールせずにプロジェクトを生成する。                                         |
+| オプション/フラグ | 説明文                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------ |
+| `[dir]`           | ディレクトリ引数にプロジェクト名を含める                                                   |
+| `--noGit`         | CLI にプロジェクト内の新しい git リポジトリを初期化しないよう明示的に指示する              |
+| `-y`, `--default` | CLI の確認をバイパスして、すべてのオプションを選択した新しい t3-app をブートストラップする |
+| `--noInstall`     | 依存関係をインストールせずにプロジェクトを生成する                                         |
 
 ## Experimental usage
 
@@ -72,7 +72,7 @@ You don't need to explicitly opt-out of the packages you don't want. However, if
 
 ## 実験的な使い方
 
-CI 用として、プロンプトなしで任意のアプリの初期構成を生成できる実験的なフラグをいくつか用意しています。
+CI 用として、プロンプトなしで任意のアプリケーションの初期構成を生成できる実験的なフラグをいくつか用意しています。
 このユースケースがあなたに当てはまるなら、これらのフラグを使用することができます。これらのフラグは実験的なものであり、semver のバージョニングに従わずに将来的に変更されるかもしれないことに注意してください。
 
 | フラグ       | 説明文                                |
@@ -80,7 +80,7 @@ CI 用として、プロンプトなしで任意のアプリの初期構成を�
 | `--CI`       | CI モードであることを CLI に知らせる  |
 | `--trpc`     | プロジェクト内に tRPC を含める        |
 | `--prisma`   | Prisma をプロジェクトに組み込む       |
-| `--nextAuth` | NextAuth.js をプロジェクトに含める。  |
+| `--nextAuth` | NextAuth.js をプロジェクトに含める    |
 | `--tailwind` | Tailwind CSS をプロジェクトに組み込む |
 
 <Callout type="warning">

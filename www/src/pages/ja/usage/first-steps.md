@@ -15,7 +15,7 @@ If your app includes Prisma, make sure to run `npx prisma db push` from the root
 
 ## データベース
 
-アプリに Prisma が含まれている場合は、アプリのルートディレクトリから`npx prisma db push`を実行することを確認してください。このコマンドを実行すると、Prisma スキーマがデータベースと同期され、スキーマに基づいて Prisma クライアント用の TypeScript 型が生成されます。なお、生成された型を検出できるようにするため、このコマンドを実行した後に [TypeScript サーバーを再起動する](https://tinytip.co/tips/vscode-restart-ts/) 必要があります。
+アプリケーションに Prisma が含まれている場合は、アプリのルートディレクトリから`npx prisma db push`を実行することを確認してください。このコマンドを実行すると、Prisma スキーマがデータベースと同期され、スキーマに基づいて Prisma クライアント用の TypeScript 型が生成されます。なお、生成された型を検出できるようにするため、このコマンドを実行した後に [TypeScript サーバーを再起動する](https://tinytip.co/tips/vscode-restart-ts/) 必要があります。
 
 ## Authentication
 
@@ -37,7 +37,7 @@ You should now be able to log in.
 
 ## 認証
 
-アプリに NextAuth.js が含まれている場合、まず`DiscordProvider`から始めます。これは NextAuth.js が提供するプロバイダの中で最もシンプルなものの一つですが、初期設定が少し必要です。
+アプリケーションに NextAuth.js が含まれている場合、まず`DiscordProvider`から始めます。これは NextAuth.js が提供するプロバイダの中で最もシンプルなものの一つですが、初期設定が少し必要です。
 
 もちろん、別の認証プロバイダを使いたい場合は、NextAuth.js が提供する[多数のプロバイダ](https://next-auth.js.org/providers/)を利用することができます。
 
@@ -79,6 +79,6 @@ The following extensions are recommended for an optimal developer experience. Th
 
 ## 次のステップへ
 
-- もしあなたのアプリが tRPC を含んでいるならば、`src/pages/index.tsx` と `src/server/api/routers/example.ts` をチェックして、tRPC クエリがどのように動作するかを見てください。
-- Create T3 App のドキュメントや、あなたのアプリに含まれるパッケージのドキュメントを見てみてください。
+- もしあなたのアプリケーションが tRPC を含んでいるならば、`src/pages/index.tsx` と `src/server/api/routers/example.ts` をチェックして、tRPC クエリがどのように動作するかを見てください。
+- Create T3 App のドキュメントや、あなたのアプリケーションに含まれるパッケージのドキュメントを見てみてください。
 - [Discord](https://t3.gg/discord)に参加し、[GitHub](https://github.com/t3-oss/create-t3-app)でスターを付けてください！:)

@@ -7,13 +7,13 @@ lang: ja
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your frontend and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
-tRPC では、コード生成やランタイムの肥大化なしに、エンドツーエンドのタイプセーフ API を書くことができます。TypeScript の優れた推論機能を利用して API ルーターの型定義を推論し、完全な型安全性の元で自動補完を効かせながらフロントエンドから API プロシージャを呼び出すことができます。tRPC を使用すると、フロントエンドとバックエンドがこれまで以上に身近に感じられ、優れた開発者体験を得ることができるのです。
+tRPC では、コード生成やランタイムの肥大化なしに、エンドツーエンドの型安全な API を書くことができます。TypeScript の優れた推論機能を利用して API ルーターの型定義を推論し、完全な型安全性の元で自動補完を効かせながら、フロントエンドから API プロシージャを呼び出すことができます。tRPC を使用すると、フロントエンドとバックエンドがこれまで以上に身近に感じられ、優れた開発者体験を得ることができるのです。
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
       <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.
-      私は、従来のAPIレイヤーの必要性を排除することによって、迅速なイテレーションを回してもアプリが壊れないという自信を持ちつつ、人々がより速く移動できるようにするためにtRPCを構築しました。<span aria-hidden="true">&quot;</span>
+      私は、従来のAPIレイヤーの必要性を排除することによって、迅速なイテレーションを回してもアプリケーションが壊れないという自信を持ちつつ、人々がより速く移動できるようにするためにtRPCを構築しました。<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -208,7 +208,7 @@ Here we [merge](https://trpc.io/docs/v10/merging-routers) all the sub-routers de
 
 ### 📄 `server/api/root.ts`.
 
-ここでは、`routers/**`で定義されたすべてのサブルータを 1 つのアプリルータに[マージ](https://trpc.io/docs/v10/merging-routers)しています。
+ここでは、`routers/**`で定義されたすべてのサブルータを 1 つの app ルータに[マージ](https://trpc.io/docs/v10/merging-routers)しています。
 
 ### 📄 `utils/api.ts`
 
@@ -409,7 +409,7 @@ Optimistic updates are when we update the UI before the API call has finished. T
 
 ### 楽観的な更新
 
-楽観的な更新とは、API コールが終了する前に UI を更新することです。API コールの終了を待たずに UI に反映されるため、ユーザーにとってより良い体験になります。しかし、データの正しさを重視するアプリでは、楽観的な更新はバックエンドの状態を「正しく」表現できないため、避けるべきでしょう。詳しくは、[React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates)をご覧ください。
+楽観的な更新とは、API コールが終了する前に UI を更新することです。API コールの終了を待たずに UI に反映されるため、ユーザーにとってより良い体験になります。しかし、データの正しさを重視するアプリケーションでは、楽観的な更新はバックエンドの状態を「正しく」表現できないため、避けるべきでしょう。詳しくは、[React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates)をご覧ください。
 
 ```tsx
 const MyComponent = () => {

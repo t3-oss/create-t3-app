@@ -9,9 +9,9 @@ We started Create T3 App because [Theo](https://twitter.com/t3dotgg) refused to 
 
 If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
 
-私たちが Create T3 App の開発を始めたのは、[Theo](https://twitter.com/t3dotgg)が自分の好みの技術のテンプレートを作ることを拒んだからです。create-next-app や[Astro's CLI](https://astro.build)、そして一般的なタイプセーフティへの愛に触発されて、Create T3 App チームは新しく T3 Stack プロジェクトを始めるための最高の出発点を作るために懸命に働きました。
+私たちが Create T3 App の開発を始めたのは、[Theo](https://twitter.com/t3dotgg)が自分の好みの技術のテンプレートを作ることを拒んだからです。create-next-app や[Astro's CLI](https://astro.build)、そして型安全性への全面的な愛に触発されて、Create T3 App チームは新しく T3 Stack プロジェクトを始めるための最高の出発点を作るために懸命に働きました。
 
-Next.js を型安全な方法で使うことに興味があるなら、ここから始めましょう。私たちが選択した具体的な技術について興味がある方は、この続きをぜひお読みください :)
+Next.js を型安全な方法で使うことに興味があるなら、こここそが始めるべき場所です。私たちが選択した技術的選択について興味がある方は、引き続きお読みください :)
 
 ## Why TypeScript?
 
@@ -23,11 +23,11 @@ Typesafety makes you faster. If you're not convinced, you [might be using TypeSc
 
 ## なぜ TypeScript なのか？
 
-JavaScript は難しいですね。なぜこれ以上ルールを増やすのでしょうか？
+JavaScript は難しいですよね。なんだってこれ以上ルールを増やすのでしょうか？
 
-私たちは、TypeScript が提供する体験が、より優れた開発者になるのに役立つと確信しています。TypeScript は、期待されるデータ型を定義することで、コードを書く際にリアルタイムのフィードバックを提供し、存在しないプロパティにアクセスを試みたり、間違った型の値を渡そうとすると、エディタで役立つオートコンプリートを提供したり、赤い波線で警告を発してくれます。ウェブ開発の初心者であれ、熟練したプロであれ、TypeScript の「厳密さ」は、「バニラ JS」よりもフラストレーションが少なく、一貫した体験を提供してくれるでしょう。
+私たちは、TypeScript が提供する体験が、より優れた開発者になるのに役立つと確信しています。TypeScript は、期待されるデータ型を定義することで、コードを書きながらのリアルタイムのフィードバックを提供し、存在しないプロパティにアクセスを試みたり、間違った型の値を渡そうとすると、エディタで役立つ自動補完を提供したり、赤い波線で警告を発してくれます。Web 開発の初心者であれ、熟練したプロであれ、TypeScript の「厳密さ」は、「バニラ JS」よりもフラストレーションが少なく、一貫した体験を提供してくれるでしょう。
 
-Typesafety はあなたをより速くします。もし納得できないなら、あなたは[TypeScript の使い方が間違っているかもしれません...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)。
+型安全性はあなたをより速くします。もし納得できないなら、あなたは[TypeScript の使い方を間違っているかもしれません...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)。
 
 ## Why Next.js?
 
@@ -39,7 +39,7 @@ Next.js offers a lightly opinionated, heavily optimized approach to creating app
 
 私たちは React を愛しています。React はこれまで想像もしなかったような方法で UI 開発を身近なものにしてくれました。しかし、その反面、開発者を険しい道へ導くこともあります。
 
-Next.js は、React を使ったアプリケーションを作成するための、思想に拘りすぎず、かつ強く最適化したアプローチを提供します。ルーティングから API 定義、画像レンダリングまで、私たちは Next.js は開発者を良い判断ができるように導いてくれることを信じています。
+Next.js は、React を使ったアプリケーションを作成するための、思想に拘りすぎず、かつ強く最適化したアプローチを提供します。Next.js は、ルーティングから API 定義、画像レンダリングに至るまで、開発者が良い判断ができるように導いてくれると私たちは信じています。
 
 ## Why tRPC/Prisma/Tailwind/etc?
 
@@ -47,7 +47,7 @@ While we believe in keeping things as simple as possible, we find these pieces b
 
 ## なぜ tRPC/Prisma/Tailwind/etc なのか？
 
-私たちは物事をできるだけシンプルに保つべきだと信じているのですが、私たちが作ってきたすべての「アプリ」などのプロジェクトにおいてこれらの構成要素が使っていたことを発見したのです。`create-t3-app`は、必要なピースを適用できるように良くやってくれます。
+私たちは物事をできるだけシンプルに保つべきだと信じてやってきましたが、これらの構成要素は私たちが作ってきた、「アプリ」っぽいすべてのプロジェクトで使ってきたことがわかりました。`create-t3-app`は、必要とする構成要素を導入できるように、すばらしく良い仕事をしてくれます。
 
 ### tRPC
 
@@ -55,7 +55,7 @@ tRPC delivers on GraphQL's promise of seamless client development against a type
 
 ### tRPC
 
-tRPC は GraphQL が実現してくれるはずのもの、「サーバーに対するシームレスでタイプセーフなクライアント開発」を、定型文を一切使わずに実現するものです。これは TypeScript を巧みに利用したもので、素晴らしい開発体験を提供するものです。
+tRPC は GraphQL が実現してくれるはずのもの、「サーバーに対するシームレスで型安全なクライアント開発」を、定型文を一切使わずに実現するものです。これは TypeScript を巧みに利用したもので、極上の開発体験が得られます。
 
 ### Prisma
 
@@ -65,9 +65,9 @@ Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/ove
 
 ### Prisma
 
-SQL に対する Prisma は 「JS に対する TypeScript」のようなものです。Prisma はそれまで存在しなかった開発者体験を作り出しました。[複数のデータベース](https://www.prisma.io/docs/concepts/database-connectors)と互換性のあるユーザー定義スキーマから型を生成することで、Prisma はデータベースからアプリまでのエンドツーエンドの型安全性を保証しています。
+SQL に対する Prisma は 「JS に対する TypeScript」のようなものです。Prisma はこれまでにない開発者体験を作り出しました。[複数のデータベース](https://www.prisma.io/docs/concepts/database-connectors)と互換性のあるユーザー定義スキーマから型を生成することで、Prisma はデータベースからアプリケーションまでのエンドツーエンドの型安全性を保証します。
 
-Prisma は、データベースとの日々のやりとりをより簡単にするための[ツール群](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows)を提供しています。特に Prisma Client は、クエリ実行と SQL 使用をほとんど気づかないほど簡単にします。Prisma Studio は、データベースの便利な GUI で、コードを書くことなくデータを素早く表示したり操作したりすることができます。
+Prisma は、データベースの日常的な操作をより簡単にするための[ツール群](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows)を提供しています。特に Prisma Client は、クエリの実行と SQL の使用をほとんど意識しないで済むぐらい簡単にします。Prisma Studio は、データベースの便利な GUI で、コードを書くことなくデータを素早く表示したり操作したりすることができます。
 
 ### Tailwind CSS
 
@@ -79,11 +79,11 @@ Additionally, with its inline-like approach, Tailwind encourages you to style wi
 
 ### Tailwind CSS
 
-Tailwind は「zen-mode CSS」のような感覚です。
+Tailwind は「禅モードの CSS」みたいなものです。
 
-Tailwind は、優れたデフォルトの色、間隔、その他のプリミティブという形でビルディングブロックを提供することで、見栄えの良いアプリを簡単に作成することができます。また、コンポーネントライブラリとは異なり、アプリを次のレベルに引き上げたいとき、美しくユニークなものを作りたいときにも、Tailwind はあなたを拘束することはありません。
+Tailwind は、優れたデフォルトの色・間隔(spacing)・その他のプリミティブという形でビルディングブロックを提供することで、見栄えの良いアプリケーションを簡単に作成することができます。また、コンポーネントライブラリとは異なり、アプリケーションを次のレベルまで引き上げようとしたり、美しくユニークなものを作ろうとしたときに、足かせとなってにっちもさっちもいかなくなったりするようなことは Tailwind では起きません。
 
-また、Tailwind はインラインのようなアプローチで、クラス名やファイルの整理など、解決しようとする問題に直接関係しない問題を気にせずにスタイリングすることを促進します。
+また、Tailwind ではインラインスタイルのような書きっぷりをするのですが、クラス名やファイルの編成など、「解決しようとしている問題には直接関係しないことがら」を気にせずにスタイリングできます。
 
 ### NextAuth.js
 
@@ -91,4 +91,4 @@ When you want an authentication system in your NextJS application, NextAuth.js i
 
 ### NextAuth.js
 
-NextJS アプリケーションに認証システムを導入したいとき、NextAuth.js は、自分で構築する手間をかけずに、複雑なセキュリティを導入できる優れたソリューションです。NextAuth.js には、OAuth 認証をすばやく追加するための豊富なプロバイダーリストが付属しており、多くのデータベースや ORM のためのアダプターを提供しています。
+NextJS アプリケーションに認証システムを導入したいとき、NextAuth.js は、がんばって自分で構築する手間をかけずに、複雑なセキュリティ条件下に導入できる優れたソリューションです。NextAuth.js は、OAuth 認証をすばやく追加するための豊富なプロバイダーリストと、多くのデータベースや ORM のためのアダプターを提供しています。

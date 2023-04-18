@@ -7,7 +7,7 @@ lang: ja
 
 We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
 
-アプリは[Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss)にデプロイすることをお勧めします。Next.js のアプリを超簡単にデプロイすることができます。
+アプリケーションは[Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss)にデプロイすることをお勧めします。Next.js のアプリケーションを超簡単にデプロイすることができます。
 
 ## Project Configuration
 
@@ -56,7 +56,7 @@ Vercel はビルドコマンドの設定とディレクトリの公開を自動�
 
 ![環境変数を追加する](/images/vercel-env-vars.webp)
 
-4. **Deploy**をクリックします。これで、リポジトリに変更をプッシュするたびに、Vercel は自動的にアプリを再デプロイするようになります！
+4. **Deploy**をクリックします。これで、リポジトリに変更をプッシュするたびに、Vercel は自動的にアプリケーションを再デプロイするようになります！
 
 ## Using the Vercel CLI
 
