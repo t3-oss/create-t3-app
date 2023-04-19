@@ -1,5 +1,5 @@
 ---
-title: その他のオススメポイント
+title: その他のオススメ
 description: 多くのプロジェクトに推奨しているライブラリ・サービス
 layout: ../../layouts/docs.astro
 lang: ja

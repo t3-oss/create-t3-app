@@ -2,7 +2,7 @@
 title: はじめの一歩
 description: 新しいT3アプリを使い始める
 layout: ../../../layouts/docs.astro
-lang: jp
+lang: ja
 ---
 
 You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.

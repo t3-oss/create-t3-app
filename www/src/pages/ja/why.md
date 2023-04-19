@@ -1,6 +1,6 @@
 ---
-title: なぜCT3A?
-description: なぜあなたは次のプロジェクトでCreate T3 Appを選ぶべきなのか
+title: CT3A を選ぶ理由
+description: なぜあなたは次のプロジェクトで Create T3 App を選ぶべきなのか
 layout: ../../layouts/docs.astro
 lang: ja
 ---
