@@ -53,7 +53,7 @@ We'll be frank - this is an _opinionated project_. We share a handful of core be
 
 It's easy to fall into the trap of "adding everything" - we explicitly don't want to do that. Everything added to `create-t3-app` should solve a specific problem that exists within the core technologies included. This means we won't add things like state libraries (`zustand`, `redux`) but we will add things like NextAuth.js and integrate Prisma and tRPC for you.
 
-### 問題を解決せよ
+### 問題を解決する
 
 「何でもかんでも追加してしまう」という罠に容易に陥りがちですが、わたしたちは明示的にそれを避けます。`create-t3-app` に追加するものはすべて、その領域における固有の問題を解決している必要があります。したがって状態管理ライブラリ(Zustand、Redux 等)は含めませんが、NextAuth.js などは追加し、Prisma や tRPC などを統合します。
 

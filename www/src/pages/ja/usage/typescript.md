@@ -90,9 +90,9 @@ Check out Theo's video on how [you might be using TypeScript wrong](https://www.
 
 ## 役に立つ情報源
 
-| リソース                                                                 | リンク                                                            |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| TypeScript ハンドブック                                                  | https://www.typescriptlang.org/docs/handbook/                     |
-| TypeScript 初心者向けチュートリアル                                      | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                                          | https://github.com/type-challenges/type-challenges                |
-| TypeScript のロドニー・ミューレン(マット・ポコック)の Youtube チャンネル | https://www.youtube.com/c/MattPocockUk/videos                     |
+| リソース                                                       | リンク                                                            |
+| -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| TypeScript ハンドブック                                        | https://www.typescriptlang.org/docs/handbook/                     |
+| TypeScript 初心者向けチュートリアル                            | https://github.com/total-typescript/beginners-typescript-tutorial |
+| Type Challenges                                                | https://github.com/type-challenges/type-challenges                |
+| TypeScript の Rodney Mullen (Matt Pocock)の Youtube チャンネル | https://www.youtube.com/c/MattPocockUk/videos                     |

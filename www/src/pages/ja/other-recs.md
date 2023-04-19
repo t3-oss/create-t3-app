@@ -9,7 +9,7 @@ We recognize that the libraries included in `create-t3-app` don't solve every pr
 
 These are recommendations by individual Create T3 App contributors and should not be seen as "official" endorsements by the Create T3 App team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
 
-私たちは、`create-t3-app`に含まれるライブラリがすべての問題を解決するわけではないことを認識しています。私たちが提供するものでプロジェクトを始めることをお勧めしますが、他パッケージ導入が必要となる時も来るでしょう。あなたのプロジェクトに何が必要かを知っているのはあなただけです。ここでは、私たちが頻繁に推奨しているものをいくつか紹介します。
+私たちは、`create-t3-app`に含まれるライブラリがすべての問題を解決するわけではないことを認識しています。私たちの提供物でプロジェクトを始めることをお勧めしますが、他パッケージの導入が必要となる時も来るでしょう。あなたのプロジェクトに何が必要かを知っているのはあなただけです。ここでは、私たちが頻繁に推奨しているものをいくつか紹介します。
 
 これらは、個々の Create T3 App の貢献者による推奨であり、Create T3 App チームまたは T3-OSS による「公式」推奨とみなされるものではありません。 _**特に有料サービスを利用する前にはご自身で調査してください**_。
 
@@ -19,7 +19,7 @@ _**Editor's Note**_: State management libraries can be great, but often aren't n
 
 ## 状態管理
 
-_**編集部注**_：tRPC の React Query フックでサーバー状態を管理することができるでしょう。クライアントの状態については、React の`useState`から始め、もっと必要になったときにこれら選択肢のどれかを使用すれば良いでしょう。
+_**編集部注**_：tRPC の React Query フックでサーバー状態を管理することができるでしょう。クライアントの状態については、React の`useState`から始め、それでは不足したときにこれら選択肢のどれかを使用すれば良いでしょう。
 
 ### Zustand
 
@@ -34,7 +34,7 @@ The "modern, simple Redux" you didn't know you needed. [Poimandres](https://gith
 
 **もう二度と Redux を使わないために**
 
-あなたが知らない「モダンでシンプルな Redux」。[Poimandres](https://github.com/pmndrs)はいつも信頼できます。この小さなライブラリで、ビデオ通話アプリからゲーム、サーバーまで、あらゆるものを作ることができます。
+あなたが知らない「モダンでシンプルな Redux」。[Poimandres](https://github.com/pmndrs)はいつも信頼できます。この小さなライブラリで、ビデオ通話アプリからゲーム、サーバーまで、あらゆるものを作れます。
 
 - [Zustand ホームページ](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
@@ -52,7 +52,7 @@ For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://
 
 **Context を二度と利用しないために**
 
-よりアトミックなアプローチでは、Jotai が勝るとも劣らりません。同じく[Poimandres](https://github.com/pmndrs)による Jotai では、グローバルな useState のような感覚でシングルトンを定義することができます。ステートマシンまでは必要としないステートフルな振舞いに最適なオプションです。
+よりアトミックなアプローチでは、Jotai が勝るとも劣りません。Zustand と同じく、[Poimandres](https://github.com/pmndrs)から提供される Jotai は、グローバルな useState のような感覚でシングルトンを定義することができます。ステートマシンまでは必要としないステートフルな振舞いに最適なオプションです。
 
 - [Jotai ホームページ](https://jotai.org/)
 - [Jotai GitHub](https://github.com/pmndrs/jotai)
@@ -75,15 +75,15 @@ Also known as headless libraries, they provide great unstyled, and accessible co
 
 - [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
 
-### スタイルのないコンポーネント・ライブラリ
+### スタイルのないコンポーネントライブラリ
 
-ヘッドレスライブラリとも呼ばれ、スタイルにとらわれず、自分好みにカスタマイズできるアクセス性の高い素晴らしいコンポーネントを提供しています。ここでは、おすすめのものをいくつか紹介します。
+ヘッドレスライブラリとも呼ばれ、スタイルにとらわれず、自分好みにカスタマイズできるアクセス性の高い素晴らしいコンポーネントが提供されています。ここでは、おすすめのものをいくつか紹介します。
 
-- [Radix UI](https://www.radix-ui.com/) は、バニラまたは Tailwind CSS でスタイルを設定できる便利でアクセスしやすいプリミティブの強力なセットを提供します。
+- [Radix UI](https://www.radix-ui.com/) は、バニラまたは Tailwind CSS でスタイルを設定できる、便利でアクセスしやすいプリミティブの強力なセットを提供します。
 
 - Tailwind CSS チームによって作られた[Headless UI](https://headlessui.com/)も、Tailwind CSS とシームレスに統合された、スタイルのないアクセシビリティを考慮したコンポーネント群を提供しています。
 
-- [React Aria](https://react-spectrum.adobe.com/react-aria/)は、デザインシステムのためのアクセシビリティを考慮した UI プリミティブを提供します。彼らの Date Picker コンポーネントはトップクラスです。
+- [React Aria](https://react-spectrum.adobe.com/react-aria/)は、アクセシビリティを考慮した UI プリミティブをあなたのデザインシステムに提供します。彼らの Date Picker コンポーネントはトップクラスです。
 
 ### Styled Component Libraries
 
@@ -95,11 +95,11 @@ Sometimes you're building a project where you just want the UI to look decent ou
 - [Mantine](https://mantine.dev)
 - [@shadcn/ui](https://ui.shadcn.com/)
 
-### スタイルド・コンポーネント・ライブラリ
+### スタイル付けされたコンポーネントライブラリ
 
-**アプリケーションの外観を整えたいときに**。
+**アプリケーションの外観を整えたいときに**
 
-プロジェクトでは、UI がすぐにきちんと見えるようにしたい場合があります。管理者用ダッシュボードやその他の類似のプロジェクトでは、これらのコンポーネント・ライブラリのいずれかを使用すれば、仕事を完了することができます。
+プロジェクトでは、UI がすぐにきちんと見えるようにしたい場合があります。管理者用ダッシュボードおよび類似のプロジェクトでは、以下のコンポーネントライブラリのいずれかを使用すれば、仕事は完了するでしょう。
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
@@ -125,7 +125,7 @@ For when you need animations in your app, here are our recommendations.
 
 ## アニメーション
 
-アプリケーションにアニメーションが必要になったときのための、おすすめのアプリケーションを紹介します。
+アニメーションが必要なときにおすすめのアプリケーションを紹介します。
 
 ### AutoAnimate
 
@@ -141,11 +141,11 @@ Most animation libraries try to satisfy every possible use case, and become clun
 
 **1 行のコードでアニメーションを作成する場合**
 
-ほとんどのアニメーションライブラリは、ありとあらゆるユースケースを満たそうとするため、結果的に不格好になってしまいます。AutoAnimate は、設定不要のツールで、開発者の労力を増やすことなく、UX を大幅に向上させることができます。
+ほとんどのアニメーションライブラリは、ありとあらゆるユースケースを満たそうとするため、結果的に不格好になってしまいます。AutoAnimate は設定不要のツールで、開発者の労力を増やすことなく、UX を大幅に向上させることができます。
 
 - [AutoAnimate のホームページ](https://auto-animate.formkit.com/)
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
-- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
+- [AutoAnimate コンポーネントスニペット](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
@@ -215,7 +215,7 @@ PlanetScale は、これまで使ってきた「サーバーレスデータベ�
 
 **インフラのホスティングに最適**
 
-「モダン Heroku」。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が十分でなくても、Railway なら充足するでしょう。GitHub のリポジトリを指定して、実行してみてください。
+「モダン Heroku」。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が不満でも、Railway なら満足でしょう。GitHub のリポジトリを指定し実行してみてください。
 
 - [Railway ホームページ](https://railway.app/)
 
@@ -260,7 +260,7 @@ Soketi is a self-hostable, simple, and fast alternative to Pusher. It's fully co
 
 ### Soketi
 
-Soketi は Pusher の代替となる、セルフホスティング可能でシンプルで、高速なソフトウェアです。サーバーに接続するために使用できる Pusher SDK と完全に互換性があります。Soketi のサーバーレスもベータ版です。
+Soketi は Pusher の代替となる、セルフホスティング可能でシンプルかつ高速なソフトウェアです。サーバーに接続するために使用できる Pusher SDK と完全に互換性があります。Soketi のサーバーレスもベータ版です。
 
 - [Soketi ホームページ](https://soketi.app)
 - [Soketi GitHub](https://github.com/soketi/soketi)
@@ -311,6 +311,6 @@ It can sometimes be difficult to determine what will be included in the build ou
 
 ### Next Bundle Analyzer
 
-アプリケーションのビルド出力に何が含まれるかを判断するのは、時として難しい場合があります。Next Bundle Analyzer は、生成される JavaScript バンドルを簡単に視覚化し、分析する方法です。
+アプリケーションのビルド出力に何が含まれるかを判断するのは、時として難しい場合があります。Next Bundle Analyzer は、生成される JavaScript バンドルを簡単に視覚化し分析する方法です。
 
 - [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)

@@ -296,7 +296,7 @@ tRPC communicates over HTTP, so it is also possible to call your tRPC procedures
 
 ### HTTP Requests だけです
 
-tRPC は HTTP で通信するため、「通常の」HTTP リクエストを使って tRPC プロシージャを呼び出すこともできます。ただし、tRPC が使用している[RPC プロトコル](https://trpc.io/docs/v10/rpc)のため、構文が煩雑になる可能性があります。もし興味があれば、ブラウザのネットワーク・タブで tRPC のリクエストとレスポンスがどのように見えるかを確認することができますが、これはあくまで教育的な練習として行い、上記のソリューションのいずれかを採用することをお勧めします。
+tRPC は HTTP で通信するため、「通常の」HTTP リクエストを使って tRPC プロシージャを呼び出すこともできます。ただし、tRPC が使用している[RPC プロトコル](https://trpc.io/docs/v10/rpc)のため、構文が煩雑になる可能性があります。もし興味があれば、ブラウザのネットワークタブで tRPC のリクエストとレスポンスがどのように見えるかを確認することができますが、これはあくまで教育的な練習として行い、上記のソリューションのいずれかを採用することをお勧めします。
 
 ## Comparison to a Next.js API endpoint
 

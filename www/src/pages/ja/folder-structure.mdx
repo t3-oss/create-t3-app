@@ -11,7 +11,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
 
-以下でパッケージを選択すると、その選択したパッケージで新たに足場を組んだアプリケーションのフォルダ構造が表示されます。さらに下に進むと、各エントリーの説明があります。
+以下でパッケージを選択してみてください。すると、その選択したパッケージで新たに初期構成を生成したアプリケーションのフォルダ構造が表示されます。もっと下には各エントリーの説明があります。
 
 <Form />
 
@@ -24,7 +24,7 @@ Please select your packages to see the folder structure of a newly scaffolded ap
 The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
 
 `prisma` フォルダには、データベース接続とデータベーススキーマの設定に使用する `schema.prisma` ファイルが格納されています。
-また、マイグレーションファイルやシードスクリプトを格納する場所でもある（もし使用する場合）。
+また、マイグレーションファイルやシードスクリプトを格納する場所でもあります（もし使用する場合）。
 詳しくは、[Prisma の使い方](/ja/usage/prisma)を参照してください。
 
 </div>
@@ -43,7 +43,7 @@ The `public` folder contains static assets that are served by the web server. Th
 
 Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
 
-環境変数の検証や型定義に使用される - [環境変数](usage/env-variables)を参照。
+環境変数の検証や型定義に使用します。[環境変数](usage/env-variables)を参照。
 
 </div>
 <div>
@@ -52,7 +52,7 @@ Used for environment variable validation and type definitions - see [Environment
 
 The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
 
-`pages`フォルダには、Next.js アプリケーションのすべてのページが格納されます。`pages`のルートディレクトリにある `index.tsx` ファイルは、アプリケーションのホームページとなります。`\_app.tsx`ファイルは、アプリケーションを各種プロバイダでラップするために使用されます。詳しくは、[Next.js ドキュメント](https://nextjs.org/docs/basic-features/pages)を参照してください。
+`pages`フォルダには、Next.js アプリケーションのすべてのページが格納されます。`pages`ディレクトリの直下にある `index.tsx` ファイルは、アプリケーションのホームページとなります。`_app.tsx`ファイルは、アプリケーションを各種プロバイダでラップするために使用されます。詳しくは、[Next.js ドキュメント](https://nextjs.org/docs/basic-features/pages)を参照してください。
 
 </div>
 <div data-components="nextauth trpc">
@@ -235,7 +235,7 @@ The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript c
 
 The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
 
-`next.config.mjs`ファイルは、Next.js を設定するためのものです。詳しくは[Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)を参照してください。注： .mjs という拡張子は、ESM のインポートできるようにするために使用されます。
+`next.config.mjs`ファイルは、Next.js を設定するためのものです。詳しくは[Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)を参照してください。注： .mjs という拡張子は、ESM でのインポートができるようにするために使用されます。
 
 </div>
 <div data-components="tailwind">
@@ -262,6 +262,6 @@ The `prettier.config.cjs` file is used to configure Prettier to include the pret
 
 The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
 
-`tsconfig.json`ファイルは、TypeScript を設定するために使用されます。Create T3 App とそのライブラリの TypeScript を最適に利用するために、`strict mode`のようないくつかの非デフォルトが有効になっています。詳細については、[TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) または [TypeScript Usage](usage/typescript) を参照してください。
+`tsconfig.json`ファイルは、TypeScript を設定するために使用されます。Create T3 App とそのライブラリの TypeScript を最適に利用するために、`strict mode`のようないくつかの非デフォルトが有効になっています。詳細については、[TypeScript ドキュメント](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) または [使用法のTypeScript](usage/typescript) を参照してください。
 
 </div>

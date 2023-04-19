@@ -24,7 +24,7 @@ There are relative pros and cons for all deployment providers since no single ho
 
 従来の常識では、Vercel が Next.js のサポートに優れているのは、Vercel が Next.js を開発しているからだと言われています。Vercel は、Next.js で最適なパフォーマンスと DX が得られるようにプラットフォームを調整することに既得権益を持っています。大半のユースケースにおいて、これは真実であり、標準的な道から逸脱することに意味はないでしょう。
 
-また、Next.js の多くの機能は Vercel でしかサポートされないという意見もよくあります。確かに Next.js の新機能はリリース時にデフォルトで Vercel でテスト・サポートされますが、Netlify など他のプロバイダーが[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[迅速に実装してサポートをリリース](https://www.netlify.com/blog/deploy-nextjs-13/)するケースもあります。
+また、Next.js の多くの機能は Vercel でしかサポートされないという意見もよくあります。確かに Next.js の新機能はリリース時にデフォルトで Vercel でテストされ、サポートされますが、Netlify など他のプロバイダーが[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[迅速に実装してサポートをリリース](https://www.netlify.com/blog/deploy-nextjs-13/)するケースもあります。
 
 すべてのデプロイメント先のプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）のために、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)を開発し、[HTTP レスポンスにアクセスしたり変更したりするユニークなミドルウェアをメンテナンス](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)しています。
 
