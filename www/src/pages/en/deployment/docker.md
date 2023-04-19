@@ -84,7 +84,7 @@ RUN \
 ##### BUILDER
 
 FROM --platform=linux/amd64 node:16-alpine3.17 AS builder
-ARG DATABASE_URL
+
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -92,7 +92,7 @@ COPY . .
 
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN \
+RUN --mount=type=secret,id=ENV_WITH_SECRETS,dst=.env \
  if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
  elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
@@ -121,6 +121,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 EXPOSE 3000
 ENV PORT 3000
+ENV DATABASE_URL ''
 
 CMD ["node", "server.js"]
 
@@ -141,7 +142,7 @@ CMD ["node", "server.js"]
 Build and run this image locally with the following commands:
 
 ```bash
-docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
+DOCKER_BUILDKIT=1 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar --secret id=ENV_WITH_SECRETS,src=.env .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
 ```
 
@@ -171,8 +172,11 @@ services:
     ports:
       - "3000:3000"
     image: t3-app
-    environment:
-      - DATABASE_URL=database_url_goes_here
+    secrets:
+      - ENV_WITH_SECRETS
+secrets:
+  ENV_WITH_SECRETS:
+    file: ./.env
 ```
 
 Run this using the `docker compose up` command:
