@@ -1,5 +1,3 @@
-// @ts-check
-
 import { z } from "zod";
 
 /**

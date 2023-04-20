@@ -1,5 +1,3 @@
-// @ts-check
-
 import { z } from "zod";
 
 /**
@@ -15,11 +13,9 @@ const server = z.object({
  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object(
-  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ (
-    {
-      // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
-    }
-  ),
+  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ ({
+    NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+  }),
 );
 
 /**
