@@ -19,7 +19,7 @@ _**Editor's Note**_: State management libraries can be great, but often aren't n
 
 ## 状態管理
 
-_**編集部注**_：tRPC の React Query フックでサーバー状態を管理することができるでしょう。クライアントの状態については、React の`useState`から始め、それでは不足したときにこれら選択肢のどれかを使用すれば良いでしょう。
+_**編集部注**_：tRPC の React Query フックでサーバー状態を管理することができるでしょう。クライアントの状態管理については、React の`useState`から始め、不足を感じた時になってからこれらの選択肢のいずれかを使用すれば良いでしょう。
 
 ### Zustand
 
@@ -182,7 +182,7 @@ Vercel took the hell of web deployments and made it a set-and-forget GitHub inte
 
 **アプリケーションのホスティング用**
 
-Vercel は、Web デプロイメントの地獄を、セット＆フォゲットの GitHub 統合にしました。私たちは問題なく数十万人のユーザーにスケールしています。AWS の力を借りて、より良いインターフェイスを実現しました。:）
+Vercel は、デプロイ作業のひどいつらみを巻き取ってくれ、GitHub 連携を設定すれば放っておいてもよしなにやってくれます。また、何の問題もなく数十万人のユーザーへプロダクトを展開できました。AWS の力も得て、インターフェイスもはるかに優れています :)
 
 - [Vercel のホームページ](https://vercel.com/)
 - [Create T3 App Vercel デプロイメントガイド](/ja/deployment/vercel)
@@ -199,7 +199,7 @@ PlanetScale is the best "serverless database platform" we've used by far. Insane
 
 **心配のないデータベースのために**
 
-PlanetScale は、これまで使ってきた「サーバーレスデータベースプラットフォーム」の中で最も優れています。非常識なスケール、素晴らしい開発者体験、そして素晴らしい価格設定。SQL（できれば Prisma も）を使っているのであれば、これに勝るものはないでしょう。
+PlanetScale は、これまで使ってきた「サーバーレスデータベースプラットフォーム」の中で最も優れています。驚くほどのスケーラビリティ、素晴らしい開発者体験、そして素敵な価格設定。SQL（できれば Prisma も）を使っているのであれば、これに勝るものはないでしょう。
 
 - [PlanetScale ホームページ](https://planetscale.com/)
 
@@ -215,7 +215,7 @@ PlanetScale は、これまで使ってきた「サーバーレスデータベ�
 
 **インフラのホスティングに最適**
 
-「モダン Heroku」。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が不満でも、Railway なら満足でしょう。GitHub のリポジトリを指定し実行してみてください。
+「現代的な Heroku」。本物のサーバーを立ち上げるための最も簡単な方法です。Vercel と PlanetScale が不満でも、Railway なら満足でしょう。GitHub のリポジトリを指定し実行してみてください。
 
 - [Railway ホームページ](https://railway.app/)
 
