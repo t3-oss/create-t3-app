@@ -7,14 +7,18 @@ lang: ja
 
 tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and autocompletion. When using tRPC, your frontend and backend feel closer together than ever before, allowing for an outstanding developer experience.
 
-tRPC では、コード生成やランタイムの肥大化なしに、エンドツーエンドの型安全な API を書くことができます。TypeScript の優れた推論機能を利用して API ルーターの型定義を推論し、完全な型安全性の元で自動補完を効かせながら、フロントエンドから API プロシージャを呼び出すことができます。tRPC を使用すると、フロントエンドとバックエンドがこれまで以上に身近に感じられ、優れた開発者体験を得ることができるのです。
+tRPC では、コード生成したりランタイムが肥大化することなしに、エンドツーエンドの型安全な API を書くことができます。TypeScript の優れた型推論機能を利用して API ルーターの型定義を推論し、完全な型安全性の元で自動補完を効かせながら、フロントエンドから API プロシージャを呼び出すことができます。tRPC を使用すると、フロントエンドとバックエンドがより近しいものに感じられ、極上の開発者体験を得ることができます。
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.
-      私は、従来のAPIレイヤーの必要性を排除することによって、迅速なイテレーションを回してもアプリケーションが壊れないという自信を持ちつつ、人々がより速く移動できるようにするためにtRPCを構築しました。<span aria-hidden="true">&quot;</span>
-    </p>
+      <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need of a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate."
+
+「私は、従来の API レイヤーの必要性を排除することによって、迅速なイテレーションを回してもアプリケーションが壊れないという自信を持ちつつ、人々がより速く動けるようにするために tRPC を開発しました。」
+<span aria-hidden="true"></span>
+
+</p>
+
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
     <img
@@ -72,7 +76,7 @@ You define your procedures in `routers` which represent a collection of related 
 
 これは tRPC プロシージャ（従来のバックエンドのルートハンドラに相当）で、まず Zod（[環境変数の検証](./env-variables)に使っているのと同じ検証ライブラリ）を使って入力の検証を行います（この場合、入力が文字列であることを確認します）。入力が文字列でない場合は、代わりに情報提供のためのエラーを送信します。
 
-入力の後、[query](https://trpc.io/docs/v10/react-queries)、[mutation](https://trpc.io/docs/v10/react-mutations)、[subscription](https://trpc.io/docs/v10/subscriptions)のいずれかになるリゾルバー関数をチェーンします。この例では、リゾルバは[prisma](./prisma)クライアントを使用してデータベースを呼び出し、`id`が渡したものと一致するユーザを返します。
+入力の後、[query](https://trpc.io/docs/v10/react-queries)、[mutation](https://trpc.io/docs/v10/react-mutations)、[subscription](https://trpc.io/docs/v10/subscriptions)のいずれかになるリゾルバー関数の呼び出しを繋げていきます。この例では、リゾルバは[prisma](./prisma)クライアントを使用してデータベースを呼び出し、渡した`id`と一致するユーザを返します。
 
 プロシージャは `routers` という名前空間を共有する関連するプロシージャの集合体として定義します。例えば、`users`用のルータ、`posts`用のルータ、`messages`用のルータをそれぞれ 1 つずつ用意することができます。これらのルータは、1 つの集中管理された `appRouter` に統合することができます：
 
@@ -92,7 +96,7 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 
 ルーターの型定義だけをエクスポートすれば良く、クライアントでサーバーサイドのコードをインポートすることはないことに注意してください。
 
-tRPC は `@tanstack/react-query` のラッパーで、API コールが型付けされ推論されるという利点もあり、彼らが提供するフックのフルパワーを利用することができます。以下ように、フロントエンドからプロシージャを呼び出すことができます：
+さて、フロントエンドからプロシージャを呼び出してみましょう、tRPC は `@tanstack/react-query` のラッパーを提供しており、API 呼び出しが型付けされ推論されるという利点のもとで、TanStack Query が提供する Hooks のフルパワーを利用することができます。以下のように、フロントエンドからプロシージャを呼び出すことができます：
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
@@ -112,7 +116,7 @@ const UserPage = () => {
 
 You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `api.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
 
-自動補完と型安全がいかに優れているか、すぐにお分かりいただけると思います。`api.`と入力すると即座に自動補完でルータ一覧が表示され、ルータを選択するとそのプロシージャ一覧も表示されます。また、入力がバックエンドで定義したバリデータと一致しない場合は、TypeScript のエラーが表示されます。
+自動補完と型安全がいかに優れているか、すぐにお分かりいただけると思います。`api.`と入力すると即座に自動補完でルータ一覧が表示され、ルータを選択するとそのプロシージャ一覧も表示されます。また、入力したものがバックエンドで定義したバリデータと一致しない場合は、TypeScript のエラーが表示されます。
 
 ## Inferring errors
 
@@ -120,7 +124,7 @@ By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/er
 
 ## エラーを推論する
 
-デフォルトでは、`create-t3-app`は[エラーフォーマッタ](https://trpc.io/docs/error-formatting)を設定し、バックエンドでバリデーションエラーが発生した場合に Zod Errors を推論することができるようにします。
+デフォルトで、`create-t3-app`は[エラーフォーマッタ](https://trpc.io/docs/error-formatting)を設定し、バックエンドでバリデーションエラーが発生した場合に Zod Errors を推論することができるようにします。
 
 Example usage:
 
@@ -156,7 +160,7 @@ tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. L
 
 ## ファイル
 
-tRPC は、`create-t3-app`がセットアップしてくれる、かなり多くのボイラープレートを必要とします。それでは、生成されるファイルについて説明します：
+tRPC は、`create-t3-app`がセットアップしてくれる、かなり多くのボイラープレートを必要とします。それでは、生成されるファイルについて説明していきましょう：
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
@@ -164,7 +168,7 @@ This is the entry point for your API and exposes the tRPC router. Normally, you 
 
 ### 📄 `pages/api/trpc/[trpc].ts`.
 
-これは API のエントリポイントであり、tRPC ルータを公開します。通常、このファイルに触れることはあまりありませんが、たとえば CORS ミドルウェアなどを有効にする必要がある場合、エクスポートされた `createNextApiHandler` は [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) であり、 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) と [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) オブジェクトを受け取ることを知っていれば便利です。つまり、`createNextApiHandler`を任意のミドルウェアでラッピングすることができます。CORS を追加する[サンプルのコード断片](#cors-の有効化)は以下を参照してください。
+これは API のエントリポイントであり、tRPC ルータを公開します。通常、このファイルに触れることはあまりありませんが、たとえば CORS ミドルウェアなどを有効にする必要がある場合、エクスポートされた `createNextApiHandler` は [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) であり、 [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) と [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) オブジェクトを受け取ることを知っていれば便利です。つまり、`createNextApiHandler`を任意のミドルウェアでラッピングすることができます。CORS を追加する[サンプルのコードスニペット](#cors-の有効化)は以下を参照してください。
 
 ### 📄 `server/api/trpc.ts`
 
@@ -184,15 +188,15 @@ You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/
 
 このファイルは、コンテキスト作成と tRPC 初期化の 2 つに分かれています：
 
-1. tRPC プロシージャに渡されるコンテキストを定義します。コンテキストは、すべての tRPC プロシージャがアクセスできるデータであり、データベース接続、認証情報などのようなものを置くのに最適な場所です。create-t3-app では、リクエストオブジェクトにアクセスできないときに、コンテキストのサブセットを使用できるようにするために、2 つの関数を使用しています。
+1. tRPC プロシージャに渡されるコンテキストを定義します。コンテキストは、すべての tRPC プロシージャがアクセスできるデータであり、データベース接続、認証情報などを置くのに最適な場所です。create-t3-app では、リクエストオブジェクトにアクセスできないときに、コンテキストのサブセットを使用できるようにするために、2 つの関数を使用しています。
 
 - `createInnerTRPCContext`：ここでは、リクエストに依存しないコンテキスト (例: データベース接続) を定義します。この関数は、リクエストオブジェクトを持たない [統合テスト](#統合テストの例) や [ssg-helpers](https://trpc.io/docs/v10/ssg-helpers) で使用することができます。
 
 - `createTRPCContext`：ここでは、リクエストに依存するコンテキスト (例えば、ユーザのセッション) を定義します。`opts.req`オブジェクトを使ってセッションをリクエストし、そのセッションを `createInnerTRPCContext` 関数に渡して最終的なコンテキストを作成します。
 
-2. tRPC を初期化し、再利用可能な[手続き](https://trpc.io/docs/v10/procedures)と[ミドルウェア](https://trpc.io/docs/v10/middlewares)を定義しています。慣例として、`t`オブジェクト全体をエクスポートするのではなく、再利用可能な手続きとミドルウェアを作成し、それらをエクスポートする必要があります。
+2. tRPC を初期化し、再利用可能な[手続き](https://trpc.io/docs/v10/procedures)と[ミドルウェア](https://trpc.io/docs/v10/middlewares)を定義しています。慣例としては、`t`オブジェクト全体をエクスポートするのではなく、再利用可能な手続きとミドルウェアを作成し、それらをエクスポートするのが良いでしょう。
 
-[データトランスフォーマー](https://trpc.io/docs/v10/data-transformers)として `superjson` を使用していることにお気づきでしょう。これにより、データ型がクライアントに届くときに保持されます。例えば `Date` オブジェクトを送信すると、クライアントは `Date` を返し、ほとんどの API でそうなってしまうような文字列は返しません。
+[データトランスフォーマー](https://trpc.io/docs/v10/data-transformers)として `superjson` を使用していることにお気づきでしょう。これにより、データがクライアントに到達したときにもデータ型が保持されるため、例えば`Date`オブジェクトを送信すると、クライアントは文字列ではなく`Date`を返します。他の API のほとんどはこうならないでしょう。
 
 ### 📄 `server/api/routers/*.ts`
 
@@ -200,7 +204,7 @@ This is where you define the routes and procedures of your API. By convention, y
 
 ### 📄 `server/api/routers/*.ts`.
 
-ここでは、API のルータ群とプロシージャを定義します。慣例として、関連する一連のプロシージャごとに[別のルータ](https://trpc.io/docs/v10/router)を作成します。
+ここでは、API のルータ群とプロシージャ群を定義します。慣例として、関連する一連のプロシージャごとに[別のルータ](https://trpc.io/docs/v10/router)を作成します。
 
 ### 📄 `server/api/root.ts`
 
@@ -226,7 +230,7 @@ Create T3 App contributor [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee
 
 ### 📄 `utils/api.ts`
 
-これは、tRPC のフロントエンドのエントリポイントです。ここでルーターの**型定義**をインポートし、react-query フックと一緒に tRPC クライアントを作成することになります。バックエンドでデータ変換器として `superjson` を有効にしたため、フロントエンドでも有効にする必要があります。これは、バックエンドでシリアライズされたデータが、フロントエンドでデシリアライズされるためです。
+これは、tRPC のフロントエンドのエントリポイントです。ここでルーターの**型定義**をインポートし、react-query フックと一緒に tRPC クライアントを作成することになります。バックエンドでデータ変換器として `superjson` を有効にしたため、フロントエンドでも有効にする必要があります。これは、バックエンドでシリアライズされたデータが、フロントエンドでデシリアライズされるようにするためです。
 
 ここでは tRPC の[リンク](https://trpc.io/docs/v10/links)を定義し、クライアントからサーバーへのリクエストフローを決定します。ここでは、デフォルトとしての [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) を使用し、[リクエストバッチ](https://cloud.google.com/compute/docs/api/how-tos/batch) を有効にします。また、開発中に役立つリクエストログを出力する [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) を使用します。
 
@@ -372,7 +376,7 @@ Here are some snippets that might come in handy.
 
 ## 便利なスニペット
 
-以下に、便利そうなスニペットをご紹介します。
+以下、便利そうなスニペットを紹介していきます。
 
 ### Enabling CORS
 
@@ -380,7 +384,7 @@ If you need to consume your API from a different domain, for example in a monore
 
 ### CORS の有効化
 
-React Native アプリを含む monorepo など、異なるドメインから API を消費する必要がある場合、CORS を有効にする必要がある場合があります：
+React Native アプリを含むモノレポなど、異なるドメインから API を呼び出す必要がある場合、CORS の有効化が必要かもしれません：
 
 ```ts:pages/api/trpc/[trpc].ts
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -502,5 +506,5 @@ test("protected example router", async () => {
 | リソース                 | Link                                                    |
 | ------------------------ | ------------------------------------------------------- |
 | tRPC ドキュメント        | https://www.trpc.io                                     |
-| tRPC の事例集            | https://github.com/trpc/trpc/tree/next/examples         |
+| tRPC のサンプル集        | https://github.com/trpc/trpc/tree/next/examples         |
 | React Query ドキュメント | https://tanstack.com/query/v4/docs/adapters/react-query |

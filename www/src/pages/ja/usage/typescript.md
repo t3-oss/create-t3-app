@@ -37,11 +37,11 @@ It provides live feedback as you write your code by defining expected data types
 
 It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
 
-新人開発者であれ、熟練した開発者であれ、TypeScript は必須の要素だと考えています。最初はとっつきにくいかもしれませんが、多くのツールがそうであるように、使い始めたら元に戻ることはないでしょう。
+新人開発者であれ、熟練した開発者であれ、TypeScript は必須の要素だと考えています。最初はとっつきにくいかもしれませんが、多くのツールがそうであるように、使い始めたら元に戻りたいと思うことはないでしょう。
 
-また、存在しないプロパティにアクセスしようとしたり、間違った型の値を渡そうとしたりすると、赤い波線で警告され、デバッグが必要になります。
+また、存在しないプロパティにアクセスしようとしたり、間違った型の値を渡そうとしたりすると、デバッグが必要になる箇所が赤い波線で警告されます。
 
-エディターで直接書いているコードや消費しているコードのドキュメントを提供し、不可避な間違いを犯したときにすぐにフィードバックが得られるというのは、おそらく開発者に最も生産性をもたらすツールだと思います。
+あなたが今まさに書いているコードや、のめり込んで集中しているコードに対して、ドキュメントをエディター中で直接表示し、不可避な間違いを犯したときにすぐにフィードバックが得られるのですから、TypeScript はおそらく最も開発者に生産性をもたらすツールです。
 
 ## Type Inference
 
@@ -49,7 +49,7 @@ While many new TypeScript developers are concerned with _writing_ TypeScript, ma
 
 ## 型推論
 
-TypeScript を初めて開発する人の多くは、TypeScript を「_書く_」ことを気にしてしまいますが、そのメリットの多くは、実はコードを一切変更しなくても、特に型推論おいて得られるのです。型推論とは、何かが型付けされた場合、その型はアプリケーションのフロー全体を通じて、他の場所で再宣言することなく、その型に従っていることを意味します。例えばある関数が受け取る引数の型を定義してしまえば、その関数の本体では通常、TypeScript 特有のコードを必要とせずに型安全になります。また、ライブラリの開発者は、ライブラリの型を維持するために多大な労力を費やしています。つまり、アプリケーション開発者は、これらの型が提供する推論とコードエディタでの組み込みドキュメントの両方から恩恵を受けることができるのです。
+TypeScript を初めて開発する人の多くは、TypeScript を「_書く_」ことを気にしてしまいますが、そのメリットの多くは実はコードを一切変更しなくても型推論で得られるのです。型推論とは、何かが型付けされた場合、その型はアプリケーションのフロー全体を通じて、他の場所で再宣言することなく、その型に適合していることを意味します。例えばある関数が受け取る引数の型を定義してしまえば、その関数の本体では通常、TypeScript 特有のコードを必要とせずに型安全になります。また、ライブラリの開発者は、ライブラリの型を維持するために多大な労力を費やしています。つまり、アプリケーション開発者は、既存ライブラリが持っている型情報からの推論と、ビルドインのドキュメントの両方からエディタ上で恩恵を受けることができるのです。
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -77,7 +77,7 @@ Check out Theo's video on how [you might be using TypeScript wrong](https://www.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) は、宣言的で常に最新の自動管理されたクエリとミューテーションを提供し、開発者とユーザーの両方の体験を直接改善します。
+[Tanstack Query](https://tanstack.com/query/v4/) は、宣言的で常に最新の自動管理されたクエリとミューテーションを提供し、開発者体験と利用者体験の両方を直接改善します。
 
 ## Useful Resources
 
@@ -94,5 +94,5 @@ Check out Theo's video on how [you might be using TypeScript wrong](https://www.
 | -------------------------------------------------------------- | ----------------------------------------------------------------- |
 | TypeScript ハンドブック                                        | https://www.typescriptlang.org/docs/handbook/                     |
 | TypeScript 初心者向けチュートリアル                            | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                                | https://github.com/type-challenges/type-challenges                |
+| タイプチャレンジ                                               | https://github.com/type-challenges/type-challenges                |
 | TypeScript の Rodney Mullen (Matt Pocock)の Youtube チャンネル | https://www.youtube.com/c/MattPocockUk/videos                     |
