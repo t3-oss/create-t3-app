@@ -7,7 +7,7 @@ lang: ja
 
 When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
 
-Next.js アプリケーションが認証システムを必要とするとき、NextAuth.js は、自分で構築する手間をかけずに、複雑なセキュリティを取り入れることができる優れたソリューションです。NextAuth.js には OAuth 認証をすばやく追加するための豊富なプロバイダーリストが付属しており、多くのデータベースや ORM のためのアダプターを提供しています。
+Next.js アプリケーションが認証システムを必要とするとき、NextAuth.js は、自分で構築する手間をかけずに、複雑なセキュリティを導入できる優れたソリューションです。NextAuth.js には OAuth 認証をすばやく追加するための豊富なプロバイダーの一覧が付属しており、多くのデータベースや ORM のためのアダプターを提供しています。
 
 ## Context Provider
 
@@ -15,7 +15,7 @@ In your app's entrypoint, you'll see that your application is wrapped in a [Sess
 
 ## コンテクストプロバイダー
 
-アプリケーションのエントリーポイントでは、アプリケーションが[SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider)でラップされていることがわかります：
+アプリケーションのエントリーポイントでは、アプリケーションが [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider)でラップされていることがわかります：
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -75,7 +75,7 @@ Create T3 App is configured to utilise the [session callback](https://next-auth.
 
 ## セッションに `user.id` を含める
 
-Create T3 App は、NextAuth.js の設定にある[session callback](https://next-auth.js.org/configuration/callbacks#session-callback)を利用して、ユーザーの ID を`session`オブジェクトに含めるように設定されています。
+Create T3 App は、NextAuth.js の設定にある[session callback](https://next-auth.js.org/configuration/callbacks#session-callback)を利用して、ユーザー ID を`session`オブジェクトに含めるように設定されています。
 
 ```ts:server/auth.ts
 callbacks: {
@@ -118,7 +118,7 @@ This is done in a two step process:
 
 ## tRPC との併用
 
-NextAuth.js を tRPC で利用する場合、[middleware](https://trpc.io/docs/v10/middlewares)を使って、再利用可能で、保護されたプロシージャを作成することができます。これにより、認証されたユーザーのみがアクセスできるプロシージャを作成することができます。`create-t3-app`は、認証されたプロシージャの中でセッションオブジェクトに簡単にアクセスできるように、すべてセットアップしてくれます。
+NextAuth.js を tRPC で利用する場合、[ミドルウェア](https://trpc.io/docs/v10/middlewares) を使って、再利用可能で保護されたプロシージャを作成することができます。これにより、認証されたユーザーのみがアクセスできるプロシージャを作成することができます。`create-t3-app`は、認証されたプロシージャの中でセッションオブジェクトに簡単にアクセスできるように、すべてセットアップしてくれます。
 
 これは、2 段階のプロセスで行われます：
 
@@ -171,7 +171,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
 
-セッションオブジェクトは、ユーザーの軽くて最小限の表現であり、いくつかのフィールドを含むだけです。protectedProcedures`を使用すると、データベースからより多くのデータを取得するために使用できるユーザーの id にアクセスできます。
+セッションオブジェクトは、ユーザーの軽くて最小限の表現であり、いくつかのフィールドしか含んでいません。`protectedProcedures`を使用するとユーザー id にアクセスでき、データベースからさらにデータを取得するのに使用できます。
 
 ```ts:server/api/routers/user.ts
 const userRouter = router({
@@ -190,9 +190,9 @@ const userRouter = router({
 
 Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://authjs.dev/reference/adapter/prisma/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
 
-## Prisma での使用方法
+## Prisma との併用法
 
-NextAuth.js を Prisma で動作させるためには、多くの[初期設定](https://authjs.dev/reference/adapter/prisma/)が必要です。Prisma と NextAuth.js の両方を選択すると、必要なモデルがすべて設定された、完全に動作する認証システムを手に入れることができるのです！ `create-t3-app` はこのすべてを処理します。Prisma と NextAuth.js の両方を選択した場合、必要なモデルがあらかじめ設定された、完全に動作する認証システムが得られます。雛形アプリには、Discord OAuth プロバイダがあらかじめ設定されています。しかし、[NextAuth.js ドキュメント](https://next-auth.js.org/providers/) に従えば、簡単に他のプロバイダを追加することができます。なお、プロバイダによっては、特定のモデルに余分なフィールドを追加する必要がある場合があります。利用したいプロバイダのドキュメントを読んで、必要なフィールドがすべて揃っていることを確認することをお勧めします。
+NextAuth.js を Prisma と共に動作させるには、多くの[初期設定](https://authjs.dev/reference/adapter/prisma/)が必要ですが、`create-t3-app` はこのすべてを処理します。`create-t3-app` の実行において Prisma と NextAuth.js の両方を選択すると、必要なモデルがすべて設定された、完全に動作する認証システムを手に入れることができます。初期構成として生成されたアプリケーションには、Discord OAuth プロバイダがあらかじめ設定されています。これを使っているのは一番簡単に始められるからで、`.env`にトークンを設定するだけで準備完了です。しかし、[NextAuth.js ドキュメント](https://next-auth.js.org/providers/) に従えば、簡単に他のプロバイダを追加することもできます。なお、プロバイダによっては、特定のモデルに余分なフィールドを追加する必要がある場合があります。利用したいプロバイダのドキュメントを読んで、必要なフィールドがすべて揃っていることを確認することをお勧めします。
 
 ### Adding new fields to your models
 
@@ -204,7 +204,7 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 `User`、`Account`、`Session`、`VerificationToken`のいずれかのモデルに新しいフィールドを追加する場合（ほとんどの場合、`User`モデルのみを変更する必要があります）、[Prisma adapter](https://next-auth.js.org/adapters/prisma) が新しいユーザーのサインアップやログイン時に自動的にこれらのモデル上にフィールドを作成することを念頭に置いておく必要があります。したがって、これらのモデルに新しいフィールドを追加する場合は、デフォルト値を指定する必要があります。
 
-例えば、`User`モデルに `role` を追加したい場合、`role` フィールドにデフォルト値を指定する必要があります。これは `User` モデルの `role` フィールドに `@default` 値を追加することで実現できる：
+例えば、`User`モデルに `role` を追加したい場合、`role` フィールドにデフォルト値を指定する必要があります。これは `User` モデルの `role` フィールドに `@default` 値を追加することで実現できます：
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -224,7 +224,7 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
 
 ## Next.js ミドルウェアを使った利用法
 
-NextAuth.js を Next.js ミドルウェアで利用する場合、認証に JWT セッション戦略](https://next-auth.js.org/configuration/nextjs#caveats)を利用する必要があります。これは、ミドルウェアがJWTである場合にのみ、セッションクッキーにアクセスすることができるためです。デフォルトでは、Create T3 App は、データベースアダプターとして Prisma と組み合わせて、**default**データベースストラテジーを使用するように構成されています。
+NextAuth.js を Next.js ミドルウェアで利用する場合、認証に [JWT セッション戦略](https://next-auth.js.org/configuration/nextjs#caveats)を利用する必要があります。これは、ミドルウェアが JWT である場合にのみ、セッションクッキーにアクセスすることができるためです。デフォルトでは、Create T3 App は、データベースアダプターとして Prisma と組み合わせて、**default**データベースストラテジーを使用するように構成されています。
 
 ## Setting up the default DiscordProvider
 
@@ -239,14 +239,14 @@ NextAuth.js を Next.js ミドルウェアで利用する場合、認証に JWT 
 
 ## デフォルトの DiscordProvider を設定する
 
-1. [Discord Developer Portal のアプリケーションセクション](https://discord.com/developers/applications)に向かい、「New Application」をクリックします。
-2. 設定メニューの 「OAuth2⇒ 一般」
+1. [Discord Developer Portal の Application セクション](https://discord.com/developers/applications)に向かい「New Application」をクリックします。
+2. 設定メニューの 「OAuth2⇒ 一般」に行きます
 
 - Client ID をコピーして、`.env`の`DISCORD_CLIENT_ID`に貼り付けます。
-- Client Secret の下にある 「Reset Secret」をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。この秘密情報は二度と表示されないので、リセットすると既存の秘密情報はが失効してしまうので注意してください。
+- Client Secret の下にある 「Reset Secret」をクリックし、その文字列を`.env`の`DISCORD_CLIENT_SECRET`にコピーしてください。この秘密情報は二度と表示されないことと、リセットすると既存の秘密情報は失効してしまうことについて注意してください。
 - Add Redirect」をクリックし、`<app url>/api/auth/callback/discord` を貼り付ける(ローカル開発サーバの場合の例：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - 変更を保存する
-- 開発用と本番用で同じ Discord Application を使用できますが、推奨はしません。また、開発時に[Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)を検討するのもよいでしょう。
+- 開発用と本番用で同じ Discord Application を使用できますが、推奨はしません。また、開発時には[プロバイダをモックする](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)こと検討するのもよいでしょう。
 
 ## お役立ち情報
 
