@@ -7,7 +7,7 @@ lang: ja
 
 Prisma is an ORM for TypeScript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
 
-Prisma は TypeScript 用の ORM で、`schema.prisma`ファイルでデータベーススキーマとモデルを定義し、バックエンドからデータベースと対話するために使用できる型安全なクライアントを生成することができます。
+Prisma は TypeScript のための ORM で、`schema.prisma`ファイルでデータベーススキーマとモデルを定義し、バックエンドにおいてデータベースとの対話に使用できる型安全なクライアントを生成することができます。
 
 ## Prisma Client
 
@@ -15,7 +15,7 @@ Located at `src/server/db.ts`, the Prisma Client is instantiated as a global var
 
 ## Prisma Client
 
-`src/server/db.ts`にある Prisma Client は、グローバル変数としてインスタンス化され（Prisma のチームが[best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem)として推奨）、API ルートで使用するためにエクスポートされます。Prisma クライアントは、デフォルトで[Context](/ja/usage/trpc#-serverapitrpcts)に含まれており、各ファイルで個別にインポートするのではなく、こちらを使用することを推奨します。
+`src/server/db.ts`にある Prisma Client は、グローバル変数としてインスタンス化され（Prisma チームが[ベストプラクティス](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem)として推奨）、API ルートで使用するためにエクスポートされます。Prisma クライアントは、デフォルトで [Context](/ja/usage/trpc#-serverapitrpcts) に含まれており、各ファイルで個別にインポートするのではなく、こちらを使用することを推奨します。
 
 ## Schema
 
@@ -39,7 +39,7 @@ The default database is an SQLite database, which is great for development and q
 
 ## デフォルトのデータベース
 
-デフォルトのデータベースは SQLite データベースで、開発や概念実証を素早く行うには適していますが、本番環境ではお勧めできません。使用するデータベースを変更するには、`datasource` ブロックの `provider` を `postgresql` または `mysql` に変更し、環境変数内の接続文字列をあなたのデータベースを指すように更新する必要があります。
+デフォルトのデータベースは SQLite データベースで、開発や PoC を素早く行うのには適していますが、本番環境での使用はお勧めできません。使用するデータベースを変更するには、`datasource` ブロックの `provider` を `postgresql` または `mysql` に変更し、環境変数内の接続文字列でデータベースを指定します。
 
 ## Seeding your Database
 
@@ -47,7 +47,7 @@ The default database is an SQLite database, which is great for development and q
 
 ## データベースのシーディング
 
-[データーベースのシーディング](https://www.prisma.io/docs/guides/database/seed-database)は、データベースにテストデータを素早く投入し、使い始めるのに役立つ素晴らしい方法です。シーディングを設定するには、`/prisma`ディレクトリに `seed.ts` ファイルを作成し、`seed` スクリプトを `package.json` ファイルに追加する必要があります。また、seed スクリプトを実行できる TypeScript ランナーも必要です。esbuild を使用し、ESM の設定を必要としない非常にパフォーマンスの高い TypeScript ランナーである[tsx](https://github.com/esbuild-kit/tsx)をお勧めしますが、`ts-node`やその他のランナーでも動作します。
+[データーベースのシーディング](https://www.prisma.io/docs/guides/database/seed-database)(訳註: データベース構築時にダミーデータや初期データを投入すること)は、データベースにテストデータを素早く投入し、使い始めるのに役立つ素晴らしい方法です。シーディングを設定するには、`/prisma`ディレクトリに `seed.ts` ファイルを作成し、`seed` スクリプトを `package.json` ファイルに追加する必要があります。また、seed スクリプトを実行できる TypeScript ランナーも必要です。TypeScript ランナーには、esbuild を使用し、ESM の設定を必要としない非常にパフォーマンスの高い [tsx](https://github.com/esbuild-kit/tsx) をお勧めしますが、`ts-node`やその他のランナーでも動作します。
 
 ```jsonc:package.json
 {
@@ -89,7 +89,7 @@ main()
 
 Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
 
-その後、`pnpm db-seed` (または `npm`/`yarn`) を実行して、データベースをシードします。
+その後、`pnpm db-seed` (または `npm`/`yarn`) を実行して、データベースへのシーディングを実行します。
 
 ## Useful Resources
 
