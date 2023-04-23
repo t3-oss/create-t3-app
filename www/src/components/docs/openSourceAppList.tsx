@@ -198,7 +198,7 @@ const projects: App[] = [
     link: "https://prisma-editor.up.railway.app",
   },
 
- {
+  {
     description: "T3 Blog - A Reddit inspired forum website",
     repoName: "leojuriolli7/t3-blog",
     repo: "https://github.com/leojuriolli7/t3-blog",
