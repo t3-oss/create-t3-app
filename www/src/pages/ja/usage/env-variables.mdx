@@ -10,7 +10,7 @@ import Callout from "../../../components/docs/callout.tsx";
 
 Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional logic in `src/env.mjs`.
 
-Create T3 App は、[Zod](https://github.com/colinhacks/zod)を使用して、`src/env.mjs`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行う。
+Create T3 App は [Zod](https://github.com/colinhacks/zod) を使用して、`src/env.mjs`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行います。
 
 ## env.mjs
 
@@ -52,6 +52,11 @@ Define your server-side environment variables schema here.
   important secrets to the client.
 </Callout>
 
+<Callout type="warning">
+  重要なシークレットがクライアント側に漏れないようにするため、ここに
+  `NEXT_PUBLIC` というプレフィックスをつけないように注意してください。
+</Callout>
+
 ### Client Schema
 
 Define your client-side environment variables schema here.
@@ -62,7 +67,7 @@ To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validat
 
 クライアント側の環境変数のスキーマをここで定義します。
 
-クライアントに公開するには、その前に `NEXT_PUBLIC` を付ける必要があります。無効な設定を検出するのに役立つように、そうしないとバリデーションに失敗します。
+クライアントに公開するには接頭辞 `NEXT_PUBLIC` を付ける必要があります。接頭辞を付けない場合、検証が失敗するので無効な構成を検出するのに役立ちます。
 
 ### processEnv Object
 
@@ -76,7 +81,7 @@ TypeScript will help you make sure that you have destructed all the keys from bo
 
 ここで `process.env` を分解します。
 
-Next.js では環境変数を扱う際に、通常のオブジェクトのように `process.env` を分解することができないので、手動で行う必要があります。
+Next.js では環境変数を扱う際に、通常のオブジェクトのように `process.env` を分解することができないので手動で行う必要があります。
 
 TypeScript は、両方のスキーマからすべてのキーを分解したことを確認するのに役立ちます。
 
@@ -179,7 +184,7 @@ Some frameworks and build tools, like Next.js, suggest that you store secrets in
 
 ## .env.example
 
-デフォルトの `.env` ファイルはバージョンコントロールにコミットされないので、オプションで `.env.example` ファイルも用意しました。このファイルには、秘密情報が削除された `.env` ファイルのコピーを保存しておくことができます。これは必須ではありませんが、コントリビューターが自分の環境を使い始めるのをできるだけ簡単にするために、example を最新に保つことをお勧めします。
+デフォルトの `.env` ファイルはバージョンコントロールにコミットされないので、初期構成プロジェクトには`.env.example` ファイルも用意しました。このファイルは、秘密情報が削除された `.env` ファイルのコピーを保存しておくことができます。これは必須ではありませんが、貢献者が自分の環境をできるだけ簡単に立ち上げられるようにするために、example を最新に保つことをお勧めします。
 
 Next.js のようなフレームワークやビルドツールでは、秘密情報を `.env.local` ファイルに保存し、 `.env` ファイルをプロジェクトにコミットすることを推奨するものがあります。しかしこれだと誤ってプロジェクトに秘密情報をコミットしてしまうかもしれないため、あまりお勧めできません。その代わりに、秘密情報を `.env` に保存し、 `.env` ファイルを `.gitignore` に保存し、 `.env.example` ファイルのみをプロジェクトにコミットすることを推奨します。
 
@@ -199,13 +204,13 @@ Optionally, you can also keep `.env.example` updated:
 
 プロジェクトが必要とする環境変数がない状態でビルドが完了しないようにするために、**2**箇所に新しい環境変数を追加する必要があります：
 
-📄 `.env` を入力します：`.env`ファイルに通常入力するように、環境変数を入力します（例：`KEY=VALUE`）。
+📄 `.env`: `.env`ファイルに通常入力するように、環境変数を入力します（例：`KEY=VALUE`）。
 
-📄 `env.mjs`：環境変数に適切な検証ロジックを追加するために、Zod スキーマを定義します（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに分解します（例：`KEY: process.env.KEY` ）。
+📄 `env.mjs`：Zod スキーマを定義することで、環境変数に適切な検証ロジックを追加します。（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに分解します（例：`KEY: process.env.KEY` ）。
 
-オプションで、`.env.example`を更新しておくこともできます：
+オプションで、`.env.example`を最新化しておいても良いでしょう：
 
-📄 `.env.example`：環境変数を入力します。ただし、値が秘密である場合は、その値を含めないように注意してください。
+📄 `.env.example`：環境変数を入力します。ただし、シークレット値は含めないように注意してください。(例： `KEY=VALUE` or `KEY=`)
 
 ### Example
 
@@ -248,12 +253,12 @@ export const processEnv = {
 <Callout type="info">
   空文字列は文字列なので、`z.string()`は空文字列を
   有効な値として受け入れます。もし、環境変数が
-  空であってはならない場合は、`z.string().min(1)`のように指定します。
+  空であってはならない場合は、`z.string().min(1)` のように指定します。
 </Callout>
 
 3. _Optional:_ Add the environment variable to `.env.example`, but don't include the token
 
-4. _オプション:_ 環境変数を `.env.example` に追加しますが、トークンは含めないようにします。
+4. _オプション:_ 環境変数を `.env.example` に追加しますが、トークン値自体は含めないようにします。
 
 ```
 TWITTER_API_TOKEN=
