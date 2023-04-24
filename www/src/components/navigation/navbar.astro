@@ -45,7 +45,20 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     <div class="flex w-full items-center justify-between md:w-auto">
       <div>
         <a href="/" class="flex" title="Home">
-          <img src="/favicon.svg" width="50" height="50" alt="T3 Logo" />
+          <img
+            class="logo-dark"
+            width="50"
+            height="50"
+            src="/images/t3-dark.svg"
+            alt="T3 Logo Dark"
+          />
+          <img
+            class="logo-light"
+            width="50"
+            height="50"
+            src="/images/t3-light.svg"
+            alt="T3 Logo Light"
+          />
         </a>
       </div>
       <div
@@ -108,3 +121,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     window.location.pathname = "/branding";
   });
 </script>
+<style is:global>
+  .dark .logo-dark,
+  .light .logo-light {
+    display: none;
+  }
+  .light .logo-dark,
+  .dark .logo-light {
+    display: block;
+  }
+</style>
