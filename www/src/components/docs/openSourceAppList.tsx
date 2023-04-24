@@ -197,10 +197,18 @@ const projects: App[] = [
     linkName: "prisma-editor.up.railway.app",
     link: "https://prisma-editor.up.railway.app",
   },
-  
+
   {
-    description: "Discuss - A scuffed forum/socmed site in dark theme",
-    repoName: "discuss",
+    description: "T3 Blog - A Reddit inspired forum website",
+    repoName: "leojuriolli7/t3-blog",
+    repo: "https://github.com/leojuriolli7/t3-blog",
+    linkName: "t3-blog-pi.vercel.app",
+    link: "https://t3-blog-pi.vercel.app",
+  },
+
+  {
+    description: "Discuss - Simple dark theme forum website",
+    repoName: "cweiqi27/discuss",
     repo: "https://github.com/cweiqi27/discuss",
     linkName: "discuss-forum.vercel.app",
     link: "https://discuss-forum.vercel.app/",
