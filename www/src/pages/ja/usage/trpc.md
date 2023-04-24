@@ -501,7 +501,7 @@ test("protected example router", async () => {
 | Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
 | React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
 
-## 役に立つ情報源
+## お役立ち情報
 
 | リソース                 | Link                                                    |
 | ------------------------ | ------------------------------------------------------- |

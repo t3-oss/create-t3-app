@@ -88,7 +88,7 @@ Check out Theo's video on how [you might be using TypeScript wrong](https://www.
 | Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
 | Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
 
-## 役に立つ情報源
+## お役立ち情報
 
 | リソース                                                       | リンク                                                            |
 | -------------------------------------------------------------- | ----------------------------------------------------------------- |

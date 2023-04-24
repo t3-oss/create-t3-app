@@ -48,7 +48,7 @@ Next.js の大きな特徴は、データフェッチ機能です。各メソッ
 | Next.js Twitter                | https://twitter.com/nextjs         |
 | Vercel/Next.js YouTube Channel | https://www.youtube.com/c/VercelHQ |
 
-## 役に立つ情報源
+## お役立ち情報
 
 | リソース                          | リンク                             |
 | --------------------------------- | ---------------------------------- |
