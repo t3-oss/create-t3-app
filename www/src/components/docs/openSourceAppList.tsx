@@ -205,6 +205,14 @@ const projects: App[] = [
     linkName: "t3-blog-pi.vercel.app",
     link: "https://t3-blog-pi.vercel.app",
   },
+
+  {
+    description: "Discuss - Simple dark theme forum website",
+    repoName: "cweiqi27/discuss",
+    repo: "https://github.com/cweiqi27/discuss",
+    linkName: "discuss-forum.vercel.app",
+    link: "https://discuss-forum.vercel.app/",
+  },
 ];
 
 export default function OpenSourceAppList({
