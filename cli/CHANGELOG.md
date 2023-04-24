@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.12.0
+
+### Minor Changes
+
+- [#1370](https://github.com/t3-oss/create-t3-app/pull/1370) [`18bc6a7`](https://github.com/t3-oss/create-t3-app/commit/18bc6a73a77b0b48191792ddfd0c296b58cc8221) Thanks [@chungweileong94](https://github.com/chungweileong94)! - Enforce `NEXT_PUBLIC_` env key on client
+
 ## 7.11.0
 
 ### Minor Changes
