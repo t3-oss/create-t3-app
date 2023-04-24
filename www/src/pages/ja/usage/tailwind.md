@@ -140,7 +140,7 @@ Conditionally adding classes using ternaries can get very messy and hard to read
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |
 
-## 役に立つ情報源
+## お役立ち情報
 
 | リソース                        | リンク                                                   |
 | ------------------------------- | -------------------------------------------------------- |

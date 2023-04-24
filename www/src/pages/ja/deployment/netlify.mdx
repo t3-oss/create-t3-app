@@ -10,7 +10,7 @@ import Callout from "../../../components/docs/callout.tsx";
 
 Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
 
-Netlify は Vercel と同じような系統、代替となるデプロイメントプロバイダです。このドキュメントに基づいたサンプルリポジトリは [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) を参照してください。
+Netlify は Vercel と同系統であり、その代替となり得るデプロイメントプロバイダです。本ドキュメントに基づいたサンプルリポジトリは [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) を参照してください。
 
 ## Why Host on Netlify
 
@@ -22,11 +22,11 @@ There are relative pros and cons for all deployment providers since no single ho
 
 ## Netlify でホスティングする理由
 
-従来の常識では、Vercel が Next.js のサポートに優れているのは、Vercel が Next.js を開発しているからだと言われています。Vercel は、Next.js で最適なパフォーマンスと DX が得られるようにプラットフォームを調整することに既得権益を持っています。大半のユースケースにおいて、これは真実であり、標準的な道から逸脱することに意味はないでしょう。
+従来の知識では、Vercel が Next.js のサポートが優れているとされています。これは、Vercel が Next.js を開発しているためで、Next.js との最適なパフォーマンスと DX のためにチューニングされることに Vercel プラットフォームは大きな関心をもっています。多くのユースケースではこのことは真であり、この「標準的な道筋」から逸脱することは意味がありません。
 
-また、Next.js の多くの機能は Vercel でしかサポートされないという意見もよくあります。確かに Next.js の新機能はリリース時にデフォルトで Vercel でテストされ、サポートされますが、Netlify など他のプロバイダーが[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[迅速に実装してサポートをリリース](https://www.netlify.com/blog/deploy-nextjs-13/)するケースもあります。
+また、一般に、多くの Next.js の機能が Vercel でのみサポートされているという意見もあります。確かに新しい Next.js の機能はデフォルトでリリース時に Vercel でテストおよびサポートされることは事実ですが、Netlify のような他のプロバイダも、[安定した Next.js 機能](https://docs.netlify.com/integrations/frameworks/next-js/overview/)に対して[すぐに実装およびリリースサポート](https://www.netlify.com/blog/deploy-nextjs-13/)を提供することがあります。
 
-すべてのデプロイメント先のプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）のために、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)を開発し、[HTTP レスポンスにアクセスしたり変更したりするユニークなミドルウェアをメンテナンス](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)しています。
+しかし、すべてのデプロイメントプロバイダーには相対的な長所と短所があり、単一のホストがすべてのユースケースに対して最高のサポートを提供できるわけではありません。例えば、Netlify では、Netlify のエッジファンクション（Deno Deploy 上で動作）用に、独自の[カスタム Next.js ランタイム](https://github.com/netlify/next-runtime)を構築し、[HTTP レスポンスにアクセスへのアクセスと変更のための独自のミドルウェアをメンテナンス](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)しています。
 
 <Callout type="info">
   To track the status of non-stable Next 13 features see [Using the Next 13
@@ -77,7 +77,7 @@ Netlify CLI や Netlify ダッシュボードを使って直接ビルド命令�
 
 6. Click **Deploy site**, wait for the build to complete, and view your new site.
 
-## Netlify Dashboard を使う
+## Netlify Dashboard の使用方法
 
 1. コードを GitHub リポジトリにプッシュし、[Netlify](https://app.netlify.com/signup)にサインアップしてください。アカウントを作成したら、**Add new site** から **Import an existing project** をクリックします。
 
@@ -99,7 +99,7 @@ Netlify CLI や Netlify ダッシュボードを使って直接ビルド命令�
 
 ![環境変数の追加](/images/netlify-05-env-vars.webp)
 
-6. 「** Deploy site**」をクリックし、ビルドが完了するのを待ち、新しいサイトを表示します。
+6. 「**Deploy site**」をクリックし、ビルドが完了するのを待ち、新しいサイトを表示します。
 
 ## Using the Netlify CLI
 
@@ -135,7 +135,7 @@ ntl deploy --prod --build
 
 To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
 
-## Netlify CLI を使用する
+## Netlify CLI の使用方法
 
 コマンドラインからデプロイするには、まずプロジェクトを GitHub のリポジトリにプッシュし、[Netlify CLI をインストール](https://docs.netlify.com/cli/get-started/) する必要があります。`netlify-cli` はプロジェクトの依存関係としてインストールするか、以下のコマンドであなたのマシンにグローバルにインストールすることができます：
 
