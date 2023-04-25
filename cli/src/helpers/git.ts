@@ -112,7 +112,7 @@ export const initializeGit = async (projectDir: string) => {
 
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
-    if (major < 2 || minor < 28) {
+    if (major < 2 || (major == 2 && minor < 28)) {
       await execa("git", ["init"], { cwd: projectDir });
       await execa("git", ["branch", "-m", branchName], { cwd: projectDir });
     } else {
