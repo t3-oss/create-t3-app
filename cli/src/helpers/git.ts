@@ -114,7 +114,9 @@ export const initializeGit = async (projectDir: string) => {
     const { major, minor } = getGitVersion();
     if (major < 2 || (major == 2 && minor < 28)) {
       await execa("git", ["init"], { cwd: projectDir });
-      await execa("git", ["branch", "-m", branchName], { cwd: projectDir });
+      await execa("git", ["symbolic-ref", "HEAD", `refs/heads/${branchName}`], {
+        cwd: projectDir,
+      });
     } else {
       await execa("git", ["init", `--initial-branch=${branchName}`], {
         cwd: projectDir,
