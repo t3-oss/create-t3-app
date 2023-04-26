@@ -7,7 +7,7 @@ lang: ja
 
 このスタックをコンテナ化し、Docker を使用して単一のコンテナとしてデプロイすることができます。または、 docker-compose を使用して複数のコンテナのグループの一部としてデプロイすることもできます。このドキュメントに基づいたサンプルリポジトリは [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) をご覧ください。
 
-## Docker プロジェクトの構成
+## Docker プロジェクトの設定
 
 Next.js では、ビルド時の変数（フロントエンドで利用可能、接頭辞は`NEXT_PUBLIC`）と実行環境の変数（サーバサイドのみ）が異なる処理を必要とすることに注意してください。このデモでは 2 つの変数を使用しています。`Dockerfile`、コマンドライン引数、`docker-compose.yml`の中での位置に注意してください：
 

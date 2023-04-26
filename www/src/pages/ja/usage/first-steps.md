@@ -5,8 +5,6 @@ layout: ../../../layouts/docs.astro
 lang: ja
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
-
 新しい T3 アプリのために初期構成を生成し、準備ができたとして、ここではアプリを動作させるために必要な最低限の手順を説明します。
 
 ## データベース

@@ -50,7 +50,7 @@ const processEnv = {
 
 ここで `process.env` を再構築します。
 
-Next.js では環境変数を扱う際に、通常のオブジェクトのように `process.env` を再構築することができないので手動で行う必要があります。
+Zod スキーマを解析できる JavaScript オブジェクトが必要で、Next.js が環境変数を扱う方法のため、通常のオブジェクトのように process.env を再構築できません。そのため、手動で行う必要があります
 
 TypeScript は、両方のスキーマからすべてのキーを再構築したことを確認するのに役立ちます。
 
@@ -69,8 +69,6 @@ _興味のある読者のために:_
 
 <details>
 <summary>高度な話題: バリデーションロジック</summary>
-
-Depending on the environment (server or client) we validate either both or just the client schema. This means that even though the server environment variables will be undefined, they won't trigger the validation to fail - meaning we can have a single entrypoint for our environment variables.
 
 環境（サーバーまたはクライアント）に応じて、両方のスキーマが検証されるのか、クライアントのスキーマだけが検証されるのかが決まります。つまり、サーバーの環境変数が未定義であっても、バリデーションが失敗することはありません。つまり、環境変数のエントリーポイントを 1 つにすることができます。
 
@@ -92,8 +90,6 @@ if (parsed.success === false) {
   throw new Error("Invalid environment variables");
 }
 ```
-
-Then, we use a proxy object to throw errors if you try to access a server-side environment variable on the client.
 
 そして、プロキシオブジェクトを使って、クライアントでサーバーサイドの環境変数にアクセスしようとすると、エラーを投げるようにしています。
 
