@@ -3,7 +3,10 @@ title: Installasjon
 description: Installasjonsveiledning for Create T3 App
 layout: ../../layouts/docs.astro
 lang: no
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 For å lage en app med `create-t3-app`, kjør en av følgende tre kommandoer og svar på spørsmålene i veiviseren:
 
@@ -48,7 +51,9 @@ For vår CI (Kontinuerlig Integrasjon) har vi noen eksperimentelle flagg som lar
 | `--nextAuth` | Inkluder NextAuth.js i prosjektet  |
 | `--tailwind` | Inkluder Tailwind CSS i prosjektet |
 
-**Merk: Hvis du utelater CI-flagget har resten flaggene ingen effekt.**
+<Callout type="warning">
+  Hvis du utelater CI-flagget har resten flaggene ingen effekt.
+</Callout>
 
 Du trenger ikke å eksplisitt velge bort pakkene du ikke vil ha. Men hvis du vil være eksplisitt, kan du sende `false`, f.eks. `--nextAuth false`.
 
