@@ -8,8 +8,6 @@ isMdx: true
 
 import Callout from "../../components/docs/callout.tsx";
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
-
 `create-t3-app`を使用してアプリケーションの初期構成を生成するには、以下の 3 つのコマンドのいずれかを実行し、コマンドプロンプトの質問に答えてください：
 
 ### npm
@@ -30,18 +28,7 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
-
 アプリケーションの初期構成が生成されたら、[ファーストステップ](/ja/usage/first-steps) をチェックして、新しいアプリケーションを開始しましょう。
-
-## Advanced usage
-
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
 
 ## 高度な使用法
 
@@ -51,24 +38,6 @@ After your app has been scaffolded, check out the [first steps](/en/usage/first-
 | `--noGit`         | プロジェクト内に新しい git リポジトリを初期化しないよう CLI に明示的に指示する   |
 | `-y`, `--default` | CLI の確認をバイパスして、すべてのオプションを選択した新しい t3-app を立ち上げる |
 | `--noInstall`     | 依存関係をインストールせずにプロジェクトを生成する                               |
-
-## Experimental usage
-
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
-
-| Flag         | Description                         |
-| ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
-
-<Callout type="warning">
-  If you don't provide the `CI` flag, the rest of these flags has no effect.
-</Callout>
-
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
 
 ## 実験的な使い方
 
@@ -89,19 +58,10 @@ CI 用として、プロンプトなしで任意のアプリケーションの�
 
 不要なパッケージを明示的にオプトアウトする必要はありません。しかし、明示的にそうしたい場合は、`--nextAuth false` のように `false` を渡すことができます。
 
-### Example
-
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
-
-```bash
-pnpm dlx create-t3-app@latest --CI --trpc --tailwind
-```
-
 ### 例
 
 以下は、tRPC と Tailwind CSS を使った T3 App の初期構成を生成します。
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
-
 ```

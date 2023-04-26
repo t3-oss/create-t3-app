@@ -31,41 +31,23 @@ lang: ja
   </cite>
 </blockquote>
 
-Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
-
-It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line.
-
-It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
-
 新人開発者であれ、熟練した開発者であれ、TypeScript は必須の要素だと考えています。最初はとっつきにくいかもしれませんが、多くのツールがそうであるように、使い始めたら元に戻りたいと思うことはないでしょう。
 
 また、存在しないプロパティにアクセスしようとしたり、間違った型の値を渡そうとしたりすると、デバッグが必要になる箇所が赤い波線で警告されます。
 
-あなたが今まさに書いているコードや、のめり込んで集中しているコードに対して、ドキュメントをエディター中で直接表示し、不可避な間違いを犯したときにすぐにフィードバックが得られるのですから、TypeScript はおそらく最も開発者に生産性をもたらすツールです。
-
-## Type Inference
-
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
+あなたが今まさに書いているコードや、のめり込んで集中しているコードに対して、ドキュメントをエディター中で直接表示し、避けられないミスを犯したときに即座にフィードバックが得られるのですから、TypeScript はおそらく、開発者に最も生産性をもたらすツールです。
 
 ## 型推論
 
-TypeScript を初めて開発する人の多くは、TypeScript を「_書く_」ことを気にしてしまいますが、そのメリットの多くは実はコードを一切変更しなくても型推論で得られるのです。型推論とは、何かが型付けされた場合、その型はアプリケーションのフロー全体を通じて、他の場所で再宣言することなく、その型に適合していることを意味します。例えばある関数が受け取る引数の型を定義してしまえば、その関数の本体では通常、TypeScript 特有のコードを必要とせずに型安全になります。また、ライブラリの開発者は、ライブラリの型を維持するために多大な労力を費やしています。つまり、アプリケーション開発者は、既存ライブラリが持っている型情報からの推論と、ビルドインのドキュメントの両方からエディタ上で恩恵を受けることができるのです。
+多くの新しい TypeScript 開発者は、TypeScript の「_記述_」に関心がありますが、そのメリットの多くは実はコードを一切変更せずとも、型推論で得られるのです。型推論とは、何かが型付けされた場合、その型はアプリケーションのフロー全体を通じ、他の場所で再度型宣言することなしで、その型への適合が追従することを意味します。例えばある関数が受け取る引数の型を定義してしまえば、その関数の本体では通常、さらなる TypeScript 特有のコードを必要とせずに型安全になることを意味します。また、ライブラリの開発者は、ライブラリの型を維持するために多大な労力を費やしています。つまり、アプリケーション開発者は、型推論が提供する型と、ビルトインのドキュメントが提供する型の両方からエディタ上で恩恵を受けることができるのです。
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
-
 [TypeScript の使い方が間違っているかもしれない](https://www.youtube.com/watch?v=RmGHnYUqQ4k)という Theo のビデオをチェックしてみてください。
 
-## Powerful uses of type inference
-
 ## 型推論の強力な活用法
-
-### Zod
-
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
 
 ### Zod
 
@@ -73,20 +55,7 @@ Check out Theo's video on how [you might be using TypeScript wrong](https://www.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
-
-### Tanstack Query
-
-[Tanstack Query](https://tanstack.com/query/v4/) は、宣言的で常に最新の自動管理されたクエリとミューテーションを提供し、開発者体験と利用者体験の両方を直接改善します。
-
-## Useful Resources
-
-| Resource                                                  | Link                                                              |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
-| Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
-| Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
+[Tanstack Query](https://tanstack.com/query/v4/) は、宣言的で、常にデータが最新化される自動管理されたクエリとミューテーションを提供し、開発者体験と利用者体験の両方を直接改善します。
 
 ## お役立ち情報
 
