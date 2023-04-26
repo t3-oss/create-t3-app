@@ -1,16 +1,19 @@
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
 import remarkCodeTitles from "remark-code-titles";
 
 /** @link https://astro.build/config */
 export default defineConfig({
   site: `https://create.t3.gg/`,
+  output: "server",
+  adapter: vercel(),
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
@@ -50,4 +53,9 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });
