@@ -114,6 +114,9 @@ export const initializeGit = async (projectDir: string) => {
     const { major, minor } = getGitVersion();
     if (major < 2 || (major == 2 && minor < 28)) {
       await execa("git", ["init"], { cwd: projectDir });
+      // symbolic-ref is used here due to refs/heads/master not existing
+      // It is only created after the first commit
+      // https://superuser.com/a/1419674
       await execa("git", ["symbolic-ref", "HEAD", `refs/heads/${branchName}`], {
         cwd: projectDir,
       });
