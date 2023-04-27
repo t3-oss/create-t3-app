@@ -1,0 +1,73 @@
+---
+title: FAQ
+description: T3 Appについてのよくある質問(FAQ)
+layout: ../../layouts/docs.astro
+lang: ja
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Create T3 App について、よくあるご質問をご紹介します。
+
+## 次に何をしたら良いですか？これでアプリケーションを作るにはどうすればいい？
+
+CT3A はできる限りシンプルにしたものなので、CT3A で生成した初期構成から始め、後で必要なものが出てきたらその時点で追加していくのが良いでしょう。
+
+このプロジェクトで使用されているさまざまな技術に精通していない場合、それぞれのドキュメントを参照してください。それでも漠然としている場合は、私たちの[Discord](https://t3.gg/discord)に参加し質問してください。
+
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
+
+## アプリケーションを最新の状態に保つにはどうすればよいですか？
+
+Create T3 App はフレームワークではなく、初期構成を生成するツールです。このことは、一度アプリケーションを初期化したなら、それはあなたのものになることを意味します。インストール後には、最新版へ追随するのを助けてくれる CLI ツールのようなものはありません。もし、私たちがテンプレートに加えた改良を追っていきたいのであれば、私たちのリポジトリで[リリースを通知できるようにする](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)と良いでしょう。とはいえ、私たちがテンプレートに加えたすべての変更を、あなたのアプリケーションに反映させる必要はないでしょう。
+
+## 現在、どのような学習リソースがありますか？
+
+下記のリソースは T3 Stack のために存在する最高のものの一部ですが、コミュニティ（および[Theo](https://youtu.be/rzwaaWH0ksk?t=1436)）としては、まずはスタックを使い始め、それを使って開発をしながら学んでいくことをお奨めします。
+
+もしあなたが Create T3 App を検討しているなら、スタックの構成要素のいくつかをすでに使っているかもしれません。そうなら、思い切って飛び込んで、何かを作りながら他の構成要素を学んでいってみてはいかがでしょうか？
+
+とはいえ、この方法が誰にとってもうまくいくわけではないことも理解しています。もしあなたが、推奨される方法を試した上でもっとリソースが欲しいと感じたり、自分でやる自信がなかったり、スタックに圧倒されていると感じたら、Create T3 App に関する以下の素晴らしいチュートリアルをチェックしてみてください：
+
+### 記事一覧
+
+- [Create T3 App でフルスタックアプリを作る](https://www.nexxel.dev/blog/ct3a-guestbook)
+- [初めての Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [T3 アプリを Turborepo に移行する](https://www.jumr.dev/blog/t3-turbo)
+- [T3 アプリに Stripe を組み込む](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+
+### 動画
+
+- [T3 Stack チュートリアル - FROM 0 TO PROD FOR $0 (Next.js, tRPC, TypeScript, Tailwind, Prisma & More)](https://www.youtube.com/watch?v=YkOSUVzOAA4) **(recommended)**
+- [Jack Herrington - T3 Stack でメモ帳アプリを作る](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [T3 Stack で Twitter クローンを作る - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [T3 スタックでブログを作る - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [T3 スタックによるライブチャットアプリケーションの構築 - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [T3 Stack - どのように作ったか](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [Create T3 App の概要（Next、Typescript、Tailwind、tRPC、Next-Auth）](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+
+## なぜプロジェクトに `.js` ファイルがあるのですか？
+
+[T3-原則#3](/ja/introduction#型安全は必須)にあるように、私たちは型安全性を第一級市民として扱っています。しかし残念ながら、すべてのフレームワークやプラグインが TypeScript をサポートしているわけではないので、設定ファイルの一部は `.js` ファイルでなければならないのです。
+
+これらのファイルが JavaScript であることを強調するために、各ファイルの種別（`cjs`または`mjs`）を、それを使用するライブラリによってサポートするものに応じて明示的に宣言するように努めています。また、このプロジェクトのすべての `js` ファイルは、コンパイラ (tsconfig) の checkJs オプションを使用して型チェックが行われています。
+
+## アプリケーションを国際化対応するのに苦労しています。参考にできるものはありますか？
+
+`create-t3-app` にデフォルトで i18n を含めないことにした理由は、非常に意見が分かれるトピックであり、実装方法も多岐にわたるためです。
+
+しかし、実装するのに苦労していて参考プロジェクトを見たい場合は、[next-i18next](https://github.com/i18next/next-i18next)を使って T3 アプリケーションに i18n を追加する方法を紹介する[参考リポジトリ](https://github.com/juliusmarminge/t3-i18n)があります。
+
+## Next.js 13 の /app ではなく、なぜ /pages を使っているのですか？
+
+[T3 原則 2](/ja/introduction#問題を解決する)の通り、私たちは最先端のものが大好きですが、安定性を重視しており、ルーター全体を移植するのは難しく、[血を流すのには適切なところではない](https://youtu.be/mnwUbtieOuI?t=1662)とみなしています。`/app` ディレクトリは [未来への一端を垣間見せてくれる](https://youtu.be/rnsC-12PVlM?t=818)ものではありますが、まだ本番環境には適していません。API はベータ版であり、破壊的な変更が予想されています。
+
+<Callout type="info">
+  `/app`ディレクトリでサポートされている機能、計画されている機能、作業中の機能の一覧は[ベータ版Next.js
+  ドキュメント](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features)をご覧ください。
+</Callout>
