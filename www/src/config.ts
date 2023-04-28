@@ -28,6 +28,7 @@ export const KNOWN_LANGUAGES = {
   // Add more languages here
   // sv: "Svenska",
   ar: "العربية",
+  cs: "Čeština",
   en: "English",
   es: "Español",
   fr: "Français",
@@ -104,6 +105,35 @@ export const SIDEBAR: Sidebar = {
     Deployment: [
       { text: "Vercel", link: "ar/deployment/vercel" },
       { text: "Docker", link: "ar/deployment/docker" },
+    ],
+  },
+  cs: {
+    "Create T3 App": [
+      { text: "Úvod", link: "cs/introduction" },
+      { text: "Proč CT3A?", link: "cs/why" },
+      { text: "Instalace", link: "cs/installation" },
+      { text: "Struktura projektu", link: "cs/folder-structure" },
+      { text: "Často kladené dotazy", link: "cs/faq" },
+      { text: "T3 Koleke", link: "cs/t3-collection" },
+      { text: "Další doporučení", link: "cs/other-recs" },
+    ],
+    Usage: [
+      { text: "První kroky", link: "cs/usage/first-steps" },
+      { text: "Next.js", link: "cs/usage/next-js" },
+      { text: "TypeScript", link: "cs/usage/typescript" },
+      { text: "tRPC", link: "cs/usage/trpc" },
+      { text: "Prisma", link: "cs/usage/prisma" },
+      { text: "NextAuth.js", link: "cs/usage/next-auth" },
+      {
+        text: "Systémové proměnné",
+        link: "cs/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "cs/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "cs/deployment/vercel" },
+      { text: "Netlify", link: "cs/deployment/netlify" },
+      { text: "Docker", link: "cs/deployment/docker" },
     ],
   },
   en: {
@@ -395,6 +425,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "كيفية الإستخدام؟",
     Deployment: "نَشر تطبيقك",
+  },
+  cs: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Použití",
+    Deployment: "Nasazení",
   },
   fr: {
     "Create T3 App": "Create T3 App",
