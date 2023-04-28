@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.12.1
+
+### Patch Changes
+
+- [#1377](https://github.com/t3-oss/create-t3-app/pull/1377) [`00018ff`](https://github.com/t3-oss/create-t3-app/commit/00018ff0cbe5904f0bb37b8cb0a64814ca5f9410) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - move env validation logic out to a separate package
+
+- [#1385](https://github.com/t3-oss/create-t3-app/pull/1385) [`ac12abb`](https://github.com/t3-oss/create-t3-app/commit/ac12abb92a77d251b2c4bc72caceb422ab4ca706) Thanks [@iAverages](https://github.com/iAverages)! - Fixed issue with creating git repository with git versions below 2.28
+  Fixed bug with check to use --inital-branch set in git v2.28
+
 ## 7.12.0
 
 ### Minor Changes
