@@ -3,6 +3,7 @@ const config = {
   ...require("../.prettierrc.cjs"),
   plugins: [
     require.resolve("prettier-plugin-astro"),
+    require.resolve("@ianvs/prettier-plugin-sort-imports"),
     require.resolve("prettier-plugin-tailwindcss"), // MUST come last
   ],
   pluginSearchDirs: false,

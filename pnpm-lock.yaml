@@ -92,6 +92,9 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
     devDependencies:
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: ^3.7.2
+        version: 3.7.2(prettier@2.8.6)
       '@prisma/client':
         specifier: ^4.11.0
         version: 4.11.0(prisma@4.11.0)
@@ -124,7 +127,7 @@ importers:
         version: 18.15.5
       next:
         specifier: ^13.2.4
-        version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+        version: 13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
         specifier: ^4.20.1
         version: 4.20.1(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
@@ -133,7 +136,7 @@ importers:
         version: 2.8.6
       prettier-plugin-tailwindcss:
         specifier: ^0.2.6
-        version: 0.2.6(prettier-plugin-astro@0.8.0)(prettier@2.8.6)
+        version: 0.2.6(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.0)(prettier@2.8.6)
       prisma:
         specifier: ^4.11.0
         version: 4.11.0
@@ -216,6 +219,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^3.1.1
         version: 3.1.1(astro@2.1.5)(tailwindcss@3.3.0)
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: ^3.7.2
+        version: 3.7.2(prettier@2.8.6)
       '@types/node':
         specifier: ^18.15.5
         version: 18.15.5
@@ -254,7 +260,7 @@ importers:
         version: 0.8.0
       prettier-plugin-tailwindcss:
         specifier: ^0.2.6
-        version: 0.2.6(prettier-plugin-astro@0.8.0)(prettier@2.8.6)
+        version: 0.2.6(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.0)(prettier@2.8.6)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -1269,6 +1275,28 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
+  /@ianvs/prettier-plugin-sort-imports@3.7.2(prettier@2.8.6):
+    resolution: {integrity: sha512-bVckKToJM8XV2wTOG1VpeXrSmfAG49esVrikbxeFbY51RJdNke9AdMANJtGuACB59uo+pGlz0wBdWFrRzWyO1A==}
+    peerDependencies:
+      '@vue/compiler-sfc': '>=3.0.0'
+      prettier: 2.x
+    peerDependenciesMeta:
+      '@vue/compiler-sfc':
+        optional: true
+    dependencies:
+      '@babel/core': 7.21.3
+      '@babel/generator': 7.21.3
+      '@babel/parser': 7.21.3
+      '@babel/traverse': 7.21.3
+      '@babel/types': 7.21.3
+      javascript-natural-sort: 0.7.1
+      lodash.clone: 4.5.0
+      lodash.isequal: 4.5.0
+      prettier: 2.8.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@jridgewell/gen-mapping@0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
     engines: {node: '>=6.0.0'}
@@ -1676,7 +1704,7 @@ packages:
       '@trpc/client': 10.18.0(@trpc/server@10.18.0)
       '@trpc/react-query': 10.18.0(@tanstack/react-query@4.28.0)(@trpc/client@10.18.0)(@trpc/server@10.18.0)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server': 10.18.0
-      next: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+      next: 13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-ssr-prepass: 1.5.0(react@18.2.0)
@@ -4405,6 +4433,10 @@ packages:
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  /javascript-natural-sort@0.7.1:
+    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
+    dev: true
+
   /jiti@1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
@@ -4566,6 +4598,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+
+  /lodash.clone@4.5.0:
+    resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
+    dev: true
+
+  /lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: true
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -5280,7 +5320,7 @@ packages:
       '@panva/hkdf': 1.0.4
       cookie: 0.5.0
       jose: 4.13.1
-      next: 13.2.4(react-dom@18.2.0)(react@18.2.0)
+      next: 13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
       oauth: 0.9.15
       openid-client: 5.4.0
       preact: 10.13.1
@@ -5290,7 +5330,7 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /next@13.2.4(react-dom@18.2.0)(react@18.2.0):
+  /next@13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-g1I30317cThkEpvzfXujf0O4wtaQHtDCLhlivwlTJ885Ld+eOgcz7r3TGQzeU+cSRoNHtD8tsJgzxVdYojFssw==}
     engines: {node: '>=14.6.0'}
     hasBin: true
@@ -5317,7 +5357,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
+      styled-jsx: 5.1.1(@babel/core@7.21.3)(react@18.2.0)
     optionalDependencies:
       '@next/swc-android-arm-eabi': 13.2.4
       '@next/swc-android-arm64': 13.2.4
@@ -5886,7 +5926,7 @@ packages:
       synckit: 0.8.5
     dev: true
 
-  /prettier-plugin-tailwindcss@0.2.6(prettier-plugin-astro@0.8.0)(prettier@2.8.6):
+  /prettier-plugin-tailwindcss@0.2.6(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.0)(prettier@2.8.6):
     resolution: {integrity: sha512-F+7XCl9RLF/LPrGdUMHWpsT6TM31JraonAUyE6eBmpqymFvDwyl0ETHsKFHP1NG+sEfv8bmKqnTxEbWQbHPlBA==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -5938,6 +5978,7 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
+      '@ianvs/prettier-plugin-sort-imports': 3.7.2(prettier@2.8.6)
       prettier: 2.8.6
       prettier-plugin-astro: 0.8.0
     dev: true
@@ -6756,7 +6797,7 @@ packages:
       inline-style-parser: 0.1.1
     dev: false
 
-  /styled-jsx@5.1.1(react@18.2.0):
+  /styled-jsx@5.1.1(@babel/core@7.21.3)(react@18.2.0):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -6769,6 +6810,7 @@ packages:
       babel-plugin-macros:
         optional: true
     dependencies:
+      '@babel/core': 7.21.3
       client-only: 0.0.1
       react: 18.2.0
     dev: true
