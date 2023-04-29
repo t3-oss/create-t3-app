@@ -8,7 +8,7 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App uses its newly published package [@t3-oss/env-nextjs](https://env.t3.gg) and [zod](https://zod.dev)  under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.ts`.
+Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev)  under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.ts`.
 
 ## env.ts
 
@@ -66,7 +66,7 @@ To ensure your build never completes without the environment variables the proje
 
 📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-📄 `env.ts`: Add the appropriate validation logic for the environment variable by defining a Zod schema inside `createEnv`, e.g. `KEY: z.string()`, and destruct the environment variable from `process.env` in the `processEnv` object, e.g. `KEY: process.env.KEY`.
+📄 `env.ts`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`.
 
 Optionally, you can also keep `.env.example` updated:
 
