@@ -1,6 +1,6 @@
-import clsx from "clsx";
 import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../../languages";
+import clsx from "clsx";
 
 type SlugType = "" | "usage" | "deployment";
 type Entry = { text: string; link: string };
