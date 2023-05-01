@@ -15,6 +15,7 @@ Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along
 _TLDR; If you want to add a new environment variable, you must add it to your `.env` as it is defined in the `src/env.ts` validator._
 
 ```ts:env.ts
+import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
  
 export const env = createEnv({
@@ -23,6 +24,9 @@ export const env = createEnv({
   },
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
   },
 });
 ```
