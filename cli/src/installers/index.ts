@@ -1,9 +1,10 @@
-import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
+import { strictEsLintAndPrettier } from "~/installers/strictEslintAndPrettier.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
+import { type PackageManager } from "~/utils/getUserPkgManager.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
@@ -13,6 +14,7 @@ export const availablePackages = [
   "tailwind",
   "trpc",
   "envVariables",
+  "strictEslintAndPrettier",
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -55,5 +57,9 @@ export const buildPkgInstallerMap = (
   envVariables: {
     inUse: true,
     installer: envVariablesInstaller,
+  },
+  strictEslintAndPrettier: {
+    inUse: true,
+    installer: strictEsLintAndPrettier,
   },
 });
