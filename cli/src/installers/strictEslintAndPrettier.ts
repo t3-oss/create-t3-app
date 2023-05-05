@@ -34,7 +34,7 @@ export const strictEsLintAndPrettier: Installer = ({
     );
   } else {
     fs.copySync(
-      path.join(configDir, "prettier.config.cjs"),
+      path.join(configDir, "_prettier.config.cjs"),
       path.join(projectDir, "prettier.config.cjs"),
     );
   }
