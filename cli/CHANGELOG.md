@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.12.2
+
+### Patch Changes
+
+- [#1401](https://github.com/t3-oss/create-t3-app/pull/1401) [`b1a35dd`](https://github.com/t3-oss/create-t3-app/commit/b1a35dd66c5c9abab13daebfee93c08b67317272) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next to fix vercel build error
+
 ## 7.12.1
 
 ### Patch Changes
