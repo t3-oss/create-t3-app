@@ -59,7 +59,7 @@ export const buildPkgInstallerMap = (
     installer: envVariablesInstaller,
   },
   strictEslintAndPrettier: {
-    inUse: true,
+    inUse: packages.includes("strictEslintAndPrettier"),
     installer: strictEsLintAndPrettier,
   },
 });

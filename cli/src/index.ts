@@ -1,10 +1,4 @@
 #!/usr/bin/env node
-import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
-import {
-  getNpmVersion,
-  renderVersionWarning,
-} from "./utils/renderVersionWarning.js";
 import fs from "fs-extra";
 import path from "path";
 import { type PackageJson } from "type-fest";
@@ -17,6 +11,12 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
+import {
+  getNpmVersion,
+  renderVersionWarning,
+} from "./utils/renderVersionWarning.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
@@ -67,10 +67,12 @@ const main = async () => {
   }
 
   // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
-  fs.renameSync(
-    path.join(projectDir, "_eslintrc.cjs"),
-    path.join(projectDir, ".eslintrc.cjs"),
-  );
+  if (fs.existsSync(path.join(projectDir, "_eslintrc.cjs"))) {
+    fs.renameSync(
+      path.join(projectDir, "_eslintrc.cjs"),
+      path.join(projectDir, ".eslintrc.cjs"),
+    );
+  }
 
   if (!noGit) {
     await initializeGit(projectDir);

@@ -26,5 +26,8 @@ export const dependencyVersionMap = {
   "@trpc/next": "^10.18.0",
   "@tanstack/react-query": "^4.28.0",
   superjson: "1.12.2",
+
+  // strictEslintAndPrettier
+  "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
