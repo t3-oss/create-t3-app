@@ -51,20 +51,22 @@ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
  * errors on the backend.
  */
 import { initTRPC } from "@trpc/server";
+import { TRPCErrorShape } from "@trpc/server/rpc";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
-    return {
-      ...shape,
-      data: {
-        ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
-      },
-    };
+    const data: TRPCErrorShape["data"] = { ...shape.data };
+    if (error.cause) {
+      if (error.cause instanceof ZodError) {
+        data.zodError = error.cause.flatten();
+      } else {
+        data.cause = error.cause;
+      }
+    }
+    return { ...shape, data };
   },
 });
 
