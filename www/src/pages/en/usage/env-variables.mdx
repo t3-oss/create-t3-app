@@ -39,7 +39,7 @@ T3 Env brings a new concept across the `createEnv`, which is responsible for cre
 
 ## Using Environment Variables
 
-When you want to use your environment variables, you can import them from the created `env.mjs` (or `env.mjs`) and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
+When you want to use your environment variables, you can import them from the created `env.mjs` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
@@ -70,7 +70,7 @@ To ensure your build never completes without the environment variables the proje
 
 📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-📄 `env.mjs`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`.
+📄 `env.mjs`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`. Besides that, make sure to destruct them in the `runtimeEnv` option, e.g.: `KEY: process.env.KEY`
 
 Optionally, you can also keep `.env.example` updated:
 
@@ -106,8 +106,13 @@ export const env = createEnv({
   not empty, you can use `z.string().min(1)`.
 </Callout>
 
-3. _Optional:_ Add the environment variable to `.env.example` and make sure not to include the secret
+3. _Optional:_ Add the environment variable to `.env.example` and make sure not to include the secret in the `runtimeEnv` option
 
 ```
-TWITTER_API_TOKEN=
+export const env = createEnv({
+  // ...
+  runtimeEnv: {
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
 ```

@@ -41,7 +41,7 @@ T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por
 
 ## Usando Variáveis de Ambiente
 
-Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` (ou `env.mjs`) e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
+Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
@@ -70,7 +70,7 @@ Alguns frameworks e outras ferramentas, como o Next.js, sugerem que você armaze
 
 Para garantir que sua compilação nunca seja concluída sem as variáveis de ambiente de que o projeto precisa, você precisará adicionar novas variáveis de ambiente em **dois** locais:
 
-📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`
+📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`. Além disso, certifique-se de desestruturar elas na opção `runtimeEnv`, por exemplo, `CHAVE: process.env.CHAVE`.
 
 📄 `env.mjs`: Adicione a lógica de validação apropriada para as variáveis de ambiente definindo um esquema Zod, por exemplo `NOME_DA_VARIAVEL: z.string()`
 
@@ -111,5 +111,10 @@ export const env = createEnv({
 3. opcional: adicione a variável de ambiente a `.env.example`, mas não inclua o token
 
 ```
-TWITTER_API_TOKEN=
+export const env = createEnv({
+  // ...
+  runtimeEnv: {
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
 ```
