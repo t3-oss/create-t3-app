@@ -1,4 +1,4 @@
-import type { MarkdownHeading } from "astro";
+import { type MarkdownHeading } from "astro";
 import { useEffect, useMemo, useState } from "react";
 import { Menu } from "@headlessui/react";
 import clsx from "clsx";
@@ -75,7 +75,7 @@ export default function OnThisPageLinks({
   }, [headings, title]);
 
   return (
-    <div className="sticky inset-x-0 top-20 z-[11] block w-full bg-default px-4 pb-4 pt-2 lg:hidden">
+    <div className="sticky inset-x-0 top-[72px] z-[11] block w-full bg-default px-4 pb-4 pt-2 lg:hidden">
       <Menu>
         {({ open }) => (
           <div className="relative w-full">
@@ -116,7 +116,7 @@ export default function OnThisPageLinks({
                       {({ active }) => (
                         <a
                           className={clsx(
-                            "line-clamp-1 text-md block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
+                            "text-md line-clamp-1 block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
                             isLtr && (heading.depth === 2 ? "pl-3" : "pl-8"),
                             isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
                             {

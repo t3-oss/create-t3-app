@@ -1,67 +1,7 @@
 ---
 import PageSection from "../pageSection.astro";
 import TweetSlider from "./tweetSlider.astro";
-import { type Tweet, dummyTweet } from "./types";
-
-const token = import.meta.env.TWITTER_BEARER_TOKEN;
-const fetchTweets = async (ids: string[]) => {
-  const url =
-    "https://api.twitter.com/2/tweets" +
-    `?ids=${ids.join(",")}` +
-    "&tweet.fields=created_at,public_metrics" +
-    "&user.fields=name,profile_image_url,username,verified" +
-    "&expansions=author_id";
-
-  return await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        console.error(res);
-        throw new Error("Failed to fetch tweets");
-      }
-    })
-    .then((res) => {
-      // TODO: Maybe use Twitter SDK to make this typesafe in the future?
-      return res.data.map((d: any) => {
-        const user = res.includes.users.find((u: any) => u.id === d.author_id);
-        return {
-          id: d.id,
-          handle: user.username,
-          author: user.name,
-          verified: user.verified,
-          avatar: user.profile_image_url,
-          date: new Date(d.created_at),
-          text: d.text.replace(/\b(http(s|):\/\/.+)\W*$/, ""), // remove trailing link
-          likes: d.public_metrics.like_count,
-          retweets: d.public_metrics.retweet_count,
-          replies: d.public_metrics.reply_count,
-          quotes: d.public_metrics.quote_count,
-        };
-      });
-    });
-};
-
-let tweets: Tweet[];
-if (import.meta.env.MODE === "CI" || !token) {
-  console.warn("No Twitter token found, using dummy data");
-  tweets = [dummyTweet, dummyTweet, dummyTweet];
-} else {
-  tweets = await fetchTweets([
-    // Feel free to add more tweets here
-    "1544909672137867264", // https://twitter.com/ajcwebdev/status/1544909672137867264
-    "1595652166173458434", // https://twitter.com/tomdoes_tech/status/1595652166173458434
-    "1553580714591158272", // https://twitter.com/synecdokey/status/1553580714591158272
-    "1553191258771841024", // https://twitter.com/royanger/status/1553191258771841024
-    "1570054715240763393", // https://twitter.com/jonhigger/status/1570054715240763393
-  ]);
-}
-const THREE_HOURS = 3 * 60 * 60;
-Astro.response.headers.set("Cache-Control", `public, max-age=${THREE_HOURS}`);
+import { featuredTweets } from "./featuredTweets";
 ---
 
 <PageSection
@@ -80,7 +20,7 @@ Astro.response.headers.set("Cache-Control", `public, max-age=${THREE_HOURS}`);
     <h3
       class="mt-2 text-3xl font-bold tracking-tight text-t3-purple-50 md:text-5xl lg:text-5xl"
     >
-      Our users <span class="italic">make ship happen</span>
+      Our users ship. <span class="italic">Fast.</span>
     </h3>
     <p
       class="mt-4 max-w-3xl text-base text-t3-purple-200 md:text-lg lg:text-lg"
@@ -92,5 +32,5 @@ Astro.response.headers.set("Cache-Control", `public, max-age=${THREE_HOURS}`);
       > if you want to pop up here ;)
     </p>
   </div>
-  <TweetSlider tweets={tweets} />
+  <TweetSlider tweets={featuredTweets} />
 </PageSection>

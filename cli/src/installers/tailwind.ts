@@ -1,7 +1,7 @@
-import type { Installer } from "~/installers/index.js";
-import path from "path";
 import fs from "fs-extra";
+import path from "path";
 import { PKG_ROOT } from "~/consts.js";
+import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const tailwindInstaller: Installer = ({ projectDir }) => {
@@ -20,8 +20,8 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.cjs");
-  const twCfgDest = path.join(projectDir, "tailwind.config.cjs");
+  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.ts");
+  const twCfgDest = path.join(projectDir, "tailwind.config.ts");
 
   const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.cjs");
   const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");

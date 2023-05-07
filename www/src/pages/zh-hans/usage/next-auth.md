@@ -40,7 +40,7 @@ const User = () => {
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import type { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -94,7 +94,7 @@ declare module "next-auth" {
 
 这个过程可以被分为两步完成：
 
-1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。无需担心，这个函数可以被安全地使用 —— 它的名字包含 `unstable` 是因为这个 API 未来很可能会被修改而已。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
+1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
@@ -154,7 +154,7 @@ const userRouter = router({
 
 ## 搭配 Prisma 使用
 
-要将 NextAuth.js 搭配 Prisma 一起使用需要非常多的 [初始化步骤](https://next-auth.js.org/adapters/models/)。`create-t3-app` 可以帮你完成这些工作，如果你在用 CLI 创建应用时同时选择了 Prisma 和 NextAuth.js，那你的应用已经集成了一个完全正常运行的认证系统，所有的数据库模型都已经预先配置好了。我们为你的应用预先配置了 Discord OAuth 认证服务，因为它是最方便实现的服务之一 —— 只需要在 `.env` 文件里提供令牌即可。然而，你也可以根据 [NextAuth.js 文档](https://next-auth.js.org/providers/) 来轻松添加更多其他第三方认证服务。要注意的是有部分特定的第三方服务需要你在数据模型上添加额外的字段。我们推荐你去阅读你想要添加的第三方验证服务的文档，以便确保你已经提供所有要求的字段了。
+要将 NextAuth.js 搭配 Prisma 一起使用需要非常多的 [初始化步骤](https://authjs.dev/reference/adapter/prisma/)。`create-t3-app` 可以帮你完成这些工作，如果你在用 CLI 创建应用时同时选择了 Prisma 和 NextAuth.js，那你的应用已经集成了一个完全正常运行的认证系统，所有的数据库模型都已经预先配置好了。我们为你的应用预先配置了 Discord OAuth 认证服务，因为它是最方便实现的服务之一 —— 只需要在 `.env` 文件里提供令牌即可。然而，你也可以根据 [NextAuth.js 文档](https://next-auth.js.org/providers/) 来轻松添加更多其他第三方认证服务。要注意的是有部分特定的第三方服务需要你在数据模型上添加额外的字段。我们推荐你去阅读你想要添加的第三方验证服务的文档，以便确保你已经提供所有要求的字段了。
 
 ### 给你的模型添加新的字段
 

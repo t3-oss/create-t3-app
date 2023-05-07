@@ -30,7 +30,7 @@ Le dossier "public" contient des fichiers statiques qui sont servis par le serve
 
 </div>
 <div>
-  
+
 ### `src/env`
 
 Utilisé pour la validation des variables d'environnement et les définitions de types - voir [Variables d'environnement](usage/env-variables).
@@ -114,15 +114,15 @@ En fonction des packages choisis, ce routeur contient plus ou moins de routes po
 
 Le fichier `trpc.ts` est le fichier de configuration principal de votre back-end tRPC. Ici, vous trouverez:
 
-1. La définissons du contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-servertrpccontextts) pour plus d'informations.
-2. Le helper de procédure d'exportation. Voir [utilisation de tRPC](usage/trpc#-servertrpctrpcts) pour plus d'informations.
+1. La définissons du contexte utilisé dans les requêtes tRPC. Voir [utilisation de tRPC](usage/trpc#-serverapitrpcts) pour plus d'informations.
+2. Le helper de procédure d'exportation. Voir [utilisation de tRPC](usage/trpc#-serverapitrpcts) pour plus d'informations.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/root.ts`
 
-Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que la définition du type de routeur. Voir [utilisation du tRPC](usage/trpc#-servertrpcrourts) pour plus d'informations.
+Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les exporter en tant que routeur unique, ainsi que la définition du type de routeur. Voir [utilisation du tRPC](usage/trpc#-serverapirootts) pour plus d'informations.
 
 </div>
 <div>
@@ -157,7 +157,7 @@ Le dossier `utils` est utilisé pour stocker les fonctions utilitaires courammen
 
 #### `src/utils/api.ts`
 
-Le fichier `api.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilstrpcts) pour plus d'informations.
+Le fichier `api.ts` est le point d'entrée frontal de tRPC. Voir [utilisation de tRPC](usage/trpc#-utilsapits) pour plus d'informations.
 
 </div>
 <div>
@@ -176,9 +176,9 @@ Le fichier `.env.example` montre des exemples de variables d'environnement basé
 </div>
 <div>
 
-### `.eslintrc.json`
+### `.eslintrc.cjs`
 
-Le fichier `.eslintrc.json` est utilisé pour configurer ESLint. Voir la [documentation de ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) pour plus d'informations.
+Le fichier `.eslintrc.cjs` est utilisé pour configurer ESLint. Voir la [documentation de ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) pour plus d'informations.
 
 </div>
 <div>

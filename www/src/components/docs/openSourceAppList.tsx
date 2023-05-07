@@ -15,6 +15,7 @@ const projects: App[] = [
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
+
   {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
@@ -154,6 +155,63 @@ const projects: App[] = [
     repo: "https://github.com/AnswerOverflow/AnswerOverflow",
     linkName: "answeroverflow.com",
     link: "https://www.answeroverflow.com/",
+  },
+
+  {
+    description: "Hitori - Serverless Discord bot template",
+    repoName: "astridlol/Hitori",
+    repo: "https://github.com/astridlol/hitori",
+    linkName: "(none)",
+    link: "https://github.com/astridlol/hitori",
+  },
+
+  {
+    description: "CUA - Create an Universal App for web, native and desktop",
+    repoName: "chen-rn/CUA",
+    repo: "https://github.com/chen-rn/CUA",
+    linkName: "cua-demo.vercel.app",
+    link: "https://cua-demo.vercel.app/",
+  },
+
+  {
+    description: "Menufic - Digital menu generator for restaurants",
+    repoName: "kaje94/menufic",
+    repo: "https://github.com/kaje94/menufic",
+    linkName: "menufic.com",
+    link: "https://menufic.com",
+  },
+
+  {
+    description: "Twitter clone - A simple Twitter clone",
+    repoName: "AlandSleman/t3-twitter-clone",
+    repo: "https://github.com/AlandSleman/t3-twitter-clone",
+    linkName: "twitter-clone.kurdmake.com",
+    link: "https://twitter-clone.kurdmake.com",
+  },
+
+  {
+    description:
+      "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
+    repoName: "mohammed-bahumaish/prisma-editor",
+    repo: "https://github.com/mohammed-bahumaish/prisma-editor",
+    linkName: "prisma-editor.up.railway.app",
+    link: "https://prisma-editor.up.railway.app",
+  },
+
+  {
+    description: "T3 Blog - A Reddit inspired forum website",
+    repoName: "leojuriolli7/t3-blog",
+    repo: "https://github.com/leojuriolli7/t3-blog",
+    linkName: "t3-blog-pi.vercel.app",
+    link: "https://t3-blog-pi.vercel.app",
+  },
+
+  {
+    description: "Checkinout - A checklist management project using T3 Stack",
+    repoName: "burak-sevinc/t3-checkinout",
+    repo: "https://github.com/burak-sevinc/t3-checkinout",
+    linkName: "checkinout.vercel.app",
+    link: "https://checkinout.vercel.app/",
   },
 ];
 

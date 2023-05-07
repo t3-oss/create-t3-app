@@ -24,7 +24,7 @@
   "engines": {
     "node": ">=14.16"
   },
-  "packageManager": "pnpm@7.13.0",
+  "packageManager": "pnpm@8.1.0",
   "scripts": {
     "typecheck": "turbo typecheck",
     "build:cli": "turbo --filter=create-t3-app build",
@@ -35,9 +35,10 @@
     "dev:cli": "turbo --filter=create-t3-app dev",
     "dev:www": "turbo --filter=www dev",
     "clean": "turbo clean && rm -rf node_modules",
-    "lint": "turbo lint",
-    "format": "turbo format && prettier --write *.{cjs,md,json}",
-    "format:check": "turbo format:check && prettier --check *.{cjs,md,json}",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "turbo lint:fix && manypkg fix",
+    "format": "turbo format && prettier --write *.{cjs,md,json} --ignore-unknown --no-error-on-unmatched-pattern",
+    "format:check": "turbo format:check && prettier --check *.{cjs,md,json} --ignore-unknown --no-error-on-unmatched-pattern",
     "check": "turbo lint typecheck format:check && manypkg check",
     "release": "changeset version",
     "pub:beta": "cd cli && pnpm pub:beta",
@@ -45,19 +46,24 @@
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.0",
+    "@changesets/cli": "^2.26.1",
     "@manypkg/cli": "^0.20.0",
-    "@types/node": "^18.8.0",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.28.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-turbo": "^0.0.4",
+    "@total-typescript/ts-reset": "^0.3.7",
+    "@types/eslint": "^8.37.0",
+    "@types/node": "^18.16.1",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-turbo": "^0.0.9",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-isaacscript": "^2.6.7",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.0",
-    "turbo": "^1.5.5",
-    "typescript": "^4.9.3"
+    "prettier": "^2.8.8",
+    "turbo": "^1.9.3",
+    "typescript": "^5.0.4"
   }
 }

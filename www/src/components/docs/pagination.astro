@@ -1,5 +1,5 @@
 ---
-import type { SidebarItemLink } from "../../config";
+import { type SidebarItemLink } from "../../config";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { paginate } from "../../utils/pagination";
 import LeftArrow from "../icons/leftArrow.astro";
@@ -20,13 +20,13 @@ const isRtl = getIsRtlFromUrl(pathname);
 ---
 
 <div
-  class="mt-16 mb-8 flex flex-row items-center justify-between px-4 pt-4 font-medium text-t3-purple-800 dark:text-t3-purple-200 lg:px-8"
+  class="mb-8 mt-16 flex flex-row items-center justify-between px-4 pt-4 font-medium text-t3-purple-800 dark:text-t3-purple-200 lg:px-8"
 >
   <div>
     {
       prev ? (
         <a
-          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          class="flex items-center underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
           rel="prev"
           href={Astro.site?.pathname + prev.link}
         >
@@ -43,7 +43,7 @@ const isRtl = getIsRtlFromUrl(pathname);
       next ? (
         <a
           rel="next"
-          class="underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
+          class="flex items-center underline-offset-2 hover:text-t3-purple-400 hover:underline dark:hover:text-t3-purple-100"
           href={Astro.site?.pathname + next.link}
         >
           <>

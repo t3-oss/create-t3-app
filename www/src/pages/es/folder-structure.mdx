@@ -1,0 +1,229 @@
+---
+title: Estructura de Carpetas
+description: Estructura de carpetas de una aplicación T3 recién creada
+layout: ../../layouts/docs.astro
+lang: es
+isMdx: true
+---
+
+import Form from "../../components/docs/folderStructureForm.astro";
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+
+Por favor selecciona las librerías que deseas utilizar para ver la estructura de carpetas de una aplicación T3 recién creada con esas selecciones. Más abajo, encontrarás una descripción de cada entrada.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+La carpeta `prisma` contiene el archivo `schema.prisma` que se utiliza para configurar la conexión de la base de datos y su esquema. También es la ubicación para almacenar archivos de migración y/o scripts que inyectan valores iniciales a la base de datos (seed scripts), si se utilizan. Consulta [uso de Prisma](/es/usage/prisma) para obtener más información.
+
+</div>
+
+<div>
+
+### `public`
+
+La carpeta `public` contiene archivos estáticos que son servidos por el servidor web. El archivo `favicon.ico` es un ejemplo de un archivo estático.
+
+</div>
+
+<div>
+
+### `src/env`
+
+Se utiliza para la validación de variables de entorno y definiciones de tipo; consulta [variables de entorno](usage/env-variables).
+
+</div>
+
+<div>
+
+### `src/pages`
+
+La carpeta `pages` contiene todas las páginas de la aplicación Next.js. El archivo `index.tsx` en el directorio raíz de `/pages` es la página de inicio de la aplicación. El archivo `_app.tsx` se usa para componer la aplicación con otros proveedores. Consulta la [documentación de Next.js](https://nextjs.org/docs/basic-features/pages) para obtener más información.
+
+</div>
+
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+La carpeta `api` contiene todas las rutas API de la aplicación Next.js. El archivo `examples.ts` (con Prisma) contiene un ejemplo de una ruta que hace uso de [rutas API Next.js](https://nextjs.org/docs/api-routes/introduction) junto con Prisma. El archivo `restricted.ts` (con Next-Auth) contiene un ejemplo de una ruta que hace uso de [rutas API Next.js](https://nextjs.org/docs/api-routes/introduction) y está protegida por [NextAuth.js](https://next-auth.js.org/).
+
+</div>
+
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+El archivo `[...nextauth].ts` es la ruta _slug_ de autenticación NextAuth.js. Se utiliza para manejar solicitudes de autenticación. Consulta [uso de NextAuth.js](usage/next-auth) para obtener más información sobre NextAuth.js y [la documentación de rutas dinámicas de Next.js](https://nextjs.org/docs/routing/dynamic-routes) para obtener información sobre rutas _catch-all/slug_.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+El archivo `[trpc].ts` es el punto de entrada de la API de tRPC. Se utiliza para manejar solicitudes tRPC. Consulta [uso de tRPC](usage/trpc#-pagesapitrpctrpcts) para obtener más información sobre este archivo y [la documentación de rutas dinámicas de Next.js](https://nextjs.org/docs/routing/dynamic-routes) para obtener información sobre rutas _catch-all/slug_.
+
+</div>
+
+<div data-components="trpc prisma nextauth">
+
+### `src/server`
+
+La carpeta `server` se usa para separar claramente el código del lado del servidor del código del lado del cliente.
+
+</div>
+
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+La entrada principal para la lógica de autenticación del lado del servidor. Aquí, configuramos las [opciones de configuración](usage/next-auth) de NextAuth.js, realizamos [ampliación de módulo](usage/next-auth#inclusion-of-userid-on-the-session) y también proporcionamos algunas utilidades DX para la autenticación, como la recuperación de la sesión del usuario en el lado del servidor. Consulta [uso de NextAuth.js](usage/next-auth#usage-with-trpc) para obtener más información.
+
+</div>
+
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+El archivo `db.ts` se usa para instanciar el cliente Prisma en el ámbito global. Consulta [uso de Prisma](usage/prisma#prisma-client) y [mejores prácticas para usar Prisma con Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) para obtener más información.
+
+</div>
+
+<div data-components="trpc">
+
+### `src/server/api`
+
+La carpeta `api` contiene el código del lado del servidor de tRPC.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+La carpeta `routers` contiene todos tus sub-routers de tRPC.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+El archivo `example.ts` es un ejemplo de un sub-router tRPC utilizando el helper `publicProcedure` para demostrar cómo crear una ruta pública tRPC.
+
+Dendiendo de tus paquetes elegidos este router contiene más o menos rutas para demostrar mejor el uso a tus necesidades.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+El archivo `trpc.ts` es el archivo de configuración principal de tu back-end tRPC. Aquí:
+
+1. Define el contexto de tRPC. Consulta [uso de tRPC](usage/trpc#-serverapitrpcts) para obtener más información.
+2. Exporta el router principal de tRPC. Consulta [uso de tRPC](usage/trpc#-serverapitrpcts) para obtener más información.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+El archivo `root.ts` se usa para combinar los sub-routers de tRPC y exportarlos como un solo router, así como la definición de tipo del router. Consulta [uso de tRPC](usage/trpc#-serverapirootts) para obtener más información.
+
+</div>
+
+<div>
+
+### `src/styles`
+
+La carpeta `styles` contiene los estilos globales de la aplicación.
+
+</div>
+
+<div data-components="trpc">
+
+### `src/utils`
+
+La carpeta `utils` se usa para almacenar funciones de utilidad comúnmente reutilizadas.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+El archivo `api.ts` es el punto de entrada del front-end a tRPC. Consulta [uso de tRPC](usage/trpc#-utilsapits) para obtener más información.
+
+</div>
+
+<div>
+
+### `.env`
+
+El archivo `.env` se usa para almacenar variables de entorno. Consulta [Variables de entorno](usage/env-variables) para obtener más información. Este archivo **no** debe ser enviado al historial de git.
+
+</div>
+
+<div>
+
+### `.env.example`
+
+El archivo `.env.example` muestra las variables de entorno de ejemplo basadas en las bibliotecas elegidas. Este archivo debe ser enviado al historial de git.
+
+</div>
+
+<div>
+
+### `.eslintrc.cjs`
+
+El archivo `.eslintrc.cjs` se usa para configurar ESLint. Consulta [la documentación de ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) para obtener más información.
+
+</div>
+
+<div>
+
+### `next-env.d.ts`
+
+El archivo `next-env.d.ts` asegura que los tipos de Next.js se detecten en el compilador de TypeScript. **No debe eliminarlo ni editarlo, ya que puede cambiar en cualquier momento.** Consulta [la documentación de Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) para obtener más información.
+
+</div>
+
+<div>
+
+### `next.config.mjs`
+
+El archivo `next.config.mjs` se usa para configurar Next.js. Consulta [la documentación de Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) para obtener más información. Nota: La extensión .mjs se usa para permitir importaciones ESM.
+
+</div>
+
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+El archivo `postcss.config.cjs` se usa para la configuración de Tailwind PostCSS. Consulta [la documentación de Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) para obtener más información.
+
+</div>
+
+<div data-components="tailwind">
+
+### `prettier.config.cjs`
+
+El archivo `prettier.config.cjs` se usa para configurar Prettier para incluir el prettier-plugin-tailwindcss para formatear las clases de Tailwind CSS. Consulta [el artículo del blog de Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para obtener más información.
+
+</div>
+
+<div>
+
+### `tsconfig.json`
+
+El archivo `tscconfig.json` se usa para configurar TypeScript. Algunos no predeterminados, como `modo estricto`, se han habilitado para garantizar el mejor uso de TypeScript para Create T3 App y sus bibliotecas. Consulta [la documentación de TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) o [uso de TypeScript](usage/typescript) para obtener más información.
+
+</div>

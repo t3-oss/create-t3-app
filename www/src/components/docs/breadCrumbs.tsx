@@ -3,12 +3,11 @@ import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../../languages";
 
 type SlugType = "" | "usage" | "deployment";
-type Entry = { text: string; link: string };
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
   const isRtl = getIsRtlFromLangCode(lang ?? "en");
-  const slugToEntryPath = (slug: SlugType) => {
+  const slugToEntryPath = (slug: SlugType): OuterHeaders => {
     switch (slug) {
       case "":
         return "Create T3 App";
@@ -18,17 +17,26 @@ export default function BreadCrumbs() {
         return "Deployment";
     }
   };
+
+  const pathname = window.location.pathname.endsWith("/")
+    ? window.location.pathname.slice(0, -1)
+    : window.location.pathname;
+
   const slug =
-    window.location.pathname.slice(1).split("/").length > 2
-      ? window.location.pathname.slice(1).split("/")[1]
+    pathname.slice(1).split("/").length > 2
+      ? pathname.slice(1).split("/")[1]
       : "" || "";
-  // TODO: find a way to use inference here to gain better typesafety
-  const actualEntries = SIDEBAR[lang][
-    slugToEntryPath(slug === undefined || slug === "" ? "" : (slug as SlugType))
-  ] as Entry[] | undefined;
+
+  const actualEntries =
+    SIDEBAR[lang][
+      slugToEntryPath(
+        slug === undefined || slug === "" ? "" : (slug as SlugType),
+      )
+    ];
 
   const getPathNameFromLink = (link: string) => {
-    return actualEntries?.find((entry) => entry.link === link)?.text;
+    return [...(actualEntries ?? [])].find((entry) => entry.link === link)
+      ?.text;
   };
 
   const getHeaderName = (header: OuterHeaders) => {
@@ -36,21 +44,22 @@ export default function BreadCrumbs() {
     return SIDEBAR_HEADER_MAP[lang][header];
   };
 
-  const breadcrumbs = window.location.pathname
+  const breadcrumbs = pathname
     .split("/")
-    .slice(window.location.pathname.split("/").length > 3 ? -2 : -1)
+    .slice(pathname.split("/").length > 3 ? -2 : -1)
     .map((crumb) => {
-      const path = window.location.pathname
+      const path = pathname
         .split("/")
-        .slice(0, window.location.pathname.split("/").indexOf(crumb) + 1)
+        .slice(0, pathname.split("/").indexOf(crumb) + 1)
         .join("/");
+
       return {
         href: `${window.location.protocol}//${window.location.host}${path}`,
         key: crumb,
         text:
           getPathNameFromLink(path.slice(path.indexOf(lang))) ||
           getHeaderName(
-            (crumb[0]?.toUpperCase() + crumb.slice(1)) as OuterHeaders,
+            `${crumb[0]?.toUpperCase()}${crumb.slice(1)}` as OuterHeaders,
           ),
       };
     });
@@ -68,7 +77,9 @@ export default function BreadCrumbs() {
           />
         </svg>
       </a>
-      <BreadCrumbsArrow isRtl={isRtl} />
+      <span className="flex-shrink-0">
+        <BreadCrumbsArrow isRtl={isRtl} />
+      </span>
       {breadcrumbs.map((crumb, index) => (
         <div className="flex items-center gap-2" key={crumb.key}>
           <a
@@ -77,7 +88,11 @@ export default function BreadCrumbs() {
           >
             {crumb.text}
           </a>
-          {index < breadcrumbs.length - 1 && <BreadCrumbsArrow isRtl={isRtl} />}
+          {index < breadcrumbs.length - 1 && (
+            <span className="flex-shrink-0">
+              <BreadCrumbsArrow isRtl={isRtl} />
+            </span>
+          )}
         </div>
       ))}
     </div>

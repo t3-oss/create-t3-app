@@ -15,9 +15,7 @@
   const allFiles = {
     "public/favicon.ico": [], // This file is included in every configuration
     "prisma/schema.prisma": ["prisma"], // This file is included with prisma
-    "src/env/client.mjs": [],
-    "src/env/schema.mjs": [],
-    "src/env/server.mjs": [],
+    "src/env.mjs": [],
     "src/pages/_app.tsx": [],
     "src/pages/api/auth/[...nextauth].ts": ["nextauth"],
     "src/pages/api/trpc/[trpc].ts": ["trpc"],
@@ -31,7 +29,7 @@
     "src/utils/api.ts": ["trpc"],
     ".env": [],
     ".env.example": [],
-    ".eslintrc.json": [],
+    ".eslintrc.cjs": [],
     ".gitignore": [],
     "next-env.d.ts": [],
     "next.config.mjs": [],
@@ -39,7 +37,7 @@
     "postcss.config.cjs": ["tailwind"],
     "prettier.config.cjs": ["tailwind"],
     "README.md": [],
-    "tailwind.config.cjs": ["tailwind"],
+    "tailwind.config.ts": ["tailwind"],
     "tsconfig.json": [],
   };
 
@@ -70,7 +68,19 @@
     if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
   };
 
-  renderDiagram(["nextauth", "trpc", "prisma", "tailwind"]);
+  const getSelectedFromPackagesQueryParam = () => {
+    const selectedParam = new URLSearchParams(window.location.search).get(
+      "packages",
+    );
+
+    if (selectedParam === null) {
+      return ["nextauth", "prisma", "tailwind", "trpc"];
+    }
+
+    return selectedParam.split(",");
+  };
+
+  renderDiagram(getSelectedFromPackagesQueryParam());
 </script>
 
 <pre

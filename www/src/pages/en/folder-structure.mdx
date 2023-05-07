@@ -47,7 +47,7 @@ The `pages` folder contains all the pages of the Next.js application. The `index
 
 #### `src/pages/api`
 
-The `api` folder contains all the API routes of the Next.js application. The `examples.ts` file contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature along with Prisma. The `restricted.ts` file contains an example of a route that uses the [Next.js API route](https://nextjs.org/docs/api-routes/introduction) feature and is protected by [NextAuth.js](https://next-auth.js.org/).
+The `api` folder contains all the API routes of the Next.js application. See [Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction) for info on api routes.
 
 </div>
 <div data-components="nextauth">
@@ -75,7 +75,7 @@ The `server` folder is used to clearly separate server-side code from client-sid
 
 #### `src/server/auth.ts`
 
-The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utlities for authentication such as retriving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
 
 </div>
 <div data-components="prisma">
@@ -114,8 +114,8 @@ Depending on your chosen packages this router contains more or less routes to be
 
 The `trpc.ts` file is the main configuration file for your tRPC back-end. In here we:
 
-1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-servertrpccontextts) for more information.
-2. Export procedure helpers. See [tRPC usage](usage/trpc#-servertrpctrpcts) for more information.
+1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
+2. Export procedure helpers. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
 
 </div>
 
@@ -123,7 +123,7 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 
 #### `src/server/api/root.ts`
 
-The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-servertrpcrouterts) for more information.
+The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-serverapirootts) for more information.
 
 </div>
 <div>
@@ -144,7 +144,7 @@ The `utils` folder is used to store commonly re-used utility functions.
 
 #### `src/utils/api.ts`
 
-The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilstrpcts) for more information.
+The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilsapits) for more information.
 
 </div>
 <div>
@@ -163,9 +163,9 @@ The `.env.example` file shows example environment variables based on the chosen 
 </div>
 <div>
 
-### `.eslintrc.json`
+### `.eslintrc.cjs`
 
-The `.eslintrc.json` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+The `.eslintrc.cjs` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
 
 </div>
 <div>

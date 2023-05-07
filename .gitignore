@@ -34,7 +34,6 @@ yarn-error.log*
 
 # MISC
 .idea
-.turbo/
 .cache/
 .next/
 .nuxt/
@@ -49,3 +48,7 @@ Thumbs.db
 
 .turbo
 .vercel
+
+# Emacs backup files
+\#*
+.\#*

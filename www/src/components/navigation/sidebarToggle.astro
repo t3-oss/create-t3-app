@@ -1,6 +1,4 @@
 ---
-import clsx from "clsx";
-
 export interface Props {
   isLanding: boolean;
 }
@@ -12,10 +10,13 @@ const { isLanding } = Astro.props;
   id="sidebar-toggle"
   type="button"
   aria-pressed="false"
-  class={clsx("z-20 block md:hidden", {
-    "text-white": isLanding,
-    "text-black dark:text-white": !isLanding,
-  })}
+  class:list={[
+    "z-20 block md:hidden",
+    {
+      "text-white": isLanding,
+      "text-black dark:text-white": !isLanding,
+    },
+  ]}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

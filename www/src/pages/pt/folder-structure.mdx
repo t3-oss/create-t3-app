@@ -1,0 +1,219 @@
+---
+title: Estrutura de Pastas
+description: Estrutura de pastas de um novo T3 App inicializado
+layout: ../../layouts/docs.astro
+lang: pt
+isMdx: true
+---
+
+import Form from "../../components/docs/folderStructureForm.astro";
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+
+Por favor, selecione seus pacotes para ver a estrutura de pastas de um aplicativo recém-estruturado com essas seleções. Mais abaixo, você encontrará uma descrição de cada pacote.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+A pasta `prisma` contém o arquivo `schema.prisma` que é usado para configurar a conexão com o banco de dados e o schema do banco de dados. Ela também é onde são salvos os arquivos de migração e/ou scripts de seed, se usados. Veja [Uso do Prisma](/en/usage/prisma) para mais informações.
+
+</div>
+<div>
+
+### `public`
+
+A pasta `public` contém recursos estáticos que são servidos pelo servidor web. O `favicon.ico` é um exemplo de um recurso estático.
+
+</div>
+<div>
+
+### `src/env`
+
+Usado para a validação de variáveis ambiente e definição de tipos - veja [Variáveis de Ambiente](usage/env-variables).
+
+</div>
+<div>
+
+### `src/pages`
+
+A pasta `pages` contém todas as páginas da aplicação Next.js. O arquivo `index.tsx` na raiz da pasta `/pages` é a página inicial da aplicação. O arquivo `_app.tsx` é usado para envolver a aplicação com providers. Veja a [Documentação do Next.js](https://nextjs.org/docs/basic-features/pages) para mais informações.
+
+</div>
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+A pasta `api` contém todas as rotas API da aplicação Next.js. O arquivo `examples.ts` contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) junto com o prisma. O arquivo `restricted.ts` contém um exemplo de rota que usa o recurso de [Rotas API do Next.js](https://nextjs.org/docs/api-routes/introduction) e é protegido pelo [NextAuth.js](https://next-auth.js.org/).
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+O arquivo `[...nextauth].ts` é a rota de autenticação com slug do NextAuth.js. Ele é usado para lidar com as requisições de autenticação. Veja [Uso do NextAuth.js](usage/next-auth) para mais informações sobre o NextAuth.js, e a [Documentação de Rotas Dinâmicas do Next.js](https://nextjs.org/docs/routing/dynamic-routes) para informações sobre rotas com parâmetros/slugs.
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+O arquivo `[trpc].ts` é o ponto de entrada do tRPC. Ele é usado para lidar com as requisições do tRPC. Veja [Uso do tRPC](usage/trpc#-pagesapitrpctrpcts) para mais informações sobre esse arquivo, e [Documentação de Rotas Dinâmicas do Next.js](https://nextjs.org/docs/routing/dynamic-routes) para informações sobre rotas com parâmetros/slugs.
+
+</div>
+<div data-components="trpc prisma nextauth">
+
+### `src/server`
+
+A pasta `server` é usada para de maneira clara separar código do servidor e código do cliente.
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+Contém utilitários para autenticação, como recuperar a sessão do usuário no lado do servidor. Veja [uso do NextAuth.js](usage/next-auth#usage-with-trpc) para mais informações.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+O arquivo db.ts é usado para instanciar o cliente Prisma no escopo global. Veja [uso do Prisma](usage/prisma#prisma-client) e [melhores práticas para usar o Prisma com o Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) para mais informações.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+A pasta api contém o código do lado do servidor do tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+A pasta routers contém todos as sub-rotas do tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+O arquivo `example.ts` é um exemplo de roteador tRPC que utiliza o utilitário `publicProcedure` para demonstrar como criar uma rota tRPC pública.
+
+Dependendo dos pacotes escolhidos, este roteador contém mais ou menos rotas para melhor demonstrar o uso de acordo com suas necessidades.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/trpc/trpc.ts`
+
+O arquivo `trpc.ts` é o arquivo de configuração principal para seu back-end tRPC. Aqui nós:
+
+1. Definimos o contexto usado nas requests tRPC. Veja [uso do tRPC](usage/trpc#-serverapitrpcts) para mais informações.
+2. Exportamos os auxiliares de procedures. Veja [uso do tRPC](usage/trpc#-serverapitrpcts) para mais informações.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+O arquivo `root.ts` é usado para mesclar as rotas tRPC e exportá-las como um único roteador, bem como a definição de tipo da rota. Veja [uso do tRPC](usage/trpc#-serverapirootts) para mais informações.
+
+</div>
+<div>
+
+### `src/styles`
+
+A pasta `styles` contém os estilos globais da aplicação.
+
+</div>
+<div data-components="nextauth">
+
+### `src/types`
+
+A pasta `types` é usada para guardar tipos ou definições de tipos reutilizáveis.
+
+</div>
+<div data-components="nextauth">
+
+#### `src/types/next-auth.d.ts`
+
+O arquivo `next-auth.d.ts` é usado para estender o tipo padrão de sessão do NextAuth para incluir o ID de usuário. Veja [Uso do NextAuth.js](usage/next-auth#inclusão-do-userid-na-sessão) para mais informações.
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+A pasta `utils` é usada para guardar funções utilitárias comuns reutilizáveis.
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+O arquivo `api.ts` é o ponto de entrada front-end para o tRPC. Veja [uso do tRPC](usage/trpc#-utilsapits) para mais informações.
+
+</div>
+<div>
+
+### `.env`
+
+O arquivo `.env` é usado para armazenas as variáveis ambiente. Veja [Variáveis de Ambiente](usage/env-variables) para mais informações. Esse arquivo **não** deve ser commitado para o histórico do git.
+
+</div>
+<div>
+
+### `.env.example`
+
+O arquivo `.env.example` mostra um exemplo de de variáveis ambiente baseado nas bibliotecas escolhidas. Esse arquivo deve ser commitado para o histórico do git.
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+O arquivo `.eslintrc.cjs` é usado para configurar o ESLint. Veja [Documentação do ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) para mais informações.
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+O arquivo `next-env.d.ts` garante que os tipos do Next.js sejam lidos pelo compilador do TypeScript. **Você não deve remover ou editar, uma vez que pode mudar a qualquer momento.** Veja [Documentação do Next.js ](https://nextjs.org/docs/basic-features/typescript#existing-projects) para mais informações.
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+O arquivo `next.config.mjs` é usado para configura o Next.js. Veja [Documentação do Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) para mais informações. Nota: a extensão .mjs é usada para permitir importações de módulos ESM.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+O arquivo `postcss.config.cjs` é usado para o uso do Tailwind PostCSS. Veja [Documentação do Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) para mais informações.
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.cjs`
+
+O arquivo `prettier.config.cjs` é usado para configura o Prettier e incluir o prettier-plugin-tailwindcss para a formatação das classes CSS. Veja o post no [Blog do Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais informações.
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+O arquivo `tsconfig.json` é usado para configurar o TypeScript. Algumas configurações diferentes do padrão, como `strict mode`, foram habilitadas para garantir o melhor uso do TypeScript no create-t3-app e suas bibliotecas. Veja [Documentação do Typescript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) ou [Uso do TypeScript](usage/typescript) para mais informações.
+
+</div>

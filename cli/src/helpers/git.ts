@@ -16,12 +16,12 @@ const isGitInstalled = (dir: string): boolean => {
   }
 };
 
-/** If dir has `.git` => is the root of a git repo */
+/** @returns Whether or not the provided directory has a `.git` subdirectory in it. */
 const isRootGitRepo = (dir: string): boolean => {
   return fs.existsSync(path.join(dir, ".git"));
 };
 
-/** If dir is inside a git worktree, meaning a parent directory has `.git` */
+/** @returns Whether or not this directory or a parent directory has a `.git` directory. */
 const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
     // If this command succeeds, we're inside a git repo
@@ -44,7 +44,7 @@ const getGitVersion = () => {
   return { major: Number(major), minor: Number(minor) };
 };
 
-/** If git config value 'init.defaultBranch' is set return value else 'main' */
+/** @returns The git config value of "init.defaultBranch". If it is not set, returns "main". */
 const getDefaultBranch = () => {
   const stdout = execSync("git config --global init.defaultBranch || echo main")
     .toString()
@@ -112,9 +112,14 @@ export const initializeGit = async (projectDir: string) => {
 
     // --initial-branch flag was added in git v2.28.0
     const { major, minor } = getGitVersion();
-    if (major < 2 || minor < 28) {
+    if (major < 2 || (major == 2 && minor < 28)) {
       await execa("git", ["init"], { cwd: projectDir });
-      await execa("git", ["branch", "-m", branchName], { cwd: projectDir });
+      // symbolic-ref is used here due to refs/heads/master not existing
+      // It is only created after the first commit
+      // https://superuser.com/a/1419674
+      await execa("git", ["symbolic-ref", "HEAD", `refs/heads/${branchName}`], {
+        cwd: projectDir,
+      });
     } else {
       await execa("git", ["init", `--initial-branch=${branchName}`], {
         cwd: projectDir,

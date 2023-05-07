@@ -54,6 +54,7 @@ Czasem budując projekt, chcesz aby Ui wyglądało po prostu przyzwoicie. Do pro
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
+- [@shadcn/ui](https://ui.shadcn.com/)
 
 ### Class Variance Authority
 

@@ -7,7 +7,7 @@ lang: pt
 
 Nós reconhecemos que as bibliotecas inclusas no `create-t3-app` não resolvem todos os problemas. Enquanto nós te encorajamos a começar o seu projeto com as coisas que providenciamos, em algum momento você terá que adicionar novos pacotes. Apenas você pode saber o que o seu projeto precisa, mas aqui estão algumas coisas que nos encontramos recomendando com frequência.
 
-Estas são recomendações de contribuidores individuais do create-t3-app e não devem ser vistas como propriedades "oficiais" pela equipe create-t3-app ou T3-OSS. _**Faça sua própria pesquisa, especialmente antes de se comprometer com serviços pagos**_.
+Estas são recomendações de contribuidores individuais do Create T3 App e não devem ser vistas como propriedades "oficiais" pela equipe Create T3 App ou T3-OSS. _**Faça sua própria pesquisa, especialmente antes de se comprometer com serviços pagos**_.
 
 ## Gerenciamento de Estado
 
@@ -26,15 +26,14 @@ O "moderno e simples Redux", que você não sabia que precisava. Sempre podemos 
 
 **Para nunca mais usar Context**
 
-Para uma abordagem mais atômica, o Jotai é difícil de bater. Também de [Poimandres](https://github.com/pmndrs), O Jotai te permite definir singletons que parecem um useState global. Uma boa opção para
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. Uma ótima opção para comportamentos de estado que ainda não precisam de uma máquina.
+Para uma abordagem mais atômica, o Jotai é difícil de ser batido. Também da [Poimandres](https://github.com/pmndrs), Jotai te permite definir singletons que parecem um useState global. Uma boa opção para manipulações de estado que não necessariamente precisam de uma máquina de estado.
 
 - [Página inicial do Jotai](https://jotai.org/)
 - [GitHub do Jotai](https://github.com/pmndrs/jotai)
 
 ## Biblioteca de Componentes
 
-A maior parte de aplicações necessita de vários componentes - botões de toggle, menus dropdown, modais, e assim por diante. Essas bibliotecas providenciam components bons, acessíveis e que você pode customizar como achar melhor.
+A maior parte das aplicações necessitam de vários componentes - botões de toggle, menus dropdown, modais, e assim por diante. Essas bibliotecas providenciam components bons, acessíveis e que você pode customizar como achar melhor.
 
 ### Bibliotecas de Componentes não estilizados
 
@@ -54,6 +53,7 @@ Também conhecidas como bibliotecas headless, elas providenciam componentes não
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
+- [@shadcn/ui](https://ui.shadcn.com/)
 
 ### Class Variance Authority
 
@@ -148,7 +148,7 @@ Precisa de análise? Plausível é uma das maneiras mais rápidas de obtê-los. 
 
 ### Umami
 
-Umami é uma alternativa auto-hospedável, simples, rápida e focada em privacidade para o Google Analytics. Você pode implantá-lo facilmente em Vercel, Railway, etc. com PlanetScale como seu banco de dados.
+Umami é uma alternativa de código aberto, auto-hospedável, simples, rápida e focada em privacidade para o Google Analytics. Você pode implantá-lo facilmente em Vercel, Railway, etc. com PlanetScale como seu banco de dados.
 
 - [Página inicial do Umami](https://umami.is/)
 - [GitHub do Umami](https://github.com/umami-software/umami)

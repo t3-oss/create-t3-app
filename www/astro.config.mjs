@@ -1,18 +1,19 @@
-import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import { defineConfig } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
-import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
-/**
- * @link https://astro.build/config
- */
+import vercel from "@astrojs/vercel/serverless";
+import remarkCodeTitles from "remark-code-titles";
+
+/** @link https://astro.build/config */
 export default defineConfig({
-  site: `https://create.t3.gg`,
+  site: `https://create.t3.gg/`,
+  output: "server",
+  adapter: vercel(),
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
@@ -43,15 +44,18 @@ export default defineConfig({
       theme: "rose-pine",
       wrap: true,
     },
-    extendDefaultPlugins: true,
   },
   integrations: [
     react(),
-    tailwind({ config: { applyBaseStyles: false } }),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
     sitemap(),
     mdx(),
   ],
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });

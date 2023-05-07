@@ -1,9 +1,9 @@
 import chalk from "chalk";
 import { execa } from "execa";
-import ora, { Ora } from "ora";
+import ora, { type Ora } from "ora";
 import {
   getUserPkgManager,
-  PackageManager,
+  type PackageManager,
 } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 

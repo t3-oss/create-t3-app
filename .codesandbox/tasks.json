@@ -1,0 +1,73 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "Install Dependencies",
+      "command": "pnpm install"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "typecheck": {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "runAtStart": false
+    },
+    "build:cli": {
+      "name": "build:cli",
+      "command": "pnpm build:cli",
+      "runAtStart": false
+    },
+    "build:www": {
+      "name": "build:www",
+      "command": "pnpm build:www",
+      "runAtStart": false
+    },
+    "build": {
+      "name": "build",
+      "command": "pnpm build",
+      "runAtStart": false
+    },
+    "start:cli": {
+      "name": "start:cli",
+      "command": "pnpm start:cli",
+      "runAtStart": false
+    },
+    "start:www": {
+      "name": "start:www",
+      "command": "pnpm start:www",
+      "runAtStart": false
+    },
+    "dev:cli": {
+      "name": "dev:cli",
+      "command": "pnpm dev:cli",
+      "runAtStart": false
+    },
+    "dev:www": {
+      "name": "dev:www",
+      "command": "pnpm dev:www",
+      "runAtStart": true
+    },
+    "clean": {
+      "name": "clean",
+      "command": "pnpm clean",
+      "runAtStart": false
+    },
+    "lint": {
+      "name": "lint",
+      "command": "pnpm lint",
+      "runAtStart": false
+    },
+    "format": {
+      "name": "format",
+      "command": "pnpm format",
+      "runAtStart": false
+    },
+    "format:check": {
+      "name": "format:check",
+      "command": "pnpm format:check",
+      "runAtStart": false
+    }
+  }
+}

@@ -9,7 +9,7 @@ Du har nettopp opprettet en ny T3-app, og du er klar til å sette i gang. Her er
 
 ## Database
 
-Hvis applikasjonen din bruker Prisma, må du kjøre `npx prisma db push` fra rotmappen av applikasjonen. Denne kommandoen synkroniserer Prisma-skjemaet til databasen og genererer TypeScript-typene for Prisma-klienten basert på skjemaet ditt. Merk at du må starte TypeScript-serveren på nytt etter denne handlingen for at de genererte typene skal gjenkjennes.
+Hvis applikasjonen din bruker Prisma, må du kjøre `npx prisma db push` fra rotmappen av applikasjonen. Denne kommandoen synkroniserer Prisma-skjemaet til databasen og genererer TypeScript-typene for Prisma-klienten basert på skjemaet ditt. Merk at du må [starte TypeScript-serveren på nytt](https://tinytip.co/tips/vscode-restart-ts/) etter denne handlingen for at de genererte typene skal gjenkjennes.
 
 ## Autentisering
 
@@ -29,8 +29,16 @@ Hvis du foretrekker en annen autentiseringsleverandør, kan du også bruke en av
 
 Du skal nå kunne logge på.
 
+## Editor Setup
+
+Følgende utvidelser anbefales for en optimal utvikleropplevelse. Linkene nedenfor gir støtte for redigeringsprogram utvidelser.
+
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
+
 ## Neste Steg
 
-- Hvis applikasjonen din bruker tRPC, ta en titt på `src/pages/index.tsx` og `src/server/trpc/router/example.ts` for å se hvordan tRPC-spørringer fungerer.
+- Hvis applikasjonen din bruker tRPC, ta en titt på `src/pages/index.tsx` og `src/server/api/routers/example.ts` for å se hvordan tRPC-spørringer fungerer.
 - Ta en titt på dokumentasjonen for `create-t3-app` samt dokumentasjonen for pakkene applikasjonen din inkluderer.
 - Bli med i [Discord](https://t3.gg/discord) og gi oss en stjerne på [GitHub](https://github.com/t3-oss/create-t3-app)! :)

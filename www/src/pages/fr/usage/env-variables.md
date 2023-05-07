@@ -80,7 +80,7 @@ C'est ici que la validation se fait et l'export des objets valider. Vous ne devr
 Lorsque vous souhaitez utiliser vos variables d'environnement, vous pouvez les importer depuis `env/client.mjs` ou `env/server.mjs` selon l'endroit où vous souhaitez les utiliser :
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env/server.mjs";
+import { env } from "../../env.mjs";
 
 // `env` est totalement typesafe et fournit une autocomplétion
 const dbUrl = env.DATABASE_URL;

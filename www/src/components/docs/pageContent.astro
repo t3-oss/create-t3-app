@@ -1,6 +1,6 @@
 ---
-import type { MarkdownHeading } from "astro";
-import type { Frontmatter, KnownLanguageCode } from "../../config";
+import { type MarkdownHeading } from "astro";
+import { type Frontmatter, type KnownLanguageCode } from "../../config";
 import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
 import BreadCrumbs from "./breadCrumbs";
 import Pagination from "./pagination.astro";
@@ -22,7 +22,7 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
   {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
-  <div class="h-10">
+  <div>
     <BreadCrumbs client:only />
   </div>
   <OnThisPageLinks

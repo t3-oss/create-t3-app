@@ -40,7 +40,7 @@ Parfois, vous souhaiterez demander la session côté serveur. Pour ce faire, pr�
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import type { GetServerSideProps } from "next";
+import { type GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
@@ -94,7 +94,7 @@ Lorsque vous utilisez NextAuth.js avec tRPC, vous pouvez créer des procédures 
 
 Cela se fait en deux étapes :
 
-1. Récupérez la session à partir des en-têtes de requête à l'aide de la fonction [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Ne vous inquiétez pas, cette fonction est sûre à utiliser - le nom inclut "unstable" uniquement parce que l'implémentation de l'API peut changer à l'avenir. L'avantage d'utiliser `getServerSession` au lieu de `getSession` est qu'il s'agit d'une fonction côté serveur uniquement et qu'elle ne déclenche pas d'appels de récupération inutiles. `create-t3-app` crée une fonction d'assistance qui résume cette API particulière.
+1. Récupérez la session à partir des en-têtes de requête à l'aide de la fonction [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). L'avantage d'utiliser `getServerSession` au lieu de `getSession` est qu'il s'agit d'une fonction côté serveur uniquement et qu'elle ne déclenche pas d'appels de récupération inutiles. `create-t3-app` crée une fonction d'assistance qui résume cette API particulière.
 
 ```ts:server/auth.ts
 export const getServerAuthSession = async (ctx: {
@@ -154,7 +154,7 @@ const userRouter = router({
 
 ## Utilisation avec Prisma
 
-Faire fonctionner NextAuth.js avec Prisma nécessite beaucoup de [configuration initiale](https://next-auth.js.org/adapters/models/). `create-t3-app` gère tout cela pour vous, et si vous sélectionnez à la fois Prisma et NextAuth.js, vous obtiendrez un système d'authentification entièrement fonctionnel avec tous les modèles requis préconfigurés. Nous démarrons votre application avec un fournisseur Discord OAuth préconfiguré, que nous avons choisi car c'est l'un des plus faciles à démarrer - fournissez simplement vos jetons dans le `.env` et vous êtes prêt à partir. Cependant, vous pouvez facilement ajouter d'autres fournisseurs en suivant la [documentation NextAuth.js](https://next-auth.js.org/providers/). Notez que certains fournisseurs exigent que des champs supplémentaires soient ajoutés à certains modèles. Nous vous recommandons de lire la documentation du fournisseur que vous souhaitez utiliser pour vous assurer que vous disposez de tous les champs obligatoires.
+Faire fonctionner NextAuth.js avec Prisma nécessite beaucoup de [configuration initiale](https://authjs.dev/reference/adapter/prisma/). `create-t3-app` gère tout cela pour vous, et si vous sélectionnez à la fois Prisma et NextAuth.js, vous obtiendrez un système d'authentification entièrement fonctionnel avec tous les modèles requis préconfigurés. Nous démarrons votre application avec un fournisseur Discord OAuth préconfiguré, que nous avons choisi car c'est l'un des plus faciles à démarrer - fournissez simplement vos jetons dans le `.env` et vous êtes prêt à partir. Cependant, vous pouvez facilement ajouter d'autres fournisseurs en suivant la [documentation NextAuth.js](https://next-auth.js.org/providers/). Notez que certains fournisseurs exigent que des champs supplémentaires soient ajoutés à certains modèles. Nous vous recommandons de lire la documentation du fournisseur que vous souhaitez utiliser pour vous assurer que vous disposez de tous les champs obligatoires.
 
 ### Ajout de nouveaux champs à vos modèles
 

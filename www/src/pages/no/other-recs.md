@@ -148,7 +148,7 @@ Trenger du analyser? Plausibel er en av de raskeste måtene. Superminimal. Og de
 
 ### Umami
 
-Umami er et selvhostende, enkelt, raskt og personvernvennlig alternativ til Google Analytics. Du kan hoste det veldig enkelt på Vercel, Railway, osv. med PlanetScale som database.
+Umami er et åpen kilde, selvhostende, enkelt, raskt og personvernvennlig alternativ til Google Analytics. Du kan hoste det veldig enkelt på Vercel, Railway, osv. med PlanetScale som database.
 
 - [Umami Hjemmeside](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)

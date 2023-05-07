@@ -1,0 +1,208 @@
+---
+title: フォルダ構造
+description: 初期構成として新規に生成されたT3 Appのフォルダ構造
+layout: ../../layouts/docs.astro
+lang: ja
+isMdx: true
+---
+
+import Form from "../../components/docs/folderStructureForm.astro";
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+
+以下でパッケージを選択してみてください。すると、その選択したパッケージで新たに初期構成を生成したアプリケーションのフォルダ構造が表示されます。もっと下には各エントリーの説明があります。
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+`prisma` フォルダには、データベース接続とデータベーススキーマの設定に使用する `schema.prisma` ファイルが格納されています。
+また、マイグレーションファイルやシードスクリプトを格納する場所でもあります（もし使用する場合）。
+詳しくは、[Prisma の使い方](/ja/usage/prisma)を参照してください。
+
+</div>
+<div>
+
+### `public`
+
+`public`フォルダには、Web サーバが提供する静的アセットが格納されています。`favicon.ico`ファイルは静的アセットの一例です。
+
+</div>
+<div>
+
+### `src/env`
+
+環境変数の検証や型定義に使用します。[環境変数](usage/env-variables)を参照。
+
+</div>
+<div>
+
+### `src/pages`
+
+`pages`フォルダには、Next.js アプリケーションのすべてのページが格納されます。`pages`ディレクトリの直下にある `index.tsx` ファイルは、アプリケーションのホームページとなります。`_app.tsx`ファイルは、アプリケーションを各種プロバイダでラップするために使用されます。詳しくは、[Next.js ドキュメント](https://nextjs.org/docs/basic-features/pages)を参照してください。
+
+</div>
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+`api`フォルダには、Next.js アプリケーションのすべての API ルーティングが格納されています。API ルートについては、[Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction)を参照してください。
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+`[...nextauth].ts`ファイルは、NextAuth.js の認証スラッグルートです。認証リクエストを処理するために使用されます。NextAuth.js の詳細については [NextAuth.js usage](usage/next-auth) を、キャッチオール／スラッグルートについては [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) を参照してください。
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+`[trpc].ts`ファイルは、tRPC API のエントリポイントです。このファイルは、tRPC リクエストを処理するために使用されます。このファイルの詳細については[tRPC の使い方](usage/trpc#-pagesapitrpctrpcts)を、キャッチオール/スラッグルートの情報については[Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) を参照してください。
+
+</div>
+<div data-components="trpc prisma nextauth">
+
+### `src/server`
+
+`server`フォルダは、サーバサイドのコードとクライアントサイドのコードを明確に分けるために使用されます。
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+サーバーサイドの認証ロジックのメインエントリポイントです。
+ここでは、NextAuth.js の[設定オプション](usage/next-auth)、[モジュール拡張](usage/next-auth#inclusion-of-userid-on-the-session) と、サーバサイドでユーザのセッションを取得するなどの認証に関する DX ユーティリティを提供しています。詳しくは [NextAuth.js usage](usage/next-auth#usage-with-trpc) をご覧ください。
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+`db.ts`ファイルは、グローバルスコープで Prisma クライアントをインスタンス化するために使用されます。詳しくは、[Prisma の使い方](usage/prisma#prisma-client)と[Next.js で Prisma を使うためのベストプラクティス](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)をご覧ください。
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+`api`フォルダには、tRPC のサーバーサイドのコードが格納されています。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+`routers`フォルダには、すべての tRPC サブルーターが格納されています。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+`example.ts`ファイルは、`publicProcedure`ヘルパーを利用した tRPC ルーターの例で、public な tRPC ルートを作成する方法を示しています。
+
+このルーターには、あなたがどのパッケージを選択したかに応じて増減させたルーターが含められており、あなたが必要とする使用方法を示しています。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+`trpc.ts`ファイルは、tRPC バックエンドのメイン設定ファイルです。この中で私たちは：
+
+1. tRPC リクエストで使用するコンテキストを定義しています。詳しくは[tRPC の使い方](usage/trpc#-serverapitrpcts)を参照してください。
+2. プロシージャヘルパーをエクスポートしています。詳しくは、[tRPC usage](usage/trpc#-serverapitrpcts) を参照してください。
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+`root.ts` ファイルは、ルータの型定義と同様に、tRPC ルータをマージして 1 つのルータとしてエクスポートするために使用されます。詳しくは[tRPC の使い方](usage/trpc#-serverapirootts)を参照してください。
+
+</div>
+<div>
+
+### `src/styles`
+
+`styles`フォルダには、アプリケーションのグローバルスタイルが格納されます。
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+`utils`フォルダは、よく再利用されるユーティリティ関数を置いておくために使用されます。
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+`api.ts`ファイルは、tRPC のフロントエンドのエントリポイントです。詳しくは[tRPC の使い方](usage/trpc#-utilsapits)を参照してください。
+
+</div>
+<div>
+
+### `.env`
+
+`.env`ファイルは、環境変数を格納するために使用されます。詳しくは [環境変数](usage/env-variables) を参照してください。このファイルは、git 履歴にコミットする必要はありません。
+
+</div>
+<div>
+
+### `.env.example`
+
+`.env.example` ファイルは、選択したライブラリに基づく環境変数の例を示しています。このファイルは git 履歴にコミットしておく必要があります。
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+`.eslintrc.cjs`ファイルは、ESLint の設定に使用されます。詳しくは[ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)を参照してください。
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+`next-env.d.ts`ファイルは、Next.js の型が TypeScript コンパイラに拾われるようにするためのファイルです。**いつでも変化し得るものなので、削除や編集はしないでください。** 詳細は [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) をご覧ください。
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+`next.config.mjs`ファイルは、Next.js を設定するためのものです。詳しくは[Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction)を参照してください。注： .mjs という拡張子は、ESM でのインポートができるようにするために使用されます。
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+Tailwind の PostCSS の利用には、`postcss.config.cjs`ファイルが使用されます。詳しくは[Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss)を参照してください。
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.cjs`
+
+`prettier.config.cjs`ファイルは、Tailwind CSS クラスをフォーマットするために prettier-plugin-tailwindcss を含めるように Prettier を設定するために使用します。詳しくは [Tailwind CSS ブログポスト](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) を参照してください。
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+`tsconfig.json`ファイルは、TypeScript を設定するために使用されます。Create T3 App とそのライブラリの TypeScript を最適に利用するために、`strict mode`のようないくつかの非デフォルトが有効になっています。詳細については、[TypeScript ドキュメント](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) または [使用法の TypeScript](usage/typescript) を参照してください。
+
+</div>

@@ -34,11 +34,31 @@ const User = () => {
 };
 ```
 
+## Henting av session på serversiden
+
+Noen ganger vil du kanskje be om _session_ på serveren. For å gjøre dette, prefetch'er du session ved å bruke `getServerAuthSession`-hjelperfunksjonen som `create-t3-app` gir, sender den videre til klienten ved å bruke `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import type { GetServerSideProps } from "next";
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+const User = () => {
+  const { data: session } = useSession();
+  // MERK: `session` vil ikke ha en lastestatus siden den allerede er prefetched på serveren
+  ...
+}
+```
+
 ## Inkluder `user.id` i din Session
 
 `create-t3-app` er konfigurert til å bruke [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) i NextAuth.js-konfigurasjonen for å inkludere bruker-ID i 'session'-objektet.
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -51,7 +71,7 @@ callbacks: {
 
 Dette er kombinert med en typedeklarasjonsfil for å sikre at `user.id` er riktig typet når du får tilgang til `session`-objektet. Les mer om [`"Module Augmentation"`](https://next-auth.js.org/getting-started/typescript#module-augmentation) i NextAuth.js-dokumentasjonen.
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -71,21 +91,21 @@ Hvis du bruker NextAuth.js med tRPC, kan du opprette gjenbrukbare beskyttede pro
 
 Dette skjer i to trinn:
 
-1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Ikke bekymre deg, denne funksjonen er trygg å bruke - navnet inneholder bare `unstable` fordi API-implementeringen kan endres i fremtiden. Fordelen med `getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et.
+1. Få tilgang til sesjonen fra _request-headerne_ ved å bruke funksjonen [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Fordelen med `getServerSession` sammenlignet med `getSession` er at det er en funksjon på serversiden og medfører ikke unødvendige kall. `create-t3-app` lager en hjelpefunksjon som abstraherer dette særegne API-et, slik at du ikke trenger å importere både NextAuth.js-alternativene dine så vel som `getServerSession`-funksjonen hver gang du trenger tilgang til sesssion.
 
-```ts:server/common/get-server-auth-session.ts
-export const getServerAuthSession = async (ctx: {
+```ts:server/auth.ts
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
 Med denne hjelpefunksjonen kan vi hente sesjonen og sende den videre til tRPC-konteksten:
 
-```ts:server/trpc/context.ts
-import { getServerAuthSession } from "../common/get-server-auth-session";
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
 
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
@@ -98,7 +118,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 2. Lag en tRPC-middleware som sjekker om brukeren er autentisert. Vi bruker deretter middlewaren i en `protectedProcedure`. Hvert kall av disse prosedyrene må autentiseres, ellers kastes en feilmelding, som kan håndteres av klienten.
 
-```ts:server/trpc/trpc.ts
+```ts:server/api/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -116,7 +136,7 @@ export const protectedProcedure = t.procedure.use(isAuthed);
 
 `Session`-objektet er en minimal representasjon av brukeren og inneholder bare noen få felt. Hvis du bruker `protectedProcedures`, har du tilgang til brukerens ID, som kan brukes til å hente ut mer data fra databasen.
 
-```ts:server/trpc/router/user.ts
+```ts:server/api/routers/user.ts
 const userRouter = router({
   me: protectedProcedure.query(async ({ ctx }) => {
     const user = await prisma.user.findUnique({
@@ -131,7 +151,7 @@ const userRouter = router({
 
 ## Bruk med Prisma
 
-Mye [førstegangsoppsett](https://next-auth.js.org/adapters/models/) kreves for å bruke NextAuth.js med Prisma. `create-t3-app` vil gjøre dette for deg, og hvis du velger både Prisma og NextAuth.js, får du et fullt funksjonelt autentiseringssystem med alle nødvendige modeller forhåndskonfigurert. Vi oppretter applikasjonen din med en forhåndskonfigurert Discord OAuth-leverandør, som vi valgte siden den er en av de enkleste leverandørene å komme i gang med – du trenger bare å legge inn tokens i `.env`-filen og du er i gang. Du kan imidlertid enkelt legge til flere leverandører ved å følge [NextAuth.js-dokumentasjonen](https://next-auth.js.org/providers/). Vær oppmerksom på at enkelte leverandører krever at du legger til flere felt i enkelte modeller. Vi anbefaler å lese dokumentasjonen for leverandøren du planlegger å bruke for å sikre at alle obligatoriske felt er til stede.
+Mye [førstegangsoppsett](https://authjs.dev/reference/adapter/prisma/) kreves for å bruke NextAuth.js med Prisma. `create-t3-app` vil gjøre dette for deg, og hvis du velger både Prisma og NextAuth.js, får du et fullt funksjonelt autentiseringssystem med alle nødvendige modeller forhåndskonfigurert. Vi oppretter applikasjonen din med en forhåndskonfigurert Discord OAuth-leverandør, som vi valgte siden den er en av de enkleste leverandørene å komme i gang med – du trenger bare å legge inn tokens i `.env`-filen og du er i gang. Du kan imidlertid enkelt legge til flere leverandører ved å følge [NextAuth.js-dokumentasjonen](https://next-auth.js.org/providers/). Vær oppmerksom på at enkelte leverandører krever at du legger til flere felt i enkelte modeller. Vi anbefaler å lese dokumentasjonen for leverandøren du planlegger å bruke for å sikre at alle obligatoriske felt er til stede.
 
 ### Legge til nye felt i modellene dine
 

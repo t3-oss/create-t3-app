@@ -34,6 +34,29 @@ const User = () => {
 };
 ```
 
+## Recuperando a sessão do lado do servidor.
+
+Às vezes, você poderá querer solicitar a sessão no servidor. Para fazer isso, faça uma requisição usando o utilitário `getServerAuthSession` que `create-t3-app` fornece e passe-a para o cliente usando `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import { type GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // NOTA: `session` não terá um estado de carregamento, pois já foi pré-carregado no servidor
+
+  ...
+}
+```
+
 ## Inclusão do `user.id` na Sessão
 
 `create-t3-app` está configurado para utilizar o [retorno de chamada de sessão (sesion callback)](https://next-auth.js.org/configuration/callbacks#session-callback) na configuração NextAuth.js para incluir o ID do usuário dentro do objeto `session`.
@@ -71,7 +94,7 @@ Ao usar NextAuth.js com tRPC, você pode criar procedimentos protegidos e reutil
 
 Isso é feito em um processo de duas etapas:
 
-1. Pegar a sessão dos cabeçalhos de solicitação usando a função [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Não se preocupe, esta função é segura de usar - o nome inclui `unstable` apenas porque a implementação da API pode mudar no futuro. A vantagem de usar `getServerSession` em vez do `getSession` regular é que é uma função somente do lado do servidor e não aciona chamadas de busca desnecessárias. `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
+1. Pegar a sessão dos headers da request usando a função [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). A vantagem de usar `getServerSession` em vez do `getSession` regular é que é uma função que é executada somente do lado do servidor e não faz chamadas de busca desnecessárias. O `create-t3-app` cria uma função auxiliar que abstrai essa API peculiar.
 
 ```ts:server/common/get-server-auth-session.ts
 export const getServerAuthSession = async (ctx: {
@@ -131,7 +154,7 @@ const userRouter = router({
 
 ## Uso com Prisma
 
-Fazer o NextAuth.js funcionar com o Prisma requer muita [configuração inicial](https://next-auth.js.org/adapters/models/). O `create-t3-app` lida com tudo isso para você e, se você selecionar Prisma e NextAuth.js, obterá um sistema de autenticação totalmente funcional com todos os modelos necessários pré-configurados. Enviamos seu aplicativo montado com um provedor do Discord OAuth pré-configurado, que escolhemos porque é um dos mais fáceis de começar - basta fornecer seus tokens no `.env` e pronto. No entanto, você pode adicionar facilmente mais provedores seguindo a [documentação do NextAuth.js](https://next-auth.js.org/providers/). Observe que certos provedores exigem que campos extras sejam adicionados a determinados modelos. Recomendamos que você leia a documentação do provedor que deseja usar para certificar-se de que possui todos os campos obrigatórios.
+Fazer o NextAuth.js funcionar com o Prisma requer muita [configuração inicial](https://authjs.dev/reference/adapter/prisma/). O `create-t3-app` lida com tudo isso para você e, se você selecionar Prisma e NextAuth.js, obterá um sistema de autenticação totalmente funcional com todos os modelos necessários pré-configurados. Enviamos seu aplicativo montado com um provedor do Discord OAuth pré-configurado, que escolhemos porque é um dos mais fáceis de começar - basta fornecer seus tokens no `.env` e pronto. No entanto, você pode adicionar facilmente mais provedores seguindo a [documentação do NextAuth.js](https://next-auth.js.org/providers/). Observe que certos provedores exigem que campos extras sejam adicionados a determinados modelos. Recomendamos que você leia a documentação do provedor que deseja usar para certificar-se de que possui todos os campos obrigatórios.
 
 ### Adicionando novos campos aos seus modelos
 

@@ -48,10 +48,11 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
     <>
       <button
         type="button"
+        aria-label="Search Create T3 App"
         ref={searchButtonRef}
         onClick={onOpen}
         className={clsx(
-          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-colors duration-300 dark:text-slate-100",
+          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 !transition-colors !duration-300 dark:text-slate-100",
           {
             "hover:bg-t3-purple/20 border border-t3-purple-200/20 bg-t3-purple-200/10 duration-300 hover:border-t3-purple-200/50":
               isLanding,

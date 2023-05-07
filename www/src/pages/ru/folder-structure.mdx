@@ -114,8 +114,8 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 Файл `trpc.ts` - это основной файл конфигурации для вашего tRPC-бэкэнда. В нем мы:
 
-1. Определяем контекст используемый в запросах tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpccontextts) для получения дополнительной информации.
-2. Экспортируем вспомогательные функции процедур. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpctrpcts) для получения дополнительной информации.
+1. Определяем контекст используемый в запросах tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-serverapitrpcts) для получения дополнительной информации.
+2. Экспортируем вспомогательные функции процедур. Смотрите [Использование tRPC](/ru/usage/trpc#-serverapitrpcts) для получения дополнительной информации.
 
 </div>
 
@@ -123,7 +123,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/server/api/root.ts`
 
-Файл `root.ts` используется для слияния маршрутизаторов tRPC и экспорта их как единого маршрутизатора, а также определения типа маршрутизатора. Смотрите [Использование tRPC](/ru/usage/trpc#-servertrpcrouterts) для получения дополнительной информации.
+Файл `root.ts` используется для слияния маршрутизаторов tRPC и экспорта их как единого маршрутизатора, а также определения типа маршрутизатора. Смотрите [Использование tRPC](/ru/usage/trpc#-serverapirootts) для получения дополнительной информации.
 
 </div>
 <div>
@@ -158,7 +158,7 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 
 #### `src/utils/api.ts`
 
-Файл `api.ts` является точкой входа для tRPC на стороне клиента. Смотрите [Использование tRPC](/ru/usage/trpc#-utilstrpcts) для получения дополнительной информации.
+Файл `api.ts` является точкой входа для tRPC на стороне клиента. Смотрите [Использование tRPC](/ru/usage/trpc#-utilsapits) для получения дополнительной информации.
 
 </div>
 <div>
@@ -177,9 +177,9 @@ import Diagram from "../../components/docs/folderStructureDiagram.astro";
 </div>
 <div>
 
-### `.eslintrc.json`
+### `.eslintrc.cjs`
 
-Файл `.eslintrc.json` используется для настройки ESLint. Смотрите [документацию ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для получения дополнительной информации.
+Файл `.eslintrc.cjs` используется для настройки ESLint. Смотрите [документацию ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для получения дополнительной информации.
 
 </div>
 <div>
