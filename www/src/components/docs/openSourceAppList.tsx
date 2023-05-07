@@ -199,6 +199,14 @@ const projects: App[] = [
   },
 
   {
+    description: "Judge devs - website, where developers share their projects",
+    repoName: "judge-devs (gh)",
+    repo: "https://github.com/serzhan181/judge-devs",
+    linkName: "judge-devs.com",
+    link: "https://judge-devs.vercel.app/",
+  },
+
+  {
     description: "T3 Blog - A Reddit inspired forum website",
     repoName: "leojuriolli7/t3-blog",
     repo: "https://github.com/leojuriolli7/t3-blog",
