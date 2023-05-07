@@ -8,119 +8,39 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App uses [Zod](https://github.com/colinhacks/zod) for validating your environment variables at runtime _and_ buildtime by providing some additional logic in `src/env.mjs`.
-
-<Callout>
-
-This page is under reconstruction after the recent migration to our newly published [@t3-oss/env-nextjs](https://env.t3.gg) package.
-
-</Callout>
+Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev) under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.mjs`.
 
 ## env.mjs
 
-_TLDR; If you want to add a new environment variable, you must add it to both your `.env` as well as define the validator in `src/env.mjs`._
-
-This file is split into two parts - the schema and object destructuring as well as the validation logic. The validation logic should not need to be touched.
+_TLDR; If you want to add a new environment variable, you must add a validator for it in `src/env.mjs`, and then add the KV-pair in `.env`_
 
 ```ts:env.mjs
-const server = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
-});
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
-const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
-
-const processEnv = {
-  NODE_ENV: process.env.NODE_ENV,
-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-};
-```
-
-### Server Schema
-
-Define your server-side environment variables schema here.
-
-<Callout type="warning">
-  Make sure you do not prefix keys here with `NEXT_PUBLIC` in order not to leak
-  important secrets to the client.
-</Callout>
-
-### Client Schema
-
-Define your client-side environment variables schema here.
-
-To expose them to the client you need to prefix them with `NEXT_PUBLIC`. Validation will fail if you don't to help you detect invalid configuration.
-
-### processEnv Object
-
-Destruct the `process.env` here.
-
-We need a JavaScript object that we can parse our Zod-schemas with and due to the way Next.js handles environment variables, you can't destruct `process.env` like a regular object, so we need to do it manually.
-
-TypeScript will help you make sure that you have destructed all the keys from both schemas.
-
-```ts
-// ❌ This doesn't work, we need to destruct it manually
-const schema = z.object({
-  NEXT_PUBLIC_WS_KEY: z.string(),
-});
-
-const validated = schema.parse(process.env);
-```
-
-### Validation Logic
-
-_For the interested reader:_
-
-<details>
-<summary>Advanced: Validation logic</summary>
-
-Depending on the environment (server or client) we validate either both or just the client schema. This means that even though the server environment variables will be undefined, they won't trigger the validation to fail - meaning we can have a single entrypoint for our environment variables.
-
-```ts
-// src/env.mjs
-
-const isServer = typeof window === "undefined";
-
-const merged = server.merge(client);
-const parsed = isServer
-  ? merged.safeParse(processEnv) // <-- on server, validate all
-  : client.safeParse(processEnv); // <-- on client, validate only client
-
-if (parsed.success === false) {
-  console.error(
-    "❌ Invalid environment variables:\n",
-    ...formatErrors(parsed.error.format()),
-  );
-  throw new Error("Invalid environment variables");
-}
-```
-
-Then, we use a proxy object to throw errors if you try to access a server-side environment variable on the client.
-
-```ts
-// src/env.mjs
-
-// proxy allows us to remap the getters
-export const env = new Proxy(parsed.data, {
-  get(target, prop) {
-    if (typeof prop !== "string") return undefined;
-    // on the client we only allow NEXT_PUBLIC_ variables
-    if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
-      throw new Error(
-        "❌ Attempted to access serverside environment variable on the client",
-      );
-    return target[prop]; // <-- otherwise, return the value
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
   },
 });
 ```
 
-</details>
+T3 Env brings a new concept across the `createEnv`, which is responsible for creating the schema and will include the main validation logic for client and server-sided environment variables.
+
+<Callout type="info">
+  For more information about how `createEnv` internally works, check out the [T3
+  Env](https://env.t3.gg/docs/introduction) docs
+</Callout>
 
 ## Using Environment Variables
 
-When you want to use your environment variables, you can import them from `env.mjs` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
+When you want to use your environment variables, you can import them from the created `env.mjs` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
@@ -151,7 +71,14 @@ To ensure your build never completes without the environment variables the proje
 
 📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-📄 `env.mjs`: Add the appropriate validation logic for the environment variable by defining a Zod schema, e.g. `KEY: z.string()`, and destruct the environment variable from `process.env` in the `processEnv` object, e.g. `KEY: process.env.KEY`.
+📄 `env.mjs`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`. Besides that, make sure to destruct them in the `runtimeEnv` option, e.g.: `KEY: process.env.KEY`
+
+<Callout type="info">
+  Why do I need to destructure the environment variable in the `runtimeEnv`?
+  This is due to how Next.js bundles environment variables in certain runtimes.
+  By destructuring it manually, you ensure that the variable will never be
+  stripped out from the bundle.
+</Callout>
 
 Optionally, you can also keep `.env.example` updated:
 
@@ -170,15 +97,19 @@ TWITTER_API_TOKEN=1234567890
 2. Add the environment variable to `env.mjs`:
 
 ```ts
-export const server = z.object({
-  // ...
-  TWITTER_API_TOKEN: z.string(),
-});
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
-export const processEnv = {
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
   // ...
-  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-};
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
 ```
 
 <Callout type="info">
@@ -187,8 +118,8 @@ export const processEnv = {
   not empty, you can use `z.string().min(1)`.
 </Callout>
 
-3. _Optional:_ Add the environment variable to `.env.example`, but don't include the token
+3. _Optional:_ Add the environment variable to `.env.example` and make sure not to include the secret in the `runtimeEnv` option
 
-```
+```bash
 TWITTER_API_TOKEN=
 ```
