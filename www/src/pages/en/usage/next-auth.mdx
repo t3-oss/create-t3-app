@@ -3,7 +3,10 @@ title: NextAuth.js
 description: Usage of NextAuth.js
 layout: ../../../layouts/docs.astro
 lang: en
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 When you want an authentication system in your Next.js application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
 
@@ -176,7 +179,34 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ## Usage with Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
+Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.  
+
+<Callout type="warning">
+  Using database sessions is the recommended approach and you should read up on JWTs before switching to the JWT session strategy to avoid any security issues.
+</Callout>
+
+After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.  
+The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.  
+I.e.:
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session({ session, user }) {
++     session({ session, token }) {
+-       if (session.user) {
++       if (session.user && token.sub) {
+-         session.user.id = user.id;
++         session.user.id = token.sub;
+        }
+        return session;
+      }
+    },
+  };
+```
 
 ## Setting up the default DiscordProvider
 

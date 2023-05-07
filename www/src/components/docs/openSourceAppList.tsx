@@ -212,6 +212,14 @@ const projects: App[] = [
     linkName: "t3-blog-pi.vercel.app",
     link: "https://t3-blog-pi.vercel.app",
   },
+
+  {
+    description: "Checkinout - A checklist management project using T3 Stack",
+    repoName: "burak-sevinc/t3-checkinout",
+    repo: "https://github.com/burak-sevinc/t3-checkinout",
+    linkName: "checkinout.vercel.app",
+    link: "https://checkinout.vercel.app/",
+  },
 ];
 
 export default function OpenSourceAppList({

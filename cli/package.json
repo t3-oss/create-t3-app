@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.12.0",
+  "version": "7.13.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@prisma/client": "^4.11.0",
+    "@t3-oss/env-nextjs": "^0.2.1",
     "@tanstack/react-query": "^4.28.0",
     "@trpc/client": "^10.18.0",
     "@trpc/next": "^10.18.0",

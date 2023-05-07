@@ -1,6 +1,6 @@
 ---
 title: Variáveis de Ambiente
-description: Getting started with Create T3 App
+description: Iniciando com Create T3 App 
 layout: ../../../layouts/docs.astro
 lang: pt
 isMdx: true
@@ -8,118 +8,45 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-O Create T3 App usa [Zod](https://github.com/colinhacks/zod) para validar suas variáveis de ambiente em runtime _e_ buildtime fornecendo alguns arquivos adicionais no diretório `env`:
+O Create T3 App usa sua mais nova biblioteca [@t3-oss/env-nextjs](https://env.t3.gg) e [zod](https://zod.dev) para validar variáveis de ambiente durante o tempo de execução (runtime) _e_ buildtime fornecendo uma lógica simples no arquivo `src/env.mjs`:
 
 ## env.mjs
 
-_Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente, você deve adicioná-la tanto ao seu `.env` quanto definir o validador em `src/env.mjs`._
+_Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente, você deve adicioná-la ao seu `.env` ao definir no validador em `src/env.mjs`._
 
 Este arquivo é dividido em duas partes - o esquema e a desestruturação do objeto, bem como a lógica de validação. A lógica de validação não deve ser tocada.
 
 ```ts:env.mjs
-const server = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
-});
-
-const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
-
-const processEnv = {
-  NODE_ENV: process.env.NODE_ENV,
-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-};
-```
-
-### Schema do Servidor
-
-Defina seu esquema de variáveis de ambiente do lado do servidor aqui.
-
-<Callout type="warning">
-  Tenha certeza de não prefixar as chaves aqui com `NEXT_PUBLIC` para não expor
-  segredos importantes ao cliente.
-</Callout>
-
-### Schema do Cliente
-
-Defina seu esquema de variáveis de ambiente do lado do cliente aqui.
-
-Para expô-los ao cliente, você precisa prefixá-los com `NEXT_PUBLIC`. A validação falhará se você não o ajudar a detectar uma configuração inválida.
-
-### Objeto processEnv
-
-Desestruture o `process.env` aqui.
-
-Precisamos de um objeto JavaScript com o qual possamos analisar nossos esquemas Zod e devido à maneira como o Next.js lida com as variáveis de ambiente, você não pode destruir `process.env` como um objeto normal, então precisamos fazer isso manualmente.
-
-O TypeScript ajudará você a garantir que inseriu as chaves em `clientEnv` e também em `clientSchema`.
-
-```ts
-// ❌ Isso não funciona, precisamos desestruturá-lo manualmente
-const schema = z.object({
-  NEXT_PUBLIC_WS_KEY: z.string(),
-});
-
-const validated = schema.parse(process.env);
-```
-
-### Lógica de Validação
-
-_Para o leitor interessado:_
-
-<details>
-<summary>Avançado: Lógica de validação</summary>
-
-Dependendo do ambiente (servidor ou cliente), validamos tanto o esquema do servidor quanto o do cliente. Isso significa que, mesmo que as variáveis de ambiente do servidor sejam indefinidas, elas não acionarão a falha da validação - o que significa que podemos ter um único ponto de entrada para nossas variáveis de ambiente.
-
-```ts
-// src/env.mjs
-
-const isServer = typeof window === "undefined";
-
-const merged = server.merge(client);
-const parsed = isServer
-  ? merged.safeParse(processEnv) // <-- no server, valide tudo
-  : client.safeParse(processEnv); // <-- no client, valide apenas o cliente
-
-if (parsed.success === false) {
-  console.error(
-    "❌ Invalid environment variables:\n",
-    ...formatErrors(parsed.error.format()),
-  );
-  throw new Error("Invalid environment variables");
-}
-```
-
-Então, usamos um objeto proxy para lançar erros se você tentar acessar uma variável de ambiente do lado do servidor no cliente.
-
-```ts
-// src/env.mjs
-
-// proxy permite reatribuir os getters
-export const env = new Proxy(parsed.data, {
-  get(target, prop) {
-    if (typeof prop !== "string") return undefined;
-    // no client, permitimos apenas variáveis NEXT_PUBLIC_
-    if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
-      throw new Error(
-        "❌ Attempted to access serverside environment variable on the client",
-      );
-    return target[prop]; // <-- otherwise, return the value
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+ 
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
   },
 });
 ```
 
-</details>
+T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por criar o esquema e irá incluir a lógica de validação para  variáveis de ambiente no cliente e servidor. 
 
-## Usando Variáveis Ambiente
+<Callout type="info">
+    Para mais informações sobre como o `createEnv` funciona internamente, confira a documentação de [T3 Env](https://env.t3.gg/docs/introduction)
+</Callout>
 
-Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução.
+## Usando Variáveis de Ambiente
+
+Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
 
-// `env` é totalmente tipado e fornece autocomplete
+// `env` é totalmente tipado e fornece preenchimento automático 
 const dbUrl = env.DATABASE_URL;
 ```
 
@@ -143,9 +70,9 @@ Alguns frameworks e outras ferramentas, como o Next.js, sugerem que você armaze
 
 Para garantir que sua compilação nunca seja concluída sem as variáveis de ambiente de que o projeto precisa, você precisará adicionar novas variáveis de ambiente em **dois** locais:
 
-📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`
+📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`. Além disso, certifique-se de desestruturar elas na opção `runtimeEnv`, por exemplo, `CHAVE: process.env.CHAVE`.
 
-📄 `schema.mjs`: Adicione a lógica de validação apropriada para a variável de ambiente definindo um esquema Zod, por exemplo `TECLA: z.string()`
+📄 `env.mjs`: Adicione a lógica de validação apropriada para as variáveis de ambiente definindo um esquema Zod, por exemplo `NOME_DA_VARIAVEL: z.string()`
 
 Opcionalmente, você também pode manter `.env.example` atualizado:
 
@@ -153,7 +80,7 @@ Opcionalmente, você também pode manter `.env.example` atualizado:
 
 ### Exemplo
 
-_Quero adicionar meu token de API do Twitter como uma variável de ambiente do lado do servidor_
+_Quero adicionar meu token da API do Twitter como uma variável de ambiente do lado do servidor_
 
 1. Adicione a variável de ambiente a `.env`:
 
@@ -161,18 +88,18 @@ _Quero adicionar meu token de API do Twitter como uma variável de ambiente do l
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Adicione a variável de ambiente a `schema.mjs`:
+2. Adicione a variável de ambiente a `env.mjs`:
 
 ```ts
-export const serverSchema = z.object({
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+ 
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
   // ...
-  TWITTER_API_TOKEN: z.string(),
 });
-
-export const serverEnv = {
-  // ...
-  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-};
 ```
 
 <Callout type="info">
@@ -184,5 +111,10 @@ export const serverEnv = {
 3. opcional: adicione a variável de ambiente a `.env.example`, mas não inclua o token
 
 ```
-TWITTER_API_TOKEN=
+export const env = createEnv({
+  // ...
+  runtimeEnv: {
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
 ```
