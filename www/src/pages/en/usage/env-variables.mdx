@@ -8,16 +8,16 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev)  under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.mjs`.
+Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev) under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.mjs`.
 
 ## env.mjs
 
-_TLDR; If you want to add a new environment variable, you must add it to your `.env` as it is defined in the `src/env.mjs` validator._
+_TLDR; If you want to add a new environment variable, you must add a validator for it in `src/env.mjs`, and then add the KV-pair in `.env`_
 
 ```ts:env.mjs
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
- 
+
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
@@ -31,10 +31,11 @@ export const env = createEnv({
 });
 ```
 
-T3 Env brings a new concept across the `createEnv`, which is responsible for creating the schema and will include the main validation logic for client and server-sided environment variables. 
+T3 Env brings a new concept across the `createEnv`, which is responsible for creating the schema and will include the main validation logic for client and server-sided environment variables.
 
 <Callout type="info">
-    For more information about how `createEnv` internally works, check out the [T3 Env](https://env.t3.gg/docs/introduction) docs
+  For more information about how `createEnv` internally works, check out the [T3
+  Env](https://env.t3.gg/docs/introduction) docs
 </Callout>
 
 ## Using Environment Variables
@@ -72,6 +73,13 @@ To ensure your build never completes without the environment variables the proje
 
 📄 `env.mjs`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`. Besides that, make sure to destruct them in the `runtimeEnv` option, e.g.: `KEY: process.env.KEY`
 
+<Callout type="info">
+  Why do I need to destructure the environment variable in the `runtimeEnv`?
+  This is due to how Next.js bundles environment variables in certain runtimes.
+  By destructuring it manually, you ensure that the variable will never be
+  stripped out from the bundle.
+</Callout>
+
 Optionally, you can also keep `.env.example` updated:
 
 📄 `.env.example`: Enter your environment variable, but be sure to not include the value if it is secret, i.e. `KEY=VALUE` or `KEY=`
@@ -91,12 +99,16 @@ TWITTER_API_TOKEN=1234567890
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
- 
+
 export const env = createEnv({
   server: {
     TWITTER_API_TOKEN: z.string(),
   },
   // ...
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
 });
 ```
 
@@ -108,11 +120,6 @@ export const env = createEnv({
 
 3. _Optional:_ Add the environment variable to `.env.example` and make sure not to include the secret in the `runtimeEnv` option
 
-```
-export const env = createEnv({
-  // ...
-  runtimeEnv: {
-    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-  },
-});
+```bash
+TWITTER_API_TOKEN=
 ```
