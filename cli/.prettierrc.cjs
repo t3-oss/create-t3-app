@@ -13,7 +13,7 @@ const config = {
         "src/utils/renderVersionWarning.ts",
       ],
       options: {
-        plugins: ["prettier-plugin-tailwindcss"],
+        plugins: [],
       },
     },
   ],
