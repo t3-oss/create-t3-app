@@ -1,23 +1,22 @@
 #!/usr/bin/env node
-
-import { type PackageJson } from "type-fest";
-import path from "path";
-import fs from "fs-extra";
-import { runCli } from "~/cli/index.js";
-import { createProject } from "~/helpers/createProject.js";
-import { initializeGit } from "~/helpers/git.js";
-import { setImportAlias } from "~/helpers/setImportAlias.js";
-import { logNextSteps } from "~/helpers/logNextSteps.js";
-import { buildPkgInstallerMap } from "~/installers/index.js";
-import { logger } from "~/utils/logger.js";
-import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
-import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
 import {
   getNpmVersion,
   renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
-import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
+import fs from "fs-extra";
+import path from "path";
+import { type PackageJson } from "type-fest";
+import { runCli } from "~/cli/index.js";
+import { createProject } from "~/helpers/createProject.js";
+import { initializeGit } from "~/helpers/git.js";
+import { logNextSteps } from "~/helpers/logNextSteps.js";
+import { setImportAlias } from "~/helpers/setImportAlias.js";
+import { buildPkgInstallerMap } from "~/installers/index.js";
+import { logger } from "~/utils/logger.js";
+import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
+import { renderTitle } from "~/utils/renderTitle.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {

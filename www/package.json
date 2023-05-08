@@ -27,6 +27,7 @@
     "@fontsource/inter": "^4.5.15",
     "@fontsource/jetbrains-mono": "^4.5.12",
     "@headlessui/react": "^1.7.13",
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@resvg/resvg-js": "^2.4.1",
     "@vercel/analytics": "^1.0.0",
     "clsx": "^1.2.1",
