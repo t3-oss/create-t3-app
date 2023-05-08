@@ -10,12 +10,15 @@ const config = {
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
   overrides: [
     {
+      // Don't perform import sorting on these files
       files: [
         "template/extras/src/server/api/trpc/*",
         "src/utils/renderVersionWarning.ts",
       ],
       options: {
-        plugins: [],
+        plugins: baseConfig.plugins.filter(
+          (p) => p !== "@ianvs/prettier-plugin-sort-imports",
+        ),
       },
     },
   ],

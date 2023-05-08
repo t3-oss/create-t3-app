@@ -7,7 +7,7 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
-  plugins: [require.resolve("@ianvs/prettier-plugin-sort-imports")],
+  plugins: ["@ianvs/prettier-plugin-sort-imports"],
 };
 
 module.exports = config;
