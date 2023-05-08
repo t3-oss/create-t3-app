@@ -1,0 +1,122 @@
+---
+title: Variables d'environnement
+description: Débuter avec Create T3 App
+layout: ../../../layouts/docs.astro
+lang: fr
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Create T3 App utilise son propre package [@t3-oss/env-nextjs](https://env.t3.gg), ainsi que [zod](https://zod.dev) en interne pour valider les variables d'environnement à l'exécution _et_ au moment du build, en fournissant une logique simple dans `src/env.mjs`.
+
+## env.mjs
+
+_Résumé : Si vous voulez ajouter une nouvelle variable d'environnement, vous devez ajouter un validateur pour celle-ci dans `src/env.mjs`, puis ajouter la paire CLEF/VALEUR dans `.env`._
+
+```ts:env.mjs
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
+});
+```
+
+T3 Env introduit un nouveau concept à travers la fonction `createEnv`, qui est responsable de la création du schéma et inclura la logique de validation principale pour les variables d'environnement côté client et côté serveur.
+
+<Callout type="info">
+  Pour plus d'informations sur le fonctionnement interne de `createEnv`, consultez la documentation de [T3 Env](https://env.t3.gg/docs/introduction).
+</Callout>
+
+## Utilisation de variables d'environnement
+
+Lorsque vous souhaitez utiliser vos variables d'environnement, vous pouvez les importer depuis `env.mjs` et les utiliser comme vous le feriez normalement. Si vous l'importez côté client et essayez d'accéder à une variable d'environnement du côté serveur, vous obtiendrez une erreur d'exécution.
+
+```ts:pages/api/hello.ts
+import { env } from "../../env.mjs";
+
+// `env` is fully typesafe and provides autocompletion
+const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.mjs";
+
+// ❌ This will throw a runtime error
+const dbUrl = env.DATABASE_URL;
+
+// ✅ This is fine
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
+```
+
+## .env.example
+
+Puisque le fichier `.env` par défaut n'est pas enregistré dans le dépoôt de version, nous avons inclus un fichier `.env.example` dans lequel vous pouvez éventuellement conserver une copie de votre fichier `.env` sans les secrets. Cela n'est pas obligatoire, mais nous recommandons de maintenir le fichier exemple à jour pour faciliter autant que possible le démarrage des nouveaux contributeurs avec leur environnement.
+
+Certains frameworks et outils de build, comme Next.js, suggèrent de stocker les secrets dans un fichier `.env.local` et de commit les fichiers `.env` dans votre projet. Ceci n'est pas recommandé, car cela pourrait rendre facile de commit accidentellement des secrets dans votre projet. Au lieu de cela, nous recommandons de stocker les secrets dans le fichier `.env`, de rajouter votre fichier `.env` dans le fichier `.gitignore` et de ne commit que les fichiers `.env.example` dans votre projet.
+
+## Ajout des variables d’environnement
+
+Pour vous assurer que votre build ne se termine jamais sans les variables d'environnement nécessaires au projet, vous devriez ajouter de nouvelles variables d'environnement dans **deux** emplacements:
+
+📄 `.env`: Entrez votre variable d'environnement comme vous le feriez normalement dans un fichier `.env`, c'est-à-dire `CLEF=VALEUR`
+
+📄 `env.mjs`: Ajoutez la logique de validation appropriée pour les variables d'environnement en définissant un schéma Zod à l'intérieur de `createEnv` pour chacune d'entre elles, par exemple `CLEF: z.string()`. En plus de cela, assurez-vous de la déstructuration dans l'option `runtimeEnv`, par exemple : `CLEF: process.env.CLEF`
+
+<Callout type="info">
+  Pourquoi ai-je besoin de déstructurer la variable d'environnement dans `runtimeEnv` ?
+  Cela est dû à la façon dont Next.js rassemble les variables d'environnement dans certains contextes d'exécution.
+  En les déstructurant manuellement, vous vous assurez que la variable ne sera jamais supprimée de le bundle.
+</Callout>
+
+En option, vous pouvez également maintenir à jour le fichier `.env.example`:
+
+📄 `.env.example`: Entrez votre variable d'environnement, mais assurez-vous de ne pas inclure la valeur si elle est secrète, c'est-à-dire `CLEF=VALUE` ou `CLEF=`
+
+### Exemple
+
+_Je veux ajouter le jeton de l’API Twitter en tant que variable d’environnement côté serveur_
+
+1. Ajouter la variable d'environnement dans `.env`:
+
+```
+TWITTER_API_TOKEN=1234567890
+```
+
+2. Ajouter la variable d'environnement dans `env.mjs`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
+  // ...
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
+
+```
+
+<Callout type="info">
+  Une chaîne vide est toujours une chaîne, donc `z.string()` acceptera une chaîne vide comme valeur valide. Si vous voulez vous assurer que la variable d'environnement n'est pas vide, vous pouvez utiliser `z.string().min(1)
+</Callout>
+
+3. facultatif : ajoutez la variable d'environnement à `.env.example`, mais n'incluez pas le jeton
+
+```
+TWITTER_API_TOKEN=
+```
