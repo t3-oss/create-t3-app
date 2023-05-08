@@ -5,18 +5,6 @@ const config = {
   ...baseConfig,
   plugins: [...baseConfig.plugins, "prettier-plugin-tailwindcss"],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
-  overrides: [
-    {
-      // Don't perform import sorting on these files
-      files: [
-        "template/extras/src/server/api/trpc/*",
-        "src/utils/renderVersionWarning.ts",
-      ],
-      options: {
-        plugins: [],
-      },
-    },
-  ],
 };
 
 module.exports = config;
