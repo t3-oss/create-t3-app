@@ -1,11 +1,11 @@
-import path from "path";
 import fs from "fs-extra";
+import path from "path";
+import sortPackageJson from "sort-package-json";
 import { type PackageJson } from "type-fest";
 import {
   dependencyVersionMap,
   type AvailableDependencies,
 } from "~/installers/dependencyVersionMap.js";
-import sortPackageJson from "sort-package-json";
 
 export const addPackageDependency = (opts: {
   dependencies: AvailableDependencies[];

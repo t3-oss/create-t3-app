@@ -1,11 +1,11 @@
-import satori from "satori";
 import OpenGraph from "../components/openGraph";
-import { type APIRoute } from "astro";
-import { Resvg } from "@resvg/resvg-js";
-import { getFont } from "../utils/ogFont";
-import { SITE_URL } from "../utils/siteUrl";
 import { SITE } from "../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../languages";
+import { getFont } from "../utils/ogFont";
+import { SITE_URL } from "../utils/siteUrl";
+import { Resvg } from "@resvg/resvg-js";
+import { type APIRoute } from "astro";
+import satori from "satori";
 
 const removeEndingSlash = (str: string) => str.replace(/\/$/, "");
 
