@@ -1,12 +1,11 @@
 const baseConfig = require("../.prettierrc.cjs");
 
+console.log("baseConfig", baseConfig.plugins);
+
 /** @type {import('prettier').Config} */
 const config = {
   ...baseConfig,
-  plugins: [
-    ...baseConfig.plugins,
-    require.resolve("prettier-plugin-tailwindcss"),
-  ],
+  plugins: [...baseConfig.plugins, "prettier-plugin-tailwindcss"],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
   overrides: [
     {
@@ -16,9 +15,12 @@ const config = {
         "src/utils/renderVersionWarning.ts",
       ],
       options: {
-        plugins: baseConfig.plugins.filter(
-          (p) => p !== "@ianvs/prettier-plugin-sort-imports",
-        ),
+        plugins: [
+          ...baseConfig.plugins.filter(
+            (p) => p !== "@ianvs/prettier-plugin-sort-imports",
+          ),
+          "prettier-plugin-tailwindcss",
+        ],
       },
     },
   ],
