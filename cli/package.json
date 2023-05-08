@@ -34,7 +34,7 @@
     "lint": "eslint . --report-unused-disable-directives",
     "lint:fix": "pnpm lint --fix",
     "format": "pnpm format:check --write",
-    "format:check": "pnpm format --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern--check",
+    "format:check": "pnpm prettier --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
     "release": "changeset version",
     "pub:beta": "pnpm build && npm publish --tag beta",
     "pub:next": "pnpm build && npm publish --tag next",
