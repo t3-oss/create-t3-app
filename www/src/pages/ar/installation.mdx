@@ -4,7 +4,10 @@ description: تعليمات التثبيت لـ Create T3 App
 layout: ../../layouts/docs.astro
 lang: ar
 dir: rtl
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 لإنشاء تَطبيق بإستخدام `create-t3-app`، نفيذ أي من الأوامر الثلاث التالية وأجب عن أسئلة مٌوجه الأوامر (command prompt):
 
@@ -49,9 +52,11 @@ pnpm create t3-app@latest
 | `--nextAuth` | أضف NextAuth.js الي التطبيق  |
 | `--tailwind` | أضف Tailwind CSS الي التطبيق |
 
-**ملاحظة: إذا لم تضع الخاصية `CI` ، فلن يكون لبقية هذه الخصائص أي تأثير.**
-
-يمكنك الا تُضيف الخيارات في حال لم تكن تريد ذلك، لكننا ننصحك بذلك تحرياََ للدقة فعليك تمرير `false` مع الخاصية مثل `--nextAuth false`.
+<Callout type="warning">
+  ملاحظة: إذا لم تضع الخاصية `CI` ، فلن يكون لبقية هذه الخصائص أي تأثير.
+</Callout>
+يمكنك الا تُضيف الخيارات في حال لم تكن تريد ذلك، لكننا ننصحك بذلك تحرياََ للدقة فعليك
+تمرير `false` مع الخاصية مثل `--nextAuth false`.
 
 ### أمثلة
 

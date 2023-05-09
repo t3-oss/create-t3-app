@@ -11,7 +11,8 @@ try {
       console.log(err);
       process.exit(1);
     }
-    pkg.version = "6.0.0-next." + stdout.trim();
+    const [major, minor, patch] = pkg.version.split(".").map(Number);
+    pkg.version = `${major}.${minor}.${patch + 1}-next.${stdout.trim()}`;
     fs.writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, "\t") + "\n");
   });
 } catch (error) {

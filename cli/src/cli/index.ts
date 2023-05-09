@@ -2,10 +2,8 @@ import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import {
-  availablePackages,
-  type AvailablePackages,
-} from "~/installers/index.js";
+import { type AvailablePackages } from "~/installers/index.js";
+import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
@@ -17,7 +15,6 @@ interface CliFlags {
   noInstall: boolean;
   default: boolean;
   importAlias: string;
-  strictEslintAndPrettier: boolean;
 
   /** @internal Used in CI. */
   CI: boolean;
@@ -50,7 +47,6 @@ const defaultOptions: CliResults = {
     prisma: false,
     nextAuth: false,
     importAlias: "~/",
-    strictEslintAndPrettier: false,
   },
 };
 
@@ -118,11 +114,6 @@ export const runCli = async () => {
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias,
     )
-    .option(
-      "-ep -eslint-pretteier",
-      "enable prettier and a strict eslint config",
-      defaultOptions.flags.strictEslintAndPrettier,
-    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -162,8 +153,6 @@ export const runCli = async () => {
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
-    if (cliResults.flags.strictEslintAndPrettier)
-      cliResults.packages.push("strictEslintAndPrettier");
   }
 
   // Explained below why this is in a try/catch block

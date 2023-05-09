@@ -25,6 +25,11 @@ const companies: Company[] = [
     linkName: "ecotokens.net",
     link: "https://ecotokens.net",
   },
+  {
+    name: "Civitai",
+    linkName: "civitai.com",
+    link: "https://civitai.com",
+  },
 ];
 
 export default function CompanyList({

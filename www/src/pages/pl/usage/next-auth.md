@@ -58,7 +58,7 @@ const User = () => {
 
 Create T3 App jest skonfigurowany tak, aby wykorzystać [callback `session`](https://next-auth.js.org/configuration/callbacks#session-callback) w konfiguracji NextAuth.js do dodania ID użytkownika do obiektu `session`.
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -71,7 +71,7 @@ callbacks: {
 
 Łączy się to z plikiem deklaracji typów, aby zapewnić odpowiednie typy obiektu `session` - musi on zawierać powyższe pole `user.id`. Więcej o zmianie typów poczytać możesz w rozdziale [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) dokumentacji NextAuth.js.
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -91,14 +91,14 @@ Jeżeli używasz NextAuth.js oraz tRPC, stworzyć można zabezpieczone procedury
 
 Konfiguracja ta zachodzi w dwóch krokach:
 
-1. Pobierz sesję z headerów zapytania korzystając z funkcji [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Zaletą korzystania z `getServerSession` zamiast `getSession` jest fakt, iż jest to funkcja wywoływana jedynie po stronie serwera i nie inicjuje ona żadnych niepotrzebnych zapytań. `create-t3-app` tworzy funkcję pomocniczą, która ułatwia korzystanie z `getServerSession`.
+1. Pobierz sesję z headerów zapytania korzystając z funkcji [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Zaletą korzystania z `getServerSession` zamiast `getSession` jest fakt, iż jest to funkcja wywoływana jedynie po stronie serwera i nie inicjuje ona żadnych niepotrzebnych zapytań. `create-t3-app` tworzy funkcję pomocniczą, która ułatwia korzystanie z `getServerSession` - nie musisz więc importować zarówno opcji NextAuth.js jak i funkcji `getServerSession` za każdym razem, kiedy chcesz otrzymać sesję.
 
 ```ts:server/auth.ts
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
@@ -151,7 +151,7 @@ const userRouter = router({
 
 ## Korzystanie wraz z Prismą
 
-Przygotowanie NextAuth.js do pracy z Prismą wymaga wiele [wstępnej konfiguracji](https://next-auth.js.org/adapters/models/). `create-t3-app` zajmuje się nią za Ciebie, a jeśli wybierzesz zarówno Prismę i NextAuth.js, otrzymasz w pełni działający system uwierzytelniania, wraz z wszystkimi potrzebnymi modelami bazy danych. Szablon aplikacji, który dostarczamy, zawiera domyślnie provider OAuth Discorda, który wybraliśmy z powodu bycia jednym z łatwiejszych do obsługiwania - jedyne, co musiz zrobić, to podać tokeny w pliku `.env`... i gotowe! Jeżeli jednak chcesz skorzystać z czegoś innego, możesz w łatwy sposób dołączyć inne providery opierając się na [dokumentacji NextAuth.js](https://next-auth.js.org/providers/). Uwaga - niektóre z providerów wymagają większej ilości pól na modelach w bazie danych. Polecamy Ci przeczytać dokumentację providera, z którego chciałbyś skorzystać aby upewnić się, iż posiadasz wszystko, czego potrzebujesz.
+Przygotowanie NextAuth.js do pracy z Prismą wymaga wiele [wstępnej konfiguracji](https://authjs.dev/reference/adapter/prisma/). `create-t3-app` zajmuje się nią za Ciebie, a jeśli wybierzesz zarówno Prismę i NextAuth.js, otrzymasz w pełni działający system uwierzytelniania, wraz z wszystkimi potrzebnymi modelami bazy danych. Szablon aplikacji, który dostarczamy, zawiera domyślnie provider OAuth Discorda, który wybraliśmy z powodu bycia jednym z łatwiejszych do obsługiwania - jedyne, co musiz zrobić, to podać tokeny w pliku `.env`... i gotowe! Jeżeli jednak chcesz skorzystać z czegoś innego, możesz w łatwy sposób dołączyć inne providery opierając się na [dokumentacji NextAuth.js](https://next-auth.js.org/providers/). Uwaga - niektóre z providerów wymagają większej ilości pól na modelach w bazie danych. Polecamy Ci przeczytać dokumentację providera, z którego chciałbyś skorzystać aby upewnić się, iż posiadasz wszystko, czego potrzebujesz.
 
 ### Dodawanie nowych pól do modeli
 

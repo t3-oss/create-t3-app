@@ -1,13 +1,6 @@
 import { getVersion } from "./getT3Version.js";
 import { logger } from "./logger.js";
 import { execSync } from "child_process";
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the LICENSE file in the root
- * directory of this source tree.
- * https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/LICENSE
- */
 import https from "https";
 
 export const renderVersionWarning = (npmVersion: string) => {
@@ -37,6 +30,13 @@ export const renderVersionWarning = (npmVersion: string) => {
   console.log("");
 };
 
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root
+ * directory of this source tree.
+ * https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/LICENSE
+ */
 type DistTagsBody = {
   latest: string;
 };

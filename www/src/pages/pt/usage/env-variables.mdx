@@ -1,0 +1,120 @@
+---
+title: Variáveis de Ambiente
+description: Iniciando com Create T3 App 
+layout: ../../../layouts/docs.astro
+lang: pt
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+O Create T3 App usa sua mais nova biblioteca [@t3-oss/env-nextjs](https://env.t3.gg) e [zod](https://zod.dev) para validar variáveis de ambiente durante o tempo de execução (runtime) _e_ buildtime fornecendo uma lógica simples no arquivo `src/env.mjs`:
+
+## env.mjs
+
+_Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente, você deve adicioná-la ao seu `.env` ao definir no validador em `src/env.mjs`._
+
+Este arquivo é dividido em duas partes - o esquema e a desestruturação do objeto, bem como a lógica de validação. A lógica de validação não deve ser tocada.
+
+```ts:env.mjs
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+ 
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
+});
+```
+
+T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por criar o esquema e irá incluir a lógica de validação para  variáveis de ambiente no cliente e servidor. 
+
+<Callout type="info">
+    Para mais informações sobre como o `createEnv` funciona internamente, confira a documentação de [T3 Env](https://env.t3.gg/docs/introduction)
+</Callout>
+
+## Usando Variáveis de Ambiente
+
+Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
+
+```ts:pages/api/hello.ts
+import { env } from "../../env.mjs";
+
+// `env` é totalmente tipado e fornece preenchimento automático 
+const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.mjs";
+
+// ❌ Isso lançará um erro em tempo de execução
+const dbUrl = env.DATABASE_URL;
+
+// ✅ Isso está correto
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
+```
+
+## .env.example
+
+Como o arquivo `.env` padrão não está comprometido com o controle de versão, também incluímos um arquivo `.env.example`, no qual você pode, opcionalmente, manter uma cópia de seu arquivo `.env` com quaisquer segredos removidos. Isso não é necessário, mas recomendamos manter o exemplo atualizado para tornar mais fácil para os contribuidores começarem a usar seu ambiente.
+
+Alguns frameworks e outras ferramentas, como o Next.js, sugerem que você armazene variáveis em um arquivo `.env.local` e faça commit de arquivos `.env` em seu projeto. Isso não é recomendado, pois poderia facilitar o acidente de incluir variáveis ambiente secretas em seu histórico do git. Em vez disso, recomendamos que você armazene essas variáveis no arquivo `.env`, mantenha o arquivo `.env` em seu `.gitignore` e faça commit somente de arquivos `.env.example` em seu projeto.
+
+## Adicionando Variáveis Ambiente
+
+Para garantir que sua compilação nunca seja concluída sem as variáveis de ambiente de que o projeto precisa, você precisará adicionar novas variáveis de ambiente em **dois** locais:
+
+📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`. Além disso, certifique-se de desestruturar elas na opção `runtimeEnv`, por exemplo, `CHAVE: process.env.CHAVE`.
+
+📄 `env.mjs`: Adicione a lógica de validação apropriada para as variáveis de ambiente definindo um esquema Zod, por exemplo `NOME_DA_VARIAVEL: z.string()`
+
+Opcionalmente, você também pode manter `.env.example` atualizado:
+
+📄 `.env.example`: Insira sua variável de ambiente, mas certifique-se de não incluir o valor se for secreto, ou seja, `CHAVE=VALOR` ou `CHAVE=`
+
+### Exemplo
+
+_Quero adicionar meu token da API do Twitter como uma variável de ambiente do lado do servidor_
+
+1. Adicione a variável de ambiente a `.env`:
+
+```
+TWITTER_API_TOKEN=1234567890
+```
+
+2. Adicione a variável de ambiente a `env.mjs`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+ 
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
+  // ...
+});
+```
+
+<Callout type="info">
+  Uma string vazia ainda é uma string, então `z.string()` aceitará uma string
+  vazia como um valor válido. Se você quiser ter certeza de que a variável de
+  ambiente não está vazia, você pode usar `z.string().min(1)`.
+</Callout>
+
+3. opcional: adicione a variável de ambiente a `.env.example`, mas não inclua o token
+
+```
+export const env = createEnv({
+  // ...
+  runtimeEnv: {
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
+```

@@ -1,5 +1,72 @@
 # Changelog
 
+## 7.13.0
+
+### Minor Changes
+
+- [#1397](https://github.com/t3-oss/create-t3-app/pull/1397) [`be9a834`](https://github.com/t3-oss/create-t3-app/commit/be9a83483339f8bb799be7a3d69cf67e64882daf) Thanks [@brieyla1](https://github.com/brieyla1)! - feat: Added JsonProtocol as the Default Prisma Engine for Serverless speedups
+
+  modified:
+
+      - cli/template/extras/prisma/schema/base.prisma
+
+      - cli/template/extras/prisma/schema/with-auth.prisma
+
+  Description: This pull request proposes the enabling of the JsonProtocol by default. The rationale for this change is based on the performance improvements provided by the JsonProtocol without compromising stability, even though it is still a preview feature. Empirical evidence gathered from large-scale projects, with 100+ Prisma calls, demonstrates the significant time reductions enabled by this optimization, particularly in serverless environments such as Vercel. Another point worth adding is that most projects using nextJS create-t3-app will be deployed on serverless platforms such as vercel, where the real impact is.
+
+## 7.12.3
+
+### Patch Changes
+
+- [#1404](https://github.com/t3-oss/create-t3-app/pull/1404) [`48dd89a`](https://github.com/t3-oss/create-t3-app/commit/48dd89adb33ff9625dba82f6e149cf111f02e488) Thanks [@michalbundyra](https://github.com/michalbundyra)! - update nextjs dependency to ^13.4.1
+
+## 7.12.2
+
+### Patch Changes
+
+- [#1401](https://github.com/t3-oss/create-t3-app/pull/1401) [`b1a35dd`](https://github.com/t3-oss/create-t3-app/commit/b1a35dd66c5c9abab13daebfee93c08b67317272) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next to fix vercel build error
+
+## 7.12.1
+
+### Patch Changes
+
+- [#1377](https://github.com/t3-oss/create-t3-app/pull/1377) [`00018ff`](https://github.com/t3-oss/create-t3-app/commit/00018ff0cbe5904f0bb37b8cb0a64814ca5f9410) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - move env validation logic out to a separate package
+
+- [#1385](https://github.com/t3-oss/create-t3-app/pull/1385) [`ac12abb`](https://github.com/t3-oss/create-t3-app/commit/ac12abb92a77d251b2c4bc72caceb422ab4ca706) Thanks [@iAverages](https://github.com/iAverages)! - Fixed issue with creating git repository with git versions below 2.28
+  Fixed bug with check to use --inital-branch set in git v2.28
+
+## 7.12.0
+
+### Minor Changes
+
+- [#1370](https://github.com/t3-oss/create-t3-app/pull/1370) [`18bc6a7`](https://github.com/t3-oss/create-t3-app/commit/18bc6a73a77b0b48191792ddfd0c296b58cc8221) Thanks [@chungweileong94](https://github.com/chungweileong94)! - Enforce `NEXT_PUBLIC_` env key on client
+
+## 7.11.0
+
+### Minor Changes
+
+- [#1358](https://github.com/t3-oss/create-t3-app/pull/1358) [`1a8a97e`](https://github.com/t3-oss/create-t3-app/commit/1a8a97e42b8991596fc70e50dd6870c987a59075) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - improve boolean coercion of `SKIP_ENV_VALIDATION` environment variable
+
+  If defined, "0" and "false" are now considered falsey values, all other values are considered truthy.
+
+### Patch Changes
+
+- [#1352](https://github.com/t3-oss/create-t3-app/pull/1352) [`c48b38f`](https://github.com/t3-oss/create-t3-app/commit/c48b38f522b81097e2f0e883ede053dbac620c12) Thanks [@Tungetyt](https://github.com/Tungetyt)! - refactor: make destructuring consistent
+
+## 7.10.3
+
+### Patch Changes
+
+- [#1330](https://github.com/t3-oss/create-t3-app/pull/1330) [`85997e0`](https://github.com/t3-oss/create-t3-app/commit/85997e0cc26a2ae6fbcd08458734bd6335ba467a) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: create a new object for the session callback
+
+## 7.10.2
+
+### Patch Changes
+
+- [#1329](https://github.com/t3-oss/create-t3-app/pull/1329) [`5429989`](https://github.com/t3-oss/create-t3-app/commit/54299895517d3c406637efec8f0512cf1ba2da5a) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next-auth version
+
+- [#1321](https://github.com/t3-oss/create-t3-app/pull/1321) [`7fcb41c`](https://github.com/t3-oss/create-t3-app/commit/7fcb41c95d24567040b72409a576d8c694f910a1) Thanks [@JingLi1998](https://github.com/JingLi1998)! - Update the type for global prisma instance
+
 ## 7.10.1
 
 ### Patch Changes

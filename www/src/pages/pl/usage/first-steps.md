@@ -9,7 +9,7 @@ Skorzytałeś właśnie z szablonu aplikacji T3 i jesteś gotowy, aby zacząć z
 
 ## Baza Danych
 
-Jeżeli twoja aplikacja zawiera Prismę, koniecznie uruchom `npx prisma db push` z głównego folderu projektu. Komenda ta zsynchronizuje twój schemat Prismy z bazą danych i wygeneruje typy TypeScripta dla "Prisma Client" bazując na tym schemacie. Uwaga: po wygenerowaniu typów Prismy prawdopodobnie będziesz musiał zrestartować serwer TypeScripta, aby był on w stanie je wykryć.
+Jeżeli twoja aplikacja zawiera Prismę, koniecznie uruchom `npx prisma db push` z głównego folderu projektu. Komenda ta zsynchronizuje twój schemat Prismy z bazą danych i wygeneruje typy TypeScripta dla "Prisma Client" bazując na tym schemacie. Uwaga: po wygenerowaniu typów Prismy prawdopodobnie będziesz musiał [zrestartować serwer TypeScripta](https://tinytip.co/tips/vscode-restart-ts/), aby był on w stanie je wykryć.
 
 ## Uwierzytelnianie
 
@@ -30,6 +30,14 @@ Oczywiście, jeżeli wolisz korzystać z innego, możesz użyć jednego z [wielu
 2. Ustaw `NEXTAUTH_SECRET` w pliku `.env`. W wersji rozwojowej zadziała byle co, w wersji produkcyjnej zobacz uwagę w pliku `.env`, która mówi, jak wygenerować bezpieczny secret.
 
 Powinieneś być w stanie się zalogować.
+
+## Konfiguracja Edytora
+
+Następujące rozszerzenia są przez nas polecane dla optymalnego DX'u. Poniższe linki dostarczają pluginy dla odpowiednich edytorów.
+
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
 ## Następne Kroki
 
