@@ -1,9 +1,9 @@
+import { type Installer } from "../installers/index.js";
+import { type AvailableDependencies } from "./dependencyVersionMap.js";
 import fs from "fs-extra";
 import path from "path";
 import { PKG_ROOT } from "~/consts.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
-import { type Installer } from "../installers/index.js";
-import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 export const prettier: Installer = ({ projectDir, packages }) => {
   const packeagesToInstall: AvailableDependencies[] = [
