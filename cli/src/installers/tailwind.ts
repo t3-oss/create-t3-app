@@ -4,7 +4,7 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const tailwindInstaller: Installer = ({ projectDir, packages }) => {
+export const tailwindInstaller: Installer = ({ projectDir }) => {
   addPackageDependency({
     projectDir,
     dependencies: ["tailwindcss", "postcss", "autoprefixer"],
