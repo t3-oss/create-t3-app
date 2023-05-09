@@ -31,7 +31,6 @@ export const dependencyVersionMap = {
   "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
 
   // Eslint
-  eslint: "^8.36.0",
   "eslint-config-next": "^13.4.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

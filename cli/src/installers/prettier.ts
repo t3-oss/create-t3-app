@@ -32,7 +32,7 @@ export const prettier: Installer = ({ projectDir, packages }) => {
     );
   } else {
     fs.copySync(
-      path.join(PKG_ROOT, "template/extras/config/prettier.config.cjs"),
+      path.join(PKG_ROOT, "template/extras/config/_prettier.config.cjs"),
       path.join(projectDir, "prettier.config.cjs"),
     );
   }
