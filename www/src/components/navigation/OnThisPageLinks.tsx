@@ -1,7 +1,7 @@
-import { type MarkdownHeading } from "astro";
-import { useEffect, useMemo, useState } from "react";
 import { Menu } from "@headlessui/react";
+import { type MarkdownHeading } from "astro";
 import clsx from "clsx";
+import { useEffect, useMemo, useState } from "react";
 
 type OnThisPageLinksProps = {
   headings: MarkdownHeading[];
@@ -75,7 +75,7 @@ export default function OnThisPageLinks({
   }, [headings, title]);
 
   return (
-    <div className="sticky inset-x-0 top-20 z-[11] block w-full bg-default px-4 pb-4 pt-2 lg:hidden">
+    <div className="sticky inset-x-0 top-[72px] z-[11] block w-full bg-default px-4 pb-4 pt-2 lg:hidden">
       <Menu>
         {({ open }) => (
           <div className="relative w-full">
