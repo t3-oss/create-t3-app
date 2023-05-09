@@ -33,14 +33,15 @@
     "start": "node dist/index.js",
     "lint": "eslint . --report-unused-disable-directives",
     "lint:fix": "pnpm lint --fix",
-    "format": "prettier --write --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
-    "format:check": "pnpm format --check",
+    "format": "pnpm format:check --write",
+    "format:check": "pnpm prettier --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
     "release": "changeset version",
     "pub:beta": "pnpm build && npm publish --tag beta",
     "pub:next": "pnpm build && npm publish --tag next",
     "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "chalk": "5.2.0",
     "commander": "^10.0.0",
     "execa": "^7.1.1",
