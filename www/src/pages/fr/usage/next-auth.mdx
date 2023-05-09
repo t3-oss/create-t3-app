@@ -3,7 +3,10 @@ title: NextAuth.js
 description: Utilisation de NextAuth.js
 layout: ../../../layouts/docs.astro
 lang: fr
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Lorsque vous souhaitez un système d'authentification dans votre application Next.js, NextAuth.js est une excellente solution pour apporter la sécurité sans avoir à le construire vous-même. Il vient avec une longue liste de fournisseurs pour ajouter rapidement de l'authentification OAuth et fournit des adaptateurs pour de nombreuses bases de données et ORM.
 
@@ -177,6 +180,32 @@ Si, par exemple, vous souhaitez ajouter un `role` au modèle `User`, vous devrez
 ## Utilisation avec le middleware Next.js
 
 Utilisation de NextAuth.js avec le middleware Next.js [nécessite l'utilisation de la stratégie de session JWT](https://next-auth.js.org/configuration/nextjs#caveats) pour l'authentification. En effet, le middleware ne peut accéder au cookie de session que s'il s'agit d'un JWT. Par défaut, Create T3 App est configuré pour utiliser la stratégie de base de données **default**, en combinaison avec Prisma comme adaptateur de base de données.
+
+<Callout type="warning">
+  L'utilisation de sessions en base de données est l'approche recommandée et vous devriez vous informer sur les JWT (JSON Web Token) avant de passer à la stratégie de session JWT, et ce, afin d'éviter tout problème de sécurité.
+</Callout>
+
+Après avoir basculé vers la stratégie de session JWT, assurez-vous de mettre à jour le callback `session` dans `src/server/auth.ts`. L'objet `user` sera `undefined`. À la place, récupérez l'identifiant de l'utilisateur à partir de l'objet `token`.
+Ex.:
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session({ session, user }) {
++     session({ session, token }) {
+-       if (session.user) {
++       if (session.user && token.sub) {
+-         session.user.id = user.id;
++         session.user.id = token.sub;
+        }
+        return session;
+      }
+    },
+  };
+```
 
 ## Configuration du DiscordProvider par défaut
 
