@@ -51,6 +51,7 @@
     "sort-package-json": "^2.4.1"
   },
   "devDependencies": {
+    "@clerk/nextjs": "^4.17.1",
     "@prisma/client": "^4.11.0",
     "@t3-oss/env-nextjs": "^0.2.1",
     "@tanstack/react-query": "^4.28.0",
