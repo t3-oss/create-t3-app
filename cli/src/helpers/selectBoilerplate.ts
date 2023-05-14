@@ -15,13 +15,18 @@ export const selectAppFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
+  const usingClerk = packages.clerk.inUse;
 
   let appFile = "";
   if (usingNextAuth && usingTRPC) {
     appFile = "with-auth-trpc.tsx";
+  } else if (usingClerk && usingTRPC) {
+    appFile = "with-clerk-trpc.tsx";
   } else if (usingNextAuth && !usingTRPC) {
     appFile = "with-auth.tsx";
-  } else if (!usingNextAuth && usingTRPC) {
+  } else if (usingClerk && !usingTRPC) {
+    appFile = "with-clerk.tsx";
+  } else if (!usingNextAuth && !usingClerk && usingTRPC) {
     appFile = "with-trpc.tsx";
   }
 
