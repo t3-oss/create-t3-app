@@ -1,0 +1,78 @@
+diff --git a/package.json b/package.json
+index 0399767..2940cb1 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,29 +9,29 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "next": "^13.2.1",
++    "next": "^13.2.4",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.20.6"
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/eslint": "^8.21.1",
+-    "@types/node": "^18.14.0",
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
+     "@types/prettier": "^2.7.2",
+     "@types/react": "^18.0.28",
+     "@types/react-dom": "^18.0.11",
+-    "@typescript-eslint/eslint-plugin": "^5.53.0",
+-    "@typescript-eslint/parser": "^5.53.0",
+-    "autoprefixer": "^10.4.7",
+-    "eslint": "^8.34.0",
+-    "eslint-config-next": "^13.2.1",
+-    "postcss": "^8.4.14",
+-    "prettier": "^2.8.1",
+-    "prettier-plugin-tailwindcss": "^0.2.1",
+-    "tailwindcss": "^3.2.0",
+-    "typescript": "^4.9.5"
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "autoprefixer": "^10.4.14",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.2.4",
++    "postcss": "^8.4.21",
++    "prettier": "^2.8.6",
++    "prettier-plugin-tailwindcss": "^0.2.6",
++    "tailwindcss": "^3.3.0",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.8.0"
++    "initVersion": "7.10.1"
+   }
+ }
+diff --git a/tailwind.config.cjs b/tailwind.config.ts
+similarity index 50%
+rename from tailwind.config.cjs
+rename to tailwind.config.ts
+index a82e7e9..d4d3fa2 100644
+--- a/tailwind.config.cjs
++++ b/tailwind.config.ts
+@@ -1,10 +1,9 @@
+-/** @type {import('tailwindcss').Config} */
+-const config = {
++import { type Config } from "tailwindcss";
++
++export default {
+   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+-};
+-
+-module.exports = config;
++} satisfies Config;

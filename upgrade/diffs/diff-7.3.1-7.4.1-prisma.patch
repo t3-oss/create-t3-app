@@ -1,0 +1,135 @@
+diff --git a/.env.example b/.env.example
+index cb15881..89f2130 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,9 +1,14 @@
+-# Since .env is gitignored, you can use .env.example to build a new `.env` file when you clone the repo.
+-# Keep this file up-to-date when you add new variables to `.env`.
++# Since the ".env" file is gitignored, you can use the ".env.example" file to
++# build a new ".env" file when you clone the repo. Keep this file up-to-date
++# when you add new variables to `.env`.
+ 
+-# This file will be committed to version control, so make sure not to have any secrets in it.
+-# If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
++# This file will be committed to version control, so make sure not to have any
++# secrets in it. If you are cloning this repo, create a copy of this file named
++# ".env" and populate it with your secrets.
++
++# When adding additional environment variables, the schema in "/env/schema.mjs"
++# should be updated accordingly.
+ 
+-# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+ # Prisma
+-DATABASE_URL=file:./db.sqlite
++# https://www.prisma.io/docs/reference/database-reference/connection-urls#env
++DATABASE_URL="file:./db.sqlite"
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..ce181ca 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,4 +1,5 @@
+ // @ts-check
++
+ /**
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+@@ -8,7 +9,13 @@
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++
++  /**
++   * If you have the "experimental: { appDir: true }" setting enabled, then you
++   * must comment the below `i18n` config out.
++   *
++   * @see https://github.com/vercel/next.js/issues/41980
++   */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index 04c539a..bfe6b9a 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,8 +10,8 @@
+     "postinstall": "prisma generate"
+   },
+   "dependencies": {
+-    "@prisma/client": "^4.8.0",
+-    "next": "13.1.1",
++    "@prisma/client": "^4.9.0",
++    "next": "13.1.6",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "zod": "^3.20.2"
+@@ -23,11 +23,11 @@
+     "@typescript-eslint/eslint-plugin": "^5.47.1",
+     "@typescript-eslint/parser": "^5.47.1",
+     "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
+-    "prisma": "^4.8.0",
++    "eslint-config-next": "13.1.6",
++    "prisma": "^4.9.0",
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.3.1"
++    "initVersion": "7.4.1"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index f2a36da..d883ade 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -13,7 +13,7 @@ export const serverSchema = z.object({
+ /**
+  * You can't destruct `process.env` as a regular object in the Next.js
+  * middleware, so you have to do it manually here.
+- * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ * @type {{ [k in keyof z.input<typeof serverSchema>]: string | undefined }}
+  */
+ export const serverEnv = {
+   DATABASE_URL: process.env.DATABASE_URL,
+@@ -33,7 +33,7 @@ export const clientSchema = z.object({
+  * You can't destruct `process.env` as a regular object, so you have to do
+  * it manually here. This is because Next.js evaluates this at build time,
+  * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
++ * @type {{ [k in keyof z.input<typeof clientSchema>]: string | undefined }}
+  */
+ export const clientEnv = {
+   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+diff --git a/src/server/db.ts b/src/server/db.ts
+index 5df917c..038504d 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -2,18 +2,13 @@ import { PrismaClient } from "@prisma/client";
+ 
+ import { env } from "../env/server.mjs";
+ 
+-declare global {
+-  // eslint-disable-next-line no-var
+-  var prisma: PrismaClient | undefined;
+-}
++const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+ 
+ export const prisma =
+-  global.prisma ||
++  globalForPrisma.prisma ||
+   new PrismaClient({
+     log:
+       env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+   });
+ 
+-if (env.NODE_ENV !== "production") {
+-  global.prisma = prisma;
+-}
++if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

@@ -1,0 +1,49 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+index 861f139..10756b8 100644
+--- a/.eslintrc.cjs
++++ b/.eslintrc.cjs
+@@ -25,6 +25,7 @@ const config = {
+         fixStyle: "inline-type-imports",
+       },
+     ],
++    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+   },
+ };
+ 
+diff --git a/package.json b/package.json
+index d7ab0d9..72dba2f 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -12,7 +12,7 @@
+   "dependencies": {
+     "@next-auth/prisma-adapter": "^1.0.5",
+     "@prisma/client": "^4.9.0",
+-    "next": "13.1.6",
++    "next": "^13.2.1",
+     "next-auth": "^4.19.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -26,11 +26,11 @@
+     "@typescript-eslint/eslint-plugin": "^5.53.0",
+     "@typescript-eslint/parser": "^5.53.0",
+     "eslint": "^8.34.0",
+-    "eslint-config-next": "13.1.6",
++    "eslint-config-next": "^13.2.1",
+     "prisma": "^4.9.0",
+     "typescript": "^4.9.5"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.7"
++    "initVersion": "7.7.0"
+   }
+ }
+diff --git a/public/favicon.ico b/public/favicon.ico
+index efd76f1..60c702a 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ

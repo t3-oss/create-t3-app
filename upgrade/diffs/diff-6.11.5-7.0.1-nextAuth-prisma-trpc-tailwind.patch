@@ -1,0 +1,765 @@
+diff --git a/.env.example b/.env.example
+index 3be874a..991c762 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,7 +5,6 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Prisma
+ DATABASE_URL=file:./db.sqlite
+ 
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index 88cc29e..2749c38 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -11,37 +11,37 @@
+   },
+   "dependencies": {
+     "@next-auth/prisma-adapter": "^1.0.5",
+-    "@prisma/client": "^4.5.0",
+-    "@tanstack/react-query": "^4.16.0",
+-    "@trpc/client": "^10.0.0",
+-    "@trpc/next": "^10.0.0",
+-    "@trpc/react-query": "^10.0.0",
+-    "@trpc/server": "^10.0.0",
++    "@prisma/client": "^4.8.0",
++    "@tanstack/react-query": "^4.20.0",
++    "@trpc/client": "^10.7.0",
++    "@trpc/next": "^10.7.0",
++    "@trpc/react-query": "^10.7.0",
++    "@trpc/server": "^10.7.0",
+     "next": "13.1.1",
+-    "next-auth": "^4.18.3",
++    "next-auth": "^4.18.7",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
++    "@types/node": "^18.11.18",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+-    "eslint": "^8.26.0",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+-    "prisma": "^4.5.0",
++    "prisma": "^4.8.0",
+     "tailwindcss": "^3.2.0",
+-    "typescript": "^4.8.4"
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.11.5"
++    "initVersion": "7.0.1"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 1ac91dd..6d78c6a 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -2,65 +2,65 @@
+ // learn more about it in the docs: https://pris.ly/d/prisma-schema
+ 
+ generator client {
+-  provider = "prisma-client-js"
++    provider = "prisma-client-js"
+ }
+ 
+ datasource db {
+-  provider = "sqlite"
+-  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+-  // Further reading:
+-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+-  url      = env("DATABASE_URL")
++    provider = "sqlite"
++    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
++    // Further reading:
++    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
++    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
++    url      = env("DATABASE_URL")
+ }
+ 
+ model Example {
+-  id        String   @id @default(cuid())
+-  createdAt DateTime @default(now())
+-  updatedAt DateTime @updatedAt
++    id        String   @id @default(cuid())
++    createdAt DateTime @default(now())
++    updatedAt DateTime @updatedAt
+ }
+ 
+ // Necessary for Next auth
+ model Account {
+-  id                String  @id @default(cuid())
+-  userId            String
+-  type              String
+-  provider          String
+-  providerAccountId String
+-  refresh_token     String? // @db.Text
+-  access_token      String? // @db.Text
+-  expires_at        Int?
+-  token_type        String?
+-  scope             String?
+-  id_token          String? // @db.Text
+-  session_state     String?
+-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
++    id                String  @id @default(cuid())
++    userId            String
++    type              String
++    provider          String
++    providerAccountId String
++    refresh_token     String? // @db.Text
++    access_token      String? // @db.Text
++    expires_at        Int?
++    token_type        String?
++    scope             String?
++    id_token          String? // @db.Text
++    session_state     String?
++    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+-  @@unique([provider, providerAccountId])
++    @@unique([provider, providerAccountId])
+ }
+ 
+ model Session {
+-  id           String   @id @default(cuid())
+-  sessionToken String   @unique
+-  userId       String
+-  expires      DateTime
+-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
++    id           String   @id @default(cuid())
++    sessionToken String   @unique
++    userId       String
++    expires      DateTime
++    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ }
+ 
+ model User {
+-  id            String    @id @default(cuid())
+-  name          String?
+-  email         String?   @unique
+-  emailVerified DateTime?
+-  image         String?
+-  accounts      Account[]
+-  sessions      Session[]
++    id            String    @id @default(cuid())
++    name          String?
++    email         String?   @unique
++    emailVerified DateTime?
++    image         String?
++    accounts      Account[]
++    sessions      Session[]
+ }
+ 
+ model VerificationToken {
+-  identifier String
+-  token      String   @unique
+-  expires    DateTime
++    identifier String
++    token      String   @unique
++    expires    DateTime
+ 
+-  @@unique([identifier, token])
++    @@unique([identifier, token])
+ }
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 2e2d750..2a46c68 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -2,7 +2,7 @@ import { type AppType } from "next/app";
+ import { type Session } from "next-auth";
+ import { SessionProvider } from "next-auth/react";
+ 
+-import { trpc } from "../utils/trpc";
++import { api } from "../utils/api";
+ 
+ import "../styles/globals.css";
+ 
+@@ -17,4 +17,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
+   );
+ };
+ 
+-export default trpc.withTRPC(MyApp);
++export default api.withTRPC(MyApp);
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index fe2b192..e218f01 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -4,7 +4,7 @@ import DiscordProvider from "next-auth/providers/discord";
+ import { PrismaAdapter } from "@next-auth/prisma-adapter";
+ 
+ import { env } from "../../../env/server.mjs";
+-import { prisma } from "../../../server/db/client";
++import { prisma } from "../../../server/db";
+ 
+ export const authOptions: NextAuthOptions = {
+   // Include user.id on session
+@@ -23,7 +23,15 @@ export const authOptions: NextAuthOptions = {
+       clientId: env.DISCORD_CLIENT_ID,
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+-    // ...add more providers here
++    /**
++     * ...add more providers here
++     *
++     * Most other providers require a bit more work than the Discord provider.
++     * For example, the GitHub provider requires you to add the
++     * `refresh_token_expires_in` field to the Account model. Refer to the
++     * NextAuth.js docs for the provider you want to use. Example:
++     * @see https://next-auth.js.org/providers/github
++     */
+   ],
+ };
+ 
+diff --git a/src/pages/api/examples.ts b/src/pages/api/examples.ts
+deleted file mode 100644
+index c0889f5..0000000
+--- a/src/pages/api/examples.ts
++++ /dev/null
+@@ -1,10 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { prisma } from "../../server/db/client";
+-
+-const examples = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const examples = await prisma.example.findMany();
+-  res.status(200).json(examples);
+-};
+-
+-export default examples;
+diff --git a/src/pages/api/restricted.ts b/src/pages/api/restricted.ts
+deleted file mode 100644
+index 39d936d..0000000
+--- a/src/pages/api/restricted.ts
++++ /dev/null
+@@ -1,21 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { getServerAuthSession } from "../../server/common/get-server-auth-session";
+-
+-const restricted = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const session = await getServerAuthSession({ req, res });
+-
+-  if (session) {
+-    res.send({
+-      content:
+-        "This is protected content. You can access this content because you are signed in.",
+-    });
+-  } else {
+-    res.send({
+-      error:
+-        "You must be signed in to view the protected content on this page.",
+-    });
+-  }
+-};
+-
+-export default restricted;
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index f69201d..70f0892 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -1,13 +1,13 @@
+ import { createNextApiHandler } from "@trpc/server/adapters/next";
+ 
+ import { env } from "../../../env/server.mjs";
+-import { createContext } from "../../../server/trpc/context";
+-import { appRouter } from "../../../server/trpc/router/_app";
++import { createTRPCContext } from "../../../server/api/trpc";
++import { appRouter } from "../../../server/api/root";
+ 
+ // export API handler
+ export default createNextApiHandler({
+   router: appRouter,
+-  createContext,
++  createContext: createTRPCContext,
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index e727579..77c98e0 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -3,10 +3,10 @@ import Head from "next/head";
+ import Link from "next/link";
+ import { signIn, signOut, useSession } from "next-auth/react";
+ 
+-import { trpc } from "../utils/trpc";
++import { api } from "../utils/api";
+ 
+ const Home: NextPage = () => {
+-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
++  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+ 
+   return (
+     <>
+@@ -61,7 +61,7 @@ export default Home;
+ const AuthShowcase: React.FC = () => {
+   const { data: sessionData } = useSession();
+ 
+-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
++  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
+     undefined, // no input
+     { enabled: sessionData?.user !== undefined },
+   );
+diff --git a/src/server/api/root.ts b/src/server/api/root.ts
+new file mode 100644
+index 0000000..c3f288e
+--- /dev/null
++++ b/src/server/api/root.ts
+@@ -0,0 +1,14 @@
++import { createTRPCRouter } from "./trpc";
++import { exampleRouter } from "./routers/example";
++
++/**
++ * This is the primary router for your server.
++ *
++ * All routers added in /api/routers should be manually added here
++ */
++export const appRouter = createTRPCRouter({
++  example: exampleRouter,
++});
++
++// export type definition of API
++export type AppRouter = typeof appRouter;
+diff --git a/src/server/api/routers/example.ts b/src/server/api/routers/example.ts
+new file mode 100644
+index 0000000..1586033
+--- /dev/null
++++ b/src/server/api/routers/example.ts
+@@ -0,0 +1,21 @@
++import { z } from "zod";
++
++import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
++
++export const exampleRouter = createTRPCRouter({
++  hello: publicProcedure
++    .input(z.object({ text: z.string() }))
++    .query(({ input }) => {
++      return {
++        greeting: `Hello ${input.text}`,
++      };
++    }),
++
++  getAll: publicProcedure.query(({ ctx }) => {
++    return ctx.prisma.example.findMany();
++  }),
++
++  getSecretMessage: protectedProcedure.query(() => {
++    return "you can now see this secret message!";
++  }),
++});
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+new file mode 100644
+index 0000000..37039da
+--- /dev/null
++++ b/src/server/api/trpc.ts
+@@ -0,0 +1,126 @@
++/**
++ * YOU PROBABLY DON'T NEED TO EDIT THIS FILE, UNLESS:
++ * 1. You want to modify request context (see Part 1)
++ * 2. You want to create a new middleware or type of procedure (see Part 3)
++ *
++ * tl;dr - this is where all the tRPC server stuff is created and plugged in.
++ * The pieces you will need to use are documented accordingly near the end
++ */
++
++/**
++ * 1. CONTEXT
++ *
++ * This section defines the "contexts" that are available in the backend API
++ *
++ * These allow you to access things like the database, the session, etc, when
++ * processing a request
++ *
++ */
++import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
++import { type Session } from "next-auth";
++
++import { getServerAuthSession } from "../auth";
++import { prisma } from "../db";
++
++type CreateContextOptions = {
++  session: Session | null;
++};
++
++/**
++ * This helper generates the "internals" for a tRPC context. If you need to use
++ * it, you can export it from here
++ *
++ * Examples of things you may need it for:
++ * - testing, so we dont have to mock Next.js' req/res
++ * - trpc's `createSSGHelpers` where we don't have req/res
++ * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ */
++const createInnerTRPCContext = async (opts: CreateContextOptions) => {
++  return {
++    session: opts.session,
++    prisma,
++  };
++};
++
++/**
++ * This is the actual context you'll use in your router. It will be used to
++ * process every request that goes through your tRPC endpoint
++ * @link https://trpc.io/docs/context
++ */
++export const createTRPCContext = async (opts: CreateNextContextOptions) => {
++  const { req, res } = opts;
++
++  // Get the session from the server using the unstable_getServerSession wrapper function
++  const session = await getServerAuthSession({ req, res });
++
++  return await createInnerTRPCContext({
++    session,
++  });
++};
++
++/**
++ * 2. INITIALIZATION
++ *
++ * This is where the trpc api is initialized, connecting the context and
++ * transformer
++ */
++import { initTRPC, TRPCError } from "@trpc/server";
++import superjson from "superjson";
++
++const t = initTRPC
++  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
++  .create({
++    transformer: superjson,
++    errorFormatter({ shape }) {
++      return shape;
++    },
++  });
++
++/**
++ * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
++ *
++ * These are the pieces you use to build your tRPC API. You should import these
++ * a lot in the /src/server/api/routers folder
++ */
++
++/**
++ * This is how you create new routers and subrouters in your tRPC API
++ * @see https://trpc.io/docs/router
++ */
++export const createTRPCRouter = t.router;
++
++/**
++ * Public (unauthed) procedure
++ *
++ * This is the base piece you use to build new queries and mutations on your
++ * tRPC API. It does not guarantee that a user querying is authorized, but you
++ * can still access user session data if they are logged in
++ */
++export const publicProcedure = t.procedure;
++
++/**
++ * Reusable middleware that enforces users are logged in before running the
++ * procedure
++ */
++const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
++  if (!ctx.session || !ctx.session.user) {
++    throw new TRPCError({ code: "UNAUTHORIZED" });
++  }
++  return next({
++    ctx: {
++      // infers the `session` as non-nullable
++      session: { ...ctx.session, user: ctx.session.user },
++    },
++  });
++});
++
++/**
++ * Protected (authed) procedure
++ *
++ * If you want a query or mutation to ONLY be accessible to logged in users, use
++ * this. It verifies the session is valid and guarantees ctx.session.user is not
++ * null
++ *
++ * @see https://trpc.io/docs/procedures
++ */
++export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+diff --git a/src/server/common/get-server-auth-session.ts b/src/server/auth.ts
+similarity index 50%
+rename from src/server/common/get-server-auth-session.ts
+rename to src/server/auth.ts
+index b2b90ed..a99fdae 100644
+--- a/src/server/common/get-server-auth-session.ts
++++ b/src/server/auth.ts
+@@ -1,12 +1,18 @@
+ import { type GetServerSidePropsContext } from "next";
+ import { unstable_getServerSession } from "next-auth";
+ 
+-import { authOptions } from "../../pages/api/auth/[...nextauth]";
++import { authOptions } from "../pages/api/auth/[...nextauth]";
+ 
+ /**
+- * Wrapper for unstable_getServerSession https://next-auth.js.org/configuration/nextjs
+- * See example usage in trpc createContext or the restricted API route
++ * Wrapper for unstable_getServerSession, used in trpc createContext and the
++ * restricted API route
++ *
++ * Don't worry too much about the "unstable", it's safe to use but the syntax
++ * may change in future versions
++ *
++ * @see https://next-auth.js.org/configuration/nextjs
+  */
++
+ export const getServerAuthSession = async (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];
+diff --git a/src/server/db/client.ts b/src/server/db.ts
+similarity index 89%
+rename from src/server/db/client.ts
+rename to src/server/db.ts
+index 0c3d234..5df917c 100644
+--- a/src/server/db/client.ts
++++ b/src/server/db.ts
+@@ -1,6 +1,6 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../../env/server.mjs";
++import { env } from "../env/server.mjs";
+ 
+ declare global {
+   // eslint-disable-next-line no-var
+diff --git a/src/server/trpc/context.ts b/src/server/trpc/context.ts
+deleted file mode 100644
+index 97932de..0000000
+--- a/src/server/trpc/context.ts
++++ /dev/null
+@@ -1,39 +0,0 @@
+-import { type inferAsyncReturnType } from "@trpc/server";
+-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+-import { type Session } from "next-auth";
+-
+-import { getServerAuthSession } from "../common/get-server-auth-session";
+-import { prisma } from "../db/client";
+-
+-type CreateContextOptions = {
+-  session: Session | null;
+-};
+-
+-/** Use this helper for:
+- * - testing, so we dont have to mock Next.js' req/res
+- * - trpc's `createSSGHelpers` where we don't have req/res
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+- **/
+-export const createContextInner = async (opts: CreateContextOptions) => {
+-  return {
+-    session: opts.session,
+-    prisma,
+-  };
+-};
+-
+-/**
+- * This is the actual context you'll use in your router
+- * @link https://trpc.io/docs/context
+- **/
+-export const createContext = async (opts: CreateNextContextOptions) => {
+-  const { req, res } = opts;
+-
+-  // Get the session from the server using the unstable_getServerSession wrapper function
+-  const session = await getServerAuthSession({ req, res });
+-
+-  return await createContextInner({
+-    session,
+-  });
+-};
+-
+-export type Context = inferAsyncReturnType<typeof createContext>;
+diff --git a/src/server/trpc/router/_app.ts b/src/server/trpc/router/_app.ts
+deleted file mode 100644
+index 0316694..0000000
+--- a/src/server/trpc/router/_app.ts
++++ /dev/null
+@@ -1,11 +0,0 @@
+-import { router } from "../trpc";
+-import { authRouter } from "./auth";
+-import { exampleRouter } from "./example";
+-
+-export const appRouter = router({
+-  example: exampleRouter,
+-  auth: authRouter,
+-});
+-
+-// export type definition of API
+-export type AppRouter = typeof appRouter;
+diff --git a/src/server/trpc/router/auth.ts b/src/server/trpc/router/auth.ts
+deleted file mode 100644
+index 0fd2185..0000000
+--- a/src/server/trpc/router/auth.ts
++++ /dev/null
+@@ -1,10 +0,0 @@
+-import { router, publicProcedure, protectedProcedure } from "../trpc";
+-
+-export const authRouter = router({
+-  getSession: publicProcedure.query(({ ctx }) => {
+-    return ctx.session;
+-  }),
+-  getSecretMessage: protectedProcedure.query(() => {
+-    return "you can now see this secret message!";
+-  }),
+-});
+diff --git a/src/server/trpc/router/example.ts b/src/server/trpc/router/example.ts
+deleted file mode 100644
+index b736705..0000000
+--- a/src/server/trpc/router/example.ts
++++ /dev/null
+@@ -1,16 +0,0 @@
+-import { z } from "zod";
+-
+-import { router, publicProcedure } from "../trpc";
+-
+-export const exampleRouter = router({
+-  hello: publicProcedure
+-    .input(z.object({ text: z.string().nullish() }).nullish())
+-    .query(({ input }) => {
+-      return {
+-        greeting: `Hello ${input?.text ?? "world"}`,
+-      };
+-    }),
+-  getAll: publicProcedure.query(({ ctx }) => {
+-    return ctx.prisma.example.findMany();
+-  }),
+-});
+diff --git a/src/server/trpc/trpc.ts b/src/server/trpc/trpc.ts
+deleted file mode 100644
+index 7c80f44..0000000
+--- a/src/server/trpc/trpc.ts
++++ /dev/null
+@@ -1,39 +0,0 @@
+-import { initTRPC, TRPCError } from "@trpc/server";
+-import superjson from "superjson";
+-
+-import { type Context } from "./context";
+-
+-const t = initTRPC.context<Context>().create({
+-  transformer: superjson,
+-  errorFormatter({ shape }) {
+-    return shape;
+-  },
+-});
+-
+-export const router = t.router;
+-
+-/**
+- * Unprotected procedure
+- **/
+-export const publicProcedure = t.procedure;
+-
+-/**
+- * Reusable middleware to ensure
+- * users are logged in
+- */
+-const isAuthed = t.middleware(({ ctx, next }) => {
+-  if (!ctx.session || !ctx.session.user) {
+-    throw new TRPCError({ code: "UNAUTHORIZED" });
+-  }
+-  return next({
+-    ctx: {
+-      // infers the `session` as non-nullable
+-      session: { ...ctx.session, user: ctx.session.user },
+-    },
+-  });
+-});
+-
+-/**
+- * Protected procedure
+- **/
+-export const protectedProcedure = t.procedure.use(isAuthed);
+diff --git a/src/utils/trpc.ts b/src/utils/api.ts
+similarity index 59%
+rename from src/utils/trpc.ts
+rename to src/utils/api.ts
+index 2391cbc..c99a366 100644
+--- a/src/utils/trpc.ts
++++ b/src/utils/api.ts
+@@ -1,9 +1,16 @@
++/**
++ * This is the client-side entrypoint for your tRPC API.
++ * It's used to create the `api` object which contains the Next.js App-wrapper
++ * as well as your typesafe react-query hooks.
++ *
++ * We also create a few inference helpers for input and output types
++ */
+ import { httpBatchLink, loggerLink } from "@trpc/client";
+ import { createTRPCNext } from "@trpc/next";
+ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-import { type AppRouter } from "../server/trpc/router/_app";
++import { type AppRouter } from "../server/api/root";
+ 
+ const getBaseUrl = () => {
+   if (typeof window !== "undefined") return ""; // browser should use relative url
+@@ -11,10 +18,22 @@ const getBaseUrl = () => {
+   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+ };
+ 
+-export const trpc = createTRPCNext<AppRouter>({
++/**
++ * A set of typesafe react-query hooks for your tRPC API
++ */
++export const api = createTRPCNext<AppRouter>({
+   config() {
+     return {
++      /**
++       * Transformer used for data de-serialization from the server
++       * @see https://trpc.io/docs/data-transformers
++       **/
+       transformer: superjson,
++
++      /**
++       * Links used to determine request flow from client to server
++       * @see https://trpc.io/docs/links
++       * */
+       links: [
+         loggerLink({
+           enabled: (opts) =>
+@@ -27,6 +46,10 @@ export const trpc = createTRPCNext<AppRouter>({
+       ],
+     };
+   },
++  /**
++   * Whether tRPC should await queries when server rendering pages
++   * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
++   */
+   ssr: false,
+ });
+ 

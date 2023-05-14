@@ -1,0 +1,37 @@
+diff --git a/package.json b/package.json
+index 0f3c3f8..60cf048 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -18,7 +18,7 @@
+     "@trpc/next": "^10.18.0",
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+-    "next": "13.3.4",
++    "next": "^13.4.1",
+     "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -35,7 +35,7 @@
+     "@typescript-eslint/parser": "^5.56.0",
+     "autoprefixer": "^10.4.14",
+     "eslint": "^8.36.0",
+-    "eslint-config-next": "^13.2.4",
++    "eslint-config-next": "^13.4.1",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+     "prettier-plugin-tailwindcss": "^0.2.6",
+@@ -44,6 +44,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.2"
++    "initVersion": "7.12.3"
+   }
+ }

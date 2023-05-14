@@ -1,0 +1,40 @@
+diff --git a/package.json b/package.json
+index 4ce29ca..7886d17 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -14,7 +14,7 @@
+     "@trpc/next": "^10.9.0",
+     "@trpc/react-query": "^10.9.0",
+     "@trpc/server": "^10.9.0",
+-    "next": "13.1.6",
++    "next": "^13.2.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+@@ -30,7 +30,7 @@
+     "@typescript-eslint/parser": "^5.53.0",
+     "autoprefixer": "^10.4.7",
+     "eslint": "^8.34.0",
+-    "eslint-config-next": "13.1.6",
++    "eslint-config-next": "^13.2.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+@@ -38,6 +38,6 @@
+     "typescript": "^4.9.5"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.7"
++    "initVersion": "7.6.0"
+   }
+ }
+diff --git a/public/favicon.ico b/public/favicon.ico
+index efd76f1..60c702a 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ

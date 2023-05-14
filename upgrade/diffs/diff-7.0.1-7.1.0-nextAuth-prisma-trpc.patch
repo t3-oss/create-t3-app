@@ -1,0 +1,89 @@
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/package.json b/package.json
+index a11ba37..4ebdc8f 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -36,6 +36,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.1"
++    "initVersion": "7.1.0"
+   }
+ }
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 70f0892..8ec828b 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -11,7 +11,9 @@ export default createNextApiHandler({
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+-          console.error(`❌ tRPC failed on ${path}: ${error}`);
++          console.error(
++            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
++          );
+         }
+       : undefined,
+ });
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index 8b65c78..adcaac7 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -75,7 +75,7 @@ const AuthShowcase: React.FC = () => {
+       </p>
+       <button
+         className={styles.loginButton}
+-        onClick={sessionData ? () => signOut() : () => signIn()}
++        onClick={sessionData ? () => void signOut() : () => void signIn()}
+       >
+         {sessionData ? "Sign out" : "Sign in"}
+       </button>
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 37039da..e31fa65 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -35,7 +35,7 @@ type CreateContextOptions = {
+  * - trpc's `createSSGHelpers` where we don't have req/res
+  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+  */
+-const createInnerTRPCContext = async (opts: CreateContextOptions) => {
++const createInnerTRPCContext = (opts: CreateContextOptions) => {
+   return {
+     session: opts.session,
+     prisma,
+@@ -53,7 +53,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+   // Get the session from the server using the unstable_getServerSession wrapper function
+   const session = await getServerAuthSession({ req, res });
+ 
+-  return await createInnerTRPCContext({
++  return createInnerTRPCContext({
+     session,
+   });
+ };

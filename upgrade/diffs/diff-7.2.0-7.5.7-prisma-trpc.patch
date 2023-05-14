@@ -1,0 +1,706 @@
+diff --git a/.env.example b/.env.example
+index cb15881..168cf5b 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,9 +1,14 @@
+-# Since .env is gitignored, you can use .env.example to build a new `.env` file when you clone the repo.
+-# Keep this file up-to-date when you add new variables to `.env`.
++# Since the ".env" file is gitignored, you can use the ".env.example" file to
++# build a new ".env" file when you clone the repo. Keep this file up-to-date
++# when you add new variables to `.env`.
+ 
+-# This file will be committed to version control, so make sure not to have any secrets in it.
+-# If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
++# This file will be committed to version control, so make sure not to have any
++# secrets in it. If you are cloning this repo, create a copy of this file named
++# ".env" and populate it with your secrets.
++
++# When adding additional environment variables, the schema in "/src/env.mjs"
++# should be updated accordingly.
+ 
+-# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+ # Prisma
+-DATABASE_URL=file:./db.sqlite
++# https://www.prisma.io/docs/reference/database-reference/connection-urls#env
++DATABASE_URL="file:./db.sqlite"
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+new file mode 100644
+index 0000000..861f139
+--- /dev/null
++++ b/.eslintrc.cjs
+@@ -0,0 +1,31 @@
++/** @type {import("eslint").Linter.Config} */
++const config = {
++  overrides: [
++    {
++      extends: [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking",
++      ],
++      files: ["*.ts", "*.tsx"],
++      parserOptions: {
++        project: "tsconfig.json",
++      },
++    },
++  ],
++  parser: "@typescript-eslint/parser",
++  parserOptions: {
++    project: "./tsconfig.json",
++  },
++  plugins: ["@typescript-eslint"],
++  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
++  rules: {
++    "@typescript-eslint/consistent-type-imports": [
++      "warn",
++      {
++        prefer: "type-imports",
++        fixStyle: "inline-type-imports",
++      },
++    ],
++  },
++};
++
++module.exports = config;
+diff --git a/.eslintrc.json b/.eslintrc.json
+deleted file mode 100644
+index 82671df..0000000
+--- a/.eslintrc.json
++++ /dev/null
+@@ -1,22 +0,0 @@
+-{
+-  "overrides": [
+-    {
+-      "extends": [
+-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+-      ],
+-      "files": ["*.ts", "*.tsx"],
+-      "parserOptions": {
+-        "project": "tsconfig.json"
+-      }
+-    }
+-  ],
+-  "parser": "@typescript-eslint/parser",
+-  "parserOptions": {
+-    "project": "./tsconfig.json"
+-  },
+-  "plugins": ["@typescript-eslint"],
+-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+-  "rules": {
+-    "@typescript-eslint/consistent-type-imports": "warn"
+-  }
+-}
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..d7dfb79 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,14 +1,21 @@
+ // @ts-check
++
+ /**
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
++!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++
++  /**
++   * If you have the "experimental: { appDir: true }" setting enabled, then you
++   * must comment the below `i18n` config out.
++   *
++   * @see https://github.com/vercel/next.js/issues/41980
++   */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index c298792..9c989fe 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,30 +10,31 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@prisma/client": "^4.8.0",
+-    "@tanstack/react-query": "^4.20.0",
+-    "@trpc/client": "^10.8.1",
+-    "@trpc/next": "^10.8.1",
+-    "@trpc/react-query": "^10.8.1",
+-    "@trpc/server": "^10.8.1",
+-    "next": "13.1.1",
++    "@prisma/client": "^4.9.0",
++    "@tanstack/react-query": "^4.20.2",
++    "@trpc/client": "^10.9.0",
++    "@trpc/next": "^10.9.0",
++    "@trpc/react-query": "^10.9.0",
++    "@trpc/server": "^10.9.0",
++    "next": "13.1.6",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+-    "zod": "^3.20.2"
++    "zod": "^3.20.6"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.11.18",
+-    "@types/react": "^18.0.26",
+-    "@types/react-dom": "^18.0.10",
+-    "@typescript-eslint/eslint-plugin": "^5.47.1",
+-    "@typescript-eslint/parser": "^5.47.1",
+-    "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
+-    "prisma": "^4.8.0",
+-    "typescript": "^4.9.4"
++    "@types/eslint": "^8.21.1",
++    "@types/node": "^18.14.0",
++    "@types/react": "^18.0.28",
++    "@types/react-dom": "^18.0.11",
++    "@typescript-eslint/eslint-plugin": "^5.53.0",
++    "@typescript-eslint/parser": "^5.53.0",
++    "eslint": "^8.34.0",
++    "eslint-config-next": "13.1.6",
++    "prisma": "^4.9.0",
++    "typescript": "^4.9.5"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.2.0"
++    "initVersion": "7.5.7"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+new file mode 100644
+index 0000000..126943c
+--- /dev/null
++++ b/src/env.mjs
+@@ -0,0 +1,76 @@
++import { z } from "zod";
++
++/**
++ * Specify your server-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars.
++ */
++const server = z.object({
++  DATABASE_URL: z.string().url(),
++  NODE_ENV: z.enum(["development", "test", "production"]),
++});
++
++/**
++ * Specify your client-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ */
++const client = z.object({
++  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++});
++
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++ * middlewares) or client-side so we need to destruct manually.
++ *
++ * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
++ */
++const processEnv = {
++  DATABASE_URL: process.env.DATABASE_URL,
++  NODE_ENV: process.env.NODE_ENV,
++  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++};
++
++// Don't touch the part below
++// --------------------------
++
++const merged = server.merge(client);
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
++
++if (!!process.env.SKIP_ENV_VALIDATION == false) {
++  const isServer = typeof window === "undefined";
++
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
++
++  if (parsed.success === false) {
++    console.error(
++      "❌ Invalid environment variables:",
++      parsed.error.flatten().fieldErrors,
++    );
++    throw new Error("Invalid environment variables");
++  }
++
++  env = new Proxy(parsed.data, {
++    get(target, prop) {
++      if (typeof prop !== "string") return undefined;
++      // Throw a descriptive error if a server-side env var is accessed on the client
++      // Otherwise it would just be returning `undefined` and be annoying to debug
++      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
++        throw new Error(
++          process.env.NODE_ENV === "production"
++            ? "❌ Attempted to access a server-side environment variable on the client"
++            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
++        );
++      return target[/** @type {keyof typeof target} */ (prop)];
++    },
++  });
++}
++
++export { env };
+diff --git a/src/env/client.mjs b/src/env/client.mjs
+deleted file mode 100644
+index 30958cb..0000000
+--- a/src/env/client.mjs
++++ /dev/null
+@@ -1,35 +0,0 @@
+-// @ts-check
+-import { clientEnv, clientSchema } from "./schema.mjs";
+-
+-const _clientEnv = clientSchema.safeParse(clientEnv);
+-
+-export const formatErrors = (
+-  /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
+-  errors,
+-) =>
+-  Object.entries(errors)
+-    .map(([name, value]) => {
+-      if (value && "_errors" in value)
+-        return `${name}: ${value._errors.join(", ")}\n`;
+-    })
+-    .filter(Boolean);
+-
+-if (!_clientEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_clientEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_clientEnv.data)) {
+-  if (!key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn(
+-      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`,
+-    );
+-
+-    throw new Error("Invalid public environment variable name");
+-  }
+-}
+-
+-export const env = _clientEnv.data;
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+deleted file mode 100644
+index f2a36da..0000000
+--- a/src/env/schema.mjs
++++ /dev/null
+@@ -1,40 +0,0 @@
+-// @ts-check
+-import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-export const serverSchema = z.object({
+-  DATABASE_URL: z.string().url(),
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * middleware, so you have to do it manually here.
+- * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
+- */
+-export const serverEnv = {
+-  DATABASE_URL: process.env.DATABASE_URL,
+-  NODE_ENV: process.env.NODE_ENV,
+-};
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-export const clientSchema = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object, so you have to do
+- * it manually here. This is because Next.js evaluates this at build time,
+- * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
+- */
+-export const clientEnv = {
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+deleted file mode 100644
+index c04b5ae..0000000
+--- a/src/env/server.mjs
++++ /dev/null
+@@ -1,27 +0,0 @@
+-// @ts-check
+-/**
+- * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+- * It has to be a `.mjs`-file to be imported there.
+- */
+-import { serverSchema, serverEnv } from "./schema.mjs";
+-import { env as clientEnv, formatErrors } from "./client.mjs";
+-
+-const _serverEnv = serverSchema.safeParse(serverEnv);
+-
+-if (!_serverEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_serverEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_serverEnv.data)) {
+-  if (key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn("❌ You are exposing a server-side env-variable:", key);
+-
+-    throw new Error("You are exposing a server-side env-variable");
+-  }
+-}
+-
+-export const env = { ..._serverEnv.data, ...clientEnv };
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 5f36a0d..1831917 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -1,8 +1,8 @@
+ import { type AppType } from "next/app";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+-import "../styles/globals.css";
++import "~/styles/globals.css";
+ 
+ const MyApp: AppType = ({ Component, pageProps }) => {
+   return <Component {...pageProps} />;
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 8ec828b..3c744a0 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -1,8 +1,8 @@
+ import { createNextApiHandler } from "@trpc/server/adapters/next";
+ 
+-import { env } from "../../../env/server.mjs";
+-import { createTRPCContext } from "../../../server/api/trpc";
+-import { appRouter } from "../../../server/api/root";
++import { env } from "~/env.mjs";
++import { createTRPCContext } from "~/server/api/trpc";
++import { appRouter } from "~/server/api/root";
+ 
+ // export API handler
+ export default createNextApiHandler({
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index 02a5df9..2e97a27 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -3,7 +3,7 @@ import { type NextPage } from "next";
+ import Head from "next/head";
+ import Link from "next/link";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+ const Home: NextPage = () => {
+   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+diff --git a/src/server/api/root.ts b/src/server/api/root.ts
+index c3f288e..93fba92 100644
+--- a/src/server/api/root.ts
++++ b/src/server/api/root.ts
+@@ -1,10 +1,10 @@
+-import { createTRPCRouter } from "./trpc";
+-import { exampleRouter } from "./routers/example";
++import { createTRPCRouter } from "~/server/api/trpc";
++import { exampleRouter } from "~/server/api/routers/example";
+ 
+ /**
+  * This is the primary router for your server.
+  *
+- * All routers added in /api/routers should be manually added here
++ * All routers added in /api/routers should be manually added here.
+  */
+ export const appRouter = createTRPCRouter({
+   example: exampleRouter,
+diff --git a/src/server/api/routers/example.ts b/src/server/api/routers/example.ts
+index 7e9b9a3..be8d0e1 100644
+--- a/src/server/api/routers/example.ts
++++ b/src/server/api/routers/example.ts
+@@ -1,6 +1,6 @@
+ import { z } from "zod";
+ 
+-import { createTRPCRouter, publicProcedure } from "../trpc";
++import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+ 
+ export const exampleRouter = createTRPCRouter({
+   hello: publicProcedure
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 933b493..de532f6 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -1,34 +1,33 @@
+ /**
+  * YOU PROBABLY DON'T NEED TO EDIT THIS FILE, UNLESS:
+- * 1. You want to modify request context (see Part 1)
+- * 2. You want to create a new middleware or type of procedure (see Part 3)
++ * 1. You want to modify request context (see Part 1).
++ * 2. You want to create a new middleware or type of procedure (see Part 3).
+  *
+- * tl;dr - this is where all the tRPC server stuff is created and plugged in.
+- * The pieces you will need to use are documented accordingly near the end
++ * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
++ * need to use are documented accordingly near the end.
+  */
+ 
+ /**
+  * 1. CONTEXT
+  *
+- * This section defines the "contexts" that are available in the backend API
+- *
+- * These allow you to access things like the database, the session, etc, when
+- * processing a request
++ * This section defines the "contexts" that are available in the backend API.
+  *
++ * These allow you to access things when processing a request, like the database, the session, etc.
+  */
+ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+ 
+-import { prisma } from "../db";
++import { prisma } from "~/server/db";
+ 
+ type CreateContextOptions = Record<string, never>;
+ 
+ /**
+- * This helper generates the "internals" for a tRPC context. If you need to use
+- * it, you can export it from here
++ * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
++ * it from here.
+  *
+  * Examples of things you may need it for:
+- * - testing, so we dont have to mock Next.js' req/res
+- * - trpc's `createSSGHelpers` where we don't have req/res
++ * - testing, so we don't have to mock Next.js' req/res
++ * - tRPC's `createSSGHelpers`, where we don't have req/res
++ *
+  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+  */
+ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+@@ -38,9 +37,10 @@ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+ };
+ 
+ /**
+- * This is the actual context you'll use in your router. It will be used to
+- * process every request that goes through your tRPC endpoint
+- * @link https://trpc.io/docs/context
++ * This is the actual context you will use in your router. It will be used to process every request
++ * that goes through your tRPC endpoint.
++ *
++ * @see https://trpc.io/docs/context
+  */
+ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
+   return createInnerTRPCContext({});
+@@ -49,8 +49,7 @@ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
+ /**
+  * 2. INITIALIZATION
+  *
+- * This is where the trpc api is initialized, connecting the context and
+- * transformer
++ * This is where the tRPC API is initialized, connecting the context and transformer.
+  */
+ import { initTRPC } from "@trpc/server";
+ import superjson from "superjson";
+@@ -65,21 +64,22 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
+ /**
+  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
+  *
+- * These are the pieces you use to build your tRPC API. You should import these
+- * a lot in the /src/server/api/routers folder
++ * These are the pieces you use to build your tRPC API. You should import these a lot in the
++ * "/src/server/api/routers" directory.
+  */
+ 
+ /**
+- * This is how you create new routers and subrouters in your tRPC API
++ * This is how you create new routers and sub-routers in your tRPC API.
++ *
+  * @see https://trpc.io/docs/router
+  */
+ export const createTRPCRouter = t.router;
+ 
+ /**
+- * Public (unauthed) procedure
++ * Public (unauthenticated) procedure
+  *
+- * This is the base piece you use to build new queries and mutations on your
+- * tRPC API. It does not guarantee that a user querying is authorized, but you
+- * can still access user session data if they are logged in
++ * This is the base piece you use to build new queries and mutations on your tRPC API. It does not
++ * guarantee that a user querying is authorized, but you can still access user session data if they
++ * are logged in.
+  */
+ export const publicProcedure = t.procedure;
+diff --git a/src/server/db.ts b/src/server/db.ts
+index 5df917c..f3d7be3 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -1,19 +1,14 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../env/server.mjs";
++import { env } from "~/env.mjs";
+ 
+-declare global {
+-  // eslint-disable-next-line no-var
+-  var prisma: PrismaClient | undefined;
+-}
++const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+ 
+ export const prisma =
+-  global.prisma ||
++  globalForPrisma.prisma ||
+   new PrismaClient({
+     log:
+       env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+   });
+ 
+-if (env.NODE_ENV !== "production") {
+-  global.prisma = prisma;
+-}
++if (env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+diff --git a/src/utils/api.ts b/src/utils/api.ts
+index c99a366..f4f4ad5 100644
+--- a/src/utils/api.ts
++++ b/src/utils/api.ts
+@@ -1,16 +1,15 @@
+ /**
+- * This is the client-side entrypoint for your tRPC API.
+- * It's used to create the `api` object which contains the Next.js App-wrapper
+- * as well as your typesafe react-query hooks.
++ * This is the client-side entrypoint for your tRPC API. It is used to create the `api` object which
++ * contains the Next.js App-wrapper, as well as your type-safe React Query hooks.
+  *
+- * We also create a few inference helpers for input and output types
++ * We also create a few inference helpers for input and output types.
+  */
+ import { httpBatchLink, loggerLink } from "@trpc/client";
+ import { createTRPCNext } from "@trpc/next";
+ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-import { type AppRouter } from "../server/api/root";
++import { type AppRouter } from "~/server/api/root";
+ 
+ const getBaseUrl = () => {
+   if (typeof window !== "undefined") return ""; // browser should use relative url
+@@ -18,22 +17,22 @@ const getBaseUrl = () => {
+   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+ };
+ 
+-/**
+- * A set of typesafe react-query hooks for your tRPC API
+- */
++/** A set of type-safe react-query hooks for your tRPC API. */
+ export const api = createTRPCNext<AppRouter>({
+   config() {
+     return {
+       /**
+-       * Transformer used for data de-serialization from the server
++       * Transformer used for data de-serialization from the server.
++       *
+        * @see https://trpc.io/docs/data-transformers
+-       **/
++       */
+       transformer: superjson,
+ 
+       /**
+-       * Links used to determine request flow from client to server
++       * Links used to determine request flow from client to server.
++       *
+        * @see https://trpc.io/docs/links
+-       * */
++       */
+       links: [
+         loggerLink({
+           enabled: (opts) =>
+@@ -47,19 +46,23 @@ export const api = createTRPCNext<AppRouter>({
+     };
+   },
+   /**
+-   * Whether tRPC should await queries when server rendering pages
++   * Whether tRPC should await queries when server rendering pages.
++   *
+    * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
+    */
+   ssr: false,
+ });
+ 
+ /**
+- * Inference helper for inputs
++ * Inference helper for inputs.
++ *
+  * @example type HelloInput = RouterInputs['example']['hello']
+- **/
++ */
+ export type RouterInputs = inferRouterInputs<AppRouter>;
++
+ /**
+- * Inference helper for outputs
++ * Inference helper for outputs.
++ *
+  * @example type HelloOutput = RouterOutputs['example']['hello']
+- **/
++ */
+ export type RouterOutputs = inferRouterOutputs<AppRouter>;
+diff --git a/tsconfig.json b/tsconfig.json
+index 658068a..03ebb74 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -3,6 +3,7 @@
+     "target": "es2017",
+     "lib": ["dom", "dom.iterable", "esnext"],
+     "allowJs": true,
++    "checkJs": true,
+     "skipLibCheck": true,
+     "strict": true,
+     "forceConsistentCasingInFileNames": true,
+@@ -14,8 +15,19 @@
+     "isolatedModules": true,
+     "jsx": "preserve",
+     "incremental": true,
+-    "noUncheckedIndexedAccess": true
++    "noUncheckedIndexedAccess": true,
++    "baseUrl": ".",
++    "paths": {
++      "~/*": ["./src/*"]
++    }
+   },
+-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
++  "include": [
++    ".eslintrc.cjs",
++    "next-env.d.ts",
++    "**/*.ts",
++    "**/*.tsx",
++    "**/*.cjs",
++    "**/*.mjs"
++  ],
+   "exclude": ["node_modules"]
+ }

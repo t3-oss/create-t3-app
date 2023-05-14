@@ -1,0 +1,49 @@
+diff --git a/package.json b/package.json
+index f4d5465..f75870f 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -12,7 +12,7 @@
+   "dependencies": {
+     "@prisma/client": "^4.11.0",
+     "@t3-oss/env-nextjs": "^0.2.1",
+-    "next": "^13.2.4",
++    "next": "^13.4.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "zod": "^3.21.4"
+@@ -27,7 +27,7 @@
+     "@typescript-eslint/parser": "^5.56.0",
+     "autoprefixer": "^10.4.14",
+     "eslint": "^8.36.0",
+-    "eslint-config-next": "^13.2.4",
++    "eslint-config-next": "^13.4.1",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+     "prettier-plugin-tailwindcss": "^0.2.6",
+@@ -36,6 +36,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.1"
++    "initVersion": "7.13.0"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 6d43fd2..a297407 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -3,6 +3,7 @@
+ 
+ generator client {
+     provider = "prisma-client-js"
++    previewFeatures = ["jsonProtocol"]
+ }
+ 
+ datasource db {

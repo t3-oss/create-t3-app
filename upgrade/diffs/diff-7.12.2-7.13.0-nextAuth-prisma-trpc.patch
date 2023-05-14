@@ -1,0 +1,46 @@
+diff --git a/package.json b/package.json
+index 80ef55f..428177f 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -18,7 +18,7 @@
+     "@trpc/next": "^10.18.0",
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+-    "next": "13.3.4",
++    "next": "^13.4.1",
+     "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -33,11 +33,11 @@
+     "@typescript-eslint/eslint-plugin": "^5.56.0",
+     "@typescript-eslint/parser": "^5.56.0",
+     "eslint": "^8.36.0",
+-    "eslint-config-next": "^13.2.4",
++    "eslint-config-next": "^13.4.1",
+     "prisma": "^4.11.0",
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.2"
++    "initVersion": "7.13.0"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 0001d80..a352ad5 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -3,6 +3,7 @@
+ 
+ generator client {
+     provider = "prisma-client-js"
++    previewFeatures = ["jsonProtocol"]
+ }
+ 
+ datasource db {

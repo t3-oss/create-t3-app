@@ -1,0 +1,31 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+index 861f139..10756b8 100644
+--- a/.eslintrc.cjs
++++ b/.eslintrc.cjs
+@@ -25,6 +25,7 @@ const config = {
+         fixStyle: "inline-type-imports",
+       },
+     ],
++    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+   },
+ };
+ 
+diff --git a/package.json b/package.json
+index 4f39f61..cc19d7d 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -43,6 +43,6 @@
+     "typescript": "^4.9.5"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.6.0"
++    "initVersion": "7.7.0"
+   }
+ }

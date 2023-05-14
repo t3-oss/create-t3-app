@@ -1,0 +1,60 @@
+diff --git a/package.json b/package.json
+index 8130a0f..3d7b06b 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -28,6 +28,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.3"
++    "initVersion": "7.5.4"
+   }
+ }
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index adea8e0..d280cbd 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -1,6 +1,6 @@
+ import { type AppType } from "next/dist/shared/lib/utils";
+ 
+-import "../styles/globals.css";
++import "~/styles/globals.css";
+ 
+ const MyApp: AppType = ({ Component, pageProps }) => {
+   return <Component {...pageProps} />;
+diff --git a/src/server/db.ts b/src/server/db.ts
+index b724101..f3d7be3 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -1,6 +1,6 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../env.mjs";
++import { env } from "~/env.mjs";
+ 
+ const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+ 
+diff --git a/tsconfig.json b/tsconfig.json
+index 9630df8..b9e51f3 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -15,7 +15,11 @@
+     "isolatedModules": true,
+     "jsx": "preserve",
+     "incremental": true,
+-    "noUncheckedIndexedAccess": true
++    "noUncheckedIndexedAccess": true,
++    "baseUrl": ".",
++    "paths": {
++      "~/*": ["./src/*"]
++    }
+   },
+   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+   "exclude": ["node_modules"]

@@ -1,0 +1,57 @@
+diff --git a/package.json b/package.json
+index 2e4bb97..c69e118 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -28,6 +28,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.1.0"
++    "initVersion": "7.2.0"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index 45d3935..f2a36da 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -10,6 +10,16 @@ export const serverSchema = z.object({
+   NODE_ENV: z.enum(["development", "test", "production"]),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ */
++export const serverEnv = {
++  DATABASE_URL: process.env.DATABASE_URL,
++  NODE_ENV: process.env.NODE_ENV,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(

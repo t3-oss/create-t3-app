@@ -1,0 +1,41 @@
+diff --git a/package.json b/package.json
+index 9464c73..2842a6b 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -18,7 +18,7 @@
+     "@trpc/next": "^10.18.0",
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+-    "next": "^13.2.4",
++    "next": "13.3.4",
+     "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -38,6 +38,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.1"
++    "initVersion": "7.12.2"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 6d78c6a..0001d80 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -7,7 +7,7 @@ generator client {
+ 
+ datasource db {
+     provider = "sqlite"
+-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
++    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+     // Further reading:
+     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+     // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string

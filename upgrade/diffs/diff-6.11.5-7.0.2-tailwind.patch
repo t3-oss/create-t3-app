@@ -1,0 +1,68 @@
+diff --git a/.env.example b/.env.example
+index 38b70c1..a6755f1 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,7 +5,6 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Example:
+ # SERVERVAR=foo
+ # NEXT_PUBLIC_CLIENTVAR=bar
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index 77872dc..a65d97e 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -12,25 +12,25 @@
+     "next": "13.1.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
++    "@types/node": "^18.11.18",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+-    "eslint": "^8.26.0",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+     "tailwindcss": "^3.2.0",
+-    "typescript": "^4.8.4"
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.11.5"
++    "initVersion": "7.0.2"
+   }
+ }

@@ -1,0 +1,122 @@
+diff --git a/.env.example b/.env.example
+index 96d6793..cb15881 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,6 +5,5 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Prisma
+ DATABASE_URL=file:./db.sqlite
+diff --git a/package.json b/package.json
+index 9731293..3c5bf70 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,30 +10,30 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@prisma/client": "^4.5.0",
++    "@prisma/client": "^4.8.0",
+     "next": "13.1.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
++    "@types/node": "^18.11.18",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+-    "eslint": "^8.26.0",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+-    "prisma": "^4.5.0",
++    "prisma": "^4.8.0",
+     "tailwindcss": "^3.2.0",
+-    "typescript": "^4.8.4"
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.11.5"
++    "initVersion": "7.0.0"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 06dc8cd..6d43fd2 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -2,16 +2,16 @@
+ // learn more about it in the docs: https://pris.ly/d/prisma-schema
+ 
+ generator client {
+-  provider = "prisma-client-js"
++    provider = "prisma-client-js"
+ }
+ 
+ datasource db {
+-  provider = "sqlite"
+-  url      = env("DATABASE_URL")
++    provider = "sqlite"
++    url      = env("DATABASE_URL")
+ }
+ 
+ model Example {
+-  id        String   @id @default(cuid())
+-  createdAt DateTime @default(now())
+-  updatedAt DateTime @updatedAt
++    id        String   @id @default(cuid())
++    createdAt DateTime @default(now())
++    updatedAt DateTime @updatedAt
+ }
+diff --git a/src/pages/api/examples.ts b/src/pages/api/examples.ts
+deleted file mode 100644
+index c0889f5..0000000
+--- a/src/pages/api/examples.ts
++++ /dev/null
+@@ -1,10 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { prisma } from "../../server/db/client";
+-
+-const examples = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const examples = await prisma.example.findMany();
+-  res.status(200).json(examples);
+-};
+-
+-export default examples;
+diff --git a/src/server/db/client.ts b/src/server/db.ts
+similarity index 89%
+rename from src/server/db/client.ts
+rename to src/server/db.ts
+index 0c3d234..5df917c 100644
+--- a/src/server/db/client.ts
++++ b/src/server/db.ts
+@@ -1,6 +1,6 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../../env/server.mjs";
++import { env } from "../env/server.mjs";
+ 
+ declare global {
+   // eslint-disable-next-line no-var

@@ -1,0 +1,424 @@
+diff --git a/.env.example b/.env.example
+index 96d6793..89f2130 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,10 +1,14 @@
+-# Since .env is gitignored, you can use .env.example to build a new `.env` file when you clone the repo.
+-# Keep this file up-to-date when you add new variables to `.env`.
++# Since the ".env" file is gitignored, you can use the ".env.example" file to
++# build a new ".env" file when you clone the repo. Keep this file up-to-date
++# when you add new variables to `.env`.
+ 
+-# This file will be committed to version control, so make sure not to have any secrets in it.
+-# If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
++# This file will be committed to version control, so make sure not to have any
++# secrets in it. If you are cloning this repo, create a copy of this file named
++# ".env" and populate it with your secrets.
+ 
+-# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
++# When adding additional environment variables, the schema in "/env/schema.mjs"
++# should be updated accordingly.
+ 
+ # Prisma
+-DATABASE_URL=file:./db.sqlite
++# https://www.prisma.io/docs/reference/database-reference/connection-urls#env
++DATABASE_URL="file:./db.sqlite"
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..d7dfb79 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,14 +1,21 @@
+ // @ts-check
++
+ /**
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
++!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++
++  /**
++   * If you have the "experimental: { appDir: true }" setting enabled, then you
++   * must comment the below `i18n` config out.
++   *
++   * @see https://github.com/vercel/next.js/issues/41980
++   */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index 6ead2de..279d879 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,24 +10,24 @@
+     "postinstall": "prisma generate"
+   },
+   "dependencies": {
+-    "@prisma/client": "^4.5.0",
+-    "next": "13.1.1",
++    "@prisma/client": "^4.9.0",
++    "next": "13.1.6",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
+-    "eslint": "^8.26.0",
+-    "eslint-config-next": "13.1.1",
+-    "prisma": "^4.5.0",
+-    "typescript": "^4.8.4"
++    "@types/node": "^18.11.18",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
++    "eslint": "^8.30.0",
++    "eslint-config-next": "13.1.6",
++    "prisma": "^4.9.0",
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.12.0"
++    "initVersion": "7.5.2"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 06dc8cd..6d43fd2 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -2,16 +2,16 @@
+ // learn more about it in the docs: https://pris.ly/d/prisma-schema
+ 
+ generator client {
+-  provider = "prisma-client-js"
++    provider = "prisma-client-js"
+ }
+ 
+ datasource db {
+-  provider = "sqlite"
+-  url      = env("DATABASE_URL")
++    provider = "sqlite"
++    url      = env("DATABASE_URL")
+ }
+ 
+ model Example {
+-  id        String   @id @default(cuid())
+-  createdAt DateTime @default(now())
+-  updatedAt DateTime @updatedAt
++    id        String   @id @default(cuid())
++    createdAt DateTime @default(now())
++    updatedAt DateTime @updatedAt
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+new file mode 100644
+index 0000000..8888d41
+--- /dev/null
++++ b/src/env.mjs
+@@ -0,0 +1,76 @@
++import { z } from "zod";
++
++/**
++ * Specify your server-side environment variables schema here.
++ * This way you can ensure the app isn't built with invalid env vars.
++ */
++const server = z.object({
++  DATABASE_URL: z.string().url(),
++  NODE_ENV: z.enum(["development", "test", "production"]),
++});
++
++/**
++ * Specify your client-side environment variables schema here.
++ * This way you can ensure the app isn't built with invalid env vars.
++ * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ */
++const client = z.object({
++  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++});
++
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
++ * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
++ */
++const processEnv = {
++  DATABASE_URL: process.env.DATABASE_URL,
++  NODE_ENV: process.env.NODE_ENV,
++  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++};
++
++// Don't touch the part below
++// --------------------------
++
++const merged = server.merge(client);
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
++
++if (!!process.env.SKIP_ENV_VALIDATION == false) {
++  const isServer = typeof window === "undefined";
++
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
++
++  if (parsed.success === false) {
++    console.error(
++      "❌ Invalid environment variables:",
++      parsed.error.flatten().fieldErrors,
++    );
++    throw new Error("Invalid environment variables");
++  }
++
++  env = new Proxy(parsed.data, {
++    get(target, prop) {
++      if (typeof prop !== "string") return undefined;
++      // Throw a descriptive error if a server-side env var is accessed on the client
++      // Otherwise it would just be returning `undefined` and be annoying to debug
++      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
++        throw new Error(
++          process.env.NODE_ENV === "production"
++            ? "❌ Attempted to access a server-side environment variable on the client"
++            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
++        );
++      return target[/** @type {keyof typeof target} */ (prop)];
++    },
++  });
++}
++
++export { env };
+diff --git a/src/env/client.mjs b/src/env/client.mjs
+deleted file mode 100644
+index 30958cb..0000000
+--- a/src/env/client.mjs
++++ /dev/null
+@@ -1,35 +0,0 @@
+-// @ts-check
+-import { clientEnv, clientSchema } from "./schema.mjs";
+-
+-const _clientEnv = clientSchema.safeParse(clientEnv);
+-
+-export const formatErrors = (
+-  /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
+-  errors,
+-) =>
+-  Object.entries(errors)
+-    .map(([name, value]) => {
+-      if (value && "_errors" in value)
+-        return `${name}: ${value._errors.join(", ")}\n`;
+-    })
+-    .filter(Boolean);
+-
+-if (!_clientEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_clientEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_clientEnv.data)) {
+-  if (!key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn(
+-      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`,
+-    );
+-
+-    throw new Error("Invalid public environment variable name");
+-  }
+-}
+-
+-export const env = _clientEnv.data;
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+deleted file mode 100644
+index 45d3935..0000000
+--- a/src/env/schema.mjs
++++ /dev/null
+@@ -1,30 +0,0 @@
+-// @ts-check
+-import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-export const serverSchema = z.object({
+-  DATABASE_URL: z.string().url(),
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-});
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-export const clientSchema = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object, so you have to do
+- * it manually here. This is because Next.js evaluates this at build time,
+- * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
+- */
+-export const clientEnv = {
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+deleted file mode 100644
+index 736e3a6..0000000
+--- a/src/env/server.mjs
++++ /dev/null
+@@ -1,27 +0,0 @@
+-// @ts-check
+-/**
+- * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+- * It has to be a `.mjs`-file to be imported there.
+- */
+-import { serverSchema } from "./schema.mjs";
+-import { env as clientEnv, formatErrors } from "./client.mjs";
+-
+-const _serverEnv = serverSchema.safeParse(process.env);
+-
+-if (!_serverEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_serverEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_serverEnv.data)) {
+-  if (key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn("❌ You are exposing a server-side env-variable:", key);
+-
+-    throw new Error("You are exposing a server-side env-variable");
+-  }
+-}
+-
+-export const env = { ..._serverEnv.data, ...clientEnv };
+diff --git a/src/pages/api/examples.ts b/src/pages/api/examples.ts
+deleted file mode 100644
+index c0889f5..0000000
+--- a/src/pages/api/examples.ts
++++ /dev/null
+@@ -1,10 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { prisma } from "../../server/db/client";
+-
+-const examples = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const examples = await prisma.example.findMany();
+-  res.status(200).json(examples);
+-};
+-
+-export default examples;
+diff --git a/src/server/db.ts b/src/server/db.ts
+new file mode 100644
+index 0000000..b724101
+--- /dev/null
++++ b/src/server/db.ts
+@@ -0,0 +1,14 @@
++import { PrismaClient } from "@prisma/client";
++
++import { env } from "../env.mjs";
++
++const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
++
++export const prisma =
++  globalForPrisma.prisma ||
++  new PrismaClient({
++    log:
++      env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
++  });
++
++if (env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+diff --git a/src/server/db/client.ts b/src/server/db/client.ts
+deleted file mode 100644
+index 0c3d234..0000000
+--- a/src/server/db/client.ts
++++ /dev/null
+@@ -1,19 +0,0 @@
+-import { PrismaClient } from "@prisma/client";
+-
+-import { env } from "../../env/server.mjs";
+-
+-declare global {
+-  // eslint-disable-next-line no-var
+-  var prisma: PrismaClient | undefined;
+-}
+-
+-export const prisma =
+-  global.prisma ||
+-  new PrismaClient({
+-    log:
+-      env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+-  });
+-
+-if (env.NODE_ENV !== "production") {
+-  global.prisma = prisma;
+-}
+diff --git a/tsconfig.json b/tsconfig.json
+index 658068a..9630df8 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -3,6 +3,7 @@
+     "target": "es2017",
+     "lib": ["dom", "dom.iterable", "esnext"],
+     "allowJs": true,
++    "checkJs": true,
+     "skipLibCheck": true,
+     "strict": true,
+     "forceConsistentCasingInFileNames": true,

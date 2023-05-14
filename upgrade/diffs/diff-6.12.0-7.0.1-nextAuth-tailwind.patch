@@ -1,0 +1,149 @@
+diff --git a/.env.example b/.env.example
+index 5a3a375..dbeac89 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,7 +5,6 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Next Auth
+ # You can generate the secret via 'openssl rand -base64 32' on Linux
+ # More info: https://next-auth.js.org/configuration/options#secret
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index b8791b1..09c94b5 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,28 +10,28 @@
+   },
+   "dependencies": {
+     "next": "13.1.1",
+-    "next-auth": "^4.18.3",
++    "next-auth": "^4.18.7",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
++    "@types/node": "^18.11.18",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+-    "eslint": "^8.26.0",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+     "tailwindcss": "^3.2.0",
+-    "typescript": "^4.8.4"
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.12.0"
++    "initVersion": "7.0.1"
+   }
+ }
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index 396fc10..d317154 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -19,7 +19,15 @@ export const authOptions: NextAuthOptions = {
+       clientId: env.DISCORD_CLIENT_ID,
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+-    // ...add more providers here
++    /**
++     * ...add more providers here
++     *
++     * Most other providers require a bit more work than the Discord provider.
++     * For example, the GitHub provider requires you to add the
++     * `refresh_token_expires_in` field to the Account model. Refer to the
++     * NextAuth.js docs for the provider you want to use. Example:
++     * @see https://next-auth.js.org/providers/github
++     */
+   ],
+ };
+ 
+diff --git a/src/pages/api/restricted.ts b/src/pages/api/restricted.ts
+deleted file mode 100644
+index 39d936d..0000000
+--- a/src/pages/api/restricted.ts
++++ /dev/null
+@@ -1,21 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { getServerAuthSession } from "../../server/common/get-server-auth-session";
+-
+-const restricted = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const session = await getServerAuthSession({ req, res });
+-
+-  if (session) {
+-    res.send({
+-      content:
+-        "This is protected content. You can access this content because you are signed in.",
+-    });
+-  } else {
+-    res.send({
+-      error:
+-        "You must be signed in to view the protected content on this page.",
+-    });
+-  }
+-};
+-
+-export default restricted;
+diff --git a/src/server/common/get-server-auth-session.ts b/src/server/auth.ts
+similarity index 50%
+rename from src/server/common/get-server-auth-session.ts
+rename to src/server/auth.ts
+index b2b90ed..a99fdae 100644
+--- a/src/server/common/get-server-auth-session.ts
++++ b/src/server/auth.ts
+@@ -1,12 +1,18 @@
+ import { type GetServerSidePropsContext } from "next";
+ import { unstable_getServerSession } from "next-auth";
+ 
+-import { authOptions } from "../../pages/api/auth/[...nextauth]";
++import { authOptions } from "../pages/api/auth/[...nextauth]";
+ 
+ /**
+- * Wrapper for unstable_getServerSession https://next-auth.js.org/configuration/nextjs
+- * See example usage in trpc createContext or the restricted API route
++ * Wrapper for unstable_getServerSession, used in trpc createContext and the
++ * restricted API route
++ *
++ * Don't worry too much about the "unstable", it's safe to use but the syntax
++ * may change in future versions
++ *
++ * @see https://next-auth.js.org/configuration/nextjs
+  */
++
+ export const getServerAuthSession = async (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];

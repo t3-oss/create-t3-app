@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:3000/api/webhook",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Hub-Signature-256": "%%WEBHOOK_SIGNATURE%%"
+  }
+}

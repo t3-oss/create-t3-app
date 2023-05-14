@@ -1,0 +1,47 @@
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..0ee755b 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -8,7 +8,8 @@
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++  /* If trying out the experimental appDir, comment the i18n config out
++   * @see https://github.com/vercel/next.js/issues/41980 */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index d45c6da..e0578d5 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -14,7 +14,7 @@
+     "@trpc/next": "^10.8.1",
+     "@trpc/react-query": "^10.8.1",
+     "@trpc/server": "^10.8.1",
+-    "next": "13.1.1",
++    "next": "13.1.2",
+     "next-auth": "^4.18.7",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -28,10 +28,10 @@
+     "@typescript-eslint/eslint-plugin": "^5.47.1",
+     "@typescript-eslint/parser": "^5.47.1",
+     "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
++    "eslint-config-next": "13.1.2",
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.3.1"
++    "initVersion": "7.3.2"
+   }
+ }

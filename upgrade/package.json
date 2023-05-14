@@ -1,0 +1,56 @@
+{
+  "name": "t3-upgrade-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start",
+    "webhook:dev": "npx webhookthing@latest",
+    "generate-all-missing-diffs": "tsx src/lib/runGenerateAllScript.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-select": "^1.2.1",
+    "class-variance-authority": "^0.5.1",
+    "clsx": "^1.2.1",
+    "eslint-plugin-tailwindcss": "^3.11.0",
+    "gitdiff-parser": "^0.3.1",
+    "lucide-react": "^0.134.0",
+    "@t3-oss/env-nextjs": "^0.2.1",
+    "next": "^13.4.1",
+    "node-fetch": "^2.6.9",
+    "react": "18.2.0",
+    "react-diff-view": "^3.0.3",
+    "react-dom": "18.2.0",
+    "refractor": "^3.5.0",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss-animate": "^1.0.5",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.21.3",
+    "@types/node": "^18.15.5",
+    "@types/node-fetch": "^2.6.3",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/refractor": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.36.0",
+    "eslint-config-next": "^13.4.1",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.6",
+    "prettier-plugin-tailwindcss": "^0.2.6",
+    "tailwindcss": "^3.3.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.2"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.13.0"
+  }
+}

@@ -1,0 +1,112 @@
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index d546467..b446f37 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -30,6 +30,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.0"
++    "initVersion": "7.3.1"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index 33e923b..3e5bd6c 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -23,6 +23,20 @@ export const serverSchema = z.object({
+   DISCORD_CLIENT_SECRET: z.string(),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ */
++export const serverEnv = {
++  DATABASE_URL: process.env.DATABASE_URL,
++  NODE_ENV: process.env.NODE_ENV,
++  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
++  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
++  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
++  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index c24bd59..e218f01 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -23,7 +23,15 @@ export const authOptions: NextAuthOptions = {
+       clientId: env.DISCORD_CLIENT_ID,
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+-    // ...add more providers here
++    /**
++     * ...add more providers here
++     *
++     * Most other providers require a bit more work than the Discord provider.
++     * For example, the GitHub provider requires you to add the
++     * `refresh_token_expires_in` field to the Account model. Refer to the
++     * NextAuth.js docs for the provider you want to use. Example:
++     * @see https://next-auth.js.org/providers/github
++     */
+   ],
+ };
+ 

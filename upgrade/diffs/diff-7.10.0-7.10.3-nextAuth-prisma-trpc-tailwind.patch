@@ -1,0 +1,80 @@
+diff --git a/package.json b/package.json
+index 40bd43e..6e23dc7 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -18,7 +18,7 @@
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+     "next": "^13.2.4",
+-    "next-auth": "^4.20.1",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.12.2",
+@@ -37,12 +37,12 @@
+     "eslint-config-next": "^13.2.4",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+-    "prettier-plugin-tailwindcss": "^0.2.5",
++    "prettier-plugin-tailwindcss": "^0.2.6",
+     "prisma": "^4.11.0",
+-    "tailwindcss": "^3.2.7",
++    "tailwindcss": "^3.3.0",
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.10.0"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 7e6d826..ed57078 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -37,13 +37,13 @@ declare module "next-auth" {
+  */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   adapter: PrismaAdapter(prisma),
+   providers: [
+diff --git a/src/server/db.ts b/src/server/db.ts
+index f3d7be3..861093d 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -2,10 +2,12 @@ import { PrismaClient } from "@prisma/client";
+ 
+ import { env } from "~/env.mjs";
+ 
+-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
++const globalForPrisma = globalThis as unknown as {
++  prisma: PrismaClient | undefined;
++};
+ 
+ export const prisma =
+-  globalForPrisma.prisma ||
++  globalForPrisma.prisma ??
+   new PrismaClient({
+     log:
+       env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],

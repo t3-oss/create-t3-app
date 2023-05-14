@@ -1,0 +1,406 @@
+diff --git a/.env.example b/.env.example
+index 38b70c1..a6755f1 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,7 +5,6 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Example:
+ # SERVERVAR=foo
+ # NEXT_PUBLIC_CLIENTVAR=bar
+diff --git a/package.json b/package.json
+index 3c0e09a..f378a01 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,34 +9,34 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@tanstack/react-query": "^4.16.0",
+-    "@trpc/client": "^10.0.0",
+-    "@trpc/next": "^10.0.0",
+-    "@trpc/react-query": "^10.0.0",
+-    "@trpc/server": "^10.0.0",
++    "@tanstack/react-query": "^4.20.0",
++    "@trpc/client": "^10.7.0",
++    "@trpc/next": "^10.7.0",
++    "@trpc/react-query": "^10.7.0",
++    "@trpc/server": "^10.7.0",
+     "next": "13.1.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
++    "@types/node": "^18.11.18",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+-    "eslint": "^8.26.0",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+     "tailwindcss": "^3.2.0",
+-    "typescript": "^4.8.4"
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.12.0"
++    "initVersion": "7.0.0"
+   }
+ }
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 93ad12b..5f36a0d 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -1,6 +1,6 @@
+ import { type AppType } from "next/app";
+ 
+-import { trpc } from "../utils/trpc";
++import { api } from "../utils/api";
+ 
+ import "../styles/globals.css";
+ 
+@@ -8,4 +8,4 @@ const MyApp: AppType = ({ Component, pageProps }) => {
+   return <Component {...pageProps} />;
+ };
+ 
+-export default trpc.withTRPC(MyApp);
++export default api.withTRPC(MyApp);
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index f69201d..70f0892 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -1,13 +1,13 @@
+ import { createNextApiHandler } from "@trpc/server/adapters/next";
+ 
+ import { env } from "../../../env/server.mjs";
+-import { createContext } from "../../../server/trpc/context";
+-import { appRouter } from "../../../server/trpc/router/_app";
++import { createTRPCContext } from "../../../server/api/trpc";
++import { appRouter } from "../../../server/api/root";
+ 
+ // export API handler
+ export default createNextApiHandler({
+   router: appRouter,
+-  createContext,
++  createContext: createTRPCContext,
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index 1967114..aab332a 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -2,10 +2,10 @@ import { type NextPage } from "next";
+ import Head from "next/head";
+ import Link from "next/link";
+ 
+-import { trpc } from "../utils/trpc";
++import { api } from "../utils/api";
+ 
+ const Home: NextPage = () => {
+-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
++  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+ 
+   return (
+     <>
+diff --git a/src/server/api/root.ts b/src/server/api/root.ts
+new file mode 100644
+index 0000000..c3f288e
+--- /dev/null
++++ b/src/server/api/root.ts
+@@ -0,0 +1,14 @@
++import { createTRPCRouter } from "./trpc";
++import { exampleRouter } from "./routers/example";
++
++/**
++ * This is the primary router for your server.
++ *
++ * All routers added in /api/routers should be manually added here
++ */
++export const appRouter = createTRPCRouter({
++  example: exampleRouter,
++});
++
++// export type definition of API
++export type AppRouter = typeof appRouter;
+diff --git a/src/server/api/routers/example.ts b/src/server/api/routers/example.ts
+new file mode 100644
+index 0000000..275ada0
+--- /dev/null
++++ b/src/server/api/routers/example.ts
+@@ -0,0 +1,13 @@
++import { z } from "zod";
++
++import { createTRPCRouter, publicProcedure } from "../trpc";
++
++export const exampleRouter = createTRPCRouter({
++  hello: publicProcedure
++    .input(z.object({ text: z.string() }))
++    .query(({ input }) => {
++      return {
++        greeting: `Hello ${input.text}`,
++      };
++    }),
++});
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+new file mode 100644
+index 0000000..4dd2202
+--- /dev/null
++++ b/src/server/api/trpc.ts
+@@ -0,0 +1,86 @@
++/**
++ * YOU PROBABLY DON'T NEED TO EDIT THIS FILE, UNLESS:
++ * 1. You want to modify request context (see Part 1)
++ * 2. You want to create a new middleware or type of procedure (see Part 3)
++ *
++ * tl;dr - this is where all the tRPC server stuff is created and plugged in.
++ * The pieces you will need to use are documented accordingly near the end
++ */
++
++/**
++ * 1. CONTEXT
++ *
++ * This section defines the "contexts" that are available in the backend API
++ *
++ * These allow you to access things like the database, the session, etc, when
++ * processing a request
++ *
++ */
++import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
++
++/**
++ * Replace this with an object if you want to pass things to createContextInner
++ */
++type CreateContextOptions = Record<string, never>;
++
++/**
++ * This helper generates the "internals" for a tRPC context. If you need to use
++ * it, you can export it from here
++ *
++ * Examples of things you may need it for:
++ * - testing, so we dont have to mock Next.js' req/res
++ * - trpc's `createSSGHelpers` where we don't have req/res
++ * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ */
++const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
++  return {};
++};
++
++/**
++ * This is the actual context you'll use in your router. It will be used to
++ * process every request that goes through your tRPC endpoint
++ * @link https://trpc.io/docs/context
++ */
++export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
++  return await createInnerTRPCContext({});
++};
++
++/**
++ * 2. INITIALIZATION
++ *
++ * This is where the trpc api is initialized, connecting the context and
++ * transformer
++ */
++import { initTRPC } from "@trpc/server";
++import superjson from "superjson";
++
++const t = initTRPC
++  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
++  .create({
++    transformer: superjson,
++    errorFormatter({ shape }) {
++      return shape;
++    },
++  });
++
++/**
++ * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
++ *
++ * These are the pieces you use to build your tRPC API. You should import these
++ * a lot in the /src/server/api/routers folder
++ */
++
++/**
++ * This is how you create new routers and subrouters in your tRPC API
++ * @see https://trpc.io/docs/router
++ */
++export const createTRPCRouter = t.router;
++
++/**
++ * Public (unauthed) procedure
++ *
++ * This is the base piece you use to build new queries and mutations on your
++ * tRPC API. It does not guarantee that a user querying is authorized, but you
++ * can still access user session data if they are logged in
++ */
++export const publicProcedure = t.procedure;
+diff --git a/src/server/trpc/context.ts b/src/server/trpc/context.ts
+deleted file mode 100644
+index ad515e9..0000000
+--- a/src/server/trpc/context.ts
++++ /dev/null
+@@ -1,26 +0,0 @@
+-import { type inferAsyncReturnType } from "@trpc/server";
+-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+-
+-/**
+- * Replace this with an object if you want to pass things to createContextInner
+- */
+-type CreateContextOptions = Record<string, never>;
+-
+-/** Use this helper for:
+- * - testing, so we dont have to mock Next.js' req/res
+- * - trpc's `createSSGHelpers` where we don't have req/res
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+- **/
+-export const createContextInner = async (opts: CreateContextOptions) => {
+-  return {};
+-};
+-
+-/**
+- * This is the actual context you'll use in your router
+- * @link https://trpc.io/docs/context
+- **/
+-export const createContext = async (opts: CreateNextContextOptions) => {
+-  return await createContextInner({});
+-};
+-
+-export type Context = inferAsyncReturnType<typeof createContext>;
+diff --git a/src/server/trpc/router/_app.ts b/src/server/trpc/router/_app.ts
+deleted file mode 100644
+index 673135d..0000000
+--- a/src/server/trpc/router/_app.ts
++++ /dev/null
+@@ -1,9 +0,0 @@
+-import { router } from "../trpc";
+-import { exampleRouter } from "./example";
+-
+-export const appRouter = router({
+-  example: exampleRouter,
+-});
+-
+-// export type definition of API
+-export type AppRouter = typeof appRouter;
+diff --git a/src/server/trpc/router/example.ts b/src/server/trpc/router/example.ts
+deleted file mode 100644
+index 086a723..0000000
+--- a/src/server/trpc/router/example.ts
++++ /dev/null
+@@ -1,13 +0,0 @@
+-import { z } from "zod";
+-
+-import { router, publicProcedure } from "../trpc";
+-
+-export const exampleRouter = router({
+-  hello: publicProcedure
+-    .input(z.object({ text: z.string().nullish() }).nullish())
+-    .query(({ input }) => {
+-      return {
+-        greeting: `Hello ${input?.text ?? "world"}`,
+-      };
+-    }),
+-});
+diff --git a/src/server/trpc/trpc.ts b/src/server/trpc/trpc.ts
+deleted file mode 100644
+index b4a9527..0000000
+--- a/src/server/trpc/trpc.ts
++++ /dev/null
+@@ -1,15 +0,0 @@
+-import { initTRPC } from "@trpc/server";
+-import superjson from "superjson";
+-
+-import { type Context } from "./context";
+-
+-const t = initTRPC.context<Context>().create({
+-  transformer: superjson,
+-  errorFormatter({ shape }) {
+-    return shape;
+-  },
+-});
+-
+-export const router = t.router;
+-
+-export const publicProcedure = t.procedure;
+diff --git a/src/utils/trpc.ts b/src/utils/api.ts
+similarity index 59%
+rename from src/utils/trpc.ts
+rename to src/utils/api.ts
+index 2391cbc..c99a366 100644
+--- a/src/utils/trpc.ts
++++ b/src/utils/api.ts
+@@ -1,9 +1,16 @@
++/**
++ * This is the client-side entrypoint for your tRPC API.
++ * It's used to create the `api` object which contains the Next.js App-wrapper
++ * as well as your typesafe react-query hooks.
++ *
++ * We also create a few inference helpers for input and output types
++ */
+ import { httpBatchLink, loggerLink } from "@trpc/client";
+ import { createTRPCNext } from "@trpc/next";
+ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-import { type AppRouter } from "../server/trpc/router/_app";
++import { type AppRouter } from "../server/api/root";
+ 
+ const getBaseUrl = () => {
+   if (typeof window !== "undefined") return ""; // browser should use relative url
+@@ -11,10 +18,22 @@ const getBaseUrl = () => {
+   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+ };
+ 
+-export const trpc = createTRPCNext<AppRouter>({
++/**
++ * A set of typesafe react-query hooks for your tRPC API
++ */
++export const api = createTRPCNext<AppRouter>({
+   config() {
+     return {
++      /**
++       * Transformer used for data de-serialization from the server
++       * @see https://trpc.io/docs/data-transformers
++       **/
+       transformer: superjson,
++
++      /**
++       * Links used to determine request flow from client to server
++       * @see https://trpc.io/docs/links
++       * */
+       links: [
+         loggerLink({
+           enabled: (opts) =>
+@@ -27,6 +46,10 @@ export const trpc = createTRPCNext<AppRouter>({
+       ],
+     };
+   },
++  /**
++   * Whether tRPC should await queries when server rendering pages
++   * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
++   */
+   ssr: false,
+ });
+ 

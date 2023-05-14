@@ -1,0 +1,82 @@
+diff --git a/package.json b/package.json
+index 86bd0e4..77575f6 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,7 +10,7 @@
+   },
+   "dependencies": {
+     "next": "^13.2.4",
+-    "next-auth": "^4.20.1",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "zod": "^3.21.4"
+@@ -28,11 +28,11 @@
+     "eslint-config-next": "^13.2.4",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+-    "prettier-plugin-tailwindcss": "^0.2.5",
+-    "tailwindcss": "^3.2.7",
++    "prettier-plugin-tailwindcss": "^0.2.6",
++    "tailwindcss": "^3.3.0",
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.10.0"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 0b69401..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -35,13 +35,13 @@ declare module "next-auth" {
+  */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({
+diff --git a/tailwind.config.cjs b/tailwind.config.ts
+similarity index 50%
+rename from tailwind.config.cjs
+rename to tailwind.config.ts
+index a82e7e9..d4d3fa2 100644
+--- a/tailwind.config.cjs
++++ b/tailwind.config.ts
+@@ -1,10 +1,9 @@
+-/** @type {import('tailwindcss').Config} */
+-const config = {
++import { type Config } from "tailwindcss";
++
++export default {
+   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+-};
+-
+-module.exports = config;
++} satisfies Config;

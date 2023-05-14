@@ -1,0 +1,158 @@
+diff --git a/package.json b/package.json
+index b44a62b..1822727 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,12 +9,13 @@
+     "start": "next start"
+   },
+   "dependencies": {
++    "@t3-oss/env-nextjs": "^0.2.1",
+     "@tanstack/react-query": "^4.28.0",
+     "@trpc/client": "^10.18.0",
+     "@trpc/next": "^10.18.0",
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+-    "next": "^13.2.4",
++    "next": "^13.4.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.12.2",
+@@ -30,7 +31,7 @@
+     "@typescript-eslint/parser": "^5.56.0",
+     "autoprefixer": "^10.4.14",
+     "eslint": "^8.36.0",
+-    "eslint-config-next": "^13.2.4",
++    "eslint-config-next": "^13.4.1",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+     "prettier-plugin-tailwindcss": "^0.2.6",
+@@ -38,6 +39,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.0"
++    "initVersion": "7.13.0"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 23a5693..be65c66 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,82 +1,30 @@
+ import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here. This way you can ensure the app isn't
+- * built with invalid env vars.
+- */
+-const server = z.object({
+-  NODE_ENV: z.enum(["development", "test", "production"]),
++import { createEnv } from "@t3-oss/env-nextjs";
++
++export const env = createEnv({
++  /**
++   * Specify your server-side environment variables schema here. This way you can ensure the app
++   * isn't built with invalid env vars.
++   */
++  server: {
++    NODE_ENV: z.enum(["development", "test", "production"]),
++  },
++
++  /**
++   * Specify your client-side environment variables schema here. This way you can ensure the app
++   * isn't built with invalid env vars. To expose them to the client, prefix them with
++   * `NEXT_PUBLIC_`.
++   */
++  client: {
++    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++  },
++
++  /**
++   * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++   * middlewares) or client-side so we need to destruct manually.
++   */
++  runtimeEnv: {
++    NODE_ENV: process.env.NODE_ENV,
++    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++  },
+ });
+-
+-/**
+- * Specify your client-side environment variables schema here. This way you can ensure the app isn't
+- * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-const client = z.object(
+-  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ (
+-    {
+-      // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+-    }
+-  ),
+-);
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
+- * middlewares) or client-side so we need to destruct manually.
+- *
+- * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
+- */
+-const processEnv = {
+-  NODE_ENV: process.env.NODE_ENV,
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+-
+-// Don't touch the part below
+-// --------------------------
+-
+-const merged = server.merge(client);
+-
+-/** @typedef {z.input<typeof merged>} MergedInput */
+-/** @typedef {z.infer<typeof merged>} MergedOutput */
+-/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
+-
+-let env = /** @type {MergedOutput} */ (process.env);
+-
+-const skip =
+-  !!process.env.SKIP_ENV_VALIDATION &&
+-  process.env.SKIP_ENV_VALIDATION !== "false" &&
+-  process.env.SKIP_ENV_VALIDATION !== "0";
+-if (!skip) {
+-  const isServer = typeof window === "undefined";
+-
+-  const parsed = /** @type {MergedSafeParseReturn} */ (
+-    isServer
+-      ? merged.safeParse(processEnv) // on server we can validate all env vars
+-      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
+-  );
+-
+-  if (parsed.success === false) {
+-    console.error(
+-      "❌ Invalid environment variables:",
+-      parsed.error.flatten().fieldErrors,
+-    );
+-    throw new Error("Invalid environment variables");
+-  }
+-
+-  env = new Proxy(parsed.data, {
+-    get(target, prop) {
+-      if (typeof prop !== "string") return undefined;
+-      // Throw a descriptive error if a server-side env var is accessed on the client
+-      // Otherwise it would just be returning `undefined` and be annoying to debug
+-      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
+-        throw new Error(
+-          process.env.NODE_ENV === "production"
+-            ? "❌ Attempted to access a server-side environment variable on the client"
+-            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+-        );
+-      return target[/** @type {keyof typeof target} */ (prop)];
+-    },
+-  });
+-}
+-
+-export { env };

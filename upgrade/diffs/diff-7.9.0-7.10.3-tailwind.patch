@@ -1,0 +1,48 @@
+diff --git a/package.json b/package.json
+index ee7ff5f..fbb82b7 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -27,11 +27,11 @@
+     "eslint-config-next": "^13.2.4",
+     "postcss": "^8.4.21",
+     "prettier": "^2.8.6",
+-    "prettier-plugin-tailwindcss": "^0.2.5",
+-    "tailwindcss": "^3.2.7",
++    "prettier-plugin-tailwindcss": "^0.2.6",
++    "tailwindcss": "^3.3.0",
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.9.0"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/tailwind.config.cjs b/tailwind.config.ts
+similarity index 50%
+rename from tailwind.config.cjs
+rename to tailwind.config.ts
+index a82e7e9..d4d3fa2 100644
+--- a/tailwind.config.cjs
++++ b/tailwind.config.ts
+@@ -1,10 +1,9 @@
+-/** @type {import('tailwindcss').Config} */
+-const config = {
++import { type Config } from "tailwindcss";
++
++export default {
+   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+-};
+-
+-module.exports = config;
++} satisfies Config;

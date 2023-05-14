@@ -1,0 +1,255 @@
+diff --git a/.env.example b/.env.example
+index 7eae284..3fcccc6 100644
+--- a/.env.example
++++ b/.env.example
+@@ -6,7 +6,7 @@
+ # secrets in it. If you are cloning this repo, create a copy of this file named
+ # ".env" and populate it with your secrets.
+ 
+-# When adding additional environment variables, the schema in "/env/schema.mjs"
++# When adding additional environment variables, the schema in "/src/env.mjs"
+ # should be updated accordingly.
+ 
+ # Example:
+diff --git a/next.config.mjs b/next.config.mjs
+index ce181ca..d7dfb79 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -4,7 +4,7 @@
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
++!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+diff --git a/package.json b/package.json
+index 01ead4d..8058c15 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -31,6 +31,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.4.1"
++    "initVersion": "7.5.3"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+new file mode 100644
+index 0000000..29c9b54
+--- /dev/null
++++ b/src/env.mjs
+@@ -0,0 +1,74 @@
++import { z } from "zod";
++
++/**
++ * Specify your server-side environment variables schema here.
++ * This way you can ensure the app isn't built with invalid env vars.
++ */
++const server = z.object({
++  NODE_ENV: z.enum(["development", "test", "production"]),
++});
++
++/**
++ * Specify your client-side environment variables schema here.
++ * This way you can ensure the app isn't built with invalid env vars.
++ * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ */
++const client = z.object({
++  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++});
++
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
++ * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
++ */
++const processEnv = {
++  NODE_ENV: process.env.NODE_ENV,
++  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++};
++
++// Don't touch the part below
++// --------------------------
++
++const merged = server.merge(client);
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
++
++if (!!process.env.SKIP_ENV_VALIDATION == false) {
++  const isServer = typeof window === "undefined";
++
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
++
++  if (parsed.success === false) {
++    console.error(
++      "❌ Invalid environment variables:",
++      parsed.error.flatten().fieldErrors,
++    );
++    throw new Error("Invalid environment variables");
++  }
++
++  env = new Proxy(parsed.data, {
++    get(target, prop) {
++      if (typeof prop !== "string") return undefined;
++      // Throw a descriptive error if a server-side env var is accessed on the client
++      // Otherwise it would just be returning `undefined` and be annoying to debug
++      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
++        throw new Error(
++          process.env.NODE_ENV === "production"
++            ? "❌ Attempted to access a server-side environment variable on the client"
++            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
++        );
++      return target[/** @type {keyof typeof target} */ (prop)];
++    },
++  });
++}
++
++export { env };
+diff --git a/src/env/client.mjs b/src/env/client.mjs
+deleted file mode 100644
+index 30958cb..0000000
+--- a/src/env/client.mjs
++++ /dev/null
+@@ -1,35 +0,0 @@
+-// @ts-check
+-import { clientEnv, clientSchema } from "./schema.mjs";
+-
+-const _clientEnv = clientSchema.safeParse(clientEnv);
+-
+-export const formatErrors = (
+-  /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
+-  errors,
+-) =>
+-  Object.entries(errors)
+-    .map(([name, value]) => {
+-      if (value && "_errors" in value)
+-        return `${name}: ${value._errors.join(", ")}\n`;
+-    })
+-    .filter(Boolean);
+-
+-if (!_clientEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_clientEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_clientEnv.data)) {
+-  if (!key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn(
+-      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`,
+-    );
+-
+-    throw new Error("Invalid public environment variable name");
+-  }
+-}
+-
+-export const env = _clientEnv.data;
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+deleted file mode 100644
+index 13a5763..0000000
+--- a/src/env/schema.mjs
++++ /dev/null
+@@ -1,38 +0,0 @@
+-// @ts-check
+-import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-export const serverSchema = z.object({
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * middleware, so you have to do it manually here.
+- * @type {{ [k in keyof z.input<typeof serverSchema>]: string | undefined }}
+- */
+-export const serverEnv = {
+-  NODE_ENV: process.env.NODE_ENV,
+-};
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-export const clientSchema = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object, so you have to do
+- * it manually here. This is because Next.js evaluates this at build time,
+- * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.input<typeof clientSchema>]: string | undefined }}
+- */
+-export const clientEnv = {
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+deleted file mode 100644
+index c04b5ae..0000000
+--- a/src/env/server.mjs
++++ /dev/null
+@@ -1,27 +0,0 @@
+-// @ts-check
+-/**
+- * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+- * It has to be a `.mjs`-file to be imported there.
+- */
+-import { serverSchema, serverEnv } from "./schema.mjs";
+-import { env as clientEnv, formatErrors } from "./client.mjs";
+-
+-const _serverEnv = serverSchema.safeParse(serverEnv);
+-
+-if (!_serverEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_serverEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_serverEnv.data)) {
+-  if (key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn("❌ You are exposing a server-side env-variable:", key);
+-
+-    throw new Error("You are exposing a server-side env-variable");
+-  }
+-}
+-
+-export const env = { ..._serverEnv.data, ...clientEnv };
+diff --git a/tsconfig.json b/tsconfig.json
+index 658068a..9630df8 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -3,6 +3,7 @@
+     "target": "es2017",
+     "lib": ["dom", "dom.iterable", "esnext"],
+     "allowJs": true,
++    "checkJs": true,
+     "skipLibCheck": true,
+     "strict": true,
+     "forceConsistentCasingInFileNames": true,

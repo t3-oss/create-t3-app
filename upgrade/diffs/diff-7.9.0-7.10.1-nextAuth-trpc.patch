@@ -1,0 +1,32 @@
+diff --git a/package.json b/package.json
+index e207910..0131c22 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -33,6 +33,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.9.0"
++    "initVersion": "7.10.1"
+   }
+ }
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 2f27124..1705d0f 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -31,7 +31,7 @@ type CreateContextOptions = {
+  * - testing, so we don't have to mock Next.js' req/res
+  * - tRPC's `createSSGHelpers`, where we don't have req/res
+  *
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
+  */
+ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+   return {
