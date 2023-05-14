@@ -20,6 +20,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
 
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
+  const usingClerk = packages?.clerk.inUse;
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
@@ -34,6 +35,8 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       ? "with-auth-prisma.ts"
       : usingAuth
       ? "with-auth.ts"
+      : usingClerk
+      ? "with-clerk.ts"
       : usingPrisma
       ? "with-prisma.ts"
       : "base.ts";
@@ -48,6 +51,8 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       ? "with-auth-prisma.ts"
       : usingAuth
       ? "with-auth.ts"
+      : usingClerk
+      ? "with-clerk.ts"
       : usingPrisma
       ? "with-prisma.ts"
       : "base.ts";
