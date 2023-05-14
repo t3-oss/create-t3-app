@@ -1,0 +1,100 @@
+diff --git a/package.json b/package.json
+index df608c8..df63982 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,10 +10,10 @@
+   },
+   "dependencies": {
+     "@tanstack/react-query": "^4.20.0",
+-    "@trpc/client": "^10.7.0",
+-    "@trpc/next": "^10.7.0",
+-    "@trpc/react-query": "^10.7.0",
+-    "@trpc/server": "^10.7.0",
++    "@trpc/client": "^10.8.1",
++    "@trpc/next": "^10.8.1",
++    "@trpc/react-query": "^10.8.1",
++    "@trpc/server": "^10.8.1",
+     "next": "13.1.1",
+     "next-auth": "^4.18.7",
+     "react": "18.2.0",
+@@ -38,6 +38,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.1.0"
++    "initVersion": "7.2.0"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index cd0e268..1068e79 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -22,6 +22,19 @@ export const serverSchema = z.object({
+   DISCORD_CLIENT_SECRET: z.string(),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ */
++export const serverEnv = {
++  NODE_ENV: process.env.NODE_ENV,
++  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
++  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
++  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
++  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 0b95612..a8c5a48 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -65,14 +65,12 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+ import { initTRPC, TRPCError } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-const t = initTRPC
+-  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
+-  .create({
+-    transformer: superjson,
+-    errorFormatter({ shape }) {
+-      return shape;
+-    },
+-  });
++const t = initTRPC.context<typeof createTRPCContext>().create({
++  transformer: superjson,
++  errorFormatter({ shape }) {
++    return shape;
++  },
++});
+ 
+ /**
+  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)

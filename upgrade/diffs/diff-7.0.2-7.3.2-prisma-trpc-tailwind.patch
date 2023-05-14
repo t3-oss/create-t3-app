@@ -1,0 +1,177 @@
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..0ee755b 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -8,7 +8,8 @@
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++  /* If trying out the experimental appDir, comment the i18n config out
++   * @see https://github.com/vercel/next.js/issues/41980 */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index 4922d5f..0f530f7 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -12,11 +12,11 @@
+   "dependencies": {
+     "@prisma/client": "^4.8.0",
+     "@tanstack/react-query": "^4.20.0",
+-    "@trpc/client": "^10.7.0",
+-    "@trpc/next": "^10.7.0",
+-    "@trpc/react-query": "^10.7.0",
+-    "@trpc/server": "^10.7.0",
+-    "next": "13.1.1",
++    "@trpc/client": "^10.8.1",
++    "@trpc/next": "^10.8.1",
++    "@trpc/react-query": "^10.8.1",
++    "@trpc/server": "^10.8.1",
++    "next": "13.1.2",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+@@ -31,7 +31,7 @@
+     "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+     "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
++    "eslint-config-next": "13.1.2",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+@@ -40,6 +40,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.2"
++    "initVersion": "7.3.2"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index 45d3935..f2a36da 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -10,6 +10,16 @@ export const serverSchema = z.object({
+   NODE_ENV: z.enum(["development", "test", "production"]),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ */
++export const serverEnv = {
++  DATABASE_URL: process.env.DATABASE_URL,
++  NODE_ENV: process.env.NODE_ENV,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 70f0892..8ec828b 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -11,7 +11,9 @@ export default createNextApiHandler({
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+-          console.error(`❌ tRPC failed on ${path}: ${error}`);
++          console.error(
++            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
++          );
+         }
+       : undefined,
+ });
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 81abfbd..933b493 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -31,7 +31,7 @@ type CreateContextOptions = Record<string, never>;
+  * - trpc's `createSSGHelpers` where we don't have req/res
+  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+  */
+-const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
++const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+   return {
+     prisma,
+   };
+@@ -42,8 +42,8 @@ const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
+  * process every request that goes through your tRPC endpoint
+  * @link https://trpc.io/docs/context
+  */
+-export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+-  return await createInnerTRPCContext({});
++export const createTRPCContext = (_opts: CreateNextContextOptions) => {
++  return createInnerTRPCContext({});
+ };
+ 
+ /**
+@@ -55,14 +55,12 @@ export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+ import { initTRPC } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-const t = initTRPC
+-  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
+-  .create({
+-    transformer: superjson,
+-    errorFormatter({ shape }) {
+-      return shape;
+-    },
+-  });
++const t = initTRPC.context<typeof createTRPCContext>().create({
++  transformer: superjson,
++  errorFormatter({ shape }) {
++    return shape;
++  },
++});
+ 
+ /**
+  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)

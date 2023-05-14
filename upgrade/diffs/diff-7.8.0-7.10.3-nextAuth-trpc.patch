@@ -1,0 +1,97 @@
+diff --git a/package.json b/package.json
+index 24d0617..5e49bf2 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,30 +9,30 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@tanstack/react-query": "^4.20.2",
+-    "@trpc/client": "^10.9.0",
+-    "@trpc/next": "^10.9.0",
+-    "@trpc/react-query": "^10.9.0",
+-    "@trpc/server": "^10.9.0",
+-    "next": "^13.2.1",
+-    "next-auth": "^4.19.0",
++    "@tanstack/react-query": "^4.28.0",
++    "@trpc/client": "^10.18.0",
++    "@trpc/next": "^10.18.0",
++    "@trpc/react-query": "^10.18.0",
++    "@trpc/server": "^10.18.0",
++    "next": "^13.2.4",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "superjson": "1.9.1",
+-    "zod": "^3.20.6"
++    "superjson": "1.12.2",
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/eslint": "^8.21.1",
+-    "@types/node": "^18.14.0",
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
+     "@types/react": "^18.0.28",
+     "@types/react-dom": "^18.0.11",
+-    "@typescript-eslint/eslint-plugin": "^5.53.0",
+-    "@typescript-eslint/parser": "^5.53.0",
+-    "eslint": "^8.34.0",
+-    "eslint-config-next": "^13.2.1",
+-    "typescript": "^4.9.5"
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.2.4",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.8.0"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 2f27124..1705d0f 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -31,7 +31,7 @@ type CreateContextOptions = {
+  * - testing, so we don't have to mock Next.js' req/res
+  * - tRPC's `createSSGHelpers`, where we don't have req/res
+  *
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
+  */
+ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+   return {
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 0b69401..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -35,13 +35,13 @@ declare module "next-auth" {
+  */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({

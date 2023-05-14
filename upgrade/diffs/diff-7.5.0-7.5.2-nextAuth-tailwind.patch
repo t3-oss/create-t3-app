@@ -1,0 +1,190 @@
+diff --git a/package.json b/package.json
+index 5427520..51d99b0 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -32,6 +32,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.0"
++    "initVersion": "7.5.2"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 0c7fe9e..60104e0 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,4 +1,3 @@
+-/* eslint-disable @typescript-eslint/ban-ts-comment */
+ import { z } from "zod";
+ 
+ /**
+@@ -50,16 +49,21 @@ const processEnv = {
+ // --------------------------
+ 
+ const merged = server.merge(client);
+-/** @type z.infer<merged>
+- *  @ts-ignore - can't type this properly in jsdoc */
+-let env = process.env;
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
+ 
+ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+   const isServer = typeof window === "undefined";
+ 
+-  const parsed = isServer
+-    ? merged.safeParse(processEnv) // on server we can validate all env vars
+-    : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
+ 
+   if (parsed.success === false) {
+     console.error(
+@@ -69,8 +73,6 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+     throw new Error("Invalid environment variables");
+   }
+ 
+-  /** @type z.infer<merged>
+-   *  @ts-ignore - can't type this properly in jsdoc */
+   env = new Proxy(parsed.data, {
+     get(target, prop) {
+       if (typeof prop !== "string") return undefined;
+@@ -82,8 +84,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+             ? "❌ Attempted to access a server-side environment variable on the client"
+             : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+         );
+-      /*  @ts-ignore - can't type this properly in jsdoc */
+-      return target[prop];
++      return target[/** @type {keyof typeof target} */ (prop)];
+     },
+   });
+ }
+diff --git a/src/env/client.mjs b/src/env/client.mjs
+deleted file mode 100644
+index afe30a5..0000000
+--- a/src/env/client.mjs
++++ /dev/null
+@@ -1,34 +0,0 @@
+-import { clientEnv, clientSchema } from "./schema.mjs";
+-
+-const _clientEnv = clientSchema.safeParse(clientEnv);
+-
+-export const formatErrors = (
+-  /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
+-  errors,
+-) =>
+-  Object.entries(errors)
+-    .map(([name, value]) => {
+-      if (value && "_errors" in value)
+-        return `${name}: ${value._errors.join(", ")}\n`;
+-    })
+-    .filter(Boolean);
+-
+-if (!_clientEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_clientEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_clientEnv.data)) {
+-  if (!key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn(
+-      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`,
+-    );
+-
+-    throw new Error("Invalid public environment variable name");
+-  }
+-}
+-
+-export const env = _clientEnv.data;
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+deleted file mode 100644
+index d730707..0000000
+--- a/src/env/schema.mjs
++++ /dev/null
+@@ -1,37 +0,0 @@
+-import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-export const serverSchema = z.object({
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * middleware, so you have to do it manually here.
+- * @type {{ [k in keyof z.input<typeof serverSchema>]: string | undefined }}
+- */
+-export const serverEnv = {
+-  NODE_ENV: process.env.NODE_ENV,
+-};
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-export const clientSchema = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object, so you have to do
+- * it manually here. This is because Next.js evaluates this at build time,
+- * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.input<typeof clientSchema>]: string | undefined }}
+- */
+-export const clientEnv = {
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+deleted file mode 100644
+index 050781a..0000000
+--- a/src/env/server.mjs
++++ /dev/null
+@@ -1,26 +0,0 @@
+-/**
+- * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+- * It has to be a `.mjs`-file to be imported there.
+- */
+-import { serverSchema, serverEnv } from "./schema.mjs";
+-import { env as clientEnv, formatErrors } from "./client.mjs";
+-
+-const _serverEnv = serverSchema.safeParse(serverEnv);
+-
+-if (!_serverEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_serverEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_serverEnv.data)) {
+-  if (key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn("❌ You are exposing a server-side env-variable:", key);
+-
+-    throw new Error("You are exposing a server-side env-variable");
+-  }
+-}
+-
+-export const env = { ..._serverEnv.data, ...clientEnv };

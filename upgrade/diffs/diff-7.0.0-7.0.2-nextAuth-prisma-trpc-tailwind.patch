@@ -1,0 +1,50 @@
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index d6efdc1..eebd48b 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -42,6 +42,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.0"
++    "initVersion": "7.0.2"
+   }
+ }
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index c24bd59..e218f01 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -23,7 +23,15 @@ export const authOptions: NextAuthOptions = {
+       clientId: env.DISCORD_CLIENT_ID,
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+-    // ...add more providers here
++    /**
++     * ...add more providers here
++     *
++     * Most other providers require a bit more work than the Discord provider.
++     * For example, the GitHub provider requires you to add the
++     * `refresh_token_expires_in` field to the Account model. Refer to the
++     * NextAuth.js docs for the provider you want to use. Example:
++     * @see https://next-auth.js.org/providers/github
++     */
+   ],
+ };
+ 

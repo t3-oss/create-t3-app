@@ -1,0 +1,80 @@
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/package.json b/package.json
+index 95e7b6b..83a2e91 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -26,6 +26,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.1"
++    "initVersion": "7.2.0"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index cd0e268..1068e79 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -22,6 +22,19 @@ export const serverSchema = z.object({
+   DISCORD_CLIENT_SECRET: z.string(),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
++ */
++export const serverEnv = {
++  NODE_ENV: process.env.NODE_ENV,
++  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
++  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
++  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
++  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(

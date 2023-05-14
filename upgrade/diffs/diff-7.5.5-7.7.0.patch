@@ -1,0 +1,106 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+index db7fda4..10756b8 100644
+--- a/.eslintrc.cjs
++++ b/.eslintrc.cjs
+@@ -1,5 +1,5 @@
+ /** @type {import("eslint").Linter.Config} */
+-module.exports = {
++const config = {
+   overrides: [
+     {
+       extends: [
+@@ -25,5 +25,8 @@ module.exports = {
+         fixStyle: "inline-type-imports",
+       },
+     ],
++    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+   },
+ };
++
++module.exports = config;
+diff --git a/package.json b/package.json
+index 49693d4..366f098 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,23 +9,23 @@
+     "lint": "next lint"
+   },
+   "dependencies": {
+-    "next": "13.1.6",
++    "next": "^13.2.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.20.2"
++    "zod": "^3.20.6"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.11.18",
+-    "@types/react": "^18.0.26",
+-    "@types/react-dom": "^18.0.10",
++    "@types/node": "^18.14.0",
++    "@types/react": "^18.0.28",
++    "@types/react-dom": "^18.0.11",
+     "@types/eslint": "^8.21.1",
+-    "@typescript-eslint/eslint-plugin": "^5.47.1",
+-    "@typescript-eslint/parser": "^5.47.1",
+-    "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.6",
+-    "typescript": "^4.9.4"
++    "@typescript-eslint/eslint-plugin": "^5.53.0",
++    "@typescript-eslint/parser": "^5.53.0",
++    "eslint": "^8.34.0",
++    "eslint-config-next": "^13.2.1",
++    "typescript": "^4.9.5"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.5"
++    "initVersion": "7.7.0"
+   }
+ }
+diff --git a/public/favicon.ico b/public/favicon.ico
+index efd76f1..60c702a 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ
+diff --git a/src/env.mjs b/src/env.mjs
+index 29c9b54..38e38da 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,25 +1,25 @@
+ import { z } from "zod";
+ 
+ /**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
++ * Specify your server-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars.
+  */
+ const server = z.object({
+   NODE_ENV: z.enum(["development", "test", "production"]),
+ });
+ 
+ /**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ * Specify your client-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+  */
+ const client = z.object({
+   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+ });
+ 
+ /**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
++ * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++ * middlewares) or client-side so we need to destruct manually.
++ *
+  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
+  */
+ const processEnv = {

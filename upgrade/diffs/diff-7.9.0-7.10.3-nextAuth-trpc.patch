@@ -1,0 +1,66 @@
+diff --git a/package.json b/package.json
+index e207910..5e49bf2 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -15,7 +15,7 @@
+     "@trpc/react-query": "^10.18.0",
+     "@trpc/server": "^10.18.0",
+     "next": "^13.2.4",
+-    "next-auth": "^4.20.1",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.12.2",
+@@ -33,6 +33,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.9.0"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 2f27124..1705d0f 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -31,7 +31,7 @@ type CreateContextOptions = {
+  * - testing, so we don't have to mock Next.js' req/res
+  * - tRPC's `createSSGHelpers`, where we don't have req/res
+  *
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
+  */
+ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+   return {
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 0b69401..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -35,13 +35,13 @@ declare module "next-auth" {
+  */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({

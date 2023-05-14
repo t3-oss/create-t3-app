@@ -1,0 +1,98 @@
+diff --git a/next.config.mjs b/next.config.mjs
+index f9b4e26..d921057 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,16 +1,16 @@
+ /**
+- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+- * This is especially useful for Docker builds.
++ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
++ * for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
++await import("./src/env.mjs");
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+ 
+   /**
+-   * If you have the "experimental: { appDir: true }" setting enabled, then you
+-   * must comment the below `i18n` config out.
++   * If you have `experimental: { appDir: true }` set, then you must comment the below `i18n` config
++   * out.
+    *
+    * @see https://github.com/vercel/next.js/issues/41980
+    */
+diff --git a/package.json b/package.json
+index 30a07a0..f67dcd2 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -35,6 +35,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.10.0"
++    "initVersion": "7.12.0"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 126943c..05eb654 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -13,9 +13,13 @@ const server = z.object({
+  * Specify your client-side environment variables schema here. This way you can ensure the app isn't
+  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+  */
+-const client = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+-});
++const client = z.object(
++  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ (
++    {
++      // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++    }
++  ),
++);
+ 
+ /**
+  * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
+@@ -40,7 +44,11 @@ const merged = server.merge(client);
+ 
+ let env = /** @type {MergedOutput} */ (process.env);
+ 
+-if (!!process.env.SKIP_ENV_VALIDATION == false) {
++const skip =
++  !!process.env.SKIP_ENV_VALIDATION &&
++  process.env.SKIP_ENV_VALIDATION !== "false" &&
++  process.env.SKIP_ENV_VALIDATION !== "0";
++if (!skip) {
+   const isServer = typeof window === "undefined";
+ 
+   const parsed = /** @type {MergedSafeParseReturn} */ (
+diff --git a/src/server/db.ts b/src/server/db.ts
+index f3d7be3..861093d 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -2,10 +2,12 @@ import { PrismaClient } from "@prisma/client";
+ 
+ import { env } from "~/env.mjs";
+ 
+-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
++const globalForPrisma = globalThis as unknown as {
++  prisma: PrismaClient | undefined;
++};
+ 
+ export const prisma =
+-  globalForPrisma.prisma ||
++  globalForPrisma.prisma ??
+   new PrismaClient({
+     log:
+       env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],

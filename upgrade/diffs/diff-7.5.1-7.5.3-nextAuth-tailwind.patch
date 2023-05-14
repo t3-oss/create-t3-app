@@ -1,0 +1,88 @@
+diff --git a/.env.example b/.env.example
+index 42b5bc2..9cfcdd6 100644
+--- a/.env.example
++++ b/.env.example
+@@ -6,7 +6,7 @@
+ # secrets in it. If you are cloning this repo, create a copy of this file named
+ # ".env" and populate it with your secrets.
+ 
+-# When adding additional environment variables, the schema in "/env/schema.mjs"
++# When adding additional environment variables, the schema in "/src/env.mjs"
+ # should be updated accordingly.
+ 
+ # Next Auth
+diff --git a/package.json b/package.json
+index 3a45abc..cfa9ef8 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -32,6 +32,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.1"
++    "initVersion": "7.5.3"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 0c7fe9e..60104e0 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,4 +1,3 @@
+-/* eslint-disable @typescript-eslint/ban-ts-comment */
+ import { z } from "zod";
+ 
+ /**
+@@ -50,16 +49,21 @@ const processEnv = {
+ // --------------------------
+ 
+ const merged = server.merge(client);
+-/** @type z.infer<merged>
+- *  @ts-ignore - can't type this properly in jsdoc */
+-let env = process.env;
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
+ 
+ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+   const isServer = typeof window === "undefined";
+ 
+-  const parsed = isServer
+-    ? merged.safeParse(processEnv) // on server we can validate all env vars
+-    : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
+ 
+   if (parsed.success === false) {
+     console.error(
+@@ -69,8 +73,6 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+     throw new Error("Invalid environment variables");
+   }
+ 
+-  /** @type z.infer<merged>
+-   *  @ts-ignore - can't type this properly in jsdoc */
+   env = new Proxy(parsed.data, {
+     get(target, prop) {
+       if (typeof prop !== "string") return undefined;
+@@ -82,8 +84,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
+             ? "❌ Attempted to access a server-side environment variable on the client"
+             : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+         );
+-      /*  @ts-ignore - can't type this properly in jsdoc */
+-      return target[prop];
++      return target[/** @type {keyof typeof target} */ (prop)];
+     },
+   });
+ }

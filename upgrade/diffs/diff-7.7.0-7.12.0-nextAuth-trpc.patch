@@ -1,0 +1,235 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+index 10756b8..8b7a0e8 100644
+--- a/.eslintrc.cjs
++++ b/.eslintrc.cjs
+@@ -1,3 +1,6 @@
++// eslint-disable-next-line @typescript-eslint/no-var-requires
++const path = require("path");
++
+ /** @type {import("eslint").Linter.Config} */
+ const config = {
+   overrides: [
+@@ -7,13 +10,13 @@ const config = {
+       ],
+       files: ["*.ts", "*.tsx"],
+       parserOptions: {
+-        project: "tsconfig.json",
++        project: path.join(__dirname, "tsconfig.json"),
+       },
+     },
+   ],
+   parser: "@typescript-eslint/parser",
+   parserOptions: {
+-    project: "./tsconfig.json",
++    project: path.join(__dirname, "tsconfig.json"),
+   },
+   plugins: ["@typescript-eslint"],
+   extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+diff --git a/next.config.mjs b/next.config.mjs
+index d7dfb79..d921057 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,18 +1,16 @@
+-// @ts-check
+-
+ /**
+- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+- * This is especially useful for Docker builds.
++ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
++ * for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
++await import("./src/env.mjs");
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+ 
+   /**
+-   * If you have the "experimental: { appDir: true }" setting enabled, then you
+-   * must comment the below `i18n` config out.
++   * If you have `experimental: { appDir: true }` set, then you must comment the below `i18n` config
++   * out.
+    *
+    * @see https://github.com/vercel/next.js/issues/41980
+    */
+diff --git a/package.json b/package.json
+index 2578306..3b0960e 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,30 +9,30 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@tanstack/react-query": "^4.20.2",
+-    "@trpc/client": "^10.9.0",
+-    "@trpc/next": "^10.9.0",
+-    "@trpc/react-query": "^10.9.0",
+-    "@trpc/server": "^10.9.0",
+-    "next": "^13.2.1",
+-    "next-auth": "^4.19.0",
++    "@tanstack/react-query": "^4.28.0",
++    "@trpc/client": "^10.18.0",
++    "@trpc/next": "^10.18.0",
++    "@trpc/react-query": "^10.18.0",
++    "@trpc/server": "^10.18.0",
++    "next": "^13.2.4",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "superjson": "1.9.1",
+-    "zod": "^3.20.6"
++    "superjson": "1.12.2",
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/eslint": "^8.21.1",
+-    "@types/node": "^18.14.0",
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
+     "@types/react": "^18.0.28",
+     "@types/react-dom": "^18.0.11",
+-    "@typescript-eslint/eslint-plugin": "^5.53.0",
+-    "@typescript-eslint/parser": "^5.53.0",
+-    "eslint": "^8.34.0",
+-    "eslint-config-next": "^13.2.1",
+-    "typescript": "^4.9.5"
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.2.4",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.7.0"
++    "initVersion": "7.12.0"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 9f3d74a..2fad8b6 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -26,9 +26,13 @@ const server = z.object({
+  * Specify your client-side environment variables schema here. This way you can ensure the app isn't
+  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+  */
+-const client = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+-});
++const client = z.object(
++  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ (
++    {
++      // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++    }
++  ),
++);
+ 
+ /**
+  * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
+@@ -56,7 +60,11 @@ const merged = server.merge(client);
+ 
+ let env = /** @type {MergedOutput} */ (process.env);
+ 
+-if (!!process.env.SKIP_ENV_VALIDATION == false) {
++const skip =
++  !!process.env.SKIP_ENV_VALIDATION &&
++  process.env.SKIP_ENV_VALIDATION !== "false" &&
++  process.env.SKIP_ENV_VALIDATION !== "0";
++if (!skip) {
+   const isServer = typeof window === "undefined";
+ 
+   const parsed = /** @type {MergedSafeParseReturn} */ (
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 10fd521..7f343bf 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -31,11 +31,11 @@ type CreateContextOptions = {
+  * - testing, so we don't have to mock Next.js' req/res
+  * - tRPC's `createSSGHelpers`, where we don't have req/res
+  *
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
+  */
+-const createInnerTRPCContext = (opts: CreateContextOptions) => {
++const createInnerTRPCContext = ({ session }: CreateContextOptions) => {
+   return {
+-    session: opts.session,
++    session,
+   };
+ };
+ 
+@@ -45,9 +45,10 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+  *
+  * @see https://trpc.io/docs/context
+  */
+-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+-  const { req, res } = opts;
+-
++export const createTRPCContext = async ({
++  req,
++  res,
++}: CreateNextContextOptions) => {
+   // Get the session from the server using the getServerSession wrapper function
+   const session = await getServerAuthSession({ req, res });
+ 
+@@ -59,15 +60,25 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+ /**
+  * 2. INITIALIZATION
+  *
+- * This is where the tRPC API is initialized, connecting the context and transformer.
++ * This is where the tRPC API is initialized, connecting the context and transformer. We also parse
++ * ZodErrors so that you get typesafety on the frontend if your procedure fails due to validation
++ * errors on the backend.
+  */
+ import { initTRPC, TRPCError } from "@trpc/server";
+ import superjson from "superjson";
++import { ZodError } from "zod";
+ 
+ const t = initTRPC.context<typeof createTRPCContext>().create({
+   transformer: superjson,
+-  errorFormatter({ shape }) {
+-    return shape;
++  errorFormatter({ shape, error }) {
++    return {
++      ...shape,
++      data: {
++        ...shape.data,
++        zodError:
++          error.cause instanceof ZodError ? error.cause.flatten() : null,
++      },
++    };
+   },
+ });
+ 
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 0b69401..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -35,13 +35,13 @@ declare module "next-auth" {
+  */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({

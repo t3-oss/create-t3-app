@@ -1,0 +1,70 @@
+diff --git a/package.json b/package.json
+index 870c469..7284111 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,36 +9,36 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@tanstack/react-query": "^4.20.2",
+-    "@trpc/client": "^10.9.0",
+-    "@trpc/next": "^10.9.0",
+-    "@trpc/react-query": "^10.9.0",
+-    "@trpc/server": "^10.9.0",
+-    "next": "^13.2.1",
+-    "next-auth": "^4.19.0",
++    "@tanstack/react-query": "^4.28.0",
++    "@trpc/client": "^10.18.0",
++    "@trpc/next": "^10.18.0",
++    "@trpc/react-query": "^10.18.0",
++    "@trpc/server": "^10.18.0",
++    "next": "^13.2.4",
++    "next-auth": "^4.20.1",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "superjson": "1.9.1",
+-    "zod": "^3.20.6"
++    "superjson": "1.12.2",
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/eslint": "^8.21.1",
+-    "@types/node": "^18.14.0",
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
+     "@types/prettier": "^2.7.2",
+     "@types/react": "^18.0.28",
+     "@types/react-dom": "^18.0.11",
+-    "@typescript-eslint/eslint-plugin": "^5.53.0",
+-    "@typescript-eslint/parser": "^5.53.0",
+-    "autoprefixer": "^10.4.7",
+-    "eslint": "^8.34.0",
+-    "eslint-config-next": "^13.2.1",
+-    "postcss": "^8.4.14",
+-    "prettier": "^2.8.1",
+-    "prettier-plugin-tailwindcss": "^0.2.1",
+-    "tailwindcss": "^3.2.0",
+-    "typescript": "^4.9.5"
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "autoprefixer": "^10.4.14",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.2.4",
++    "postcss": "^8.4.21",
++    "prettier": "^2.8.6",
++    "prettier-plugin-tailwindcss": "^0.2.5",
++    "tailwindcss": "^3.2.7",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.8.0"
++    "initVersion": "7.9.0"
+   }
+ }

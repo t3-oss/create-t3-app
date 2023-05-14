@@ -1,0 +1,575 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+new file mode 100644
+index 0000000..8b7a0e8
+--- /dev/null
++++ b/.eslintrc.cjs
+@@ -0,0 +1,35 @@
++// eslint-disable-next-line @typescript-eslint/no-var-requires
++const path = require("path");
++
++/** @type {import("eslint").Linter.Config} */
++const config = {
++  overrides: [
++    {
++      extends: [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking",
++      ],
++      files: ["*.ts", "*.tsx"],
++      parserOptions: {
++        project: path.join(__dirname, "tsconfig.json"),
++      },
++    },
++  ],
++  parser: "@typescript-eslint/parser",
++  parserOptions: {
++    project: path.join(__dirname, "tsconfig.json"),
++  },
++  plugins: ["@typescript-eslint"],
++  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
++  rules: {
++    "@typescript-eslint/consistent-type-imports": [
++      "warn",
++      {
++        prefer: "type-imports",
++        fixStyle: "inline-type-imports",
++      },
++    ],
++    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
++  },
++};
++
++module.exports = config;
+diff --git a/.eslintrc.json b/.eslintrc.json
+deleted file mode 100644
+index 82671df..0000000
+--- a/.eslintrc.json
++++ /dev/null
+@@ -1,22 +0,0 @@
+-{
+-  "overrides": [
+-    {
+-      "extends": [
+-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+-      ],
+-      "files": ["*.ts", "*.tsx"],
+-      "parserOptions": {
+-        "project": "tsconfig.json"
+-      }
+-    }
+-  ],
+-  "parser": "@typescript-eslint/parser",
+-  "parserOptions": {
+-    "project": "./tsconfig.json"
+-  },
+-  "plugins": ["@typescript-eslint"],
+-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+-  "rules": {
+-    "@typescript-eslint/consistent-type-imports": "warn"
+-  }
+-}
+diff --git a/next.config.mjs b/next.config.mjs
+index d7dfb79..f9b4e26 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,5 +1,3 @@
+-// @ts-check
+-
+ /**
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+diff --git a/package.json b/package.json
+index 838b8a8..5e49bf2 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,29 +9,30 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "@tanstack/react-query": "^4.20.2",
+-    "@trpc/client": "^10.9.0",
+-    "@trpc/next": "^10.9.0",
+-    "@trpc/react-query": "^10.9.0",
+-    "@trpc/server": "^10.9.0",
+-    "next": "13.1.6",
+-    "next-auth": "^4.19.0",
++    "@tanstack/react-query": "^4.28.0",
++    "@trpc/client": "^10.18.0",
++    "@trpc/next": "^10.18.0",
++    "@trpc/react-query": "^10.18.0",
++    "@trpc/server": "^10.18.0",
++    "next": "^13.2.4",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "superjson": "1.9.1",
+-    "zod": "^3.20.2"
++    "superjson": "1.12.2",
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.11.18",
+-    "@types/react": "^18.0.26",
+-    "@types/react-dom": "^18.0.10",
+-    "@typescript-eslint/eslint-plugin": "^5.47.1",
+-    "@typescript-eslint/parser": "^5.47.1",
+-    "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.6",
+-    "typescript": "^4.9.4"
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
++    "@types/react": "^18.0.28",
++    "@types/react-dom": "^18.0.11",
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.2.4",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.3"
++    "initVersion": "7.10.3"
+   }
+ }
+diff --git a/public/favicon.ico b/public/favicon.ico
+index efd76f1..60c702a 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ
+diff --git a/src/env.mjs b/src/env.mjs
+index 60104e0..9f3d74a 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,8 +1,8 @@
+ import { z } from "zod";
+ 
+ /**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
++ * Specify your server-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars.
+  */
+ const server = z.object({
+   NODE_ENV: z.enum(["development", "test", "production"]),
+@@ -23,17 +23,17 @@ const server = z.object({
+ });
+ 
+ /**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ * Specify your client-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+  */
+ const client = z.object({
+   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+ });
+ 
+ /**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
++ * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++ * middlewares) or client-side so we need to destruct manually.
++ *
+  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
+  */
+ const processEnv = {
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 2a46c68..81e8bcc 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -2,9 +2,9 @@ import { type AppType } from "next/app";
+ import { type Session } from "next-auth";
+ import { SessionProvider } from "next-auth/react";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+-import "../styles/globals.css";
++import "~/styles/globals.css";
+ 
+ const MyApp: AppType<{ session: Session | null }> = ({
+   Component,
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index d978ea4..8aefbb6 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -1,4 +1,4 @@
+ import NextAuth from "next-auth";
+-import { authOptions } from "../../../server/auth";
++import { authOptions } from "~/server/auth";
+ 
+ export default NextAuth(authOptions);
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 9102e8b..3c744a0 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -1,8 +1,8 @@
+ import { createNextApiHandler } from "@trpc/server/adapters/next";
+ 
+-import { env } from "../../../env.mjs";
+-import { createTRPCContext } from "../../../server/api/trpc";
+-import { appRouter } from "../../../server/api/root";
++import { env } from "~/env.mjs";
++import { createTRPCContext } from "~/server/api/trpc";
++import { appRouter } from "~/server/api/root";
+ 
+ // export API handler
+ export default createNextApiHandler({
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index adcaac7..c85095e 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -4,7 +4,7 @@ import Head from "next/head";
+ import Link from "next/link";
+ import { signIn, signOut, useSession } from "next-auth/react";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+ const Home: NextPage = () => {
+   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+diff --git a/src/server/api/root.ts b/src/server/api/root.ts
+index c3f288e..93fba92 100644
+--- a/src/server/api/root.ts
++++ b/src/server/api/root.ts
+@@ -1,10 +1,10 @@
+-import { createTRPCRouter } from "./trpc";
+-import { exampleRouter } from "./routers/example";
++import { createTRPCRouter } from "~/server/api/trpc";
++import { exampleRouter } from "~/server/api/routers/example";
+ 
+ /**
+  * This is the primary router for your server.
+  *
+- * All routers added in /api/routers should be manually added here
++ * All routers added in /api/routers should be manually added here.
+  */
+ export const appRouter = createTRPCRouter({
+   example: exampleRouter,
+diff --git a/src/server/api/routers/example.ts b/src/server/api/routers/example.ts
+index 30559f2..147aa68 100644
+--- a/src/server/api/routers/example.ts
++++ b/src/server/api/routers/example.ts
+@@ -1,6 +1,10 @@
+ import { z } from "zod";
+ 
+-import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
++import {
++  createTRPCRouter,
++  publicProcedure,
++  protectedProcedure,
++} from "~/server/api/trpc";
+ 
+ export const exampleRouter = createTRPCRouter({
+   hello: publicProcedure
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 9d0b8b6..1705d0f 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -3,8 +3,8 @@
+  * 1. You want to modify request context (see Part 1).
+  * 2. You want to create a new middleware or type of procedure (see Part 3).
+  *
+- * tl;dr - This is where all the tRPC server stuff is created and plugged in.
+- * The pieces you will need to use are documented accordingly near the end.
++ * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
++ * need to use are documented accordingly near the end.
+  */
+ 
+ /**
+@@ -12,27 +12,26 @@
+  *
+  * This section defines the "contexts" that are available in the backend API.
+  *
+- * These allow you to access things when processing a request, like the
+- * database, the session, etc.
++ * These allow you to access things when processing a request, like the database, the session, etc.
+  */
+ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+ import { type Session } from "next-auth";
+ 
+-import { getServerAuthSession } from "../auth";
++import { getServerAuthSession } from "~/server/auth";
+ 
+ type CreateContextOptions = {
+   session: Session | null;
+ };
+ 
+ /**
+- * This helper generates the "internals" for a tRPC context. If you need to use
+- * it, you can export it from here.
++ * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
++ * it from here.
+  *
+  * Examples of things you may need it for:
+  * - testing, so we don't have to mock Next.js' req/res
+  * - tRPC's `createSSGHelpers`, where we don't have req/res
+  *
+- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
++ * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
+  */
+ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+   return {
+@@ -41,8 +40,8 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
+ };
+ 
+ /**
+- * This is the actual context you will use in your router. It will be used to
+- * process every request that goes through your tRPC endpoint.
++ * This is the actual context you will use in your router. It will be used to process every request
++ * that goes through your tRPC endpoint.
+  *
+  * @see https://trpc.io/docs/context
+  */
+@@ -60,24 +59,33 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+ /**
+  * 2. INITIALIZATION
+  *
+- * This is where the tRPC API is initialized, connecting the context and
+- * transformer.
++ * This is where the tRPC API is initialized, connecting the context and transformer. We also parse
++ * ZodErrors so that you get typesafety on the frontend if your procedure fails due to validation
++ * errors on the backend.
+  */
+ import { initTRPC, TRPCError } from "@trpc/server";
+ import superjson from "superjson";
++import { ZodError } from "zod";
+ 
+ const t = initTRPC.context<typeof createTRPCContext>().create({
+   transformer: superjson,
+-  errorFormatter({ shape }) {
+-    return shape;
++  errorFormatter({ shape, error }) {
++    return {
++      ...shape,
++      data: {
++        ...shape.data,
++        zodError:
++          error.cause instanceof ZodError ? error.cause.flatten() : null,
++      },
++    };
+   },
+ });
+ 
+ /**
+  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
+  *
+- * These are the pieces you use to build your tRPC API. You should import these
+- * a lot in the "/src/server/api/routers" directory.
++ * These are the pieces you use to build your tRPC API. You should import these a lot in the
++ * "/src/server/api/routers" directory.
+  */
+ 
+ /**
+@@ -90,16 +98,13 @@ export const createTRPCRouter = t.router;
+ /**
+  * Public (unauthenticated) procedure
+  *
+- * This is the base piece you use to build new queries and mutations on your
+- * tRPC API. It does not guarantee that a user querying is authorized, but you
+- * can still access user session data if they are logged in.
++ * This is the base piece you use to build new queries and mutations on your tRPC API. It does not
++ * guarantee that a user querying is authorized, but you can still access user session data if they
++ * are logged in.
+  */
+ export const publicProcedure = t.procedure;
+ 
+-/**
+- * Reusable middleware that enforces users are logged in before running the
+- * procedure.
+- */
++/** Reusable middleware that enforces users are logged in before running the procedure. */
+ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
+   if (!ctx.session || !ctx.session.user) {
+     throw new TRPCError({ code: "UNAUTHORIZED" });
+@@ -115,9 +120,8 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
+ /**
+  * Protected (authenticated) procedure
+  *
+- * If you want a query or mutation to ONLY be accessible to logged in users, use
+- * this. It verifies the session is valid and guarantees `ctx.session.user` is
+- * not null.
++ * If you want a query or mutation to ONLY be accessible to logged in users, use this. It verifies
++ * the session is valid and guarantees `ctx.session.user` is not null.
+  *
+  * @see https://trpc.io/docs/procedures
+  */
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index 4b5358f..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -1,19 +1,18 @@
+-import type { GetServerSidePropsContext } from "next";
++import { type GetServerSidePropsContext } from "next";
+ import {
+   getServerSession,
+   type NextAuthOptions,
+   type DefaultSession,
+ } from "next-auth";
+ import DiscordProvider from "next-auth/providers/discord";
+-import { env } from "../env.mjs";
++import { env } from "~/env.mjs";
+ 
+ /**
+- * Module augmentation for `next-auth` types.
+- * Allows us to add custom properties to the `session` object and keep type
+- * safety.
++ * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
++ * object and keep type safety.
+  *
+  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
+- **/
++ */
+ declare module "next-auth" {
+   interface Session extends DefaultSession {
+     user: {
+@@ -30,20 +29,19 @@ declare module "next-auth" {
+ }
+ 
+ /**
+- * Options for NextAuth.js used to configure adapters, providers, callbacks,
+- * etc.
++ * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
+  *
+  * @see https://next-auth.js.org/configuration/options
+- **/
++ */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({
+@@ -51,24 +49,22 @@ export const authOptions: NextAuthOptions = {
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+     /**
+-     * ...add more providers here
++     * ...add more providers here.
+      *
+-     * Most other providers require a bit more work than the Discord provider.
+-     * For example, the GitHub provider requires you to add the
+-     * `refresh_token_expires_in` field to the Account model. Refer to the
+-     * NextAuth.js docs for the provider you want to use. Example:
++     * Most other providers require a bit more work than the Discord provider. For example, the
++     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
++     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
+      *
+      * @see https://next-auth.js.org/providers/github
+-     **/
++     */
+   ],
+ };
+ 
+ /**
+- * Wrapper for `getServerSession` so that you don't need to import the
+- * `authOptions` in every file.
++ * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
+  *
+  * @see https://next-auth.js.org/configuration/nextjs
+- **/
++ */
+ export const getServerAuthSession = (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];
+diff --git a/src/utils/api.ts b/src/utils/api.ts
+index 9e0c7b2..f4f4ad5 100644
+--- a/src/utils/api.ts
++++ b/src/utils/api.ts
+@@ -1,16 +1,15 @@
+ /**
+- * This is the client-side entrypoint for your tRPC API.
+- * It is used to create the `api` object which contains the Next.js
+- * App-wrapper, as well as your type-safe React Query hooks.
++ * This is the client-side entrypoint for your tRPC API. It is used to create the `api` object which
++ * contains the Next.js App-wrapper, as well as your type-safe React Query hooks.
+  *
+- * We also create a few inference helpers for input and output types
++ * We also create a few inference helpers for input and output types.
+  */
+ import { httpBatchLink, loggerLink } from "@trpc/client";
+ import { createTRPCNext } from "@trpc/next";
+ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-import { type AppRouter } from "../server/api/root";
++import { type AppRouter } from "~/server/api/root";
+ 
+ const getBaseUrl = () => {
+   if (typeof window !== "undefined") return ""; // browser should use relative url
+@@ -26,14 +25,14 @@ export const api = createTRPCNext<AppRouter>({
+        * Transformer used for data de-serialization from the server.
+        *
+        * @see https://trpc.io/docs/data-transformers
+-       **/
++       */
+       transformer: superjson,
+ 
+       /**
+        * Links used to determine request flow from client to server.
+        *
+        * @see https://trpc.io/docs/links
+-       * */
++       */
+       links: [
+         loggerLink({
+           enabled: (opts) =>
+@@ -58,12 +57,12 @@ export const api = createTRPCNext<AppRouter>({
+  * Inference helper for inputs.
+  *
+  * @example type HelloInput = RouterInputs['example']['hello']
+- **/
++ */
+ export type RouterInputs = inferRouterInputs<AppRouter>;
+ 
+ /**
+  * Inference helper for outputs.
+  *
+  * @example type HelloOutput = RouterOutputs['example']['hello']
+- **/
++ */
+ export type RouterOutputs = inferRouterOutputs<AppRouter>;
+diff --git a/tsconfig.json b/tsconfig.json
+index 9630df8..03ebb74 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -15,8 +15,19 @@
+     "isolatedModules": true,
+     "jsx": "preserve",
+     "incremental": true,
+-    "noUncheckedIndexedAccess": true
++    "noUncheckedIndexedAccess": true,
++    "baseUrl": ".",
++    "paths": {
++      "~/*": ["./src/*"]
++    }
+   },
+-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
++  "include": [
++    ".eslintrc.cjs",
++    "next-env.d.ts",
++    "**/*.ts",
++    "**/*.tsx",
++    "**/*.cjs",
++    "**/*.mjs"
++  ],
+   "exclude": ["node_modules"]
+ }

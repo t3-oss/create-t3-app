@@ -1,0 +1,216 @@
+diff --git a/.env.example b/.env.example
+index a6755f1..7eae284 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,10 +1,14 @@
+-# Since .env is gitignored, you can use .env.example to build a new `.env` file when you clone the repo.
+-# Keep this file up-to-date when you add new variables to `.env`.
++# Since the ".env" file is gitignored, you can use the ".env.example" file to
++# build a new ".env" file when you clone the repo. Keep this file up-to-date
++# when you add new variables to `.env`.
+ 
+-# This file will be committed to version control, so make sure not to have any secrets in it.
+-# If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
++# This file will be committed to version control, so make sure not to have any
++# secrets in it. If you are cloning this repo, create a copy of this file named
++# ".env" and populate it with your secrets.
++
++# When adding additional environment variables, the schema in "/env/schema.mjs"
++# should be updated accordingly.
+ 
+-# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+ # Example:
+-# SERVERVAR=foo
+-# NEXT_PUBLIC_CLIENTVAR=bar
++# SERVERVAR="foo"
++# NEXT_PUBLIC_CLIENTVAR="bar"
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..0ee755b 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -8,7 +8,8 @@
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++  /* If trying out the experimental appDir, comment the i18n config out
++   * @see https://github.com/vercel/next.js/issues/41980 */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index 628432a..031600e 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,11 +10,11 @@
+   },
+   "dependencies": {
+     "@tanstack/react-query": "^4.20.0",
+-    "@trpc/client": "^10.7.0",
+-    "@trpc/next": "^10.7.0",
+-    "@trpc/react-query": "^10.7.0",
+-    "@trpc/server": "^10.7.0",
+-    "next": "13.1.1",
++    "@trpc/client": "^10.9.0",
++    "@trpc/next": "^10.9.0",
++    "@trpc/react-query": "^10.9.0",
++    "@trpc/server": "^10.9.0",
++    "next": "13.1.6",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "superjson": "1.9.1",
+@@ -29,7 +29,7 @@
+     "@typescript-eslint/parser": "^5.47.1",
+     "autoprefixer": "^10.4.7",
+     "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
++    "eslint-config-next": "13.1.6",
+     "postcss": "^8.4.14",
+     "prettier": "^2.8.1",
+     "prettier-plugin-tailwindcss": "^0.2.1",
+@@ -37,6 +37,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.1"
++    "initVersion": "7.4.0"
+   }
+ }
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+index c621d13..13a5763 100644
+--- a/src/env/schema.mjs
++++ b/src/env/schema.mjs
+@@ -9,6 +9,15 @@ export const serverSchema = z.object({
+   NODE_ENV: z.enum(["development", "test", "production"]),
+ });
+ 
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js
++ * middleware, so you have to do it manually here.
++ * @type {{ [k in keyof z.input<typeof serverSchema>]: string | undefined }}
++ */
++export const serverEnv = {
++  NODE_ENV: process.env.NODE_ENV,
++};
++
+ /**
+  * Specify your client-side environment variables schema here.
+  * This way you can ensure the app isn't built with invalid env vars.
+@@ -22,7 +31,7 @@ export const clientSchema = z.object({
+  * You can't destruct `process.env` as a regular object, so you have to do
+  * it manually here. This is because Next.js evaluates this at build time,
+  * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
++ * @type {{ [k in keyof z.input<typeof clientSchema>]: string | undefined }}
+  */
+ export const clientEnv = {
+   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+index 736e3a6..c04b5ae 100644
+--- a/src/env/server.mjs
++++ b/src/env/server.mjs
+@@ -3,10 +3,10 @@
+  * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+  * It has to be a `.mjs`-file to be imported there.
+  */
+-import { serverSchema } from "./schema.mjs";
++import { serverSchema, serverEnv } from "./schema.mjs";
+ import { env as clientEnv, formatErrors } from "./client.mjs";
+ 
+-const _serverEnv = serverSchema.safeParse(process.env);
++const _serverEnv = serverSchema.safeParse(serverEnv);
+ 
+ if (!_serverEnv.success) {
+   console.error(
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 70f0892..8ec828b 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -11,7 +11,9 @@ export default createNextApiHandler({
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+-          console.error(`❌ tRPC failed on ${path}: ${error}`);
++          console.error(
++            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
++          );
+         }
+       : undefined,
+ });
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 09915bd..000e5bb 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -28,11 +28,11 @@ type CreateContextOptions = Record<string, never>;
+  * it, you can export it from here
+  *
+  * Examples of things you may need it for:
+- * - testing, so we dont have to mock Next.js' req/res
++ * - testing, so we don't have to mock Next.js' req/res
+  * - trpc's `createSSGHelpers` where we don't have req/res
+  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+  */
+-const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
++const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+   return {};
+ };
+ 
+@@ -41,8 +41,8 @@ const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
+  * process every request that goes through your tRPC endpoint
+  * @see https://trpc.io/docs/context
+  */
+-export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+-  return await createInnerTRPCContext({});
++export const createTRPCContext = (_opts: CreateNextContextOptions) => {
++  return createInnerTRPCContext({});
+ };
+ 
+ /**
+@@ -54,14 +54,12 @@ export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+ import { initTRPC } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-const t = initTRPC
+-  .context<Awaited<ReturnType<typeof createTRPCContext>>>()
+-  .create({
+-    transformer: superjson,
+-    errorFormatter({ shape }) {
+-      return shape;
+-    },
+-  });
++const t = initTRPC.context<typeof createTRPCContext>().create({
++  transformer: superjson,
++  errorFormatter({ shape }) {
++    return shape;
++  },
++});
+ 
+ /**
+  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)

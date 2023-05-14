@@ -1,0 +1,40 @@
+diff --git a/package.json b/package.json
+index cba3de8..ba3b976 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -43,6 +43,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.11.0"
++    "initVersion": "7.12.0"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+index 13f969e..b0f735a 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -27,9 +27,13 @@ const server = z.object({
+  * Specify your client-side environment variables schema here. This way you can ensure the app isn't
+  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+  */
+-const client = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+-});
++const client = z.object(
++  /** @satisfies {Record<`NEXT_PUBLIC_${string}`, import('zod').ZodType>} */ (
++    {
++      // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++    }
++  ),
++);
+ 
+ /**
+  * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.

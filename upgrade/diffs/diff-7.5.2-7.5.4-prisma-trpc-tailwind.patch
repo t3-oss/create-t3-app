@@ -1,0 +1,155 @@
+diff --git a/.env.example b/.env.example
+index 89f2130..168cf5b 100644
+--- a/.env.example
++++ b/.env.example
+@@ -6,7 +6,7 @@
+ # secrets in it. If you are cloning this repo, create a copy of this file named
+ # ".env" and populate it with your secrets.
+ 
+-# When adding additional environment variables, the schema in "/env/schema.mjs"
++# When adding additional environment variables, the schema in "/src/env.mjs"
+ # should be updated accordingly.
+ 
+ # Prisma
+diff --git a/package.json b/package.json
+index 49902cd..32d55c6 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -40,6 +40,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.2"
++    "initVersion": "7.5.4"
+   }
+ }
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 5f36a0d..1831917 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -1,8 +1,8 @@
+ import { type AppType } from "next/app";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+-import "../styles/globals.css";
++import "~/styles/globals.css";
+ 
+ const MyApp: AppType = ({ Component, pageProps }) => {
+   return <Component {...pageProps} />;
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 9102e8b..3c744a0 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -1,8 +1,8 @@
+ import { createNextApiHandler } from "@trpc/server/adapters/next";
+ 
+-import { env } from "../../../env.mjs";
+-import { createTRPCContext } from "../../../server/api/trpc";
+-import { appRouter } from "../../../server/api/root";
++import { env } from "~/env.mjs";
++import { createTRPCContext } from "~/server/api/trpc";
++import { appRouter } from "~/server/api/root";
+ 
+ // export API handler
+ export default createNextApiHandler({
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+index aab332a..bf665c8 100644
+--- a/src/pages/index.tsx
++++ b/src/pages/index.tsx
+@@ -2,7 +2,7 @@ import { type NextPage } from "next";
+ import Head from "next/head";
+ import Link from "next/link";
+ 
+-import { api } from "../utils/api";
++import { api } from "~/utils/api";
+ 
+ const Home: NextPage = () => {
+   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+diff --git a/src/server/api/root.ts b/src/server/api/root.ts
+index c3f288e..3ed2ed5 100644
+--- a/src/server/api/root.ts
++++ b/src/server/api/root.ts
+@@ -1,5 +1,5 @@
+-import { createTRPCRouter } from "./trpc";
+-import { exampleRouter } from "./routers/example";
++import { createTRPCRouter } from "~/server/api/trpc";
++import { exampleRouter } from "~/server/api/routers/example";
+ 
+ /**
+  * This is the primary router for your server.
+diff --git a/src/server/api/routers/example.ts b/src/server/api/routers/example.ts
+index 7e9b9a3..be8d0e1 100644
+--- a/src/server/api/routers/example.ts
++++ b/src/server/api/routers/example.ts
+@@ -1,6 +1,6 @@
+ import { z } from "zod";
+ 
+-import { createTRPCRouter, publicProcedure } from "../trpc";
++import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+ 
+ export const exampleRouter = createTRPCRouter({
+   hello: publicProcedure
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 595c8fa..3e38f26 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -17,7 +17,7 @@
+  */
+ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+ 
+-import { prisma } from "../db";
++import { prisma } from "~/server/db";
+ 
+ type CreateContextOptions = Record<string, never>;
+ 
+diff --git a/src/server/db.ts b/src/server/db.ts
+index b724101..f3d7be3 100644
+--- a/src/server/db.ts
++++ b/src/server/db.ts
+@@ -1,6 +1,6 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../env.mjs";
++import { env } from "~/env.mjs";
+ 
+ const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+ 
+diff --git a/src/utils/api.ts b/src/utils/api.ts
+index 9e0c7b2..abd6b01 100644
+--- a/src/utils/api.ts
++++ b/src/utils/api.ts
+@@ -10,7 +10,7 @@ import { createTRPCNext } from "@trpc/next";
+ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+ import superjson from "superjson";
+ 
+-import { type AppRouter } from "../server/api/root";
++import { type AppRouter } from "~/server/api/root";
+ 
+ const getBaseUrl = () => {
+   if (typeof window !== "undefined") return ""; // browser should use relative url
+diff --git a/tsconfig.json b/tsconfig.json
+index 9630df8..b9e51f3 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -15,7 +15,11 @@
+     "isolatedModules": true,
+     "jsx": "preserve",
+     "incremental": true,
+-    "noUncheckedIndexedAccess": true
++    "noUncheckedIndexedAccess": true,
++    "baseUrl": ".",
++    "paths": {
++      "~/*": ["./src/*"]
++    }
+   },
+   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+   "exclude": ["node_modules"]

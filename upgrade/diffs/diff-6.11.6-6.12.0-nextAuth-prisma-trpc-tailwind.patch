@@ -1,0 +1,19 @@
+diff --git a/package.json b/package.json
+index 588a341..b960331 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -42,6 +42,6 @@
+     "typescript": "^4.8.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.11.6"
++    "initVersion": "6.12.0"
+   }
+ }

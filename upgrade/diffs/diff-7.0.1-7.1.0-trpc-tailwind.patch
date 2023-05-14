@@ -1,0 +1,78 @@
+diff --git a/.eslintrc.json b/.eslintrc.json
+index 4cc0a95..82671df 100644
+--- a/.eslintrc.json
++++ b/.eslintrc.json
+@@ -1,4 +1,15 @@
+ {
++  "overrides": [
++    {
++      "extends": [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking"
++      ],
++      "files": ["*.ts", "*.tsx"],
++      "parserOptions": {
++        "project": "tsconfig.json"
++      }
++    }
++  ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+     "project": "./tsconfig.json"
+diff --git a/package.json b/package.json
+index 628432a..bba8e92 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -37,6 +37,6 @@
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.0.1"
++    "initVersion": "7.1.0"
+   }
+ }
+diff --git a/src/pages/api/trpc/[trpc].ts b/src/pages/api/trpc/[trpc].ts
+index 70f0892..8ec828b 100644
+--- a/src/pages/api/trpc/[trpc].ts
++++ b/src/pages/api/trpc/[trpc].ts
+@@ -11,7 +11,9 @@ export default createNextApiHandler({
+   onError:
+     env.NODE_ENV === "development"
+       ? ({ path, error }) => {
+-          console.error(`❌ tRPC failed on ${path}: ${error}`);
++          console.error(
++            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
++          );
+         }
+       : undefined,
+ });
+diff --git a/src/server/api/trpc.ts b/src/server/api/trpc.ts
+index 09915bd..53fa394 100644
+--- a/src/server/api/trpc.ts
++++ b/src/server/api/trpc.ts
+@@ -32,7 +32,7 @@ type CreateContextOptions = Record<string, never>;
+  * - trpc's `createSSGHelpers` where we don't have req/res
+  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
+  */
+-const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
++const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+   return {};
+ };
+ 
+@@ -41,8 +41,8 @@ const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
+  * process every request that goes through your tRPC endpoint
+  * @see https://trpc.io/docs/context
+  */
+-export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+-  return await createInnerTRPCContext({});
++export const createTRPCContext = (_opts: CreateNextContextOptions) => {
++  return createInnerTRPCContext({});
+ };
+ 
+ /**

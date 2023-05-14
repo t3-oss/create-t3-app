@@ -1,0 +1,298 @@
+diff --git a/.env.example b/.env.example
+index 3be874a..991c762 100644
+--- a/.env.example
++++ b/.env.example
+@@ -5,7 +5,6 @@
+ # If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
+ 
+ # When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+-
+ # Prisma
+ DATABASE_URL=file:./db.sqlite
+ 
+diff --git a/README.md b/README.md
+index cc40526..fba19ed 100644
+--- a/README.md
++++ b/README.md
+@@ -25,4 +25,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
+ 
+ ## How do I deploy this?
+ 
+-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
++Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+diff --git a/package.json b/package.json
+index 4a08128..e02c9f9 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -11,25 +11,25 @@
+   },
+   "dependencies": {
+     "@next-auth/prisma-adapter": "^1.0.5",
+-    "@prisma/client": "^4.5.0",
++    "@prisma/client": "^4.8.0",
+     "next": "13.1.1",
+-    "next-auth": "^4.18.3",
++    "next-auth": "^4.18.7",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.18.0"
++    "zod": "^3.20.2"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.0.0",
+-    "@types/react": "^18.0.14",
+-    "@types/react-dom": "^18.0.5",
+-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+-    "@typescript-eslint/parser": "^5.33.0",
+-    "eslint": "^8.26.0",
++    "@types/node": "^18.11.18",
++    "@types/react": "^18.0.26",
++    "@types/react-dom": "^18.0.10",
++    "@typescript-eslint/eslint-plugin": "^5.47.1",
++    "@typescript-eslint/parser": "^5.47.1",
++    "eslint": "^8.30.0",
+     "eslint-config-next": "13.1.1",
+-    "prisma": "^4.5.0",
+-    "typescript": "^4.8.4"
++    "prisma": "^4.8.0",
++    "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "6.11.6"
++    "initVersion": "7.0.1"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 1ac91dd..6d78c6a 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -2,65 +2,65 @@
+ // learn more about it in the docs: https://pris.ly/d/prisma-schema
+ 
+ generator client {
+-  provider = "prisma-client-js"
++    provider = "prisma-client-js"
+ }
+ 
+ datasource db {
+-  provider = "sqlite"
+-  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+-  // Further reading:
+-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+-  url      = env("DATABASE_URL")
++    provider = "sqlite"
++    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
++    // Further reading:
++    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
++    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
++    url      = env("DATABASE_URL")
+ }
+ 
+ model Example {
+-  id        String   @id @default(cuid())
+-  createdAt DateTime @default(now())
+-  updatedAt DateTime @updatedAt
++    id        String   @id @default(cuid())
++    createdAt DateTime @default(now())
++    updatedAt DateTime @updatedAt
+ }
+ 
+ // Necessary for Next auth
+ model Account {
+-  id                String  @id @default(cuid())
+-  userId            String
+-  type              String
+-  provider          String
+-  providerAccountId String
+-  refresh_token     String? // @db.Text
+-  access_token      String? // @db.Text
+-  expires_at        Int?
+-  token_type        String?
+-  scope             String?
+-  id_token          String? // @db.Text
+-  session_state     String?
+-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
++    id                String  @id @default(cuid())
++    userId            String
++    type              String
++    provider          String
++    providerAccountId String
++    refresh_token     String? // @db.Text
++    access_token      String? // @db.Text
++    expires_at        Int?
++    token_type        String?
++    scope             String?
++    id_token          String? // @db.Text
++    session_state     String?
++    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+-  @@unique([provider, providerAccountId])
++    @@unique([provider, providerAccountId])
+ }
+ 
+ model Session {
+-  id           String   @id @default(cuid())
+-  sessionToken String   @unique
+-  userId       String
+-  expires      DateTime
+-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
++    id           String   @id @default(cuid())
++    sessionToken String   @unique
++    userId       String
++    expires      DateTime
++    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ }
+ 
+ model User {
+-  id            String    @id @default(cuid())
+-  name          String?
+-  email         String?   @unique
+-  emailVerified DateTime?
+-  image         String?
+-  accounts      Account[]
+-  sessions      Session[]
++    id            String    @id @default(cuid())
++    name          String?
++    email         String?   @unique
++    emailVerified DateTime?
++    image         String?
++    accounts      Account[]
++    sessions      Session[]
+ }
+ 
+ model VerificationToken {
+-  identifier String
+-  token      String   @unique
+-  expires    DateTime
++    identifier String
++    token      String   @unique
++    expires    DateTime
+ 
+-  @@unique([identifier, token])
++    @@unique([identifier, token])
+ }
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index fe2b192..e218f01 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -4,7 +4,7 @@ import DiscordProvider from "next-auth/providers/discord";
+ import { PrismaAdapter } from "@next-auth/prisma-adapter";
+ 
+ import { env } from "../../../env/server.mjs";
+-import { prisma } from "../../../server/db/client";
++import { prisma } from "../../../server/db";
+ 
+ export const authOptions: NextAuthOptions = {
+   // Include user.id on session
+@@ -23,7 +23,15 @@ export const authOptions: NextAuthOptions = {
+       clientId: env.DISCORD_CLIENT_ID,
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+-    // ...add more providers here
++    /**
++     * ...add more providers here
++     *
++     * Most other providers require a bit more work than the Discord provider.
++     * For example, the GitHub provider requires you to add the
++     * `refresh_token_expires_in` field to the Account model. Refer to the
++     * NextAuth.js docs for the provider you want to use. Example:
++     * @see https://next-auth.js.org/providers/github
++     */
+   ],
+ };
+ 
+diff --git a/src/pages/api/examples.ts b/src/pages/api/examples.ts
+deleted file mode 100644
+index c0889f5..0000000
+--- a/src/pages/api/examples.ts
++++ /dev/null
+@@ -1,10 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { prisma } from "../../server/db/client";
+-
+-const examples = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const examples = await prisma.example.findMany();
+-  res.status(200).json(examples);
+-};
+-
+-export default examples;
+diff --git a/src/pages/api/restricted.ts b/src/pages/api/restricted.ts
+deleted file mode 100644
+index 39d936d..0000000
+--- a/src/pages/api/restricted.ts
++++ /dev/null
+@@ -1,21 +0,0 @@
+-import { type NextApiRequest, type NextApiResponse } from "next";
+-
+-import { getServerAuthSession } from "../../server/common/get-server-auth-session";
+-
+-const restricted = async (req: NextApiRequest, res: NextApiResponse) => {
+-  const session = await getServerAuthSession({ req, res });
+-
+-  if (session) {
+-    res.send({
+-      content:
+-        "This is protected content. You can access this content because you are signed in.",
+-    });
+-  } else {
+-    res.send({
+-      error:
+-        "You must be signed in to view the protected content on this page.",
+-    });
+-  }
+-};
+-
+-export default restricted;
+diff --git a/src/server/common/get-server-auth-session.ts b/src/server/auth.ts
+similarity index 50%
+rename from src/server/common/get-server-auth-session.ts
+rename to src/server/auth.ts
+index b2b90ed..a99fdae 100644
+--- a/src/server/common/get-server-auth-session.ts
++++ b/src/server/auth.ts
+@@ -1,12 +1,18 @@
+ import { type GetServerSidePropsContext } from "next";
+ import { unstable_getServerSession } from "next-auth";
+ 
+-import { authOptions } from "../../pages/api/auth/[...nextauth]";
++import { authOptions } from "../pages/api/auth/[...nextauth]";
+ 
+ /**
+- * Wrapper for unstable_getServerSession https://next-auth.js.org/configuration/nextjs
+- * See example usage in trpc createContext or the restricted API route
++ * Wrapper for unstable_getServerSession, used in trpc createContext and the
++ * restricted API route
++ *
++ * Don't worry too much about the "unstable", it's safe to use but the syntax
++ * may change in future versions
++ *
++ * @see https://next-auth.js.org/configuration/nextjs
+  */
++
+ export const getServerAuthSession = async (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];
+diff --git a/src/server/db/client.ts b/src/server/db.ts
+similarity index 89%
+rename from src/server/db/client.ts
+rename to src/server/db.ts
+index 0c3d234..5df917c 100644
+--- a/src/server/db/client.ts
++++ b/src/server/db.ts
+@@ -1,6 +1,6 @@
+ import { PrismaClient } from "@prisma/client";
+ 
+-import { env } from "../../env/server.mjs";
++import { env } from "../env/server.mjs";
+ 
+ declare global {
+   // eslint-disable-next-line no-var

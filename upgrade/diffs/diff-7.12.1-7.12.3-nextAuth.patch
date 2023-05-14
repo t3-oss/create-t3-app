@@ -1,0 +1,33 @@
+diff --git a/package.json b/package.json
+index 6706d7b..6c6cfd9 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -10,7 +10,7 @@
+   },
+   "dependencies": {
+     "@t3-oss/env-nextjs": "^0.2.1",
+-    "next": "^13.2.4",
++    "next": "^13.4.1",
+     "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+@@ -24,10 +24,10 @@
+     "@typescript-eslint/eslint-plugin": "^5.56.0",
+     "@typescript-eslint/parser": "^5.56.0",
+     "eslint": "^8.36.0",
+-    "eslint-config-next": "^13.2.4",
++    "eslint-config-next": "^13.4.1",
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.1"
++    "initVersion": "7.12.3"
+   }
+ }

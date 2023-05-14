@@ -1,0 +1,594 @@
+diff --git a/.env.example b/.env.example
+index dbeac89..9cfcdd6 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,16 +1,21 @@
+-# Since .env is gitignored, you can use .env.example to build a new `.env` file when you clone the repo.
+-# Keep this file up-to-date when you add new variables to `.env`.
++# Since the ".env" file is gitignored, you can use the ".env.example" file to
++# build a new ".env" file when you clone the repo. Keep this file up-to-date
++# when you add new variables to `.env`.
+ 
+-# This file will be committed to version control, so make sure not to have any secrets in it.
+-# If you are cloning this repo, create a copy of this file named `.env` and populate it with your secrets.
++# This file will be committed to version control, so make sure not to have any
++# secrets in it. If you are cloning this repo, create a copy of this file named
++# ".env" and populate it with your secrets.
++
++# When adding additional environment variables, the schema in "/src/env.mjs"
++# should be updated accordingly.
+ 
+-# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly
+ # Next Auth
+-# You can generate the secret via 'openssl rand -base64 32' on Linux
+-# More info: https://next-auth.js.org/configuration/options#secret
+-# NEXTAUTH_SECRET=
+-NEXTAUTH_URL=http://localhost:3000
++# You can generate a new secret on the command line with:
++# openssl rand -base64 32
++# https://next-auth.js.org/configuration/options#secret
++# NEXTAUTH_SECRET=""
++NEXTAUTH_URL="http://localhost:3000"
+ 
+ # Next Auth Discord Provider
+-DISCORD_CLIENT_ID=
+-DISCORD_CLIENT_SECRET=
++DISCORD_CLIENT_ID=""
++DISCORD_CLIENT_SECRET=""
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+new file mode 100644
+index 0000000..db7fda4
+--- /dev/null
++++ b/.eslintrc.cjs
+@@ -0,0 +1,29 @@
++/** @type {import("eslint").Linter.Config} */
++module.exports = {
++  overrides: [
++    {
++      extends: [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking",
++      ],
++      files: ["*.ts", "*.tsx"],
++      parserOptions: {
++        project: "tsconfig.json",
++      },
++    },
++  ],
++  parser: "@typescript-eslint/parser",
++  parserOptions: {
++    project: "./tsconfig.json",
++  },
++  plugins: ["@typescript-eslint"],
++  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
++  rules: {
++    "@typescript-eslint/consistent-type-imports": [
++      "warn",
++      {
++        prefer: "type-imports",
++        fixStyle: "inline-type-imports",
++      },
++    ],
++  },
++};
+diff --git a/.eslintrc.json b/.eslintrc.json
+deleted file mode 100644
+index 82671df..0000000
+--- a/.eslintrc.json
++++ /dev/null
+@@ -1,22 +0,0 @@
+-{
+-  "overrides": [
+-    {
+-      "extends": [
+-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+-      ],
+-      "files": ["*.ts", "*.tsx"],
+-      "parserOptions": {
+-        "project": "tsconfig.json"
+-      }
+-    }
+-  ],
+-  "parser": "@typescript-eslint/parser",
+-  "parserOptions": {
+-    "project": "./tsconfig.json"
+-  },
+-  "plugins": ["@typescript-eslint"],
+-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+-  "rules": {
+-    "@typescript-eslint/consistent-type-imports": "warn"
+-  }
+-}
+diff --git a/next.config.mjs b/next.config.mjs
+index b5bef6c..d7dfb79 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,14 +1,21 @@
+ // @ts-check
++
+ /**
+  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+  * This is especially useful for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
++!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+-  swcMinify: true,
++
++  /**
++   * If you have the "experimental: { appDir: true }" setting enabled, then you
++   * must comment the below `i18n` config out.
++   *
++   * @see https://github.com/vercel/next.js/issues/41980
++   */
+   i18n: {
+     locales: ["en"],
+     defaultLocale: "en",
+diff --git a/package.json b/package.json
+index 2107a64..c00e347 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,23 +9,24 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "next": "13.1.1",
+-    "next-auth": "^4.18.7",
++    "next": "13.1.6",
++    "next-auth": "^4.19.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "zod": "^3.20.2"
+   },
+   "devDependencies": {
++    "@types/eslint": "^8.21.1",
+     "@types/node": "^18.11.18",
+     "@types/react": "^18.0.26",
+     "@types/react-dom": "^18.0.10",
+     "@typescript-eslint/eslint-plugin": "^5.47.1",
+     "@typescript-eslint/parser": "^5.47.1",
+     "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.1",
++    "eslint-config-next": "13.1.6",
+     "typescript": "^4.9.4"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.3.1"
++    "initVersion": "7.5.6"
+   }
+ }
+diff --git a/src/env.mjs b/src/env.mjs
+new file mode 100644
+index 0000000..9f3d74a
+--- /dev/null
++++ b/src/env.mjs
+@@ -0,0 +1,92 @@
++import { z } from "zod";
++
++/**
++ * Specify your server-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars.
++ */
++const server = z.object({
++  NODE_ENV: z.enum(["development", "test", "production"]),
++  NEXTAUTH_SECRET:
++    process.env.NODE_ENV === "production"
++      ? z.string().min(1)
++      : z.string().min(1).optional(),
++  NEXTAUTH_URL: z.preprocess(
++    // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
++    // Since NextAuth.js automatically uses the VERCEL_URL if present.
++    (str) => process.env.VERCEL_URL ?? str,
++    // VERCEL_URL doesn't include `https` so it cant be validated as a URL
++    process.env.VERCEL ? z.string().min(1) : z.string().url(),
++  ),
++  // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
++  DISCORD_CLIENT_ID: z.string(),
++  DISCORD_CLIENT_SECRET: z.string(),
++});
++
++/**
++ * Specify your client-side environment variables schema here. This way you can ensure the app isn't
++ * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
++ */
++const client = z.object({
++  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++});
++
++/**
++ * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++ * middlewares) or client-side so we need to destruct manually.
++ *
++ * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
++ */
++const processEnv = {
++  NODE_ENV: process.env.NODE_ENV,
++  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
++  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
++  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
++  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
++  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++};
++
++// Don't touch the part below
++// --------------------------
++
++const merged = server.merge(client);
++
++/** @typedef {z.input<typeof merged>} MergedInput */
++/** @typedef {z.infer<typeof merged>} MergedOutput */
++/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
++
++let env = /** @type {MergedOutput} */ (process.env);
++
++if (!!process.env.SKIP_ENV_VALIDATION == false) {
++  const isServer = typeof window === "undefined";
++
++  const parsed = /** @type {MergedSafeParseReturn} */ (
++    isServer
++      ? merged.safeParse(processEnv) // on server we can validate all env vars
++      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
++  );
++
++  if (parsed.success === false) {
++    console.error(
++      "❌ Invalid environment variables:",
++      parsed.error.flatten().fieldErrors,
++    );
++    throw new Error("Invalid environment variables");
++  }
++
++  env = new Proxy(parsed.data, {
++    get(target, prop) {
++      if (typeof prop !== "string") return undefined;
++      // Throw a descriptive error if a server-side env var is accessed on the client
++      // Otherwise it would just be returning `undefined` and be annoying to debug
++      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
++        throw new Error(
++          process.env.NODE_ENV === "production"
++            ? "❌ Attempted to access a server-side environment variable on the client"
++            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
++        );
++      return target[/** @type {keyof typeof target} */ (prop)];
++    },
++  });
++}
++
++export { env };
+diff --git a/src/env/client.mjs b/src/env/client.mjs
+deleted file mode 100644
+index 30958cb..0000000
+--- a/src/env/client.mjs
++++ /dev/null
+@@ -1,35 +0,0 @@
+-// @ts-check
+-import { clientEnv, clientSchema } from "./schema.mjs";
+-
+-const _clientEnv = clientSchema.safeParse(clientEnv);
+-
+-export const formatErrors = (
+-  /** @type {import('zod').ZodFormattedError<Map<string,string>,string>} */
+-  errors,
+-) =>
+-  Object.entries(errors)
+-    .map(([name, value]) => {
+-      if (value && "_errors" in value)
+-        return `${name}: ${value._errors.join(", ")}\n`;
+-    })
+-    .filter(Boolean);
+-
+-if (!_clientEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_clientEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_clientEnv.data)) {
+-  if (!key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn(
+-      `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`,
+-    );
+-
+-    throw new Error("Invalid public environment variable name");
+-  }
+-}
+-
+-export const env = _clientEnv.data;
+diff --git a/src/env/schema.mjs b/src/env/schema.mjs
+deleted file mode 100644
+index 1068e79..0000000
+--- a/src/env/schema.mjs
++++ /dev/null
+@@ -1,55 +0,0 @@
+-// @ts-check
+-import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-export const serverSchema = z.object({
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-  NEXTAUTH_SECRET:
+-    process.env.NODE_ENV === "production"
+-      ? z.string().min(1)
+-      : z.string().min(1).optional(),
+-  NEXTAUTH_URL: z.preprocess(
+-    // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
+-    // Since NextAuth.js automatically uses the VERCEL_URL if present.
+-    (str) => process.env.VERCEL_URL ?? str,
+-    // VERCEL_URL doesn't include `https` so it cant be validated as a URL
+-    process.env.VERCEL ? z.string() : z.string().url(),
+-  ),
+-  DISCORD_CLIENT_ID: z.string(),
+-  DISCORD_CLIENT_SECRET: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * middleware, so you have to do it manually here.
+- * @type {{ [k in keyof z.infer<typeof serverSchema>]: z.infer<typeof serverSchema>[k] | undefined }}
+- */
+-export const serverEnv = {
+-  NODE_ENV: process.env.NODE_ENV,
+-  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+-  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+-  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+-};
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-export const clientSchema = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+-});
+-
+-/**
+- * You can't destruct `process.env` as a regular object, so you have to do
+- * it manually here. This is because Next.js evaluates this at build time,
+- * and only used environment variables are included in the build.
+- * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
+- */
+-export const clientEnv = {
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+diff --git a/src/env/server.mjs b/src/env/server.mjs
+deleted file mode 100644
+index c04b5ae..0000000
+--- a/src/env/server.mjs
++++ /dev/null
+@@ -1,27 +0,0 @@
+-// @ts-check
+-/**
+- * This file is included in `/next.config.mjs` which ensures the app isn't built with invalid env vars.
+- * It has to be a `.mjs`-file to be imported there.
+- */
+-import { serverSchema, serverEnv } from "./schema.mjs";
+-import { env as clientEnv, formatErrors } from "./client.mjs";
+-
+-const _serverEnv = serverSchema.safeParse(serverEnv);
+-
+-if (!_serverEnv.success) {
+-  console.error(
+-    "❌ Invalid environment variables:\n",
+-    ...formatErrors(_serverEnv.error.format()),
+-  );
+-  throw new Error("Invalid environment variables");
+-}
+-
+-for (let key of Object.keys(_serverEnv.data)) {
+-  if (key.startsWith("NEXT_PUBLIC_")) {
+-    console.warn("❌ You are exposing a server-side env-variable:", key);
+-
+-    throw new Error("You are exposing a server-side env-variable");
+-  }
+-}
+-
+-export const env = { ..._serverEnv.data, ...clientEnv };
+diff --git a/src/pages/_app.tsx b/src/pages/_app.tsx
+index 43ed98e..76a32df 100644
+--- a/src/pages/_app.tsx
++++ b/src/pages/_app.tsx
+@@ -2,7 +2,7 @@ import { type AppType } from "next/app";
+ import { type Session } from "next-auth";
+ import { SessionProvider } from "next-auth/react";
+ 
+-import "../styles/globals.css";
++import "~/styles/globals.css";
+ 
+ const MyApp: AppType<{ session: Session | null }> = ({
+   Component,
+diff --git a/src/pages/api/auth/[...nextauth].ts b/src/pages/api/auth/[...nextauth].ts
+index d317154..8aefbb6 100644
+--- a/src/pages/api/auth/[...nextauth].ts
++++ b/src/pages/api/auth/[...nextauth].ts
+@@ -1,34 +1,4 @@
+-import NextAuth, { type NextAuthOptions } from "next-auth";
+-import DiscordProvider from "next-auth/providers/discord";
+-
+-import { env } from "../../../env/server.mjs";
+-
+-export const authOptions: NextAuthOptions = {
+-  // Include user.id on session
+-  callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-      }
+-      return session;
+-    },
+-  },
+-  // Configure one or more authentication providers
+-  providers: [
+-    DiscordProvider({
+-      clientId: env.DISCORD_CLIENT_ID,
+-      clientSecret: env.DISCORD_CLIENT_SECRET,
+-    }),
+-    /**
+-     * ...add more providers here
+-     *
+-     * Most other providers require a bit more work than the Discord provider.
+-     * For example, the GitHub provider requires you to add the
+-     * `refresh_token_expires_in` field to the Account model. Refer to the
+-     * NextAuth.js docs for the provider you want to use. Example:
+-     * @see https://next-auth.js.org/providers/github
+-     */
+-  ],
+-};
++import NextAuth from "next-auth";
++import { authOptions } from "~/server/auth";
+ 
+ export default NextAuth(authOptions);
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index a99fdae..0b69401 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -1,21 +1,73 @@
+ import { type GetServerSidePropsContext } from "next";
+-import { unstable_getServerSession } from "next-auth";
++import {
++  getServerSession,
++  type NextAuthOptions,
++  type DefaultSession,
++} from "next-auth";
++import DiscordProvider from "next-auth/providers/discord";
++import { env } from "~/env.mjs";
+ 
+-import { authOptions } from "../pages/api/auth/[...nextauth]";
++/**
++ * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
++ * object and keep type safety.
++ *
++ * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
++ */
++declare module "next-auth" {
++  interface Session extends DefaultSession {
++    user: {
++      id: string;
++      // ...other properties
++      // role: UserRole;
++    } & DefaultSession["user"];
++  }
++
++  // interface User {
++  //   // ...other properties
++  //   // role: UserRole;
++  // }
++}
+ 
+ /**
+- * Wrapper for unstable_getServerSession, used in trpc createContext and the
+- * restricted API route
++ * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
+  *
+- * Don't worry too much about the "unstable", it's safe to use but the syntax
+- * may change in future versions
++ * @see https://next-auth.js.org/configuration/options
++ */
++export const authOptions: NextAuthOptions = {
++  callbacks: {
++    session({ session, user }) {
++      if (session.user) {
++        session.user.id = user.id;
++        // session.user.role = user.role; <-- put other properties on the session here
++      }
++      return session;
++    },
++  },
++  providers: [
++    DiscordProvider({
++      clientId: env.DISCORD_CLIENT_ID,
++      clientSecret: env.DISCORD_CLIENT_SECRET,
++    }),
++    /**
++     * ...add more providers here.
++     *
++     * Most other providers require a bit more work than the Discord provider. For example, the
++     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
++     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
++     *
++     * @see https://next-auth.js.org/providers/github
++     */
++  ],
++};
++
++/**
++ * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
+  *
+  * @see https://next-auth.js.org/configuration/nextjs
+  */
+-
+-export const getServerAuthSession = async (ctx: {
++export const getServerAuthSession = (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];
+ }) => {
+-  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
++  return getServerSession(ctx.req, ctx.res, authOptions);
+ };
+diff --git a/src/types/next-auth.d.ts b/src/types/next-auth.d.ts
+deleted file mode 100644
+index fc41716..0000000
+--- a/src/types/next-auth.d.ts
++++ /dev/null
+@@ -1,12 +0,0 @@
+-import { type DefaultSession } from "next-auth";
+-
+-declare module "next-auth" {
+-  /**
+-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+-   */
+-  interface Session {
+-    user?: {
+-      id: string;
+-    } & DefaultSession["user"];
+-  }
+-}
+diff --git a/tsconfig.json b/tsconfig.json
+index 658068a..03ebb74 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -3,6 +3,7 @@
+     "target": "es2017",
+     "lib": ["dom", "dom.iterable", "esnext"],
+     "allowJs": true,
++    "checkJs": true,
+     "skipLibCheck": true,
+     "strict": true,
+     "forceConsistentCasingInFileNames": true,
+@@ -14,8 +15,19 @@
+     "isolatedModules": true,
+     "jsx": "preserve",
+     "incremental": true,
+-    "noUncheckedIndexedAccess": true
++    "noUncheckedIndexedAccess": true,
++    "baseUrl": ".",
++    "paths": {
++      "~/*": ["./src/*"]
++    }
+   },
+-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
++  "include": [
++    ".eslintrc.cjs",
++    "next-env.d.ts",
++    "**/*.ts",
++    "**/*.tsx",
++    "**/*.cjs",
++    "**/*.mjs"
++  ],
+   "exclude": ["node_modules"]
+ }

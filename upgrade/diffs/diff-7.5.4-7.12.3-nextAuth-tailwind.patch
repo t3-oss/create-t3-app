@@ -1,0 +1,456 @@
+diff --git a/.eslintrc.cjs b/.eslintrc.cjs
+new file mode 100644
+index 0000000..8b7a0e8
+--- /dev/null
++++ b/.eslintrc.cjs
+@@ -0,0 +1,35 @@
++// eslint-disable-next-line @typescript-eslint/no-var-requires
++const path = require("path");
++
++/** @type {import("eslint").Linter.Config} */
++const config = {
++  overrides: [
++    {
++      extends: [
++        "plugin:@typescript-eslint/recommended-requiring-type-checking",
++      ],
++      files: ["*.ts", "*.tsx"],
++      parserOptions: {
++        project: path.join(__dirname, "tsconfig.json"),
++      },
++    },
++  ],
++  parser: "@typescript-eslint/parser",
++  parserOptions: {
++    project: path.join(__dirname, "tsconfig.json"),
++  },
++  plugins: ["@typescript-eslint"],
++  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
++  rules: {
++    "@typescript-eslint/consistent-type-imports": [
++      "warn",
++      {
++        prefer: "type-imports",
++        fixStyle: "inline-type-imports",
++      },
++    ],
++    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
++  },
++};
++
++module.exports = config;
+diff --git a/.eslintrc.json b/.eslintrc.json
+deleted file mode 100644
+index 82671df..0000000
+--- a/.eslintrc.json
++++ /dev/null
+@@ -1,22 +0,0 @@
+-{
+-  "overrides": [
+-    {
+-      "extends": [
+-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+-      ],
+-      "files": ["*.ts", "*.tsx"],
+-      "parserOptions": {
+-        "project": "tsconfig.json"
+-      }
+-    }
+-  ],
+-  "parser": "@typescript-eslint/parser",
+-  "parserOptions": {
+-    "project": "./tsconfig.json"
+-  },
+-  "plugins": ["@typescript-eslint"],
+-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+-  "rules": {
+-    "@typescript-eslint/consistent-type-imports": "warn"
+-  }
+-}
+diff --git a/next.config.mjs b/next.config.mjs
+index d7dfb79..d921057 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,18 +1,16 @@
+-// @ts-check
+-
+ /**
+- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+- * This is especially useful for Docker builds.
++ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
++ * for Docker builds.
+  */
+-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
++await import("./src/env.mjs");
+ 
+ /** @type {import("next").NextConfig} */
+ const config = {
+   reactStrictMode: true,
+ 
+   /**
+-   * If you have the "experimental: { appDir: true }" setting enabled, then you
+-   * must comment the below `i18n` config out.
++   * If you have `experimental: { appDir: true }` set, then you must comment the below `i18n` config
++   * out.
+    *
+    * @see https://github.com/vercel/next.js/issues/41980
+    */
+diff --git a/package.json b/package.json
+index 2926a6d..3fc7bd3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -9,29 +9,31 @@
+     "start": "next start"
+   },
+   "dependencies": {
+-    "next": "13.1.6",
+-    "next-auth": "^4.19.0",
++    "@t3-oss/env-nextjs": "^0.2.1",
++    "next": "^13.4.1",
++    "next-auth": "^4.21.0",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+-    "zod": "^3.20.2"
++    "zod": "^3.21.4"
+   },
+   "devDependencies": {
+-    "@types/node": "^18.11.18",
++    "@types/eslint": "^8.21.3",
++    "@types/node": "^18.15.5",
+     "@types/prettier": "^2.7.2",
+-    "@types/react": "^18.0.26",
+-    "@types/react-dom": "^18.0.10",
+-    "@typescript-eslint/eslint-plugin": "^5.47.1",
+-    "@typescript-eslint/parser": "^5.47.1",
+-    "autoprefixer": "^10.4.7",
+-    "eslint": "^8.30.0",
+-    "eslint-config-next": "13.1.6",
+-    "postcss": "^8.4.14",
+-    "prettier": "^2.8.1",
+-    "prettier-plugin-tailwindcss": "^0.2.1",
+-    "tailwindcss": "^3.2.0",
+-    "typescript": "^4.9.4"
++    "@types/react": "^18.0.28",
++    "@types/react-dom": "^18.0.11",
++    "@typescript-eslint/eslint-plugin": "^5.56.0",
++    "@typescript-eslint/parser": "^5.56.0",
++    "autoprefixer": "^10.4.14",
++    "eslint": "^8.36.0",
++    "eslint-config-next": "^13.4.1",
++    "postcss": "^8.4.21",
++    "prettier": "^2.8.6",
++    "prettier-plugin-tailwindcss": "^0.2.6",
++    "tailwindcss": "^3.3.0",
++    "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.5.4"
++    "initVersion": "7.12.3"
+   }
+ }
+diff --git a/postcss.config.cjs b/postcss.config.cjs
+index 12a703d..e305dd9 100644
+--- a/postcss.config.cjs
++++ b/postcss.config.cjs
+@@ -1,6 +1,8 @@
+-module.exports = {
++const config = {
+   plugins: {
+     tailwindcss: {},
+     autoprefixer: {},
+   },
+ };
++
++module.exports = config;
+diff --git a/prettier.config.cjs b/prettier.config.cjs
+index 58b0aee..ca28ed9 100644
+--- a/prettier.config.cjs
++++ b/prettier.config.cjs
+@@ -1,4 +1,6 @@
+ /** @type {import("prettier").Config} */
+-module.exports = {
++const config = {
+   plugins: [require.resolve("prettier-plugin-tailwindcss")],
+ };
++
++module.exports = config;
+diff --git a/public/favicon.ico b/public/favicon.ico
+index efd76f1..60c702a 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ
+diff --git a/src/env.mjs b/src/env.mjs
+index 60104e0..bf80c67 100644
+--- a/src/env.mjs
++++ b/src/env.mjs
+@@ -1,92 +1,48 @@
+ import { z } from "zod";
+-
+-/**
+- * Specify your server-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- */
+-const server = z.object({
+-  NODE_ENV: z.enum(["development", "test", "production"]),
+-  NEXTAUTH_SECRET:
+-    process.env.NODE_ENV === "production"
+-      ? z.string().min(1)
+-      : z.string().min(1).optional(),
+-  NEXTAUTH_URL: z.preprocess(
+-    // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
+-    // Since NextAuth.js automatically uses the VERCEL_URL if present.
+-    (str) => process.env.VERCEL_URL ?? str,
+-    // VERCEL_URL doesn't include `https` so it cant be validated as a URL
+-    process.env.VERCEL ? z.string().min(1) : z.string().url(),
+-  ),
+-  // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
+-  DISCORD_CLIENT_ID: z.string(),
+-  DISCORD_CLIENT_SECRET: z.string(),
+-});
+-
+-/**
+- * Specify your client-side environment variables schema here.
+- * This way you can ensure the app isn't built with invalid env vars.
+- * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+- */
+-const client = z.object({
+-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++import { createEnv } from "@t3-oss/env-nextjs";
++
++export const env = createEnv({
++  /**
++   * Specify your server-side environment variables schema here. This way you can ensure the app
++   * isn't built with invalid env vars.
++   */
++  server: {
++    NODE_ENV: z.enum(["development", "test", "production"]),
++    NEXTAUTH_SECRET:
++      process.env.NODE_ENV === "production"
++        ? z.string().min(1)
++        : z.string().min(1).optional(),
++    NEXTAUTH_URL: z.preprocess(
++      // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
++      // Since NextAuth.js automatically uses the VERCEL_URL if present.
++      (str) => process.env.VERCEL_URL ?? str,
++      // VERCEL_URL doesn't include `https` so it cant be validated as a URL
++      process.env.VERCEL ? z.string().min(1) : z.string().url(),
++    ),
++    // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
++    DISCORD_CLIENT_ID: z.string(),
++    DISCORD_CLIENT_SECRET: z.string(),
++  },
++
++  /**
++   * Specify your client-side environment variables schema here. This way you can ensure the app
++   * isn't built with invalid env vars. To expose them to the client, prefix them with
++   * `NEXT_PUBLIC_`.
++   */
++  client: {
++    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
++  },
++
++  /**
++   * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
++   * middlewares) or client-side so we need to destruct manually.
++   */
++  runtimeEnv: {
++    NODE_ENV: process.env.NODE_ENV,
++    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
++    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
++    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
++    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
++    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
++  },
+ });
+-
+-/**
+- * You can't destruct `process.env` as a regular object in the Next.js
+- * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
+- * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
+- */
+-const processEnv = {
+-  NODE_ENV: process.env.NODE_ENV,
+-  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+-  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+-  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+-};
+-
+-// Don't touch the part below
+-// --------------------------
+-
+-const merged = server.merge(client);
+-
+-/** @typedef {z.input<typeof merged>} MergedInput */
+-/** @typedef {z.infer<typeof merged>} MergedOutput */
+-/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
+-
+-let env = /** @type {MergedOutput} */ (process.env);
+-
+-if (!!process.env.SKIP_ENV_VALIDATION == false) {
+-  const isServer = typeof window === "undefined";
+-
+-  const parsed = /** @type {MergedSafeParseReturn} */ (
+-    isServer
+-      ? merged.safeParse(processEnv) // on server we can validate all env vars
+-      : client.safeParse(processEnv) // on client we can only validate the ones that are exposed
+-  );
+-
+-  if (parsed.success === false) {
+-    console.error(
+-      "❌ Invalid environment variables:",
+-      parsed.error.flatten().fieldErrors,
+-    );
+-    throw new Error("Invalid environment variables");
+-  }
+-
+-  env = new Proxy(parsed.data, {
+-    get(target, prop) {
+-      if (typeof prop !== "string") return undefined;
+-      // Throw a descriptive error if a server-side env var is accessed on the client
+-      // Otherwise it would just be returning `undefined` and be annoying to debug
+-      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
+-        throw new Error(
+-          process.env.NODE_ENV === "production"
+-            ? "❌ Attempted to access a server-side environment variable on the client"
+-            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+-        );
+-      return target[/** @type {keyof typeof target} */ (prop)];
+-    },
+-  });
+-}
+-
+-export { env };
+diff --git a/src/server/auth.ts b/src/server/auth.ts
+index a83bda1..67fc94b 100644
+--- a/src/server/auth.ts
++++ b/src/server/auth.ts
+@@ -1,4 +1,4 @@
+-import type { GetServerSidePropsContext } from "next";
++import { type GetServerSidePropsContext } from "next";
+ import {
+   getServerSession,
+   type NextAuthOptions,
+@@ -8,12 +8,11 @@ import DiscordProvider from "next-auth/providers/discord";
+ import { env } from "~/env.mjs";
+ 
+ /**
+- * Module augmentation for `next-auth` types.
+- * Allows us to add custom properties to the `session` object and keep type
+- * safety.
++ * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
++ * object and keep type safety.
+  *
+  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
+- **/
++ */
+ declare module "next-auth" {
+   interface Session extends DefaultSession {
+     user: {
+@@ -30,20 +29,19 @@ declare module "next-auth" {
+ }
+ 
+ /**
+- * Options for NextAuth.js used to configure adapters, providers, callbacks,
+- * etc.
++ * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
+  *
+  * @see https://next-auth.js.org/configuration/options
+- **/
++ */
+ export const authOptions: NextAuthOptions = {
+   callbacks: {
+-    session({ session, user }) {
+-      if (session.user) {
+-        session.user.id = user.id;
+-        // session.user.role = user.role; <-- put other properties on the session here
+-      }
+-      return session;
+-    },
++    session: ({ session, user }) => ({
++      ...session,
++      user: {
++        ...session.user,
++        id: user.id,
++      },
++    }),
+   },
+   providers: [
+     DiscordProvider({
+@@ -51,24 +49,22 @@ export const authOptions: NextAuthOptions = {
+       clientSecret: env.DISCORD_CLIENT_SECRET,
+     }),
+     /**
+-     * ...add more providers here
++     * ...add more providers here.
+      *
+-     * Most other providers require a bit more work than the Discord provider.
+-     * For example, the GitHub provider requires you to add the
+-     * `refresh_token_expires_in` field to the Account model. Refer to the
+-     * NextAuth.js docs for the provider you want to use. Example:
++     * Most other providers require a bit more work than the Discord provider. For example, the
++     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
++     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
+      *
+      * @see https://next-auth.js.org/providers/github
+-     **/
++     */
+   ],
+ };
+ 
+ /**
+- * Wrapper for `getServerSession` so that you don't need to import the
+- * `authOptions` in every file.
++ * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
+  *
+  * @see https://next-auth.js.org/configuration/nextjs
+- **/
++ */
+ export const getServerAuthSession = (ctx: {
+   req: GetServerSidePropsContext["req"];
+   res: GetServerSidePropsContext["res"];
+diff --git a/tailwind.config.cjs b/tailwind.config.ts
+similarity index 52%
+rename from tailwind.config.cjs
+rename to tailwind.config.ts
+index 54331dc..d4d3fa2 100644
+--- a/tailwind.config.cjs
++++ b/tailwind.config.ts
+@@ -1,8 +1,9 @@
+-/** @type {import('tailwindcss').Config} */
+-module.exports = {
++import { type Config } from "tailwindcss";
++
++export default {
+   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+-};
++} satisfies Config;
+diff --git a/tsconfig.json b/tsconfig.json
+index b9e51f3..03ebb74 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -21,6 +21,13 @@
+       "~/*": ["./src/*"]
+     }
+   },
+-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
++  "include": [
++    ".eslintrc.cjs",
++    "next-env.d.ts",
++    "**/*.ts",
++    "**/*.tsx",
++    "**/*.cjs",
++    "**/*.mjs"
++  ],
+   "exclude": ["node_modules"]
+ }

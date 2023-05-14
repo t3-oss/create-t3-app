@@ -1,0 +1,31 @@
+diff --git a/package.json b/package.json
+index 5664606..a7ba414 100644
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "current",
++  "name": "upgrade",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+@@ -42,6 +42,6 @@
+     "typescript": "^5.0.2"
+   },
+   "ct3aMetadata": {
+-    "initVersion": "7.12.3"
++    "initVersion": "7.13.0"
+   }
+ }
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 6d43fd2..a297407 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -3,6 +3,7 @@
+ 
+ generator client {
+     provider = "prisma-client-js"
++    previewFeatures = ["jsonProtocol"]
+ }
+ 
+ datasource db {
