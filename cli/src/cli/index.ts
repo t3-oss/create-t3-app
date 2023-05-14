@@ -26,6 +26,8 @@ interface CliFlags {
   prisma: boolean;
   /** @internal Used in CI. */
   nextAuth: boolean;
+  /** @internal Used in CI */
+  clerk: boolean;
 }
 
 interface CliResults {
@@ -36,7 +38,7 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "prisma", "tailwind", "trpc"],
+  packages: ["nextAuth", "prisma", "tailwind", "trpc", "clerk"],
   flags: {
     noGit: false,
     noInstall: false,
@@ -46,6 +48,7 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
+    clerk: false,
     importAlias: "~/",
   },
 };
@@ -110,6 +113,12 @@ export const runCli = async () => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
+      "--clerk [boolean]",
+      "Experimental: Boolean value if we should install Clerk. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false",
+    )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias,
@@ -153,6 +162,7 @@ export const runCli = async () => {
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+    if (cliResults.flags.clerk) cliResults.packages.push("clerk");
   }
 
   // Explained below why this is in a try/catch block
