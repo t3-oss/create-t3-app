@@ -8,6 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-select": "^1.2.1",
+    "@radix-ui/react-slot": "^1.0.1",
     "@t3-oss/env-nextjs": "^0.2.1",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
