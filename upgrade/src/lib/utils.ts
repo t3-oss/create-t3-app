@@ -34,6 +34,7 @@ export const getT3Versions = async () => {
 
   return parsed.data
     .map((release) => release.tag_name.split("@")[1] ?? "")
+    .filter((v) => v !== "")
     .filter((v) => {
       console.log(v);
       // Looks like we only have diffs starting 6.11.5
@@ -45,8 +46,7 @@ export const getT3Versions = async () => {
       if (major === 6 && minor > 11) return true;
       if (major === 6 && minor === 11 && patch >= 5) return true;
       return false;
-    })
-    .filter((v) => v !== "");
+    });
 };
 
 export const getT3VersionsGroupedByMajor = async () => {
