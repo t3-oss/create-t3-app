@@ -121,11 +121,11 @@ export interface DiffLocation {
   features: Features;
 }
 
-const octokit = new Octokit({
-  auth: env.GITHUB_PERSONAL_ACCESS_TOKEN,
-});
-
 export const getDiffFromGithub = async (props: DiffLocation) => {
+  const octokit = new Octokit({
+    auth: env.GITHUB_PERSONAL_ACCESS_TOKEN,
+  });
+
   const featuresString = getFeaturesString(props.features);
   const path = `diffs/diff-${props.currentVersion}-${props.upgradeVersion}${
     featuresString ? `-${featuresString}` : ""
