@@ -67,6 +67,11 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+
+    --diff-code-insert-background-color: #2a5c34;
+    --diff-gutter-insert-background-color: #2a5c34;
+    --diff-code-delete-background-color: hsla(var(--destructive));
+    --diff-gutter-delete-background-color: hsla(var(--destructive));
   }
 }
 
