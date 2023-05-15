@@ -91,7 +91,7 @@ const UpgradePanel: React.FC<{
     );
     const featuresString = activeFeatures.join("-");
 
-    const url = `/diff/${currentVersion}..${upgradeVersion}${
+    const url = `/diff/${currentVersion}...${upgradeVersion}${
       featuresString ? `-${featuresString}` : ""
     }`;
 

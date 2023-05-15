@@ -27,7 +27,7 @@ export default async function Page({
   }
 
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
-  const viewType = searchParams["viewType"] === "split" ? "split" : "unified";
+  const viewType = searchParams["viewType"] === "unified" ? "unified" : "split";
 
   if (!versionsAndFeatures) {
     console.warn("No versions and features provided");
@@ -102,12 +102,12 @@ export default async function Page({
       </div>
 
       <div className="w-full max-w-7xl">
-        <div className="inline-flex h-12 w-full items-center justify-center rounded-md bg-muted p-1">
+        <div className="inline-flex h-12 w-full items-center justify-center rounded-md bg-muted p-1 text-muted-foreground">
           <Link
             href={`/diff/${params.slug}?viewType=split`}
             className={cn(
-              "inline-flex w-24 items-center justify-center whitespace-nowrap rounded-sm py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-              viewType === "split" && "bg-background",
+              "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-10 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+              viewType === "split" && "bg-background text-foreground shadow-sm",
             )}
           >
             Split
@@ -115,11 +115,26 @@ export default async function Page({
           <Link
             href={`/diff/${params.slug}?viewType=unified`}
             className={cn(
-              "inline-flex w-24 items-center justify-center whitespace-nowrap rounded-sm py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-              viewType === "unified" && "bg-background",
+              "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-10 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background",
+              viewType === "unified" &&
+                "bg-background text-foreground shadow-sm",
             )}
           >
             Unified
+          </Link>
+          <span className="ml-4">or</span>
+          <Link
+            href={
+              "https://github.com/t3-oss/create-t3-app/compare/" +
+              encodeURIComponent(
+                `create-t3-app@${versionsAndFeatures.currentVersion}...create-t3-app@${versionsAndFeatures.upgradeVersion}`,
+              )
+            }
+            className={cn(
+              "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-4 py-2 text-sm font-medium ring-offset-background transition-all hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background",
+            )}
+          >
+            View on Github
           </Link>
         </div>
         <Files diffText={diff} />
