@@ -12,7 +12,7 @@ import { cn } from "~/lib/utils";
 export function Files(props: { diffText: string; viewType: ViewType }) {
   const files = parseDiff(props.diffText ?? "");
   const [expandedDiffs, setExpandedDiffs] = useState<boolean[]>(
-    Array.from({ length: files.length }, () => false),
+    Array.from({ length: files.length }, (_, i) => i == 0),
   );
 
   return (
