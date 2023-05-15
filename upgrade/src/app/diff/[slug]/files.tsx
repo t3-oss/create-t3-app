@@ -1,14 +1,13 @@
 "use client";
 
 import { type File as FileData } from "gitdiff-parser";
-import { useSearchParams } from "next/navigation";
 import { Fragment, useMemo, useState } from "react";
-import { parseDiff } from "react-diff-view";
+import { type ViewType, parseDiff } from "react-diff-view";
 import { Decoration, Diff, Hunk } from "react-diff-view";
 import { tokenize } from "~/lib/clientUtils";
 import { cn } from "~/lib/utils";
 
-export function Files(props: { diffText: string }) {
+export function Files(props: { diffText: string; viewType: ViewType }) {
   const files = parseDiff(props.diffText ?? "");
   const [expandedDiffs, setExpandedDiffs] = useState<boolean[]>(
     Array.from({ length: files.length }, () => false),
@@ -22,6 +21,7 @@ export function Files(props: { diffText: string }) {
           className="rounded-xl bg-muted shadow-lg"
         >
           <FileComponent
+            viewType={props.viewType}
             file={file}
             isExpanded={expandedDiffs[index] ?? true}
             setIsExpanded={(a) => {
@@ -36,17 +36,16 @@ export function Files(props: { diffText: string }) {
 }
 
 const FileComponent = ({
+  viewType,
   file,
   isExpanded,
   setIsExpanded,
 }: {
+  viewType: ViewType;
   file: FileData;
   isExpanded: boolean;
   setIsExpanded: (a: boolean) => void;
 }) => {
-  const searchParams = useSearchParams();
-  const viewType =
-    searchParams.get("viewType") === "split" ? "split" : "unified";
   const { oldRevision, newRevision, type, hunks, oldPath, newPath } = file;
 
   const tokens = useMemo(() => tokenize(hunks), [hunks]);

@@ -29,6 +29,11 @@ export default async function Page({
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
   const viewType = searchParams["viewType"] === "unified" ? "unified" : "split";
 
+  console.log({
+    searchParams,
+    viewType,
+  });
+
   if (!versionsAndFeatures) {
     console.warn("No versions and features provided");
     notFound();
@@ -137,7 +142,7 @@ export default async function Page({
             View on Github
           </Link>
         </div>
-        <Files diffText={diff} />
+        <Files diffText={diff} viewType={viewType} />
       </div>
     </main>
   );
