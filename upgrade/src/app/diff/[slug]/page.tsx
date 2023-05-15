@@ -40,7 +40,7 @@ export default async function Page({
   });
 
   return (
-    <main className="min-h-screen py-4">
+    <main className="container flex min-h-[calc(100vh-4rem)] min-w-[900px] max-w-4xl flex-col py-8">
       <h1 className="mb-4 text-center text-4xl font-extrabold tracking-tight sm:text-5xl">
         Changes from {versionsAndFeatures?.currentVersion} to{" "}
         {versionsAndFeatures?.upgradeVersion}
@@ -63,7 +63,7 @@ export default async function Page({
           </DialogContent>
         </Dialog>
       </div>
-      <ul className="mx-2 my-3 grid grid-cols-1 justify-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+      <ul className="my-3 grid grid-cols-1 justify-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
         {Object.entries(versionsAndFeatures.features).map(
           ([feature, enabled]) => (
             <li
@@ -81,19 +81,18 @@ export default async function Page({
               <a
                 href={getFeatureUrl(feature)}
                 target="_blank"
-                className="flex flex-1 items-center justify-between truncate rounded-r-md px-4 py-2 text-left"
+                className="flex flex-1 items-center justify-between truncate rounded-r-md p-2 text-left"
               >
                 <div className="flex-1 truncate text-sm">
                   <span className="font-medium">
                     {prettyFeatureNameMap[feature as keyof Features]}
                   </span>
                 </div>
-                <div className="shrink-0">
-                  <Button variant="ghost">
-                    <span className="sr-only">Open website</span>
-                    <ChevronRight />
-                  </Button>
-                </div>
+
+                <Button variant="ghost" className="px-2">
+                  <span className="sr-only">Open website</span>
+                  <ChevronRight />
+                </Button>
               </a>
             </li>
           ),

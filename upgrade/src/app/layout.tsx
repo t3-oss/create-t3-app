@@ -25,31 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark h-screen">
-      <body className={cn(inter.variable, "font-sans")}>
-        <main className="flex h-screen flex-col items-center justify-center bg-gradient-to-b from-background to-muted">
-          <div className="container flex grow flex-col items-center justify-center gap-12 px-4 py-16">
-            <h1 className="text-center text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-              Upgrade <span className="text-purple-400">T3</span> App
-            </h1>
-            {children}
-          </div>
-          <Footer />
-        </main>
+    <html lang="en" className="dark">
+      <body
+        className={cn(
+          inter.variable,
+          "min-h-screen bg-gradient-to-b from-background to-muted font-sans",
+        )}
+      >
+        <div className="container mx-auto">
+          {children}
+          <footer className="flex justify-center pb-4">
+            <a
+              href="https://github.com/t3-oss/create-t3-app/tree/next/upgrade"
+              className="flex items-center gap-2 text-sm text-muted-foreground"
+            >
+              <Github className="h-8 w-8" /> Open Source by Andrei Filip on
+              GitHub
+            </a>
+          </footer>
+        </div>
       </body>
     </html>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="pb-5">
-      <a
-        href="https://github.com/t3-oss/create-t3-app/tree/next/upgrade"
-        className="flex items-center gap-2 text-sm text-muted-foreground"
-      >
-        <Github className="h-8 w-8" /> Open Source by Andrei Filip on GitHub
-      </a>
-    </footer>
   );
 }

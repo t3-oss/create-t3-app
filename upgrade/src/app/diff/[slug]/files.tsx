@@ -6,22 +6,28 @@ import { Fragment, useMemo, useState } from "react";
 import { parseDiff } from "react-diff-view";
 import { Decoration, Diff, Hunk } from "react-diff-view";
 import { tokenize } from "~/lib/clientUtils";
+import { cn } from "~/lib/utils";
 
 export function Files(props: { diffText: string }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const files = parseDiff(props.diffText ?? "");
+  const [expandedDiffs, setExpandedDiffs] = useState<boolean[]>(
+    Array.from({ length: files.length }, () => false),
+  );
+
   return (
-    <div>
+    <div className="mt-4 w-full space-y-4">
       {files.map((file, index) => (
         <div
           key={`${file.newPath}-${index}`}
-          className="m-2 my-4 rounded-xl bg-white shadow-lg"
+          className="rounded-xl bg-muted shadow-lg"
         >
           <FileComponent
             file={file}
-            isExpanded={isExpanded}
-            setIsExpanded={setIsExpanded}
+            isExpanded={expandedDiffs[index] ?? true}
+            setIsExpanded={(a) => {
+              expandedDiffs[index] = a;
+              setExpandedDiffs([...expandedDiffs]);
+            }}
           />
         </div>
       ))}
@@ -48,13 +54,14 @@ const FileComponent = ({
   return (
     <div key={`${oldRevision}-${newRevision}`}>
       <button
-        className={`flex w-full flex-row justify-between p-4 font-mono ${
-          isExpanded ? "border-b-2" : ""
-        }`}
+        className={cn(
+          "flex w-full flex-row justify-between p-4 font-mono",
+          isExpanded && "border-b-2",
+        )}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex flex-row gap-4">
-          <div className="my-auto rounded-[4px] border border-gray-500 px-1 text-gray-500">
+          <div className="my-auto rounded-[4px] border px-1">
             {type === "modify"
               ? "CHANGED"
               : type === "add"
@@ -74,30 +81,23 @@ const FileComponent = ({
           </h1>
         </div>
 
-        <div className="my-auto rounded-[4px] border border-gray-500 px-1 text-gray-500">
+        <div className="my-auto rounded border px-1">
           {isExpanded ? "Collapse" : "Expand"}
         </div>
       </button>
       {isExpanded && (
-        <div>
-          <Diff
-            viewType={viewType}
-            diffType={type}
-            hunks={hunks}
-            tokens={tokens}
-          >
-            {(hunks) =>
-              hunks.map((hunk, i) => (
-                <Fragment key={`hunk-${hunk.content}-${i}`}>
-                  <Decoration className="bg-gray-100 text-gray-400">
-                    <span className="pl-20">{hunk.content}</span>
-                  </Decoration>
-                  <Hunk hunk={hunk} />
-                </Fragment>
-              ))
-            }
-          </Diff>
-        </div>
+        <Diff viewType={viewType} diffType={type} hunks={hunks} tokens={tokens}>
+          {(hunks) =>
+            hunks.map((hunk, i) => (
+              <Fragment key={`hunk-${hunk.content}-${i}`}>
+                <Decoration className="bg-primary text-secondary">
+                  <span className="pl-20">{hunk.content}</span>
+                </Decoration>
+                <Hunk hunk={hunk} />
+              </Fragment>
+            ))
+          }
+        </Diff>
       )}
     </div>
   );
