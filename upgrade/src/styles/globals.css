@@ -34,6 +34,12 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
+    --diff-code-insert-background-color: hsl(var(--success));
+    --diff-gutter-insert-background-color: hsl(var(--success));
+    --diff-code-delete-background-color: hsla(var(--destructive));
+    --diff-gutter-delete-background-color: hsla(var(--destructive));
+    --diff-omit-gutter-line-color: hsla(var(--destructive));
   }
 
   .dark {
