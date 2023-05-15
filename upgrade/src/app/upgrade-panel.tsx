@@ -20,9 +20,11 @@ import {
 import { prettyFeatureNameMap } from "~/lib/utils";
 import { type Features, type VersionsGroupedByMajor } from "~/lib/utils";
 
-const UpgradePanel: React.FC<{
+export function UpgradePanel({
+  versionOptions,
+}: {
   versionOptions: VersionsGroupedByMajor;
-}> = ({ versionOptions }) => {
+}) {
   const router = useRouter();
 
   const [fetchingDiff, setFetchingDiff] = useState(false);
@@ -216,6 +218,4 @@ const UpgradePanel: React.FC<{
       </div>
     </div>
   );
-};
-
-export default UpgradePanel;
+}

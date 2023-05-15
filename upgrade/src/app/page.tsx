@@ -1,4 +1,4 @@
-import UpgradePanel from "~/app/upgrade-panel";
+import { UpgradePanel } from "~/app/upgrade-panel";
 import { getT3VersionsGroupedByMajor } from "~/lib/utils";
 
 export default async function Page() {

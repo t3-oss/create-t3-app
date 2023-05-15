@@ -4,7 +4,9 @@ import { type File as FileData } from "gitdiff-parser";
 import { Fragment, useMemo, useState } from "react";
 import { type ViewType, parseDiff } from "react-diff-view";
 import { Decoration, Diff, Hunk } from "react-diff-view";
-import { tokenize } from "~/lib/clientUtils";
+import { markEdits, tokenize } from "react-diff-view";
+import { refractor } from "refractor";
+import ts from "refractor/lang/typescript";
 import { cn } from "~/lib/utils";
 
 export function Files(props: { diffText: string; viewType: ViewType }) {
@@ -35,7 +37,7 @@ export function Files(props: { diffText: string; viewType: ViewType }) {
   );
 }
 
-const FileComponent = ({
+function FileComponent({
   viewType,
   file,
   isExpanded,
@@ -45,10 +47,25 @@ const FileComponent = ({
   file: FileData;
   isExpanded: boolean;
   setIsExpanded: (a: boolean) => void;
-}) => {
+}) {
   const { oldRevision, newRevision, type, hunks, oldPath, newPath } = file;
 
-  const tokens = useMemo(() => tokenize(hunks), [hunks]);
+  const tokens = useMemo(() => {
+    if (!hunks) return undefined;
+
+    refractor.register(ts);
+
+    try {
+      return tokenize(hunks, {
+        highlight: true,
+        enhancers: [markEdits(hunks, { type: "block" })],
+        language: "typescript",
+        refractor,
+      });
+    } catch (e) {
+      return undefined;
+    }
+  }, [hunks]);
 
   return (
     <div
@@ -103,4 +120,4 @@ const FileComponent = ({
       )}
     </div>
   );
-};
+}
