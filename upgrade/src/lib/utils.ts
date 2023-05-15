@@ -8,6 +8,13 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
+export const prettyFeatureNameMap: Record<keyof Features, string> = {
+  nextAuth: "NextAuth.js",
+  prisma: "Prisma",
+  trpc: "tRPC",
+  tailwind: "Tailwind CSS",
+};
+
 export type VersionsGroupedByMajor = Array<{
   major: string;
   versions: string[];

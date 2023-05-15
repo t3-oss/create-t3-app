@@ -6,11 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "~/components/ui/hover-card";
+import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -21,14 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { prettyFeatureNameMap } from "~/lib/utils";
 import { type Features, type VersionsGroupedByMajor } from "~/lib/utils";
-
-const prettyFeatureNameMap: Record<keyof Features, string> = {
-  nextAuth: "NextAuth.js",
-  prisma: "Prisma",
-  trpc: "tRPC",
-  tailwind: "Tailwind CSS",
-};
 
 const UpgradePanel: React.FC<{
   versionOptions: VersionsGroupedByMajor;
@@ -150,18 +140,14 @@ const UpgradePanel: React.FC<{
           <div className="w-full space-y-1">
             <div className="flex gap-1">
               <Label className="text-base">I am on</Label>
-              <HoverCard>
-                <HoverCardTrigger>
+              <Dialog>
+                <DialogTrigger>
                   <Info className="h-4 w-4" />
-                </HoverCardTrigger>
-                <HoverCardContent
-                  className="w-max"
-                  align="start"
-                  sideOffset={10}
-                >
+                </DialogTrigger>
+                <DialogContent>
                   <WheresMyVersion />
-                </HoverCardContent>
-              </HoverCard>
+                </DialogContent>
+              </Dialog>
             </div>
             <Select onValueChange={(value) => setCurrentVersion(value)}>
               <SelectTrigger>
