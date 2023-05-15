@@ -2,7 +2,6 @@ import { Octokit } from "@octokit/rest";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { z } from "zod";
-
 import { env } from "~/env.mjs";
 
 export const cn = (...inputs: ClassValue[]) => {
@@ -16,7 +15,7 @@ export type VersionsGroupedByMajor = Array<{
 
 export const getT3Versions = async () => {
   const response = await fetch(
-    "https://api.github.com/repos/t3-oss/create-t3-app/releases?per_page=100"
+    "https://api.github.com/repos/t3-oss/create-t3-app/releases?per_page=100",
   );
 
   const responseSchema = z.array(z.object({ tag_name: z.string() }));
@@ -41,7 +40,7 @@ export const getT3VersionsGroupedByMajor = async () => {
     if (!major) return;
 
     const majorGroup = versionsGroupedByMajor.find(
-      (group) => group.major === major
+      (group) => group.major === major,
     );
 
     if (majorGroup) {
@@ -55,7 +54,7 @@ export const getT3VersionsGroupedByMajor = async () => {
   });
 
   return versionsGroupedByMajor.sort(
-    (a, b) => Number(b.major) - Number(a.major)
+    (a, b) => Number(b.major) - Number(a.major),
   );
 };
 

@@ -107,7 +107,7 @@ const UpgradePanel: React.FC<{
   const goToDiff = () => {
     if (!currentVersion || !upgradeVersion) return;
     const activeFeatures = Object.keys(features).filter(
-      (feature) => features[feature as keyof typeof features]
+      (feature) => features[feature as keyof typeof features],
     );
     const featuresString = activeFeatures.join("-");
 

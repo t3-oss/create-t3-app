@@ -1,6 +1,6 @@
+import DiffPage from "./diff-page";
 import { notFound } from "next/navigation";
 import { extractVersionsAndFeatures, getDiffFromGithub } from "~/lib/utils";
-import DiffPage from "./diff-page";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   if (!params?.slug) {

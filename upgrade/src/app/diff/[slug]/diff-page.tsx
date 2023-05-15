@@ -1,5 +1,6 @@
 "use client";
 
+import FileComponent from "./file-component";
 import { CheckIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { parseDiff, type ViewType } from "react-diff-view";
@@ -12,7 +13,6 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog";
 import { getFeatureUrl, type DiffLocation } from "~/lib/utils";
-import FileComponent from "./file-component";
 
 const DiffPage = ({
   diffText,
@@ -26,7 +26,7 @@ const DiffPage = ({
   const files = parseDiff(diffText ?? "");
 
   const [expandedDiffs, setExpandedDiffs] = useState<boolean[]>(
-    Array.from({ length: files.length }, () => true)
+    Array.from({ length: files.length }, () => true),
   );
 
   const downloadDiffFile = () => {
@@ -135,7 +135,7 @@ const DiffPage = ({
                 </div>
               </button>
             </li>
-          )
+          ),
         )}
       </ul>
 

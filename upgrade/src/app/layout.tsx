@@ -1,7 +1,6 @@
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import "react-diff-view/style/index.css";
-
 import "~/styles/globals.css";
 import "~/styles/prismjs.css";
 
