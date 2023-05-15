@@ -16,7 +16,7 @@ export type VersionsGroupedByMajor = Array<{
 
 export const getT3Versions = async () => {
   const response = await fetch(
-    "https://api.github.com/repos/t3-oss/create-t3-app/releases"
+    "https://api.github.com/repos/t3-oss/create-t3-app/releases?per_page=100"
   );
 
   const responseSchema = z.array(z.object({ tag_name: z.string() }));
