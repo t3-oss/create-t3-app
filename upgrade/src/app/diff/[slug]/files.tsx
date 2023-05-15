@@ -52,7 +52,10 @@ const FileComponent = ({
   const tokens = useMemo(() => tokenize(hunks), [hunks]);
 
   return (
-    <div key={`${oldRevision}-${newRevision}`}>
+    <div
+      key={`${oldRevision}-${newRevision}`}
+      className="rounded-lg border shadow-lg"
+    >
       <button
         className={cn(
           "flex w-full flex-row justify-between p-4 font-mono",
@@ -90,7 +93,7 @@ const FileComponent = ({
           {(hunks) =>
             hunks.map((hunk, i) => (
               <Fragment key={`hunk-${hunk.content}-${i}`}>
-                <Decoration className="bg-primary text-secondary">
+                <Decoration className="bg-primary/60 text-secondary">
                   <span className="pl-20">{hunk.content}</span>
                 </Decoration>
                 <Hunk hunk={hunk} />

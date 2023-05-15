@@ -61,6 +61,9 @@
     --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
 
+    --success: 132 37% 26%;
+    --success-foreground: 210 40% 98%;
+
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
@@ -68,10 +71,11 @@
 
     --radius: 0.5rem;
 
-    --diff-code-insert-background-color: #2a5c34;
-    --diff-gutter-insert-background-color: #2a5c34;
+    --diff-code-insert-background-color: hsl(var(--success));
+    --diff-gutter-insert-background-color: hsl(var(--success));
     --diff-code-delete-background-color: hsla(var(--destructive));
     --diff-gutter-delete-background-color: hsla(var(--destructive));
+    --diff-omit-gutter-line-color: hsla(var(--destructive));
   }
 }
 
@@ -101,5 +105,9 @@
   pre > code {
     counter-reset: line;
     padding: unset !important;
+  }
+
+  .diff {
+    @apply overflow-hidden rounded-b-lg;
   }
 }
