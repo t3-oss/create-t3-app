@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@octokit/rest": "^19.0.8",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-select": "^1.2.1",
@@ -15,10 +16,13 @@
     "@t3-oss/env-nextjs": "^0.2.1",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
+    "gitdiff-parser": "^0.3.1",
     "lucide-react": "^0.216.0",
     "next": "^13.4.1",
     "react": "18.2.0",
+    "react-diff-view": "^3.0.3",
     "react-dom": "18.2.0",
+    "refractor": "^4.8.1",
     "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.4"
@@ -29,6 +33,7 @@
     "@types/prettier": "^2.7.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/refractor": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "autoprefixer": "^10.4.14",
