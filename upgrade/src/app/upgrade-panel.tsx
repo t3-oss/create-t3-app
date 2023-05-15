@@ -145,12 +145,26 @@ const UpgradePanel: React.FC<{
         </div>
       </div>
 
-      <div className="flex items-end justify-between">
-        <div className="relative flex flex-1">
+      <div className="flex items-end justify-between gap-4">
+        <div className="relative flex flex-1 gap-4">
           <div className="w-full space-y-1">
-            <Label className="text-base">I am on</Label>
+            <div className="flex gap-1">
+              <Label className="text-base">I am on</Label>
+              <HoverCard>
+                <HoverCardTrigger>
+                  <Info className="h-4 w-4" />
+                </HoverCardTrigger>
+                <HoverCardContent
+                  className="w-max"
+                  align="start"
+                  sideOffset={10}
+                >
+                  <WheresMyVersion />
+                </HoverCardContent>
+              </HoverCard>
+            </div>
             <Select onValueChange={(value) => setCurrentVersion(value)}>
-              <SelectTrigger className="w-[180px] text-white">
+              <SelectTrigger>
                 <SelectValue placeholder="Select version" />
               </SelectTrigger>
               <SelectContent className="h-80">
@@ -181,7 +195,7 @@ const UpgradePanel: React.FC<{
                   : upgradeVersionOptions[0]?.versions[0]
               }
             >
-              <SelectTrigger className="w-[180px] text-white">
+              <SelectTrigger>
                 <SelectValue
                   placeholder={
                     noUpgradeAvailable
@@ -206,15 +220,6 @@ const UpgradePanel: React.FC<{
               </SelectContent>
             </Select>
           </div>
-
-          <HoverCard>
-            <HoverCardTrigger className="absolute -top-2 right-8">
-              <Info className="h-5 w-5" />
-            </HoverCardTrigger>
-            <HoverCardContent className="w-max" align="end" sideOffset={10}>
-              <WheresMyVersion />
-            </HoverCardContent>
-          </HoverCard>
         </div>
         <Button
           disabled={!currentVersion || !upgradeVersion || fetchingDiff}
