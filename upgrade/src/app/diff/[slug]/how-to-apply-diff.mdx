@@ -1,0 +1,31 @@
+import { Steps } from "~/components/mdx";
+
+## Patching
+
+<Steps>
+
+### Apply the diff
+
+To apply the patch, you can use the following command:
+
+`git apply --reject ./t3-upgrade.patch`
+
+This will create a new file with the changes that could not be applied.
+
+### Apply the changes manually
+
+You can then use wiggle to apply the changes manually:
+
+`wiggle -r ./package.json ./package.json.rej`
+
+This will apply the changes to the file and create a file called
+package.json.porig with the original file.
+
+### Resolve conflicts
+
+In case of conflicts, it will add the conflict markers to the file.
+You can then resolve the conflicts manually.
+
+</Steps>
+
+Remember to place your patch file in the project directory, or use the correct file path.

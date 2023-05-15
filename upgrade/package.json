@@ -1,0 +1,63 @@
+{
+  "name": "upgrade",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "next build",
+    "clean": "rm -rf node_modules .turbo dist .eslintcache",
+    "dev": "next dev",
+    "format": "pnpm format:check --write",
+    "format:check": "prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json,astro} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
+    "lint": "eslint . --report-unused-disable-directives",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@next/mdx": "^13.4.1",
+    "@octokit/rest": "^19.0.8",
+    "@radix-ui/react-checkbox": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-hover-card": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.1",
+    "@radix-ui/react-select": "^1.2.1",
+    "@radix-ui/react-slot": "^1.0.1",
+    "@t3-oss/env-nextjs": "^0.2.1",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "gitdiff-parser": "^0.3.1",
+    "lucide-react": "^0.216.0",
+    "next": "^13.4.1",
+    "react": "18.2.0",
+    "react-diff-view": "^3.0.3",
+    "react-dom": "18.2.0",
+    "refractor": "^4.8.1",
+    "rehype-pretty-code": "^0.9.5",
+    "shiki": "^0.14.1",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss-animate": "^1.0.5",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.37.0",
+    "@types/mdx": "^2.0.5",
+    "@types/node": "^18.16.1",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "@types/refractor": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.39.0",
+    "eslint-config-next": "^13.4.1",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.7",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.4"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.13.0"
+  }
+}
