@@ -13,9 +13,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@next/mdx": "^13.4.1",
     "@octokit/rest": "^19.0.8",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-hover-card": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-slot": "^1.0.1",
     "@t3-oss/env-nextjs": "^0.2.1",
@@ -28,12 +32,15 @@
     "react-diff-view": "^3.0.3",
     "react-dom": "18.2.0",
     "refractor": "^4.8.1",
+    "rehype-pretty-code": "^0.9.5",
+    "shiki": "^0.14.1",
     "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
+    "@types/mdx": "^2.0.5",
     "@types/node": "^18.16.1",
     "@types/prettier": "^2.7.2",
     "@types/react": "^18.2.0",

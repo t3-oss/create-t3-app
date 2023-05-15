@@ -1,17 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import WheresMyVersion from "./wheres-my-version.mdx";
+import { Info } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "~/components/ui/dialog";
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "~/components/ui/hover-card";
+import { Label } from "~/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -22,6 +22,13 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { type Features, type VersionsGroupedByMajor } from "~/lib/utils";
+
+const prettyFeatureNameMap: Record<keyof Features, string> = {
+  nextAuth: "NextAuth.js",
+  prisma: "Prisma",
+  trpc: "tRPC",
+  tailwind: "Tailwind CSS",
+};
 
 const UpgradePanel: React.FC<{
   versionOptions: VersionsGroupedByMajor;
@@ -85,23 +92,6 @@ const UpgradePanel: React.FC<{
     return filteredVersions;
   }, [currentVersion, versionOptions]);
 
-  const renderSelectContent = (options: VersionsGroupedByMajor) => {
-    if (!options.length) return null;
-
-    return options
-      .filter((option) => option.versions.length > 0)
-      .map((option) => (
-        <SelectGroup key={option.major}>
-          <SelectLabel>{`${option.major}.x`}</SelectLabel>
-          {option.versions.map((minorVersion) => (
-            <SelectItem key={minorVersion} value={minorVersion}>
-              {minorVersion}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      ));
-  };
-
   const noUpgradeAvailable = upgradeVersionOptions.length === 0;
 
   const goToDiff = () => {
@@ -129,134 +119,111 @@ const UpgradePanel: React.FC<{
   }, [noUpgradeAvailable, upgradeVersionOptions]);
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-      <div className="container flex grow flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-center text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Upgrade <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-
-        <>
-          <div className="flex items-center gap-6">
-            <div>
-              <p className="text-xl text-white">Current version:</p>
-              <Select onValueChange={(value) => setCurrentVersion(value)}>
-                <SelectTrigger className="w-[180px] text-white">
-                  <SelectValue placeholder="Select version" />
-                </SelectTrigger>
-                <SelectContent>
-                  {renderSelectContent(versionOptions)}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <p className="text-xl text-white">Upgrade to:</p>
-
-              <Select
-                onValueChange={(value) => setUpgradeVersion(value)}
-                disabled={!!noUpgradeAvailable}
-                defaultValue={
-                  noUpgradeAvailable
-                    ? undefined
-                    : upgradeVersionOptions[0]?.versions[0]
+    <div className="w-full max-w-lg space-y-8">
+      <div className="w-full space-y-2">
+        <Label className="text-base">I use the following packages:</Label>
+        <div className="flex justify-between">
+          {Object.keys(features).map((feature) => (
+            <div className="flex items-center space-x-2" key={feature}>
+              <Checkbox
+                id={feature}
+                checked={features[feature as keyof typeof features]}
+                onCheckedChange={(value) =>
+                  value !== "indeterminate"
+                    ? setFeatures((prev) => ({
+                        ...prev,
+                        [feature]: value,
+                      }))
+                    : null
                 }
-              >
-                <SelectTrigger className="w-[180px] text-white">
-                  <SelectValue
-                    placeholder={
-                      noUpgradeAvailable
-                        ? "No upgrade available"
-                        : "Select version"
-                    }
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  {renderSelectContent(upgradeVersionOptions)}
-                </SelectContent>
-              </Select>
+              />
+              <Label htmlFor={feature} className="">
+                {prettyFeatureNameMap[feature as keyof Features]}
+              </Label>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-end justify-between">
+        <div className="relative flex flex-1">
+          <div className="w-full space-y-1">
+            <Label className="text-base">I am on</Label>
+            <Select onValueChange={(value) => setCurrentVersion(value)}>
+              <SelectTrigger className="w-[180px] text-white">
+                <SelectValue placeholder="Select version" />
+              </SelectTrigger>
+              <SelectContent className="h-80">
+                {versionOptions
+                  .filter((option) => option.versions.length > 0)
+                  .map((option) => (
+                    <SelectGroup key={option.major}>
+                      <SelectLabel>{`${option.major}.x`}</SelectLabel>
+                      {option.versions.map((minorVersion) => (
+                        <SelectItem key={minorVersion} value={minorVersion}>
+                          {minorVersion}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  ))}
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="flex items-center gap-6 text-white">
-            {Object.keys(features).map((feature) => (
-              <div className="flex items-center space-x-4" key={feature}>
-                <Checkbox
-                  id={feature}
-                  checked={features[feature as keyof typeof features]}
-                  onCheckedChange={(value) =>
-                    value !== "indeterminate"
-                      ? setFeatures((prev) => ({
-                          ...prev,
-                          [feature]: value,
-                        }))
-                      : null
+          <div className="w-full space-y-1">
+            <Label className="text-base">I want to upgrade to</Label>
+            <Select
+              onValueChange={(value) => setUpgradeVersion(value)}
+              disabled={!!noUpgradeAvailable}
+              defaultValue={
+                noUpgradeAvailable
+                  ? undefined
+                  : upgradeVersionOptions[0]?.versions[0]
+              }
+            >
+              <SelectTrigger className="w-[180px] text-white">
+                <SelectValue
+                  placeholder={
+                    noUpgradeAvailable
+                      ? "No upgrade available"
+                      : "Select version"
                   }
                 />
-                <label
-                  htmlFor={feature}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  {feature}
-                </label>
-              </div>
-            ))}
+              </SelectTrigger>
+              <SelectContent className="h-80">
+                {upgradeVersionOptions
+                  .filter((option) => option.versions.length > 0)
+                  .map((option) => (
+                    <SelectGroup key={option.major}>
+                      <SelectLabel>{`${option.major}.x`}</SelectLabel>
+                      {option.versions.map((minorVersion) => (
+                        <SelectItem key={minorVersion} value={minorVersion}>
+                          {minorVersion}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  ))}
+              </SelectContent>
+            </Select>
           </div>
 
-          <Dialog>
-            <DialogTrigger>
-              <span className="text-[hsl(280,100%,70%)] transition-colors hover:text-[hsl(280,100%,60%)]">
-                What is my version?
-              </span>
-            </DialogTrigger>
-            <DialogContent className="bg-white">
-              <DialogHeader>
-                <DialogTitle className="text-2xl">
-                  Checking your create-t3-app version
-                </DialogTitle>
-              </DialogHeader>
-
-              <div>
-                <p>
-                  To check your app&apos;s version, use the{" "}
-                  <code>package.json</code> file.
-                </p>
-
-                <p className="my-3">
-                  <p>Look for a section like this:</p>
-
-                  <p>
-                    <code>{`"ct3aMetadata": { "initVersion": "YOUR_VERSION" }`}</code>
-                  </p>
-                </p>
-
-                <p>
-                  The version you see here is the one you have to select on this
-                  page.
-                </p>
-              </div>
-            </DialogContent>
-          </Dialog>
-
-          <Button
-            className="bg-[hsl(280,100%,70%)] hover:bg-[hsl(280,100%,60%)]"
-            disabled={!currentVersion || !upgradeVersion || fetchingDiff}
-            onClick={() => void goToDiff()}
-          >
-            {fetchingDiff ? "Loading..." : "Upgrade"}
-          </Button>
-        </>
+          <HoverCard>
+            <HoverCardTrigger className="absolute -top-2 right-8">
+              <Info className="h-5 w-5" />
+            </HoverCardTrigger>
+            <HoverCardContent className="w-max" align="end" sideOffset={10}>
+              <WheresMyVersion />
+            </HoverCardContent>
+          </HoverCard>
+        </div>
+        <Button
+          disabled={!currentVersion || !upgradeVersion || fetchingDiff}
+          onClick={() => void goToDiff()}
+        >
+          {fetchingDiff ? "Loading..." : "Upgrade"}
+        </Button>
       </div>
-      <div className="pb-5">
-        <a href="https://github.com/andreifilip123/t3-upgrade-web">
-          <Image
-            src="/github-mark-white.svg"
-            alt="Github Logo"
-            width={32}
-            height={32}
-          />
-        </a>
-      </div>
-    </main>
+    </div>
   );
 };
 
