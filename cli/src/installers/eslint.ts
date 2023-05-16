@@ -65,13 +65,13 @@ export function setupLinter(opts: {
 const config = ${JSON.stringify(eslintConfig, null, 2)};
 
 module.exports = config;
-  `
-    .trim()
-    .replace('"__dirname"', "__dirname");
+  `.trim();
 
   fs.writeFileSync(
     path.join(opts.projectDir, ".eslintrc.cjs"),
-    format(stringedEslintConfig, { parser: "babel" }),
+    format(stringedEslintConfig, { parser: "babel" })
+      // remove the escaped __dirname AFTER formatting
+      .replace('"__dirname"', "__dirname"),
   );
 }
 
