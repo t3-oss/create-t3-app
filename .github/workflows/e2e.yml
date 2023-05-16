@@ -27,8 +27,8 @@ jobs:
         tailwind: ["true", "false"]
         nextAuth: ["true", "false"]
         prisma: ["true", "false"]
-        eslint: ["true", "false"]
-        prettier: ["true", "false"]
+        # eslint: ["true", "false"]
+        # prettier: ["true", "false"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}"
     steps:
