@@ -40,7 +40,7 @@ module.exports = config;
 
   fs.writeFileSync(
     path.join(opts.projectDir, ".prettierrc.cjs"),
-    format(stringedPrettierConfig),
+    format(stringedPrettierConfig, { parser: "babel" }),
   );
 }
 

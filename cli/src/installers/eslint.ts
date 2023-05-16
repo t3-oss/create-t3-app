@@ -36,8 +36,8 @@ export function setupLinter(opts: {
   });
 
   const eslintConfig = opts.linterConfig.strict
-    ? baseEslint({ projectDir: opts.projectDir })
-    : strictEslint({ projectDir: opts.projectDir });
+    ? strictEslint({ projectDir: opts.projectDir })
+    : baseEslint({ projectDir: opts.projectDir });
 
   if (linterConfig.withPrettier) {
     buildAndWritePrettierConfig({
@@ -69,7 +69,7 @@ module.exports = config;
 
   fs.writeFileSync(
     path.join(opts.projectDir, ".eslintrc.cjs"),
-    format(stringedEslintConfig),
+    format(stringedEslintConfig, { parser: "babel" }),
   );
 }
 
