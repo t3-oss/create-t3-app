@@ -71,7 +71,7 @@ module.exports = config;
     path.join(opts.projectDir, ".eslintrc.cjs"),
     format(stringedEslintConfig, { parser: "babel" })
       // remove the escaped __dirname AFTER formatting
-      .replace('"__dirname"', "__dirname"),
+      .replace(/"__dirname"/g, "__dirname"),
   );
 }
 
