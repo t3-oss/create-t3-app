@@ -66,7 +66,7 @@
     "next": "^13.2.4",
     "next-auth": "^4.22.1",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.2.8",
     "prisma": "^4.14.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

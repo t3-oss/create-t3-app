@@ -138,8 +138,8 @@ importers:
         specifier: ^2.8.8
         version: 2.8.8
       prettier-plugin-tailwindcss:
-        specifier: ^0.3.0
-        version: 0.3.0(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8)
+        specifier: ^0.2.8
+        version: 0.2.8(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8)
       prisma:
         specifier: ^4.14.0
         version: 4.14.0
@@ -277,8 +277,8 @@ importers:
         specifier: ^0.8.1
         version: 0.8.1
       prettier-plugin-tailwindcss:
-        specifier: ^0.3.0
-        version: 0.3.0(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8)
+        specifier: ^0.2.8
+        version: 0.2.8(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -6486,8 +6486,8 @@ packages:
       sass-formatter: 0.7.6
       synckit: 0.8.5
 
-  /prettier-plugin-tailwindcss@0.3.0(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8):
-    resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
+  /prettier-plugin-tailwindcss@0.2.8(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier-plugin-astro@0.8.1)(prettier@2.8.8):
+    resolution: {integrity: sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -6500,7 +6500,6 @@ packages:
       prettier-plugin-css-order: '*'
       prettier-plugin-import-sort: '*'
       prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
       prettier-plugin-organize-attributes: '*'
       prettier-plugin-organize-imports: '*'
       prettier-plugin-style-order: '*'
@@ -6524,8 +6523,6 @@ packages:
       prettier-plugin-import-sort:
         optional: true
       prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
         optional: true
       prettier-plugin-organize-attributes:
         optional: true
