@@ -49,6 +49,7 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^9.1.5",
     "ora": "6.1.2",
+    "prettier": "^2.8.8",
     "sort-package-json": "^2.4.1"
   },
   "devDependencies": {
@@ -65,7 +66,6 @@
     "@types/node": "^18.16.1",
     "next": "^13.2.4",
     "next-auth": "^4.20.1",
-    "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.7",
     "prisma": "^4.11.0",
     "react": "18.2.0",

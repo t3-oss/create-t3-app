@@ -24,13 +24,16 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^4.28.0",
   superjson: "1.12.2",
 
-  // Prettier
+  // Prettier & Eslint
   prettier: "^2.8.6",
   "prettier-plugin-tailwindcss": "^0.2.6",
   "@types/prettier": "^2.7.2",
   "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
-
-  // Eslint
+  eslint: "^8.40.0",
+  "@types/eslint": "^8.37.0",
   "eslint-config-next": "^13.4.1",
+  "@typescript-eslint/eslint-plugin": "^5.59.0",
+  "@typescript-eslint/parser": "^5.59.0",
+  "eslint-config-prettier": "^8.8.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

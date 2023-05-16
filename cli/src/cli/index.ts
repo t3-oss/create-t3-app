@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
+import { type CliLinterConfig } from "~/installers/eslint.js";
 import { type AvailablePackages } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
@@ -31,12 +32,18 @@ interface CliFlags {
 interface CliResults {
   appName: string;
   packages: AvailablePackages[];
+  linterConfig: CliLinterConfig | null;
   flags: CliFlags;
 }
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
   packages: ["nextAuth", "prisma", "tailwind", "trpc"],
+  linterConfig: {
+    strict: true,
+    withPrettier: false,
+    withTailwind: true,
+  },
   flags: {
     noGit: false,
     noInstall: false,
@@ -177,6 +184,11 @@ export const runCli = async () => {
 
       await promptLanguage();
       cliResults.packages = await promptPackages();
+
+      cliResults.linterConfig = await promptLinterConfig({
+        hasTailwind: cliResults.packages.includes("tailwind"),
+      });
+
       if (!cliResults.flags.noGit) {
         cliResults.flags.noGit = !(await promptGit());
       }
@@ -267,6 +279,53 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
   });
 
   return packages;
+};
+
+const promptLinterConfig = async (opts: {
+  hasTailwind: boolean;
+}): Promise<CliLinterConfig | null> => {
+  const { linterConfig } = await inquirer.prompt<{ linterConfig: string }>({
+    name: "linterConfig",
+    type: "list",
+    message: "How would you like to configure your linter?",
+    choices: [
+      {
+        name: "None, I'll set it up myself",
+        value: "none",
+      },
+      {
+        name: "Just the default Next.js config",
+        value: "default",
+        short: "Default",
+      },
+      ...(opts.hasTailwind
+        ? [
+            {
+              name: "Just the defaults, but include prettier-plugin-tailwindcss for class sorting",
+              value: "tailwind",
+            },
+          ]
+        : []),
+      {
+        name: "A stricter ESLint config with @typescript-eslint",
+        value: "strict",
+      },
+      {
+        name: "A stricter ESLint config with @typescript-eslint and Prettier",
+        value: "strictPrettier",
+      },
+    ],
+    default: "strict",
+  });
+
+  if (linterConfig === "none") return null;
+
+  return {
+    strict: linterConfig === "strict" || linterConfig === "strictPrettier",
+    withPrettier: linterConfig === "strictPrettier",
+    withTailwind:
+      linterConfig === "tailwind" || linterConfig === "strictPrettier",
+  };
 };
 
 const promptGit = async (): Promise<boolean> => {

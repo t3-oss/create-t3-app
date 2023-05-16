@@ -1,55 +1,86 @@
-import { type Installer } from "../installers/index.js";
 import { type AvailableDependencies } from "./dependencyVersionMap.js";
+import { type Linter } from "eslint";
 import fs from "fs-extra";
 import path from "path";
-import { PKG_ROOT } from "~/consts.js";
+import { format, type Config as PrettierConfig } from "prettier";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { addPackageScript } from "~/utils/addPackageScript.js";
 
-export const prettier: Installer = ({ projectDir, packages }) => {
-  const packeagesToInstall: AvailableDependencies[] = [
+export function buildAndWritePrettierConfig(opts: {
+  projectDir: string;
+  withTailwind: boolean;
+}) {
+  const deps: AvailableDependencies[] = [
     "prettier",
     "@types/prettier",
     "@ianvs/prettier-plugin-sort-imports",
   ];
-
-  if (packages?.tailwind.inUse) {
-    packeagesToInstall.push("prettier-plugin-tailwindcss");
-  }
+  opts.withTailwind && deps.push("prettier-plugin-tailwindcss");
 
   addPackageDependency({
-    projectDir,
-    dependencies: packeagesToInstall,
+    dependencies: deps,
     devMode: true,
+    projectDir: opts.projectDir,
+  });
+
+  const config = {
+    plugins: ["@ianvs/prettier-plugin-sort-imports"],
+  } satisfies PrettierConfig;
+
+  if (opts.withTailwind) {
+    config.plugins.push("prettier-plugin-tailwindcss");
+  }
+
+  const stringedPrettierConfig = `
+/** @type {import("prettier").Config} */
+const config = ${JSON.stringify(config, null, 2)};
+
+module.exports = config;
+  `.trim();
+
+  fs.writeFileSync(
+    path.join(opts.projectDir, ".prettierrc.cjs"),
+    format(stringedPrettierConfig),
+  );
+}
+
+// Next.js with TypeScript Linting & Prettier
+export function addPrettierToEslintConfig(opts: {
+  projectDir: string;
+  eslintConfig: Linter.Config;
+}) {
+  addPackageDependency({
+    dependencies: [
+      "@types/eslint",
+      "eslint",
+      "eslint-config-next",
+      "@typescript-eslint/parser",
+      "@typescript-eslint/eslint-plugin",
+      "prettier",
+      "@types/prettier",
+      "@ianvs/prettier-plugin-sort-imports",
+      "eslint-config-prettier",
+    ],
+    devMode: true,
+    projectDir: opts.projectDir,
   });
 
   addPackageScript({
-    projectDir,
+    projectDir: opts.projectDir,
     scripts: [
+      { name: "lint", value: "next lint" },
+      { name: "lint:fix", value: "next lint --fix" },
       {
         name: "format",
-        value: "pnpm format:check --write",
+        value: "prettier --write . --ignore-path .gitignore",
       },
       {
         name: "format:check",
-        value:
-          "pnpm prettier --check --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern",
+        value: "prettier --check . --ignore-path .gitignore",
       },
     ],
   });
 
-  if (packages?.tailwind.inUse) {
-    fs.copySync(
-      path.join(
-        PKG_ROOT,
-        "template/extras/config/prettier-with-tailwind.config.cjs",
-      ),
-      path.join(projectDir, "prettier.config.cjs"),
-    );
-  } else {
-    fs.copySync(
-      path.join(PKG_ROOT, "template/extras/config/_prettier.config.cjs"),
-      path.join(projectDir, "prettier.config.cjs"),
-    );
-  }
-};
+  if (!Array.isArray(opts.eslintConfig.extends)) throw new Error("Whoops");
+  opts.eslintConfig.extends.push("prettier");
+}

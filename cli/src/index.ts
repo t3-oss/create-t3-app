@@ -32,6 +32,7 @@ const main = async () => {
   const {
     appName,
     packages,
+    linterConfig,
     flags: { noGit, noInstall, importAlias },
   } = await runCli();
 
@@ -43,6 +44,7 @@ const main = async () => {
   const projectDir = await createProject({
     projectName: appDir,
     packages: usePackages,
+    linterConfig,
     importAlias: importAlias,
     noInstall,
   });
@@ -64,14 +66,6 @@ const main = async () => {
 
   if (!noInstall) {
     await installDependencies({ projectDir });
-  }
-
-  // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
-  if (fs.existsSync(path.join(projectDir, "_eslintrc.cjs"))) {
-    fs.renameSync(
-      path.join(projectDir, "_eslintrc.cjs"),
-      path.join(projectDir, ".eslintrc.cjs"),
-    );
   }
 
   if (!noGit) {
