@@ -65,7 +65,9 @@ export function setupLinter(opts: {
 const config = ${JSON.stringify(eslintConfig, null, 2)};
 
 module.exports = config;
-  `.trim();
+  `
+    .trim()
+    .replace('"__dirname"', "__dirname");
 
   fs.writeFileSync(
     path.join(opts.projectDir, ".eslintrc.cjs"),
@@ -93,6 +95,7 @@ const strictEslint = (opts: { projectDir: string }) => {
     projectDir: opts.projectDir,
   });
 
+  // __dirname is escaped here - we'll replace it once the file is written
   const config: Linter.Config = {
     overrides: [
       {
@@ -101,13 +104,13 @@ const strictEslint = (opts: { projectDir: string }) => {
         ],
         files: ["*.ts", "*.tsx"],
         parserOptions: {
-          project: path.join(__dirname, "tsconfig.json"),
+          project: path.join("__dirname", "tsconfig.json"),
         },
       },
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
-      project: path.join(__dirname, "tsconfig.json"),
+      project: path.join("__dirname", "tsconfig.json"),
     },
     plugins: ["@typescript-eslint"],
     extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
