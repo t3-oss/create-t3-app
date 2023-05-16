@@ -32,7 +32,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias },
+    flags: { noGit, noInstall, importAlias, prettierAndExtendedEslint },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -45,6 +45,7 @@ const main = async () => {
     packages: usePackages,
     importAlias: importAlias,
     noInstall,
+    prettierAndExtendedEslint,
   });
 
   // Write name to package.json

@@ -1,5 +1,3 @@
-import { eslint } from "./eslint.js";
-import { prettier } from "./prettier.js";
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
@@ -15,8 +13,6 @@ export const availablePackages = [
   "tailwind",
   "trpc",
   "envVariables",
-  "eslint",
-  "prettier",
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -59,13 +55,5 @@ export const buildPkgInstallerMap = (
   envVariables: {
     inUse: true,
     installer: envVariablesInstaller,
-  },
-  prettier: {
-    inUse: packages.includes("prettier"),
-    installer: prettier,
-  },
-  eslint: {
-    inUse: packages.includes("eslint"),
-    installer: eslint,
   },
 });

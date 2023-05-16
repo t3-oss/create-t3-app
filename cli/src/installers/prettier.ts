@@ -6,7 +6,7 @@ import { PKG_ROOT } from "~/consts.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { addPackageScript } from "~/utils/addPackageScript.js";
 
-export const prettier: Installer = ({ projectDir, packages }) => {
+export const installPrettier: Installer = ({ projectDir, packages }) => {
   const packeagesToInstall: AvailableDependencies[] = [
     "prettier",
     "@types/prettier",

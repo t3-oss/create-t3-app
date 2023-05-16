@@ -4,7 +4,7 @@ import path from "path";
 import { PKG_ROOT } from "~/consts.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const eslint: Installer = ({ projectDir }) => {
+export const installExtendedEslint: Installer = ({ projectDir }) => {
   addPackageDependency({
     dependencies: ["eslint-config-next"],
     devMode: true,
