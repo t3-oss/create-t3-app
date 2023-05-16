@@ -104,13 +104,17 @@ const strictEslint = (opts: { projectDir: string }) => {
         ],
         files: ["*.ts", "*.tsx"],
         parserOptions: {
-          project: path.join("__dirname", "tsconfig.json"),
+          tsconfigRootDir: "__dirname",
+          project: "./tsconfig.json",
         },
       },
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
-      project: path.join("__dirname", "tsconfig.json"),
+      parserOptions: {
+        tsconfigRootDir: "__dirname",
+        project: "./tsconfig.json",
+      },
     },
     plugins: ["@typescript-eslint"],
     extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
