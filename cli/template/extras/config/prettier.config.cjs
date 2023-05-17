@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 const config = {
-  plugins: ["@ianvs/prettier-plugin-sort-imports"],
+  plugins: [require.resolve("prettier-plugin-tailwindcss")],
 };
 
 module.exports = config;
