@@ -27,7 +27,6 @@ export function UpgradePanel({
 }) {
   const router = useRouter();
 
-  const [fetchingDiff, setFetchingDiff] = useState(false);
   const [currentVersion, setCurrentVersion] = useState<string>();
   const [upgradeVersion, setUpgradeVersion] = useState<string>();
   const [features, setFeatures] = useState<Features>({
@@ -208,10 +207,10 @@ export function UpgradePanel({
           </div>
         </div>
         <Button
-          disabled={!currentVersion || !upgradeVersion || fetchingDiff}
+          disabled={!currentVersion || !upgradeVersion}
           onClick={() => void goToDiff()}
         >
-          {fetchingDiff ? "Loading..." : "Upgrade"}
+          Upgrade
         </Button>
       </div>
     </div>
