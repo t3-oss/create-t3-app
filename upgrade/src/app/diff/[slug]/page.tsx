@@ -21,28 +21,12 @@ export default async function Page({
   params: { slug: string };
   searchParams: Record<string, string>;
 }) {
-  if (!params?.slug) {
-    console.warn("No slug provided");
-    notFound();
-  }
-
+  if (!params?.slug) notFound();
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
   const viewType = searchParams["viewType"] === "unified" ? "unified" : "split";
 
-  console.log({
-    searchParams,
-    viewType,
-  });
-
-  if (!versionsAndFeatures) {
-    console.warn("No versions and features provided");
-    notFound();
-  }
-
-  const diff = await getDiffFromGithub(versionsAndFeatures).catch(() => {
-    console.warn("Github API error");
-    notFound();
-  });
+  if (!versionsAndFeatures) notFound();
+  const diff = await getDiffFromGithub(versionsAndFeatures).catch(notFound);
 
   return (
     <main className="container flex min-h-[calc(100vh-4rem)] min-w-[900px] flex-col py-8">
