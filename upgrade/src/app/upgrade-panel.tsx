@@ -2,9 +2,9 @@
 
 import WheresMyVersion from "./wheres-my-version.mdx";
 import { Info } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Button } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/label";
@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { prettyFeatureNameMap } from "~/lib/utils";
+import { cn, prettyFeatureNameMap } from "~/lib/utils";
 import { type Features, type VersionsGroupedByMajor } from "~/lib/utils";
 
 export function UpgradePanel({
@@ -25,8 +25,6 @@ export function UpgradePanel({
 }: {
   versionOptions: VersionsGroupedByMajor;
 }) {
-  const router = useRouter();
-
   const [currentVersion, setCurrentVersion] = useState<string>();
   const [upgradeVersion, setUpgradeVersion] = useState<string>();
   const [features, setFeatures] = useState<Features>({
@@ -84,20 +82,6 @@ export function UpgradePanel({
   }, [currentVersion, versionOptions]);
 
   const noUpgradeAvailable = upgradeVersionOptions.length === 0;
-
-  const goToDiff = () => {
-    if (!currentVersion || !upgradeVersion) return;
-    const activeFeatures = Object.keys(features).filter(
-      (feature) => features[feature as keyof typeof features],
-    );
-    const featuresString = activeFeatures.join("-");
-
-    const url = `/diff/${currentVersion}...${upgradeVersion}${
-      featuresString ? `-${featuresString}` : ""
-    }`;
-
-    router.push(url);
-  };
 
   useEffect(() => {
     if (noUpgradeAvailable) {
@@ -206,12 +190,20 @@ export function UpgradePanel({
             </Select>
           </div>
         </div>
-        <Button
-          disabled={!currentVersion || !upgradeVersion}
-          onClick={() => void goToDiff()}
+        <Link
+          href={`/diff/${currentVersion}...${upgradeVersion}${Object.keys(
+            features,
+          )
+            .filter((feature) => features[feature as keyof typeof features])
+            .join("-")}`}
+          className={cn(
+            buttonVariants(),
+            (!currentVersion || !upgradeVersion) &&
+              "pointer-events-none opacity-50",
+          )}
         >
           Upgrade
-        </Button>
+        </Link>
       </div>
     </div>
   );
