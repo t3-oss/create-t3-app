@@ -97,9 +97,7 @@ export function UpgradePanel({
       featuresString ? `-${featuresString}` : ""
     }`;
 
-    setFetchingDiff(true);
     router.push(url);
-    setFetchingDiff(false);
   };
 
   useEffect(() => {
