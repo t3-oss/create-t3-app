@@ -15,9 +15,6 @@ export const dependencyVersionMap = {
   tailwindcss: "^3.3.0",
   autoprefixer: "^10.4.14",
   postcss: "^8.4.21",
-  prettier: "^2.8.8",
-  "prettier-plugin-tailwindcss": "^0.2.8",
-  "@types/prettier": "^2.7.2",
 
   // tRPC
   "@trpc/client": "^10.26.0",
@@ -26,5 +23,14 @@ export const dependencyVersionMap = {
   "@trpc/next": "^10.26.0",
   "@tanstack/react-query": "^4.29.7",
   superjson: "1.12.2",
+
+  // Prettier
+  prettier: "^2.8.8",
+  "prettier-plugin-tailwindcss": "^0.2.8",
+  "@types/prettier": "^2.7.2",
+  "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+
+  // Eslint
+  "eslint-config-next": "^13.4.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

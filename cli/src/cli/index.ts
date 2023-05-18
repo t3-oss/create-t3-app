@@ -2,8 +2,10 @@ import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { type AvailablePackages } from "~/installers/index.js";
-import { availablePackages } from "~/installers/index.js";
+import {
+  availablePackages,
+  type AvailablePackages,
+} from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
@@ -15,6 +17,7 @@ interface CliFlags {
   noInstall: boolean;
   default: boolean;
   importAlias: string;
+  prettierAndExtendedEslint: boolean;
 
   /** @internal Used in CI. */
   CI: boolean;
@@ -47,6 +50,7 @@ const defaultOptions: CliResults = {
     prisma: false,
     nextAuth: false,
     importAlias: "~/",
+    prettierAndExtendedEslint: false,
   },
 };
 
@@ -114,6 +118,12 @@ export const runCli = async () => {
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias,
     )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "-p, --prettier-and-extended-eslint",
+      "Explicitly tell the CLI to use a custom import alias",
+      defaultOptions.flags.prettierAndExtendedEslint,
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -153,6 +163,9 @@ export const runCli = async () => {
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+    if (cliResults.flags.prettierAndExtendedEslint) {
+      cliResults.flags.prettierAndExtendedEslint = true;
+    }
   }
 
   // Explained below why this is in a try/catch block
@@ -186,6 +199,9 @@ export const runCli = async () => {
       }
 
       cliResults.flags.importAlias = await promptImportAlias();
+
+      cliResults.flags.prettierAndExtendedEslint =
+        await promtPrettierAndExtendedEslint();
     }
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
@@ -328,4 +344,17 @@ const promptImportAlias = async (): Promise<string> => {
   });
 
   return importAlias;
+};
+
+const promtPrettierAndExtendedEslint = async (): Promise<boolean> => {
+  const { prettierAndExtendedEslint } = await inquirer.prompt<
+    Pick<CliFlags, "prettierAndExtendedEslint">
+  >({
+    name: "prettierAndExtendedEslint",
+    type: "confirm",
+    message: "Would you like to use prettier and extended an eslint config?",
+    default: defaultOptions.flags.prettierAndExtendedEslint,
+  });
+
+  return prettierAndExtendedEslint;
 };
