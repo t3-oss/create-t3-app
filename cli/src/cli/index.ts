@@ -120,8 +120,8 @@ export const runCli = async () => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "-p, --prettier-and-extended-eslint",
-      "Explicitly tell the CLI to use a custom import alias",
+      "--prettier-and-extended-eslint [boolean]",
+      "Opt in to using prettier and an extended eslint config",
       defaultOptions.flags.prettierAndExtendedEslint,
     )
     /** END CI-FLAGS */
