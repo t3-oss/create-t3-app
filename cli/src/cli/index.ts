@@ -352,7 +352,7 @@ const promtPrettierAndExtendedEslint = async (): Promise<boolean> => {
   >({
     name: "prettierAndExtendedEslint",
     type: "confirm",
-    message: "Would you like to use prettier and extended an eslint conifg?",
+    message: "Would you like to use prettier and extended an eslint config?",
     default: defaultOptions.flags.prettierAndExtendedEslint,
   });
 
