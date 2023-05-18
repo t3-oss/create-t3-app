@@ -14,6 +14,8 @@ import {
   prettyFeatureNameMap,
 } from "~/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({
   params,
   searchParams,
@@ -69,16 +71,16 @@ export default async function Page({
             </DialogContent>
           </Dialog>
         </div>
-        <ul className="my-3 grid grid-cols-1 justify-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <ul className="my-4 grid grid-cols-1 justify-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {Object.entries(versionsAndFeatures.features).map(
             ([feature, enabled]) => (
               <li
                 key={feature}
-                className="col-span-1 flex rounded-md border shadow-sm transition-all hover:shadow-md"
+                className="col-span-1 flex h-14 rounded border shadow-sm transition-all hover:shadow-md"
               >
                 <div
                   className={cn(
-                    "flex w-16 shrink-0 items-center justify-center rounded-l-md text-sm font-medium",
+                    "flex w-16 shrink-0 items-center justify-center rounded-l text-sm font-medium",
                     enabled ? "bg-success" : "bg-destructive",
                   )}
                 >
@@ -87,7 +89,7 @@ export default async function Page({
                 <a
                   href={getFeatureUrl(feature)}
                   target="_blank"
-                  className="flex flex-1 items-center justify-between truncate rounded-r-md p-2 text-left"
+                  className="flex flex-1 items-center justify-between truncate rounded-r p-2 text-left"
                 >
                   <div className="flex-1 truncate text-sm">
                     <span className="font-medium">
@@ -107,7 +109,7 @@ export default async function Page({
       </div>
 
       <div className="w-full max-w-7xl">
-        <div className="inline-flex h-12 w-full items-center justify-center rounded-md bg-muted p-1 text-muted-foreground">
+        <div className="inline-flex h-12 w-full items-center justify-center rounded bg-muted p-1 text-muted-foreground">
           <Link
             href={`/diff/${params.slug}?viewType=split`}
             className={cn(

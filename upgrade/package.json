@@ -18,7 +18,6 @@
     "@octokit/rest": "^19.0.8",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",
-    "@radix-ui/react-hover-card": "^1.0.5",
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-slot": "^1.0.1",

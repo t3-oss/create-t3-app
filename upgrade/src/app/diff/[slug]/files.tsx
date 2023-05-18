@@ -20,7 +20,7 @@ export function Files(props: { diffText: string; viewType: ViewType }) {
       {files.map((file, index) => (
         <div
           key={`${file.newPath}-${index}`}
-          className="rounded-xl bg-muted shadow-lg"
+          className="rounded bg-muted shadow-lg"
         >
           <FileComponent
             viewType={props.viewType}
@@ -70,7 +70,7 @@ function FileComponent({
   return (
     <div
       key={`${oldRevision}-${newRevision}`}
-      className="rounded-lg border shadow-lg"
+      className="rounded border shadow-lg"
     >
       <button
         className={cn(
@@ -80,7 +80,7 @@ function FileComponent({
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex flex-row gap-4">
-          <div className="my-auto rounded-[4px] border px-1">
+          <div className="my-auto rounded-sm border px-1">
             {type === "modify"
               ? "CHANGED"
               : type === "add"

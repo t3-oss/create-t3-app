@@ -114,6 +114,6 @@
   }
 
   .diff {
-    @apply overflow-hidden rounded-b-lg;
+    @apply overflow-hidden rounded-b;
   }
 }
