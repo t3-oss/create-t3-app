@@ -4,12 +4,12 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.21.0",
+  "next-auth": "^4.22.1",
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
-  prisma: "^4.11.0",
-  "@prisma/client": "^4.11.0",
+  prisma: "^4.14.0",
+  "@prisma/client": "^4.14.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.0",
@@ -17,20 +17,20 @@ export const dependencyVersionMap = {
   postcss: "^8.4.21",
 
   // tRPC
-  "@trpc/client": "^10.18.0",
-  "@trpc/server": "^10.18.0",
-  "@trpc/react-query": "^10.18.0",
-  "@trpc/next": "^10.18.0",
-  "@tanstack/react-query": "^4.28.0",
+  "@trpc/client": "^10.26.0",
+  "@trpc/server": "^10.26.0",
+  "@trpc/react-query": "^10.26.0",
+  "@trpc/next": "^10.26.0",
+  "@tanstack/react-query": "^4.29.7",
   superjson: "1.12.2",
 
   // Prettier
-  prettier: "^2.8.6",
-  "prettier-plugin-tailwindcss": "^0.2.6",
+  prettier: "^2.8.8",
+  "prettier-plugin-tailwindcss": "^0.2.8",
   "@types/prettier": "^2.7.2",
   "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
 
   // Eslint
-  "eslint-config-next": "^13.4.1",
+  "eslint-config-next": "^13.4.2",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
