@@ -6,7 +6,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const installExtendedEslint: Installer = ({ projectDir }) => {
   addPackageDependency({
-    dependencies: ["eslint-config-next"],
+    dependencies: ["eslint-config-next", "eslint-config-prettier"],
     devMode: true,
     projectDir,
   });

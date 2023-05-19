@@ -32,5 +32,6 @@ export const dependencyVersionMap = {
 
   // Eslint
   "eslint-config-next": "^13.4.2",
+  "eslint-config-prettier": "^8.8.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
