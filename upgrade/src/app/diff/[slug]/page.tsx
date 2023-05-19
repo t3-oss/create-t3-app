@@ -3,16 +3,44 @@ import HowToApplyDiff from "./how-to-apply-diff.mdx";
 import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { parseDiff } from "react-diff-view";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import {
-  type Features,
   cn,
   extractVersionsAndFeatures,
   getDiffFromGithub,
   getFeatureUrl,
   prettyFeatureNameMap,
+  type Features,
 } from "~/lib/utils";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
+  if (!versionsAndFeatures) notFound();
+  const diff = await getDiffFromGithub(versionsAndFeatures).catch(notFound);
+  const files = parseDiff(diff ?? "");
+  let totalAdditions = 0;
+  let totalRemovals = 0;
+  files.forEach((file) => {
+    file.hunks?.forEach((hunk) => {
+      hunk.changes.forEach((change) => {
+        if (change.type === "insert") totalAdditions++;
+        if (change.type === "delete") totalRemovals++;
+      });
+    });
+  });
+  return {
+    metadataBase: new URL("http://localhost:3000"),
+    openGraph: {
+      images: `/api/og?currentVersion=${versionsAndFeatures.currentVersion}&upgradeVersion=${versionsAndFeatures.upgradeVersion}&additions=${totalAdditions}&removals=${totalRemovals}`,
+    },
+  };
+}
 
 export default async function Page({
   params,
