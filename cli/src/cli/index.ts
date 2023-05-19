@@ -163,9 +163,8 @@ export const runCli = async () => {
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
-    if (cliResults.flags.prettierAndExtendedEslint) {
+    cliResults.flags.prettierAndExtendedEslint =
       cliResults.flags.prettierAndExtendedEslint = true;
-    }
   }
 
   // Explained below why this is in a try/catch block
@@ -352,7 +351,7 @@ const promtPrettierAndExtendedEslint = async (): Promise<boolean> => {
   >({
     name: "prettierAndExtendedEslint",
     type: "confirm",
-    message: "Would you like to use prettier and extended an eslint config?",
+    message: "Would you like to use prettier and an extended eslint config?",
     default: defaultOptions.flags.prettierAndExtendedEslint,
   });
 

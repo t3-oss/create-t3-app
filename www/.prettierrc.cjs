@@ -4,9 +4,9 @@ const config = {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("@ianvs/prettier-plugin-sort-imports"),
-    require.resolve("prettier-plugin-tailwindcss"), // MUST come last
+    "prettier-plugin-astro",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss", // MUST come last
   ],
   pluginSearchDirs: false,
   overrides: [
