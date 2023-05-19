@@ -24,11 +24,10 @@ export default function handler(req: Request) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundImage:
-              "linear-gradient(180deg, rgb(24, 24, 27) 0%, rgb(14, 14, 16) 100%)",
+            backgroundImage: "linear-gradient(to bottom, #111827, #0f172a)",
           }}
         >
-          <div tw="center flex h-full w-full flex-col items-center justify-center bg-gradient-to-b from-[#18181b] to-slate-900">
+          <div tw="flex h-full w-full flex-col items-center justify-center">
             <div tw="flex w-full flex-col justify-between gap-10 p-8 md:flex-row md:gap-0">
               <h1 tw="text-center text-4xl font-extrabold text-white">
                 Upgrade <span tw="text-purple-400">T3</span> App
