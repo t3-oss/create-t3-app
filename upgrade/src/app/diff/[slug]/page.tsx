@@ -1,9 +1,9 @@
 import { Files } from "./files";
 import HowToApplyDiff from "./how-to-apply-diff.mdx";
+import gitdiffParser from "gitdiff-parser";
 import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { parseDiff } from "react-diff-view";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import {
@@ -23,7 +23,7 @@ export async function generateMetadata({
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
   if (!versionsAndFeatures) notFound();
   const diff = await getDiffFromGithub(versionsAndFeatures).catch(notFound);
-  const files = parseDiff(diff ?? "");
+  const files = gitdiffParser.parse(diff ?? "");
   let totalAdditions = 0;
   let totalRemovals = 0;
   files.forEach((file) => {
