@@ -1,10 +1,8 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/server";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
-export default function handler(req: Request) {
+export function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
 
