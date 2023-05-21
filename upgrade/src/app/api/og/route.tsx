@@ -39,15 +39,15 @@ export function GET(req: Request) {
                 <div tw="flex flex-col items-center justify-center">
                   <p tw="text-white">
                     From{" "}
-                    <span tw="font-black text-purple-400">
+                    <span tw="font-black text-purple-400 mx-1">
                       {currentVersion}
                     </span>{" "}
                     to{" "}
-                    <span tw="font-black text-purple-400">
+                    <span tw="font-black text-purple-400 mx-1">
                       {upgradeVersion}
                     </span>
                   </p>
-                  <div tw="flex items-center" style={{ gap: "10px" }}>
+                  <div tw="flex items-center" style={{ gap: "5px" }}>
                     <span tw="text-green-500">+{additions}</span>
                     <span tw="text-red-500">-{removals}</span>
                     <div tw="flex h-4 w-[100px]" style={{ gap: "5px" }}>
