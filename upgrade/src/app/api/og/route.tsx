@@ -11,6 +11,11 @@ export function GET(req: Request) {
     const upgradeVersion = searchParams.get("upgradeVersion");
     const additions = searchParams.get("additions");
     const removals = searchParams.get("removals");
+    const total = Number(additions) + Number(removals);
+
+    const greenSquares = Math.floor((Number(additions) * 5) / total);
+    const redSquares = Math.floor((Number(removals) * 5) / total);
+    const graySquares = 5 - greenSquares - redSquares;
 
     return new ImageResponse(
       (
@@ -45,12 +50,19 @@ export function GET(req: Request) {
                   <div tw="flex space-x-2">
                     <span tw="text-green-500">+{additions}</span>
                     <span tw="text-red-500">-{removals}</span>
-                    <div tw="flex h-4 w-[100px] gap-1 align-middle">
-                      <div tw="flex-1 bg-red-500"></div>
-                      <div tw="flex-1 bg-green-500"></div>
-                      <div tw="flex-1 bg-red-500"></div>
-                      <div tw="flex-1 bg-green-500"></div>
-                      <div tw="flex-1 bg-red-500"></div>
+                    <div
+                      tw="flex h-4 w-[100px] align-middle"
+                      style={{ gap: "5px" }}
+                    >
+                      {Array.from({ length: greenSquares }).map((_, i) => (
+                        <div key={i} tw="flex-1 bg-green-500" />
+                      ))}
+                      {Array.from({ length: redSquares }).map((_, i) => (
+                        <div key={i} tw="flex-1 bg-red-500" />
+                      ))}
+                      {Array.from({ length: graySquares }).map((_, i) => (
+                        <div key={i} tw="flex-1 bg-gray-500" />
+                      ))}
                     </div>
                   </div>
                 </div>
