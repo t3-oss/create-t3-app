@@ -31,12 +31,12 @@ export function GET(req: Request) {
           }}
         >
           <div tw="flex h-full w-full flex-col items-center justify-center">
-            <div tw="flex w-full flex-col justify-between gap-10 p-8 md:flex-row md:gap-0">
+            <div tw="flex w-full flex-row justify-between p-8">
               <h1 tw="text-center text-4xl font-extrabold text-white">
                 Upgrade <span tw="text-purple-400">T3</span> App
               </h1>
               {currentVersion && upgradeVersion && additions && removals && (
-                <div tw="flex flex-col items-center justify-center md:items-end">
+                <div tw="flex flex-col items-center justify-center">
                   <p tw="text-white">
                     From{" "}
                     <span tw="font-black text-purple-400">
@@ -47,13 +47,10 @@ export function GET(req: Request) {
                       {upgradeVersion}
                     </span>
                   </p>
-                  <div tw="flex space-x-2">
+                  <div tw="flex items-center" style={{ gap: "10px" }}>
                     <span tw="text-green-500">+{additions}</span>
                     <span tw="text-red-500">-{removals}</span>
-                    <div
-                      tw="flex h-4 w-[100px] align-middle"
-                      style={{ gap: "5px" }}
-                    >
+                    <div tw="flex h-4 w-[100px]" style={{ gap: "5px" }}>
                       {Array.from({ length: greenSquares }).map((_, i) => (
                         <div key={i} tw="flex-1 bg-green-500" />
                       ))}
