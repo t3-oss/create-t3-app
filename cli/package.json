@@ -70,7 +70,7 @@
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.3",
     "@types/node": "^18.16.0",
-    "next": "^13.2.4",
+    "next": "^13.4.2",
     "next-auth": "^4.22.1",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
