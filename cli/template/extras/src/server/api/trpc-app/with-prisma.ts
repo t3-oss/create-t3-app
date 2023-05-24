@@ -40,7 +40,7 @@ type CreateContextOptions = {
 export const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     headers: opts.headers,
-    db: prisma,
+    prisma,
   };
 };
 
