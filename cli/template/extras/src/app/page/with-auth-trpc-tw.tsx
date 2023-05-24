@@ -1,5 +1,4 @@
 import Link from "next/link";
-import * as React from "react";
 import { createPost } from "~/app/actions";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
@@ -56,10 +55,8 @@ export default async function Home() {
             </Link>
           </div>
 
-          <React.Suspense fallback="Loading posts...">
-            {/* @ts-expect-error - Async Server Component */}
-            <CrudShowcase />
-          </React.Suspense>
+          {/* @ts-expect-error - Async Server Component */}
+          <CrudShowcase />
         </div>
       </div>
     </main>
