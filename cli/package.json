@@ -38,7 +38,7 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
-    "lint": "eslint . --report-unused-disable-directives",
+    "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "format": "pnpm format:check --write",
     "format:check": "pnpm prettier --plugin-search-dir=. **/*.{cjs,mjs,ts,tsx,md,json} --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
