@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { experimental_useFormStatus } from "react-dom";
+import { twMerge } from "tailwind-merge";
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
@@ -11,7 +12,10 @@ export const Button = React.forwardRef<
 
   return (
     <button
-      className="text-primary-foreground hover:bg-primary/90 inline-flex w-full items-center justify-center rounded-md bg-primary p-2 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+      className={twMerge(
+        "text-primary-foreground inline-flex w-full items-center justify-center rounded-md bg-primary p-2 text-sm font-medium ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        className,
+      )}
       disabled={props.disabled || pending}
       ref={ref}
       {...props}
