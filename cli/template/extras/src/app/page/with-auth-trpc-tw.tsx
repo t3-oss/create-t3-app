@@ -3,6 +3,7 @@ import * as React from "react";
 import { createPost } from "~/app/actions";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import { Button } from "~/ui/button";
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: "from tRPC" });
@@ -86,7 +87,7 @@ async function CrudShowcase() {
           placeholder="Title"
           className="w-full rounded bg-primary p-2 text-background"
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
