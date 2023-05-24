@@ -7,7 +7,7 @@ export const createPost = publicProcedure
     // simulate a slow db call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return ctx.db.post.create({
+    return ctx.prisma.post.create({
       data: {
         text: input.text,
       },
