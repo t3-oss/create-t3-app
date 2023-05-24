@@ -33,4 +33,5 @@ export const env = createEnv({
     GITHUB_DIFFS_REPO: process.env.GITHUB_DIFFS_REPO,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });
