@@ -290,7 +290,7 @@ const promptAppRouter = async () => {
     name: "appRouter",
     type: "confirm",
     message: "(experimental) Would you like to use Next.js App Router?",
-    default: defaultOptions.flags.appRouter,
+    default: false,
   });
 
   return appRouter;

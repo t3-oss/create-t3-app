@@ -1,7 +1,14 @@
+import fs from "fs";
 import path from "path";
+import { PKG_ROOT } from "~/consts.js";
 import { installPackages } from "~/helpers/installPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
-import { selectAppFile, selectIndexFile } from "~/helpers/selectBoilerplate.js";
+import {
+  selectAppFile,
+  selectIndexFile,
+  selectLayoutFile,
+  selectPageFile,
+} from "~/helpers/selectBoilerplate.js";
 import { type PkgInstallerMap } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
@@ -40,9 +47,42 @@ export const createProject = async ({
     appRouter,
   });
 
-  // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  selectAppFile({ projectDir, packages });
-  selectIndexFile({ projectDir, packages });
+  // Select necessary _app,index / layout,page files
+  if (appRouter) {
+    // Override default next.config
+    fs.writeFileSync(
+      path.join(projectDir, "next.config.mjs"),
+      `import "./src/env.mjs";
+
+/** @type {import("next").NextConfig} */
+const config = {
+  experimental: { serverActions: true },
+};
+export default config;
+`,
+    );
+
+    selectLayoutFile({ projectDir, packages });
+    selectPageFile({ projectDir, packages });
+  } else {
+    selectAppFile({ projectDir, packages });
+    selectIndexFile({ projectDir, packages });
+  }
+
+  // If no tailwind, select use css modules
+  if (!packages.tailwind.inUse) {
+    const indexModuleCss = path.join(
+      PKG_ROOT,
+      "template/extras/src/index.module.css",
+    );
+    const indexModuleCssDest = path.join(
+      projectDir,
+      "src",
+      appRouter ? "app" : "pages",
+      "index.module.css",
+    );
+    fs.copyFileSync(indexModuleCss, indexModuleCssDest);
+  }
 
   return projectDir;
 };

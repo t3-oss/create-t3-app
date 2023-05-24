@@ -4,7 +4,11 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const trpcInstaller: Installer = ({ projectDir, packages }) => {
+export const trpcInstaller: Installer = ({
+  projectDir,
+  packages,
+  appRouter,
+}) => {
   addPackageDependency({
     projectDir,
     dependencies: [
@@ -13,7 +17,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
-      "@trpc/react-query",
+      "@trpc/react-query", // TODO: remove for appRouter when peerDep is resolved in trpc
     ],
     devMode: false,
   });
@@ -23,11 +27,12 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerSrc = path.join(extrasDir, "src/pages/api/trpc/[trpc].ts");
-  const apiHandlerDest = path.join(projectDir, "src/pages/api/trpc/[trpc].ts");
+  const apiHandlerFile = "src/pages/api/trpc/[trpc].ts";
+  const routeHandlerFile = "src/app/api/trpc/[trpc]/route.ts";
+  const srcToUse = appRouter ? routeHandlerFile : apiHandlerFile;
 
-  const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
-  const utilsDest = path.join(projectDir, "src/utils/api.ts");
+  const apiHandlerSrc = path.join(extrasDir, srcToUse);
+  const apiHandlerDest = path.join(projectDir, srcToUse);
 
   const trpcFile =
     usingAuth && usingPrisma
@@ -37,7 +42,12 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       : usingPrisma
       ? "with-prisma.ts"
       : "base.ts";
-  const trpcSrc = path.join(extrasDir, "src/server/api/trpc", trpcFile);
+  const trpcSrc = path.join(
+    extrasDir,
+    "src/server/api",
+    appRouter ? "trpc-app" : "trpc-pages",
+    trpcFile,
+  );
   const trpcDest = path.join(projectDir, "src/server/api/trpc.ts");
 
   const rootRouterSrc = path.join(extrasDir, "src/server/api/root.ts");
@@ -62,9 +72,42 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
     "src/server/api/routers/example.ts",
   );
 
-  fs.copySync(apiHandlerSrc, apiHandlerDest);
-  fs.copySync(utilsSrc, utilsDest);
-  fs.copySync(trpcSrc, trpcDest);
-  fs.copySync(rootRouterSrc, rootRouterDest);
-  fs.copySync(exampleRouterSrc, exampleRouterDest);
+  const copySrcDest: [string, string][] = [
+    [apiHandlerSrc, apiHandlerDest],
+    [trpcSrc, trpcDest],
+    [rootRouterSrc, rootRouterDest],
+    [exampleRouterSrc, exampleRouterDest],
+  ];
+
+  if (appRouter) {
+    const trpcDir = path.join(extrasDir, "src/trpc");
+    copySrcDest.push(
+      [
+        path.join(trpcDir, "server.ts"),
+        path.join(projectDir, "src/trpc/server.ts"),
+      ],
+      [
+        path.join(trpcDir, "client.ts"),
+        path.join(projectDir, "src/trpc/client.ts"),
+      ],
+      [
+        path.join(trpcDir, "shared.ts"),
+        path.join(projectDir, "src/trpc/shared.ts"),
+      ],
+    );
+  } else {
+    const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
+    const utilsDest = path.join(projectDir, "src/utils/api.ts");
+    copySrcDest.push([utilsSrc, utilsDest]);
+  }
+
+  copySrcDest.forEach(([src, dest]) => {
+    fs.copySync(src, dest);
+  });
+
+  // fs.copySync(apiHandlerSrc, apiHandlerDest);
+  // fs.copySync(utilsSrc, utilsDest);
+  // fs.copySync(trpcSrc, trpcDest);
+  // fs.copySync(rootRouterSrc, rootRouterDest);
+  // fs.copySync(exampleRouterSrc, exampleRouterDest);
 };

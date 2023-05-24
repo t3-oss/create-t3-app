@@ -16,7 +16,7 @@ export const selectAppFile = ({
   const usingTRPC = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
 
-  let appFile = "";
+  let appFile = "base.tsx";
   if (usingNextAuth && usingTRPC) {
     appFile = "with-auth-trpc.tsx";
   } else if (usingNextAuth && !usingTRPC) {
@@ -25,11 +25,24 @@ export const selectAppFile = ({
     appFile = "with-trpc.tsx";
   }
 
-  if (appFile !== "") {
-    const appSrc = path.join(appFileDir, appFile);
-    const appDest = path.join(projectDir, "src/pages/_app.tsx");
-    fs.copySync(appSrc, appDest);
-  }
+  const appSrc = path.join(appFileDir, appFile);
+  const appDest = path.join(projectDir, "src/pages/_app.tsx");
+  fs.copySync(appSrc, appDest);
+};
+
+// Similar to _app, but for app router
+export const selectLayoutFile = ({
+  projectDir,
+  packages,
+}: SelectBoilerplateProps) => {
+  const layoutFileDir = path.join(PKG_ROOT, "template/extras/src/app/layout");
+
+  const usingTw = packages.tailwind.inUse;
+  const layoutFile = usingTw ? "with-tw.tsx" : "base.tsx";
+
+  const appSrc = path.join(layoutFileDir, layoutFile);
+  const appDest = path.join(projectDir, "src/app/layout.tsx");
+  fs.copySync(appSrc, appDest);
 };
 
 // This selects the proper index.tsx to be used that showcases the chosen tech
@@ -43,7 +56,7 @@ export const selectIndexFile = ({
   const usingTw = packages.tailwind.inUse;
   const usingAuth = packages.nextAuth.inUse;
 
-  let indexFile = "";
+  let indexFile = "base.tsx";
   if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingAuth) {
@@ -56,9 +69,36 @@ export const selectIndexFile = ({
     indexFile = "with-tw.tsx";
   }
 
-  if (indexFile !== "") {
-    const indexSrc = path.join(indexFileDir, indexFile);
-    const indexDest = path.join(projectDir, "src/pages/index.tsx");
-    fs.copySync(indexSrc, indexDest);
+  const indexSrc = path.join(indexFileDir, indexFile);
+  const indexDest = path.join(projectDir, "src/pages/index.tsx");
+  fs.copySync(indexSrc, indexDest);
+};
+
+// Similar to index, but for app router
+export const selectPageFile = ({
+  projectDir,
+  packages,
+}: SelectBoilerplateProps) => {
+  const indexFileDir = path.join(PKG_ROOT, "template/extras/src/app/page");
+
+  const usingTRPC = packages.trpc.inUse;
+  const usingTw = packages.tailwind.inUse;
+  const usingAuth = packages.nextAuth.inUse;
+
+  let indexFile = "base.tsx";
+  if (usingTRPC && usingTw && usingAuth) {
+    indexFile = "with-auth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingAuth) {
+    indexFile = "with-auth-trpc.tsx";
+  } else if (usingTRPC && usingTw) {
+    indexFile = "with-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw) {
+    indexFile = "with-trpc.tsx";
+  } else if (!usingTRPC && usingTw) {
+    indexFile = "with-tw.tsx";
   }
+
+  const indexSrc = path.join(indexFileDir, indexFile);
+  const indexDest = path.join(projectDir, "src/app/page.tsx");
+  fs.copySync(indexSrc, indexDest);
 };

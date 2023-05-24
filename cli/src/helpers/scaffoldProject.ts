@@ -13,7 +13,6 @@ export const scaffoldProject = async ({
   projectDir,
   pkgManager,
   noInstall,
-  appRouter,
 }: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
@@ -102,10 +101,6 @@ export const scaffoldProject = async ({
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore"),
   );
-
-  if (appRouter) {
-    fs.rm(path.join(projectDir, "src/pages"), { recursive: true });
-  }
 
   const scaffoldedName =
     projectName === "." ? "App" : chalk.cyan.bold(projectName);

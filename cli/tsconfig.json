@@ -5,7 +5,8 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "checkJs": true
+    "checkJs": true,
+    "jsx": "react"
   },
-  "include": ["src", "tsup.config.ts", "../reset.d.ts"]
+  "include": ["src", "tsup.config.ts", "../reset.d.ts", "template"]
 }

@@ -1,3 +1,6 @@
 {
+  "compilerOptions": {
+    "jsx": "react"
+  },
   "include": ["src", "template", "tsup.config.ts"]
 }
