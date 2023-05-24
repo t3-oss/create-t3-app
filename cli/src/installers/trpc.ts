@@ -94,11 +94,12 @@ export const trpcInstaller: Installer = ({
         path.join(trpcDir, "shared.ts"),
         path.join(projectDir, "src/trpc/shared.ts"),
       ],
-      [
+    );
+    usingPrisma &&
+      copySrcDest.push([
         path.join(extrasDir, "src/app/actions.ts"),
         path.join(projectDir, "src/app/actions.ts"),
-      ],
-    );
+      ]);
   } else {
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
     const utilsDest = path.join(projectDir, "src/utils/api.ts");
