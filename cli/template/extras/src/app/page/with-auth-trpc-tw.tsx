@@ -1,9 +1,11 @@
 import Link from "next/link";
+import * as React from "react";
+import { createPost } from "~/app/actions";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
 export default async function Home() {
-  const hello = await api.example.hello.query({ text: "from tRPC" });
+  const hello = await api.post.hello.query({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
   return (
@@ -52,8 +54,40 @@ export default async function Home() {
               {session ? "Sign out" : "Sign in"}
             </Link>
           </div>
+
+          <React.Suspense fallback="Loading posts...">
+            {/* @ts-expect-error - Async Server Component */}
+            <CrudShowcase />
+          </React.Suspense>
         </div>
       </div>
     </main>
+  );
+}
+
+async function CrudShowcase() {
+  const session = await getServerAuthSession();
+  if (!session?.user) return null;
+
+  const latestPost = await api.post.getLatest.query();
+
+  return (
+    <div className="w-full max-w-xs">
+      {latestPost ? (
+        <p className="truncate">Your most recent post: {latestPost.text}</p>
+      ) : (
+        <p>You have no posts yet.</p>
+      )}
+
+      <form action={createPost} className="flex flex-col gap-2">
+        <input
+          type="text"
+          name="text"
+          placeholder="Title"
+          className="w-full rounded bg-primary p-2 text-background"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }

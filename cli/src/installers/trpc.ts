@@ -64,12 +64,12 @@ export const trpcInstaller: Installer = ({
 
   const exampleRouterSrc = path.join(
     extrasDir,
-    "src/server/api/routers/example",
+    "src/server/api/routers/post",
     exampleRouterFile,
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/example.ts",
+    "src/server/api/routers/post.ts",
   );
 
   const copySrcDest: [string, string][] = [
@@ -94,6 +94,10 @@ export const trpcInstaller: Installer = ({
         path.join(trpcDir, "shared.ts"),
         path.join(projectDir, "src/trpc/shared.ts"),
       ],
+      [
+        path.join(extrasDir, "src/app/actions.ts"),
+        path.join(projectDir, "src/app/actions.ts"),
+      ],
     );
   } else {
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
@@ -104,10 +108,4 @@ export const trpcInstaller: Installer = ({
   copySrcDest.forEach(([src, dest]) => {
     fs.copySync(src, dest);
   });
-
-  // fs.copySync(apiHandlerSrc, apiHandlerDest);
-  // fs.copySync(utilsSrc, utilsDest);
-  // fs.copySync(trpcSrc, trpcDest);
-  // fs.copySync(rootRouterSrc, rootRouterDest);
-  // fs.copySync(exampleRouterSrc, exampleRouterDest);
 };
