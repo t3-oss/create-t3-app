@@ -26,6 +26,8 @@ interface CliFlags {
   prisma: boolean;
   /** @internal Used in CI. */
   nextAuth: boolean;
+  /** @internal Used in CI. */
+  appRouter: boolean;
 }
 
 interface CliResults {
@@ -47,6 +49,7 @@ const defaultOptions: CliResults = {
     prisma: false,
     nextAuth: false,
     importAlias: "~/",
+    appRouter: false,
   },
 };
 
@@ -114,6 +117,11 @@ export const runCli = async () => {
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias,
     )
+    .option(
+      "--appRouter [boolean]",
+      "Explicitly tell the CLI to use the new Next.js app router",
+      (value) => !!value && value !== "false",
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -177,6 +185,12 @@ export const runCli = async () => {
 
       await promptLanguage();
       cliResults.packages = await promptPackages();
+
+      if (!cliResults.flags.appRouter) {
+        cliResults.flags.appRouter = await promptAppRouter();
+        logger.info("Using appRouter?", cliResults.flags.appRouter);
+      }
+
       if (!cliResults.flags.noGit) {
         cliResults.flags.noGit = !(await promptGit());
       }
@@ -267,6 +281,19 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
   });
 
   return packages;
+};
+
+const promptAppRouter = async () => {
+  const { appRouter } = await inquirer.prompt<
+    Pick<CliResults["flags"], "appRouter">
+  >({
+    name: "appRouter",
+    type: "confirm",
+    message: "(experimental) Would you like to use Next.js App Router?",
+    default: defaultOptions.flags.appRouter,
+  });
+
+  return appRouter;
 };
 
 const promptGit = async (): Promise<boolean> => {

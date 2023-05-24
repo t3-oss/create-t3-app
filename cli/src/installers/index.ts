@@ -22,6 +22,7 @@ export interface InstallerOptions {
   noInstall: boolean;
   packages?: PkgInstallerMap;
   projectName?: string;
+  appRouter?: boolean;
 }
 
 export type Installer = (opts: InstallerOptions) => void;

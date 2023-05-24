@@ -10,12 +10,14 @@ interface CreateProjectOptions {
   packages: PkgInstallerMap;
   noInstall: boolean;
   importAlias: string;
+  appRouter: boolean;
 }
 
 export const createProject = async ({
   projectName,
   packages,
   noInstall,
+  appRouter,
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
@@ -26,6 +28,7 @@ export const createProject = async ({
     projectDir,
     pkgManager,
     noInstall,
+    appRouter,
   });
 
   // Install the selected packages
@@ -34,6 +37,7 @@ export const createProject = async ({
     pkgManager,
     packages,
     noInstall,
+    appRouter,
   });
 
   // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
