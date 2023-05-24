@@ -24,6 +24,7 @@
   },
   "files": [
     "dist",
+    "template",
     "README.md",
     "CHANGELOG.md",
     ".yarnrc.yml",
