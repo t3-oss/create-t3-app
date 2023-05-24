@@ -34,7 +34,7 @@ export const postRouter = createTRPCRouter({
     return ctx.prisma.post.findMany();
   }),
 
-  getLatest: publicProcedure.query(({ ctx }) => {
+  getLatest: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.post.findFirst({
       orderBy: { createdAt: "desc" },
       where: { createdBy: { id: ctx.session.user.id } },
