@@ -43,7 +43,6 @@ export async function generateMetadata({
   });
 
   return {
-    metadataBase: new URL("http://localhost:3000"),
     openGraph: {
       images: [{ url: `/api/og?${queryParams}` }],
     },
