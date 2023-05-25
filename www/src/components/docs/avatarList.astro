@@ -46,7 +46,7 @@ const additionalContributors = unique.length - recentContributors.length; // lis
     {
       recentContributors.map((item) => (
         <li>
-          <a href={`https://github.com/${item.login}`}>
+          <a class="rounded-full" href={`https://github.com/${item.login}`}>
             <img
               class="h-8 w-8 rounded-full sm:h-10 sm:w-10"
               alt={`Contributor ${item.login}`}
