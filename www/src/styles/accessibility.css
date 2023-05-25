@@ -13,3 +13,7 @@
 *:not(:active):focus-visible {
   @apply outline-offset-4;
 }
+
+a:has(> img) {
+  @apply inline-block;
+}
