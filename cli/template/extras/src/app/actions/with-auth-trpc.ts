@@ -1,11 +1,11 @@
 "use server";
 
 import * as z from "zod";
-import { createAction, protetedProcedure } from "~/server/api/trpc";
+import { createAction, protectedProcedure } from "~/server/api/trpc";
 
 /** You can also create procedures inline using the reusable procedure builders. */
 export const createPost = createAction(
-  protetedProcedure
+  protectedProcedure
     .input(
       z.object({
         id: z.string(),
