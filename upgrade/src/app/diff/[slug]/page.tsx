@@ -34,10 +34,18 @@ export async function generateMetadata({
       });
     });
   });
+
+  const queryParams = new URLSearchParams({
+    currentVersion: versionsAndFeatures.currentVersion,
+    upgradeVersion: versionsAndFeatures.upgradeVersion,
+    additions: String(totalAdditions),
+    removals: String(totalRemovals),
+  });
+
   return {
     metadataBase: new URL("http://localhost:3000"),
     openGraph: {
-      images: `/api/og?currentVersion=${versionsAndFeatures.currentVersion}&upgradeVersion=${versionsAndFeatures.upgradeVersion}&additions=${totalAdditions}&removals=${totalRemovals}`,
+      images: `/api/og?${queryParams}`,
     },
   };
 }
