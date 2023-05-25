@@ -45,7 +45,11 @@ export async function generateMetadata({
   return {
     metadataBase: new URL("http://localhost:3000"),
     openGraph: {
-      images: `/api/og?${queryParams}`,
+      images: [{ url: `/api/og?${queryParams}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [{ url: `/api/og?${queryParams}` }],
     },
   };
 }
