@@ -33,9 +33,16 @@ export const getT3Versions = async () => {
   return releases.data
     .map((release) => release.tag_name.split("@")[1] ?? "")
     .filter((v) => {
+      if (!v) return false;
       // ignore versions under 5.10.3
-      const [major, minor, patch] = v.split(".").map(Number);
-      if (!major || !minor || !patch) return false;
+      const [majorStr, minorStr, patchStr] = v.split(".");
+      const major = Number(majorStr);
+      const minor = Number(minorStr);
+      const patch = Number(patchStr);
+      if (isNaN(major) || isNaN(minor) || isNaN(patch)) {
+        console.warn(`Failed to parse version ${v}`);
+        return false;
+      }
 
       if (major > 5) return true;
       if (major === 5 && minor > 10) return true;
