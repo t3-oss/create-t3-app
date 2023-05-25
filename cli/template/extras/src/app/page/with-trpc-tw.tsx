@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { createPost } from "~/app/actions";
 import { api } from "~/trpc/server";
+import { Button } from "~/ui/button";
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: "from tRPC" });
@@ -40,6 +42,16 @@ export default async function Home() {
           </p>
         </div>
       </div>
+
+      <form action={createPost} className="flex flex-col gap-2">
+        <input
+          type="text"
+          name="text"
+          placeholder="Title"
+          className="w-full rounded bg-primary p-2 text-background"
+        />
+        <Button type="submit">Submit</Button>
+      </form>
     </main>
   );
 }

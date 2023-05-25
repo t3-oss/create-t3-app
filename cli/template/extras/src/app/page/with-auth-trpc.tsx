@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import Link from "next/link";
+import { createPost } from "~/app/actions";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
@@ -54,6 +55,13 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+
+        <form action={createPost}>
+          <input type="text" name="text" placeholder="Title" />
+          <button type="submit" className={styles.loginButton}>
+            Trigger Server Action
+          </button>
+        </form>
       </div>
     </main>
   );

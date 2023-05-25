@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import Link from "next/link";
+import { createPost } from "~/app/actions";
 import { api } from "~/trpc/server";
 
 export default async function Home() {
@@ -40,6 +41,13 @@ export default async function Home() {
             {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
         </div>
+
+        <form action={createPost}>
+          <input type="text" name="text" placeholder="Title" />
+          <button type="submit" className={styles.loginButton}>
+            Trigger Server Action
+          </button>
+        </form>
       </div>
     </main>
   );

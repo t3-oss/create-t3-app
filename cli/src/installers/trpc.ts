@@ -95,9 +95,25 @@ export const trpcInstaller: Installer = ({
         path.join(projectDir, "src/trpc/shared.ts"),
       ],
     );
-    usingPrisma &&
+
+    if (usingAuth && usingPrisma)
       copySrcDest.push([
-        path.join(extrasDir, "src/app/actions.ts"),
+        path.join(extrasDir, "src/app/actions/with-auth-prisma-trpc.ts"),
+        path.join(projectDir, "src/app/actions.ts"),
+      ]);
+    else if (usingAuth)
+      copySrcDest.push([
+        path.join(extrasDir, "src/app/actions/with-auth-trpc.ts"),
+        path.join(projectDir, "src/app/actions.ts"),
+      ]);
+    else if (usingPrisma)
+      copySrcDest.push([
+        path.join(extrasDir, "src/app/actions/with-prisma-trpc.ts"),
+        path.join(projectDir, "src/app/actions.ts"),
+      ]);
+    else
+      copySrcDest.push([
+        path.join(extrasDir, "src/app/actions/with-trpc.ts"),
         path.join(projectDir, "src/app/actions.ts"),
       ]);
   } else {
