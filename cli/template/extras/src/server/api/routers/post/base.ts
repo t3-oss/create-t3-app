@@ -8,7 +8,7 @@ let post = {
 
 export const createPost = publicProcedure
   .input(z.object({ text: z.string().min(1) }))
-  .mutation(async ({ ctx, input }) => {
+  .mutation(async ({ input }) => {
     // simulate a slow db call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
