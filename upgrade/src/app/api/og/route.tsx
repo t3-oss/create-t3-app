@@ -31,7 +31,7 @@ export async function GET(req: Request) {
             alignItems: "center",
             justifyContent: "center",
             background:
-              "linear-gradient(180deg, rgba(48,1,113,1) 0%, rgba(17,24,39,1) 100%)",
+              "linear-gradient(180deg, rgba(9,11,16,1) 0%, rgba(13,19,28,1) 100%)",
             fontFamily: "Inter",
           }}
         >

@@ -13,6 +13,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Upgrade T3 App",
   description: "A tool to upgrade your create-t3-app instance",
+  openGraph: {
+    images: [{ url: "/opengraph-image.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [{ url: "/opengraph-image.png" }],
+  },
+  metadataBase: new URL("https://t3-upgrade.vercel.app/"),
 };
 
 export default function RootLayout({
