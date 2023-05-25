@@ -7,7 +7,7 @@ import {
 
 let post = {
   id: 1,
-  title: "Hello World",
+  text: "Hello World",
 };
 
 export const createPost = protectedProcedure
@@ -16,7 +16,7 @@ export const createPost = protectedProcedure
     // simulate a slow db call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    post = { id: post.id + 1, title: input.text };
+    post = { id: post.id + 1, text: input.text };
     return post;
   });
 
