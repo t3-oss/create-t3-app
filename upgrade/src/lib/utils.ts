@@ -1,4 +1,4 @@
-import { Octokit } from "@octokit/rest";
+import { request } from "@octokit/request";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { env } from "~/env.mjs";
@@ -20,11 +20,7 @@ export type VersionsGroupedByMajor = Array<{
 }>;
 
 export const getT3Versions = async () => {
-  const octokit = new Octokit({
-    auth: env.GITHUB_PERSONAL_ACCESS_TOKEN,
-  });
-
-  const releases = await octokit.repos.listReleases({
+  const releases = await request("GET /repos/{owner}/{repo}/releases", {
     owner: "t3-oss",
     repo: "create-t3-app",
     per_page: 100,
@@ -143,19 +139,18 @@ export interface DiffLocation {
 }
 
 export const getDiffFromGithub = async (props: DiffLocation) => {
-  const octokit = new Octokit({
-    auth: env.GITHUB_PERSONAL_ACCESS_TOKEN,
-  });
-
   const featuresString = getFeaturesString(props.features);
   const path = `diffs/diff-${props.currentVersion}-${props.upgradeVersion}${
     featuresString ? `-${featuresString}` : ""
   }.patch`;
 
-  const { data } = await octokit.repos.getContent({
+  const { data } = await request("GET /repos/{owner}/{repo}/contents/{path}", {
     owner: env.GITHUB_DIFFS_OWNER,
     repo: env.GITHUB_DIFFS_REPO,
     path,
+    headers: {
+      authorization: `token ${env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
+    },
   });
 
   if (Array.isArray(data)) {
