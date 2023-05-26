@@ -1,6 +1,7 @@
 {
-  "name": "upgrade",
+  "name": "@ct3a/upgrade",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "build": "next build",
     "clean": "rm -rf node_modules .turbo dist .eslintcache",
