@@ -15,7 +15,7 @@
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.1",
-    "@octokit/rest": "^19.0.8",
+    "@octokit/request": "^7.0.0-beta.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-label": "^2.0.1",
