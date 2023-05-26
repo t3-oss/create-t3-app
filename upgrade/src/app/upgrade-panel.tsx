@@ -91,6 +91,17 @@ export function UpgradePanel({
     }
   }, [noUpgradeAvailable, upgradeVersionOptions]);
 
+  const diffLink = useMemo(() => {
+    if (!currentVersion || !upgradeVersion) return undefined;
+
+    const baseDiff = `/diff/${currentVersion}...${upgradeVersion}`;
+    const featuresString = Object.keys(features)
+      .filter((feature) => features[feature as keyof typeof features])
+      .join("-");
+
+    return featuresString ? `${baseDiff}-${featuresString}` : baseDiff;
+  }, [currentVersion, features, upgradeVersion]);
+
   return (
     <div className="w-full max-w-lg space-y-8">
       <div className="w-full space-y-2">
@@ -191,11 +202,7 @@ export function UpgradePanel({
           </div>
         </div>
         <Link
-          href={`/diff/${currentVersion}...${upgradeVersion}${Object.keys(
-            features,
-          )
-            .filter((feature) => features[feature as keyof typeof features])
-            .join("-")}`}
+          href={diffLink ?? "#"}
           className={cn(
             buttonVariants(),
             (!currentVersion || !upgradeVersion) &&
