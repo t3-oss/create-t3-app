@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function Error404() {
   return (
     <main className="flex h-[calc(100vh-4rem)] flex-col items-center justify-center bg-gradient-to-b from-background to-muted">
@@ -18,7 +16,7 @@ export default function Error404() {
         </div>
 
         <p className="text-center text-2xl font-extrabold tracking-tight hover:underline sm:text-[2rem]">
-          <Link href="/">Go Home</Link>
+          <a href="/">Go Home</a>
         </p>
       </div>
     </main>
