@@ -1,10 +1,11 @@
+import DownloadButton from "./download-button";
 import { Files } from "./files";
 import HowToApplyDiff from "./how-to-apply-diff.mdx";
 import gitdiffParser from "gitdiff-parser";
 import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Button, buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import {
   cn,
@@ -75,13 +76,7 @@ export default async function Page({
           {versionsAndFeatures?.upgradeVersion}
         </h1>
         <div className="my-4 flex w-full items-center justify-center gap-4">
-          <a
-            href={URL.createObjectURL(new Blob([diff], { type: "text/plain" }))}
-            className={cn(buttonVariants())}
-            download={"t3-upgrade.patch"}
-          >
-            Download .patch file
-          </a>
+          <DownloadButton diff={diff} />
 
           <Dialog>
             <DialogTrigger asChild>
