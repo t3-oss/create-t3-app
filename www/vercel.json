@@ -40,5 +40,11 @@
       "source": "/awesome",
       "destination": "/en/t3-collection"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/upgrade/:path*",
+      "destination": "https://t3-upgrade.vercel.app/:path*"
+    }
   ]
 }
