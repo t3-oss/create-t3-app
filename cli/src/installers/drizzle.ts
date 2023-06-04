@@ -8,7 +8,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-kit"],
+    dependencies: ["drizzle-kit", "dotenv"],
     devMode: true,
   });
   addPackageDependency({
@@ -18,6 +18,9 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
+
+  const configFile = path.join(extrasDir, "config/drizzle.config.ts");
+  const configDest = path.join(projectDir, "drizzle.config.ts");
 
   const schemaSrc = path.join(
     extrasDir,
@@ -40,6 +43,7 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
     "db:push": "drizzle-kit push:mysql",
   };
 
+  fs.copySync(configFile, configDest);
   fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
