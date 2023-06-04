@@ -29,13 +29,14 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const clientSrc = path.join(extrasDir, "src/server/db/db-prisma.ts");
   const clientDest = path.join(projectDir, "src/server/db.ts");
 
-  // add postinstall script to package.json
+  // add postinstall and push script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
     postinstall: "prisma generate",
+    "db:push": "prisma db push",
   };
 
   fs.copySync(schemaSrc, schemaDest);
