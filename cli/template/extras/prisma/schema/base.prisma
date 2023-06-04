@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
     previewFeatures = ["jsonProtocol"]
 }
 
@@ -12,7 +12,8 @@ datasource db {
 }
 
 model Example {
-    id        String   @id @default(cuid())
+    id        Int      @id @default(autoincrement())
+    number    Int
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }

@@ -11,6 +11,12 @@ export const dependencyVersionMap = {
   prisma: "^4.14.0",
   "@prisma/client": "^4.14.0",
 
+  // Drizzle
+  "drizzle-orm": "^0.26.3",
+  "drizzle-kit": "^0.18.1",
+  // REVIEW: Is it fine including pscale by default?
+  "@planetscale/database": "^1.7.0",
+
   // TailwindCSS
   tailwindcss: "^3.3.0",
   autoprefixer: "^10.4.14",

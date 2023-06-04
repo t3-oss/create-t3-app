@@ -52,6 +52,7 @@
     "sort-package-json": "^2.4.1"
   },
   "devDependencies": {
+    "@planetscale/database": "^1.7.0",
     "@prisma/client": "^4.14.0",
     "@t3-oss/env-nextjs": "^0.3.1",
     "@tanstack/react-query": "^4.29.7",
@@ -63,6 +64,7 @@
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.3",
     "@types/node": "^18.16.0",
+    "drizzle-orm": "^0.26.5",
     "next": "^13.4.1",
     "next-auth": "^4.22.1",
     "prettier": "^2.8.8",

@@ -25,6 +25,8 @@ interface CliFlags {
   /** @internal Used in CI. */
   prisma: boolean;
   /** @internal Used in CI. */
+  drizzle: boolean;
+  /** @internal Used in CI. */
   nextAuth: boolean;
 }
 
@@ -45,6 +47,7 @@ const defaultOptions: CliResults = {
     tailwind: false,
     trpc: false,
     prisma: false,
+    drizzle: false,
     nextAuth: false,
     importAlias: "~/",
   },
@@ -104,6 +107,12 @@ export const runCli = async () => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
+      "--drizzle [boolean]",
+      "Experimental: Boolean value if we should install Drizzle. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false",
+    )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
@@ -152,7 +161,16 @@ export const runCli = async () => {
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
+    if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+
+    if (cliResults.flags.prisma && cliResults.flags.drizzle) {
+      console.warn(
+        "Incompatible combination Prisma + Drizzle. Falling back to Prisma only.",
+      );
+      cliResults.flags.drizzle = false;
+      cliResults.packages.splice(cliResults.packages.indexOf("drizzle"), 1);
+    }
   }
 
   // Explained below why this is in a try/catch block
@@ -264,6 +282,12 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
         name: pkgName,
         checked: false,
       })),
+    validate: (input: string[]) => {
+      if (input.includes("prisma") && input.includes("drizzle")) {
+        return "You cannot select both Prisma and Drizzle in the same app.";
+      }
+      return true;
+    },
   });
 
   return packages;

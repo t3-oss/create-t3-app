@@ -5,15 +5,15 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const prismaInstaller: Installer = ({ projectDir, packages }) => {
+export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["prisma"],
+    dependencies: ["drizzle-kit"],
     devMode: true,
   });
   addPackageDependency({
     projectDir,
-    dependencies: ["@prisma/client"],
+    dependencies: ["drizzle-orm", "@planetscale/database"],
     devMode: false,
   });
 
@@ -21,21 +21,23 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
 
   const schemaSrc = path.join(
     extrasDir,
-    "prisma/schema",
-    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma",
+    "src/server/db",
+    packages?.nextAuth.inUse
+      ? "drizzle-schema-auth.ts"
+      : "drizzle-schema-base.ts",
   );
-  const schemaDest = path.join(projectDir, "prisma/schema.prisma");
+  const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
-  const clientSrc = path.join(extrasDir, "src/server/db/db-prisma.ts");
-  const clientDest = path.join(projectDir, "src/server/db.ts");
+  const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
+  const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
-  // add postinstall script to package.json
+  // add db:push script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    postinstall: "prisma generate",
+    "db:push": "drizzle-kit push:mysql",
   };
 
   fs.copySync(schemaSrc, schemaDest);
