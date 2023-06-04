@@ -28,8 +28,10 @@ export const logNextSteps = ({
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 
-  logger.warn(
-    `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
-    `\nNote: We use the PlanetScale driver. If you want to use a different driver, you'll need to change it yourself.`,
-  );
+  if (packages?.drizzle.inUse) {
+    logger.warn(
+      `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
+      `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`,
+    );
+  }
 };
