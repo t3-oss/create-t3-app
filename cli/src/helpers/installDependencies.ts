@@ -64,6 +64,22 @@ const runInstallCommand = async (
       });
 
       return yarnSpinner;
+    case "bun":
+      const bunSpinner = ora("Running bun install...").start();
+      const bunSubprocess = execa(pkgManager, ["install"], {
+        cwd: projectDir,
+        stdout: "pipe",
+      });
+
+      await new Promise<void>((res, rej) => {
+        bunSubprocess.stdout?.on("data", (data: Buffer) => {
+          bunSpinner.text = data.toString();
+        });
+        bunSubprocess.on("error", (e) => rej(e));
+        bunSubprocess.on("close", () => res());
+      });
+
+      return bunSpinner;
   }
 };
 /*eslint-enable @typescript-eslint/no-floating-promises*/
