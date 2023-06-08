@@ -3,6 +3,11 @@ const validationRegExp =
 
 //Validate a string against allowed package.json names
 export const validateAppName = (input: string) => {
+  // Ignore potential trailing slash
+  if (input.endsWith("/")) {
+    input = input.slice(0, -1);
+  }
+
   const paths = input.split("/");
 
   // If the first part is a @, it's a scoped package

@@ -231,6 +231,11 @@ const promptAppName = async (): Promise<string> => {
     },
   });
 
+  // Remove potential trailing slash
+  if (appName.endsWith("/")) {
+    return appName.slice(0, -1);
+  }
+
   return appName;
 };
 
