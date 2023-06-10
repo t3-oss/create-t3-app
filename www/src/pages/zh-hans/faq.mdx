@@ -3,7 +3,10 @@ title: 常见疑问
 description: 关于 Create T3 App 的常见疑问
 layout: ../../layouts/docs.astro
 lang: zh-hans
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 这里罗列了一些关于 Create T3 App 的常见疑问。
 
@@ -18,6 +21,10 @@ lang: zh-hans
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+
+## 如何使我的应用保持更新？
+Create T3 App是一个脚手架工具，不是一个框架。这意味着一旦你初始化了一个应用程序，它就是你的了。并没有帮助你保持最新状态的 CLI 工具。如果你想跟踪我们对模板所做的改进，你可以在我们的存储库上[启用发布通知](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)功能。
+话是这么说，但是不一定需要将我们对模板所做的每一个更改都应用到你的应用程序中。
 
 ## 现在有哪些关于 T3 Stack 的学习资源可供参考？
 
@@ -59,4 +66,6 @@ lang: zh-hans
 
 正如在 [T3-原则第二条](/zh-hans/introduction#负责任地尝鲜) 里提到的，我们热爱新技术，但是也看重稳定性，项目的整个路由不是很容易迁移，而你却在此使用风险较高的新技术，[这不是一个明智的选择](https://youtu.be/mnwUbtieOuI?t=1662)。`/app` 目前只是 [对未来特性的一瞥而已](https://youtu.be/rnsC-12PVlM?t=818)，它还未做好准备被用于生产环境；这项 API 还处于 beta 阶段，可以预见接下来还会有破坏性的改变。
 
-你可以访问 [beta 版 Next.js 文档](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features) 来查看 `/app` 目录所支持的、计划支持的和目前正在实施的特性列表。
+<Callout type="info">
+  对于 `/app` 目录中支持的、计划的和正在开发的功能列表，请访问 [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>

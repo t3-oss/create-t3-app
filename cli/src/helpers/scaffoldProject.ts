@@ -1,8 +1,8 @@
-import path from "path";
 import chalk from "chalk";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
+import path from "path";
 import { PKG_ROOT } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";

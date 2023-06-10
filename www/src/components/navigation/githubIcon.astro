@@ -1,6 +1,6 @@
 ---
-import { fetchGithub } from "../../utils/fetchGithub";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
+import { fetchGithub } from "../../utils/fetchGithub";
 
 const githubStars =
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {

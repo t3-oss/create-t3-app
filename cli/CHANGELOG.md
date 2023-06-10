@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.13.1
+
+### Patch Changes
+
+- [#1436](https://github.com/t3-oss/create-t3-app/pull/1436) [`b0facee`](https://github.com/t3-oss/create-t3-app/commit/b0facee2736e3e0afc909c3d80b38499174fd84c) Thanks [@harrismcc](https://github.com/harrismcc)! - When using NextAuth but not Prisma, the session user's id is now set to `token.sub` instead of `user.id` because `user` is undefined when not using database sessions.
+
+- [#1433](https://github.com/t3-oss/create-t3-app/pull/1433) [`7fbe991`](https://github.com/t3-oss/create-t3-app/commit/7fbe991175f4da02184e0e43a5439515d1ef7439) Thanks [@FinnDore](https://github.com/FinnDore)! - fix: SKIP_ENV_VALIDATION not skipping env validation
+
 ## 7.13.0
 
 ### Minor Changes
