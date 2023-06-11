@@ -1,3 +1,4 @@
+import { removeTrailingSlash } from "./removeTrailingSlash.js";
 import pathModule from "path";
 
 /**
@@ -15,11 +16,8 @@ import pathModule from "path";
  * - dir/@mono/app => ["@mono/app", "dir/app"]
  * - dir/app => ["app", "dir/app"]
  */
-export const parseNameAndPath = (input: string) => {
-  // Remove potential trailing slash
-  if (input.endsWith("/")) {
-    input = input.slice(0, -1);
-  }
+export const parseNameAndPath = (rawInput: string) => {
+  const input = removeTrailingSlash(rawInput);
 
   const paths = input.split("/");
 
