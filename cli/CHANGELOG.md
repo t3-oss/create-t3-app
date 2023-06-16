@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.13.2
+
+### Patch Changes
+
+- [#1469](https://github.com/t3-oss/create-t3-app/pull/1469) [`547f504`](https://github.com/t3-oss/create-t3-app/commit/547f504b91c3da9b6419ea7f9f43d03e6c243839) Thanks [@ericshively](https://github.com/ericshively)! - Replace React.FC with basic function syntax
+
 ## 7.13.1
 
 ### Patch Changes
