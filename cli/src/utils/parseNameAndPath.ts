@@ -1,3 +1,4 @@
+import { removeTrailingSlash } from "./removeTrailingSlash.js";
 import pathModule from "path";
 
 /**
@@ -15,7 +16,9 @@ import pathModule from "path";
  * - dir/@mono/app => ["@mono/app", "dir/app"]
  * - dir/app => ["app", "dir/app"]
  */
-export const parseNameAndPath = (input: string) => {
+export const parseNameAndPath = (rawInput: string) => {
+  const input = removeTrailingSlash(rawInput);
+
   const paths = input.split("/");
 
   let appName = paths[paths.length - 1];
