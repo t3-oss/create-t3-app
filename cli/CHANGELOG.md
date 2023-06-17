@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.14.0
+
+### Minor Changes
+
+- [#1466](https://github.com/t3-oss/create-t3-app/pull/1466) [`e8b68d9`](https://github.com/t3-oss/create-t3-app/commit/e8b68d92af093361bf73eed7eacd7ed6848500c3) Thanks [@brunoeduardodev](https://github.com/brunoeduardodev)! - Ignore trailing slashes when prompting the app name.
+
 ## 7.13.2
 
 ### Patch Changes
