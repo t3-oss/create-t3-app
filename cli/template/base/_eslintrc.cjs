@@ -1,5 +1,5 @@
 /** @type {import("eslint").Linter.Config} */
-module.exports = {
+const config = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
@@ -21,3 +21,5 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
   },
 };
+
+module.exports = config;
