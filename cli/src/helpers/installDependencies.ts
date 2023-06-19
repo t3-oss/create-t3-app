@@ -7,9 +7,9 @@ import {
 } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
-type Options = {
+interface Options {
   projectDir: string;
-};
+}
 
 /*eslint-disable @typescript-eslint/no-floating-promises*/
 const runInstallCommand = async (
@@ -43,8 +43,12 @@ const runInstallCommand = async (
               : text;
           }
         });
-        pnpmSubprocess.on("error", (e) => rej(e));
-        pnpmSubprocess.on("close", () => res());
+        pnpmSubprocess.on("error", (e) => {
+          rej(e);
+        });
+        pnpmSubprocess.on("close", () => {
+          res();
+        });
       });
 
       return pnpmSpinner;
@@ -59,8 +63,12 @@ const runInstallCommand = async (
         yarnSubprocess.stdout?.on("data", (data: Buffer) => {
           yarnSpinner.text = data.toString();
         });
-        yarnSubprocess.on("error", (e) => rej(e));
-        yarnSubprocess.on("close", () => res());
+        yarnSubprocess.on("error", (e) => {
+          rej(e);
+        });
+        yarnSubprocess.on("close", () => {
+          res();
+        });
       });
 
       return yarnSpinner;
@@ -76,7 +84,7 @@ export const installDependencies = async ({ projectDir }: Options) => {
 
   // If the spinner was used to show the progress, use succeed method on it
   // If not, use the succeed on a new spinner
-  (installSpinner || ora()).succeed(
+  (installSpinner ?? ora()).succeed(
     chalk.green("Successfully installed dependencies!\n"),
   );
 };

@@ -6,9 +6,9 @@ import {
 } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 
-type InstallPackagesOptions = {
+type InstallPackagesOptions = InstallerOptions & {
   packages: PkgInstallerMap;
-} & InstallerOptions;
+};
 // This runs the installer for all the packages that the user has selected
 export const installPackages = (options: InstallPackagesOptions) => {
   const { packages } = options;

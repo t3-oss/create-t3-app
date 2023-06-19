@@ -13,7 +13,7 @@ export const OPEN_GRAPH = {
 };
 
 // This is the type of the frontmatter you put in the docs markdown files.
-export type Frontmatter = {
+export interface Frontmatter {
   title: string;
   description: string;
   layout: string;
@@ -22,7 +22,7 @@ export type Frontmatter = {
   ogLocale?: string;
   lang?: KnownLanguageCode;
   isMdx?: boolean;
-};
+}
 
 export const KNOWN_LANGUAGES = {
   // Add more languages here
@@ -51,12 +51,14 @@ export const ALGOLIA = {
   apiKey: "892c4647b96fe1b3d0b7d8de1c5b5e40",
 };
 
-export type OuterHeaders = "Create T3 App" | "Usage" | "Deployment";
+export type OuterHeaders = "Create T3 App" | "Deployment" | "Usage";
 
-export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
+export interface SidebarItem<
+  TCode extends KnownLanguageCode = KnownLanguageCode,
+> {
   text: string;
   link: `${TCode}/${string}`;
-};
+}
 
 export type SidebarItemLink = SidebarItem["link"];
 

@@ -52,8 +52,8 @@
     "@types/eslint": "^8.37.0",
     "@types/node": "^18.16.0",
     "@types/prettier": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.6",
-    "@typescript-eslint/parser": "^5.59.6",
+    "@typescript-eslint/eslint-plugin": "6.0.0-alpha.158",
+    "@typescript-eslint/parser": "6.0.0-alpha.158",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^0.0.9",
@@ -65,5 +65,9 @@
     "prettier": "^2.8.8",
     "turbo": "^1.9.6",
     "typescript": "^5.0.4"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "6.0.0-alpha.158",
+    "@typescript-eslint/parser": "6.0.0-alpha.158"
   }
 }

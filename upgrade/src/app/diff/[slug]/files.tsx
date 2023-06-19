@@ -77,7 +77,9 @@ function FileComponent({
           "flex w-full flex-row justify-between p-4 font-mono",
           isExpanded && "border-b-2",
         )}
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={() => {
+          setIsExpanded(!isExpanded);
+        }}
       >
         <div className="flex flex-row gap-4">
           <div className="my-auto rounded-sm border px-1">

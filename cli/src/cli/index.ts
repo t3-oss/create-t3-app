@@ -163,7 +163,7 @@ export const runCli = async () => {
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
       const error = new Error("Non-interactive environment");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
       (error as any).isTTYError = true;
       throw error;
     }
@@ -191,7 +191,7 @@ export const runCli = async () => {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
     // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
     if (err instanceof Error && (err as any).isTTYError) {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
