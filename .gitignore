@@ -41,6 +41,7 @@ next-env.d.ts
 tmp/
 temp/
 .docusaurus
+*.tsbuildinfo
 
 # MAC
 ._*
