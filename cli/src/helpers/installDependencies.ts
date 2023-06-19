@@ -43,12 +43,8 @@ const runInstallCommand = async (
               : text;
           }
         });
-        pnpmSubprocess.on("error", (e) => {
-          rej(e);
-        });
-        pnpmSubprocess.on("close", () => {
-          res();
-        });
+        pnpmSubprocess.on("error", (e) => rej(e));
+        pnpmSubprocess.on("close", () => res());
       });
 
       return pnpmSpinner;
@@ -63,12 +59,8 @@ const runInstallCommand = async (
         yarnSubprocess.stdout?.on("data", (data: Buffer) => {
           yarnSpinner.text = data.toString();
         });
-        yarnSubprocess.on("error", (e) => {
-          rej(e);
-        });
-        yarnSubprocess.on("close", () => {
-          res();
-        });
+        yarnSubprocess.on("error", (e) => rej(e));
+        yarnSubprocess.on("close", () => res());
       });
 
       return yarnSpinner;

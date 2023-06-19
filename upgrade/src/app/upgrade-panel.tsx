@@ -112,14 +112,14 @@ export function UpgradePanel({
               <Checkbox
                 id={feature}
                 checked={features[feature as keyof typeof features]}
-                onCheckedChange={(value) => {
+                onCheckedChange={(value) =>
                   value !== "indeterminate"
                     ? setFeatures((prev) => ({
                         ...prev,
                         [feature]: value,
                       }))
-                    : null;
-                }}
+                    : null
+                }
               />
               <Label htmlFor={feature} className="">
                 {prettyFeatureNameMap[feature as keyof Features]}
@@ -143,11 +143,7 @@ export function UpgradePanel({
                 </DialogContent>
               </Dialog>
             </div>
-            <Select
-              onValueChange={(value) => {
-                setCurrentVersion(value);
-              }}
-            >
+            <Select onValueChange={(value) => setCurrentVersion(value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select version" />
               </SelectTrigger>
@@ -171,9 +167,7 @@ export function UpgradePanel({
           <div className="w-full space-y-1">
             <Label className="text-base">I want to upgrade to</Label>
             <Select
-              onValueChange={(value) => {
-                setUpgradeVersion(value);
-              }}
+              onValueChange={(value) => setUpgradeVersion(value)}
               disabled={!!noUpgradeAvailable}
               defaultValue={
                 noUpgradeAvailable
