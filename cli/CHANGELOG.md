@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.14.1
+
+### Patch Changes
+
+- [#1479](https://github.com/t3-oss/create-t3-app/pull/1479) [`bb7324c`](https://github.com/t3-oss/create-t3-app/commit/bb7324c9503995949c61c0a5abe736c38f07b815) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use custom error class for IsTTYError
+
 ## 7.14.0
 
 ### Minor Changes
