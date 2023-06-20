@@ -6,6 +6,7 @@ import { type AvailablePackages } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { IsTTYError } from "~/utils/isTTYError.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
 import { validateImportAlias } from "~/utils/validateImportAlias.js";
@@ -162,10 +163,7 @@ export const runCli = async () => {
   using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
-      const error = new Error("Non-interactive environment");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (error as any).isTTYError = true;
-      throw error;
+      throw new IsTTYError("Non-interactive environment");
     }
 
     // if --CI flag is set, we are running in CI mode and should not prompt the user
@@ -188,11 +186,9 @@ export const runCli = async () => {
       cliResults.flags.importAlias = await promptImportAlias();
     }
   } catch (err) {
-    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
+    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an IsTTYError
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
-    // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (err instanceof Error && (err as any).isTTYError) {
+    if (err instanceof IsTTYError) {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
