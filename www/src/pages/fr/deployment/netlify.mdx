@@ -3,7 +3,10 @@ title: Netlify
 description: Déploiement sur Netlify
 layout: ../../../layouts/docs.astro
 lang: fr
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Netlify est un fournisseur de déploiement alternatif dans la même veine que Vercel. Voir [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) pour un exemple de dépôt basé sur ce document.
 
@@ -15,7 +18,9 @@ Il existe également un sentiment commun selon lequel de nombreuses fonctionnali
 
 Il existe des avantages et des inconvénients relatifs pour chaque fournisseurs de déploiement, car aucun hébergeur ne peut avoir le meilleur support pour tous les cas d'utilisation. Par exemple, Netlify a construit son propre [environnement d'exécution Next.js personnalisé](https://github.com/netlify/next-runtime) pour les fonctions Edge de Netlify (qui s'exécutent sur Deno Deploy) et [maintient un middleware unique pour accéder et modifier les réponses HTTP](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
-> _REMARQUE : Pour suivre l'état des fonctionnalités instables de Next 13, consultez [Utilisation du répertoire "app" de Next 13 sur Netlify](https://github.com/netlify/next-runtime/discussions/1724)._
+<Callout type="info">
+  Pour suivre l'état des fonctionnalités instables de Next 13, consultez [Utilisation du répertoire "app" de Next 13 sur Netlify](https://github.com/netlify/next-runtime/discussions/1724).
+</Callout>
 
 ## Configurer le projet
 

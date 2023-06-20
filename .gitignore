@@ -36,10 +36,12 @@ yarn-error.log*
 .idea
 .cache/
 .next/
+next-env.d.ts
 .nuxt/
 tmp/
 temp/
 .docusaurus
+*.tsbuildinfo
 
 # MAC
 ._*

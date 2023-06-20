@@ -1,5 +1,31 @@
 # Changelog
 
+## 7.14.1
+
+### Patch Changes
+
+- [#1479](https://github.com/t3-oss/create-t3-app/pull/1479) [`bb7324c`](https://github.com/t3-oss/create-t3-app/commit/bb7324c9503995949c61c0a5abe736c38f07b815) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use custom error class for IsTTYError
+
+## 7.14.0
+
+### Minor Changes
+
+- [#1466](https://github.com/t3-oss/create-t3-app/pull/1466) [`e8b68d9`](https://github.com/t3-oss/create-t3-app/commit/e8b68d92af093361bf73eed7eacd7ed6848500c3) Thanks [@brunoeduardodev](https://github.com/brunoeduardodev)! - Ignore trailing slashes when prompting the app name.
+
+## 7.13.2
+
+### Patch Changes
+
+- [#1469](https://github.com/t3-oss/create-t3-app/pull/1469) [`547f504`](https://github.com/t3-oss/create-t3-app/commit/547f504b91c3da9b6419ea7f9f43d03e6c243839) Thanks [@ericshively](https://github.com/ericshively)! - Replace React.FC with basic function syntax
+
+## 7.13.1
+
+### Patch Changes
+
+- [#1436](https://github.com/t3-oss/create-t3-app/pull/1436) [`b0facee`](https://github.com/t3-oss/create-t3-app/commit/b0facee2736e3e0afc909c3d80b38499174fd84c) Thanks [@harrismcc](https://github.com/harrismcc)! - When using NextAuth but not Prisma, the session user's id is now set to `token.sub` instead of `user.id` because `user` is undefined when not using database sessions.
+
+- [#1433](https://github.com/t3-oss/create-t3-app/pull/1433) [`7fbe991`](https://github.com/t3-oss/create-t3-app/commit/7fbe991175f4da02184e0e43a5439515d1ef7439) Thanks [@FinnDore](https://github.com/FinnDore)! - fix: SKIP_ENV_VALIDATION not skipping env validation
+
 ## 7.13.0
 
 ### Minor Changes
