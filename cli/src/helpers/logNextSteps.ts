@@ -29,4 +29,6 @@ export const logNextSteps = ({
   }
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
+
+  logger.info(`  git commit -m "initial commit"`);
 };
