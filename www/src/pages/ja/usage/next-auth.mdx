@@ -3,7 +3,10 @@ title: NextAuth.js
 description: NextAuth.jsの使い方
 layout: ../../../layouts/docs.astro
 lang: ja
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Next.js アプリケーションが認証システムを必要とするとき、NextAuth.js は、自分で構築する手間をかけずに、複雑なセキュリティを導入できる優れたソリューションです。NextAuth.js には OAuth 認証をすばやく追加するための豊富なプロバイダーの一覧が付属しており、多くのデータベースや ORM のためのアダプターを提供しています。
 
@@ -177,6 +180,34 @@ NextAuth.js を Prisma と共に動作させるには、多くの[初期設定](
 ## Next.js ミドルウェアを使った利用法
 
 NextAuth.js を Next.js ミドルウェアで利用する場合、認証に [JWT セッション戦略](https://next-auth.js.org/configuration/nextjs#caveats)を利用する必要があります。これは、ミドルウェアが JWT である場合にのみ、セッションクッキーにアクセスすることができるためです。デフォルトでは、Create T3 App は、データベースアダプターとして Prisma と組み合わせて、**default**データベースストラテジーを使用するように構成されています。
+
+<Callout type="warning">
+データベースセッションの使用が推奨されており、セキュリティ問題を避けるために JWT セッション戦略に切り替える前に JWT について詳しく調べておくべきです。
+
+</Callout>
+
+JWT セッション戦略に切り替えた後は、`src/server/auth.ts` の`session`コールバックを更新してください。
+`user`オブジェクトは`undefined`になります。代わりに、`token`オブジェクトからユーザーの ID を取得します。
+つまり：
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session({ session, user }) {
++     session({ session, token }) {
+-       if (session.user) {
++       if (session.user && token.sub) {
+-         session.user.id = user.id;
++         session.user.id = token.sub;
+        }
+        return session;
+      }
+    },
+  };
+```
 
 ## デフォルトの DiscordProvider を設定する
 
