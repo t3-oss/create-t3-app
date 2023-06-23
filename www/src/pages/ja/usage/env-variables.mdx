@@ -8,113 +8,39 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App は [Zod](https://github.com/colinhacks/zod) を使用して、`src/env.mjs`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行います。
+Create T3 App は自前のパッケージ[@t3-oss/env-nextjs](https://env.t3.gg) と [Zod](https://github.com/colinhacks/zod) を組合わせて、`src/env.mjs`にいくつかの簡単なロジックを提供することにより、実行時*および*構築時に環境変数の検証を行います。
 
 ## env.mjs
 
-_要約; 環境変数を追加する場合は、`.env`に追加するとともに、`src/env.mjs`にバリデーターを定義する必要があります。_
-
-このファイルは、スキーマと、オブジェクトの検証ロジックおよび再構築の、2 つの部分に分かれています。検証ロジックは触る必要がありません。
+_要約; 環境変数を追加する場合は、`src/env.mjs`にバリデーターを定義し、キーバリューペアを `.env`に追加する必要があります。_
 
 ```ts:env.mjs
-const server = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
-});
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
-const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
-
-const processEnv = {
-  NODE_ENV: process.env.NODE_ENV,
-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-};
-```
-
-### サーバースキーマ
-
-サーバーサイドの環境変数スキーマをここで定義します。
-
-<Callout type="warning">
-  重要なシークレットがクライアント側に漏れないようにするため、ここでのキーには
-  `NEXT_PUBLIC` の接頭辞をつけないようにしてください。
-</Callout>
-
-### クライアントスキーマ
-
-クライアント側の環境変数のスキーマをここで定義します。
-
-クライアントに公開するには接頭辞 `NEXT_PUBLIC` を付ける必要があります。接頭辞を付けない場合、検証が失敗するので不正な構成を検出できます。
-
-### processEnv オブジェクト
-
-ここで `process.env` を再構築します。
-
-Zod スキーマを解析できる JavaScript オブジェクトが必要で、Next.js が環境変数を扱う方法のため、通常のオブジェクトのように process.env を再構築できません。そのため、手動で行う必要があります
-
-TypeScript は、両方のスキーマからすべてのキーを再構築したことを確認するのに役立ちます。
-
-```ts
-// ❌ This doesn't work, we need to destruct it manually
-const schema = z.object({
-  NEXT_PUBLIC_WS_KEY: z.string(),
-});
-
-const validated = schema.parse(process.env);
-```
-
-### バリデーションロジック
-
-_興味のある読者のために:_
-
-<details>
-<summary>高度な話題: バリデーションロジック</summary>
-
-環境（サーバーまたはクライアント）に応じて、両方のスキーマが検証されるのか、クライアントのスキーマだけが検証されるのかが決まります。つまり、サーバーの環境変数が未定義であっても、バリデーションが失敗することはありません。つまり、環境変数のエントリーポイントを 1 つにすることができます。
-
-```ts
-// src/env.mjs
-
-const isServer = typeof window === "undefined";
-
-const merged = server.merge(client);
-const parsed = isServer
-  ? merged.safeParse(processEnv) // <-- on server, validate all
-  : client.safeParse(processEnv); // <-- on client, validate only client
-
-if (parsed.success === false) {
-  console.error(
-    "❌ Invalid environment variables:\n",
-    ...formatErrors(parsed.error.format()),
-  );
-  throw new Error("Invalid environment variables");
-}
-```
-
-そして、プロキシオブジェクトを使って、クライアントでサーバーサイドの環境変数にアクセスしようとすると、エラーを投げるようにしています。
-
-```ts
-// src/env.mjs
-
-// proxy allows us to remap the getters
-export const env = new Proxy(parsed.data, {
-  get(target, prop) {
-    if (typeof prop !== "string") return undefined;
-    // on the client we only allow NEXT_PUBLIC_ variables
-    if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
-      throw new Error(
-        "❌ Attempted to access serverside environment variable on the client",
-      );
-    return target[prop]; // <-- otherwise, return the value
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
   },
 });
 ```
 
-</details>
+T3 Env は`createEnv`関数を使用して、クライアント側とサーバー側の環境変数を検証するスキーマを作成します。
+
+<Callout type="info">
+  createEnvが内部でどのように動作するかについての詳細は、[T3
+  Env](https://env.t3.gg/docs/introduction)のドキュメントをご覧ください。
+</Callout>
 
 ## 環境変数の使用
 
-環境変数を使いたいときは、`env.mjs`からインポートして、通常と同じように使うことができます。これをクライアントでインポートして、サーバー側の環境変数にアクセスしようとすると、ランタイムエラーが発生します。
+環境変数を使いたいときは、先程作成した`env.mjs`からインポートして、通常と同じように使うことができます。これをクライアントでインポートして、サーバー側の環境変数にアクセスしようとすると、ランタイムエラーが発生します。
 
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
@@ -145,7 +71,11 @@ Next.js などのいくつかのフレームワークやビルドツールでは
 
 📄 `.env`: 通常の`.env`ファイルに入力するように、環境変数を入力します（例：`KEY=VALUE`）。
 
-📄 `env.mjs`：Zod スキーマを定義することで、環境変数に適切な検証ロジックを追加します。（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに再構築します（例：`KEY: process.env.KEY` ）。
+📄 `env.mjs`：それぞれの環境変数に`createEnv`中で Zod スキーマを定義することで、環境変数に適切な検証ロジックを追加します。（例：`KEY: z.string()` ）。それに加えて、`runtimeEnv`オプションでそれらを分解することを確認してください。例えば、`KEY: process.env.KEY`のようにします。
+
+<Callout type="info">
+  なぜ`runtimeEnv`で環境変数を分解する必要があるのでしょうか。これはNext.jsが特定のランタイムで環境変数をバンドルする方法によるものです。手動で分解することで、変数がバンドルから取り除かれることはないことを保証します。
+</Callout>
 
 オプションで、`.env.example`を最新化しておいても良いでしょう：
 
@@ -164,15 +94,19 @@ TWITTER_API_TOKEN=1234567890
 2. 環境変数を `env.mjs` に追加する：
 
 ```ts
-export const server = z.object({
-  // ...
-  TWITTER_API_TOKEN: z.string(),
-});
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
-export const processEnv = {
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
   // ...
-  TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
-};
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
 ```
 
 <Callout type="info">
@@ -181,7 +115,7 @@ export const processEnv = {
   空であってはならない場合は、`z.string().min(1)` のように指定します。
 </Callout>
 
-3. _オプション:_ 環境変数を `.env.example` に追加しますが、トークン値自体は含めないようにします。
+3. _オプション:_ 環境変数を `.env.example` に追加しますが、`runtimeEnv`オプションには秘密情報を含めないように注意してください。
 
 ```
 TWITTER_API_TOKEN=
