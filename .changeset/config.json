@@ -1,11 +1,15 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "$schema": "https://unpkg.com/@changesets/config@2.1.1/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "t3-oss/create-t3-app" }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],
-  "access": "restricted",
-  "baseBranch": "main",
+  "access": "public",
+  "baseBranch": "next",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": ["@ct3a/www", "@ct3a/upgrade"],
+  "changedFilePatterns": ["src/**", "template/**"]
 }
