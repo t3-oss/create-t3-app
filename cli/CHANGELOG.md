@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.15.0
+
+### Minor Changes
+
+- [#1484](https://github.com/t3-oss/create-t3-app/pull/1484) [`23a9d60`](https://github.com/t3-oss/create-t3-app/commit/23a9d60cd013c40d76ab96d0340425e1e3d8efa2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - reminder to git commit after creating an application with the CLI
+
 ## 7.14.1
 
 ### Patch Changes
