@@ -13,9 +13,9 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
-      "@trpc/react-query"
+      "@trpc/react-query",
     ],
-    devMode: false
+    devMode: false,
   });
 
   const usingAuth = packages?.nextAuth.inUse;

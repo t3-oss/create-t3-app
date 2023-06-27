@@ -12,7 +12,7 @@ export const availablePackages = [
   "prisma",
   "tailwind",
   "trpc",
-  "envVariables"
+  "envVariables",
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -38,22 +38,22 @@ export const buildPkgInstallerMap = (
 ): PkgInstallerMap => ({
   nextAuth: {
     inUse: packages.includes("nextAuth"),
-    installer: nextAuthInstaller
+    installer: nextAuthInstaller,
   },
   prisma: {
     inUse: packages.includes("prisma"),
-    installer: prismaInstaller
+    installer: prismaInstaller,
   },
   tailwind: {
     inUse: packages.includes("tailwind"),
-    installer: tailwindInstaller
+    installer: tailwindInstaller,
   },
   trpc: {
     inUse: packages.includes("trpc"),
-    installer: trpcInstaller
+    installer: trpcInstaller,
   },
   envVariables: {
     inUse: true,
-    installer: envVariablesInstaller
-  }
+    installer: envVariablesInstaller,
+  },
 });

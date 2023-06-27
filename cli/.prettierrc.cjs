@@ -5,7 +5,7 @@ const config = {
   ...baseConfig,
   plugins: [...baseConfig.plugins, "prettier-plugin-tailwindcss"],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
-  trailingComma: "none"
+  trailingComma: "es5",
 };
 
 module.exports = config;

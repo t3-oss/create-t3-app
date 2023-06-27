@@ -9,7 +9,7 @@ type SelectBoilerplateProps = Required<
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = ({
   projectDir,
-  packages
+  packages,
 }: SelectBoilerplateProps) => {
   const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
 
@@ -35,7 +35,7 @@ export const selectAppFile = ({
 // This selects the proper index.tsx to be used that showcases the chosen tech
 export const selectIndexFile = ({
   projectDir,
-  packages
+  packages,
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/pages/index");
 

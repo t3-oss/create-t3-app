@@ -3,7 +3,7 @@ import { execa } from "execa";
 import ora, { type Ora } from "ora";
 import {
   getUserPkgManager,
-  type PackageManager
+  type PackageManager,
 } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
@@ -21,7 +21,7 @@ const runInstallCommand = async (
     case "npm":
       await execa(pkgManager, ["install"], {
         cwd: projectDir,
-        stderr: "inherit"
+        stderr: "inherit",
       });
 
       return null;
@@ -30,7 +30,7 @@ const runInstallCommand = async (
       const pnpmSpinner = ora("Running pnpm install...").start();
       const pnpmSubprocess = execa(pkgManager, ["install"], {
         cwd: projectDir,
-        stdout: "pipe"
+        stdout: "pipe",
       });
 
       await new Promise<void>((res, rej) => {
@@ -52,7 +52,7 @@ const runInstallCommand = async (
       const yarnSpinner = ora("Running yarn...").start();
       const yarnSubprocess = execa(pkgManager, [], {
         cwd: projectDir,
-        stdout: "pipe"
+        stdout: "pipe",
       });
 
       await new Promise<void>((res, rej) => {

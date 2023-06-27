@@ -36,12 +36,12 @@ export const api = createTRPCNext<AppRouter>({
         loggerLink({
           enabled: (opts) =>
             process.env.NODE_ENV === "development" ||
-            (opts.direction === "down" && opts.result instanceof Error)
+            (opts.direction === "down" && opts.result instanceof Error),
         }),
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`
-        })
-      ]
+          url: `${getBaseUrl()}/api/trpc`,
+        }),
+      ],
     };
   },
   /**
@@ -49,7 +49,7 @@ export const api = createTRPCNext<AppRouter>({
    *
    * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
    */
-  ssr: false
+  ssr: false,
 });
 
 /**

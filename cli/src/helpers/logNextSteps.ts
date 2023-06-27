@@ -7,7 +7,7 @@ import { logger } from "~/utils/logger.js";
 export const logNextSteps = ({
   projectName = DEFAULT_APP_NAME,
   packages,
-  noInstall
+  noInstall,
 }: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
   const pkgManager = getUserPkgManager();
 

@@ -47,8 +47,8 @@ const defaultOptions: CliResults = {
     trpc: false,
     prisma: false,
     nextAuth: false,
-    importAlias: "~/"
-  }
+    importAlias: "~/",
+  },
 };
 
 export const runCli = async () => {
@@ -198,7 +198,7 @@ export const runCli = async () => {
         name: "shouldContinue",
         type: "confirm",
         message: `Continue scaffolding a default T3 app?`,
-        default: true
+        default: true,
       });
 
       if (!shouldContinue) {
@@ -224,7 +224,7 @@ const promptAppName = async (): Promise<string> => {
     validate: validateAppName,
     transformer: (input: string) => {
       return input.trim();
-    }
+    },
   });
 
   return appName;
@@ -237,9 +237,9 @@ const promptLanguage = async (): Promise<void> => {
     message: "Will you be using TypeScript or JavaScript?",
     choices: [
       { name: "TypeScript", value: "typescript", short: "TypeScript" },
-      { name: "JavaScript", value: "javascript", short: "JavaScript" }
+      { name: "JavaScript", value: "javascript", short: "JavaScript" },
     ],
-    default: "typescript"
+    default: "typescript",
   });
 
   if (language === "javascript") {
@@ -258,8 +258,8 @@ const promptPackages = async (): Promise<AvailablePackages[]> => {
       .filter((pkg) => pkg !== "envVariables") // don't prompt for env-vars
       .map((pkgName) => ({
         name: pkgName,
-        checked: false
-      }))
+        checked: false,
+      })),
   });
 
   return packages;
@@ -270,7 +270,7 @@ const promptGit = async (): Promise<boolean> => {
     name: "git",
     type: "confirm",
     message: "Initialize a new git repository?",
-    default: true
+    default: true,
   });
 
   if (git) {
@@ -291,7 +291,7 @@ const promptInstall = async (): Promise<boolean> => {
     message:
       `Would you like us to run '${pkgManager}` +
       (pkgManager === "yarn" ? `'?` : ` install'?`),
-    default: true
+    default: true,
   });
 
   if (install) {
@@ -320,7 +320,7 @@ const promptImportAlias = async (): Promise<string> => {
     validate: validateImportAlias,
     transformer: (input: string) => {
       return input.trim();
-    }
+    },
   });
 
   return importAlias;

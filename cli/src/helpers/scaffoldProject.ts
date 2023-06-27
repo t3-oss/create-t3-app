@@ -12,7 +12,7 @@ export const scaffoldProject = async ({
   projectName,
   projectDir,
   pkgManager,
-  noInstall
+  noInstall,
 }: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
@@ -44,20 +44,20 @@ export const scaffoldProject = async ({
           {
             name: "Abort installation (recommended)",
             value: "abort",
-            short: "Abort"
+            short: "Abort",
           },
           {
             name: "Clear the directory and continue installation",
             value: "clear",
-            short: "Clear"
+            short: "Clear",
           },
           {
             name: "Continue installation and overwrite conflicting files",
             value: "overwrite",
-            short: "Overwrite"
-          }
+            short: "Overwrite",
+          },
         ],
-        default: "abort"
+        default: "abort",
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
@@ -75,7 +75,7 @@ export const scaffoldProject = async ({
         name: "confirmOverwriteDir",
         type: "confirm",
         message: `Are you sure you want to ${overwriteAction}?`,
-        default: false
+        default: false,
       });
 
       if (!confirmOverwriteDir) {

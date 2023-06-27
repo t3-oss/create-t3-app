@@ -13,7 +13,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
     dependencies: deps,
-    devMode: false
+    devMode: false,
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");

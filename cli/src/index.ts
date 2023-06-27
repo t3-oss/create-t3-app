@@ -3,7 +3,7 @@ import { installDependencies } from "./helpers/installDependencies.js";
 import { getVersion } from "./utils/getT3Version.js";
 import {
   getNpmVersion,
-  renderVersionWarning
+  renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
 import fs from "fs-extra";
 import path from "path";
@@ -32,7 +32,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias }
+    flags: { noGit, noInstall, importAlias },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -44,7 +44,7 @@ const main = async () => {
     projectName: appDir,
     packages: usePackages,
     importAlias: importAlias,
-    noInstall
+    noInstall,
   });
 
   // Write name to package.json
@@ -54,7 +54,7 @@ const main = async () => {
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
-    spaces: 2
+    spaces: 2,
   });
 
   // update import alias in any generated files if not using the default

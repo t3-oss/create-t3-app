@@ -27,7 +27,7 @@ const isInsideGitRepo = async (dir: string): Promise<boolean> => {
     // If this command succeeds, we're inside a git repo
     await execa("git", ["rev-parse", "--is-inside-work-tree"], {
       cwd: dir,
-      stdout: "ignore"
+      stdout: "ignore",
     });
     return true;
   } catch (_e) {
@@ -79,7 +79,7 @@ export const initializeGit = async (projectDir: string) => {
       message: `${chalk.redBright.bold(
         "Warning:"
       )} Git is already initialized in "${dirName}". Initializing a new git repository would delete the previous history. Would you like to continue anyways?`,
-      default: false
+      default: false,
     });
     if (!overwriteGit) {
       spinner.info("Skipping Git initialization.");
@@ -98,7 +98,7 @@ export const initializeGit = async (projectDir: string) => {
       message: `${chalk.redBright.bold(
         "Warning:"
       )} "${dirName}" is already in a git worktree. Would you still like to initialize a new git repository in this directory?`,
-      default: false
+      default: false,
     });
     if (!initializeChildGitRepo) {
       spinner.info("Skipping Git initialization.");
@@ -118,11 +118,11 @@ export const initializeGit = async (projectDir: string) => {
       // It is only created after the first commit
       // https://superuser.com/a/1419674
       await execa("git", ["symbolic-ref", "HEAD", `refs/heads/${branchName}`], {
-        cwd: projectDir
+        cwd: projectDir,
       });
     } else {
       await execa("git", ["init", `--initial-branch=${branchName}`], {
-        cwd: projectDir
+        cwd: projectDir,
       });
     }
     await execa("git", ["add", "."], { cwd: projectDir });

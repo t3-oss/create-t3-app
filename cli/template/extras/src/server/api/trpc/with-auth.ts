@@ -37,7 +37,7 @@ type CreateContextOptions = {
  */
 const createInnerTRPCContext = ({ session }: CreateContextOptions) => {
   return {
-    session
+    session,
   };
 };
 
@@ -49,13 +49,13 @@ const createInnerTRPCContext = ({ session }: CreateContextOptions) => {
  */
 export const createTRPCContext = async ({
   req,
-  res
+  res,
 }: CreateNextContextOptions) => {
   // Get the session from the server using the getServerSession wrapper function
   const session = await getServerAuthSession({ req, res });
 
   return createInnerTRPCContext({
-    session
+    session,
   });
 };
 
@@ -74,10 +74,11 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null
-      }
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
+      },
     };
-  }
+  },
 });
 
 /**
@@ -111,8 +112,8 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   return next({
     ctx: {
       // infers the `session` as non-nullable
-      session: { ...ctx.session, user: ctx.session.user }
-    }
+      session: { ...ctx.session, user: ctx.session.user },
+    },
   });
 });
 
