@@ -26,6 +26,12 @@ export const logNextSteps = ({
     logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} db:push`);
   }
 
+  if (packages?.drizzle.inUse) {
+    logger.info(
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} drizzle-kit push:mysql`,
+    );
+  }
+
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 
   if (packages?.drizzle.inUse) {
