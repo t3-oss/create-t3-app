@@ -12,9 +12,9 @@ export const example = mysqlTable(
   "example",
   {
     id: serial("id").primaryKey(),
-    number: varchar("number", { length: 256 }),
+    name: varchar("name", { length: 256 }),
   },
   (example) => ({
-    numberIndex: uniqueIndex("number_idx").on(example.number),
+    nameIndex: uniqueIndex("name_idx").on(example.name),
   }),
 );
