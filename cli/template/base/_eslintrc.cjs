@@ -6,17 +6,17 @@ const config = {
   overrides: [
     {
       extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
-        project: path.join(__dirname, "tsconfig.json"),
-      },
-    },
+        project: path.join(__dirname, "tsconfig.json")
+      }
+    }
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: path.join(__dirname, "tsconfig.json"),
+    project: path.join(__dirname, "tsconfig.json")
   },
   plugins: ["@typescript-eslint"],
   extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
@@ -25,11 +25,11 @@ const config = {
       "warn",
       {
         prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
+        fixStyle: "inline-type-imports"
+      }
     ],
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-  },
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }]
+  }
 };
 
 module.exports = config;
