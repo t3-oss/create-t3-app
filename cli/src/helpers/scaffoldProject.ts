@@ -12,7 +12,7 @@ export const scaffoldProject = async ({
   projectName,
   projectDir,
   pkgManager,
-  noInstall,
+  noInstall
 }: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
@@ -28,9 +28,7 @@ export const scaffoldProject = async ({
     if (fs.readdirSync(projectDir).length === 0) {
       if (projectName !== ".")
         spinner.info(
-          `${chalk.cyan.bold(
-            projectName,
-          )} exists but is empty, continuing...\n`,
+          `${chalk.cyan.bold(projectName)} exists but is empty, continuing...\n`
         );
     } else {
       spinner.stopAndPersist();
@@ -40,26 +38,26 @@ export const scaffoldProject = async ({
         name: "overwriteDir",
         type: "list",
         message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
-          projectName,
+          projectName
         )} already exists and isn't empty. How would you like to proceed?`,
         choices: [
           {
             name: "Abort installation (recommended)",
             value: "abort",
-            short: "Abort",
+            short: "Abort"
           },
           {
             name: "Clear the directory and continue installation",
             value: "clear",
-            short: "Clear",
+            short: "Clear"
           },
           {
             name: "Continue installation and overwrite conflicting files",
             value: "overwrite",
-            short: "Overwrite",
-          },
+            short: "Overwrite"
+          }
         ],
-        default: "abort",
+        default: "abort"
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
@@ -77,7 +75,7 @@ export const scaffoldProject = async ({
         name: "confirmOverwriteDir",
         type: "confirm",
         message: `Are you sure you want to ${overwriteAction}?`,
-        default: false,
+        default: false
       });
 
       if (!confirmOverwriteDir) {
@@ -87,7 +85,7 @@ export const scaffoldProject = async ({
 
       if (overwriteDir === "clear") {
         spinner.info(
-          `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`,
+          `Emptying ${chalk.cyan.bold(projectName)} and creating t3 app..\n`
         );
         fs.emptyDirSync(projectDir);
       }
@@ -99,13 +97,13 @@ export const scaffoldProject = async ({
   fs.copySync(srcDir, projectDir);
   fs.renameSync(
     path.join(projectDir, "_gitignore"),
-    path.join(projectDir, ".gitignore"),
+    path.join(projectDir, ".gitignore")
   );
 
   const scaffoldedName =
     projectName === "." ? "App" : chalk.cyan.bold(projectName);
 
   spinner.succeed(
-    `${scaffoldedName} ${chalk.green("scaffolded successfully!")}\n`,
+    `${scaffoldedName} ${chalk.green("scaffolded successfully!")}\n`
   );
 };

@@ -3,7 +3,7 @@ import { type GetServerSidePropsContext } from "next";
 import {
   getServerSession,
   type NextAuthOptions,
-  type DefaultSession,
+  type DefaultSession
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import { env } from "~/env.mjs";
@@ -41,16 +41,16 @@ export const authOptions: NextAuthOptions = {
       ...session,
       user: {
         ...session.user,
-        id: user.id,
-      },
-    }),
+        id: user.id
+      }
+    })
   },
   adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-    }),
+      clientSecret: env.DISCORD_CLIENT_SECRET
+    })
     /**
      * ...add more providers here.
      *
@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
      *
      * @see https://next-auth.js.org/providers/github
      */
-  ],
+  ]
 };
 
 /**

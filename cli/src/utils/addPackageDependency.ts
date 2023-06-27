@@ -4,7 +4,7 @@ import sortPackageJson from "sort-package-json";
 import { type PackageJson } from "type-fest";
 import {
   dependencyVersionMap,
-  type AvailableDependencies,
+  type AvailableDependencies
 } from "~/installers/dependencyVersionMap.js";
 
 export const addPackageDependency = (opts: {
@@ -15,7 +15,7 @@ export const addPackageDependency = (opts: {
   const { dependencies, devMode, projectDir } = opts;
 
   const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
+    path.join(projectDir, "package.json")
   ) as PackageJson;
 
   dependencies.forEach((pkgName) => {
@@ -30,6 +30,6 @@ export const addPackageDependency = (opts: {
   const sortedPkgJson = sortPackageJson(pkgJson);
 
   fs.writeJSONSync(path.join(projectDir, "package.json"), sortedPkgJson, {
-    spaces: 2,
+    spaces: 2
   });
 };

@@ -22,7 +22,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     const envSchemaSrc = path.join(
       PKG_ROOT,
       "template/extras/src/env",
-      envFile,
+      envFile
     );
     const envSchemaDest = path.join(projectDir, "src/env.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);

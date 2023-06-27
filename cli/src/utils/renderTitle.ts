@@ -9,7 +9,7 @@ const poimandresTheme = {
   green: "#5de4c7",
   magenta: "#fae4fc",
   red: "#d0679d",
-  yellow: "#fffac2",
+  yellow: "#fffac2"
 };
 
 export const renderTitle = () => {

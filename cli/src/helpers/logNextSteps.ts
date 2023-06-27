@@ -7,7 +7,7 @@ import { logger } from "~/utils/logger.js";
 export const logNextSteps = ({
   projectName = DEFAULT_APP_NAME,
   packages,
-  noInstall,
+  noInstall
 }: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
   const pkgManager = getUserPkgManager();
 
@@ -24,7 +24,7 @@ export const logNextSteps = ({
 
   if (packages?.prisma.inUse) {
     logger.info(
-      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`,
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`
     );
   }
 

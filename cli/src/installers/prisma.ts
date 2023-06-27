@@ -9,12 +9,12 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
     dependencies: ["prisma"],
-    devMode: true,
+    devMode: true
   });
   addPackageDependency({
     projectDir,
     dependencies: ["@prisma/client"],
-    devMode: false,
+    devMode: false
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
@@ -22,7 +22,7 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const schemaSrc = path.join(
     extrasDir,
     "prisma/schema",
-    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma",
+    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma"
   );
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
@@ -35,12 +35,12 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    postinstall: "prisma generate",
+    postinstall: "prisma generate"
   };
 
   fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
-    spaces: 2,
+    spaces: 2
   });
 };

@@ -13,7 +13,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
     projectDir,
     dependencies: deps,
-    devMode: false,
+    devMode: false
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
@@ -25,7 +25,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const authConfigSrc = path.join(
     extrasDir,
     "src/server/auth",
-    usingPrisma ? "with-prisma.ts" : "base.ts",
+    usingPrisma ? "with-prisma.ts" : "base.ts"
   );
   const authConfigDest = path.join(projectDir, "src/server/auth.ts");
 

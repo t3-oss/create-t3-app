@@ -13,9 +13,9 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "autoprefixer",
       "prettier",
       "prettier-plugin-tailwindcss",
-      "@types/prettier",
+      "@types/prettier"
     ],
-    devMode: true,
+    devMode: true
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");

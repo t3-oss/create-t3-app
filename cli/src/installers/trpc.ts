@@ -13,9 +13,9 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
-      "@trpc/react-query",
+      "@trpc/react-query"
     ],
-    devMode: false,
+    devMode: false
   });
 
   const usingAuth = packages?.nextAuth.inUse;
@@ -55,11 +55,11 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const exampleRouterSrc = path.join(
     extrasDir,
     "src/server/api/routers/example",
-    exampleRouterFile,
+    exampleRouterFile
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/example.ts",
+    "src/server/api/routers/example.ts"
   );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
