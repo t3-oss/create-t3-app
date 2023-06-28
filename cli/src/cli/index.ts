@@ -62,22 +62,22 @@ export const runCli = async () => {
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
       "[dir]",
-      "The name of the application, as well as the name of the directory to create",
+      "The name of the application, as well as the name of the directory to create"
     )
     .option(
       "--noGit",
       "Explicitly tell the CLI to not initialize a new git repo in the project",
-      false,
+      false
     )
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
-      false,
+      false
     )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
-      false,
+      false
     )
     /** START CI-FLAGS */
     /**
@@ -89,31 +89,31 @@ export const runCli = async () => {
     .option(
       "--tailwind [boolean]",
       "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--prisma [boolean]",
       "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
-      defaultOptions.flags.importAlias,
+      defaultOptions.flags.importAlias
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -122,10 +122,10 @@ export const runCli = async () => {
       `\n The t3 stack was inspired by ${chalk
         .hex("#E8DCFF")
         .bold(
-          "@t3dotgg",
+          "@t3dotgg"
         )} and has been used to build awesome fullstack applications like ${chalk
         .hex("#E24A8D")
-        .underline("https://ping.gg")} \n`,
+        .underline("https://ping.gg")} \n`
     )
     .parse(process.argv);
 
@@ -299,11 +299,11 @@ const promptInstall = async (): Promise<boolean> => {
   } else {
     if (pkgManager === "yarn") {
       logger.info(
-        `No worries. You can run '${pkgManager}' later to install the dependencies.`,
+        `No worries. You can run '${pkgManager}' later to install the dependencies.`
       );
     } else {
       logger.info(
-        `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
+        `No worries. You can run '${pkgManager} install' later to install the dependencies.`
       );
     }
   }

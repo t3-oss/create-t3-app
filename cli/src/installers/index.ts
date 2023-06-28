@@ -34,7 +34,7 @@ export type PkgInstallerMap = {
 };
 
 export const buildPkgInstallerMap = (
-  packages: AvailablePackages[],
+  packages: AvailablePackages[]
 ): PkgInstallerMap => ({
   nextAuth: {
     inUse: packages.includes("nextAuth"),
