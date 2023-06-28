@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.15.0
+
+### Minor Changes
+
+- [#1484](https://github.com/t3-oss/create-t3-app/pull/1484) [`23a9d60`](https://github.com/t3-oss/create-t3-app/commit/23a9d60cd013c40d76ab96d0340425e1e3d8efa2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - reminder to git commit after creating an application with the CLI
+
+### Patch Changes
+
+- [#1493](https://github.com/t3-oss/create-t3-app/pull/1493) [`a230d9f`](https://github.com/t3-oss/create-t3-app/commit/a230d9f7bb3a78669f2003ae9084c868f06639b7) Thanks [@dcottr](https://github.com/dcottr)! - Remove trailing newlines in generated app that aren't allowed by the generated prettier config
+
 ## 7.14.1
 
 ### Patch Changes
