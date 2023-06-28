@@ -14,7 +14,7 @@ export const renderVersionWarning = (npmVersion: string) => {
     logger.warn("  Please report any bugs you encounter.");
   } else if (currentVersion.includes("next")) {
     logger.warn(
-      "  You are running create-t3-app with the @next tag which is no longer maintained.",
+      "  You are running create-t3-app with the @next tag which is no longer maintained."
     );
     logger.warn("  Please run the CLI with @latest instead.");
   } else if (currentVersion !== npmVersion) {
@@ -23,7 +23,7 @@ export const renderVersionWarning = (npmVersion: string) => {
       "  Your version:",
       currentVersion + ".",
       "Latest version in the npm registry:",
-      npmVersion,
+      npmVersion
     );
     logger.warn("  Please run the CLI with @latest to get the latest updates.");
   }
@@ -56,7 +56,7 @@ function checkForLatestVersion(): Promise<string> {
           } else {
             reject();
           }
-        },
+        }
       )
       .on("error", () => {
         // logger.error("Unable to check for latest version.");
