@@ -13,7 +13,9 @@ datasource db {
 
 model Example {
     id        Int      @id @default(autoincrement())
-    number    Int
+    name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    @@index([name])
 }

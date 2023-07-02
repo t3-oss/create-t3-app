@@ -15,7 +15,7 @@ To make the different ORM options as similar as possible, some minor changes has
      // prisma
      opts.ctx.db.example.findMany()
      // drizzle
-     opts.ctx.cb.query.example.findMany()
+     opts.ctx.db.query.example.findMany()
   }),
   ```
 
