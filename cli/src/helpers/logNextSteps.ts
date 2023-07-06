@@ -8,7 +8,8 @@ export const logNextSteps = ({
   projectName = DEFAULT_APP_NAME,
   packages,
   noInstall,
-}: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
+  noGit,
+}: Pick<InstallerOptions, "projectName" | "packages" | "noInstall"> & { noGit: boolean }) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
@@ -30,5 +31,7 @@ export const logNextSteps = ({
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 
-  logger.info(`  git commit -m "initial commit"`);
+  if (!noGit) {
+    logger.info(`  git commit -m "initial commit"`);
+  }
 };
