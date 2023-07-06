@@ -53,7 +53,7 @@
     "eslint": "^8.40.0",
     "eslint-plugin-astro": "^0.27.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.8.1",
     "prettier-plugin-tailwindcss": "^0.2.8",
     "react": "18.2.0",

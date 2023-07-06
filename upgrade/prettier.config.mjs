@@ -1,13 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const baseConfig = require("../.prettierrc.cjs");
+import baseConfig from "../prettier.config.mjs";
 
 /** @type {import("prettier").Config} */
-const config = {
+export default {
   ...baseConfig,
   plugins: [
     ...(baseConfig.plugins ?? []),
     require.resolve("prettier-plugin-tailwindcss"),
   ],
 };
-
-module.exports = config;

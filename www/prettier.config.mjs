@@ -1,6 +1,7 @@
-const baseConfig = require("../.prettierrc.cjs");
+import baseConfig from "../prettier.config.mjs";
+
 /** @type {import('prettier').Config} */
-const config = {
+export default {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
@@ -19,5 +20,3 @@ const config = {
   astroAllowShorthand: false,
   tailwindConfig: "./tailwind.config.ts",
 };
-
-module.exports = config;

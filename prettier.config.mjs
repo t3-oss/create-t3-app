@@ -1,5 +1,5 @@
 /** @type {import('prettier').Config} */
-const config = {
+export default {
   arrowParens: "always",
   printWidth: 80,
   singleQuote: false,
@@ -10,4 +10,3 @@ const config = {
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
 };
 
-module.exports = config;
