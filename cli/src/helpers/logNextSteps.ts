@@ -10,7 +10,7 @@ export const logNextSteps = ({
   noInstall,
   noGit,
 }: Pick<InstallerOptions, "projectName" | "packages" | "noInstall"> & {
-  noGit: boolean; 
+  noGit: boolean;
 }) => {
   const pkgManager = getUserPkgManager();
 
