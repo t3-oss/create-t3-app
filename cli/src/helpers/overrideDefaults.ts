@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import fs from "fs-extra";
-import { Ora } from "ora";
+import { type Ora } from "ora";
 import path from "path";
 import { env } from "process";
 
