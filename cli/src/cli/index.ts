@@ -6,6 +6,7 @@ import { type AvailablePackages } from "~/installers/index.js";
 import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { IsTTYError } from "~/utils/isTTYError.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
 import { validateImportAlias } from "~/utils/validateImportAlias.js";
@@ -61,22 +62,22 @@ export const runCli = async () => {
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
       "[dir]",
-      "The name of the application, as well as the name of the directory to create",
+      "The name of the application, as well as the name of the directory to create"
     )
     .option(
       "--noGit",
       "Explicitly tell the CLI to not initialize a new git repo in the project",
-      false,
+      false
     )
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
-      false,
+      false
     )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
-      false,
+      false
     )
     /** START CI-FLAGS */
     /**
@@ -88,31 +89,31 @@ export const runCli = async () => {
     .option(
       "--tailwind [boolean]",
       "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--prisma [boolean]",
       "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
-      defaultOptions.flags.importAlias,
+      defaultOptions.flags.importAlias
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -121,10 +122,10 @@ export const runCli = async () => {
       `\n The t3 stack was inspired by ${chalk
         .hex("#E8DCFF")
         .bold(
-          "@t3dotgg",
+          "@t3dotgg"
         )} and has been used to build awesome fullstack applications like ${chalk
         .hex("#E24A8D")
-        .underline("https://ping.gg")} \n`,
+        .underline("https://ping.gg")} \n`
     )
     .parse(process.argv);
 
@@ -162,10 +163,7 @@ export const runCli = async () => {
   using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
-      const error = new Error("Non-interactive environment");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-      (error as any).isTTYError = true;
-      throw error;
+      throw new IsTTYError("Non-interactive environment");
     }
 
     // if --CI flag is set, we are running in CI mode and should not prompt the user
@@ -188,11 +186,9 @@ export const runCli = async () => {
       cliResults.flags.importAlias = await promptImportAlias();
     }
   } catch (err) {
-    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
+    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an IsTTYError
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
-    // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-    if (err instanceof Error && (err as any).isTTYError) {
+    if (err instanceof IsTTYError) {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
@@ -303,11 +299,11 @@ const promptInstall = async (): Promise<boolean> => {
   } else {
     if (pkgManager === "yarn") {
       logger.info(
-        `No worries. You can run '${pkgManager}' later to install the dependencies.`,
+        `No worries. You can run '${pkgManager}' later to install the dependencies.`
       );
     } else {
       logger.info(
-        `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
+        `No worries. You can run '${pkgManager} install' later to install the dependencies.`
       );
     }
   }

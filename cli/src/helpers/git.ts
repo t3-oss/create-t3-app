@@ -77,7 +77,7 @@ export const initializeGit = async (projectDir: string) => {
       name: "overwriteGit",
       type: "confirm",
       message: `${chalk.redBright.bold(
-        "Warning:",
+        "Warning:"
       )} Git is already initialized in "${dirName}". Initializing a new git repository would delete the previous history. Would you like to continue anyways?`,
       default: false,
     });
@@ -96,7 +96,7 @@ export const initializeGit = async (projectDir: string) => {
       name: "initializeChildGitRepo",
       type: "confirm",
       message: `${chalk.redBright.bold(
-        "Warning:",
+        "Warning:"
       )} "${dirName}" is already in a git worktree. Would you still like to initialize a new git repository in this directory?`,
       default: false,
     });
@@ -128,15 +128,15 @@ export const initializeGit = async (projectDir: string) => {
     await execa("git", ["add", "."], { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized and staged")} ${chalk.green.bold(
-        "git",
-      )}\n`,
+        "git"
+      )}\n`
     );
   } catch (error) {
     // Safeguard, should be unreachable
     spinner.fail(
       `${chalk.bold.red(
-        "Failed:",
-      )} could not initialize git. Update git to the latest version!\n`,
+        "Failed:"
+      )} could not initialize git. Update git to the latest version!\n`
     );
   }
 };

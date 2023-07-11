@@ -24,9 +24,11 @@ export const logNextSteps = ({
 
   if (packages?.prisma.inUse) {
     logger.info(
-      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`,
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} prisma db push`
     );
   }
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
+
+  logger.info(`  git commit -m "initial commit"`);
 };
