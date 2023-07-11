@@ -67,10 +67,10 @@
     "typescript": "^5.0.4"
   },
   "resolutions": {
-    "@typescript-eslint/eslint-plugin": "6.0.0-alpha.158",
-    "@typescript-eslint/parser": "6.0.0-alpha.158",
-    "@typescript-eslint/scope-manager": "6.0.0-alpha.158",
-    "@typescript-eslint/types": "6.0.0-alpha.158",
-    "@typescript-eslint/visitor-keys": "6.0.0-alpha.158"
+    "@typescript-eslint/eslint-plugin": "6.0.0",
+    "@typescript-eslint/parser": "6.0.0",
+    "@typescript-eslint/scope-manager": "6.0.0",
+    "@typescript-eslint/types": "6.0.0",
+    "@typescript-eslint/visitor-keys": "6.0.0"
   }
 }
