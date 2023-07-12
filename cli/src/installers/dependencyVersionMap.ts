@@ -16,7 +16,7 @@ export const dependencyVersionMap = {
   autoprefixer: "^10.4.14",
   postcss: "^8.4.21",
   prettier: "^3.0.0",
-  "prettier-plugin-tailwindcss": "^0.2.8",
+  "prettier-plugin-tailwindcss": "^0.4.0",
   "@types/prettier": "^2.7.3",
 
   // tRPC
