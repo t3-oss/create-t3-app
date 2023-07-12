@@ -195,7 +195,7 @@ I.e.:
 +     strategy: "jwt",
 +   },
     callbacks: {
--     session: ({ session, token }) => ({
+-     session: ({ session, user }) => ({
 +     session: ({ session, token }) => ({
         ...session,
         user: {
