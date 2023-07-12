@@ -66,6 +66,6 @@ export default {
       ],
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-call
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 } satisfies Config;

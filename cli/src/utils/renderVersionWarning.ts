@@ -37,9 +37,9 @@ export const renderVersionWarning = (npmVersion: string) => {
  * directory of this source tree.
  * https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/LICENSE
  */
-type DistTagsBody = {
+interface DistTagsBody {
   latest: string;
-};
+}
 
 function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {

@@ -39,5 +39,8 @@ export async function getFont<TWeights extends readonly number[]>({
     const res = await fetch(font.url);
     return [font.weight, await res.arrayBuffer()];
   });
+
+  // Object.fromEntries is typed as returning any *sigh*
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return Object.fromEntries(await Promise.all(promises));
 }

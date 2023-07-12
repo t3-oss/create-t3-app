@@ -8,7 +8,7 @@ export const logNextSteps = ({
   projectName = DEFAULT_APP_NAME,
   packages,
   noInstall,
-}: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
+}: Pick<InstallerOptions, "noInstall" | "packages" | "projectName">) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
