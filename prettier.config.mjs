@@ -9,4 +9,3 @@ export default {
   tabWidth: 2,
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
 };
-

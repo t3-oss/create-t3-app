@@ -1,9 +1,9 @@
-const baseConfig = require("../.prettierrc.cjs");
+import prettierPluginTailwindcss from "prettier-plugin-tailwindcss";
 
 /** @type {import('prettier').Config} */
 const config = {
   ...baseConfig,
-  plugins: [...baseConfig.plugins, "prettier-plugin-tailwindcss"],
+  plugins: [...baseConfig.plugins, prettierPluginTailwindcss],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
   trailingComma: "es5",
 };

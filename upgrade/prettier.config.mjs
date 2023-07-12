@@ -1,11 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import prettierPluginTailwindcss from "prettier-plugin-tailwindcss";
 import baseConfig from "../prettier.config.mjs";
 
 /** @type {import("prettier").Config} */
 export default {
   ...baseConfig,
-  plugins: [
-    ...(baseConfig.plugins ?? []),
-    require.resolve("prettier-plugin-tailwindcss"),
-  ],
+  plugins: [...(baseConfig.plugins ?? []), prettierPluginTailwindcss],
 };

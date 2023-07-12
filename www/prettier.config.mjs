@@ -1,12 +1,14 @@
 import baseConfig from "../prettier.config.mjs";
+import prettierPluginAstro from "prettier-plugin-astro";
+import prettierPluginTailwindcss from "prettier-plugin-tailwindcss";
 
 /** @type {import('prettier').Config} */
 export default {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("prettier-plugin-tailwindcss"), // MUST come last
+    prettierPluginAstro,
+    prettierPluginTailwindcss, // MUST come last
   ],
   pluginSearchDirs: false,
   overrides: [
