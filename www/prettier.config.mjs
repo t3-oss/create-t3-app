@@ -1,16 +1,13 @@
 import baseConfig from "../prettier.config.mjs";
-import prettierPluginAstro from "prettier-plugin-astro";
-import prettierPluginTailwindcss from "prettier-plugin-tailwindcss";
 
 /** @type {import('prettier').Config} */
-export default {
+const config ={
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
-    prettierPluginAstro,
-    prettierPluginTailwindcss, // MUST come last
+    "prettier-plugin-astro",
+"prettier-plugin-tailwindcss" // MUST come last
   ],
-  pluginSearchDirs: false,
   overrides: [
     {
       files: "*.astro",
@@ -22,3 +19,5 @@ export default {
   astroAllowShorthand: false,
   tailwindConfig: "./tailwind.config.ts",
 };
+
+export default config;
