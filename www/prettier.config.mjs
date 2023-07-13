@@ -1,12 +1,12 @@
 import baseConfig from "../prettier.config.mjs";
 
 /** @type {import('prettier').Config} */
-const config ={
+const config = {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
     "prettier-plugin-astro",
-"prettier-plugin-tailwindcss" // MUST come last
+    "prettier-plugin-tailwindcss", // MUST come last
   ],
   overrides: [
     {
