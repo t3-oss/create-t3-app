@@ -51,7 +51,6 @@
     "@total-typescript/ts-reset": "^0.3.7",
     "@types/eslint": "^8.37.0",
     "@types/node": "^18.16.0",
-    "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "eslint": "^8.40.0",
