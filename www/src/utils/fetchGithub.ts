@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-type Options<T extends "repo" | "commits"> = {
+interface Options<T extends "commits" | "repo"> {
   throwIfNotOk?: boolean;
   throwIfNoAuth?: boolean;
   fetchType: T;
-};
+}
 
 export const repoSchema = z.object({
   stargazers_count: z.number(),
@@ -27,7 +27,7 @@ export const commitsSchema = z.array(
 export type Commit = z.infer<typeof commitsSchema>[number];
 
 /** Helper function to fetch the GitHub API with an auth token to avoid rate limiting. */
-export const fetchGithub = async <T extends "repo" | "commits">(
+export const fetchGithub = async <T extends "commits" | "repo">(
   url: string,
   opts: Options<T>,
 ): Promise<z.infer<
