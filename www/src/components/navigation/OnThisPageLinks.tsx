@@ -3,11 +3,11 @@ import { type MarkdownHeading } from "astro";
 import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
 
-type OnThisPageLinksProps = {
+interface OnThisPageLinksProps {
   headings: MarkdownHeading[];
   title: string;
   isRtl: boolean;
-};
+}
 
 export default function OnThisPageLinks({
   headings,

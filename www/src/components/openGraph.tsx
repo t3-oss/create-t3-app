@@ -1,10 +1,10 @@
-type OpenGraphProps = {
+interface OpenGraphProps {
   title: string;
   description: string;
   imageBase: string;
   pageUrl: string;
   rtl: boolean;
-};
+}
 
 export default function OpenGraph({
   title,
