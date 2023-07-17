@@ -14,6 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^v4.1.0",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.1",
     "@octokit/request": "^7.0.0-beta.2",
