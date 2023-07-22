@@ -8,8 +8,8 @@ export const dependencyVersionMap = {
   "@next-auth/prisma-adapter": "^1.0.5",
 
   // Prisma
-  prisma: "^4.14.0",
-  "@prisma/client": "^4.14.0",
+  prisma: "^5.0.0",
+  "@prisma/client": "^5.0.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.0",
