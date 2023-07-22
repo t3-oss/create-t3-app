@@ -4,7 +4,7 @@ import baseConfig from "../prettier.config.mjs";
 const config = {
   ...baseConfig,
   plugins: [
-    ...baseConfig.plugins,
+    "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss", // MUST come last
   ],
