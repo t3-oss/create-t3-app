@@ -10,14 +10,17 @@ const config = {
   ],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
   trailingComma: "es5",
-  overrides:[
+  overrides: [
     {
-      files: ["**/prettier.config.mjs", "**/postcss.config.cjs"],
+      files: [
+        "**/*postcss.config.cjs",
+        "cli/template/extras/config/prettier.config.mjs",
+      ],
       options: {
-        plugins: []
+        plugins: [],
       },
-    }
-  ]
+    },
+  ],
 };
 
 export default config;
