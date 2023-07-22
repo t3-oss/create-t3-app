@@ -12,7 +12,7 @@ const config = {
   trailingComma: "es5",
   overrides:[
     {
-      files: ["*prettier.config.mjs", "*postcss.config.cjs"],
+      files: ["**/prettier.config.mjs", "**/postcss.config.cjs"],
       options: {
         plugins: []
       },

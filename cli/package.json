@@ -41,7 +41,7 @@
     "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^v4.1.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
     "chalk": "5.2.0",
     "commander": "^10.0.0",
     "execa": "^7.1.1",
