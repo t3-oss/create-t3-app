@@ -1,8 +1,10 @@
-import baseConfig from "../prettier.config.mjs";
+// import baseConfig from "../prettier.config.mjs";
 
-/** @type {import('prettier').Config} */
+/**
+ * @type {import('prettier').Config & import("@ianvs/prettier-plugin-sort-imports").PrettierConfig}
+ */
 const config = {
-  ...baseConfig,
+  // ...baseConfig,
   arrowParens: "always",
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
@@ -12,7 +14,7 @@ const config = {
   trailingComma: "es5",
   overrides: [
     {
-      files: "template/**/*.cjs",
+      files: ["template/**/*.cjs"],
       options: {
         plugins: [],
       },
