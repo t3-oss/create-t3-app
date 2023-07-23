@@ -1,10 +1,8 @@
-// import baseConfig from "../prettier.config.mjs";
+import baseConfig from "../prettier.config.mjs";
 
-/**
- * @type {import('prettier').Config & import("@ianvs/prettier-plugin-sort-imports").PrettierConfig}
- */
+/** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').options} */
 const config = {
-  // ...baseConfig,
+  ...baseConfig,
   arrowParens: "always",
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
