@@ -3,7 +3,10 @@ title: NextAuth.js
 description: NextAuth.js 的用法
 layout: ../../../layouts/docs.astro
 lang: zh-hans
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 当你想在你的 Next.js 应用中集成认证系统时，NextAuth.js 是一个很好的解决方案，它为我们引入了足够复杂的安全措施，而无需我们自己去构建。它广泛支持不同的服务，能够快速将 OAuth 认证集成进来，并为许多数据库和 ORM 提供了适配器。
 
@@ -61,7 +64,7 @@ const User = () => {
 
 默认设置下， Create T3 App 利用了 NextAuth.js 配置里的 [session 回调函数](https://next-auth.js.org/configuration/callbacks#session-callback) 来帮你将用户的 ID 添加到 `session` 对象里。
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -74,7 +77,7 @@ callbacks: {
 
 这耦合了类型声明文件，来保证从 `session` 对象里获取 `user.id` 时，它是类型安全的。 参看 NextAuth.js 的文档，阅读更多关于 [`模块扩充`](https://next-auth.js.org/getting-started/typescript#module-augmentation)。
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -94,18 +97,18 @@ declare module "next-auth" {
 
 这个过程可以被分为两步完成：
 
-1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个 `getServerAuthSession` 函数，将这个特殊的 API 抽象了出来。
+1. 先通过函数 [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) 从请求头里获得 session。使用 `getServerSession` 而不是普通的 `getSession` 函数的优势是，它是一个服务端的函数，不会触发无必要的数据请求调用。 `create-t3-app` 创建了一个帮助函数，将这个特殊的 API 抽象了出来，这样你就不需要每次访问会话时都导入你的 NextAuth.js 选项以及 `getServerSession` 函数。
 
 ```ts:server/auth.ts
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
-通过使用这个函数，我们可以获取 session，并将它传给 tRPC 的上下文：
+通过使用这个帮助函数，我们可以获取 session，并将它传给 tRPC 的上下文：
 
 ```ts:server/api/trpc.ts
 import { getServerAuthSession } from "../auth";
@@ -160,7 +163,7 @@ const userRouter = router({
 
 当你给 `User`、`Account`、`Session` 或 `VerificationToken` 中任何一个模型添加字段时（大部分情况你只需要修改 `User` 模型），你要注意的是 [Prisma 适配器](https://next-auth.js.org/adapters/prisma) 会在用户注册和登入时自动给这些模型添加额外的字段，因此你必须给这些字段提供初始值，因为这个适配器并不能知道这些字段是否已经存在。
 
-如果你想要，例如给 `User` 模型添加一个 `role` 字段，你需要为它提供一个默认初始值。你可以通过给 `role` 字段添加一个 `@default` 属性来完成：
+如果你想要，例如给 `User` 模型添加一个 `role` 字段，你需要为它提供一个默认初始值。你可以通过给 `User` 模型的 `role` 字段添加一个 `@default` 属性来完成：
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -178,6 +181,33 @@ const userRouter = router({
 
 将 NextAuth.js 搭配 Next.js 中间件一同使用[需要采用 JWT session 策略](https://next-auth.js.org/configuration/nextjs#caveats) 来进行认证。这是因为只有当会话 cookie 为 JWT 时，中间件才能够获取到它。默认情况下，Create T3 App 会用 Prisma 作为数据库适配器，并采取**默认**的数据库策略。
 
+<Callout type="warning">
+  使用数据库会话是推荐的方法，如果要切换到 JWT 会话策略，请先了解 JWT，以避免出现任何安全问题。
+</Callout>
+
+在切换到 JWT 会话策略后，请确保更新 `src/server/auth.ts` 中的 `session` 回调函数。
+`user` 对象将为 `undefined`。相反，应从 `token` 对象中检索用户的 ID。
+例如：
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session({ session, user }) {
++     session({ session, token }) {
+-       if (session.user) {
++       if (session.user && token.sub) {
+-         session.user.id = user.id;
++         session.user.id = token.sub;
+        }
+        return session;
+      }
+    },
+  };
+```
+
 ## 配置默认的 DiscordProvider
 
 1. 前往 [Discord 开发者页面的应用部分](https://discord.com/developers/applications)，然后点击 "New Application"
@@ -185,7 +215,7 @@ const userRouter = router({
 
 - 复制 Client ID，然后粘贴到 `.env` 文件中的 `DISCORD_CLIENT_ID`。
 - 在 Client Secret 下方，点击 "Reset Secret"，然后复制该字符串到 `env` 中的 `DISCORD_CLIENT_SECRET`。务必要细心，因为你无法再次查看该密钥了，而将它重置会让现存的密钥失效。
-- 点击 "Add Redirect"，然后将你应用的网址替换 `<app url>/api/auth/callback/discord` 里的 `<app url>`（例如，一个开发阶段的完整链接像这样：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
+- 点击 "Add Redirect"，然后将你应用的网址替换 `<app url>/api/auth/callback/discord` 里的 `<app url>`（例如，一个开发阶段的完整链接像这样：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>）
 - 保存你的更改
 - 在开发和生产环境使用同一个 Discord 应用是可行的，但不鼓励这么做。你应该也考虑在开发阶段 [模拟认证服务](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)。
 

@@ -1,0 +1,150 @@
+---
+title: 环境变量
+description: 开始使用 create-t3-app
+layout: ../../../layouts/docs.astro
+lang: zh-hans
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Create T3 App 使用自己的包 [@t3-oss/env-nextjs](https://env.t3.gg) 和 [zod](https://zod.dev) ，通过在 `src/env.mjs` 中提供一个简单的逻辑，在运行时和构建时验证环境变量。
+
+## env.mjs
+
+_简而言之，如果你想要添加一个新的环境变量，你需要在 src/env.mjs 中添加一个验证器，然后在 .env 文件中添加键值对。_
+
+```ts:env.mjs
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
+});
+```
+
+T3 Env 使用 `createEnv` 函数来创建 schema，以验证客户端和服务端的环境变量。
+
+<Callout type="info">
+  如果你想了解更多 `createEnv` 函数的内部工作原理，可以参看 [T3 Env](https://env.t3.gg/docs/introduction) 的文档。
+</Callout>
+
+## 使用环境变量
+
+当你想使用你的环境变量时，你可以从创建的 `env.mjs` 中导入，并像平常一样使用它们。如果你在客户端导入并尝试访问服务端环境变量，你将得到一个运行时错误。
+
+```ts:pages/api/hello.ts
+import { env } from "../../env.mjs";
+
+// `env` 是完全类型安全的，并提供自动完成功能
+const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.mjs";
+
+// ❌ 这将抛出一个运行时错误
+const dbUrl = env.DATABASE_URL;
+
+// ✅ 这是正确的
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
+```
+
+## .env.example
+
+由于默认的 `.env` 文件不会被提交到版本控制中，因此我们还提供了一个 `.env.example` 文件，你可以在其中选择性地保留你的 `.env` 文件的副本，并删除其中的任何机密信息。这不是必需的，但我们建议保持示例文件的更新，以便让贡献者更轻松地开始配置他们的环境。
+
+有些框架和构建工具（例如 Next.js）建议你将机密信息存储在 `.env.local` 文件中，并将 `.env` 文件提交到你的项目中。我们不建议这样做，因为这样很容易意外地将机密信息提交到你的项目中。相反，我们建议你将机密信息存储在 `.env` 文件中，将 `.env` 文件添加到 `.gitignore` 中，只将 `.env.example` 文件提交到你的项目中。
+
+## 添加环境变量
+
+为了确保项目所需的环境变量不会丢失，您需要在两个位置添加新的环境变量。
+
+📄 `.env`：像在 `.env` 文件中一样输入您的环境变量，例如：`KEY=VALUE`
+
+📄 `env.mjs`：为每个环境变量添加适当的验证逻辑，在 `createEnv` 中定义一个Zod模式，例如：`KEY: z.string()`。此外，确保在 `runtimeEnv` 选项中对它们进行解构，例如：KEY: `process.env.KEY`
+
+<Callout type="info">
+  为什么需要在 `runtimeEnv` 中对环境变量进行解构？
+  这是由于 Next.js 在某些运行时中绑定环境变量的方式所致。
+  通过手动解构，可以确保变量永远不会从 bundle 中剔除。
+</Callout>
+
+你也可以选择更新 `.env.example`
+
+📄 `.env.example`：输入你的环境变量，但确保不要在 `runtimeEnv` 选项中包含机密信息, 例如： `KEY=VALUE` 或 `KEY=`
+
+### 示例
+
+1. 在 `.env` 中添加环境变量：
+
+```
+TWITTER_API_TOKEN=1234567890
+```
+
+2. 在 `env.mjs` 中添加环境变量：
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
+  // ...
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
+```
+
+<Callout type="info">
+  空字符串仍然是字符串，因此 `z.string()` 将接受空字符串作为有效值。
+  如果要确保环境变量不为空，可以使用 `z.string().min(1)。
+</Callout>
+
+3. _可选：_ 将环境变量添加到 `.env.example`，并确保不在 `runtimeEnv` 选项中包含机密信息。
+
+```bash
+TWITTER_API_TOKEN=
+```
+
+## 类型强制
+
+所有添加到 `.env` 中的变量都将以字符串的形式导入，即使它们的值表示不同的类型。如果你想在运行时使用不同类型的环境变量，可以使用 Zod 的 `coerce` 将字符串转换为你想要的类型。如果转换失败，它将抛出错误。
+
+将变量添加到你的 `.env`：
+
+```
+SOME_NUMBER=123
+SOME_BOOLEAN=true
+```
+
+然后，在 `env.mjs` 中验证它们：
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    SOME_NUMBER: z.coerce.number(),
+    SOME_BOOLEAN: z.coerce.boolean(),
+  },
+  // ...
+  runtimeEnv: {
+    SOME_NUMBER: process.env.SOME_NUMBER,
+    SOME_BOOLEAN: process.env.SOME_BOOLEAN,
+  },
+});
+```
