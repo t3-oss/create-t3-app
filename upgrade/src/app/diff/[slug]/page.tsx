@@ -63,7 +63,7 @@ export default async function Page({
 }) {
   if (!params?.slug) notFound();
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
-  const viewType = searchParams["viewType"] === "unified" ? "unified" : "split";
+  const viewType = searchParams.viewType === "unified" ? "unified" : "split";
 
   if (!versionsAndFeatures) notFound();
   const diff = await getDiffFromGithub(versionsAndFeatures).catch(notFound);

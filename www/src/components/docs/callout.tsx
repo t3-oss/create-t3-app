@@ -4,7 +4,7 @@ export default function Callout({
   type,
   children,
 }: {
-  type: "warning" | "info" | "tip";
+  type: "info" | "tip" | "warning";
   children: React.ReactNode;
 }) {
   const getEmoji = () => {

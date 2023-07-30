@@ -27,7 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const Component = isExternal ? "a" : Link;
       return (
         <Component
-          href={href as string}
+          href={href!}
           className="underline decoration-primary decoration-2 underline-offset-4"
         >
           {children}

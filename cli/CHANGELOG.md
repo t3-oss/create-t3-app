@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.17.0
+
+### Minor Changes
+
+- [#1523](https://github.com/t3-oss/create-t3-app/pull/1523) [`c441a9e`](https://github.com/t3-oss/create-t3-app/commit/c441a9ecfaeb61866a76379712b297fc6c2c36b3) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - reduced stylistic linting
+
+## 7.16.0
+
+### Minor Changes
+
+- [#1476](https://github.com/t3-oss/create-t3-app/pull/1476) [`f3fd50f`](https://github.com/t3-oss/create-t3-app/commit/f3fd50fbd5dfd705507b1a2b53e8e6fd39b2dadb) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - Upgraded typescript-eslint to v6, with reworked ESLint configurations
+
+- [#1508](https://github.com/t3-oss/create-t3-app/pull/1508) [`e9c862e`](https://github.com/t3-oss/create-t3-app/commit/e9c862e7e114214139f05572d62af45d87d3fc1c) Thanks [@Sn0wye](https://github.com/Sn0wye)! - chore(deps): bump prisma to v5.0.0
+
 ## 7.15.0
 
 ### Minor Changes

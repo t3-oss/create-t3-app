@@ -148,10 +148,11 @@ Soketi 是一个支持自行部署的、简单快速的 Pusher 替代方案。�
 
 ### Umami
 
-Umami 是一个开源的、支持自行部署、简单快速、注重隐私的 Google Analytics 备选方案。你可以非常轻松地将它部署到 Vercel、 Railway 等，并选用 PlanetScale 作为其数据库。
+Umami 是一个开源的、支持自行部署、简单快速、注重隐私的 Google Analytics 备选方案。你可以使用 PlanetScale 作为数据库，轻松地将其部署到 Vercel、Railway 等平台上，也可以使用其云版本。
 
 - [Umami 官网](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
+- [Umami Cloud](https://cloud.umami.is/)
 
 ## 其他
 

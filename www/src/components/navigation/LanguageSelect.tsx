@@ -4,9 +4,9 @@ import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment } from "react";
 
-type LanguageSelectProps = {
+interface LanguageSelectProps {
   language: KnownLanguageCode;
-};
+}
 
 export default function LanguageSelect({ language }: LanguageSelectProps) {
   const handleSelect = (code: string) => {
