@@ -223,6 +223,14 @@ const projects: App[] = [
   },
 
   {
+    description: "Sozluk Clone - A simple clone of Ekşi Sözlük",
+    repoName: "doandroidsdreamof/sozluk-clone",
+    repo: "https://github.com/doandroidsdreamof/sozluk-clone",
+    linkName: "sozluk-clone.vercel.app",
+    link: "https://sozluk-clone.vercel.app",
+  },
+
+  {
     description: "Henrique's personal site",
     repoName: "henriqgoncalvs/website",
     repo: "https://github.com/henriqgoncalvs/website",
