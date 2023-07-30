@@ -221,6 +221,13 @@ const projects: App[] = [
     linkName: "checkinout.vercel.app",
     link: "https://checkinout.vercel.app/",
   },
+  {
+    description: "Sozluk Clone - A simple clone of Ekşi Sözlük",
+    repoName: "doandroidsdreamof/sozluk-clone",
+    repo: "https://github.com/doandroidsdreamof/sozluk-clone",
+    linkName: "sozluk-clone.vercel.app",
+    link: "https://sozluk-clone.vercel.app",
+  },
 ];
 
 export default function OpenSourceAppList({
