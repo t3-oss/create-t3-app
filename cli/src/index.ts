@@ -76,7 +76,12 @@ const main = async () => {
     await initializeGit(projectDir);
   }
 
-  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
+  await logNextSteps({
+    projectName: appDir,
+    packages: usePackages,
+    noInstall,
+    projectDir,
+  });
 
   process.exit(0);
 };
