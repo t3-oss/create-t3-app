@@ -1,3 +1,4 @@
+import { overrideDefaults } from "./overrideDefaults.js";
 import chalk from "chalk";
 import fs from "fs-extra";
 import inquirer from "inquirer";
@@ -102,6 +103,8 @@ export const scaffoldProject = async ({
 
   const scaffoldedName =
     projectName === "." ? "App" : chalk.cyan.bold(projectName);
+
+  overrideDefaults(spinner, projectDir);
 
   spinner.succeed(
     `${scaffoldedName} ${chalk.green("scaffolded successfully!")}\n`
