@@ -4,17 +4,17 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.22.1",
+  "next-auth": "^4.22.4",
   "@next-auth/prisma-adapter": "^1.0.7",
 
   // Prisma
-  prisma: "^5.0.0",
-  "@prisma/client": "^5.0.0",
+  prisma: "^5.1.1",
+  "@prisma/client": "^5.1.1",
 
   // TailwindCSS
   tailwindcss: "^3.3.3",
   autoprefixer: "^10.4.14",
-  postcss: "^8.4.26",
+  postcss: "^8.4.27",
   prettier: "^2.8.8",
   "prettier-plugin-tailwindcss": "^0.2.8",
   "@types/prettier": "^2.7.2",
