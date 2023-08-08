@@ -35,6 +35,11 @@ const companies: Company[] = [
     linkName: "greatfrontend.com",
     link: "https://www.greatfrontend.com",
   },
+  {
+    name: "River",
+    linkName: "getriver.io",
+    link: "https://getriver.io",
+  },
 ];
 
 export default function CompanyList({

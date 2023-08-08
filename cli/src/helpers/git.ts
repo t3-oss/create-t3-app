@@ -17,12 +17,12 @@ const isGitInstalled = (dir: string): boolean => {
 };
 
 /** @returns Whether or not the provided directory has a `.git` subdirectory in it. */
-const isRootGitRepo = (dir: string): boolean => {
+export const isRootGitRepo = (dir: string): boolean => {
   return fs.existsSync(path.join(dir, ".git"));
 };
 
 /** @returns Whether or not this directory or a parent directory has a `.git` directory. */
-const isInsideGitRepo = async (dir: string): Promise<boolean> => {
+export const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
     // If this command succeeds, we're inside a git repo
     await execa("git", ["rev-parse", "--is-inside-work-tree"], {
