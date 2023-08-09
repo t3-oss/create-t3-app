@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.17.0
+
+### Minor Changes
+
+- [#1523](https://github.com/t3-oss/create-t3-app/pull/1523) [`c441a9e`](https://github.com/t3-oss/create-t3-app/commit/c441a9ecfaeb61866a76379712b297fc6c2c36b3) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - reduced stylistic linting
+
 ## 7.16.0
 
 ### Minor Changes

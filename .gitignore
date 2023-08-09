@@ -54,3 +54,6 @@ Thumbs.db
 # Emacs backup files
 \#*
 .\#*
+
+# TYPESCRIPT
+*.tsbuildinfo
