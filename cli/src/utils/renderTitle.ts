@@ -1,6 +1,6 @@
-import gradient from "gradient-string";
 import { TITLE_TEXT } from "~/consts.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import gradient from "gradient-string";
 
 // colors brought in from vscode poimandres theme
 const poimandresTheme = {

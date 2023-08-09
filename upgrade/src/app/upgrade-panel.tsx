@@ -1,9 +1,5 @@
 "use client";
 
-import WheresMyVersion from "./wheres-my-version.mdx";
-import { Info } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import { buttonVariants } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
@@ -17,8 +13,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { cn, prettyFeatureNameMap } from "~/lib/utils";
-import { type Features, type VersionsGroupedByMajor } from "~/lib/utils";
+import {
+  cn,
+  prettyFeatureNameMap,
+  type Features,
+  type VersionsGroupedByMajor,
+} from "~/lib/utils";
+import { Info } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import WheresMyVersion from "./wheres-my-version.mdx";
 
 export function UpgradePanel({
   versionOptions,
