@@ -1,4 +1,6 @@
-/** @type {import('prettier').Config} */
+/**
+ * @type {import('prettier').Config & import("@ianvs/prettier-plugin-sort-imports").PluginConfig}
+ */
 const config = {
   arrowParens: "always",
   printWidth: 80,
@@ -7,6 +9,16 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
+  importOrder: [
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@acme/(.*)$",
+    "",
+    "^~/(.*)$",
+    "^[./]",
+  ],
+  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderTypeScriptVersion: "4.4.0",
 };
 
 export default config;
