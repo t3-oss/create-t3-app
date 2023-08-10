@@ -2,11 +2,18 @@
 
 import { type File as FileData } from "gitdiff-parser";
 import { Fragment, useMemo, useState } from "react";
-import { type ViewType, parseDiff } from "react-diff-view";
-import { Decoration, Diff, Hunk } from "react-diff-view";
-import { markEdits, tokenize } from "react-diff-view";
+import {
+  Decoration,
+  Diff,
+  Hunk,
+  markEdits,
+  parseDiff,
+  tokenize,
+  type ViewType,
+} from "react-diff-view";
 import { refractor } from "refractor";
 import ts from "refractor/lang/typescript";
+
 import { cn } from "~/lib/utils";
 
 export function Files(props: { diffText: string; viewType: ViewType }) {

@@ -297,6 +297,7 @@ const MyComponent = () => {
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
 import { expect, test } from "vitest";
+
 import { appRouter, type AppRouter } from "~/server/router/_app";
 import { createContextInner } from "~/server/router/context";
 

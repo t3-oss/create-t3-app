@@ -1,5 +1,6 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 

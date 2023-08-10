@@ -1,9 +1,12 @@
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
+
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { type AvailablePackages } from "~/installers/index.js";
-import { availablePackages } from "~/installers/index.js";
+import {
+  availablePackages,
+  type AvailablePackages,
+} from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { IsTTYError } from "~/utils/isTTYError.js";

@@ -1,8 +1,8 @@
-import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 import { DEFAULT_APP_NAME } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
+import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 
 // This logs the next steps that the user should take in order to advance the project
 export const logNextSteps = async ({
