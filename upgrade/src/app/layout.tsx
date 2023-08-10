@@ -1,9 +1,11 @@
 import "react-diff-view/style/index.css";
 import "~/styles/globals.css";
-import { cn } from "~/lib/utils";
+
 import { Github } from "lucide-react";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
+
+import { cn } from "~/lib/utils";
 
 const inter = Inter({
   subsets: ["latin"],

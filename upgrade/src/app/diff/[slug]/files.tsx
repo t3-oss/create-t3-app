@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "~/lib/utils";
 import { type File as FileData } from "gitdiff-parser";
 import { Fragment, useMemo, useState } from "react";
 import {
@@ -14,6 +13,8 @@ import {
 } from "react-diff-view";
 import { refractor } from "refractor";
 import ts from "refractor/lang/typescript";
+
+import { cn } from "~/lib/utils";
 
 export function Files(props: { diffText: string; viewType: ViewType }) {
   const files = parseDiff(props.diffText ?? "");

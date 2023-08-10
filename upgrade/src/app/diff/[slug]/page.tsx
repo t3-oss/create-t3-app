@@ -1,3 +1,8 @@
+import gitdiffParser from "gitdiff-parser";
+import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import {
@@ -8,10 +13,6 @@ import {
   prettyFeatureNameMap,
   type Features,
 } from "~/lib/utils";
-import gitdiffParser from "gitdiff-parser";
-import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 import DownloadButton from "./download-button";
 import { Files } from "./files";
 import HowToApplyDiff from "./how-to-apply-diff.mdx";

@@ -1,6 +1,7 @@
 import { Resvg } from "@resvg/resvg-js";
 import { type APIRoute } from "astro";
 import satori from "satori";
+
 import OpenGraph from "../components/openGraph";
 import { SITE } from "../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../languages";

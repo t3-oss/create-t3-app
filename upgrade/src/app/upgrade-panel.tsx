@@ -1,5 +1,9 @@
 "use client";
 
+import { Info } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+
 import { buttonVariants } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
@@ -19,9 +23,6 @@ import {
   type Features,
   type VersionsGroupedByMajor,
 } from "~/lib/utils";
-import { Info } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import WheresMyVersion from "./wheres-my-version.mdx";
 
 export function UpgradePanel({
