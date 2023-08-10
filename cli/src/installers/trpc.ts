@@ -1,8 +1,8 @@
-import fs from "fs-extra";
 import path from "path";
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import fs from "fs-extra";
 
 export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
