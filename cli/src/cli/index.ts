@@ -1,7 +1,6 @@
 import * as p from "@clack/prompts";
 import chalk from "chalk";
 import { Command } from "commander";
-import inquirer from "inquirer";
 
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
 // import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
@@ -310,13 +309,9 @@ export const runCli = async (): Promise<CliResults> => {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
-      const { shouldContinue } = await inquirer.prompt<{
-        shouldContinue: boolean;
-      }>({
-        name: "shouldContinue",
-        type: "confirm",
+      const shouldContinue = await p.confirm({
         message: `Continue scaffolding a default T3 app?`,
-        default: true,
+        initialValue: true,
       });
 
       if (!shouldContinue) {

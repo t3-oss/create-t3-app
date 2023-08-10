@@ -1,7 +1,7 @@
 import path from "path";
+import * as p from "@clack/prompts";
 import chalk from "chalk";
 import fs from "fs-extra";
-import inquirer from "inquirer";
 import ora from "ora";
 
 import { PKG_ROOT } from "~/consts.js";
@@ -33,32 +33,25 @@ export const scaffoldProject = async ({
         );
     } else {
       spinner.stopAndPersist();
-      const { overwriteDir } = await inquirer.prompt<{
-        overwriteDir: "abort" | "clear" | "overwrite";
-      }>({
-        name: "overwriteDir",
-        type: "list",
+      const overwriteDir = await p.select({
         message: `${chalk.redBright.bold("Warning:")} ${chalk.cyan.bold(
           projectName
         )} already exists and isn't empty. How would you like to proceed?`,
-        choices: [
+        options: [
           {
-            name: "Abort installation (recommended)",
+            label: "Abort installation (recommended)",
             value: "abort",
-            short: "Abort",
           },
           {
-            name: "Clear the directory and continue installation",
+            label: "Clear the directory and continue installation",
             value: "clear",
-            short: "Clear",
           },
           {
-            name: "Continue installation and overwrite conflicting files",
+            label: "Continue installation and overwrite conflicting files",
             value: "overwrite",
-            short: "Overwrite",
           },
         ],
-        default: "abort",
+        initialValue: "abort",
       });
       if (overwriteDir === "abort") {
         spinner.fail("Aborting installation...");
@@ -70,13 +63,9 @@ export const scaffoldProject = async ({
           ? "clear the directory"
           : "overwrite conflicting files";
 
-      const { confirmOverwriteDir } = await inquirer.prompt<{
-        confirmOverwriteDir: boolean;
-      }>({
-        name: "confirmOverwriteDir",
-        type: "confirm",
+      const confirmOverwriteDir = await p.confirm({
         message: `Are you sure you want to ${overwriteAction}?`,
-        default: false,
+        initialValue: false,
       });
 
       if (!confirmOverwriteDir) {
