@@ -4,7 +4,7 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.22.4",
+  "next-auth": "^4.22.5",
   "@next-auth/prisma-adapter": "^1.0.7",
   "@auth/drizzle-adapter": "^0.2.1",
 
@@ -13,10 +13,10 @@ export const dependencyVersionMap = {
   "@prisma/client": "^5.1.1",
 
   // Drizzle
-  "drizzle-orm": "^0.26.3",
-  "drizzle-kit": "^0.18.1",
+  "drizzle-orm": "^0.28.2",
+  "drizzle-kit": "^0.19.12",
   dotenv: "^16.1.4",
-  "@planetscale/database": "^1.7.0",
+  "@planetscale/database": "^1.10.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.3",
@@ -26,11 +26,11 @@ export const dependencyVersionMap = {
   "prettier-plugin-tailwindcss": "^0.5.1",
 
   // tRPC
-  "@trpc/client": "^10.34.0",
-  "@trpc/server": "^10.34.0",
-  "@trpc/react-query": "^10.34.0",
-  "@trpc/next": "^10.34.0",
-  "@tanstack/react-query": "^4.29.25",
+  "@trpc/client": "^10.37.1",
+  "@trpc/server": "^10.37.1",
+  "@trpc/react-query": "^10.37.1",
+  "@trpc/next": "^10.37.1",
+  "@tanstack/react-query": "^4.32.6",
   superjson: "^1.13.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
