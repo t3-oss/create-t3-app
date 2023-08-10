@@ -27,7 +27,7 @@ export const logNextSteps = async ({
     }
   }
 
-  const drizzleInUse = packages?.["drizzle"];
+  const drizzleInUse = packages?.drizzle;
   if (packages?.prisma.inUse || drizzleInUse) {
     logger.info(`  ${pkgManager === "npm" ? "npx" : pkgManager} db:push`);
   }

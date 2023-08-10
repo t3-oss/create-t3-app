@@ -5,7 +5,6 @@ import {
   mysqlTableCreator,
   primaryKey,
   serial,
-  text,
   timestamp,
   uniqueIndex,
   varchar,

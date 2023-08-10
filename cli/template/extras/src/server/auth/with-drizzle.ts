@@ -1,5 +1,4 @@
 import { DrizzleAdapter } from "@next-auth/drizzle-adapter";
-import { and, eq } from "drizzle-orm";
 import { type GetServerSidePropsContext } from "next";
 import {
   getServerSession,
