@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 import path from "path";
+import fs from "fs-extra";
+import { type PackageJson } from "type-fest";
+
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/git.js";
@@ -9,8 +12,6 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
-import fs from "fs-extra";
-import { type PackageJson } from "type-fest";
 import { installDependencies } from "./helpers/installDependencies.js";
 import { getVersion } from "./utils/getT3Version.js";
 import {

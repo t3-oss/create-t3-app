@@ -1,7 +1,8 @@
 import path from "path";
-import { PKG_ROOT } from "~/consts.js";
 import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
+
+import { PKG_ROOT } from "~/consts.js";
 
 export const getVersion = () => {
   const packageJsonPath = path.join(PKG_ROOT, "package.json");

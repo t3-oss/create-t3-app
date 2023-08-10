@@ -1,11 +1,12 @@
+import chalk from "chalk";
+import { execa } from "execa";
+import ora, { type Ora } from "ora";
+
 import {
   getUserPkgManager,
   type PackageManager,
 } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
-import chalk from "chalk";
-import { execa } from "execa";
-import ora, { type Ora } from "ora";
 
 interface Options {
   projectDir: string;
