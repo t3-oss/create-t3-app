@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import ora from "ora";
+
 import {
   type InstallerOptions,
   type PkgInstallerMap,
