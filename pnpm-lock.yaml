@@ -98,6 +98,9 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
     devDependencies:
+      '@auth/drizzle-adapter':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@planetscale/database':
         specifier: ^1.7.0
         version: 1.7.0
@@ -781,6 +784,30 @@ packages:
     resolution: {integrity: sha512-mHAOApWyjqSe5AQMOUD9rsZJqbMQqe3Wosb1a40JV6Okvyxj1G6GTlthwYadWCymq/lbgwh0PLiY8Fr4eFxtuQ==}
     dependencies:
       undici: 5.22.1
+
+  /@auth/core@0.10.1:
+    resolution: {integrity: sha512-zTE9cMRaAeTHvB78nRMovXW0D6ZnT3ldoGU+2PD5YAC+1G591LdOc4qjVaCyg5vmGjcTlHOpB4ApzyXXQkS1dA==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.0.4
+      cookie: 0.5.0
+      jose: 4.13.1
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: true
+
+  /@auth/drizzle-adapter@0.2.1:
+    resolution: {integrity: sha512-RGIiFGTrmWYYNeGw2KUX1WyTtsUNjSevSTf2c+3bdoUT73sfvarHaxLZ3qdI/+UyEdQVMiNkescU8fLqqQCOVg==}
+    dependencies:
+      '@auth/core': 0.10.1
+    transitivePeerDependencies:
+      - nodemailer
+    dev: true
 
   /@babel/code-frame@7.22.5:
     resolution: {integrity: sha512-Xmwn266vad+6DAqEB2A6V/CcZVp62BbwVmcOJc2RPuwih1kw02TjQvWVWlcKGbBPd+8/0V5DEkOcizRGYsspYQ==}
@@ -7425,6 +7452,10 @@ packages:
       set-blocking: 2.0.0
     dev: false
 
+  /oauth4webapi@2.3.0:
+    resolution: {integrity: sha512-JGkb5doGrwzVDuHwgrR4nHJayzN4h59VCed6EW8Tql6iHDfZIabCJvg6wtbn5q6pyB2hZruI3b77Nudvq7NmvA==}
+    dev: true
+
   /oauth@0.9.15:
     resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
     dev: true
@@ -7854,6 +7885,15 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
+  /preact-render-to-string@5.2.3(preact@10.11.3):
+    resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==}
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: 10.11.3
+      pretty-format: 3.8.0
+    dev: true
+
   /preact-render-to-string@5.2.6(preact@10.13.1):
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
@@ -7861,6 +7901,10 @@ packages:
     dependencies:
       preact: 10.13.1
       pretty-format: 3.8.0
+    dev: true
+
+  /preact@10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
     dev: true
 
   /preact@10.13.1:

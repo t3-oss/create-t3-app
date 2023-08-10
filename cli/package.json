@@ -54,6 +54,7 @@
     "sort-package-json": "^2.4.1"
   },
   "devDependencies": {
+    "@auth/drizzle-adapter": "^0.2.1",
     "@planetscale/database": "^1.7.0",
     "@prisma/client": "^4.14.0",
     "@t3-oss/env-nextjs": "^0.3.1",
