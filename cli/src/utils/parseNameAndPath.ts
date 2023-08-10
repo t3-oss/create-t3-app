@@ -1,4 +1,5 @@
 import pathModule from "path";
+
 import { removeTrailingSlash } from "./removeTrailingSlash.js";
 
 /**

@@ -1,9 +1,10 @@
 import path from "path";
+import fs from "fs-extra";
+import { type PackageJson } from "type-fest";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
-import fs from "fs-extra";
-import { type PackageJson } from "type-fest";
 
 export const prismaInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
