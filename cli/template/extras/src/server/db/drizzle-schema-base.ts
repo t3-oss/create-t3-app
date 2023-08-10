@@ -15,7 +15,7 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
+export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
 
 export const example = mysqlTable(
   "example",
