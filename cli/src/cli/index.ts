@@ -29,7 +29,7 @@ interface CliFlags {
   /** @internal Used in CI. */
   prisma: boolean;
   /** @internal Used in CI. */
-  drizzle: boolean | "pscale" | "pg";
+  drizzle: boolean;
   /** @internal Used in CI. */
   nextAuth: boolean;
 }
@@ -108,19 +108,9 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "--drizzle [string]",
-      "Experimental: What SQL Dialect to use if using Drizzle. Must be used in conjunction with `--CI`.",
-      (value) => {
-        if (!value || value === "false") {
-          return false;
-        }
-        if (["pg", "pscale"].includes(value)) {
-          return value;
-        }
-        throw new Error(
-          `Invalid value for --drizzle. Expected: 'none', 'pg' or 'pscale', got '${value}'`
-        );
-      }
+      "--drizzle [boolean]",
+      "Experimental: Boolean value if we should install Drizzle. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
@@ -170,10 +160,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
-    if (cliResults.flags.drizzle === "pg")
-      cliResults.packages.push("drizzle-pg");
-    if (cliResults.flags.drizzle === "pscale")
-      cliResults.packages.push("drizzle-pscale");
+    if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
 
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
@@ -182,7 +169,7 @@ export const runCli = async (): Promise<CliResults> => {
       );
       cliResults.flags.drizzle = false;
       cliResults.packages = cliResults.packages.filter(
-        (pkg) => pkg !== "drizzle-pg" && pkg !== "drizzle-pscale"
+        (pkg) => pkg !== "drizzle"
       );
     }
 
@@ -305,8 +292,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.trpc) packages.push("trpc");
     if (project.authentication === "next-auth") packages.push("nextAuth");
     if (project.database === "prisma") packages.push("prisma");
-    if (project.database === "drizzle-pscale") packages.push("drizzle-pscale");
-    if (project.database === "drizzle-pg") packages.push("drizzle-pg");
+    if (project.database === "drizzle") packages.push("drizzle");
 
     return {
       appName: project.name ?? cliResults.appName,

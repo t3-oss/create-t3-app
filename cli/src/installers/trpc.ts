@@ -21,8 +21,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
 
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
-  const usingDrizzle =
-    packages?.["drizzle-pg"].inUse || packages?.["drizzle-pscale"].inUse;
+  const usingDrizzle = packages?.drizzle.inUse;
   const usingDb = usingPrisma || usingDrizzle;
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");

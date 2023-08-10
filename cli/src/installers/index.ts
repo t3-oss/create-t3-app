@@ -4,15 +4,14 @@ import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
-import { getDrizzleInstaller } from "./drizzle.js";
+import { drizzleInstaller } from "./drizzle.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
 export const availablePackages = [
   "nextAuth",
   "prisma",
-  "drizzle-pscale",
-  "drizzle-pg",
+  "drizzle",
   "tailwind",
   "trpc",
   "envVariables",
@@ -47,13 +46,9 @@ export const buildPkgInstallerMap = (
     inUse: packages.includes("prisma"),
     installer: prismaInstaller,
   },
-  "drizzle-pg": {
-    inUse: packages.includes("drizzle-pg"),
-    installer: getDrizzleInstaller("pg"),
-  },
-  "drizzle-pscale": {
-    inUse: packages.includes("drizzle-pscale"),
-    installer: getDrizzleInstaller("pscale"),
+  drizzle: {
+    inUse: packages.includes("drizzle"),
+    installer: drizzleInstaller,
   },
   tailwind: {
     inUse: packages.includes("tailwind"),

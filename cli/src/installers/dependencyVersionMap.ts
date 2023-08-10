@@ -15,7 +15,6 @@ export const dependencyVersionMap = {
   "drizzle-orm": "^0.26.3",
   "drizzle-kit": "^0.18.1",
   dotenv: "^16.1.4",
-  // REVIEW: Is it fine including pscale by default?
   "@planetscale/database": "^1.7.0",
 
   // TailwindCSS
