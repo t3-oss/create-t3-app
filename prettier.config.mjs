@@ -9,14 +9,7 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
-  importOrder: [
-    "<THIRD_PARTY_MODULES>",
-    "",
-    "^@acme/(.*)$",
-    "",
-    "^~/(.*)$",
-    "^[./]",
-  ],
+  importOrder: ["<THIRD_PARTY_MODULES>", "", "^~/(.*)$", "^[./]"],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
 };
