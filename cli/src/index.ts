@@ -49,7 +49,7 @@ const main = async () => {
 
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
+    path.join(projectDir, "package.json")
   ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
@@ -69,7 +69,7 @@ const main = async () => {
   // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
   fs.renameSync(
     path.join(projectDir, "_eslintrc.cjs"),
-    path.join(projectDir, ".eslintrc.cjs"),
+    path.join(projectDir, ".eslintrc.cjs")
   );
 
   if (!noGit) {
@@ -87,7 +87,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unknown error has occurred. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:"
     );
     console.log(err);
   }

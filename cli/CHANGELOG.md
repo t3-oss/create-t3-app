@@ -1,5 +1,33 @@
 # Changelog
 
+## 7.15.0
+
+### Minor Changes
+
+- [#1484](https://github.com/t3-oss/create-t3-app/pull/1484) [`23a9d60`](https://github.com/t3-oss/create-t3-app/commit/23a9d60cd013c40d76ab96d0340425e1e3d8efa2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - reminder to git commit after creating an application with the CLI
+
+### Patch Changes
+
+- [#1493](https://github.com/t3-oss/create-t3-app/pull/1493) [`a230d9f`](https://github.com/t3-oss/create-t3-app/commit/a230d9f7bb3a78669f2003ae9084c868f06639b7) Thanks [@dcottr](https://github.com/dcottr)! - Remove trailing newlines in generated app that aren't allowed by the generated prettier config
+
+## 7.14.1
+
+### Patch Changes
+
+- [#1479](https://github.com/t3-oss/create-t3-app/pull/1479) [`bb7324c`](https://github.com/t3-oss/create-t3-app/commit/bb7324c9503995949c61c0a5abe736c38f07b815) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use custom error class for IsTTYError
+
+## 7.14.0
+
+### Minor Changes
+
+- [#1466](https://github.com/t3-oss/create-t3-app/pull/1466) [`e8b68d9`](https://github.com/t3-oss/create-t3-app/commit/e8b68d92af093361bf73eed7eacd7ed6848500c3) Thanks [@brunoeduardodev](https://github.com/brunoeduardodev)! - Ignore trailing slashes when prompting the app name.
+
+## 7.13.2
+
+### Patch Changes
+
+- [#1469](https://github.com/t3-oss/create-t3-app/pull/1469) [`547f504`](https://github.com/t3-oss/create-t3-app/commit/547f504b91c3da9b6419ea7f9f43d03e6c243839) Thanks [@ericshively](https://github.com/ericshively)! - Replace React.FC with basic function syntax
+
 ## 7.13.1
 
 ### Patch Changes

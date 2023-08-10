@@ -23,12 +23,12 @@ export const logNextSteps = ({
   }
 
   if (packages?.prisma.inUse) {
-    logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} db:push`);
+    logger.info(`  ${pkgManager === "npm" ? "npx" : pkgManager} db:push`);
   }
 
   if (packages?.drizzle.inUse) {
     logger.info(
-      `  ${pkgManager === "npm" ? "npx" : pkgManager} drizzle-kit push:mysql`,
+      `  ${pkgManager === "npm" ? "npx" : pkgManager} drizzle-kit push:mysql`
     );
   }
 
@@ -37,7 +37,9 @@ export const logNextSteps = ({
   if (packages?.drizzle.inUse) {
     logger.warn(
       `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
-      `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`,
+      `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
   }
+
+  logger.info(`  git commit -m "initial commit"`);
 };

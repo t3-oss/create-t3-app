@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.13.1",
+  "version": "7.15.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -41,6 +41,8 @@
     "pub:release": "pnpm build && npm publish"
   },
   "dependencies": {
+    "@clack/core": "^0.3.2",
+    "@clack/prompts": "^0.6.3",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "chalk": "5.2.0",
     "commander": "^10.0.0",

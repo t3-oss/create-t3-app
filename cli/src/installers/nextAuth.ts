@@ -33,7 +33,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
       ? "with-prisma.ts"
       : usingDrizzle
       ? "with-drizzle.ts"
-      : "base.ts",
+      : "base.ts"
   );
   const authConfigDest = path.join(projectDir, "src/server/auth.ts");
 

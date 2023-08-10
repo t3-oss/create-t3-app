@@ -1,11 +1,14 @@
+import * as p from "@clack/prompts";
 import chalk from "chalk";
 import { Command } from "commander";
 import inquirer from "inquirer";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
 import { type AvailablePackages } from "~/installers/index.js";
-import { availablePackages } from "~/installers/index.js";
+// import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+// import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { IsTTYError } from "~/utils/isTTYError.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
 import { validateImportAlias } from "~/utils/validateImportAlias.js";
@@ -25,7 +28,7 @@ interface CliFlags {
   /** @internal Used in CI. */
   prisma: boolean;
   /** @internal Used in CI. */
-  drizzle: boolean;
+  drizzle: boolean | "pscale" | "pg";
   /** @internal Used in CI. */
   nextAuth: boolean;
 }
@@ -53,33 +56,30 @@ const defaultOptions: CliResults = {
   },
 };
 
-export const runCli = async () => {
+export const runCli = async (): Promise<CliResults> => {
   const cliResults = defaultOptions;
 
-  const program = new Command().name(CREATE_T3_APP);
-
-  // TODO: This doesn't return anything typesafe. Research other options?
-  // Emulate from: https://github.com/Schniz/soundtype-commander
-  program
+  const program = new Command()
+    .name(CREATE_T3_APP)
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
       "[dir]",
-      "The name of the application, as well as the name of the directory to create",
+      "The name of the application, as well as the name of the directory to create"
     )
     .option(
       "--noGit",
       "Explicitly tell the CLI to not initialize a new git repo in the project",
-      false,
+      false
     )
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
-      false,
+      false
     )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new t3-app",
-      false,
+      false
     )
     /** START CI-FLAGS */
     /**
@@ -91,37 +91,47 @@ export const runCli = async () => {
     .option(
       "--tailwind [boolean]",
       "Experimental: Boolean value if we should install Tailwind CSS. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--prisma [boolean]",
       "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "--drizzle [boolean]",
-      "Experimental: Boolean value if we should install Drizzle. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      "--drizzle [string]",
+      "Experimental: What SQL Dialect to use if using Drizzle. Must be used in conjunction with `--CI`.",
+      (value) => {
+        if (!value || value === "false") {
+          return false;
+        }
+        if (["pg", "pscale"].includes(value)) {
+          return value;
+        }
+        throw new Error(
+          `Invalid value for --drizzle. Expected: 'none', 'pg' or 'pscale', got '${value}'`
+        );
+      }
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
+      (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
-      defaultOptions.flags.importAlias,
+      defaultOptions.flags.importAlias
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -130,10 +140,10 @@ export const runCli = async () => {
       `\n The t3 stack was inspired by ${chalk
         .hex("#E8DCFF")
         .bold(
-          "@t3dotgg",
+          "@t3dotgg"
         )} and has been used to build awesome fullstack applications like ${chalk
         .hex("#E24A8D")
-        .underline("https://ping.gg")} \n`,
+        .underline("https://ping.gg")} \n`
     )
     .parse(process.argv);
 
@@ -154,23 +164,32 @@ export const runCli = async () => {
   cliResults.flags = program.opts();
 
   /** @internal Used for CI E2E tests. */
-  let CIMode = false;
   if (cliResults.flags.CI) {
-    CIMode = true;
     cliResults.packages = [];
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
-    if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
+    if (cliResults.flags.drizzle === "pg")
+      cliResults.packages.push("drizzle-pg");
+    if (cliResults.flags.drizzle === "pscale")
+      cliResults.packages.push("drizzle-pscale");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
 
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       console.warn(
-        "Incompatible combination Prisma + Drizzle. Falling back to Prisma only.",
+        "Incompatible combination Prisma + Drizzle. Falling back to Prisma only."
       );
       cliResults.flags.drizzle = false;
-      cliResults.packages.splice(cliResults.packages.indexOf("drizzle"), 1);
+      cliResults.packages = cliResults.packages.filter(
+        (pkg) => pkg !== "drizzle-pg" && pkg !== "drizzle-pscale"
+      );
     }
+
+    return cliResults;
+  }
+
+  if (cliResults.flags.default) {
+    return cliResults;
   }
 
   // Explained below why this is in a try/catch block
@@ -180,37 +199,128 @@ export const runCli = async () => {
   using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
-      const error = new Error("Non-interactive environment");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (error as any).isTTYError = true;
-      throw error;
+      throw new IsTTYError("Non-interactive environment");
     }
 
     // if --CI flag is set, we are running in CI mode and should not prompt the user
-    // if --default flag is set, we should not prompt the user
-    if (!cliResults.flags.default && !CIMode) {
-      if (!cliProvidedName) {
-        cliResults.appName = await promptAppName();
-      }
 
-      await promptLanguage();
-      cliResults.packages = await promptPackages();
-      if (!cliResults.flags.noGit) {
-        cliResults.flags.noGit = !(await promptGit());
-      }
+    const pkgManager = getUserPkgManager();
 
-      if (!cliResults.flags.noInstall) {
-        cliResults.flags.noInstall = !(await promptInstall());
+    const project = await p.group(
+      {
+        ...(!cliProvidedName && {
+          name: () =>
+            p.text({
+              message: "What will your project be called?",
+              defaultValue: cliProvidedName,
+              validate: validateAppName,
+            }),
+        }),
+        language: () => {
+          return p.select({
+            message: "Will you be using TypeScript or JavaScript?",
+            options: [
+              { value: "typescript", label: "TypeScript" },
+              { value: "javascript", label: "JavaScript" },
+            ],
+            initialValue: "typescript",
+          });
+        },
+        _: ({ results }) =>
+          results.language === "javascript"
+            ? p.note(chalk.redBright("Wrong answer, using TypeScript instead"))
+            : undefined,
+        styling: () => {
+          return p.confirm({
+            message: "Will you be using Tailwind CSS for styling?",
+          });
+        },
+        trpc: () => {
+          return p.confirm({
+            message: "Would you like to use tRPC?",
+          });
+        },
+        authentication: () => {
+          return p.select({
+            message: "What authentication provider would you like to use?",
+            options: [
+              { value: "none", label: "None" },
+              { value: "next-auth", label: "NextAuth.js" },
+              // Maybe later
+              // { value: "clerk", label: "Clerk" },
+            ],
+            initialValue: "none",
+          });
+        },
+        database: () => {
+          return p.select({
+            message: "What database ORM would you like to use?",
+            options: [
+              { value: "none", label: "None" },
+              { value: "prisma", label: "Prisma" },
+              { value: "drizzle-pscale", label: "Drizzle w/ PlanetScale" },
+              { value: "drizzle-pg", label: "Drizzle w/ PostgreSQL" },
+            ],
+            initialValue: "none",
+          });
+        },
+        ...(!cliResults.flags.noGit && {
+          git: () => {
+            return p.confirm({
+              message:
+                "Should we initialize a Git repository and stage the changes?",
+              initialValue: !defaultOptions.flags.noGit,
+            });
+          },
+        }),
+        ...(!cliResults.flags.noInstall && {
+          install: () => {
+            return p.confirm({
+              message:
+                `Should we run '${pkgManager}` +
+                (pkgManager === "yarn" ? `'?` : ` install' for you?`),
+              initialValue: !defaultOptions.flags.noInstall,
+            });
+          },
+        }),
+        importAlias: () => {
+          return p.text({
+            message: "What import alias would you like to use?",
+            defaultValue: defaultOptions.flags.importAlias,
+            placeholder: defaultOptions.flags.importAlias,
+            validate: validateImportAlias,
+          });
+        },
+      },
+      {
+        onCancel() {
+          process.exit(1);
+        },
       }
+    );
 
-      cliResults.flags.importAlias = await promptImportAlias();
-    }
+    const packages: AvailablePackages[] = [];
+    if (project.styling) packages.push("tailwind");
+    if (project.trpc) packages.push("trpc");
+    if (project.authentication === "next-auth") packages.push("nextAuth");
+    if (project.database === "prisma") packages.push("prisma");
+    if (project.database === "drizzle-pscale") packages.push("drizzle-pscale");
+    if (project.database === "drizzle-pg") packages.push("drizzle-pg");
+
+    return {
+      appName: project.name ?? cliResults.appName,
+      packages,
+      flags: {
+        ...cliResults.flags,
+        noGit: !project.git ?? cliResults.flags.noGit,
+        noInstall: !project.install ?? cliResults.flags.noInstall,
+        importAlias: project.importAlias ?? cliResults.flags.importAlias,
+      },
+    };
   } catch (err) {
-    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an error with isTTYError = true
+    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an IsTTYError
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
-    // Otherwise we have to do some fancy namespace extension logic on the Error type which feels overkill for one line
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (err instanceof Error && (err as any).isTTYError) {
+    if (err instanceof IsTTYError) {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
@@ -235,121 +345,4 @@ export const runCli = async () => {
   }
 
   return cliResults;
-};
-
-const promptAppName = async (): Promise<string> => {
-  const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
-    name: "appName",
-    type: "input",
-    message: "What will your project be called?",
-    default: defaultOptions.appName,
-    validate: validateAppName,
-    transformer: (input: string) => {
-      return input.trim();
-    },
-  });
-
-  return appName;
-};
-
-const promptLanguage = async (): Promise<void> => {
-  const { language } = await inquirer.prompt<{ language: string }>({
-    name: "language",
-    type: "list",
-    message: "Will you be using TypeScript or JavaScript?",
-    choices: [
-      { name: "TypeScript", value: "typescript", short: "TypeScript" },
-      { name: "JavaScript", value: "javascript", short: "JavaScript" },
-    ],
-    default: "typescript",
-  });
-
-  if (language === "javascript") {
-    logger.error("Wrong answer, using TypeScript instead...");
-  } else {
-    logger.success("Good choice! Using TypeScript!");
-  }
-};
-
-const promptPackages = async (): Promise<AvailablePackages[]> => {
-  const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
-    name: "packages",
-    type: "checkbox",
-    message: "Which packages would you like to enable?",
-    choices: availablePackages
-      .filter((pkg) => pkg !== "envVariables") // don't prompt for env-vars
-      .map((pkgName) => ({
-        name: pkgName,
-        checked: false,
-      })),
-    validate: (input: string[]) => {
-      if (input.includes("prisma") && input.includes("drizzle")) {
-        return "You cannot select both Prisma and Drizzle in the same app.";
-      }
-      return true;
-    },
-  });
-
-  return packages;
-};
-
-const promptGit = async (): Promise<boolean> => {
-  const { git } = await inquirer.prompt<{ git: boolean }>({
-    name: "git",
-    type: "confirm",
-    message: "Initialize a new git repository?",
-    default: true,
-  });
-
-  if (git) {
-    logger.success("Nice one! Initializing repository!");
-  } else {
-    logger.info("Sounds good! You can come back and run git init later.");
-  }
-
-  return git;
-};
-
-const promptInstall = async (): Promise<boolean> => {
-  const pkgManager = getUserPkgManager();
-
-  const { install } = await inquirer.prompt<{ install: boolean }>({
-    name: "install",
-    type: "confirm",
-    message:
-      `Would you like us to run '${pkgManager}` +
-      (pkgManager === "yarn" ? `'?` : ` install'?`),
-    default: true,
-  });
-
-  if (install) {
-    logger.success("Alright. We'll install the dependencies for you!");
-  } else {
-    if (pkgManager === "yarn") {
-      logger.info(
-        `No worries. You can run '${pkgManager}' later to install the dependencies.`,
-      );
-    } else {
-      logger.info(
-        `No worries. You can run '${pkgManager} install' later to install the dependencies.`,
-      );
-    }
-  }
-
-  return install;
-};
-
-const promptImportAlias = async (): Promise<string> => {
-  const { importAlias } = await inquirer.prompt<Pick<CliFlags, "importAlias">>({
-    name: "importAlias",
-    type: "input",
-    message: "What import alias would you like configured?",
-    default: defaultOptions.flags.importAlias,
-    validate: validateImportAlias,
-    transformer: (input: string) => {
-      return input.trim();
-    },
-  });
-
-  return importAlias;
 };

@@ -27,5 +27,5 @@ export const example = mysqlTable(
   },
   (example) => ({
     nameIndex: uniqueIndex("name_idx").on(example.name),
-  }),
+  })
 );

@@ -29,7 +29,7 @@ export const example = mysqlTable(
   },
   (example) => ({
     nameIndex: uniqueIndex("name_idx").on(example.name),
-  }),
+  })
 );
 
 export const users = mysqlTable("users", {
@@ -63,7 +63,7 @@ export const accounts = mysqlTable(
   },
   (account) => ({
     compoundKey: primaryKey(account.provider, account.providerAccountId),
-  }),
+  })
 );
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
@@ -89,5 +89,5 @@ export const verificationTokens = mysqlTable(
   },
   (vt) => ({
     compoundKey: primaryKey(vt.identifier, vt.token),
-  }),
+  })
 );

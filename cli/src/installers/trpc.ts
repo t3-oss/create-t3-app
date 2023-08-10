@@ -61,11 +61,11 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const exampleRouterSrc = path.join(
     extrasDir,
     "src/server/api/routers/example",
-    exampleRouterFile,
+    exampleRouterFile
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/example.ts",
+    "src/server/api/routers/example.ts"
   );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);

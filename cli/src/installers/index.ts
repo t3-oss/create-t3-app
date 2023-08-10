@@ -11,7 +11,8 @@ import { type PackageManager } from "~/utils/getUserPkgManager.js";
 export const availablePackages = [
   "nextAuth",
   "prisma",
-  "drizzle",
+  "drizzle-pscale",
+  "drizzle-pg",
   "tailwind",
   "trpc",
   "envVariables",
@@ -36,7 +37,7 @@ export type PkgInstallerMap = {
 };
 
 export const buildPkgInstallerMap = (
-  packages: AvailablePackages[],
+  packages: AvailablePackages[]
 ): PkgInstallerMap => ({
   nextAuth: {
     inUse: packages.includes("nextAuth"),
@@ -46,9 +47,13 @@ export const buildPkgInstallerMap = (
     inUse: packages.includes("prisma"),
     installer: prismaInstaller,
   },
-  drizzle: {
-    inUse: packages.includes("drizzle"),
-    installer: drizzleInstaller,
+  "drizzle-pg": {
+    inUse: packages.includes("drizzle-pg"),
+    installer: getDrizzleInstaller("pg"),
+  },
+  "drizzle-pscale": {
+    inUse: packages.includes("drizzle-pscale"),
+    installer: getDrizzleInstaller("pscale"),
   },
   tailwind: {
     inUse: packages.includes("tailwind"),

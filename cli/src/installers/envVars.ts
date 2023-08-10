@@ -23,7 +23,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     const envSchemaSrc = path.join(
       PKG_ROOT,
       "template/extras/src/env",
-      envFile,
+      envFile
     );
     const envSchemaDest = path.join(projectDir, "src/env.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);
@@ -39,7 +39,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 const getEnvContent = (
   usingAuth: boolean,
   usingPrisma: boolean,
-  usingDrizzle: boolean,
+  usingDrizzle: boolean
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.mjs"

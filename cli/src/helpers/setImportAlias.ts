@@ -4,7 +4,7 @@ import path from "path";
 function replaceTextInFiles(
   directoryPath: string,
   search: string,
-  replacement: string,
+  replacement: string
 ): void {
   const files = fs.readdirSync(directoryPath);
 
