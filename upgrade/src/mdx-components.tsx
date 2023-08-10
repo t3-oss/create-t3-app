@@ -1,7 +1,8 @@
-import { Steps } from "./components/mdx";
 import { type MDXComponents } from "mdx/types";
 import Link from "next/link";
 import * as React from "react";
+
+import { Steps } from "./components/mdx";
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -27,7 +28,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const Component = isExternal ? "a" : Link;
       return (
         <Component
-          href={href as string}
+          href={href!}
           className="underline decoration-primary decoration-2 underline-offset-4"
         >
           {children}

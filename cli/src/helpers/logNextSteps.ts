@@ -2,13 +2,18 @@ import { DEFAULT_APP_NAME } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
+import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 
 // This logs the next steps that the user should take in order to advance the project
-export const logNextSteps = ({
+export const logNextSteps = async ({
   projectName = DEFAULT_APP_NAME,
   packages,
   noInstall,
-}: Pick<InstallerOptions, "projectName" | "packages" | "noInstall">) => {
+  projectDir,
+}: Pick<
+  InstallerOptions,
+  "projectName" | "packages" | "noInstall" | "projectDir"
+>) => {
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
@@ -22,24 +27,22 @@ export const logNextSteps = ({
     }
   }
 
-  if (packages?.prisma.inUse) {
+  const drizzleInUse = packages?.["drizzle-pg"] || packages?.["drizzle-pscale"];
+  if (packages?.prisma.inUse || drizzleInUse) {
     logger.info(`  ${pkgManager === "npm" ? "npx" : pkgManager} db:push`);
-  }
-
-  if (packages?.drizzle.inUse) {
-    logger.info(
-      `  ${pkgManager === "npm" ? "npx" : pkgManager} drizzle-kit push:mysql`
-    );
   }
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 
-  if (packages?.drizzle.inUse) {
+  if (drizzleInUse) {
     logger.warn(
       `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
       `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
   }
 
+  if (!(await isInsideGitRepo(projectDir)) && !isRootGitRepo(projectDir)) {
+    logger.info(`  git init`);
+  }
   logger.info(`  git commit -m "initial commit"`);
 };

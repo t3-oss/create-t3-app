@@ -1,6 +1,8 @@
 import { removeTrailingSlash } from "./removeTrailingSlash.js";
 import pathModule from "path";
 
+import { removeTrailingSlash } from "./removeTrailingSlash.js";
+
 /**
  * Parses the appName and its path from the user input.
  *

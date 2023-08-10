@@ -1,10 +1,11 @@
-import chalk from "chalk";
 import { execSync } from "child_process";
+import path from "path";
+import chalk from "chalk";
 import { execa } from "execa";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import ora from "ora";
-import path from "path";
+
 import { logger } from "~/utils/logger.js";
 
 const isGitInstalled = (dir: string): boolean => {
@@ -17,12 +18,12 @@ const isGitInstalled = (dir: string): boolean => {
 };
 
 /** @returns Whether or not the provided directory has a `.git` subdirectory in it. */
-const isRootGitRepo = (dir: string): boolean => {
+export const isRootGitRepo = (dir: string): boolean => {
   return fs.existsSync(path.join(dir, ".git"));
 };
 
 /** @returns Whether or not this directory or a parent directory has a `.git` directory. */
-const isInsideGitRepo = async (dir: string): Promise<boolean> => {
+export const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
     // If this command succeeds, we're inside a git repo
     await execa("git", ["rev-parse", "--is-inside-work-tree"], {

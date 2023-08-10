@@ -1,4 +1,5 @@
 import path from "path";
+
 import { installPackages } from "~/helpers/installPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
 import { selectAppFile, selectIndexFile } from "~/helpers/selectBoilerplate.js";

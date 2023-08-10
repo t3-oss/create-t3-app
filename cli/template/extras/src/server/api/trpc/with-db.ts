@@ -8,9 +8,9 @@
  */
 import { initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import { db } from "~/server/db";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { db } from "~/server/db";
 
 /**
  * 1. CONTEXT
