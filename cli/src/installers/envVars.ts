@@ -9,14 +9,16 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
+  const usingDb = usingPrisma || usingDrizzle;
+
   const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
 
   const envFile =
-    usingAuth && usingPrisma
-      ? "with-auth-prisma.mjs"
+    usingAuth && usingDb
+      ? "with-auth-db.mjs"
       : usingAuth
       ? "with-auth.mjs"
-      : usingPrisma || usingDrizzle
+      : usingDb
       ? "with-db.mjs"
       : "";
 
