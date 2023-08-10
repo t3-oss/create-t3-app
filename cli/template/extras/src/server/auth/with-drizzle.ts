@@ -2,11 +2,12 @@ import { and, eq } from "drizzle-orm";
 import { type GetServerSidePropsContext } from "next";
 import {
   getServerSession,
-  type NextAuthOptions,
   type DefaultSession,
+  type NextAuthOptions,
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
+
 import { env } from "~/env.mjs";
 import { db } from "~/server/db";
 import * as schema from "~/server/db/schema";

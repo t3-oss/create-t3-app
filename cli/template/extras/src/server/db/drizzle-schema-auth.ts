@@ -1,13 +1,13 @@
 import { relations } from "drizzle-orm";
 import {
   int,
-  timestamp,
   mysqlTableCreator,
-  varchar,
   primaryKey,
   serial,
-  uniqueIndex,
   text,
+  timestamp,
+  uniqueIndex,
+  varchar,
 } from "drizzle-orm/mysql-core";
 import { type AdapterAccount } from "next-auth/adapters";
 

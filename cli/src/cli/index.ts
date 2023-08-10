@@ -1,4 +1,8 @@
 import * as p from "@clack/prompts";
+import chalk from "chalk";
+import { Command } from "commander";
+import inquirer from "inquirer";
+
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
 // import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { type AvailablePackages } from "~/installers/index.js";
@@ -9,9 +13,6 @@ import { IsTTYError } from "~/utils/isTTYError.js";
 import { logger } from "~/utils/logger.js";
 import { validateAppName } from "~/utils/validateAppName.js";
 import { validateImportAlias } from "~/utils/validateImportAlias.js";
-import chalk from "chalk";
-import { Command } from "commander";
-import inquirer from "inquirer";
 
 interface CliFlags {
   noGit: boolean;
