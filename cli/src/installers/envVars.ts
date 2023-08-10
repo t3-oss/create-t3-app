@@ -7,7 +7,8 @@ import { type Installer } from "~/installers/index.js";
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
-  const usingDrizzle = packages?.drizzle.inUse;
+  const usingDrizzle =
+    packages?.["drizzle-pg"].inUse || packages?.["drizzle-pscale"].inUse;
 
   const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
 

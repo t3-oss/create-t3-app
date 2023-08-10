@@ -99,7 +99,7 @@ export function DrizzleAdapter(): Adapter {
         .from(users)
         .where(eq(users.id, id))
         .then((res) => res[0]);
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       return user!;
     },
     getUser: async (data) => {
@@ -117,7 +117,7 @@ export function DrizzleAdapter(): Adapter {
         .select()
         .from(sessions)
         .where(eq(sessions.sessionToken, data.sessionToken));
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       return session[0]!;
     },
     getSessionAndUser: async (data) => {
@@ -140,7 +140,7 @@ export function DrizzleAdapter(): Adapter {
       await db.update(users).set(data).where(eq(users.id, data.id));
 
       const user = await db.select().from(users).where(eq(users.id, data.id));
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       return user[0]!;
     },
     updateSession: async (data) => {
