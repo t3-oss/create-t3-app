@@ -246,8 +246,7 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "prisma", label: "Prisma" },
-              { value: "drizzle-pscale", label: "Drizzle w/ PlanetScale" },
-              { value: "drizzle-pg", label: "Drizzle w/ PostgreSQL" },
+              { value: "drizzle", label: "Drizzle" },
             ],
             initialValue: "none",
           });
