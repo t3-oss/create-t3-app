@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 
+import { useCallback, useRef, useState } from "react";
 import { ALGOLIA } from "../../config";
-import { useState, useCallback, useRef } from "react";
 import "../../styles/algolia/style.css";
 import * as docSearchReact from "@docsearch/react";
 import clsx from "clsx";
