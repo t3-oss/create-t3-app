@@ -9,7 +9,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
-  projectName,
+scopedAppName,
 }) => {
   addPackageDependency({
     projectDir,
@@ -40,7 +40,7 @@ export const drizzleInstaller: Installer = ({
   let schemaContent = fs.readFileSync(schemaSrc, "utf-8");
   schemaContent = schemaContent.replace(
     "project1_${name}",
-    `${projectName}_\${name}`
+    `${scopedAppName}_\${name}`
   );
 
   const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
