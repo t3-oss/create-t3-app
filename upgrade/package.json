@@ -23,7 +23,7 @@
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-slot": "^1.0.1",
-    "@t3-oss/env-nextjs": "^0.3.1",
+    "@t3-oss/env-nextjs": "^0.6.0",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "gitdiff-parser": "^0.3.1",
