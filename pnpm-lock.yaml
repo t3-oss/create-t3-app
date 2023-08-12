@@ -192,8 +192,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(react@18.2.0)
       '@t3-oss/env-nextjs':
-        specifier: ^0.3.1
-        version: 0.3.1(typescript@5.0.4)(zod@3.21.4)
+        specifier: ^0.6.0
+        version: 0.6.0(typescript@5.0.4)(zod@3.21.4)
       class-variance-authority:
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.0.4)
@@ -2630,16 +2630,6 @@ packages:
       defer-to-connect: 1.1.3
     dev: false
 
-  /@t3-oss/env-core@0.3.1(typescript@5.0.4)(zod@3.21.4):
-    resolution: {integrity: sha512-iEnBuWeSjzqQLDTUw7H+YhstV4OZrGXTkQGL6ZOMxZQoCmwGX7GVS+1KCd5RvCzOtrIAD9jeOItSWNjC7sG4Sg==}
-    peerDependencies:
-      typescript: '>=4.7.2'
-      zod: ^3.0.0
-    dependencies:
-      typescript: 5.0.4
-      zod: 3.21.4
-    dev: false
-
   /@t3-oss/env-core@0.6.0(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-3FkPAba069WRZVVab/sB1m3eSGn/rZeypx5k+sWEu1d+k0OQdRDnvFS+7MtxYgqVrwaRk3b7yVnX2dgSPVmWPQ==}
     peerDependencies:
@@ -2648,18 +2638,6 @@ packages:
     dependencies:
       typescript: 5.0.4
       zod: 3.21.4
-    dev: true
-
-  /@t3-oss/env-nextjs@0.3.1(typescript@5.0.4)(zod@3.21.4):
-    resolution: {integrity: sha512-W1OgOn5xtpdEGraAQesyLzO2aNLRfSJEyK6qjQFfEUnrPbkvB+WxABX2bPMqfn4KJQ8pziLCSdBFiUN8OagqAg==}
-    peerDependencies:
-      typescript: '>=4.7.2'
-      zod: ^3.0.0
-    dependencies:
-      '@t3-oss/env-core': 0.3.1(typescript@5.0.4)(zod@3.21.4)
-      typescript: 5.0.4
-      zod: 3.21.4
-    dev: false
 
   /@t3-oss/env-nextjs@0.6.0(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-SpzcGNIbUYcQw4zPPFeRJqCC1560zL7QmB0puIqOnuCsmykPkqHPX+n9CNZLXVQerboHzfvb7Kd+jAdouk72Vw==}
@@ -2670,7 +2648,6 @@ packages:
       '@t3-oss/env-core': 0.6.0(typescript@5.0.4)(zod@3.21.4)
       typescript: 5.0.4
       zod: 3.21.4
-    dev: true
 
   /@tanstack/query-core@4.29.7:
     resolution: {integrity: sha512-GXG4b5hV2Loir+h2G+RXhJdoZhJLnrBWsuLB2r0qBRyhWuXq9w/dWxzvpP89H0UARlH6Mr9DiVj4SMtpkF/aUA==}
