@@ -41,9 +41,9 @@ const companies: Company[] = [
     link: "https://getriver.io",
   },
   {
-    name:"FlowGPT",
+    name: "FlowGPT",
     linkName: "flowgpt.com",
-    link:"https://flowgpt.com",
+    link: "https://flowgpt.com",
   },
 ];
 
