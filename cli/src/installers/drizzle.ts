@@ -49,6 +49,7 @@ let schemaContent = fs.readFileSync(schemaSrc, "utf-8");
   };
 
   fs.copySync(configFile, configDest);
+  fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
   fs.writeFileSync(schemaDest, schemaContent);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
