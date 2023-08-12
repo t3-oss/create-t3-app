@@ -23,7 +23,7 @@ export interface InstallerOptions {
   pkgManager: PackageManager;
   noInstall: boolean;
   packages?: PkgInstallerMap;
-  projectName?: string;
+  projectName: string;
 }
 
 export type Installer = (opts: InstallerOptions) => void;
