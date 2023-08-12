@@ -6,7 +6,7 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
+export const drizzleInstaller: Installer = ({ projectDir, packages, projectName }) => {
   addPackageDependency({
     projectDir,
     dependencies: ["drizzle-kit", "dotenv"],
@@ -32,6 +32,10 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
+    // Replace placeholder table prefix with project name
+let schemaContent = fs.readFileSync(schemaSrc, "utf-8");
+    schemaContent = schemaContent.replace("project1_${name}", `${projectName}_\${name}`);
+
   const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
@@ -45,7 +49,7 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   };
 
   fs.copySync(configFile, configDest);
-  fs.copySync(schemaSrc, schemaDest);
+  fs.writeFileSync(schemaDest, schemaContent);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
