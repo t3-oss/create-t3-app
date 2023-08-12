@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@auth/drizzle-adapter": "^0.3.1",
-    "@auth/prisma-adapter": "^1.0.1",
+    "@next-auth/prisma-adapter": "^1.0.7",
     "@planetscale/database": "^1.10.0",
     "@prisma/client": "^5.1.1",
     "@t3-oss/env-nextjs": "^0.6.0",
