@@ -11,8 +11,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = packages?.drizzle.inUse;
 
   const deps: AvailableDependencies[] = ["next-auth"];
-  if (usingPrisma) deps.push("@next-auth/prisma-adapter");
-  // This adapter is not yet available on npm so we have our own inhoused
+  if (usingPrisma) deps.push("@auth/prisma-adapter");
   if (usingDrizzle) deps.push("@auth/drizzle-adapter");
 
   addPackageDependency({

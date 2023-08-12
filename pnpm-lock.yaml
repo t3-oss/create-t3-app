@@ -96,8 +96,11 @@ importers:
         version: 2.4.1
     devDependencies:
       '@auth/drizzle-adapter':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.3.1
+        version: 0.3.1
+      '@auth/prisma-adapter':
+        specifier: ^1.0.1
+        version: 1.0.1(@prisma/client@5.1.1)
       '@planetscale/database':
         specifier: ^1.10.0
         version: 1.10.0
@@ -144,8 +147,8 @@ importers:
         specifier: ^13.4.13
         version: 13.4.13(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: ^4.22.5
-        version: 4.22.5(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.23.0
+        version: 4.23.0(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
       prettier:
         specifier: ^3.0.0
         version: 3.0.0
@@ -782,8 +785,8 @@ packages:
     dependencies:
       undici: 5.22.1
 
-  /@auth/core@0.10.1:
-    resolution: {integrity: sha512-zTE9cMRaAeTHvB78nRMovXW0D6ZnT3ldoGU+2PD5YAC+1G591LdOc4qjVaCyg5vmGjcTlHOpB4ApzyXXQkS1dA==}
+  /@auth/core@0.11.1:
+    resolution: {integrity: sha512-PzvebszgJ4NpQNz8Fsjn39oEY8MzULKppr7Um7DX/HLrS3zthgLY0yAnwkA+2/kxwAb36dIkX+C72q6TziiTaA==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -798,10 +801,37 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: true
 
-  /@auth/drizzle-adapter@0.2.1:
-    resolution: {integrity: sha512-RGIiFGTrmWYYNeGw2KUX1WyTtsUNjSevSTf2c+3bdoUT73sfvarHaxLZ3qdI/+UyEdQVMiNkescU8fLqqQCOVg==}
+  /@auth/core@0.9.0:
+    resolution: {integrity: sha512-W2WO0WCBg1T3P8+yjQPzurTQhPv6ecBYfJ2oE3uvXPAX5ZLWAMSjKFAIa9oLZy5pwrB+YehJZPnlIxVilhrVcg==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
     dependencies:
-      '@auth/core': 0.10.1
+      '@panva/hkdf': 1.0.4
+      cookie: 0.5.0
+      jose: 4.13.1
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: true
+
+  /@auth/drizzle-adapter@0.3.1:
+    resolution: {integrity: sha512-zSuewnrozY0EZYVrt2T5VY0R+wA3chXncanmUgvAgoX+pcussKMVFmnSrSYuc3i4vfM2qCmAa6S6dkSH5RViSA==}
+    dependencies:
+      '@auth/core': 0.11.1
+    transitivePeerDependencies:
+      - nodemailer
+    dev: true
+
+  /@auth/prisma-adapter@1.0.1(@prisma/client@5.1.1):
+    resolution: {integrity: sha512-sBp9l/jVr7l9y7rp2Pv6eoP7i8X2CgRNE3jDWJ0B/u+HnKRofXflD1cldPqRSAkJhqH3UxhVtMTEijT9FoofmQ==}
+    peerDependencies:
+      '@prisma/client': '>=2.26.0 || >=3 || >=4'
+    dependencies:
+      '@auth/core': 0.9.0
+      '@prisma/client': 5.1.1(prisma@4.14.0)
     transitivePeerDependencies:
       - nodemailer
     dev: true
@@ -7210,8 +7240,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
-  /next-auth@4.22.5(next@13.4.13)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zPVEpqDp4cx1y0HbonCSrz2sA4qw0grTMd/S0PezUKXvDzmVemtsJnfNK/xo5pO2sz5ilM541+EVCTp9QoRLbA==}
+  /next-auth@4.23.0(next@13.4.13)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RgukcJkBdvsJwEfA+B80Wcowvtgy6tk8KKWffb7CMCdzcLO4fCCA6aB6sp/DZ2I0ISvWGnbVcO5KXmlan71igw==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5

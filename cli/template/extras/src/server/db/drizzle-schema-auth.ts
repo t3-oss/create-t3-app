@@ -32,7 +32,7 @@ export const example = mysqlTable(
   })
 );
 
-export const users = mysqlTable("users", {
+export const users = mysqlTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
@@ -48,7 +48,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 }));
 
 export const accounts = mysqlTable(
-  "accounts",
+  "account",
   {
     userId: varchar("userId", { length: 255 }).notNull(),
     type: varchar("type", { length: 255 })
@@ -75,7 +75,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 }));
 
 export const sessions = mysqlTable(
-  "sessions",
+  "session",
   {
     sessionToken: varchar("sessionToken", { length: 255 })
       .notNull()
