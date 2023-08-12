@@ -9,7 +9,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
-scopedAppName,
+  scopedAppName,
 }) => {
   addPackageDependency({
     projectDir,
