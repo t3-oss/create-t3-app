@@ -1,11 +1,16 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
+export const drizzleInstaller: Installer = ({
+  projectDir,
+  packages,
+  scopedAppName,
+}) => {
   addPackageDependency({
     projectDir,
     dependencies: ["drizzle-kit", "dotenv"],
@@ -27,9 +32,16 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
     "src/server/db",
     packages?.nextAuth.inUse
       ? "drizzle-schema-auth.ts"
-      : "drizzle-schema-base.ts",
+      : "drizzle-schema-base.ts"
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
+
+  // Replace placeholder table prefix with project name
+  let schemaContent = fs.readFileSync(schemaSrc, "utf-8");
+  schemaContent = schemaContent.replace(
+    "project1_${name}",
+    `${scopedAppName}_\${name}`
+  );
 
   const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
@@ -44,7 +56,8 @@ export const drizzleInstaller: Installer = ({ projectDir, packages }) => {
   };
 
   fs.copySync(configFile, configDest);
-  fs.copySync(schemaSrc, schemaDest);
+  fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
+  fs.writeFileSync(schemaDest, schemaContent);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,

@@ -1,5 +1,5 @@
 ---
-"create-t3-app": patch
+"create-t3-app": minor
 ---
 
 feat: add drizzle

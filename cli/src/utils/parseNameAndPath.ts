@@ -1,5 +1,7 @@
 import pathModule from "path";
 
+import { removeTrailingSlash } from "./removeTrailingSlash.js";
+
 /**
  * Parses the appName and its path from the user input.
  *
@@ -15,10 +17,12 @@ import pathModule from "path";
  * - dir/@mono/app => ["@mono/app", "dir/app"]
  * - dir/app => ["app", "dir/app"]
  */
-export const parseNameAndPath = (input: string) => {
+export const parseNameAndPath = (rawInput: string) => {
+  const input = removeTrailingSlash(rawInput);
+
   const paths = input.split("/");
 
-  let appName = paths[paths.length - 1];
+  let appName = paths[paths.length - 1]!;
 
   // If the user ran `npx create-t3-app .` or similar, the appName should be the current directory
   if (appName === ".") {

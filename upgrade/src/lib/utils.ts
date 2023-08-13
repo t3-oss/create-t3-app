@@ -1,6 +1,7 @@
 import { request } from "@octokit/request";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+
 import { env } from "~/env.mjs";
 
 export const cn = (...inputs: ClassValue[]) => {
@@ -14,10 +15,12 @@ export const prettyFeatureNameMap: Record<keyof Features, string> = {
   tailwind: "Tailwind CSS",
 };
 
-export type VersionsGroupedByMajor = Array<{
+export interface VersionGroupedByMajor {
   major: string;
   versions: string[];
-}>;
+}
+
+export type VersionsGroupedByMajor = VersionGroupedByMajor[];
 
 export const getT3Versions = async () => {
   const releases = await request("GET /repos/{owner}/{repo}/releases", {
@@ -102,10 +105,10 @@ export const getFeatureUrl = (feature: string) => {
   }
 };
 
-type VersionsRegex = {
+interface VersionsRegex {
   currentVersion: string;
   upgradeVersion: string;
-};
+}
 
 export const extractVersionsAndFeatures = (slug: string) => {
   const regex =

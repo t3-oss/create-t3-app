@@ -41,6 +41,7 @@ next-env.d.ts
 tmp/
 temp/
 .docusaurus
+*.tsbuildinfo
 
 # MAC
 ._*
@@ -53,3 +54,6 @@ Thumbs.db
 # Emacs backup files
 \#*
 .\#*
+
+# TYPESCRIPT
+*.tsbuildinfo

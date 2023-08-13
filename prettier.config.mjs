@@ -1,4 +1,6 @@
-/** @type {import('prettier').Config} */
+/**
+ * @type {import('prettier').Config & import("@ianvs/prettier-plugin-sort-imports").PluginConfig}
+ */
 const config = {
   arrowParens: "always",
   printWidth: 80,
@@ -7,7 +9,6 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
-  plugins: ["@ianvs/prettier-plugin-sort-imports"],
 };
 
-module.exports = config;
+export default config;

@@ -1,5 +1,6 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 
@@ -8,14 +9,16 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
+  const usingDb = usingPrisma || usingDrizzle;
+
   const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
 
   const envFile =
-    usingAuth && usingPrisma
-      ? "with-auth-prisma.mjs"
+    usingAuth && usingDb
+      ? "with-auth-db.mjs"
       : usingAuth
       ? "with-auth.mjs"
-      : usingPrisma || usingDrizzle
+      : usingDb
       ? "with-db.mjs"
       : "";
 
@@ -23,7 +26,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     const envSchemaSrc = path.join(
       PKG_ROOT,
       "template/extras/src/env",
-      envFile,
+      envFile
     );
     const envSchemaDest = path.join(projectDir, "src/env.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);
@@ -39,7 +42,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 const getEnvContent = (
   usingAuth: boolean,
   usingPrisma: boolean,
-  usingDrizzle: boolean,
+  usingDrizzle: boolean
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.mjs"
