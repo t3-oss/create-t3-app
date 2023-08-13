@@ -18,6 +18,7 @@ Jeżeli nie znasz poszczególnych technologi użytych w projekcie, skorzystaj z 
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Drizzle](https://drizzle.team/)
 
 ## Jak sprawić, by aplikacja była ciągle aktualna?
 
