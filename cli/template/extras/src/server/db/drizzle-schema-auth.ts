@@ -5,10 +5,10 @@ import {
   mysqlTableCreator,
   primaryKey,
   serial,
+  text,
   timestamp,
   uniqueIndex,
   varchar,
-  text,
 } from "drizzle-orm/mysql-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -25,7 +25,9 @@ export const example = mysqlTable(
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`).notNull(),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
