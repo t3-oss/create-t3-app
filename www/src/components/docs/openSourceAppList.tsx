@@ -9,13 +9,19 @@ interface App {
 
 const projects: App[] = [
   {
+    description: "TheNinja-RPG - A free browser-based ninja game",
+    repoName: "TheNinjaRPG",
+    repo: "https://github.com/MathiasGruber/TheNinjaRPG",
+    linkName: "theninja-rpg.com",
+    link: "https://www.theninja-rpg.com",
+  },
+  {
     description: "Create T3 Turbo - T3 Stack using Turborepo",
     repoName: "create-t3-turbo",
     repo: "https://github.com/t3-oss/create-t3-turbo",
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
-
   {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
