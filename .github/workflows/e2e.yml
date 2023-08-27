@@ -116,6 +116,19 @@ jobs:
           bun-version: latest
 
       - run: cd cli && bun run dist/index.js ../../ci-bun --default
+
+      - name: We should have a Bun lockfile
+        run: |
+          if [ ! -f "../../ci-bun/bun.lockb" ]; then
+            echo "Bun lockfile not found"
+            exit 1
+          fi
+
+      # FIXME: This doesn't actually run the build script using bun, since Next.js doesn't support it yet.
+      # But you should still be able to use `bun` as a package manager for any Next.js app.
+      # If/When Next.js supports it, we should be able to run `bun --bun run build` here to override any Node binaries.
+      # See: https://bun.sh/docs/cli/bunx#shebangs
       - run: cd ../../ci-bun && bun run build
+        # - run: cd ../../ci-bun && bun --bun run build
         env:
           NEXTAUTH_SECRET: foo
