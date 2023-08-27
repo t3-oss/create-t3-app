@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import { execa, type StdioOption } from "execa";
 import ora, { type Ora } from "ora";
+
 import {
   getUserPkgManager,
   type PackageManager,
@@ -35,7 +36,7 @@ const execWithSpinner = async (
 
 const runInstallCommand = async (
   pkgManager: PackageManager,
-  projectDir: string,
+  projectDir: string
 ): Promise<Ora | null> => {
   switch (pkgManager) {
     // When using npm, inherit the stderr stream so that the progress bar is shown
@@ -83,7 +84,7 @@ export const installDependencies = async ({ projectDir }: Options) => {
 
   // If the spinner was used to show the progress, use succeed method on it
   // If not, use the succeed on a new spinner
-  (installSpinner || ora()).succeed(
-    chalk.green("Successfully installed dependencies!\n"),
+  (installSpinner ?? ora()).succeed(
+    chalk.green("Successfully installed dependencies!\n")
   );
 };

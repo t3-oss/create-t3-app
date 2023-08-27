@@ -1,8 +1,9 @@
-import { type Installer } from "~/installers/index.js";
-import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
+import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js";
+import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
@@ -25,7 +26,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
   const authConfigSrc = path.join(
     extrasDir,
     "src/server/auth",
-    usingPrisma ? "with-prisma.ts" : "base.ts",
+    usingPrisma ? "with-prisma.ts" : "base.ts"
   );
   const authConfigDest = path.join(projectDir, "src/server/auth.ts");
 

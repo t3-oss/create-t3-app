@@ -1,7 +1,8 @@
-import { type Installer } from "~/installers/index.js";
 import path from "path";
 import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
+import { type Installer } from "~/installers/index.js";
 
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
@@ -22,7 +23,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     const envSchemaSrc = path.join(
       PKG_ROOT,
       "template/extras/src/env",
-      envFile,
+      envFile
     );
     const envSchemaDest = path.join(projectDir, "src/env.mjs");
     fs.copySync(envSchemaSrc, envSchemaDest);

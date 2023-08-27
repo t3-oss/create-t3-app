@@ -36,10 +36,12 @@ yarn-error.log*
 .idea
 .cache/
 .next/
+next-env.d.ts
 .nuxt/
 tmp/
 temp/
 .docusaurus
+*.tsbuildinfo
 
 # MAC
 ._*
@@ -48,3 +50,10 @@ Thumbs.db
 
 .turbo
 .vercel
+
+# Emacs backup files
+\#*
+.\#*
+
+# TYPESCRIPT
+*.tsbuildinfo

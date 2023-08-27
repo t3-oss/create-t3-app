@@ -1,6 +1,7 @@
-import { type PackageJson } from "type-fest";
 import path from "path";
 import fs from "fs-extra";
+import { type PackageJson } from "type-fest";
+
 import { PKG_ROOT } from "~/consts.js";
 
 export const getVersion = () => {

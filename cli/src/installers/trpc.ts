@@ -1,8 +1,9 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
-import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { type Installer } from "~/installers/index.js";
+import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   addPackageDependency({
@@ -55,11 +56,11 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const exampleRouterSrc = path.join(
     extrasDir,
     "src/server/api/routers/example",
-    exampleRouterFile,
+    exampleRouterFile
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/example.ts",
+    "src/server/api/routers/example.ts"
   );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);

@@ -1,5 +1,98 @@
 # Changelog
 
+## 7.18.0
+
+### Minor Changes
+
+- [#1532](https://github.com/t3-oss/create-t3-app/pull/1532) [`941a0fc`](https://github.com/t3-oss/create-t3-app/commit/941a0fc79bcfb24c894525c93aab87c2860b2ad4) Thanks [@spicybackend](https://github.com/spicybackend)! - chore(deps): upgrade Prisma to v5.1.1, bump patch versions of other dependencies
+
+- [#1507](https://github.com/t3-oss/create-t3-app/pull/1507) [`fe5755c`](https://github.com/t3-oss/create-t3-app/commit/fe5755c2d575ce27e8e9c86e6fc79e7903af0390) Thanks [@LevinUncu](https://github.com/LevinUncu)! - If the project is not in a Git repo, the next steps will show git init instead of git commit -m "initial commit".
+
+## 7.17.0
+
+### Minor Changes
+
+- [#1523](https://github.com/t3-oss/create-t3-app/pull/1523) [`c441a9e`](https://github.com/t3-oss/create-t3-app/commit/c441a9ecfaeb61866a76379712b297fc6c2c36b3) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - reduced stylistic linting
+
+## 7.16.0
+
+### Minor Changes
+
+- [#1476](https://github.com/t3-oss/create-t3-app/pull/1476) [`f3fd50f`](https://github.com/t3-oss/create-t3-app/commit/f3fd50fbd5dfd705507b1a2b53e8e6fd39b2dadb) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - Upgraded typescript-eslint to v6, with reworked ESLint configurations
+
+- [#1508](https://github.com/t3-oss/create-t3-app/pull/1508) [`e9c862e`](https://github.com/t3-oss/create-t3-app/commit/e9c862e7e114214139f05572d62af45d87d3fc1c) Thanks [@Sn0wye](https://github.com/Sn0wye)! - chore(deps): bump prisma to v5.0.0
+
+## 7.15.0
+
+### Minor Changes
+
+- [#1484](https://github.com/t3-oss/create-t3-app/pull/1484) [`23a9d60`](https://github.com/t3-oss/create-t3-app/commit/23a9d60cd013c40d76ab96d0340425e1e3d8efa2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - reminder to git commit after creating an application with the CLI
+
+### Patch Changes
+
+- [#1493](https://github.com/t3-oss/create-t3-app/pull/1493) [`a230d9f`](https://github.com/t3-oss/create-t3-app/commit/a230d9f7bb3a78669f2003ae9084c868f06639b7) Thanks [@dcottr](https://github.com/dcottr)! - Remove trailing newlines in generated app that aren't allowed by the generated prettier config
+
+## 7.14.1
+
+### Patch Changes
+
+- [#1479](https://github.com/t3-oss/create-t3-app/pull/1479) [`bb7324c`](https://github.com/t3-oss/create-t3-app/commit/bb7324c9503995949c61c0a5abe736c38f07b815) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use custom error class for IsTTYError
+
+## 7.14.0
+
+### Minor Changes
+
+- [#1466](https://github.com/t3-oss/create-t3-app/pull/1466) [`e8b68d9`](https://github.com/t3-oss/create-t3-app/commit/e8b68d92af093361bf73eed7eacd7ed6848500c3) Thanks [@brunoeduardodev](https://github.com/brunoeduardodev)! - Ignore trailing slashes when prompting the app name.
+
+## 7.13.2
+
+### Patch Changes
+
+- [#1469](https://github.com/t3-oss/create-t3-app/pull/1469) [`547f504`](https://github.com/t3-oss/create-t3-app/commit/547f504b91c3da9b6419ea7f9f43d03e6c243839) Thanks [@ericshively](https://github.com/ericshively)! - Replace React.FC with basic function syntax
+
+## 7.13.1
+
+### Patch Changes
+
+- [#1436](https://github.com/t3-oss/create-t3-app/pull/1436) [`b0facee`](https://github.com/t3-oss/create-t3-app/commit/b0facee2736e3e0afc909c3d80b38499174fd84c) Thanks [@harrismcc](https://github.com/harrismcc)! - When using NextAuth but not Prisma, the session user's id is now set to `token.sub` instead of `user.id` because `user` is undefined when not using database sessions.
+
+- [#1433](https://github.com/t3-oss/create-t3-app/pull/1433) [`7fbe991`](https://github.com/t3-oss/create-t3-app/commit/7fbe991175f4da02184e0e43a5439515d1ef7439) Thanks [@FinnDore](https://github.com/FinnDore)! - fix: SKIP_ENV_VALIDATION not skipping env validation
+
+## 7.13.0
+
+### Minor Changes
+
+- [#1397](https://github.com/t3-oss/create-t3-app/pull/1397) [`be9a834`](https://github.com/t3-oss/create-t3-app/commit/be9a83483339f8bb799be7a3d69cf67e64882daf) Thanks [@brieyla1](https://github.com/brieyla1)! - feat: Added JsonProtocol as the Default Prisma Engine for Serverless speedups
+
+  modified:
+
+      - cli/template/extras/prisma/schema/base.prisma
+
+      - cli/template/extras/prisma/schema/with-auth.prisma
+
+  Description: This pull request proposes the enabling of the JsonProtocol by default. The rationale for this change is based on the performance improvements provided by the JsonProtocol without compromising stability, even though it is still a preview feature. Empirical evidence gathered from large-scale projects, with 100+ Prisma calls, demonstrates the significant time reductions enabled by this optimization, particularly in serverless environments such as Vercel. Another point worth adding is that most projects using nextJS create-t3-app will be deployed on serverless platforms such as vercel, where the real impact is.
+
+## 7.12.3
+
+### Patch Changes
+
+- [#1404](https://github.com/t3-oss/create-t3-app/pull/1404) [`48dd89a`](https://github.com/t3-oss/create-t3-app/commit/48dd89adb33ff9625dba82f6e149cf111f02e488) Thanks [@michalbundyra](https://github.com/michalbundyra)! - update nextjs dependency to ^13.4.1
+
+## 7.12.2
+
+### Patch Changes
+
+- [#1401](https://github.com/t3-oss/create-t3-app/pull/1401) [`b1a35dd`](https://github.com/t3-oss/create-t3-app/commit/b1a35dd66c5c9abab13daebfee93c08b67317272) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - temporarily pin next to fix vercel build error
+
+## 7.12.1
+
+### Patch Changes
+
+- [#1377](https://github.com/t3-oss/create-t3-app/pull/1377) [`00018ff`](https://github.com/t3-oss/create-t3-app/commit/00018ff0cbe5904f0bb37b8cb0a64814ca5f9410) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - move env validation logic out to a separate package
+
+- [#1385](https://github.com/t3-oss/create-t3-app/pull/1385) [`ac12abb`](https://github.com/t3-oss/create-t3-app/commit/ac12abb92a77d251b2c4bc72caceb422ab4ca706) Thanks [@iAverages](https://github.com/iAverages)! - Fixed issue with creating git repository with git versions below 2.28
+  Fixed bug with check to use --inital-branch set in git v2.28
+
 ## 7.12.0
 
 ### Minor Changes

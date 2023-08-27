@@ -1,11 +1,12 @@
 ---
 import { type MarkdownHeading } from "astro";
+
 import { type Frontmatter, type KnownLanguageCode } from "../../config";
-import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
-import BreadCrumbs from "./breadCrumbs";
-import Pagination from "./pagination.astro";
-import OnThisPageLinks from "../navigation/OnThisPageLinks";
 import { getIsRtlFromLangCode } from "../../languages";
+import OnThisPageLinks from "../navigation/OnThisPageLinks";
+import BreadCrumbs from "./breadCrumbs";
+import OutdatedDocsBanner from "./outdatedDocsBanner.astro";
+import Pagination from "./pagination.astro";
 
 export interface Props {
   frontmatter: Frontmatter;

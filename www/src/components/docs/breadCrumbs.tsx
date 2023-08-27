@@ -1,8 +1,9 @@
 import clsx from "clsx";
+
 import { SIDEBAR, SIDEBAR_HEADER_MAP, type OuterHeaders } from "../../config";
 import { getIsRtlFromLangCode, getLanguageFromURL } from "../../languages";
 
-type SlugType = "" | "usage" | "deployment";
+type SlugType = "" | "deployment" | "usage";
 
 export default function BreadCrumbs() {
   const lang = getLanguageFromURL(window.location.href);
@@ -57,7 +58,7 @@ export default function BreadCrumbs() {
         href: `${window.location.protocol}//${window.location.host}${path}`,
         key: crumb,
         text:
-          getPathNameFromLink(path.slice(path.indexOf(lang))) ||
+          getPathNameFromLink(path.slice(path.indexOf(lang))) ??
           getHeaderName(
             `${crumb[0]?.toUpperCase()}${crumb.slice(1)}` as OuterHeaders,
           ),

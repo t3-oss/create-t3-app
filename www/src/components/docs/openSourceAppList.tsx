@@ -37,10 +37,10 @@ const projects: App[] = [
   {
     description:
       "Me3 - Describe yourself in 3 things and share with your friends.",
-    repoName: "hnqg/me3",
-    repo: "https://github.com/hnqg/me3",
-    linkName: "me3.hnqg.io",
-    link: "https://me3.hnqg.io",
+    repoName: "henriqgoncalvs/me3",
+    repo: "https://github.com/henriqgoncalvs/me3",
+    linkName: "me3-henriiqueg.vercel.app",
+    link: "https://me3-henriiqueg.vercel.app/",
   },
 
   {
@@ -196,6 +196,46 @@ const projects: App[] = [
     repo: "https://github.com/mohammed-bahumaish/prisma-editor",
     linkName: "prisma-editor.up.railway.app",
     link: "https://prisma-editor.up.railway.app",
+  },
+
+  {
+    description: "Judge devs - website, where developers share their projects",
+    repoName: "judge-devs (gh)",
+    repo: "https://github.com/serzhan181/judge-devs",
+    linkName: "judge-devs.com",
+    link: "https://judge-devs.vercel.app/",
+  },
+
+  {
+    description: "T3 Blog - A Reddit inspired forum website",
+    repoName: "leojuriolli7/t3-blog",
+    repo: "https://github.com/leojuriolli7/t3-blog",
+    linkName: "t3-blog-pi.vercel.app",
+    link: "https://t3-blog-pi.vercel.app",
+  },
+
+  {
+    description: "Checkinout - A checklist management project using T3 Stack",
+    repoName: "burak-sevinc/t3-checkinout",
+    repo: "https://github.com/burak-sevinc/t3-checkinout",
+    linkName: "checkinout.vercel.app",
+    link: "https://checkinout.vercel.app/",
+  },
+
+  {
+    description: "Sozluk Clone - A simple clone of Ekşi Sözlük",
+    repoName: "doandroidsdreamof/sozluk-clone",
+    repo: "https://github.com/doandroidsdreamof/sozluk-clone",
+    linkName: "sozluk-clone.vercel.app",
+    link: "https://sozluk-clone.vercel.app",
+  },
+
+  {
+    description: "Henrique's personal site",
+    repoName: "henriqgoncalvs/website",
+    repo: "https://github.com/henriqgoncalvs/website",
+    linkName: "henriqgoncalvs.com",
+    link: "https://henriqgoncalvs.com",
   },
 ];
 
