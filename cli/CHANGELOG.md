@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.19.0
+
+### Minor Changes
+
+- [#1375](https://github.com/t3-oss/create-t3-app/pull/1375) [`d781f08`](https://github.com/t3-oss/create-t3-app/commit/d781f0861ba05aee6b3d460fc53e126868409fb5) Thanks [@Zeko369](https://github.com/Zeko369)! - feat: detect and support usage of Bun as package manager
+
 ## 7.18.0
 
 ### Minor Changes
