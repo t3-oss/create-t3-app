@@ -72,11 +72,11 @@ const runInstallCommand = async (
   }
 };
 
-type Options = {
+export const installDependencies = async ({
+  projectDir,
+}: {
   projectDir: string;
-};
-
-export const installDependencies = async ({ projectDir }: Options) => {
+}) => {
   logger.info("Installing dependencies...");
   const pkgManager = getUserPkgManager();
 
