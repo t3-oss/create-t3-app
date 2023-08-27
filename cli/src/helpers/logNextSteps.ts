@@ -28,7 +28,11 @@ export const logNextSteps = async ({
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
-    logger.info(`  ${pkgManager === "npm" ? "npx" : pkgManager} db:push`);
+    if (["npm", "bun"].includes(pkgManager)) {
+      logger.info(`  ${pkgManager} run db:push`);
+    } else {
+      logger.info(`  ${pkgManager} db:push`);
+    }
   }
 
   if (["npm", "bun"].includes(pkgManager)) {
