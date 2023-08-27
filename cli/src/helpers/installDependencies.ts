@@ -15,7 +15,7 @@ const execWithSpinner = async (
     args?: string[];
     stdout?: StdioOption;
     onDataHandle?: (spinner: Ora) => (data: Buffer) => void;
-  },
+  }
 ) => {
   const { onDataHandle, args = ["install"], stdout = "pipe" } = options;
 
