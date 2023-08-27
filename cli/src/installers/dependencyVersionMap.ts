@@ -6,7 +6,7 @@ export const dependencyVersionMap = {
   // NextAuth.js
   "next-auth": "^4.23.0",
   "@next-auth/prisma-adapter": "^1.0.7",
-  "@auth/drizzle-adapter": "^0.3.1",
+  "@auth/drizzle-adapter": "^0.3.2",
 
   // Prisma
   prisma: "^5.1.1",
@@ -16,7 +16,7 @@ export const dependencyVersionMap = {
   "drizzle-orm": "^0.28.2",
   "drizzle-kit": "^0.19.12",
   dotenv: "^16.1.4",
-  "@planetscale/database": "^1.10.0",
+  "@planetscale/database": "^1.11.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.3",

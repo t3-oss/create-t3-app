@@ -96,14 +96,14 @@ importers:
         version: 2.4.1
     devDependencies:
       '@auth/drizzle-adapter':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.3.2
+        version: 0.3.2
       '@next-auth/prisma-adapter':
         specifier: ^1.0.7
         version: 1.0.7(@prisma/client@5.1.1)(next-auth@4.23.0)
       '@planetscale/database':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       '@prisma/client':
         specifier: ^5.1.1
         version: 5.1.1(prisma@4.14.0)
@@ -142,7 +142,7 @@ importers:
         version: 0.19.12
       drizzle-orm:
         specifier: ^0.28.2
-        version: 0.28.2(@planetscale/database@1.10.0)
+        version: 0.28.2(@planetscale/database@1.11.0)
       next:
         specifier: ^13.4.13
         version: 13.4.13(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
@@ -785,8 +785,8 @@ packages:
     dependencies:
       undici: 5.22.1
 
-  /@auth/core@0.11.1:
-    resolution: {integrity: sha512-PzvebszgJ4NpQNz8Fsjn39oEY8MzULKppr7Um7DX/HLrS3zthgLY0yAnwkA+2/kxwAb36dIkX+C72q6TziiTaA==}
+  /@auth/core@0.12.0:
+    resolution: {integrity: sha512-XYipdAc/nKu014VOgpcPyLlj1ghWlnwyloaB1UjQd9ElZRZQ9YpSizzXGLON23t/a0FyabOBBl0/awD2tW58Rg==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -801,10 +801,10 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: true
 
-  /@auth/drizzle-adapter@0.3.1:
-    resolution: {integrity: sha512-zSuewnrozY0EZYVrt2T5VY0R+wA3chXncanmUgvAgoX+pcussKMVFmnSrSYuc3i4vfM2qCmAa6S6dkSH5RViSA==}
+  /@auth/drizzle-adapter@0.3.2:
+    resolution: {integrity: sha512-fHfzwaTomm/RKgFKBO5AJ8JTfR44rX1KX2ASaKRk+4jvVhDh9FCir5BV1Fv68b5ay7XBo9DtcNSQuZp4hbpLYw==}
     dependencies:
-      '@auth/core': 0.11.1
+      '@auth/core': 0.12.0
     transitivePeerDependencies:
       - nodemailer
     dev: true
@@ -2322,8 +2322,8 @@ packages:
       tiny-glob: 0.2.9
       tslib: 2.5.0
 
-  /@planetscale/database@1.10.0:
-    resolution: {integrity: sha512-XMfNRjIPgGTga6g1YpGr7E21CcnHZcHZdyhRUIiZ/AlpD+ts65UF2B3wKjcu7MKMynmmcOGs6R9kAT6D1OTlZQ==}
+  /@planetscale/database@1.11.0:
+    resolution: {integrity: sha512-aWbU+D/IRHoDE9975y+Q4c+EwwAWxCPwFId+N1AhQVFXzbeJMkj6KN2iQtoi03elcLMRdfT+V3i9Z4WRw+/oIA==}
     engines: {node: '>=16'}
     dev: true
 
@@ -4641,7 +4641,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.2(@planetscale/database@1.10.0):
+  /drizzle-orm@0.28.2(@planetscale/database@1.11.0):
     resolution: {integrity: sha512-QRyuzvpJr7GE6LpvZ/sg2nAKNg2if1uGGkgFTiXn4auuYId//vVJe6HBsDTktfKfcaDGzIYos+/f+PS5EkBmrg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -4703,7 +4703,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@planetscale/database': 1.10.0
+      '@planetscale/database': 1.11.0
     dev: true
 
   /dset@3.1.2:
