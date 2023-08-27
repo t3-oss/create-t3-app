@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.6.0",
-    "next": "^13.4.13",
+    "next": "^13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.21.4"
