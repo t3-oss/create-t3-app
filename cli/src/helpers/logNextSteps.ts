@@ -33,7 +33,11 @@ export const logNextSteps = async ({
     );
   }
 
-  logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
+  if (["npm", "bun"].includes(pkgManager)) {
+    logger.info(`  ${pkgManager} run dev`);
+  } else {
+    logger.info(`  ${pkgManager} dev`);
+  }
 
   if (!(await isInsideGitRepo(projectDir)) && !isRootGitRepo(projectDir)) {
     logger.info(`  git init`);
