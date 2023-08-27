@@ -11,6 +11,7 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
 import superjson from "superjson";
 import { ZodError } from "zod";
+
 import { getServerAuthSession } from "~/server/auth";
 
 /**
@@ -21,9 +22,9 @@ import { getServerAuthSession } from "~/server/auth";
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
 
-type CreateContextOptions = {
+interface CreateContextOptions {
   session: Session | null;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
@@ -106,7 +107,7 @@ export const publicProcedure = t.procedure;
 
 /** Reusable middleware that enforces users are logged in before running the procedure. */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({

@@ -301,6 +301,7 @@ Her er et eksempel på en integrasjonstest som bruker [Vitest](https://vitest.de
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
 import { expect, test } from "vitest";
+
 import { appRouter, type AppRouter } from "~/server/api/root";
 import { createInnerTRPCContext } from "~/server/api/trpc";
 

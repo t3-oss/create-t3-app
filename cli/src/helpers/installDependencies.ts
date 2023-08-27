@@ -1,15 +1,16 @@
 import chalk from "chalk";
 import { execa } from "execa";
 import ora, { type Ora } from "ora";
+
 import {
   getUserPkgManager,
   type PackageManager,
 } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 
-type Options = {
+interface Options {
   projectDir: string;
-};
+}
 
 /*eslint-disable @typescript-eslint/no-floating-promises*/
 const runInstallCommand = async (
@@ -76,7 +77,7 @@ export const installDependencies = async ({ projectDir }: Options) => {
 
   // If the spinner was used to show the progress, use succeed method on it
   // If not, use the succeed on a new spinner
-  (installSpinner || ora()).succeed(
+  (installSpinner ?? ora()).succeed(
     chalk.green("Successfully installed dependencies!\n")
   );
 };

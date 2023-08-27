@@ -1,10 +1,8 @@
-import DownloadButton from "./download-button";
-import { Files } from "./files";
-import HowToApplyDiff from "./how-to-apply-diff.mdx";
 import gitdiffParser from "gitdiff-parser";
 import { CheckIcon, ChevronRight, XIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import {
@@ -15,6 +13,9 @@ import {
   prettyFeatureNameMap,
   type Features,
 } from "~/lib/utils";
+import DownloadButton from "./download-button";
+import { Files } from "./files";
+import HowToApplyDiff from "./how-to-apply-diff.mdx";
 
 export async function generateMetadata({
   params,
@@ -63,7 +64,7 @@ export default async function Page({
 }) {
   if (!params?.slug) notFound();
   const versionsAndFeatures = extractVersionsAndFeatures(params.slug);
-  const viewType = searchParams["viewType"] === "unified" ? "unified" : "split";
+  const viewType = searchParams.viewType === "unified" ? "unified" : "split";
 
   if (!versionsAndFeatures) notFound();
   const diff = await getDiffFromGithub(versionsAndFeatures).catch(notFound);
