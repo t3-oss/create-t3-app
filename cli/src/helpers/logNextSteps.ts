@@ -36,11 +36,10 @@ export const logNextSteps = async ({
 
   logger.info(`  ${pkgManager === "npm" ? "npm run" : pkgManager} dev`);
 
-  if (!noGit) {
-    logger.info(`  git commit -m "initial commit"`);
-  }
   if (!(await isInsideGitRepo(projectDir)) && !isRootGitRepo(projectDir)) {
     logger.info(`  git init`);
   }
-  logger.info(`  git commit -m "initial commit"`);
+  if (!noGit) {
+    logger.info(`  git commit -m "initial commit"`);
+  }
 };
