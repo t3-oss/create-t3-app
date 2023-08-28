@@ -161,13 +161,13 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
 
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
-      console.warn(
-        "Incompatible combination Prisma + Drizzle. Falling back to Prisma only."
+      // We test a matrix of all possible combination of packages in CI. Checking for impossible
+      // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
+      // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
+      logger.warn(
+        "Incompatible combination Prisma + Drizzle. Exiting."
       );
-      cliResults.flags.drizzle = false;
-      cliResults.packages = cliResults.packages.filter(
-        (pkg) => pkg !== "drizzle"
-      );
+      process.exit(0);
     }
 
     return cliResults;
