@@ -32,7 +32,7 @@ jobs:
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}"
     steps:
       - name: Check valid matrix
-        if: ${{ matrix..prisma == "true" }} && ${{ matrix.drizzle == "true" }}
+        if: ${{ matrix.prisma == "true" }} && ${{ matrix.drizzle == "true" }}
         run: |
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
