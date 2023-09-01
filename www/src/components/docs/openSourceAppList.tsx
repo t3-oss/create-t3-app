@@ -9,6 +9,13 @@ interface App {
 
 const projects: App[] = [
   {
+    description: "OpenBio - Open Source Link in Bio",
+    repoName: "vanxh/openbio",
+    repo: "https://github.com/vanxh/openbio",
+    linkName: "openbio.app",
+    link: "https://openbio.app",
+  },
+  {
     description: "TheNinja-RPG - A free browser-based ninja game",
     repoName: "TheNinjaRPG",
     repo: "https://github.com/MathiasGruber/TheNinjaRPG",
