@@ -37,7 +37,6 @@ jobs:
 
       - name: Check valid matrix
         id: matrix-valid
-        # if: ${{ matrix.prisma == 'true' }} && ${{ matrix.drizzle == 'true' }}
         run: |
           echo "continue=${{ matrix.prisma == 'false' || matrix.drizzle == 'false' }}" >> $GITHUB_OUTPUT
 
