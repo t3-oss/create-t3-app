@@ -38,8 +38,10 @@ jobs:
       - name: Check valid matrix
         if: ${{ matrix.prisma == 'true' }} && ${{ matrix.drizzle == 'true' }}
         run: |
-         gh run cancel ${{ github.run_id }}
-         gh run watch ${{ github.run_id }}
+          gh run cancel ${{ github.run_id }}
+          gh run watch ${{ github.run_id }}
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Install Node.js
         uses: actions/setup-node@v3
