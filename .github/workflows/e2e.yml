@@ -36,30 +36,32 @@ jobs:
           fetch-depth: 0
 
       - name: Check valid matrix
-        if: ${{ matrix.prisma == 'true' }} && ${{ matrix.drizzle == 'true' }}
+        id: matrix-valid
+        # if: ${{ matrix.prisma == 'true' }} && ${{ matrix.drizzle == 'true' }}
         run: |
-          gh run cancel ${{ github.run_id }}
-          gh run watch ${{ github.run_id }}
-        env:
-          GH_TOKEN: ${{ github.token }}
+          echo "continue=${{ matrix.prisma == 'true' && matrix.drizzle == 'true' }}" >> $GITHUB_OUTPUT
 
       - name: Install Node.js
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }} 
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - uses: pnpm/action-setup@v2.2.4
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         name: Install pnpm
         id: pnpm-install
         with:
           run_install: false
 
       - name: Get pnpm store directory
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
@@ -68,14 +70,19 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         run: pnpm install
 
       - run: pnpm turbo --filter=create-t3-app build
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+        
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
       - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }}
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
       - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}} && pnpm build
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           NEXTAUTH_SECRET: foo
 
