@@ -39,7 +39,7 @@ jobs:
         id: matrix-valid
         # if: ${{ matrix.prisma == 'true' }} && ${{ matrix.drizzle == 'true' }}
         run: |
-          echo "continue=${{ matrix.prisma == 'true' && matrix.drizzle == 'true' }}" >> $GITHUB_OUTPUT
+          echo "continue=${{ matrix.prisma == 'false' || matrix.drizzle == 'false' }}" >> $GITHUB_OUTPUT
 
       - name: Install Node.js
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }} 
