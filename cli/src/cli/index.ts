@@ -164,9 +164,7 @@ export const runCli = async (): Promise<CliResults> => {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
       // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
-      logger.warn(
-        "Incompatible combination Prisma + Drizzle. Exiting."
-      );
+      logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
       process.exit(0);
     }
 
