@@ -1,18 +1,23 @@
 /** @jsxImportSource react */
-import { useState, useCallback, useRef } from "react";
+
+import { useCallback, useRef, useState } from "react";
+
 import { ALGOLIA } from "../../config";
+
 import "../../styles/algolia/style.css";
 
-import { createPortal } from "react-dom";
 import * as docSearchReact from "@docsearch/react";
 import clsx from "clsx";
+import { createPortal } from "react-dom";
 
 /** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
 const DocSearchModal =
   docSearchReact.DocSearchModal ||
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
   (docSearchReact as any).default.DocSearchModal;
 const useDocSearchKeyboardEvents =
   docSearchReact.useDocSearchKeyboardEvents ||
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
   (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
 export default function Search({ isLanding }: { isLanding: boolean }) {
@@ -52,7 +57,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
         ref={searchButtonRef}
         onClick={onOpen}
         className={clsx(
-          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-colors duration-300 dark:text-slate-100",
+          "flex w-full cursor-text items-center justify-between rounded-lg px-4 py-2 text-sm font-medium text-slate-800 !transition-colors !duration-300 dark:text-slate-100",
           {
             "hover:bg-t3-purple/20 border border-t3-purple-200/20 bg-t3-purple-200/10 duration-300 hover:border-t3-purple-200/50":
               isLanding,

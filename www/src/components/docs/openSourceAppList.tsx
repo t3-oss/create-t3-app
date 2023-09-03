@@ -9,13 +9,26 @@ interface App {
 
 const projects: App[] = [
   {
+    description: "OpenBio - Open Source Link in Bio",
+    repoName: "vanxh/openbio",
+    repo: "https://github.com/vanxh/openbio",
+    linkName: "openbio.app",
+    link: "https://openbio.app",
+  },
+  {
+    description: "TheNinja-RPG - A free browser-based ninja game",
+    repoName: "TheNinjaRPG",
+    repo: "https://github.com/MathiasGruber/TheNinjaRPG",
+    linkName: "theninja-rpg.com",
+    link: "https://www.theninja-rpg.com",
+  },
+  {
     description: "Create T3 Turbo - T3 Stack using Turborepo",
     repoName: "create-t3-turbo",
     repo: "https://github.com/t3-oss/create-t3-turbo",
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
-
   {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
@@ -37,10 +50,10 @@ const projects: App[] = [
   {
     description:
       "Me3 - Describe yourself in 3 things and share with your friends.",
-    repoName: "hnqg/me3",
-    repo: "https://github.com/hnqg/me3",
-    linkName: "me3.hnqg.io",
-    link: "https://me3.hnqg.io",
+    repoName: "henriqgoncalvs/me3",
+    repo: "https://github.com/henriqgoncalvs/me3",
+    linkName: "me3-henriiqueg.vercel.app",
+    link: "https://me3-henriiqueg.vercel.app/",
   },
 
   {
@@ -187,6 +200,55 @@ const projects: App[] = [
     repo: "https://github.com/AlandSleman/t3-twitter-clone",
     linkName: "twitter-clone.kurdmake.com",
     link: "https://twitter-clone.kurdmake.com",
+  },
+
+  {
+    description:
+      "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
+    repoName: "mohammed-bahumaish/prisma-editor",
+    repo: "https://github.com/mohammed-bahumaish/prisma-editor",
+    linkName: "prisma-editor.up.railway.app",
+    link: "https://prisma-editor.up.railway.app",
+  },
+
+  {
+    description: "Judge devs - website, where developers share their projects",
+    repoName: "judge-devs (gh)",
+    repo: "https://github.com/serzhan181/judge-devs",
+    linkName: "judge-devs.com",
+    link: "https://judge-devs.vercel.app/",
+  },
+
+  {
+    description: "T3 Blog - A Reddit inspired forum website",
+    repoName: "leojuriolli7/t3-blog",
+    repo: "https://github.com/leojuriolli7/t3-blog",
+    linkName: "t3-blog-pi.vercel.app",
+    link: "https://t3-blog-pi.vercel.app",
+  },
+
+  {
+    description: "Checkinout - A checklist management project using T3 Stack",
+    repoName: "burak-sevinc/t3-checkinout",
+    repo: "https://github.com/burak-sevinc/t3-checkinout",
+    linkName: "checkinout.vercel.app",
+    link: "https://checkinout.vercel.app/",
+  },
+
+  {
+    description: "Sozluk Clone - A simple clone of Ekşi Sözlük",
+    repoName: "doandroidsdreamof/sozluk-clone",
+    repo: "https://github.com/doandroidsdreamof/sozluk-clone",
+    linkName: "sozluk-clone.vercel.app",
+    link: "https://sozluk-clone.vercel.app",
+  },
+
+  {
+    description: "Henrique's personal site",
+    repoName: "henriqgoncalvs/website",
+    repo: "https://github.com/henriqgoncalvs/website",
+    linkName: "henriqgoncalvs.com",
+    link: "https://henriqgoncalvs.com",
   },
 ];
 

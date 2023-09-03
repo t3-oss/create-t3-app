@@ -1,5 +1,6 @@
 ---
-import { SITE, OPEN_GRAPH, type Frontmatter } from "../config";
+import { OPEN_GRAPH, SITE, type Frontmatter } from "../config";
+import { SITE_URL } from "../utils/siteUrl";
 
 export interface Props {
   frontmatter?: Frontmatter;
@@ -14,7 +15,21 @@ const formattedContentTitle = frontmatter
   ? `${frontmatter.title} 🚀 ${SITE.title}`
   : SITE.title;
 
-const imageSrc = frontmatter?.image?.src ?? OPEN_GRAPH.image.src;
+const ogTitle = frontmatter ? frontmatter.title : SITE.title;
+const ogDescription = frontmatter ? frontmatter.description : SITE.description;
+
+const ogImageData = {
+  title: ogTitle,
+  description: ogDescription,
+  pagePath: Astro.url.pathname,
+};
+
+const imageSrc =
+  frontmatter?.image?.src ??
+  `${SITE_URL}/og?${Object.entries(ogImageData)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&")}`;
+
 const imageUrl = new URL(imageSrc, Astro.url.origin);
 const imageAlt = frontmatter?.image?.alt ?? OPEN_GRAPH.image.alt;
 

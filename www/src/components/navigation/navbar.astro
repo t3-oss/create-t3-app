@@ -1,8 +1,8 @@
 ---
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import GithubIcon from "./githubIcon.astro";
-import Search from "./Search";
 import LanguageSelect from "./LanguageSelect";
+import Search from "./Search";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
@@ -32,7 +32,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
 
 <nav
   class:list={[
-    "navbar flex flex-col relative justify-between items-center py-4",
+    "navbar relative flex flex-col items-center justify-between py-4",
     {
       "z-40 text-slate-50": isLanding,
       "transition-colors duration-300": !isLanding,
@@ -44,19 +44,26 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
     <div class="flex w-full items-center justify-between md:w-auto">
       <div>
-        <a href="/" class="flex rounded-xl" title="Home">
+        <a href="/" class="flex" title="Home">
           <img
-            src="/favicon.svg"
+            class="block dark:hidden"
             width="50"
             height="50"
-            alt="T3 Logo"
-            class="rounded-xl"
+            src="/images/t3-dark.svg"
+            alt="T3 Logo Dark"
+          />
+          <img
+            class="hidden dark:block"
+            width="50"
+            height="50"
+            src="/images/t3-light.svg"
+            alt="T3 Logo Light"
           />
         </a>
       </div>
       <div
         class:list={[
-          "hidden -space-x-1 md:flex gap-2",
+          "hidden gap-2 -space-x-1 md:flex",
           isLtr && "md:ml-10",
           isRtl && "md:mr-10",
         ]}
