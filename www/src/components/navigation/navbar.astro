@@ -39,12 +39,11 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     },
   ]}
   aria-label="Global"
-  data-navbar
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
     <div class="flex w-full items-center justify-between md:w-auto">
       <div>
-        <a href="/" class="flex" title="Home">
+        <a href="/" class="flex" title="Home" data-home-link>
           <img
             class="block dark:hidden"
             width="50"
@@ -114,7 +113,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   </div>
 </nav>
 <script>
-  const logo = document.querySelector("[data-navbar]") as HTMLElement;
+  const logo = document.querySelector("[data-home-link]") as HTMLAnchorElement;
 
   logo.addEventListener("contextmenu", (e) => {
     e.preventDefault();
