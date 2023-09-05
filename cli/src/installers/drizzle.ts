@@ -52,7 +52,7 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": "drizzle-kit push:mysql",
+    "db:push": "dotenv drizzle-kit push:mysql",
   };
 
   fs.copySync(configFile, configDest);
