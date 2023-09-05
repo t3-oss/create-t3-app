@@ -8,4 +8,5 @@ export default {
   dbCredentials: {
     connectionString: env.DATABASE_URL,
   },
+  tablesFilter: ["project1_*"],
 } satisfies Config;

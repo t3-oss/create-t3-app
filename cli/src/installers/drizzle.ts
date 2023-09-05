@@ -42,6 +42,11 @@ export const drizzleInstaller: Installer = ({
     "project1_${name}",
     `${scopedAppName}_\${name}`
   );
+  let configContent = fs.readFileSync(configFile, "utf-8");
+  configContent = configContent.replace(
+    "project1_*",
+    `${scopedAppName}_*`
+  );
 
   const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
@@ -58,6 +63,7 @@ export const drizzleInstaller: Installer = ({
   fs.copySync(configFile, configDest);
   fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
   fs.writeFileSync(schemaDest, schemaContent);
+  fs.writeFileSync(configDest, configContent);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
