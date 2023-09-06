@@ -250,6 +250,14 @@ const projects: App[] = [
     linkName: "henriqgoncalvs.com",
     link: "https://henriqgoncalvs.com",
   },
+  
+  {
+    description: "SunalRahal - Your Spotify, in a SVG",
+    repoName: "prabincankod/sunal-rahal",
+    repo: "https://github.com/prabincankod/sunal-rahal",
+    linkName: "SunalRhal",
+    link: "https://sunal-rahal.vercel.app",
+  },
 ];
 
 export default function OpenSourceAppList({
