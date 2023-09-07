@@ -13,7 +13,7 @@ export const drizzleInstaller: Installer = ({
 }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-kit", "dotenv"],
+    dependencies: ["drizzle-kit", "dotenv-cli"],
     devMode: true,
   });
   addPackageDependency({
