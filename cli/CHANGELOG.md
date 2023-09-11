@@ -1,5 +1,32 @@
 # Changelog
 
+## 7.20.0
+
+### Minor Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add drizzle
+
+  This release adds a new option to use [`drizzle-orm`](https://orm.drizzle.team/docs/overview) as an alternative to Prisma.
+
+  To make the different ORM options as similar as possible, some minor changes has also been made to the Prisma installer:
+
+  - a new script `db:push` has been added and is included in both ORM options.
+  - the prisma client has been renamed to `db` in the trpc context - you now access your database client like
+    ```ts
+    examples: publicProcedure.query((opts) => {
+       // prisma
+       opts.ctx.db.example.findMany()
+       // drizzle
+       opts.ctx.db.query.example.findMany()
+    }),
+    ```
+
+  You cannot choose the two options in the same app.
+
+### Patch Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - refactor: swap inquirer for clack
+
 ## 7.19.0
 
 ### Minor Changes
