@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import path from "path";
+import { execa } from "execa";
 import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
 
@@ -9,6 +10,7 @@ import { initializeGit } from "~/helpers/git.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { setImportAlias } from "~/helpers/setImportAlias.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
@@ -18,8 +20,6 @@ import {
   getNpmVersion,
   renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
-import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
-import { execa } from "execa";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
