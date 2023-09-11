@@ -14,7 +14,7 @@ import { headers } from "next/headers";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { prisma } from "~/server/db";
+import { db } from "~/server/db";
 
 /**
  * 1. CONTEXT
@@ -41,7 +41,7 @@ interface CreateContextOptions {
 export const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     headers: opts.headers,
-    prisma,
+    db,
   };
 };
 

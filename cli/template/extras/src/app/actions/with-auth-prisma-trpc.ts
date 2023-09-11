@@ -18,7 +18,7 @@ export const editPost = createAction(
       })
     )
     .mutation(({ ctx, input }) => {
-      return ctx.prisma.post.update({
+      return ctx.db.post.update({
         where: {
           id: input.id,
         },

@@ -8,7 +8,7 @@ export const createPost = publicProcedure
     // simulate a slow db call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return ctx.prisma.post.create({
+    return ctx.db.post.create({
       data: {
         text: input.text,
       },
@@ -27,7 +27,7 @@ export const postRouter = createTRPCRouter({
   create: createPost,
 
   getLatest: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.post.findFirst({
+    return ctx.db.post.findFirst({
       orderBy: { createdAt: "desc" },
     });
   }),
