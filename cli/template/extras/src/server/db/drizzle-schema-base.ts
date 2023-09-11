@@ -3,8 +3,8 @@
 
 import { sql } from "drizzle-orm";
 import {
+  bigint,
   mysqlTableCreator,
-  serial,
   timestamp,
   uniqueIndex,
   varchar,
@@ -21,7 +21,7 @@ export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
 export const example = mysqlTable(
   "example",
   {
-    id: serial("id").primaryKey(),
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
     name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)

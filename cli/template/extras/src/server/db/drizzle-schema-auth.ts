@@ -1,10 +1,10 @@
 import { relations, sql } from "drizzle-orm";
 import {
+  bigint,
   index,
   int,
   mysqlTableCreator,
   primaryKey,
-  serial,
   text,
   timestamp,
   uniqueIndex,
@@ -23,7 +23,7 @@ export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
 export const example = mysqlTable(
   "example",
   {
-    id: serial("id").primaryKey(),
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
     name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
