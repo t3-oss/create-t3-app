@@ -7,13 +7,16 @@ import {
 } from "~/server/api/trpc";
 import { posts } from "~/server/db/schema";
 
-export const createPost = publicProcedure
+export const createPost = protectedProcedure
   .input(z.object({ text: z.string().min(1) }))
   .mutation(async ({ ctx, input }) => {
     // simulate a slow db call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    await ctx.db.insert(posts).values({ text: input.text });
+    await ctx.db.insert(posts).values({
+      text: input.text,
+      createdById: ctx.session.user.id,
+    });
   });
 
 export const postRouter = createTRPCRouter({
@@ -28,8 +31,8 @@ export const postRouter = createTRPCRouter({
   create: createPost,
 
   getLatest: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.post.findFirst({
-      orderBy: { createdAt: "desc" },
+    return ctx.db.query.posts.findFirst({
+      orderBy: (posts, { desc }) => [desc(posts.createdAt)],
     });
   }),
 
