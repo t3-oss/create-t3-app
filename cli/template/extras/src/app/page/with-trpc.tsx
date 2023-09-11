@@ -1,7 +1,8 @@
-import styles from "./index.module.css";
 import Link from "next/link";
+
 import { createPost } from "~/app/actions";
 import { api } from "~/trpc/server";
+import styles from "./index.module.css";
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: "from tRPC" });

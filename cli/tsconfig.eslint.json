@@ -1,4 +1,7 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react"
+  },
   "include": ["src", "template", "tsup.config.ts", "prettier.config.mjs"]
 }

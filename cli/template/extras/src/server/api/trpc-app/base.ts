@@ -22,9 +22,9 @@ import { ZodError } from "zod";
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
 
-type CreateContextOptions = {
+interface CreateContextOptions {
   headers: Headers;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export

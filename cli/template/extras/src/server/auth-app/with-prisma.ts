@@ -1,10 +1,11 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import {
   getServerSession,
-  type NextAuthOptions,
   type DefaultSession,
+  type NextAuthOptions,
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
+
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 

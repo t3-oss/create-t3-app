@@ -13,6 +13,7 @@ import { type FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import { headers } from "next/headers";
 import superjson from "superjson";
 import { ZodError } from "zod";
+
 import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
 
@@ -24,9 +25,9 @@ import { prisma } from "~/server/db";
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
 
-type CreateContextOptions = {
+interface CreateContextOptions {
   headers: Headers;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
