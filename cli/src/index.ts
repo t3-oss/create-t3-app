@@ -62,7 +62,7 @@ const main = async () => {
   const { stdout } = await execa(pkgManager, ["-v"], {
     cwd: projectDir,
   });
-  pkgJson.packageManager = `${pkgManager}@${stdout}`;
+  pkgJson.packageManager = `${pkgManager}@${stdout.trim()}`;
 
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
