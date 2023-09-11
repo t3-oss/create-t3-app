@@ -26,6 +26,7 @@
     "dist",
     "template",
     "README.md",
+    "LICENSE",
     "CHANGELOG.md",
     ".yarnrc.yml",
     "package.json"
