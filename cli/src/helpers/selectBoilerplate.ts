@@ -1,10 +1,11 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 
 type SelectBoilerplateProps = Required<
-  Pick<InstallerOptions, "projectDir" | "packages">
+  Pick<InstallerOptions, "packages" | "projectDir">
 >;
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = ({

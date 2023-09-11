@@ -1,0 +1,63 @@
+{
+  "name": "@ct3a/upgrade",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "clean": "rm -rf node_modules .turbo dist .eslintcache",
+    "dev": "next dev",
+    "format": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --write",
+    "format:check": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
+    "lint": "eslint . --report-unused-disable-directives",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@mdx-js/loader": "^2.3.0",
+    "@next/mdx": "^13.4.1",
+    "@octokit/request": "^7.0.0-beta.2",
+    "@radix-ui/react-checkbox": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-label": "^2.0.1",
+    "@radix-ui/react-select": "^1.2.1",
+    "@radix-ui/react-slot": "^1.0.1",
+    "@t3-oss/env-nextjs": "^0.6.0",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "gitdiff-parser": "^0.3.1",
+    "lucide-react": "^0.263.1",
+    "next": "^13.4.19",
+    "react": "18.2.0",
+    "react-diff-view": "^3.0.3",
+    "react-dom": "18.2.0",
+    "refractor": "^4.8.1",
+    "rehype-pretty-code": "^0.9.5",
+    "shiki": "^0.14.1",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss-animate": "^1.0.5",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.37.0",
+    "@types/mdx": "^2.0.5",
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "@types/refractor": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "6.0.0",
+    "@typescript-eslint/parser": "6.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "^13.4.1",
+    "postcss": "^8.4.21",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.1",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.13.0"
+  }
+}

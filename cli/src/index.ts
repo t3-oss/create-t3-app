@@ -1,13 +1,8 @@
 #!/usr/bin/env node
-import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
-import {
-  getNpmVersion,
-  renderVersionWarning,
-} from "./utils/renderVersionWarning.js";
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
+
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/git.js";
@@ -17,6 +12,12 @@ import { buildPkgInstallerMap } from "~/installers/index.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
+import {
+  getNpmVersion,
+  renderVersionWarning,
+} from "./utils/renderVersionWarning.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
@@ -42,6 +43,7 @@ const main = async () => {
 
   const projectDir = await createProject({
     projectName: appDir,
+    scopedAppName,
     packages: usePackages,
     importAlias,
     noInstall,
@@ -50,7 +52,7 @@ const main = async () => {
 
   // Write name to package.json
   const pkgJson = fs.readJSONSync(
-    path.join(projectDir, "package.json"),
+    path.join(projectDir, "package.json")
   ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
@@ -70,14 +72,19 @@ const main = async () => {
   // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
   fs.renameSync(
     path.join(projectDir, "_eslintrc.cjs"),
-    path.join(projectDir, ".eslintrc.cjs"),
+    path.join(projectDir, ".eslintrc.cjs")
   );
 
   if (!noGit) {
     await initializeGit(projectDir);
   }
 
-  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
+  await logNextSteps({
+    projectName: appDir,
+    packages: usePackages,
+    noInstall,
+    projectDir,
+  });
 
   process.exit(0);
 };
@@ -88,7 +95,7 @@ main().catch((err) => {
     logger.error(err);
   } else {
     logger.error(
-      "An unknown error has occurred. Please open an issue on github with the below:",
+      "An unknown error has occurred. Please open an issue on github with the below:"
     );
     console.log(err);
   }

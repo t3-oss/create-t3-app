@@ -1,5 +1,6 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
@@ -24,6 +25,8 @@ export const trpcInstaller: Installer = ({
 
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
+  const usingDrizzle = packages?.drizzle.inUse;
+  const usingDb = usingPrisma || usingDrizzle;
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
@@ -35,18 +38,18 @@ export const trpcInstaller: Installer = ({
   const apiHandlerDest = path.join(projectDir, srcToUse);
 
   const trpcFile =
-    usingAuth && usingPrisma
-      ? "with-auth-prisma.ts"
+    usingAuth && usingDb
+      ? "with-auth-db.ts"
       : usingAuth
       ? "with-auth.ts"
-      : usingPrisma
-      ? "with-prisma.ts"
+      : usingDb
+      ? "with-db.ts"
       : "base.ts";
   const trpcSrc = path.join(
     extrasDir,
     "src/server/api",
     appRouter ? "trpc-app" : "trpc-pages",
-    trpcFile,
+    trpcFile
   );
   const trpcDest = path.join(projectDir, "src/server/api/trpc.ts");
 
@@ -56,20 +59,24 @@ export const trpcInstaller: Installer = ({
   const exampleRouterFile =
     usingAuth && usingPrisma
       ? "with-auth-prisma.ts"
+      : usingAuth && usingDrizzle
+      ? "with-auth-drizzle.ts"
       : usingAuth
       ? "with-auth.ts"
       : usingPrisma
       ? "with-prisma.ts"
+      : usingDrizzle
+      ? "with-drizzle.ts"
       : "base.ts";
 
   const exampleRouterSrc = path.join(
     extrasDir,
     "src/server/api/routers/post",
-    exampleRouterFile,
+    exampleRouterFile
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/post.ts",
+    "src/server/api/routers/post.ts"
   );
 
   const copySrcDest: [string, string][] = [
@@ -93,7 +100,7 @@ export const trpcInstaller: Installer = ({
       [
         path.join(trpcDir, "shared.ts"),
         path.join(projectDir, "src/trpc/shared.ts"),
-      ],
+      ]
     );
 
     if (usingAuth && usingPrisma)

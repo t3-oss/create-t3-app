@@ -3,11 +3,14 @@ title: 常见疑问
 description: 关于 Create T3 App 的常见疑问
 layout: ../../layouts/docs.astro
 lang: zh-hans
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 这里罗列了一些关于 Create T3 App 的常见疑问。
 
-## 下一步呢？我怎么通过它制作应用？
+## 下一步呢？我怎么通过它开发一个应用？
 
 我们努力保持这个项目尽可能的简单，这样你就可以通过我们设定的脚手架来开始制作应用，而且可以在之后有需要的时候添入额外的东西。
 
@@ -19,6 +22,10 @@ lang: zh-hans
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+## 如何使我的应用保持更新？
+Create T3 App 是一个脚手架工具，而不是一个框架。这意味着一旦你初始化了一个应用程序，它就是你的了。没有类似于 postinstall CLI 的工具来帮助你保持最新状态。如果你想跟踪我们对模板所做的任何改进，你可以在我们的存储库上[启用发布通知](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)功能。
+话虽如此，但不一定需要将我们对模板所做的每一个更改都应用到你的应用程序中。
+
 ## 现在有哪些关于 T3 Stack 的学习资源可供参考？
 
 尽管以下列出的资源已经是现有关于 T3 Stack 的最好教程了，但社区（和 [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)）依然推荐你直接开始使用它，与此同时你可以在通过它构建应用的过程中来学习。
@@ -29,13 +36,15 @@ lang: zh-hans
 
 ### 文章
 
-- [使用 Create T3 App 来创建一个全栈应用](https://www.nexxel.dev/blog/ct3a-guestbook)
+其中的一些也许已经过时。
+
 - [初探 Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [将你的 T3 App 迁移到 Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [将 Stripe 集成到你的 T3 App 中](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### 视频
 
+- [T3 Stack 教程 - 从 0 到上线，0 元成本 (Next.js, tRPC, TypeScript, Tailwind, Prisma 等)](https://www.youtube.com/watch?v=YkOSUVzOAA4) **(推荐)**
 - [Jack Herrington - 使用 T3 Stack 创建一个笔记应用](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [使用 T3 Stack 创建推特克隆应用 - tRPC、Next.js、Prisma、Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [使用 T3 Stack 创建博客应用 - tRPC、TypeScript、Next.js、Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
@@ -59,4 +68,6 @@ lang: zh-hans
 
 正如在 [T3-原则第二条](/zh-hans/introduction#负责任地尝鲜) 里提到的，我们热爱新技术，但是也看重稳定性，项目的整个路由不是很容易迁移，而你却在此使用风险较高的新技术，[这不是一个明智的选择](https://youtu.be/mnwUbtieOuI?t=1662)。`/app` 目前只是 [对未来特性的一瞥而已](https://youtu.be/rnsC-12PVlM?t=818)，它还未做好准备被用于生产环境；这项 API 还处于 beta 阶段，可以预见接下来还会有破坏性的改变。
 
-你可以访问 [beta 版 Next.js 文档](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features) 来查看 `/app` 目录所支持的、计划支持的和目前正在实施的特性列表。
+<Callout type="info">
+  对于 `/app` 目录中支持的、计划的和正在开发的功能列表，请访问 [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>

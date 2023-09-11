@@ -99,6 +99,12 @@ yarn create t3-app
 pnpm create t3-app@latest
 ```
 
+### bun
+
+```bash
+bunx create-t3-app@latest
+```
+
 For more advanced usage, check out the [CLI docs](https://create.t3.gg/en/installation).
 
 <h2 id="community">Community</h2>

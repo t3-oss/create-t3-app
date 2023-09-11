@@ -4,8 +4,8 @@ const config = {
   parser: "@typescript-eslint/parser",
   plugins: ["isaacscript", "import"],
   extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:prettier/recommended",
   ],
   parserOptions: {
@@ -15,11 +15,20 @@ const config = {
     project: [
       "./tsconfig.json",
       "./cli/tsconfig.eslint.json", // separate eslint config for the CLI since we want to lint and typecheck differently due to template files
+      "./upgrade/tsconfig.json",
       "./www/tsconfig.json",
     ],
   },
+  overrides: [
+    // Template files don't have reliable type information
+    {
+      files: ["./cli/template/**/*.{ts,tsx}"],
+      extends: ["plugin:@typescript-eslint/disable-type-checked"],
+    },
+  ],
   rules: {
-    "@typescript-eslint/restrict-template-expressions": "off",
+    // These off/not-configured-the-way-we-want lint rules we like & opt into
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
@@ -30,19 +39,16 @@ const config = {
     ],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
 
-    // These rules are only disabled because we hit a bug in linting.
-    // See https://github.com/t3-oss/create-t3-app/pull/1036#discussion_r1060505136
-    // If you still see the bug once TypeScript@5 is used, please let typescript-eslint know!
-    "@typescript-eslint/no-unsafe-argument": "off",
-    "@typescript-eslint/no-unsafe-assignment": "off",
-    "@typescript-eslint/no-unsafe-call": "off",
-    "@typescript-eslint/no-unsafe-member-access": "off",
-    "@typescript-eslint/no-unsafe-return": "off",
-    "@typescript-eslint/no-unnecessary-type-assertion": "off",
-
     // For educational purposes we format our comments/jsdoc nicely
     "isaacscript/complete-sentences-jsdoc": "warn",
     "isaacscript/format-jsdoc-comments": "warn",
+
+    // These lint rules don't make sense for us but are enabled in the preset configs
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+
+    // This rule doesn't seem to be working properly
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
 };
 

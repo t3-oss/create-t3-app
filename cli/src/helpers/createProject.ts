@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+
 import { PKG_ROOT } from "~/consts.js";
 import { installPackages } from "~/helpers/installPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
@@ -15,6 +16,7 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
+  scopedAppName: string;
   noInstall: boolean;
   importAlias: string;
   appRouter: boolean;
@@ -22,6 +24,7 @@ interface CreateProjectOptions {
 
 export const createProject = async ({
   projectName,
+  scopedAppName,
   packages,
   noInstall,
   appRouter,
@@ -34,12 +37,15 @@ export const createProject = async ({
     projectName,
     projectDir,
     pkgManager,
+    scopedAppName,
     noInstall,
     appRouter,
   });
 
   // Install the selected packages
   installPackages({
+    projectName,
+    scopedAppName,
     projectDir,
     pkgManager,
     packages,
@@ -59,7 +65,7 @@ const config = {
   experimental: { serverActions: true },
 };
 export default config;
-`,
+`
     );
 
     selectLayoutFile({ projectDir, packages });
@@ -73,13 +79,13 @@ export default config;
   if (!packages.tailwind.inUse) {
     const indexModuleCss = path.join(
       PKG_ROOT,
-      "template/extras/src/index.module.css",
+      "template/extras/src/index.module.css"
     );
     const indexModuleCssDest = path.join(
       projectDir,
       "src",
       appRouter ? "app" : "pages",
-      "index.module.css",
+      "index.module.css"
     );
     fs.copyFileSync(indexModuleCss, indexModuleCssDest);
   }

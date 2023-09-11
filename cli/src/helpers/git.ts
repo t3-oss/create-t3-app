@@ -1,10 +1,11 @@
-import chalk from "chalk";
 import { execSync } from "child_process";
+import path from "path";
+import * as p from "@clack/prompts";
+import chalk from "chalk";
 import { execa } from "execa";
 import fs from "fs-extra";
-import inquirer from "inquirer";
 import ora from "ora";
-import path from "path";
+
 import { logger } from "~/utils/logger.js";
 
 const isGitInstalled = (dir: string): boolean => {
@@ -17,12 +18,12 @@ const isGitInstalled = (dir: string): boolean => {
 };
 
 /** @returns Whether or not the provided directory has a `.git` subdirectory in it. */
-const isRootGitRepo = (dir: string): boolean => {
+export const isRootGitRepo = (dir: string): boolean => {
   return fs.existsSync(path.join(dir, ".git"));
 };
 
 /** @returns Whether or not this directory or a parent directory has a `.git` directory. */
-const isInsideGitRepo = async (dir: string): Promise<boolean> => {
+export const isInsideGitRepo = async (dir: string): Promise<boolean> => {
   try {
     // If this command succeeds, we're inside a git repo
     await execa("git", ["rev-parse", "--is-inside-work-tree"], {
@@ -71,16 +72,13 @@ export const initializeGit = async (projectDir: string) => {
   if (isInside && isRoot) {
     // Dir is a root git repo
     spinner.stop();
-    const { overwriteGit } = await inquirer.prompt<{
-      overwriteGit: boolean;
-    }>({
-      name: "overwriteGit",
-      type: "confirm",
+    const overwriteGit = await p.confirm({
       message: `${chalk.redBright.bold(
-        "Warning:",
+        "Warning:"
       )} Git is already initialized in "${dirName}". Initializing a new git repository would delete the previous history. Would you like to continue anyways?`,
-      default: false,
+      initialValue: false,
     });
+
     if (!overwriteGit) {
       spinner.info("Skipping Git initialization.");
       return;
@@ -90,15 +88,11 @@ export const initializeGit = async (projectDir: string) => {
   } else if (isInside && !isRoot) {
     // Dir is inside a git worktree
     spinner.stop();
-    const { initializeChildGitRepo } = await inquirer.prompt<{
-      initializeChildGitRepo: boolean;
-    }>({
-      name: "initializeChildGitRepo",
-      type: "confirm",
+    const initializeChildGitRepo = await p.confirm({
       message: `${chalk.redBright.bold(
-        "Warning:",
+        "Warning:"
       )} "${dirName}" is already in a git worktree. Would you still like to initialize a new git repository in this directory?`,
-      default: false,
+      initialValue: false,
     });
     if (!initializeChildGitRepo) {
       spinner.info("Skipping Git initialization.");
@@ -128,15 +122,15 @@ export const initializeGit = async (projectDir: string) => {
     await execa("git", ["add", "."], { cwd: projectDir });
     spinner.succeed(
       `${chalk.green("Successfully initialized and staged")} ${chalk.green.bold(
-        "git",
-      )}\n`,
+        "git"
+      )}\n`
     );
   } catch (error) {
     // Safeguard, should be unreachable
     spinner.fail(
       `${chalk.bold.red(
-        "Failed:",
-      )} could not initialize git. Update git to the latest version!\n`,
+        "Failed:"
+      )} could not initialize git. Update git to the latest version!\n`
     );
   }
 };

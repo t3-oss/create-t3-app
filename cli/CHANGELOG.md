@@ -1,5 +1,88 @@
 # Changelog
 
+## 7.20.0
+
+### Minor Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add drizzle
+
+  This release adds a new option to use [`drizzle-orm`](https://orm.drizzle.team/docs/overview) as an alternative to Prisma.
+
+  To make the different ORM options as similar as possible, some minor changes has also been made to the Prisma installer:
+
+  - a new script `db:push` has been added and is included in both ORM options.
+  - the prisma client has been renamed to `db` in the trpc context - you now access your database client like
+    ```ts
+    examples: publicProcedure.query((opts) => {
+       // prisma
+       opts.ctx.db.example.findMany()
+       // drizzle
+       opts.ctx.db.query.example.findMany()
+    }),
+    ```
+
+  You cannot choose the two options in the same app.
+
+### Patch Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - refactor: swap inquirer for clack
+
+## 7.19.0
+
+### Minor Changes
+
+- [#1375](https://github.com/t3-oss/create-t3-app/pull/1375) [`d781f08`](https://github.com/t3-oss/create-t3-app/commit/d781f0861ba05aee6b3d460fc53e126868409fb5) Thanks [@Zeko369](https://github.com/Zeko369)! - feat: detect and support usage of Bun as package manager
+
+## 7.18.0
+
+### Minor Changes
+
+- [#1532](https://github.com/t3-oss/create-t3-app/pull/1532) [`941a0fc`](https://github.com/t3-oss/create-t3-app/commit/941a0fc79bcfb24c894525c93aab87c2860b2ad4) Thanks [@spicybackend](https://github.com/spicybackend)! - chore(deps): upgrade Prisma to v5.1.1, bump patch versions of other dependencies
+
+- [#1507](https://github.com/t3-oss/create-t3-app/pull/1507) [`fe5755c`](https://github.com/t3-oss/create-t3-app/commit/fe5755c2d575ce27e8e9c86e6fc79e7903af0390) Thanks [@LevinUncu](https://github.com/LevinUncu)! - If the project is not in a Git repo, the next steps will show git init instead of git commit -m "initial commit".
+
+## 7.17.0
+
+### Minor Changes
+
+- [#1523](https://github.com/t3-oss/create-t3-app/pull/1523) [`c441a9e`](https://github.com/t3-oss/create-t3-app/commit/c441a9ecfaeb61866a76379712b297fc6c2c36b3) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - reduced stylistic linting
+
+## 7.16.0
+
+### Minor Changes
+
+- [#1476](https://github.com/t3-oss/create-t3-app/pull/1476) [`f3fd50f`](https://github.com/t3-oss/create-t3-app/commit/f3fd50fbd5dfd705507b1a2b53e8e6fd39b2dadb) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - Upgraded typescript-eslint to v6, with reworked ESLint configurations
+
+- [#1508](https://github.com/t3-oss/create-t3-app/pull/1508) [`e9c862e`](https://github.com/t3-oss/create-t3-app/commit/e9c862e7e114214139f05572d62af45d87d3fc1c) Thanks [@Sn0wye](https://github.com/Sn0wye)! - chore(deps): bump prisma to v5.0.0
+
+## 7.15.0
+
+### Minor Changes
+
+- [#1484](https://github.com/t3-oss/create-t3-app/pull/1484) [`23a9d60`](https://github.com/t3-oss/create-t3-app/commit/23a9d60cd013c40d76ab96d0340425e1e3d8efa2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - reminder to git commit after creating an application with the CLI
+
+### Patch Changes
+
+- [#1493](https://github.com/t3-oss/create-t3-app/pull/1493) [`a230d9f`](https://github.com/t3-oss/create-t3-app/commit/a230d9f7bb3a78669f2003ae9084c868f06639b7) Thanks [@dcottr](https://github.com/dcottr)! - Remove trailing newlines in generated app that aren't allowed by the generated prettier config
+
+## 7.14.1
+
+### Patch Changes
+
+- [#1479](https://github.com/t3-oss/create-t3-app/pull/1479) [`bb7324c`](https://github.com/t3-oss/create-t3-app/commit/bb7324c9503995949c61c0a5abe736c38f07b815) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - use custom error class for IsTTYError
+
+## 7.14.0
+
+### Minor Changes
+
+- [#1466](https://github.com/t3-oss/create-t3-app/pull/1466) [`e8b68d9`](https://github.com/t3-oss/create-t3-app/commit/e8b68d92af093361bf73eed7eacd7ed6848500c3) Thanks [@brunoeduardodev](https://github.com/brunoeduardodev)! - Ignore trailing slashes when prompting the app name.
+
+## 7.13.2
+
+### Patch Changes
+
+- [#1469](https://github.com/t3-oss/create-t3-app/pull/1469) [`547f504`](https://github.com/t3-oss/create-t3-app/commit/547f504b91c3da9b6419ea7f9f43d03e6c243839) Thanks [@ericshively](https://github.com/ericshively)! - Replace React.FC with basic function syntax
+
 ## 7.13.1
 
 ### Patch Changes

@@ -1,9 +1,9 @@
-import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+
 import { api } from "~/utils/api";
 
-const Home: NextPage = () => {
+export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
 
   return (
@@ -49,6 +49,4 @@ const Home: NextPage = () => {
       </main>
     </>
   );
-};
-
-export default Home;
+}

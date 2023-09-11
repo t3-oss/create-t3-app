@@ -308,6 +308,7 @@ Voici un exemple de test d'intégration qui utilise [Vitest](https://vitest.dev)
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
 import { expect, test } from "vitest";
+
 import { appRouter, type AppRouter } from "~/server/api/root";
 import { createInnerTRPCContext } from "~/server/api/trpc";
 

@@ -3,7 +3,10 @@ title: Netlify
 description: 部署到 Netlify
 layout: ../../../layouts/docs.astro
 lang: zh-hans
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Netlify 是与 Vercel 类似的托管平台服务商。参看基于本文档的示例仓库 [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify)。
 
@@ -15,7 +18,9 @@ Netlify 是与 Vercel 类似的托管平台服务商。参看基于本文档的�
 
 所有的部署平台都有相对的优缺点，因为没有一家供应商能对所有的使用场景都提供最好的支持。举例来说，Netlify 为他们的边缘函数（它们运行在 Deno 环境）自行创建了一个 [定制的 Next.js 运行时](https://github.com/netlify/next-runtime)，[使用了独有的中间件来访问和修改 HTTP 响应](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify)。
 
-> _注意：要追踪 Next 13 非稳定特性的最新状态，参看 [在 Netlify 上使用 Next.js 13 的 `app` 目录](https://github.com/netlify/next-runtime/discussions/1724)。_
+<Callout type="info">
+  要追踪 Next 13 非稳定特性的最新状态，参看 [在 Netlify 上使用 Next.js 13 的 `app` 目录](https://github.com/netlify/next-runtime/discussions/1724)。_
+</Callout>
 
 ## 项目配置
 

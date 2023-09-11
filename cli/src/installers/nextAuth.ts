@@ -1,5 +1,6 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js";
 import { type Installer } from "~/installers/index.js";
@@ -11,8 +12,11 @@ export const nextAuthInstaller: Installer = ({
   appRouter,
 }) => {
   const usingPrisma = packages?.prisma.inUse;
+  const usingDrizzle = packages?.drizzle.inUse;
+
   const deps: AvailableDependencies[] = ["next-auth"];
   if (usingPrisma) deps.push("@next-auth/prisma-adapter");
+  if (usingDrizzle) deps.push("@auth/drizzle-adapter");
 
   addPackageDependency({
     projectDir,
@@ -33,7 +37,11 @@ export const nextAuthInstaller: Installer = ({
     extrasDir,
     "src/server",
     appRouter ? "auth-app" : "auth-pages",
-    usingPrisma ? "with-prisma.ts" : "base.ts",
+    usingPrisma
+      ? "with-prisma.ts"
+      : usingDrizzle
+      ? "with-drizzle.ts"
+      : "base.ts"
   );
   const authConfigDest = path.join(projectDir, "src/server/auth.ts");
 
