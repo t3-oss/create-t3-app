@@ -5,6 +5,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { posts } from "~/server/db/schema";
 
 export const createPost = publicProcedure
   .input(z.object({ text: z.string().min(1) }))
