@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { createPost } from "~/app/actions";
+import { createPost } from "~/app/_actions";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 import styles from "./index.module.css";

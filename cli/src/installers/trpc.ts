@@ -106,22 +106,32 @@ export const trpcInstaller: Installer = ({
     if (usingAuth && usingPrisma)
       copySrcDest.push([
         path.join(extrasDir, "src/app/actions/with-auth-prisma-trpc.ts"),
-        path.join(projectDir, "src/app/actions.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
+      ]);
+    else if (usingAuth && usingDrizzle)
+      copySrcDest.push([
+        path.join(extrasDir, "src/app/actions/with-auth-drizzle-trpc.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
       ]);
     else if (usingAuth)
       copySrcDest.push([
         path.join(extrasDir, "src/app/actions/with-auth-trpc.ts"),
-        path.join(projectDir, "src/app/actions.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
       ]);
     else if (usingPrisma)
       copySrcDest.push([
         path.join(extrasDir, "src/app/actions/with-prisma-trpc.ts"),
-        path.join(projectDir, "src/app/actions.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
+      ]);
+    else if (usingDrizzle)
+      copySrcDest.push([
+        path.join(extrasDir, "src/app/actions/with-drizzle-trpc.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
       ]);
     else
       copySrcDest.push([
         path.join(extrasDir, "src/app/actions/with-trpc.ts"),
-        path.join(projectDir, "src/app/actions.ts"),
+        path.join(projectDir, "src/app/_actions.ts"),
       ]);
   } else {
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");

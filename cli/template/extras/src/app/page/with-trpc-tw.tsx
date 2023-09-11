@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { createPost } from "~/app/actions";
+import { createPost } from "~/app/_actions";
 import { api } from "~/trpc/server";
 import { Button } from "~/ui/button";
 
