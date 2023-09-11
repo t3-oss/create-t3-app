@@ -56,7 +56,6 @@ export default async function Home() {
             </Link>
           </div>
 
-          {/* @ts-expect-error - Async Server Component */}
           <CrudShowcase />
         </div>
       </div>
