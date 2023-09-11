@@ -9,12 +9,14 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
+  scopedAppName: string;
   noInstall: boolean;
   importAlias: string;
 }
 
 export const createProject = async ({
   projectName,
+  scopedAppName,
   packages,
   noInstall,
 }: CreateProjectOptions) => {
@@ -26,11 +28,14 @@ export const createProject = async ({
     projectName,
     projectDir,
     pkgManager,
+    scopedAppName,
     noInstall,
   });
 
   // Install the selected packages
   installPackages({
+    projectName,
+    scopedAppName,
     projectDir,
     pkgManager,
     packages,

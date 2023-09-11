@@ -24,5 +24,8 @@
   "mdx.experimentalLanguageServer": true,
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }

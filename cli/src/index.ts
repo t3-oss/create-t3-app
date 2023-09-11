@@ -43,6 +43,7 @@ const main = async () => {
 
   const projectDir = await createProject({
     projectName: appDir,
+    scopedAppName,
     packages: usePackages,
     importAlias: importAlias,
     noInstall,

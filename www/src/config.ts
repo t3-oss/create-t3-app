@@ -123,6 +123,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Next.js", link: "en/usage/next-js" },
       { text: "TypeScript", link: "en/usage/typescript" },
       { text: "tRPC", link: "en/usage/trpc" },
+      { text: "Drizzle", link: "en/usage/drizzle" },
       { text: "Prisma", link: "en/usage/prisma" },
       { text: "NextAuth.js", link: "en/usage/next-auth" },
       {
