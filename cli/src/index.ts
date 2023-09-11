@@ -18,6 +18,8 @@ import {
   getNpmVersion,
   renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+import { execa } from "execa";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
@@ -27,6 +29,7 @@ type CT3APackageJSON = PackageJson & {
 
 const main = async () => {
   const npmVersion = await getNpmVersion();
+  const pkgManager = getUserPkgManager();
   renderTitle();
   npmVersion && renderVersionWarning(npmVersion);
 
@@ -55,6 +58,12 @@ const main = async () => {
   ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
+
+  const { stdout } = await execa(pkgManager, ["-v"], {
+    cwd: projectDir,
+  });
+  pkgJson.packageManager = `${pkgManager}@${stdout}`;
+
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
