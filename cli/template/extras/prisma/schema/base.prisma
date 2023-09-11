@@ -11,7 +11,10 @@ datasource db {
 }
 
 model Example {
-    id        String   @id @default(cuid())
+    id        Int      @id @default(autoincrement())
+    name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    @@index([name])
 }
