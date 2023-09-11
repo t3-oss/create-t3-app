@@ -22,6 +22,14 @@
   "bin": {
     "create-t3-app": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "template",
+    "README.md",
+    "CHANGELOG.md",
+    ".yarnrc.yml",
+    "package.json"
+  ],
   "engines": {
     "node": ">=14.16"
   },
