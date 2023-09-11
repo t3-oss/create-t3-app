@@ -4,7 +4,7 @@
 
 feat: add drizzle
 
-This release adds a new option to use [`drizzle-orm`](https://orm.drizzle.team/) as an alternative to Prisma.
+This release adds a new option to use [`drizzle-orm`](https://orm.drizzle.team/docs/overview) as an alternative to Prisma.
 
 To make the different ORM options as similar as possible, some minor changes has also been made to the Prisma installer:
 
