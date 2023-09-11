@@ -256,7 +256,10 @@ export const runCli = async (): Promise<CliResults> => {
         },
         appRouter: () => {
           return p.confirm({
-            message: "Would you like to use Next.js App Router?",
+            message:
+              chalk.bgCyan("EXPERIMENTAL") +
+              " Would you like to use Next.js App Router?",
+            initialValue: false,
           });
         },
         ...(!cliResults.flags.noGit && {
