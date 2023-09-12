@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.20.2
+
+### Patch Changes
+
+- [#1564](https://github.com/t3-oss/create-t3-app/pull/1564) [`58ee08e`](https://github.com/t3-oss/create-t3-app/commit/58ee08e850d985b5ef1b7e5bf0cc164cfaff3f3f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: block drizzle apps when the example database url hasn't been changed yet
+
 ## 7.20.1
 
 ### Patch Changes
