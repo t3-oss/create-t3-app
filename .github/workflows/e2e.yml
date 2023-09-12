@@ -41,7 +41,7 @@ jobs:
           echo "continue=${{ matrix.prisma == 'false' || matrix.drizzle == 'false' }}" >> $GITHUB_OUTPUT
 
       - name: Install Node.js
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }} 
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -74,7 +74,7 @@ jobs:
 
       - run: pnpm turbo --filter=create-t3-app build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        
+
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
@@ -84,6 +84,7 @@ jobs:
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           NEXTAUTH_SECRET: foo
+          DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
