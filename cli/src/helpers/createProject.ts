@@ -55,6 +55,12 @@ export const createProject = async ({
 
   // Select necessary _app,index / layout,page files
   if (appRouter) {
+    // Replace next.config
+    fs.copyFileSync(
+      path.join(PKG_ROOT, "template/extras/config/next-config-appdir.mjs"),
+      path.join(projectDir, "next.config.mjs")
+    );
+
     selectLayoutFile({ projectDir, packages });
     selectPageFile({ projectDir, packages });
   } else {
