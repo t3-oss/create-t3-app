@@ -55,19 +55,6 @@ export const createProject = async ({
 
   // Select necessary _app,index / layout,page files
   if (appRouter) {
-    // Override default next.config
-    fs.writeFileSync(
-      path.join(projectDir, "next.config.mjs"),
-      `import "./src/env.mjs";
-
-/** @type {import("next").NextConfig} */
-const config = {
-  experimental: { serverActions: true },
-};
-export default config;
-`
-    );
-
     selectLayoutFile({ projectDir, packages });
     selectPageFile({ projectDir, packages });
   } else {
