@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.20.2
+
+### Patch Changes
+
+- [#1564](https://github.com/t3-oss/create-t3-app/pull/1564) [`58ee08e`](https://github.com/t3-oss/create-t3-app/commit/58ee08e850d985b5ef1b7e5bf0cc164cfaff3f3f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: block drizzle apps when the example database url hasn't been changed yet
+
+## 7.20.1
+
+### Patch Changes
+
+- [#1561](https://github.com/t3-oss/create-t3-app/pull/1561) [`b8507dc`](https://github.com/t3-oss/create-t3-app/commit/b8507dc64ee91b8423de2ab6145cb3e7d8072528) Thanks [@Nsttt](https://github.com/Nsttt)! - Add packageManager field in package.json at app creation
+
 ## 7.20.0
 
 ### Minor Changes

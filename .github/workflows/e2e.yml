@@ -85,6 +85,7 @@ jobs:
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           NEXTAUTH_SECRET: foo
+          DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
