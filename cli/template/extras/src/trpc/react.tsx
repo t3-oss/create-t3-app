@@ -23,8 +23,9 @@ export function TRPCReactProvider(props: {
         unstable_httpBatchStreamLink({
           url: getUrl(),
           headers() {
-            const headers = new Map(props.headers);
-            return Object.fromEntries(headers);
+            const heads = new Map(props.headers);
+            heads.set("x-trpc-source", "react");
+            return Object.fromEntries(heads);
           },
         }),
       ],
