@@ -20,7 +20,6 @@ export const dependencyVersionMap = {
 
   // TailwindCSS
   tailwindcss: "^3.3.3",
-  "tailwind-merge": "^1.12.0",
   autoprefixer: "^10.4.14",
   postcss: "^8.4.27",
   prettier: "^3.0.0",

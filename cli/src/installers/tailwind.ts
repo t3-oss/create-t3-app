@@ -5,12 +5,11 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const tailwindInstaller: Installer = ({ projectDir, appRouter }) => {
+export const tailwindInstaller: Installer = ({ projectDir }) => {
   addPackageDependency({
     projectDir,
     dependencies: [
       "tailwindcss",
-      "tailwind-merge",
       "postcss",
       "autoprefixer",
       "prettier",
@@ -32,12 +31,6 @@ export const tailwindInstaller: Installer = ({ projectDir, appRouter }) => {
 
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
-
-  if (appRouter) {
-    const btnSrc = path.join(extrasDir, "src/ui/button.tsx");
-    const btnDest = path.join(projectDir, "src/ui/button.tsx");
-    fs.copySync(btnSrc, btnDest);
-  }
 
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);

@@ -100,26 +100,12 @@ export const trpcInstaller: Installer = ({
       [
         path.join(trpcDir, "shared.ts"),
         path.join(projectDir, "src/trpc/shared.ts"),
+      ],
+      [
+        path.join(extrasDir, "src/app/_components/create-post.tsx"),
+        path.join(projectDir, "src/app/_components/create-post.tsx"),
       ]
     );
-
-    const actionFileName =
-      usingAuth && usingPrisma
-        ? "with-auth-prisma-trpc.ts"
-        : usingAuth && usingDrizzle
-        ? "with-auth-drizzle-trpc.ts"
-        : usingAuth
-        ? "with-auth-trpc.ts"
-        : usingPrisma
-        ? "with-prisma-trpc.ts"
-        : usingDrizzle
-        ? "with-drizzle-trpc.ts"
-        : "with-trpc.ts";
-
-    copySrcDest.push([
-      path.join(extrasDir, "src/app/actions", actionFileName),
-      path.join(projectDir, "src/app/_actions.ts"),
-    ]);
   } else {
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
     const utilsDest = path.join(projectDir, "src/utils/api.ts");

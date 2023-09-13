@@ -11,16 +11,6 @@ let post = {
   text: "Hello World",
 };
 
-export const createPost = protectedProcedure
-  .input(z.object({ text: z.string().min(1) }))
-  .mutation(async ({ input }) => {
-    // simulate a slow db call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    post = { id: post.id + 1, text: input.text };
-    return post;
-  });
-
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
@@ -30,7 +20,15 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
-  create: createPost,
+  create: protectedProcedure
+    .input(z.object({ text: z.string().min(1) }))
+    .mutation(async ({ input }) => {
+      // simulate a slow db call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      post = { id: post.id + 1, text: input.text };
+      return post;
+    }),
 
   getLatest: protectedProcedure.query(() => {
     return post;

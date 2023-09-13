@@ -167,9 +167,6 @@ importers:
       superjson:
         specifier: ^1.12.2
         version: 1.12.2
-      tailwind-merge:
-        specifier: ^1.12.0
-        version: 1.12.0
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
@@ -9218,6 +9215,7 @@ packages:
 
   /tailwind-merge@1.12.0:
     resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==}
+    dev: false
 
   /tailwind-scrollbar@3.0.0(tailwindcss@3.3.2):
     resolution: {integrity: sha512-OkVRX9Q1T769vk979UZ519jhj/j/zNBHql7zPLI+tlhX+ahksYO4ZryWD29lOETDx9Wj1sw+K1OeW7W3+ECQOA==}

@@ -6,11 +6,8 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-
-import { experimental_createServerActionHandler } from "@trpc/next/app-dir/server";
 import { initTRPC } from "@trpc/server";
-import { type FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
-import { headers } from "next/headers";
+import type { NextRequest } from "next/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
@@ -51,7 +48,7 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: FetchCreateContextFnOptions) => {
+export const createTRPCContext = (opts: { req: NextRequest }) => {
   // Fetch stuff that depends on the request
 
   return createInnerTRPCContext({
@@ -78,19 +75,6 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
           error.cause instanceof ZodError ? error.cause.flatten() : null,
       },
     };
-  },
-});
-
-/**
- * Helper to create validated server actions from trpc procedures, or build inline actions using the
- * reusable procedure builders.
- */
-export const createAction = experimental_createServerActionHandler(t, {
-  createContext() {
-    const ctx = createInnerTRPCContext({
-      headers: headers(),
-    });
-    return ctx;
   },
 });
 

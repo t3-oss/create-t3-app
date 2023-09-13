@@ -6,20 +6,6 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 
-export const createPost = protectedProcedure
-  .input(z.object({ text: z.string().min(1) }))
-  .mutation(async ({ ctx, input }) => {
-    // simulate a slow db call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    return ctx.db.post.create({
-      data: {
-        text: input.text,
-        createdBy: { connect: { id: ctx.session.user.id } },
-      },
-    });
-  });
-
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
@@ -29,7 +15,19 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
-  create: createPost,
+  create: protectedProcedure
+    .input(z.object({ text: z.string().min(1) }))
+    .mutation(async ({ ctx, input }) => {
+      // simulate a slow db call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      return ctx.db.post.create({
+        data: {
+          text: input.text,
+          createdBy: { connect: { id: ctx.session.user.id } },
+        },
+      });
+    }),
 
   getLatest: protectedProcedure.query(({ ctx }) => {
     return ctx.db.post.findFirst({

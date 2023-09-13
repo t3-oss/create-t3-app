@@ -1,7 +1,6 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
-import { twMerge } from "tailwind-merge";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,14 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={twMerge(
-          "bg-background font-sans text-foreground",
-          inter.variable
-        )}
-      >
-        {children}
-      </body>
+      <body className={`font-sans ${inter.variable}`}>{children}</body>
     </html>
   );
 }

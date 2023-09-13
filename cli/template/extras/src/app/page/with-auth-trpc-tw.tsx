@@ -1,9 +1,8 @@
 import Link from "next/link";
 
-import { createPost } from "~/app/_actions";
+import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
-import { Button } from "~/ui/button";
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: "from tRPC" });
@@ -77,15 +76,7 @@ async function CrudShowcase() {
         <p>You have no posts yet.</p>
       )}
 
-      <form action={createPost} className="flex flex-col gap-2">
-        <input
-          type="text"
-          name="text"
-          placeholder="Title"
-          className="w-full rounded bg-primary p-2 text-background"
-        />
-        <Button type="submit">Submit</Button>
-      </form>
+      <CreatePost />
     </div>
   );
 }
