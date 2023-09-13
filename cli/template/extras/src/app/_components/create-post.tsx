@@ -27,7 +27,7 @@ export function CreatePost() {
         type="text"
         name="text"
         placeholder="Title"
-        className="w-full rounded bg-primary p-2 text-background"
+        className="w-full rounded p-2"
       />
       <button type="submit">Submit</button>
     </form>
