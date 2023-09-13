@@ -27,9 +27,14 @@ export function CreatePost() {
         type="text"
         name="text"
         placeholder="Title"
-        className="w-full rounded p-2"
+        className="w-full rounded-full px-4 py-2 text-black"
       />
-      <button type="submit">Submit</button>
+      <button
+        type="submit"
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+      >
+        Submit
+      </button>
     </form>
   );
 }
