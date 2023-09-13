@@ -15,12 +15,11 @@ export function CreatePost() {
 
   return (
     <form
-      onSubmit={async (e) => {
+      onSubmit={(e) => {
         e.preventDefault();
 
         const text = new FormData(e.currentTarget).get("text") as string;
         createPost.mutate({ text });
-        router.refresh();
       }}
       className="flex flex-col gap-2"
     >
