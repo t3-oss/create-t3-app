@@ -7,7 +7,6 @@ import {
   primaryKey,
   text,
   timestamp,
-  uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
 import { type AdapterAccount } from "next-auth/adapters";
@@ -33,7 +32,7 @@ export const posts = mysqlTable(
   },
   (example) => ({
     createdByIdIdx: index("createdById_idx").on(example.createdById),
-    textIndex: uniqueIndex("text_idx").on(example.text),
+    textIndex: index("text_idx").on(example.text),
   })
 );
 

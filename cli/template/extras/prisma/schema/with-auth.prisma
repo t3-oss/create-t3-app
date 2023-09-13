@@ -22,6 +22,8 @@ model Post {
 
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
+
+    @@index([text])
 }
 
 // Necessary for Next auth

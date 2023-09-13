@@ -6,7 +6,6 @@ import {
   bigint,
   mysqlTableCreator,
   timestamp,
-  uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
 
@@ -29,6 +28,6 @@ export const posts = mysqlTable(
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
-    textIndex: uniqueIndex("text_idx").on(example.text),
+    textIndex: index("text_idx").on(example.text),
   })
 );

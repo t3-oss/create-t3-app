@@ -1,15 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { api } from "~/trpc/react";
 
 export function CreatePost() {
   const router = useRouter();
+  const [text, setText] = useState("");
 
   const createPost = api.post.create.useMutation({
     onSuccess: () => {
       router.refresh();
+      setText("");
     },
   });
 
@@ -17,16 +20,15 @@ export function CreatePost() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-
-        const text = new FormData(e.currentTarget).get("text") as string;
         createPost.mutate({ text });
       }}
       className="flex flex-col gap-2"
     >
       <input
         type="text"
-        name="text"
         placeholder="Title"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         className="w-full rounded-full px-4 py-2 text-black"
       />
       <button
