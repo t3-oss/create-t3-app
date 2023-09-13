@@ -2,10 +2,16 @@
 
 import { useRouter } from "next/navigation";
 
-import { api } from "~/trpc/client";
+import { api } from "~/trpc/react";
 
 export function CreatePost() {
   const router = useRouter();
+
+  const createPost = api.post.create.useMutation({
+    onSuccess: () => {
+      router.refresh();
+    },
+  });
 
   return (
     <form
@@ -13,7 +19,7 @@ export function CreatePost() {
         e.preventDefault();
 
         const text = new FormData(e.currentTarget).get("text") as string;
-        await api.post.create.mutate({ text });
+        createPost.mutate({ text });
         router.refresh();
       }}
       className="flex flex-col gap-2"

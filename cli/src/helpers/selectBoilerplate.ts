@@ -39,7 +39,15 @@ export const selectLayoutFile = ({
   const layoutFileDir = path.join(PKG_ROOT, "template/extras/src/app/layout");
 
   const usingTw = packages.tailwind.inUse;
-  const layoutFile = usingTw ? "with-tw.tsx" : "base.tsx";
+  const usingTRPC = packages.trpc.inUse;
+  let layoutFile = "base.tsx";
+  if (usingTRPC && usingTw) {
+    layoutFile = "with-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw) {
+    layoutFile = "with-trpc.tsx";
+  } else if (!usingTRPC && usingTw) {
+    layoutFile = "with-tw.tsx";
+  }
 
   const appSrc = path.join(layoutFileDir, layoutFile);
   const appDest = path.join(projectDir, "src/app/layout.tsx");
