@@ -23,6 +23,8 @@ Next.js 是你 React 应用的后端框架。
 
 Next.js 的一项关键特性就是它支持的几种获取数据的方法。我们强烈推荐先通读 [官方文档](https://nextjs.org/docs/basic-features/data-fetching) 来理解如何使用每一种方法，以及它们之间的区别。一般情况下不推荐使用 `getServerSideProps`，除非有好的理由，因为它是一个阻塞 UI 的方法，会减慢你的网站运行速度。当数据是动态且需要被增量获取时，[Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) 便是 `getServerSideProps` 的一个非常好的备选方案。
 
+如果你仍需要使用这个特性，可以查看这些链接：[Advanced tRPC - Callers, functions, and gSSP](https://www.youtube.com/watch?v=G2ZzmgShHgQ) 和 [SSG-Helpers](https://trpc.io/docs/v9/ssg-helpers)。
+
 ## 有用的资源
 
 | 资源                        | 链接                               |
