@@ -70,11 +70,13 @@ async function CrudShowcase() {
   const latestPost = await api.post.getLatest.query();
 
   return (
-    <div>
+    <div className={styles.showcaseContainer}>
       {latestPost ? (
-        <p>Your most recent post: {latestPost.name}</p>
+        <p className={styles.showcaseText}>
+          Your most recent post: {latestPost.name}
+        </p>
       ) : (
-        <p>You have no posts yet.</p>
+        <p className={styles.showcaseText}>You have no posts yet.</p>
       )}
 
       <CreatePost />

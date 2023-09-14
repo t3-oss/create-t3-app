@@ -147,3 +147,31 @@
 .loginButton:hover {
   background-color: rgb(255 255 255 / 0.2);
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  color: black;
+}
+
+.submitButton {
+  all: unset;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.1);
+  padding: 0.75rem 2.5rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  transition: background-color 150ms cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.submitButton:hover {
+  background-color: rgb(255 255 255 / 0.2);
+}

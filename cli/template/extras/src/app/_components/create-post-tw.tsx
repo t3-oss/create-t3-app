@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "~/trpc/react";
-import styles from "../index.module.css";
 
 export function CreatePost() {
   const router = useRouter();
@@ -23,16 +22,19 @@ export function CreatePost() {
         e.preventDefault();
         createPost.mutate({ name });
       }}
-      className={styles.form}
+      className="flex flex-col gap-2"
     >
       <input
         type="text"
         placeholder="Title"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className={styles.input}
+        className="w-full rounded-full px-4 py-2 text-black"
       />
-      <button type="submit" className={styles.submitButton}>
+      <button
+        type="submit"
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+      >
         Submit
       </button>
     </form>

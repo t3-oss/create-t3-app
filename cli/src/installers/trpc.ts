@@ -102,7 +102,11 @@ export const trpcInstaller: Installer = ({
         path.join(projectDir, "src/trpc/shared.ts"),
       ],
       [
-        path.join(extrasDir, "src/app/_components/create-post.tsx"),
+        path.join(
+          extrasDir,
+          "src/app/_components",
+          packages?.tailwind.inUse ? "create-post-tw.tsx" : "create-post.tsx"
+        ),
         path.join(projectDir, "src/app/_components/create-post.tsx"),
       ]
     );
