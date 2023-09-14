@@ -12,7 +12,7 @@ export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: {
   children: React.ReactNode;
-  headers: Headers; // <-- Important
+  headers: Headers;
 }) {
   const [queryClient] = useState(() => new QueryClient());
 
