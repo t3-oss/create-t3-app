@@ -22,13 +22,13 @@ export const posts = mysqlTable(
   "post",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    text: varchar("name", { length: 256 }),
+    name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
-    textIndex: index("text_idx").on(example.text),
+    nameIndex: index("text_idx").on(example.name),
   })
 );

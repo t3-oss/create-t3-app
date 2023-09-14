@@ -4,7 +4,7 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 let post = {
   id: 1,
-  text: "Hello World",
+  name: "Hello World",
 };
 
 export const postRouter = createTRPCRouter({
@@ -17,12 +17,12 @@ export const postRouter = createTRPCRouter({
     }),
 
   create: publicProcedure
-    .input(z.object({ text: z.string().min(1) }))
+    .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ input }) => {
       // simulate a slow db call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      post = { id: post.id + 1, text: input.text };
+      post = { id: post.id + 1, name: input.name };
       return post;
     }),
 

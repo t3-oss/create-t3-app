@@ -23,7 +23,7 @@ export const posts = mysqlTable(
   "post",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    text: varchar("name", { length: 256 }),
+    name: varchar("name", { length: 256 }),
     createdById: varchar("createdById", { length: 255 }).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
@@ -32,7 +32,7 @@ export const posts = mysqlTable(
   },
   (example) => ({
     createdByIdIdx: index("createdById_idx").on(example.createdById),
-    textIndex: index("text_idx").on(example.text),
+    nameIndex: index("name_idx").on(example.name),
   })
 );
 

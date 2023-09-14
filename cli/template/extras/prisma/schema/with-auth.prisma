@@ -16,14 +16,14 @@ datasource db {
 
 model Post {
     id        Int      @id @default(autoincrement())
-    text      String
+    name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
-    @@index([text])
+    @@index([name])
 }
 
 // Necessary for Next auth
