@@ -29,6 +29,6 @@ export const posts = mysqlTable(
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
-    nameIndex: index("text_idx").on(example.name),
+    nameIndex: index("name_idx").on(example.name),
   })
 );
