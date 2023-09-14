@@ -18,7 +18,7 @@ export const trpcInstaller: Installer = ({
       "@trpc/server",
       "@trpc/client",
       "@trpc/next",
-      "@trpc/react-query", // TODO: remove for appRouter when peerDep is resolved in trpc
+      "@trpc/react-query",
     ],
     devMode: false,
   });
