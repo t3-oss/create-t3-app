@@ -13,7 +13,7 @@ export const drizzleInstaller: Installer = ({
 }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-kit", "dotenv-cli"],
+    dependencies: ["drizzle-kit", "dotenv-cli", "mysql2"],
     devMode: true,
   });
   addPackageDependency({
@@ -55,6 +55,7 @@ export const drizzleInstaller: Installer = ({
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
     "db:push": "dotenv drizzle-kit push:mysql",
+    "db:studio": "dotenv drizzle-kit studio",
   };
 
   fs.copySync(configFile, configDest);
