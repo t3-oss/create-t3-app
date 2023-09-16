@@ -16,7 +16,7 @@ export const dependencyVersionMap = {
   "drizzle-orm": "^0.28.5",
   "drizzle-kit": "^0.19.13",
   "dotenv-cli": "^7.3.0",
-  "mysql2": "^3.6.1",
+  mysql2: "^3.6.1",
   "@planetscale/database": "^1.11.0",
 
   // TailwindCSS
