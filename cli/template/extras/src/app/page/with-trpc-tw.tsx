@@ -41,9 +41,9 @@ export default async function Home() {
             {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
         </div>
-      </div>
 
-      <CrudShowcase />
+        <CrudShowcase />
+      </div>
     </main>
   );
 }

@@ -54,9 +54,9 @@ export default async function Home() {
               {session ? "Sign out" : "Sign in"}
             </Link>
           </div>
-
-          <CrudShowcase />
         </div>
+
+        <CrudShowcase />
       </div>
     </main>
   );
