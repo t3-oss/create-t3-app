@@ -32,8 +32,12 @@ export function CreatePost() {
         onChange={(e) => setName(e.target.value)}
         className={styles.input}
       />
-      <button type="submit" className={styles.submitButton}>
-        Submit
+      <button
+        type="submit"
+        className={styles.submitButton}
+        disabled={createPost.isLoading}
+      >
+        {createPost.isLoading ? "Submitting..." : "Submit"}
       </button>
     </form>
   );
