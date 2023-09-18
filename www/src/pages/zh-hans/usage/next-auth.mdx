@@ -43,18 +43,21 @@ const User = () => {
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import { type GetServerSideProps } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
+
   return {
-    props: { session },
+    props: { userSession: session },
   };
 };
 
 const User = () => {
-  const { data: session } = useSession();
-  // 注意: `session` 不会有加载状态，因为它已经在服务器上预获取了。
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) {
+  const { userSession } = props;
+  // 注意: `userSession` 不会有加载状态，因为它已经在服务器上预获取了。
 
   ...
 }
@@ -182,7 +185,8 @@ const userRouter = router({
 将 NextAuth.js 搭配 Next.js 中间件一同使用[需要采用 JWT session 策略](https://next-auth.js.org/configuration/nextjs#caveats) 来进行认证。这是因为只有当会话 cookie 为 JWT 时，中间件才能够获取到它。默认情况下，Create T3 App 会用 Prisma 作为数据库适配器，并采取**默认**的数据库策略。
 
 <Callout type="warning">
-  使用数据库会话是推荐的方法，如果要切换到 JWT 会话策略，请先了解 JWT，以避免出现任何安全问题。
+  使用数据库会话是推荐的方法，如果要切换到 JWT 会话策略，请先了解
+  JWT，以避免出现任何安全问题。
 </Callout>
 
 在切换到 JWT 会话策略后，请确保更新 `src/server/auth.ts` 中的 `session` 回调函数。

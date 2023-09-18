@@ -43,18 +43,21 @@ Parfois, vous souhaiterez demander la session côté serveur. Pour ce faire, pr�
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import { type GetServerSideProps } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
+
   return {
-    props: { session },
+    props: { userSession: session },
   };
 };
 
 const User = () => {
-  const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) {
+  const { userSession } = props;
+  // NOTE: `userSession` wont have a loading state since it's already prefetched on the server
 
   ...
 }
@@ -182,7 +185,9 @@ Si, par exemple, vous souhaitez ajouter un `role` au modèle `User`, vous devrez
 Utilisation de NextAuth.js avec le middleware Next.js [nécessite l'utilisation de la stratégie de session JWT](https://next-auth.js.org/configuration/nextjs#caveats) pour l'authentification. En effet, le middleware ne peut accéder au cookie de session que s'il s'agit d'un JWT. Par défaut, Create T3 App est configuré pour utiliser la stratégie de base de données **default**, en combinaison avec Prisma comme adaptateur de base de données.
 
 <Callout type="warning">
-  L'utilisation de sessions en base de données est l'approche recommandée et vous devriez vous informer sur les JWT (JSON Web Token) avant de passer à la stratégie de session JWT, et ce, afin d'éviter tout problème de sécurité.
+  L'utilisation de sessions en base de données est l'approche recommandée et
+  vous devriez vous informer sur les JWT (JSON Web Token) avant de passer à la
+  stratégie de session JWT, et ce, afin d'éviter tout problème de sécurité.
 </Callout>
 
 Après avoir basculé vers la stratégie de session JWT, assurez-vous de mettre à jour le callback `session` dans `src/server/auth.ts`. L'objet `user` sera `undefined`. À la place, récupérez l'identifiant de l'utilisateur à partir de l'objet `token`.

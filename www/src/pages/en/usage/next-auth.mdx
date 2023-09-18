@@ -43,18 +43,21 @@ Sometimes you might want to request the session on the server. To do so, prefetc
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import { type GetServerSideProps } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
+
   return {
-    props: { session },
+    props: { userSession: session },
   };
 };
 
 const User = () => {
-  const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) {
+  const { userSession } = props;
+  // NOTE: `userSession` wont have a loading state since it's already prefetched on the server
 
   ...
 }
@@ -179,10 +182,12 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ## Usage with Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.  
+Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
 
 <Callout type="warning">
-  Using database sessions is the recommended approach and you should read up on JWTs before switching to the JWT session strategy to avoid any security issues.
+  Using database sessions is the recommended approach and you should read up on
+  JWTs before switching to the JWT session strategy to avoid any security
+  issues.
 </Callout>
 
 After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.  

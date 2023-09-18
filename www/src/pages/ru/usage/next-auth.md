@@ -40,18 +40,21 @@ const User = () => {
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
-import { type GetServerSideProps } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
+
   return {
-    props: { session },
+    props: { userSession: session },
   };
 };
 
 const User = () => {
-  const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) {
+  const { userSession } = props;
+  // NOTE: `userSession` wont have a loading state since it's already prefetched on the server
 
   ...
 }
