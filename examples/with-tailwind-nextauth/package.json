@@ -1,0 +1,39 @@
+{
+  "name": "with-tailwind-nextauth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.6.0",
+    "next": "^13.4.19",
+    "next-auth": "^4.23.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.44.2",
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^13.4.19",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.1",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.20.2"
+  },
+  "packageManager": "npm@9.8.1"
+}

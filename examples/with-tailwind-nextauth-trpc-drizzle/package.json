@@ -1,0 +1,51 @@
+{
+  "name": "with-tailwind-nextauth-trpc-drizzle",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "db:push": "dotenv drizzle-kit push:mysql",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@auth/drizzle-adapter": "^0.3.2",
+    "@planetscale/database": "^1.11.0",
+    "@t3-oss/env-nextjs": "^0.6.0",
+    "@tanstack/react-query": "^4.32.6",
+    "@trpc/client": "^10.37.1",
+    "@trpc/next": "^10.37.1",
+    "@trpc/react-query": "^10.37.1",
+    "@trpc/server": "^10.37.1",
+    "drizzle-orm": "^0.28.5",
+    "next": "^13.4.19",
+    "next-auth": "^4.23.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "superjson": "^1.13.1",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.44.2",
+    "@types/node": "^18.16.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "autoprefixer": "^10.4.14",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "^0.19.13",
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^13.4.19",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.1",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.20.2"
+  },
+  "packageManager": "npm@9.8.1"
+}
