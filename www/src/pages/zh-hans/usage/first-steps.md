@@ -11,6 +11,10 @@ lang: zh-hans
 
 如果你的 App 包括了 Prisma，务必记得从项目根目录运行命令 `npx prisma db push`。 这行命令将同步 Prisma schema 和你的数据库，并且会根据 schema 为 Prisma 客户端生成对应的类型声明。注意你在完成这一步之后，需要 [重启 TypeScript 服务器](https://tinytip.co/tips/vscode-restart-ts/)，以便它能够检测到那些生成的类型。
 
+### Drizzle
+
+如果你的 App 包含了 Drizzle，请查看 `.env` 文件，了解如何构建你的 `DATABASE_URL` 环境变量。当 env 文件准备就绪后，运行 `pnpm db:push`（或其他软件包管理器的类似方法）来推送你的 schema。
+
 ## 认证
 
 如果你的 App 包含了 NextAuth.js，那我们可以先从 `DiscordProvider` 开始。这是 NextAuth.js 提供的最简单的第三方服务之一，但是它仍然需要你做一些初始化的操作。
