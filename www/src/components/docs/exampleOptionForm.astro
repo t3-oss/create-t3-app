@@ -4,63 +4,63 @@ const options = {
   prisma: "Prisma",
   tailwind: "Tailwind CSS",
   trpc: "tRPC",
-  drizzle: 'drizzle'
+  drizzle: "drizzle",
 };
 ---
-<script>
-  import sdk from '@stackblitz/sdk';
 
-  function directToStackBlitz(checkedInputs:any){
+<script>
+  import sdk from "@stackblitz/sdk";
+
+  function directToStackBlitz(checkedInputs: any) {
     try {
       sdk.openProject(
-            {
-              title: 'T3 Examples',
-              description: 'T3 example apps.',
-              template: 'node',
-              files: {
-                'package.json':`{
+        {
+          title: "T3 Examples",
+          description: "T3 example apps.",
+          template: "node",
+          files: {
+            "package.json": `{
                     "name": "T3 Examples",
                     "version": "1.0.0",
                     "description": "My Next.js app",
                     "scripts":{
-                        "dev": " echo 'y' | npx create-t3-app my-app --CI ${checkedInputs} && cd ./my-app  && rm ../package.json " }
-                }`
-              },
-              settings: {
-                compile: {
-                  trigger: 'auto',
-                  clearConsole: false,
-                },
-              },
+                        "dev": " echo 'y' | npx create-t3-app example-app --CI ${checkedInputs} && cd ./my-app  && rm ../package.json " }
+                }`,
+          },
+          settings: {
+            compile: {
+              trigger: "auto",
+              clearConsole: false,
             },
-            {
-              newWindow: true,
-              openFile: ['package.json'],
-            },
-        );
+          },
+        },
+        {
+          newWindow: true,
+          openFile: ["package.json"],
+        },
+      );
     } catch (error) {
-        console.error("Error", error)
+      console.error("Error", error);
     }
-
   }
 
   function handleFormSubmit(e: Event) {
     e.preventDefault();
 
     const inputs = Array.from(
-    (e.target as HTMLFormElement).querySelectorAll("input")
+      (e.target as HTMLFormElement).querySelectorAll("input"),
     );
-    let checkedInputs = ''
-    inputs.filter((input) => input.checked).map((input) => checkedInputs += ` --${input.value}`);
+    let checkedInputs = "";
+    inputs
+      .filter((input) => input.checked)
+      .map((input) => (checkedInputs += ` --${input.value}`));
 
- 
-    directToStackBlitz(checkedInputs)
+    directToStackBlitz(checkedInputs);
   }
-
 
   const form = document.getElementById("componentForm") as HTMLFormElement;
 
-  form.addEventListener('submit', handleFormSubmit);
+  form.addEventListener("submit", handleFormSubmit);
 </script>
 
 <form
@@ -83,12 +83,9 @@ const options = {
       </div>
     ))
   }
-  <button 
-  class="text-md inline-flex cursor-pointer items-center 
-        gap-1.5 whitespace-nowrap rounded-md border-2 
-        bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 
-        dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 
-        dark:hover:border-t3-purple-200/50">
+  <button
+    class="text-md inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
+  >
     View in StackBlitz
   </button>
 </form>
