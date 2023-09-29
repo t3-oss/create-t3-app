@@ -10,7 +10,7 @@ const config = {
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
   ],
-  importOrder: ["<THIRD_PARTY_MODULES>", "", "^~/", "^[../]", "^[./]"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "", "^~/", "^[.][.]/", "^[.]/"],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
 };
