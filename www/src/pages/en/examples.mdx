@@ -6,9 +6,13 @@ lang: en
 isMdx: true
 ---
 
-
+import Callout from "../../components/docs/callout.tsx";
 import Form from "../../components/docs/exampleOptionForm.astro";
 
 You can try out different combinations of technologies that create-t3-app offers. 
 
 <Form />
+
+<Callout type="info">
+  You cannot select `prisma` and `drizzle` at the same time.
+</Callout>
