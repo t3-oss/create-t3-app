@@ -195,15 +195,15 @@ I.e.:
 +     strategy: "jwt",
 +   },
     callbacks: {
--     session({ session, user }) {
-+     session({ session, token }) {
--       if (session.user) {
-+       if (session.user && token.sub) {
--         session.user.id = user.id;
-+         session.user.id = token.sub;
+-     session: ({ session, user }) => ({
++     session: ({ session, token }) => ({
+        ...session,
+        user: {
+          ...session.user,
+-         id: user.id;
++         id: token.sub;
         }
-        return session;
-      }
+      }),
     },
   };
 ```
