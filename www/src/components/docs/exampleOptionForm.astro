@@ -4,7 +4,7 @@ const options = {
   prisma: "Prisma",
   tailwind: "Tailwind CSS",
   trpc: "tRPC",
-  drizzle: "drizzle"
+  drizzle: "drizzle",
 };
 ---
 
@@ -43,7 +43,7 @@ const options = {
       console.error("Error", error);
     }
   }
-  
+
   function handleFormSubmit(e: Event) {
     e.preventDefault();
 
@@ -60,9 +60,9 @@ const options = {
 
   const form = document.getElementById("componentForm") as HTMLFormElement;
 
-  const prismaInput = document.getElementById('prisma') as HTMLInputElement;
-  const drizzleInput = document.getElementById('drizzle') as HTMLInputElement;
-  
+  const prismaInput = document.getElementById("prisma") as HTMLInputElement;
+  const drizzleInput = document.getElementById("drizzle") as HTMLInputElement;
+
   function handleCheckboxChange(e: Event) {
     if (e.target === prismaInput && drizzleInput.checked) {
       drizzleInput.checked = false;
