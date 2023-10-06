@@ -109,11 +109,6 @@ export const env = createEnv({
 });
 ```
 
-<Callout type="info">
-  空字符串仍然是字符串，因此 `z.string()` 将接受空字符串作为有效值。
-  如果要确保环境变量不为空，可以使用 `z.string()。
-</Callout>
-
 3. _可选：_ 将环境变量添加到 `.env.example`，并确保不在 `runtimeEnv` 选项中包含机密信息。
 
 ```bash
