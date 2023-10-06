@@ -342,6 +342,9 @@ importers:
       '@resvg/resvg-js':
         specifier: ^2.4.1
         version: 2.4.1
+      '@stackblitz/sdk':
+        specifier: ^1.9.0
+        version: 1.9.0
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -2884,6 +2887,10 @@ packages:
   /@sindresorhus/is@0.14.0:
     resolution: {integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==}
     engines: {node: '>=6'}
+    dev: false
+
+  /@stackblitz/sdk@1.9.0:
+    resolution: {integrity: sha512-3m6C7f8pnR5KXys/Hqx2x6ylnpqOak6HtnZI6T5keEO0yT+E4Spkw37VEbdwuC+2oxmjdgq6YZEgiKX7hM1GmQ==}
     dev: false
 
   /@swc/helpers@0.5.1:
@@ -10283,3 +10290,7 @@ packages:
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
