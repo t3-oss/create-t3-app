@@ -116,6 +116,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Folder Structure", link: "en/folder-structure" },
       { text: "FAQ", link: "en/faq" },
       { text: "T3 Collection", link: "en/t3-collection" },
+      { text: "Examples", link: "en/examples" },
       { text: "Other Recommendations", link: "en/other-recs" },
     ],
     Usage: [
