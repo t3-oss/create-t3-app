@@ -25,6 +25,6 @@ export const setImportAlias = (projectDir: string, importAlias: string) => {
     .replace(/\*/g, "") // remove any wildcards (~/* -> ~/)
     .replace(/[^\/]$/, "$&/"); // ensure trailing slash (@ -> ~/)
 
-  // update import alias in any files if not using the default
+  // update the import alias in any files if not using the default
   replaceTextInFiles(projectDir, `~/`, normalizedImportAlias);
 };

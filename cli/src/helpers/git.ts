@@ -70,7 +70,7 @@ export const initializeGit = async (projectDir: string) => {
   const dirName = path.parse(projectDir).name; // skip full path for logging
 
   if (isInside && isRoot) {
-    // Dir is a root git repo
+    // Directory is a root git repo
     spinner.stop();
     const overwriteGit = await p.confirm({
       message: `${chalk.redBright.bold(
@@ -86,7 +86,7 @@ export const initializeGit = async (projectDir: string) => {
     // Deleting the .git folder
     fs.removeSync(path.join(projectDir, ".git"));
   } else if (isInside && !isRoot) {
-    // Dir is inside a git worktree
+    // Directory is inside a git worktree
     spinner.stop();
     const initializeChildGitRepo = await p.confirm({
       message: `${chalk.redBright.bold(

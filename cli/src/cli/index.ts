@@ -231,6 +231,7 @@ export const runCli = async (): Promise<CliResults> => {
               { value: "next-auth", label: "NextAuth.js" },
               // Maybe later
               // { value: "clerk", label: "Clerk" },
+              // {value:"kinde" , label:"Kinde"}, 
             ],
             initialValue: "none",
           });

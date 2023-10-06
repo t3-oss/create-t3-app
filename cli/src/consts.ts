@@ -9,7 +9,7 @@ export const PKG_ROOT = path.join(distPath, "../");
 
 //export const PKG_ROOT = path.dirname(require.main.filename);
 
-export const TITLE_TEXT = `   ___ ___ ___   __ _____ ___   _____ ____    __   ___ ___
+export const TITLE_TEXT = `   ___ ___ ___   __ _____ ___   _____ ____    __ __  ___ ___
   / __| _ \\ __| /  \\_   _| __| |_   _|__ /   /  \\ | _ \\ _ \\
  | (__|   / _| / /\\ \\| | | _|    | |  |_ \\  / /\\ \\|  _/  _/
   \\___|_|_\\___|_/‾‾\\_\\_| |___|   |_| |___/ /_/‾‾\\_\\_| |_|

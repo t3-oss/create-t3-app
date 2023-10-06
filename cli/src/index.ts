@@ -101,7 +101,7 @@ const main = async () => {
 };
 
 main().catch((err) => {
-  logger.error("Aborting installation...");
+  logger.error("Aborting Installation...");
   if (err instanceof Error) {
     logger.error(err);
   } else {

@@ -3,18 +3,18 @@ import gradient from "gradient-string";
 import { TITLE_TEXT } from "~/consts.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
-// colors brought in from vscode poimandres theme
-const poimandresTheme = {
-  blue: "#add7ff",
-  cyan: "#89ddff",
-  green: "#5de4c7",
-  magenta: "#fae4fc",
-  red: "#d0679d",
-  yellow: "#fffac2",
+// I don't know yet if this is the best way to do this but it works
+const $t3theme = {
+  blue: "#428ed6",
+  cyan: "#5a98a6",
+  green: "#34cfad",
+  magenta: "#c362cc",
+  red: "#d95096",
+  yellow: "#bfb760",
 };
 
 export const renderTitle = () => {
-  const t3Gradient = gradient(Object.values(poimandresTheme));
+  const t3Gradient = gradient(Object.values($t3theme));
 
   // resolves weird behavior where the ascii is offset
   const pkgManager = getUserPkgManager();
