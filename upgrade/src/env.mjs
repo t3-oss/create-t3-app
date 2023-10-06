@@ -8,9 +8,9 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
-    GITHUB_PERSONAL_ACCESS_TOKEN: z.string().min(1),
-    GITHUB_DIFFS_OWNER: z.string().min(1),
-    GITHUB_DIFFS_REPO: z.string().min(1),
+    GITHUB_PERSONAL_ACCESS_TOKEN: z.string(),
+    GITHUB_DIFFS_OWNER: z.string(),
+    GITHUB_DIFFS_REPO: z.string(),
   },
 
   /**
@@ -19,7 +19,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
 
   /**
@@ -34,4 +34,9 @@ export const env = createEnv({
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+  /**
+   * Makes it so that empty strings are treated as undefined. `SOME_VAR: z.string()` and
+   * `SOME_VAR=''` will throw an error.
+   */
+  emptyStringAsUndefined: true,
 });

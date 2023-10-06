@@ -13,7 +13,7 @@ const config = {
   ],
   tailwindConfig: "./template/extras/config/tailwind.config.ts",
   trailingComma: "es5",
-  importOrder: ["<THIRD_PARTY_MODULES>", "", "^~/", "^[../]", "^[./]"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "", "^~/", "^[.][.]/", "^[.]/"],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
 };

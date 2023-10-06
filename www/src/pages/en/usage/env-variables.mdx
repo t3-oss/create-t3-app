@@ -112,12 +112,6 @@ export const env = createEnv({
 });
 ```
 
-<Callout type="info">
-  An empty string is still a string, so `z.string()` will accept an empty string
-  as a valid value. If you want to make sure that the environment variable is
-  not empty, you can use `z.string().min(1)`.
-</Callout>
-
 3. _Optional:_ Add the environment variable to `.env.example` and make sure not to include the secret in the `runtimeEnv` option
 
 ```bash
