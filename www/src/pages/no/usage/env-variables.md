@@ -125,7 +125,7 @@ export const serverEnv = {
 };
 ```
 
-_**MERK:** En tom streng er fortsatt en streng, så `z.string()` vil godta en tom streng som en gyldig verdi. Hvis du vil forsikre deg om at miljøvariabelen ikke er tom, kan du bruke `z.string().min(1)`._
+_**MERK:** En tom streng er fortsatt en streng, så `z.string()` vil godta en tom streng som en gyldig verdi. Hvis du vil forsikre deg om at miljøvariabelen ikke er tom, kan du bruke `z.string()`._
 
 3. Valgfritt: Inkluder miljøvariabelen i `.env.example`, men ikke glem å fjerne verdien
 

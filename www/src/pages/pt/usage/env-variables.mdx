@@ -1,6 +1,6 @@
 ---
 title: Variáveis de Ambiente
-description: Iniciando com Create T3 App 
+description: Iniciando com Create T3 App
 layout: ../../../layouts/docs.astro
 lang: pt
 isMdx: true
@@ -19,7 +19,7 @@ Este arquivo é dividido em duas partes - o esquema e a desestruturação do obj
 ```ts:env.mjs
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
- 
+
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
@@ -33,10 +33,11 @@ export const env = createEnv({
 });
 ```
 
-T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por criar o esquema e irá incluir a lógica de validação para  variáveis de ambiente no cliente e servidor. 
+T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por criar o esquema e irá incluir a lógica de validação para variáveis de ambiente no cliente e servidor.
 
 <Callout type="info">
-    Para mais informações sobre como o `createEnv` funciona internamente, confira a documentação de [T3 Env](https://env.t3.gg/docs/introduction)
+  Para mais informações sobre como o `createEnv` funciona internamente, confira
+  a documentação de [T3 Env](https://env.t3.gg/docs/introduction)
 </Callout>
 
 ## Usando Variáveis de Ambiente
@@ -46,7 +47,7 @@ Quando você quiser usar suas variáveis de ambiente, você pode importá-las de
 ```ts:pages/api/hello.ts
 import { env } from "../../env.mjs";
 
-// `env` é totalmente tipado e fornece preenchimento automático 
+// `env` é totalmente tipado e fornece preenchimento automático
 const dbUrl = env.DATABASE_URL;
 ```
 
@@ -93,7 +94,7 @@ TWITTER_API_TOKEN=1234567890
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
- 
+
 export const env = createEnv({
   server: {
     TWITTER_API_TOKEN: z.string(),
@@ -105,7 +106,7 @@ export const env = createEnv({
 <Callout type="info">
   Uma string vazia ainda é uma string, então `z.string()` aceitará uma string
   vazia como um valor válido. Se você quiser ter certeza de que a variável de
-  ambiente não está vazia, você pode usar `z.string().min(1)`.
+  ambiente não está vazia, você pode usar `z.string()`.
 </Callout>
 
 3. opcional: adicione a variável de ambiente a `.env.example`, mas não inclua o token
