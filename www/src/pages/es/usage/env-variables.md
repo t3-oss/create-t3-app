@@ -116,7 +116,7 @@ export const serverSchema = z.object({
 });
 ```
 
-1. Opcional: agrega la variable de entorno a `.env.example`, pero no incluyas el token
+3. Opcional: agrega la variable de entorno a `.env.example`, pero no incluyas el token
 
 ```
 TWITTER_API_TOKEN=
