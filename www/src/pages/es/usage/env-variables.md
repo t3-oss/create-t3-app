@@ -116,9 +116,7 @@ export const serverSchema = z.object({
 });
 ```
 
-_**NOTA:** Una cadena vacía sigue siendo una cadena, por lo que `z.string()` aceptará una cadena vacía como un valor válido. Si quieres asegurarte de que la variable de entorno no esté vacía, puedes usar `z.string()`._
-
-3. Opcional: agrega la variable de entorno a `.env.example`, pero no incluyas el token
+1. Opcional: agrega la variable de entorno a `.env.example`, pero no incluyas el token
 
 ```
 TWITTER_API_TOKEN=
