@@ -34,7 +34,8 @@ export const env = createEnv({
 T3 Env 使用 `createEnv` 函数来创建 schema，以验证客户端和服务端的环境变量。
 
 <Callout type="info">
-  如果你想了解更多 `createEnv` 函数的内部工作原理，可以参看 [T3 Env](https://env.t3.gg/docs/introduction) 的文档。
+  如果你想了解更多 `createEnv` 函数的内部工作原理，可以参看 [T3
+  Env](https://env.t3.gg/docs/introduction) 的文档。
 </Callout>
 
 ## 使用环境变量
@@ -73,9 +74,9 @@ const wsKey = env.NEXT_PUBLIC_WS_KEY;
 📄 `env.mjs`：为每个环境变量添加适当的验证逻辑，在 `createEnv` 中定义一个Zod模式，例如：`KEY: z.string()`。此外，确保在 `runtimeEnv` 选项中对它们进行解构，例如：KEY: `process.env.KEY`
 
 <Callout type="info">
-  为什么需要在 `runtimeEnv` 中对环境变量进行解构？
-  这是由于 Next.js 在某些运行时中绑定环境变量的方式所致。
-  通过手动解构，可以确保变量永远不会从 bundle 中剔除。
+  为什么需要在 `runtimeEnv` 中对环境变量进行解构？ 这是由于 Next.js
+  在某些运行时中绑定环境变量的方式所致。 通过手动解构，可以确保变量永远不会从
+  bundle 中剔除。
 </Callout>
 
 你也可以选择更新 `.env.example`
@@ -107,11 +108,6 @@ export const env = createEnv({
   },
 });
 ```
-
-<Callout type="info">
-  空字符串仍然是字符串，因此 `z.string()` 将接受空字符串作为有效值。
-  如果要确保环境变量不为空，可以使用 `z.string().min(1)。
-</Callout>
 
 3. _可选：_ 将环境变量添加到 `.env.example`，并确保不在 `runtimeEnv` 选项中包含机密信息。
 

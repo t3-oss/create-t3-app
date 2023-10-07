@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.6.0",
-    "next": "^13.4.19",
+    "@t3-oss/env-nextjs": "^0.7.0",
+    "next": "^13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/eslint": "^8.44.2",
@@ -23,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.47.0",
-    "eslint-config-next": "^13.4.19",
+    "eslint-config-next": "^13.5.4",
     "typescript": "^5.1.6"
   }
 }

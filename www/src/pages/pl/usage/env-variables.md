@@ -165,8 +165,6 @@ export const processEnv = {
 };
 ```
 
-_**UWAGA:** Pusty string to dalej string, więc `z.string()` zaakceptuje każdy pusty tekst jako poprawną wartość. Jeżeli chcesz, by wartość była wymagana (i nie pusta!), możesz użyć `z.string().min(1)`._
-
 3. opcjonalnie: Dodaj zmienną środowiskową do `.env.example`. Usuń jednak token.
 
 ```

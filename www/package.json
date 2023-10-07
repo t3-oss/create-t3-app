@@ -29,6 +29,7 @@
     "@headlessui/react": "^1.7.14",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
     "@resvg/resvg-js": "^2.4.1",
+    "@stackblitz/sdk": "^1.9.0",
     "@vercel/analytics": "^1.0.1",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.1.0",
@@ -38,7 +39,7 @@
     "tailwind-scrollbar": "^3.0.0",
     "treeify": "^1.1.0",
     "unist-util-visit": "^4.1.2",
-    "zod": "^3.21.4"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@astrojs/react": "^2.1.3",
