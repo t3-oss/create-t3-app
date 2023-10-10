@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.21.0
+
+### Minor Changes
+
+- [#1584](https://github.com/t3-oss/create-t3-app/pull/1584) [`9614d84`](https://github.com/t3-oss/create-t3-app/commit/9614d8424d810278facf012fb99d1da51d2238e6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump deps and add `emptyStringAsUndefined` option for `t3-env`
+
 ## 7.20.2
 
 ### Patch Changes
