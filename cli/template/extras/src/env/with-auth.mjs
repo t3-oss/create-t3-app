@@ -10,6 +10,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    PORT: z.coerce.number().default(3000),
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string()
@@ -17,7 +18,19 @@ export const env = createEnv({
     NEXTAUTH_URL: z.preprocess(
       // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
       // Since NextAuth.js automatically uses the VERCEL_URL if present.
-      (str) => process.env.VERCEL_URL ?? str,
+      (str) => {
+        // Warn if local development URL doesn't match with the active port
+        if (
+          process.env.NODE_ENV === "development" &&
+          process.env.PORT &&
+          !str.includes(process.env.PORT)
+        ) {
+          console.warn(
+            `NEXTAUTH_URL (${str}) doesn't match with PORT (${process.env.PORT})`
+          );
+        }
+        return process.env.VERCEL_URL ?? str;
+      },
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string() : z.string().url()
     ),
@@ -41,6 +54,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    PORT: process.env.PORT,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
