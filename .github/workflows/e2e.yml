@@ -27,9 +27,10 @@ jobs:
         tailwind: ["true", "false"]
         nextAuth: ["true", "false"]
         prisma: ["true", "false"]
+        appRouter: ["true", "false"]
         drizzle: ["true", "false"]
 
-    name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}"
+    name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -69,19 +70,19 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         run: pnpm install
 
       - run: pnpm turbo --filter=create-t3-app build
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
 
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
-      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }}
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}} && pnpm build
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }}
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }} && pnpm build
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           NEXTAUTH_SECRET: foo
           DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env

@@ -29,6 +29,8 @@ interface CliFlags {
   drizzle: boolean;
   /** @internal Used in CI. */
   nextAuth: boolean;
+  /** @internal Used in CI. */
+  appRouter: boolean;
 }
 
 interface CliResults {
@@ -51,6 +53,7 @@ const defaultOptions: CliResults = {
     drizzle: false,
     nextAuth: false,
     importAlias: "~/",
+    appRouter: false,
   },
 };
 
@@ -120,6 +123,11 @@ export const runCli = async (): Promise<CliResults> => {
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias
+    )
+    .option(
+      "--appRouter [boolean]",
+      "Explicitly tell the CLI to use the new Next.js app router",
+      (value) => !!value && value !== "false"
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -246,6 +254,14 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: "none",
           });
         },
+        appRouter: () => {
+          return p.confirm({
+            message:
+              chalk.bgCyan(" EXPERIMENTAL ") +
+              " Would you like to use Next.js App Router?",
+            initialValue: false,
+          });
+        },
         ...(!cliResults.flags.noGit && {
           git: () => {
             return p.confirm({
@@ -293,6 +309,7 @@ export const runCli = async (): Promise<CliResults> => {
       packages,
       flags: {
         ...cliResults.flags,
+        appRouter: project.appRouter ?? cliResults.flags.appRouter,
         noGit: !project.git ?? cliResults.flags.noGit,
         noInstall: !project.install ?? cliResults.flags.noInstall,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,

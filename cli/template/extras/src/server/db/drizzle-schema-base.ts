@@ -4,9 +4,9 @@
 import { sql } from "drizzle-orm";
 import {
   bigint,
+  index,
   mysqlTableCreator,
   timestamp,
-  uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
 
@@ -18,8 +18,8 @@ import {
  */
 export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
 
-export const example = mysqlTable(
-  "example",
+export const posts = mysqlTable(
+  "post",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
     name: varchar("name", { length: 256 }),
@@ -29,6 +29,6 @@ export const example = mysqlTable(
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
-    nameIndex: uniqueIndex("name_idx").on(example.name),
+    nameIndex: index("name_idx").on(example.name),
   })
 );

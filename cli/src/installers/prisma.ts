@@ -38,6 +38,7 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
     ...packageJsonContent.scripts,
     postinstall: "prisma generate",
     "db:push": "prisma db push",
+    "db:studio": "prisma studio",
   };
 
   fs.copySync(schemaSrc, schemaDest);
