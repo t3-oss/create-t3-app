@@ -1,8 +1,15 @@
+import fs from "fs";
 import path from "path";
 
+import { PKG_ROOT } from "~/consts.js";
 import { installPackages } from "~/helpers/installPackages.js";
 import { scaffoldProject } from "~/helpers/scaffoldProject.js";
-import { selectAppFile, selectIndexFile } from "~/helpers/selectBoilerplate.js";
+import {
+  selectAppFile,
+  selectIndexFile,
+  selectLayoutFile,
+  selectPageFile,
+} from "~/helpers/selectBoilerplate.js";
 import { type PkgInstallerMap } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 
@@ -12,6 +19,7 @@ interface CreateProjectOptions {
   scopedAppName: string;
   noInstall: boolean;
   importAlias: string;
+  appRouter: boolean;
 }
 
 export const createProject = async ({
@@ -19,6 +27,7 @@ export const createProject = async ({
   scopedAppName,
   packages,
   noInstall,
+  appRouter,
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
@@ -30,6 +39,7 @@ export const createProject = async ({
     pkgManager,
     scopedAppName,
     noInstall,
+    appRouter,
   });
 
   // Install the selected packages
@@ -40,11 +50,38 @@ export const createProject = async ({
     pkgManager,
     packages,
     noInstall,
+    appRouter,
   });
 
-  // TODO: Look into using handlebars or other templating engine to scaffold without needing to maintain multiple copies of the same file
-  selectAppFile({ projectDir, packages });
-  selectIndexFile({ projectDir, packages });
+  // Select necessary _app,index / layout,page files
+  if (appRouter) {
+    // Replace next.config
+    fs.copyFileSync(
+      path.join(PKG_ROOT, "template/extras/config/next-config-appdir.mjs"),
+      path.join(projectDir, "next.config.mjs")
+    );
+
+    selectLayoutFile({ projectDir, packages });
+    selectPageFile({ projectDir, packages });
+  } else {
+    selectAppFile({ projectDir, packages });
+    selectIndexFile({ projectDir, packages });
+  }
+
+  // If no tailwind, select use css modules
+  if (!packages.tailwind.inUse) {
+    const indexModuleCss = path.join(
+      PKG_ROOT,
+      "template/extras/src/index.module.css"
+    );
+    const indexModuleCssDest = path.join(
+      projectDir,
+      "src",
+      appRouter ? "app" : "pages",
+      "index.module.css"
+    );
+    fs.copyFileSync(indexModuleCss, indexModuleCssDest);
+  }
 
   return projectDir;
 };

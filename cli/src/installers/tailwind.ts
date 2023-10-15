@@ -36,8 +36,4 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
-
-  // Remove vanilla css file
-  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
-  fs.unlinkSync(indexModuleCss);
 };
