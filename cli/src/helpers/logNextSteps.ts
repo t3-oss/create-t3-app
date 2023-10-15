@@ -8,11 +8,12 @@ import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 export const logNextSteps = async ({
   projectName = DEFAULT_APP_NAME,
   packages,
+  appRouter,
   noInstall,
   projectDir,
 }: Pick<
   InstallerOptions,
-  "projectName" | "packages" | "noInstall" | "projectDir"
+  "projectName" | "packages" | "noInstall" | "projectDir" | "appRouter"
 >) => {
   const pkgManager = getUserPkgManager();
 
@@ -45,6 +46,12 @@ export const logNextSteps = async ({
     logger.info(`  git init`);
   }
   logger.info(`  git commit -m "initial commit"`);
+
+  if (appRouter) {
+    logger.warn(
+      `\nThank you for trying out the App Router option. If you encounter any issues, please open an issue!`,
+    )
+  }
 
   if (packages?.drizzle.inUse) {
     logger.warn(
