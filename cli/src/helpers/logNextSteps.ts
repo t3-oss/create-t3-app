@@ -49,8 +49,8 @@ export const logNextSteps = async ({
 
   if (appRouter) {
     logger.warn(
-      `\nThank you for trying out the App Router option. If you encounter any issues, please open an issue!`,
-    )
+      `\nThank you for trying out the App Router option. If you encounter any issues, please open an issue!`
+    );
   }
 
   if (packages?.drizzle.inUse) {
