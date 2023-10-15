@@ -6,14 +6,15 @@ lang: ru
 isMdx: true
 ---
 
+import OpenSourceAppList from "../../components/docs/openSourceAppList.tsx";
+import CompanyList from "../../components/docs/companyList.tsx";
+import Callout from "../../components/docs/callout.tsx";
+
 Сделали проект использующий T3 стек и хотите поделиться им? Добавьте его в список!
 
 ## Open Source приложения сделанные с использованием T3 стека
-import OpenSourceAppList from "../../components/docs/openSourceAppList.tsx";
-import CompanyList from "../../components/docs/companyList.tsx";
 
 <OpenSourceAppList descriptionIntl="Описание" repoIntl="Ссылка" linkIntl="Ссылка"/>
-
 
 ## Компании использующие T3 стек
 
@@ -21,4 +22,6 @@ import CompanyList from "../../components/docs/companyList.tsx";
 
 <CompanyList linkIntl="Ссылка"/>
 
-_Крутой проект использующий T3 стек? Сделайте [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/components/docs/openSourceAppList.tsx) и добавьте его в список!_
+<Callout type="tip">
+Крутой проект использующий T3 стек? Сделайте [pull request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/components/docs/openSourceAppList.tsx) и добавьте его в список!
+</Callout>

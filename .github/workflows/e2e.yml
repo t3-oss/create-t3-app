@@ -86,6 +86,8 @@ jobs:
         env:
           NEXTAUTH_SECRET: foo
           DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env
+          DISCORD_CLIENT_ID: bar
+          DISCORD_CLIENT_SECRET: baz
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
@@ -149,3 +151,6 @@ jobs:
         # - run: cd ../ci-bun && bun --bun run build
         env:
           NEXTAUTH_SECRET: foo
+          DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env
+          DISCORD_CLIENT_ID: bar
+          DISCORD_CLIENT_SECRET: baz

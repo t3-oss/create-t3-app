@@ -2,11 +2,12 @@
 
 # run labeler with elevated permissions before other actions
 
-name: Label PR and check title
+name: PR Checks
 
 on:
   pull_request_target:
     branches: ["*"]
+    types: ["opened", "synchronize"]
 
 jobs:
   lint-pr-title:

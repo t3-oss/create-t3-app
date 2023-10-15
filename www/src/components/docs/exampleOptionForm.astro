@@ -1,0 +1,104 @@
+---
+const options = {
+  nextAuth: "NextAuth.js",
+  prisma: "Prisma",
+  tailwind: "Tailwind CSS",
+  trpc: "tRPC",
+  drizzle: "Drizzle",
+};
+---
+
+<script>
+  import sdk from "@stackblitz/sdk";
+
+  function directToStackBlitz(checkedInputs: any) {
+    try {
+      sdk.openProject(
+        {
+          title: "T3 Examples",
+          description: "T3 example apps.",
+          template: "node",
+          files: {
+            "package.json": `{
+                    "name": "T3 Examples",
+                    "version": "1.0.0",
+                    "description": "My Next.js app",
+                    "scripts":{
+                        "dev": " echo 'y' | npx create-t3-app example-app --CI ${checkedInputs} && cd ./example-app  && rm ../package.json " }
+                }`,
+          },
+          settings: {
+            compile: {
+              trigger: "auto",
+              clearConsole: false,
+            },
+          },
+        },
+        {
+          newWindow: true,
+          openFile: ["package.json"],
+        },
+      );
+    } catch (error) {
+      console.error("Error", error);
+    }
+  }
+
+  function handleFormSubmit(e: Event) {
+    e.preventDefault();
+
+    const inputs = Array.from(
+      (e.target as HTMLFormElement).querySelectorAll("input"),
+    );
+    let checkedInputs = "";
+    inputs
+      .filter((input) => input.checked)
+      .map((input) => (checkedInputs += ` --${input.value}`));
+
+    directToStackBlitz(checkedInputs);
+  }
+
+  const form = document.getElementById("componentForm") as HTMLFormElement;
+
+  const prismaInput = document.getElementById("prisma") as HTMLInputElement;
+  const drizzleInput = document.getElementById("drizzle") as HTMLInputElement;
+
+  function handleCheckboxChange(e: Event) {
+    if (e.target === prismaInput && drizzleInput.checked) {
+      drizzleInput.checked = false;
+    } else if (e.target === drizzleInput && prismaInput.checked) {
+      prismaInput.checked = false;
+    }
+  }
+
+  prismaInput.addEventListener("change", handleCheckboxChange);
+  drizzleInput.addEventListener("change", handleCheckboxChange);
+
+  form.addEventListener("submit", handleFormSubmit);
+</script>
+
+<form
+  method="get"
+  id="componentForm"
+  class="mb-4 w-full rounded border border-t3-purple-300 p-4 text-lg"
+>
+  {
+    Object.entries(options).map(([code, name]) => (
+      <div>
+        <input
+          id={code}
+          type="checkbox"
+          name={name}
+          value={code}
+          class="h-4 w-4"
+        />
+        <label for={code}>{name}</label>
+      </div>
+    ))
+  }
+  <button
+    class="text-md inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
+  >
+    View in StackBlitz
+  </button>
+</form>
