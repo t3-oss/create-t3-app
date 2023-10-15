@@ -14,6 +14,8 @@ export const scaffoldProject = async ({
   projectDir,
   pkgManager,
   noInstall,
+  appRouter,
+  packages,
 }: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, "template/base");
 
@@ -88,6 +90,15 @@ export const scaffoldProject = async ({
   fs.renameSync(
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore")
+  );
+
+  // Select next.config.mjs
+  const configDir = path.join(PKG_ROOT, "template/extras/config/next-config");
+  let filename = packages?.nextAuth.inUse ? "with-auth-" : "with-";
+  filename += appRouter ? "appdir.mjs" : "pagedir.mjs";
+  fs.copyFileSync(
+    path.join(configDir, filename),
+    path.join(projectDir, "next.config.mjs")
   );
 
   const scaffoldedName =
