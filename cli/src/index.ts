@@ -94,6 +94,7 @@ const main = async () => {
   await logNextSteps({
     projectName: appDir,
     packages: usePackages,
+    appRouter,
     noInstall,
     projectDir,
   });
