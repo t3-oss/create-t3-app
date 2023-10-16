@@ -79,7 +79,7 @@ The stated goal of `create-t3-app` is to provide the quickest way to start a new
 
 <h2 id="getting-started">Getting Started</h2>
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+To scaffold an app using `create-t3-app`, run any of the following four commands and answer the command prompt questions:
 
 ### npm
 
