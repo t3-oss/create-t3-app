@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.22.0
+
+### Minor Changes
+
+- [#1567](https://github.com/t3-oss/create-t3-app/pull/1567) [`e71bedd`](https://github.com/t3-oss/create-t3-app/commit/e71bedde0d6944fa7719a5f97cd27a1503156faa) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add app router option
+
+- [#1595](https://github.com/t3-oss/create-t3-app/pull/1595) [`d7824e0`](https://github.com/t3-oss/create-t3-app/commit/d7824e0e2523703662b731945229e2fae88708ae) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - show callout when scaffolding with app router
+
 ## 7.21.0
 
 ### Minor Changes
