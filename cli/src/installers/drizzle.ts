@@ -27,13 +27,15 @@ export const drizzleInstaller: Installer = ({
   const configFile = path.join(extrasDir, "config/drizzle.config.ts");
   const configDest = path.join(projectDir, "drizzle.config.ts");
 
-  const schemaSrc = path.join(
-    extrasDir,
-    "src/server/db",
-    packages?.nextAuth.inUse
-      ? "drizzle-schema-auth.ts"
-      : "drizzle-schema-base.ts"
-  );
+  let schemaFile = "drizzle-schema-base.ts";
+  if (packages?.nextAuth.inUse) {
+    schemaFile = "drizzle-schema-nextauth.ts";
+  }
+  if (packages?.lucia.inUse) {
+    schemaFile = "drizzle-schema-lucia.ts";
+  }
+
+  const schemaSrc = path.join(extrasDir, "src/server/db", schemaFile);
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
   // Replace placeholder table prefix with project name

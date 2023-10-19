@@ -5,11 +5,13 @@ import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { drizzleInstaller } from "./drizzle.js";
+import { luciaInstaller } from "./lucia.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
 export const availablePackages = [
   "nextAuth",
+  "lucia",
   "prisma",
   "drizzle",
   "tailwind",
@@ -43,6 +45,10 @@ export const buildPkgInstallerMap = (
   nextAuth: {
     inUse: packages.includes("nextAuth"),
     installer: nextAuthInstaller,
+  },
+  lucia: {
+    inUse: packages.includes("lucia"),
+    installer: luciaInstaller,
   },
   prisma: {
     inUse: packages.includes("prisma"),

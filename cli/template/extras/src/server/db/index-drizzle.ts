@@ -4,9 +4,8 @@ import { drizzle } from "drizzle-orm/planetscale-serverless";
 import { env } from "~/env.mjs";
 import * as schema from "./schema";
 
-export const db = drizzle(
-  new Client({
-    url: env.DATABASE_URL,
-  }).connection(),
-  { schema }
-);
+export const dbConnection = new Client({
+  url: env.DATABASE_URL,
+}).connection();
+
+export const db = drizzle(dbConnection, { schema });

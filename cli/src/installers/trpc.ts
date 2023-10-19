@@ -23,9 +23,11 @@ export const trpcInstaller: Installer = ({
     devMode: false,
   });
 
-  const usingAuth = packages?.nextAuth.inUse;
+  const usingNextAuth = packages?.nextAuth.inUse;
+  const usingLucia = packages?.lucia.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
+  const usingTailwind = packages?.tailwind.inUse;
   const usingDb = usingPrisma || usingDrizzle;
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
@@ -37,14 +39,13 @@ export const trpcInstaller: Installer = ({
   const apiHandlerSrc = path.join(extrasDir, srcToUse);
   const apiHandlerDest = path.join(projectDir, srcToUse);
 
-  const trpcFile =
-    usingAuth && usingDb
-      ? "with-auth-db.ts"
-      : usingAuth
-      ? "with-auth.ts"
-      : usingDb
-      ? "with-db.ts"
-      : "base.ts";
+  let trpcFile = "base.ts";
+  if (usingDb) trpcFile = "with-db.ts";
+  if (usingNextAuth) trpcFile = "with-nextauth.ts";
+  if (usingNextAuth && usingDb) trpcFile = "with-nextauth-db.ts";
+  if (usingLucia) trpcFile = "with-lucia.ts";
+  if (usingLucia && usingDb) trpcFile = "with-lucia-db.ts";
+
   const trpcSrc = path.join(
     extrasDir,
     "src/server/api",
@@ -53,21 +54,24 @@ export const trpcInstaller: Installer = ({
   );
   const trpcDest = path.join(projectDir, "src/server/api/trpc.ts");
 
-  const rootRouterSrc = path.join(extrasDir, "src/server/api/root.ts");
+  const rootRouterSrc = path.join(
+    extrasDir,
+    usingLucia
+      ? "src/server/api/root/with-lucia.ts"
+      : "src/server/api/root/base.ts"
+  );
   const rootRouterDest = path.join(projectDir, "src/server/api/root.ts");
 
-  const exampleRouterFile =
-    usingAuth && usingPrisma
-      ? "with-auth-prisma.ts"
-      : usingAuth && usingDrizzle
-      ? "with-auth-drizzle.ts"
-      : usingAuth
-      ? "with-auth.ts"
-      : usingPrisma
-      ? "with-prisma.ts"
-      : usingDrizzle
-      ? "with-drizzle.ts"
-      : "base.ts";
+  let exampleRouterFile = "base.ts";
+  if (usingDrizzle) exampleRouterFile = "with-drizzle.ts";
+  if (usingPrisma) exampleRouterFile = "with-prisma.ts";
+  if (usingNextAuth || usingLucia) exampleRouterFile = "with-auth.ts";
+  if (usingNextAuth && usingDrizzle)
+    exampleRouterFile = "with-nextauth-drizzle.ts";
+  if (usingNextAuth && usingPrisma)
+    exampleRouterFile = "with-nextauth-prisma.ts";
+  if (usingLucia && usingDrizzle) exampleRouterFile = "with-lucia-drizzle.ts";
+  if (usingLucia && usingPrisma) exampleRouterFile = "with-lucia-prisma.ts";
 
   const exampleRouterSrc = path.join(
     extrasDir,
@@ -85,6 +89,18 @@ export const trpcInstaller: Installer = ({
     [rootRouterSrc, rootRouterDest],
     [exampleRouterSrc, exampleRouterDest],
   ];
+
+  if (usingLucia) {
+    const authRouterSrc = path.join(
+      extrasDir,
+      "src/server/api/routers/auth.ts"
+    );
+    const authRouterDest = path.join(
+      projectDir,
+      "src/server/api/routers/auth.ts"
+    );
+    copySrcDest.push([authRouterSrc, authRouterDest]);
+  }
 
   if (appRouter) {
     const trpcDir = path.join(extrasDir, "src/trpc");
@@ -105,7 +121,7 @@ export const trpcInstaller: Installer = ({
         path.join(
           extrasDir,
           "src/app/_components",
-          packages?.tailwind.inUse ? "create-post-tw.tsx" : "create-post.tsx"
+          usingTailwind ? "create-post-tw.tsx" : "create-post.tsx"
         ),
         path.join(projectDir, "src/app/_components/create-post.tsx"),
       ]

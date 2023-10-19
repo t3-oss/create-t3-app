@@ -19,9 +19,9 @@ export const selectAppFile = ({
 
   let appFile = "base.tsx";
   if (usingNextAuth && usingTRPC) {
-    appFile = "with-auth-trpc.tsx";
+    appFile = "with-nextauth-trpc.tsx";
   } else if (usingNextAuth && !usingTRPC) {
-    appFile = "with-auth.tsx";
+    appFile = "with-nextauth.tsx";
   } else if (!usingNextAuth && usingTRPC) {
     appFile = "with-trpc.tsx";
   }
@@ -63,13 +63,18 @@ export const selectIndexFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  const usingNextAuth = packages.nextAuth.inUse;
+  const usingLucia = packages.lucia.inUse;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
+  if (usingTRPC && usingTw && usingNextAuth) {
+    indexFile = "with-nextauth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingNextAuth) {
+    indexFile = "with-nextauth-trpc.tsx";
+  } else if (usingTRPC && usingTw && usingLucia) {
+    indexFile = "with-lucia-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingLucia) {
+    indexFile = "with-lucia-trpc.tsx";
   } else if (usingTRPC && usingTw) {
     indexFile = "with-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw) {
@@ -92,13 +97,22 @@ export const selectPageFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  const usingLucia = packages.lucia.inUse;
+  const usingNextAuth = packages.nextAuth.inUse;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
+  if (usingTRPC && usingTw && usingNextAuth) {
+    indexFile = "with-nextauth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingNextAuth) {
+    indexFile = "with-nextauth-trpc.tsx";
+  } else if (usingTRPC && usingTw && usingLucia) {
+    indexFile = "with-lucia-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingLucia) {
+    indexFile = "with-lucia-trpc.tsx";
+  } else if (!usingTRPC && usingTw && usingLucia) {
+    indexFile = "with-lucia-tw.tsx";
+  } else if (!usingTRPC && !usingTw && usingLucia) {
+    indexFile = "with-lucia.tsx";
   } else if (usingTRPC && usingTw) {
     indexFile = "with-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw) {

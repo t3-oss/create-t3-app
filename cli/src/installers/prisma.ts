@@ -20,11 +20,15 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const schemaSrc = path.join(
-    extrasDir,
-    "prisma/schema",
-    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma"
-  );
+  let schemaFile = "base.prisma";
+  if (packages?.nextAuth.inUse) {
+    schemaFile = "with-nextauth.prisma";
+  }
+  if (packages?.lucia.inUse) {
+    schemaFile = "with-lucia.prisma";
+  }
+
+  const schemaSrc = path.join(extrasDir, "prisma/schema", schemaFile);
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
 
   const clientSrc = path.join(extrasDir, "src/server/db/db-prisma.ts");

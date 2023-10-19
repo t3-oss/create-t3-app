@@ -5,22 +5,26 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
-  const usingAuth = packages?.nextAuth.inUse;
+  const usingNextAuth = packages?.nextAuth.inUse;
+  const usingLucia = packages?.lucia.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
   const usingDb = usingPrisma || usingDrizzle;
 
-  const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
+  const envContent = getEnvContent({
+    usingDrizzle: !!usingDrizzle,
+    usingLucia: !!usingLucia,
+    usingNextAuth: !!usingNextAuth,
+    usingPrisma: !!usingPrisma,
+  });
 
-  const envFile =
-    usingAuth && usingDb
-      ? "with-auth-db.mjs"
-      : usingAuth
-      ? "with-auth.mjs"
-      : usingDb
-      ? "with-db.mjs"
-      : "";
+  let envFile = "";
+  if (usingDb) envFile = "with-db.mjs";
+  if (usingNextAuth) envFile = "with-nextauth.mjs";
+  if (usingNextAuth && usingDb) envFile = "with-nextauth-db.mjs";
+  if (usingLucia) envFile = "with-lucia.mjs";
+  if (usingLucia && usingDb) envFile = "with-lucia-db.mjs";
 
   if (envFile !== "") {
     const envSchemaSrc = path.join(
@@ -39,11 +43,17 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   fs.writeFileSync(envExampleDest, exampleEnvContent + envContent, "utf-8");
 };
 
-const getEnvContent = (
-  usingAuth: boolean,
-  usingPrisma: boolean,
-  usingDrizzle: boolean
-) => {
+const getEnvContent = ({
+  usingDrizzle,
+  usingLucia,
+  usingNextAuth,
+  usingPrisma,
+}: {
+  usingNextAuth: boolean;
+  usingLucia: boolean;
+  usingPrisma: boolean;
+  usingDrizzle: boolean;
+}) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.mjs"
 # should be updated accordingly.
@@ -67,7 +77,7 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'
 `;
   }
 
-  if (usingAuth)
+  if (usingNextAuth)
     content += `
 # Next Auth
 # You can generate a new secret on the command line with:
@@ -80,8 +90,17 @@ NEXTAUTH_URL="http://localhost:3000"
 DISCORD_CLIENT_ID=""
 DISCORD_CLIENT_SECRET=""
 `;
+  if (usingLucia)
+    content += `
+# Lucia Auth
+AUTH_URL="http://localhost:3000"
 
-  if (!usingAuth && !usingPrisma)
+# Lucia Auth Discord Provider
+DISCORD_CLIENT_ID=""
+DISCORD_CLIENT_SECRET=""
+`;
+
+  if (!usingNextAuth && !usingPrisma && !usingLucia && !usingDrizzle)
     content += `
 # Example:
 # SERVERVAR="foo"

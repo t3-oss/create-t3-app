@@ -8,6 +8,12 @@ export const dependencyVersionMap = {
   "@next-auth/prisma-adapter": "^1.0.7",
   "@auth/drizzle-adapter": "^0.3.2",
 
+  // Lucia Auth
+  lucia: "^2.7.1",
+  "@lucia-auth/adapter-mysql": "^2.1.0",
+  "@lucia-auth/adapter-prisma": "^3.0.2",
+  "@lucia-auth/oauth": "^3.3.1",
+
   // Prisma
   prisma: "^5.1.1",
   "@prisma/client": "^5.1.1",

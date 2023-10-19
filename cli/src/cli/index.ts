@@ -30,6 +30,8 @@ interface CliFlags {
   /** @internal Used in CI. */
   nextAuth: boolean;
   /** @internal Used in CI. */
+  lucia: boolean;
+  /** @internal Used in CI. */
   appRouter: boolean;
 }
 
@@ -52,6 +54,7 @@ const defaultOptions: CliResults = {
     prisma: false,
     drizzle: false,
     nextAuth: false,
+    lucia: false,
     importAlias: "~/",
     appRouter: false,
   },
@@ -98,6 +101,12 @@ export const runCli = async (): Promise<CliResults> => {
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
+    )
+    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "--lucia [boolean]",
+      "Experimental: Boolean value if we should install Lucia Auth. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
@@ -167,12 +176,20 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+    if (cliResults.flags.lucia) cliResults.packages.push("lucia");
 
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
       // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
       logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
+      process.exit(0);
+    }
+
+    if (cliResults.flags.nextAuth && cliResults.flags.lucia) {
+      logger.warn(
+        "Incompatible combination NextAuth.js + Lucia Auth. Exiting."
+      );
       process.exit(0);
     }
 
@@ -237,6 +254,7 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "next-auth", label: "NextAuth.js" },
+              { value: "lucia", label: "Lucia Auth" },
               // Maybe later
               // { value: "clerk", label: "Clerk" },
             ],
@@ -301,6 +319,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.styling) packages.push("tailwind");
     if (project.trpc) packages.push("trpc");
     if (project.authentication === "next-auth") packages.push("nextAuth");
+    if (project.authentication === "lucia") packages.push("lucia");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
 

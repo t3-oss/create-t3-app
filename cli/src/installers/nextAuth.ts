@@ -36,7 +36,7 @@ export const nextAuthInstaller: Installer = ({
   const authConfigSrc = path.join(
     extrasDir,
     "src/server",
-    appRouter ? "auth-app" : "auth-pages",
+    appRouter ? "nextauth-app" : "nextauth-pages",
     usingPrisma
       ? "with-prisma.ts"
       : usingDrizzle
