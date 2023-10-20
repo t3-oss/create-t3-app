@@ -58,7 +58,7 @@ export default function ClipboardSelect() {
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
             <svg
-              className={`animate-draw h-[1em] w-[1em] ${
+              className={`h-[1em] w-[1em] animate-draw ${
                 !coolDown && "hidden"
               }`}
               style={checkStyles}
