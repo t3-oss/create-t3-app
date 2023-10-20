@@ -4,19 +4,19 @@ import { Fragment, useState } from "react";
 
 const commands = [
   {
-    command: "npm create t3-app@latest",
+    command: "create t3-app@latest",
     manager: "npm",
   },
   {
-    command: "yarn create t3-app",
+    command: "create t3-app",
     manager: "yarn",
   },
   {
-    command: "pnpm create t3-app@latest",
+    command: "create t3-app@latest",
     manager: "pnpm",
   },
   {
-    command: "bun create t3-app",
+    command: "create t3-app@latest",
     manager: "bun",
   },
 ];
@@ -24,9 +24,10 @@ const commands = [
 export default function ClipboardSelect() {
   const [coolDown, setCoolDown] = useState(false);
 
-  const handleCopyToClipboard = async (command: string) => {
+  const handleCopyToClipboard = async (manager: string, command: string) => {
+    const nextClipboard = `${manager} ${command}`;
     try {
-      await navigator.clipboard.writeText(command);
+      await navigator.clipboard.writeText(nextClipboard);
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
@@ -86,16 +87,16 @@ export default function ClipboardSelect() {
                 "focus-none shadow-l t3-scrollbar absolute right-0 mt-1 max-h-60 w-fit min-w-[6em] overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none dark:border-t3-purple-200/20 sm:text-sm",
               )}
             >
-              {commands.map(({ command, manager }) => (
+              {commands.map(({ manager, command }) => (
                 <Menu.Item key={manager}>
                   {({ active }) => {
                     return (
                       <button
                         className={`${
                           active && "bg-t3-purple-200/20"
-                        } group flex w-full items-center bg-t3-purple-200/10 px-2 py-2 text-sm hover:bg-t3-purple-200/20`}
+                        } group flex w-full items-center bg-t3-purple-200/10 px-4 py-2 text-sm font-medium hover:bg-t3-purple-200/20`}
                         onClick={() => {
-                          handleCopyToClipboard(command)
+                          handleCopyToClipboard(manager, command)
                             .then(() => {
                               setCoolDown(true);
                               setTimeout(() => {

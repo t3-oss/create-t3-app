@@ -102,7 +102,7 @@ pnpm create t3-app@latest
 ### bun
 
 ```bash
-bun create t3-app
+bun create t3-app@latest
 ```
 
 For more advanced usage, check out the [CLI docs](https://create.t3.gg/en/installation).
