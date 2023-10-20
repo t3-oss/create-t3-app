@@ -88,7 +88,7 @@ export default function ClipboardSelect() {
             >
               {commands.map(({ command, manager }) => (
                 <Menu.Item key={manager}>
-                  {({ active }) => {
+                  {() => {
                     return (
                       <button
                         className={`group flex w-full items-center bg-t3-purple-200/10 px-2 py-2 text-sm hover:bg-t3-purple-200/20`}
