@@ -91,7 +91,7 @@ export default function ClipboardSelect() {
                   {({ active }) => {
                     return (
                       <button
-                        className={`group flex w-full items-center px-2 py-2 text-sm hover:bg-t3-purple-300/20`}
+                        className={`group flex w-full items-center bg-t3-purple-200/10 px-2 py-2 text-sm hover:bg-t3-purple-200/20`}
                         onClick={() => {
                           handleCopyToClipboard(command)
                             .then(() => {
