@@ -175,6 +175,18 @@ import Button from "./button.astro";
           checkIcon.classList.toggle("hidden");
         }
 
+        function clickOutsideMenuOrToggle(event) {
+          if (
+            !dropdownMenu.contains(event.target) &&
+            !dropdownToggle.contains(event.target)
+          ) {
+            dropdownMenu.classList.add("hidden");
+            dropdownMenu.classList.remove("flex");
+          }
+        }
+
+        document.addEventListener("click", clickOutsideMenuOrToggle);
+
         command.addEventListener("click", () => {
           if (cooldown === false) {
             cooldown = true;
