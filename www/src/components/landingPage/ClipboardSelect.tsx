@@ -16,8 +16,8 @@ const commands = [
     manager: "pnpm",
   },
   {
-    command: "bunx create-t3-app@latest",
-    manager: "bunx",
+    command: "bun create t3-app",
+    manager: "bun",
   },
 ];
 
