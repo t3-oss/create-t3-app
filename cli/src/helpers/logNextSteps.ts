@@ -59,4 +59,10 @@ export const logNextSteps = async ({
       `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
   }
+
+  if (packages?.lucia.inUse) {
+    logger.warn(
+      `\nThank you for trying out the Lucia Auth option. If you encounter any issues, please open an issue!`
+    );
+  }
 };
