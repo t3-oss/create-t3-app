@@ -28,6 +28,14 @@ export default {
         "t3-purple-900": "#231ed3",
         "t3-purple-1000": "#1613cb",
       },
+      animation: {
+        draw: "draw 2s linear normal",
+      },
+    },
+    keyframes: {
+      draw: {
+        to: { strokeDashoffset: "200" },
+      },
     },
     fontFamily: {
       sans: [
