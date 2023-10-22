@@ -57,13 +57,6 @@ export default function Home() {
 
 function AuthShowcase() {
   const { data: user } = api.auth.getCurrentUser.useQuery();
-  const utils = api.useUtils();
-  const logOut = api.auth.logOut.useMutation({
-    onSuccess: async () => {
-      await utils.auth.getCurrentUser.invalidate();
-    },
-  });
-
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
     { enabled: !!user }
@@ -72,13 +65,15 @@ function AuthShowcase() {
   return (
     <div className={styles.authContainer}>
       <p className={styles.showcaseText}>
-        {user && <span>Logged in as {user.username}</span>}
-        {user && secretMessage && <span> - {secretMessage}</span>}
+        {user && <span>Logged in as {user.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
       </p>
       {user ? (
-        <button className={styles.loginButton} onClick={() => logOut.mutate()}>
-          {logOut.isLoading ? "Loading..." : "Log out"}
-        </button>
+        <form action="/api/auth/logout" method="post">
+          <button type="submit" className={styles.loginButton}>
+            Log out
+          </button>
+        </form>
       ) : (
         <Link className={styles.loginButton} href="/api/auth/discord/signin">
           Sign in

@@ -140,6 +140,8 @@
   padding: 0.75rem 2.5rem;
   font-weight: 600;
   color: white;
+  border: none;
+  cursor: pointer;
   text-decoration-line: none;
   transition: background-color 150ms cubic-bezier(0.5, 0, 0.2, 1);
 }

@@ -56,12 +56,6 @@ export default function Home() {
 
 function AuthShowcase() {
   const { data: user } = api.auth.getCurrentUser.useQuery();
-  const utils = api.useUtils();
-  const logOut = api.auth.logOut.useMutation({
-    onSuccess: async () => {
-      await utils.auth.getCurrentUser.invalidate();
-    },
-  });
 
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
@@ -71,16 +65,18 @@ function AuthShowcase() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
-        {user && <span>Logged in as {user.username}</span>}
-        {user && secretMessage && <span> - {secretMessage}</span>}
+        {user && <span>Logged in as {user.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
       </p>
       {user ? (
-        <button
-          className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-          onClick={() => logOut.mutate()}
-        >
-          {logOut.isLoading ? "Loading..." : "Log out"}
-        </button>
+        <form action="/api/auth/logout" method="post">
+          <button
+            type="submit"
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+          >
+            Log out
+          </button>
+        </form>
       ) : (
         <Link
           className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
