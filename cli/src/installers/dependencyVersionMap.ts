@@ -12,7 +12,10 @@ export const dependencyVersionMap = {
   lucia: "^2.7.1",
   "@lucia-auth/adapter-mysql": "^2.1.0",
   "@lucia-auth/adapter-prisma": "^3.0.2",
+  "@lucia-auth/adapter-sqlite": "^2.0.1",
   "@lucia-auth/oauth": "^3.3.1",
+  "better-sqlite3": "^9.0.0",
+  "@types/better-sqlite3": "^7.6.6",
 
   // Prisma
   prisma: "^5.1.1",

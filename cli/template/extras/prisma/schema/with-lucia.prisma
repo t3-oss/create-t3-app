@@ -24,7 +24,7 @@ model Post {
 
 model User {
     id         String @id @unique
-    username   String
+    name       String
     discord_id String
 
     auth_session Session[]

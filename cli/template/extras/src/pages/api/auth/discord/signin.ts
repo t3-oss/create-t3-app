@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await authRequest.validate();
   if (session) {
     // If already signed in, redirect to home page
-    return res.status(302).setHeader("Location", "/").end();
+    return res.redirect("/").end();
   }
   const [url, state] = await discordAuth.getAuthorizationUrl();
   const stateCookie = serializeCookie("discord_oauth_state", state, {
@@ -21,9 +21,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     maxAge: 60 * 60,
   });
   return res
-    .status(302)
     .setHeader("Set-Cookie", stateCookie)
-    .setHeader("Location", url.toString())
+    .redirect(302, url.toString())
     .end();
 };
 

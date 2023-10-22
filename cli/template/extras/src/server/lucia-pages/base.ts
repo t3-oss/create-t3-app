@@ -1,20 +1,33 @@
+import fs from "node:fs";
+import { betterSqlite3 } from "@lucia-auth/adapter-sqlite";
 import { discord } from "@lucia-auth/oauth/providers";
+import sqlite from "better-sqlite3";
 import { lucia } from "lucia";
 import { nextjs_future } from "lucia/middleware";
 
 import { env } from "~/env.mjs";
 
+// For demo purposes, we use an in-memory SQLite database here.
+// You should probably change this. Check the link below for the list of supported databases.
+// https://lucia-auth.com/basics/database/#database-adapters
+const db = sqlite(":memory:");
+db.exec(fs.readFileSync("schema.sql", "utf8"));
+
 /** @see https://lucia-auth.com/basics/configuration/ */
 export const auth = lucia({
-  // Lucia needs a database adapter. Please set up one for your database: https://lucia-auth.com/getting-started/#setup-your-database
-  // adapter: yourDBAdapter(),
+  adapter: betterSqlite3(db, {
+    // Database table names
+    user: "user",
+    session: "session",
+    key: "key",
+  }),
   env: env.NODE_ENV === "development" ? "DEV" : "PROD",
   middleware: nextjs_future(),
   sessionCookie: {
     expires: false,
   },
   getUserAttributes: (databaseUser) => ({
-    username: databaseUser.username,
+    name: databaseUser.name,
     discordId: databaseUser.discord_id,
   }),
 });

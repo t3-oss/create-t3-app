@@ -22,7 +22,7 @@ export const auth = lucia({
     expires: false,
   },
   getUserAttributes: (databaseUser) => ({
-    username: databaseUser.username,
+    name: databaseUser.name,
     discordId: databaseUser.discord_id,
   }),
 });
@@ -34,7 +34,7 @@ export const discordAuth = discord(auth, {
 });
 
 /** Get auth session from a server component. */
-export const getPageSession = cache(() => {
+export const getServerAuthSession = cache(() => {
   const authRequest = auth.handleRequest("GET", context);
   return authRequest.validate();
 });

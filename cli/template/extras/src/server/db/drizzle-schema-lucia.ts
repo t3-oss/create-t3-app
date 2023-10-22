@@ -34,7 +34,7 @@ export const posts = mysqlTable(
 
 export const users = mysqlTable("user", {
   id: varchar("id", { length: 15 }).notNull().primaryKey(),
-  username: varchar("username", { length: 255 }),
+  name: varchar("name", { length: 255 }),
   discordId: varchar("discord_id", { length: 18 }),
 });
 
@@ -50,7 +50,7 @@ export const keys = mysqlTable("key", {
     length: 15,
   }).notNull(),
 
-  // Required for Lucia Auth even if you don't use username/password auth
+  // Required for Lucia Auth even if you don't use name/password auth
   hashedPassword: varchar("hashed_password", {
     length: 255,
   }),

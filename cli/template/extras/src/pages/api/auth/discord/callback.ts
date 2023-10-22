@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const authRequest = auth.handleRequest({ req, res });
   const session = await authRequest.validate();
   if (session) {
-    return res.status(302).setHeader("Location", "/").end();
+    return res.redirect(302, "/");
   }
   const cookies = parseCookie(req.headers.cookie ?? "");
   const storedState = cookies.discord_oauth_state;
@@ -34,7 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const user = await createUser({
         attributes: {
           discord_id: discordUser.id,
-          username: discordUser.username,
+          name: discordUser.username,
         },
       });
       return user;
@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       attributes: {},
     });
     authRequest.setSession(session);
-    return res.status(302).setHeader("Location", "/").end();
+    return res.redirect(302, "/");
   } catch (e) {
     if (e instanceof OAuthRequestError) {
       // invalid code

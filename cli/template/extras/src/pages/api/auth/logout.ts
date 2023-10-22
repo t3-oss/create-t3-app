@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await auth.invalidateSession(session.sessionId);
   // delete session cookie
   authRequest.setSession(null);
-  return res.end();
+  return res.redirect(302, "/");
 };
 
 export default handler;

@@ -1,5 +1,5 @@
 import * as context from "next/headers";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { env } from "~/env.mjs";
 import { auth, discordAuth } from "~/server/auth";
@@ -10,12 +10,7 @@ export const GET = async (request: NextRequest) => {
   const session = await authRequest.validate();
   if (session) {
     // If already signed in, redirect to home page
-    return new Response(null, {
-      status: 302,
-      headers: {
-        Location: "/",
-      },
-    });
+    return NextResponse.redirect(new URL("/", request.url));
   }
   const [url, state] = await discordAuth.getAuthorizationUrl();
   const cookieStore = context.cookies();
@@ -25,10 +20,5 @@ export const GET = async (request: NextRequest) => {
     path: "/",
     maxAge: 60 * 60,
   });
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: url.toString(),
-    },
-  });
+  return NextResponse.redirect(url);
 };

@@ -1,11 +1,10 @@
 import Link from "next/link";
 
-import { LogOutButton } from "~/app/_components/logout-button";
-import { getPageSession } from "~/server/auth";
+import { getServerAuthSession } from "~/server/auth";
 import styles from "./index.module.css";
 
 export default async function Home() {
-  const session = await getPageSession();
+  const session = await getServerAuthSession();
 
   return (
     <main className={styles.main}>
@@ -40,10 +39,14 @@ export default async function Home() {
         <div className={styles.showcaseContainer}>
           <div className={styles.authContainer}>
             <p className={styles.showcaseText}>
-              {session && <span>Logged in as {session.user.username}</span>}
+              {session && <span>Logged in as {session.user.name}</span>}
             </p>
             {session ? (
-              <LogOutButton className={styles.loginButton} />
+              <form action="/api/auth/logout" method="post">
+                <button className={styles.loginButton} type="submit">
+                  Log out
+                </button>
+              </form>
             ) : (
               <Link
                 href="/api/auth/discord/signin"

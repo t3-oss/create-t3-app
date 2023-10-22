@@ -1,6 +1,6 @@
 import { OAuthRequestError } from "@lucia-auth/oauth";
 import { cookies, headers } from "next/headers";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { auth, discordAuth } from "~/server/auth";
 
@@ -11,18 +11,12 @@ export const GET = async (request: NextRequest) => {
   });
   const session = await authRequest.validate();
   if (session) {
-    return new Response(null, {
-      status: 302,
-      headers: {
-        Location: "/",
-      },
-    });
+    return NextResponse.redirect(new URL("/", request.url));
   }
   const cookieStore = cookies();
   const storedState = cookieStore.get("discord_oauth_state")?.value;
-  const url = new URL(request.url);
-  const state = url.searchParams.get("state");
-  const code = url.searchParams.get("code");
+  const state = request.nextUrl.searchParams.get("state");
+  const code = request.nextUrl.searchParams.get("code");
   // validate state
   if (!storedState || !state || storedState !== state || !code) {
     return new Response(null, {
@@ -38,7 +32,7 @@ export const GET = async (request: NextRequest) => {
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
-          username: discordUser.username,
+          name: discordUser.username,
           discord_id: discordUser.id,
         },
       });
@@ -51,12 +45,7 @@ export const GET = async (request: NextRequest) => {
       attributes: {},
     });
     authRequest.setSession(session);
-    return new Response(null, {
-      status: 302,
-      headers: {
-        Location: "/",
-      },
-    });
+    return NextResponse.redirect(new URL("/", request.url));
   } catch (e) {
     if (e instanceof OAuthRequestError) {
       // invalid code

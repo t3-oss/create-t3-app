@@ -72,7 +72,7 @@ function AuthShowcase() {
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
         {user && <span>Logged in as {user.username}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
+        {user && secretMessage && <span> - {secretMessage}</span>}
       </p>
       {user ? (
         <button

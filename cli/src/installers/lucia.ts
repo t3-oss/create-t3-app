@@ -14,7 +14,7 @@ export const luciaInstaller: Installer = ({
 }) => {
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
-  const usingTrpc = packages?.trpc.inUse;
+  const usingDB = usingPrisma || usingDrizzle;
 
   const deps: AvailableDependencies[] = ["lucia", "@lucia-auth/oauth"];
   if (usingPrisma) deps.push("@lucia-auth/adapter-prisma");
@@ -44,6 +44,8 @@ export const luciaInstaller: Installer = ({
   const signInDest = path.join(projectDir, signInFile);
   const callbackSrc = path.join(extrasDir, callbackFile);
   const callbackDest = path.join(projectDir, callbackFile);
+  const logOutSrc = path.join(extrasDir, logOutFile);
+  const logOutDest = path.join(projectDir, logOutFile);
 
   const tsDefinitionSrc = path.join(extrasDir, tsDefinitionFile);
   const tsDefinitionDest = path.join(projectDir, tsDefinitionFile);
@@ -74,26 +76,24 @@ export const luciaInstaller: Installer = ({
   const copySrcDest: [string, string][] = [
     [signInSrc, signInDest],
     [callbackSrc, callbackDest],
+    [logOutSrc, logOutDest],
     [tsDefinitionSrc, tsDefinitionDest],
   ];
 
-  if (appRouter) {
-    copySrcDest.push([
-      path.join(
-        extrasDir,
-        usingTrpc
-          ? "src/app/_components/logout-button-trpc.tsx"
-          : "src/app/_components/logout-button.tsx"
-      ),
-      path.join(projectDir, "src/app/_components/logout-button.tsx"),
-    ]);
-  }
-
-  if (!usingTrpc) {
-    const logOutSrc = path.join(extrasDir, logOutFile);
-    const logOutDest = path.join(projectDir, logOutFile);
-
-    copySrcDest.push([logOutSrc, logOutDest]);
+  if (!usingDB) {
+    const sqlSchemaSrc = path.join(extrasDir, "schema.sql");
+    const sqlSchemaDest = path.join(projectDir, "schema.sql");
+    copySrcDest.push([sqlSchemaSrc, sqlSchemaDest]);
+    addPackageDependency({
+      dependencies: ["better-sqlite3", "@lucia-auth/adapter-sqlite"],
+      devMode: false,
+      projectDir,
+    });
+    addPackageDependency({
+      dependencies: ["@types/better-sqlite3"],
+      devMode: true,
+      projectDir,
+    });
   }
 
   copySrcDest.forEach(([src, dest]) => {

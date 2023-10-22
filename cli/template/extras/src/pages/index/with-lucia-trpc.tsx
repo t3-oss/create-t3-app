@@ -73,7 +73,7 @@ function AuthShowcase() {
     <div className={styles.authContainer}>
       <p className={styles.showcaseText}>
         {user && <span>Logged in as {user.username}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
+        {user && secretMessage && <span> - {secretMessage}</span>}
       </p>
       {user ? (
         <button className={styles.loginButton} onClick={() => logOut.mutate()}>

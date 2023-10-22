@@ -20,7 +20,7 @@ export const auth = lucia({
     expires: false,
   },
   getUserAttributes: (databaseUser) => ({
-    username: databaseUser.username,
+    name: databaseUser.name,
     discordId: databaseUser.discord_id,
   }),
 });
