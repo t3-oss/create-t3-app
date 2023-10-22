@@ -24,7 +24,6 @@ import { auth } from "~/server/auth";
 
 interface CreateContextOptions {
   session: Session | null;
-  authRequest: ReturnType<typeof auth.handleRequest>;
 }
 
 /**
@@ -40,7 +39,6 @@ interface CreateContextOptions {
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     session: opts.session,
-    authRequest: opts.authRequest,
   };
 };
 
@@ -59,7 +57,6 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 
   return createInnerTRPCContext({
     session,
-    authRequest,
   });
 };
 
