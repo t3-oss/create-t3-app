@@ -31,6 +31,6 @@ lang: ru
 
 ## Следующие шаги
 
-- Если ваше приложение включает tRPC, ознакомьтесь с `src/pages/index.tsx` и `src/server/trpc/router/example.ts`, чтобы узнать, как работают запросы tRPC.
+- Если ваше приложение включает tRPC, ознакомьтесь с `src/pages/index.tsx` и `src/server/trpc/router/post.ts`, чтобы узнать, как работают запросы tRPC.
 - Посмотрите на документацию `create-t3-app`, а также на документацию пакетов, которые включает ваше приложение.
 - Присоединяйтесь к нашему [Discord](https://t3.gg/discord) и поставьте звезду на [GitHub](https://github.com/t3-oss/create-t3-app)! :)
