@@ -65,8 +65,8 @@ function AuthShowcase() {
   return (
     <div className={styles.authContainer}>
       <p className={styles.showcaseText}>
-        {user && <span>Logged in as {user.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
+        {user && <span>Logged in as {user.username}</span>}
+        {user && secretMessage && <span> - {secretMessage}</span>}
       </p>
       {user ? (
         <form action="/api/auth/logout" method="post">
