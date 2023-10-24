@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npm create t3-app@latest</code>
+  Get started with the <a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a> by running <code>npm create-t3-app@latest</code>
 </p>
 
 <div align="center">
@@ -84,25 +84,25 @@ To scaffold an app using `create-t3-app`, run any of the following four commands
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create-t3-app@latest
 ```
 
 ### yarn
 
 ```bash
-yarn create t3-app
+yarn create-t3-app
 ```
 
 ### pnpm
 
 ```bash
-pnpm create t3-app@latest
+pnpm create-t3-app@latest
 ```
 
 ### bun
 
 ```bash
-bun create t3-app@latest
+bun create-t3-app@latest
 ```
 
 For more advanced usage, check out the [CLI docs](https://create.t3.gg/en/installation).
