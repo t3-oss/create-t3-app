@@ -82,6 +82,9 @@ export const drizzleInstaller: Installer = ({
         sqlite: "better-sqlite",
       }[databaseProvider]
     );
+    if (databaseProvider === "sqlite")
+      configContent = configContent.replace("connectionString:", "url:");
+
     schemaContent = schemaContent.replace(
       "drizzle-orm/mysql-core",
       `drizzle-orm/${dbType}-core`
