@@ -189,6 +189,10 @@ export const runCli = async (): Promise<CliResults> => {
       process.exit(0);
     }
 
+    cliResults.databaseProvider = cliResults.packages.includes("drizzle")
+      ? "planetscale"
+      : "sqlite";
+
     return cliResults;
   }
 
@@ -335,7 +339,8 @@ export const runCli = async (): Promise<CliResults> => {
       appName: project.name ?? cliResults.appName,
       packages,
       databaseProvider:
-        (project.databaseProvider as DatabaseProvider) || "sqlite",
+        (project.databaseProvider as DatabaseProvider) ||
+        (packages.includes("drizzle") ? "planetscale" : "sqlite"),
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
