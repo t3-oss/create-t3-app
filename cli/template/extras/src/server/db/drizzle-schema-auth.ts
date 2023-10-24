@@ -17,9 +17,9 @@ import { type AdapterAccount } from "next-auth/adapters";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
+export const createTable = mysqlTableCreator((name) => `project1_${name}`);
 
-export const posts = mysqlTable(
+export const posts = createTable(
   "post",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
@@ -36,7 +36,7 @@ export const posts = mysqlTable(
   })
 );
 
-export const users = mysqlTable("user", {
+export const users = createTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
@@ -52,7 +52,7 @@ export const usersRelations = relations(users, ({ many }) => ({
   sessions: many(sessions),
 }));
 
-export const accounts = mysqlTable(
+export const accounts = createTable(
   "account",
   {
     userId: varchar("userId", { length: 255 }).notNull(),
@@ -79,7 +79,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
   user: one(users, { fields: [accounts.userId], references: [users.id] }),
 }));
 
-export const sessions = mysqlTable(
+export const sessions = createTable(
   "session",
   {
     sessionToken: varchar("sessionToken", { length: 255 })
@@ -97,7 +97,7 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
   user: one(users, { fields: [sessions.userId], references: [users.id] }),
 }));
 
-export const verificationTokens = mysqlTable(
+export const verificationTokens = createTable(
   "verificationToken",
   {
     identifier: varchar("identifier", { length: 255 }).notNull(),

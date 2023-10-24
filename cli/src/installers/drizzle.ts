@@ -5,20 +5,39 @@ import { type PackageJson } from "type-fest";
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
   scopedAppName,
+  databaseProvider,
 }) => {
+  const devPackages: AvailableDependencies[] = ["drizzle-kit", "dotenv-cli"];
+  if (databaseProvider === "planetscale") devPackages.push("mysql2");
+  if (databaseProvider === "postgres") devPackages.push("@types/pg");
+  if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
+  if (databaseProvider === "neon") devPackages.push("pg");
+
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-kit", "dotenv-cli", "mysql2"],
+    dependencies: devPackages,
     devMode: true,
   });
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-orm", "@planetscale/database"],
+    dependencies: [
+      "drizzle-orm",
+      (
+        {
+          planetscale: "@planetscale/database",
+          mysql: "mysql2",
+          postgres: "pg",
+          sqlite: "better-sqlite3",
+          neon: "@neondatabase/serverless",
+        } as const
+      )[databaseProvider],
+    ],
     devMode: false,
   });
 
@@ -42,10 +61,80 @@ export const drizzleInstaller: Installer = ({
     "project1_${name}",
     `${scopedAppName}_\${name}`
   );
-  let configContent = fs.readFileSync(configFile, "utf-8");
-  configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
 
-  const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
+  let configContent = fs.readFileSync(configFile, "utf-8");
+  const dbType = (
+    {
+      postgres: "pg",
+      neon: "pg",
+      sqlite: "sqlite",
+      mysql: "mysql",
+      planetscale: "mysql",
+    } as const
+  )[databaseProvider];
+  configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
+  if (databaseProvider !== "mysql" && databaseProvider !== "planetscale") {
+    configContent = configContent.replace(
+      "mysql2",
+      {
+        postgres: "pg",
+        neon: "pg",
+        sqlite: "better-sqlite",
+      }[databaseProvider]
+    );
+    schemaContent = schemaContent.replace(
+      "drizzle-orm/mysql-core",
+      `drizzle-orm/${dbType}-core`
+    );
+    schemaContent = schemaContent.replaceAll(
+      "mysqlTableCreator",
+      `${dbType}TableCreator`
+    );
+    schemaContent = schemaContent.replaceAll(".onUpdateNow()", "");
+    if (dbType === "sqlite") {
+      schemaContent = schemaContent.replace("  varchar,\n", "");
+      schemaContent = schemaContent.replace("  bigint,\n", "");
+      schemaContent = schemaContent.replace("  timestamp,\n", "");
+      schemaContent = schemaContent.replaceAll("varchar", "text");
+      schemaContent = schemaContent.replaceAll("bigint", "int");
+      schemaContent = schemaContent.replace(
+        /timestamp\("([a-zA-Z\-_]+)", { mode: "date" }\)/g,
+        'int("$1", { mode: "timestamp_ms" })'
+      );
+      schemaContent = schemaContent.replace(
+        /timestamp\("([a-zA-Z\-_]+)"\)/g,
+        'int("$1", { mode: "timestamp" })'
+      );
+      schemaContent = schemaContent.replace(
+        `timestamp("emailVerified", {
+    mode: "date",
+    fsp: 3,
+  })`,
+        'int("emailVerified", { mode: "timestamp" })'
+      );
+      schemaContent = schemaContent.replaceAll(
+        ".primaryKey().autoincrement()",
+        ".primaryKey({ autoIncrement: true })"
+      );
+    }
+    if (dbType === "pg") {
+      schemaContent = schemaContent.replace("  bigint,\n", "");
+      schemaContent = schemaContent.replace(
+        "  int,\n",
+        "  integer as int,\n  serial,\n"
+      );
+      schemaContent = schemaContent.replace(
+        'id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),',
+        'id: serial("post_id").primaryKey(),'
+      );
+      schemaContent = schemaContent.replace("fsp: ", "precision: ");
+    }
+  }
+
+  const clientSrc = path.join(
+    extrasDir,
+    `src/server/db/index-drizzle/with-${databaseProvider}.ts`
+  );
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
   // add db:push script to package.json
@@ -54,7 +143,7 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": "dotenv drizzle-kit push:mysql",
+    "db:push": `dotenv drizzle-kit push:${dbType}`,
     "db:studio": "dotenv drizzle-kit studio",
   };
 

@@ -3,7 +3,11 @@ import chalk from "chalk";
 import { Command } from "commander";
 
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { type AvailablePackages } from "~/installers/index.js";
+import {
+  databaseProviders,
+  type AvailablePackages,
+  type DatabaseProvider,
+} from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { IsTTYError } from "~/utils/isTTYError.js";
@@ -37,6 +41,7 @@ interface CliResults {
   appName: string;
   packages: AvailablePackages[];
   flags: CliFlags;
+  databaseProvider: DatabaseProvider;
 }
 
 const defaultOptions: CliResults = {
@@ -55,6 +60,7 @@ const defaultOptions: CliResults = {
     importAlias: "~/",
     appRouter: false,
   },
+  databaseProvider: "sqlite",
 };
 
 export const runCli = async (): Promise<CliResults> => {
@@ -122,6 +128,13 @@ export const runCli = async (): Promise<CliResults> => {
     .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
+      defaultOptions.flags.importAlias
+    )
+    .option(
+      "--db-provider",
+      `Choose a database provider to use. Possible values: ${databaseProviders.join(
+        ", "
+      )}`,
       defaultOptions.flags.importAlias
     )
     .option(
@@ -262,6 +275,20 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: false,
           });
         },
+        databaseProvider: ({ results }) => {
+          if (results.database === "none") return;
+          return p.select({
+            message: "What database provider would you like to use?",
+            options: [
+              { value: "mysql", label: "MySQL" },
+              { value: "postgres", label: "PostgreSQL" },
+              { value: "sqlite", label: "SQLite" },
+              { value: "planetscale", label: "Planetscale Serverless" },
+              { value: "neon", label: "Neon Serverless" },
+            ],
+            initialValue: "mysql",
+          });
+        },
         ...(!cliResults.flags.noGit && {
           git: () => {
             return p.confirm({
@@ -307,6 +334,8 @@ export const runCli = async (): Promise<CliResults> => {
     return {
       appName: project.name ?? cliResults.appName,
       packages,
+      databaseProvider:
+        (project.databaseProvider as DatabaseProvider) || "sqlite",
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,

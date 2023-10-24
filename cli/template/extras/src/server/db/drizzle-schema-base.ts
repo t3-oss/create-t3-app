@@ -16,9 +16,9 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `project1_${name}`);
+export const createTable = mysqlTableCreator((name) => `project1_${name}`);
 
-export const posts = mysqlTable(
+export const posts = createTable(
   "post",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),

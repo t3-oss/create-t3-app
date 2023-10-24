@@ -2,16 +2,25 @@ import path from "path";
 import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
-import { type Installer } from "~/installers/index.js";
+import { type DatabaseProvider, type Installer } from "~/installers/index.js";
 
-export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
+export const envVariablesInstaller: Installer = ({
+  projectDir,
+  packages,
+  databaseProvider,
+}) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
   const usingDb = usingPrisma || usingDrizzle;
 
-  const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
+  const envContent = getEnvContent(
+    !!usingAuth,
+    !!usingPrisma,
+    !!usingDrizzle,
+    databaseProvider
+  );
 
   const envFile =
     usingAuth && usingDb
@@ -42,7 +51,8 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 const getEnvContent = (
   usingAuth: boolean,
   usingPrisma: boolean,
-  usingDrizzle: boolean
+  usingDrizzle: boolean,
+  databaseProvider: DatabaseProvider
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.mjs"
@@ -55,16 +65,23 @@ const getEnvContent = (
     content += `
 # Prisma
 # https://www.prisma.io/docs/reference/database-reference/connection-urls#env
-DATABASE_URL="file:./db.sqlite"
 `;
 
-  if (usingDrizzle) {
-    content += `
-# Drizzle
-# Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
-# Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
-DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'
-`;
+  if (usingDrizzle) content += "\n# Drizzle\n";
+
+  if (usingPrisma || usingDrizzle) {
+    if (databaseProvider === "planetscale") {
+      content += `Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
+      # Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
+      DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
+    } else if (databaseProvider === "mysql") {
+      content += `DATABASE_URL='mysql://username:password@localhost:3306/db_name?schema=public'`;
+    } else if (databaseProvider === "postgres" || databaseProvider === "neon") {
+      content += `DATABASE_URL='postgresql://username:password@localhost:5432/db_name?schema=public'`;
+    } else if (databaseProvider === "sqlite") {
+      content += `DATABASE_URL='file:./db.sqlite'`;
+    }
+    content += "\n";
   }
 
   if (usingAuth)

@@ -37,6 +37,7 @@ const main = async () => {
     appName,
     packages,
     flags: { noGit, noInstall, importAlias, appRouter },
+    databaseProvider,
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -48,6 +49,7 @@ const main = async () => {
     projectName: appDir,
     scopedAppName,
     packages: usePackages,
+    databaseProvider,
     importAlias,
     noInstall,
     appRouter,

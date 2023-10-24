@@ -18,6 +18,15 @@ export const availablePackages = [
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
+export const databaseProviders = [
+  "mysql",
+  "postgres",
+  "sqlite",
+  "planetscale",
+  "neon",
+] as const;
+export type DatabaseProvider = (typeof databaseProviders)[number];
+
 export interface InstallerOptions {
   projectDir: string;
   pkgManager: PackageManager;
@@ -26,6 +35,7 @@ export interface InstallerOptions {
   appRouter?: boolean;
   projectName: string;
   scopedAppName: string;
+  databaseProvider: DatabaseProvider;
 }
 
 export type Installer = (opts: InstallerOptions) => void;

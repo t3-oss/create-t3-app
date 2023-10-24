@@ -6,7 +6,11 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const prismaInstaller: Installer = ({ projectDir, packages }) => {
+export const prismaInstaller: Installer = ({
+  projectDir,
+  packages,
+  databaseProvider,
+}) => {
   addPackageDependency({
     projectDir,
     dependencies: ["prisma"],
@@ -25,7 +29,26 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
     "prisma/schema",
     packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma"
   );
+  let schemaText = fs.readFileSync(schemaSrc, "utf-8");
+  if (databaseProvider !== "sqlite") {
+    schemaText = schemaText.replace(
+      'provider = "sqlite"',
+      `provider = "${
+        {
+          mysql: "mysql",
+          postgres: "postgresql",
+          neon: "postgresql",
+          planetscale: "mysql",
+        }[databaseProvider]
+      }"`
+    );
+    if (["mysql", "planetscale"].includes(databaseProvider)) {
+      schemaText = schemaText.replace("// @db.Text", "@db.Text");
+    }
+  }
   const schemaDest = path.join(projectDir, "prisma/schema.prisma");
+  fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
+  fs.writeFileSync(schemaDest, schemaText);
 
   const clientSrc = path.join(extrasDir, "src/server/db/db-prisma.ts");
   const clientDest = path.join(projectDir, "src/server/db.ts");
@@ -41,7 +64,6 @@ export const prismaInstaller: Installer = ({ projectDir, packages }) => {
     "db:studio": "prisma studio",
   };
 
-  fs.copySync(schemaSrc, schemaDest);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
