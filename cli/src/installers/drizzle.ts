@@ -95,8 +95,10 @@ export const drizzleInstaller: Installer = ({
     );
     schemaContent = schemaContent.replaceAll(".onUpdateNow()", "");
     if (dbType === "sqlite") {
-      schemaContent = schemaContent.replace("  varchar,\n", "");
-      schemaContent = schemaContent.replace("  bigint,\n", "");
+      if (packages?.nextAuth.inUse) {
+        schemaContent = schemaContent.replace("  varchar,\n", "");
+        schemaContent = schemaContent.replace("  bigint,\n", "");
+      }
       schemaContent = schemaContent.replace("  timestamp,\n", "");
       schemaContent = schemaContent.replaceAll("varchar", "text");
       schemaContent = schemaContent.replaceAll("bigint", "int");
