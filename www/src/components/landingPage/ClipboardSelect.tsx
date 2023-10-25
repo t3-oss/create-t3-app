@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
