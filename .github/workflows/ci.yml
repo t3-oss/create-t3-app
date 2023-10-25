@@ -94,7 +94,6 @@ jobs:
 
         # This will use the `changedFilePatterns` to check that a changeset has been added
         # if any matched file has been changed in /cli
-        # NONE /ci CHANGE
       - name: Validate changeset if /cli modified
         if: steps.cli-check.outputs.stdout != 'No changes in /cli'
         run: pnpm changeset status --since origin/next
