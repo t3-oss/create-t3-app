@@ -17,7 +17,7 @@ export default function CodeCard() {
           <div className="ml-2 h-3 w-3 rounded-full bg-green-500"></div>
         </div>
         <Typist cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-          npm create-t3-app@latest
+          npm create t3-app@latest
           <Typist.Delay ms={1250} />
         </Typist>
         <Typist
