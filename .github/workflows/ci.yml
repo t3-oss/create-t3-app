@@ -89,7 +89,8 @@ jobs:
       - name: Check for changes in /cli
         id: cli-check
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
+          git fetch origin next:next # Fetch the next branch
+          git diff --name-only next...${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
 
         # This will use the `changedFilePatterns` to check that a changeset has been added
         # if any matched file has been changed in /cli
