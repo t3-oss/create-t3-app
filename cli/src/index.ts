@@ -41,6 +41,8 @@ const main = async () => {
 
   const usePackages = buildPkgInstallerMap(packages);
 
+  // DEBUG LINE
+
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
 
