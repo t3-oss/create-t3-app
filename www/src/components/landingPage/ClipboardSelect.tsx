@@ -1,22 +1,23 @@
+/* eslint-disable prettier/prettier */
 import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
 
 const commands = [
   {
-    command: "create-t3-app@latest",
+    command: "create t3-app@latest",
     manager: "npm",
   },
   {
-    command: "create-t3-app",
+    command: "create t3-app",
     manager: "yarn",
   },
   {
-    command: "create-t3-app@latest",
+    command: "create t3-app@latest",
     manager: "pnpm",
   },
   {
-    command: "create-t3-app@latest",
+    command: "create t3-app@latest",
     manager: "bun",
   },
 ];
