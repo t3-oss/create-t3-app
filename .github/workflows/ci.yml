@@ -89,13 +89,13 @@ jobs:
       - name: Check for changes in /cli
         id: cli-check
         run: |
-          output=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^cli/' || echo "No changes in /cli")
-          echo "cli-output=${output}" >> $GITHUB_ENV
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
 
+        # This will use the `changedFilePatterns` to check that a changeset has been added
+        # if any matched file has been changed in /cli
       - name: Validate changeset if /cli modified
-        if: steps.cli-check.outputs.stdout != '' && steps.cli-check.outputs.stdout != 'No changes in /cli'
+        if: steps.cli-check.outputs.stdout != 'No changes in /cli'
         run: pnpm changeset status --since origin/next
-
 
   prettier:
     runs-on: ubuntu-latest
