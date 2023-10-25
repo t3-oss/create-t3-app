@@ -41,6 +41,6 @@ lang: ja
 
 ## 次のステップへ
 
-- もしあなたのアプリケーションが tRPC を含んでいるならば、`src/pages/index.tsx` と `src/server/api/routers/example.ts` をチェックして、tRPC クエリがどのように動作するかを見てください。
+- もしあなたのアプリケーションが tRPC を含んでいるならば、`src/pages/index.tsx` と `src/server/api/routers/post.ts` をチェックして、tRPC クエリがどのように動作するかを見てください。
 - Create T3 App のドキュメントや、あなたのアプリケーションに含まれるパッケージのドキュメントを見てみてください。
 - [Discord](https://t3.gg/discord)に参加し、[GitHub](https://github.com/t3-oss/create-t3-app)でスターを付けてください！:)
