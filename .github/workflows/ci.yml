@@ -86,6 +86,12 @@ jobs:
       - name: Install root dependencies
         run: pnpm --filter root install
 
+      # Debugging
+      - name: Debug SHA values
+        run: |
+          echo "Before SHA: ${{ github.event.before }}"
+          echo "Current SHA: ${{ github.sha }}"
+
       - name: Check for changes in /cli
         id: cli-check
         run: |
@@ -94,7 +100,7 @@ jobs:
         # This will use the `changedFilePatterns` to check that a changeset has been added
         # if any matched file has been changed in /cli
       - name: Validate changeset if /cli modified
-        if: steps.cli-check.outputs.stdout != ''
+        if: steps.cli-check.outputs.stdout != '' && steps.cli-check.outputs.stdout != 'No changes in /cli'
         run: pnpm changeset status --since origin/next
 
   prettier:
