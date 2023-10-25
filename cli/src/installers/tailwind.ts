@@ -1,5 +1,6 @@
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
+
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
@@ -13,7 +14,6 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "autoprefixer",
       "prettier",
       "prettier-plugin-tailwindcss",
-      "@types/prettier",
     ],
     devMode: true,
   });
@@ -26,8 +26,8 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.cjs");
   const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");
 
-  const prettierSrc = path.join(extrasDir, "config/prettier.config.cjs");
-  const prettierDest = path.join(projectDir, "prettier.config.cjs");
+  const prettierSrc = path.join(extrasDir, "config/_prettier.config.mjs");
+  const prettierDest = path.join(projectDir, "prettier.config.mjs");
 
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
@@ -36,8 +36,4 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
-
-  // Remove vanilla css file
-  const indexModuleCss = path.join(projectDir, "src/pages/index.module.css");
-  fs.unlinkSync(indexModuleCss);
 };

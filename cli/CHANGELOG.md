@@ -1,5 +1,86 @@
 # Changelog
 
+## 7.22.0
+
+### Minor Changes
+
+- [#1567](https://github.com/t3-oss/create-t3-app/pull/1567) [`e71bedd`](https://github.com/t3-oss/create-t3-app/commit/e71bedde0d6944fa7719a5f97cd27a1503156faa) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add app router option
+
+- [#1595](https://github.com/t3-oss/create-t3-app/pull/1595) [`d7824e0`](https://github.com/t3-oss/create-t3-app/commit/d7824e0e2523703662b731945229e2fae88708ae) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - show callout when scaffolding with app router
+
+## 7.21.0
+
+### Minor Changes
+
+- [#1584](https://github.com/t3-oss/create-t3-app/pull/1584) [`9614d84`](https://github.com/t3-oss/create-t3-app/commit/9614d8424d810278facf012fb99d1da51d2238e6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump deps and add `emptyStringAsUndefined` option for `t3-env`
+
+## 7.20.2
+
+### Patch Changes
+
+- [#1564](https://github.com/t3-oss/create-t3-app/pull/1564) [`58ee08e`](https://github.com/t3-oss/create-t3-app/commit/58ee08e850d985b5ef1b7e5bf0cc164cfaff3f3f) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: block drizzle apps when the example database url hasn't been changed yet
+
+## 7.20.1
+
+### Patch Changes
+
+- [#1561](https://github.com/t3-oss/create-t3-app/pull/1561) [`b8507dc`](https://github.com/t3-oss/create-t3-app/commit/b8507dc64ee91b8423de2ab6145cb3e7d8072528) Thanks [@Nsttt](https://github.com/Nsttt)! - Add packageManager field in package.json at app creation
+
+## 7.20.0
+
+### Minor Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add drizzle
+
+  This release adds a new option to use [`drizzle-orm`](https://orm.drizzle.team/docs/overview) as an alternative to Prisma.
+
+  To make the different ORM options as similar as possible, some minor changes has also been made to the Prisma installer:
+
+  - a new script `db:push` has been added and is included in both ORM options.
+  - the prisma client has been renamed to `db` in the trpc context - you now access your database client like
+    ```ts
+    examples: publicProcedure.query((opts) => {
+       // prisma
+       opts.ctx.db.example.findMany()
+       // drizzle
+       opts.ctx.db.query.example.findMany()
+    }),
+    ```
+
+  You cannot choose the two options in the same app.
+
+### Patch Changes
+
+- [#1461](https://github.com/t3-oss/create-t3-app/pull/1461) [`8034db0`](https://github.com/t3-oss/create-t3-app/commit/8034db042b9ed12f5ba01c1f779c5ee77d78afc4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - refactor: swap inquirer for clack
+
+## 7.19.0
+
+### Minor Changes
+
+- [#1375](https://github.com/t3-oss/create-t3-app/pull/1375) [`d781f08`](https://github.com/t3-oss/create-t3-app/commit/d781f0861ba05aee6b3d460fc53e126868409fb5) Thanks [@Zeko369](https://github.com/Zeko369)! - feat: detect and support usage of Bun as package manager
+
+## 7.18.0
+
+### Minor Changes
+
+- [#1532](https://github.com/t3-oss/create-t3-app/pull/1532) [`941a0fc`](https://github.com/t3-oss/create-t3-app/commit/941a0fc79bcfb24c894525c93aab87c2860b2ad4) Thanks [@spicybackend](https://github.com/spicybackend)! - chore(deps): upgrade Prisma to v5.1.1, bump patch versions of other dependencies
+
+- [#1507](https://github.com/t3-oss/create-t3-app/pull/1507) [`fe5755c`](https://github.com/t3-oss/create-t3-app/commit/fe5755c2d575ce27e8e9c86e6fc79e7903af0390) Thanks [@LevinUncu](https://github.com/LevinUncu)! - If the project is not in a Git repo, the next steps will show git init instead of git commit -m "initial commit".
+
+## 7.17.0
+
+### Minor Changes
+
+- [#1523](https://github.com/t3-oss/create-t3-app/pull/1523) [`c441a9e`](https://github.com/t3-oss/create-t3-app/commit/c441a9ecfaeb61866a76379712b297fc6c2c36b3) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - reduced stylistic linting
+
+## 7.16.0
+
+### Minor Changes
+
+- [#1476](https://github.com/t3-oss/create-t3-app/pull/1476) [`f3fd50f`](https://github.com/t3-oss/create-t3-app/commit/f3fd50fbd5dfd705507b1a2b53e8e6fd39b2dadb) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - Upgraded typescript-eslint to v6, with reworked ESLint configurations
+
+- [#1508](https://github.com/t3-oss/create-t3-app/pull/1508) [`e9c862e`](https://github.com/t3-oss/create-t3-app/commit/e9c862e7e114214139f05572d62af45d87d3fc1c) Thanks [@Sn0wye](https://github.com/Sn0wye)! - chore(deps): bump prisma to v5.0.0
+
 ## 7.15.0
 
 ### Minor Changes

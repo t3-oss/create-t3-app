@@ -1,7 +1,8 @@
-import { Steps } from "./components/mdx";
 import { type MDXComponents } from "mdx/types";
 import Link from "next/link";
 import * as React from "react";
+
+import { Steps } from "./components/mdx";
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {

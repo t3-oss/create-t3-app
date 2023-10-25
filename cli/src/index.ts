@@ -1,22 +1,25 @@
 #!/usr/bin/env node
-import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
-import {
-  getNpmVersion,
-  renderVersionWarning,
-} from "./utils/renderVersionWarning.js";
-import fs from "fs-extra";
 import path from "path";
+import { execa } from "execa";
+import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
+
 import { runCli } from "~/cli/index.js";
 import { createProject } from "~/helpers/createProject.js";
 import { initializeGit } from "~/helpers/git.js";
 import { logNextSteps } from "~/helpers/logNextSteps.js";
 import { setImportAlias } from "~/helpers/setImportAlias.js";
 import { buildPkgInstallerMap } from "~/installers/index.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { installDependencies } from "./helpers/installDependencies.js";
+import { getVersion } from "./utils/getT3Version.js";
+import {
+  getNpmVersion,
+  renderVersionWarning,
+} from "./utils/renderVersionWarning.js";
 
 type CT3APackageJSON = PackageJson & {
   ct3aMetadata?: {
@@ -26,13 +29,14 @@ type CT3APackageJSON = PackageJson & {
 
 const main = async () => {
   const npmVersion = await getNpmVersion();
+  const pkgManager = getUserPkgManager();
   renderTitle();
   npmVersion && renderVersionWarning(npmVersion);
 
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias },
+    flags: { noGit, noInstall, importAlias, appRouter },
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages);
@@ -42,9 +46,11 @@ const main = async () => {
 
   const projectDir = await createProject({
     projectName: appDir,
+    scopedAppName,
     packages: usePackages,
-    importAlias: importAlias,
+    importAlias,
     noInstall,
+    appRouter,
   });
 
   // Write name to package.json
@@ -53,6 +59,15 @@ const main = async () => {
   ) as CT3APackageJSON;
   pkgJson.name = scopedAppName;
   pkgJson.ct3aMetadata = { initVersion: getVersion() };
+
+  // ? Bun doesn't support this field (yet)
+  if (pkgManager !== "bun") {
+    const { stdout } = await execa(pkgManager, ["-v"], {
+      cwd: projectDir,
+    });
+    pkgJson.packageManager = `${pkgManager}@${stdout.trim()}`;
+  }
+
   fs.writeJSONSync(path.join(projectDir, "package.json"), pkgJson, {
     spaces: 2,
   });
@@ -76,7 +91,13 @@ const main = async () => {
     await initializeGit(projectDir);
   }
 
-  logNextSteps({ projectName: appDir, packages: usePackages, noInstall });
+  await logNextSteps({
+    projectName: appDir,
+    packages: usePackages,
+    appRouter,
+    noInstall,
+    projectDir,
+  });
 
   process.exit(0);
 };

@@ -116,6 +116,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Folder Structure", link: "en/folder-structure" },
       { text: "FAQ", link: "en/faq" },
       { text: "T3 Collection", link: "en/t3-collection" },
+      { text: "Examples", link: "en/examples" },
       { text: "Other Recommendations", link: "en/other-recs" },
     ],
     Usage: [
@@ -123,6 +124,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Next.js", link: "en/usage/next-js" },
       { text: "TypeScript", link: "en/usage/typescript" },
       { text: "tRPC", link: "en/usage/trpc" },
+      { text: "Drizzle", link: "en/usage/drizzle" },
       { text: "Prisma", link: "en/usage/prisma" },
       { text: "NextAuth.js", link: "en/usage/next-auth" },
       {
@@ -229,6 +231,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Structure des dossiers", link: "fr/folder-structure" },
       { text: "FAQ", link: "fr/faq" },
       { text: "Collection T3", link: "fr/t3-collection" },
+      { text: "Exemples", link: "fr/examples" },
       { text: "Autres recommandations", link: "fr/other-recs" },
     ],
     Usage: [

@@ -23,6 +23,8 @@ Pairing Next.js with [Vercel](https://vercel.com/) makes developing and deployin
 
 A key feature of Next.js is its data fetching capabilities. We highly recommend reading through the [official documentation](https://nextjs.org/docs/basic-features/data-fetching) to understand how to use each method and how they differ. `getServerSideProps` is generally discouraged unless there is a good reason for it, due to the fact that it is a blocking call and will slow down your site. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) is a great alternative to `getServerSideProps` when the data is dynamic and can be fetched incrementally.
 
+If you need to use this feature anyway, check these links out: [Advanced tRPC - Callers, functions, and gSSP](https://www.youtube.com/watch?v=G2ZzmgShHgQ) and [SSG-Helpers](https://trpc.io/docs/v9/ssg-helpers)
+
 ## Useful Resources
 
 | Resource                       | Link                               |

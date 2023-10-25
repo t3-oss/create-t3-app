@@ -1,9 +1,9 @@
+import * as p from "@clack/prompts";
 import chalk from "chalk";
 import { Command } from "commander";
-import inquirer from "inquirer";
+
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
 import { type AvailablePackages } from "~/installers/index.js";
-import { availablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { IsTTYError } from "~/utils/isTTYError.js";
@@ -26,7 +26,11 @@ interface CliFlags {
   /** @internal Used in CI. */
   prisma: boolean;
   /** @internal Used in CI. */
+  drizzle: boolean;
+  /** @internal Used in CI. */
   nextAuth: boolean;
+  /** @internal Used in CI. */
+  appRouter: boolean;
 }
 
 interface CliResults {
@@ -46,19 +50,18 @@ const defaultOptions: CliResults = {
     tailwind: false,
     trpc: false,
     prisma: false,
+    drizzle: false,
     nextAuth: false,
     importAlias: "~/",
+    appRouter: false,
   },
 };
 
-export const runCli = async () => {
+export const runCli = async (): Promise<CliResults> => {
   const cliResults = defaultOptions;
 
-  const program = new Command().name(CREATE_T3_APP);
-
-  // TODO: This doesn't return anything typesafe. Research other options?
-  // Emulate from: https://github.com/Schniz/soundtype-commander
-  program
+  const program = new Command()
+    .name(CREATE_T3_APP)
     .description("A CLI for creating web applications with the t3 stack")
     .argument(
       "[dir]",
@@ -105,6 +108,12 @@ export const runCli = async () => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
+      "--drizzle [boolean]",
+      "Experimental: Boolean value if we should install Drizzle. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
+    )
+    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
@@ -114,6 +123,11 @@ export const runCli = async () => {
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias
+    )
+    .option(
+      "--appRouter [boolean]",
+      "Explicitly tell the CLI to use the new Next.js app router",
+      (value) => !!value && value !== "false"
     )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
@@ -146,14 +160,27 @@ export const runCli = async () => {
   cliResults.flags = program.opts();
 
   /** @internal Used for CI E2E tests. */
-  let CIMode = false;
   if (cliResults.flags.CI) {
-    CIMode = true;
     cliResults.packages = [];
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
+    if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+
+    if (cliResults.flags.prisma && cliResults.flags.drizzle) {
+      // We test a matrix of all possible combination of packages in CI. Checking for impossible
+      // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
+      // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
+      logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
+      process.exit(0);
+    }
+
+    return cliResults;
+  }
+
+  if (cliResults.flags.default) {
+    return cliResults;
   }
 
   // Explained below why this is in a try/catch block
@@ -167,24 +194,127 @@ export const runCli = async () => {
     }
 
     // if --CI flag is set, we are running in CI mode and should not prompt the user
-    // if --default flag is set, we should not prompt the user
-    if (!cliResults.flags.default && !CIMode) {
-      if (!cliProvidedName) {
-        cliResults.appName = await promptAppName();
-      }
 
-      await promptLanguage();
-      cliResults.packages = await promptPackages();
-      if (!cliResults.flags.noGit) {
-        cliResults.flags.noGit = !(await promptGit());
-      }
+    const pkgManager = getUserPkgManager();
 
-      if (!cliResults.flags.noInstall) {
-        cliResults.flags.noInstall = !(await promptInstall());
+    const project = await p.group(
+      {
+        ...(!cliProvidedName && {
+          name: () =>
+            p.text({
+              message: "What will your project be called?",
+              defaultValue: cliProvidedName,
+              validate: validateAppName,
+            }),
+        }),
+        language: () => {
+          return p.select({
+            message: "Will you be using TypeScript or JavaScript?",
+            options: [
+              { value: "typescript", label: "TypeScript" },
+              { value: "javascript", label: "JavaScript" },
+            ],
+            initialValue: "typescript",
+          });
+        },
+        _: ({ results }) =>
+          results.language === "javascript"
+            ? p.note(chalk.redBright("Wrong answer, using TypeScript instead"))
+            : undefined,
+        styling: () => {
+          return p.confirm({
+            message: "Will you be using Tailwind CSS for styling?",
+          });
+        },
+        trpc: () => {
+          return p.confirm({
+            message: "Would you like to use tRPC?",
+          });
+        },
+        authentication: () => {
+          return p.select({
+            message: "What authentication provider would you like to use?",
+            options: [
+              { value: "none", label: "None" },
+              { value: "next-auth", label: "NextAuth.js" },
+              // Maybe later
+              // { value: "clerk", label: "Clerk" },
+            ],
+            initialValue: "none",
+          });
+        },
+        database: () => {
+          return p.select({
+            message: "What database ORM would you like to use?",
+            options: [
+              { value: "none", label: "None" },
+              { value: "prisma", label: "Prisma" },
+              { value: "drizzle", label: "Drizzle" },
+            ],
+            initialValue: "none",
+          });
+        },
+        appRouter: () => {
+          return p.confirm({
+            message:
+              chalk.bgCyan(" EXPERIMENTAL ") +
+              " Would you like to use Next.js App Router?",
+            initialValue: false,
+          });
+        },
+        ...(!cliResults.flags.noGit && {
+          git: () => {
+            return p.confirm({
+              message:
+                "Should we initialize a Git repository and stage the changes?",
+              initialValue: !defaultOptions.flags.noGit,
+            });
+          },
+        }),
+        ...(!cliResults.flags.noInstall && {
+          install: () => {
+            return p.confirm({
+              message:
+                `Should we run '${pkgManager}` +
+                (pkgManager === "yarn" ? `'?` : ` install' for you?`),
+              initialValue: !defaultOptions.flags.noInstall,
+            });
+          },
+        }),
+        importAlias: () => {
+          return p.text({
+            message: "What import alias would you like to use?",
+            defaultValue: defaultOptions.flags.importAlias,
+            placeholder: defaultOptions.flags.importAlias,
+            validate: validateImportAlias,
+          });
+        },
+      },
+      {
+        onCancel() {
+          process.exit(1);
+        },
       }
+    );
 
-      cliResults.flags.importAlias = await promptImportAlias();
-    }
+    const packages: AvailablePackages[] = [];
+    if (project.styling) packages.push("tailwind");
+    if (project.trpc) packages.push("trpc");
+    if (project.authentication === "next-auth") packages.push("nextAuth");
+    if (project.database === "prisma") packages.push("prisma");
+    if (project.database === "drizzle") packages.push("drizzle");
+
+    return {
+      appName: project.name ?? cliResults.appName,
+      packages,
+      flags: {
+        ...cliResults.flags,
+        appRouter: project.appRouter ?? cliResults.flags.appRouter,
+        noGit: !project.git ?? cliResults.flags.noGit,
+        noInstall: !project.install ?? cliResults.flags.noInstall,
+        importAlias: project.importAlias ?? cliResults.flags.importAlias,
+      },
+    };
   } catch (err) {
     // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an IsTTYError
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
@@ -192,13 +322,9 @@ export const runCli = async () => {
       logger.warn(`
   ${CREATE_T3_APP} needs an interactive terminal to provide options`);
 
-      const { shouldContinue } = await inquirer.prompt<{
-        shouldContinue: boolean;
-      }>({
-        name: "shouldContinue",
-        type: "confirm",
+      const shouldContinue = await p.confirm({
         message: `Continue scaffolding a default T3 app?`,
-        default: true,
+        initialValue: true,
       });
 
       if (!shouldContinue) {
@@ -213,115 +339,4 @@ export const runCli = async () => {
   }
 
   return cliResults;
-};
-
-const promptAppName = async (): Promise<string> => {
-  const { appName } = await inquirer.prompt<Pick<CliResults, "appName">>({
-    name: "appName",
-    type: "input",
-    message: "What will your project be called?",
-    default: defaultOptions.appName,
-    validate: validateAppName,
-    transformer: (input: string) => {
-      return input.trim();
-    },
-  });
-
-  return appName;
-};
-
-const promptLanguage = async (): Promise<void> => {
-  const { language } = await inquirer.prompt<{ language: string }>({
-    name: "language",
-    type: "list",
-    message: "Will you be using TypeScript or JavaScript?",
-    choices: [
-      { name: "TypeScript", value: "typescript", short: "TypeScript" },
-      { name: "JavaScript", value: "javascript", short: "JavaScript" },
-    ],
-    default: "typescript",
-  });
-
-  if (language === "javascript") {
-    logger.error("Wrong answer, using TypeScript instead...");
-  } else {
-    logger.success("Good choice! Using TypeScript!");
-  }
-};
-
-const promptPackages = async (): Promise<AvailablePackages[]> => {
-  const { packages } = await inquirer.prompt<Pick<CliResults, "packages">>({
-    name: "packages",
-    type: "checkbox",
-    message: "Which packages would you like to enable?",
-    choices: availablePackages
-      .filter((pkg) => pkg !== "envVariables") // don't prompt for env-vars
-      .map((pkgName) => ({
-        name: pkgName,
-        checked: false,
-      })),
-  });
-
-  return packages;
-};
-
-const promptGit = async (): Promise<boolean> => {
-  const { git } = await inquirer.prompt<{ git: boolean }>({
-    name: "git",
-    type: "confirm",
-    message: "Initialize a new git repository?",
-    default: true,
-  });
-
-  if (git) {
-    logger.success("Nice one! Initializing repository!");
-  } else {
-    logger.info("Sounds good! You can come back and run git init later.");
-  }
-
-  return git;
-};
-
-const promptInstall = async (): Promise<boolean> => {
-  const pkgManager = getUserPkgManager();
-
-  const { install } = await inquirer.prompt<{ install: boolean }>({
-    name: "install",
-    type: "confirm",
-    message:
-      `Would you like us to run '${pkgManager}` +
-      (pkgManager === "yarn" ? `'?` : ` install'?`),
-    default: true,
-  });
-
-  if (install) {
-    logger.success("Alright. We'll install the dependencies for you!");
-  } else {
-    if (pkgManager === "yarn") {
-      logger.info(
-        `No worries. You can run '${pkgManager}' later to install the dependencies.`
-      );
-    } else {
-      logger.info(
-        `No worries. You can run '${pkgManager} install' later to install the dependencies.`
-      );
-    }
-  }
-
-  return install;
-};
-
-const promptImportAlias = async (): Promise<string> => {
-  const { importAlias } = await inquirer.prompt<Pick<CliFlags, "importAlias">>({
-    name: "importAlias",
-    type: "input",
-    message: "What import alias would you like configured?",
-    default: defaultOptions.flags.importAlias,
-    validate: validateImportAlias,
-    transformer: (input: string) => {
-      return input.trim();
-    },
-  });
-
-  return importAlias;
 };

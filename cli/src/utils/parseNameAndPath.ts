@@ -1,5 +1,6 @@
-import { removeTrailingSlash } from "./removeTrailingSlash.js";
 import pathModule from "path";
+
+import { removeTrailingSlash } from "./removeTrailingSlash.js";
 
 /**
  * Parses the appName and its path from the user input.
@@ -21,7 +22,7 @@ export const parseNameAndPath = (rawInput: string) => {
 
   const paths = input.split("/");
 
-  let appName = paths[paths.length - 1];
+  let appName = paths[paths.length - 1]!;
 
   // If the user ran `npx create-t3-app .` or similar, the appName should be the current directory
   if (appName === ".") {

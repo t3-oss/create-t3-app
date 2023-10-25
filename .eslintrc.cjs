@@ -46,6 +46,9 @@ const config = {
     // These lint rules don't make sense for us but are enabled in the preset configs
     "@typescript-eslint/no-confusing-void-expression": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+
+    // This rule doesn't seem to be working properly
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
 };
 
