@@ -81,6 +81,8 @@ const main = async () => {
     await installDependencies({ projectDir });
   }
 
+  // this should make ci ask for a changeset
+
   // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
   fs.renameSync(
     path.join(projectDir, "_eslintrc.cjs"),
