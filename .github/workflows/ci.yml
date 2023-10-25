@@ -86,9 +86,16 @@ jobs:
       - name: Install root dependencies
         run: pnpm --filter root install
 
-      # This will use the `changedFilePatterns` to check that a changeset has been added
-      # if any matched file has been changed
-      - run: pnpm changeset status --since origin/next
+      - name: Check for changes in /cli
+        id: cli-check
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
+
+        # This will use the `changedFilePatterns` to check that a changeset has been added
+        # if any matched file has been changed in /cli
+      - name: Validate changeset if /cli modified
+        if: steps.cli-check.outputs.stdout != ''
+        run: pnpm changeset status --since origin/next
 
   prettier:
     runs-on: ubuntu-latest
