@@ -31,6 +31,6 @@ Ahora deberías poder iniciar sesión.
 
 ## Siguientes pasos
 
-- Si tu aplicación incluye tRPC, consulta `src/pages/index.tsx` y `src/server/trpc/router/example.ts` para ver cómo funcionan las consultas de tRPC.
+- Si tu aplicación incluye tRPC, consulta `src/pages/index.tsx` y `src/server/trpc/router/post.ts` para ver cómo funcionan las consultas de tRPC.
 - Echa un vistazo a la documentación de `create-t3-app`, así como la documentación de los paquetes que incluye tu aplicación.
 - ¡Únete a nuestro [Discord](https://t3.gg/discord) y danos una estrella en [GitHub](https://github.com/t3-oss/create-t3-app)! :)
