@@ -94,7 +94,6 @@ jobs:
             echo "Changes detected in /cli: $changes"
             pnpm changeset status --since origin/next
             exit_status=$?
-            echo "Changeset status: $exit_status"
             if [[ $exit_status -eq 0 ]]; then
               echo "Changeset validation succeeded."
             else
