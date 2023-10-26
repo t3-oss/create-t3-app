@@ -92,8 +92,12 @@ jobs:
           git fetch origin next:next
           git diff --name-only next...${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
 
-        # This will use the `changedFilePatterns` to check that a changeset has been added
-        # if any matched file has been changed in /cli
+      # This will use the `changedFilePatterns` to check that a changeset has been added
+      # if any matched file has been changed in /cli
+      - name: Debug CLI Changes Output
+        run: |
+              echo "CLI changes output: '${{ steps.cli-check.outputs.stdout }}'"
+
       - name: Validate changeset if /cli modified
         if: steps.cli-check.outputs.stdout != 'No changes in /cli'
         run: pnpm changeset status --since origin/next
