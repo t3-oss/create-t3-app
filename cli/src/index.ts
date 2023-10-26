@@ -41,8 +41,6 @@ const main = async () => {
 
   const usePackages = buildPkgInstallerMap(packages);
 
-  // DEBUG CHANGE IN /CI DIR
-
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
 
