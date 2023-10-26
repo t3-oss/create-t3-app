@@ -86,16 +86,22 @@ jobs:
       - name: Install root dependencies
         run: pnpm --filter root install
 
-      - name: Check for changes in /cli
-        id: cli-check
+      - name: Check and Validate Changes in /cli
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^cli/' || echo "No changes in /cli"
-
-        # This will use the `changedFilePatterns` to check that a changeset has been added
-        # if any matched file has been changed in /cli
-      - name: Validate changeset if /cli modified
-        if: steps.cli-check.outputs.stdout != ''
-        run: pnpm changeset status --since origin/next
+          git fetch origin next:next
+          changes=$(git diff --name-only next...${{ github.sha }} | grep '^cli/' || true)
+          if [[ -n "$changes" ]]; then
+            echo "Changes detected in /cli: $changes"
+            pnpm changeset status --since origin/next
+            exit_status=$?
+            if [[ $exit_status -eq 0 ]]; then
+              echo "Changeset validation succeeded."
+            else
+              echo "Changeset validation failed."
+            fi
+          else
+            echo "No changes detected in /cli"
+          fi
 
   prettier:
     runs-on: ubuntu-latest
