@@ -90,7 +90,7 @@ jobs:
         run: |
           set -x
           git fetch origin next:next
-          changes=$(git diff --name-only next...${{ github.sha }} | grep '^cli/')
+          changes=$(git diff --name-only next...${{ github.sha }} | grep '^cli/' || true)
           echo "Debug: Value of 'changes' variable: $changes"
           if [[ -n "$changes" ]]; then
             echo "Debug: Entering conditional block because 'changes' is non-empty."
