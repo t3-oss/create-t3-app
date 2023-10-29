@@ -45,6 +45,6 @@ The following extensions are recommended for an optimal developer experience. Th
 
 ## Next Steps
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/example.ts` to see how tRPC queries work.
+- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/post.ts` to see how tRPC queries work.
 - Have a look around the Create T3 App docs, as well as the docs of the packages that your app includes.
 - Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
