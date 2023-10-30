@@ -1,15 +1,15 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: Struktur Folder
+description: Struktur folder aplikasi T3 yang baru dibuat
 layout: ../../layouts/docs.astro
-lang: en
+lang: id
 isMdx: true
 ---
 
 import Diagram from "../../components/docs/folderStructureDiagram.astro";
 import Form from "../../components/docs/folderStructureForm.astro";
 
-Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
+Silakan pilih paket Anda untuk melihat struktur folder dari aplikasi yang baru saja dibuat dengan pilihan tersebut. Lebih lanjut, Anda akan menemukan deskripsi dari setiap entri.
 
 <Form />
 
@@ -19,103 +19,103 @@ Please select your packages to see the folder structure of a newly scaffolded ap
 
 ### `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
+Folder `prisma` berisi file `schema.prisma` yang digunakan untuk mengkonfigurasi koneksi database dan skema database. Ini juga merupakan lokasi untuk menyimpan file migrasi dan/atau skrip seed, jika digunakan. Lihat [Penggunaan Prisma](/id/usage/prisma) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `public`
 
-The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+Folder `public` berisi aset statis yang disajikan oleh server web. File `favicon.ico` adalah contoh dari aset statis.
 
 </div>
 <div>
 
 ### `src/env`
 
-Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
+Digunakan untuk validasi variabel lingkungan dan definisi tipe - lihat [Variabel Lingkungan](usage/env-variables).
 
 </div>
 <div>
 
 ### `src/pages`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+Folder `pages` berisi semua halaman aplikasi Next.js. File `index.tsx` di direktori root `/pages` adalah halaman beranda aplikasi. File `_app.tsx` digunakan untuk membungkus aplikasi dengan penyedia. Lihat [Dokumentasi Next.js](https://nextjs.org/docs/basic-features/pages) untuk informasi lebih lanjut.
 
 </div>
 <div data-components="nextauth trpc">
 
 #### `src/pages/api`
 
-The `api` folder contains all the API routes of the Next.js application. See [Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction) for info on api routes.
+Folder `api` berisi semua rute API aplikasi Next.js. Lihat [Dokumentasi Rute API Next.js](https://nextjs.org/docs/api-routes/introduction) untuk informasi tentang rute API.
 
 </div>
 <div data-components="nextauth">
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+File `[...nextauth].ts` adalah rute slug otentikasi NextAuth.js. Digunakan untuk menangani permintaan otentikasi. Lihat [Penggunaan NextAuth.js](usage/next-auth) untuk informasi lebih lanjut tentang NextAuth.js, dan [Dokumentasi Rute Dinamis Next.js](https://nextjs.org/docs/routing/dynamic-routes) untuk informasi tentang rute tangkap semua/slug.
 
 </div>
 <div data-components="trpc">
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+File `[trpc].ts` adalah titik masuk API tRPC. Digunakan untuk menangani permintaan tRPC. Lihat [Penggunaan tRPC](usage/trpc#-pagesapitrpctrpcts) untuk informasi lebih lanjut tentang file ini, dan [Dokumentasi Rute Dinamis Next.js](https://nextjs.org/docs/routing/dynamic-routes) untuk informasi tentang rute tangkap semua/slug.
 
 </div>
 <div data-components="trpc prisma nextauth">
 
 ### `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+Folder `server` digunakan untuk memisahkan kode sisi server dengan kode sisi klien.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/auth.ts`
 
-The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+Titik masuk utama untuk logika otentikasi sisi server. Di sini, kami mengatur [opsi konfigurasi NextAuth.js](usage/next-auth), melakukan [augmentasi modul](usage/next-auth#inclusion-of-userid-on-the-session), serta menyediakan beberapa utilitas DX untuk otentikasi seperti mengambil sesi pengguna di sisi server. Lihat [Penggunaan NextAuth.js](usage/next-auth#usage-with-trpc) untuk informasi lebih lanjut.
 
 </div>
 <div data-components="prisma">
 
 #### `src/server/db.ts`
 
-The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+File `db.ts` digunakan untuk menginisialisasi klien Prisma pada lingkup global. Lihat [Penggunaan Prisma](usage/prisma#prisma-client) dan [praktik terbaik untuk menggunakan Prisma dengan Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) untuk informasi lebih lanjut.
 
 </div>
 <div data-components="trpc">
 
 ### `src/server/api`
 
-The `api` folder contains the tRPC server-side code.
+Folder `api` berisi kode sisi server tRPC.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers`
 
-The `routers` folder contains all your tRPC sub-routers.
+Folder `routers` berisi semua sub-router tRPC Anda.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers/example.ts`
 
-The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+File `example.ts` adalah contoh router tRPC yang menggunakan helper `publicProcedure` untuk menunjukkan bagaimana membuat rute tRPC publik.
 
-Depending on your chosen packages this router contains more or less routes to best demonstrate the usage to your needs.
+Tergantung pada paket yang Anda pilih, router ini mungkin berisi lebih atau kurang rute untuk mendemonstrasikan penggunaan sesuai kebutuhan Anda.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/trpc.ts`
 
-The `trpc.ts` file is the main configuration file for your tRPC back-end. In here we:
+File `trpc.ts` adalah file konfigurasi utama untuk back-end tRPC Anda. Di sini kami:
 
-1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
-2. Export procedure helpers. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
+1. Mendefinisikan konteks yang digunakan dalam permintaan tRPC. Lihat [Penggunaan tRPC](usage/trpc#-serverapitrpctrpcts) untuk informasi lebih lanjut.
+2. Eksport helper procedure. Lihat [Penggunaan tRPC](usage/trpc#-serverapitrpctrpcts) untuk informasi lebih lanjut.
 
 </div>
 
@@ -123,90 +123,90 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 
 #### `src/server/api/root.ts`
 
-The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-serverapirootts) for more information.
+File `root.ts` digunakan untuk menggabungkan router tRPC dan mengekspornya sebagai satu router, serta definisi tipe router. Lihat [Penggunaan tRPC](usage/trpc#-serverapirootts) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `src/styles`
 
-The `styles` folder contains the global styles of the application.
+Folder `styles` berisi gaya global aplikasi.
 
 </div>
 <div data-components="trpc">
 
 ### `src/utils`
 
-The `utils` folder is used to store commonly re-used utility functions.
+Folder `utils` digunakan untuk menyimpan fungsi utilitas yang sering digunakan.
 
 </div>
 <div data-components="trpc">
 
 #### `src/utils/api.ts`
 
-The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+File `api.ts` adalah titik masuk frontend ke tRPC. Lihat [Penggunaan tRPC](usage/trpc#-utilsapits) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
+File `.env` digunakan untuk menyimpan variabel lingkungan. Lihat [Variabel Lingkungan](usage/env-variables) untuk informasi lebih lanjut. File ini **tidak boleh** dicommit ke sejarah git.
 
 </div>
 <div>
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
+File `.env.example` menampilkan contoh variabel lingkungan berdasarkan pustaka yang dipilih. File ini harus dicommit ke sejarah git.
 
 </div>
 <div>
 
 ### `.eslintrc.cjs`
 
-The `.eslintrc.cjs` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+File `.eslintrc.cjs` digunakan untuk mengkonfigurasi ESLint. Lihat [Dokumentasi ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+File `next-env.d.ts` memastikan tipe Next.js diakui oleh kompiler TypeScript. **Anda tidak boleh menghapusnya atau mengeditnya karena dapat berubah kapan saja.** Lihat [Dokumentasi Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `next.config.mjs`
 
-The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+File `next.config.mjs` digunakan untuk mengkonfigurasi Next.js. Lihat [Dokumentasi Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) untuk informasi lebih lanjut. Catatan: Ekstensi .mjs digunakan untuk mengizinkan impor ESM.
 
 </div>
 <div data-components="tailwind">
 
 ### `postcss.config.cjs`
 
-The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+File `postcss.config.cjs` digunakan untuk penggunaan Tailwind PostCSS. Lihat [Dokumentasi Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) untuk informasi lebih lanjut.
 
 </div>
 <div data-components="tailwind">
 
 ### `prettier.config.mjs`
 
-The `prettier.config.mjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+File `prettier.config.mjs` digunakan untuk mengkonfigurasi Prettier agar mencakup prettier-plugin-tailwindcss untuk mengatur kelas-kelas Tailwind CSS. Lihat [posting blog Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+File `tsconfig.json` digunakan untuk mengkonfigurasi TypeScript. Beberapa non-default, seperti `strict mode`, telah diaktifkan untuk memastikan penggunaan terbaik TypeScript untuk Create T3 App dan pustakanya. Lihat [Dokumentasi TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) atau [Penggunaan TypeScript](usage/typescript) untuk informasi lebih lanjut.
 
 </div>
 <div>
 
 ### `drizzle.config.ts`
 
-The `drizzle.config.ts` file is used to configure drizzle kit. See [the documentation](https://orm.drizzle.team/kit-docs/config-reference) for more information.
+File `drizzle.config.ts` digunakan untuk mengkonfigurasi drizzle kit. Lihat [dokumentasi](https://orm.drizzle.team/kit-docs/config-reference) untuk informasi lebih lanjut.
 
 </div>
