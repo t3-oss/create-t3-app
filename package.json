@@ -22,7 +22,7 @@
     "typescript"
   ],
   "engines": {
-    "node": ">=14.16"
+    "node": ">=18.17.0"
   },
   "packageManager": "pnpm@8.5.1",
   "scripts": {
