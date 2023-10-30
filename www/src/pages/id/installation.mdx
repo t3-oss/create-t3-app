@@ -1,14 +1,14 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Instalasi
+description: Instruksi instalasi untuk Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: id
 isMdx: true
 ---
 
 import Callout from "../../components/docs/callout.tsx";
 
-To scaffold an app using `create-t3-app`, run any of the following three commands and answer the command prompt questions:
+Untuk membuat aplikasi menggunakan `create-t3-app`, jalankan salah satu dari tiga perintah berikut dan jawab pertanyaan dari prompt perintah:
 
 ### npm
 
@@ -34,38 +34,38 @@ pnpm create t3-app@latest
 bun create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Setelah aplikasi Anda telah dibuat, lihat langkah-langkah pertama [di sini](/id/usage/first-steps) untuk memulai aplikasi baru Anda.
 
-## Advanced usage
+## Penggunaan Lanjutan
 
-| Option/Flag       | Description                                                             |
+| Opsi/Flag        | Deskripsi                                                               |
 | ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| `[dir]`           | Sertakan argumen direktori dengan nama untuk proyek                     |
+| `--noGit`         | Katakan secara eksplisit kepada CLI untuk tidak menginisialisasi repo git baru di proyek |
+| `-y`, `--default` | Lewati CLI dan bootstrapping aplikasi t3 baru dengan semua opsi yang dipilih |
+| `--noInstall`     | Hasilkan proyek tanpa menginstal dependensi                               |
 
-## Experimental usage
+## Penggunaan Eksperimental
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+Untuk CI kami, kami memiliki beberapa flag eksperimental yang memungkinkan Anda membuat aplikasi tanpa prompt. Jika ini berlaku untuk Anda, Anda dapat menggunakan flag-flag ini. Harap dicatat bahwa flag-flag ini bersifat eksperimental dan dapat berubah di masa depan tanpa mengikuti semver versioning.
 
-| Flag         | Description                         |
+| Flag         | Deskripsi                         |
 | ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| `--CI`       | Beri tahu CLI bahwa Anda berada dalam mode CI  |
+| `--trpc`     | Sertakan tRPC dalam proyek         |
+| `--prisma`   | Sertakan Prisma dalam proyek       |
+| `--nextAuth` | Sertakan NextAuth.js dalam proyek  |
+| `--tailwind` | Sertakan Tailwind CSS dalam proyek |
 
 <Callout type="warning">
-  If you don't provide the `CI` flag, the rest of these flags has no effect.
+  Jika Anda tidak menyediakan flag `CI`, maka flag-flag lainnya tidak berpengaruh.
 </Callout>
 
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Anda tidak perlu secara eksplisit menolak paket yang tidak Anda inginkan. Namun, jika Anda lebih suka eksplisit, Anda dapat menyampaikan `false`, misalnya `--nextAuth false`.
 
-### Example
+### Contoh
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Berikut ini akan membuat aplikasi T3 dengan tRPC dan Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
