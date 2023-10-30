@@ -1,50 +1,50 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Langkah Pertama
+description: Memulai dengan Aplikasi T3 Baru Anda
 layout: ../../../layouts/docs.astro
-lang: en
+lang: id
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+Anda baru saja membuat kerangka dasar aplikasi T3 baru dan siap untuk mulai. Berikut adalah langkah-langkah dasar untuk membuat aplikasi Anda berfungsi.
 
 ## Database
 
 ### Prisma
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
+Jika aplikasi Anda menggunakan Prisma, pastikan untuk menjalankan `npx prisma db push` dari direktori root aplikasi Anda. Perintah ini akan menyinkronkan skema Prisma Anda dengan database Anda dan akan menghasilkan jenis TypeScript untuk Prisma Client berdasarkan skema Anda. Perhatikan bahwa Anda perlu [memulai ulang server TypeScript](https://tinytip.co/tips/vscode-restart-ts/) setelah melakukan ini agar dapat mendeteksi jenis yang dihasilkan.
 
 ### Drizzle
 
-If your app includes Drizzle, check the `.env` file for instructions on how to construct your `DATABASE_URL` env variable. Once your env file is ready, run `pnpm db:push` (or the equivalent for other package managers) to push your schema.
+Jika aplikasi Anda menggunakan Drizzle, periksa file `.env` untuk petunjuk tentang bagaimana membuat variabel lingkungan `DATABASE_URL` Anda. Setelah file lingkungan Anda siap, jalankan `pnpm db:push` (atau yang setara untuk manajer paket lainnya) untuk mengirimkan skema Anda.
 
-## Authentication
+## Otentikasi
 
-If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
+Jika aplikasi Anda menggunakan NextAuth.js, kami memulai dengan `DiscordProvider`. Ini adalah salah satu penyedia paling sederhana yang ditawarkan oleh NextAuth.js, tetapi masih memerlukan sedikit setup awal dari Anda.
 
-Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth.js offers.
+Tentu saja, jika Anda lebih suka menggunakan penyedia otentikasi yang berbeda, Anda juga dapat menggunakan salah satu [banyak penyedia](https://next-auth.js.org/providers/) yang ditawarkan oleh NextAuth.js.
 
-1. You will need a Discord account, so register one if you haven't already.
-2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
-3. Once your application has been created, navigate to "Settings → OAuth2 → General".
-4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
-5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
-6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-   - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes.
-8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
+1. Anda akan memerlukan akun Discord, jadi daftarkan satu jika Anda belum memiliki akun.
+2. Buka <https://discord.com/developers/applications> dan klik "Aplikasi Baru" di sudut kanan atas. Beri nama aplikasi Anda dan setujui Ketentuan Layanan.
+3. Setelah aplikasi Anda dibuat, buka "Pengaturan → OAuth2 → Umum".
+4. Salin "Client ID" dan tambahkan ke file `.env` Anda sebagai `DISCORD_CLIENT_ID`.
+5. Klik "Reset Secret", salin rahasia baru, dan tambahkan ke file `.env` Anda sebagai `DISCORD_CLIENT_SECRET`.
+6. Klik "Tambahkan Redirect" dan ketik `http://localhost:3000/api/auth/callback/discord`.
+   - Untuk implementasi produksi, ikuti langkah-langkah sebelumnya untuk membuat Aplikasi Discord lainnya, tetapi kali ini gantilah `http://localhost:3000` dengan URL tempat Anda akan mendeploy aplikasi Anda.
+7. Simpan Perubahan.
+8. Tetapkan `NEXTAUTH_SECRET` di dalam file `.env`. Di dalam pengembangan, setiap string akan berfungsi, untuk produksi lihat catatan di dalam file `.env` tentang cara menghasilkan rahasia yang aman.
 
-You should now be able to log in.
+Anda sekarang seharusnya dapat masuk.
 
-## Editor Setup
+## Pengaturan Editor
 
-The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
+Berikut adalah ekstensi yang direkomendasikan untuk pengalaman pengembangan yang optimal. Tautan di bawah ini menyediakan dukungan plugin yang spesifik untuk editor.
 
-- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
-- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
-- [Prettier Extension](https://prettier.io/docs/en/editors.html)
+- [Ekstensi Prisma](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Ekstensi Tailwind CSS IntelliSense](https://tailwindcss.com/docs/editor-setup)
+- [Ekstensi Prettier](https://prettier.io/docs/en/editors.html)
 
-## Next Steps
+## Langkah Selanjutnya
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/post.ts` to see how tRPC queries work.
-- Have a look around the Create T3 App docs, as well as the docs of the packages that your app includes.
-- Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+- Jika aplikasi Anda mencakup tRPC, periksa `src/pages/index.tsx` dan `src/server/api/routers/post.ts` untuk melihat bagaimana kueri tRPC bekerja.
+- Jelajahi dokumen Create T3 App, serta dokumen paket-paket yang digunakan oleh aplikasi Anda.
+- Bergabunglah dengan [Discord](https://t3.gg/discord) kami dan berikan kami bintang di [GitHub](https://github.com/t3-oss/create-t3-app)! :)

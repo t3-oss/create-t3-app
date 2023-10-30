@@ -1,37 +1,37 @@
 ---
 title: Next.js
-description: Usage of Next.js
+description: Penggunaan Next.js
 layout: ../../../layouts/docs.astro
-lang: en
+lang: id
 ---
 
-Next.js is a backend framework for your React applications.
+Next.js adalah framework backend untuk aplikasi React Anda.
 
 <div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js is a backend framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W4UhNo3HAMw" title="Next.js adalah framework backend" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out [Theo's Next.js Conf talk](https://www.youtube.com/watch?v=W4UhNo3HAMw) to get a better understanding of what Next.js is and how it works.</p>
+Lihat [presentasi Theo tentang Next.js Conf](https://www.youtube.com/watch?v=W4UhNo3HAMw) untuk mendapatkan pemahaman yang lebih baik tentang apa itu Next.js dan bagaimana cara kerjanya.</p>
 
-## Why should I use it?
+## Mengapa Harus Menggunakannya?
 
-We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths. Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers towards good decisions.
+Kami mencintai React. Ini telah membuat pengembangan UI dapat diakses dengan cara yang belum pernah kami bayangkan sebelumnya. Ini juga dapat membimbing pengembang ke jalur yang sulit. Next.js menawarkan pendekatan yang sedikit berpendapat dan sangat dioptimalkan untuk membuat aplikasi menggunakan React. Mulai dari routing hingga definisi API hingga rendering gambar, kami percayakan Next.js untuk membimbing pengembang menuju keputusan yang baik.
 
-Pairing Next.js with [Vercel](https://vercel.com/) makes developing and deploying web apps easier than ever before. Their extremely generous free-tier and super intuitive interface provides a point and click solution to deploy your site (We ❤️ Vercel)
+Menggabungkan Next.js dengan [Vercel](https://vercel.com/) membuat pengembangan dan penyebaran aplikasi web lebih mudah daripada sebelumnya. Paket gratis mereka yang sangat murah hati dan antarmuka yang sangat intuitif menyediakan solusi klik-dan-pilih untuk mendeploy situs Anda (Kami ❤️ Vercel)
 
-## Get Static/Server Props
+## Dapatkan Static/Server Props
 
-A key feature of Next.js is its data fetching capabilities. We highly recommend reading through the [official documentation](https://nextjs.org/docs/basic-features/data-fetching) to understand how to use each method and how they differ. `getServerSideProps` is generally discouraged unless there is a good reason for it, due to the fact that it is a blocking call and will slow down your site. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) is a great alternative to `getServerSideProps` when the data is dynamic and can be fetched incrementally.
+Salah satu fitur utama Next.js adalah kemampuan pengambilan data. Kami sangat menyarankan untuk membaca [dokumentasi resmi](https://nextjs.org/docs/basic-features/data-fetching) untuk memahami cara menggunakan setiap metode dan bagaimana perbedaannya. `getServerSideProps` umumnya tidak disarankan kecuali ada alasan yang baik, karena itu adalah panggilan pemblokiran dan akan melambatkan situs Anda. [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) adalah alternatif yang bagus untuk `getServerSideProps` ketika data bersifat dinamis dan dapat diambil secara bertahap.
 
-If you need to use this feature anyway, check these links out: [Advanced tRPC - Callers, functions, and gSSP](https://www.youtube.com/watch?v=G2ZzmgShHgQ) and [SSG-Helpers](https://trpc.io/docs/v9/ssg-helpers)
+Jika Anda perlu menggunakan fitur ini, periksa tautan-tautan berikut: [Advanced tRPC - Pemanggil, fungsi, dan gSSP](https://www.youtube.com/watch?v=G2ZzmgShHgQ) dan [SSG-Helpers](https://trpc.io/docs/v9/ssg-helpers)
 
-## Useful Resources
+## Sumber Daya Berguna
 
-| Resource                       | Link                               |
-| ------------------------------ | ---------------------------------- |
-| Next.js Documentation          | https://nextjs.org/docs            |
-| Next.js GitHub                 | https://github.com/vercel/next.js  |
-| Next.js Blog                   | https://nextjs.org/blog            |
-| Next.js Discord                | https://nextjs.org/discord         |
-| Next.js Twitter                | https://twitter.com/nextjs         |
-| Vercel/Next.js YouTube Channel | https://www.youtube.com/c/VercelHQ |
+| Sumber Daya                    | Tautan                                     |
+| ----------------------------- | ------------------------------------------ |
+| Dokumentasi Next.js            | <https://nextjs.org/docs>                    |
+| GitHub Next.js                | <https://github.com/vercel/next.js>         |
+| Blog Next.js                  | <https://nextjs.org/blog>                    |
+| Discord Next.js               | <https://nextjs.org/discord>                 |
+| Twitter Next.js               | <https://twitter.com/nextjs>                |
+| Saluran YouTube Vercel/Next.js | <https://www.youtube.com/c/VercelHQ>         |

@@ -1,22 +1,22 @@
 ---
 title: Docker
-description: Deployment with Docker
+description: Deployment dengan Docker
 layout: ../../../layouts/docs.astro
-lang: en
+lang: id
 ---
 
-You can containerize this stack and deploy it as a single container using Docker, or as a part of a group of containers using docker-compose. See [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) for an example repo based on this doc.
+Anda dapat membuat kontainer untuk tumpukan ini dan mendeploynya sebagai satu kontainer menggunakan Docker, atau sebagai bagian dari kelompok kontainer menggunakan docker-compose. Lihat [`ajcwebdev/ct3a-docker`](https://github.com/ajcwebdev/ct3a-docker) untuk repositori contoh berdasarkan dokumen ini.
 
-## Docker Project Configuration
+## Konfigurasi Proyek Docker
 
-Please note that Next.js requires a different process for build time (available in the frontend, prefixed by `NEXT_PUBLIC`) and runtime environment, server-side only, variables. In this demo we are using two variables, pay attention to their positions in the `Dockerfile`, command-line arguments, and `docker-compose.yml`:
+Harap perhatikan bahwa Next.js memerlukan proses yang berbeda untuk waktu kompilasi (tersedia di frontend, diawali dengan `NEXT_PUBLIC`) dan variabel runtime, hanya server-side. Dalam demo ini, kami menggunakan dua variabel, perhatikan posisinya dalam `Dockerfile`, argumen baris perintah, dan `docker-compose.yml`:
 
-- `DATABASE_URL` (used by the server)
-- `NEXT_PUBLIC_CLIENTVAR` (used by the client)
+- `DATABASE_URL` (digunakan oleh server)
+- `NEXT_PUBLIC_CLIENTVAR` (digunakan oleh client)
 
-### 1. Next Configuration
+### 1. Konfigurasi Next
 
-In your [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), add the `standalone` output-option configuration to [reduce image size by automatically leveraging output traces](https://nextjs.org/docs/advanced-features/output-file-tracing):
+Di [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) Anda, tambahkan konfigurasi output-option `standalone` untuk [mengurangi ukuran gambar secara otomatis dengan memanfaatkan jejak output](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -26,11 +26,11 @@ export default defineNextConfig({
 });
 ```
 
-### 2. Create dockerignore file
+### 2. Buat file .dockerignore
 
 <details>
     <summary>
-      Click here and include contents in <code>.dockerignore</code>:
+      Klik di sini dan sertakan konten dalam <code>.dockerignore</code>:
     </summary>
 <div class="content">
 
@@ -49,13 +49,13 @@ README.md
 
 </details>
 
-### 3. Create Dockerfile
+### 3. Buat Dockerfile
 
-> Since we're not pulling the server environment variables into our container, the [environment schema validation](/en/usage/env-variables) will fail. To prevent this, we have to add a `SKIP_ENV_VALIDATION=1` flag to the build command so that the env-schemas aren't validated at build time.
+> Karena kita tidak menarik variabel lingkungan server ke dalam kontainer kami, validasi skema lingkungan akan gagal. Untuk mencegah ini, kita harus menambahkan flag `SKIP_ENV_VALIDATION=1` ke perintah build sehingga skema env tidak divalidasi saat waktu kompilasi.
 
 <details>
     <summary>
-      Click here and include contents in <code>Dockerfile</code>:
+      Klik di sini dan sertakan konten dalam <code>Dockerfile</code>:
     </summary>
 <div class="content">
 
@@ -126,34 +126,36 @@ CMD ["node", "server.js"]
 
 ```
 
-> **_Notes_**
+> **_Catatan_**
 >
-> - _Emulation of `--platform=linux/amd64` may not be necessary after moving to Node 18._
-> - _See [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) to understand why `libc6-compat` might be needed._
-> - _Using Alpine 3.17 based images [can cause issues with Prisma](https://github.com/t3-oss/create-t3-app/issues/975). Setting `engineType = "binary"` solves the issue in Alpine 3.17, [but has an associated performance cost](https://www.prisma.io/docs/concepts/components/prisma-engines/query-engine#the-query-engine-at-runtime)._
-> - _Next.js collects [anonymous telemetry data about general usage](https://nextjs.org/telemetry). Uncomment the first instance of `ENV NEXT_TELEMETRY_DISABLED 1` to disable telemetry during the build. Uncomment the second instance to disable telemetry during runtime._
+> - _Emulasi `--platform=linux/amd64` mungkin tidak perlu setelah beralih ke Node 18._
+> - _Lihat [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) untuk memahami mengapa `libc6-compat` mungkin diperlukan._
+> - _Menggunakan gambar berbasis Alpine 3.17 [dapat menyebabkan masalah dengan Prisma](https://github.com/t3-oss/create-t3-app/issues/975). Menetapkan `engineType = "binary"` memecahkan masalah di Alpine 3.17, [tetapi memiliki biaya kinerja terkait](https://www.prisma.io/docs/concepts/components/prisma-engines/query-engine#the-query-engine-at-runtime)._
+> - _Next.js mengumpulkan [data telemetri anonim tentang penggunaan umum](https://nextjs.org/telemetry). Hapus komentar pada contoh pertama `ENV NEXT_TELEMETRY_DISABLED 1` untuk menonaktifkan telemetri selama waktu kompilasi. Hapus komentar pada contoh kedua untuk menonaktifkan telemetri selama waktu runtime._
 
 </div>
 </details>
 
-## Build and Run Image Locally
+## Bangun dan Jalankan Gambar Secara Lokal
 
-Build and run this image locally with the following commands:
+Bangun dan jalankan gambar ini secara lokal dengan perintah berikut:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
 docker run -p 3000:3000 -e DATABASE_URL="database_url_goes_here" ct3a-docker
+
+
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Buka [localhost:3000](http://localhost:3000/) untuk melihat aplikasi yang berjalan.
 
 ## Docker Compose
 
-You can also use Docker Compose to build the image and run the container.
+Anda juga dapat menggunakan Docker Compose untuk membangun gambar dan menjalankan kontainer.
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+      Ikuti langkah 1-4 di atas, klik di sini, dan sertakan konten dalam <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
@@ -175,20 +177,20 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-Run this using the `docker compose up` command:
+Jalankan ini menggunakan perintah `docker compose up`:
 
 ```bash
 docker compose up
 ```
 
-Open [localhost:3000](http://localhost:3000/) to see your running application.
+Buka [localhost:3000](http://localhost:3000/) untuk melihat aplikasi yang berjalan.
 
 </div>
 </details>
 
-## Deploy to Railway
+## Deploy ke Railway
 
-You can use a PaaS such as [Railway's](https://railway.app) automated [Dockerfile deployments](https://docs.railway.app/deploy/dockerfiles) to deploy your app. If you have the [Railway CLI installed](https://docs.railway.app/develop/cli#install) you can deploy your app with the following commands:
+Anda dapat menggunakan PaaS seperti [Railway](https://railway.app) yang otomatis [menggunakan Dockerfile untuk mendeploy aplikasi](https://docs.railway.app/deploy/dockerfiles) untuk mendeploy aplikasi Anda. Jika Anda telah menginstal [Railway CLI](https://docs.railway.app/develop/cli#install), Anda dapat mendeploy aplikasi Anda dengan perintah berikut:
 
 ```bash
 railway login
@@ -198,17 +200,17 @@ railway up
 railway open
 ```
 
-Go to "Variables" and include your `DATABASE_URL`. Then go to "Settings" and select "Generate Domain." To view a running example on Railway, visit [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
+Buka "Variables" dan sertakan `DATABASE_URL` Anda. Kemudian buka "Settings" dan pilih "Generate Domain." Untuk melihat contoh yang berjalan di Railway, kunjungi [ct3a-docker.up.railway.app](https://ct3a-docker.up.railway.app/).
 
-## Useful Resources
+## Sumber Daya Berguna
 
-| Resource                             | Link                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| Dockerfile reference                 | https://docs.docker.com/engine/reference/builder/                    |
-| Compose file version 3 reference     | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
-| Docker CLI reference                 | https://docs.docker.com/engine/reference/commandline/docker/         |
-| Docker Compose CLI reference         | https://docs.docker.com/compose/reference/                           |
-| Next.js Deployment with Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                    | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Next.js with Docker Example          | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Sumber Daya                            | Tautan                                                                  |
+| ------------------------------------   | ------------------------------------------------------------------------ |
+| Referensi Dockerfile                   | <https://docs.docker.com/engine/reference/builder/>                       |
+| Referensi Compose file versi 3         | <https://docs.docker.com/compose/compose-file/compose-file-v3/>           |
+| Referensi CLI Docker                   | <https://docs.docker.com/engine/reference/commandline/docker/>            |
+| Referensi CLI Docker Compose           | <https://docs.docker.com/compose/reference/>                              |
+| Next.js Deployment dengan Docker Image | <https://nextjs.org/docs/deployment#docker-image>                         |
+| Next.js di Docker                      | <https://benmarte.com/blog/nextjs-in-docker/>                             |
+| Contoh Next.js dengan Docker           | <https://github.com/vercel/next.js/tree/canary/examples/with-docker>      |
+| Membuat Gambar Docker dari aplikasi Next.js | <https://blog.tericcabrel.com/create-docker-image-nextjs-application/>  |

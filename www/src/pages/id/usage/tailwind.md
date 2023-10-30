@@ -1,19 +1,19 @@
 ---
 title: Tailwind CSS
-description: Usage of Tailwind CSS
+description: Penggunaan Tailwind CSS
 layout: ../../../layouts/docs.astro
-lang: en
+lang: id
 ---
 
-## What is Tailwind CSS?
+## Apa itu Tailwind CSS?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+Tailwind CSS adalah kerangka kerja CSS [bertumpu pada utilitas](https://tailwindcss.com/docs/utility-first) kecil untuk membangun desain kustom tanpa perlu beralih konteks seperti yang biasa dilakukan dalam CSS biasa. Ini adalah kerangka kerja CSS murni dan tidak menyediakan komponen atau logika pra-dibangun, serta menyediakan [seperangkat manfaat yang sangat berbeda](https://www.youtube.com/watch?v=CQuTF-bkOgc) dibandingkan dengan pustaka komponen seperti Material UI.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
+Tailwind CSS membuat penulisan CSS menjadi sangat mudah dan cepat, seperti yang ditunjukkan oleh contoh berikut:
 
-Old CSS:
+CSS Lama:
 
-1. Write CSS, often in a separate file
+1. Tulis CSS, seringkali di file terpisah
 
 ```css
 .my-class {
@@ -28,21 +28,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. Impor CSS ke dalam komponen Anda
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. Tambahkan kelas ke HTML Anda
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+Setara dalam Tailwind:
 
-1. Just write classes in your HTML
+1. Hanya menulis kelas dalam HTML Anda
 
 ```html
 <div
@@ -52,45 +52,45 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+Ketika digunakan bersama dengan Komponen React, Tailwind CSS sangat kuat untuk dengan cepat membangun UI.
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+Tailwind CSS memiliki sistem desain bawaan yang indah, yang keluar dari kotak dengan palet warna yang dipilih dengan hati-hati, pola penentuan ukuran untuk gaya seperti lebar/tinggi dan padding/margin untuk desain seragam, serta breakpoint media untuk membuat tata letak responsif. Sistem desain ini dapat disesuaikan dan diperluas untuk membuat perangkat alat gaya yang sesuai dengan kebutuhan proyek Anda.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+Tru Narla yang lebih dikenal sebagai [mewtru](https://twitter.com/trunarla) memberikan presentasi luar biasa tentang [membangun sistem desain menggunakan Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
+## Penggunaan
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+Pastikan Anda telah menginstal plugin editor untuk Tailwind untuk meningkatkan pengalaman menulis Tailwind.
 
-### Extensions and Plugins
+### Ekstensi dan Plugin
 
-- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-- [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
+- [Ekstensi VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [Integrasi JetBrains](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
+### Pemformatan
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+Kelas-kelas Tailwind CSS dapat dengan mudah menjadi sedikit berantakan, jadi pemformat untuk kelas-kelas tersebut adalah suatu keharusan. [Plugin Prettier Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) mengurutkan kelas-kelas dalam [urutan yang direkomendasikan](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) sehingga kelas-kelas sesuai dengan bundel css yang dihasilkan. Saat memilih Tailwind dalam CLI, kami akan menginstal dan mengonfigurasi ini untuk Anda.
 
-### Conditionally Applying Classes
+### Penggunaan Kelas Secara Kondisional
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+Menggunakan kelas secara kondisional dengan menggunakan operator ternary bisa menjadi sangat berantakan dan sulit dibaca. Paket-paket berikut membantu dalam mengorganisir kelas-kelas Anda saat menggunakan logika kondisional.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## Sumber Daya Berguna
 
-| Resource                     | Link                                                     |
-| ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| Sumber Daya                     | Tautan                                                         |
+| ---------------------------- | ------------------------------------------------------------------ |
+| Dokumentasi Tailwind          | <https://tailwindcss.com/docs/editor-setup/>                       |
+| Daftar Cepat Tailwind         | <https://nerdcave.com/tailwind-cheat-sheet/>                       |
+| awesome-tailwindcss          | <https://github.com/aniftyco/awesome-tailwindcss/>                 |
+| Komunitas Tailwind           | <https://github.com/tailwindlabs/tailwindcss/discussions/>         |
+| Server Discord Tailwind      | <https://tailwindcss.com/discord/>                                 |
+| Kanal Youtube TailwindLabs  | <https://www.youtube.com/tailwindlabs/>                            |
+| Tailwind Playground          | <https://play.tailwindcss.com/>                                    |

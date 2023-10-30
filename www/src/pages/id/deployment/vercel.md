@@ -1,15 +1,15 @@
 ---
 title: Vercel
-description: Deploying to Vercel
+description: Deploy ke Vercel
 layout: ../../../layouts/docs.astro
-lang: en
+lang: id
 ---
 
-We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
+Kami merekomendasikan untuk melakukan deploy aplikasi Anda ke [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Ini sangat mudah untuk melakukan deploy aplikasi Next.js.
 
-## Project Configuration
+## Konfigurasi Proyek
 
-Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands. **This is not required for most projects.**
+Vercel kemungkinan akan mengonfigurasi perintah pembangunan Anda dan direktori penerbitan secara otomatis. Namun, Anda juga dapat menentukan informasi ini bersama dengan konfigurasi lainnya dengan membuat file bernama [`vercel.json`](https://vercel.com/docs/project-configuration) dan menyertakan perintah-perintah berikut. **Ini tidak diperlukan untuk sebagian besar proyek.**
 
 ```json
 {
@@ -20,43 +20,43 @@ Vercel will likely configure your build command and publish the directory automa
 }
 ```
 
-## Using the Vercel Dashboard
+## Menggunakan Dashboard Vercel
 
-1. After pushing your code to a GitHub repository, sign up for [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) with GitHub and click on **Add New Project**.
+1. Setelah mengunggah kode Anda ke repositori GitHub, daftar ke [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) dengan GitHub dan klik **Tambahkan Proyek Baru**.
 
-![New project on Vercel](/images/vercel-new-project.webp)
+![Proyek baru di Vercel](/images/vercel-proyek-baru.webp)
 
-2. Import the GitHub repository with your project.
+2. Impor repositori GitHub dengan proyek Anda.
 
-![Import repository](/images/vercel-import-project.webp)
+![Impor repositori](/images/vercel-impor-proyek.webp)
 
-3. Add your environment variables.
+3. Tambahkan variabel lingkungan Anda.
 
-![Add environment variables](/images/vercel-env-vars.webp)
+![Tambahkan variabel lingkungan](/images/vercel-variabel-lingkungan.webp)
 
-4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
+4. Klik **Deploy**. Sekarang, setiap kali Anda melakukan perubahan pada repositori Anda, Vercel akan secara otomatis melakukan redeploy aplikasi Anda!
 
-## Using the Vercel CLI
+## Menggunakan Vercel CLI
 
-To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
+Untuk melakukan deploy dari baris perintah, Anda harus terlebih dahulu [menginstal Vercel CLI secara global](https://vercel.com/docs/cli#installing-vercel-cli).
 
 ```bash
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
+Jalankan perintah [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) untuk melakukan deploy proyek Anda.
 
 ```bash
 vercel
 ```
 
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+Sertakan `--env DATABASE_URL=URL_KONEKSI_DATABASE_ANDA_DI_SINI` untuk variabel lingkungan seperti string koneksi database. Gunakan `--yes` jika Anda ingin melewati pertanyaan-pertanyaan deployment dan memberikan jawaban default untuk setiap pertanyaan.
 
 ```bash
-vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
+vercel --env DATABASE_URL=URL_KONEKSI_DATABASE_ANDA_DI_SINI --yes
 ```
 
-After the first deployment this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
+Setelah deployment pertama, perintah ini akan melakukan deploy ke cabang pratinjau. Anda perlu menyertakan `--prod` untuk mendorong perubahan langsung ke situs langsung untuk deployment di masa mendatang.
 
 ```bash
 vercel --prod

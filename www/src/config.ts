@@ -436,7 +436,7 @@ export const SIDEBAR_HEADER_MAP: Record<
   id: {
     "Create T3 App": "Create T3 App",
     Usage: "Pemakaian",
-    Deployment: "Penyebaran",
+    Deployment: "Deployment",
   },
   fr: {
     "Create T3 App": "Create T3 App",
