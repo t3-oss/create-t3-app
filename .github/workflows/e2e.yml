@@ -29,6 +29,7 @@ jobs:
         prisma: ["true", "false"]
         appRouter: ["true", "false"]
         drizzle: ["true", "false"]
+        dbType: ["planetscale", "sqlite", "mysql", "postgresql", "neon"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}"
     steps:
@@ -39,7 +40,7 @@ jobs:
       - name: Check valid matrix
         id: matrix-valid
         run: |
-          echo "continue=${{ matrix.prisma == 'false' || matrix.drizzle == 'false' }}" >> $GITHUB_OUTPUT
+          echo "continue=${{ (matrix.prisma == 'false' || matrix.drizzle == 'false') && (matrix.drizzle == 'true' || matrix.prisma == 'true' || matrix.dbType == 'sqlite') }}" >> $GITHUB_OUTPUT
 
       - name: Install Node.js
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
@@ -79,9 +80,9 @@ jobs:
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
-      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }}
+      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }} --dbProvider=${{ matrix.dbType }}
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }} && pnpm build
+      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           NEXTAUTH_SECRET: foo

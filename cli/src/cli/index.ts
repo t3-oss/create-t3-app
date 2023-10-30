@@ -131,7 +131,7 @@ export const runCli = async (): Promise<CliResults> => {
       defaultOptions.flags.importAlias
     )
     .option(
-      "--db-provider",
+      "--dbProvider [provider]",
       `Choose a database provider to use. Possible values: ${databaseProviders.join(
         ", "
       )}`,
