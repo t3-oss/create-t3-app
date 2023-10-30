@@ -166,6 +166,37 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "es/deployment/docker" },
     ],
   },
+  id: {
+    "Create T3 App": [
+      { text: "Introduction", link: "id/introduction" },
+      { text: "Why CT3A?", link: "id/why" },
+      { text: "Installation", link: "id/installation" },
+      { text: "Folder Structure", link: "id/folder-structure" },
+      { text: "FAQ", link: "id/faq" },
+      { text: "T3 Collection", link: "id/t3-collection" },
+      { text: "Examples", link: "id/examples" },
+      { text: "Other Recommendations", link: "id/other-recs" },
+    ],
+    Usage: [
+      { text: "First Steps", link: "id/usage/first-steps" },
+      { text: "Next.js", link: "id/usage/next-js" },
+      { text: "TypeScript", link: "id/usage/typescript" },
+      { text: "tRPC", link: "id/usage/trpc" },
+      { text: "Drizzle", link: "id/usage/drizzle" },
+      { text: "Prisma", link: "id/usage/prisma" },
+      { text: "NextAuth.js", link: "id/usage/next-auth" },
+      {
+        text: "Environment Variables",
+        link: "id/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "id/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "id/deployment/vercel" },
+      { text: "Netlify", link: "id/deployment/netlify" },
+      { text: "Docker", link: "id/deployment/docker" },
+    ],
+  },
   ja: {
     "Create T3 App": [
       { text: "イントロダクション", link: "ja/introduction" },
@@ -401,6 +432,11 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "كيفية الإستخدام؟",
     Deployment: "نَشر تطبيقك",
+  },
+  id: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Pemakaian",
+    Deployment: "Penyebaran",
   },
   fr: {
     "Create T3 App": "Create T3 App",
