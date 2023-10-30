@@ -31,6 +31,7 @@ export const KNOWN_LANGUAGES = {
   en: "English",
   es: "Español",
   fr: "Français",
+  id: "Bahasa Indonesia",
   ja: "日本語",
   pt: "Português",
   ru: "Русский",
