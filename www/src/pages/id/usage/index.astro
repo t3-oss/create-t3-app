@@ -12,7 +12,7 @@ const frontmatter: Frontmatter = {
 };
 
 const lang = getLanguageFromURL(Astro.url.pathname);
-const sidebarEntries = SIDEBAR[lang]["Pemakaian"]!;
+const sidebarEntries = SIDEBAR[lang]["Usage"]!;
 const files = await Astro.glob("./*.{md,mdx,astro}");
 ---
 
