@@ -27,11 +27,11 @@ Jika Anda perlu menggunakan fitur ini, periksa tautan-tautan berikut: [Advanced 
 
 ## Sumber Daya Berguna
 
-| Sumber Daya                    | Tautan                                     |
-| ----------------------------- | ------------------------------------------ |
-| Dokumentasi Next.js            | <https://nextjs.org/docs>                    |
-| GitHub Next.js                | <https://github.com/vercel/next.js>         |
-| Blog Next.js                  | <https://nextjs.org/blog>                    |
-| Discord Next.js               | <https://nextjs.org/discord>                 |
-| Twitter Next.js               | <https://twitter.com/nextjs>                |
-| Saluran YouTube Vercel/Next.js | <https://www.youtube.com/c/VercelHQ>         |
+| Sumber Daya                    | Tautan                               |
+| ------------------------------ | ------------------------------------ |
+| Dokumentasi Next.js            | <https://nextjs.org/docs>            |
+| GitHub Next.js                 | <https://github.com/vercel/next.js>  |
+| Blog Next.js                   | <https://nextjs.org/blog>            |
+| Discord Next.js                | <https://nextjs.org/discord>         |
+| Twitter Next.js                | <https://twitter.com/nextjs>         |
+| Saluran YouTube Vercel/Next.js | <https://www.youtube.com/c/VercelHQ> |

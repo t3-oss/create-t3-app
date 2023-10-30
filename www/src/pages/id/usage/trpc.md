@@ -379,8 +379,8 @@ test("contoh router yang dilindungi", async () => {
 
 ## Sumber Daya Berguna
 
-| Sumber Daya         | Tautan                                                  |
-| ------------------- | ------------------------------------------------------- |
-| Dokumentasi tRPC    | <https://www.trpc.io>                                     |
-| Banyak Contoh tRPC  | <https://github.com/trpc/trpc/tree/next/examples>         |
+| Sumber Daya             | Tautan                                                    |
+| ----------------------- | --------------------------------------------------------- |
+| Dokumentasi tRPC        | <https://www.trpc.io>                                     |
+| Banyak Contoh tRPC      | <https://github.com/trpc/trpc/tree/next/examples>         |
 | Dokumentasi React Query | <https://tanstack.com/query/v4/docs/adapters/react-query> |

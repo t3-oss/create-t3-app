@@ -59,9 +59,9 @@ Lihat video Theo tentang [Anda mungkin salah menggunakan TypeScript](https://www
 
 ## Sumber Daya Berguna
 
-| Sumber Daya                            | Tautan                                                              |
-| -------------------------------------- | ------------------------------------------------------------------- |
-| Panduan TypeScript                      | <https://www.typescriptlang.org/docs/handbook/>                     |
-| Tutorial TypeScript untuk Pemula       | <https://github.com/total-typescript/beginners-typescript-tutorial> |
-| Tantangan Tipe                         | <https://github.com/type-challenges/type-challenges>                |
+| Sumber Daya                                                      | Tautan                                                              |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Panduan TypeScript                                               | <https://www.typescriptlang.org/docs/handbook/>                     |
+| Tutorial TypeScript untuk Pemula                                 | <https://github.com/total-typescript/beginners-typescript-tutorial> |
+| Tantangan Tipe                                                   | <https://github.com/type-challenges/type-challenges>                |
 | Saluran Youtube "Rodney Mullen" (Matt Pocock) tentang TypeScript | <https://www.youtube.com/c/MattPocockUk/videos>                     |

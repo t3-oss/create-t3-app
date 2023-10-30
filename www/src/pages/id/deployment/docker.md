@@ -204,13 +204,13 @@ Buka "Variables" dan sertakan `DATABASE_URL` Anda. Kemudian buka "Settings" dan 
 
 ## Sumber Daya Berguna
 
-| Sumber Daya                            | Tautan                                                                  |
-| ------------------------------------   | ------------------------------------------------------------------------ |
-| Referensi Dockerfile                   | <https://docs.docker.com/engine/reference/builder/>                       |
-| Referensi Compose file versi 3         | <https://docs.docker.com/compose/compose-file/compose-file-v3/>           |
-| Referensi CLI Docker                   | <https://docs.docker.com/engine/reference/commandline/docker/>            |
-| Referensi CLI Docker Compose           | <https://docs.docker.com/compose/reference/>                              |
-| Next.js Deployment dengan Docker Image | <https://nextjs.org/docs/deployment#docker-image>                         |
-| Next.js di Docker                      | <https://benmarte.com/blog/nextjs-in-docker/>                             |
-| Contoh Next.js dengan Docker           | <https://github.com/vercel/next.js/tree/canary/examples/with-docker>      |
-| Membuat Gambar Docker dari aplikasi Next.js | <https://blog.tericcabrel.com/create-docker-image-nextjs-application/>  |
+| Sumber Daya                                 | Tautan                                                                 |
+| ------------------------------------------- | ---------------------------------------------------------------------- |
+| Referensi Dockerfile                        | <https://docs.docker.com/engine/reference/builder/>                    |
+| Referensi Compose file versi 3              | <https://docs.docker.com/compose/compose-file/compose-file-v3/>        |
+| Referensi CLI Docker                        | <https://docs.docker.com/engine/reference/commandline/docker/>         |
+| Referensi CLI Docker Compose                | <https://docs.docker.com/compose/reference/>                           |
+| Next.js Deployment dengan Docker Image      | <https://nextjs.org/docs/deployment#docker-image>                      |
+| Next.js di Docker                           | <https://benmarte.com/blog/nextjs-in-docker/>                          |
+| Contoh Next.js dengan Docker                | <https://github.com/vercel/next.js/tree/canary/examples/with-docker>   |
+| Membuat Gambar Docker dari aplikasi Next.js | <https://blog.tericcabrel.com/create-docker-image-nextjs-application/> |

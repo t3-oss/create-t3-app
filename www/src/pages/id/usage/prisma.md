@@ -69,10 +69,10 @@ Kemudian, cukup jalankan `pnpm db-seed` (atau `npm`/`yarn`) untuk menyemai basis
 
 ## Sumber Daya Berguna
 
-| Sumber Daya                     | Tautan                                                                                                                                               |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dokumentasi Prisma              | <https://www.prisma.io/docs/>                                                                                                                           |
-| GitHub Prisma                  | <https://github.com/prisma/prisma>                                                                                                                      |
-| Prisma Migrate Playground      | <https://playground.prisma.io/guides>                                                                                                                   |
-| Adapter Prisma NextAuth.JS     | <https://next-auth.js.org/adapters/prisma>                                                                                                              |
-| Panduan Koneksi Planetscale    | <https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale> |
+| Sumber Daya                 | Tautan                                                                                                                                              |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dokumentasi Prisma          | <https://www.prisma.io/docs/>                                                                                                                       |
+| GitHub Prisma               | <https://github.com/prisma/prisma>                                                                                                                  |
+| Prisma Migrate Playground   | <https://playground.prisma.io/guides>                                                                                                               |
+| Adapter Prisma NextAuth.JS  | <https://next-auth.js.org/adapters/prisma>                                                                                                          |
+| Panduan Koneksi Planetscale | <https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale> |

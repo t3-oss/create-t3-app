@@ -85,12 +85,12 @@ Menggunakan kelas secara kondisional dengan menggunakan operator ternary bisa me
 
 ## Sumber Daya Berguna
 
-| Sumber Daya                     | Tautan                                                         |
-| ---------------------------- | ------------------------------------------------------------------ |
-| Dokumentasi Tailwind          | <https://tailwindcss.com/docs/editor-setup/>                       |
-| Daftar Cepat Tailwind         | <https://nerdcave.com/tailwind-cheat-sheet/>                       |
-| awesome-tailwindcss          | <https://github.com/aniftyco/awesome-tailwindcss/>                 |
-| Komunitas Tailwind           | <https://github.com/tailwindlabs/tailwindcss/discussions/>         |
-| Server Discord Tailwind      | <https://tailwindcss.com/discord/>                                 |
-| Kanal Youtube TailwindLabs  | <https://www.youtube.com/tailwindlabs/>                            |
-| Tailwind Playground          | <https://play.tailwindcss.com/>                                    |
+| Sumber Daya                | Tautan                                                     |
+| -------------------------- | ---------------------------------------------------------- |
+| Dokumentasi Tailwind       | <https://tailwindcss.com/docs/editor-setup/>               |
+| Daftar Cepat Tailwind      | <https://nerdcave.com/tailwind-cheat-sheet/>               |
+| awesome-tailwindcss        | <https://github.com/aniftyco/awesome-tailwindcss/>         |
+| Komunitas Tailwind         | <https://github.com/tailwindlabs/tailwindcss/discussions/> |
+| Server Discord Tailwind    | <https://tailwindcss.com/discord/>                         |
+| Kanal Youtube TailwindLabs | <https://www.youtube.com/tailwindlabs/>                    |
+| Tailwind Playground        | <https://play.tailwindcss.com/>                            |
