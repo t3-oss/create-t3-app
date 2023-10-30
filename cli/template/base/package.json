@@ -23,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.47.0",
-    "eslint-config-next": "^13.5.4",
+    "eslint-config-next": "^14.0.0",
     "typescript": "^5.1.6"
   }
 }
