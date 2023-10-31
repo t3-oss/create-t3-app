@@ -9,7 +9,8 @@ interface App {
 
 const projects: App[] = [
   {
-    description: "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
+    description:
+      "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
     repoName: "meetqy/rao-pics",
     repo: "https://github.com/meetqy/rao-pics",
     linkName: "rao.pics",
