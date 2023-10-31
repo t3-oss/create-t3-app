@@ -14,7 +14,7 @@ const projects: App[] = [
     repo: "https://github.com/meetqy/rao-pics",
     linkName: "rao.pics",
     link: "https://rao.pics",
-  }
+  },
   {
     description: "OpenBio - Open Source Link in Bio",
     repoName: "vanxh/openbio",
