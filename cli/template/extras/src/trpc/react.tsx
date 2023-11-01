@@ -30,6 +30,7 @@ export function TRPCReactProvider(props: {
           headers() {
             const heads = new Map(props.headers);
             heads.set("x-trpc-source", "react");
+            heads.delete("content-length");
             return Object.fromEntries(heads);
           },
         }),
