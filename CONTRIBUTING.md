@@ -92,8 +92,6 @@ git add .changeset/*.md && git commit -m "chore: add changeset"
 
 When all that's done, it's time to file a pull request to upstream:
 
-**NOTE**: All pull requests should target the `next` branch. `main` has been feature-locked since 2022-10-06.
-
 ```bash
 gh pr create --web
 ```
