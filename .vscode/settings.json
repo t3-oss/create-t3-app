@@ -6,6 +6,9 @@
   "editor.formatOnSave": true,
   "editor.rulers": [100],
   "editor.tabSize": 2,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
 
   "eslint.validate": [
     "javascript",
@@ -27,5 +30,14 @@
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

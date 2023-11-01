@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.22.0
+
+### Minor Changes
+
+- [#1567](https://github.com/t3-oss/create-t3-app/pull/1567) [`e71bedd`](https://github.com/t3-oss/create-t3-app/commit/e71bedde0d6944fa7719a5f97cd27a1503156faa) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add app router option
+
+- [#1595](https://github.com/t3-oss/create-t3-app/pull/1595) [`d7824e0`](https://github.com/t3-oss/create-t3-app/commit/d7824e0e2523703662b731945229e2fae88708ae) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - show callout when scaffolding with app router
+
+## 7.21.0
+
+### Minor Changes
+
+- [#1584](https://github.com/t3-oss/create-t3-app/pull/1584) [`9614d84`](https://github.com/t3-oss/create-t3-app/commit/9614d8424d810278facf012fb99d1da51d2238e6) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump deps and add `emptyStringAsUndefined` option for `t3-env`
+
 ## 7.20.2
 
 ### Patch Changes

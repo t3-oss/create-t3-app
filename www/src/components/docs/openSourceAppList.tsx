@@ -250,6 +250,14 @@ const projects: App[] = [
     linkName: "henriqgoncalvs.com",
     link: "https://henriqgoncalvs.com",
   },
+
+  {
+    description: "Code Notes - Takes your notes without any b*llshit",
+    repoName: "JungRama/code-notes",
+    repo: "https://github.com/JungRama/code-notes",
+    linkName: "code-notes-app.vercel.app",
+    link: "https://code-notes-app.vercel.app",
+  },
 ];
 
 export default function OpenSourceAppList({

@@ -53,6 +53,7 @@ _**Примечание редактора**_: Библиотеки управл
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
+- [@shadcn/ui](https://ui.shadcn.com/)
 
 ### Class Variance Authority
 
