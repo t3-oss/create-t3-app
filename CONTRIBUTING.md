@@ -92,8 +92,6 @@ git add .changeset/*.md && git commit -m "chore: add changeset"
 
 When all that's done, it's time to file a pull request to upstream:
 
-**NOTE**: All pull requests should target the `next` branch. `main` has been feature-locked since 2022-10-06.
-
 ```bash
 gh pr create --web
 ```
@@ -102,7 +100,7 @@ and fill out the title and body appropriately. Again, make sure to follow the [c
 
 ## Translations
 
-For more information on how to help with translation, please see the [contributing guidelines for our docs](https://github.com/t3-oss/create-t3-app/blob/next/www/TRANSLATIONS.md).
+For more information on how to help with translation, please see the [contributing guidelines for our docs](https://github.com/t3-oss/create-t3-app/blob/main/www/TRANSLATIONS.md).
 
 ## Credits
 
