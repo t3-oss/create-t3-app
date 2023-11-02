@@ -9,14 +9,6 @@ interface App {
 
 const projects: App[] = [
   {
-    description:
-      "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
-    repoName: "meetqy/rao-pics",
-    repo: "https://github.com/meetqy/rao-pics",
-    linkName: "rao.pics",
-    link: "https://rao.pics",
-  },
-  {
     description: "OpenBio - Open Source Link in Bio",
     repoName: "vanxh/openbio",
     repo: "https://github.com/vanxh/openbio",
@@ -265,6 +257,14 @@ const projects: App[] = [
     repo: "https://github.com/JungRama/code-notes",
     linkName: "code-notes-app.vercel.app",
     link: "https://code-notes-app.vercel.app",
+  },
+  {
+    description:
+      "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
+    repoName: "meetqy/rao-pics",
+    repo: "https://github.com/meetqy/rao-pics",
+    linkName: "rao.pics",
+    link: "https://rao.pics",
   },
 ];
 
