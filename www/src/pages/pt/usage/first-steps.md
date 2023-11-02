@@ -31,6 +31,6 @@ Agora você deve conseguir fazer login.
 
 ## Próximos passos
 
-- Se sua aplicação incluir tRPC, confira `src/pages/index.tsx` e `src/server/trpc/router/example.ts` para ver como funcionam as consultas tRPC.
+- Se sua aplicação incluir tRPC, confira `src/pages/index.tsx` e `src/server/trpc/router/post.ts` para ver como funcionam as consultas tRPC.
 - Dê uma olhada na documentação `create-t3-app`, bem como nos documentos dos pacotes que sua aplicação inclui.
 - Junte-se ao nosso [Discord](https://t3.gg/discord) e dê-nos uma estrela no [GitHub](https://github.com/t3-oss/create-t3-app)! :)

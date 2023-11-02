@@ -1,5 +1,6 @@
 ---
 import Button from "./button.astro";
+import ClipboardSelect from "./ClipboardSelect";
 ---
 
 <div class="py-12 sm:py-8 md:py-12 lg:py-14 xl:py-12 2xl:py-28">
@@ -69,43 +70,12 @@ import Button from "./button.astro";
 
               <div class="flex w-full flex-col items-center">
                 <div class="relative mt-4 flex h-full xl:mt-8">
-                  <button
-                    class="relative flex cursor-pointer flex-row items-center gap-2 rounded-md border border-t3-purple-200/20 bg-t3-purple-100/10 px-2 py-2 text-sm transition-colors duration-300 hover:border-t3-purple-300/50 hover:bg-t3-purple-100/20 md:px-3 md:py-3 md:text-lg lg:px-5 lg:py-4 lg:text-xl"
-                    title="Copy the command to get started"
-                    id="command"
+                  <div
+                    class="relative flex items-center rounded-lg border border-t3-purple-200/20 bg-t3-purple-100/10 px-2 py-2 text-sm md:px-3 md:py-3 md:text-lg lg:px-5 lg:py-4 lg:text-xl"
                   >
-                    <code id="command-text">npm create t3-app@latest</code>
-                    <svg
-                      id="copy-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      ><rect x="9" y="9" width="13" height="13" rx="2" ry="2"
-                      ></rect><path
-                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                      ></path>
-                    </svg>
-                    <svg
-                      id="check-icon"
-                      class="hidden"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      ><polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </button>
+                    <code class="mr-12">npm create t3-app@latest</code>
+                    <ClipboardSelect client:load />
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,44 +83,5 @@ import Button from "./button.astro";
         </div>
       </div>
     </div>
-    <script is:inline>
-      const command = document.querySelector("#command");
-      const commandText = document.querySelector("#command-text");
-      const copyIcon = document.querySelector("#copy-icon");
-      const checkIcon = document.querySelector("#check-icon");
-      let cooldown = false;
-
-      function toggleIcons() {
-        copyIcon.classList.toggle("hidden");
-        checkIcon.classList.toggle("hidden");
-      }
-
-      command.addEventListener("click", () => {
-        if (cooldown === false) {
-          cooldown = true;
-          navigator.clipboard.writeText(commandText.innerText);
-          toggleIcons();
-
-          setTimeout(() => {
-            toggleIcons();
-            cooldown = false;
-          }, 2000);
-        }
-      });
-    </script>
   </div>
-
-  <style>
-    #check-icon {
-      stroke-dasharray: 450;
-      stroke-dashoffset: -30;
-      animation: draw 2s linear normal;
-    }
-
-    @keyframes draw {
-      to {
-        stroke-dashoffset: 200;
-      }
-    }
-  </style>
 </div>
