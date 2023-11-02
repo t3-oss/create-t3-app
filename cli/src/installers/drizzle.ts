@@ -17,7 +17,6 @@ export const drizzleInstaller: Installer = ({
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
   if (databaseProvider === "postgres") devPackages.push("@types/pg");
   if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
-  if (databaseProvider === "neon") devPackages.push("pg");
 
   addPackageDependency({
     projectDir,
@@ -34,7 +33,6 @@ export const drizzleInstaller: Installer = ({
           mysql: "mysql2",
           postgres: "pg",
           sqlite: "better-sqlite3",
-          neon: "@neondatabase/serverless",
         } as const
       )[databaseProvider],
     ],
@@ -66,7 +64,6 @@ export const drizzleInstaller: Installer = ({
   const dbType = (
     {
       postgres: "pg",
-      neon: "pg",
       sqlite: "sqlite",
       mysql: "mysql",
       planetscale: "mysql",
@@ -77,9 +74,8 @@ export const drizzleInstaller: Installer = ({
     configContent = configContent.replace(
       "mysql2",
       {
-        postgres: "pg",
-        neon: "pg",
         sqlite: "better-sqlite",
+        postgres: "pg",
       }[databaseProvider]
     );
     if (databaseProvider === "sqlite")

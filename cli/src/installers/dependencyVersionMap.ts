@@ -22,7 +22,6 @@ export const dependencyVersionMap = {
   "@types/pg": "^8.10.7",
   "@types/better-sqlite3": "^7.6.6",
   "better-sqlite3": "^9.0.0",
-  "@neondatabase/serverless": "^0.6.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.3",

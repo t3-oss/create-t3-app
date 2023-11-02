@@ -29,7 +29,7 @@ jobs:
         prisma: ["true", "false"]
         appRouter: ["true", "false"]
         drizzle: ["true", "false"]
-        dbType: ["planetscale", "sqlite", "mysql", "postgresql", "neon"]
+        dbType: ["planetscale", "sqlite", "mysql", "postgresql"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}"
     steps:

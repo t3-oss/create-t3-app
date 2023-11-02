@@ -76,7 +76,7 @@ const getEnvContent = (
       DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
     } else if (databaseProvider === "mysql") {
       content += `DATABASE_URL='mysql://username:password@localhost:3306/db_name?schema=public'`;
-    } else if (databaseProvider === "postgres" || databaseProvider === "neon") {
+    } else if (databaseProvider === "postgres") {
       content += `DATABASE_URL='postgresql://username:password@localhost:5432/db_name?schema=public'`;
     } else if (databaseProvider === "sqlite") {
       content += `DATABASE_URL='file:./db.sqlite'`;

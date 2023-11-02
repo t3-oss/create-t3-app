@@ -23,7 +23,6 @@ export const databaseProviders = [
   "postgres",
   "sqlite",
   "planetscale",
-  "neon",
 ] as const;
 export type DatabaseProvider = (typeof databaseProviders)[number];
 
