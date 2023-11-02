@@ -11,6 +11,11 @@ const companies: Company[] = [
     link: "https://ping.gg",
   },
   {
+    name: "Social Crow",
+    linkName: "socialcrow.co",
+    link: "https://www.socialcrow.co",
+  },
+  {
     name: "Nexiona",
     linkName: "nexiona.com",
     link: "https://nexiona.com",
