@@ -258,6 +258,14 @@ const projects: App[] = [
     linkName: "code-notes-app.vercel.app",
     link: "https://code-notes-app.vercel.app",
   },
+  {
+    description:
+      "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
+    repoName: "meetqy/rao-pics",
+    repo: "https://github.com/meetqy/rao-pics",
+    linkName: "rao.pics",
+    link: "https://rao.pics",
+  },
 ];
 
 export default function OpenSourceAppList({
