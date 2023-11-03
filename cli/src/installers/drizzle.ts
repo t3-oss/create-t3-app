@@ -39,6 +39,15 @@ export const drizzleInstaller: Installer = ({
     devMode: false,
   });
 
+  const dbType = (
+    {
+      postgres: "postgres",
+      sqlite: "sqlite",
+      mysql: "mysql",
+      planetscale: "mysql",
+    } as const
+  )[databaseProvider];
+
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const configFile = path.join(extrasDir, "config/drizzle.config.ts");
@@ -46,10 +55,8 @@ export const drizzleInstaller: Installer = ({
 
   const schemaSrc = path.join(
     extrasDir,
-    "src/server/db",
-    packages?.nextAuth.inUse
-      ? "drizzle-schema-auth.ts"
-      : "drizzle-schema-base.ts"
+    "src/server/db/schema-drizzle",
+    packages?.nextAuth.inUse ? `with-auth-${dbType}.ts` : `base-${dbType}.ts`
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
@@ -61,76 +68,8 @@ export const drizzleInstaller: Installer = ({
   );
 
   let configContent = fs.readFileSync(configFile, "utf-8");
-  const dbType = (
-    {
-      postgres: "pg",
-      sqlite: "sqlite",
-      mysql: "mysql",
-      planetscale: "mysql",
-    } as const
-  )[databaseProvider];
-  configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
-  if (databaseProvider !== "mysql" && databaseProvider !== "planetscale") {
-    configContent = configContent.replace(
-      "mysql2",
-      {
-        sqlite: "better-sqlite",
-        postgres: "pg",
-      }[databaseProvider]
-    );
-    if (databaseProvider === "sqlite")
-      configContent = configContent.replace("connectionString:", "url:");
 
-    schemaContent = schemaContent.replace(
-      "drizzle-orm/mysql-core",
-      `drizzle-orm/${dbType}-core`
-    );
-    schemaContent = schemaContent.replaceAll(
-      "mysqlTableCreator",
-      `${dbType}TableCreator`
-    );
-    schemaContent = schemaContent.replaceAll(".onUpdateNow()", "");
-    if (dbType === "sqlite") {
-      if (packages?.nextAuth.inUse) {
-        schemaContent = schemaContent.replace("  varchar,\n", "");
-        schemaContent = schemaContent.replace("  bigint,\n", "");
-      }
-      schemaContent = schemaContent.replace("  timestamp,\n", "");
-      schemaContent = schemaContent.replaceAll("varchar", "text");
-      schemaContent = schemaContent.replaceAll("bigint", "int");
-      schemaContent = schemaContent.replace(
-        /timestamp\("([a-zA-Z\-_]+)", { mode: "date" }\)/g,
-        'int("$1", { mode: "timestamp_ms" })'
-      );
-      schemaContent = schemaContent.replace(
-        /timestamp\("([a-zA-Z\-_]+)"\)/g,
-        'int("$1", { mode: "timestamp" })'
-      );
-      schemaContent = schemaContent.replace(
-        `timestamp("emailVerified", {
-    mode: "date",
-    fsp: 3,
-  })`,
-        'int("emailVerified", { mode: "timestamp" })'
-      );
-      schemaContent = schemaContent.replaceAll(
-        ".primaryKey().autoincrement()",
-        ".primaryKey({ autoIncrement: true })"
-      );
-    }
-    if (dbType === "pg") {
-      schemaContent = schemaContent.replace("  bigint,\n", "");
-      schemaContent = schemaContent.replace(
-        "  int,\n",
-        "  integer as int,\n  serial,\n"
-      );
-      schemaContent = schemaContent.replace(
-        'id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),',
-        'id: serial("post_id").primaryKey(),'
-      );
-      schemaContent = schemaContent.replace("fsp: ", "precision: ");
-    }
-  }
+  configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
 
   const clientSrc = path.join(
     extrasDir,
@@ -144,7 +83,9 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": `dotenv drizzle-kit push:${dbType}`,
+    "db:push": `dotenv drizzle-kit push:${
+      dbType === "postgres" ? "pg" : dbType
+    }`,
     "db:studio": "dotenv drizzle-kit studio",
   };
 

@@ -31,7 +31,7 @@ jobs:
         drizzle: ["true", "false"]
         dbType: ["planetscale", "sqlite", "mysql", "postgresql"]
 
-    name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}"
+    name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }}"
     steps:
       - uses: actions/checkout@v3
         with:
