@@ -74,7 +74,7 @@ export const buildPkgInstallerMap = (
   },
   dbContainer: {
     inUse: ["mysql", "postgres"].includes(databaseProvider),
-    installer: () => dbContainerInstaller,
+    installer: dbContainerInstaller,
   },
   envVariables: {
     inUse: true,

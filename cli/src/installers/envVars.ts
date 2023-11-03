@@ -86,13 +86,17 @@ const getEnvContent = (
 # Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
 DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
     } else if (databaseProvider === "mysql") {
-      content += `DATABASE_PASSWORD=${generateRandomString(12)}
-DATABASE_URL="mysql://root:$DATABASE_PASSWORD@localhost:3306/${projectName}"`;
+      content += `DATABASE_URL="mysql://root:${generateRandomString(
+        12
+      )}@localhost:3306/${projectName}"`;
     } else if (databaseProvider === "postgres") {
-      content += `DATABASE_PASSWORD=${generateRandomString(12)}
-DATABASE_URL="postgresql://postgres:$DATABASE_PASSWORD@localhost:5432/${projectName}?schema=public"`;
+      content += `DATABASE_URL="postgresql://postgres:${generateRandomString(
+        12
+      )}@localhost:5432/${projectName}"`;
     } else if (databaseProvider === "sqlite") {
-      content += `DATABASE_URL="db.sqlite"`;
+      content += usingPrisma
+        ? 'DATABASE_URL="file:./db.sqlite"'
+        : 'DATABASE_URL="db.sqlite"';
     }
     content += "\n";
   }
