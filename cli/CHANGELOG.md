@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.23.0
+
+### Minor Changes
+
+- [#1628](https://github.com/t3-oss/create-t3-app/pull/1628) [`57a82d2`](https://github.com/t3-oss/create-t3-app/commit/57a82d2f4c1a34068280a1f01c1f2618af260650) Thanks [@CarlosZiegler](https://github.com/CarlosZiegler)! - Update Next to use last version (14.0.0)
+
 ## 7.22.0
 
 ### Minor Changes
