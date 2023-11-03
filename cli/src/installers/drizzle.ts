@@ -15,7 +15,6 @@ export const drizzleInstaller: Installer = ({
 }) => {
   const devPackages: AvailableDependencies[] = ["drizzle-kit", "dotenv-cli"];
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
-  if (databaseProvider === "postgres") devPackages.push("@types/pg");
   if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
 
   addPackageDependency({
@@ -31,7 +30,7 @@ export const drizzleInstaller: Installer = ({
         {
           planetscale: "@planetscale/database",
           mysql: "mysql2",
-          postgres: "pg",
+          postgres: "postgres",
           sqlite: "better-sqlite3",
         } as const
       )[databaseProvider],
@@ -50,7 +49,12 @@ export const drizzleInstaller: Installer = ({
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const configFile = path.join(extrasDir, "config/drizzle.config.ts");
+  const configFile = path.join(
+    extrasDir,
+    `config/drizzle-config-${
+      databaseProvider === "planetscale" ? "mysql" : databaseProvider
+    }.ts`
+  );
   const configDest = path.join(projectDir, "drizzle.config.ts");
 
   const schemaSrc = path.join(

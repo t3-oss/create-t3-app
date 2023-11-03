@@ -18,8 +18,7 @@ export const dependencyVersionMap = {
   "dotenv-cli": "^7.3.0",
   mysql2: "^3.6.1",
   "@planetscale/database": "^1.11.0",
-  pg: "^8.11.3",
-  "@types/pg": "^8.10.7",
+  postgres: "^3.4.3",
   "@types/better-sqlite3": "^7.6.6",
   "better-sqlite3": "^9.0.0",
 
