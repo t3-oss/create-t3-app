@@ -40,8 +40,15 @@ export const envVariablesInstaller: Installer = ({
       "template/extras/src/env",
       envFile
     );
+    const envFileText = fs.readFileSync(envSchemaSrc, "utf-8");
     const envSchemaDest = path.join(projectDir, "src/env.mjs");
-    fs.copySync(envSchemaSrc, envSchemaDest);
+    fs.writeFileSync(
+      envSchemaDest,
+      databaseProvider === "sqlite"
+        ? envFileText.replace("\n      .url()", "")
+        : envFileText,
+      "utf-8"
+    );
   }
 
   const envDest = path.join(projectDir, ".env");
@@ -85,7 +92,7 @@ DATABASE_URL="mysql://root:$DATABASE_PASSWORD@localhost:3306/${projectName}"`;
       content += `DATABASE_PASSWORD=${generateRandomString(12)}
 DATABASE_URL="postgresql://postgres:$DATABASE_PASSWORD@localhost:5432/${projectName}?schema=public"`;
     } else if (databaseProvider === "sqlite") {
-      content += `DATABASE_URL="file:./db.sqlite"`;
+      content += `DATABASE_URL="db.sqlite"`;
     }
     content += "\n";
   }
