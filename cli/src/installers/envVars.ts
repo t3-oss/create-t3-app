@@ -3,11 +3,13 @@ import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
 import { type DatabaseProvider, type Installer } from "~/installers/index.js";
+import { generateRandomString } from "~/utils/randomString.js";
 
 export const envVariablesInstaller: Installer = ({
   projectDir,
   packages,
   databaseProvider,
+  projectName,
 }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
@@ -19,7 +21,8 @@ export const envVariablesInstaller: Installer = ({
     !!usingAuth,
     !!usingPrisma,
     !!usingDrizzle,
-    databaseProvider
+    databaseProvider,
+    projectName
   );
 
   const envFile =
@@ -52,7 +55,8 @@ const getEnvContent = (
   usingAuth: boolean,
   usingPrisma: boolean,
   usingDrizzle: boolean,
-  databaseProvider: DatabaseProvider
+  databaseProvider: DatabaseProvider,
+  projectName: string
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.mjs"
@@ -72,14 +76,16 @@ const getEnvContent = (
   if (usingPrisma || usingDrizzle) {
     if (databaseProvider === "planetscale") {
       content += `Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
-      # Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
-      DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
+# Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
+DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
     } else if (databaseProvider === "mysql") {
-      content += `DATABASE_URL='mysql://username:password@localhost:3306/db_name?schema=public'`;
+      content += `DATABASE_PASSWORD=${generateRandomString(12)}
+DATABASE_URL="mysql://root:$DATABASE_PASSWORD@localhost:3306/${projectName}"`;
     } else if (databaseProvider === "postgres") {
-      content += `DATABASE_URL='postgresql://username:password@localhost:5432/db_name?schema=public'`;
+      content += `DATABASE_PASSWORD=${generateRandomString(12)}
+DATABASE_URL="postgresql://postgres:$DATABASE_PASSWORD@localhost:5432/${projectName}?schema=public"`;
     } else if (databaseProvider === "sqlite") {
-      content += `DATABASE_URL='file:./db.sqlite'`;
+      content += `DATABASE_URL="file:./db.sqlite"`;
     }
     content += "\n";
   }

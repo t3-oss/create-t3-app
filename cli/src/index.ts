@@ -40,7 +40,7 @@ const main = async () => {
     databaseProvider,
   } = await runCli();
 
-  const usePackages = buildPkgInstallerMap(packages);
+  const usePackages = buildPkgInstallerMap(packages, databaseProvider);
 
   // e.g. dir/@mono/app returns ["@mono/app", "dir/app"]
   const [scopedAppName, appDir] = parseNameAndPath(appName);
@@ -99,6 +99,7 @@ const main = async () => {
     appRouter,
     noInstall,
     projectDir,
+    databaseProvider,
   });
 
   process.exit(0);
