@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.23.1
+
+### Patch Changes
+
+- [#1644](https://github.com/t3-oss/create-t3-app/pull/1644) [`e6649f1`](https://github.com/t3-oss/create-t3-app/commit/e6649f18963086b2d016815e60cc9915711a85d8) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: only forward required cookie header
+
+## 7.23.0
+
+### Minor Changes
+
+- [#1628](https://github.com/t3-oss/create-t3-app/pull/1628) [`57a82d2`](https://github.com/t3-oss/create-t3-app/commit/57a82d2f4c1a34068280a1f01c1f2618af260650) Thanks [@CarlosZiegler](https://github.com/CarlosZiegler)! - Update Next to use last version (14.0.0)
+
 ## 7.22.0
 
 ### Minor Changes
