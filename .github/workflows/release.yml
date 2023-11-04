@@ -6,7 +6,7 @@ name: Release
 on:
   push:
     branches:
-      - next
+      - main
 
 jobs:
   release:
