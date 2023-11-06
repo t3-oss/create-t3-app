@@ -266,6 +266,13 @@ const projects: App[] = [
     linkName: "rao.pics",
     link: "https://rao.pics",
   },
+  {
+    description: "eBoto Mo - One-Stop Online Voting Solution",
+    repoName: "bricesuazo/eboto-mo",
+    repo: "https://github.com/bricesuazo/eboto-mo",
+    linkName: "eboto-mo.com",
+    link: "https://eboto-mo.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
