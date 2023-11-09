@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.23.2
+
+### Patch Changes
+
+- [#1651](https://github.com/t3-oss/create-t3-app/pull/1651) [`4834ec3`](https://github.com/t3-oss/create-t3-app/commit/4834ec3cd16c8dba4be1bcd2a9b162c37a0bc7d2) Thanks [@mattpocock](https://github.com/mattpocock)! - tidy up and modernize tsconfig
+
 ## 7.23.1
 
 ### Patch Changes
