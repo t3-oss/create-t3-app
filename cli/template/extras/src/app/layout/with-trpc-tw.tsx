@@ -16,6 +16,8 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+const getCookieString = () => Promise.resolve(cookies().toString());
+
 export default function RootLayout({
   children,
 }: {
@@ -24,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider cookies={cookies().toString()}>
+        <TRPCReactProvider cookiePromise={getCookieString()}>
           {children}
         </TRPCReactProvider>
       </body>
