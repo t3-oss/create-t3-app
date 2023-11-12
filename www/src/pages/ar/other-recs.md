@@ -11,14 +11,15 @@ dir: rtl
 هَاك بَعضٌ المَصادر التي نٌشجعك على أن تّتبعها.
 بَعض الترشيحات التالية قَدمها مٌساهمون مٌنفردون فلا يَجب أن تُؤخذ على أنها تَرشيحات رَسمية من فريق T3 أو T3-OSS، لذلك **قُم بالبحث، خاصة قبل أن تشترك في خدمات مدفوعة**
 
-## الـState Management
+## State Management
 
 **ملحوظة المحرر**: مكتبات الـ State Management رائعة لكنها في مٌعظم الحالات ليست ضَرورية، فـ tRPC و ReactQuery تقوم بالوظيفة بشكل جيد، لذلك إبدأ بـ`useState` وانتقل إلى أحد البدائل المتاحة فقط عندما يلزم الأمر.
 
 ### Zustand
 
 **حتي لا تستعمل Redux أبداََ مرة اخرى**
-بديل Redux الذي لم تكن تعلم إنك تحتاجة، غير إمكانية الوثوق بها فأنة بإستخدام [Poimandres](https://github.com/pmndrs) يمكنك صُنع **كل شي** من `_تطبيقات المكالمات_` الي `الالعاب` وغيرها.
+
+بديل Redux الذي لم تكن تعلم إنك تحتاجة، غير إمكانية الوثوق بها فأنة بإستخدام [Poimandres](https://github.com/pmndrs) يمكنك صُنع **كل شي** من تطبيقات المكالمات الي الالعاب وغيرها.
 
 - [Zustand Homepage](https://zustand-demo.pmnd.rs/)
 - [Zustand GitHub](https://github.com/pmndrs/zustand)
@@ -36,21 +37,21 @@ dir: rtl
 - [Headless UI](https://headlessui.com/)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/)
 
-### Styled Component Libraries\*\*
+### Styled Component Libraries
 
 في بعض الأحيان تقوم ببناء مشروع وكل ما تريدة هو أن تبدو واجهة المستخدم جيدة. كـ لوحات التحكم وغيرها ، سَتٌنجز أي هذه المكتبات هذه المهمة على أكمل وجه
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
 
-### سُلطة التباين الطبقي
+### Class Variance Authority
 
 ** لبناء مكتبات UI **
 تُساعدك علي إنشاء مكتبات واجهة مستخدم بشكل تصريحي (Declarative) بألوان وأحجام مختلفة ومتغيرات مختلفة. عندما يصل مشروعك إلى حجم يلزمك فيه مجموعة موحدة من مكونات الـ UI مع مُتغيرات مٌتعددة لـ Tailwind CSS ، فإن CVA هي أداة رائعة.
 
 - [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
 
-# الانميشن
+## Animations
 
 ### AutoAnimate
 
@@ -62,27 +63,30 @@ dir: rtl
 - [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
 - [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
-### ـ Framer Motion
+### Framer Motion
 
 **الرسوم المتحركة المعقدة**
+
 تٌوفر FramerMotion اٌسلوبا بَسيطا لكتابة الكود، فَتسمح لك بكتابة رسوميات معقدة بكود أقل
 
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
 
-## Deployments, Infrastructure, Databases and CI
+## Deployments، و Infrastructure، و Databases، و CI
 
 ### Vercel
 
 **إستضافة موقعك**
+
 قامت Vervel بتسهيل استضافة موقعك بعد أن كان جِحِيماََ في الماضي، فإنها تَعتمد عََلي AWS لكن مع واجهة أفضل.
 
-- [Vercel موقع](https://vercel.com/)
-- [Create T3 App Vercel كتيب تعليمات](/en/deployment/vercel)
+- [Vercel Homepage](https://vercel.com/)
+- [Create T3 App Vercel deployment guide](/en/deployment/vercel)
 
 ### PlanetScale
 
 **حتي لا تقلق علي قواعد بياناتك بعد الآن**
+
 تُعد PlanetScale أحد أفضل مٌزودي خِدمة قَواعد البيانات عَلي الإطلاق لقٌدرتها عَلى التَوسع وتجربة المطور الممتازة والأسعار المعقولة.
 
 - [PlanetScale Homepage](https://planetscale.com/)
@@ -90,9 +94,10 @@ dir: rtl
 ### Railway
 
 **لإستضافة البنية التحتية للموقع**
+
 فهي Heroku العصر الحديث، إذا كان Vercelli , PlanetScale غير كافيين لك، فـ Railway سَتكون خيارك المناسب.
 
-- [Railway موقع](https://railway.app/)
+- [Railway Homepage](https://railway.app/)
 
 ### Upstash
 
@@ -104,6 +109,7 @@ dir: rtl
 ### Pusher
 
 **For serverless WebSockets**
+
 إذا كان الـ WebSockets مُهمة بالنسبة لك، فإنه مِن الأفضل الإعتماد على سيرفر تقليدي مثل [Fastify](https://www.fastify.io/) والتي أيضا تدعم [tRPC](https://trpc.io/docs/v10/fastify)
 لكن إذا كانت السرعة مهمة لك فإن Pusher هو الخيار المناسب لك.
 
@@ -124,13 +130,13 @@ Soketi هو بديل بسيط وسريع للاستضافة الذاتية لـ 
 
 هل تحتاج إلى تحليلات؟ Plausible هو أحد أسرع الطرق للحصول عليها [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
-- [Plausible موق](https://plausible.io/)
+- [Plausible Homepage](https://plausible.io/)
 
 ### Umami
 
 يعد Umami بديلًا بسيطًا وسريعًا لبرنامج Google Analytics. يمكنك استخدامه بسهولة في Vercel و Railway وما إلى ذلك باستخدام PlanetScale كقاعدة بيانات.
 
-- [Umami موفع](https://umami.is/)
+- [Umami Homepage](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
 
 ## غيرها
@@ -139,4 +145,4 @@ Soketi هو بديل بسيط وسريع للاستضافة الذاتية لـ 
 
 قد يكون من الصعب أحيانًا تحديد ما سيتم تضمينه في الإصدار النهائي لتطبيقك. يُعد Next Bundle Analyzer طريقة سهلة لتصور وتحليل حزم JavaScript التي تم إنشاؤها.
 
-- [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
+- [next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
