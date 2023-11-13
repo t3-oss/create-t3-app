@@ -267,9 +267,9 @@ const projects: App[] = [
     link: "https://rao.pics",
   },
   {
-    description: "eBoto Mo - One-Stop Online Voting Solution",
-    repoName: "bricesuazo/eboto-mo",
-    repo: "https://github.com/bricesuazo/eboto-mo",
+    description: "eBoto - One-Stop Online Voting Solution",
+    repoName: "bricesuazo/eboto",
+    repo: "https://github.com/bricesuazo/eboto",
     linkName: "eboto-mo.com",
     link: "https://eboto-mo.com/",
   },
