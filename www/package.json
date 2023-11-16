@@ -35,7 +35,7 @@
     "embla-carousel": "^7.1.0",
     "embla-carousel-autoplay": "^7.1.0",
     "satori": "^0.8.1",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.6",
     "tailwind-scrollbar": "^3.0.0",
     "treeify": "^1.1.0",
     "unist-util-visit": "^4.1.2",
