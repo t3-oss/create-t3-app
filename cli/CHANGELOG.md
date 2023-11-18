@@ -296,7 +296,7 @@
 
 ### Patch Changes
 
-- [#1189](https://github.com/t3-oss/create-t3-app/pull/1189) [`bf12635`](https://github.com/t3-oss/create-t3-app/commit/bf1263576866116a904f3d1fa741c5496a535cb9) Thanks [@p13lgst](https://github.com/p13lgst)! - fix: remove ts-ignores on env.mjs
+- [#1189](https://github.com/t3-oss/create-t3-app/pull/1189) [`bf12635`](https://github.com/t3-oss/create-t3-app/commit/bf1263576866116a904f3d1fa741c5496a535cb9) Thanks [@p13lgst](https://github.com/p13lgst)! - fix: remove ts-ignores on env.js
 
 ## 7.5.1
 
