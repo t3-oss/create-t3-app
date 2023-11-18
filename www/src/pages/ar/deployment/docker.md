@@ -20,7 +20,7 @@ dir: rtl
 
 ### 1. إعداد Next
 
-في ملف [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) قم بإضافة `standalone` حتى [تُقلل حجم الصور تلقائيا](https://nextjs.org/docs/advanced-features/output-file-tracing):
+في ملف [`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js) قم بإضافة `standalone` حتى [تُقلل حجم الصور تلقائيا](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -115,7 +115,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 

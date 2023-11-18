@@ -16,7 +16,7 @@ lang: zh-hans
 
 ### 1. Next 的配置
 
-在你的 [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) 文件里，添加构建输出选项 `standalone`，以[自动借助追踪输出文件来降低镜像文件的大小](https://nextjs.org/docs/advanced-features/output-file-tracing)：
+在你的 [`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js) 文件里，添加构建输出选项 `standalone`，以[自动借助追踪输出文件来降低镜像文件的大小](https://nextjs.org/docs/advanced-features/output-file-tracing)：
 
 ```diff
 export default defineNextConfig({
@@ -111,7 +111,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
