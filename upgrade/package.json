@@ -1,6 +1,7 @@
 {
   "name": "@ct3a/upgrade",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "next build",
