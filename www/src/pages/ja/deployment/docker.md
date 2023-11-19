@@ -16,7 +16,7 @@ Next.js では、ビルド時の変数（フロントエンドで利用可能、
 
 ### 1. Next の設定
 
-[`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs) に、[出力ファイルのトレースを自動的に活用してイメージサイズを小さくする](https://nextjs.org/docs/advanced-features/output-file-tracing)ための`standalone`出力オプション設定を追加してください：
+[`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js) に、[出力ファイルのトレースを自動的に活用してイメージサイズを小さくする](https://nextjs.org/docs/advanced-features/output-file-tracing)ための`standalone`出力オプション設定を追加してください：
 
 ```diff
 export default defineNextConfig({
@@ -111,7 +111,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 

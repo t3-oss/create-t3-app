@@ -16,7 +16,7 @@ Należy pamiętać, że Next.js wymaga innego procesu na czas budowania (dostęp
 
 ### 1. Konfiguracja Next.js
 
-W swoim pliku [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), dodaj opcję konfiguracji outputu `standalone` aby [zredukować rozmiar zdjęć poprzez automatyczne wykorzystanie danych wyjściowych](https://nextjs.org/docs/advanced-features/output-file-tracing):
+W swoim pliku [`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js), dodaj opcję konfiguracji outputu `standalone` aby [zredukować rozmiar zdjęć poprzez automatyczne wykorzystanie danych wyjściowych](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -111,7 +111,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 

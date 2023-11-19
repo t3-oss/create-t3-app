@@ -27,11 +27,11 @@ export const envVariablesInstaller: Installer = ({
 
   const envFile =
     usingAuth && usingDb
-      ? "with-auth-db.mjs"
+      ? "with-auth-db.js"
       : usingAuth
-      ? "with-auth.mjs"
+      ? "with-auth.js"
       : usingDb
-      ? "with-db.mjs"
+      ? "with-db.js"
       : "";
 
   if (envFile !== "") {
@@ -41,7 +41,7 @@ export const envVariablesInstaller: Installer = ({
       envFile
     );
     const envFileText = fs.readFileSync(envSchemaSrc, "utf-8");
-    const envSchemaDest = path.join(projectDir, "src/env.mjs");
+    const envSchemaDest = path.join(projectDir, "src/env.js");
     fs.writeFileSync(
       envSchemaDest,
       databaseProvider === "sqlite"
@@ -66,7 +66,7 @@ const getEnvContent = (
   projectName: string
 ) => {
   let content = `
-# When adding additional environment variables, the schema in "/src/env.mjs"
+# When adding additional environment variables, the schema in "/src/env.js"
 # should be updated accordingly.
 `
     .trim()
