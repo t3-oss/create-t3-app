@@ -17,7 +17,7 @@ if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   docker start $DB_CONTAINER_NAME
   echo "Database container started"
 else
-  echo "Did not find a database container. Creating a new container..."
+  echo "Creating a new container..."
   docker run --name $DB_CONTAINER_NAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=project1 -d -p 5432:5432 docker.io/postgres
   echo "Database container created and started"
 fi
