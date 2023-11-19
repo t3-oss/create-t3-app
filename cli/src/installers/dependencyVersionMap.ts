@@ -11,6 +11,7 @@ export const dependencyVersionMap = {
   // Prisma
   prisma: "^5.1.1",
   "@prisma/client": "^5.1.1",
+  "@prisma/adapter-planetscale": "^5.6.0",
 
   // Drizzle
   "drizzle-orm": "^0.28.5",

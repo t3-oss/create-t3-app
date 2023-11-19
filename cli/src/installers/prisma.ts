@@ -21,13 +21,21 @@ export const prismaInstaller: Installer = ({
     dependencies: ["@prisma/client"],
     devMode: false,
   });
+  if (databaseProvider === "planetscale")
+    addPackageDependency({
+      projectDir,
+      dependencies: ["@prisma/adapter-planetscale", "@planetscale/database"],
+      devMode: false,
+    });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const schemaSrc = path.join(
     extrasDir,
     "prisma/schema",
-    packages?.nextAuth.inUse ? "with-auth.prisma" : "base.prisma"
+    `${packages?.nextAuth.inUse ? "with-auth" : "base"}${
+      databaseProvider === "planetscale" ? "-planetscale" : ""
+    }.prisma`
   );
   let schemaText = fs.readFileSync(schemaSrc, "utf-8");
   if (databaseProvider !== "sqlite") {
@@ -49,7 +57,12 @@ export const prismaInstaller: Installer = ({
   fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
   fs.writeFileSync(schemaDest, schemaText);
 
-  const clientSrc = path.join(extrasDir, "src/server/db/db-prisma.ts");
+  const clientSrc = path.join(
+    extrasDir,
+    databaseProvider === "planetscale"
+      ? "src/server/db/db-prisma-planetscale.ts"
+      : "src/server/db/db-prisma.ts"
+  );
   const clientDest = path.join(projectDir, "src/server/db.ts");
 
   // add postinstall and push script to package.json
