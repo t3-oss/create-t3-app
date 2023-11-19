@@ -17,10 +17,10 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
     usingAuth && usingDb
       ? "with-auth-db.js"
       : usingAuth
-      ? "with-auth.js"
-      : usingDb
-      ? "with-db.js"
-      : "";
+        ? "with-auth.js"
+        : usingDb
+          ? "with-db.js"
+          : "";
 
   if (envFile !== "") {
     const envSchemaSrc = path.join(

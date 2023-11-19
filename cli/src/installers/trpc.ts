@@ -41,10 +41,10 @@ export const trpcInstaller: Installer = ({
     usingAuth && usingDb
       ? "with-auth-db.ts"
       : usingAuth
-      ? "with-auth.ts"
-      : usingDb
-      ? "with-db.ts"
-      : "base.ts";
+        ? "with-auth.ts"
+        : usingDb
+          ? "with-db.ts"
+          : "base.ts";
   const trpcSrc = path.join(
     extrasDir,
     "src/server/api",
@@ -60,14 +60,14 @@ export const trpcInstaller: Installer = ({
     usingAuth && usingPrisma
       ? "with-auth-prisma.ts"
       : usingAuth && usingDrizzle
-      ? "with-auth-drizzle.ts"
-      : usingAuth
-      ? "with-auth.ts"
-      : usingPrisma
-      ? "with-prisma.ts"
-      : usingDrizzle
-      ? "with-drizzle.ts"
-      : "base.ts";
+        ? "with-auth-drizzle.ts"
+        : usingAuth
+          ? "with-auth.ts"
+          : usingPrisma
+            ? "with-prisma.ts"
+            : usingDrizzle
+              ? "with-drizzle.ts"
+              : "base.ts";
 
   const exampleRouterSrc = path.join(
     extrasDir,
