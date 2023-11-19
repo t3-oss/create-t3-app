@@ -15,11 +15,11 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 
   const envFile =
     usingAuth && usingDb
-      ? "with-auth-db.mjs"
+      ? "with-auth-db.js"
       : usingAuth
-      ? "with-auth.mjs"
+      ? "with-auth.js"
       : usingDb
-      ? "with-db.mjs"
+      ? "with-db.js"
       : "";
 
   if (envFile !== "") {
@@ -28,7 +28,7 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
       "template/extras/src/env",
       envFile
     );
-    const envSchemaDest = path.join(projectDir, "src/env.mjs");
+    const envSchemaDest = path.join(projectDir, "src/env.js");
     fs.copySync(envSchemaSrc, envSchemaDest);
   }
 
@@ -45,7 +45,7 @@ const getEnvContent = (
   usingDrizzle: boolean
 ) => {
   let content = `
-# When adding additional environment variables, the schema in "/src/env.mjs"
+# When adding additional environment variables, the schema in "/src/env.js"
 # should be updated accordingly.
 `
     .trim()

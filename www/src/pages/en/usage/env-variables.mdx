@@ -8,13 +8,13 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev) under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.mjs`.
+Create T3 App uses its own package [@t3-oss/env-nextjs](https://env.t3.gg) along with [zod](https://zod.dev) under the hood for validating environment variables at runtime _and_ buildtime by providing a simple logic in `src/env.js`.
 
-## env.mjs
+## env.js
 
-_TLDR; If you want to add a new environment variable, you must add a validator for it in `src/env.mjs`, and then add the KV-pair in `.env`_
+_TLDR; If you want to add a new environment variable, you must add a validator for it in `src/env.js`, and then add the KV-pair in `.env`_
 
-```ts:env.mjs
+```ts:env.js
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -40,17 +40,17 @@ T3 Env uses the `createEnv` function to create the schema validate both client a
 
 ## Using Environment Variables
 
-When you want to use your environment variables, you can import them from the created `env.mjs` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
+When you want to use your environment variables, you can import them from the created `env.js` and use them as you would normally do. If you import this on the client and try accessing a server-side environment variable, you will get a runtime error.
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env.mjs";
+import { env } from "../../env.js";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;
 ```
 
 ```ts:pages/index.tsx
-import { env } from "../env.mjs";
+import { env } from "../env.js";
 
 // ❌ This will throw a runtime error
 const dbUrl = env.DATABASE_URL;
@@ -71,7 +71,7 @@ To ensure your build never completes without the environment variables the proje
 
 📄 `.env`: Enter your environment variable like you would normally do in a `.env` file, i.e. `KEY=VALUE`
 
-📄 `env.mjs`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`. Besides that, make sure to destruct them in the `runtimeEnv` option, e.g.: `KEY: process.env.KEY`
+📄 `env.js`: Add the appropriate validation logic for the environment variables by defining a Zod schema inside `createEnv` for each one, e.g. `KEY: z.string()`. Besides that, make sure to destruct them in the `runtimeEnv` option, e.g.: `KEY: process.env.KEY`
 
 <Callout type="info">
   Why do I need to destructure the environment variable in the `runtimeEnv`?
@@ -94,7 +94,7 @@ _I want to add my Twitter API Token as a server-side environment variable_
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Add the environment variable to `env.mjs`:
+2. Add the environment variable to `env.js`:
 
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";
@@ -129,7 +129,7 @@ SOME_NUMBER=123
 SOME_BOOLEAN=true
 ```
 
-Then, validate them in `env.mjs`:
+Then, validate them in `env.js`:
 
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";

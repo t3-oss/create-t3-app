@@ -16,7 +16,7 @@ Vær klar over at Next.js krever forskjellig håndtering av variabler som er sat
 
 ### 1. Next.js-konfigurasjon
 
-I [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), legg til _output_-alternativet `standalone` for å redusere størrelsen på Docker-_imaget_ ved å benytte ["Output File Tracing"](https://nextjs.org/docs/advanced-features/output-file-tracing):
+I [`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js), legg til _output_-alternativet `standalone` for å redusere størrelsen på Docker-_imaget_ ved å benytte ["Output File Tracing"](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -111,7 +111,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
