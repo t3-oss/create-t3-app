@@ -5,15 +5,15 @@ layout: ../../../layouts/docs.astro
 lang: pl
 ---
 
-Create T3 App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe narzędzia w pliku `src/env.mjs`.
+Create T3 App korzysta z paczki [Zod](https://github.com/colinhacks/zod) w celu walidacji twoich zmiennych środowiskowych podczas runtime'u _oraz_ budowania aplikacji. Dołączane są z tego powodu dodatkowe narzędzia w pliku `src/env.js`.
 
-## env.mjs
+## env.js
 
-_TLDR; Jeżeli chcesz dodać nową zmienną środowiskową, musisz dodać ją zarówno do pliku `.env`, jak i zdefiniować jej walidator w pliku `src/env.mjs`._
+_TLDR; Jeżeli chcesz dodać nową zmienną środowiskową, musisz dodać ją zarówno do pliku `.env`, jak i zdefiniować jej walidator w pliku `src/env.js`._
 
 Plik ten podzielony jest na dwie części - schemat zmiennych i wykorzystywanie obiektu `process.env`, jak i logika walidacji. Logika ta nie powinna być zmieniana.
 
-```ts:env.mjs
+```ts:env.js
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
 });
@@ -66,7 +66,7 @@ _Dla zainteresowanego czytelnika:_
 
 W zależności od środowiska (serwer lub klient) walidujemy albo oba schematy, albo tylko schemat klienta. Oznacza to, iż nawet jeśli zmienne środowiskowe serwera nie będą zdefiniowane, nie zostanie wyrzucony błąd walidacji - możemy więc mieć jeden punkt odniesienia do naszych zmiennych.
 
-```ts:env.mjs
+```ts:env.js
 const isServer = typeof window === "undefined";
 
 const merged = server.merge(client);
@@ -85,7 +85,7 @@ if (parsed.success === false) {
 
 Następnie korzystamy z obiektu proxy, aby wyrzucać błędy, jeśli chcesz skorzystać z serwerowych zmiennych środowiskowych na kliencie.
 
-```ts:env.mjs
+```ts:env.js
 // proxy pozwala na zmianę gettera
 export const env = new Proxy(parsed.data, {
   get(target, prop) {
@@ -104,17 +104,17 @@ export const env = new Proxy(parsed.data, {
 
 ## Korzystanie Ze Zmiennych Środowiskowych
 
-Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env.mjs` i skorzystać z nich tak, jak normalnie byłoby to możliwe. Jeżeli zaimportujesz obiekt ten na kliencie i spróbujesz skorzystać ze zmiennych serwera, wystąpi błąd runtime.
+Jeżeli chcesz skorzystać ze swoich zmiennych środowiskowych, możesz zaimportować je z pliku `env.js` i skorzystać z nich tak, jak normalnie byłoby to możliwe. Jeżeli zaimportujesz obiekt ten na kliencie i spróbujesz skorzystać ze zmiennych serwera, wystąpi błąd runtime.
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env.mjs";
+import { env } from "../../env.js";
 
 // `env` jest w pełni typesafe i zapewnia autouzupełnianie
 const dbUrl = env.DATABASE_URL;
 ```
 
 ```ts:pages/index.tsx
-import { env } from "../env.mjs";
+import { env } from "../env.js";
 
 // ❌ Wyrzuci to błąd runtime
 const dbUrl = env.DATABASE_URL;
@@ -135,7 +135,7 @@ Aby upewnić się, że twój projekt nie zbuduje się bez wymaganych zmiennych �
 
 📄 `.env`: Wprowadź swoją zmienną środ. tak, jak to zwykle robisz (np. `KLUCZ=WARTOŚĆ`)
 
-📄 `env.mjs`: Dodaj odpowiadającą jej logikę walidacji definiując schemat Zod, np. `KLUCZ: z.string()`. Następnie wykorzystaj obiekt `process.env` w `processEnv`, np. `KEY: process.env.KEY`.
+📄 `env.js`: Dodaj odpowiadającą jej logikę walidacji definiując schemat Zod, np. `KLUCZ: z.string()`. Następnie wykorzystaj obiekt `process.env` w `processEnv`, np. `KEY: process.env.KEY`.
 
 Opcjonalnie możesz zaktualizować plik `.env.example`:
 
@@ -151,7 +151,7 @@ _Chcę dodać mój token do API Twittera jako zmienną środowiskową po stronie
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Dodaj zmienną środowiskową do pliku `env.mjs`:
+2. Dodaj zmienną środowiskową do pliku `env.js`:
 
 ```ts
 export const server = z.object({

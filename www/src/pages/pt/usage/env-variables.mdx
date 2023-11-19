@@ -8,15 +8,15 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-O Create T3 App usa sua mais nova biblioteca [@t3-oss/env-nextjs](https://env.t3.gg) e [zod](https://zod.dev) para validar variáveis de ambiente durante o tempo de execução (runtime) _e_ buildtime fornecendo uma lógica simples no arquivo `src/env.mjs`:
+O Create T3 App usa sua mais nova biblioteca [@t3-oss/env-nextjs](https://env.t3.gg) e [zod](https://zod.dev) para validar variáveis de ambiente durante o tempo de execução (runtime) _e_ buildtime fornecendo uma lógica simples no arquivo `src/env.js`:
 
-## env.mjs
+## env.js
 
-_Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente, você deve adicioná-la ao seu `.env` ao definir no validador em `src/env.mjs`._
+_Muito longo, não li; Se você quiser adicionar uma nova variável de ambiente, você deve adicioná-la ao seu `.env` ao definir no validador em `src/env.js`._
 
 Este arquivo é dividido em duas partes - o esquema e a desestruturação do objeto, bem como a lógica de validação. A lógica de validação não deve ser tocada.
 
-```ts:env.mjs
+```ts:env.js
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -42,17 +42,17 @@ T3 Env traz um novo conceito através do `createEnv`, o qual é responsável por
 
 ## Usando Variáveis de Ambiente
 
-Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.mjs` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
+Quando você quiser usar suas variáveis de ambiente, você pode importá-las de `env.js` e usá-las como faria normalmente. Se você importar isso no cliente e tentar acessar uma variável de ambiente do lado do servidor, receberá um erro em tempo de execução (runtime).
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env.mjs";
+import { env } from "../../env.js";
 
 // `env` é totalmente tipado e fornece preenchimento automático
 const dbUrl = env.DATABASE_URL;
 ```
 
 ```ts:pages/index.tsx
-import { env } from "../env.mjs";
+import { env } from "../env.js";
 
 // ❌ Isso lançará um erro em tempo de execução
 const dbUrl = env.DATABASE_URL;
@@ -73,7 +73,7 @@ Para garantir que sua compilação nunca seja concluída sem as variáveis de am
 
 📄 `.env`: Insira sua variável de ambiente como faria normalmente em um arquivo `.env`, ou seja, `CHAVE=VALOR`. Além disso, certifique-se de desestruturar elas na opção `runtimeEnv`, por exemplo, `CHAVE: process.env.CHAVE`.
 
-📄 `env.mjs`: Adicione a lógica de validação apropriada para as variáveis de ambiente definindo um esquema Zod, por exemplo `NOME_DA_VARIAVEL: z.string()`
+📄 `env.js`: Adicione a lógica de validação apropriada para as variáveis de ambiente definindo um esquema Zod, por exemplo `NOME_DA_VARIAVEL: z.string()`
 
 Opcionalmente, você também pode manter `.env.example` atualizado:
 
@@ -89,7 +89,7 @@ _Quero adicionar meu token da API do Twitter como uma variável de ambiente do l
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. Adicione a variável de ambiente a `env.mjs`:
+2. Adicione a variável de ambiente a `env.js`:
 
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";

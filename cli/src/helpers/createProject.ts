@@ -57,8 +57,8 @@ export const createProject = async ({
   if (appRouter) {
     // Replace next.config
     fs.copyFileSync(
-      path.join(PKG_ROOT, "template/extras/config/next-config-appdir.mjs"),
-      path.join(projectDir, "next.config.mjs")
+      path.join(PKG_ROOT, "template/extras/config/next-config-appdir.js"),
+      path.join(projectDir, "next.config.js")
     );
 
     selectLayoutFile({ projectDir, packages });

@@ -8,15 +8,15 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App は [Zod](https://github.com/colinhacks/zod) を使用して、`src/env.mjs`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行います。
+Create T3 App は [Zod](https://github.com/colinhacks/zod) を使用して、`src/env.js`にいくつかの追加ロジックを提供することにより、実行時*および*構築時に環境変数の検証を行います。
 
-## env.mjs
+## env.js
 
-_要約; 環境変数を追加する場合は、`.env`に追加するとともに、`src/env.mjs`にバリデーターを定義する必要があります。_
+_要約; 環境変数を追加する場合は、`.env`に追加するとともに、`src/env.js`にバリデーターを定義する必要があります。_
 
 このファイルは、スキーマと、オブジェクトの検証ロジックおよび再構築の、2 つの部分に分かれています。検証ロジックは触る必要がありません。
 
-```ts:env.mjs
+```ts:env.js
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
 });
@@ -73,7 +73,7 @@ _興味のある読者のために:_
 環境（サーバーまたはクライアント）に応じて、両方のスキーマが検証されるのか、クライアントのスキーマだけが検証されるのかが決まります。つまり、サーバーの環境変数が未定義であっても、バリデーションが失敗することはありません。つまり、環境変数のエントリーポイントを 1 つにすることができます。
 
 ```ts
-// src/env.mjs
+// src/env.js
 
 const isServer = typeof window === "undefined";
 
@@ -94,7 +94,7 @@ if (parsed.success === false) {
 そして、プロキシオブジェクトを使って、クライアントでサーバーサイドの環境変数にアクセスしようとすると、エラーを投げるようにしています。
 
 ```ts
-// src/env.mjs
+// src/env.js
 
 // proxy allows us to remap the getters
 export const env = new Proxy(parsed.data, {
@@ -114,17 +114,17 @@ export const env = new Proxy(parsed.data, {
 
 ## 環境変数の使用
 
-環境変数を使いたいときは、`env.mjs`からインポートして、通常と同じように使うことができます。これをクライアントでインポートして、サーバー側の環境変数にアクセスしようとすると、ランタイムエラーが発生します。
+環境変数を使いたいときは、`env.js`からインポートして、通常と同じように使うことができます。これをクライアントでインポートして、サーバー側の環境変数にアクセスしようとすると、ランタイムエラーが発生します。
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env.mjs";
+import { env } from "../../env.js";
 
 // `env` is fully typesafe and provides autocompletion
 const dbUrl = env.DATABASE_URL;
 ```
 
 ```ts:pages/index.tsx
-import { env } from "../env.mjs";
+import { env } from "../env.js";
 
 // ❌ This will throw a runtime error
 const dbUrl = env.DATABASE_URL;
@@ -145,7 +145,7 @@ Next.js などのいくつかのフレームワークやビルドツールでは
 
 📄 `.env`: 通常の`.env`ファイルに入力するように、環境変数を入力します（例：`KEY=VALUE`）。
 
-📄 `env.mjs`：Zod スキーマを定義することで、環境変数に適切な検証ロジックを追加します。（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに再構築します（例：`KEY: process.env.KEY` ）。
+📄 `env.js`：Zod スキーマを定義することで、環境変数に適切な検証ロジックを追加します。（例：`KEY: z.string()` ）。そして、環境変数を `process.env` から `processEnv` オブジェクトに再構築します（例：`KEY: process.env.KEY` ）。
 
 オプションで、`.env.example`を最新化しておいても良いでしょう：
 
@@ -161,7 +161,7 @@ _サーバーサイドの環境変数として、Twitter API Token を追加し�
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. 環境変数を `env.mjs` に追加する：
+2. 環境変数を `env.js` に追加する：
 
 ```ts
 export const server = z.object({

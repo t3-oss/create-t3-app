@@ -8,13 +8,13 @@ isMdx: true
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Create T3 App 使用自己的包 [@t3-oss/env-nextjs](https://env.t3.gg) 和 [zod](https://zod.dev) ，通过在 `src/env.mjs` 中提供一个简单的逻辑，在运行时和构建时验证环境变量。
+Create T3 App 使用自己的包 [@t3-oss/env-nextjs](https://env.t3.gg) 和 [zod](https://zod.dev) ，通过在 `src/env.js` 中提供一个简单的逻辑，在运行时和构建时验证环境变量。
 
-## env.mjs
+## env.js
 
-_简而言之，如果你想要添加一个新的环境变量，你需要在 src/env.mjs 中添加一个验证器，然后在 .env 文件中添加键值对。_
+_简而言之，如果你想要添加一个新的环境变量，你需要在 src/env.js 中添加一个验证器，然后在 .env 文件中添加键值对。_
 
-```ts:env.mjs
+```ts:env.js
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -40,17 +40,17 @@ T3 Env 使用 `createEnv` 函数来创建 schema，以验证客户端和服务�
 
 ## 使用环境变量
 
-当你想使用你的环境变量时，你可以从创建的 `env.mjs` 中导入，并像平常一样使用它们。如果你在客户端导入并尝试访问服务端环境变量，你将得到一个运行时错误。
+当你想使用你的环境变量时，你可以从创建的 `env.js` 中导入，并像平常一样使用它们。如果你在客户端导入并尝试访问服务端环境变量，你将得到一个运行时错误。
 
 ```ts:pages/api/hello.ts
-import { env } from "../../env.mjs";
+import { env } from "../../env.js";
 
 // `env` 是完全类型安全的，并提供自动完成功能
 const dbUrl = env.DATABASE_URL;
 ```
 
 ```ts:pages/index.tsx
-import { env } from "../env.mjs";
+import { env } from "../env.js";
 
 // ❌ 这将抛出一个运行时错误
 const dbUrl = env.DATABASE_URL;
@@ -71,7 +71,7 @@ const wsKey = env.NEXT_PUBLIC_WS_KEY;
 
 📄 `.env`：像在 `.env` 文件中一样输入您的环境变量，例如：`KEY=VALUE`
 
-📄 `env.mjs`：为每个环境变量添加适当的验证逻辑，在 `createEnv` 中定义一个Zod模式，例如：`KEY: z.string()`。此外，确保在 `runtimeEnv` 选项中对它们进行解构，例如：KEY: `process.env.KEY`
+📄 `env.js`：为每个环境变量添加适当的验证逻辑，在 `createEnv` 中定义一个Zod模式，例如：`KEY: z.string()`。此外，确保在 `runtimeEnv` 选项中对它们进行解构，例如：KEY: `process.env.KEY`
 
 <Callout type="info">
   为什么需要在 `runtimeEnv` 中对环境变量进行解构？ 这是由于 Next.js
@@ -91,7 +91,7 @@ const wsKey = env.NEXT_PUBLIC_WS_KEY;
 TWITTER_API_TOKEN=1234567890
 ```
 
-2. 在 `env.mjs` 中添加环境变量：
+2. 在 `env.js` 中添加环境变量：
 
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";
@@ -126,7 +126,7 @@ SOME_NUMBER=123
 SOME_BOOLEAN=true
 ```
 
-然后，在 `env.mjs` 中验证它们：
+然后，在 `env.js` 中验证它们：
 
 ```ts
 import { createEnv } from "@t3-oss/env-nextjs";

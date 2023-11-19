@@ -16,7 +16,7 @@ Veuillez noter que Next.js nécessite des variables d’environnements qui sont 
 
 ### 1. Configuration de Next
 
-Dans votre fichier [`next.config.mjs`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.mjs), ajouter l'entrée `output` avec comme valeur `standalone` [réduit la taille de l'image Docker en se basant sur la sortie du processus de génération](https://nextjs.org/docs/advanced-features/output-file-tracing):
+Dans votre fichier [`next.config.js`](https://github.com/t3-oss/create-t3-app/blob/main/cli/template/base/next.config.js), ajouter l'entrée `output` avec comme valeur `standalone` [réduit la taille de l'image Docker en se basant sur la sortie du processus de génération](https://nextjs.org/docs/advanced-features/output-file-tracing):
 
 ```diff
 export default defineNextConfig({
@@ -111,7 +111,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 

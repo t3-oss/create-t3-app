@@ -2,7 +2,7 @@ import { request } from "@octokit/request";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { env } from "~/env.mjs";
+import { env } from "~/env";
 
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
