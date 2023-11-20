@@ -1,4 +1,3 @@
-// Import required dependencies
 import { Client } from "@planetscale/database";
 import { PrismaPlanetScale } from "@prisma/adapter-planetscale";
 import { PrismaClient } from "@prisma/client/edge";
