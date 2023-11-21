@@ -1,3 +1,5 @@
+import "server-only";
+
 import {
   createTRPCProxyClient,
   loggerLink,
@@ -35,9 +37,8 @@ export const api = createTRPCProxyClient<typeof appRouter>({
         (op.direction === "down" && op.result instanceof Error),
     }),
     /**
-     * Custom RSC link that invokes procedures directly in the server component Don't be too afraid
-     * about the complexity here, it's just wrapping `callProcedure` with an observable to make it a
-     * valid ending link for tRPC.
+     * Custom RSC link that lets us invoke procedures without using http requests. Since Server
+     * Components always run on the server, we can just call the procedure as a function.
      */
     () =>
       ({ op }) =>
