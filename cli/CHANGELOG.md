@@ -1,5 +1,21 @@
 # Changelog
 
+## 7.24.0
+
+### Minor Changes
+
+- [#1670](https://github.com/t3-oss/create-t3-app/pull/1670) [`32e0747`](https://github.com/t3-oss/create-t3-app/commit/32e0747a027be16cc36ad5bead062eea696e4012) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: trpc server caller without http
+
+### Patch Changes
+
+- [#1661](https://github.com/t3-oss/create-t3-app/pull/1661) [`ef8f99f`](https://github.com/t3-oss/create-t3-app/commit/ef8f99f65443e48284bc54699eeddc9d10c43a8c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - update sharp
+
+- [#1667](https://github.com/t3-oss/create-t3-app/pull/1667) [`43cc10b`](https://github.com/t3-oss/create-t3-app/commit/43cc10b0e4ddd6c1b3eb175309df3aebe0571285) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: bump some deps
+
+- [#1666](https://github.com/t3-oss/create-t3-app/pull/1666) [`3317a41`](https://github.com/t3-oss/create-t3-app/commit/3317a41546728509543d8fc44a8fe715b04f09e8) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - refactor: use `type: module` for more modern setup
+
+- [#1664](https://github.com/t3-oss/create-t3-app/pull/1664) [`66213b0`](https://github.com/t3-oss/create-t3-app/commit/66213b04cf03fd7d4d0602bbb34a3de2ab703daa) Thanks [@piousdeer](https://github.com/piousdeer)! - chore: replace a `2` with `"error"` in eslint config
+
 ## 7.23.2
 
 ### Patch Changes
