@@ -87,6 +87,12 @@ export const trpcInstaller: Installer = ({
   ];
 
   if (appRouter) {
+    addPackageDependency({
+      dependencies: ["server-only"],
+      devMode: false,
+      projectDir,
+    });
+
     const trpcDir = path.join(extrasDir, "src/trpc");
     copySrcDest.push(
       [
