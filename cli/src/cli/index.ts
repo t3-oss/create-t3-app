@@ -284,12 +284,12 @@ export const runCli = async (): Promise<CliResults> => {
           return p.select({
             message: "What database provider would you like to use?",
             options: [
+              { value: "sqlite", label: "SQLite" },
               { value: "mysql", label: "MySQL" },
               { value: "postgres", label: "PostgreSQL" },
-              { value: "sqlite", label: "SQLite" },
-              { value: "planetscale", label: "Planetscale Serverless" },
+              { value: "planetscale", label: "Planetscale" },
             ],
-            initialValue: "mysql",
+            initialValue: "sqlite",
           });
         },
         ...(!cliResults.flags.noGit && {
@@ -338,8 +338,7 @@ export const runCli = async (): Promise<CliResults> => {
       appName: project.name ?? cliResults.appName,
       packages,
       databaseProvider:
-        (project.databaseProvider as DatabaseProvider) ||
-        (packages.includes("drizzle") ? "planetscale" : "sqlite"),
+        (project.databaseProvider as DatabaseProvider) || "sqlite",
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
