@@ -37,5 +37,6 @@ export const dependencyVersionMap = {
   "@trpc/next": "^10.43.6",
   "@tanstack/react-query": "^4.36.1",
   superjson: "^2.2.1",
+  "server-only": "^0.0.1",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
