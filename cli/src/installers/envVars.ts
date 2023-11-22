@@ -3,7 +3,6 @@ import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
 import { type DatabaseProvider, type Installer } from "~/installers/index.js";
-import { generateRandomString } from "~/utils/randomString.js";
 
 export const envVariablesInstaller: Installer = ({
   projectDir,
@@ -82,13 +81,9 @@ const getEnvContent = (
 # Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
 DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
     } else if (databaseProvider === "mysql") {
-      content += `DATABASE_URL="mysql://root:${generateRandomString(
-        12
-      )}@localhost:3306/${projectName}"`;
+      content += `DATABASE_URL="mysql://root:password@localhost:3306/${projectName}"`;
     } else if (databaseProvider === "postgres") {
-      content += `DATABASE_URL="postgresql://postgres:${generateRandomString(
-        12
-      )}@localhost:5432/${projectName}"`;
+      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${projectName}"`;
     } else if (databaseProvider === "sqlite") {
       content += usingPrisma
         ? 'DATABASE_URL="file:./db.sqlite"'
