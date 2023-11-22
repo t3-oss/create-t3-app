@@ -21,7 +21,9 @@ export const posts = createTable(
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     name: text("name", { length: 256 }),
-    createdById: text("createdById", { length: 255 }).notNull(),
+    createdById: text("createdById", { length: 255 })
+      .notNull()
+      .references(() => users.id),
     createdAt: int("created_at", { mode: "timestamp" })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -50,7 +52,9 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const accounts = createTable(
   "account",
   {
-    userId: text("userId", { length: 255 }).notNull(),
+    userId: text("userId", { length: 255 })
+      .notNull()
+      .references(() => users.id),
     type: text("type", { length: 255 })
       .$type<AdapterAccount["type"]>()
       .notNull(),
@@ -78,7 +82,9 @@ export const sessions = createTable(
   "session",
   {
     sessionToken: text("sessionToken", { length: 255 }).notNull().primaryKey(),
-    userId: text("userId", { length: 255 }).notNull(),
+    userId: text("userId", { length: 255 })
+      .notNull()
+      .references(() => users.id),
     expires: int("expires", { mode: "timestamp" }).notNull(),
   },
   (session) => ({

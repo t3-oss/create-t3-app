@@ -38,15 +38,6 @@ export const drizzleInstaller: Installer = ({
     devMode: false,
   });
 
-  const dbType = (
-    {
-      postgres: "postgres",
-      sqlite: "sqlite",
-      mysql: "mysql",
-      planetscale: "mysql",
-    } as const
-  )[databaseProvider];
-
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const configFile = path.join(
@@ -60,7 +51,9 @@ export const drizzleInstaller: Installer = ({
   const schemaSrc = path.join(
     extrasDir,
     "src/server/db/schema-drizzle",
-    packages?.nextAuth.inUse ? `with-auth-${dbType}.ts` : `base-${dbType}.ts`
+    packages?.nextAuth.inUse
+      ? `with-auth-${databaseProvider}.ts`
+      : `base-${databaseProvider}.ts`
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
@@ -88,7 +81,12 @@ export const drizzleInstaller: Installer = ({
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
     "db:push": `dotenv drizzle-kit push:${
-      dbType === "postgres" ? "pg" : dbType
+      {
+        postgres: "pg",
+        sqlite: "sqlite",
+        mysql: "mysql",
+        planetscale: "mysql",
+      }[databaseProvider]
     }`,
     "db:studio": "dotenv drizzle-kit studio",
   };
