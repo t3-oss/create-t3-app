@@ -7,8 +7,11 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "mysql"
     url      = env("DATABASE_URL")
+
+    // Do not use foreign keys (PlanetScale does not support them)
+    relationMode = "prisma"
 }
 
 model Post {
