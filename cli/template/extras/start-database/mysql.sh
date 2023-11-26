@@ -1,6 +1,14 @@
 #!/bin/bash
 # Use this script to start a docker container for a local development database
 
+# TO RUN ON WINDOWS: 
+# 1. Install WSL (Windows Subsystem for Linux) - https://learn.microsoft.com/en-us/windows/wsl/install
+# 2. Install Docker Desktop for Windows - https://docs.docker.com/docker-for-windows/install/
+# 3. Open WSL - `wsl`
+# 4. Run this script - `./start-database.sh`
+
+# On Lunux and macOS you can run this script directly - `./start-database.sh`
+
 DB_CONTAINER_NAME="project1-mysql"
 
 if ! [ -x "$(command -v docker)" ]; then
