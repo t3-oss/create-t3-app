@@ -34,6 +34,8 @@ export const drizzleInstaller: Installer = ({
       ? "drizzle-schema-auth.ts"
       : "drizzle-schema-base.ts"
   );
+
+  const seedSrc = path.join(extrasDir, "src/server/db/drizzle-seed.ts")
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
   // Replace placeholder table prefix with project name
@@ -42,6 +44,12 @@ export const drizzleInstaller: Installer = ({
     "project1_${name}",
     `${scopedAppName}_\${name}`
   );
+
+  
+  let seedDest = path.join(projectDir, "src/server/db/seed.ts");
+  let seedContent = fs.readFileSync(seedSrc, "utf-8");
+
+
   let configContent = fs.readFileSync(configFile, "utf-8");
   configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
 
@@ -63,6 +71,7 @@ export const drizzleInstaller: Installer = ({
   fs.copySync(configFile, configDest);
   fs.mkdirSync(path.dirname(schemaDest), { recursive: true });
   fs.writeFileSync(schemaDest, schemaContent);
+  fs.writeFileSync(seedDest, seedContent);
   fs.writeFileSync(configDest, configContent);
   fs.copySync(clientSrc, clientDest);
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
