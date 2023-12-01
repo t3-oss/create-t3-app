@@ -56,6 +56,8 @@ export const drizzleInstaller: Installer = ({
     ...packageJsonContent.scripts,
     "db:push": "dotenv drizzle-kit push:mysql",
     "db:studio": "dotenv drizzle-kit studio",
+    "db:migrate": "dotenv drizzle-kit generate:mysql",
+    "db:seed": "dotenv npx tsx ./src/server/db/seed.ts",
   };
 
   fs.copySync(configFile, configDest);
