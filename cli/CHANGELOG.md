@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.24.1
+
+### Patch Changes
+
+- [#1673](https://github.com/t3-oss/create-t3-app/pull/1673) [`b80188e`](https://github.com/t3-oss/create-t3-app/commit/b80188eaecc64e564909ed7ee566790f5e56e59f) Thanks [@ahkhanjani](https://github.com/ahkhanjani)! - fix: Use the correct types for `prettier-plugin-tailwindcss`
+
 ## 7.24.0
 
 ### Minor Changes
