@@ -200,12 +200,12 @@ I.e.:
         ...session,
         user: {
           ...session.user,
--         id: user.id;
-+         id: token.sub;
-        }
+-         id: user.id,
++         id: token.sub,
+        },
       }),
     },
-  };
+  }
 ```
 
 ## Setting up the default DiscordProvider
