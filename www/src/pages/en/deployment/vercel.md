@@ -14,7 +14,6 @@ Vercel will likely configure your build command and publish the directory automa
 ```json
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install"
 }
