@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.24.2
+
+### Patch Changes
+
+- [#1687](https://github.com/t3-oss/create-t3-app/pull/1687) [`6461090`](https://github.com/t3-oss/create-t3-app/commit/6461090a029dd2094065493e513a289a1b414673) Thanks [@sinasab](https://github.com/sinasab)! - chore: reuse existing AppRouter type #1687
+
 ## 7.24.1
 
 ### Patch Changes
