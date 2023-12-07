@@ -21,7 +21,7 @@ When you select NextAuth.js in combination with Drizzle, the schema file is gene
 
 ## Default Database
 
-The default database is an MySql database, using the PlanetScale serverless client, so it is edge ready out of the box! All you need to do is spin up a database at PlanetScale (up to one instance in free-tier BTW) and copy and paste the connection string in the `.env` file. Don't forget to add `ssl={"rejectUnauthorized":true}` to the end of the string.
+The default database is a MySql database, using the PlanetScale serverless client, so it is edge ready out of the box! All you need to do is spin up a database at PlanetScale (up to one instance in free-tier BTW) and copy and paste the connection string in the `.env` file. Don't forget to add `ssl={"rejectUnauthorized":true}` to the end of the string.
 
 ## Seeding your Database
 
