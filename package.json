@@ -1,5 +1,5 @@
 {
-  "name": "@ct3a/root",
+  "name": "@bsmntapp/root",
   "version": "0.0.0",
   "description": "Quickest way to start a new web app with full stack typesafety",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
@@ -13,7 +13,7 @@
     "url": "https://github.com/t3-oss/create-t3-app.git"
   },
   "keywords": [
-    "create-t3-app",
+    "create-bsmnt-app",
     "init.tips",
     "next.js",
     "t3-stack",
@@ -27,12 +27,12 @@
   "packageManager": "pnpm@8.5.1",
   "scripts": {
     "typecheck": "turbo typecheck",
-    "build:cli": "turbo --filter=create-t3-app build",
+    "build:cli": "turbo --filter=create-bsmnt-app build",
     "build:www": "turbo --filter=www build",
     "build": "turbo build",
-    "start:cli": "turbo --filter=create-t3-app start",
+    "start:cli": "turbo --filter=create-bsmnt-app start",
     "start:www": "turbo --filter=www start",
-    "dev:cli": "turbo --filter=create-t3-app dev",
+    "dev:cli": "turbo --filter=create-bsmnt-app dev",
     "dev:www": "turbo --filter=www dev",
     "clean": "turbo clean && rm -rf node_modules",
     "lint": "turbo lint && manypkg check",

@@ -1,7 +1,7 @@
 {
-  "name": "create-t3-app",
+  "name": "create-bsmnt-app",
   "version": "7.24.2",
-  "description": "Create web application with the t3 stack",
+  "description": "Create web application with the basement stack",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -9,10 +9,10 @@
     "directory": "cli"
   },
   "keywords": [
-    "create-t3-app",
+    "create-basement-app",
     "init.tips",
     "next.js",
-    "t3-stack",
+    "basement-stack",
     "tailwind",
     "tRPC",
     "typescript"
