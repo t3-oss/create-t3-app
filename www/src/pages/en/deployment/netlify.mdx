@@ -12,7 +12,7 @@ Netlify is an alternative deployment provider in a similar vein to Vercel. See [
 
 ## Why Host on Netlify
 
-Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases this will be true and it won't make sense to deviate from the standard path.
+Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases, this will be true and it won't make sense to deviate from the standard path.
 
 There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
@@ -26,7 +26,7 @@ There are relative pros and cons for all deployment providers since no single ho
 
 ## Project Configuration
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures forked and cloned versions of the project will be easier to reproducibly deploy.
+There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures that forked and cloned versions of the project will be easier to reproducibly deploy.
 
 ```toml
 [build]
