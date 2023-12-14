@@ -55,7 +55,7 @@ Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables li
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
-After the first deployment this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
+After the first deployment, this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
 
 ```bash
 vercel --prod
