@@ -5,7 +5,7 @@ layout: ../../layouts/docs.astro
 lang: en
 ---
 
-We started Create T3 App because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build) and a general love for typesafety, the Create T3 App team worked hard to build the best possible starting point for new T3 Stack projects.
+We started Create T3 App because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build), and a general love for typesafety, the Create T3 App team worked hard to build the best possible starting point for new T3 Stack projects.
 
 If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
 
