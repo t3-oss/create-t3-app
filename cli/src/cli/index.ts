@@ -94,7 +94,7 @@ export const runCli = async (): Promise<CliResults> => {
     /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "--basehub [boolean]",
-      "Experimental: Boolean value if we should install Basehub. Must be used in conjunction with `--basehub`.",
+      "Experimental: Boolean value if we should install BaseHub. Must be used in conjunction with `--basehub`.",
       (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
