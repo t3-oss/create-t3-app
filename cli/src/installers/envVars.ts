@@ -1,25 +1,10 @@
 import path from "path";
 import fs from "fs-extra";
 
-import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 
-export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
-  const usingAuth = packages?.nextAuth.inUse;
-
-  const envContent = getEnvContent(!!usingAuth);
-
-  const envFile = usingAuth ? "with-auth.js" : "";
-
-  if (envFile !== "") {
-    const envSchemaSrc = path.join(
-      PKG_ROOT,
-      "template/extras/src/env",
-      envFile
-    );
-    const envSchemaDest = path.join(projectDir, "src/env.js");
-    fs.copySync(envSchemaSrc, envSchemaDest);
-  }
+export const envVariablesInstaller: Installer = ({ projectDir }) => {
+  const envContent = getEnvContent();
 
   const envDest = path.join(projectDir, ".env");
   const envExampleDest = path.join(projectDir, ".env.example");
@@ -28,27 +13,13 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   fs.writeFileSync(envExampleDest, exampleEnvContent + envContent, "utf-8");
 };
 
-const getEnvContent = (usingAuth: boolean) => {
-  let content = `
+const getEnvContent = () => {
+  const content = `
 # When adding additional environment variables, the schema in "/src/env.js"
 # should be updated accordingly.
 `
     .trim()
     .concat("\n");
-
-  if (usingAuth)
-    content += `
-# Next Auth
-# You can generate a new secret on the command line with:
-# openssl rand -base64 32
-# https://next-auth.js.org/configuration/options#secret
-# NEXTAUTH_SECRET=""
-NEXTAUTH_URL="http://localhost:3000"
-
-# Next Auth Discord Provider
-DISCORD_CLIENT_ID=""
-DISCORD_CLIENT_SECRET=""
-`;
 
   return content;
 };

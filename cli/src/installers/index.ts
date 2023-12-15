@@ -1,5 +1,4 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
-import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { creativeStackInstaller } from "./creativeStack.js";
@@ -16,7 +15,6 @@ export const creativeStackPackages = [
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
 export const availablePackages = [
-  "nextAuth",
   "tailwind",
   "basehub",
   "envVariables",
@@ -48,10 +46,6 @@ export type PkgInstallerMap = {
 export const buildPkgInstallerMap = (
   packages: AvailablePackages[]
 ): PkgInstallerMap => ({
-  nextAuth: {
-    inUse: packages.includes("nextAuth"),
-    installer: nextAuthInstaller,
-  },
   tailwind: {
     inUse: packages.includes("tailwind"),
     installer: tailwindInstaller,

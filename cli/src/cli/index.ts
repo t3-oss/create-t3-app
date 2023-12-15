@@ -24,8 +24,6 @@ interface CliFlags {
   /** @internal Used in CI. */
   basehub: boolean;
   /** @internal Used in CI. */
-  nextAuth: boolean;
-  /** @internal Used in CI. */
   appRouter: boolean;
 }
 
@@ -37,7 +35,7 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "basehub", "tailwind"],
+  packages: ["basehub", "tailwind"],
   flags: {
     noGit: false,
     noInstall: false,
@@ -45,7 +43,6 @@ const defaultOptions: CliResults = {
     CI: false,
     tailwind: false,
     basehub: false,
-    nextAuth: false,
     importAlias: "~/",
     appRouter: false,
   },
@@ -100,12 +97,6 @@ export const runCli = async (): Promise<CliResults> => {
       "Experimental: Boolean value if we should install Basehub. Must be used in conjunction with `--basehub`.",
       (value) => !!value && value !== "false"
     )
-    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
-    .option(
-      "--nextAuth [boolean]",
-      "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
-    )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
       "-i, --import-alias",
@@ -151,7 +142,6 @@ export const runCli = async (): Promise<CliResults> => {
   if (cliResults.flags.CI) {
     cliResults.packages = [];
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
-    if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
 
     // example how to deal with incompatible flags
     // if (cliResults.flags.prisma && cliResults.flags.drizzle) {
@@ -212,18 +202,6 @@ export const runCli = async (): Promise<CliResults> => {
             message: "Will you be using Tailwind CSS for styling?",
           });
         },
-        authentication: () => {
-          return p.select({
-            message: "What authentication provider would you like to use?",
-            options: [
-              { value: "none", label: "None" },
-              { value: "next-auth", label: "NextAuth.js" },
-              // Maybe later
-              // { value: "clerk", label: "Clerk" },
-            ],
-            initialValue: "none",
-          });
-        },
         appRouter: () => {
           return p.confirm({
             message:
@@ -279,7 +257,6 @@ export const runCli = async (): Promise<CliResults> => {
 
     const packages: AvailablePackages[] = [];
     if (project.styling) packages.push("tailwind");
-    if (project.authentication === "next-auth") packages.push("nextAuth");
     console.log(project.creativeStack);
     return {
       appName: project.name ?? cliResults.appName,

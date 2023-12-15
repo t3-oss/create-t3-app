@@ -8,23 +8,10 @@ type SelectBoilerplateProps = Required<
   Pick<InstallerOptions, "packages" | "projectDir">
 >;
 // This generates the _app.tsx file that is used to render the app
-export const selectAppFile = ({
-  projectDir,
-  packages,
-}: SelectBoilerplateProps) => {
+export const selectAppFile = ({ projectDir }: SelectBoilerplateProps) => {
   const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
 
-  const usingTRPC = packages.trpc.inUse;
-  const usingNextAuth = packages.nextAuth.inUse;
-
-  let appFile = "base.tsx";
-  if (usingNextAuth && usingTRPC) {
-    appFile = "with-auth-trpc.tsx";
-  } else if (usingNextAuth && !usingTRPC) {
-    appFile = "with-auth.tsx";
-  } else if (!usingNextAuth && usingTRPC) {
-    appFile = "with-trpc.tsx";
-  }
+  const appFile = "base.tsx";
 
   const appSrc = path.join(appFileDir, appFile);
   const appDest = path.join(projectDir, "src/pages/_app.tsx");
@@ -39,13 +26,9 @@ export const selectLayoutFile = ({
   const layoutFileDir = path.join(PKG_ROOT, "template/extras/src/app/layout");
 
   const usingTw = packages.tailwind.inUse;
-  const usingTRPC = packages.trpc.inUse;
   let layoutFile = "base.tsx";
-  if (usingTRPC && usingTw) {
-    layoutFile = "with-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw) {
-    layoutFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw) {
+
+  if (usingTw) {
     layoutFile = "with-tw.tsx";
   }
 
@@ -61,20 +44,11 @@ export const selectIndexFile = ({
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/pages/index");
 
-  const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
-  } else if (usingTRPC && usingTw) {
-    indexFile = "with-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw) {
-    indexFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw) {
+
+  if (usingTw) {
     indexFile = "with-tw.tsx";
   }
 
@@ -90,20 +64,11 @@ export const selectPageFile = ({
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/app/page");
 
-  const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
-    indexFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && usingAuth) {
-    indexFile = "with-auth-trpc.tsx";
-  } else if (usingTRPC && usingTw) {
-    indexFile = "with-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw) {
-    indexFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw) {
+
+  if (usingTw) {
     indexFile = "with-tw.tsx";
   }
 
