@@ -1,23 +1,31 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
-import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
-import { trpcInstaller } from "~/installers/trpc.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
-import { drizzleInstaller } from "./drizzle.js";
+import { creativeStackInstaller } from "./creativeStack.js";
+
+export const creativeStackPackages = [
+  "three",
+  "@react-three/drei",
+  "@react-three/fiber",
+  "leva",
+  "maath",
+  "three-stdlib",
+] as const;
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extensability in the future
 export const availablePackages = [
   "nextAuth",
-  "prisma",
-  "drizzle",
   "tailwind",
-  "trpc",
+  "basehub",
   "envVariables",
+  "creativeStack",
 ] as const;
+
 export type AvailablePackages = (typeof availablePackages)[number];
 
+export type CreativeStackPackages = (typeof creativeStackPackages)[number];
 export interface InstallerOptions {
   projectDir: string;
   pkgManager: PackageManager;
@@ -31,7 +39,7 @@ export interface InstallerOptions {
 export type Installer = (opts: InstallerOptions) => void;
 
 export type PkgInstallerMap = {
-  [pkg in AvailablePackages]: {
+  [pkg in AvailablePackages | "creativeStack"]: {
     inUse: boolean;
     installer: Installer;
   };
@@ -44,21 +52,17 @@ export const buildPkgInstallerMap = (
     inUse: packages.includes("nextAuth"),
     installer: nextAuthInstaller,
   },
-  prisma: {
-    inUse: packages.includes("prisma"),
-    installer: prismaInstaller,
-  },
-  drizzle: {
-    inUse: packages.includes("drizzle"),
-    installer: drizzleInstaller,
-  },
   tailwind: {
     inUse: packages.includes("tailwind"),
     installer: tailwindInstaller,
   },
-  trpc: {
-    inUse: packages.includes("trpc"),
-    installer: trpcInstaller,
+  basehub: {
+    inUse: packages.includes("basehub"),
+    installer: tailwindInstaller,
+  },
+  creativeStack: {
+    inUse: packages.includes("creativeStack"),
+    installer: creativeStackInstaller,
   },
   envVariables: {
     inUse: true,

@@ -7,7 +7,6 @@ import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 // This logs the next steps that the user should take in order to advance the project
 export const logNextSteps = async ({
   projectName = DEFAULT_APP_NAME,
-  packages,
   appRouter,
   noInstall,
   projectDir,
@@ -28,14 +27,6 @@ export const logNextSteps = async ({
     }
   }
 
-  if (packages?.prisma.inUse || packages?.drizzle.inUse) {
-    if (["npm", "bun"].includes(pkgManager)) {
-      logger.info(`  ${pkgManager} run db:push`);
-    } else {
-      logger.info(`  ${pkgManager} db:push`);
-    }
-  }
-
   if (["npm", "bun"].includes(pkgManager)) {
     logger.info(`  ${pkgManager} run dev`);
   } else {
@@ -50,13 +41,6 @@ export const logNextSteps = async ({
   if (appRouter) {
     logger.warn(
       `\nThank you for trying out the App Router option. If you encounter any issues, please open an issue!`
-    );
-  }
-
-  if (packages?.drizzle.inUse) {
-    logger.warn(
-      `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
-      `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
   }
 };

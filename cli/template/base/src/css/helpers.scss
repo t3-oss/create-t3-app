@@ -1,0 +1,52 @@
+@use 'sass:string';
+@use 'sass:math';
+
+/* stylelint-disable-next-line number-max-precision */
+$golden-ratio: 1.6180339887498948482;
+$reciprocal-golden-ratio: 1 / $golden-ratio;
+$duration: $reciprocal-golden-ratio * 1.2;
+$breakpoints: (
+  'mobile-sm': (
+    max-width: 500px
+  ),
+  'mobile': (
+    max-width: 900px
+  ),
+  'min-tablet': (
+    min-width: 901px
+  ),
+  'tablet': (
+    max-width: 1024px
+  ),
+  'min-desktop-sm': (
+    min-width: 1025px
+  ),
+  'desktop-sm': (
+    max-width: 1280px
+  ),
+  'min-desktop': (
+    min-width: 1281px
+  ),
+  'desktop': (
+    max-width: 1440px
+  ),
+  'min-desktop-lg': (
+    min-width: 1441px
+  ),
+  'desktop-xl': (
+    max-width: 1920px
+  ),
+  'min-desktop-xl': (
+    min-width: 1920px
+  )
+);
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. ' + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+  }
+}

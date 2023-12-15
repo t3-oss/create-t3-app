@@ -14,7 +14,11 @@
     "next": "^14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.3.8",
+    "gsap": "^3.12.3",
+    "clsx": "1.1.1",
+    "react-merge-refs": "1.1.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.3",
@@ -26,5 +30,175 @@
     "@typescript-eslint/parser": "^6.11.0",
     "eslint": "^8.54.0",
     "typescript": "^5.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "tabWidth": 2,
+    "printWidth": 80,
+    "trailingComma": "none",
+    "endOfLine": "auto"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "react",
+      "react-hooks",
+      "simple-import-sort",
+      "@typescript-eslint"
+    ],
+    "ignorePatterns": [],
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/recommended",
+      "plugin:import/typescript",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "plugin:prettier/recommended",
+      "plugin:@next/next/recommended"
+    ],
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "react/react-in-jsx-scope": 0,
+      "react/display-name": 0,
+      "react/prop-types": 0,
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/indent": 0,
+      "@typescript-eslint/member-delimiter-style": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-var-requires": 0,
+      "@typescript-eslint/no-use-before-define": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "simple-import-sort/imports": "warn",
+      "simple-import-sort/exports": "warn",
+      "react-hooks/exhaustive-deps": [
+        "warn",
+        {
+          "additionalHooks": "(useIsomorphicLayoutEffect|useGsapContext)"
+        }
+      ],
+      "react/no-unescaped-entities": 0,
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "react/jsx-no-target-blank": [
+        2,
+        {
+          "allowReferrer": true
+        }
+      ],
+      "@typescript-eslint/no-unused-vars": [
+        2,
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "no-console": [
+        1,
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "prettier/prettier": [
+        "warn",
+        {
+          "endOfLine": "auto"
+        }
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    },
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true,
+          "project": "."
+        }
+      },
+      "react": {
+        "version": "detect"
+      }
+    }
+  },
+  "stylelint": {
+    "ignoreFiles": [
+      "**/*.{ts,tsx,js,jsx}"
+    ],
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-standard-scss",
+      "stylelint-prettier/recommended"
+    ],
+    "plugins": [
+      "stylelint-prettier"
+    ],
+    "rules": {
+      "scss/at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "tailwind",
+            "layer",
+            "apply",
+            "variants",
+            "responsive",
+            "screen",
+            "include",
+            "for",
+            "mixin",
+            "if",
+            "else",
+            "warn",
+            "return",
+            "function",
+            "use",
+            "each"
+          ]
+        }
+      ],
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ],
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "font-named-instance"
+          ]
+        }
+      ],
+      "declaration-block-trailing-semicolon": null,
+      "no-descending-specificity": null,
+      "number-leading-zero": null,
+      "length-zero-no-unit": null,
+      "alpha-value-notation": null,
+      "selector-id-pattern": null,
+      "selector-class-pattern": null,
+      "property-no-vendor-prefix": null,
+      "value-no-vendor-prefix": null,
+      "scss/no-global-function-names": null,
+      "scss/double-slash-comment-empty-line-before": null
+    }
   }
 }

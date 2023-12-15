@@ -2,7 +2,7 @@ import * as p from "@clack/prompts";
 import chalk from "chalk";
 import { Command } from "commander";
 
-import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
+import { CREATE_BSMNT_APP, DEFAULT_APP_NAME } from "~/consts.js";
 import { type AvailablePackages } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
@@ -22,11 +22,7 @@ interface CliFlags {
   /** @internal Used in CI. */
   tailwind: boolean;
   /** @internal Used in CI. */
-  trpc: boolean;
-  /** @internal Used in CI. */
-  prisma: boolean;
-  /** @internal Used in CI. */
-  drizzle: boolean;
+  basehub: boolean;
   /** @internal Used in CI. */
   nextAuth: boolean;
   /** @internal Used in CI. */
@@ -41,16 +37,14 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "prisma", "tailwind", "trpc"],
+  packages: ["nextAuth", "basehub", "tailwind"],
   flags: {
     noGit: false,
     noInstall: false,
     default: false,
     CI: false,
     tailwind: false,
-    trpc: false,
-    prisma: false,
-    drizzle: false,
+    basehub: false,
     nextAuth: false,
     importAlias: "~/",
     appRouter: false,
@@ -61,8 +55,8 @@ export const runCli = async (): Promise<CliResults> => {
   const cliResults = defaultOptions;
 
   const program = new Command()
-    .name(CREATE_T3_APP)
-    .description("A CLI for creating web applications with the t3 stack")
+    .name(CREATE_BSMNT_APP)
+    .description("A CLI for creating cool websites with the basement stack")
     .argument(
       "[dir]",
       "The name of the application, as well as the name of the directory to create"
@@ -79,7 +73,7 @@ export const runCli = async (): Promise<CliResults> => {
     )
     .option(
       "-y, --default",
-      "Bypass the CLI and use all default options to bootstrap a new t3-app",
+      "Bypass the CLI and use all default options to bootstrap a new basement app",
       false
     )
     /** START CI-FLAGS */
@@ -96,26 +90,20 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
+      "--creativeStack [boolean]",
+      "Experimental: Boolean value if we should install the 3D creative stack. Must be used in conjunction with `--creactiveStack`.",
+      (value) => !!value && value !== "false"
+    )
+    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "--basehub [boolean]",
+      "Experimental: Boolean value if we should install Basehub. Must be used in conjunction with `--basehub`.",
+      (value) => !!value && value !== "false"
+    )
+    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
-    )
-    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
-    .option(
-      "--prisma [boolean]",
-      "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
-    )
-    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
-    .option(
-      "--drizzle [boolean]",
-      "Experimental: Boolean value if we should install Drizzle. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
-    )
-    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
-    .option(
-      "--trpc [boolean]",
-      "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
@@ -162,19 +150,17 @@ export const runCli = async (): Promise<CliResults> => {
   /** @internal Used for CI E2E tests. */
   if (cliResults.flags.CI) {
     cliResults.packages = [];
-    if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
-    if (cliResults.flags.prisma) cliResults.packages.push("prisma");
-    if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
 
-    if (cliResults.flags.prisma && cliResults.flags.drizzle) {
-      // We test a matrix of all possible combination of packages in CI. Checking for impossible
-      // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
-      // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
-      logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
-      process.exit(0);
-    }
+    // example how to deal with incompatible flags
+    // if (cliResults.flags.prisma && cliResults.flags.drizzle) {
+    //   // We test a matrix of all possible combination of packages in CI. Checking for impossible
+    //   // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
+    //   // invalid combinations. We are using an "OK" exit code so CI continues with the next combination.
+    //   logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
+    //   process.exit(0);
+    // }
 
     return cliResults;
   }
@@ -226,11 +212,6 @@ export const runCli = async (): Promise<CliResults> => {
             message: "Will you be using Tailwind CSS for styling?",
           });
         },
-        trpc: () => {
-          return p.confirm({
-            message: "Would you like to use tRPC?",
-          });
-        },
         authentication: () => {
           return p.select({
             message: "What authentication provider would you like to use?",
@@ -243,23 +224,22 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: "none",
           });
         },
-        database: () => {
-          return p.select({
-            message: "What database ORM would you like to use?",
-            options: [
-              { value: "none", label: "None" },
-              { value: "prisma", label: "Prisma" },
-              { value: "drizzle", label: "Drizzle" },
-            ],
-            initialValue: "none",
-          });
-        },
         appRouter: () => {
           return p.confirm({
             message:
               chalk.bgCyan(" EXPERIMENTAL ") +
               " Would you like to use Next.js App Router?",
-            initialValue: false,
+            initialValue: true,
+          });
+        },
+        basehub: () => {
+          return p.confirm({
+            message: "Will you be using Basehub as CMS?",
+          });
+        },
+        creativeStack: () => {
+          return p.confirm({
+            message: "Will you be using the 3D creative stack?",
           });
         },
         ...(!cliResults.flags.noGit && {
@@ -299,11 +279,8 @@ export const runCli = async (): Promise<CliResults> => {
 
     const packages: AvailablePackages[] = [];
     if (project.styling) packages.push("tailwind");
-    if (project.trpc) packages.push("trpc");
     if (project.authentication === "next-auth") packages.push("nextAuth");
-    if (project.database === "prisma") packages.push("prisma");
-    if (project.database === "drizzle") packages.push("drizzle");
-
+    console.log(project.creativeStack);
     return {
       appName: project.name ?? cliResults.appName,
       packages,
@@ -320,7 +297,7 @@ export const runCli = async (): Promise<CliResults> => {
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
     if (err instanceof IsTTYError) {
       logger.warn(`
-  ${CREATE_T3_APP} needs an interactive terminal to provide options`);
+  ${CREATE_BSMNT_APP} needs an interactive terminal to provide options`);
 
       const shouldContinue = await p.confirm({
         message: `Continue scaffolding a default T3 app?`,
@@ -332,7 +309,9 @@ export const runCli = async (): Promise<CliResults> => {
         process.exit(0);
       }
 
-      logger.info(`Bootstrapping a default T3 app in ./${cliResults.appName}`);
+      logger.info(
+        `Bootstrapping a default bsmnt-app app in ./${cliResults.appName}`
+      );
     } else {
       throw err;
     }

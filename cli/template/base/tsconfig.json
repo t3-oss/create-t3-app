@@ -20,14 +20,16 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "preserve",
+    "paths": {  
+      "~/videos/*": ["../videos/*"],
+      "~/public/*": ["../public/*"],
+      "~/*": ["./*"]
+    },
     "plugins": [{ "name": "next" }],
     "incremental": true,
 
     /* Path Aliases */
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "baseUrl": "./src"
   },
   "include": [
     ".eslintrc.cjs",
@@ -36,6 +38,7 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
+    "video.d.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

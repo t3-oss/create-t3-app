@@ -1,0 +1,62 @@
+@use "sass:math";
+@import "./helpers";
+@import "./reset.css";
+
+:root {
+  // Fonts
+  --font-system: -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen,
+    ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+  --font-fallback: var(--font-system), sans-serif;
+
+  // Colors
+  --inspect-color: #f00;
+  --color-black: #000;
+}
+
+html {
+  box-sizing: border-box;
+  text-rendering: geometricprecision;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+  background-color: var(--color-azimuth);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-cloud);
+  font-size: 18px;
+  line-height: 23px;
+  overflow-x: hidden;
+}
+
+body.inspect * {
+  outline: 1px solid var(--inspect-color) !important;
+}
+
+// Used to only render to screen readers and dont show it on the front.
+// Very useful for web scrappers.
+// For example: you have an svg with some illustration that says 'Hello', but you want
+// to render that as a text for web scrapper, you can do: <p className="screen-reader-only">Hello</p>
+.screen-reader-only {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+}
+
+// used in use-prevents-scroll hook
+html.no-scroll {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
