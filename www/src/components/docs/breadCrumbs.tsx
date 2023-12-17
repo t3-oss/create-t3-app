@@ -26,7 +26,7 @@ export default function BreadCrumbs() {
   const slug =
     pathname.slice(1).split("/").length > 2
       ? pathname.slice(1).split("/")[1]
-      : "" || "";
+      : "";
 
   const actualEntries =
     SIDEBAR[lang][
