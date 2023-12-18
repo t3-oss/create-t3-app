@@ -58,10 +58,10 @@ const projects: App[] = [
 
   {
     description: "Josh's personal site",
-    repoName: "joshhyde9/t3-portfolio",
-    repo: "https://github.com/JoshHyde9/t3-portfolio",
-    linkName: "t3.joshhyde.me",
-    link: "https://t3.joshhyde.me",
+    repoName: "GentikSolm/imjosh-blog",
+    repo: "https://github.com/GentikSolm/imjosh-blog",
+    linkName: "imjosh.dev",
+    link: "https://imjosh.dev",
   },
 
   {
