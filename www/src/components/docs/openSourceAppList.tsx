@@ -171,14 +171,6 @@ const projects: App[] = [
   },
 
   {
-    description: "Hitori - Serverless Discord bot template",
-    repoName: "astridlol/Hitori",
-    repo: "https://github.com/astridlol/hitori",
-    linkName: "(none)",
-    link: "https://github.com/astridlol/hitori",
-  },
-
-  {
     description: "CUA - Create an Universal App for web, native and desktop",
     repoName: "chen-rn/CUA",
     repo: "https://github.com/chen-rn/CUA",
