@@ -58,10 +58,10 @@ const projects: App[] = [
 
   {
     description: "Josh's personal site",
-    repoName: "joshhyde9/t3-portfolio",
-    repo: "https://github.com/JoshHyde9/t3-portfolio",
-    linkName: "t3.joshhyde.me",
-    link: "https://t3.joshhyde.me",
+    repoName: "GentikSolm/imjosh-blog",
+    repo: "https://github.com/GentikSolm/imjosh-blog",
+    linkName: "imjosh.dev",
+    link: "https://imjosh.dev",
   },
 
   {
@@ -168,14 +168,6 @@ const projects: App[] = [
     repo: "https://github.com/AnswerOverflow/AnswerOverflow",
     linkName: "answeroverflow.com",
     link: "https://www.answeroverflow.com/",
-  },
-
-  {
-    description: "Hitori - Serverless Discord bot template",
-    repoName: "astridlol/Hitori",
-    repo: "https://github.com/astridlol/hitori",
-    linkName: "(none)",
-    link: "https://github.com/astridlol/hitori",
   },
 
   {

@@ -1,5 +1,27 @@
 # Changelog
 
+## 7.25.0
+
+### Minor Changes
+
+- [#1702](https://github.com/t3-oss/create-t3-app/pull/1702) [`62fa8dc`](https://github.com/t3-oss/create-t3-app/commit/62fa8dcad2e0d3d6bad04bb6167d7580a754049c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - update drizzle-kit and change connectionString to uri
+
+### Patch Changes
+
+- [#1690](https://github.com/t3-oss/create-t3-app/pull/1690) [`6efb99a`](https://github.com/t3-oss/create-t3-app/commit/6efb99a94f29d28243fa7c625b099995e84e4db2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix typo in env.mjs
+
+## 7.24.2
+
+### Patch Changes
+
+- [#1687](https://github.com/t3-oss/create-t3-app/pull/1687) [`6461090`](https://github.com/t3-oss/create-t3-app/commit/6461090a029dd2094065493e513a289a1b414673) Thanks [@sinasab](https://github.com/sinasab)! - chore: reuse existing AppRouter type #1687
+
+## 7.24.1
+
+### Patch Changes
+
+- [#1673](https://github.com/t3-oss/create-t3-app/pull/1673) [`b80188e`](https://github.com/t3-oss/create-t3-app/commit/b80188eaecc64e564909ed7ee566790f5e56e59f) Thanks [@ahkhanjani](https://github.com/ahkhanjani)! - fix: Use the correct types for `prettier-plugin-tailwindcss`
+
 ## 7.24.0
 
 ### Minor Changes
