@@ -13,9 +13,8 @@ export const dependencyVersionMap = {
   "@prisma/client": "^5.6.0",
 
   // Drizzle
-  "drizzle-orm": "^0.28.5",
-  "drizzle-kit": "^0.20.7",
-  "dotenv-cli": "^7.3.0",
+  "drizzle-orm": "^0.29.2",
+  "drizzle-kit": "^0.20.8",
   mysql2: "^3.6.1",
   "@planetscale/database": "^1.11.0",
 
