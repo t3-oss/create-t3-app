@@ -122,7 +122,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. Создайте tRPC middleware, которое проверяет, аутентифицирован ли пользователь. Затем мы используем middleware в `protectedProcedure`. Любой вызывающий эти процедуры должен быть аутентифицирован, иначе будет сгенерирована ошибка, которую можно правильно обработать на стороне клиента.
 
 ```ts:server/api/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -132,9 +132,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+})
 ```
 
 Обект сессии - это легкое, минимальное представление пользователя и содержит только несколько полей. При использовании `protectedProcedures` у вас есть доступ к идентификатору пользователя, который можно использовать для получения большего количества данных из базы данных.
