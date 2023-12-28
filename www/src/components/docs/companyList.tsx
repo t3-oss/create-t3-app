@@ -55,6 +55,11 @@ const companies: Company[] = [
     linkName: "Papertrail",
     link: "https://papertrail.biblish.com",
   },
+  {
+    name: "AIKeywording",
+    linkName: "aikeywording.com/",
+    link: "https://aikeywording.com/",
+  },
 ];
 
 export default function CompanyList({
