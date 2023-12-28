@@ -125,7 +125,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
 
 ```ts:server/api/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -135,9 +135,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+})
 ```
 
 The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
@@ -179,10 +177,12 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
 
 ## Usage with Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.  
+Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
 
 <Callout type="warning">
-  Using database sessions is the recommended approach and you should read up on JWTs before switching to the JWT session strategy to avoid any security issues.
+  Using database sessions is the recommended approach and you should read up on
+  JWTs before switching to the JWT session strategy to avoid any security
+  issues.
 </Callout>
 
 After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.  

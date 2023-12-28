@@ -122,7 +122,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. ユーザーが認証されているかどうかをチェックする tRPC ミドルウェアを作成します。そして、そのミドルウェアを `protectedProcedure` で使用します。これらのプロシージャの呼び出し元はすべて認証されていなければなりません。そうでなければ、エラーが投げられるので、クライアントで適切にエラー処理を行えます。
 
 ```ts:server/api/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -132,9 +132,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+})
 ```
 
 セッションオブジェクトは、ユーザーの軽くて最小限の表現であり、いくつかのフィールドしか含んでいません。`protectedProcedures`を使用するとユーザー id にアクセスでき、データベースからさらにデータを取得するのに使用できます。

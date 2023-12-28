@@ -99,7 +99,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. أنشئ tRPC Middleware وتأكد ما اذا كان هذا المستخدم يملك الصلاحيات اللازمة أم لا.
 
 ```ts:server/trpc/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -110,8 +110,6 @@ const isAuthed = t.middleware(({ ctx, next }) => {
     },
   });
 });
-
-export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
 الـ Session Object صغير ويحتوي علي عدد قليل من الخانات، وعند استخدامك لـ `protectedProcedures`يمكنك الوصول الى هذة البيانات منها الـ UserId وعندها يمكنك عمل fetch لبيانات اخرى من قاعدة البيانات.
