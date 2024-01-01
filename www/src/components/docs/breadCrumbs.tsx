@@ -66,7 +66,7 @@ export default function BreadCrumbs() {
     });
 
   return (
-    <div className="mb-4 flex items-center gap-2 px-4 text-sm">
+    <div className="flex items-center gap-2 px-4 text-sm">
       <a
         href="/"
         className="rounded-lg border bg-t3-purple-200/50 p-1 hover:bg-t3-purple-200/75 hover:no-underline dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
