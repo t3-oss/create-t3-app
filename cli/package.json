@@ -74,7 +74,6 @@
     "@trpc/server": "^10.43.6",
     "@types/fs-extra": "^11.0.1",
     "@types/gradient-string": "^1.1.2",
-    "@types/inquirer": "^9.0.3",
     "@types/node": "^18.17.0",
     "drizzle-kit": "^0.20.9",
     "drizzle-orm": "^0.29.2",
