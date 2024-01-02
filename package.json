@@ -1,7 +1,7 @@
 {
   "name": "@bsmntapp/root",
   "version": "0.0.0",
-  "description": "Quickest way to start a new web app with full stack typesafety",
+  "description": "CLI to create pages using the basement stack",
   "author": "Shoubhit Dash <shoubhit2005@gmail.com> (https://nexxel.dev)",
   "maintainers": [
     "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)"
@@ -10,15 +10,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/t3-oss/create-t3-app.git"
+    "url": "https://github.com/basementstudio/create-basement.git"
   },
   "keywords": [
     "create-bsmnt-app",
     "init.tips",
     "next.js",
-    "t3-stack",
     "tailwind",
-    "tRPC",
     "typescript"
   ],
   "engines": {

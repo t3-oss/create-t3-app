@@ -109,6 +109,7 @@ export const runCli = async (): Promise<CliResults> => {
       (value) => !!value && value !== "false"
     )
     /** END CI-FLAGS */
+
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
       "afterAll",
@@ -204,9 +205,7 @@ export const runCli = async (): Promise<CliResults> => {
         },
         appRouter: () => {
           return p.confirm({
-            message:
-              chalk.bgCyan(" EXPERIMENTAL ") +
-              " Would you like to use Next.js App Router?",
+            message: " Would you like to use Next.js App Router?",
             initialValue: true,
           });
         },
@@ -257,7 +256,10 @@ export const runCli = async (): Promise<CliResults> => {
 
     const packages: AvailablePackages[] = [];
     if (project.styling) packages.push("tailwind");
-    console.log(project.creativeStack);
+    if (project.basehub) packages.push("basehub");
+    if (project.creativeStack) packages.push("creativeStack");
+
+    console.log(project);
     return {
       appName: project.name ?? cliResults.appName,
       packages,

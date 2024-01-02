@@ -1,6 +1,7 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
+import { basehubInstaller } from "./basehub.js";
 import { creativeStackInstaller } from "./creativeStack.js";
 
 export const creativeStackPackages = [
@@ -52,7 +53,7 @@ export const buildPkgInstallerMap = (
   },
   basehub: {
     inUse: packages.includes("basehub"),
-    installer: tailwindInstaller,
+    installer: basehubInstaller,
   },
   creativeStack: {
     inUse: packages.includes("creativeStack"),
