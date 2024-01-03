@@ -1,6 +1,10 @@
 @import "./helpers";
 @import "./reset.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   // Fonts
   --font-system: -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen,
