@@ -14,6 +14,7 @@ import { validateImportAlias } from "~/utils/validateImportAlias.js";
 interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
+  ignoreScripts: boolean;
   default: boolean;
   importAlias: string;
 
@@ -37,6 +38,7 @@ const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
   packages: ["basehub", "tailwind"],
   flags: {
+    ignoreScripts: false,
     noGit: false,
     noInstall: false,
     default: false,
@@ -268,6 +270,7 @@ export const runCli = async (): Promise<CliResults> => {
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
         noGit: !project.git ?? cliResults.flags.noGit,
         noInstall: !project.install ?? cliResults.flags.noInstall,
+        ignoreScripts: project.basehub,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,
       },
     };
