@@ -1,33 +1,33 @@
-import * as ReactDeviceDetect from 'react-device-detect'
+import * as ReactDeviceDetect from "react-device-detect";
 
-import { useIsHydrated } from './use-is-hydrated'
+import { useIsHydrated } from "./use-is-hydrated";
 
-type DD = {
-  isMobile?: boolean
-  isTablet?: boolean
-  isDesktop?: boolean
-  isMobileSafari?: boolean
-  isMobileOnly?: boolean
-  isSafari?: boolean
-  isChrome?: boolean
-  isFirefox?: boolean
-  isMacOs?: boolean
-  isWindows?: boolean
-  isIOS?: boolean
-  isAndroid?: boolean
-  isBrowser?: boolean
-  isTouch?: boolean
+interface DD {
+  isMobile?: boolean;
+  isTablet?: boolean;
+  isDesktop?: boolean;
+  isMobileSafari?: boolean;
+  isMobileOnly?: boolean;
+  isSafari?: boolean;
+  isChrome?: boolean;
+  isFirefox?: boolean;
+  isMacOs?: boolean;
+  isWindows?: boolean;
+  isIOS?: boolean;
+  isAndroid?: boolean;
+  isBrowser?: boolean;
+  isTouch?: boolean;
 }
 
 function getDD() {
   const isTouchDevice =
-    'ontouchstart' in window ||
+    "ontouchstart" in window ||
     navigator.maxTouchPoints > 0 ||
     // @ts-ignore
-    navigator.msMaxTouchPoints > 0
+    navigator.msMaxTouchPoints > 0;
 
   const isIpadPro =
-    ReactDeviceDetect.isDesktop && ReactDeviceDetect.isSafari && isTouchDevice
+    ReactDeviceDetect.isDesktop && ReactDeviceDetect.isSafari && isTouchDevice;
 
   return {
     isDesktop: ReactDeviceDetect.isDesktop && !isIpadPro,
@@ -43,16 +43,16 @@ function getDD() {
     isIOS: ReactDeviceDetect.isIOS,
     isAndroid: ReactDeviceDetect.isAndroid,
     isBrowser: ReactDeviceDetect.isBrowser,
-    isTouch: isTouchDevice
-  }
+    isTouch: isTouchDevice,
+  };
 }
 
 export const useDeviceDetect = (): DD => {
-  const isHydrated = useIsHydrated()
+  const isHydrated = useIsHydrated();
 
   if (!isHydrated) {
-    return {}
+    return {};
   }
 
-  return getDD()
-}
+  return getDD();
+};

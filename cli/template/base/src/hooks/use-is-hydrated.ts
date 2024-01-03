@@ -1,14 +1,14 @@
-import * as React from 'react'
+import * as React from "react";
 
-let globalIsHydrated = false
+let globalIsHydrated = false;
 
 export const useIsHydrated = () => {
-  const [isHydrated, setIsHydrated] = React.useState(globalIsHydrated)
+  const [isHydrated, setIsHydrated] = React.useState(globalIsHydrated);
 
   React.useEffect(() => {
-    setIsHydrated(true)
-    globalIsHydrated = true
-  }, [])
+    setIsHydrated(true);
+    globalIsHydrated = true;
+  }, []);
 
-  return isHydrated
-}
+  return isHydrated;
+};

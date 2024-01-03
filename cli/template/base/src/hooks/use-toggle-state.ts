@@ -1,21 +1,21 @@
-import * as React from 'react'
+import * as React from "react";
 
 export const useToggleState = (initialState = false) => {
-  const [isOn, setIsOn] = React.useState(initialState)
+  const [isOn, setIsOn] = React.useState(initialState);
 
   const handleOn = React.useCallback(() => {
-    setIsOn(true)
-  }, [])
+    setIsOn(true);
+  }, []);
 
   const handleOff = React.useCallback(() => {
-    setIsOn(false)
-  }, [])
+    setIsOn(false);
+  }, []);
 
   const handleToggle = React.useCallback(() => {
-    setIsOn((p) => !p)
-  }, [])
+    setIsOn((p) => !p);
+  }, []);
 
-  return { isOn, handleToggle, handleOn, handleOff }
-}
+  return { isOn, handleToggle, handleOn, handleOff };
+};
 
-export type ToggleState = ReturnType<typeof useToggleState>
+export type ToggleState = ReturnType<typeof useToggleState>;
