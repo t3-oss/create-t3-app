@@ -10,7 +10,6 @@ on:
 
 jobs:
   release:
-    if: ${{ github.repository_owner == 't3-oss' }}
     name: Create a PR for release workflow
     runs-on: ubuntu-latest
     steps:
@@ -47,5 +46,5 @@ jobs:
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_ENV: "production"
