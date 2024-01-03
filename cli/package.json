@@ -1,6 +1,6 @@
 {
   "name": "create-bsmnt-app",
-  "version": "7.24.2",
+  "version": "1.0.0",
   "description": "Create web application with the basement stack",
   "license": "MIT",
   "repository": {
