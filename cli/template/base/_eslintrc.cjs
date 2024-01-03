@@ -1,88 +1,88 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: true
+    project: true,
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
+  plugins: ["@typescript-eslint", "react", "react-hooks", "simple-import-sort"],
   extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:@next/next/recommended'
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:@next/next/recommended",
   ],
   ignorePatterns: [],
   env: {
     es6: true,
     browser: true,
-    node: true
+    node: true,
   },
   rules: {
-    'react/react-in-jsx-scope': 0,
-    'react/display-name': 0,
-    'react/prop-types': 0,
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/explicit-member-accessibility': 0,
-    '@typescript-eslint/indent': 0,
-    '@typescript-eslint/member-delimiter-style': 0,
-    '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/no-use-before-define': 0,
-    '@typescript-eslint/ban-ts-comment': 0,
-    'simple-import-sort/imports': 'warn',
-    'simple-import-sort/exports': 'warn',
-    'react-hooks/exhaustive-deps': [
-      'warn',
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    "react-hooks/exhaustive-deps": [
+      "warn",
       {
-        additionalHooks: '(useIsomorphicLayoutEffect|useGsapContext)'
-      }
+        additionalHooks: "(useIsomorphicLayoutEffect|useGsapContext)",
+      },
     ],
-    'react/no-unescaped-entities': 0,
-    curly: ['error', 'multi-line'],
-    'react/jsx-no-target-blank': [
+    "react/no-unescaped-entities": 0,
+    curly: ["error", "multi-line"],
+    "react/jsx-no-target-blank": [
       2,
       {
-        allowReferrer: true
-      }
+        allowReferrer: true,
+      },
     ],
-    '@typescript-eslint/no-unused-vars': [
+    "@typescript-eslint/no-unused-vars": [
       2,
       {
-        argsIgnorePattern: '^_'
-      }
+        argsIgnorePattern: "^_",
+      },
     ],
-    'no-console': [
+    "no-console": [
       1,
       {
-        allow: ['warn', 'error']
-      }
+        allow: ["warn", "error"],
+      },
     ],
-    'prettier/prettier': [
-      'warn',
+    "prettier/prettier": [
+      "warn",
       {
-        endOfLine: 'auto'
-      }
+        endOfLine: "auto",
+      },
     ],
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   },
   settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
     },
-    'import/resolver': {
+    "import/resolver": {
       typescript: {
         alwaysTryTypes: true,
-        project: '.'
-      }
+        project: ".",
+      },
     },
     react: {
-      version: 'detect'
-    }
-  }
-}
+      version: "detect",
+    },
+  },
+};
 
-module.exports = config
+module.exports = config;

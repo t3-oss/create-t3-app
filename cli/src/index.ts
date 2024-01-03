@@ -87,6 +87,16 @@ const main = async () => {
     path.join(projectDir, ".eslintrc.cjs")
   );
 
+  // do the same for prettier and stylelint
+  fs.renameSync(
+    path.join(projectDir, "_prettierrc.cjs"),
+    path.join(projectDir, ".prettierrc.cjs")
+  );
+  fs.renameSync(
+    path.join(projectDir, "_stylelint.cjs"),
+    path.join(projectDir, ".stylelint.cjs")
+  );
+
   if (!noGit) {
     await initializeGit(projectDir);
   }
