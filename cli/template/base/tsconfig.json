@@ -20,7 +20,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "preserve",
-    "paths": {  
+    "paths": {
       "~/videos/*": ["../videos/*"],
       "~/public/*": ["../public/*"],
       "~/*": ["./*"]
