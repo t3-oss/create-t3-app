@@ -4,7 +4,7 @@ import { Command } from "commander";
 
 import { CREATE_BSMNT_APP, DEFAULT_APP_NAME } from "~/consts.js";
 import { type AvailablePackages } from "~/installers/index.js";
-import { getVersion } from "~/utils/getT3Version.js";
+import { getVersion } from "~/utils/getBsmntVersion.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { IsTTYError } from "~/utils/isTTYError.js";
 import { logger } from "~/utils/logger.js";
@@ -113,24 +113,14 @@ export const runCli = async (): Promise<CliResults> => {
     /** END CI-FLAGS */
 
     .version(getVersion(), "-v, --version", "Display the version number")
-    .addHelpText(
-      "afterAll",
-      `\n The t3 stack was inspired by ${chalk
-        .hex("#E8DCFF")
-        .bold(
-          "@t3dotgg"
-        )} and has been used to build awesome fullstack applications like ${chalk
-        .hex("#E24A8D")
-        .underline("https://ping.gg")} \n`
-    )
+
     .parse(process.argv);
 
   // FIXME: TEMPORARY WARNING WHEN USING YARN 3. SEE ISSUE #57
   if (process.env.npm_config_user_agent?.startsWith("yarn/3")) {
     logger.warn(`  WARNING: It looks like you are using Yarn 3. This is currently not supported,
-  and likely to result in a crash. Please run create-t3-app with another
-  package manager such as pnpm, npm, or Yarn Classic.
-  See: https://github.com/t3-oss/create-t3-app/issues/57`);
+  and likely to result in a crash. Please run create-bsmnt-app with another
+  package manager such as pnpm, npm, or Yarn Classic.`);
   }
 
   // Needs to be separated outside the if statement to correctly infer the type as string | undefined
@@ -275,14 +265,14 @@ export const runCli = async (): Promise<CliResults> => {
       },
     };
   } catch (err) {
-    // If the user is not calling create-t3-app from an interactive terminal, inquirer will throw an IsTTYError
-    // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default t3 app
+    // If the user is not calling create-bsmnt-app from an interactive terminal, inquirer will throw an IsTTYError
+    // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default bsmnt app
     if (err instanceof IsTTYError) {
       logger.warn(`
   ${CREATE_BSMNT_APP} needs an interactive terminal to provide options`);
 
       const shouldContinue = await p.confirm({
-        message: `Continue scaffolding a default T3 app?`,
+        message: `Continue scaffolding a default bsmnt-app?`,
         initialValue: true,
       });
 

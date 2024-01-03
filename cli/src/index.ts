@@ -15,14 +15,14 @@ import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
 import { installDependencies } from "./helpers/installDependencies.js";
-import { getVersion } from "./utils/getT3Version.js";
+import { getVersion } from "./utils/getBsmntVersion.js";
 import {
   getNpmVersion,
   renderVersionWarning,
 } from "./utils/renderVersionWarning.js";
 
 type BsmntPackageJSON = PackageJson & {
-  ct3aMetadata?: {
+  bsmntMetadata?: {
     initVersion: string;
   };
 };
@@ -58,7 +58,7 @@ const main = async () => {
     path.join(projectDir, "package.json")
   ) as BsmntPackageJSON;
   pkgJson.name = scopedAppName;
-  pkgJson.ct3aMetadata = { initVersion: getVersion() };
+  pkgJson.bsmntMetadata = { initVersion: getVersion() };
 
   // ? Bun doesn't support this field (yet)
   if (pkgManager !== "bun") {

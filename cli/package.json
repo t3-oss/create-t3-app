@@ -1,11 +1,11 @@
 {
-  "name": "create-basement-app",
+  "name": "create-bsmnt-app",
   "version": "1.0.0",
   "description": "Create web application with the basement stack",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/t3-oss/create-t3-app.git",
+    "url": "https://github.com/basementstudio/create-basement.git",
     "directory": "cli"
   },
   "keywords": [
@@ -20,7 +20,7 @@
   "type": "module",
   "exports": "./dist/index.js",
   "bin": {
-    "create-t3-app": "./dist/index.js"
+    "create-bsmnt-app": "./dist/index.js"
   },
   "files": [
     "dist",
