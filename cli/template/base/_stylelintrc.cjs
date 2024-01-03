@@ -1,4 +1,3 @@
-/** @type {import('stylelint').Config} */
 const config = {
   ignoreFiles: ["**/*.{ts,tsx,js,jsx}"],
   extends: [
