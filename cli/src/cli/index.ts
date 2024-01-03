@@ -213,7 +213,7 @@ export const runCli = async (): Promise<CliResults> => {
         },
         basehub: () => {
           return p.confirm({
-            message: "Will you be using Basehub as CMS?",
+            message: "Will you be using BaseHub as CMS?",
           });
         },
         creativeStack: () => {
