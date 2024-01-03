@@ -23,8 +23,7 @@ function getDD() {
   const isTouchDevice =
     "ontouchstart" in window ||
     navigator.maxTouchPoints > 0 ||
-    // @ts-ignore
-    navigator.msMaxTouchPoints > 0;
+    navigator.maxTouchPoints > 0;
 
   const isIpadPro =
     ReactDeviceDetect.isDesktop && ReactDeviceDetect.isSafari && isTouchDevice;

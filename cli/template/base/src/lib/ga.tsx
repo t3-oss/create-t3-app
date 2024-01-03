@@ -6,7 +6,7 @@ import { gaTrackingId } from "./constants";
 
 declare global {
   interface Window {
-    gtag: undefined | ((...args: any[]) => void);
+    gtag: undefined | ((...args: unknown[]) => void);
   }
 }
 

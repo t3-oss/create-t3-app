@@ -36,7 +36,7 @@ export const useViewportSize = () => {
 
 export const useOnWindowResize = (
   callback: (width: number, height: number) => void,
-  deps: any[]
+  deps: React.DependencyList
 ) => {
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +50,5 @@ export const useOnWindowResize = (
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
 };
