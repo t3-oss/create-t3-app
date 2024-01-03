@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.1.1/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "t3-oss/create-t3-app" }
+    { "repo": "basement/create-basement-app" }
   ],
   "commit": false,
   "fixed": [],
@@ -10,6 +10,6 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@ct3a/www", "@ct3a/upgrade"],
+  "ignore": ["@bsmntapp/www", "@bsmntapp/upgrade"],
   "changedFilePatterns": ["src/**", "template/**"]
 }
