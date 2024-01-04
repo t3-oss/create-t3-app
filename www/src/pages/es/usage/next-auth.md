@@ -99,7 +99,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. Crea un middleware tRPC que verifique si el usuario está autenticado. Luego usamos el middleware en una `protectedProcedure`. Cualquier persona que llama a estos procedimientos debe de estar autenticada, o de lo contrario se lanzará un error que el cliente puede manejar adecuadamente.
 
 ```ts:server/trpc/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -109,9 +109,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+})
 ```
 
 El objeto de sesión es una representación ligera y mínima del usuario y solo contiene algunos campos. Cuando uses `protectedProcedures`, tienes acceso al ID del usuario que puede usarse para obtener más datos de la base de datos.

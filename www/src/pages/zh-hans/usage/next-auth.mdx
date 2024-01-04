@@ -125,19 +125,17 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. 创建一个 tRPC 中间件，来检测用户是否已通过认证。然后我们可以在一个 `protectedProcedure` 里调用该中间件。任何对该路由的调用都会被要求认证，否则会抛出一个错误，由客户端妥善处理。
 
 ```ts:server/api/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
-      // 推断出 `session` 为非空类型
+      // inferer `session` som ikke-nullbar
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+}));
 ```
 
 这个 session 对象是对用户数据的一个轻量、最小化表示，仅包含了少量字段。当使用 `protectedProcedures` 时，你可以借助访问用户 ID 来从数据库里读取该用户的更多数据。
@@ -182,7 +180,8 @@ const userRouter = router({
 将 NextAuth.js 搭配 Next.js 中间件一同使用[需要采用 JWT session 策略](https://next-auth.js.org/configuration/nextjs#caveats) 来进行认证。这是因为只有当会话 cookie 为 JWT 时，中间件才能够获取到它。默认情况下，Create T3 App 会用 Prisma 作为数据库适配器，并采取**默认**的数据库策略。
 
 <Callout type="warning">
-  使用数据库会话是推荐的方法，如果要切换到 JWT 会话策略，请先了解 JWT，以避免出现任何安全问题。
+  使用数据库会话是推荐的方法，如果要切换到 JWT 会话策略，请先了解
+  JWT，以避免出现任何安全问题。
 </Callout>
 
 在切换到 JWT 会话策略后，请确保更新 `src/server/auth.ts` 中的 `session` 回调函数。

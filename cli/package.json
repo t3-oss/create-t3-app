@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.24.2",
+  "version": "7.25.1",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -75,10 +75,9 @@
     "@trpc/server": "^10.43.6",
     "@types/fs-extra": "^11.0.1",
     "@types/gradient-string": "^1.1.2",
-    "@types/inquirer": "^9.0.3",
     "@types/node": "^18.17.0",
-    "drizzle-kit": "^0.19.13",
-    "drizzle-orm": "^0.28.5",
+    "drizzle-kit": "^0.20.9",
+    "drizzle-orm": "^0.29.3",
     "next": "^14.0.3",
     "next-auth": "^4.24.5",
     "prettier": "^3.1.0",

@@ -1,5 +1,29 @@
 # Changelog
 
+## 7.25.1
+
+### Patch Changes
+
+- [#1713](https://github.com/t3-oss/create-t3-app/pull/1713) [`e34b082`](https://github.com/t3-oss/create-t3-app/commit/e34b08245cc3c1288f90b289577e7c18b37acb1c) Thanks [@daikiejp](https://github.com/daikiejp)! - remove unused @types/inquirer
+
+- [#1703](https://github.com/t3-oss/create-t3-app/pull/1703) [`b6ccded`](https://github.com/t3-oss/create-t3-app/commit/b6ccdedd11b22b64e7bb6f1c55997362fa2915a4) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - update eslint setup for next 14.0.4
+
+- [#1714](https://github.com/t3-oss/create-t3-app/pull/1714) [`ba352ef`](https://github.com/t3-oss/create-t3-app/commit/ba352ef73823eb6413cf251bd7111db6fcb3a585) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: update drizzle dep to remove invalid expo peerDep
+
+- [#1707](https://github.com/t3-oss/create-t3-app/pull/1707) [`26efe48`](https://github.com/t3-oss/create-t3-app/commit/26efe482bdcb309796a2bf207c50ebc844233106) Thanks [@esize](https://github.com/esize)! - chore: update drizzle-orm and drizzle-kit
+
+- [#1708](https://github.com/t3-oss/create-t3-app/pull/1708) [`8f379b4`](https://github.com/t3-oss/create-t3-app/commit/8f379b4df75e56b98973aabcc2097b62be80d0c7) Thanks [@KATT](https://github.com/KATT)! - chore: drop `t.middleware()`
+
+## 7.25.0
+
+### Minor Changes
+
+- [#1702](https://github.com/t3-oss/create-t3-app/pull/1702) [`62fa8dc`](https://github.com/t3-oss/create-t3-app/commit/62fa8dcad2e0d3d6bad04bb6167d7580a754049c) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - update drizzle-kit and change connectionString to uri
+
+### Patch Changes
+
+- [#1690](https://github.com/t3-oss/create-t3-app/pull/1690) [`6efb99a`](https://github.com/t3-oss/create-t3-app/commit/6efb99a94f29d28243fa7c625b099995e84e4db2) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix typo in env.mjs
+
 ## 7.24.2
 
 ### Patch Changes

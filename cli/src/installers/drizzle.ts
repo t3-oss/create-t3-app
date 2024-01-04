@@ -13,7 +13,7 @@ export const drizzleInstaller: Installer = ({
   scopedAppName,
   databaseProvider,
 }) => {
-  const devPackages: AvailableDependencies[] = ["drizzle-kit", "dotenv-cli"];
+  const devPackages: AvailableDependencies[] = ["drizzle-kit"];
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
   if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
 
@@ -80,7 +80,7 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": `dotenv drizzle-kit push:${
+    "db:push": `drizzle-kit push:${
       {
         postgres: "pg",
         sqlite: "sqlite",
@@ -88,7 +88,7 @@ export const drizzleInstaller: Installer = ({
         planetscale: "mysql",
       }[databaseProvider]
     }`,
-    "db:studio": "dotenv drizzle-kit studio",
+    "db:studio": "drizzle-kit studio",
   };
 
   fs.copySync(configFile, configDest);

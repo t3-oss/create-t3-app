@@ -119,7 +119,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 2. Lag en tRPC-middleware som sjekker om brukeren er autentisert. Vi bruker deretter middlewaren i en `protectedProcedure`. Hvert kall av disse prosedyrene må autentiseres, ellers kastes en feilmelding, som kan håndteres av klienten.
 
 ```ts:server/api/trpc.ts
-const isAuthed = t.middleware(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -129,9 +129,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-});
-
-export const protectedProcedure = t.procedure.use(isAuthed);
+}));
 ```
 
 `Session`-objektet er en minimal representasjon av brukeren og inneholder bare noen få felt. Hvis du bruker `protectedProcedures`, har du tilgang til brukerens ID, som kan brukes til å hente ut mer data fra databasen.
