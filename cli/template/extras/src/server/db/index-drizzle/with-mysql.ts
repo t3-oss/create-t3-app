@@ -8,5 +8,5 @@ export const db = drizzle(
   mysql.createPool({
     uri: env.DATABASE_URL,
   }),
-  { schema }
+  { schema, mode: "default" }
 );
