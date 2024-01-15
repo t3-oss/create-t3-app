@@ -342,8 +342,8 @@ export const runCli = async (): Promise<CliResults> => {
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
-        noGit: !project.git ?? cliResults.flags.noGit,
-        noInstall: !project.install ?? cliResults.flags.noInstall,
+        noGit: !project.git || cliResults.flags.noGit,
+        noInstall: !project.install || cliResults.flags.noInstall,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,
       },
     };
