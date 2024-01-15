@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.25.2
+
+### Patch Changes
+
+- [#1723](https://github.com/t3-oss/create-t3-app/pull/1723) [`c116281`](https://github.com/t3-oss/create-t3-app/commit/c116281f3626ae5f05191037789d7338a8fa2e5c) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: don't pass cookies to CC
+
+- [#1728](https://github.com/t3-oss/create-t3-app/pull/1728) [`06ec5b3`](https://github.com/t3-oss/create-t3-app/commit/06ec5b37784c305d18a775b64d34cecb5de45bf2) Thanks [@Nsttt](https://github.com/Nsttt)! - fix missuse of binary expressions
+
 ## 7.25.1
 
 ### Patch Changes
