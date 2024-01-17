@@ -9,7 +9,13 @@ Skorzytałeś właśnie z szablonu aplikacji T3 i jesteś gotowy, aby zacząć z
 
 ## Baza Danych
 
+### Prisma
+
 Jeżeli twoja aplikacja zawiera Prismę, koniecznie uruchom `npx prisma db push` z głównego folderu projektu. Komenda ta zsynchronizuje twój schemat Prismy z bazą danych i wygeneruje typy TypeScripta dla "Prisma Client" bazując na tym schemacie. Uwaga: po wygenerowaniu typów Prismy prawdopodobnie będziesz musiał [zrestartować serwer TypeScripta](https://tinytip.co/tips/vscode-restart-ts/), aby był on w stanie je wykryć.
+
+### Drizzle
+
+Jeżeli twoja aplikacja zawiera Drizzle, sprawdź plik `.env` po instrukcje jak stworzyć swój `DATABASE_URL`. Po dodaniu `DATABASE_URL` do pliku `.env` uruchom `pnpm db:push` ( lub odpowiednik dla innych menedżerów pakietów) by zsynchronizować twoje schematy.
 
 ## Uwierzytelnianie
 
