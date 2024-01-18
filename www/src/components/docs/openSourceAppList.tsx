@@ -287,10 +287,14 @@ export default function OpenSourceAppList({
         <tr>
           <td>{project.description}</td>
           <td>
-            <a href={project.repo}>{project.repoName}</a>
+            <a href={project.repo} target="_blank">
+              {project.repoName}
+            </a>
           </td>
           <td>
-            <a href={project.link}>{project.linkName}</a>
+            <a href={project.link} target="_blank">
+              {project.linkName}
+            </a>
             {project.linkExtra && <span> {project.linkExtra}</span>}
           </td>
         </tr>
