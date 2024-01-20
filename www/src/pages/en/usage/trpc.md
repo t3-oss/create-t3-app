@@ -304,7 +304,7 @@ Optimistic updates are when we update the UI before the API call has finished. T
 const MyComponent = () => {
   const listPostQuery = api.post.list.useQuery();
 
-  const utils = api.useContext();
+  const utils = api.useUtils();
   const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
       // Cancel outgoing fetches (so they don't overwrite our optimistic update)
