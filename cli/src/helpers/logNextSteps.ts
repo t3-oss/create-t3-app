@@ -11,9 +11,15 @@ export const logNextSteps = async ({
   appRouter,
   noInstall,
   projectDir,
+  databaseProvider,
 }: Pick<
   InstallerOptions,
-  "projectName" | "packages" | "noInstall" | "projectDir" | "appRouter"
+  | "projectName"
+  | "packages"
+  | "noInstall"
+  | "projectDir"
+  | "appRouter"
+  | "databaseProvider"
 >) => {
   const pkgManager = getUserPkgManager();
 
@@ -26,6 +32,10 @@ export const logNextSteps = async ({
     } else {
       logger.info(`  ${pkgManager} install`);
     }
+  }
+
+  if (["postgres", "mysql"].includes(databaseProvider)) {
+    logger.info("  ./start-database.sh");
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
