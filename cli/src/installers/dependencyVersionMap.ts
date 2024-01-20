@@ -11,12 +11,16 @@ export const dependencyVersionMap = {
   // Prisma
   prisma: "^5.6.0",
   "@prisma/client": "^5.6.0",
+  "@prisma/adapter-planetscale": "^5.6.0",
 
   // Drizzle
   "drizzle-orm": "^0.29.3",
   "drizzle-kit": "^0.20.9",
   mysql2: "^3.6.1",
   "@planetscale/database": "^1.11.0",
+  postgres: "^3.4.3",
+  "@types/better-sqlite3": "^7.6.6",
+  "better-sqlite3": "^9.0.0",
 
   // TailwindCSS
   tailwindcss: "^3.3.5",

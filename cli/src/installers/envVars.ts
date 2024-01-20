@@ -2,25 +2,32 @@ import path from "path";
 import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
-import { type Installer } from "~/installers/index.js";
+import { type DatabaseProvider, type Installer } from "~/installers/index.js";
 
-export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
+export const envVariablesInstaller: Installer = ({
+  projectDir,
+  packages,
+  databaseProvider,
+  projectName,
+}) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
   const usingDb = usingPrisma || usingDrizzle;
 
-  const envContent = getEnvContent(!!usingAuth, !!usingPrisma, !!usingDrizzle);
+  const envContent = getEnvContent(
+    !!usingAuth,
+    !!usingPrisma,
+    !!usingDrizzle,
+    databaseProvider,
+    projectName
+  );
 
-  const envFile =
-    usingAuth && usingDb
-      ? "with-auth-db.js"
-      : usingAuth
-        ? "with-auth.js"
-        : usingDb
-          ? "with-db.js"
-          : "";
+  let envFile = "";
+  if (usingAuth && usingDb) envFile = "with-auth-db.js";
+  else if (usingAuth) envFile = "with-auth.js";
+  else if (usingDb) envFile = "with-db.js";
 
   if (envFile !== "") {
     const envSchemaSrc = path.join(
@@ -28,8 +35,15 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
       "template/extras/src/env",
       envFile
     );
+    const envFileText = fs.readFileSync(envSchemaSrc, "utf-8");
     const envSchemaDest = path.join(projectDir, "src/env.js");
-    fs.copySync(envSchemaSrc, envSchemaDest);
+    fs.writeFileSync(
+      envSchemaDest,
+      databaseProvider === "sqlite"
+        ? envFileText.replace("\n      .url()", "")
+        : envFileText,
+      "utf-8"
+    );
   }
 
   const envDest = path.join(projectDir, ".env");
@@ -42,7 +56,9 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
 const getEnvContent = (
   usingAuth: boolean,
   usingPrisma: boolean,
-  usingDrizzle: boolean
+  usingDrizzle: boolean,
+  databaseProvider: DatabaseProvider,
+  projectName: string
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.js"
@@ -55,16 +71,30 @@ const getEnvContent = (
     content += `
 # Prisma
 # https://www.prisma.io/docs/reference/database-reference/connection-urls#env
-DATABASE_URL="file:./db.sqlite"
 `;
 
-  if (usingDrizzle) {
-    content += `
-# Drizzle
-# Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
+  if (usingDrizzle) content += "\n# Drizzle\n";
+
+  if (usingPrisma || usingDrizzle) {
+    if (databaseProvider === "planetscale") {
+      if (usingDrizzle) {
+        content += `Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
 # Change the query params at the end of the URL to "?ssl={"rejectUnauthorized":true}"
-DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'
-`;
+DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
+      } else {
+        content = `Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
+DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
+      }
+    } else if (databaseProvider === "mysql") {
+      content += `DATABASE_URL="mysql://root:password@localhost:3306/${projectName}"`;
+    } else if (databaseProvider === "postgres") {
+      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${projectName}"`;
+    } else if (databaseProvider === "sqlite") {
+      content += usingPrisma
+        ? 'DATABASE_URL="file:./db.sqlite"'
+        : 'DATABASE_URL="db.sqlite"';
+    }
+    content += "\n";
   }
 
   if (usingAuth)

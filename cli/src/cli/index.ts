@@ -3,7 +3,11 @@ import chalk from "chalk";
 import { Command } from "commander";
 
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
-import { type AvailablePackages } from "~/installers/index.js";
+import {
+  databaseProviders,
+  type AvailablePackages,
+  type DatabaseProvider,
+} from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { IsTTYError } from "~/utils/isTTYError.js";
@@ -37,6 +41,7 @@ interface CliResults {
   appName: string;
   packages: AvailablePackages[];
   flags: CliFlags;
+  databaseProvider: DatabaseProvider;
 }
 
 const defaultOptions: CliResults = {
@@ -55,6 +60,7 @@ const defaultOptions: CliResults = {
     importAlias: "~/",
     appRouter: false,
   },
+  databaseProvider: "sqlite",
 };
 
 export const runCli = async (): Promise<CliResults> => {
@@ -125,6 +131,13 @@ export const runCli = async (): Promise<CliResults> => {
       defaultOptions.flags.importAlias
     )
     .option(
+      "--dbProvider [provider]",
+      `Choose a database provider to use. Possible values: ${databaseProviders.join(
+        ", "
+      )}`,
+      defaultOptions.flags.importAlias
+    )
+    .option(
       "--appRouter [boolean]",
       "Explicitly tell the CLI to use the new Next.js app router",
       (value) => !!value && value !== "false"
@@ -175,6 +188,10 @@ export const runCli = async (): Promise<CliResults> => {
       logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
       process.exit(0);
     }
+
+    cliResults.databaseProvider = cliResults.packages.includes("drizzle")
+      ? "planetscale"
+      : "sqlite";
 
     return cliResults;
   }
@@ -262,6 +279,19 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: false,
           });
         },
+        databaseProvider: ({ results }) => {
+          if (results.database === "none") return;
+          return p.select({
+            message: "What database provider would you like to use?",
+            options: [
+              { value: "sqlite", label: "SQLite" },
+              { value: "mysql", label: "MySQL" },
+              { value: "postgres", label: "PostgreSQL" },
+              { value: "planetscale", label: "Planetscale" },
+            ],
+            initialValue: "sqlite",
+          });
+        },
         ...(!cliResults.flags.noGit && {
           git: () => {
             return p.confirm({
@@ -307,6 +337,8 @@ export const runCli = async (): Promise<CliResults> => {
     return {
       appName: project.name ?? cliResults.appName,
       packages,
+      databaseProvider:
+        (project.databaseProvider as DatabaseProvider) || "sqlite",
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
