@@ -5,34 +5,55 @@ import { type PackageJson } from "type-fest";
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
   scopedAppName,
+  databaseProvider,
 }) => {
+  const devPackages: AvailableDependencies[] = ["drizzle-kit"];
+  if (databaseProvider === "planetscale") devPackages.push("mysql2");
+  if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
+
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-kit", "mysql2"],
+    dependencies: devPackages,
     devMode: true,
   });
   addPackageDependency({
     projectDir,
-    dependencies: ["drizzle-orm", "@planetscale/database"],
+    dependencies: [
+      "drizzle-orm",
+      (
+        {
+          planetscale: "@planetscale/database",
+          mysql: "mysql2",
+          postgres: "postgres",
+          sqlite: "better-sqlite3",
+        } as const
+      )[databaseProvider],
+    ],
     devMode: false,
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const configFile = path.join(extrasDir, "config/drizzle.config.ts");
+  const configFile = path.join(
+    extrasDir,
+    `config/drizzle-config-${
+      databaseProvider === "planetscale" ? "mysql" : databaseProvider
+    }.ts`
+  );
   const configDest = path.join(projectDir, "drizzle.config.ts");
 
   const schemaSrc = path.join(
     extrasDir,
-    "src/server/db",
+    "src/server/db/schema-drizzle",
     packages?.nextAuth.inUse
-      ? "drizzle-schema-auth.ts"
-      : "drizzle-schema-base.ts"
+      ? `with-auth-${databaseProvider}.ts`
+      : `base-${databaseProvider}.ts`
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
@@ -42,10 +63,15 @@ export const drizzleInstaller: Installer = ({
     "project1_${name}",
     `${scopedAppName}_\${name}`
   );
+
   let configContent = fs.readFileSync(configFile, "utf-8");
+
   configContent = configContent.replace("project1_*", `${scopedAppName}_*`);
 
-  const clientSrc = path.join(extrasDir, "src/server/db/index-drizzle.ts");
+  const clientSrc = path.join(
+    extrasDir,
+    `src/server/db/index-drizzle/with-${databaseProvider}.ts`
+  );
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
   // add db:push script to package.json
@@ -54,7 +80,14 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": "drizzle-kit push:mysql",
+    "db:push": `drizzle-kit push:${
+      {
+        postgres: "pg",
+        sqlite: "sqlite",
+        mysql: "mysql",
+        planetscale: "mysql",
+      }[databaseProvider]
+    }`,
     "db:studio": "drizzle-kit studio",
   };
 
