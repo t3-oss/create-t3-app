@@ -42,7 +42,7 @@ export default function RootLayout({
           {children}
           <footer className="flex justify-center pb-4">
             <a
-              href="https://github.com/t3-oss/create-t3-app/tree/next/upgrade"
+              href="https://github.com/t3-oss/create-t3-app/tree/main/upgrade"
               className="flex items-center gap-2 text-sm text-muted-foreground"
             >
               <Github className="h-8 w-8" /> Open Source by Andrei Filip on
