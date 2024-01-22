@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.26.0
+
+### Minor Changes
+
+- [#1622](https://github.com/t3-oss/create-t3-app/pull/1622) [`06b1bca`](https://github.com/t3-oss/create-t3-app/commit/06b1bcafe8751a0fc3cfb7992dfb12cb88bf0234) Thanks [@ronanru](https://github.com/ronanru)! - add more db options
+
 ## 7.25.2
 
 ### Patch Changes
