@@ -40,7 +40,7 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
-export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/next/www`;
+export const GITHUB_EDIT_URL = `https://github.com/t3-oss/create-t3-app/tree/main/www`;
 
 export const COMMUNITY_INVITE_URL = `https://t3.gg/discord`;
 
