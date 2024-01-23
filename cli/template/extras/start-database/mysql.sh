@@ -7,7 +7,7 @@
 # 3. Open WSL - `wsl`
 # 4. Run this script - `./start-database.sh`
 
-# On Lunux and macOS you can run this script directly - `./start-database.sh`
+# On Linux and macOS you can run this script directly - `./start-database.sh`
 
 DB_CONTAINER_NAME="project1-mysql"
 
