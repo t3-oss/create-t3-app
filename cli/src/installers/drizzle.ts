@@ -30,7 +30,7 @@ export const drizzleInstaller: Installer = ({
         {
           planetscale: "@planetscale/database",
           mysql: "mysql2",
-          postgres: "postgres",
+          postgres: "pg",
           sqlite: "better-sqlite3",
         } as const
       )[databaseProvider],
