@@ -2,11 +2,17 @@
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { fetchGithub } from "../../utils/fetchGithub";
 
-const githubStars =
+let githubStars = 42069;
+
+try {
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
     throwIfNoAuth: false,
     fetchType: "repo",
   }).then((data) => data?.stargazers_count)) ?? 42069;
+} catch (e) {
+  console.error("unable to fetch from github", e);
+}
+
 const ONE_HOUR = 1 * 60 * 60;
 Astro.response.headers.set("Cache-Control", `public, max-age=${ONE_HOUR}`);
 
