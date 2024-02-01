@@ -202,6 +202,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Struktura Projektu", link: "pl/folder-structure" },
       { text: "FAQ", link: "pl/faq" },
       { text: "Kolekcja T3", link: "pl/t3-collection" },
+      { text: "Przykłady", link: "pl/examples" },
       { text: "Inne Rekomendacje", link: "pl/other-recs" },
     ],
     Usage: [
