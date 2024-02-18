@@ -30,6 +30,13 @@ const projects: App[] = [
     link: "https://create-t3-turbo.vercel.app/",
   },
   {
+    description: "T3 turborepo template with biomejs and both shadcn native and web ui",
+    repoName: "rajatsandeepsen/t3-turbo-biome",
+    repo: "https://github.com/rajatsandeepsen/t3-turbo-biome",
+    linkName: "create-t3-turbo.vercel.app",
+    link: "https://create-t3-turbo.vercel.app/",
+  },
+  {
     description: "Zapdos - a QnA app for streamers",
     repoName: "pingdotgg/zapdos",
     repo: "https://github.com/pingdotgg/zapdos",
