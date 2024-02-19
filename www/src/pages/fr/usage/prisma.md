@@ -74,4 +74,4 @@ Ensuite, exécutez simplement `pnpm db-seed` (ou `npm`/`yarn`) pour amorcer votr
 | Documentation Prisma               | https://www.prisma.io/docs/                                                                                                                       |
 | Prisma GitHub                      | https://github.com/prisma/prisma                                                                                                                  |
 | Adaptateur Prisma pour NextAuth.JS | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Guide de connexion à Planetscale   | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| Guide de connexion à PlanetScale   | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
