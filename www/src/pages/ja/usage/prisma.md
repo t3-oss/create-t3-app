@@ -75,4 +75,4 @@ main()
 | Prisma GitHub                           | https://github.com/prisma/prisma                                                                                                                  |
 | Prisma マイグレーションプレイグラウンド | https://playground.prisma.io/guides                                                                                                               |
 | NextAuth.JS Prisma アダプタ             | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Planetscale 接続ガイド                  | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| PlanetScale 接続ガイド                  | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
