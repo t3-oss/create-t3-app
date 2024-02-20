@@ -43,6 +43,7 @@ jobs:
               pl: ["matibox", "Infiplaya", "PiotrekPKP"],
               pt: ["minsk-dev", "Sn0wye", "victoriaquasar", "MattFerreira18", "gilhrpenner"],
               ru: ["AmadeusTwi", "ronanru", "JohnBakhmat"],
+              uk: ["pqoqubbw"],
               "zh-hans": ["fernandoxu", "escwxyz"],
             };
 

@@ -1,0 +1,33 @@
+---
+title: T3 колекція
+description: Круті open source проекти та компанії, що використовують T3 стек
+layout: ../../layouts/docs.astro
+lang: uk
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+import CompanyList from "../../components/docs/companyList.tsx";
+import OpenSourceAppList from "../../components/docs/openSourceAppList.tsx";
+
+Зробили проект, що використовує T3 стек і хочете поділитися ним? Додайте його до списку!
+
+## Open Source програми зроблені з використанням T3 стека
+
+<OpenSourceAppList
+  descriptionIntl="Опис"
+  repoIntl="Посилання"
+  linkIntl="Посилання"
+/>
+
+## Компанії використовують T3 стек
+
+Нам би дуже хотілося дізнатися про компанії, які використовують T3 стек для своїх додатків. Ваша компанія використовує стек T3 і ви хочете поділитися цим? Додайте її до списку!
+
+<CompanyList companyIntl="Опис" linkIntl="Посилання" />
+
+<Callout type="tip">
+  Є крутий проект, що використовує T3 стек? Зробіть [pull
+  request](https://github.com/t3-oss/create-t3-app/tree/next/www/src/components/docs/openSourceAppList.tsx)
+  та додайте його до списку!
+</Callout>

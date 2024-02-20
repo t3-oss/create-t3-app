@@ -1,0 +1,225 @@
+---
+title: Файлова структура
+description: Файлова структура нового T3 додатка
+layout: ../../layouts/docs.astro
+lang: uk
+isMdx: true
+---
+
+import Diagram from "../../components/docs/folderStructureDiagram.astro";
+import Form from "../../components/docs/folderStructureForm.astro";
+
+Будь ласка, виберіть пакети, щоб побачити файлову структуру нового додатка з обраними пакетами. Нижче ви знайдете опис кожного елемента.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+Папка `prisma` містить файл `schema.prisma`, який використовується для налаштування з'єднання з базою даних і схеми бази даних. Також це місце для зберігання файлів міграції та/або сценаріїв заповнення, якщо вони використовуються. Дивіться [Використання Prisma](/uk/usage/prisma) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `public`
+
+Папка `public` містить статичні файли, які обслуговуються веб-сервером. Файл `favicon.ico` - це приклад статичного файлу.
+
+</div>
+<div>
+
+### `src/env`
+
+Використовується для перевірки змінних оточення і визначення типів - дивіться [Змінні оточення](/uk/usage/env-variables).
+
+</div>
+<div>
+
+### `src/pages`
+
+Папка `pages` містить усі сторінки додатка Next.js. Файл `index.tsx` у кореневій папці `/pages` є домашньою сторінкою додатка. Файл `_app.tsx` використовується для обертання додатка провайдерами. Дивіться [документацію Next.js](https://nextjs.org/docs/basic-features/pages) для отримання додаткової інформації.
+
+</div>
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+Папка `api` містить усі маршрути API додатка Next.js. Файл `examples.ts` (з Prisma) містить приклад маршруту, який використовує функцію [Next.js API route](https://nextjs.org/docs/api-routes/introduction) разом із Prisma. Файл `restricted.ts` (з Next-Auth) містить приклад маршруту, який використовує функцію [Next.js API route](https://nextjs.org/docs/api-routes/introduction) і захищений за допомогою [NextAuth.js](https://next-auth.js.org/).
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+Файл `[...nextauth].ts` - це slug-маршрут NextAuth.js для аутентифікації. Він використовується для обробки запитів аутентифікації. Дивіться [Використання NextAuth.js](/uk/usage/next-auth) для отримання додаткової інформації про NextAuth.js і [документацію Next.js про динамічні маршрути](https://nextjs.org/docs/routing/dynamic-routes) для отримання інформації про маршрути catch-all/slug.
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+Файл `[trpc].ts` - це точка входу tRPC API. Він використовується для обробки запитів tRPC. Дивіться [Використання tRPC](/uk/usage/trpc#-pagesapitrpctrpcts) для отримання додаткової інформації про цей файл і [документацію Next.js про динамічні маршрути](https://nextjs.org/docs/routing/dynamic-routes) для отримання інформації про маршрути catch-all/slug.
+
+</div>
+<div data-components="trpc prisma nextauth">
+
+### `src/server`
+
+Папка `server` використовується для чіткого поділу серверного коду від клієнтського коду.
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+Містить утиліти для автентифікації, такі як отримання сесії користувача на стороні сервера. Дивіться [Використання NextAuth.js](/uk/usage/next-auth#usage-with-trpc) для отримання додаткової інформації.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+Файл `db.ts` використовується для створення клієнта Prisma на глобальному рівні. Дивіться [Використання Prisma](/uk/usage/prisma#prisma-client) і [кращі практики по використанню Prisma з Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) для отримання додаткової інформації.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+Папка `api` містить серверний код tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+Папка `routers` містить усі ваші під-маршрутизатори tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+Файл `example.ts` - це приклад маршрутизатора tRPC, який використовує допоміжну функцію `publicProcedure` для демонстрації того, як створити публічний маршрут tRPC.
+
+Базуючись на обраних вами пакетах, цей маршрутизатор містить більше або менше маршрутів для кращого демонстрування використання ваших потреб.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+Файл `trpc.ts` - це основний файл конфігурації для вашого tRPC-бекенду. У ньому ми:
+
+1. Визначаємо контекст, який використовується в запитах tRPC. Дивіться [Використання tRPC](/uk/usage/trpc#-serverapitrpcts) для отримання додаткової інформації.
+2. Експортуємо допоміжні функції процедур. Дивіться [Використання tRPC](/uk/usage/trpc#-serverapitrpcts) для отримання додаткової інформації.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+Файл `root.ts` використовується для мерджу маршрутизаторів tRPC і експорту їх як єдиного маршрутизатора, а також визначення типу маршрутизатора. Дивіться [Використання tRPC](/uk/usage/trpc#-serverapirootts) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `src/styles`
+
+Папка `styles` містить глобальні стилі додатка.
+
+</div>
+<div data-components="nextauth">
+
+### `src/types`
+
+Папка `types` використовується для зберігання повторно використовуваних типів або оголошень типів.
+
+</div>
+<div data-components="nextauth">
+
+#### `src/types/next-auth.d.ts`
+
+Файл `next-auth.d.ts` використовується для розширення типу сесії за замовчуванням NextAuth на включення ідентифікатора користувача. Дивіться [Використання NextAuth.js](/uk/usage/next-auth#включення-userid-в-сеанс) для отримання додаткової інформації.
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+Папка `utils` використовується для зберігання повторно використовуваних функцій утиліт.
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+Файл `api.ts` є точкою входу для tRPC на стороні клієнта. Дивіться [Використання tRPC](/uk/usage/trpc#-utilsapits) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `.env`
+
+Файл `.env` використовується для зберігання змінних середовища. Дивіться [Змінні середовища](/uk/usage/env-variables) для отримання додаткової інформації. Цей файл **не** повинен бути доданий в історію git.
+
+</div>
+<div>
+
+### `.env.example`
+
+Файл `.env.example` показує приклад змінних середовища на основі обраних бібліотек. Цей файл має бути доданий в історію git.
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+Файл `.eslintrc.cjs` використовується для налаштування ESLint. Дивіться [документацію ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+Файл `next-env.d.ts` гарантує, що типи Next.js будуть виявлені компілятором TypeScript. **Ви не повинні видаляти його або редагувати, оскільки він може змінитися в будь-який час.** Дивіться [документацію Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+Файл `next.config.mjs` використовується для налаштування Next.js. Дивіться [Документацію Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) для отримання додаткової інформації. Примітка: Розширення .mjs використовується для дозволу імпорту ESM.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+Файл `postcss.config.cjs` використовується для використання Tailwind PostCSS. Дивіться [документацію Taiwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) для отримання додаткової інформації.
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.mjs`
+
+Файл `prettier.config.mjs` використовується для налаштування Prettier для ввімкнення prettier-plugin-tailwindcss для форматування класів Tailwind CSS. Дивіться [пост блогу Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) для отримання додаткової інформації.
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+Файл `tsconfig.json` використовується для налаштування TypeScript. Деякі значення за замовчуванням, такі як `strict mode`, були увімкнені для забезпечення кращого використання TypeScript для create-t3-app та його бібліотек. Дивіться [документацію TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) або [Використання TypeScript](usage/typescript) для отримання додаткової інформації.
+
+</div>
+<div>
+### `drizzle.config.ts`
+
+Файл `drizzle.config.ts` використовується для налаштування drizzle kit. Дивіться [документацію](https://orm.drizzle.team/kit-docs/config-reference) для отримання додаткової інформації.
+
+</div>
