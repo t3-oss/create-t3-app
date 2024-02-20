@@ -63,7 +63,7 @@ README.md
 ##### DEPENDENCIES
 
 FROM --platform=linux/amd64 node:20-alpine AS deps
-RUN apk add --no-cache libc6-compat openssl1.1-compat
+RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
@@ -148,7 +148,7 @@ You can also use Docker Compose to build the image and run the container.
 
 <details>
     <summary>
-      Follow steps 1-4 above, click here, and include contents in <code>docker-compose.yml</code>:
+      Follow steps 1-3 above, click here, and include contents in <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
@@ -170,10 +170,10 @@ services:
       - DATABASE_URL=database_url_goes_here
 ```
 
-Run this using the `docker compose up` command:
+Build and run this using the `docker compose up --build` command:
 
 ```bash
-docker compose up
+docker compose up --build
 ```
 
 Open [localhost:3000](http://localhost:3000/) to see your running application.
