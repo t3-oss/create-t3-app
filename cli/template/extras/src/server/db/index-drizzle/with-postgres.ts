@@ -4,20 +4,11 @@ import postgres from "postgres";
 import { env } from "~/env.js";
 import * as schema from "./schema";
 
-const global: {
+const globalForDrizzle = globalThis as unknown as {
   db: PostgresJsDatabase<typeof schema> | undefined;
-} = {
-  db: undefined,
 };
 
-let db: PostgresJsDatabase<typeof schema>;
+export const db =
+  globalForDrizzle.db ?? drizzle(postgres(env.DATABASE_URL), { schema });
 
-if (env.NODE_ENV === "production") {
-  db = drizzle(postgres(env.DATABASE_URL), { schema });
-} else {
-  if (!global.db) global.db = drizzle(postgres(env.DATABASE_URL), { schema });
-
-  db = global.db;
-}
-
-export { db };
+if (env.NODE_ENV !== "production") globalForDrizzle.db = db;
