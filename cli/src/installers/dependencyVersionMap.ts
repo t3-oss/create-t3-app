@@ -4,7 +4,7 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.24.5",
+  "next-auth": "^4.24.6",
   "@auth/prisma-adapter": "^1.4.0",
   "@auth/drizzle-adapter": "^0.7.0",
 
