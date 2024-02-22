@@ -8,24 +8,18 @@ import { useState } from "react";
 import { type AppRouter } from "~/server/api/root";
 import { getUrl, transformer } from "./shared";
 
-function makeQueryClient() {
-  return new QueryClient({
-    /* ...opts */
-  });
-}
+const createQueryClient = () => new QueryClient();
 
-let clientQueryClient: QueryClient | undefined = undefined;
-
-function getQueryClient() {
+let clientQueryClientSingleton: QueryClient | undefined = undefined;
+const getQueryClient = () => {
   if (typeof window === "undefined") {
     // Server: always make a new query client
-    return makeQueryClient();
+    return createQueryClient();
   } else {
-    // Browser: make a new query client if we don't already have one
-    if (!clientQueryClient) clientQueryClient = makeQueryClient();
-    return clientQueryClient;
+    // Browser: use singleton pattern to keep the same query client
+    return (clientQueryClientSingleton ??= createQueryClient());
   }
-}
+};
 
 export const api = createTRPCReact<AppRouter>();
 
