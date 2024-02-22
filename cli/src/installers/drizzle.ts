@@ -16,6 +16,7 @@ export const drizzleInstaller: Installer = ({
   const devPackages: AvailableDependencies[] = ["drizzle-kit"];
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
   if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
+  if (databaseProvider === "postgres") devPackages.push("pg");
 
   addPackageDependency({
     projectDir,
