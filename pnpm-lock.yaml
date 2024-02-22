@@ -45,7 +45,7 @@ importers:
         version: 2.6.7(@typescript-eslint/parser@7.0.2)(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-prettier:
         specifier: ^5.0.1
-        version: 5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.1.0)
+        version: 5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.2.5)
       eslint-plugin-react:
         specifier: ^7.32.2
         version: 7.32.2(eslint@8.56.0)
@@ -53,8 +53,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.56.0)
       prettier:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.2.5
+        version: 3.2.5
       turbo:
         specifier: ^1.9.6
         version: 1.9.6
@@ -72,7 +72,7 @@ importers:
         version: 0.6.3
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.0
-        version: 4.1.0(prettier@3.1.0)
+        version: 4.1.0(prettier@3.2.5)
       chalk:
         specifier: 5.2.0
         version: 5.2.0
@@ -96,20 +96,20 @@ importers:
         version: 2.4.1
     devDependencies:
       '@auth/drizzle-adapter':
-        specifier: ^0.3.6
-        version: 0.3.6
-      '@next-auth/prisma-adapter':
-        specifier: ^1.0.7
-        version: 1.0.7(@prisma/client@5.6.0)(next-auth@4.24.5)
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@auth/prisma-adapter':
+        specifier: ^1.4.0
+        version: 1.4.0(@prisma/client@5.10.2)
       '@planetscale/database':
         specifier: ^1.16.0
         version: 1.16.0
       '@prisma/adapter-planetscale':
-        specifier: ^5.6.0
-        version: 5.6.0(@planetscale/database@1.16.0)
+        specifier: ^5.10.2
+        version: 5.10.2(@planetscale/database@1.16.0)
       '@prisma/client':
-        specifier: ^5.6.0
-        version: 5.6.0(prisma@5.6.0)
+        specifier: ^5.10.2
+        version: 5.10.2(prisma@5.10.2)
       '@t3-oss/env-nextjs':
         specifier: ^0.9.2
         version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
@@ -117,17 +117,17 @@ importers:
         specifier: ^4.36.1
         version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
-        specifier: ^10.43.6
-        version: 10.43.6(@trpc/server@10.43.6)
+        specifier: ^10.45.1
+        version: 10.45.1(@trpc/server@10.45.1)
       '@trpc/next':
-        specifier: ^10.43.6
-        version: 10.43.6(@tanstack/react-query@4.36.1)(@trpc/client@10.43.6)(@trpc/react-query@10.43.6)(@trpc/server@10.43.6)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^10.45.1
+        version: 10.45.1(@tanstack/react-query@4.36.1)(@trpc/client@10.45.1)(@trpc/react-query@10.45.1)(@trpc/server@10.45.1)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/react-query':
-        specifier: ^10.43.6
-        version: 10.43.6(@tanstack/react-query@4.36.1)(@trpc/client@10.43.6)(@trpc/server@10.43.6)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^10.45.1
+        version: 10.45.1(@tanstack/react-query@4.36.1)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: ^10.43.6
-        version: 10.43.6
+        specifier: ^10.45.1
+        version: 10.45.1
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
@@ -147,17 +147,17 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: ^4.24.5
-        version: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.24.6
+        version: 4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       prettier:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.7
-        version: 0.5.7(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.1.0)
+        specifier: ^0.5.11
+        version: 0.5.11(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.2.5)
       prisma:
-        specifier: ^5.6.0
-        version: 5.6.0
+        specifier: ^5.10.2
+        version: 5.10.2
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -168,8 +168,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       tailwindcss:
-        specifier: ^3.3.5
-        version: 3.3.5
+        specifier: ^3.4.1
+        version: 3.4.1
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(postcss@8.4.31)(typescript@5.3.3)
@@ -187,7 +187,7 @@ importers:
     dependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.0
-        version: 4.1.0(prettier@3.1.0)
+        version: 4.1.0(prettier@3.2.5)
       '@mdx-js/loader':
         specifier: ^2.3.0
         version: 2.3.0(webpack@5.88.2)
@@ -253,7 +253,7 @@ importers:
         version: 1.12.0
       tailwindcss-animate:
         specifier: ^1.0.5
-        version: 1.0.5(tailwindcss@3.3.5)
+        version: 1.0.5(tailwindcss@3.4.1)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -295,14 +295,14 @@ importers:
         specifier: ^8.4.21
         version: 8.4.23
       prettier:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.7
-        version: 0.5.7(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.1.0)
+        specifier: ^0.5.11
+        version: 0.5.11(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.2.5)
       tailwindcss:
-        specifier: ^3.3.5
-        version: 3.3.5
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -341,7 +341,7 @@ importers:
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.0
-        version: 4.1.0(prettier@3.1.0)
+        version: 4.1.0(prettier@3.2.5)
       '@resvg/resvg-js':
         specifier: ^2.4.1
         version: 2.4.1
@@ -368,7 +368,7 @@ importers:
         version: 0.32.6
       tailwind-scrollbar:
         specifier: ^3.0.0
-        version: 3.0.0(tailwindcss@3.3.5)
+        version: 3.0.0(tailwindcss@3.4.1)
       treeify:
         specifier: ^1.1.0
         version: 1.1.0
@@ -384,7 +384,7 @@ importers:
         version: 2.1.3(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
       '@astrojs/tailwind':
         specifier: ^3.1.2
-        version: 3.1.2(astro@2.5.5)(tailwindcss@3.3.5)
+        version: 3.1.2(astro@2.5.5)(tailwindcss@3.4.1)
       '@types/node':
         specifier: ^20.11.20
         version: 20.11.20
@@ -416,14 +416,14 @@ importers:
         specifier: ^6.7.1
         version: 6.7.1(eslint@8.56.0)
       prettier:
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-astro:
         specifier: ^0.11.0
         version: 0.11.0
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.7
-        version: 0.5.7(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.1.0)
+        specifier: ^0.5.11
+        version: 0.5.11(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.2.5)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -446,8 +446,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       tailwindcss:
-        specifier: ^3.3.5
-        version: 3.3.5
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -741,7 +741,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/tailwind@3.1.2(astro@2.5.5)(tailwindcss@3.3.5):
+  /@astrojs/tailwind@3.1.2(astro@2.5.5)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-KyZ84WExLRU/TRIQm09ce+ND/0UG9AK9+7k/gjCbxuKScc/RieZ73oh4MkoEFrN/9OToMklvt+wmkAt3+u/ubQ==}
     peerDependencies:
       astro: ^2.3.3
@@ -752,7 +752,7 @@ packages:
       autoprefixer: 10.4.14(postcss@8.4.27)
       postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)
-      tailwindcss: 3.3.5
+      tailwindcss: 3.4.1
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -795,27 +795,49 @@ packages:
     dependencies:
       undici: 5.22.1
 
-  /@auth/core@0.18.1:
-    resolution: {integrity: sha512-L4MehYt/A7e5djsEid3jTSkRZ8sysxbirhmCXqSCPimGoFUtMCwTZrpzTALTSRwXGw/mps5fYlHROo3UQk9B3w==}
+  /@auth/core@0.27.0:
+    resolution: {integrity: sha512-3bydnRJIM/Al6mkYmb53MsC+6G8ojw3lLPzwgVnX4dCo6N2lrib6Wq6r0vxZIhuHGjLObqqtUfpeaEj5aeTHFg==}
     peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
       nodemailer: ^6.8.0
     peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
       nodemailer:
         optional: true
     dependencies:
       '@panva/hkdf': 1.1.1
-      cookie: 0.5.0
-      jose: 5.1.1
-      oauth4webapi: 2.3.0
+      '@types/cookie': 0.6.0
+      cookie: 0.6.0
+      jose: 5.2.2
+      oauth4webapi: 2.10.3
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: true
 
-  /@auth/drizzle-adapter@0.3.6:
-    resolution: {integrity: sha512-NcVjmFKaNDgR8sIiWdtt6tPuoOulW3tRnRA0F8FTJrCxwrLB/YK+rW0FkKZSDOFV8S50XESnz7SAinwRFzV0mQ==}
+  /@auth/drizzle-adapter@0.7.0:
+    resolution: {integrity: sha512-p/8cjrREiPPns78CT/a7VGl2TD78BNXtJ9TAXrw80bUInHd2xkEtk4CzXajWS/5r7qXE9n3r4BV9sISrf6Yqnw==}
     dependencies:
-      '@auth/core': 0.18.1
+      '@auth/core': 0.27.0
     transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
+    dev: true
+
+  /@auth/prisma-adapter@1.4.0(@prisma/client@5.10.2):
+    resolution: {integrity: sha512-k5D6ajX8MZv9107WWaIpzcNmsB8+sumyc7y46lnAMbLdgBoUcwAYtxGLbwEFSvzgjDcxjWqzlB5AIAED4vioDA==}
+    peerDependencies:
+      '@prisma/client': '>=2.26.0 || >=3 || >=4 || >=5'
+    dependencies:
+      '@auth/core': 0.27.0
+      '@prisma/client': 5.10.2(prisma@5.10.2)
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
       - nodemailer
     dev: true
 
@@ -2176,7 +2198,7 @@ packages:
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
 
-  /@ianvs/prettier-plugin-sort-imports@4.1.0(prettier@3.1.0):
+  /@ianvs/prettier-plugin-sort-imports@4.1.0(prettier@3.2.5):
     resolution: {integrity: sha512-IAXeTLU24k6mRPa6mFbW1qZJ/j0m3OeH44wyijWyr+YqqdNtBnfHxAntOAATS9iDfrT01NesKGsdzqnXdDQa/A==}
     peerDependencies:
       '@vue/compiler-sfc': '>=3.0.0'
@@ -2190,7 +2212,7 @@ packages:
       '@babel/parser': 7.22.7
       '@babel/traverse': 7.22.8
       '@babel/types': 7.22.5
-      prettier: 3.1.0
+      prettier: 3.2.5
       semver: 7.5.1
     transitivePeerDependencies:
       - supports-color
@@ -2373,16 +2395,6 @@ packages:
       - supports-color
     dev: false
 
-  /@next-auth/prisma-adapter@1.0.7(@prisma/client@5.6.0)(next-auth@4.24.5):
-    resolution: {integrity: sha512-Cdko4KfcmKjsyHFrWwZ//lfLUbcLqlyFqjd/nYE2m3aZ7tjMNUjpks47iw7NTCnXf+5UWz5Ypyt1dSs1EP5QJw==}
-    peerDependencies:
-      '@prisma/client': '>=2.26.0 || >=3'
-      next-auth: ^4
-    dependencies:
-      '@prisma/client': 5.6.0(prisma@5.6.0)
-      next-auth: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
-    dev: true
-
   /@next/env@14.1.0:
     resolution: {integrity: sha512-Py8zIo+02ht82brwwhTg36iogzFqGLPXlRGKQw5s+qP/kMNc4MAyDeEwBKDijk6zTIbegEgu8Qy7C1LboslQAw==}
 
@@ -2536,10 +2548,6 @@ packages:
       '@octokit/openapi-types': 18.0.0
     dev: false
 
-  /@panva/hkdf@1.0.4:
-    resolution: {integrity: sha512-003xWiCuvePbLaPHT+CRuaV4GlyCAVm6XYSbBZDHoWZGn1mNkVKFaDbGJjjxmEFvizUwlCoM6O18FCBMMky2zQ==}
-    dev: true
-
   /@panva/hkdf@1.1.1:
     resolution: {integrity: sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==}
     dev: true
@@ -2560,19 +2568,17 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /@prisma/adapter-planetscale@5.6.0(@planetscale/database@1.16.0):
-    resolution: {integrity: sha512-VhBEXKcRDbkozzo3W0mXd4lIHxvpR6YJkZRCHhPTyAx7gba7kpu/lJ83y/P1+YXRiyN2Qmf91pDVYr1qcpfCwQ==}
+  /@prisma/adapter-planetscale@5.10.2(@planetscale/database@1.16.0):
+    resolution: {integrity: sha512-sxNoNr8Ig9WWy94dvNxvvHG7T49RA3HCTGZEiW7s90Tw4yzc05/mnUTnyFflhNryNXVjILzeFL6DqOkXpZCLeQ==}
     peerDependencies:
-      '@planetscale/database': ^1.11.0
+      '@planetscale/database': ^1.15.0
     dependencies:
       '@planetscale/database': 1.16.0
-      '@prisma/driver-adapter-utils': 5.6.0
-    transitivePeerDependencies:
-      - supports-color
+      '@prisma/driver-adapter-utils': 5.10.2
     dev: true
 
-  /@prisma/client@5.6.0(prisma@5.6.0):
-    resolution: {integrity: sha512-mUDefQFa1wWqk4+JhKPYq8BdVoFk9NFMBXUI8jAkBfQTtgx8WPx02U2HB/XbAz3GSUJpeJOKJQtNvaAIDs6sug==}
+  /@prisma/client@5.10.2(prisma@5.10.2):
+    resolution: {integrity: sha512-ef49hzB2yJZCvM5gFHMxSFL9KYrIP9udpT5rYo0CsHD4P9IKj473MbhU1gjKKftiwWBTIyrt9jukprzZXazyag==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
@@ -2581,25 +2587,45 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 5.6.0-32.e95e739751f42d8ca026f6b910f5a2dc5adeaeee
-      prisma: 5.6.0
+      prisma: 5.10.2
     dev: true
 
-  /@prisma/driver-adapter-utils@5.6.0:
-    resolution: {integrity: sha512-/TSrfCGLAQghNf+bwg5/e8iKAgecCYU/gMN0IyNra3183/VTQJneLFgbacuSK9bBXiIRUmpbuUIrJ6dhENzfjA==}
+  /@prisma/debug@5.10.2:
+    resolution: {integrity: sha512-bkBOmH9dpEBbMKFJj8V+Zp8IZHIBjy3fSyhLhxj4FmKGb/UBSt9doyfA6k1UeUREsMJft7xgPYBbHSOYBr8XCA==}
+    dev: true
+
+  /@prisma/driver-adapter-utils@5.10.2:
+    resolution: {integrity: sha512-Qou/js8VJSmaWiGX5EVXGF83fMZltFnuzkKFOocpDvcI3f5G9WTPf61TKflzs3ZOYe1weRgM9hUk9UR7lgGEwg==}
     dependencies:
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
+      '@prisma/debug': 5.10.2
     dev: true
 
-  /@prisma/engines-version@5.6.0-32.e95e739751f42d8ca026f6b910f5a2dc5adeaeee:
-    resolution: {integrity: sha512-UoFgbV1awGL/3wXuUK3GDaX2SolqczeeJ5b4FVec9tzeGbSWJboPSbT0psSrmgYAKiKnkOPFSLlH6+b+IyOwAw==}
+  /@prisma/engines-version@5.10.0-34.5a9203d0590c951969e85a7d07215503f4672eb9:
+    resolution: {integrity: sha512-uCy/++3Jx/O3ufM+qv2H1L4tOemTNqcP/gyEVOlZqTpBvYJUe0tWtW0y3o2Ueq04mll4aM5X3f6ugQftOSLdFQ==}
     dev: true
 
-  /@prisma/engines@5.6.0:
-    resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
+  /@prisma/engines@5.10.2:
+    resolution: {integrity: sha512-HkSJvix6PW8YqEEt3zHfCYYJY69CXsNdhU+wna+4Y7EZ+AwzeupMnUThmvaDA7uqswiHkgm5/SZ6/4CStjaGmw==}
     requiresBuild: true
+    dependencies:
+      '@prisma/debug': 5.10.2
+      '@prisma/engines-version': 5.10.0-34.5a9203d0590c951969e85a7d07215503f4672eb9
+      '@prisma/fetch-engine': 5.10.2
+      '@prisma/get-platform': 5.10.2
+    dev: true
+
+  /@prisma/fetch-engine@5.10.2:
+    resolution: {integrity: sha512-dSmXcqSt6DpTmMaLQ9K8ZKzVAMH3qwGCmYEZr/uVnzVhxRJ1EbT/w2MMwIdBNq1zT69Rvh0h75WMIi0mrIw7Hg==}
+    dependencies:
+      '@prisma/debug': 5.10.2
+      '@prisma/engines-version': 5.10.0-34.5a9203d0590c951969e85a7d07215503f4672eb9
+      '@prisma/get-platform': 5.10.2
+    dev: true
+
+  /@prisma/get-platform@5.10.2:
+    resolution: {integrity: sha512-nqXP6vHiY2PIsebBAuDeWiUYg8h8mfjBckHh6Jezuwej0QJNnjDiOq30uesmg+JXxGk99nqyG3B7wpcOODzXvg==}
+    dependencies:
+      '@prisma/debug': 5.10.2
     dev: true
 
   /@proload/core@0.3.3:
@@ -3205,54 +3231,52 @@ packages:
     resolution: {integrity: sha512-yXt2BRRVCJVvzWaxac5n0nCXzIrQEBE/MeYlNQ8/Iq7UeelNmm/AdnUAu18ilSS893mbEQ4u6whPt/HvOPc4rw==}
     dev: false
 
-  /@trpc/client@10.43.6(@trpc/server@10.43.6):
-    resolution: {integrity: sha512-gQSxCQgPeBn/wqBEScu5Nq9UKqA16e965vWBj+BbdvI4URV72T44/yg0cl/E6xtBgycCVwdzwn7CuZaM8FA/VQ==}
+  /@trpc/client@10.45.1(@trpc/server@10.45.1):
+    resolution: {integrity: sha512-nVbAk1xpIiI64WgzXGgfxPOGgHoYvffn1IsjV1D/Ri7DL4BKuo2qtZ7UQ+OuHkzH2M8j4ikSVBDpk545fOdvpw==}
     peerDependencies:
-      '@trpc/server': 10.43.6
+      '@trpc/server': 10.45.1
     dependencies:
-      '@trpc/server': 10.43.6
+      '@trpc/server': 10.45.1
     dev: true
 
-  /@trpc/next@10.43.6(@tanstack/react-query@4.36.1)(@trpc/client@10.43.6)(@trpc/react-query@10.43.6)(@trpc/server@10.43.6)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-srV4twQKp8FohivGZ5wxNUdTzgPjjKeuNWG3Bpy5hVrIvg8VHDcglPMHS+3eWTUDDtCbhWpvANre+81B8b9Fgg==}
+  /@trpc/next@10.45.1(@tanstack/react-query@4.36.1)(@trpc/client@10.45.1)(@trpc/react-query@10.45.1)(@trpc/server@10.45.1)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-HSuQ0OcKUtt8mcQ4Mz4GQpy5PkNYJNvC9EEHkqTkEGa71BLEPKviyVWaE7biOlxjA0tM0aDOM21id+cRkEpfXA==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
-      '@trpc/client': 10.43.6
-      '@trpc/react-query': 10.43.6
-      '@trpc/server': 10.43.6
+      '@trpc/client': 10.45.1
+      '@trpc/react-query': 10.45.1
+      '@trpc/server': 10.45.1
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.43.6(@trpc/server@10.43.6)
-      '@trpc/react-query': 10.43.6(@tanstack/react-query@4.36.1)(@trpc/client@10.43.6)(@trpc/server@10.43.6)(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/server': 10.43.6
+      '@trpc/client': 10.45.1(@trpc/server@10.45.1)
+      '@trpc/react-query': 10.45.1(@tanstack/react-query@4.36.1)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server': 10.45.1
       next: 14.1.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-ssr-prepass: 1.5.0(react@18.2.0)
     dev: true
 
-  /@trpc/react-query@10.43.6(@tanstack/react-query@4.36.1)(@trpc/client@10.43.6)(@trpc/server@10.43.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Twf0/wvcrDwmaJ6OLf0YVNwiv8+gtoSFyKYqe+5lMkFtUYSl+4KGvSqiN9ynbnofHCvuPgjJmjdS8pxYkcWxCw==}
+  /@trpc/react-query@10.45.1(@tanstack/react-query@4.36.1)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-48OOMpwVjQFUQJqlp9/tW1lqESZg9YEqB5iVci7mYaDzZPEs/YUcV85XKvYzgeW+7K9oShX/JMVce8muON/6uQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
-      '@trpc/client': 10.43.6
-      '@trpc/server': 10.43.6
+      '@trpc/client': 10.45.1
+      '@trpc/server': 10.45.1
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 10.43.6(@trpc/server@10.43.6)
-      '@trpc/server': 10.43.6
+      '@trpc/client': 10.45.1(@trpc/server@10.45.1)
+      '@trpc/server': 10.45.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@trpc/server@10.43.6:
-    resolution: {integrity: sha512-ziN7UXGAycxe4i3FwJstTe6jzCcKBlPociCrC9XtfPzFpMTf0hNbRQQlFiZjJk23ZGQSVYDjk9RO4yIHt94mJg==}
-    engines: {node: '>=18.0.0'}
+  /@trpc/server@10.45.1:
+    resolution: {integrity: sha512-KOzBEVaHW9IxEedUP9E50y0tYxAuvlzyjn80Bpemw4rcNbT4WtJnhkFPUY+qDJl7Crt3B/oY2qMgSxVWi9toLg==}
     dev: true
 
   /@types/acorn@4.0.6:
@@ -3285,6 +3309,10 @@ packages:
     resolution: {integrity: sha512-MitHFXnhtgwsGZWtT68URpOvLN4EREih1u3QtQiN4VdAxWKRVvGCSvw/Qth0M0Qq3pJpnGOu5JaM/ydK7OGbqg==}
     dependencies:
       '@babel/types': 7.22.5
+
+  /@types/cookie@0.6.0:
+    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
+    dev: true
 
   /@types/debug@4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
@@ -4704,6 +4732,11 @@ packages:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
     engines: {node: '>= 0.6'}
 
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
+    engines: {node: '>= 0.6'}
+    dev: true
+
   /copy-anything@3.0.3:
     resolution: {integrity: sha512-fpW2W/BqEzqPp29QS+MwwfisHCQZtiduTe/m8idFo0xbti9fIZ2WVhAsCv4ggFVH3AgCkVdpoOCtQC6gBrdhjw==}
     engines: {node: '>=12.13'}
@@ -5763,7 +5796,7 @@ packages:
       semver: 6.3.1
     dev: true
 
-  /eslint-plugin-prettier@5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.1.0):
+  /eslint-plugin-prettier@5.0.1(@types/eslint@8.56.2)(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.2.5):
     resolution: {integrity: sha512-m3u5RnR56asrwV/lDC4GHorlW75DsFfmUcjfCYylTUs85dBRnB7VM6xG8eCMJdeDRnppzmxZVf1GEPJvl1JmNg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -5780,7 +5813,7 @@ packages:
       '@types/eslint': 8.56.2
       eslint: 8.56.0
       eslint-config-prettier: 9.0.0(eslint@8.56.0)
-      prettier: 3.1.0
+      prettier: 3.2.5
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.5
     dev: false
@@ -7165,8 +7198,8 @@ packages:
     resolution: {integrity: sha512-MSJQC5vXco5Br38mzaQKiq9mwt7lwj2eXpgpRyQYNHYt2lq1PjkWa7DLXX0WVcQLE9HhMh3jPiufS7fhJf+CLQ==}
     dev: true
 
-  /jose@5.1.1:
-    resolution: {integrity: sha512-bfB+lNxowY49LfrBO0ITUn93JbUhxUN8I11K6oI5hJu/G6PO6fEUddVLjqdD0cQ9SXIHWXuWh7eJYwZF7Z0N/g==}
+  /jose@5.2.2:
+    resolution: {integrity: sha512-/WByRr4jDcsKlvMd1dRJnPfS1GVO3WuKyaurJ/vvXcOaUQO8rnNObCQMlv/5uCceVQIq5Q4WLF44ohsdiTohdg==}
     dev: true
 
   /joycon@3.1.1:
@@ -8119,8 +8152,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
-  /next-auth@4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3RafV3XbfIKk6rF6GlLE4/KxjTcuMCifqrmD+98ejFq73SRoj2rmzoca8u764977lH/Q7jo6Xu6yM+Re1Mz/Og==}
+  /next-auth@4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-djQt3ZEaWEIxcsuh3HTW2uuzLfXMRjHH+ugAsichlQSbH4iA5MRcgMA2HvTNvsDTDLh44tyU72+/gWsxgTbAKg==}
     peerDependencies:
       next: ^12.2.5 || ^13 || ^14
       nodemailer: ^6.6.5
@@ -8131,7 +8164,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.21.0
-      '@panva/hkdf': 1.0.4
+      '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.13.1
       next: 14.1.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
@@ -8277,8 +8310,8 @@ packages:
       set-blocking: 2.0.0
     dev: false
 
-  /oauth4webapi@2.3.0:
-    resolution: {integrity: sha512-JGkb5doGrwzVDuHwgrR4nHJayzN4h59VCed6EW8Tql6iHDfZIabCJvg6wtbn5q6pyB2hZruI3b77Nudvq7NmvA==}
+  /oauth4webapi@2.10.3:
+    resolution: {integrity: sha512-9FkXEXfzVKzH63GUOZz1zMr3wBaICSzk6DLXx+CGdrQ10ItNk2ePWzYYc1fdmKq1ayGFb2aX97sRCoZ2s0mkDw==}
     dev: true
 
   /oauth@0.9.15:
@@ -8821,7 +8854,7 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     dependencies:
       '@astrojs/compiler': 1.6.1
-      prettier: 3.1.0
+      prettier: 3.2.5
       sass-formatter: 0.7.6
     dev: true
 
@@ -8834,14 +8867,13 @@ packages:
       sass-formatter: 0.7.6
       synckit: 0.8.5
 
-  /prettier-plugin-tailwindcss@0.5.7(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.1.0):
-    resolution: {integrity: sha512-4v6uESAgwCni6YF6DwJlRaDjg9Z+al5zM4JfngcazMy4WEf/XkPS5TEQjbD+DZ5iNuG6RrKQLa/HuX2SYzC3kQ==}
+  /prettier-plugin-tailwindcss@0.5.11(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier-plugin-astro@0.11.0)(prettier@3.2.5):
+    resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
       '@prettier/plugin-pug': '*'
       '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
       '@trivago/prettier-plugin-sort-imports': '*'
       prettier: ^3.0
       prettier-plugin-astro: '*'
@@ -8860,8 +8892,6 @@ packages:
       '@prettier/plugin-pug':
         optional: true
       '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
         optional: true
       '@trivago/prettier-plugin-sort-imports':
         optional: true
@@ -8886,8 +8916,8 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      '@ianvs/prettier-plugin-sort-imports': 4.1.0(prettier@3.1.0)
-      prettier: 3.1.0
+      '@ianvs/prettier-plugin-sort-imports': 4.1.0(prettier@3.2.5)
+      prettier: 3.2.5
       prettier-plugin-astro: 0.11.0
     dev: true
 
@@ -8896,8 +8926,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  /prettier@3.1.0:
-    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -8905,13 +8935,13 @@ packages:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: true
 
-  /prisma@5.6.0:
-    resolution: {integrity: sha512-EEaccku4ZGshdr2cthYHhf7iyvCcXqwJDvnoQRAJg5ge2Tzpv0e2BaMCp+CbbDUwoVTzwgOap9Zp+d4jFa2O9A==}
+  /prisma@5.10.2:
+    resolution: {integrity: sha512-hqb/JMz9/kymRE25pMWCxkdyhbnIWrq+h7S6WysJpdnCvhstbJSNP/S6mScEcqiB8Qv2F+0R3yG+osRaWqZacQ==}
     engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 5.6.0
+      '@prisma/engines': 5.10.2
     dev: true
 
   /prismjs@1.29.0:
@@ -9041,14 +9071,6 @@ packages:
       use-callback-ref: 1.3.0(@types/react@18.2.57)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.57)(react@18.2.0)
     dev: false
-
-  /react-ssr-prepass@1.5.0(react@18.2.0):
-    resolution: {integrity: sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: true
 
   /react-style-singleton@2.2.1(@types/react@18.2.57)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
@@ -10037,25 +10059,25 @@ packages:
     resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==}
     dev: false
 
-  /tailwind-scrollbar@3.0.0(tailwindcss@3.3.5):
+  /tailwind-scrollbar@3.0.0(tailwindcss@3.4.1):
     resolution: {integrity: sha512-OkVRX9Q1T769vk979UZ519jhj/j/zNBHql7zPLI+tlhX+ahksYO4ZryWD29lOETDx9Wj1sw+K1OeW7W3+ECQOA==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: 3.x
     dependencies:
-      tailwindcss: 3.3.5
+      tailwindcss: 3.4.1
     dev: false
 
-  /tailwindcss-animate@1.0.5(tailwindcss@3.3.5):
+  /tailwindcss-animate@1.0.5(tailwindcss@3.4.1):
     resolution: {integrity: sha512-UU3qrOJ4lFQABY+MVADmBm+0KW3xZyhMdRvejwtXqYOL7YjHYxmuREFAZdmVG5LPe5E9CAst846SLC4j5I3dcw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
-      tailwindcss: 3.3.5
+      tailwindcss: 3.4.1
     dev: false
 
-  /tailwindcss@3.3.5:
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.4.1:
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

@@ -53,9 +53,9 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.21",
-    "prettier": "^3.1.0",
-    "prettier-plugin-tailwindcss": "^0.5.7",
-    "tailwindcss": "^3.3.5",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
   "ct3aMetadata": {
