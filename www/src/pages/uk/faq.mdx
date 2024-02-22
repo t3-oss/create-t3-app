@@ -1,0 +1,74 @@
+---
+title: FAQ
+description: Найпоширеніші запитання про Create T3 App
+layout: ../../layouts/docs.astro
+lang: uk
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Це деякі часті запитання про `create-t3-app`.
+
+## Що далі? Як я можу створити додаток?
+
+Ми намагаємося зробити цей проект якомога простішим, тому ви можете почати з того, що ми налаштували для вас, а потім додавати додаткові вам речі, коли вони стануть вам необхідними.
+
+Якщо ви не знайомі з різними технологіями, що використовуються в цьому проєкті, зверніться до відповідної документації. Якщо щось усе ще не зрозуміло, приєднуйтесь до нашого [Discord](https://t3.gg/discord) і попросіть допомоги.
+
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
+
+## Як мені тримати свій додаток оновленим?
+
+Додаток Create T3 – це інструмент для будування, а не фреймворк. Це означає, що як тільки ви ініціалізуєте програму, вона стане вашою. Немає жодного інструменту CLI після інсталяції, який би допомагав вам залишатися в курсі подій. Якщо ви хочете відстежувати будь-які вдосконалення, які ми вносимо в шаблон, ви можете [увімкнути сповіщення про випуски](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) у нашому репозиторії. Зважаючи це, насправді не обов'язково вносити кожну зміну, яку ми вносимо в шаблон у вашій програмі.
+
+## Які навчальні ресурси зараз доступні?
+
+Не дивлячись на те, що перераховані нижче ресурси є одними з найкращих для T3 Stack, спільнота (і [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) рекомендує просто почати використовувати стек і вчитися в процесі розробки з його допомогою.
+
+Якщо ви розглядаєте Create T3 App, швидше за все, ви вже використовували деякі частини стека. То чому б не зануритися в проєкт з головою і не вивчити решту технологій у процесі розробки?
+
+Ми розуміємо, що цей шлях не підходить для кожного. Тому, якщо ви відчуваєте, що ви спробували рекомендований шлях і цього недостатньо, і вам все ще потрібні ресурси, або ви просто не впевнені у своїх силах та/або почуваєтесь перевантаженим цим стеком, ознайомтеся з цими приголомшливими навчальними матеріалами щодо Create T3 App:
+
+### Статті
+
+Деякі з них можуть бути застарілими.
+
+- [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+
+### Відео
+
+- [T3 Stack Tutorial - FROM 0 TO PROD FOR $0 (Next.js, tRPC, TypeScript, Tailwind, Prisma & More)](https://www.youtube.com/watch?v=YkOSUVzOAA4) **(рекомендовано)**
+- [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+
+## Чому в проєкті є файли `.js`?
+
+Згідно з [T3-Аксіомою #3](/uk/introduction#%D1%82%D0%B8%D0%BF%D0%BE%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D0%BA%D0%B0-%D0%BD%D0%B5-%D1%94-%D0%BE%D0%BF%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%8E), ми вважаємо типобезпеку об'єктом першого класу. На жаль, не всі фреймворки та плагіни підтримують TypeScript, тому деякі файли конфігурації мають бути файлами `.js`.
+
+Ми намагаємося підкреслити, що ці файли є файлами JavaScript не без причини, явно оголошуючи тип кожного файлу (`cjs` або `mjs`), залежно від того, що підтримується бібліотекою, якою він використовується. Крім того, всі файли `js` у цьому проєкті все ще перевіряються на типи за допомогою коментаря `@ts-check` вгорі.
+
+## У мене не виходить додати i18n до мого додатка. Чи є якісь рекомендації?
+
+Ми вирішили не включати i18n за замовчуванням у `create-t3-app`, тому що це дуже суб'єктивна тема, і є багато способів її реалізації.
+
+У той же час, якщо ви зіткнулися з проблемами під час реалізації та хочете побачити проєкт-зразок, у нас є [посилання на репозиторій](https://github.com/juliusmarminge/t3-i18n), яке показує, як ви можете додати i18n в T3 App за допомогою [next-i18next](https://github.com/i18next/next-i18next).
+
+## Чому ми використовуємо `/pages` а не `/app` з Next.js 13?
+
+Згідно з [T3-Аксіомою #2](/uk/introduction#%D0%BE%D0%BD%D0%BE%D0%B2%D0%BB%D1%8E%D0%B9%D1%82%D0%B5%D1%81%D1%8C-%D0%B7-%D0%B2%D1%96%D0%B4%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%D1%81%D1%82%D1%8E), ми любимо новинки, але цінуємо стабільність, вам буде складно перенести весь маршрутизатор, [не найкраще місце для експериментів](https://youtu.be/mnwUbtieOuI?t=1662). Хоча `/app` [являє собою погляд у майбутнє](https://youtu.be/rnsC-12PVlM?t=818), він ще не готовий до використання в продакшені; API перебуває в бета-версії, і очікується, що він матиме зворотно несумісні зміни.
+
+<Callout type="info">
+  Список підтримуваних, запланованих і тих, що перебувають у розробці, функцій у
+  каталозі `/app` можна знайти в [бета-документації
+  Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>

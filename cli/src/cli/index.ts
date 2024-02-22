@@ -287,7 +287,7 @@ export const runCli = async (): Promise<CliResults> => {
               { value: "sqlite", label: "SQLite" },
               { value: "mysql", label: "MySQL" },
               { value: "postgres", label: "PostgreSQL" },
-              { value: "planetscale", label: "Planetscale" },
+              { value: "planetscale", label: "PlanetScale" },
             ],
             initialValue: "sqlite",
           });

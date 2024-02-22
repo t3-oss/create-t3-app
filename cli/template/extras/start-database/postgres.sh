@@ -7,7 +7,7 @@
 # 3. Open WSL - `wsl`
 # 4. Run this script - `./start-database.sh`
 
-# On Lunux and macOS you can run this script directly - `./start-database.sh`
+# On Linux and macOS you can run this script directly - `./start-database.sh`
 
 DB_CONTAINER_NAME="project1-postgres"
 
@@ -36,7 +36,7 @@ if [ "$DB_PASSWORD" = "password" ]; then
     exit 1
   fi
   DB_PASSWORD=$(openssl rand -base64 12)
-  sed -i -e "s/:password@/:$DB_PASSWORD@/" .env
+  sed -i -e "s#:password@#:$DB_PASSWORD@#" .env
 fi
 
 docker run --name $DB_CONTAINER_NAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=project1 -d -p 5432:5432 docker.io/postgres

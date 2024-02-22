@@ -75,4 +75,4 @@ Deretter kan du kjøre `pnpm db-seed` (eller `npm`/`yarn`) for å fylle inn data
 | Prisma GitHub                     | https://github.com/prisma/prisma                                                                                                                  |
 | Prisma Migrate Playground         | https://playground.prisma.io/guides                                                                                                               |
 | NextAuth.JS Prisma Adapter        | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Planetscale Tilkoblingsveiledning | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| PlanetScale Tilkoblingsveiledning | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
