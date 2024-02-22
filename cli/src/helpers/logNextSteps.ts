@@ -63,9 +63,14 @@ export const logNextSteps = async ({
     );
   }
 
-  if (packages?.drizzle.inUse && !["mysql"].includes(databaseProvider) {
+  if (packages?.drizzle.inUse) {
     logger.warn(
-      `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`,
+      `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`
+    );
+  }
+
+  if (["mysql"].includes(databaseProvider)) {
+    logger.warn(
       `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
   }
