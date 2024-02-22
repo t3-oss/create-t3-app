@@ -74,4 +74,4 @@ Em seguida, basta executar `pnpm db-seed` (ou `npm`/`yarn`) para propagar seu ba
 | Documentação do Prisma               | https://www.prisma.io/docs/                                                                                                                       |
 | GitHub do Prisma                     | https://github.com/prisma/prisma                                                                                                                  |
 | Adaptador de Prisma para NextAuth.js | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| Guia de Conexão com Planetscale      | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| Guia de Conexão com PlanetScale      | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
