@@ -8,10 +8,29 @@ import { useState } from "react";
 import { type AppRouter } from "~/server/api/root";
 import { getUrl, transformer } from "./shared";
 
+function makeQueryClient() {
+  return new QueryClient({
+    /* ...opts */
+  });
+}
+
+let clientQueryClient: QueryClient | undefined = undefined;
+
+function getQueryClient() {
+  if (typeof window === "undefined") {
+    // Server: always make a new query client
+    return makeQueryClient();
+  } else {
+    // Browser: make a new query client if we don't already have one
+    if (!clientQueryClient) clientQueryClient = makeQueryClient();
+    return clientQueryClient;
+  }
+}
+
 export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
+  const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() =>
     api.createClient({
