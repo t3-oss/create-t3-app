@@ -19,6 +19,7 @@ export const dependencyVersionMap = {
   mysql2: "^3.6.1",
   "@planetscale/database": "^1.11.0",
   postgres: "^3.4.3",
+  pg: "^8.11.3",
   "@types/better-sqlite3": "^7.6.6",
   "better-sqlite3": "^9.0.0",
 
