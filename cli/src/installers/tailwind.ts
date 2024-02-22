@@ -11,7 +11,6 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
     dependencies: [
       "tailwindcss",
       "postcss",
-      "autoprefixer",
       "prettier",
       "prettier-plugin-tailwindcss",
     ],

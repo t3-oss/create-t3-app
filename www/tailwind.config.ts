@@ -1,3 +1,4 @@
+import scrollbar from "tailwind-scrollbar";
 import { type Config } from "tailwindcss";
 
 export default {
@@ -74,6 +75,5 @@ export default {
       ],
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-call
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [scrollbar({ nocompatible: true })],
 } satisfies Config;

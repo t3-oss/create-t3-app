@@ -1,4 +1,5 @@
 import withMdx from "@next/mdx";
+// @ts-expect-error - no types
 import rehypePrettyCode from "rehype-pretty-code";
 import { getHighlighter } from "shiki";
 
@@ -18,11 +19,10 @@ export default withMdx({
     rehypePlugins: [
       [
         rehypePrettyCode,
-        /** @type {Partial<import("rehype-pretty-code").Options>} */
-        ({
+        {
           theme: { dark: "one-dark-pro" },
           getHighlighter,
-        }),
+        },
       ],
     ],
   },

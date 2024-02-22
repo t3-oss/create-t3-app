@@ -4,7 +4,7 @@ import {
   type BetterSQLite3Database,
 } from "drizzle-orm/better-sqlite3";
 
-import { env } from "~/env.js";
+import { env } from "~/env";
 import * as schema from "./schema";
 
 const globalForDrizzle = globalThis as unknown as {
