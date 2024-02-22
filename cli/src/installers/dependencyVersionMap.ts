@@ -16,12 +16,12 @@ export const dependencyVersionMap = {
   // Drizzle
   "drizzle-orm": "^0.29.4",
   "drizzle-kit": "^0.20.14",
-  mysql2: "^3.6.1",
+  mysql2: "^3.9.1",
   "@planetscale/database": "^1.16.0",
   postgres: "^3.4.3",
   pg: "^8.11.3",
-  "@types/better-sqlite3": "^7.6.6",
-  "better-sqlite3": "^9.0.0",
+  "@types/better-sqlite3": "^7.6.9",
+  "better-sqlite3": "^9.4.3",
 
   // TailwindCSS
   tailwindcss: "^3.4.1",
