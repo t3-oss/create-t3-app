@@ -49,11 +49,11 @@
     "@changesets/cli": "^2.26.1",
     "@manypkg/cli": "^0.20.0",
     "@total-typescript/ts-reset": "^0.3.7",
-    "@types/eslint": "^8.37.0",
-    "@types/node": "^18.17.0",
-    "@typescript-eslint/eslint-plugin": "6.0.0",
-    "@typescript-eslint/parser": "6.0.0",
-    "eslint": "^8.40.0",
+    "@types/eslint": "^8.56.2",
+    "@types/node": "^20.11.20",
+    "@typescript-eslint/eslint-plugin": "7.0.2",
+    "@typescript-eslint/parser": "7.0.2",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-turbo": "^0.0.9",
     "eslint-plugin-import": "^2.27.5",
@@ -61,8 +61,8 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.1.0",
+    "prettier": "^3.2.5",
     "turbo": "^1.9.6",
-    "typescript": "^5.0.4"
+    "typescript": "^5.3.3"
   }
 }
