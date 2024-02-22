@@ -147,7 +147,7 @@ You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/
 
 ### 📄 `server/api/routers/*.ts`
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/router) for related procedures.
+This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v10/server/routers) for related procedures.
 
 ### 📄 `server/api/root.ts`
 
