@@ -69,7 +69,7 @@ export const logNextSteps = async ({
     );
   }
 
-  if (["mysql"].includes(databaseProvider)) {
+  if (databaseProvider === "planetscale") {
     logger.warn(
       `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
     );
