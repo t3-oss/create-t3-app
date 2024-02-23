@@ -7,6 +7,7 @@ import "~/styles/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -15,7 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={inter.className}>
+      <main className={`font-sans ${inter.variable}`}>
         <Component {...pageProps} />
       </main>
     </SessionProvider>

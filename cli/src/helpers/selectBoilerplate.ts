@@ -14,16 +14,25 @@ export const selectAppFile = ({
 }: SelectBoilerplateProps) => {
   const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
 
+  const usingTw = packages.tailwind.inUse;
   const usingTRPC = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
 
   let appFile = "base.tsx";
-  if (usingNextAuth && usingTRPC) {
+  if (usingTRPC && usingTw && usingNextAuth) {
+    appFile = "with-auth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingNextAuth) {
     appFile = "with-auth-trpc.tsx";
-  } else if (usingNextAuth && !usingTRPC) {
-    appFile = "with-auth.tsx";
-  } else if (!usingNextAuth && usingTRPC) {
+  } else if (usingTRPC && usingTw) {
+    appFile = "with-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw) {
     appFile = "with-trpc.tsx";
+  } else if (!usingTRPC && usingTw) {
+    appFile = "with-tw.tsx";
+  } else if (usingNextAuth && usingTw) {
+    appFile = "with-auth-tw.tsx";
+  } else if (usingNextAuth && !usingTw) {
+    appFile = "with-auth.tsx";
   }
 
   const appSrc = path.join(appFileDir, appFile);
