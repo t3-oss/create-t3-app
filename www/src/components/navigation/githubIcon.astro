@@ -2,13 +2,13 @@
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { fetchGithub } from "../../utils/fetchGithub";
 
-let githubStars = 42069;
+let githubStars = 23000;
 
 try {
   (await fetchGithub("https://api.github.com/repos/t3-oss/create-t3-app", {
     throwIfNoAuth: false,
     fetchType: "repo",
-  }).then((data) => data?.stargazers_count)) ?? 42069;
+  }).then((data) => data?.stargazers_count)) ?? 23000;
 } catch (e) {
   console.error("unable to fetch from github", e);
 }
