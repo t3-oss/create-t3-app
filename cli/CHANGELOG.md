@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.28.0
+
+### Minor Changes
+
+- [#1777](https://github.com/t3-oss/create-t3-app/pull/1777) [`640a0e0`](https://github.com/t3-oss/create-t3-app/commit/640a0e086d1515f4f88315d3295b44296fe7bbd0) Thanks [@limegorilla](https://github.com/limegorilla)! - Warning about planetscale's serverless driver now only shown if using mySQL
+
+### Patch Changes
+
+- [#1778](https://github.com/t3-oss/create-t3-app/pull/1778) [`01badfb`](https://github.com/t3-oss/create-t3-app/commit/01badfb38caec5d0d211d7f93c6e288d55f2a751) Thanks [@DerTimonius](https://github.com/DerTimonius)! - fix: add missing default font in pagesDir
+
+- [#1766](https://github.com/t3-oss/create-t3-app/pull/1766) [`d7695df`](https://github.com/t3-oss/create-t3-app/commit/d7695df89a77ea5add1d703b63b9aeda5b5ef0c5) Thanks [@fuegoio](https://github.com/fuegoio)! - fix: cache database connection during development to prevent `Too many connections` due to HMR
+
 ## 7.27.0
 
 ### Minor Changes
