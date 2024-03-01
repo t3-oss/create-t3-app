@@ -4,16 +4,18 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import { env } from "~/env";
 import * as schema from "./schema";
 
+/**
+ * Cache the database connection in development. This avoids creating a new connection on every HMR
+ * update.
+ */
 const globalForDrizzle = globalThis as unknown as {
-  dbConnection: Database | undefined;
+  conn: Database | undefined;
 };
 
-export const dbConnection =
-  globalForDrizzle.dbConnection ??
-  new Database(env.DATABASE_URL, {
-    fileMustExist: false,
-  });
+export const conn =
+  globalForDrizzle.conn ??
+  new Database(env.DATABASE_URL, { fileMustExist: false });
 
-if (env.NODE_ENV !== "production") globalForDrizzle.dbConnection = dbConnection;
+if (env.NODE_ENV !== "production") globalForDrizzle.conn = conn;
 
-export const db = drizzle(dbConnection, { schema });
+export const db = drizzle(conn, { schema });

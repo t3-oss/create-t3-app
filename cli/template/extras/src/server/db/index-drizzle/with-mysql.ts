@@ -4,16 +4,15 @@ import mysql from "mysql2/promise";
 import { env } from "~/env";
 import * as schema from "./schema";
 
-const globalForDrizzle = globalThis as unknown as {
-  dbConnection: mysql.PoolConnection | undefined;
+/**
+ * Cache the database connection in development. This avoids creating a new connection on every HMR
+ * update.
+ */
+const globalForDb = globalThis as unknown as {
+  conn: mysql.Pool | undefined;
 };
 
-const dbConnection =
-  globalForDrizzle.dbConnection ??
-  mysql.createPool({
-    uri: env.DATABASE_URL,
-  });
+const conn = globalForDb.conn ?? mysql.createPool({ uri: env.DATABASE_URL });
+if (env.NODE_ENV !== "production") globalForDb.conn = conn;
 
-if (env.NODE_ENV !== "production") globalForDrizzle.dbConnection = dbConnection;
-
-export const db = drizzle(dbConnection, { schema, mode: "default" });
+export const db = drizzle(conn, { schema, mode: "default" });
