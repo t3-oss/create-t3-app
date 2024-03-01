@@ -10,7 +10,7 @@ datasource db {
     provider = "mysql"
     url      = env("DATABASE_URL")
 
-    // If you have enabled foreign keys constraints for your database, remove this line.
+    // If you have enabled foreign key constraints for your database, remove this line.
     relationMode = "prisma"
 }
 
