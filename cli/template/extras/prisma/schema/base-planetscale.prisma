@@ -10,7 +10,7 @@ datasource db {
     provider = "mysql"
     url      = env("DATABASE_URL")
 
-    // Do not use foreign keys (PlanetScale does not support them)
+    // If you have enabled foreign keys constraints for your database, remove this line.
     relationMode = "prisma"
 }
 
