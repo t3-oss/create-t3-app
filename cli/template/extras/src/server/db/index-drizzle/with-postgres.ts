@@ -1,14 +1,16 @@
-import { drizzle, type PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { env } from "~/env";
 import * as schema from "./schema";
 
 const globalForDrizzle = globalThis as unknown as {
-  db: PostgresJsDatabase<typeof schema> | undefined;
+  dbConnection: postgres.Sql | undefined;
 };
 
-export const db =
-  globalForDrizzle.db ?? drizzle(postgres(env.DATABASE_URL), { schema });
+const dbConnection =
+  globalForDrizzle.dbConnection ?? postgres(env.DATABASE_URL);
 
-if (env.NODE_ENV !== "production") globalForDrizzle.db = db;
+if (env.NODE_ENV !== "production") globalForDrizzle.dbConnection = dbConnection;
+
+export const db = drizzle(dbConnection, { schema });
