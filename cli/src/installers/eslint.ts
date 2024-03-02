@@ -6,6 +6,26 @@ import { type Installer } from "~/installers/index.js";
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
 
+  const eslintConfig = getEslintConfig({ projectDir, usingDrizzle });
+
+  // Convert config from _eslint.config.json to .eslintrc.cjs
+  const eslintrcFileContents = [
+    '/** @type {import("eslint").Linter.Config} */',
+    `const config = ${JSON.stringify(eslintConfig, null, 2)}`,
+    "module.exports = config;",
+  ].join("\n");
+
+  const eslintConfigDest = path.join(projectDir, ".eslintrc.cjs");
+  fs.writeFileSync(eslintConfigDest, eslintrcFileContents, "utf-8");
+};
+
+const getEslintConfig = ({
+  projectDir,
+  usingDrizzle,
+}: {
+  projectDir: string;
+  usingDrizzle: boolean;
+}) => {
   const _eslintConfigSrc = path.join(projectDir, "_eslint.config.json");
 
   const eslintConfig = JSON.parse(
@@ -25,14 +45,5 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
       ...lintRules,
     };
   }
-
-  // Convert config from _eslint.config.json to .eslintrc.cjs
-  const eslintrcFileContents = [
-    '/** @type {import("eslint").Linter.Config} */',
-    `const config = ${JSON.stringify(eslintConfig, null, 2)}`,
-    "module.exports = config;",
-  ].join("\n");
-
-  const eslintConfigDest = path.join(projectDir, ".eslintrc.cjs");
-  fs.writeFileSync(eslintConfigDest, eslintrcFileContents, "utf-8");
+  return eslintConfig;
 };
