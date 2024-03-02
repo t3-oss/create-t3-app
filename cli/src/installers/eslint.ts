@@ -29,7 +29,7 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   // Convert config from _eslint.config.json to .eslintrc.cjs
   const eslintrcFileContents = [
     '/** @type {import("eslint").Linter.Config} */',
-    "const config = " + JSON.stringify(eslintConfig, null, 2),
+    `const config = ${JSON.stringify(eslintConfig, null, 2)}`,
     "module.exports = config;",
   ].join("\n");
 
