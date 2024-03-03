@@ -1,12 +1,13 @@
 import path from "path";
 import fs from "fs-extra";
 
+import { _initialConfig } from "~/../template/extras/config/_eslint.js";
 import { type Installer } from "~/installers/index.js";
 
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
 
-  const eslintConfig = getEslintConfig({ projectDir, usingDrizzle });
+  const eslintConfig = getEslintConfig({ usingDrizzle });
 
   // Convert config from _eslint.config.json to .eslintrc.cjs
   const eslintrcFileContents = [
@@ -19,30 +20,16 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   fs.writeFileSync(eslintConfigDest, eslintrcFileContents, "utf-8");
 };
 
-const getEslintConfig = ({
-  projectDir,
-  usingDrizzle,
-}: {
-  projectDir: string;
-  usingDrizzle: boolean;
-}) => {
-  const _eslintConfigSrc = path.join(projectDir, "_eslint.config.json");
-
-  const eslintConfig = JSON.parse(
-    fs.readFileSync(_eslintConfigSrc).toString()
-  ) as Record<string, unknown>;
+const getEslintConfig = ({ usingDrizzle }: { usingDrizzle: boolean }) => {
+  const eslintConfig = _initialConfig;
 
   if (usingDrizzle) {
-    eslintConfig.plugins = [...(eslintConfig.plugins as string[]), "drizzle"];
-
-    const lintRules = {
-      "drizzle/enforce-delete-with-where": "error",
-      "drizzle/enforce-update-with-where": "error",
-    };
+    eslintConfig.plugins = [...(eslintConfig.plugins ?? []), "drizzle"];
 
     eslintConfig.rules = {
-      ...(eslintConfig.rules as Record<string, unknown>),
-      ...lintRules,
+      ...eslintConfig.rules,
+      "drizzle/enforce-delete-with-where": "error",
+      "drizzle/enforce-update-with-where": "error",
     };
   }
   return eslintConfig;
