@@ -41,6 +41,6 @@ fi
 
 docker run --name $DB_CONTAINER_NAME -e MYSQL_ROOT_PASSWORD=$DB_PASSWORD -e MYSQL_DATABASE=project1 -d -p 3306:3306 docker.io/mysql
 
-echo "Database container was succesfuly created"
+echo "Database container was successfully created"
 
 
