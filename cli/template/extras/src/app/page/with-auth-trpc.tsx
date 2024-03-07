@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 
 import { CreatePost } from "~/app/_components/create-post";
@@ -7,7 +6,6 @@ import { api } from "~/trpc/server";
 import styles from "./index.module.css";
 
 export default async function Home() {
-  noStore();
   const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getServerAuthSession();
 

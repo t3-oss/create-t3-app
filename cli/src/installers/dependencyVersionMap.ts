@@ -35,7 +35,7 @@ export const dependencyVersionMap = {
   "@trpc/server": "next",
   "@trpc/react-query": "next",
   "@trpc/next": "next",
-  "@tanstack/react-query": "^5.17.19",
+  "@tanstack/react-query": "^5.25.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
 } as const;
