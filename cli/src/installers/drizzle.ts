@@ -13,7 +13,10 @@ export const drizzleInstaller: Installer = ({
   scopedAppName,
   databaseProvider,
 }) => {
-  const devPackages: AvailableDependencies[] = ["drizzle-kit"];
+  const devPackages: AvailableDependencies[] = [
+    "drizzle-kit",
+    "eslint-plugin-drizzle",
+  ];
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
   if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
   if (databaseProvider === "postgres") devPackages.push("pg");
