@@ -9,7 +9,7 @@ import * as schema from "./schema";
  * update.
  */
 const globalForDb = globalThis as unknown as {
-  conn: Database | undefined;
+  conn: Database.Database | undefined;
 };
 
 export const conn =
