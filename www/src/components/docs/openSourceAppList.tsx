@@ -265,6 +265,14 @@ const projects: App[] = [
     linkName: "eboto-mo.com",
     link: "https://eboto-mo.com/",
   },
+  {
+    description:
+      "ImprovDB - The ultimate repository for improv games & exercises",
+    repoName: "aberonni/improvdb",
+    repo: "https://github.com/aberonni/improvdb",
+    linkName: "improvdb.com",
+    link: "https://improvdb.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
