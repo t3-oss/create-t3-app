@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Use this script to start a docker container for a local development database
 
-# TO RUN ON WINDOWS: 
+# TO RUN ON WINDOWS:
 # 1. Install WSL (Windows Subsystem for Linux) - https://learn.microsoft.com/en-us/windows/wsl/install
 # 2. Install Docker Desktop for Windows - https://docs.docker.com/docker-for-windows/install/
 # 3. Open WSL - `wsl`
@@ -42,5 +42,3 @@ fi
 docker run --name $DB_CONTAINER_NAME -e MYSQL_ROOT_PASSWORD=$DB_PASSWORD -e MYSQL_DATABASE=project1 -d -p 3306:3306 docker.io/mysql
 
 echo "Database container was successfully created"
-
-
