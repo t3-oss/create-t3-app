@@ -49,9 +49,9 @@
     "@types/react-dom": "^18.2.19",
     "@types/react-typist": "^2.0.6",
     "@types/treeify": "^1.0.3",
-    "@typescript-eslint/parser": "7.0.2",
+    "@typescript-eslint/parser": "^7.1.1",
     "astro": "^2.5.5",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.27.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^3.2.5",
@@ -65,6 +65,6 @@
     "rehype-slug": "^5.1.0",
     "remark-code-titles": "^0.1.2",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }
