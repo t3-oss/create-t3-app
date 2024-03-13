@@ -35,7 +35,8 @@ if [ "$DB_PASSWORD" = "password" ]; then
     echo "Please set a password in the .env file and try again"
     exit 1
   fi
-  DB_PASSWORD=$(openssl rand -base64 12)
+  # Generate a random password URL-safe password
+  DB_PASSWORD=$(openssl rand -base64 12 | tr '+/' '-_')
   sed -i -e "s#:password@#:$DB_PASSWORD@#" .env
 fi
 
