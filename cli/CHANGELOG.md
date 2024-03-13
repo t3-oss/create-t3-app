@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.29.0
+
+### Minor Changes
+
+- [#1785](https://github.com/t3-oss/create-t3-app/pull/1785) [`57dc6ab`](https://github.com/t3-oss/create-t3-app/commit/57dc6ab0625d7cd56bf8f6b5c4d3b844421ffe48) Thanks [@thecmdrunner](https://github.com/thecmdrunner)! - Include ESLlint rules for `drizzle-orm`.
+
+- [#1794](https://github.com/t3-oss/create-t3-app/pull/1794) [`3cca996`](https://github.com/t3-oss/create-t3-app/commit/3cca9965739d29cc010e586406d40fff471a9bed) Thanks [@thecmdrunner](https://github.com/thecmdrunner)! - Use portable shebangs in scripts for nix systems
+
 ## 7.28.0
 
 ### Minor Changes
