@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.30.0
+
+### Minor Changes
+
+- [#1741](https://github.com/t3-oss/create-t3-app/pull/1741) [`5de586d`](https://github.com/t3-oss/create-t3-app/commit/5de586da1933064c9eef84ddae47d795e71afc53) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: use trpc 11
+
 ## 7.29.0
 
 ### Minor Changes
