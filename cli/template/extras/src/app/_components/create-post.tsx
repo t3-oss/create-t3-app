@@ -35,9 +35,9 @@ export function CreatePost() {
       <button
         type="submit"
         className={styles.submitButton}
-        disabled={createPost.isLoading}
+        disabled={createPost.isPending}
       >
-        {createPost.isLoading ? "Submitting..." : "Submit"}
+        {createPost.isPending ? "Submitting..." : "Submit"}
       </button>
     </form>
   );
