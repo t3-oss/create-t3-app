@@ -31,11 +31,11 @@ export const dependencyVersionMap = {
   "prettier-plugin-tailwindcss": "^0.5.11",
 
   // tRPC
-  "@trpc/client": "^10.45.1",
-  "@trpc/server": "^10.45.1",
-  "@trpc/react-query": "^10.45.1",
-  "@trpc/next": "^10.45.1",
-  "@tanstack/react-query": "^4.36.1",
+  "@trpc/client": "next",
+  "@trpc/server": "next",
+  "@trpc/react-query": "next",
+  "@trpc/next": "next",
+  "@tanstack/react-query": "^5.25.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
 } as const;

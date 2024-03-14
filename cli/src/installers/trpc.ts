@@ -104,10 +104,6 @@ export const trpcInstaller: Installer = ({
         path.join(projectDir, "src/trpc/react.tsx"),
       ],
       [
-        path.join(trpcDir, "shared.ts"),
-        path.join(projectDir, "src/trpc/shared.ts"),
-      ],
-      [
         path.join(
           extrasDir,
           "src/app/_components",
