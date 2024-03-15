@@ -34,6 +34,8 @@ export const envVariablesInstaller: Installer = ({
       if (usingAuth) envFile = "with-auth-db.js";
       else envFile = "with-db.js";
     }
+  } else {
+    if (usingAuth) envFile = "with-auth.js";
   }
 
   if (envFile !== "") {
