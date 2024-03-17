@@ -15,6 +15,7 @@ export const envVariablesInstaller: Installer = ({
   const usingDrizzle = packages?.drizzle.inUse;
 
   const usingDb = usingPrisma || usingDrizzle;
+  const usingPlanetScale = databaseProvider === "planetscale";
 
   const envContent = getEnvContent(
     !!usingAuth,
@@ -25,9 +26,17 @@ export const envVariablesInstaller: Installer = ({
   );
 
   let envFile = "";
-  if (usingAuth && usingDb) envFile = "with-auth-db.js";
-  else if (usingAuth) envFile = "with-auth.js";
-  else if (usingDb) envFile = "with-db.js";
+  if (usingDb) {
+    if (usingPlanetScale) {
+      if (usingAuth) envFile = "with-auth-db-planetscale.js";
+      else envFile = "with-db-planetscale.js";
+    } else {
+      if (usingAuth) envFile = "with-auth-db.js";
+      else envFile = "with-db.js";
+    }
+  } else {
+    if (usingAuth) envFile = "with-auth.js";
+  }
 
   if (envFile !== "") {
     const envSchemaSrc = path.join(
