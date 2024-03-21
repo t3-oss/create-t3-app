@@ -30,11 +30,11 @@ const getEslintConfig = ({ usingDrizzle }: { usingDrizzle: boolean }) => {
       ...eslintConfig.rules,
       "drizzle/enforce-delete-with-where": [
         "error",
-        { drizzleObjectName: "db" },
+        { drizzleObjectName: ["db"] },
       ],
       "drizzle/enforce-update-with-where": [
         "error",
-        { drizzleObjectName: "db" },
+        { drizzleObjectName: ["db"] },
       ],
     };
   }
