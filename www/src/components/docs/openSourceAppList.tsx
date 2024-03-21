@@ -273,6 +273,13 @@ const projects: App[] = [
     linkName: "improvdb.com",
     link: "https://improvdb.com/",
   },
+  {
+    description: "Simple Todo app - with custom auth",
+    repoName: "Parthvsquare/t3-todo-mvc",
+    repo: "https://github.com/Parthvsquare/t3-todo-mvc",
+    linkName: "",
+    link: "",
+  },
 ];
 
 export default function OpenSourceAppList({
