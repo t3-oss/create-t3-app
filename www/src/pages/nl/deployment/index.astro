@@ -5,9 +5,10 @@ import { getLanguageFromURL } from "../../../languages";
 import Layout from "../../../layouts/docs.astro";
 
 const frontmatter: Frontmatter = {
-  title: "Deployment",
+  title: "Uitrollen",
   layout: "docs",
-  description: "Learn how to deploy your T3 app to production.",
+  description: "Learn hoe je je T3-app kan uitrollen naar production.",
+  lang: "nl"
 };
 
 const lang = getLanguageFromURL(Astro.url.pathname);
