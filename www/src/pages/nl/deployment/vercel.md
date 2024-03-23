@@ -1,15 +1,15 @@
 ---
 title: Vercel
-description: Deploying to Vercel
+description: Uitrollen met Vercel
 layout: ../../../layouts/docs.astro
-lang: en
+lang: nl
 ---
 
-We recommend deploying your app to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy Next.js apps.
+We raden aan om je app uit te rollen met [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). Het maakt het supereenvoudig om je Next.js apps uit te rollen.
 
-## Project Configuration
+## Projectconfiguratie
 
-Vercel will likely configure your build command and publish the directory automatically. However, you can also specify this information along with other configurations by creating a file called [`vercel.json`](https://vercel.com/docs/project-configuration) and including the following commands. **This is not required for most projects.**
+Vercel zal waarschijnlijk je buildcommando en publish-folder automatisch configureren. Je kan deze informatie echter ook samen met andere configuraties specificeren door een bestand te maken met de naam [`vercel.json`](https://vercel.com/docs/project-configuration) en de volgende commando's in te voegen. **Dit is niet verplicht voor de meeste projecten.**
 
 ```json
 {
@@ -19,43 +19,43 @@ Vercel will likely configure your build command and publish the directory automa
 }
 ```
 
-## Using the Vercel Dashboard
+## Het Vercel Dashboard Gebruiken
 
-1. After pushing your code to a GitHub repository, sign up for [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) with GitHub and click on **Add New Project**.
+1. Meld je aan bij [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) met GitHub na het pushen van je code naar een GitHub-repository. Klik vervolgens op **Add new Project**.
 
-![New project on Vercel](/images/vercel-new-project.webp)
+![Nieuw projeect bij Vercel](/images/vercel-new-project.webp)
 
-2. Import the GitHub repository with your project.
+2. Importeer het GitHub-repository met je project.
 
-![Import repository](/images/vercel-import-project.webp)
+![Repository importeren](/images/vercel-import-project.webp)
 
-3. Add your environment variables.
+3. Voeg je omgevingsvariabelen toe.
 
-![Add environment variables](/images/vercel-env-vars.webp)
+![Omgevingsvariablen toevoegen](/images/vercel-env-vars.webp)
 
-4. Click **Deploy**. Now whenever you push a change to your repository, Vercel will automatically redeploy your app!
+4. Klik **Deploy**. Vanaf nu zal telkens wanneer je een wijziging naar je repository pusht zal Vercel je app automatisch heruitrollen!
 
-## Using the Vercel CLI
+## De Vercel CLI Gebruiken
 
-To deploy from the command line you must first [install the Vercel CLI globally](https://vercel.com/docs/cli#installing-vercel-cli).
+Om vanaf de commandline uit te rollen moet je eerst [de Vercel CLI globaal installeren](https://vercel.com/docs/cli#installing-vercel-cli).
 
 ```bash
 npm i -g vercel
 ```
 
-Run the [`vercel`](https://vercel.com/docs/cli/deploying-from-cli) command to deploy your project.
+Vor het [`vercel`](https://vercel.com/docs/cli/deploying-from-cli)-commando uit om je project uit te rollen.
 
 ```bash
 vercel
 ```
 
-Include `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` for environment variables like the database connection string. Use `--yes` if you want to skip the deployment questions and give the default answer for each.
+Voeg `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` toe voor omgevingsvariablen zoals de databaseconnectiestring. Gebruik `--yes` als je de uitrolvragen wilt overslaan en het standaardantwoord voor elk ervan wilt geven.
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes
 ```
 
-After the first deployment, this command will deploy to a preview branch. You will need to include `--prod` to push changes directly to the live site for future deployments.
+Na de eerste uitrol zal dit commando naar een previewbranch uitrollen. Je zal `--prod` moeten toevoegen om je wijzigingen direct naar de live site te pushen voor komende uitrolacties.
 
 ```bash
 vercel --prod
