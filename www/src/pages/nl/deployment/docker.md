@@ -196,13 +196,13 @@ Ga naar "Variables" en neem je `DATABASE_URL`-variable op. Ga vervolgens naar "S
 
 ## Handige Hulpbronnen
 
-| Hulpbron                          | Link                                                                 |
-|-----------------------------------| -------------------------------------------------------------------- |
-| Dockerfile referentie             | https://docs.docker.com/engine/reference/builder/                    |
-| Compose file versie 3 refere      | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
-| Docker CLI reference              | https://docs.docker.com/engine/reference/commandline/docker/         |
-| Docker Compose CLI reference      | https://docs.docker.com/compose/reference/                           |
-| Next.js Deployment with Docker Image | https://nextjs.org/docs/deployment#docker-image                      |
-| Next.js in Docker                 | https://benmarte.com/blog/nextjs-in-docker/                          |
-| Next.js with Docker Example       | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
-| Create Docker Image of a Next.js app | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
+| Hulpbron                               | Link                                                                 |
+|----------------------------------------| -------------------------------------------------------------------- |
+| Dockerfile-referentie                  | https://docs.docker.com/engine/reference/builder/                    |
+| Compose file versie 3-referentie       | https://docs.docker.com/compose/compose-file/compose-file-v3/        |
+| Docker CLI-referentie                  | https://docs.docker.com/engine/reference/commandline/docker/         |
+| Docker Compose CLI-referentie          | https://docs.docker.com/compose/reference/                           |
+| Next.js Uitrollen met Docker Image     | https://nextjs.org/docs/deployment#docker-image                      |
+| Next.js in Docker                      | https://benmarte.com/blog/nextjs-in-docker/                          |
+| Next.js met Docker Example             | https://github.com/vercel/next.js/tree/canary/examples/with-docker   |
+| Docker Image van een Next.js-app maken | https://blog.tericcabrel.com/create-docker-image-nextjs-application/ |
