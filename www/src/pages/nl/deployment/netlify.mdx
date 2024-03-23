@@ -1,32 +1,31 @@
 ---
 title: Netlify
-description: Deploying to Netlify
+description: Uitrollen met Netlify
 layout: ../../../layouts/docs.astro
-lang: en
+lang: nl
 isMdx: true
 ---
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
+Netlify is een alternatieve uitrolprovider vergelijkbaar met Vercel. Zie [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) voor een voorbeeld-repository gebasseerd op deze documentatie.
 
-## Why Host on Netlify
+## Waarom Bij Netlify Hosten
 
-Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases, this will be true and it won't make sense to deviate from the standard path.
+Men verondersteld dat Vercel betere Next.js-ondersteuning heeft omdat Vercel Next.js ontwikkeld. Ze hebben er belang bij om er voor te zorgen dat het platform is afgesteld voor ideale prestaties en een ideale DX met Next.js. In de meeste gevallen zal dit ook waar zijn en is het onlogisch om af te wijken van het standaardpat.
 
-There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+Maar er is ook een algemeen gevoel dat Next.js-functionaliteiten enkel ondersteund worden door Vercel. Hoewel het waar is dat nieuwe Next.js-functionaliteiten standaard getest en ondersteund worden door Vercel zodra ze uitkommen, is het ook het geval dat andere providers zoals Netlify [snel ondersteuning implementeren en vrij geven](https://www.netlify.com/blog/deploy-nextjs-13/) voor [stabiele Next.js functionaliteiten](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
-There are relative pros and cons for all deployment providers since no single host can have the best support for all use cases. For example, Netlify built their own [custom Next.js runtime](https://github.com/netlify/next-runtime) for Netlify's Edge Functions (which run on Deno Deploy) and [maintain unique middleware to access and modify HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
+
+Er zijn relatieve voors en tegens voor alle uitrolproviders gezien geen enkele host de beste ondersteuning kan hebben voor alle situaties. Netlify hebben bijvoorbeeld hun eigen [op maat gemaakte Next.js runtime](https://github.com/netlify/next-runtime) voor Netlify's Edge Functions (die draaien op Deno Deploy) en [onderhouden unieke middleware om HTTP-responses te openen en te wijzigen](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
 <Callout type="info">
-  To track the status of non-stable Next 13 features see [Using the Next 13
-  `app` directory on
-  Netlify](https://github.com/netlify/next-runtime/discussions/1724).
+  Zie [Using the Next 13 `app` directory on Netlify](https://github.com/netlify/next-runtime/discussions/1724) om de status bij te houden van instabiele Next 13-functionaliteiten.
 </Callout>
 
-## Project Configuration
+## Projectconfiguratie
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures that forked and cloned versions of the project will be easier to reproducibly deploy.
+Er zijn talrijke manieren om je buildinstructies te configureren waaronder direct via de Netlify CLI of het Netlify dashboard. Hoewel niet vereist, is het wijs om een [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/)-bestand te maken en bij te voegen. Dit zorgt ervoor dat geforkte en gekloonde versies van het project makkelijker zijn om reproduceerbaar uit te rollen.
 
 ```toml
 [build]
@@ -34,60 +33,60 @@ There are numerous ways to configure your build instructions including directly 
   publish = ".next"
 ```
 
-## Using the Netlify Dashboard
+## Het Netlify Dashboard Gebruiken
 
-1. Push your code to a GitHub repository and sign up for [Netlify](https://app.netlify.com/signup). After you've created an account, click on **Add new site** and then **Import an existing project**.
+1. Push je code naar een GitHub-repository en meld je aan bij [Netlify](https://app.netlify.com/signup). Kilk nadat je een account hebt gemaakt op **Add new site** en vervolgens **Import an existing project**.
 
-![New project on Netlify](/images/netlify-01-new-project.webp)
+![Nieuw project bij Netlify](/images/netlify-01-new-project.webp)
 
-2. Connect your Git provider.
+2. Koppel je Git-provider.
 
-![Import repository](/images/netlify-02-connect-to-git-provider.webp)
+![Repository importeren](/images/netlify-02-connect-to-git-provider.webp)
 
-3. Select your project's repository.
+3. Selecteer de repository van je project.
 
-![Select your project's repository](/images/netlify-03-pick-a-repository-from-github.webp)
+![Selecteer de repository van je project](/images/netlify-03-pick-a-repository-from-github.webp)
 
-4. Netlify will detect if you have a `netlify.toml` file and automatically configure your build command and publish directory.
+4. Netlify zal kijken of je een `netlify.toml`-bestand hebt en automatisch het buildcommando en de publish-folder configureren.
 
-![Nextjs build settings](/images/netlify-04-configure-build-settings.webp)
+![Nextjs build-instellingen](/images/netlify-04-configure-build-settings.webp)
 
-5. Click **Show advanced** and then **New variable** to add your environment variables.
+5. Kilik op **Show advanced** en vervolgens op **New variable** om je omgevingsvariablen toe te voegen.
 
-![Add environment variables](/images/netlify-05-env-vars.webp)
+![Omgevingsvariablen toevoegen](/images/netlify-05-env-vars.webp)
 
-6. Click **Deploy site**, wait for the build to complete, and view your new site.
+6. Klik op **Deploy site**, wacht totdat de build klaar is en bekijk je nieuwe site.
 
-## Using the Netlify CLI
+## De Netlify CLI Gebruiken
 
-To deploy from the command line you must first push your project to a GitHub repo and [install the Netlify CLI](https://docs.netlify.com/cli/get-started/). You can install `netlify-cli` as a project dependency or install it globally on your machine with the following command:
+Om vanaf de commandline uit te rollen moet je eerst je project naar een GitHub repo pushen en [de Netlify CLI installeren](https://docs.netlify.com/cli/get-started/). Je kan `netlify-cli` als een projectdependency installeren of het globaal op je machine installeren met het volgende commando:
 
 ```bash
 npm i -g netlify-cli
 ```
 
-To test your project locally, run the [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) command and open [`localhost:8888`](http://localhost:8888/) to view your locally running Netlify app:
+Om je project lokaal te testen, voer je het [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment)-commando uit en open [`localhost:88888`](http://localhost:8888/) om je lokaal draaiende Netlify-app te bekijken:
 
 ```bash
 ntl dev
 ```
 
-Run the [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) command to configure your project:
+Voer het [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment)-commando uit om je project te configureren:
 
 ```bash
 ntl init
 ```
 
-Import your project's environment variables from your `.env` file with [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
+Importeer de omgevingsvariablen van je project vanuit het `.env`-bestand met [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
 
 ```bash
 ntl env:import .env
 ```
 
-Deploy your project with [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). You'll need to pass the `--build` flag to run the build command before deployment and the `--prod` flag to deploy to your site's main URL:
+Rol je project uit met [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). Je zal de `--build` flag mee moet geven aan het commando om voor uitrollen het buildcommando te draaien. Gebruik de `--prod` flag om je site uit te rollen naar de hoofd-URL:
 
 ```bash
 ntl deploy --prod --build
 ```
 
-To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
+Bezoek [ct3a.netlify.app](https://ct3a.netlify.app/) om een werkend voorbeeld te bekijken op Netlify.
