@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.30.1
+
+### Patch Changes
+
+- [#1802](https://github.com/t3-oss/create-t3-app/pull/1802) [`41380d1`](https://github.com/t3-oss/create-t3-app/commit/41380d1cbf29418c3d60a2dcefd3eaf3f7e7bc28) Thanks [@c-ehrlich](https://github.com/c-ehrlich)! - fix: non planetscale env.js refers to YOUR_MYSQL_URL_HERE
+
+- [#1808](https://github.com/t3-oss/create-t3-app/pull/1808) [`fedd7b3`](https://github.com/t3-oss/create-t3-app/commit/fedd7b3926540fdf3137f327cac917237a438943) Thanks [@thecmdrunner](https://github.com/thecmdrunner)! - Apply drizzle-orm lint rules for `db` keyword only
+
 ## 7.30.0
 
 ### Minor Changes
