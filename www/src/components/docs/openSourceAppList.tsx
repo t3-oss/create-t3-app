@@ -280,6 +280,13 @@ const projects: App[] = [
     linkName: "",
     link: "",
   },
+  {
+      description: "Profilee - A Profile Link Builder",
+      repoName: "mittalsam98/profilee",
+      repo: "https://github.com/mittalsam98/profilee",
+      linkName: "Profilee",
+      link: "https://www.profilee.info/",
+  }
 ];
 
 export default function OpenSourceAppList({
