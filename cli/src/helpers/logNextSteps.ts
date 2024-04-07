@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 import { DEFAULT_APP_NAME } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
@@ -35,7 +37,7 @@ export const logNextSteps = async ({
   }
 
   if (["postgres", "mysql"].includes(databaseProvider)) {
-    logger.info("  ./start-database.sh");
+    logger.info(`  ./start-database.sh (${chalk.red("Optional")})`);
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
