@@ -37,7 +37,7 @@ export const logNextSteps = async ({
   }
 
   if (["postgres", "mysql"].includes(databaseProvider)) {
-    logger.info(`  ./start-database.sh (${chalk.red("Optional")})`);
+    logger.info(`  ${chalk.red("If db is down")}, use ./start-databse.sh`);
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
