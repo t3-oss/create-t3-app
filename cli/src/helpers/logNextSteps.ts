@@ -35,7 +35,7 @@ export const logNextSteps = async ({
   }
 
   if (["postgres", "mysql"].includes(databaseProvider)) {
-    logger.info("  ./start-database.sh");
+    logger.info("  Start up a database, if needed using './start-database.sh'");
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
