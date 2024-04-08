@@ -1,5 +1,3 @@
-import chalk from "chalk";
-
 import { DEFAULT_APP_NAME } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
