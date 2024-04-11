@@ -1,5 +1,5 @@
+import { GeistSans } from "geist/font/sans";
 import { type AppType } from "next/dist/shared/lib/utils";
-import { GeistSans } from 'geist/font/sans';
 
 import "~/styles/globals.css";
 

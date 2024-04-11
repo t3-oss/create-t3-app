@@ -40,6 +40,6 @@ export const dependencyVersionMap = {
   "server-only": "^0.0.1",
 
   // Geist
-  "geist": "^1.3.0",
+  geist: "^1.3.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

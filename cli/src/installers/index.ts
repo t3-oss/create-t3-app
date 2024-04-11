@@ -1,9 +1,9 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
+import { geistInstaller } from "~/installers/geist.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
-import { geistInstaller } from "~/installers/geist.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { dbContainerInstaller } from "./dbContainer.js";
 import { drizzleInstaller } from "./drizzle.js";
