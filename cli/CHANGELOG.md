@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.30.2
+
+### Patch Changes
+
+- [#1817](https://github.com/t3-oss/create-t3-app/pull/1817) [`d49300a`](https://github.com/t3-oss/create-t3-app/commit/d49300a4230835f6a771ed1a6b759c61c8902d7e) Thanks [@kxzazz](https://github.com/kxzazz)! - fix: `start-database.sh` is marked optional
+
+- [#1823](https://github.com/t3-oss/create-t3-app/pull/1823) [`f5c5db9`](https://github.com/t3-oss/create-t3-app/commit/f5c5db99dbd86010369b26e55dd65973ccd0db05) Thanks [@t3dotgg](https://github.com/t3dotgg)! - chore: update next to 14.2.1
+
 ## 7.30.1
 
 ### Patch Changes
