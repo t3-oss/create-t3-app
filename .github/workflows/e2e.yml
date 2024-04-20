@@ -46,17 +46,8 @@ jobs:
         run: |
           echo "continue=${{ (matrix.prisma == 'false' || matrix.drizzle == 'false') && (matrix.drizzle == 'true' || matrix.prisma == 'true' || matrix.dbType == 'sqlite') }}" >> $GITHUB_OUTPUT
 
-      - uses: actions/setup-node@v4
+      - uses: ./.github/actions/setup
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        with:
-          node-version: 18
-          cache: "pnpm"
-
-      - uses: pnpm/action-setup@v3
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-
-      - run: pnpm install
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
 
       - run: pnpm turbo --filter=create-t3-app build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
@@ -84,17 +75,7 @@ jobs:
           fetch-depth: 0
 
       # First install everything and build the CLI with Node
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - uses: pnpm/action-setup@v3
-
-      - name: Install dependencies
-        run: pnpm install
-
+      - uses: ./.github/actions/setup
       - run: pnpm turbo --filter=create-t3-app build
 
       # Then, run the CLI and build the generated app with Bun
