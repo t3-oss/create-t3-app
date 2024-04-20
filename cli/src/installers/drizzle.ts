@@ -18,7 +18,6 @@ export const drizzleInstaller: Installer = ({
     "eslint-plugin-drizzle",
   ];
   if (databaseProvider === "planetscale") devPackages.push("mysql2");
-  if (databaseProvider === "sqlite") devPackages.push("@types/better-sqlite3");
   if (databaseProvider === "postgres") devPackages.push("pg");
 
   addPackageDependency({
@@ -35,7 +34,7 @@ export const drizzleInstaller: Installer = ({
           planetscale: "@planetscale/database",
           mysql: "mysql2",
           postgres: "postgres",
-          sqlite: "better-sqlite3",
+          sqlite: "@libsql/client",
         } as const
       )[databaseProvider],
     ],
