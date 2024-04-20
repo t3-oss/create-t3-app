@@ -37,7 +37,7 @@ jobs:
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }}"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -46,37 +46,17 @@ jobs:
         run: |
           echo "continue=${{ (matrix.prisma == 'false' || matrix.drizzle == 'false') && (matrix.drizzle == 'true' || matrix.prisma == 'true' || matrix.dbType == 'sqlite') }}" >> $GITHUB_OUTPUT
 
-      - name: Install Node.js
+      - uses: actions/setup-node@v4
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: "pnpm"
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v3
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: false
 
-      - name: Get pnpm store directory
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
+      - run: pnpm install
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
-        run: pnpm install
 
       - run: pnpm turbo --filter=create-t3-app build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
@@ -105,28 +85,12 @@ jobs:
 
       # First install everything and build the CLI with Node
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: "pnpm"
 
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - uses: pnpm/action-setup@v3
 
       - name: Install dependencies
         run: pnpm install
