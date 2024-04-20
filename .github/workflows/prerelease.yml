@@ -20,16 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - uses: pnpm/action-setup@v3
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "pnpm"
-
-      - name: Install NPM Dependencies
-        run: pnpm install
+      - uses: ./.github/actions/setup
 
       - name: Modify package.json version
         run: node .github/version-script-beta.js
