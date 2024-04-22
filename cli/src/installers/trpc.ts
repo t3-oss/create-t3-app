@@ -17,7 +17,6 @@ export const trpcInstaller: Installer = ({
       "superjson",
       "@trpc/server",
       "@trpc/client",
-      "@trpc/next",
       "@trpc/react-query",
     ],
     devMode: false,
@@ -113,6 +112,12 @@ export const trpcInstaller: Installer = ({
       ]
     );
   } else {
+    addPackageDependency({
+      dependencies: ["@trpc/next"],
+      devMode: false,
+      projectDir,
+    });
+
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
     const utilsDest = path.join(projectDir, "src/utils/api.ts");
     copySrcDest.push([utilsSrc, utilsDest]);
