@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.31.0
+
+### Minor Changes
+
+- [#1830](https://github.com/t3-oss/create-t3-app/pull/1830) [`3257d0a`](https://github.com/t3-oss/create-t3-app/commit/3257d0a2fe73847b501bdf36f09053638b4a41a4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: replace better-sqlite3 with libsql
+
+### Patch Changes
+
+- [`ab5fa95`](https://github.com/t3-oss/create-t3-app/commit/ab5fa95afce2a0feb8567aed6bb02beeef1401e5) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: pin zod version
+
+- [#1835](https://github.com/t3-oss/create-t3-app/pull/1835) [`f66e30a`](https://github.com/t3-oss/create-t3-app/commit/f66e30a0c84eb4f74182d79b23e3c5e900788e10) Thanks [@Inshiku-Han](https://github.com/Inshiku-Han)! - Only install @trpc/next when router style is page router
+
 ## 7.30.2
 
 ### Patch Changes
