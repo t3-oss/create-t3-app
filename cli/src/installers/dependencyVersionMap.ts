@@ -21,8 +21,7 @@ export const dependencyVersionMap = {
   "@planetscale/database": "^1.16.0",
   postgres: "^3.4.3",
   pg: "^8.11.3",
-  "@types/better-sqlite3": "^7.6.9",
-  "better-sqlite3": "^9.4.3",
+  "@libsql/client": "^0.6.0",
 
   // TailwindCSS
   tailwindcss: "^3.4.1",
