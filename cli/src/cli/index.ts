@@ -284,7 +284,7 @@ export const runCli = async (): Promise<CliResults> => {
           return p.select({
             message: "What database provider would you like to use?",
             options: [
-              { value: "sqlite", label: "SQLite" },
+              { value: "sqlite", label: "SQLite (LibSQL)" },
               { value: "mysql", label: "MySQL" },
               { value: "postgres", label: "PostgreSQL" },
               { value: "planetscale", label: "PlanetScale" },
