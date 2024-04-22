@@ -190,7 +190,7 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       zod:
-        specifier: ^3.22.4
+        specifier: 3.22.4
         version: 3.22.4
 
   upgrade:
@@ -265,7 +265,7 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5(tailwindcss@3.4.1)
       zod:
-        specifier: ^3.22.4
+        specifier: 3.22.4
         version: 3.22.4
     devDependencies:
       '@types/eslint':
@@ -386,7 +386,7 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       zod:
-        specifier: ^3.22.4
+        specifier: 3.22.4
         version: 3.22.4
     devDependencies:
       '@astrojs/react':
