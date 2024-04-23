@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.32.0
+
+### Minor Changes
+
+- [#1842](https://github.com/t3-oss/create-t3-app/pull/1842) [`088a773`](https://github.com/t3-oss/create-t3-app/commit/088a773103a03e0ec34cbe22329ead33cd80c5ff) Thanks [@nick22985](https://github.com/nick22985)! - Infers tRPC input & output types to the client for app router
+
+- [#1841](https://github.com/t3-oss/create-t3-app/pull/1841) [`41bd524`](https://github.com/t3-oss/create-t3-app/commit/41bd5240276f1029633cde588b0ca08301c4e78c) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - mark app router as stable
+
+### Patch Changes
+
+- [#1838](https://github.com/t3-oss/create-t3-app/pull/1838) [`ff886b3`](https://github.com/t3-oss/create-t3-app/commit/ff886b3fed4b193b8fc85882a71c7e8085457cf0) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump zod and t3-env
+
 ## 7.31.0
 
 ### Minor Changes
