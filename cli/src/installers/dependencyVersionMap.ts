@@ -37,5 +37,8 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^5.25.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
+
+  // Geist
+  geist: "^1.3.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

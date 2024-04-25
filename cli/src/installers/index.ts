@@ -1,4 +1,5 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
+import { geistInstaller } from "~/installers/geist.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
@@ -8,14 +9,15 @@ import { dbContainerInstaller } from "./dbContainer.js";
 import { drizzleInstaller } from "./drizzle.js";
 import { dynamicEslintInstaller } from "./eslint.js";
 
-// Turning this into a const allows the list to be iterated over for programatically creating prompt options
-// Should increase extensability in the future
+// Turning this into a const allows the list to be iterated over for programmatically creating prompt options
+// Should increase extensibility in the future
 export const availablePackages = [
   "nextAuth",
   "prisma",
   "drizzle",
   "tailwind",
   "trpc",
+  "geist",
   "envVariables",
   "eslint",
   "dbContainer",
@@ -73,6 +75,10 @@ export const buildPkgInstallerMap = (
   trpc: {
     inUse: packages.includes("trpc"),
     installer: trpcInstaller,
+  },
+  geist: {
+    inUse: packages.includes("geist"),
+    installer: geistInstaller,
   },
   dbContainer: {
     inUse: ["mysql", "postgres"].includes(databaseProvider),
