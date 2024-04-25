@@ -1,5 +1,4 @@
 import { envVariablesInstaller } from "~/installers/envVars.js";
-import { geistInstaller } from "~/installers/geist.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
@@ -17,7 +16,6 @@ export const availablePackages = [
   "drizzle",
   "tailwind",
   "trpc",
-  "geist",
   "envVariables",
   "eslint",
   "dbContainer",
@@ -75,10 +73,6 @@ export const buildPkgInstallerMap = (
   trpc: {
     inUse: packages.includes("trpc"),
     installer: trpcInstaller,
-  },
-  geist: {
-    inUse: packages.includes("geist"),
-    installer: geistInstaller,
   },
   dbContainer: {
     inUse: ["mysql", "postgres"].includes(databaseProvider),

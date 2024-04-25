@@ -34,8 +34,6 @@ interface CliFlags {
   /** @internal Used in CI. */
   nextAuth: boolean;
   /** @internal Used in CI. */
-  geist: boolean;
-  /** @internal Used in CI. */
   appRouter: boolean;
 }
 
@@ -59,7 +57,6 @@ const defaultOptions: CliResults = {
     prisma: false,
     drizzle: false,
     nextAuth: false,
-    geist: false,
     importAlias: "~/",
     appRouter: false,
   },
@@ -129,12 +126,6 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "--geist [boolean]",
-      "Experimental: Boolean value if we should install Geist. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
-    )
-    /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
-    .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias
@@ -189,7 +180,6 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
-    if (cliResults.flags.geist) cliResults.packages.push("geist");
 
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
@@ -283,10 +273,8 @@ export const runCli = async (): Promise<CliResults> => {
         },
         appRouter: () => {
           return p.confirm({
-            message:
-              chalk.bgCyan(" EXPERIMENTAL ") +
-              " Would you like to use Next.js App Router?",
-            initialValue: false,
+            message: "Would you like to use Next.js App Router?",
+            initialValue: true,
           });
         },
         databaseProvider: ({ results }) => {
@@ -294,22 +282,12 @@ export const runCli = async (): Promise<CliResults> => {
           return p.select({
             message: "What database provider would you like to use?",
             options: [
-              { value: "sqlite", label: "SQLite" },
+              { value: "sqlite", label: "SQLite (LibSQL)" },
               { value: "mysql", label: "MySQL" },
               { value: "postgres", label: "PostgreSQL" },
               { value: "planetscale", label: "PlanetScale" },
             ],
             initialValue: "sqlite",
-          });
-        },
-        font: () => {
-          return p.select({
-            message: "What font would you like to use?",
-            options: [
-              { value: "inter", label: "Inter" },
-              { value: "geist", label: "Geist" },
-            ],
-            initialValue: "inter",
           });
         },
         ...(!cliResults.flags.noGit && {
@@ -353,7 +331,6 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.authentication === "next-auth") packages.push("nextAuth");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
-    if (project.font === "geist") packages.push("geist");
 
     return {
       appName: project.name ?? cliResults.appName,

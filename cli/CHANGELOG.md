@@ -1,5 +1,37 @@
 # Changelog
 
+## 7.32.0
+
+### Minor Changes
+
+- [#1842](https://github.com/t3-oss/create-t3-app/pull/1842) [`088a773`](https://github.com/t3-oss/create-t3-app/commit/088a773103a03e0ec34cbe22329ead33cd80c5ff) Thanks [@nick22985](https://github.com/nick22985)! - Infers tRPC input & output types to the client for app router
+
+- [#1841](https://github.com/t3-oss/create-t3-app/pull/1841) [`41bd524`](https://github.com/t3-oss/create-t3-app/commit/41bd5240276f1029633cde588b0ca08301c4e78c) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - mark app router as stable
+
+### Patch Changes
+
+- [#1838](https://github.com/t3-oss/create-t3-app/pull/1838) [`ff886b3`](https://github.com/t3-oss/create-t3-app/commit/ff886b3fed4b193b8fc85882a71c7e8085457cf0) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - bump zod and t3-env
+
+## 7.31.0
+
+### Minor Changes
+
+- [#1830](https://github.com/t3-oss/create-t3-app/pull/1830) [`3257d0a`](https://github.com/t3-oss/create-t3-app/commit/3257d0a2fe73847b501bdf36f09053638b4a41a4) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: replace better-sqlite3 with libsql
+
+### Patch Changes
+
+- [`ab5fa95`](https://github.com/t3-oss/create-t3-app/commit/ab5fa95afce2a0feb8567aed6bb02beeef1401e5) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: pin zod version
+
+- [#1835](https://github.com/t3-oss/create-t3-app/pull/1835) [`f66e30a`](https://github.com/t3-oss/create-t3-app/commit/f66e30a0c84eb4f74182d79b23e3c5e900788e10) Thanks [@Inshiku-Han](https://github.com/Inshiku-Han)! - Only install @trpc/next when router style is page router
+
+## 7.30.2
+
+### Patch Changes
+
+- [#1817](https://github.com/t3-oss/create-t3-app/pull/1817) [`d49300a`](https://github.com/t3-oss/create-t3-app/commit/d49300a4230835f6a771ed1a6b759c61c8902d7e) Thanks [@kxzazz](https://github.com/kxzazz)! - fix: `start-database.sh` is marked optional
+
+- [#1823](https://github.com/t3-oss/create-t3-app/pull/1823) [`f5c5db9`](https://github.com/t3-oss/create-t3-app/commit/f5c5db99dbd86010369b26e55dd65973ccd0db05) Thanks [@t3dotgg](https://github.com/t3dotgg)! - chore: update next to 14.2.1
+
 ## 7.30.1
 
 ### Patch Changes

@@ -17,22 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Use PNPM
-        uses: pnpm/action-setup@v2.2.4
-
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "pnpm"
-
-      - name: Install NPM Dependencies
-        run: pnpm install
+      - uses: ./.github/actions/setup
 
       - name: Modify package.json version
         run: node .github/version-script-beta.js
@@ -52,7 +40,7 @@ jobs:
           path: cli
 
       - name: Upload packaged artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: npm-package-create-t3-app@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
           path: cli/dist/index.js

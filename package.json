@@ -24,7 +24,7 @@
   "engines": {
     "node": ">=18.17.0"
   },
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@9.0.4",
   "scripts": {
     "typecheck": "turbo typecheck",
     "build:cli": "turbo --filter=create-t3-app build",
@@ -55,15 +55,13 @@
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-config-turbo": "^0.0.9",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-isaacscript": "^2.6.7",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "pnpm": "^8.15.6",
     "prettier": "^3.2.5",
-    "turbo": "^1.9.6",
+    "turbo": "1.13.3-canary.3",
     "typescript": "^5.4.2"
   }
 }

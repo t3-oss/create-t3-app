@@ -21,8 +21,7 @@ export const dependencyVersionMap = {
   "@planetscale/database": "^1.16.0",
   postgres: "^3.4.3",
   pg: "^8.11.3",
-  "@types/better-sqlite3": "^7.6.9",
-  "better-sqlite3": "^9.4.3",
+  "@libsql/client": "^0.6.0",
 
   // TailwindCSS
   tailwindcss: "^3.4.1",
@@ -38,8 +37,5 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^5.25.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
-
-  // Geist
-  geist: "^1.3.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

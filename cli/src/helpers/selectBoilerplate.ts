@@ -17,26 +17,9 @@ export const selectAppFile = ({
   const usingTw = packages.tailwind.inUse;
   const usingTRPC = packages.trpc.inUse;
   const usingNextAuth = packages.nextAuth.inUse;
-  const usingGeist = packages.geist.inUse;
 
   let appFile = "base.tsx";
-  if (usingTRPC && usingTw && usingNextAuth && usingGeist) {
-    appFile = "with-auth-trpc-tw-geist.tsx";
-  } else if (usingTRPC && !usingTw && usingNextAuth && usingGeist) {
-    appFile = "with-auth-trpc-geist.tsx";
-  } else if (usingTRPC && usingTw && usingGeist) {
-    appFile = "with-trpc-tw-geist.tsx";
-  } else if (usingTRPC && !usingTw && usingGeist) {
-    appFile = "with-trpc-geist.tsx";
-  } else if (!usingTRPC && usingTw && usingGeist) {
-    appFile = "with-tw-geist.tsx";
-  } else if (usingNextAuth && usingTw && usingGeist) {
-    appFile = "with-auth-tw-geist.tsx";
-  } else if (usingNextAuth && !usingTw && usingGeist) {
-    appFile = "with-auth-geist.tsx";
-  } else if (!usingTw && usingGeist) {
-    appFile = "with-geist.tsx";
-  } else if (usingTRPC && usingTw && usingNextAuth) {
+  if (usingTRPC && usingTw && usingNextAuth) {
     appFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingNextAuth) {
     appFile = "with-auth-trpc.tsx";
@@ -66,21 +49,12 @@ export const selectLayoutFile = ({
 
   const usingTw = packages.tailwind.inUse;
   const usingTRPC = packages.trpc.inUse;
-  const usingGeist = packages.geist.inUse;
   let layoutFile = "base.tsx";
-  if (usingTRPC && usingTw && usingGeist) {
-    layoutFile = "with-trpc-tw-geist.tsx";
-  } else if (usingTRPC && !usingTw && usingGeist) {
-    layoutFile = "with-trpc-geist.tsx";
-  } else if (!usingTRPC && usingTw && usingGeist) {
-    layoutFile = "with-tw-geist.tsx";
-  } else if (!usingTRPC && !usingTw && usingGeist) {
-    layoutFile = "with-geist.tsx";
-  } else if (usingTRPC && usingTw && !usingGeist) {
+  if (usingTRPC && usingTw) {
     layoutFile = "with-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && !usingGeist) {
+  } else if (usingTRPC && !usingTw) {
     layoutFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw && !usingGeist) {
+  } else if (!usingTRPC && usingTw) {
     layoutFile = "with-tw.tsx";
   }
 
