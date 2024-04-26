@@ -39,5 +39,12 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "workbench.editor.customLabels.patterns": {
+    "**src/app/**/page.tsx": "${dirname} - Page",
+    "**src/app/**/layout.tsx": "${dirname} - Layout",
+    "**src/app/**/route.ts": "${dirname} - API Route",
+    "**src/app/**/route.tsx": "${dirname} - API Route"
   }
 }
