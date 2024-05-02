@@ -13,7 +13,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={`${GeistSans.variable}`}>
+      <main className={GeistSans.className}>
         <Component {...pageProps} />
       </main>
     </SessionProvider>
