@@ -331,7 +331,6 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.authentication === "next-auth") packages.push("nextAuth");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
-    packages.push("geist");
 
     return {
       appName: project.name ?? cliResults.appName,
