@@ -13,9 +13,8 @@
    * Next.js
    */
   "workbench.editor.customLabels.patterns": {
-    "**src/app/**/page.tsx": "${dirname} - Page",
-    "**src/app/**/layout.tsx": "${dirname} - Layout",
-    "**src/app/**/route.ts": "${dirname} - API",
-    "**src/app/**/route.tsx": "${dirname} - API"
+    "**/src/app/**/page.tsx": "${dirname} - Page",
+    "**/src/app/**/layout.tsx": "${dirname} - Layout",
+    "**/src/app/**/route.{ts,tsx}": "${dirname} - API"
   }
 }
