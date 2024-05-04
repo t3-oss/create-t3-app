@@ -12,6 +12,7 @@
    * Custom editor labels Makes it easy to distinguish between pages, layouts and API routes in
    * Next.js
    */
+  "workbench.editor.customLabels.enabled": true,
   "workbench.editor.customLabels.patterns": {
     "**/src/app/**/page.tsx": "${dirname} - Page",
     "**/src/app/**/layout.tsx": "${dirname} - Layout",
