@@ -49,13 +49,15 @@ After your app has been scaffolded, check out the [first steps](/en/usage/first-
 
 For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
 
-| Flag         | Description                         |
-| ------------ | ----------------------------------- |
-| `--CI`       | Let the CLI know you're in CI mode  |
-| `--trpc`     | Include tRPC in the project         |
-| `--prisma`   | Include Prisma in the project       |
-| `--nextAuth` | Include NextAuth.js in the project  |
-| `--tailwind` | Include Tailwind CSS in the project |
+| Flag                      | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `--CI`                    | Let the CLI know you're in CI mode           |
+| `--trpc`                  | Include tRPC in the project                  |
+| `--prisma`                | Include Prisma in the project                |
+| `--drizzle`               | Inlcude Drizzle in the project               |
+| `--nextAuth`              | Include NextAuth.js in the project           |
+| `--tailwind`              | Include Tailwind CSS in the project          |
+| `--dbProvider [provider]` | Include a configured database in the project |
 
 <Callout type="warning">
   If you don't provide the `CI` flag, the rest of these flags have no effect.
@@ -63,10 +65,18 @@ For our CI, we have some experimental flags that allow you to scaffold any app w
 
 You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
 
+The --dbProvider command has 4 database values to choose from: mysql, postgres, planetscale, sqlite. If the command is not provided the default value will be sqlite.
+
 ### Example
 
 The following would scaffold a T3 App with tRPC and Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
+```
+
+The following would scaffold a T3 App with NextAuth.js, Tailwind CSS, Drizzle, and PostgreSQL.
+
+```bash
+pnpm dlx create-t3-app@latest --CI --nextAuth --tailwind --drizzle --dbProvider postgres
 ```
