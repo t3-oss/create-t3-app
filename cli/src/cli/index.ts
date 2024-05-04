@@ -138,7 +138,7 @@ export const runCli = async (): Promise<CliResults> => {
       `Choose a database provider to use. Possible values: ${databaseProviders.join(
         ", "
       )}`,
-      defaultOptions.flags.importAlias
+      defaultOptions.flags.dbProvider
     )
     .option(
       "--appRouter [boolean]",
