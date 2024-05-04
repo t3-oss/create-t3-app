@@ -1,0 +1,21 @@
+{
+  /**
+   * Makes sure you're using the TypeScript plugin that comes with Next.js
+   *
+   * @see
+   * https://nextjs.org/docs/app/building-your-application/configuring/typescript#typescript-plugin
+   */
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  /**
+   * Custom editor labels Makes it easy to distinguish between pages, layouts and API routes in
+   * Next.js
+   */
+  "workbench.editor.customLabels.patterns": {
+    "**src/app/**/page.tsx": "${dirname} - Page",
+    "**src/app/**/layout.tsx": "${dirname} - Layout",
+    "**src/app/**/route.ts": "${dirname} - API",
+    "**src/app/**/route.tsx": "${dirname} - API"
+  }
+}
