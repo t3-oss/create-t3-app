@@ -6,7 +6,6 @@
    * https://nextjs.org/docs/app/building-your-application/configuring/typescript#typescript-plugin
    */
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
 
   /**
    * Custom editor labels Makes it easy to distinguish between pages, layouts and API routes in
