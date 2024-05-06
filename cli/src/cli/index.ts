@@ -35,6 +35,8 @@ interface CliFlags {
   nextAuth: boolean;
   /** @internal Used in CI. */
   appRouter: boolean;
+  /** @internal Used in CI */
+  dbProvider: DatabaseProvider;
 }
 
 interface CliResults {
@@ -59,6 +61,7 @@ const defaultOptions: CliResults = {
     nextAuth: false,
     importAlias: "~/",
     appRouter: false,
+    dbProvider: "sqlite",
   },
   databaseProvider: "sqlite",
 };
@@ -203,8 +206,8 @@ export const runCli = async (): Promise<CliResults> => {
   // Explained below why this is in a try/catch block
   try {
     if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
-      logger.warn(`  WARNING: It looks like you are using MinTTY, which is non-interactive. This is most likely because you are 
-  using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
+      logger.warn(`  WARNING: It looks like you are using MinTTY, which is non-interactive. This is most likely because you are
+  using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
       throw new IsTTYError("Non-interactive environment");
