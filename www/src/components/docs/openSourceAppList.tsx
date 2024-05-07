@@ -125,8 +125,8 @@ const projects: App[] = [
     description: "Railtrack",
     repoName: "noahflk/railtrack",
     repo: "https://github.com/noahflk/railtrack",
-    linkName: "railtrack.flk.li",
-    link: "https://railtrack.flk.li",
+    linkName: "railtrack.ch",
+    link: "https://railtrack.ch",
   },
 
   {
