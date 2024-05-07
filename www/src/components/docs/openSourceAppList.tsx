@@ -15,7 +15,7 @@ const projects: App[] = [
     linkName: "openbio.app",
     link: "https://openbio.app",
   },
-   {
+  {
     description: "Exaya - Organic transportation processes manager",
     repoName: "exaya",
     repo: "https://github.com/kralion/exaya",
