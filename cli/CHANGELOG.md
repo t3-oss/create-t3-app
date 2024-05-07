@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.32.1
+
+### Patch Changes
+
+- [#1867](https://github.com/t3-oss/create-t3-app/pull/1867) [`304a67f`](https://github.com/t3-oss/create-t3-app/commit/304a67f5bde05116b143c86588546af02e86cfda) Thanks [@xelacast](https://github.com/xelacast)! - Parsed --dbprovider flag correctly and added related error message
+
+- [#1860](https://github.com/t3-oss/create-t3-app/pull/1860) [`b5ced34`](https://github.com/t3-oss/create-t3-app/commit/b5ced343f8a7fbc889a113ec05bef6c5e550cd55) Thanks [@victor-falcon](https://github.com/victor-falcon)! - Load PORT in start-database script
+
+- [#1871](https://github.com/t3-oss/create-t3-app/pull/1871) [`f29a69f`](https://github.com/t3-oss/create-t3-app/commit/f29a69fcc300db539fe0cfa9f52858551e89b869) Thanks [@xelacast](https://github.com/xelacast)! - Fixed project creation of . bug in ./start-database.sh
+
+- [#1858](https://github.com/t3-oss/create-t3-app/pull/1858) [`29348b6`](https://github.com/t3-oss/create-t3-app/commit/29348b6b4f11d7f19915be6639e3c5aaa27b8907) Thanks [@lcabraja](https://github.com/lcabraja)! - Added drizzle's db.sqlite location to .gitignore
+
 ## 7.32.0
 
 ### Minor Changes
