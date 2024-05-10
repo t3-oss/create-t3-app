@@ -4,7 +4,7 @@ import { env } from "~/env";
 
 export default {
   schema: "./src/server/db/schema.ts",
-  driver: "sqlite",
+  dialect: "sqlite",
   dbCredentials: {
     url: env.DATABASE_URL,
   },
