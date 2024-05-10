@@ -103,7 +103,7 @@ async function getFont<TWeights extends readonly number[]>({
     ";",
   )}${text ? `&text=${encodeURIComponent(text)}` : ""}`;
 
-  const css = (await (
+  const css = await (
     await fetch(API, {
       headers: {
         // Make sure it returns TTF.
@@ -111,7 +111,7 @@ async function getFont<TWeights extends readonly number[]>({
           "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
       },
     })
-  ).text()) as string;
+  ).text();
 
   const fonts = css
     .split("@font-face {")

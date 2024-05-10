@@ -71,7 +71,7 @@ export const fetchGithub = async <T extends "commits" | "repo">(
     },
   });
 
-  const data = (await res.json()) as unknown;
+  const data = await res.json();
 
   if (!res.ok) {
     const msg = `Request to fetch ${url} failed. Reason: ${res.statusText}
