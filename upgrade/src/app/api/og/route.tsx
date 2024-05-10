@@ -131,6 +131,6 @@ async function getFont<TWeights extends readonly number[]>({
   });
 
   // Object.fromEntries is typed as returning any *sigh*
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
   return Object.fromEntries(await Promise.all(promises));
 }
