@@ -48,7 +48,7 @@ export const fetchGithub = async <T extends "commits" | "repo">(
     console.warn(msg);
 
     const response = await fetch(url);
-    const data = await response.json();
+    const data = (await response.json()) as Promise<unknown>;
 
     const parsed = schema.safeParse(data);
     if (!parsed.success) {
@@ -71,7 +71,7 @@ export const fetchGithub = async <T extends "commits" | "repo">(
     },
   });
 
-  const data = await res.json();
+  const data = (await res.json()) as unknown;
 
   if (!res.ok) {
     const msg = `Request to fetch ${url} failed. Reason: ${res.statusText}

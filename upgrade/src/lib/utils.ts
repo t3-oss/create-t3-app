@@ -171,5 +171,5 @@ export const getDiffFromGithub = async (props: DiffLocation) => {
     throw new Error("Failed to download diff");
   }
 
-  return response.text();
+  return response.text() as Promise<string>;
 };
