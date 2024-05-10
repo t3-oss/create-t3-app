@@ -15,7 +15,7 @@ export const dependencyVersionMap = {
 
   // Drizzle
   "drizzle-orm": "^0.29.4",
-  "drizzle-kit": "^0.20.14",
+  "drizzle-kit": "^0.21.0",
   "eslint-plugin-drizzle": "^0.2.3",
   mysql2: "^3.9.1",
   "@planetscale/database": "^1.16.0",
