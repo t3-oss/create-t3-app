@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.33.1
+
+### Patch Changes
+
+- [#1884](https://github.com/t3-oss/create-t3-app/pull/1884) [`f148deb`](https://github.com/t3-oss/create-t3-app/commit/f148debf74e16b61dae89c684fbc9ac1d97ac2c8) Thanks [@Irere123](https://github.com/Irere123)! - fix: remove deprecated push command in drizzle package.json scripts (…
+  )
+
 ## 7.33.0
 
 ### Minor Changes
