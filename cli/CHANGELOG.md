@@ -1,5 +1,22 @@
 # Changelog
 
+## 7.33.1
+
+### Patch Changes
+
+- [#1884](https://github.com/t3-oss/create-t3-app/pull/1884) [`f148deb`](https://github.com/t3-oss/create-t3-app/commit/f148debf74e16b61dae89c684fbc9ac1d97ac2c8) Thanks [@Irere123](https://github.com/Irere123)! - fix: remove deprecated push command in drizzle package.json scripts (…
+  )
+
+## 7.33.0
+
+### Minor Changes
+
+- [#1821](https://github.com/t3-oss/create-t3-app/pull/1821) [`4de1927`](https://github.com/t3-oss/create-t3-app/commit/4de1927489aa2d0cf61313ea1543f85268c0e645) Thanks [@kakeWasTaken](https://github.com/kakeWasTaken)! - change default font from Inter to Geist Sans
+
+### Patch Changes
+
+- [#1881](https://github.com/t3-oss/create-t3-app/pull/1881) [`9e5e7d0`](https://github.com/t3-oss/create-t3-app/commit/9e5e7d0c4342542fec18fdc97552b494fe31f5a3) Thanks [@gcjbr](https://github.com/gcjbr)! - chore: update `drizzle-kit` to `0.21.0`
+
 ## 7.32.1
 
 ### Patch Changes
