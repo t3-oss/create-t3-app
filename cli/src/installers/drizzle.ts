@@ -83,14 +83,7 @@ export const drizzleInstaller: Installer = ({
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": `drizzle-kit push:${
-      {
-        postgres: "pg",
-        sqlite: "sqlite",
-        mysql: "mysql",
-        planetscale: "mysql",
-      }[databaseProvider]
-    }`,
+    "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
   };
 
