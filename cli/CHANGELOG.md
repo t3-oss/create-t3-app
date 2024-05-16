@@ -1,5 +1,34 @@
 # Changelog
 
+## 7.33.1
+
+### Patch Changes
+
+- [#1884](https://github.com/t3-oss/create-t3-app/pull/1884) [`f148deb`](https://github.com/t3-oss/create-t3-app/commit/f148debf74e16b61dae89c684fbc9ac1d97ac2c8) Thanks [@Irere123](https://github.com/Irere123)! - fix: remove deprecated push command in drizzle package.json scripts (…
+  )
+
+## 7.33.0
+
+### Minor Changes
+
+- [#1821](https://github.com/t3-oss/create-t3-app/pull/1821) [`4de1927`](https://github.com/t3-oss/create-t3-app/commit/4de1927489aa2d0cf61313ea1543f85268c0e645) Thanks [@kakeWasTaken](https://github.com/kakeWasTaken)! - change default font from Inter to Geist Sans
+
+### Patch Changes
+
+- [#1881](https://github.com/t3-oss/create-t3-app/pull/1881) [`9e5e7d0`](https://github.com/t3-oss/create-t3-app/commit/9e5e7d0c4342542fec18fdc97552b494fe31f5a3) Thanks [@gcjbr](https://github.com/gcjbr)! - chore: update `drizzle-kit` to `0.21.0`
+
+## 7.32.1
+
+### Patch Changes
+
+- [#1867](https://github.com/t3-oss/create-t3-app/pull/1867) [`304a67f`](https://github.com/t3-oss/create-t3-app/commit/304a67f5bde05116b143c86588546af02e86cfda) Thanks [@xelacast](https://github.com/xelacast)! - Parsed --dbprovider flag correctly and added related error message
+
+- [#1860](https://github.com/t3-oss/create-t3-app/pull/1860) [`b5ced34`](https://github.com/t3-oss/create-t3-app/commit/b5ced343f8a7fbc889a113ec05bef6c5e550cd55) Thanks [@victor-falcon](https://github.com/victor-falcon)! - Load PORT in start-database script
+
+- [#1871](https://github.com/t3-oss/create-t3-app/pull/1871) [`f29a69f`](https://github.com/t3-oss/create-t3-app/commit/f29a69fcc300db539fe0cfa9f52858551e89b869) Thanks [@xelacast](https://github.com/xelacast)! - Fixed project creation of . bug in ./start-database.sh
+
+- [#1858](https://github.com/t3-oss/create-t3-app/pull/1858) [`29348b6`](https://github.com/t3-oss/create-t3-app/commit/29348b6b4f11d7f19915be6639e3c5aaa27b8907) Thanks [@lcabraja](https://github.com/lcabraja)! - Added drizzle's db.sqlite location to .gitignore
+
 ## 7.32.0
 
 ### Minor Changes

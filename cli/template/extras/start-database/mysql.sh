@@ -32,6 +32,7 @@ set -a
 source .env
 
 DB_PASSWORD=$(echo "$DATABASE_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
+DB_PORT=$(echo "$DATABASE_URL" | awk -F':' '{print $4}' | awk -F'\/' '{print $1}')
 
 if [ "$DB_PASSWORD" == "password" ]; then
   echo "You are using the default database password"
@@ -49,5 +50,5 @@ docker run -d \
   --name $DB_CONTAINER_NAME \
   -e MYSQL_ROOT_PASSWORD="$DB_PASSWORD" \
   -e MYSQL_DATABASE=project1 \
-  -p 3306:3306 \
+  -p "$DB_PORT":3306 \
   docker.io/mysql && echo "Database container '$DB_CONTAINER_NAME' was successfully created"

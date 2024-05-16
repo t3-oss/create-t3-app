@@ -16,6 +16,13 @@ const projects: App[] = [
     link: "https://openbio.app",
   },
   {
+    description: "Exaya - Organic transportation processes manager",
+    repoName: "exaya",
+    repo: "https://github.com/kralion/exaya",
+    linkName: "exaya.app",
+    link: "https://exaya.vercel.app",
+  },
+  {
     description: "TheNinja-RPG - A free browser-based ninja game",
     repoName: "TheNinjaRPG",
     repo: "https://github.com/MathiasGruber/TheNinjaRPG",
@@ -26,6 +33,14 @@ const projects: App[] = [
     description: "Create T3 Turbo - T3 Stack using Turborepo",
     repoName: "create-t3-turbo",
     repo: "https://github.com/t3-oss/create-t3-turbo",
+    linkName: "create-t3-turbo.vercel.app",
+    link: "https://create-t3-turbo.vercel.app/",
+  },
+  {
+    description:
+      "T3 turborepo template with biomejs and both shadcn native and web ui",
+    repoName: "rajatsandeepsen/t3-turbo-biome",
+    repo: "https://github.com/rajatsandeepsen/t3-turbo-biome",
     linkName: "create-t3-turbo.vercel.app",
     link: "https://create-t3-turbo.vercel.app/",
   },
@@ -125,8 +140,8 @@ const projects: App[] = [
     description: "Railtrack",
     repoName: "noahflk/railtrack",
     repo: "https://github.com/noahflk/railtrack",
-    linkName: "railtrack.flk.li",
-    link: "https://railtrack.flk.li",
+    linkName: "railtrack.ch",
+    link: "https://railtrack.ch",
   },
 
   {
@@ -279,6 +294,13 @@ const projects: App[] = [
     repo: "https://github.com/Parthvsquare/t3-todo-mvc",
     linkName: "",
     link: "",
+  },
+  {
+    description: "SunalRahal - Your Spotify, in a SVG",
+    repoName: "prabincankod/sunal-rahal",
+    repo: "https://github.com/prabincankod/sunal-rahal",
+    linkName: "SunalRhal",
+    link: "https://sunal-rahal.vercel.app",
   },
 ];
 

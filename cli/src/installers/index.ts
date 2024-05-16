@@ -9,8 +9,8 @@ import { drizzleInstaller } from "./drizzle.js";
 import { dynamicEslintInstaller } from "./eslint.js";
 import { vscodeInstaller } from "./vscode.js";
 
-// Turning this into a const allows the list to be iterated over for programatically creating prompt options
-// Should increase extensability in the future
+// Turning this into a const allows the list to be iterated over for programmatically creating prompt options
+// Should increase extensibility in the future
 export const availablePackages = [
   "nextAuth",
   "prisma",
