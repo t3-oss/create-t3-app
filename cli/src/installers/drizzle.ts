@@ -77,14 +77,16 @@ export const drizzleInstaller: Installer = ({
   );
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
-  // add db:push script to package.json
+  // add db:* scripts to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
-    "db:push": `drizzle-kit push`,
+    "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
   };
 
   fs.copySync(configFile, configDest);
