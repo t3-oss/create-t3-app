@@ -12,6 +12,13 @@ When you want an authentication system in your Next.js application, NextAuth.js 
 
 ## Context Provider
 
+<Callout type="warning">
+  This section is only applicable if you decide to use the `pages` router with
+  Next. To understand how to use sessions with the (reccomended) new `app`
+  router, please read the section below about retreiving a session on the
+  server-side.
+</Callout>
+
 In your app's entrypoint, you'll see that your application is wrapped in a [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 ```tsx:pages/_app.tsx
@@ -39,26 +46,32 @@ const User = () => {
 
 ## Retrieving session server-side
 
-Sometimes you might want to request the session on the server. To do so, prefetch the session using the `getServerAuthSession` helper function that `create-t3-app` provides, and pass it down to the client using `getServerSideProps`:
+If you have configured your application to use Next's `/app` router, the reccomended behavior is to request the session on the server rather than the client. This is how `create-t3-app` is configured by default.
 
-```tsx:pages/users/[id].tsx
-import { getServerAuthSession } from "../server/auth";
-import { type GetServerSideProps } from "next";
+In your app's entrypoint you will notice that the auth session has been prefetched using the `getServerAuthSession` helper function that `create-t3-app` provides.
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = await getServerAuthSession(ctx);
-  return {
-    props: { session },
-  };
-};
+```tsx:app/page.tsx
+import {getServerAuthSession} from "~/server/auth"
 
-const User = () => {
-  const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
-
-  ...
+export default async function Home(){
+  const session = await getServerAuthSession();
 }
 ```
+
+While `session` is initially equal to null, if you were to login using Discord and log `session` to the console you would notice that it takes the following form:
+
+```json
+{
+  user: {
+    name: string,
+    email: string,
+    image: string,
+    id: string,
+  }
+}
+```
+
+To add additional providers, callbacks or configure authentication in any manner you can edit the `server/auth.ts` file as necessary. Additional information about authentication configuration options are available [here](https://next-auth.js.org/configuration/options).
 
 ## Inclusion of `user.id` on the Session
 
@@ -93,19 +106,14 @@ The same pattern can be used to add any other data to the `session` object, such
 
 ## Usage with tRPC
 
-When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
+When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/server/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
 
 This is done in a two step process:
 
-1. Grab the session from the request headers using the [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) function. The advantage of using `getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away so that you don't need to import both your NextAuth.js options as well as the `getServerSession` function every time you need to access the session.
+1. Grab the session from the request headers using the [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) function. The advantage of using `getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away so that you don't need to import your NextAuth.js options to every single route where you would like to access the session.
 
 ```ts:server/auth.ts
-export const getServerAuthSession = (ctx: {
-  req: GetServerSidePropsContext["req"];
-  res: GetServerSidePropsContext["res"];
-}) => {
-  return getServerSession(ctx.req, ctx.res, authOptions);
-};
+export const getServerAuthSession = () => getServerSession(authOptions);
 ```
 
 Using this helper function, we can grab the session and pass it through to the tRPC context:
@@ -113,19 +121,21 @@ Using this helper function, we can grab the session and pass it through to the t
 ```ts:server/api/trpc.ts
 import { getServerAuthSession } from "../auth";
 
-export const createContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
-  const session = await getServerAuthSession({ req, res });
-  return await createContextInner({
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await getServerAuthSession();
+
+  return {
+    db,
     session,
-  });
+    ...opts,
+  };
 };
 ```
 
 2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
 
 ```ts:server/api/trpc.ts
-export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -135,21 +145,25 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
-})
+});
 ```
 
 The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
 
-```ts:server/api/routers/user.ts
-const userRouter = router({
-  me: protectedProcedure.query(async ({ ctx }) => {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: ctx.session.user.id,
-      },
+```ts:server/api/routers/post.ts
+export const postRouter = createTRPCRouter({
+
+  // code above...
+
+  getLatest: protectedProcedure.query(({ ctx }) => {
+    return ctx.db.post.findFirst({
+      orderBy: { createdAt: "desc" },
+      where: { createdBy: { id: ctx.session.user.id } },
     });
-    return user;
   }),
+
+  // code below...
+
 });
 ```
 
