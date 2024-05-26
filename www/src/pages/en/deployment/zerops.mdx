@@ -1,0 +1,38 @@
+---
+title: Zerops
+description: Deploying to Zerops
+layout: ../../../layouts/docs.astro
+lang: en
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Zerops is a bare metal cloud platform as a service (Paas) with a developer-first approach. See
+[`Nermalcat69/T3-Zerops`](https://github.com/nermalcat69/t3-zerops/) for an example repo based on
+this doc.
+
+## Why Host on Zerops
+
+There are a lot of pros and cons when choosing a deployment provider, but Zerops has many advantages,
+such as being one of the cheapest options in the market. However, you won't get a free tier like with
+Vercel. While Vercel offers more features, the difference may not be significant for many use cases.
+
+Deploying on Zerops is a good move because it is economically viable, considering it's a bare metal
+infrastructure, and gives you more control similar. Additionally, Zerops provides one
+of the cheapest PostgreSQL databases in the market. If you're looking for a free tier you can consider
+Vercel, Cloudflare Pages, or Deno Deploy.
+Each project is deployed with dedicated, robut and fully managed infrastructure on zerops
+
+<Callout type="info">
+  Each project on Zerops is deployed with dedicated, robust, and fully managed
+  infrastructure, ensuring optimal performance and reliability, along with
+  unlimited build time.
+</Callout>
+
+## Ways to Deploy
+
+There are two ways to deploy a project on zerops
+
+- Zcli (Command Line Interface)
+- Zerops Gui -> Import Yaml & Git Integration
