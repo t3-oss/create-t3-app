@@ -62,7 +62,7 @@
     "sort-package-json": "^2.10.0"
   },
   "devDependencies": {
-    "@auth/drizzle-adapter": "^0.7.0",
+    "@auth/drizzle-adapter": "^1.1.0",
     "@auth/prisma-adapter": "^1.6.0",
     "@libsql/client": "^0.6.0",
     "@planetscale/database": "^1.18.0",
@@ -77,8 +77,8 @@
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.12.12",
-    "drizzle-kit": "^0.21.0",
-    "drizzle-orm": "^0.29.4",
+    "drizzle-kit": "^0.21.4",
+    "drizzle-orm": "^0.30.10",
     "mysql2": "^3.9.7",
     "next": "^14.2.3",
     "next-auth": "^4.24.7",
