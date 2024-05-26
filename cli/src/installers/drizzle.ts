@@ -17,8 +17,6 @@ export const drizzleInstaller: Installer = ({
     "drizzle-kit",
     "eslint-plugin-drizzle",
   ];
-  if (databaseProvider === "planetscale") devPackages.push("mysql2");
-  if (databaseProvider === "postgres") devPackages.push("pg");
 
   addPackageDependency({
     projectDir,
