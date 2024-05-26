@@ -5,10 +5,9 @@ layout: ../../layouts/docs.astro
 lang: en
 ---
 
-<div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YkOSUVzOAA4" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+import { IntroductionTab } from "../../components/docs/introductionTab";
 
+<IntroductionTab client:load />
 ## The T3 Stack
 
 The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on simplicity, modularity, and full-stack typesafety.
