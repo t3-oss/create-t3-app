@@ -146,7 +146,7 @@ importers:
         version: 0.21.4
       drizzle-orm:
         specifier: ^0.30.10
-        version: 0.30.10(@libsql/client@0.6.0)(@planetscale/database@1.18.0)(@types/better-sqlite3@7.6.9)(@types/react@18.3.3)(better-sqlite3@9.4.3)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1)
+        version: 0.30.10(@libsql/client@0.6.0)(@planetscale/database@1.18.0)(@types/react@18.3.3)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1)
       mysql2:
         specifier: ^3.9.7
         version: 3.9.7
@@ -2602,9 +2602,6 @@ packages:
   '@types/babel__traverse@7.20.1':
     resolution: {integrity: sha512-MitHFXnhtgwsGZWtT68URpOvLN4EREih1u3QtQiN4VdAxWKRVvGCSvw/Qth0M0Qq3pJpnGOu5JaM/ydK7OGbqg==}
 
-  '@types/better-sqlite3@7.6.9':
-    resolution: {integrity: sha512-FvktcujPDj9XKMJQWFcl2vVl7OdRIqsSRX9b0acWwTmwLK9CF2eqo/FRcmMLNpugKoX/avA6pb7TorDLmpgTnQ==}
-
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
@@ -3117,9 +3114,6 @@ packages:
   better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
-
-  better-sqlite3@9.4.3:
-    resolution: {integrity: sha512-ud0bTmD9O3uWJGuXDltyj3R47Nz0OHX8iqPOT5PMspGqlu/qQFn+5S2eFBUCrySpavTjFXbi4EgrfVvPAHlImw==}
 
   binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
@@ -5473,10 +5467,6 @@ packages:
     resolution: {integrity: sha512-iwXuFrMAcFVi/ZoZiqq8BzAdsLw9kxDfTC0HMyjXfSL/6CSDAGD5UmR7azrAgWV1zKYq7dUUMj4owusBWKLsiQ==}
     engines: {node: '>=10'}
 
-  node-abi@3.62.0:
-    resolution: {integrity: sha512-CPMcGa+y33xuL1E0TcNIu4YyaZCxnnvkVaEXrsosR3FxN+fV8xvb7Mzpb7IgKler10qeMkE6+Dp8qJhpzdq35g==}
-    engines: {node: '>=10'}
-
   node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
 
@@ -5862,11 +5852,6 @@ packages:
 
   prebuild-install@7.1.1:
     resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
-    engines: {node: '>=10'}
-    hasBin: true
-
-  prebuild-install@7.1.2:
-    resolution: {integrity: sha512-UnNke3IQb6sgarcZIDU3gbMeTp/9SSU1DAIkil7PrqG1vZlBtY5msYccSKSHDqa3hNg436IXK+SNImReuA1wEQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -9287,11 +9272,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.24.6
 
-  '@types/better-sqlite3@7.6.9':
-    dependencies:
-      '@types/node': 20.12.12
-    optional: true
-
   '@types/cookie@0.6.0': {}
 
   '@types/debug@4.1.7':
@@ -9999,12 +9979,6 @@ snapshots:
     dependencies:
       is-windows: 1.0.2
 
-  better-sqlite3@9.4.3:
-    dependencies:
-      bindings: 1.5.0
-      prebuild-install: 7.1.2
-    optional: true
-
   binary-extensions@2.2.0: {}
 
   bindings@1.5.0:
@@ -10481,13 +10455,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.30.10(@libsql/client@0.6.0)(@planetscale/database@1.18.0)(@types/better-sqlite3@7.6.9)(@types/react@18.3.3)(better-sqlite3@9.4.3)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.30.10(@libsql/client@0.6.0)(@planetscale/database@1.18.0)(@types/react@18.3.3)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@libsql/client': 0.6.0
       '@planetscale/database': 1.18.0
-      '@types/better-sqlite3': 7.6.9
       '@types/react': 18.3.3
-      better-sqlite3: 9.4.3
       mysql2: 3.9.7
       postgres: 3.4.4
       react: 18.3.1
@@ -13104,11 +13076,6 @@ snapshots:
     dependencies:
       semver: 7.5.4
 
-  node-abi@3.62.0:
-    dependencies:
-      semver: 7.6.2
-    optional: true
-
   node-addon-api@6.1.0: {}
 
   node-domexception@1.0.0: {}
@@ -13502,22 +13469,6 @@ snapshots:
       simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
-
-  prebuild-install@7.1.2:
-    dependencies:
-      detect-libc: 2.0.3
-      expand-template: 2.0.3
-      github-from-package: 0.0.0
-      minimist: 1.2.8
-      mkdirp-classic: 0.5.3
-      napi-build-utils: 1.0.2
-      node-abi: 3.62.0
-      pump: 3.0.0
-      rc: 1.2.8
-      simple-get: 4.0.1
-      tar-fs: 2.1.1
-      tunnel-agent: 0.6.0
-    optional: true
 
   preferred-pm@3.0.3:
     dependencies:
