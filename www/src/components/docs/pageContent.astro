@@ -21,7 +21,7 @@ const [_1, _2, lang] = path.split("/");
 const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 ---
 
-<article id="article" class="flex w-full max-w-screen-lg flex-col">
+<article id="article" class="flex w-full max-w-screen-lg flex-col md:px-4">
   {lang && lang !== "en" && <OutdatedDocsBanner path={path} />}
   <div class="mb-4 h-8">
     <BreadCrumbs client:only />
