@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import withMdx from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import { getHighlighter } from "shiki";
@@ -21,6 +19,7 @@ export default withMdx({
   options: {
     rehypePlugins: [
       [
+        // @ts-expect-error - idk...
         rehypePrettyCode,
         {
           theme: { dark: "one-dark-pro" },
