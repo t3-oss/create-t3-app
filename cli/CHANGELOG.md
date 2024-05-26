@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.34.0
+
+### Minor Changes
+
+- [#1893](https://github.com/t3-oss/create-t3-app/pull/1893) [`1925236bcfcafc6c490319ab5f07b2a698e88ef5`](https://github.com/t3-oss/create-t3-app/commit/1925236bcfcafc6c490319ab5f07b2a698e88ef5) Thanks [@brandon93s](https://github.com/brandon93s)! - Add `db:generate` and `db:migrate` scripts to drizzle and prisma installers
+
+### Patch Changes
+
+- [#1891](https://github.com/t3-oss/create-t3-app/pull/1891) [`4236f0dfa969ff0d8b7ce2a60b5595c43ced9043`](https://github.com/t3-oss/create-t3-app/commit/4236f0dfa969ff0d8b7ce2a60b5595c43ced9043) Thanks [@thecmdrunner](https://github.com/thecmdrunner)! - Apply drizzle rules for `ctx.db` object in tRPC context
+
 ## 7.33.1
 
 ### Patch Changes
