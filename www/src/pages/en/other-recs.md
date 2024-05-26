@@ -86,6 +86,16 @@ Framer Motion provides a simple, declarative syntax and allows you to write less
 - [Framer Motion Homepage](https://framer.com/motion)
 - [Framer Motion Documentation](https://www.framer.com/docs/)
 
+### Motion One
+
+**For complex animations with declarative code**
+
+Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
+
+- [Motion One Homepage](https://motion.dev/)
+- [Motion One](https://github.com/motiondivision/motionone)
+- [Motion One Documentation](https://motion.dev/docs)
+
 ## Deployments, Infrastructure, Databases and CI
 
 ### Vercel
@@ -112,6 +122,14 @@ PlanetScale is the best "serverless database platform" we've used by far. Insane
 "Modern Heroku". The easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
 
 - [Railway Homepage](https://railway.app/)
+
+### Zerops
+
+**For hosting your infra**
+
+"Develooper First Cloud Platform". The cheapest and fastest way to get a real bare metal server - one of the cheapest in market if you plan on building a big product considering vercel and planetscale are not economically viable for you. Go for zerops if you need high uptime and even a dedicated server. Use their Cli if that's what you like or point to your Github repo.
+
+- [Zerops Homepage](https://zerops.io/)
 
 ### Upstash
 
