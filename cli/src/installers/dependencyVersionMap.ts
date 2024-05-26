@@ -20,7 +20,6 @@ export const dependencyVersionMap = {
   mysql2: "^3.9.7",
   "@planetscale/database": "^1.18.0",
   postgres: "^3.4.4",
-  pg: "^8.11.3",
   "@libsql/client": "^0.6.0",
 
   // TailwindCSS
