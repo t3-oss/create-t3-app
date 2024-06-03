@@ -36,7 +36,10 @@ export const posts = createTable(
 );
 
 export const users = createTable("user", {
-  id: text("id", { length: 255 }).notNull().primaryKey().$defaultFn(() => crypto.randomUUID()),
+  id: text("id", { length: 255 })
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   name: text("name", { length: 255 }),
   email: text("email", { length: 255 }).notNull(),
   emailVerified: int("emailVerified", {
