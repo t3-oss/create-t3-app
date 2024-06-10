@@ -45,7 +45,7 @@ Some of these might be outdated.
 
 ### Videos
 
-- [T3 Stack Tutorial - FROM 0 TO PROD FOR $0 (Next.js, tRPC, TypeScript, Tailwind, Prisma & More)](https://www.youtube.com/watch?v=YkOSUVzOAA4) **(recommended)**
+- [From 0 to Production - The Modern React Tutorial (RSCs, Next.js, Shadui, Drizzle, TS and more)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(recommended)** (updated 2024)*
 - [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
@@ -65,9 +65,11 @@ We have decided against including i18n by default in `create-t3-app` because it'
 
 However, if you struggle to implement it and want to see a reference project, we have a [reference repo](https://github.com/juliusmarminge/t3-i18n) that shows how you can add i18n to a T3 App using [next-i18next](https://github.com/i18next/next-i18next).
 
-## Why are we using `/pages` and not `/app` from Next.js 13?
+## Should I use `/app` from Next.js 13 or the more mature `/pages` paradigm?
 
-As per [T3-Axiom #2](/en/introduction#bleed-responsibly), we love bleeding edge stuff but value stability, your entire router is hard to port, [not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662). While `/app` is [a glimpse into the future](https://youtu.be/rnsC-12PVlM?t=818), it's not ready for production; The API is in beta and expected to have breaking changes.
+You have the option when scaffolding an app using Create T3 App to opt into the `/app` directory structure. As of the time of writing, this feature is generally considered mature enough to be used in production by the T3 stack community. For an explanation of why it took us so long to include, you can watch [this video](https://www.youtube.com/watch?v=PmBfq-SpzCU).
+
+Nevertheless, if you strongly prefer to use the old `/pages` paradigm, that's still an option. Porting over your existing router can be a monumental effort, so do not feel undue pressure to do so unnecessarily.
 
 <Callout type="info">
   For a list of supported, planned, and worked on features in the `/app` dir,
