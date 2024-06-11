@@ -140,6 +140,12 @@ Soketi is a self-hostable, simple, and fast alternative to Pusher. It's fully co
 
 User data is very valuable when you're building an app. Here are some analytics providers we recommend.
 
+### PostHog
+
+PostHog is a full-featured, open-source, and self-hostable solution for bringing in depth analytics to your product. They have SDKs for every library/framework imaginable.
+
+- [PostHog Homepage](https://posthog.com/)
+
 ### Plausible
 
 Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
