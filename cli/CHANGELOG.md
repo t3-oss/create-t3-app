@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.35.0
+
+### Minor Changes
+
+- [#1905](https://github.com/t3-oss/create-t3-app/pull/1905) [`b22e2e10d005689faa7b1db771a217b59c88635f`](https://github.com/t3-oss/create-t3-app/commit/b22e2e10d005689faa7b1db771a217b59c88635f) Thanks [@jessedelira](https://github.com/jessedelira)! - Add .idea to .gitignore
+
+### Patch Changes
+
+- [#1909](https://github.com/t3-oss/create-t3-app/pull/1909) [`f69fa29733d3bd0d6e5043d1200e250a938b6335`](https://github.com/t3-oss/create-t3-app/commit/f69fa29733d3bd0d6e5043d1200e250a938b6335) Thanks [@TheDevilOnLine](https://github.com/TheDevilOnLine)! - fix: Added $defaultFn to the user table's id field when using Drizzle to fix #1906
+
 ## 7.34.0
 
 ### Minor Changes
