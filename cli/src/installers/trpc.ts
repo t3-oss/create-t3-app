@@ -106,9 +106,9 @@ export const trpcInstaller: Installer = ({
         path.join(
           extrasDir,
           "src/app/_components",
-          packages?.tailwind.inUse ? "create-post-tw.tsx" : "create-post.tsx"
+          packages?.tailwind.inUse ? "post-tw.tsx" : "post.tsx"
         ),
-        path.join(projectDir, "src/app/_components/create-post.tsx"),
+        path.join(projectDir, "src/app/_components/post.tsx"),
       ]
     );
   } else {
