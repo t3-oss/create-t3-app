@@ -5,9 +5,9 @@ import "~/styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <main className={GeistSans.className}>
+    <div className={GeistSans.className}>
       <Component {...pageProps} />
-    </main>
+    </div>
   );
 };
 
