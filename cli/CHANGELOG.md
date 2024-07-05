@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.36.0
+
+### Minor Changes
+
+- [#1932](https://github.com/t3-oss/create-t3-app/pull/1932) [`42a485a29370fbfe4f03e5f756d97c0fee0b09e8`](https://github.com/t3-oss/create-t3-app/commit/42a485a29370fbfe4f03e5f756d97c0fee0b09e8) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - feat: add trpc rsc prefetching
+
+### Patch Changes
+
+- [#1934](https://github.com/t3-oss/create-t3-app/pull/1934) [`1cfbb117c892905ea956a597aa6d48e9984b1190`](https://github.com/t3-oss/create-t3-app/commit/1cfbb117c892905ea956a597aa6d48e9984b1190) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - remove duplicate `<main>` tags
+
+- [#1931](https://github.com/t3-oss/create-t3-app/pull/1931) [`a1a4b8707b95b82e755733b2853ac595bb9d4829`](https://github.com/t3-oss/create-t3-app/commit/a1a4b8707b95b82e755733b2853ac595bb9d4829) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - fix: unify drizlze schema and fix sqlite timestamps
+
 ## 7.35.0
 
 ### Minor Changes
