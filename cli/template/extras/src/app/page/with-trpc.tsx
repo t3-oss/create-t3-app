@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
 
-  void api.post.latest.prefetch();
+  void api.post.getLatest.prefetch();
 
   return (
     <HydrateClient>

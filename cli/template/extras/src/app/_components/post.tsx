@@ -6,7 +6,7 @@ import { api } from "~/trpc/react";
 import styles from "../index.module.css";
 
 export function LatestPost() {
-  const [latestPost] = api.post.latest.useSuspenseQuery();
+  const [latestPost] = api.post.getLatest.useSuspenseQuery();
 
   const utils = api.useUtils();
   const [name, setName] = useState("");
