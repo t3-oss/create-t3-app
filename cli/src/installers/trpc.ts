@@ -109,6 +109,10 @@ export const trpcInstaller: Installer = ({
           packages?.tailwind.inUse ? "post-tw.tsx" : "post.tsx"
         ),
         path.join(projectDir, "src/app/_components/post.tsx"),
+      ],
+      [
+        path.join(extrasDir, "src/trpc/query-client.ts"),
+        path.join(projectDir, "src/trpc/query-client.ts"),
       ]
     );
   } else {
