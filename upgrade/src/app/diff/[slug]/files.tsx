@@ -69,7 +69,7 @@ function FileComponent({
         language: "typescript",
         refractor,
       });
-    } catch (e) {
+    } catch {
       return undefined;
     }
   }, [hunks]);
