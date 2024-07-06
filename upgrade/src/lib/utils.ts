@@ -114,7 +114,7 @@ export const extractVersionsAndFeatures = (slug: string) => {
   const regex =
     /(?<currentVersion>\d+\.\d+\.\d+).*(?<upgradeVersion>\d+\.\d+\.\d+)/;
   const match =
-    (slug.match(regex) as RegExpMatchArray & {
+    (regex.exec(slug) as RegExpMatchArray & {
       groups: VersionsRegex;
     }) || null;
 

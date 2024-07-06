@@ -27,8 +27,8 @@ export async function getFont<TWeights extends readonly number[]>({
     .split("@font-face {")
     .splice(1)
     .map((font) => {
-      const u = font.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/);
-      const w = font.match(/font-weight: (\d+)/);
+      const u = /src: url\((.+)\) format\('(opentype|truetype)'\)/.exec(font);
+      const w = /font-weight: (\d+)/.exec(font);
       return u?.[1] && w?.[1] ? { url: u[1], weight: parseInt(w[1]) } : null;
     })
     .filter(
