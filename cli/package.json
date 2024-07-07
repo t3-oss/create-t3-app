@@ -76,15 +76,15 @@
     "@trpc/server": "11.0.0-rc.441",
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.10",
     "drizzle-kit": "^0.21.4",
     "drizzle-orm": "^0.30.10",
     "mysql2": "^3.9.7",
-    "next": "^14.2.3",
+    "next": "^14.2.4",
     "next-auth": "^4.24.7",
     "postgres": "^3.4.4",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "prisma": "^5.14.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
@@ -92,7 +92,7 @@
     "tailwindcss": "^3.4.3",
     "tsup": "^6.7.0",
     "type-fest": "^3.13.1",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.3",
     "zod": "^3.23.8"
   }
 }
