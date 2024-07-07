@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.36.1
+
+### Patch Changes
+
+- [#1937](https://github.com/t3-oss/create-t3-app/pull/1937) [`5a0cbc53afb8597d6da2bc6d184ea1427e741cec`](https://github.com/t3-oss/create-t3-app/commit/5a0cbc53afb8597d6da2bc6d184ea1427e741cec) Thanks [@juliusmarminge](https://github.com/juliusmarminge)! - chore: dependency bumps
+
 ## 7.36.0
 
 ### Minor Changes
