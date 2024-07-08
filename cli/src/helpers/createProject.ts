@@ -96,9 +96,16 @@ export const createProject = async ({
 
   if (!srcDirectory) {
     const tsconfigFile = path.join(projectDir, "tsconfig.json");
+    const nextconfigFile = path.join(projectDir, "next.config.js");
     fs.writeFileSync(
       tsconfigFile,
       fs.readFileSync(tsconfigFile, "utf8").replace("./src/*", "./*")
+    );
+    fs.writeFileSync(
+      nextconfigFile,
+      fs
+        .readFileSync(nextconfigFile, "utf8")
+        .replace("./src/env.js", "./env.js")
     );
   }
 
