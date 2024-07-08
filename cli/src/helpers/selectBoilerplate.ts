@@ -37,6 +37,7 @@ export const selectAppFile = ({
   }
 
   const appSrc = path.join(appFileDir, appFile);
+
   const appDest = path.join(
     projectDir,
     srcDirectory ? "src/pages/_app.tsx" : "pages/_app"
@@ -67,8 +68,9 @@ export const selectLayoutFile = ({
 
   const appDest = path.join(
     projectDir,
-    srcDirectory ? "src/app/page.tsx" : "app/page.tsx"
+    srcDirectory ? "src/app/layout.tsx" : "app/layout.tsx"
   );
+
   fs.copySync(appSrc, appDest);
 };
 

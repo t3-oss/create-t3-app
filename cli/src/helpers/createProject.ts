@@ -98,7 +98,7 @@ export const createProject = async ({
     const tsconfigFile = path.join(projectDir, "tsconfig.json");
     fs.writeFileSync(
       tsconfigFile,
-      fs.readFileSync(tsconfigFile, "utf8").replace("./src/*", "./**/*")
+      fs.readFileSync(tsconfigFile, "utf8").replace("./src/*", "./*")
     );
   }
 
