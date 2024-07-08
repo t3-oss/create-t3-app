@@ -57,7 +57,10 @@ export const drizzleInstaller: Installer = ({
       ? `with-auth-${databaseProvider}.ts`
       : `base-${databaseProvider}.ts`
   );
-  const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
+  const schemaDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/db/schema.ts" : "server/db/schema.ts"
+  );
 
   // Replace placeholder table prefix with project name
   let schemaContent = fs.readFileSync(schemaSrc, "utf-8");
@@ -99,4 +102,14 @@ export const drizzleInstaller: Installer = ({
   fs.writeJSONSync(packageJsonPath, packageJsonContent, {
     spaces: 2,
   });
+
+  if (!srcDirectory) {
+    const drizzleConfigFile = path.join(projectDir, "drizzle.config.ts");
+    fs.writeFileSync(
+      drizzleConfigFile,
+      fs
+        .readFileSync(drizzleConfigFile, "utf8")
+        .replace("./src/server/db/schema.ts", "./server/db/schema.ts")
+    );
+  }
 };
