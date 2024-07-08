@@ -8,6 +8,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const prismaInstaller: Installer = ({
   projectDir,
+  srcDirectory,
   packages,
   databaseProvider,
 }) => {
@@ -63,7 +64,10 @@ export const prismaInstaller: Installer = ({
       ? "src/server/db/db-prisma-planetscale.ts"
       : "src/server/db/db-prisma.ts"
   );
-  const clientDest = path.join(projectDir, "src/server/db.ts");
+  const clientDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/db.ts" : "server/db.ts"
+  );
 
   // add postinstall and push script to package.json
   const packageJsonPath = path.join(projectDir, "package.json");

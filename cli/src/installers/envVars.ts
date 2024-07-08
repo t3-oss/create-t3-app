@@ -7,6 +7,7 @@ import { type DatabaseProvider, type Installer } from "~/installers/index.js";
 export const envVariablesInstaller: Installer = ({
   projectDir,
   packages,
+  srcDirectory,
   databaseProvider,
   projectName,
 }) => {
@@ -44,7 +45,10 @@ export const envVariablesInstaller: Installer = ({
       "template/extras/src/env",
       envFile
     );
-    const envSchemaDest = path.join(projectDir, "src/env.js");
+    const envSchemaDest = path.join(
+      projectDir,
+      srcDirectory ? "src/env.js" : "env.js"
+    );
     fs.copyFileSync(envSchemaSrc, envSchemaDest);
   }
 

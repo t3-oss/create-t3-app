@@ -20,6 +20,7 @@ interface CliFlags {
   noInstall: boolean;
   default: boolean;
   importAlias: string;
+  srcDirectory: boolean;
 
   /** @internal Used in CI. */
   CI: boolean;
@@ -52,6 +53,7 @@ const defaultOptions: CliResults = {
   flags: {
     noGit: false,
     noInstall: false,
+    srcDirectory: false,
     default: false,
     CI: false,
     tailwind: false,
@@ -84,6 +86,11 @@ export const runCli = async (): Promise<CliResults> => {
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
+      false
+    )
+    .option(
+      "--srcDirectory",
+      "Explicitly tell the CLI to create a 'src' directory in the project",
       false
     )
     .option(
@@ -253,6 +260,11 @@ export const runCli = async (): Promise<CliResults> => {
             message: "Will you be using Tailwind CSS for styling?",
           });
         },
+        srcDirectory: () => {
+          return p.confirm({
+            message: "Would you like to use 'src' directory?",
+          });
+        },
         trpc: () => {
           return p.confirm({
             message: "Would you like to use tRPC?",
@@ -350,6 +362,7 @@ export const runCli = async (): Promise<CliResults> => {
       flags: {
         ...cliResults.flags,
         appRouter: project.appRouter ?? cliResults.flags.appRouter,
+        srcDirectory: project.srcDirectory ?? cliResults.flags.srcDirectory,
         noGit: !project.git || cliResults.flags.noGit,
         noInstall: !project.install || cliResults.flags.noInstall,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,

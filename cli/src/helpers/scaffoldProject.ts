@@ -12,6 +12,7 @@ import { logger } from "~/utils/logger.js";
 export const scaffoldProject = async ({
   projectName,
   projectDir,
+  srcDirectory,
   pkgManager,
   noInstall,
 }: InstallerOptions) => {
@@ -89,6 +90,21 @@ export const scaffoldProject = async ({
     path.join(projectDir, "_gitignore"),
     path.join(projectDir, ".gitignore")
   );
+
+  if (!srcDirectory) {
+    await Promise.all([
+      fs.rename(
+        path.join(projectDir, "src", "env.js"),
+        projectDir + "/" + "env.js"
+      ),
+      fs.rename(
+        path.join(projectDir, "src", "styles"),
+        projectDir + "/" + "styles"
+      ),
+    ]);
+
+    await fs.rm(path.join(projectDir, "src"), { recursive: true });
+  }
 
   const scaffoldedName =
     projectName === "." ? "App" : chalk.cyan.bold(projectName);

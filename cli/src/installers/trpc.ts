@@ -8,6 +8,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const trpcInstaller: Installer = ({
   projectDir,
   packages,
+  srcDirectory,
   appRouter,
 }) => {
   addPackageDependency({
@@ -29,12 +30,17 @@ export const trpcInstaller: Installer = ({
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerFile = "src/pages/api/trpc/[trpc].ts";
-  const routeHandlerFile = "src/app/api/trpc/[trpc]/route.ts";
+  const apiHandlerFile = "pages/api/trpc/[trpc].ts";
+  const routeHandlerFile = "app/api/trpc/[trpc]/route.ts";
+
   const srcToUse = appRouter ? routeHandlerFile : apiHandlerFile;
 
-  const apiHandlerSrc = path.join(extrasDir, srcToUse);
-  const apiHandlerDest = path.join(projectDir, srcToUse);
+  const apiHandlerSrc = path.join(extrasDir, "src", srcToUse);
+  const apiHandlerDest = path.join(
+    projectDir,
+    srcDirectory ? "src" : "",
+    srcToUse
+  );
 
   const trpcFile =
     usingAuth && usingDb
@@ -50,10 +56,16 @@ export const trpcInstaller: Installer = ({
     appRouter ? "trpc-app" : "trpc-pages",
     trpcFile
   );
-  const trpcDest = path.join(projectDir, "src/server/api/trpc.ts");
+  const trpcDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/api/trpc.ts" : "server/api/trpc.ts"
+  );
 
   const rootRouterSrc = path.join(extrasDir, "src/server/api/root.ts");
-  const rootRouterDest = path.join(projectDir, "src/server/api/root.ts");
+  const rootRouterDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/api/root.ts" : "server/api/root.ts"
+  );
 
   const exampleRouterFile =
     usingAuth && usingPrisma
@@ -75,7 +87,9 @@ export const trpcInstaller: Installer = ({
   );
   const exampleRouterDest = path.join(
     projectDir,
-    "src/server/api/routers/post.ts"
+    srcDirectory
+      ? "src/server/api/routers/post.ts"
+      : "server/api/routers/post.ts"
   );
 
   const copySrcDest: [string, string][] = [
@@ -96,11 +110,17 @@ export const trpcInstaller: Installer = ({
     copySrcDest.push(
       [
         path.join(trpcDir, "server.ts"),
-        path.join(projectDir, "src/trpc/server.ts"),
+        path.join(
+          projectDir,
+          srcDirectory ? "src/trpc/server.ts" : "trpc/server.ts"
+        ),
       ],
       [
         path.join(trpcDir, "react.tsx"),
-        path.join(projectDir, "src/trpc/react.tsx"),
+        path.join(
+          projectDir,
+          srcDirectory ? "src/trpc/react.tsx" : "trpc/react.tsx"
+        ),
       ],
       [
         path.join(
@@ -108,11 +128,19 @@ export const trpcInstaller: Installer = ({
           "src/app/_components",
           packages?.tailwind.inUse ? "post-tw.tsx" : "post.tsx"
         ),
-        path.join(projectDir, "src/app/_components/post.tsx"),
+        path.join(
+          projectDir,
+          srcDirectory
+            ? "src/app/_components/post.tsx"
+            : "app/_components/post.tsx"
+        ),
       ],
       [
         path.join(extrasDir, "src/trpc/query-client.ts"),
-        path.join(projectDir, "src/trpc/query-client.ts"),
+        path.join(
+          projectDir,
+          srcDirectory ? "src/trpc/query-client.ts" : "trpc/query-client.ts"
+        ),
       ]
     );
   } else {
@@ -123,7 +151,10 @@ export const trpcInstaller: Installer = ({
     });
 
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
-    const utilsDest = path.join(projectDir, "src/utils/api.ts");
+    const utilsDest = path.join(
+      projectDir,
+      srcDirectory ? "src/utils/api.ts" : "utils/api.ts"
+    );
     copySrcDest.push([utilsSrc, utilsDest]);
   }
 

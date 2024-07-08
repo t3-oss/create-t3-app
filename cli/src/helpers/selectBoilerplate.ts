@@ -5,11 +5,12 @@ import { PKG_ROOT } from "~/consts.js";
 import { type InstallerOptions } from "~/installers/index.js";
 
 type SelectBoilerplateProps = Required<
-  Pick<InstallerOptions, "packages" | "projectDir">
+  Pick<InstallerOptions, "packages" | "projectDir" | "srcDirectory">
 >;
 // This generates the _app.tsx file that is used to render the app
 export const selectAppFile = ({
   projectDir,
+  srcDirectory,
   packages,
 }: SelectBoilerplateProps) => {
   const appFileDir = path.join(PKG_ROOT, "template/extras/src/pages/_app");
@@ -36,13 +37,17 @@ export const selectAppFile = ({
   }
 
   const appSrc = path.join(appFileDir, appFile);
-  const appDest = path.join(projectDir, "src/pages/_app.tsx");
+  const appDest = path.join(
+    projectDir,
+    srcDirectory ? "src/pages/_app.tsx" : "pages/_app"
+  );
   fs.copySync(appSrc, appDest);
 };
 
 // Similar to _app, but for app router
 export const selectLayoutFile = ({
   projectDir,
+  srcDirectory,
   packages,
 }: SelectBoilerplateProps) => {
   const layoutFileDir = path.join(PKG_ROOT, "template/extras/src/app/layout");
@@ -59,13 +64,18 @@ export const selectLayoutFile = ({
   }
 
   const appSrc = path.join(layoutFileDir, layoutFile);
-  const appDest = path.join(projectDir, "src/app/layout.tsx");
+
+  const appDest = path.join(
+    projectDir,
+    srcDirectory ? "src/app/page.tsx" : "app/page.tsx"
+  );
   fs.copySync(appSrc, appDest);
 };
 
 // This selects the proper index.tsx to be used that showcases the chosen tech
 export const selectIndexFile = ({
   projectDir,
+  srcDirectory,
   packages,
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/pages/index");
@@ -88,13 +98,17 @@ export const selectIndexFile = ({
   }
 
   const indexSrc = path.join(indexFileDir, indexFile);
-  const indexDest = path.join(projectDir, "src/pages/index.tsx");
+  const indexDest = path.join(
+    projectDir,
+    srcDirectory ? "src/pages/index.tsx" : "pages/index"
+  );
   fs.copySync(indexSrc, indexDest);
 };
 
 // Similar to index, but for app router
 export const selectPageFile = ({
   projectDir,
+  srcDirectory,
   packages,
 }: SelectBoilerplateProps) => {
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/app/page");
@@ -117,6 +131,10 @@ export const selectPageFile = ({
   }
 
   const indexSrc = path.join(indexFileDir, indexFile);
-  const indexDest = path.join(projectDir, "src/app/page.tsx");
+
+  const indexDest = path.join(
+    projectDir,
+    srcDirectory ? "src/app/page.tsx" : "app/page.tsx"
+  );
   fs.copySync(indexSrc, indexDest);
 };

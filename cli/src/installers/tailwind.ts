@@ -5,7 +5,7 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const tailwindInstaller: Installer = ({ projectDir }) => {
+export const tailwindInstaller: Installer = ({ projectDir, srcDirectory }) => {
   addPackageDependency({
     projectDir,
     dependencies: [
@@ -16,6 +16,10 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
     ],
     devMode: true,
   });
+
+  const cssDestPath = srcDirectory
+    ? "src/styles/globals.css"
+    : "styles/globals.css";
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
@@ -29,10 +33,20 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const prettierDest = path.join(projectDir, "prettier.config.js");
 
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
-  const cssDest = path.join(projectDir, "src/styles/globals.css");
+  const cssDest = path.join(projectDir, cssDestPath);
 
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
+
+  if (!srcDirectory) {
+    const tailwindConfigFile = path.join(projectDir, "tailwind.config.ts");
+    fs.writeFileSync(
+      tailwindConfigFile,
+      fs
+        .readFileSync(tailwindConfigFile, "utf8")
+        .replace("./src/**/*.tsx", "./**/*.tsx")
+    );
+  }
 };

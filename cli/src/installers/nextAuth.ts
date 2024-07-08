@@ -9,6 +9,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const nextAuthInstaller: Installer = ({
   projectDir,
   packages,
+  srcDirectory,
   appRouter,
 }) => {
   const usingPrisma = packages?.prisma.inUse;
@@ -26,12 +27,16 @@ export const nextAuthInstaller: Installer = ({
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerFile = "src/pages/api/auth/[...nextauth].ts";
-  const routeHandlerFile = "src/app/api/auth/[...nextauth]/route.ts";
+  const apiHandlerFile = "pages/api/auth/[...nextauth].ts";
+  const routeHandlerFile = "app/api/auth/[...nextauth]/route.ts";
   const srcToUse = appRouter ? routeHandlerFile : apiHandlerFile;
 
-  const apiHandlerSrc = path.join(extrasDir, srcToUse);
-  const apiHandlerDest = path.join(projectDir, srcToUse);
+  const apiHandlerSrc = path.join(extrasDir, "src", srcToUse);
+  const apiHandlerDest = path.join(
+    projectDir,
+    srcDirectory ? "src" : "",
+    srcToUse
+  );
 
   const authConfigSrc = path.join(
     extrasDir,
@@ -43,7 +48,10 @@ export const nextAuthInstaller: Installer = ({
         ? "with-drizzle.ts"
         : "base.ts"
   );
-  const authConfigDest = path.join(projectDir, "src/server/auth.ts");
+  const authConfigDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/auth.ts" : "server/auth.ts"
+  );
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(authConfigSrc, authConfigDest);

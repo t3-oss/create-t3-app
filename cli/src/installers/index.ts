@@ -34,6 +34,7 @@ export interface InstallerOptions {
   projectDir: string;
   pkgManager: PackageManager;
   noInstall: boolean;
+  srcDirectory: boolean;
   packages?: PkgInstallerMap;
   appRouter?: boolean;
   projectName: string;

@@ -10,6 +10,7 @@ import { type AvailableDependencies } from "./dependencyVersionMap.js";
 export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
+  srcDirectory,
   scopedAppName,
   databaseProvider,
 }) => {
@@ -73,7 +74,10 @@ export const drizzleInstaller: Installer = ({
     extrasDir,
     `src/server/db/index-drizzle/with-${databaseProvider}.ts`
   );
-  const clientDest = path.join(projectDir, "src/server/db/index.ts");
+  const clientDest = path.join(
+    projectDir,
+    srcDirectory ? "src/server/db/index.ts" : "server/db/index.ts"
+  );
 
   // add db:* scripts to package.json
   const packageJsonPath = path.join(projectDir, "package.json");

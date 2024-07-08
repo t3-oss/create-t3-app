@@ -19,6 +19,7 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 interface CreateProjectOptions {
   projectName: string;
   packages: PkgInstallerMap;
+  srcDirectory: boolean;
   scopedAppName: string;
   noInstall: boolean;
   importAlias: string;
@@ -28,6 +29,7 @@ interface CreateProjectOptions {
 
 export const createProject = async ({
   projectName,
+  srcDirectory,
   scopedAppName,
   packages,
   noInstall,
@@ -42,6 +44,7 @@ export const createProject = async ({
     projectName,
     projectDir,
     pkgManager,
+    srcDirectory,
     scopedAppName,
     noInstall,
     appRouter,
@@ -52,6 +55,7 @@ export const createProject = async ({
   installPackages({
     projectName,
     scopedAppName,
+    srcDirectory,
     projectDir,
     pkgManager,
     packages,
@@ -68,11 +72,11 @@ export const createProject = async ({
       path.join(projectDir, "next.config.js")
     );
 
-    selectLayoutFile({ projectDir, packages });
-    selectPageFile({ projectDir, packages });
+    selectLayoutFile({ projectDir, packages, srcDirectory });
+    selectPageFile({ projectDir, packages, srcDirectory });
   } else {
-    selectAppFile({ projectDir, packages });
-    selectIndexFile({ projectDir, packages });
+    selectAppFile({ projectDir, packages, srcDirectory });
+    selectIndexFile({ projectDir, packages, srcDirectory });
   }
 
   // If no tailwind, select use css modules
@@ -83,11 +87,19 @@ export const createProject = async ({
     );
     const indexModuleCssDest = path.join(
       projectDir,
-      "src",
+      srcDirectory ? "src" : "",
       appRouter ? "app" : "pages",
       "index.module.css"
     );
     fs.copyFileSync(indexModuleCss, indexModuleCssDest);
+  }
+
+  if (!srcDirectory) {
+    const tsconfigFile = path.join(projectDir, "tsconfig.json");
+    fs.writeFileSync(
+      tsconfigFile,
+      fs.readFileSync(tsconfigFile, "utf8").replace("./src/*", "./**/*")
+    );
   }
 
   return projectDir;
