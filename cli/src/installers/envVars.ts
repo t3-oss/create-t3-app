@@ -8,7 +8,7 @@ export const envVariablesInstaller: Installer = ({
   projectDir,
   packages,
   databaseProvider,
-  projectName,
+  scopedAppName,
 }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
@@ -22,7 +22,7 @@ export const envVariablesInstaller: Installer = ({
     !!usingPrisma,
     !!usingDrizzle,
     databaseProvider,
-    projectName
+    scopedAppName
   );
 
   let envFile = "";
@@ -60,7 +60,7 @@ const getEnvContent = (
   usingPrisma: boolean,
   usingDrizzle: boolean,
   databaseProvider: DatabaseProvider,
-  projectName: string
+  scopedAppName: string
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.js"
@@ -88,9 +88,9 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
 DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
       }
     } else if (databaseProvider === "mysql") {
-      content += `DATABASE_URL="mysql://root:password@localhost:3306/${projectName}"`;
+      content += `DATABASE_URL="mysql://root:password@localhost:3306/${scopedAppName}"`;
     } else if (databaseProvider === "postgres") {
-      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${projectName}"`;
+      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${scopedAppName}"`;
     } else if (databaseProvider === "sqlite") {
       content += 'DATABASE_URL="file:./db.sqlite"';
     }
