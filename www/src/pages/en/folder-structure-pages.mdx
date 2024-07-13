@@ -1,6 +1,6 @@
 ---
 title: Folder Structure (Pages)
-description: Folder structure of a newly scaffolded T3 App
+description: Folder structure of a newly scaffolded T3 App with the Pages Router
 layout: ../../layouts/docs.astro
 lang: en
 isMdx: true
@@ -64,11 +64,11 @@ The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is 
 The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
 
 </div>
-<div data-components="trpc prisma nextauth">
+<div data-components="trpc prisma nextauth drizzle">
 
 ### `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+The `server` folder is used to clearly separate code that is only used on the server.
 
 </div>
 <div data-components="nextauth+trpc">

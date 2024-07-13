@@ -15,11 +15,11 @@
   const allFiles = {
     "prisma/schema.prisma": ["prisma"], // This file is included with prisma
     "public/favicon.ico": [], // This file is included in every configuration
-    "src/env.js": [],
-    "src/pages/_app.tsx": [],
-    "src/pages/api/auth/[...nextauth].ts": ["nextauth"],
-    "src/pages/api/trpc/[trpc].ts": ["trpc"],
-    "src/pages/index.tsx": [],
+    "src/app/_components/post.tsx": ["trpc"],
+    "src/app/api/auth/[...nextauth]/route.ts": ["nextauth"],
+    "src/app/api/trpc/[trpc]/route.ts": ["trpc"],
+    "src/app/layout.tsx": [],
+    "src/app/page.tsx": [],
     "src/server/auth.ts": ["nextauth"],
     "src/server/db.ts": ["prisma"],
     "src/server/db/index.ts": ["drizzle"],
@@ -28,7 +28,10 @@
     "src/server/api/trpc.ts": ["trpc"],
     "src/server/api/root.ts": ["trpc"],
     "src/styles/globals.css": [],
-    "src/utils/api.ts": ["trpc"],
+    "src/env.js": [],
+    "src/trpc/query-client.ts": ["trpc"],
+    "src/trpc/react.tsx": ["trpc"],
+    "src/trpc/server.ts": ["trpc"],
     ".env": [],
     ".env.example": [],
     ".eslintrc.cjs": [],
