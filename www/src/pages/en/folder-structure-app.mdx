@@ -40,42 +40,28 @@ Used for environment variable validation and type definitions - see [Environment
 
 ### `src/app`
 
-The `app` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+The `app` folder contains all the routes of the Next.js application. The `page.tsx` file at the root directory of `/app` is the homepage of the application. The `layout.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
 
 </div>
 <div data-components="trpc">
 
 #### `src/app/_components/post.tsx`
 
-TODO: write description
+The `post.tsx` file is an example of a client component that calls a tRPC mutation.
 
 </div>
 <div data-components="nextauth">
 
 #### `src/app/api/auth/[...nextauth]/route.ts`
 
-TODO: write description
+The `[...nextauth]/route.ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) for info on catch-all/slug routes.
 
 </div>
 <div data-components="trpc">
 
 #### `src/app/api/trpc/[trpc]/route.ts`
 
-TODO: write description
-
-</div>
-<div>
-
-### `src/app/layout.tsx`
-
-TODO: write description
-
-</div>
-<div>
-
-### `src/app/page.tsx`
-
-TODO: write description
+The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/app/routing/dynamic-routes) for info on catch-all/slug routes.
 
 </div>
 <div data-components="trpc prisma nextauth drizzle">
@@ -228,7 +214,7 @@ The `drizzle.config.ts` file is used to configure drizzle kit. See [the document
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/app/building-your-application/configuring/typescript) for more information.
 
 </div>
 <div>
