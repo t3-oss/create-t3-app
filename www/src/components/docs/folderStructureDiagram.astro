@@ -8,6 +8,7 @@
   document.addEventListener(
     "fileStructureComponentsChange",
     (event: CustomEvent<{ selected: string[] }>) => {
+      console.log("tktk event", event.detail);
       renderDiagram(event.detail.selected);
     },
   );
@@ -22,6 +23,8 @@
     "src/pages/index.tsx": [],
     "src/server/auth.ts": ["nextauth"],
     "src/server/db.ts": ["prisma"],
+    "src/server/index.ts": ["drizzle"],
+    "src/server/schema.ts": ["drizzle"],
     "src/server/api/routers/example.ts": ["trpc"],
     "src/server/api/trpc.ts": ["trpc"],
     "src/server/api/root.ts": ["trpc"],
@@ -31,17 +34,21 @@
     ".env.example": [],
     ".eslintrc.cjs": [],
     ".gitignore": [],
+    "db.sqlite (after `db:push`, sqlite only)": ["drizzle"],
+    "drizzle.config.ts": ["drizzle"],
     "next-env.d.ts": [],
     "next.config.js": [],
     "package.json": [],
     "postcss.config.cjs": ["tailwind"],
     "prettier.config.js": ["tailwind"],
     "README.md": [],
+    "start-database.sh (mysql or postgres only)": ["drizzle"],
     "tailwind.config.ts": ["tailwind"],
     "tsconfig.json": [],
   };
 
   const renderDiagram = (selected: string[]) => {
+    console.log("tktk renderDiagram", selected);
     // Filter files based on selected components
     const files = Object.entries(allFiles)
       .map(([filename, components]) => {
@@ -74,7 +81,7 @@
     );
 
     if (selectedParam === null) {
-      return ["nextauth", "prisma", "tailwind", "trpc"];
+      return ["nextauth", "drizzle", "tailwind", "trpc"];
     }
 
     return selectedParam.split(",");
