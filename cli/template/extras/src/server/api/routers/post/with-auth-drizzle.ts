@@ -32,10 +32,8 @@ export const postRouter = createTRPCRouter({
     const post = ctx.db.query.posts.findFirst({
       orderBy: (posts, { desc }) => [desc(posts.createdAt)],
     });
-    if (post === undefined) {
-      return null;
-    }
-    return post;
+
+    return post ?? null;
   }),
 
   getSecretMessage: protectedProcedure.query(() => {

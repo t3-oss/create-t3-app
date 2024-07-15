@@ -29,10 +29,6 @@ export const postRouter = createTRPCRouter({
       orderBy: { createdAt: "desc" },
     });
 
-    if (post === undefined) {
-      return null;
-    }
-
-    return post;
+    return post ?? null; 
   }),
 });
