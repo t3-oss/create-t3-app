@@ -298,7 +298,7 @@ export default handler;
 
 ### Optimistic updates
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/latest/docs).
 
 ```tsx
 const MyComponent = () => {
@@ -375,8 +375,8 @@ test("protected example router", async () => {
 
 ## Useful Resources
 
-| Resource               | Link                                                    |
-| ---------------------- | ------------------------------------------------------- |
-| tRPC Docs              | https://www.trpc.io                                     |
-| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Resource               | Link                                            |
+| ---------------------- | ----------------------------------------------- |
+| tRPC Docs              | https://www.trpc.io                             |
+| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples |
+| React Query Docs       | https://tanstack.com/query/latest/docs          |
