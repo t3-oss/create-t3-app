@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.36.2
+
+### Patch Changes
+
+- [#1945](https://github.com/t3-oss/create-t3-app/pull/1945) [`9eea9fb5f6d26d42944a660bfcee5f7fb33438ad`](https://github.com/t3-oss/create-t3-app/commit/9eea9fb5f6d26d42944a660bfcee5f7fb33438ad) Thanks [@datasalaryman](https://github.com/datasalaryman)! - resolve client error during getLatest trpc call
+
+- [#1948](https://github.com/t3-oss/create-t3-app/pull/1948) [`3a1b94d29a3addc783e2d6645c2e88a5b7273174`](https://github.com/t3-oss/create-t3-app/commit/3a1b94d29a3addc783e2d6645c2e88a5b7273174) Thanks [@keyding](https://github.com/keyding)! - Update seed.ts in prisma in documentation
+
+- [#1940](https://github.com/t3-oss/create-t3-app/pull/1940) [`46a4e2d144da8b184bf39444b19e0b1bd00bab2b`](https://github.com/t3-oss/create-t3-app/commit/46a4e2d144da8b184bf39444b19e0b1bd00bab2b) Thanks [@KrishanGoyal1](https://github.com/KrishanGoyal1)! - changed default password error message for `start-database` script
+
 ## 7.36.1
 
 ### Patch Changes
