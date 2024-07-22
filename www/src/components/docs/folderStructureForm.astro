@@ -2,6 +2,7 @@
 const options = {
   nextauth: "NextAuth.js",
   prisma: "Prisma",
+  drizzle: "Drizzle",
   tailwind: "Tailwind CSS",
   trpc: "tRPC",
 };
@@ -26,17 +27,38 @@ const options = {
     );
 
     if (selectedParam === null) {
-      return ["nextauth", "prisma", "tailwind", "trpc"];
+      return ["nextauth", "drizzle", "tailwind", "trpc"];
     }
 
     return selectedParam.split(",");
   };
 
   inputs.forEach((input) =>
-    input.addEventListener("change", () => {
-      const selected = Array.from(inputs).flatMap(({ value, checked }) =>
-        checked ? [value] : [],
+    input.addEventListener("change", (aaa) => {
+      console.log({ inputs, aaa, input });
+      const initialSelected = Array.from(inputs).flatMap(
+        ({ value, checked }) => {
+          return checked ? [value] : [];
+        },
       );
+
+      if (
+        input.value === "drizzle" &&
+        initialSelected.includes("drizzle") &&
+        initialSelected.includes("prisma")
+      ) {
+        document.getElementById("prisma")?.click();
+      } else if (
+        input.value === "prisma" &&
+        initialSelected.includes("prisma") &&
+        initialSelected.includes("drizzle")
+      ) {
+        document.getElementById("drizzle")?.click();
+      }
+
+      const selected = Array.from(inputs).flatMap(({ value, checked }) => {
+        return checked ? [value] : [];
+      });
 
       updatePackagesQueryParam(selected);
 
@@ -87,7 +109,7 @@ const options = {
           id={code}
           type="checkbox"
           name="conf"
-          checked
+          checked={code !== "prisma"}
           value={code}
           class="h-4 w-4"
         />
