@@ -4,38 +4,36 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "^4.24.6",
-  "@auth/prisma-adapter": "^1.4.0",
-  "@auth/drizzle-adapter": "^0.7.0",
+  "next-auth": "^4.24.7",
+  "@auth/prisma-adapter": "^1.6.0",
+  "@auth/drizzle-adapter": "^1.1.0",
 
   // Prisma
-  prisma: "^5.10.2",
-  "@prisma/client": "^5.10.2",
-  "@prisma/adapter-planetscale": "^5.10.2",
+  prisma: "^5.14.0",
+  "@prisma/client": "^5.14.0",
+  "@prisma/adapter-planetscale": "^5.14.0",
 
   // Drizzle
-  "drizzle-orm": "^0.29.4",
-  "drizzle-kit": "^0.20.14",
+  "drizzle-orm": "^0.30.10",
+  "drizzle-kit": "^0.21.4",
   "eslint-plugin-drizzle": "^0.2.3",
-  mysql2: "^3.9.1",
-  "@planetscale/database": "^1.16.0",
-  postgres: "^3.4.3",
-  pg: "^8.11.3",
-  "@types/better-sqlite3": "^7.6.9",
-  "better-sqlite3": "^9.4.3",
+  mysql2: "^3.9.7",
+  "@planetscale/database": "^1.18.0",
+  postgres: "^3.4.4",
+  "@libsql/client": "^0.6.0",
 
   // TailwindCSS
-  tailwindcss: "^3.4.1",
-  postcss: "^8.4.34",
-  prettier: "^3.2.5",
-  "prettier-plugin-tailwindcss": "^0.5.11",
+  tailwindcss: "^3.4.3",
+  postcss: "^8.4.39",
+  prettier: "^3.3.2",
+  "prettier-plugin-tailwindcss": "^0.6.5",
 
   // tRPC
-  "@trpc/client": "next",
-  "@trpc/server": "next",
-  "@trpc/react-query": "next",
-  "@trpc/next": "next",
-  "@tanstack/react-query": "^5.25.0",
+  "@trpc/client": "^11.0.0-rc.446",
+  "@trpc/server": "^11.0.0-rc.446",
+  "@trpc/react-query": "^11.0.0-rc.446",
+  "@trpc/next": "^11.0.0-rc.446",
+  "@tanstack/react-query": "^5.50.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
 } as const;

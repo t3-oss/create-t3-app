@@ -35,6 +35,8 @@ interface CliFlags {
   nextAuth: boolean;
   /** @internal Used in CI. */
   appRouter: boolean;
+  /** @internal Used in CI. */
+  dbProvider: DatabaseProvider;
 }
 
 interface CliResults {
@@ -59,6 +61,7 @@ const defaultOptions: CliResults = {
     nextAuth: false,
     importAlias: "~/",
     appRouter: false,
+    dbProvider: "sqlite",
   },
   databaseProvider: "sqlite",
 };
@@ -135,7 +138,7 @@ export const runCli = async (): Promise<CliResults> => {
       `Choose a database provider to use. Possible values: ${databaseProviders.join(
         ", "
       )}`,
-      defaultOptions.flags.importAlias
+      defaultOptions.flags.dbProvider
     )
     .option(
       "--appRouter [boolean]",
@@ -180,7 +183,6 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
-
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
@@ -188,10 +190,18 @@ export const runCli = async (): Promise<CliResults> => {
       logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
       process.exit(0);
     }
+    if (databaseProviders.includes(cliResults.flags.dbProvider) === false) {
+      logger.warn(
+        `Incompatible database provided. Use: ${databaseProviders.join(", ")}. Exiting.`
+      );
+      process.exit(0);
+    }
 
-    cliResults.databaseProvider = cliResults.packages.includes("drizzle")
-      ? "planetscale"
-      : "sqlite";
+    cliResults.databaseProvider =
+      cliResults.packages.includes("drizzle") ||
+      cliResults.packages.includes("prisma")
+        ? cliResults.flags.dbProvider
+        : "sqlite";
 
     return cliResults;
   }
@@ -203,8 +213,8 @@ export const runCli = async (): Promise<CliResults> => {
   // Explained below why this is in a try/catch block
   try {
     if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
-      logger.warn(`  WARNING: It looks like you are using MinTTY, which is non-interactive. This is most likely because you are 
-  using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you 
+      logger.warn(`  WARNING: It looks like you are using MinTTY, which is non-interactive. This is most likely because you are
+  using Git Bash. If that's that case, please use Git Bash from another terminal, such as Windows Terminal. Alternatively, you
   can provide the arguments from the CLI directly: https://create.t3.gg/en/installation#experimental-usage to skip the prompts.`);
 
       throw new IsTTYError("Non-interactive environment");
@@ -273,10 +283,8 @@ export const runCli = async (): Promise<CliResults> => {
         },
         appRouter: () => {
           return p.confirm({
-            message:
-              chalk.bgCyan(" EXPERIMENTAL ") +
-              " Would you like to use Next.js App Router?",
-            initialValue: false,
+            message: "Would you like to use Next.js App Router?",
+            initialValue: true,
           });
         },
         databaseProvider: ({ results }) => {
@@ -284,7 +292,7 @@ export const runCli = async (): Promise<CliResults> => {
           return p.select({
             message: "What database provider would you like to use?",
             options: [
-              { value: "sqlite", label: "SQLite" },
+              { value: "sqlite", label: "SQLite (LibSQL)" },
               { value: "mysql", label: "MySQL" },
               { value: "postgres", label: "PostgreSQL" },
               { value: "planetscale", label: "PlanetScale" },

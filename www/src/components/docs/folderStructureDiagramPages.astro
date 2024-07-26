@@ -1,0 +1,94 @@
+<script>
+  import { asTree, type TreeObject } from "treeify";
+
+  const element = document.getElementById("fileStructure");
+
+  // Get new selection from the form
+  //@ts-ignore
+  document.addEventListener(
+    "fileStructureComponentsChange",
+    (event: CustomEvent<{ selected: string[] }>) => {
+      renderDiagram(event.detail.selected);
+    },
+  );
+
+  const allFiles = {
+    "prisma/schema.prisma": ["prisma"], // This file is included with prisma
+    "public/favicon.ico": [], // This file is included in every configuration
+    "src/env.js": [],
+    "src/pages/_app.tsx": [],
+    "src/pages/api/auth/[...nextauth].ts": ["nextauth"],
+    "src/pages/api/trpc/[trpc].ts": ["trpc"],
+    "src/pages/index.tsx": [],
+    "src/server/auth.ts": ["nextauth"],
+    "src/server/db.ts": ["prisma"],
+    "src/server/db/index.ts": ["drizzle"],
+    "src/server/db/schema.ts": ["drizzle"],
+    "src/server/api/routers/example.ts": ["trpc"],
+    "src/server/api/trpc.ts": ["trpc"],
+    "src/server/api/root.ts": ["trpc"],
+    "src/styles/globals.css": [],
+    "src/utils/api.ts": ["trpc"],
+    ".env": [],
+    ".env.example": [],
+    ".eslintrc.cjs": [],
+    ".gitignore": [],
+    "db.sqlite (after `db:push`, sqlite only)": ["drizzle"],
+    "drizzle.config.ts": ["drizzle"],
+    "next-env.d.ts": [],
+    "next.config.js": [],
+    "package.json": [],
+    "postcss.config.cjs": ["tailwind"],
+    "prettier.config.js": ["tailwind"],
+    "README.md": [],
+    "start-database.sh (mysql or postgres only)": ["drizzle"],
+    "tailwind.config.ts": ["tailwind"],
+    "tsconfig.json": [],
+  };
+
+  const renderDiagram = (selected: string[]) => {
+    // Filter files based on selected components
+    const files = Object.entries(allFiles)
+      .map(([filename, components]) => {
+        if (components.length === 0) return filename;
+        return components.some((component) =>
+          component.split("+").every((option) => selected.includes(option)),
+        )
+          ? filename
+          : null;
+      })
+      .filter((file) => file) as string[];
+
+    // Transform files to a tree object for the treeify library
+    const filesTree: TreeObject = {};
+    files.forEach((file) => {
+      const path = file.split("/");
+      let folder = filesTree;
+      path.forEach((name) => {
+        if (!folder[name]) folder[name] = {};
+        folder = folder[name] as TreeObject;
+      });
+    });
+
+    if (element) element.textContent = `.\n${asTree(filesTree, false, true)}`;
+  };
+
+  const getSelectedFromPackagesQueryParam = () => {
+    const selectedParam = new URLSearchParams(window.location.search).get(
+      "packages",
+    );
+
+    if (selectedParam === null) {
+      return ["nextauth", "drizzle", "tailwind", "trpc"];
+    }
+
+    return selectedParam.split(",");
+  };
+
+  renderDiagram(getSelectedFromPackagesQueryParam());
+</script>
+
+<pre
+  style="background-color: #191724; color: #e8ddff;">
+  <code id="fileStructure" />
+</pre>
