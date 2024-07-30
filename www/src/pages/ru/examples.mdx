@@ -1,0 +1,22 @@
+---
+title: Examples
+description: Примеры различных приложений
+layout: ../../layouts/docs.astro
+lang: ru
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+import Form from "../../components/docs/exampleOptionForm.astro";
+
+Вы можете попробовать различные комбинации технологий, которые предоставляет create-t3-app.
+
+<Callout type="info">
+  Вы не можете одновременно выбрать `prisma` и `drizzle`.
+</Callout>
+
+<Form />
+
+<Callout type="warning">
+  Некоторые функции могут не работать, пока вы не создадите файл env.
+</Callout>
