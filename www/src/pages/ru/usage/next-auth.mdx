@@ -3,7 +3,10 @@ title: NextAuth.js
 description: Использование NextAuth.js
 layout: ../../../layouts/docs.astro
 lang: ru
+isMdx: true
 ---
+
+import Callout from "../../../components/docs/callout.tsx";
 
 Когда вы хотите иметь систему аутентификации в вашем приложении Next.js, NextAuth.js - отличное решение, чтобы не заморачиваться с реализацией сложной безопасности самостоятельно. Он имеет обширный список провайдеров для быстрого добавления аутентификации OAuth и предоставляет адаптеры для многих баз данных и ORM.
 
@@ -61,7 +64,7 @@ const User = () => {
 
 `create-t3-app` настроен для использования [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) в конфигурации NextAuth.js для включения ID пользователя в объект `session`.
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -74,7 +77,7 @@ callbacks: {
 
 Это связано с файлом объявления типов, чтобы убедиться, что `user.id` типизирован при доступе к объекту `session`. Подробнее о [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) в документации NextAuth.js.
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -97,11 +100,11 @@ declare module "next-auth" {
 1. Возьмите сессию из заголовков запроса с помощью функции [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Преимущество использования `getServerSession` вместо обычного `getSession` заключается в том, что это server-side функция и она не вызывает ненужных вызовов fetch. `create-t3-app` создает вспомогательную функцию, которая абстрагирует этот особый API.
 
 ```ts:server/auth.ts
-export const getServerAuthSession = async (ctx: {
+export const getServerAuthSession = (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await getServerSession(ctx.req, ctx.res, authOptions);
+  return getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
@@ -175,6 +178,32 @@ const userRouter = router({
 ## Использование с Next.js middleware
 
 Использование NextAuth.js с Next.js middleware [требует использования стратегии сеанса JWT](https://next-auth.js.org/configuration/nextjs#caveats) для аутентификации. Это связано с тем, что middleware может получить доступ к сессионной cookie только в том случае, если это JWT. По умолчанию, `create-t3-app` настроен на использование **default** стратегии базы данных, в сочетании с Prisma в качестве адаптера базы данных.
+
+<Callout type="warning">
+  Использование сессии базы данных - рекомендованый подход, и вам стоит следить за публикациями про JWT прежде чем переключаться на стратегию JWT сессий, для избежания проблем с безопасностью.
+</Callout>
+
+После перехода на стратегию JWT сессий, убедитесь, что вы обновили callback `session` в `src/server/auth.ts`.
+Объект `user` будет `undefined`. Вместо этого, получите ID пользователя из объекта `token`. Например:
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session: ({ session, user }) => ({
++     session: ({ session, token }) => ({
+        ...session,
+        user: {
+          ...session.user,
+-         id: user.id,
++         id: token.sub,
+        },
+      }),
+    },
+  }
+```
 
 ## Настраиваем DiscordProvider по умолчанию
 
