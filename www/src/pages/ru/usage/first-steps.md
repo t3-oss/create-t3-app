@@ -41,7 +41,7 @@ lang: ru
 
 ## Настройки редактора
 
-Следующие расширения рекомендуемы для упрощения разработки. Ссылки ниже предоставляют плагины основываясь на вашем редакторе.
+Следующие расширения рекомендуются для упрощения разработки. Ссылки ниже предоставляют плагины, основываясь на вашем редакторе кода.
 
 - [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
 - [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
