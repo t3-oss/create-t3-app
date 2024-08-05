@@ -3,12 +3,12 @@ title: Введение
 description: Введение в T3 стек
 layout: ../../layouts/docs.astro
 lang: ru
+isMdx: true
 ---
 
-<div class="embed">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YkOSUVzOAA4" title="The best stack for your next project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+import { IntroductionTab } from "../../components/docs/introductionTab";
 
+<IntroductionTab client:load />
 ## T3 Stack
 
 _«T3 Stack»_ - это стек веб-разработки, созданный [Theo](https://twitter.com/t3dotgg), с упором на простоту, модульность и full-stack типизацию.
