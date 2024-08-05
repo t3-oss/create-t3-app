@@ -75,8 +75,6 @@ import Form from "../../components/docs/folderStructureForm.astro";
 
 #### `src/server/auth.ts`
 
-The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
-
 Главная точка входа для логики аутентификации на стороне сервера. Здесь мы устанавливаем [настройки](usage/next-auth) NextAuth.js, производим [аугментацию модулей](usage/next-auth#inclusion-of-userid-on-the-session), а также предоставляем некоторые утилиты DX для аутентификации, например, для получения пользовательской сессии на стороне сервера. Смотри [Использование NextAuth.js](usage/next-auth#usage-with-trpc) для получения дополнительной информации.
 
 </div>
@@ -167,7 +165,6 @@ The main entrypoint for server-side authentication logic. Here, we setup the Nex
 
 #### `src/trpc/react.tsx`
 
-The `react.tsx` file is the front-end entrypoint to tRPC. It also contains utility types for the router inputs and outputs. See [tRPC usage](usage/trpc#-utilsapits) for more information.
 Файл `react.tsx` является точкой входа front-end'a в tRPC. Он также содержит утилитарные типы для входов и выходов маршрутизатора. Смотри [Использование tRPC](usage/trpc#-utilsapits) для получения дополнительной информации.
 
 </div>
