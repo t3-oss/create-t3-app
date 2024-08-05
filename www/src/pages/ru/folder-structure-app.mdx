@@ -1,15 +1,15 @@
 ---
-title: Файловая структура (Pages)
-description: Файловая структура нового T3 приложения с Pages роутером.
+title: Файловая структура (App)
+description: Файловая структура нового T3 приложения с App роутером.
 layout: ../../layouts/docs.astro
 lang: ru
 isMdx: true
 ---
 
-import Diagram from "../../components/docs/folderStructureDiagramPages.astro";
+import Diagram from "../../components/docs/folderStructureDiagramApp.astro";
 import Form from "../../components/docs/folderStructureForm.astro";
 
-Пожалуйста выберите пакеты, чтобы увидеть файловую структуру нового приложения с выбранными пакетами. Ниже вы найдете описание каждого элемента.
+Пожалуйста, выберите ваши пакеты для того, чтобы увидеть структуру ново-сгенерированого проекта с выбраными функциями. Ниже вы найдете описание каждой из этих функций.
 
 <Form />
 
@@ -19,63 +19,65 @@ import Form from "../../components/docs/folderStructureForm.astro";
 
 ### `prisma`
 
-Папка `prisma` содержит файл `schema.prisma`, который используется для настройки соединения с базой данных и схемы базы данных. Также это место для хранения файлов миграции и/или сценариев заполнения, если они используются. Смотрите [Использование Prisma](/ru/usage/prisma) для получения дополнительной информации.
+Папка `prisma` содержит файл `schema.prisma`, который используется для конфигурации подключения к базе данных и ее схему. Также, здесь можно хранить файлы миграций и/или исходные (seed) скрипты, есть нужно. Смотрите [Использование Prisma](usage/prisma) для получения дополнительной информации.
 
 </div>
 <div>
 
 ### `public`
 
-Папка `public` содержит статические файлы, которые обслуживаются веб-сервером. Файл `favicon.ico` - это пример статического файла.
+Папка `public` содержит статические объекты, которые публикуются вэб-сервером. Файл `favicon.ico` - пример статического объекта.
 
 </div>
 <div>
 
 ### `src/env`
 
-Используется для проверки переменных окружения и определения типов - смотрите [Переменные окружения](/ru/usage/env-variables).
+Используется для валидации переменных среды и определения типов - смотри [Переменные среды](usage/env-variables).
 
 </div>
 <div>
 
-### `src/pages`
+### `src/app`
 
-Папка `pages` содержит все страницы приложения Next.js. Файл `index.tsx` в корневой папке `/pages` является домашней страницей приложения. Файл `_app.tsx` используется для оборачивания приложения провайдерами. Смотрите [документацию Next.js](https://nextjs.org/docs/basic-features/pages) для получения дополнительной информации.
-
-</div>
-<div data-components="nextauth trpc">
-
-#### `src/pages/api`
-
-Папка `api` содержит все маршруты API приложения Next.js. Обратите внимание на [Документацию путей Api Next.js](https://nextjs.org/docs/api-routes/introduction) для дополнительной информации о путях api.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/pages/api/auth/[...nextauth].ts`
-
-Файл `[...nextauth].ts` - это слаг-маршрут NextAuth.js для аутентификации. Он используется для обработки запросов аутентификации. Смотрите [Использование NextAuth.js](/ru/usage/next-auth) для получения дополнительной информации о NextAuth.js и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
+Папка `app` содержит все маршруты приложения Next.js. Файл `page.tsx` в корневой папке `/app`, является домашней страницей приложения. Файл `layout.tsx` используется для обертывания приложения провайдерами. Смотри [документацию Next.js](https://nextjs.org/docs/basic-features/pages) для получения дополнительной документации.
 
 </div>
 <div data-components="trpc">
 
-#### `src/pages/api/trpc/[trpc].ts`
+#### `src/app/_components/post.tsx`
 
-Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
+Файл `post.tsx` - пример клиентского компонента, который вызывает мутацию tRPC.
+
+</div>
+<div data-components="nextauth">
+
+#### `src/app/api/auth/[...nextauth]/route.ts`
+
+Файл `[...nextauth]/route.ts` это slug-маршрут аутентификации NextAuth.js. Он используется для обработки запросов аутентификации. Смотри [использование NextAuth.js](usage/next-auth) для получения дополнительной информации про NextAuth.js и [документацию динамических маршрутов Next.js](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) для получения информации про catch-all/slug маршруты.
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/api/trpc/[trpc]/route.ts`
+
+Файл `[trpc].ts` - входная точка API tRPC. Он используется для обработки запросов tRPC. Смотри [использование tROC](usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации про этот файл и [документацию динамических маршрутов Next.js](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) для получения информации про catch-all/slug маршруты. 
 
 </div>
 <div data-components="trpc prisma nextauth drizzle">
 
 ### `src/server`
 
-Папка `server` используется для четкого разделения серверного кода от клиентского кода.
+Папка `server` используется для чёткого разделения кода, который используется только на сервере.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/auth.ts`
 
-Главная точка входа для логики server-side аунтентификации. Здесь мы конфигурируем NextAuth.js [настройки](usage/next-auth), проводим [аугментацию модуля](usage/next-auth#inclusion-of-userid-on-the-session), а так же предоставляем некоторые DX утилиты для аутентификации, например: получение пользовательской сессии на стороне сервера. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#usage-with-trpc) для получения дополнительной информации.
+The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+
+Главная точка входа для логики аутентификации на стороне сервера. Здесь мы устанавливаем [настройки](usage/next-auth) NextAuth.js, производим [аугментацию модулей](usage/next-auth#inclusion-of-userid-on-the-session), а также предоставляем некоторые утилиты DX для аутентификации, например, для получения пользовательской сессии на стороне сервера. Смотри [Использование NextAuth.js](usage/next-auth#usage-with-trpc) для получения дополнительной информации.
 
 </div>
 <div data-components="prisma">
@@ -147,32 +149,40 @@ import Form from "../../components/docs/folderStructureForm.astro";
 Файл `root.ts` используется для слияния маршрутизаторов tRPC и экспорта их как единого маршрутизатора, а также определения типа маршрутизатора. Смотрите [Использование tRPC](/ru/usage/trpc#-serverapirootts) для получения дополнительной информации.
 
 </div>
-<div>
+<div data-components="trpc">
 
-### `src/styles`
+### `src/trpc`
 
-Папка `styles` содержит глобальные стили приложения.
+Папки `trpc` содержит настройки, которые позваляют вам вызывать процедуры tRPC из серверных и клиентских компонентов.
 
 </div>
 <div data-components="trpc">
 
-### `src/utils`
+#### `src/trpc/query-client.ts`
 
-Папка `utils` используется для хранения повторно используемых функций утилит.
+Файл `query-client.ts` создает Query Client, который используется tRPC для кеширования и дедупликации информации в клиентских компонентах.
 
 </div>
 <div data-components="trpc">
 
-#### `src/utils/api.ts`
+#### `src/trpc/react.tsx`
 
-Файл `api.ts` является точкой входа для tRPC на стороне клиента. Смотрите [Использование tRPC](/ru/usage/trpc#-utilsapits) для получения дополнительной информации.
+The `react.tsx` file is the front-end entrypoint to tRPC. It also contains utility types for the router inputs and outputs. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+Файл `react.tsx` является точкой входа front-end'a в tRPC. Он также содержит утилитарные типы для входов и выходов маршрутизатора. Смотри [Использование tRPC](usage/trpc#-utilsapits) для получения дополнительной информации.
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/server.ts`
+
+Файл `server.ts` является точкой входа для использования tRPC в Серверных Компонентах.
 
 </div>
 <div>
 
 ### `.env`
 
-Файл `.env` используется для хранения переменных среды. Смотрите [Переменные среды](/ru/usage/env-variables) для получения дополнительной информации. Этот файл **не** должен быть добавлен в историю git.
+Файл `.env` используется для хранения переменных среды. Смотрите [Переменные среды](usage/env-variables) для получения дополнительной информации. Этот файл **не** должен быть добавлен в историю git.
 
 </div>
 <div>
