@@ -14,7 +14,6 @@ lang: ru
 ```json
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install"
 }
