@@ -47,7 +47,7 @@ import Form from "../../components/docs/folderStructureForm.astro";
 
 #### `src/pages/api`
 
-Папка `api` содержит все маршруты API приложения Next.js. Файл `examples.ts` (с Prisma) содержит пример маршрута, который использует функцию [Next.js API route](https://nextjs.org/docs/api-routes/introduction) вместе с Prisma. Файл `restricted.ts` (с Next-Auth) содержит пример маршрута, который использует функцию [Next.js API route](https://nextjs.org/docs/api-routes/introduction) и защищен с помошью [NextAuth.js](https://next-auth.js.org/).
+Папка `api` содержит все маршруты API приложения Next.js. Обратите внимание на [Документацию путей Api Next.js](https://nextjs.org/docs/api-routes/introduction) для дополнительной информации о путях api.
 
 </div>
 <div data-components="nextauth">
@@ -64,7 +64,7 @@ import Form from "../../components/docs/folderStructureForm.astro";
 Файл `[trpc].ts` - это точка входа tRPC API. Он используется для обработки запросов tRPC. Смотрите [Использование tRPC](/ru/usage/trpc#-pagesapitrpctrpcts) для получения дополнительной информации об этом файле и [документацию Next.js о динамических маршрутах](https://nextjs.org/docs/routing/dynamic-routes) для получения информации о маршрутах catch-all/slug.
 
 </div>
-<div data-components="trpc prisma nextauth">
+<div data-components="trpc prisma nextauth drizzle">
 
 ### `src/server`
 
@@ -75,7 +75,7 @@ import Form from "../../components/docs/folderStructureForm.astro";
 
 #### `src/server/auth.ts`
 
-Содержит утилиты для аутентификации, такие как получение сеанса пользователя на стороне сервера. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#usage-with-trpc) для получения дополнительной информации.
+Главная точка входа для логики server-side аунтентификации. Здесь мы конфигурируем NextAuth.js [настройки](usage/next-auth), проводим [аугментацию модуля](usage/next-auth#inclusion-of-userid-on-the-session), а так же предоставляем некоторые DX утилиты для аутентификации, например: получение пользовательской сессии на стороне сервера. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#usage-with-trpc) для получения дополнительной информации.
 
 </div>
 <div data-components="prisma">
@@ -85,6 +85,28 @@ import Form from "../../components/docs/folderStructureForm.astro";
 Файл `db.ts` используется для создания клиента Prisma на глобальном уровне. Смотрите [Использование Prisma](/ru/usage/prisma#prisma-client) и [лучшие практики по использованию Prisma с Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) для получения дополнительной информации.
 
 </div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+Папка `db` содержит клиент и схему Drizzle. Заметьте, что drizzle нуждается в файле `drizzle.config.ts` (смотрите ниже).
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+Файл `index.ts` используется для создания клиента Drizzle на глобальном уровне. Смотрите [Использование Drizzle](usage/drizzle#drizzle-client) и [лучшие практики использования Drizzle с Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) для получения дополнительной информации.
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+</div>
+
+Файл `schema.ts` используется для описания схемы базы данных. Смотрите [Использование Drizzle](usage/drizzle#drizzle-client) и [лучшие практики использования Drizzle с Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) для получения дополнительной информации.
+
 <div data-components="trpc">
 
 ### `src/server/api`
@@ -133,20 +155,6 @@ import Form from "../../components/docs/folderStructureForm.astro";
 Папка `styles` содержит глобальные стили приложения.
 
 </div>
-<div data-components="nextauth">
-
-### `src/types`
-
-Папка `types` используется для хранения повторно используемых типов или объявлений типов.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/types/next-auth.d.ts`
-
-Файл `next-auth.d.ts` используется для расширения типа сеанса по умолчанию NextAuth на включение идентификатора пользователя. Смотрите [Использование NextAuth.js](/ru/usage/next-auth#включение-userid-в-сеанс) для получения дополнительной информации.
-
-</div>
 <div data-components="trpc">
 
 ### `src/utils`
@@ -182,6 +190,20 @@ import Form from "../../components/docs/folderStructureForm.astro";
 Файл `.eslintrc.cjs` используется для настройки ESLint. Смотрите [документацию ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) для получения дополнительной информации.
 
 </div>
+<div data-components="drizzle">
+
+### `db.sqlite (sqlite only)`
+
+Файл `db.sqlite` содержит вашу базу данных разработки. Этот файт создается только после запуска `db:push` и игнорируется git.
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+Файл `drizzle.config.ts` используется для конфигурации drizzle kit. Смотрите [документацию](https://orm.drizzle.team/kit-docs/config-reference) для получения дополнительной информации.
+
+</div>
 <div>
 
 ### `next-env.d.ts`
@@ -208,6 +230,13 @@ import Form from "../../components/docs/folderStructureForm.astro";
 ### `prettier.config.mjs`
 
 Файл `prettier.config.mjs` используется для настройки Prettier для включения prettier-plugin-tailwindcss для форматирования классов Tailwind CSS. Смотрите [пост блога Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) для получения дополнительной информации.
+
+</div>
+<div data-components="drizzle">
+
+### `start-database.sh (mysql or postgres only)`
+
+Файл `start-database.sh` используется для запуска базы данных. Пожалуйста, обратите внимание на коментарии внутри файла для получения дополнительной информации про запуск базы данных вашей операционной системой.
 
 </div>
 <div>
