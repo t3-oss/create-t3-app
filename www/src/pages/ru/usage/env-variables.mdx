@@ -115,6 +115,36 @@ export const env = createEnv({
 
 3. _Опционально:_ Добавьте переменную среды в `.env.example`, но не включайте токен в `runtimeEnv`
 
-```
+```bash
 TWITTER_API_TOKEN=
+```
+
+## Приведение типа
+
+Все переменные, которые вы добавляете в `.env`, будут импортированы в виде string, даже если их значение подразумевает другой тип. Если вы хотите чтобы ваши переменные среды имели другой тип в среде исполнения (runtime), вы можете использовать функцию `coerce` из Zod для конвертации строки в нужный вам тип. В случае ошибки приведения типа, будет сгенерировано исключение.
+
+Добавьте переменные в `.env`:
+
+```
+SOME_NUMBER=123
+SOME_BOOLEAN=true
+```
+
+Затем вилидируйте их в `env.js`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    SOME_NUMBER: z.coerce.number(),
+    SOME_BOOLEAN: z.coerce.boolean(),
+  },
+  // ...
+  runtimeEnv: {
+    SOME_NUMBER: process.env.SOME_NUMBER,
+    SOME_BOOLEAN: process.env.SOME_BOOLEAN,
+  },
+});
 ```
