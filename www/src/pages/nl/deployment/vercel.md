@@ -23,7 +23,7 @@ Vercel zal waarschijnlijk je buildcommando en publish-folder automatisch configu
 
 1. Meld je aan bij [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) met GitHub na het pushen van je code naar een GitHub-repository. Klik vervolgens op **Add new Project**.
 
-![Nieuw projeect bij Vercel](/images/vercel-new-project.webp)
+![Nieuw project bij Vercel](/images/vercel-new-project.webp)
 
 2. Importeer de GitHub-repository met je project.
 
