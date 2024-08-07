@@ -8,7 +8,7 @@ export const envVariablesInstaller: Installer = ({
   projectDir,
   packages,
   databaseProvider,
-  projectName,
+  scopedAppName,
 }) => {
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
@@ -22,7 +22,7 @@ export const envVariablesInstaller: Installer = ({
     !!usingPrisma,
     !!usingDrizzle,
     databaseProvider,
-    projectName
+    scopedAppName
   );
 
   let envFile = "";
@@ -44,15 +44,8 @@ export const envVariablesInstaller: Installer = ({
       "template/extras/src/env",
       envFile
     );
-    const envFileText = fs.readFileSync(envSchemaSrc, "utf-8");
     const envSchemaDest = path.join(projectDir, "src/env.js");
-    fs.writeFileSync(
-      envSchemaDest,
-      databaseProvider === "sqlite"
-        ? envFileText.replace("\n      .url()", "")
-        : envFileText,
-      "utf-8"
-    );
+    fs.copyFileSync(envSchemaSrc, envSchemaDest);
   }
 
   const envDest = path.join(projectDir, ".env");
@@ -67,7 +60,7 @@ const getEnvContent = (
   usingPrisma: boolean,
   usingDrizzle: boolean,
   databaseProvider: DatabaseProvider,
-  projectName: string
+  scopedAppName: string
 ) => {
   let content = `
 # When adding additional environment variables, the schema in "/src/env.js"
@@ -95,13 +88,11 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
 DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
       }
     } else if (databaseProvider === "mysql") {
-      content += `DATABASE_URL="mysql://root:password@localhost:3306/${projectName}"`;
+      content += `DATABASE_URL="mysql://root:password@localhost:3306/${scopedAppName}"`;
     } else if (databaseProvider === "postgres") {
-      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${projectName}"`;
+      content += `DATABASE_URL="postgresql://postgres:password@localhost:5432/${scopedAppName}"`;
     } else if (databaseProvider === "sqlite") {
-      content += usingPrisma
-        ? 'DATABASE_URL="file:./db.sqlite"'
-        : 'DATABASE_URL="db.sqlite"';
+      content += 'DATABASE_URL="file:./db.sqlite"';
     }
     content += "\n";
   }

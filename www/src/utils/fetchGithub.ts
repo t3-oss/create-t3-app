@@ -48,7 +48,7 @@ export const fetchGithub = async <T extends "commits" | "repo">(
     console.warn(msg);
 
     const response = await fetch(url);
-    const data = await response.json();
+    const data = (await response.json()) as Promise<unknown>;
 
     const parsed = schema.safeParse(data);
     if (!parsed.success) {

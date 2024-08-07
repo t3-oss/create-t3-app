@@ -17,7 +17,6 @@ export const trpcInstaller: Installer = ({
       "superjson",
       "@trpc/server",
       "@trpc/client",
-      "@trpc/next",
       "@trpc/react-query",
     ],
     devMode: false,
@@ -107,12 +106,22 @@ export const trpcInstaller: Installer = ({
         path.join(
           extrasDir,
           "src/app/_components",
-          packages?.tailwind.inUse ? "create-post-tw.tsx" : "create-post.tsx"
+          packages?.tailwind.inUse ? "post-tw.tsx" : "post.tsx"
         ),
-        path.join(projectDir, "src/app/_components/create-post.tsx"),
+        path.join(projectDir, "src/app/_components/post.tsx"),
+      ],
+      [
+        path.join(extrasDir, "src/trpc/query-client.ts"),
+        path.join(projectDir, "src/trpc/query-client.ts"),
       ]
     );
   } else {
+    addPackageDependency({
+      dependencies: ["@trpc/next"],
+      devMode: false,
+      projectDir,
+    });
+
     const utilsSrc = path.join(extrasDir, "src/utils/api.ts");
     const utilsDest = path.join(projectDir, "src/utils/api.ts");
     copySrcDest.push([utilsSrc, utilsDest]);
