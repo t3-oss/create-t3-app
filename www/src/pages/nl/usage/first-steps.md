@@ -1,54 +1,54 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Eerste Stappen
+description: Aan de slag met Create T3 App
 layout: ../../../layouts/docs.astro
-lang: en
+lang: nl
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+Je hebt zojuist een nieuwe T3 App in de steigers gezet en staat klaar voor de start. Hier is het minimale om je app werkende te krijgen.
 
 ## Database
 
 ### MySQL, PostgreSQL
 
-If you chose MySQL or PostgreSQL as your database, your T3 app will come with a `start-database.sh` bash script that can create a docker container with a database for local development. If you already have a database, feel free to delete this file and put your database credentials in `.env`. On macOS, you can also use [DBngin](https://dbngin.com/) if you don't want to use docker.
+Als je MySQL of PostgreSQL als je database hebt gekozen, zal T3 app een `start-database.sh` bash-script meeleveren dat een docker container met een database kan maken voor lokale ontwikkling. Als je al een database hebt, voel je vrij om dit bestand te verwijderen en je databasegegevens in `.env` te plaatsen. Op macOS kun je ook [DBNgin](https://dbngin.com/) in plaats van Docker gebruiken.
 
 ### Prisma
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
+Als je app Prisma bevat, voer dan `npx prism db push` vanaf de hoofdmap van je app uit. Dit commando zal je Prisma-schema met je database synchroniseren en zal de TypeScript-types voor de Prisma-Client genereren op basis van je schema. Onthoud dat je [de TypeScript-server moet herstarten](https://tinytip.co/tips/vscode-restart-ts/) nadat je dit hebt gedaan zodat deze de gegenereerde types kan ontdekken.
 
 ### Drizzle
 
-If your app includes Drizzle, check the `.env` file for instructions on how to construct your `DATABASE_URL` env variable. Once your env file is ready, run `pnpm db:push` (or the equivalent for other package managers) to push your schema.
+Als je app Drizzle bevat, controleer dan het `.env`-bestand voor instructies over hoe je je `DATABSE_URL` omgevingsvariabele moet opbouwen. Wanneer je env-bestand klaar is, voer `pnpm db:push` (of de equivalent voor andere package managers) uit om je schema te pushen.
 
-## Authentication
+## Authenticatie
 
-If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
+Als je app NextAuth.js bevat, laten we je aan de slag gaan met de `DiscordProvider`. Dit is een van de eenvoudigste providers die NextAuth.js biedt, maar vereist nog steeds een kleine initiële installatie door jou.
 
-Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth.js offers.
+Natuurlijk, als je liever een andere authenticatieprovider gebruikt, kun je ook een van de [vele providers](https://next-auth.js.org/providers/) gebruiken die NextAuth.js biedt.
 
-1. You will need a Discord account, so register one if you haven't already.
-2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
-3. Once your application has been created, navigate to "Settings → OAuth2 → General".
-4. Copy the "Client ID" and add it to your `.env` as `DISCORD_CLIENT_ID`.
-5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `DISCORD_CLIENT_SECRET`.
-6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-   - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes.
-8. Set the `NEXTAUTH_SECRET` in `.env`. In development any string will work, for production see the note in `.env` on generating a secure secret.
+1. Je zal een Discord-account nodig hebben, dus maak er een aan als je dat nog niet hebt gedaan.
+2. Navigeer naar https://discord.com/developers/applications en klik op "New Application" in de rechterbovenhoek. Geef je applicatie een naam en stem in met de Servicevoorwaarden.
+3. Wanneer je applicatie is gemaakt, navigeer je naar "Settings → OAuth2 → General".
+4. Kopieer de "Client ID" and voeg het toe aan je `.env` als `DISCORD_CLIENT_ID`.
+5. Klik op "Reset Secret", kopieer het nieuwe secret en voeg het toe aan je `.env.` als `DISCORD_CLIENT_SECRET`.
+6. Klik op "Add Redirect" en typ `http://localhost:3000/api/auth/callback/discord`.
+   - Voor een productie-uitrol volg je de voorgaande stappen om een andere Discord-applicatie te maken, maar vervang je deze keer `http://localhost:3000` met de URL waarnaar je uitrolt.
+7. Bewaar de Wijzigingen.
+8. Stel de `NEXTAUTH_SECRET` in `.env` in. Tijdens ontwikkeling is een willekeurige string voldoende, voor productie zie de opmerking in `.env` over het genereren van een veilig secret.
 
-You should now be able to log in.
+Je zou nu moeten kunnen inloggen.
 
-## Editor Setup
+## Editor Instellen
 
-The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
+De volgende extensies zijn aangeraden voor een optimale ontwikkelaarservaring. De onderstaande links bieden editor-specifieke plugin-ondersteuning.
 
 - [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
 - [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
 - [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
-## Next Steps
+## Volgende Stappen
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/post.ts` to see how tRPC queries work.
-- Have a look around the Create T3 App docs, as well as the docs of the packages that your app includes.
-- Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+- Als je app tRPC bevat, bekijk `src/pages/index.tsx` en `src/server/api/routers/post.ts` om te bekijken hoe tRPC-queries werken.
+- Kijk eens rond in de Create T3 App-documentatie en de documentatie van packages die je app bevat.
+- Word lid van onze [Discord](https://t3.gg/discord) en geef ons een ster op [GitHub](https://github.com/t3-oss/create-t3-app)! :)
