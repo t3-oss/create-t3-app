@@ -25,7 +25,7 @@ Vercel zal waarschijnlijk je buildcommando en publish-folder automatisch configu
 
 ![Nieuw projeect bij Vercel](/images/vercel-new-project.webp)
 
-2. Importeer het GitHub-repository met je project.
+2. Importeer de GitHub-repository met je project.
 
 ![Repository importeren](/images/vercel-import-project.webp)
 
@@ -33,7 +33,7 @@ Vercel zal waarschijnlijk je buildcommando en publish-folder automatisch configu
 
 ![Omgevingsvariablen toevoegen](/images/vercel-env-vars.webp)
 
-4. Klik **Deploy**. Vanaf nu zal telkens wanneer je een wijziging naar je repository pusht zal Vercel je app automatisch heruitrollen!
+4. Klik **Deploy**. Vanaf nu zal telkens wanneer je een wijziging naar je repository pusht zal Vercel je app automatisch opnieuw uitrollen!
 
 ## De Vercel CLI Gebruiken
 
@@ -43,13 +43,13 @@ Om vanaf de commandline uit te rollen moet je eerst [de Vercel CLI globaal insta
 npm i -g vercel
 ```
 
-Vor het [`vercel`](https://vercel.com/docs/cli/deploying-from-cli)-commando uit om je project uit te rollen.
+Voer het [`vercel`](https://vercel.com/docs/cli/deploying-from-cli)-commando uit om je project uit te rollen.
 
 ```bash
 vercel
 ```
 
-Voeg `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` toe voor omgevingsvariablen zoals de databaseconnectiestring. Gebruik `--yes` als je de uitrolvragen wilt overslaan en het standaardantwoord voor elk ervan wilt geven.
+Voeg `--env DATABASE_URL=YOUR_DATABASE_URL_HERE` toe voor omgevingsvariablen zoals de databaseconnectiestring. Gebruik `--yes` als je de uitrolvragen wilt overslaan en het standaardantwoord voor elke vraag wilt geven.
 
 ```bash
 vercel --env DATABASE_URL=YOUR_DATABASE_URL_HERE --yes

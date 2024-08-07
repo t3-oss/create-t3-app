@@ -357,7 +357,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Andere Aanbevelingen", link: "nl/other-recs" },
     ],
     Usage: [
-      { text: "First Steps", link: "nl/usage/first-steps" },
+      { text: "Eerste Stappen", link: "nl/usage/first-steps" },
       { text: "Next.js", link: "nl/usage/next-js" },
       { text: "TypeScript", link: "nl/usage/typescript" },
       { text: "tRPC", link: "nl/usage/trpc" },

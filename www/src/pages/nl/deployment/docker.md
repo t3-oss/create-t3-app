@@ -132,7 +132,7 @@ CMD ["server.js"]
 
 ## Lokaal bouwen en uitvoeren
 
-Bouw en voer dit image lokaal uit met de volgende commando's:
+Bouw en voer deze image lokaal uit met de volgende commando's:
 
 ```bash
 docker build -t ct3a-docker --build-arg NEXT_PUBLIC_CLIENTVAR=clientvar .
