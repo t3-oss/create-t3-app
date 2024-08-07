@@ -8,7 +8,6 @@ import { isInsideGitRepo, isRootGitRepo } from "./git.js";
 export const logNextSteps = async ({
   projectName = DEFAULT_APP_NAME,
   packages,
-  appRouter,
   noInstall,
   projectDir,
   databaseProvider,
@@ -35,7 +34,7 @@ export const logNextSteps = async ({
   }
 
   if (["postgres", "mysql"].includes(databaseProvider)) {
-    logger.info("  ./start-database.sh");
+    logger.info("  Start up a database, if needed using './start-database.sh'");
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
@@ -56,22 +55,4 @@ export const logNextSteps = async ({
     logger.info(`  git init`);
   }
   logger.info(`  git commit -m "initial commit"`);
-
-  if (appRouter) {
-    logger.warn(
-      `\nThank you for trying out the App Router option. If you encounter any issues, please open an issue!`
-    );
-  }
-
-  if (packages?.drizzle.inUse) {
-    logger.warn(
-      `\nThank you for trying out the new Drizzle option. If you encounter any issues, please open an issue!`
-    );
-  }
-
-  if (databaseProvider === "planetscale") {
-    logger.warn(
-      `\nNote: We use the PlanetScale driver so that you can query your data in edge runtimes. If you want to use a different driver, you'll need to change it yourself.`
-    );
-  }
 };

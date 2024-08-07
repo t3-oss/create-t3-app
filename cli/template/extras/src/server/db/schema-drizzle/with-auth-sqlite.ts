@@ -21,27 +21,32 @@ export const posts = createTable(
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     name: text("name", { length: 256 }),
-    createdById: text("createdById", { length: 255 })
+    createdById: text("created_by", { length: 255 })
       .notNull()
       .references(() => users.id),
     createdAt: int("created_at", { mode: "timestamp" })
-      .default(sql`CURRENT_TIMESTAMP`)
+      .default(sql`(unixepoch())`)
       .notNull(),
-    updatedAt: int("updatedAt", { mode: "timestamp" }),
+    updatedAt: int("updatedAt", { mode: "timestamp" }).$onUpdate(
+      () => new Date()
+    ),
   },
   (example) => ({
-    createdByIdIdx: index("createdById_idx").on(example.createdById),
+    createdByIdIdx: index("created_by_idx").on(example.createdById),
     nameIndex: index("name_idx").on(example.name),
   })
 );
 
 export const users = createTable("user", {
-  id: text("id", { length: 255 }).notNull().primaryKey(),
+  id: text("id", { length: 255 })
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   name: text("name", { length: 255 }),
   email: text("email", { length: 255 }).notNull(),
-  emailVerified: int("emailVerified", {
+  emailVerified: int("email_verified", {
     mode: "timestamp",
-  }).default(sql`CURRENT_TIMESTAMP`),
+  }).default(sql`(unixepoch())`),
   image: text("image", { length: 255 }),
 });
 
@@ -52,14 +57,14 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const accounts = createTable(
   "account",
   {
-    userId: text("userId", { length: 255 })
+    userId: text("user_id", { length: 255 })
       .notNull()
       .references(() => users.id),
     type: text("type", { length: 255 })
       .$type<AdapterAccount["type"]>()
       .notNull(),
     provider: text("provider", { length: 255 }).notNull(),
-    providerAccountId: text("providerAccountId", { length: 255 }).notNull(),
+    providerAccountId: text("provider_account_id", { length: 255 }).notNull(),
     refresh_token: text("refresh_token"),
     access_token: text("access_token"),
     expires_at: int("expires_at"),
@@ -72,7 +77,7 @@ export const accounts = createTable(
     compoundKey: primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
-    userIdIdx: index("account_userId_idx").on(account.userId),
+    userIdIdx: index("account_user_id_idx").on(account.userId),
   })
 );
 
@@ -83,7 +88,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 export const sessions = createTable(
   "session",
   {
-    sessionToken: text("sessionToken", { length: 255 }).notNull().primaryKey(),
+    sessionToken: text("session_token", { length: 255 }).notNull().primaryKey(),
     userId: text("userId", { length: 255 })
       .notNull()
       .references(() => users.id),
@@ -99,7 +104,7 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
 }));
 
 export const verificationTokens = createTable(
-  "verificationToken",
+  "verification_token",
   {
     identifier: text("identifier", { length: 255 }).notNull(),
     token: text("token", { length: 255 }).notNull(),

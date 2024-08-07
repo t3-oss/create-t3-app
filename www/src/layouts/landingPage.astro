@@ -24,7 +24,7 @@ const currentPage = Astro.url.pathname;
 const { isNotFound } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
   <head>
     <HeadCommon />

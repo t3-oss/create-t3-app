@@ -1,12 +1,12 @@
 ---
-title: Folder Structure
-description: Folder structure of a newly scaffolded T3 App
+title: Folder Structure (App)
+description: Folder structure of a newly scaffolded T3 App with the App Router
 layout: ../../layouts/docs.astro
 lang: en
 isMdx: true
 ---
 
-import Diagram from "../../components/docs/folderStructureDiagram.astro";
+import Diagram from "../../components/docs/folderStructureDiagramApp.astro";
 import Form from "../../components/docs/folderStructureForm.astro";
 
 Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
@@ -38,37 +38,37 @@ Used for environment variable validation and type definitions - see [Environment
 </div>
 <div>
 
-### `src/pages`
+### `src/app`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
-
-</div>
-<div data-components="nextauth trpc">
-
-#### `src/pages/api`
-
-The `api` folder contains all the API routes of the Next.js application. See [Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction) for info on api routes.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/pages/api/auth/[...nextauth].ts`
-
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+The `app` folder contains all the routes of the Next.js application. The `page.tsx` file at the root directory of `/app` is the homepage of the application. The `layout.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
 
 </div>
 <div data-components="trpc">
 
-#### `src/pages/api/trpc/[trpc].ts`
+#### `src/app/_components/post.tsx`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+The `post.tsx` file is an example of a client component that calls a tRPC mutation.
 
 </div>
-<div data-components="trpc prisma nextauth">
+<div data-components="nextauth">
+
+#### `src/app/api/auth/[...nextauth]/route.ts`
+
+The `[...nextauth]/route.ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) for info on catch-all/slug routes.
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/api/trpc/[trpc]/route.ts`
+
+The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/app/routing/dynamic-routes) for info on catch-all/slug routes.
+
+</div>
+<div data-components="trpc prisma nextauth drizzle">
 
 ### `src/server`
 
-The `server` folder is used to clearly separate server-side code from client-side code.
+The `server` folder is used to clearly separate code that is only used on the server.
 
 </div>
 <div data-components="nextauth+trpc">
@@ -83,6 +83,27 @@ The main entrypoint for server-side authentication logic. Here, we setup the Nex
 #### `src/server/db.ts`
 
 The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+
+</div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+The `db` folder contains the Drizzle client and schema. Note that drizzle also requires the `drizzle.config.ts` file (see below).
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+The `index.ts` file is used to instantiate the Drizzle client at global scope. See [Drizzle usage](usage/drizzle#drizzle-client) and [best practices for using Drizzle with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+The `schema.ts` file is used to define the database schema. See [Drizzle usage](usage/drizzle#drizzle-client) and [best practices for using Drizzle with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
 
 </div>
 <div data-components="trpc">
@@ -126,25 +147,32 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-serverapirootts) for more information.
 
 </div>
-<div>
+<div data-components="trpc">
 
-### `src/styles`
+### `src/trpc`
 
-The `styles` folder contains the global styles of the application.
+The `trpc` folder contains the setup to let you call tRPC procedures from server components and client components.
 
 </div>
 <div data-components="trpc">
 
-### `src/utils`
+#### `src/trpc/query-client.ts`
 
-The `utils` folder is used to store commonly re-used utility functions.
+The `query-client.ts` file creates the Query Client that tRPC uses to cache and deduplicate data in client components.
 
 </div>
 <div data-components="trpc">
 
-#### `src/utils/api.ts`
+#### `src/trpc/react.tsx`
 
-The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+The `react.tsx` file is the front-end entrypoint to tRPC. It also contains utility types for the router inputs and outputs. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/server.ts`
+
+The `server.ts` file is the entrypoint for using tRPC in Server Components.
 
 </div>
 <div>
@@ -168,11 +196,25 @@ The `.env.example` file shows example environment variables based on the chosen 
 The `.eslintrc.cjs` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
 
 </div>
+<div data-components="drizzle">
+
+### `db.sqlite (sqlite only)`
+
+The `db.sqlite` file contains your development database. This file is only created after running the `db:push` parseCommandLine, and ignored by git.
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+The `drizzle.config.ts` file is used to configure drizzle kit. See [the documentation](https://orm.drizzle.team/kit-docs/config-reference) for more information.
+
+</div>
 <div>
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/app/building-your-application/configuring/typescript) for more information.
 
 </div>
 <div>
@@ -196,17 +238,17 @@ The `postcss.config.cjs` file is used for Tailwind PostCSS usage. See [Tailwind 
 The `prettier.config.mjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
 
 </div>
+<div data-components="drizzle">
+
+### `start-database.sh (mysql or postgres only)`
+
+The `start-database.sh` file is used to start the database. Please see the comments inside the file for information on how to start the database with your operating system.
+
+</div>
 <div>
 
 ### `tsconfig.json`
 
 The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
-
-</div>
-<div>
-
-### `drizzle.config.ts`
-
-The `drizzle.config.ts` file is used to configure drizzle kit. See [the documentation](https://orm.drizzle.team/kit-docs/config-reference) for more information.
 
 </div>
