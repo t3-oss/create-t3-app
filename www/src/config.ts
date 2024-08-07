@@ -375,7 +375,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Prisma", link: "nl/usage/prisma" },
       { text: "NextAuth.js", link: "nl/usage/next-auth" },
       {
-        text: "Environment Variables",
+        text: "Omgevingsvariabelen",
         link: "nl/usage/env-variables",
       },
       { text: "Tailwind CSS", link: "nl/usage/tailwind" },
