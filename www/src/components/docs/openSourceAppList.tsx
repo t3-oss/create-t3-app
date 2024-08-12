@@ -310,11 +310,11 @@ const projects: App[] = [
     link: "https://sunal-rahal.vercel.app",
   },
   {
-    description: "Tasky - Simplify task management, boost collaboration, and achieve more together",
-    repoName: "ismaelherreradev/Tasky",
-    repo: "https://github.com/ismaelherreradev/Tasky",
-    linkName: "taskyboard.vercel.app",
-    link: "https://taskyboard.vercel.app/",
+    "description": "Tasky - Simplify task management, boost collaboration, and achieve more together",
+    "repoName": "ismaelherreradev/Tasky",
+    "repo": "https://github.com/ismaelherreradev/Tasky",
+    "linkName": "taskyboard.vercel.app",
+    "link": "https://taskyboard.vercel.app"
   },
 ];
 
