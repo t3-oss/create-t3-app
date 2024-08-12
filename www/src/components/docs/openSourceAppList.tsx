@@ -314,7 +314,7 @@ const projects: App[] = [
     repoName: "ismaelherreradev/Tasky",
     repo: "https://github.com/ismaelherreradev/Tasky",
     linkName: "taskyboard.vercel.app",
-    link: "https://taskyboard.vercel.app"
+    link: "https://taskyboard.vercel.app",
   },
 ];
 
