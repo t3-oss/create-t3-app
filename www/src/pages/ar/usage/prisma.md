@@ -42,11 +42,11 @@ dir: rtl
 ```
 
 ```ts:prisma/seed.ts
-import { prisma } from "../src/server/db/client";
+import { db } from "../src/server/db/client";
 
 async function main() {
   const id = "cl9ebqhxk00003b600tymydho";
-  await prisma.example.upsert({
+  await db.example.upsert({
     where: {
       id,
     },
@@ -59,11 +59,11 @@ async function main() {
 
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await db.$disconnect();
   })
   .catch(async (e) => {
     console.error(e);
-    await prisma.$disconnect();
+    await db.$disconnect();
     process.exit(1);
   });
 ```

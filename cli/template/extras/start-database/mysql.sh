@@ -38,7 +38,7 @@ if [ "$DB_PASSWORD" == "password" ]; then
   echo "You are using the default database password"
   read -p "Should we generate a random password for you? [y/N]: " -r REPLY
   if ! [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "Please set a password in the .env file and try again"
+    echo "Please change the default password in the .env file and try again"
     exit 1
   fi
   # Generate a random URL-safe password
