@@ -37,8 +37,7 @@ const projects: App[] = [
     link: "https://create-t3-turbo.vercel.app/",
   },
   {
-    description:
-      "T3 turborepo template with biomejs and both shadcn native and web ui",
+    description: "T3 turborepo template with biomejs and both shadcn native and web ui",
     repoName: "rajatsandeepsen/t3-turbo-biome",
     repo: "https://github.com/rajatsandeepsen/t3-turbo-biome",
     linkName: "create-t3-turbo.vercel.app",
@@ -53,8 +52,7 @@ const projects: App[] = [
   },
 
   {
-    description:
-      "Shoutify - Free, open-source, self-hosted social media management",
+    description: "Shoutify - Free, open-source, self-hosted social media management",
     repoName: "techsquidtv/shoutify",
     repo: "https://github.com/TechSquidTV/Shoutify",
     linkName: "shoutify.app",
@@ -63,8 +61,7 @@ const projects: App[] = [
   },
 
   {
-    description:
-      "Me3 - Describe yourself in 3 things and share with your friends.",
+    description: "Me3 - Describe yourself in 3 things and share with your friends.",
     repoName: "henriqgoncalvs/me3",
     repo: "https://github.com/henriqgoncalvs/me3",
     linkName: "me3-henriiqueg.vercel.app",
@@ -120,8 +117,7 @@ const projects: App[] = [
   },
 
   {
-    description:
-      "AI TTS Donations - FOSS AI Text To Speech service for Streamers.",
+    description: "AI TTS Donations - FOSS AI Text To Speech service for Streamers.",
     repoName: "mmattDonk/AI-TTS-Donations",
     repo: "https://github.com/mmattDonk/AI-TTS-Donations",
     linkName: "staging.solrock.mmattDonk.com",
@@ -177,8 +173,7 @@ const projects: App[] = [
   },
 
   {
-    description:
-      "Answer Overflow - Discord bot to index help channels into Google",
+    description: "Answer Overflow - Discord bot to index help channels into Google",
     repoName: "AnswerOverflow/AnswerOverflow",
     repo: "https://github.com/AnswerOverflow/AnswerOverflow",
     linkName: "answeroverflow.com",
@@ -210,8 +205,7 @@ const projects: App[] = [
   },
 
   {
-    description:
-      "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
+    description: "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
     repoName: "mohammed-bahumaish/prisma-editor",
     repo: "https://github.com/mohammed-bahumaish/prisma-editor",
     linkName: "prisma-editor.up.railway.app",
@@ -266,8 +260,7 @@ const projects: App[] = [
     link: "https://code-notes-app.vercel.app",
   },
   {
-    description:
-      "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
+    description: "Rao.Pics - :electron: 帮助你远程访问 Eagle、Pixcall、Billfish 的素材资源。",
     repoName: "meetqy/rao-pics",
     repo: "https://github.com/meetqy/rao-pics",
     linkName: "rao.pics",
@@ -281,8 +274,7 @@ const projects: App[] = [
     link: "https://eboto-mo.com/",
   },
   {
-    description:
-      "ImprovDB - The ultimate repository for improv games & exercises",
+    description: "ImprovDB - The ultimate repository for improv games & exercises",
     repoName: "aberonni/improvdb",
     repo: "https://github.com/aberonni/improvdb",
     linkName: "improvdb.com",
@@ -310,10 +302,10 @@ const projects: App[] = [
     link: "https://sunal-rahal.vercel.app",
   },
   {
-    description: "Tasky - Simplify task management, boost collaboration, and achieve more together",
-    repoName: "ismaelherreradev/Tasky",
-    repo: "https://github.com/ismaelherreradev/Tasky",
-    linkName: "taskyboard.vercel.app",
+    description: "Tasky - Simplify task management",
+    repoName: "ismaelherreradev/tasky",
+    repo: "https://github.com/ismaelherreradev/tasky",
+    linkName: "taskyboard",
     link: "https://taskyboard.vercel.app",
   },
 ];
