@@ -27,7 +27,7 @@ export const postRouter = createTRPCRouter({
       return post;
     }),
 
-  getLatest: protectedProcedure.query(() => {
+  getLatest: publicProcedure.query(() => {
     return post;
   }),
 
