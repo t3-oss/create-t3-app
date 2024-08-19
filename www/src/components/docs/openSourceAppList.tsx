@@ -316,6 +316,13 @@ const projects: App[] = [
     linkName: "RobertHavelaar.dev",
     link: "https://www.roberthavelaar.dev/",
   },
+  {
+    description: "Tasky - Simplify task management",
+    repoName: "ismaelherreradev/tasky",
+    repo: "https://github.com/ismaelherreradev/tasky",
+    linkName: "taskyboard",
+    link: "https://taskyboard.vercel.app",
+  },
 ];
 
 export default function OpenSourceAppList({
