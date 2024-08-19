@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.37.0
+
+### Minor Changes
+
+- [#1936](https://github.com/t3-oss/create-t3-app/pull/1936) [`2d1878e53767e35ab4b22a37622fbf0d5fdb4da7`](https://github.com/t3-oss/create-t3-app/commit/2d1878e53767e35ab4b22a37622fbf0d5fdb4da7) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - upgrade to typescript eslint v8
+
+- [#1936](https://github.com/t3-oss/create-t3-app/pull/1936) [`2d1878e53767e35ab4b22a37622fbf0d5fdb4da7`](https://github.com/t3-oss/create-t3-app/commit/2d1878e53767e35ab4b22a37622fbf0d5fdb4da7) Thanks [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)! - upgrade to drizzle-orm@0.33 and corresponding drizzle-kit version
+
+### Patch Changes
+
+- [#1954](https://github.com/t3-oss/create-t3-app/pull/1954) [`f9f96d069af87d4372dc917e3625409859e4e615`](https://github.com/t3-oss/create-t3-app/commit/f9f96d069af87d4372dc917e3625409859e4e615) Thanks [@ronanru](https://github.com/ronanru)! - fix typo
+
 ## 7.36.2
 
 ### Patch Changes
