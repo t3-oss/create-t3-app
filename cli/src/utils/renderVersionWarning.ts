@@ -55,12 +55,14 @@ function checkForLatestVersion(): Promise<string> {
               resolve((JSON.parse(body) as DistTagsBody).latest);
             });
           } else {
+            // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
             reject();
           }
         }
       )
       .on("error", () => {
         // logger.error("Unable to check for latest version.");
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
         reject();
       });
   });
