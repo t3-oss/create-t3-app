@@ -60,6 +60,11 @@ const companies: Company[] = [
     linkName: "aikeywording.com/",
     link: "https://aikeywording.com/",
   },
+  {
+    name: "HIX AI",
+    linkName: "HIX AI",
+    link: "https://hix.ai",
+  },
 ];
 
 export default function CompanyList({

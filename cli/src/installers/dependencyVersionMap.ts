@@ -14,13 +14,13 @@ export const dependencyVersionMap = {
   "@prisma/adapter-planetscale": "^5.14.0",
 
   // Drizzle
-  "drizzle-orm": "^0.30.10",
-  "drizzle-kit": "^0.21.4",
+  "drizzle-kit": "^0.24.0",
+  "drizzle-orm": "^0.33.0",
   "eslint-plugin-drizzle": "^0.2.3",
-  mysql2: "^3.9.7",
-  "@planetscale/database": "^1.18.0",
+  mysql2: "^3.11.0",
+  "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",
-  "@libsql/client": "^0.6.0",
+  "@libsql/client": "^0.9.0",
 
   // TailwindCSS
   tailwindcss: "^3.4.3",
