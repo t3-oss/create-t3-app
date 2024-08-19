@@ -12,12 +12,7 @@ const config = {
     ecmaVersion: "latest",
     sourceType: "module",
     tsconfigRootDir: __dirname,
-    project: [
-      "./tsconfig.json",
-      "./cli/tsconfig.eslint.json", // separate eslint config for the CLI since we want to lint and typecheck differently due to template files
-      "./upgrade/tsconfig.json",
-      "./www/tsconfig.json",
-    ],
+    projectService: true,
   },
   overrides: [
     // Template files don't have reliable type information
