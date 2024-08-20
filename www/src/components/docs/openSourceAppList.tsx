@@ -309,6 +309,20 @@ const projects: App[] = [
     linkName: "SunalRhal",
     link: "https://sunal-rahal.vercel.app",
   },
+  {
+    description: "RobertHavelaar.dev - A Modern Portfolio and Tool Showcase",
+    repoName: "EastTexasElectronics/portfolio",
+    repo: "https://github.com/EastTexasElectronics/portfolio",
+    linkName: "RobertHavelaar.dev",
+    link: "https://www.roberthavelaar.dev/",
+  },
+  {
+    description: "Tasky - Simplify task management",
+    repoName: "ismaelherreradev/tasky",
+    repo: "https://github.com/ismaelherreradev/tasky",
+    linkName: "taskyboard",
+    link: "https://taskyboard.vercel.app",
+  },
 ];
 
 export default function OpenSourceAppList({
