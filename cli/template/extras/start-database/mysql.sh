@@ -16,6 +16,11 @@ if ! [ -x "$(command -v docker)" ]; then
   exit 1
 fi
 
+if ! docker info > /dev/null 2>&1; then
+  echo "Docker deamon is not up and running. Please start docker and try again."
+  exit 1
+fi
+
 if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   echo "Database container '$DB_CONTAINER_NAME' already running"
   exit 0
