@@ -21,6 +21,7 @@ export const dependencyVersionMap = {
   "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",
   "@libsql/client": "^0.9.0",
+  "@neondatabase/serverless": "^0.9.4",
 
   // TailwindCSS
   tailwindcss: "^3.4.3",

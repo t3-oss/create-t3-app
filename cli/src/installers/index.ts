@@ -27,6 +27,7 @@ export const databaseProviders = [
   "postgres",
   "sqlite",
   "planetscale",
+  "neon",
 ] as const;
 export type DatabaseProvider = (typeof databaseProviders)[number];
 
@@ -39,6 +40,7 @@ export interface InstallerOptions {
   projectName: string;
   scopedAppName: string;
   databaseProvider: DatabaseProvider;
+  drizzleDatabaseProvider: DatabaseProvider;
 }
 
 export type Installer = (opts: InstallerOptions) => void;
