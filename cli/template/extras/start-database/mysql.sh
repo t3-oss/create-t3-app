@@ -17,7 +17,7 @@ if ! [ -x "$(command -v docker)" ]; then
 fi
 
 if ! docker info > /dev/null 2>&1; then
-  echo "Docker deamon is not up and running. Please start docker and try again."
+  echo "Docker daemon is not running. Please start Docker and try again."
   exit 1
 fi
 
