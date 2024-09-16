@@ -1,0 +1,254 @@
+---
+title: 文件夹结构 (App)
+description: 新创建的 T3 App 的文件夹结构
+layout: ../../layouts/docs.astro
+lang: zh-hans
+isMdx: true
+---
+
+import Diagram from "../../components/docs/folderStructureDiagramApp.astro";
+import Form from "../../components/docs/folderStructureForm.astro";
+
+请选择你要安装的依赖包来查看一个对应新建的 T3 App 的文件夹结构。继续往下阅读，你可以从每个文件夹的描述了解它们对应的用途。
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+`prisma` 文件夹**包含**了 `schema.prisma` 文件，该文件用于配置数据库连接和数据库模式。如果使用的话，它也是存储迁移文件和/或种子脚本的位置。有关更多信息，请参阅 [Prisma 使用](/zh-hans/usage/prisma)。
+
+</div>
+<div>
+
+### `public`
+
+文件夹 `public` 包含了一些将被托管在服务器上的静态资源。例如文件 `favicon.ico`。
+
+</div>
+<div>
+
+### `src/env`
+
+用于环境变量验证和类型定义 - 请参阅 [环境变量](/zh-hans/usage/env-variables)。
+
+</div>
+<div>
+
+### `src/app`
+
+`app` 文件夹包含了 Next.js 应用程序的所有路由。根目录 `/app` 下的 `page.tsx` 文件是应用程序的主页。`layout.tsx` 文件用于用提供者包装应用程序。有关更多信息，请参阅 [Next.js 文档](https://nextjs.org/docs/basic-features/pages)。
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/_components/post.tsx`
+
+`post.tsx` 文件是一个调用 tRPC mutation 的客户端组件示例。
+
+</div>
+<div data-components="nextauth">
+
+#### `src/app/api/auth/[...nextauth]/route.ts`
+
+`[...nextauth]/route.ts` 文件是 NextAuth.js 认证的 slug 路由。它用于处理认证请求。有关 NextAuth.js 的更多信息，请参阅 [NextAuth.js 使用](usage/next-auth)，有关 catch-all/slug 路由的信息，请参阅 [Next.js 动态路由文档](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)。
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/api/trpc/[trpc]/route.ts`
+
+`[trpc].ts` 文件是 tRPC API 的入口点。它用于处理 tRPC 请求。有关此文件的更多信息，请参阅 [tRPC 用法](usage/trpc#-pagesapitrpctrpcts)，有关 catch-all/slug 路由的信息，请参阅 [Next.js 动态路由文档](https://nextjs.org/docs/app/routing/dynamic-routes)。
+
+</div>
+<div data-components="trpc prisma nextauth drizzle">
+
+### `src/server`
+
+`server` 文件夹用于清晰地分离仅在服务器上使用的代码。
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+这是服务器端认证逻辑的主要入口点。在这里，我们设置 NextAuth.js [配置选项](usage/next-auth)，执行[模块增强](usage/next-auth#inclusion-of-userid-on-the-session)，并提供一些认证的 DX 实用工具，如在服务器端检索用户会话。有关更多信息，请参阅 [NextAuth.js 用法](usage/next-auth#usage-with-trpc)。
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+`db.ts` 文件用于在全局范围内实例化 Prisma 客户端。有关更多信息，请参阅 [Prisma 用法](usage/prisma#prisma-client) 和 [在 Next.js 中使用 Prisma 的最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)。
+
+</div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+`db` 文件夹包含 Drizzle 客户端和 schema。请注意，drizzle 还需要 `drizzle.config.ts` 文件（见下文）。
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+`index.ts` 文件用于在全局范围内实例化 Drizzle 客户端。有关更多信息，请参阅 [Drizzle 用法](usage/drizzle#drizzle-client) 和 [在 Next.js 中使用 Drizzle 的最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)。
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+`schema.ts` 文件用于定义数据库模式。有关更多信息，请参阅 [Drizzle 用法](usage/drizzle#drizzle-client) 和 [在 Next.js 中使用 Drizzle 的最佳实践](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)。
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+`api` 文件夹包含 tRPC 服务器端代码。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+`routers` 文件夹包含你所有的 tRPC 子路由。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+`example.ts` 文件是一个利用 `publicProcedure` 辅助函数来演示如何创建公共 tRPC 路由的示例。
+
+根据你选择的包，这个路由器可能包含更多或更少的路由，以便最好地演示满足你需求的用法。
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+`trpc.ts` 文件是你的 tRPC 后端的主要配置文件。在这里我们：
+
+1. 定义在 tRPC 请求中使用的上下文。有关更多信息，请参阅 [tRPC 用法](usage/trpc#-serverapitrpcts)。
+2. 导出过程辅助函数。有关更多信息，请参阅 [tRPC 用法](usage/trpc#-serverapitrpcts)。
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+`root.ts` 文件用于合并 tRPC 路由器并将它们导出为单个路由器，以及路由器的类型定义。有关更多信息，请参阅 [tRPC 用法](usage/trpc#-serverapirootts)。
+
+</div>
+<div data-components="trpc">
+
+### `src/trpc`
+
+`trpc` 文件夹包含让你能够从服务器组件和客户端组件调用 tRPC 过程的设置代码。
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/query-client.ts`
+
+`query-client.ts` 文件创建了 tRPC 用于在客户端组件中缓存和去重数据的查询客户端。
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/react.tsx`
+
+`react.tsx` 文件是 tRPC 的前端入口点。它还包含路由器输入和输出的实用类型。有关更多信息，请参阅 [tRPC 用法](usage/trpc#-utilsapits)。
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/server.ts`
+
+`server.ts` 文件是在服务器组件中使用 tRPC 的入口点。
+
+</div>
+<div>
+
+### `.env`
+
+`.env` 文件用于存储环境变量。有关更多信息，请参阅 [环境变量](usage/env-variables)。此文件**不应**提交到 git 历史记录中。
+
+</div>
+<div>
+
+### `.env.example`
+
+`.env.example` 文件展示了基于所选库的示例环境变量。此文件应该提交到 git 历史记录中。
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+`.eslintrc.cjs` 文件用于配置 ESLint。有关更多信息，请参阅 [ESLint 文档](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)。
+
+</div>
+<div data-components="drizzle">
+
+### `db.sqlite (仅限 sqlite)`
+
+`db.sqlite` 文件包含你的开发数据库。此文件仅在运行 `db:push` 命令后创建，并被 git 忽略。
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+`drizzle.config.ts` 文件用于配置 drizzle kit。有关更多信息，请参阅 [文档](https://orm.drizzle.team/kit-docs/config-reference)。
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+`next-env.d.ts` 文件确保 Next.js 类型被 TypeScript 编译器识别。**你不应删除或编辑它，因为它可能随时发生更改。** 有关更多信息，请参阅 [Next.js 文档](https://nextjs.org/docs/app/building-your-application/configuring/typescript)。
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+`next.config.mjs` 文件用于配置 Next.js。有关更多信息，请参阅 [Next.js 文档](https://nextjs.org/docs/api-reference/next.config.js/introduction)。注意：使用 .mjs 扩展名是为了允许 ESM 导入。
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.cjs`
+
+`postcss.config.cjs` 文件用于 Tailwind PostCSS 使用。有关更多信息，请参阅 [Tailwind PostCSS 文档](https://tailwindcss.com/docs/installation/using-postcss)。
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.mjs`
+
+`prettier.config.mjs` 文件用于配置 Prettier，包括 prettier-plugin-tailwindcss 插件，以格式化 Tailwind CSS 类。有关更多信息，请参阅 [Tailwind CSS 博客文章](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)。
+
+</div>
+<div data-components="drizzle">
+
+### `start-database.sh (仅限 mysql 或 postgres)`
+
+`start-database.sh` 文件用于启动数据库。请查看文件内的注释，了解如何使用你的操作系统启动数据库。
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+`tsconfig.json` 文件用于配置 TypeScript。为了确保 Create T3 App 及其库的最佳使用，启用了一些非默认选项，如严格模式。有关更多信息，请参阅 [TypeScript 文档](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) 或 [TypeScript 使用](usage/typescript)。
+
+</div>

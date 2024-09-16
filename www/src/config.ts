@@ -389,6 +389,7 @@ export const SIDEBAR: Sidebar = {
       { text: "为什么选择 CT3A?", link: "zh-hans/why" },
       { text: "安装", link: "zh-hans/installation" },
       { text: "文件夹结构 (Pages)", link: "zh-hans/folder-structure-pages" },
+      { text: "文件夹结构 (App)", link: "zh-hans/folder-structure-app" },
       { text: "常见疑问", link: "zh-hans/faq" },
       { text: "T3 合集", link: "zh-hans/t3-collection" },
       { text: "其他推荐", link: "zh-hans/other-recs" },
