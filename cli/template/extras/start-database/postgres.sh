@@ -17,7 +17,7 @@ if ! [ -x "$(command -v docker)" ]; then
 fi
 
 if ! [ -x "$(command -v docker info)" ]; then
-  echo -e "Docker is not runnning. Please start docker and try again. If you are WSL open docker desktop to enable docker on WSL"
+  echo -e "Docker is not runnning. Please start docker and try again. If you are on WSL open docker desktop to enable docker on WSL"
   exit 1
 fi
 
