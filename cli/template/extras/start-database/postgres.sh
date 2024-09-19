@@ -16,6 +16,11 @@ if ! [ -x "$(command -v docker)" ]; then
   exit 1
 fi
 
+if ! [ -x "$(command -v docker info)" ]; then
+  echo -e "Docker is not runnning. Please start docker and try again. If you are WSL open docker desktop to enable docker on WSL"
+  exit 1
+fi
+
 if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   echo "Database container '$DB_CONTAINER_NAME' already running"
   exit 0
