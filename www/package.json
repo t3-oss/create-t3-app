@@ -11,7 +11,7 @@
     "format": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --write",
     "format:check": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --check",
     "lint": "eslint . --report-unused-disable-directives",
-    "lint:fix": "pnpm lint --fix",
+    "lint:fix": "bun lint --fix",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

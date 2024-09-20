@@ -70,14 +70,14 @@ WORKDIR /app
 
 COPY prisma ./
 
-# 使用 PNPM 包管理工具安装依赖包
+# 使用 bun 包管理工具安装依赖包
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
+COPY package.json yarn.lock* package-lock.json* bun-lock.yaml\* ./
 
 RUN \
  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
  elif [ -f package-lock.json ]; then npm ci; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+ elif [ -f bun-lock.yaml ]; then yarn global add bun && bun i; \
  else echo "Lockfile not found." && exit 1; \
  fi
 
@@ -95,7 +95,7 @@ COPY . .
 RUN \
  if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
  elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
+ elif [ -f bun-lock.yaml ]; then yarn global add bun && SKIP_ENV_VALIDATION=1 bun run build; \
  else echo "Lockfile not found." && exit 1; \
  fi
 

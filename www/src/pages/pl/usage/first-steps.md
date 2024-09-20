@@ -15,7 +15,7 @@ Jeżeli twoja aplikacja zawiera Prismę, koniecznie uruchom `npx prisma db push`
 
 ### Drizzle
 
-Jeżeli twoja aplikacja zawiera Drizzle, sprawdź plik `.env` po instrukcje jak stworzyć swój `DATABASE_URL`. Po dodaniu `DATABASE_URL` do pliku `.env` uruchom `pnpm db:push` ( lub odpowiednik dla innych menedżerów pakietów) - dokonana zostanie synchronizacja schematów twojej bazy danych.
+Jeżeli twoja aplikacja zawiera Drizzle, sprawdź plik `.env` po instrukcje jak stworzyć swój `DATABASE_URL`. Po dodaniu `DATABASE_URL` do pliku `.env` uruchom `bun db:push` ( lub odpowiednik dla innych menedżerów pakietów) - dokonana zostanie synchronizacja schematów twojej bazy danych.
 
 ## Uwierzytelnianie
 

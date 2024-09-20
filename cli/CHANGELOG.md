@@ -1031,7 +1031,7 @@
 - added JSDoc type to clientEnv in all env-schema ([#240](https://github.com/t3-oss/create-t3-app/issues/240)) ([9cb5ebb](https://github.com/t3-oss/create-t3-app/commit/9cb5ebbb2a0147ce15726c7e1a6c6be4065bc2dc))
 - clarify some comments and rename some files in env ([#245](https://github.com/t3-oss/create-t3-app/issues/245)) ([2048783](https://github.com/t3-oss/create-t3-app/commit/2048783bd26f7f0522357a3ab1e74e6f560a221c))
 - remove semicolon in \_app.tsx with next-auth to avoid early return ([1be7713](https://github.com/t3-oss/create-t3-app/commit/1be771393628631b818b46d3f3bf1ca41ad99dce))
-- title being offset when using yarn/pnpm ([c881f00](https://github.com/t3-oss/create-t3-app/commit/c881f00430f606040a448eecc41e779ab0c728a7))
+- title being offset when using yarn/bun ([c881f00](https://github.com/t3-oss/create-t3-app/commit/c881f00430f606040a448eecc41e779ab0c728a7))
 
 ### [5.2.1](https://github.com/t3-oss/create-t3-app/compare/v5.2.0...v5.2.1) (2022-07-19)
 
@@ -1109,7 +1109,7 @@
 - format contributing.md ([4111476](https://github.com/t3-oss/create-t3-app/commit/41114766582ca33fb2a3fd0b566e609a6dd3e861))
 - handle git projects correctly ([3ed897f](https://github.com/t3-oss/create-t3-app/commit/3ed897ff49c06f6d70d49aee31d5c3741fced96e))
 - incompatible git version ([#127](https://github.com/t3-oss/create-t3-app/issues/127)) ([34f44f8](https://github.com/t3-oss/create-t3-app/commit/34f44f817df52b317afea5b8d55c87eea487833f))
-- invalid pnpm action version ([2a1f6e3](https://github.com/t3-oss/create-t3-app/commit/2a1f6e32aedb8f86ee7ca403e481be8e474b76b2))
+- invalid bun action version ([2a1f6e3](https://github.com/t3-oss/create-t3-app/commit/2a1f6e32aedb8f86ee7ca403e481be8e474b76b2))
 - language prompt short answer should both be ts ([#142](https://github.com/t3-oss/create-t3-app/issues/142)) ([5e4f80d](https://github.com/t3-oss/create-t3-app/commit/5e4f80d7aa930f16add3bb2273a23f5829548f49))
 - **markup:** multiple h1 replaced to h2 ([6bf9040](https://github.com/t3-oss/create-t3-app/commit/6bf90407b9a9774348a77927d37c47f3ded5552a))
 - **prompts:** show correct package manager in prompts ([#153](https://github.com/t3-oss/create-t3-app/issues/153)) ([fe66ae9](https://github.com/t3-oss/create-t3-app/commit/fe66ae9f60cbe6a2e429be406a1cd548c51e7bbd))

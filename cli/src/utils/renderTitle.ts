@@ -18,7 +18,7 @@ export const renderTitle = () => {
 
   // resolves weird behavior where the ascii is offset
   const pkgManager = getUserPkgManager();
-  if (pkgManager === "yarn" || pkgManager === "pnpm") {
+  if (pkgManager === "yarn" || pkgManager === "bun") {
     console.log("");
   }
   console.log(t3Gradient.multiline(TITLE_TEXT));

@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Deretter kan du kjøre `pnpm db-seed` (eller `npm`/`yarn`) for å fylle inn databasen.
+Deretter kan du kjøre `bun db-seed` (eller `npm`/`yarn`) for å fylle inn databasen.
 
 ## Nyttige Ressurser
 

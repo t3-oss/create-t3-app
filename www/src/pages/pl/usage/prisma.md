@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Następnie uruchom po prostu `pnpm db-seed` (lub `npm`/`yarn`) aby wykonać seedowanie bazy danych.
+Następnie uruchom po prostu `bun db-seed` (lub `npm`/`yarn`) aby wykonać seedowanie bazy danych.
 
 ## Przydatne Zasoby
 

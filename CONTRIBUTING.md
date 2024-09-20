@@ -32,16 +32,16 @@ then, clone it to your local machine:
 gh repo clone <your-github-name>/create-t3-app
 ```
 
-This project uses [pnpm](https://pnpm.io) as its package manager. Install it if you haven't already:
+This project uses [bun](https://bun.io) as its package manager. Install it if you haven't already:
 
 ```bash
-npm install -g pnpm
+npm install -g bun
 ```
 
 Then, install the project's dependencies:
 
 ```bash
-pnpm install
+bun install
 ```
 
 ### Implement your changes
@@ -52,15 +52,15 @@ Here are some useful scripts for when you are developing:
 
 | Command          | Description                                             |
 | ---------------- | ------------------------------------------------------- |
-| `pnpm dev:cli`   | Builds and starts the CLI in watch-mode                 |
-| `pnpm dev:www`   | Starts the development server for the docs with HMR     |
-| `pnpm build:cli` | Builds the CLI                                          |
-| `pnpm build:www` | Builds the docs                                         |
-| `pnpm build`     | Builds CLI and docs                                     |
-| `pnpm format`    | Formats the code                                        |
-| `pnpm lint`      | Lints the code                                          |
-| `pnpm lint:fix`  | Lints the code and fixes any errors                     |
-| `pnpm check`     | Checks your code for typeerrors, formatting and linting |
+| `bun dev:cli`   | Builds and starts the CLI in watch-mode                 |
+| `bun dev:www`   | Starts the development server for the docs with HMR     |
+| `bun build:cli` | Builds the CLI                                          |
+| `bun build:www` | Builds the docs                                         |
+| `bun build`     | Builds CLI and docs                                     |
+| `bun format`    | Formats the code                                        |
+| `bun lint`      | Lints the code                                          |
+| `bun lint:fix`  | Lints the code and fixes any errors                     |
+| `bun check`     | Checks your code for typeerrors, formatting and linting |
 
 When making commits, make sure to follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) guidelines, i.e. prepending the message with `feat:`, `fix:`, `chore:`, `docs:`, etc... You can use `git status` to double check which files have not yet been staged for commit:
 
@@ -73,7 +73,7 @@ git add <file> && git commit -m "feat/fix/chore/docs: commit message"
 Check that your code follows the project's style guidelines by running:
 
 ```bash
-pnpm check
+bun check
 ```
 
 Please also make a manual, functional test of your changes.
@@ -81,7 +81,7 @@ Please also make a manual, functional test of your changes.
 If your change should appear in the changelog, i.e. it changes some behavior of either the CLI or the outputted application, it must be captured by `changeset` which is done by running
 
 ```bash
-pnpm changeset
+bun changeset
 ```
 
 and filling out the form with the appropriate information. Then, add the generated changeset to git:

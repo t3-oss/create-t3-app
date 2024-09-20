@@ -24,7 +24,7 @@
   "engines": {
     "node": ">=18.17.0"
   },
-  "packageManager": "pnpm@9.0.4",
+  "packageManager": "bun@1.1.29",
   "scripts": {
     "typecheck": "turbo typecheck",
     "build:cli": "turbo --filter=create-t3-app build",
@@ -41,8 +41,8 @@
     "format:check": "turbo format:check && prettier --check '*.{cjs,json}' --ignore-unknown --no-error-on-unmatched-pattern",
     "check": "turbo lint typecheck format:check && manypkg check",
     "release": "changeset version",
-    "pub:beta": "cd cli && pnpm pub:beta",
-    "pub:release": "cd cli && pnpm pub:release"
+    "pub:beta": "cd cli && bun pub:beta",
+    "pub:release": "cd cli && bun pub:release"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",

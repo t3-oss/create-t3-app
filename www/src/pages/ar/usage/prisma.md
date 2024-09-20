@@ -68,7 +68,7 @@ main()
   });
 ```
 
-ثُم قُم بتشغيل `pnpm db-seed` او `npm` او `yarn`
+ثُم قُم بتشغيل `bun db-seed` او `npm` او `yarn`
 
 ## مصادر مُفيدة
 

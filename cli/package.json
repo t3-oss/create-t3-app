@@ -41,13 +41,13 @@
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "pnpm lint --fix",
+    "lint:fix": "bun lint --fix",
     "format": "prettier '**/*.{cjs,mjs,ts,tsx,md,json}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --write",
     "format:check": "prettier '**/*.{cjs,mjs,ts,tsx,md,json}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
     "release": "changeset version",
-    "pub:beta": "pnpm build && npm publish --tag beta",
-    "pub:next": "pnpm build && npm publish --tag next",
-    "pub:release": "pnpm build && npm publish"
+    "pub:beta": "bun build && npm publish --tag beta",
+    "pub:next": "bun build && npm publish --tag next",
+    "pub:release": "bun build && npm publish"
   },
   "dependencies": {
     "@clack/core": "^0.3.4",

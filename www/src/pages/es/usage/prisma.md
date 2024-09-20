@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Luego, simplemente ejecuta `pnpm db-seed` (o `npm`/`yarn`) para llenar (_seed_) tu base de datos.
+Luego, simplemente ejecuta `bun db-seed` (o `npm`/`yarn`) para llenar (_seed_) tu base de datos.
 
 ## Recursos útiles
 

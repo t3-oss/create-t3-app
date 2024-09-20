@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Em seguida, basta executar `pnpm db-seed` (ou `npm`/`yarn`) para propagar seu banco de dados.
+Em seguida, basta executar `bun db-seed` (ou `npm`/`yarn`) para propagar seu banco de dados.
 
 ## Recursos Úteis
 

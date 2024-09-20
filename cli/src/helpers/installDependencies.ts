@@ -47,8 +47,8 @@ const runInstallCommand = async (
       });
 
       return null;
-    // When using yarn or pnpm, use the stdout stream and ora spinner to show the progress
-    case "pnpm":
+    // When using yarn or bun, use the stdout stream and ora spinner to show the progress
+    case "bun":
       return execWithSpinner(projectDir, pkgManager, {
         onDataHandle: (spinner) => (data) => {
           const text = data.toString();

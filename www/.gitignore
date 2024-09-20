@@ -1,5 +1,6 @@
 # build output
 dist/
+.astro
 
 # dependencies
 node_modules/
@@ -8,7 +9,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
+bun-debug.log*
 
 
 # environment variables

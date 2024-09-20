@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Ensuite, exécutez simplement `pnpm db-seed` (ou `npm`/`yarn`) pour amorcer votre base de données.
+Ensuite, exécutez simplement `bun db-seed` (ou `npm`/`yarn`) pour amorcer votre base de données.
 
 ## Ressources utiles
 

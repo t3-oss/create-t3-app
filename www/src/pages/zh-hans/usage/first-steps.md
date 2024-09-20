@@ -13,7 +13,7 @@ lang: zh-hans
 
 ### Drizzle
 
-如果你的 App 包含了 Drizzle，请查看 `.env` 文件，了解如何构建你的 `DATABASE_URL` 环境变量。当 env 文件准备就绪后，运行 `pnpm db:push`（或其他软件包管理器的类似方法）来推送你的 schema。
+如果你的 App 包含了 Drizzle，请查看 `.env` 文件，了解如何构建你的 `DATABASE_URL` 环境变量。当 env 文件准备就绪后，运行 `bun db:push`（或其他软件包管理器的类似方法）来推送你的 schema。
 
 ## 认证
 

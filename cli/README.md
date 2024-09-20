@@ -94,10 +94,10 @@ npm create t3-app@latest
 yarn create t3-app
 ```
 
-### pnpm
+### bun
 
 ```bash
-pnpm create t3-app@latest
+bun create t3-app@latest
 ```
 
 ### bun

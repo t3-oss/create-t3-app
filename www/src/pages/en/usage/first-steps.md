@@ -19,7 +19,7 @@ If your app includes Prisma, make sure to run `npx prisma db push` from the root
 
 ### Drizzle
 
-If your app includes Drizzle, check the `.env` file for instructions on how to construct your `DATABASE_URL` env variable. Once your env file is ready, run `pnpm db:push` (or the equivalent for other package managers) to push your schema.
+If your app includes Drizzle, check the `.env` file for instructions on how to construct your `DATABASE_URL` env variable. Once your env file is ready, run `bun db:push` (or the equivalent for other package managers) to push your schema.
 
 ## Authentication
 

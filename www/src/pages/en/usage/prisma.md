@@ -65,7 +65,7 @@ main()
   });
 ```
 
-Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
+Then, just run `bun db-seed` (or `npm`/`yarn`) to seed your database.
 
 ## Useful Resources
 

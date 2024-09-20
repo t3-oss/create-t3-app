@@ -34,8 +34,8 @@ Based on the [Astro Starter Kit: Docs Site](https://github.com/withastro/astro/t
 ```bash
 git clone https://github.com/t3-oss/create-t3-app.git
 cd create-t3-app/www
-pnpm i
-pnpm dev
+bun i
+bun dev
 ```
 
 ## Command Cheat Sheet
