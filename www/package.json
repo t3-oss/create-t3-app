@@ -1,5 +1,5 @@
 {
-  "name": "@ct3a/www",
+  "name": "@ct3cfa/www",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.23.3",
+    "@astrojs/cloudflare": "^11.0.5",
     "@astrojs/mdx": "^3.0.1",
     "@astrojs/sitemap": "^3.1.5",
     "@astrojs/vercel": "^7.6.0",
@@ -29,12 +30,10 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@resvg/resvg-js": "^2.4.1",
     "@stackblitz/sdk": "^1.9.0",
-    "@vercel/analytics": "^1.0.1",
     "clsx": "^1.2.1",
     "embla-carousel": "^7.1.0",
     "embla-carousel-autoplay": "^7.1.0",
     "satori": "^0.8.1",
-    "sharp": "^0.32.6",
     "tailwind-scrollbar": "^3.0.0",
     "treeify": "^1.1.0",
     "unist-util-visit": "^4.1.2",
