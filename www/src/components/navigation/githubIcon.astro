@@ -2,7 +2,7 @@
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 import { fetchGithub } from "../../utils/fetchGithub";
 
-let githubStars = 23000;
+let githubStars = 25000;
 
 try {
   const fetchedStars = await fetchGithub(
@@ -13,7 +13,7 @@ try {
     },
   ).then((data) => data?.stargazers_count);
 
-  githubStars = fetchedStars ?? 23000;
+  githubStars = fetchedStars ?? 25000;
 } catch (e) {
   console.error("unable to fetch from github", e);
 }
