@@ -323,6 +323,13 @@ const projects: App[] = [
     linkName: "taskyboard",
     link: "https://taskyboard.vercel.app",
   },
+  {
+    description: "Squeak - A multiplayer Solitaire-based game",
+    repoName: "michaelongaro/Squeak",
+    repo: "https://github.com/michaelongaro/Squeak",
+    linkName: "Squeak",
+    link: "https://playsqueak.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
