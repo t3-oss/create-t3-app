@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.37.1
+
+### Patch Changes
+
+- [#1969](https://github.com/t3-oss/create-t3-app/pull/1969) [`e08dbe307b4e37c7cc7e0cbf6243c008771ef4f8`](https://github.com/t3-oss/create-t3-app/commit/e08dbe307b4e37c7cc7e0cbf6243c008771ef4f8) Thanks [@Guria](https://github.com/Guria)! - fix issue with prefetch protected procedure in auth templates
+
+- [#1975](https://github.com/t3-oss/create-t3-app/pull/1975) [`78cb06f99f15f4f4f90b57e3545f1dc0b222eaf3`](https://github.com/t3-oss/create-t3-app/commit/78cb06f99f15f4f4f90b57e3545f1dc0b222eaf3) Thanks [@0pilatos0](https://github.com/0pilatos0)! - Resolved issue where database startup script did not check for docker daemon being up and running
+
 ## 7.37.0
 
 ### Minor Changes
