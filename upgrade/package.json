@@ -4,15 +4,16 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "dev": "rimraf .next && next dev",
     "build": "next build",
-    "clean": "rm -rf node_modules .turbo dist .eslintcache",
-    "dev": "next dev",
-    "format": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --write",
-    "format:check": "prettier '**/*.{cjs,mjs,ts,tsx,md,json,astro}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",
-    "lint": "eslint . --report-unused-disable-directives",
-    "lint:fix": "pnpm lint --fix",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "preview": "next build && next start",
     "typecheck": "tsc --noEmit",
-    "start": "next start"
+    "clean": "rimraf .next",
+    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
