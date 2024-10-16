@@ -3,7 +3,10 @@ title: FAQ
 description: Часто задаваемые вопросы про Create T3 App
 layout: ../../layouts/docs.astro
 lang: ru
+isMdx: true
 ---
+
+import Callout from "../../components/docs/callout.tsx";
 
 Это некоторые часто задаваемые вопросы о `create-t3-app`.
 
@@ -18,6 +21,11 @@ lang: ru
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Drizzle](https://orm.drizzle.team/docs/overview)
+
+## Как поддерживать мое приложение в актуальном состоянии?
+
+Create T3 App - это инструмент шаблонов, а не фреймворк. Это означает, что как только вы инициализируете приложение, оно ваше. Аналогичного CLI, которое поможет вашему приложению оставаться в актуальном состоянии, нет. Если вас интересуют улучшения, которые мы вносим в шаблон, вы можете [включить уведомления о релизе](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) в нашем репозитории. При этом, на самом деле не обязательно внедрять каждое изменение, которое мы вносим в шаблон, в вашем приложении.
 
 ## Какие учебные ресурсы сейчас доступны?
 
@@ -29,13 +37,16 @@ lang: ru
 
 ### Статьи
 
-- [Build a full stack app with Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
+Некоторые из них могут быть устаревшими.
+
 - [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Видео
 
+- [From 0 to Production - The Modern React Tutorial (RSCs, Next.js, Shadui, Drizzle, TS and more)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(рекомендуем)** (updated 2024)*
+- [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
 - [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
 - [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
 - [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
@@ -54,8 +65,12 @@ lang: ru
 
 В тоже время, если вы столкнулись с проблемами при реализации и хотите увидеть проект-образец, у нас есть [ссылка на репозиторий](https://github.com/juliusmarminge/t3-i18n) который показывает как вы можете добавить i18n в T3 App с помощью [next-i18next](https://github.com/i18next/next-i18next).
 
-## Почему мы используем `/pages` а не `/app` из Next.js 13?
+## Стоит ли мне использовать `/app` из Next.js 13 или более устоявшуюся парадигму `/pages`?
 
-Согласно [T3-Аксиоме #2](/ru/introduction#bleed-responsibly), мы любим новинки, но ценим стабильность, вам будет сложно перенести весь маршрутизатор, [не лучшеее место для экспериментов](https://youtu.be/mnwUbtieOuI?t=1662). Хотя `/app` [представляет собой взгляд в будущее](https://youtu.be/rnsC-12PVlM?t=818), он еще не готов к использованию в продакшене; API находится в бета-версии и ожидается, что он будет иметь обратно несовместимые изменения.
+При инициализации приложения с использованием Create T3 App, у вас есть возможность, выбрать файловую структуру `/app`. На момент написания, она считается достаточно развитой для того, чтобы использовать ее в продакшене сообществом T3 Stack. Для разъяснения, почему нам потребовалось столько времени, чтобы добавить такую возможность, посмотрите [это видео](https://www.youtube.com/watch?v=PmBfq-SpzCU).
 
-Список поддерживаемых, запланированных и находящихся в разработке функций в каталоге `/app` можно найти в [бета-документации Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+Тем не менее, еслы вы строго предпочитаете использовать старую парадигму `/pages`, у вас все еще есть такая возможность. Портировать ваш существующий роутер может быть колоcсальным трудом, поэтому не поддавайтесь давлению и не делайте этого без необходимости.
+
+<Callout type="info">
+  Список поддерживаемых, планируемых и разрабатываемых возможностей для файловой системы `/app` можно найти на странице [документации Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>

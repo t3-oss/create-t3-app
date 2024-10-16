@@ -331,8 +331,10 @@ export const SIDEBAR: Sidebar = {
       { text: "Почему CT3A?", link: "ru/why" },
       { text: "Установка", link: "ru/installation" },
       { text: "Файловая структура (Pages)", link: "ru/folder-structure-pages" },
+      { text: "Файловая структура (App)", link: "ru/folder-structure-app" },
       { text: "FAQ", link: "ru/faq" },
       { text: "T3 коллекция", link: "ru/t3-collection" },
+      { text: "Примеры", link: "ru/examples" },
       { text: "Дополнительные рекомендации", link: "ru/other-recs" },
     ],
     Usage: [
@@ -340,6 +342,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Next.js", link: "ru/usage/next-js" },
       { text: "TypeScript", link: "ru/usage/typescript" },
       { text: "tRPC", link: "ru/usage/trpc" },
+      { text: "Drizzle", link: "ru/usage/drizzle" },
       { text: "Prisma", link: "ru/usage/prisma" },
       { text: "NextAuth.js", link: "ru/usage/next-auth" },
       {
@@ -350,8 +353,8 @@ export const SIDEBAR: Sidebar = {
     ],
     Deployment: [
       { text: "Vercel", link: "ru/deployment/vercel" },
-      { text: "Docker", link: "ru/deployment/docker" },
       { text: "Netlify", link: "ru/deployment/netlify" },
+      { text: "Docker", link: "ru/deployment/docker" },
     ],
   },
   no: {
