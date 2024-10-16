@@ -38,8 +38,8 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
     const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
     packageJsonContent.scripts = {
       ...packageJsonContent.scripts,
-    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:write": 'prettier --write "**/*.{ts,tsx,js,jsx,mdx}" --cache',
+    "format:check": 'prettier --check "**/*.{ts,tsx,js,jsx,mdx}" --cache',
     };
 
   fs.copySync(twCfgSrc, twCfgDest);
