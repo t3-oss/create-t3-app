@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
+import { type PackageJson } from "type-fest";
 
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
@@ -31,8 +32,22 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
+    // add format:* scripts to package.json
+    const packageJsonPath = path.join(projectDir, "package.json");
+
+    const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+    packageJsonContent.scripts = {
+      ...packageJsonContent.scripts,
+    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    };
+
   fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
+  fs.writeJSONSync(packageJsonPath, packageJsonContent, {
+    spaces: 2,
+  });
+
 };
