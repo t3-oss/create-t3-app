@@ -44,7 +44,7 @@ export const envVariablesInstaller: Installer = ({
       "template/extras/src/env",
       envFile
     );
-    const envSchemaDest = path.join(projectDir, "src/env.ts");
+    const envSchemaDest = path.join(projectDir, "src/env.js");
     fs.copyFileSync(envSchemaSrc, envSchemaDest);
   }
 
@@ -63,7 +63,7 @@ const getEnvContent = (
   scopedAppName: string
 ) => {
   let content = `
-# When adding additional environment variables, the schema in "/src/env.ts"
+# When adding additional environment variables, the schema in "/src/env.js"
 # should be updated accordingly.
 `
     .trim()
