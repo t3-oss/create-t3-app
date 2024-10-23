@@ -57,6 +57,7 @@ export const prismaInstaller: Installer = ({
           mysql: "mysql",
           postgres: "postgresql",
           planetscale: "mysql",
+          neon: "postgresql",
         }[databaseProvider]
       }"`
     );

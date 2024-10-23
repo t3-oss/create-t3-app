@@ -31,7 +31,8 @@ export const drizzleInstaller: Installer = ({
         {
           planetscale: "@planetscale/database",
           mysql: "mysql2",
-          postgres: "postgres", // This will be selected when drizzleDatabaseProvider is "postgres"
+          neon: "postgres",
+          postgres: "postgres",
           sqlite: "@libsql/client",
         } as const
       )[drizzleDatabaseProvider],
