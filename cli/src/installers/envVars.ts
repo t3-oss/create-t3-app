@@ -101,10 +101,9 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
     content += `
 # Next Auth
 # You can generate a new secret on the command line with:
-# openssl rand -base64 32
+# npx auth secret
 # https://next-auth.js.org/configuration/options#secret
-# NEXTAUTH_SECRET=""
-NEXTAUTH_URL="http://localhost:3000"
+# AUTH_SECRET=""
 
 # Next Auth Discord Provider
 DISCORD_CLIENT_ID=""
