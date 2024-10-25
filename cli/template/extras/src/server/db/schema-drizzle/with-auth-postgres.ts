@@ -4,7 +4,6 @@ import {
   integer,
   pgTableCreator,
   primaryKey,
-  serial,
   text,
   timestamp,
   varchar,
@@ -22,7 +21,7 @@ export const createTable = pgTableCreator((name) => `project1_${name}`);
 export const posts = createTable(
   "post",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
     name: varchar("name", { length: 256 }),
     createdById: varchar("created_by", { length: 255 })
       .notNull()
