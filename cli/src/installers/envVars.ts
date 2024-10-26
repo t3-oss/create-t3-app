@@ -71,16 +71,16 @@ const getEnvContent = (
 
   if (usingAuth)
     content += `
-  # Next Auth
-  # You can generate a new secret on the command line with:
-  # npx auth secret
-  # https://next-auth.js.org/configuration/options#secret
-  # AUTH_SECRET=""
-  
-  # Next Auth Discord Provider
-  DISCORD_CLIENT_ID=""
-  DISCORD_CLIENT_SECRET=""
-  `;
+# Next Auth
+# You can generate a new secret on the command line with:
+# npx auth secret
+# https://next-auth.js.org/configuration/options#secret
+# AUTH_SECRET=""
+
+# Next Auth Discord Provider
+DISCORD_CLIENT_ID=""
+DISCORD_CLIENT_SECRET=""
+`;
 
   if (usingPrisma)
     content += `
