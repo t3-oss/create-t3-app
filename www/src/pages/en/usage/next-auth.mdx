@@ -213,8 +213,8 @@ I.e.:
 1. Head to [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications), and click on "New Application"
 2. In the settings menu, go to "OAuth2 => General"
 
-- Copy the Client ID and paste it in `DISCORD_CLIENT_ID` in `.env`.
-- Under Client Secret, click "Reset Secret" and copy that string to `DISCORD_CLIENT_SECRET` in `.env`. Be careful as you won't be able to see this secret again, and resetting it will cause the existing one to expire.
+- Copy the Client ID and paste it in `AUTH_DISCORD_ID` in `.env`.
+- Under Client Secret, click "Reset Secret" and copy that string to `AUTH_DISCORD_SECRET` in `.env`. Be careful as you won't be able to see this secret again, and resetting it will cause the existing one to expire.
 - Click "Add Redirect" and paste in `<app url>/api/auth/callback/discord` (example for local development: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Save your changes
 - It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) during development.

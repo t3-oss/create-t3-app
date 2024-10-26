@@ -24,12 +24,11 @@ lang: zh-hans
 1. 你将需要一个 Discord 账号，所以如果你没有，请先注册一个。
 2. 前往 <https://discord.com/developers/applications> 然后在右上角点击 "New Application"。给你的应用创建一个名称，并同意相关的服务条款。
 3. 当你的应用被创建后，前往 "Settings → OAuth2 → General"。
-4. 复制 "Client ID" 然后作为 `DISCORD_CLIENT_ID` 添加到 `.env`。
-5. 点击 "Reset Secret"，复制新的密钥，然后作为 `DISCORD_CLIENT_SECRET` 添加到 `.env`。
+4. 复制 "Client ID" 然后作为 `AUTH_DISCORD_ID` 添加到 `.env`。
+5. 点击 "Reset Secret"，复制新的密钥，然后作为 `AUTH_DISCORD_SECRET` 添加到 `.env`。
 6. 点击 "Add Redirect"，然后输入 `http://localhost:3000/api/auth/callback/discord`。
    - 对于生产环境的部署，按照之前的步骤来创建另一个 Discord 应用，但是这一次将链接 `http://localhost:3000` 替换为实际生产环境的链接。
 7. 保存你的更改。
-8. 在 `.env` 中设置 `NEXTAUTH_SECRET`。在开发过程中，任何字符串都能起效，但对于生产环境，记得查看 `.env` 文件中关于生成安全密钥的注释。
 
 你现在应该可以登入到你的应用中了。
 

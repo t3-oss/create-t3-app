@@ -181,8 +181,8 @@ Uso de NextAuth.js com middleware Next.js [requer o uso da estratégia de sessã
 1. Vá para [a seção Aplicativos no Portal do desenvolvedor do Discord](https://discord.com/developers/applications) e clique em "Novo aplicativo"
 2. No menu de configurações, vá para "OAuth2 => Geral"
 
-- Copie o Client ID e cole-o em `DISCORD_CLIENT_ID` em `.env`.
-- Em Client Secret, clique em "Reset Secret" e copie essa string para `DISCORD_CLIENT_SECRET` em `.env`. Tenha cuidado, pois você não poderá ver esse segredo novamente e redefini-lo fará com que o existente expire.
+- Copie o Client ID e cole-o em `AUTH_DISCORD_ID` em `.env`.
+- Em Client Secret, clique em "Reset Secret" e copie essa string para `AUTH_DISCORD_SECRET` em `.env`. Tenha cuidado, pois você não poderá ver esse segredo novamente e redefini-lo fará com que o existente expire.
 - Clique em "Add Redirect" e cole em `<app url>/api/auth/callback/discord` (exemplo para desenvolvimento local: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Salve suas alterações
 - É possível, mas não recomendado, usar o mesmo aplicativo Discord tanto para desenvolvimento quanto para produção. Você também pode considerar [mockar o Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) durante o desenvolvimento.
