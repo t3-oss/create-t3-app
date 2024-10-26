@@ -25,7 +25,7 @@ Claro, se você preferir usar um provedor de autenticação diferente, também p
 6. Clique em "Adicionar redirecionamento" e digite `http://localhost:3000/api/auth/callback/discord`.
    - Para implantação de produção, siga as etapas anteriores para criar outro aplicativo Discord, mas desta vez substitua `http://localhost:3000` pela URL na qual você está implantando.
 7. Salve as alterações.
-8. Defina `NEXTAUTH_SECRET` em `.env`. Em desenvolvimento, qualquer string funcionará, para produção, veja a nota em `.env` sobre como gerar um segredo seguro.
+8. Defina `AUTH_SECRET` em `.env`. Em desenvolvimento, qualquer string funcionará, para produção, veja a nota em `.env` sobre como gerar um segredo seguro.
 
 Agora você deve conseguir fazer login.
 

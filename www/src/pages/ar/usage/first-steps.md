@@ -26,4 +26,4 @@ dir: rtl
 
 اضغط علي Reset Secret ثم انسخ كلمة السر الجديدة وضعها في .env كـ DISCORD_CLIENT_SECRET
 اضغط علي Add Redirect واضف http://localhost:3000/api/auth/callback/discord
-اضف NEXTAUTH_SECRET الي .env كـ String، في الـ Production اضف كلمة سر قوية.
+اضف AUTH_SECRET الي .env كـ String، في الـ Production اضف كلمة سر قوية.

@@ -33,7 +33,7 @@ Oczywiście, jeżeli wolisz korzystać z innego, możesz użyć jednego z [wielu
 - Dla deploymentu w wersji produkcyjnej, podążaj za powyższymi krokami aby stworzyć nową aplikację Discord, ale tym razem zamień `http://localhost:3000` na URL, na który wrzucasz swój projekt.
 
 1. Zapisz zmiany
-2. Ustaw `NEXTAUTH_SECRET` w pliku `.env`. W wersji rozwojowej zadziała byle co, w wersji produkcyjnej zobacz uwagę w pliku `.env`, która mówi, jak wygenerować bezpieczny secret.
+2. Ustaw `AUTH_SECRET` w pliku `.env`. W wersji rozwojowej zadziała byle co, w wersji produkcyjnej zobacz uwagę w pliku `.env`, która mówi, jak wygenerować bezpieczny secret.
 
 Powinieneś być w stanie się zalogować.
 

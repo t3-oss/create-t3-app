@@ -69,6 +69,19 @@ const getEnvContent = (
     .trim()
     .concat("\n");
 
+  if (usingAuth)
+    content += `
+  # Next Auth
+  # You can generate a new secret on the command line with:
+  # npx auth secret
+  # https://next-auth.js.org/configuration/options#secret
+  # AUTH_SECRET=""
+  
+  # Next Auth Discord Provider
+  DISCORD_CLIENT_ID=""
+  DISCORD_CLIENT_SECRET=""
+  `;
+
   if (usingPrisma)
     content += `
 # Prisma
@@ -96,19 +109,6 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
     }
     content += "\n";
   }
-
-  if (usingAuth)
-    content += `
-# Next Auth
-# You can generate a new secret on the command line with:
-# npx auth secret
-# https://next-auth.js.org/configuration/options#secret
-# AUTH_SECRET=""
-
-# Next Auth Discord Provider
-DISCORD_CLIENT_ID=""
-DISCORD_CLIENT_SECRET=""
-`;
 
   if (!usingAuth && !usingPrisma)
     content += `
