@@ -179,8 +179,8 @@ Bruk av NextAuth.js med Next.js middleware [krever bruk av "JWT session strategy
 
 2. Bytt til "OAuth2 => Generelt" i settings-menyen
 
-- Kopier klient-ID-en og lim den inn i `DISCORD_CLIENT_ID` i `.env`.
-- Under Client Secret, klikk på "Reset Secret" og kopier denne strengen til `DISCORD_CLIENT_SECRET` i `.env`. Vær forsiktig siden du ikke lenger vil kunne se denne hemmeligheten og tilbakestilling av den vil føre til at den eksisterende hemmeligheten utløper.
+- Kopier klient-ID-en og lim den inn i `AUTH_DISCORD_ID` i `.env`.
+- Under Client Secret, klikk på "Reset Secret" og kopier denne strengen til `AUTH_DISCORD_SECRET` i `.env`. Vær forsiktig siden du ikke lenger vil kunne se denne hemmeligheten og tilbakestilling av den vil føre til at den eksisterende hemmeligheten utløper.
 - Klikk på "Add Redirect" og lim inn `<app url>/api/auth/callback/discord` (eksempel for utvikling i lokal miljø: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Lagre endringene dine
 - Det er mulig, men ikke anbefalt, å bruke samme Discord-applikasjon for utvikling og produksjon. Du kan også vurdere å [Mocke leverandøren](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) under utviklingen.

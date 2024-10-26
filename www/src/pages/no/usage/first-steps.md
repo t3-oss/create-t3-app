@@ -20,8 +20,8 @@ Hvis du foretrekker en annen autentiseringsleverandør, kan du også bruke en av
 1. Du trenger en Discord-konto. Meld deg på hvis du ikke har en ennå.
 2. Naviger til https://discord.com/developers/applications og klikk "New Application" øverst til høyre. Gi applikasjonen din et navn og godta vilkårene for bruk.
 3. Når applikasjonen din er opprettet, naviger til "Settings → OAuth2 → General".
-4. Kopier "Client ID" og lim den inn i `.env` som `DISCORD_CLIENT_ID`.
-5. Klikk "Reset Secret", kopier den nye hemmeligheten og lim inn verdien i `.env` som `DISCORD_CLIENT_SECRET`.
+4. Kopier "Client ID" og lim den inn i `.env` som `AUTH_DISCORD_ID`.
+5. Klikk "Reset Secret", kopier den nye hemmeligheten og lim inn verdien i `.env` som `AUTH_DISCORD_SECRET`.
 6. Klikk "Add Redirect" og skriv inn `http://localhost:3000/api/auth/callback/discord`.
    - For utrulling i produksjonsmiljø må de foregående trinnene følges på nytt for å lage en annen Discord-applikasjon. Denne gangen erstatt `http://localhost:3000` med URL-en du publiserer til.
 7. Lagre endringene.
