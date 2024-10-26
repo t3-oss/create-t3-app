@@ -4,8 +4,8 @@
 import { sql } from "drizzle-orm";
 import {
   index,
+  integer,
   pgTableCreator,
-  serial,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -21,7 +21,7 @@ export const createTable = pgTableCreator((name) => `project1_${name}`);
 export const posts = createTable(
   "post",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
     name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
