@@ -29,7 +29,6 @@ lang: zh-hans
 6. 点击 "Add Redirect"，然后输入 `http://localhost:3000/api/auth/callback/discord`。
    - 对于生产环境的部署，按照之前的步骤来创建另一个 Discord 应用，但是这一次将链接 `http://localhost:3000` 替换为实际生产环境的链接。
 7. 保存你的更改。
-8. 在 `.env` 中设置 `AUTH_SECRET`。在开发过程中，任何字符串都能起效，但对于生产环境，记得查看 `.env` 文件中关于生成安全密钥的注释。
 
 你现在应该可以登入到你的应用中了。
 

@@ -26,7 +26,6 @@ Bien sûr, si vous préférez utiliser un autre fournisseur d'authentification, 
 6. Cliquez sur "Add Redirect" et saisissez `http://localhost:3000/api/auth/callback/discord`.
    - Pour le déploiement en production, suivez les étapes précédentes pour créer une autre application Discord, mais cette fois remplacez `http://localhost:3000` par l'URL vers laquelle vous déployez.
 7. Sauvegarder les modifications.
-8. Définissez `AUTH_SECRET` dans `.env`. En développement, n'importe quelle chaîne fonctionnera, pour la production, voir la note dans `.env` sur la génération d'un secret sécurisé.
 
 Vous devriez maintenant pouvoir vous connecter.
 

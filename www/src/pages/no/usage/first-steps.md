@@ -25,7 +25,6 @@ Hvis du foretrekker en annen autentiseringsleverandør, kan du også bruke en av
 6. Klikk "Add Redirect" og skriv inn `http://localhost:3000/api/auth/callback/discord`.
    - For utrulling i produksjonsmiljø må de foregående trinnene følges på nytt for å lage en annen Discord-applikasjon. Denne gangen erstatt `http://localhost:3000` med URL-en du publiserer til.
 7. Lagre endringene.
-8. Skriv `AUTH_SECRET` i `.env`. Hvilken som helst streng vil fungere under utviklingen. For bruk i produksjonsmiljø, ta en titt på notatet i `.env` for å lage en sikker hemmelighetvariabel.
 
 Du skal nå kunne logge på.
 
