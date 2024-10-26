@@ -212,7 +212,7 @@ Ex.:
 1. Rendez-vous dans [la section Applications du portail des développeurs Discord](https://discord.com/developers/applications), et cliquez sur "New Application"
 1. Dans le menu des paramètres, allez dans "OAuth2 => General"
 
-- Copiez l'ID client et collez-le dans `DISCORD_CLIENT_ID` dans `.env`.
+- Copiez l'ID client et collez-le dans `AUTH_DISCORD_ID` dans `.env`.
 - Sous Client Secret, cliquez sur "Reset Secret" et copiez cette chaîne de caractères dans `DISCORD CLIENT_SECRET` dans `.env`. Soyez prudent car vous ne pourrez plus voir ce secret et le réinitialiser entraînera l'expiration du secret existant.
 - Cliquez sur "Add Redirect" et collez `<app url>/api/auth/callback/discord` (exemple pour le développement local : <code class="break-all">http://localhost:3000/api/auth/rappel/discord</code>)
 - Enregistrez vos modifications

@@ -178,8 +178,8 @@ Wykorzystanie middleware'a Next.js [wymaga od Ciebie skorzystania ze strategii J
 1. Przejdź do [sekcji Aplikacje w Panelu Discord Developer Portal](https://discord.com/developers/applications), a następnie kliknij na "New Application"
 2. W menu ustawień, przejdź do "OAuth2 => General"
 
-- Skopiuj Client ID i wklej go do pliku `.env` pod kluczem `DISCORD_CLIENT_ID`.
-- Pod Client Secret, kliknij "Reset Secret" i skopiuj podany tekst do pliku `.env` pod kluczem `DISCORD_CLIENT_SECRET`. Uważaj - nie będziesz mógł ponownie zobaczyć tego klucza, a jego reset spowoduje wygaśnięcie aktualnego.
+- Skopiuj Client ID i wklej go do pliku `.env` pod kluczem `AUTH_DISCORD_ID`.
+- Pod Client Secret, kliknij "Reset Secret" i skopiuj podany tekst do pliku `.env` pod kluczem `AUTH_DISCORD_SECRET`. Uważaj - nie będziesz mógł ponownie zobaczyć tego klucza, a jego reset spowoduje wygaśnięcie aktualnego.
 - Dodaj "Add Redirect" i wklej tam `<app url>/api/auth/callback/discord` (przykładowo dla lokalnej aplikacji: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Zapisz zmiany
 - Jest możliwość (nie jest ona jednak polecana), aby wykorzystać tą samą aplikację Discorda dla zarówno aplikacji lokalnej i tej w wersji produkcyjnej. Możesz także wykorzystać [mockowanie providera](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) podczas rozwoju aplikacji.
