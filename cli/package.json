@@ -32,7 +32,7 @@
     "package.json"
   ],
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=20.18.0"
   },
   "scripts": {
     "typecheck": "tsc",
@@ -68,12 +68,12 @@
     "@planetscale/database": "^1.19.0",
     "@prisma/adapter-planetscale": "^5.21.1",
     "@prisma/client": "^5.21.1",
-    "@t3-oss/env-nextjs": "^0.10.1",
+    "@t3-oss/env-nextjs": "^0.11.1",
     "@tanstack/react-query": "^5.59.16",
-    "@trpc/client": "11.0.0-rc.441",
-    "@trpc/next": "11.0.0-rc.441",
-    "@trpc/react-query": "11.0.0-rc.441",
-    "@trpc/server": "11.0.0-rc.441",
+    "@trpc/client": "11.0.0-rc.593",
+    "@trpc/next": "11.0.0-rc.593",
+    "@trpc/react-query": "11.0.0-rc.593",
+    "@trpc/server": "11.0.0-rc.593",
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.17.1",
@@ -86,8 +86,8 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "prisma": "^5.21.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "superjson": "^2.2.1",
     "tailwindcss": "^3.4.14",
     "tsup": "^6.7.0",
