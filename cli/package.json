@@ -40,7 +40,7 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist .turbo node_modules",
     "start": "node dist/index.js",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint **/*.{ts,tsx}",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier '**/*.{cjs,mjs,ts,tsx,md,json}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --write",
     "format:check": "prettier '**/*.{cjs,mjs,ts,tsx,md,json}' --ignore-path ../.gitignore --ignore-unknown --no-error-on-unmatched-pattern --check",

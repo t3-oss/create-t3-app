@@ -7,16 +7,27 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
+    ignores: ["cli/dist/**"],
+  },
+  {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {
       import: importPlugin,
+      isaacscript: isaacScriptPlugin,
     },
     extends: [
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
-      ...isaacScriptPlugin.configs.recommended,
       prettierPluginRecommended,
     ],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        tsconfigRootDir: import.meta.dirname,
+        projectService: true,
+      },
+    },
     rules: {
       // These off/not-configured-the-way-we-want lint rules we like & opt into
       "@typescript-eslint/no-explicit-any": "error",
