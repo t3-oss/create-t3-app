@@ -7,7 +7,7 @@
   },
   "include": [
     "src",
-    "astro.config.js",
+    "astro.config.ts",
     "eslint.config.js",
     "**/*.js",
     "**/*.cjs",
