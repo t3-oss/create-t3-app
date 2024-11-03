@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import path from "path";
 import fs from "fs-extra";
 
