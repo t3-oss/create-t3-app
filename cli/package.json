@@ -57,8 +57,8 @@
     "commander": "^10.0.1",
     "execa": "^7.2.0",
     "fs-extra": "^11.2.0",
-    "gradient-string": "^2.0.2",
-    "ora": "6.3.1",
+    "gradient-string": "^3.0.0",
+    "ora": "8.1.1",
     "sort-package-json": "^2.10.1"
   },
   "devDependencies": {
@@ -75,7 +75,6 @@
     "@trpc/react-query": "11.0.0-rc.608",
     "@trpc/server": "11.0.0-rc.608",
     "@types/fs-extra": "^11.0.4",
-    "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.17.6",
     "drizzle-kit": "^0.24.2",
     "drizzle-orm": "^0.33.0",
@@ -90,8 +89,8 @@
     "react-dom": "^18.3.1",
     "superjson": "^2.2.1",
     "tailwindcss": "^3.4.14",
-    "tsup": "^6.7.0",
-    "type-fest": "^3.13.1",
+    "tsup": "^8.3.5",
+    "type-fest": "^4.26.1",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"
   }
