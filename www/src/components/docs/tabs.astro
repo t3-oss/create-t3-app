@@ -1,0 +1,76 @@
+---
+const { tabName, slotOne, slotTwo } = Astro.props;
+---
+
+<style>
+  .tab-list {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .tab {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    transition: border-bottom 0.3s;
+  }
+
+  .tab.active {
+    border-bottom: 1px solid #4a3eeb;
+    color: #4a3eeb;
+  }
+
+  .tab-panel.hidden {
+    display: none;
+  }
+
+  .tab-panel {
+    padding: 1rem 0;
+  }
+</style>
+
+<div>
+  <div class="tab-list">
+    <button class={`tab active ${tabName}`} data-target={slotOne}
+      >{slotOne}</button
+    >
+    <button class={`tab ${tabName}`} data-target={slotTwo}>{slotTwo}</button>
+  </div>
+  <div class="tab-panels">
+    <div id={slotOne} class={`tab-panel ${tabName}-panel`}>
+      <slot name="1" />
+    </div>
+    <div id={slotTwo} class={`tab-panel hidden ${tabName}-panel`}>
+      <slot name="2" />
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ tabName }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(`.${tabName}`);
+    const panels = document.querySelectorAll(`.${tabName}-panel`);
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+
+        panels.forEach((panel) => panel.classList.add("hidden"));
+
+        tab.classList.add("active");
+
+        const target = tab.getAttribute("data-target");
+        if (target) {
+          const targetPanel = document.getElementById(target);
+          if (targetPanel) {
+            targetPanel.classList.remove("hidden");
+          }
+        }
+      });
+    });
+  });
+</script>
