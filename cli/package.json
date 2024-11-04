@@ -54,7 +54,7 @@
     "@clack/prompts": "^0.6.3",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "chalk": "5.2.0",
-    "commander": "^10.0.1",
+    "commander": "^12.1.0",
     "execa": "^9.5.1",
     "fs-extra": "^11.2.0",
     "gradient-string": "^3.0.0",
