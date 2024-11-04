@@ -21,12 +21,11 @@ Bien sûr, si vous préférez utiliser un autre fournisseur d'authentification, 
 1. Vous aurez besoin d'un compte Discord, créez-en un si vous ne l'avez pas déjà fait.
 2. Accédez à https://discord.com/developers/applications et cliquez sur "New Application" dans le coin supérieur droit. Nommez votre application et acceptez les conditions d'utilisation.
 3. Une fois votre application créée, accédez à "Settings → OAuth2 → General".
-4. Copiez le "Client ID" et ajoutez-le à votre `.env` en tant que `DISCORD_CLIENT_ID`.
+4. Copiez le "Client ID" et ajoutez-le à votre `.env` en tant que `AUTH_DISCORD_ID`.
 5. Cliquez sur "Reset Secret", copiez le nouveau secret et ajoutez-le à votre `.env` en tant que `DISCORD CLIENT_SECRET`.
 6. Cliquez sur "Add Redirect" et saisissez `http://localhost:3000/api/auth/callback/discord`.
    - Pour le déploiement en production, suivez les étapes précédentes pour créer une autre application Discord, mais cette fois remplacez `http://localhost:3000` par l'URL vers laquelle vous déployez.
 7. Sauvegarder les modifications.
-8. Définissez `NEXTAUTH_SECRET` dans `.env`. En développement, n'importe quelle chaîne fonctionnera, pour la production, voir la note dans `.env` sur la génération d'un secret sécurisé.
 
 Vous devriez maintenant pouvoir vous connecter.
 

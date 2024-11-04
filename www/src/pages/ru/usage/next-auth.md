@@ -181,8 +181,8 @@ const userRouter = router({
 1. Перейдите в [раздел Applications в Discord Developer Portal](https://discord.com/developers/applications), и нажмите на "New Application"
 2. В меню настроек перейдите к "OAuth2 => General"
 
-- Скопируйте Client ID и вставьте его в `DISCORD_CLIENT_ID` в `.env`.
-- Возле Client Secret нажмите "Reset Secret" и скопируйте эту строку в `DISCORD_CLIENT_SECRET` в `.env`. Будьте осторожны, поскольку вы больше не сможете увидеть этот секрет, и сброс его приведет к тому, что существующий истечет.
+- Скопируйте Client ID и вставьте его в `AUTH_DISCORD_ID` в `.env`.
+- Возле Client Secret нажмите "Reset Secret" и скопируйте эту строку в `AUTH_DISCORD_SECRET` в `.env`. Будьте осторожны, поскольку вы больше не сможете увидеть этот секрет, и сброс его приведет к тому, что существующий истечет.
 - Нажмите "Add Redirect" и вставьте `<app url>/api/auth/callback/discord` (пример для локальной разработки: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
 - Сохраните изменения
 - Возможно, но не рекомендуется, использовать одно и то же приложение Discord для разработки и продакшена. Вы также можете рассмотреть [Mocking the Provider](https://github.com/trpc/trpc/blob/next/examples/next-prisma-starter-websockets/src/pages/api/auth/%5B...nextauth%5D.ts) во время разработки.

@@ -22,8 +22,8 @@ dir: rtl
 
 ثم اذهب **<** Settings **<** OAuth2 **<** General
 
-قم بنسخ Client ID وضعه في `.env `كـ `DISCORD_CLIENT_ID`
+قم بنسخ Client ID وضعه في `.env `كـ `AUTH_DISCORD_ID`
 
-اضغط علي Reset Secret ثم انسخ كلمة السر الجديدة وضعها في .env كـ DISCORD_CLIENT_SECRET
+اضغط علي Reset Secret ثم انسخ كلمة السر الجديدة وضعها في .env كـ AUTH_DISCORD_SECRET
 اضغط علي Add Redirect واضف http://localhost:3000/api/auth/callback/discord
-اضف NEXTAUTH_SECRET الي .env كـ String، في الـ Production اضف كلمة سر قوية.
+اضف AUTH_SECRET الي .env كـ String، في الـ Production اضف كلمة سر قوية.
