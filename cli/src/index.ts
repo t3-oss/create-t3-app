@@ -40,6 +40,7 @@ const main = async () => {
     packages,
     flags: { noGit, noInstall, importAlias, appRouter },
     databaseProvider,
+    drizzleDatabaseProvider,
   } = await runCli();
 
   const usePackages = buildPkgInstallerMap(packages, databaseProvider);
@@ -52,6 +53,7 @@ const main = async () => {
     scopedAppName,
     packages: usePackages,
     databaseProvider,
+    drizzleDatabaseProvider,
     importAlias,
     noInstall,
     appRouter,
