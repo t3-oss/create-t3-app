@@ -2,19 +2,19 @@ import fs from "fs";
 import path from "path";
 
 import { PKG_ROOT } from "~/consts.js";
-import { installPackages } from "~/helpers/installPackages.js";
-import { scaffoldProject } from "~/helpers/scaffoldProject.js";
 import {
+  installPackages,
+  scaffoldProject,
   selectAppFile,
   selectIndexFile,
   selectLayoutFile,
   selectPageFile,
-} from "~/helpers/selectBoilerplate.js";
+} from "~/helpers/main.js";
 import {
   type DatabaseProvider,
   type PkgInstallerMap,
-} from "~/installers/index.js";
-import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
+} from "~/installers/main.js";
+import { getUserPkgManager } from "~/utils/main.js";
 
 interface CreateProjectOptions {
   projectName: string;

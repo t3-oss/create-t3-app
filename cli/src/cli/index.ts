@@ -7,13 +7,15 @@ import {
   databaseProviders,
   type AvailablePackages,
   type DatabaseProvider,
-} from "~/installers/index.js";
-import { getVersion } from "~/utils/getT3Version.js";
-import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
-import { IsTTYError } from "~/utils/isTTYError.js";
-import { logger } from "~/utils/logger.js";
-import { validateAppName } from "~/utils/validateAppName.js";
-import { validateImportAlias } from "~/utils/validateImportAlias.js";
+} from "~/installers/main.js";
+import {
+  getUserPkgManager,
+  getVersion,
+  IsTTYError,
+  logger,
+  validateAppName,
+  validateImportAlias,
+} from "~/utils/main.js";
 
 interface CliFlags {
   noGit: boolean;
@@ -66,6 +68,7 @@ const defaultOptions: CliResults = {
   databaseProvider: "sqlite",
 };
 
+// eslint-disable-next-line prettier/prettier
 export const runCli = async (): Promise<CliResults> => {
   const cliResults = defaultOptions;
 
