@@ -9,7 +9,8 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
 
   const rawConfig = getRawEslintConfig(usingDrizzle);
-  const configBody = JSON.stringify(rawConfig).replace(/"%%|%%"/g, "");
+  const stringConfig = JSON.stringify(rawConfig, null, 2);
+  const configBody = stringConfig.replace(/"%%|%%"/g, "");
 
   const imports = getImports(usingDrizzle);
 
