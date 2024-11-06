@@ -8,47 +8,33 @@ import { type Installer } from "~/installers/index.js";
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
 
+  const rawConfig = getRawEslintConfig(usingDrizzle);
+  const configBody = JSON.stringify(rawConfig).replace(/"%%|%%"/g, "");
+
   const imports = getImports(usingDrizzle);
 
-  const eslintConfig = getEslintConfig(usingDrizzle);
-  const stringifiedConfig = JSON.stringify(eslintConfig, null, 2).replace(
-    /"%%|%%"/g,
-    ""
-  );
-
   // Convert config from _eslint.js to eslint.config.js
-  const eslintConfigFileContents = [
+  const configFileContents = [
     ...imports,
     "",
     "export default tseslint.config(",
-    stringifiedConfig,
+    configBody,
     ");",
   ].join("\n");
 
-  format(eslintConfigFileContents, { parser: "typescript" })
-    .then((content) => {
-      const eslintConfigDest = path.join(projectDir, "eslint.config.js");
-      fs.writeFileSync(eslintConfigDest, content, "utf-8");
+  const configDest = path.join(projectDir, "eslint.config.js");
+  format(configFileContents, { parser: "typescript" })
+    .then((formattedConfigFileContents) => {
+      fs.writeFileSync(configDest, formattedConfigFileContents, "utf-8");
     })
-    .catch((error) => {
-      console.error("Invalid 'eslint.config.js'.", error);
+    .catch((e) => {
+      console.error("Unable to format ESLint config file.", e);
+      // Write to fs anyway.
+      fs.writeFileSync(configDest, configFileContents, "utf-8");
     });
 };
 
-function getImports(usingDrizzle: boolean) {
-  const imports = [
-    'import nextPlugin from "@next/eslint-plugin-next"',
-    'import tseslint from "typescript-eslint"',
-  ];
-
-  if (usingDrizzle) {
-    imports.unshift('import drizzlePlugin from "eslint-plugin-drizzle"');
-  }
-
-  return imports;
-}
-
-function getEslintConfig(usingDrizzle: boolean) {
+function getRawEslintConfig(usingDrizzle: boolean) {
   const eslintConfig = _initialConfig;
 
   if (usingDrizzle) {
@@ -69,4 +55,21 @@ function getEslintConfig(usingDrizzle: boolean) {
   }
 
   return eslintConfig;
+}
+
+function getImports(usingDrizzle: boolean): string[] {
+  const imports = [
+    createImport("nextPlugin", "@next/eslint-plugin-next"),
+    createImport("tseslint", "typescript-eslint"),
+  ];
+
+  if (usingDrizzle) {
+    imports.unshift(createImport("drizzlePlugin", "eslint-plugin-drizzle"));
+  }
+
+  return imports;
+}
+
+function createImport(defaultImportName: string, packageName: string): string {
+  return `import ${defaultImportName} from "${packageName}";`;
 }
