@@ -143,11 +143,11 @@ importers:
         specifier: ^20.17.6
         version: 20.17.6
       drizzle-kit:
-        specifier: ^0.24.2
-        version: 0.24.2
+        specifier: ^0.28.0
+        version: 0.28.0
       drizzle-orm:
-        specifier: ^0.33.0
-        version: 0.33.0(@libsql/client@0.14.0)(@planetscale/database@1.19.0)(@prisma/client@5.21.1(prisma@5.21.1))(@types/react@18.3.3)(mysql2@3.11.3)(postgres@3.4.5)(prisma@5.21.1)(react@18.3.1)
+        specifier: ^0.36.1
+        version: 0.36.1(@libsql/client@0.14.0)(@planetscale/database@1.19.0)(@prisma/client@5.21.1(prisma@5.21.1))(@types/react@18.3.3)(mysql2@3.11.3)(postgres@3.4.5)(prisma@5.21.1)(react@18.3.1)
       mysql2:
         specifier: ^3.11.3
         version: 3.11.3
@@ -2935,6 +2935,7 @@ packages:
 
   acorn-import-assertions@1.9.0:
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -3598,17 +3599,18 @@ packages:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
     engines: {node: '>=10'}
 
-  drizzle-kit@0.24.2:
-    resolution: {integrity: sha512-nXOaTSFiuIaTMhS8WJC2d4EBeIcN9OSt2A2cyFbQYBAZbi7lRsVGJNqDpEwPqYfJz38yxbY/UtbvBBahBfnExQ==}
+  drizzle-kit@0.28.0:
+    resolution: {integrity: sha512-KqI+CS2Ga9GYIrXpxpCDUJJrH/AT/k4UY0Pb4oRgQEGkgN1EdCnqp664cXgwPWjDr5RBtTsjZipw8+8C//K63A==}
     hasBin: true
 
-  drizzle-orm@0.33.0:
-    resolution: {integrity: sha512-SHy72R2Rdkz0LEq0PSG/IdvnT3nGiWuRk+2tXZQ90GVq/XQhpCzu/EFT3V2rox+w8MlkBQxifF8pCStNYnERfA==}
+  drizzle-orm@0.36.1:
+    resolution: {integrity: sha512-F4hbimnMEhyWzDowQB4xEuVJJWXLHZYD7FYwvo8RImY+N7pStGqsbfmT95jDbec1s4qKmQbiuxEDZY90LRrfIw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
-      '@electric-sql/pglite': '>=0.1.1'
-      '@libsql/client': '*'
+      '@electric-sql/pglite': '>=0.2.0'
+      '@libsql/client': '>=0.10.0'
+      '@libsql/client-wasm': '>=0.10.0'
       '@neondatabase/serverless': '>=0.1'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
@@ -3641,6 +3643,8 @@ packages:
       '@electric-sql/pglite':
         optional: true
       '@libsql/client':
+        optional: true
+      '@libsql/client-wasm':
         optional: true
       '@neondatabase/serverless':
         optional: true
@@ -4816,7 +4820,6 @@ packages:
 
   libsql@0.4.6:
     resolution: {integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -10267,7 +10270,7 @@ snapshots:
 
   dotenv@8.6.0: {}
 
-  drizzle-kit@0.24.2:
+  drizzle-kit@0.28.0:
     dependencies:
       '@drizzle-team/brocli': 0.10.2
       '@esbuild-kit/esm-loader': 2.6.5
@@ -10276,7 +10279,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.33.0(@libsql/client@0.14.0)(@planetscale/database@1.19.0)(@prisma/client@5.21.1(prisma@5.21.1))(@types/react@18.3.3)(mysql2@3.11.3)(postgres@3.4.5)(prisma@5.21.1)(react@18.3.1):
+  drizzle-orm@0.36.1(@libsql/client@0.14.0)(@planetscale/database@1.19.0)(@prisma/client@5.21.1(prisma@5.21.1))(@types/react@18.3.3)(mysql2@3.11.3)(postgres@3.4.5)(prisma@5.21.1)(react@18.3.1):
     optionalDependencies:
       '@libsql/client': 0.14.0
       '@planetscale/database': 1.19.0
