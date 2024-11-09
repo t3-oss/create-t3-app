@@ -86,4 +86,5 @@ export const buildPkgInstallerMap = (
     inUse: true,
     installer: dynamicEslintInstaller,
   },
+  //* TODO add biome installer here
 });

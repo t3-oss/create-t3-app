@@ -140,6 +140,7 @@ export const runCli = async (): Promise<CliResults> => {
       )}`,
       defaultOptions.flags.dbProvider
     )
+    //* Add eslint / biome options
     .option(
       "--appRouter [boolean]",
       "Explicitly tell the CLI to use the new Next.js app router",
