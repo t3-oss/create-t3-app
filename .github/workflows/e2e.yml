@@ -61,9 +61,9 @@ jobs:
       - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
-          NEXTAUTH_SECRET: foo
-          DISCORD_CLIENT_ID: bar
-          DISCORD_CLIENT_SECRET: baz
+          AUTH_SECRET: foo
+          AUTH_DISCORD_ID: bar
+          AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
 
   build-t3-app-with-bun:
@@ -101,7 +101,7 @@ jobs:
       - run: cd ../ci-bun && bun run build
         # - run: cd ../ci-bun && bun --bun run build
         env:
-          NEXTAUTH_SECRET: foo
+          AUTH_SECRET: foo
+          AUTH_DISCORD_ID: bar
+          AUTH_DISCORD_SECRET: baz
           DATABASE_URL: mysql://root:root@localhost:3306/test # can't use url from example env cause we block that in t3-env
-          DISCORD_CLIENT_ID: bar
-          DISCORD_CLIENT_SECRET: baz

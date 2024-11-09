@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -16,7 +16,7 @@
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",
     "geist": "^1.3.0",
-    "next": "^14.2.4",
+    "next": "^15.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "zod": "^3.23.3"
@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.4",
+    "eslint-config-next": "^15.0.1",
     "typescript": "^5.5.3"
   }
 }
