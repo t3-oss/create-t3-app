@@ -1,12 +1,66 @@
 import path from "path";
 import fs from "fs-extra";
+import { type PackageJson } from "type-fest";
 
+import { PKG_ROOT } from "~/consts.js";
 import { _initialConfig } from "~/../template/extras/config/_eslint.js";
 import { type Installer } from "~/installers/index.js";
+import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
+
+// Also installs prettier
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
-  const usingDrizzle = !!packages?.drizzle?.inUse;
+  const devPackages: AvailableDependencies[] = [
+    "prettier",
+    "eslint",
+    "eslint-config-next",
+    "@types/eslint",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+  ];
 
+  if (packages?.tailwind.inUse) {
+    devPackages.push("prettier-plugin-tailwindcss");
+  }
+  if (packages?.drizzle.inUse) {
+    devPackages.push("eslint-plugin-drizzle");
+  }
+
+  addPackageDependency({
+    projectDir,
+    dependencies: devPackages,
+    devMode: true,
+  });
+  const extrasDir = path.join(PKG_ROOT, "template/extras");
+
+  // Prettier
+  let prettierSrc: string;
+  if (packages?.tailwind.inUse) {
+    prettierSrc = path.join(extrasDir, "config/_tailwind.prettier.config.js");
+  }
+  else {
+    prettierSrc = path.join(extrasDir, "config/_prettier.config.js");
+  }
+  const prettierDest = path.join(projectDir, "prettier.config.js");
+
+  fs.copySync(prettierSrc, prettierDest);
+
+  // add format:* scripts to package.json
+  const packageJsonPath = path.join(projectDir, "package.json");
+  const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
+  packageJsonContent.scripts = {
+    ...packageJsonContent.scripts,
+    "format:write": 'prettier --write "**/*.{ts,tsx,js,jsx,mdx}" --cache',
+    "format:check": 'prettier --check "**/*.{ts,tsx,js,jsx,mdx}" --cache',
+  };
+
+  fs.writeJSONSync(packageJsonPath, packageJsonContent, {
+    spaces: 2,
+  });
+
+  // eslint
+  const usingDrizzle = !!packages?.drizzle?.inUse;
   const eslintConfig = getEslintConfig({ usingDrizzle });
 
   // Convert config from _eslint.config.json to .eslintrc.cjs

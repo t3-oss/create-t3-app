@@ -5,7 +5,6 @@ import { type PackageJson } from "type-fest";
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
-import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 export const drizzleInstaller: Installer = ({
   projectDir,
@@ -13,14 +12,10 @@ export const drizzleInstaller: Installer = ({
   scopedAppName,
   databaseProvider,
 }) => {
-  const devPackages: AvailableDependencies[] = [
-    "drizzle-kit",
-    "eslint-plugin-drizzle", //* TODO make this depend on eslint being installed
-  ];
 
   addPackageDependency({
     projectDir,
-    dependencies: devPackages,
+    dependencies: ["drizzle-kit"],
     devMode: true,
   });
   addPackageDependency({
