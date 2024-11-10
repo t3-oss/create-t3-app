@@ -36,5 +36,9 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^5.50.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
+
+  // biome
+  "@biomejs/biome": "1.9.4",
+  //* TODO also add prettier / eslint plugins here
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

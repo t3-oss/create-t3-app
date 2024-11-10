@@ -15,7 +15,7 @@ export const drizzleInstaller: Installer = ({
 }) => {
   const devPackages: AvailableDependencies[] = [
     "drizzle-kit",
-    "eslint-plugin-drizzle",
+    "eslint-plugin-drizzle", //* TODO make this depend on eslint being installed
   ];
 
   addPackageDependency({

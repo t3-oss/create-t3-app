@@ -35,6 +35,9 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   // add format:* scripts to package.json
   const packageJsonPath = path.join(projectDir, "package.json");
 
+  //* TODO for some reason the prettier related install stuff is here with tailwind, should probably be in its own installer
+  //* along with biome stuff
+  //* Update: prettier is not installed if you don't select tailwind css, which really doesn't make sense. Should move it to the eslint installer
   const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
   packageJsonContent.scripts = {
     ...packageJsonContent.scripts,
