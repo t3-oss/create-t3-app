@@ -211,7 +211,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.biome && cliResults.flags.eslint) {
       logger.warn("Incompatible combination Biome + ESLint. Exiting.");
       process.exit(0);
-    };
+    }
     if (databaseProviders.includes(cliResults.flags.dbProvider) === false) {
       logger.warn(
         `Incompatible database provided. Use: ${databaseProviders.join(", ")}. Exiting.`
@@ -324,7 +324,8 @@ export const runCli = async (): Promise<CliResults> => {
         },
         linter: () => {
           return p.select({
-            message: "Would you like to use ESLint and Prettier or Biome for linting and formatting?",
+            message:
+              "Would you like to use ESLint and Prettier or Biome for linting and formatting?",
             options: [
               { value: "eslint", label: "ESLint/Prettier" },
               { value: "biome", label: "Biome" },
@@ -373,7 +374,8 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.authentication === "next-auth") packages.push("nextAuth");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
-    //* TODO may need to add something here? not sure
+    if (project.linter === "eslint") packages.push("eslint");
+    if (project.linter === "biome") packages.push("biome");
 
     return {
       appName: project.name ?? cliResults.appName,

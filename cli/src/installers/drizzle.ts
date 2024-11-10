@@ -12,7 +12,6 @@ export const drizzleInstaller: Installer = ({
   scopedAppName,
   databaseProvider,
 }) => {
-
   addPackageDependency({
     projectDir,
     dependencies: ["drizzle-kit"],

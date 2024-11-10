@@ -2,12 +2,11 @@ import path from "path";
 import fs from "fs-extra";
 import { type PackageJson } from "type-fest";
 
-import { PKG_ROOT } from "~/consts.js";
 import { _initialConfig } from "~/../template/extras/config/_eslint.js";
+import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { type AvailableDependencies } from "./dependencyVersionMap.js";
-
 
 // Also installs prettier
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
@@ -38,8 +37,7 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   let prettierSrc: string;
   if (packages?.tailwind.inUse) {
     prettierSrc = path.join(extrasDir, "config/_tailwind.prettier.config.js");
-  }
-  else {
+  } else {
     prettierSrc = path.join(extrasDir, "config/_prettier.config.js");
   }
   const prettierDest = path.join(projectDir, "prettier.config.js");
