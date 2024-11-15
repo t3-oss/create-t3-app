@@ -1,11 +1,11 @@
 import path from "path";
 import fs from "fs-extra";
-import { type PackageJson } from "type-fest";
 
 import { _initialConfig } from "~/../template/extras/config/_eslint.js";
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
+import { addPackageScript } from "~/utils/addPackageScript.js";
 import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 // Also installs prettier
@@ -44,17 +44,15 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
 
   fs.copySync(prettierSrc, prettierDest);
 
-  // add format:* scripts to package.json
-  const packageJsonPath = path.join(projectDir, "package.json");
-  const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
-  packageJsonContent.scripts = {
-    ...packageJsonContent.scripts,
-    "format:write": 'prettier --write "**/*.{ts,tsx,js,jsx,mdx}" --cache',
-    "format:check": 'prettier --check "**/*.{ts,tsx,js,jsx,mdx}" --cache',
-  };
-
-  fs.writeJSONSync(packageJsonPath, packageJsonContent, {
-    spaces: 2,
+  addPackageScript({
+    projectDir,
+    scripts: {
+      lint: "next lint",
+      "lint:fix": "next lint --fix",
+      check: "next lint && tsc --noEmit",
+      "format:write": 'prettier --write "**/*.{ts,tsx,js,jsx,mdx}" --cache',
+      "format:check": 'prettier --check "**/*.{ts,tsx,js,jsx,mdx}" --cache',
+    },
   });
 
   // eslint
