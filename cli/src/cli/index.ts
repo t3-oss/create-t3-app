@@ -41,6 +41,8 @@ interface CliFlags {
   eslint: boolean;
   /** @internal Used in CI */
   biome: boolean;
+  /** @internal Used in CI */
+  mixedBiome: boolean;
 }
 
 interface CliResults {
@@ -68,6 +70,7 @@ const defaultOptions: CliResults = {
     dbProvider: "sqlite",
     eslint: false,
     biome: false,
+    mixedBiome: false,
   },
   databaseProvider: "sqlite",
 };
@@ -161,6 +164,11 @@ export const runCli = async (): Promise<CliResults> => {
       "Experimental: Boolean value if we should install biome. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
     )
+    .option(
+      "--mixedBiome [boolean]",
+      "Experimental: Boolean value if we should install biome and eslint. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -201,6 +209,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
     if (cliResults.flags.eslint) cliResults.packages.push("eslint");
     if (cliResults.flags.biome) cliResults.packages.push("biome");
+    if (cliResults.flags.mixedBiome) cliResults.packages.push("mixedBiome");
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
@@ -208,10 +217,17 @@ export const runCli = async (): Promise<CliResults> => {
       logger.warn("Incompatible combination Prisma + Drizzle. Exiting.");
       process.exit(0);
     }
-    if (cliResults.flags.biome && cliResults.flags.eslint) {
-      logger.warn("Incompatible combination Biome + ESLint. Exiting.");
+
+    if (
+      (cliResults.flags.mixedBiome && cliResults.flags.biome) ||
+      cliResults.flags.eslint
+    ) {
+      logger.warn(
+        "Incompatible combination Biome + ESLint. Please select one or the mixed one. Exiting."
+      );
       process.exit(0);
     }
+
     if (databaseProviders.includes(cliResults.flags.dbProvider) === false) {
       logger.warn(
         `Incompatible database provided. Use: ${databaseProviders.join(", ")}. Exiting.`
@@ -325,10 +341,11 @@ export const runCli = async (): Promise<CliResults> => {
         linter: () => {
           return p.select({
             message:
-              "Would you like to use ESLint and Prettier or Biome for linting and formatting?",
+              "Would you like to use ESLint and Prettier or ESLint and Biome or only Biome for linting and formatting?",
             options: [
               { value: "eslint", label: "ESLint/Prettier" },
               { value: "biome", label: "Biome" },
+              { value: "mixedBiome", label: "ESLint + Biome" },
             ],
             initialValue: "eslint",
           });
@@ -376,6 +393,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.database === "drizzle") packages.push("drizzle");
     if (project.linter === "eslint") packages.push("eslint");
     if (project.linter === "biome") packages.push("biome");
+    if (project.linter === "mixedBiome") packages.push("mixedBiome");
 
     return {
       appName: project.name ?? cliResults.appName,
