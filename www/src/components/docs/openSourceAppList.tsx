@@ -330,6 +330,13 @@ const projects: App[] = [
     linkName: "Squeak",
     link: "https://playsqueak.com/",
   },
+  {
+    description: "AiSeka - Discover the best Color Palette & Color Kits",
+    repoName: "meetqy/aiseka",
+    repo: "https://github.com/meetqy/aiseka",
+    linkName: "AiSeka",
+    link: "https://aiseka.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
