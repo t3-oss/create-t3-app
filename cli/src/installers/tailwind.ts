@@ -29,8 +29,8 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   const prettierSrc = path.join(extrasDir, "config/_prettier.config.js");
   const prettierDest = path.join(projectDir, "prettier.config.js");
 
-  const cssSrc = path.join(extrasDir, "src/styles/globals.css");
-  const cssDest = path.join(projectDir, "src/styles/globals.css");
+  const cssSrc = path.join(extrasDir, "src/globals.css");
+  const cssDest = path.join(projectDir, "src/globals.css");
 
   // add format:* scripts to package.json
   const packageJsonPath = path.join(projectDir, "package.json");

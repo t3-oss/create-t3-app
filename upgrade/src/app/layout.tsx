@@ -1,5 +1,5 @@
 import "react-diff-view/style/index.css";
-import "~/styles/globals.css";
+import "~/globals.css";
 
 import { Github } from "lucide-react";
 import { type Metadata } from "next";
