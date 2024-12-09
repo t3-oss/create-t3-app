@@ -1,11 +1,11 @@
 import "~/styles/globals.css";
 
-import { Geist } from "next/font/google";
 import { type Metadata } from "next";
+import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
-const geist = Geist({ subsets: ["latin"], variable: '--font-geist' });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 export const metadata: Metadata = {
   title: "Create T3 App",

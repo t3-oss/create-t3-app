@@ -5,7 +5,7 @@ import { Geist } from "next/font/google";
 
 import "~/styles/globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: '--font-geist' });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
