@@ -2,9 +2,8 @@ import "~/styles/globals.css";
 
 import { Geist } from "next/font/google";
 import { type Metadata } from "next";
-import React from "react";
 
-const geist = Geist({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"], variable: '--font-geist' });
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -17,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={geist.className}>{children}</body>
+      <body className={`${geist.className} ${geist.variable}`}>{children}</body>
     </html>
   );
 }

@@ -1,14 +1,13 @@
 import { type AppType } from "next/dist/shared/lib/utils";
 import { Geist } from "next/font/google";
-import React from "react";
 
 import "~/styles/globals.css";
 
-const geist = Geist({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"], variable: '--font-geist' });
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <div className={geist.className}>
+    <div className={`${geist.className} ${geist.variable}`}>
       <Component {...pageProps} />
     </div>
   );
