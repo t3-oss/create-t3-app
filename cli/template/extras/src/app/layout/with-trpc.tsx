@@ -1,9 +1,12 @@
 import "~/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
+import { Geist } from "next/font/google";
 import { type Metadata } from "next";
+import React from "react";
 
 import { TRPCReactProvider } from "~/trpc/react";
+
+const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -16,7 +19,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>
+      <body className={geist.className}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
