@@ -120,7 +120,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 ```ts:server/api/trpc.ts
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({

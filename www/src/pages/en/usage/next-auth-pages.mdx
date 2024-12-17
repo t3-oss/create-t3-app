@@ -116,7 +116,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 ```ts:server/api/trpc.ts
 export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
@@ -175,8 +175,8 @@ Usage of NextAuth.js with Next.js middleware [requires the use of the JWT sessio
   issues.
 </Callout>
 
-After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.  
-The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.  
+After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.
+The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.
 I.e.:
 
 ```diff:server/auth.ts
