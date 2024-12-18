@@ -1,5 +1,27 @@
 # Changelog
 
+## 7.38.1
+
+### Patch Changes
+
+- [#2010](https://github.com/t3-oss/create-t3-app/pull/2010) [`12fccae15d08bc11168fe6b462d978a6787b5c7c`](https://github.com/t3-oss/create-t3-app/commit/12fccae15d08bc11168fe6b462d978a6787b5c7c) Thanks [@swyckoff](https://github.com/swyckoff)! - Added an import for crypto in the cli envVars.ts to support older node versions.
+
+## 7.38.0
+
+### Minor Changes
+
+- [#2000](https://github.com/t3-oss/create-t3-app/pull/2000) [`41de302b5a76966741d1dc270ba5da27064f82e8`](https://github.com/t3-oss/create-t3-app/commit/41de302b5a76966741d1dc270ba5da27064f82e8) Thanks [@ronanru](https://github.com/ronanru)! - update to next.js 15 and next-auth v5
+
+- [#2002](https://github.com/t3-oss/create-t3-app/pull/2002) [`54b66484692b76d325f59dc233eb27e0aee59af2`](https://github.com/t3-oss/create-t3-app/commit/54b66484692b76d325f59dc233eb27e0aee59af2) Thanks [@devotoare](https://github.com/devotoare)! - Change drizzle with PostgresQL to use identity columns
+
+### Patch Changes
+
+- [#1969](https://github.com/t3-oss/create-t3-app/pull/1969) [`e08dbe307b4e37c7cc7e0cbf6243c008771ef4f8`](https://github.com/t3-oss/create-t3-app/commit/e08dbe307b4e37c7cc7e0cbf6243c008771ef4f8) Thanks [@Guria](https://github.com/Guria)! - fix issue with prefetch protected procedure in auth templates
+
+- [#1997](https://github.com/t3-oss/create-t3-app/pull/1997) [`fe85a233c62af607e8a39bf5ca1b2358d43c6587`](https://github.com/t3-oss/create-t3-app/commit/fe85a233c62af607e8a39bf5ca1b2358d43c6587) Thanks [@programming-with-ia](https://github.com/programming-with-ia)! - Add more scripts in `package.json`
+
+- [#1975](https://github.com/t3-oss/create-t3-app/pull/1975) [`78cb06f99f15f4f4f90b57e3545f1dc0b222eaf3`](https://github.com/t3-oss/create-t3-app/commit/78cb06f99f15f4f4f90b57e3545f1dc0b222eaf3) Thanks [@0pilatos0](https://github.com/0pilatos0)! - Resolved issue where database startup script did not check for docker daemon being up and running
+
 ## 7.37.0
 
 ### Minor Changes

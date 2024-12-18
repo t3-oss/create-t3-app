@@ -20,14 +20,13 @@ lang: ja
 1. Discord のアカウントが必要になりますので、まだの方は登録してください。
 2. https://discord.com/developers/applications に移動し、右上の「New Application」をクリックします。アプリケーションの名前を付け、利用規約に同意してください。
 3. アプリケーションの作成が完了したら、「Settings → OAuth2 → General」に移動してください。
-4. 「Client ID」をコピーし、`DISCORD_CLIENT_ID`として`.env`に追加します。
-5. 「Reset Secret」をクリックし、新しいシークレット情報をコピーし、`DISCORD_CLIENT_SECRET`として`.env`に追加します。
+4. 「Client ID」をコピーし、`AUTH_DISCORD_ID`として`.env`に追加します。
+5. 「Reset Secret」をクリックし、新しいシークレット情報をコピーし、`AUTH_DISCORD_SECRET`として`.env`に追加します。
 6. 「Add Redirect」をクリックし、`http://localhost:3000/api/auth/callback/discord`と入力します。
 
    - 本番環境でのデプロイの場合は、前述の手順で別の Discord アプリケーションを作成しますが、今回は`http://localhost:3000`をデプロイ先の URL で置き換えてください。
 
 7. 変更を保存します。
-8. `.env`に`NEXTAUTH_SECRET`を設定します。開発環境では任意の文字列が機能しますが、本番環境では`.env`内のセキュアなシークレット情報の生成に関する注意事項を参照してください。
 
 これでログインできるようになります。
 
