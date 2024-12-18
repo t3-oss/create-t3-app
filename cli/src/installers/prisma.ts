@@ -28,13 +28,24 @@ export const prismaInstaller: Installer = ({
       devMode: false,
     });
 
+  if (databaseProvider === "neon")
+    addPackageDependency({
+      projectDir,
+      dependencies: ["@neondatabase/serverless"],
+      devMode: false,
+    });
+
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
   const schemaSrc = path.join(
     extrasDir,
     "prisma/schema",
     `${packages?.nextAuth.inUse ? "with-auth" : "base"}${
-      databaseProvider === "planetscale" ? "-planetscale" : ""
+      databaseProvider === "planetscale"
+        ? "-planetscale"
+        : databaseProvider === "neon"
+          ? "-neon"
+          : ""
     }.prisma`
   );
   let schemaText = fs.readFileSync(schemaSrc, "utf-8");
@@ -46,6 +57,7 @@ export const prismaInstaller: Installer = ({
           mysql: "mysql",
           postgres: "postgresql",
           planetscale: "mysql",
+          neon: "postgresql",
         }[databaseProvider]
       }"`
     );

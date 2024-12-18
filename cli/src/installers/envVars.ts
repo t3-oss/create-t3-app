@@ -38,7 +38,7 @@ export const envVariablesInstaller: Installer = ({
   } else {
     if (usingAuth) envFile = "with-auth.js";
   }
-
+  console.log("using env file:", envFile);
   if (envFile !== "") {
     const envSchemaSrc = path.join(
       PKG_ROOT,
@@ -112,6 +112,10 @@ DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?ssl={"rejectUnauthorized":true}'`;
         content = `# Get the Database URL from the "prisma" dropdown selector in PlanetScale. 
 DATABASE_URL='mysql://YOUR_MYSQL_URL_HERE?sslaccept=strict'`;
       }
+    } else if (databaseProvider === "neon") {
+      content += `# Get the database connection details from the Connection Details widget on the Neon Dashboard.
+# Select a branch, a compute, a database, and a role. A connection string is constructed for you
+DATABASE_URL="postgresql://YOUR_POSTGRES_CONNECTION_STRING_HERE?sslmode=require"`;
     } else if (databaseProvider === "mysql") {
       content += `DATABASE_URL="mysql://root:password@localhost:3306/${scopedAppName}"`;
     } else if (databaseProvider === "postgres") {
