@@ -337,6 +337,13 @@ const projects: App[] = [
     linkName: "Ray",
     link: "https://koujialong-ray.vercel.app/",
   },
+  {
+    description: "Aiseka - Discover the best Color Palette & Color Tools",
+    repoName: "meetqy/aiseka",
+    repo: "https://github.com/meetqy/aiseka",
+    linkName: "AISEKA",
+    link: "https://aiseka.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
