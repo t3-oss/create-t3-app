@@ -331,6 +331,13 @@ const projects: App[] = [
     link: "https://playsqueak.com/",
   },
   {
+    description: "Ray - A full stack admin starter",
+    repoName: "koujialong/ray-admin",
+    repo: "https://github.com/koujialong/ray-admin",
+    linkName: "Ray",
+    link: "https://koujialong-ray.vercel.app/",
+  },
+  {
     description: "Aiseka - Discover the best Color Palette & Color Tools",
     repoName: "meetqy/aiseka",
     repo: "https://github.com/meetqy/aiseka",
