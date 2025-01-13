@@ -11,7 +11,7 @@ export const drizzleInstaller: Installer = ({
   projectDir,
   packages,
   scopedAppName,
-  databaseProvider,
+  drizzleDatabaseProvider,
 }) => {
   const devPackages: AvailableDependencies[] = [
     "drizzle-kit",
@@ -31,10 +31,11 @@ export const drizzleInstaller: Installer = ({
         {
           planetscale: "@planetscale/database",
           mysql: "mysql2",
+          neon: "postgres",
           postgres: "postgres",
           sqlite: "@libsql/client",
         } as const
-      )[databaseProvider],
+      )[drizzleDatabaseProvider],
     ],
     devMode: false,
   });
@@ -43,9 +44,7 @@ export const drizzleInstaller: Installer = ({
 
   const configFile = path.join(
     extrasDir,
-    `config/drizzle-config-${
-      databaseProvider === "planetscale" ? "mysql" : databaseProvider
-    }.ts`
+    `config/drizzle-config-${drizzleDatabaseProvider}.ts`
   );
   const configDest = path.join(projectDir, "drizzle.config.ts");
 
@@ -53,8 +52,8 @@ export const drizzleInstaller: Installer = ({
     extrasDir,
     "src/server/db/schema-drizzle",
     packages?.nextAuth.inUse
-      ? `with-auth-${databaseProvider}.ts`
-      : `base-${databaseProvider}.ts`
+      ? `with-auth-${drizzleDatabaseProvider}.ts`
+      : `base-${drizzleDatabaseProvider}.ts`
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 
@@ -71,7 +70,7 @@ export const drizzleInstaller: Installer = ({
 
   const clientSrc = path.join(
     extrasDir,
-    `src/server/db/index-drizzle/with-${databaseProvider}.ts`
+    `src/server/db/index-drizzle/with-${drizzleDatabaseProvider}.ts`
   );
   const clientDest = path.join(projectDir, "src/server/db/index.ts");
 
