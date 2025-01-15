@@ -22,9 +22,9 @@ export const biomeInstaller: Installer = ({ projectDir }) => {
   addPackageScript({
     projectDir,
     scripts: {
-      "format:unsafe": "biome check --write --unsafe .",
-      "format:write": "biome check --write .",
-      "format:check": "biome check .",
+      "check:unsafe": "biome check --write --unsafe .",
+      "check:write": "biome check --write .",
+      check: "biome check .",
     },
   });
 };

@@ -34,6 +34,7 @@ jobs:
         appRouter: ["true", "false"]
         drizzle: ["true", "false"]
         dbType: ["planetscale", "sqlite", "mysql", "postgres"]
+        # linter: ["eslint", "biome"]
 
     name: "Build and Start T3 App ${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }}"
     steps:
@@ -65,6 +66,9 @@ jobs:
           AUTH_DISCORD_ID: bar
           AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
+
+      # WIP ensure that generated app passes formatting and linting checks
+      - run: pnpm format:check && pnpm check
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest

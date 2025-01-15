@@ -38,7 +38,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias, appRouter },
+    flags: { noGit, noInstall, importAlias, appRouter, eslint },
     databaseProvider,
   } = await runCli();
 
@@ -88,6 +88,8 @@ const main = async () => {
   if (!noGit) {
     await initializeGit(projectDir);
   }
+
+  // TODO run format command
 
   await logNextSteps({
     projectName: appDir,
