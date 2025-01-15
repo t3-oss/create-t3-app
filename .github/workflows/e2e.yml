@@ -60,16 +60,14 @@ jobs:
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         # can't use default mysql string cause t3-env blocks that
 
-      # WIP ensure that generated app passes formatting and linting checks
-      - run: pnpm format:check && pnpm check
-
-      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build
+      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build && pnpm format:check && pnpm check # This shouldn't have command not found
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           AUTH_SECRET: foo
           AUTH_DISCORD_ID: bar
           AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
+      - run: pwd
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
