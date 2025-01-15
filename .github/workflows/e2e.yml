@@ -44,7 +44,7 @@ jobs:
       - name: Check valid matrix
         id: matrix-valid
         run: |
-          echo "continue=${{ (matrix.prisma == 'false' || matrix.drizzle == 'false') && (matrix.drizzle == 'true' || matrix.prisma == 'true' || matrix.dbType == 'sqlite')}}" >> $GITHUB_OUTPUT
+          echo "continue=${{ (matrix.prisma == 'false' || matrix.drizzle == 'false') && (matrix.drizzle == 'true' || matrix.prisma == 'true' || matrix.dbType == 'sqlite') }}" >> $GITHUB_OUTPUT
 
       - uses: ./.github/actions/setup
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
