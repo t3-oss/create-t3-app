@@ -59,6 +59,10 @@ jobs:
       - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }} --dbProvider=${{ matrix.dbType }}
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         # can't use default mysql string cause t3-env blocks that
+
+      # WIP ensure that generated app passes formatting and linting checks
+      - run: pnpm format:check && pnpm check
+
       - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
@@ -66,9 +70,6 @@ jobs:
           AUTH_DISCORD_ID: bar
           AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
-
-      # WIP ensure that generated app passes formatting and linting checks
-      - run: pnpm format:check && pnpm check
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
