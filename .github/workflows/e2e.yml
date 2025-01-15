@@ -56,18 +56,26 @@ jobs:
       # has to be scaffolded outside the CLI project so that no lint/tsconfig are leaking
       # through. this way it ensures that it is the app's configs that are being used
       # FIXME: this is a bit hacky, would rather have --packages=trpc,tailwind,... but not sure how to setup the matrix for that
-      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }} --dbProvider=${{ matrix.dbType }}
+      - run: cd cli && pnpm start ../../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} --noGit --CI --trpc=${{ matrix.trpc }} --tailwind=${{ matrix.tailwind }} --nextAuth=${{ matrix.nextAuth }} --prisma=${{ matrix.prisma }} --drizzle=${{ matrix.drizzle }} --appRouter=${{ matrix.appRouter }} --dbProvider=${{ matrix.dbType }} --eslint
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         # can't use default mysql string cause t3-env blocks that
 
-      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build && pnpm format:check && pnpm check # This shouldn't have command not found
+      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
         env:
           AUTH_SECRET: foo
           AUTH_DISCORD_ID: bar
           AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
-      - run: pwd
+
+      # setup eslint correctly, and run it in correct directory
+      - run: cd ../ci-${{ matrix.trpc }}-${{ matrix.tailwind }}-${{ matrix.nextAuth }}-${{ matrix.prisma }}-${{ matrix.drizzle}}-${{ matrix.appRouter }}-${{ matrix.dbType }} && pnpm format:check && pnpm check
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+        env:
+          AUTH_SECRET: foo
+          AUTH_DISCORD_ID: bar
+          AUTH_DISCORD_SECRET: baz
+          SKIP_ENV_VALIDATION: true
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
