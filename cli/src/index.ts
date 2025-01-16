@@ -86,11 +86,11 @@ const main = async () => {
     await installDependencies({ projectDir });
   }
 
+  await formatProject({ pkgManager, projectDir, eslint, biome });
+
   if (!noGit) {
     await initializeGit(projectDir);
   }
-
-  await formatProject({ pkgManager, projectDir, eslint, biome });
 
   await logNextSteps({
     projectName: appDir,
