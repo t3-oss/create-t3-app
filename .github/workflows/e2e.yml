@@ -110,6 +110,11 @@ jobs:
       # Check linting and formatting with eslint and prettier
       - run: cd ../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} && pnpm lint && pnpm format:check
         if: ${{ steps.matrix-valid.outputs.continue == 'true' && matrix.eslint == 'true' }}
+        env:
+          AUTH_SECRET: foo
+          AUTH_DISCORD_ID: bar
+          AUTH_DISCORD_SECRET: baz
+          SKIP_ENV_VALIDATION: true
 
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
