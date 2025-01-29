@@ -52,7 +52,7 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "prisma", "tailwind", "trpc"],
+  packages: ["nextAuth", "prisma", "tailwind", "trpc", "eslint"],
   flags: {
     noGit: false,
     noInstall: false,
