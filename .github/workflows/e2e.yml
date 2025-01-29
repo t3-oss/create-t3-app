@@ -67,6 +67,50 @@ jobs:
           AUTH_DISCORD_SECRET: baz
           SKIP_ENV_VALIDATION: true
 
+  check-well-formatted:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        eslint: ["true", "false"]
+        biome: ["true", "false"]
+
+    name: "Build and Start T3 App"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check valid matrix
+        id: matrix-valid
+        run: |
+          echo "continue=${{ (matrix.eslint == 'false' || matrix.biome == 'false') && (matrix.biome == 'true' || matrix.eslint == 'true') }}" >> $GITHUB_OUTPUT
+
+      - uses: ./.github/actions/setup
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+
+      - run: pnpm turbo --filter=create-t3-app build
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+
+      - run: cd cli && pnpm start ../../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} --noGit --CI --trpc --tailwind --nextAuth  --drizzle --appRouter --dbProvider=postgres --eslint=${{ matrix.eslint }} --biome=${{ matrix.biome }}
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+
+      - run: cd ../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} && pnpm build
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
+        env:
+          AUTH_SECRET: foo
+          AUTH_DISCORD_ID: bar
+          AUTH_DISCORD_SECRET: baz
+          SKIP_ENV_VALIDATION: true
+
+      # Run biome check
+      - run: cd ../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} && pnpm check
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' && matrix.biome == 'true' }}
+
+      # Check linting and formatting with eslint and prettier
+      - run: cd ../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} && pnpm lint && pnpm format:check
+        if: ${{ steps.matrix-valid.outputs.continue == 'true' && matrix.eslint == 'true' }}
+
   build-t3-app-with-bun:
     runs-on: ubuntu-latest
 
