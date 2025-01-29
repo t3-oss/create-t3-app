@@ -39,7 +39,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias, appRouter, eslint, biome },
+    flags: { noGit, noInstall, importAlias, appRouter },
     databaseProvider,
   } = await runCli();
 
@@ -86,7 +86,12 @@ const main = async () => {
     await installDependencies({ projectDir });
   }
 
-  await formatProject({ pkgManager, projectDir, eslint, biome });
+  await formatProject({
+    pkgManager,
+    projectDir,
+    eslint: packages.includes("eslint"),
+    biome: packages.includes("biome"),
+  });
 
   if (!noGit) {
     await initializeGit(projectDir);
