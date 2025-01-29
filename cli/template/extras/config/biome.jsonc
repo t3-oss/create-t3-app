@@ -3,7 +3,7 @@
   "vcs": {
     "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": true,
+    "useIgnoreFile": true
   },
   "files": { "ignoreUnknown": false, "ignore": [] },
   "formatter": { "enabled": true },
@@ -13,13 +13,14 @@
     "rules": {
       "nursery": {
         "useSortedClasses": {
-          "level": "error",
+          "level": "warn",
+          "fix": "safe",
           "options": {
-            "functions": ["clsx", "cva", "cn"],
-          },
-        },
+            "functions": ["clsx", "cva", "cn"]
+          }
+        }
       },
-      "recommended": true,
-    },
-  },
+      "recommended": true
+    }
+  }
 }
