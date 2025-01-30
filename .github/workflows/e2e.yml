@@ -139,7 +139,7 @@ jobs:
 
       - name: We should have a Bun lockfile
         run: |
-          if [ ! -f "../ci-bun/bun.lockb" ]; then
+          if [ ! -f "../ci-bun/bun.lock" ]; then
             echo "Bun lockfile not found"
             exit 1
           fi
