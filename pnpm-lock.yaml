@@ -270,11 +270,14 @@ importers:
         version: 1.14.0
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.3)
+        version: 1.0.7(tailwindcss@4.0.4)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@tailwindcss/postcss':
+        specifier: ^4.0.0
+        version: 4.0.4
       '@types/eslint':
         specifier: ^8.56.10
         version: 8.56.10
@@ -315,11 +318,11 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.5
+        specifier: ^0.6.11
         version: 0.6.11(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.2))(prettier-plugin-astro@0.14.0)(prettier@3.3.2)
       tailwindcss:
-        specifier: ^3.4.3
-        version: 3.4.3
+        specifier: ^4.0.0
+        version: 4.0.4
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -14160,9 +14163,9 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.3
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.3):
+  tailwindcss-animate@1.0.7(tailwindcss@4.0.4):
     dependencies:
-      tailwindcss: 3.4.3
+      tailwindcss: 4.0.4
 
   tailwindcss@3.4.3:
     dependencies:
