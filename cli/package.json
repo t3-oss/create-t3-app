@@ -62,7 +62,6 @@
     "sort-package-json": "^2.10.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
     "@auth/drizzle-adapter": "^1.1.0",
     "@auth/prisma-adapter": "^1.6.0",
     "@libsql/client": "^0.9.0",
@@ -70,6 +69,7 @@
     "@prisma/adapter-planetscale": "^5.14.0",
     "@prisma/client": "^5.14.0",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "@tailwindcss/postcss": "^4.0.0",
     "@tanstack/react-query": "^5.49.2",
     "@trpc/client": "11.0.0-rc.441",
     "@trpc/next": "11.0.0-rc.441",
