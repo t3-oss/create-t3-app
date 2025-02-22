@@ -52,7 +52,6 @@
   "dependencies": {
     "@clack/core": "^0.3.5",
     "@clack/prompts": "^0.7.0",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "chalk": "^5.4.1",
     "commander": "^12.1.0",
     "execa": "^9.5.2",
@@ -64,6 +63,7 @@
   "devDependencies": {
     "@auth/drizzle-adapter": "^1.7.4",
     "@auth/prisma-adapter": "^2.7.4",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@libsql/client": "^0.14.0",
     "@planetscale/database": "^1.19.0",
     "@prisma/adapter-planetscale": "^5.22.0",
