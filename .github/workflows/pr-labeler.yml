@@ -7,7 +7,7 @@ name: PR Checks
 on:
   pull_request_target:
     branches: ["*"]
-    types: ["opened", "synchronize"]
+    types: ["opened", "edited", "synchronize"]
 
 jobs:
   lint-pr-title:
