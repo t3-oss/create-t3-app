@@ -1,5 +1,4 @@
 {
-  "include": [".eslintrc.cjs", "prettier.config.mjs"],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ES2020",
@@ -45,5 +44,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true
-  }
+  },
+  "include": [".eslintrc.cjs", "prettier.config.js"]
 }
