@@ -16,7 +16,7 @@ export const dependencyVersionMap = {
   // Drizzle
   "drizzle-kit": "^0.28.1",
   "drizzle-orm": "^0.36.4",
-  "eslint-plugin-drizzle": "0.2.3-a5d12b4", // Should update this to latest when latest gets type declarations
+  "eslint-plugin-drizzle": "0.2.3",
   mysql2: "^3.12.0",
   "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",
