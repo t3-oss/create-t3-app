@@ -4,7 +4,6 @@ export const _initialConfig = {
     "@typescript-eslint": "%%tseslint.plugin%%",
   },
   extends: [
-    "%%...nextPlugin.configs['core-web-vitals'].rules%%",
     "%%...tseslint.configs.recommendedTypeChecked%%",
     "%%...tseslint.configs.stylisticTypeChecked%%",
   ],

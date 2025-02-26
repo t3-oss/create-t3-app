@@ -21,8 +21,14 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
 
 function createEslintConfig(usingDrizzle: boolean): string {
   const rawConfig = getRawEslintConfig(usingDrizzle);
-  const stringConfig = JSON.stringify(rawConfig, null, 2);
-  const configBody = stringConfig.replace(/"%%|%%"/g, "");
+  const stringConfig = JSON.stringify(rawConfig);
+  const configBody = stringConfig
+    .replace(/"%%|%%"/g, "")
+    // Add Next.js core web vitals rules
+    .replace(
+      '"rules":{',
+      '"rules":{ ...nextPlugin.configs["core-web-vitals"].rules,'
+    );
 
   const imports = getImports(usingDrizzle);
 
