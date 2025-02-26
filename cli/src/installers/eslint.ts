@@ -1,33 +1,60 @@
 import path from "path";
 import fs from "fs-extra";
+import { format } from "prettier";
 
+import { _eslintTypes } from "~/../template/extras/config/_eslint-types.js";
 import { _initialConfig } from "~/../template/extras/config/_eslint.js";
 import { type Installer } from "~/installers/index.js";
 
 export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
 
-  const eslintConfig = getEslintConfig({ usingDrizzle });
+  const configFileContents = createEslintConfig(usingDrizzle);
+  const configDest = path.join(projectDir, "eslint.config.js");
 
-  // Convert config from _eslint.config.json to .eslintrc.cjs
-  const eslintrcFileContents = [
-    '/** @type {import("eslint").Linter.Config} */',
-    `const config = ${JSON.stringify(eslintConfig, null, 2)}`,
-    "module.exports = config;",
-  ].join("\n");
+  const configTypesFileContents = createEslintConfigTypes(usingDrizzle);
+  const configTypesDest = path.join(projectDir, "eslint-types.d.ts");
 
-  const eslintConfigDest = path.join(projectDir, ".eslintrc.cjs");
-  fs.writeFileSync(eslintConfigDest, eslintrcFileContents, "utf-8");
+  void formatAndWriteFile(configDest, configFileContents);
+  void formatAndWriteFile(configTypesDest, configTypesFileContents);
 };
 
-const getEslintConfig = ({ usingDrizzle }: { usingDrizzle: boolean }) => {
+function createEslintConfig(usingDrizzle: boolean): string {
+  const rawConfig = getRawEslintConfig(usingDrizzle);
+  const stringConfig = JSON.stringify(rawConfig);
+  const configBody = stringConfig
+    .replace(/"%%|%%"/g, "")
+    // Add Next.js core web vitals rules
+    .replace(
+      '"rules":{',
+      '"rules":{ ...nextPlugin.configs["core-web-vitals"].rules,'
+    );
+
+  const imports = getImports(usingDrizzle);
+
+  // Convert config from _eslint.js to eslint.config.js
+  const configFileContents = [
+    '/// <reference types="./eslint-types.d.ts" />',
+    "",
+    ...imports,
+    "",
+    "export default tseslint.config(",
+    configBody,
+    ");",
+  ].join("\n");
+
+  return configFileContents;
+}
+
+function getRawEslintConfig(usingDrizzle: boolean) {
   const eslintConfig = _initialConfig;
 
   if (usingDrizzle) {
-    eslintConfig.plugins = [...(eslintConfig.plugins ?? []), "drizzle"];
+    Object.assign(eslintConfig.plugins, {
+      drizzle: "%%drizzlePlugin%%",
+    });
 
-    eslintConfig.rules = {
-      ...eslintConfig.rules,
+    Object.assign(eslintConfig.rules, {
       "drizzle/enforce-delete-with-where": [
         "error",
         { drizzleObjectName: ["db", "ctx.db"] },
@@ -36,7 +63,58 @@ const getEslintConfig = ({ usingDrizzle }: { usingDrizzle: boolean }) => {
         "error",
         { drizzleObjectName: ["db", "ctx.db"] },
       ],
-    };
+    });
   }
+
   return eslintConfig;
-};
+}
+
+function getImports(usingDrizzle: boolean): string[] {
+  const imports = [
+    createImport("nextPlugin", "@next/eslint-plugin-next"),
+    createImport("tseslint", "typescript-eslint"),
+  ];
+
+  if (usingDrizzle) {
+    imports.unshift(createImport("drizzlePlugin", "eslint-plugin-drizzle"));
+  }
+
+  return imports;
+}
+
+function createImport(defaultImportName: string, packageName: string): string {
+  return `import ${defaultImportName} from "${packageName}";`;
+}
+
+function createEslintConfigTypes(usingDrizzle: boolean): string {
+  let eslintConfigTypes = _eslintTypes;
+
+  if (usingDrizzle) {
+    eslintConfigTypes = eslintConfigTypes.concat(
+      `\n
+      declare module "eslint-plugin-drizzle" {
+        import type { Rule } from "eslint";
+
+        export const rules: Record<string, Rule.RuleModule>;
+      }`
+    );
+  }
+
+  return eslintConfigTypes;
+}
+
+async function formatAndWriteFile(
+  filePath: string,
+  fileContents: string
+): Promise<void> {
+  try {
+    const formattedFileContents = await format(fileContents, {
+      parser: "typescript",
+    });
+    await fs.writeFile(filePath, formattedFileContents, "utf-8");
+  } catch (e) {
+    console.error("Unable to format ESLint config file.", e);
+    // Write to fs anyway.
+    fs.writeFileSync(filePath, fileContents, "utf-8");
+  }
+}
