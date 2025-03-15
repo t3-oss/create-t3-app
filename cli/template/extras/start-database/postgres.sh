@@ -28,6 +28,20 @@ if ! docker info > /dev/null 2>&1; then
   exit 1
 fi
 
+if command -v nc >/dev/null 2>&1; then
+  if nc -z localhost "$DB_PORT" 2>/dev/null; then
+    echo "Port $DB_PORT is already in use."
+    exit 1
+  fi
+else
+  echo "Warning: Unable to check if port $DB_PORT is already in use (netcat not installed)"
+  read -p "Do you want to continue anyway? [y/N]: " -r REPLY
+  if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Aborting."
+    exit 1
+  fi
+fi
+
 if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   echo "Database container '$DB_CONTAINER_NAME' already running"
   exit 0
