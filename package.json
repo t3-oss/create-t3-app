@@ -47,6 +47,7 @@
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.27.3",
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@manypkg/cli": "^0.20.0",
     "@total-typescript/ts-reset": "^0.3.7",
     "@types/eslint": "^8.56.10",
@@ -62,7 +63,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "prettier": "^3.3.2",
     "turbo": "1.13.3-canary.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.8.2"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "8.1.0",
