@@ -79,7 +79,7 @@
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.14.10",
     "drizzle-kit": "^0.30.5",
-    "drizzle-orm": "^0.40.0",
+    "drizzle-orm": "^0.41.0",
     "mysql2": "^3.11.0",
     "next": "^15.2.3",
     "next-auth": "^4.24.7",

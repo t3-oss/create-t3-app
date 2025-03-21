@@ -15,7 +15,7 @@ export const dependencyVersionMap = {
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
-  "drizzle-orm": "^0.40.0",
+  "drizzle-orm": "^0.41.0",
   mysql2: "^3.11.0",
   "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",

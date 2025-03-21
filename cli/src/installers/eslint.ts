@@ -57,9 +57,7 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
   const eslintConfigSrc = path.join(
     extrasDir,
-    usingDrizzle
-      ? "config/_eslint.drizzle.js"
-      : "config/_eslint.base.js"
+    usingDrizzle ? "config/_eslint.drizzle.js" : "config/_eslint.base.js"
   );
   const eslintConfigDest = path.join(projectDir, "eslint.config.js");
 
