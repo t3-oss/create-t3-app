@@ -81,7 +81,7 @@
     "drizzle-kit": "^0.30.5",
     "drizzle-orm": "^0.40.0",
     "mysql2": "^3.11.0",
-    "next": "^14.2.4",
+    "next": "^15.2.3",
     "next-auth": "^4.24.7",
     "postgres": "^3.4.4",
     "prettier": "^3.3.2",

@@ -42,7 +42,7 @@ export const dependencyVersionMap = {
   prettier: "^3.3.2",
   "prettier-plugin-tailwindcss": "^0.6.11",
   eslint: "^8.57.0",
-  "eslint-config-next": "^15.0.1",
+  "eslint-config-next": "^15.2.3",
   "eslint-plugin-drizzle": "^0.2.3",
   "@types/eslint": "^8.56.10",
   "@typescript-eslint/eslint-plugin": "^8.1.0",
