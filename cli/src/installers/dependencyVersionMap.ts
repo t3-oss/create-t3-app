@@ -15,7 +15,7 @@ export const dependencyVersionMap = {
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
-  "drizzle-orm": "^0.40.0",
+  "drizzle-orm": "^0.41.0",
   mysql2: "^3.11.0",
   "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",
@@ -40,12 +40,11 @@ export const dependencyVersionMap = {
 
   // eslint / prettier
   prettier: "^3.3.2",
+  "@eslint/eslintrc": "^3.3.1",
   "prettier-plugin-tailwindcss": "^0.6.11",
-  eslint: "^8.57.0",
+  eslint: "^9.23.0",
   "eslint-config-next": "^15.2.3",
   "eslint-plugin-drizzle": "^0.2.3",
-  "@types/eslint": "^8.56.10",
-  "@typescript-eslint/eslint-plugin": "^8.1.0",
-  "@typescript-eslint/parser": "^8.1.0",
+  "typescript-eslint": "^8.27.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
