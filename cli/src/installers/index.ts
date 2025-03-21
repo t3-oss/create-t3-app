@@ -45,12 +45,13 @@ export interface InstallerOptions {
 
 export type Installer = (opts: InstallerOptions) => void;
 
-export type PkgInstallerMap = {
-  [pkg in AvailablePackages]: {
+export type PkgInstallerMap = Record<
+  AvailablePackages,
+  {
     inUse: boolean;
     installer: Installer;
-  };
-};
+  }
+>;
 
 export const buildPkgInstallerMap = (
   packages: AvailablePackages[],
