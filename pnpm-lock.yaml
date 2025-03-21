@@ -212,7 +212,7 @@ importers:
         version: 3.3.4
       '@docsearch/react':
         specifier: ^3.3.4
-        version: 3.3.4(@algolia/client-search@4.23.3)(@types/react@18.3.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 3.3.4(@algolia/client-search@4.23.3)(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@fontsource/inter':
         specifier: ^4.5.15
         version: 4.5.15
@@ -264,7 +264,7 @@ importers:
     devDependencies:
       '@astrojs/react':
         specifier: ^4.2.1
-        version: 4.2.1(@types/node@20.14.10)(@types/react-dom@18.3.0)(@types/react@18.3.3)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.4.2)
+        version: 4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.4.2)
       '@astrojs/tailwind':
         specifier: ^6.0.1
         version: 6.0.1(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.4.2))(tailwindcss@3.4.17)
@@ -272,11 +272,11 @@ importers:
         specifier: ^20.14.10
         version: 20.14.10
       '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
+        specifier: ^19.0.12
+        version: 19.0.12
       '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.12)
       '@types/react-typist':
         specifier: ^2.0.6
         version: 2.0.6
@@ -2095,17 +2095,16 @@ packages:
   '@types/normalize-package-data@2.4.1':
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
 
-  '@types/prop-types@15.7.5':
-    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-
-  '@types/react-dom@18.3.0':
-    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+  '@types/react-dom@19.0.4':
+    resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
+    peerDependencies:
+      '@types/react': ^19.0.0
 
   '@types/react-typist@2.0.6':
     resolution: {integrity: sha512-/7tmwNwKLOAdL1kx0y7yel4DqOvdQSk13MlCnBX8GyLoYicrU7t8rPOzu2soFTzq0c6QAeX6uSqTRX3tdya7rg==}
 
-  '@types/react@18.3.3':
-    resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
+  '@types/react@19.0.12':
+    resolution: {integrity: sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==}
 
   '@types/responselike@1.0.0':
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
@@ -6622,10 +6621,10 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@4.2.1(@types/node@20.14.10)(@types/react-dom@18.3.0)(@types/react@18.3.3)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.4.2)':
+  '@astrojs/react@4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.4.2)':
     dependencies:
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
+      '@types/react': 19.0.12
+      '@types/react-dom': 19.0.4(@types/react@19.0.12)
       '@vitejs/plugin-react': 4.3.4(vite@6.2.2(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.31.1)(yaml@2.4.2))
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
@@ -7147,14 +7146,14 @@ snapshots:
 
   '@docsearch/css@3.3.4': {}
 
-  '@docsearch/react@3.3.4(@algolia/client-search@4.23.3)(@types/react@18.3.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@docsearch/react@3.3.4(@algolia/client-search@4.23.3)(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@algolia/autocomplete-core': 1.8.2
       '@algolia/autocomplete-preset-algolia': 1.8.2(@algolia/client-search@4.23.3)(algoliasearch@4.19.1)
       '@docsearch/css': 3.3.4
       algoliasearch: 4.19.1
     optionalDependencies:
-      '@types/react': 18.3.3
+      '@types/react': 19.0.12
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     transitivePeerDependencies:
@@ -8246,19 +8245,16 @@ snapshots:
 
   '@types/normalize-package-data@2.4.1': {}
 
-  '@types/prop-types@15.7.5': {}
-
-  '@types/react-dom@18.3.0':
+  '@types/react-dom@19.0.4(@types/react@19.0.12)':
     dependencies:
-      '@types/react': 18.3.3
+      '@types/react': 19.0.12
 
   '@types/react-typist@2.0.6':
     dependencies:
-      '@types/react': 18.3.3
+      '@types/react': 19.0.12
 
-  '@types/react@18.3.3':
+  '@types/react@19.0.12':
     dependencies:
-      '@types/prop-types': 15.7.5
       csstype: 3.1.1
 
   '@types/responselike@1.0.0':
