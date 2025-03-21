@@ -35,7 +35,7 @@ export function LatestPost() {
           placeholder="Title"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-full px-4 py-2 text-black"
+          className="w-full rounded-full bg-white/10 px-4 py-2 text-white"
         />
         <button
           type="submit"
