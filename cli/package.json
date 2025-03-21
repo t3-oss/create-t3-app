@@ -68,12 +68,12 @@
     "@planetscale/database": "^1.19.0",
     "@prisma/adapter-planetscale": "^5.14.0",
     "@prisma/client": "^5.14.0",
-    "@t3-oss/env-nextjs": "^0.10.1",
-    "@tanstack/react-query": "^5.49.2",
-    "@trpc/client": "11.0.0-rc.441",
-    "@trpc/next": "11.0.0-rc.441",
-    "@trpc/react-query": "11.0.0-rc.441",
-    "@trpc/server": "11.0.0-rc.441",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "@tanstack/react-query": "^5.69.0",
+    "@trpc/client": "11.0.0",
+    "@trpc/next": "11.0.0",
+    "@trpc/react-query": "11.0.0",
+    "@trpc/server": "11.0.0",
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.14.10",
@@ -92,7 +92,7 @@
     "tailwindcss": "^3.4.3",
     "tsup": "^6.7.0",
     "type-fest": "^3.13.1",
-    "typescript": "^5.5.3",
-    "zod": "^3.23.8"
+    "typescript": "^5.8.2",
+    "zod": "^3.24.2"
   }
 }
