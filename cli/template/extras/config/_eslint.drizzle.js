@@ -1,6 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import tseslint from 'typescript-eslint';
-import drizzle from 'eslint-plugin-drizzle';
+// @ts-ignore -- no types for this plugin
+import drizzle from "eslint-plugin-drizzle";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -8,7 +9,7 @@ const compat = new FlatCompat({
 
 export default tseslint.config(
   {
-		ignores: ['.cache/', '.next/']
+		ignores: ['.next']
 	},
   ...compat.extends("next/core-web-vitals"),
   {
