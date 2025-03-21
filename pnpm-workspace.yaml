@@ -1,4 +1,3 @@
 packages:
   - "cli"
   - "www"
-  - "upgrade"
