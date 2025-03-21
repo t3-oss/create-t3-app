@@ -25,7 +25,7 @@ export const trpcInstaller: Installer = ({
   const usingAuth = packages?.nextAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
-  const usingDb = usingPrisma || usingDrizzle;
+  const usingDb = usingPrisma === true || usingDrizzle === true;
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
