@@ -15,7 +15,7 @@ export const envVariablesInstaller: Installer = ({
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
-  const usingDb = usingPrisma || usingDrizzle;
+  const usingDb = usingPrisma === true || usingDrizzle === true;
   const usingPlanetScale = databaseProvider === "planetscale";
 
   const envContent = getEnvContent(
