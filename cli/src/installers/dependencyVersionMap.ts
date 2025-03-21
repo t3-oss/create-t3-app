@@ -22,8 +22,9 @@ export const dependencyVersionMap = {
   "@libsql/client": "^0.14.0",
 
   // TailwindCSS
-  tailwindcss: "^3.4.3",
-  postcss: "^8.4.39",
+  tailwindcss: "^4.0.15",
+  postcss: "^8.5.3",
+  "@tailwindcss/postcss": "^4.0.15",
 
   // tRPC
   "@trpc/client": "^11.0.0",
@@ -39,7 +40,7 @@ export const dependencyVersionMap = {
 
   // eslint / prettier
   prettier: "^3.3.2",
-  "prettier-plugin-tailwindcss": "^0.6.5",
+  "prettier-plugin-tailwindcss": "^0.6.11",
   eslint: "^8.57.0",
   "eslint-config-next": "^15.0.1",
   "eslint-plugin-drizzle": "^0.2.3",
