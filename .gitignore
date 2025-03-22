@@ -17,6 +17,7 @@ build/
 public/build/
 dist/
 generated/
+.astro
 
 # ENV FILES
 .env
