@@ -36,7 +36,7 @@ const specialHoverClass = specialHover
   target={openInNewTab ? "_blank" : "_self"}
   rel="noopener noreferrer"
   class={`${specialHoverClass} ${roundedClass} ${variantClass} ${className} inline-flex items-center px-3 lg:px-4 lg:py-3 md:px-5 py-2 text-sm md:text-base font-semibold cursor-pointer hover:no-underline transition-colors`}
-  {...(download ? { download } : {})}
+  {...download ? { download } : {}}
 >
   <slot />
 </a>
