@@ -39,7 +39,7 @@ export const dependencyVersionMap = {
   "@biomejs/biome": "1.9.4",
 
   // eslint / prettier
-  prettier: "^3.3.2",
+  prettier: "^3.5.3",
   "@eslint/eslintrc": "^3.3.1",
   "prettier-plugin-tailwindcss": "^0.6.11",
   eslint: "^9.23.0",
