@@ -13,8 +13,10 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
     "prettier",
     "eslint",
     "eslint-config-next",
+    "eslint-plugin-react-hooks",
     "typescript-eslint",
     "@eslint/eslintrc",
+    "@next/eslint-plugin-next",
   ];
 
   if (packages?.tailwind.inUse) {
