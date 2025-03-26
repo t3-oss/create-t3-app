@@ -3,7 +3,7 @@
  * for Docker builds.
  */
 import type { NextConfig } from "next";
-import "./src/env.ts";
+import "./src/env";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
