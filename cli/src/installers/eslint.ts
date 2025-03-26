@@ -34,11 +34,11 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   // Prettier
   let prettierSrc: string;
   if (packages?.tailwind.inUse) {
-    prettierSrc = path.join(extrasDir, "config/_tailwind.prettier.config.js");
+    prettierSrc = path.join(extrasDir, "config/_tailwind.prettier.config.mjs");
   } else {
-    prettierSrc = path.join(extrasDir, "config/_prettier.config.js");
+    prettierSrc = path.join(extrasDir, "config/_prettier.config.mjs");
   }
-  const prettierDest = path.join(projectDir, "prettier.config.js");
+  const prettierDest = path.join(projectDir, "prettier.config.mjs");
 
   fs.copySync(prettierSrc, prettierDest);
 
@@ -57,9 +57,9 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const usingDrizzle = !!packages?.drizzle?.inUse;
   const eslintConfigSrc = path.join(
     extrasDir,
-    usingDrizzle ? "config/_eslint.drizzle.js" : "config/_eslint.base.js"
+    usingDrizzle ? "config/_eslint.drizzle.mjs" : "config/_eslint.base.mjs"
   );
-  const eslintConfigDest = path.join(projectDir, "eslint.config.js");
+  const eslintConfigDest = path.join(projectDir, "eslint.config.mjs");
 
   fs.copySync(eslintConfigSrc, eslintConfigDest);
 };

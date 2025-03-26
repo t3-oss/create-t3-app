@@ -14,8 +14,8 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.js");
-  const postcssCfgDest = path.join(projectDir, "postcss.config.js");
+  const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.mjs");
+  const postcssCfgDest = path.join(projectDir, "postcss.config.mjs");
 
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");

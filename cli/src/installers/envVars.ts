@@ -29,14 +29,14 @@ export const envVariablesInstaller: Installer = ({
   let envFile = "";
   if (usingDb) {
     if (usingPlanetScale) {
-      if (usingAuth) envFile = "with-auth-db-planetscale.js";
-      else envFile = "with-db-planetscale.js";
+      if (usingAuth) envFile = "with-auth-db-planetscale.ts";
+      else envFile = "with-db-planetscale.ts";
     } else {
-      if (usingAuth) envFile = "with-auth-db.js";
-      else envFile = "with-db.js";
+      if (usingAuth) envFile = "with-auth-db.ts";
+      else envFile = "with-db.ts";
     }
   } else {
-    if (usingAuth) envFile = "with-auth.js";
+    if (usingAuth) envFile = "with-auth.ts";
   }
 
   if (envFile !== "") {
@@ -45,7 +45,7 @@ export const envVariablesInstaller: Installer = ({
       "template/extras/src/env",
       envFile
     );
-    const envSchemaDest = path.join(projectDir, "src/env.js");
+    const envSchemaDest = path.join(projectDir, "src/env.ts");
     fs.copyFileSync(envSchemaSrc, envSchemaDest);
   }
 
@@ -75,7 +75,7 @@ const getEnvContent = (
   scopedAppName: string
 ) => {
   let content = `
-# When adding additional environment variables, the schema in "/src/env.js"
+# When adding additional environment variables, the schema in "/src/env.ts"
 # should be updated accordingly.
 `
     .trim()
