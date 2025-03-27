@@ -21,11 +21,11 @@ export const formatProject = async ({
   const spinner = ora("Running format command\n").start();
 
   if (eslint) {
-    await execa(pkgManager, ["format:write"], {
+    await execa(pkgManager, ["run", "format:write"], {
       cwd: projectDir,
     });
   } else if (biome) {
-    await execa(pkgManager, ["check:unsafe"], {
+    await execa(pkgManager, ["run", "check:unsafe"], {
       cwd: projectDir,
     });
   }
