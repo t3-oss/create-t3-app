@@ -84,14 +84,14 @@ const main = async () => {
 
   if (!noInstall) {
     await installDependencies({ projectDir });
-  }
 
-  await formatProject({
-    pkgManager,
-    projectDir,
-    eslint: packages.includes("eslint"),
-    biome: packages.includes("biome"),
-  });
+    await formatProject({
+      pkgManager,
+      projectDir,
+      eslint: packages.includes("eslint"),
+      biome: packages.includes("biome"),
+    });
+  }
 
   if (!noGit) {
     await initializeGit(projectDir);
