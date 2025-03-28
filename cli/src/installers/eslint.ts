@@ -5,6 +5,7 @@ import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 import { addPackageScript } from "~/utils/addPackageScript.js";
+import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { type AvailableDependencies } from "./dependencyVersionMap.js";
 
 // Also installs prettier
@@ -41,6 +42,13 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   const prettierDest = path.join(projectDir, "prettier.config.js");
 
   fs.copySync(prettierSrc, prettierDest);
+
+  // pnpm
+  const pkgManager = getUserPkgManager();
+  if (pkgManager === "pnpm") {
+    const pnpmSrc = path.join(extrasDir, "pnpm/.npmrc");
+    fs.copySync(pnpmSrc, path.join(projectDir, ".npmrc"));
+  }
 
   addPackageScript({
     projectDir,
