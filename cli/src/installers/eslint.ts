@@ -46,7 +46,7 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   // pnpm
   const pkgManager = getUserPkgManager();
   if (pkgManager === "pnpm") {
-    const pnpmSrc = path.join(extrasDir, "pnpm/npmrc");
+    const pnpmSrc = path.join(extrasDir, "pnpm/_npmrc");
     fs.copySync(pnpmSrc, path.join(projectDir, ".npmrc"));
   }
 
