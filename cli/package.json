@@ -25,7 +25,6 @@
   "files": [
     "dist",
     "template",
-    "template/extras/pnpm/.npmrc",
     "README.md",
     "LICENSE",
     "CHANGELOG.md",

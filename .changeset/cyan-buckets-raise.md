@@ -2,4 +2,4 @@
 "create-t3-app": patch
 ---
 
-Fix ENOENT error for template/extras/pnpm/.npmrc during ESLint boilerplating by explicitly adding template/extras/pnpm/.npmrc in cli/package.json files.
+Fix ENOENT error during ESLint boilerplating by renaming the pnpm configuration file from .npmrc to npmrc to ensure it's included in the published package.
