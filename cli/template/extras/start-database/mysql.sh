@@ -70,7 +70,12 @@ if [ "$DB_PASSWORD" == "password" ]; then
   fi
   # Generate a random URL-safe password
   DB_PASSWORD=$(openssl rand -base64 12 | tr '+/' '-_')
-  sed -i '' "s#:password@#:$DB_PASSWORD@#" .env
+  if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS requires an empty string to be passed with the `i` flag
+    sed -i '' "s#:password@#:$DB_PASSWORD@#" .env
+  else
+    sed -i "s#:password@#:$DB_PASSWORD@#" .env
+  fi
 fi
 
 $DOCKER_CMD run -d \
