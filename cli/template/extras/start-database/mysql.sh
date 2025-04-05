@@ -17,7 +17,7 @@ source .env
 DB_PASSWORD=$(echo "$DATABASE_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
 DB_PORT=$(echo "$DATABASE_URL" | awk -F':' '{print $4}' | awk -F'\/' '{print $1}')
 DB_NAME=$(echo "$DATABASE_URL" | awk -F'/' '{print $4}')
-DB_CONTAINER_NAME="$DB_NAME-postgres"
+DB_CONTAINER_NAME="$DB_NAME-mysql"
 
 if ! [ -x "$(command -v docker)" ] && ! [ -x "$(command -v podman)" ]; then
   echo -e "Docker or Podman is not installed. Please install docker or podman and try again.\nDocker install guide: https://docs.docker.com/engine/install/\nPodman install guide: https://podman.io/getting-started/installation"
@@ -70,7 +70,12 @@ if [ "$DB_PASSWORD" == "password" ]; then
   fi
   # Generate a random URL-safe password
   DB_PASSWORD=$(openssl rand -base64 12 | tr '+/' '-_')
-  sed -i '' "s#:password@#:$DB_PASSWORD@#" .env
+  if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS requires an empty string to be passed with the `i` flag
+    sed -i '' "s#:password@#:$DB_PASSWORD@#" .env
+  else
+    sed -i "s#:password@#:$DB_PASSWORD@#" .env
+  fi
 fi
 
 $DOCKER_CMD run -d \
