@@ -31,9 +31,17 @@ export const dependencyVersionMap = {
   "@trpc/server": "^11.0.0",
   "@trpc/react-query": "^11.0.0",
   "@trpc/next": "^11.0.0",
-  "@tanstack/react-query": "^5.69.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
+
+  // oRPC
+  "@orpc/client": "^0.52.0",
+  "@orpc/react-query": "^0.52.0",
+  "@orpc/server": "^0.52.0",
+
+  // Tanstack Query
+  "@tanstack/react-query": "^5.72.1",
+  "@tanstack/react-query-next-experimental": "^5.72.1",
 
   // biome
   "@biomejs/biome": "1.9.4",

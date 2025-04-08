@@ -70,7 +70,7 @@ export const trpcInstaller: Installer = ({
 
   const exampleRouterSrc = path.join(
     extrasDir,
-    "src/server/api/routers/post",
+    "src/server/api/routers/trpc-post",
     exampleRouterFile
   );
   const exampleRouterDest = path.join(
@@ -106,7 +106,7 @@ export const trpcInstaller: Installer = ({
         path.join(
           extrasDir,
           "src/app/_components",
-          packages?.tailwind.inUse ? "post-tw.tsx" : "post.tsx"
+          packages?.tailwind.inUse ? "post-trpc-tw.tsx" : "post-trpc.tsx"
         ),
         path.join(projectDir, "src/app/_components/post.tsx"),
       ],

@@ -5,8 +5,10 @@ import { Command } from "commander";
 import { CREATE_T3_APP, DEFAULT_APP_NAME } from "~/consts.js";
 import {
   databaseProviders,
+  rpcProviders,
   type AvailablePackages,
   type DatabaseProvider,
+  type RpcProvider,
 } from "~/installers/index.js";
 import { getVersion } from "~/utils/getT3Version.js";
 import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
@@ -26,8 +28,6 @@ interface CliFlags {
   /** @internal Used in CI. */
   tailwind: boolean;
   /** @internal Used in CI. */
-  trpc: boolean;
-  /** @internal Used in CI. */
   prisma: boolean;
   /** @internal Used in CI. */
   drizzle: boolean;
@@ -37,6 +37,8 @@ interface CliFlags {
   appRouter: boolean;
   /** @internal Used in CI. */
   dbProvider: DatabaseProvider;
+  /** @internal Used in CI */
+  rpcProvider: RpcProvider;
   /** @internal Used in CI */
   eslint: boolean;
   /** @internal Used in CI */
@@ -59,13 +61,13 @@ const defaultOptions: CliResults = {
     default: false,
     CI: false,
     tailwind: false,
-    trpc: false,
     prisma: false,
     drizzle: false,
     nextAuth: false,
     importAlias: "~/",
     appRouter: false,
     dbProvider: "sqlite",
+    rpcProvider: "none",
     eslint: false,
     biome: false,
   },
@@ -129,9 +131,11 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "--trpc [boolean]",
-      "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false"
+      "--rpc [rpc]",
+      `Experimental: Choose a RPC provider to use. Possible values: ${rpcProviders.join(
+        ", "
+      )}`,
+      defaultOptions.flags.rpcProvider
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
@@ -194,7 +198,6 @@ export const runCli = async (): Promise<CliResults> => {
   /** @internal Used for CI E2E tests. */
   if (cliResults.flags.CI) {
     cliResults.packages = [];
-    if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
@@ -217,6 +220,23 @@ export const runCli = async (): Promise<CliResults> => {
         `Incompatible database provided. Use: ${databaseProviders.join(", ")}. Exiting.`
       );
       process.exit(0);
+    }
+
+    if (rpcProviders.includes(cliResults.flags.rpcProvider) === false) {
+      logger.warn(
+        `Incompatible RPC provider. Use: ${rpcProviders.join(", ")}. Exiting.`
+      );
+      process.exit(0);
+    } else if (
+      !cliResults.flags.appRouter &&
+      cliResults.flags.rpcProvider === "orpc"
+    ) {
+      logger.warn(
+        `Incompatible RPC provider. oRPC requires the App Router. Exiting.`
+      );
+      process.exit(0);
+    } else if (cliResults.flags.rpcProvider !== "none") {
+      cliResults.packages.push(cliResults.flags.rpcProvider);
     }
 
     cliResults.databaseProvider =
@@ -275,11 +295,6 @@ export const runCli = async (): Promise<CliResults> => {
             message: "Will you be using Tailwind CSS for styling?",
           });
         },
-        trpc: () => {
-          return p.confirm({
-            message: "Would you like to use tRPC?",
-          });
-        },
         authentication: () => {
           return p.select({
             message: "What authentication provider would you like to use?",
@@ -307,6 +322,19 @@ export const runCli = async (): Promise<CliResults> => {
           return p.confirm({
             message: "Would you like to use Next.js App Router?",
             initialValue: true,
+          });
+        },
+        rpc: ({ results }) => {
+          return p.select({
+            message: "Which RPC provider would you like to use?",
+            options: [
+              { value: "none", label: "None" },
+              { value: "trpc", label: "tRPC" },
+              ...(results.appRouter
+                ? [{ value: "orpc", label: "oRPC (Beta)" }]
+                : []),
+            ],
+            initialValue: "none",
           });
         },
         databaseProvider: ({ results }) => {
@@ -370,7 +398,8 @@ export const runCli = async (): Promise<CliResults> => {
 
     const packages: AvailablePackages[] = [];
     if (project.styling) packages.push("tailwind");
-    if (project.trpc) packages.push("trpc");
+    if (project.rpc === "trpc") packages.push("trpc");
+    if (project.rpc === "orpc") packages.push("orpc");
     if (project.authentication === "next-auth") packages.push("nextAuth");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
