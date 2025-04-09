@@ -92,7 +92,7 @@ jobs:
       - run: pnpm turbo --filter=create-t3-app build
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
 
-      - run: cd cli && pnpm start ../../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} --noGit --CI --trpc --tailwind --nextAuth  --drizzle --appRouter --dbProvider=postgres --eslint=${{ matrix.eslint }} --biome=${{ matrix.biome }}
+      - run: cd cli && pnpm start ../../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} --noGit --CI --rpc=trpc --tailwind --nextAuth  --drizzle --appRouter --dbProvider=postgres --eslint=${{ matrix.eslint }} --biome=${{ matrix.biome }}
         if: ${{ steps.matrix-valid.outputs.continue == 'true' }}
 
       - run: cd ../ci-format-${{ matrix.eslint }}-${{ matrix.biome }} && pnpm build
