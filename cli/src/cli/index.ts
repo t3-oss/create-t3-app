@@ -131,7 +131,7 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "--rpc [rpc]",
+      "--rpcProvider [provider]",
       `Experimental: Choose a RPC provider to use. Possible values: ${rpcProviders.join(
         ", "
       )}`,
