@@ -22,8 +22,8 @@ export default async function RootLayout({
   const cookie = (await headers()).get("Cookie") ?? undefined;
 
   return (
-    <html lang="en" className={`${geist.variable}`}>
-      <body>
+    <html lang="en">
+      <body className={geist.className}>
         <Providers cookie={cookie}>{children}</Providers>
       </body>
     </html>
