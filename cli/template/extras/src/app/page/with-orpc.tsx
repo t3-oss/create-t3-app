@@ -5,7 +5,7 @@ import { api } from "~/server/api";
 import styles from "./index.module.css";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from ORPC" });
+  const hello = await api.post.hello({ text: "from oRPC" });
 
   return (
     <main className={styles.main}>
@@ -43,7 +43,7 @@ export default async function Home() {
           </p>
         </div>
 
-        {session?.user && <LatestPost />}
+        <LatestPost />
       </div>
     </main>
   );

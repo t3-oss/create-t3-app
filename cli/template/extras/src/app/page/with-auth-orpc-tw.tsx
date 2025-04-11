@@ -5,7 +5,7 @@ import { api } from "~/server/api";
 import { auth } from "~/server/auth";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from ORPC" });
+  const hello = await api.post.hello({ text: "from oRPC" });
   const session = await auth();
 
   let secretMessage;
