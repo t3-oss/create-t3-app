@@ -26,7 +26,7 @@ dir: rtl
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
-  // DATABASE_URL: z.string().url(),
+  // DATABASE_URL: z.url(),
 });
 
 export const serverEnv = {
