@@ -16,7 +16,6 @@ const create = publicProcedure
     return await context.db.post.create({
       data: {
         name: input.name,
-        createdBy: { connect: { id: context.session.user.id } },
       },
     });
   });
@@ -24,7 +23,6 @@ const create = publicProcedure
 const getLatest = publicProcedure.handler(async ({ context }) => {
   const post = await context.db.post.findFirst({
     orderBy: { createdAt: "desc" },
-    where: { createdBy: { id: context.session.user.id } },
   });
   return post ?? null;
 });

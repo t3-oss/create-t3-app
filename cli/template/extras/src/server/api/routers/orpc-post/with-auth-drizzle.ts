@@ -23,6 +23,7 @@ const create = protectedProcedure
 const getLatest = protectedProcedure.handler(async ({ context }) => {
   const post = await context.db.query.posts.findFirst({
     orderBy: (posts, { desc }) => [desc(posts.createdAt)],
+    where: (posts, { eq }) => eq(posts.createdById, context.session.user.id),
   });
   return post ?? null;
 });

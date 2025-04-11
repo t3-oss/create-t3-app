@@ -22,9 +22,9 @@ export function LatestPost() {
 
   return (
     <div className={styles.showcaseContainer}>
-      {latestPost ? (
+      {latestPost.data ? (
         <p className={styles.showcaseText}>
-          Your most recent post: {latestPost.data?.name}
+          Your most recent post: {latestPost.data.name}
         </p>
       ) : (
         <p className={styles.showcaseText}>You have no posts yet.</p>

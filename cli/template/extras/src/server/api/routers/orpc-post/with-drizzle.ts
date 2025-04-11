@@ -16,7 +16,6 @@ const create = publicProcedure
   .handler(async ({ context, input }) => {
     return await context.db.insert(posts).values({
       name: input.name,
-      createdById: context.session.user.id,
     });
   });
 
