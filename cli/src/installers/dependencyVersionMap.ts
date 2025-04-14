@@ -9,9 +9,9 @@ export const dependencyVersionMap = {
   "@auth/drizzle-adapter": "^1.7.2",
 
   // Prisma
-  prisma: "^6.5.0",
-  "@prisma/client": "^6.5.0",
-  "@prisma/adapter-planetscale": "^6.5.0",
+  prisma: "~6.5.0",
+  "@prisma/client": "~6.5.0",
+  "@prisma/adapter-planetscale": "~6.5.0",
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
