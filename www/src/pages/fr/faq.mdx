@@ -21,6 +21,11 @@ Si vous n'êtes pas familier avec les différentes technologies utilisées dans 
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Drizzle](https://orm.drizzle.team/docs/overview)
+
+## Comment faire pour que mon application reste à jour ?
+
+Create T3 App est un outil pour démarrer un projet, pas une structure logicielle complète. Une fois votre application créée, elle vous appartient. Il n'y a pas d'outil automatique pour vous aider à la maintenir à jour comme après l'installation. Si vous voulez suivre les améliorations que nous apportons au modèle de base, vous pouvez [activer les notifications pour les nouvelles versions](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) de notre dépôt. Cela dit, il n'est pas vraiment nécessaire d'appliquer chaque changement que nous faisons au modèle dans votre application.
 
 ## Quelles ressources d'apprentissage sont actuellement disponibles?
 
@@ -32,18 +37,19 @@ Maintenant, nous comprenons que cette voie ne fonctionne pas pour tout le monde.
 
 ### Articles
 
-- [Créez une application complète avec Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [Un premier aperçu de Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrer votre application T3 vers un Turborepo](https://www.jumr.dev/blog/t3-turbo)
 - [Intégrer Stripe dans votre application T3](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Vidéos
 
-- [Créez un clone Twitter avec la stack T3 - tRPC, Next.js, Prisma, Tailwind et Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
-- [Créez un blog avec la stack T3 - tRPC, TypeScript, Next.js, Prisma et Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
-- [Créer une application de chat en direct avec la stack T3 - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
-- [La stack T3 - Comment nous l'avons créez](https://www.youtube.com/watch?v=H-FXwnEjSsI)
-- [Un aperçu de Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+- [From 0 to Production - The Modern React Tutorial (RSCs, Next.js, Shadui, Drizzle, TS and more)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(recommended)** (updated 2024)\*
+- [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
 ## Pourquoi y a-t-il des fichiers `.js` dans le projet ?
 
@@ -57,10 +63,15 @@ Nous avons décidé de ne pas inclure i18n par défaut dans `create-t3-app` car 
 
 Cependant, si vous avez du mal à l'implémenter et que vous souhaitez voir un projet de référence, nous avons un [repo de référence](https://github.com/juliusmarminge/t3-i18n) qui montre comment vous pouvez ajouter i18n à une application T3 en utilisant [next-i18next](https://github.com/i18next/next-i18next).
 
-## Pourquoi utilisons-nous `/pages` et non `/app` de Next.js 13 ?
+## Devrais-je utiliser le dossier `/app` de Next.js 13 ou l'approche plus éprouvée du dossier `/pages` ?
 
-Selon [T3-Axiom #2](/fr/introduction#etre-responsable), nous aimons les trucs à la pointe de la technologie, mais nous apprécions la stabilité, l'entièreté de votre routeur est difficile à porter, [pas le meilleur lieu pour les technologies de pointes](https://youtu.be/mnwUbtieOuI?t=1662). Bien que `/app` soit [un aperçu du futur](https://youtu.be/rnsC-12PVlM?t=818), il n'est pas prêt pour la production ; L'API est en version bêta et devrait subir des modifications avec changements majeurs pouvant casser le code.
+Lorsque vous créez une application avec Create T3 App, vous avez la possibilité de choisir la structure de dossiers `/app`. Au moment où j'écris ces lignes, cette fonctionnalité est généralement considérée comme suffisamment stable pour être utilisée en production par la communauté T3. Pour comprendre pourquoi il nous a fallu si longtemps pour l'inclure, vous pouvez regarder [cette vidéo](https://www.youtube.com/watch?v=PmBfq-SpzCU).
+
+Cependant, si vous préférez fortement utiliser l'ancienne approche du dossier `/pages`, cela reste une option. Transférer votre système de routage existant peut demander un effort considérable, alors ne vous sentez pas obligé de le faire inutilement.
 
 <Callout type="info">
-  Pour obtenir une liste des fonctionnalités prises en charge, planifiées et en cours de développement dans le répertoire `/app`, consultez la [documentation de la beta de Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+  Pour obtenir une liste des fonctionnalités prises en charge, planifiées et en
+  cours de développement dans le répertoire `/app`, consultez la [documentation
+  de la beta de
+  Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
 </Callout>

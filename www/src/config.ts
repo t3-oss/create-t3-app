@@ -269,6 +269,10 @@ export const SIDEBAR: Sidebar = {
         text: "Structure des dossiers (Pages)",
         link: "fr/folder-structure-pages",
       },
+      {
+        text: "Structure des dossiers (App)",
+        link: "fr/folder-structure-app",
+      },
       { text: "FAQ", link: "fr/faq" },
       { text: "Collection T3", link: "fr/t3-collection" },
       { text: "Exemples", link: "fr/examples" },
@@ -279,6 +283,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Next.js", link: "fr/usage/next-js" },
       { text: "TypeScript", link: "fr/usage/typescript" },
       { text: "tRPC", link: "fr/usage/trpc" },
+      { text: "Drizzle", link: "fr/usage/drizzle" },
       { text: "Prisma", link: "fr/usage/prisma" },
       { text: "NextAuth.js", link: "fr/usage/next-auth" },
       {

@@ -49,21 +49,25 @@ Une fois votre application configurée, consultez les [premières étapes](/fr/u
 
 Pour notre CI, nous avons des options expérimentales qui vous permettent de configurer n'importe quelle application sans aucun invite. Si ce cas d'utilisation s'applique à vous, vous pouvez utiliser ces options. Veuillez noter que ces options sont expérimentales et peuvent changer à l'avenir sans suivre la version de Semver.
 
-| Flag         | Description                                     |
-| ------------ | ----------------------------------------------- |
-| `--CI`       | Faites savoir à la CLI que vous êtes en mode CI |
-| `--trpc`     | Inclure tRPC dans le projet                     |
-| `--prisma`   | Inclure Prisma dans le projet                   |
-| `--nextAuth` | Inclure NextAuth.js dans le projet              |
-| `--tailwind` | Inclure Tailwind CSS dans le projet             |
+| Flag                      | Description                                     |
+| ------------------------- | ----------------------------------------------- |
+| `--CI`                    | Faites savoir à la CLI que vous êtes en mode CI |
+| `--trpc`                  | Inclure tRPC dans le projet                     |
+| `--prisma`                | Inclure Prisma dans le projet                   |
+| `--drizzle`               | Inclure Drizzle dans le projet                  |
+| `--nextAuth`              | Inclure NextAuth.js dans le projet              |
+| `--tailwind`              | Inclure Tailwind CSS dans le projet             |
+| `--dbProvider [provider]` | Inclure une base de données dans le projet      |
+| `--appRouter`             | Utiliser l'App Router de Next.js dans le projet |
 
 <Callout type="warning">
   Si vous ne fournissez pas l'option "CI", le reste de ces options n'a aucun
   effet.
 </Callout>
-Vous n'avez pas besoin de vous désinscrire explicitement des packages que vous ne
-voulez pas.Cependant, si vous préférez être explicite, vous pouvez passer `false`,
-par exemple `--nextAuth false`.
+
+Vous n'avez pas besoin de vous désinscrire explicitement des packages que vous
+ne voulez pas.Cependant, si vous préférez être explicite, vous pouvez passer
+`false`, par exemple `--nextAuth false`.
 
 ### Exemple
 
@@ -71,4 +75,10 @@ Ce qui suit configurera une application T3 avec tRPC et Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
+```
+
+Ce qui suit configurera une application T3 avec NextAuth.js, Tailwind CSS, Drizzle et PostgreSQL.
+
+```bash
+pnpm dlx create-t3-app@latest --CI --nextAuth --tailwind --drizzle --dbProvider postgres
 ```
