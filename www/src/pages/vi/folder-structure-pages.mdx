@@ -1,15 +1,15 @@
 ---
-title: Folder Structure (Pages)
-description: Folder structure of a newly scaffolded T3 App with the Pages Router
+title: Cấu trúc thư mục (Pages Router)
+description: Cấu trúc thư mục của một ứng dụng T3 được tạo mới với Pages Router
 layout: ../../layouts/docs.astro
-lang: en
+lang: vi
 isMdx: true
 ---
 
 import Diagram from "../../components/docs/folderStructureDiagramPages.astro";
 import Form from "../../components/docs/folderStructureForm.astro";
 
-Please select your packages to see the folder structure of a newly scaffolded app with those selections. Further down, you will find a description of each entry.
+Vui lòng chọn các thư viện được đề cập ở dưới để xem cấu trúc thư mục của một ứng dụng T3 được tạo mới với các lựa chọn đó. Ở phía dưới, bạn sẽ tìm thấy mô tả chi tiết cho mỗi file trong cây thư mục.
 
 <Form />
 
@@ -19,124 +19,124 @@ Please select your packages to see the folder structure of a newly scaffolded ap
 
 ### `prisma`
 
-The `prisma` folder contains the `schema.prisma` file which is used to configure the database connection and the database schema. It is also the location to store migration files and/or seed scripts, if used. See [Prisma usage](/en/usage/prisma) for more information.
+Trong thư mục `prisma`, một file `schema.prisma` được sử dụng để cấu hình kết nối với cơ sở dữ liệu và định nghĩa schema cho cơ sở dữ liệu. Đây cũng là nơi lưu trữ các file migration và/hoặc seed script, nếu được sử dụng. Tham khảo [Cách sử dụng Prisma](/vi/usage/prisma) để biết thêm thông tin.
 
 </div>
 <div>
 
 ### `public`
 
-The `public` folder contains static assets that are served by the web server. The `favicon.ico` file is an example of a static asset.
+Thư mục `public` chứa các file tĩnh (static assets) được phục vụ bởi web server. File `favicon.ico` là một ví dụ về file tĩnh.
 
 </div>
 <div>
 
 ### `src/env`
 
-Used for environment variable validation and type definitions - see [Environment Variables](usage/env-variables).
+Được sử dụng để xác thực biến môi trường (environment variables) và định nghĩa kiểu cho biến môi trường (environment variables) đó - Tham khảo [Biến môi trường](/vi/usage/env-variables).
 
 </div>
 <div>
 
 ### `src/pages`
 
-The `pages` folder contains all the pages of the Next.js application. The `index.tsx` file at the root directory of `/pages` is the homepage of the application. The `_app.tsx` file is used to wrap the application with providers. See [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for more information.
+Thư mục `pages` chứa tất cả các trang của ứng dụng Next.js. File `index.tsx` ở thư mục gốc `/pages` là trang chủ và là điểm bắt đầu của ứng dụng. File `_app.tsx` được sử dụng để bao bọc ứng dụng với các provider. Tham khảo [tài liệu Next.js](https://nextjs.org/docs/basic-features/pages) để biết thêm thông tin.
 
 </div>
 <div data-components="nextauth trpc">
 
 #### `src/pages/api`
 
-The `api` folder contains all the API routes of the Next.js application. See [Next.js Api Routes Docs](https://nextjs.org/docs/api-routes/introduction) for info on api routes.
+Thư mục `api` là nơi bạn định nghĩa các API route của ứng dụng Next.js. Tham khảo [Tài liệu Next.js Api Routes](https://nextjs.org/docs/api-routes/introduction) để biết thêm thông tin về các API route.
 
 </div>
 <div data-components="nextauth">
 
 #### `src/pages/api/auth/[...nextauth].ts`
 
-The `[...nextauth].ts` file is the NextAuth.js authentication slug route. It is used to handle authentication requests. See [NextAuth.js usage](usage/next-auth) for more information on NextAuth.js, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+File `[...nextauth].ts` là một slug route của Next.js được sử dụng để xử lý các yêu cầu xác thực của NextAuth.js. Tham khảo [Cách sử dụng NextAuth.js](/vi/usage/next-auth) để biết thêm thông tin về NextAuth.js, và [Tài liệu Next.js Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) để biết thông tin về các route catch-all/slug.
 
 </div>
 <div data-components="trpc">
 
 #### `src/pages/api/trpc/[trpc].ts`
 
-The `[trpc].ts` file is the tRPC API entrypoint. It is used to handle tRPC requests. See [tRPC usage](usage/trpc#-pagesapitrpctrpcts) for more information on this file, and [Next.js Dynamic Routes Docs](https://nextjs.org/docs/routing/dynamic-routes) for info on catch-all/slug routes.
+File `[trpc].ts` là điểm xuất phát (entrypoint) API của tRPC. Nó được sử dụng để xử lý các yêu cầu tRPC. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-pagesapitrpctrpcts) để biết thêm thông tin về file này, và [Tài liệu Next.js Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes) để biết thông tin về các route catch-all/slug.
 
 </div>
 <div data-components="trpc prisma nextauth drizzle">
 
 ### `src/server`
 
-The `server` folder is used to clearly separate code that is only used on the server.
+Thư mục `server` được sử dụng để định nghĩa code chỉ được sử dụng và thực thi trên server.
 
 </div>
 <div data-components="nextauth+trpc">
 
 #### `src/server/auth.ts`
 
-The main entrypoint for server-side authentication logic. Here, we setup the NextAuth.js [configuration options](usage/next-auth), perform [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) as well as provide some DX utilities for authentication such as retrieving the user's session on the server-side. See [NextAuth.js usage](usage/next-auth#usage-with-trpc) for more information.
+Điểm bắt đầu (Entrypoint) cho logic xác thực phía server. Tại đây, chúng ta thiết lập các [tùy chọn cấu hình](usage/next-auth) NextAuth.js, thực hiện [module augmentation](usage/next-auth#inclusion-of-userid-on-the-session) cũng như cung cấp một số tiện ích DX cho việc xác thực như lấy session của người dùng ở phía server. Tham khảo [Cách sử dụng NextAuth.js](/vi/usage/next-auth#usage-with-trpc) để biết thêm thông tin.
 
 </div>
 <div data-components="prisma">
 
 #### `src/server/db.ts`
 
-The `db.ts` file is used to instantiate the Prisma client at global scope. See [Prisma usage](usage/prisma#prisma-client) and [best practices for using Prisma with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+File `db.ts` được sử dụng để khởi tạo Prisma client ở phạm vi toàn cục (global scope). Tham khảo [Cách sử dụng Prisma](/vi/usage/prisma#prisma-client) và [các phương pháp tốt nhất để sử dụng Prisma với Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) để biết thêm thông tin.
 
 </div>
 <div data-components="drizzle">
 
 ### `src/server/db`
 
-The `db` folder contains the Drizzle client and schema. Note that drizzle also requires the `drizzle.config.ts` file (see below).
+Thư mục `db` chứa Drizzle client và schema. Lưu ý rằng drizzle cũng yêu cầu file cấu hình `drizzle.config.ts` (xem bên dưới).
 
 </div>
 <div data-components="drizzle">
 
 #### `src/server/db/index.ts`
 
-The `index.ts` file is used to instantiate the Drizzle client at global scope. See [Drizzle usage](usage/drizzle#drizzle-client) for more information.
+File `index.ts` được sử dụng để khởi tạo Drizzle client ở phạm vi toàn cục. Tham khảo [Cách sử dụng Drizzle](/vi/usage/drizzle#drizzle-client) để biết thêm thông tin.
 
 </div>
 <div data-components="drizzle">
 
 #### `src/server/db/schema.ts`
 
-The `schema.ts` file is used to define the database schema. See [Drizzle usage](usage/drizzle#drizzle-client) and [Drizzle schema docs](https://orm.drizzle.team/docs/sql-schema-declaration) for more information.
+File `schema.ts` được sử dụng để định nghĩa schema cơ sở dữ liệu. Tham khảo [Cách sử dụng Drizzle](/vi/usage/drizzle#drizzle-client) và [tài liệu Drizzle schema](https://orm.drizzle.team/docs/sql-schema-declaration) để biết thêm thông tin.
 
 </div>
 <div data-components="trpc">
 
 ### `src/server/api`
 
-The `api` folder contains the tRPC server-side code.
+Thư mục `api` chứa code tRPC phía server.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers`
 
-The `routers` folder contains all your tRPC sub-routers.
+Thư mục `routers` chứa tất cả các sub-router tRPC của bạn.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/routers/example.ts`
 
-The `example.ts` file is an example tRPC router utilizing the `publicProcedure` helper to demonstrate how to create a public tRPC route.
+File `example.ts` là một ví dụ về tRPC router sử dụng helper `publicProcedure` để minh họa cách tạo một route tRPC công khai không cần xác thực.
 
-Depending on your chosen packages this router contains more or less routes to best demonstrate the usage to your needs.
+Tùy thuộc vào các thư viện bạn đã chọn, router này có thể chứa nhiều hoặc ít route hơn tùy vào cách sử dụng phù hợp với nhu cầu của bạn.
 
 </div>
 <div data-components="trpc">
 
 #### `src/server/api/trpc.ts`
 
-The `trpc.ts` file is the main configuration file for your tRPC back-end. In here we:
+File `trpc.ts` là file định nghĩa cấu hình chính cho back-end tRPC của bạn. Tại đây chúng ta:
 
-1. Define context used in tRPC requests. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
-2. Export procedure helpers. See [tRPC usage](usage/trpc#-serverapitrpcts) for more information.
+1. Định nghĩa context được sử dụng trong các yêu cầu tRPC. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapitrpcts) để biết thêm thông tin.
+2. Định nghĩa các helper procedure. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapitrpcts) để biết thêm thông tin.
 
 </div>
 
@@ -144,104 +144,104 @@ The `trpc.ts` file is the main configuration file for your tRPC back-end. In her
 
 #### `src/server/api/root.ts`
 
-The `root.ts` file is used to merge tRPC routers and export them as a single router, as well as the router's type definition. See [tRPC usage](usage/trpc#-serverapirootts) for more information.
+File `root.ts` được sử dụng để hợp nhất các tRPC router và đưa chúng dưới dạng một router duy nhất, cũng như được sử dụng để định nghĩa kiểu của router. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapirootts) để biết thêm thông tin.
 
 </div>
 <div>
 
 ### `src/styles`
 
-The `styles` folder contains the global styles of the application.
+Thư mục `styles` chứa các style toàn cục của ứng dụng.
 
 </div>
 <div data-components="trpc">
 
 ### `src/utils`
 
-The `utils` folder is used to store commonly re-used utility functions.
+Thư mục `utils` được sử dụng để lưu trữ các hàm thường được tái sử dụng.
 
 </div>
 <div data-components="trpc">
 
 #### `src/utils/api.ts`
 
-The `api.ts` file is the front-end entrypoint to tRPC. See [tRPC usage](usage/trpc#-utilsapits) for more information.
+File `api.ts` là điểm bắt đầu phía front-end cho tRPC. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-utilsapits) để biết thêm thông tin.
 
 </div>
 <div>
 
 ### `.env`
 
-The `.env` file is used to store environment variables. See [Environment Variables](usage/env-variables) for more information. This file should **not** be committed to git history.
+File `.env` được sử dụng để lưu trữ các biến môi trường. Tham khảo [Biến môi trường](/vi/usage/env-variables) để biết thêm thông tin. File này **không** nên được commit vào lịch sử git.
 
 </div>
 <div>
 
 ### `.env.example`
 
-The `.env.example` file shows example environment variables based on the chosen libraries. This file should be committed to git history.
+File `.env.example` hiển thị các biến môi trường ví dụ dựa trên các thư viện đã chọn. File này **nên** được commit vào lịch sử git.
 
 </div>
 <div>
 
 ### `.eslintrc.cjs`
 
-The `.eslintrc.cjs` file is used to configure ESLint. See [ESLint Docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) for more information.
+File `.eslintrc.cjs` được sử dụng để cấu hình ESLint. Tham khảo [Tài liệu ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) để biết thêm thông tin.
 
 </div>
 <div data-components="drizzle">
 
-### `db.sqlite (sqlite only)`
+### `db.sqlite (chỉ sqlite)`
 
-The `db.sqlite` file contains your development database. This file is only created after running the `db:push` parseCommandLine, and ignored by git.
+File `db.sqlite` chứa cơ sở dữ liệu phát triển của bạn. File này chỉ được tạo sau khi chạy lệnh `db:push` và bị bỏ qua bởi git.
 
 </div>
 <div data-components="drizzle">
 
 ### `drizzle.config.ts`
 
-The `drizzle.config.ts` file is used to configure drizzle kit. See [the documentation](https://orm.drizzle.team/kit-docs/config-reference) for more information.
+File `drizzle.config.ts` được sử dụng để cấu hình drizzle kit. Tham khảo [tài liệu](https://orm.drizzle.team/kit-docs/config-reference) để biết thêm thông tin.
 
 </div>
 <div>
 
 ### `next-env.d.ts`
 
-The `next-env.d.ts` file ensures Next.js types are picked up by the TypeScript compiler. **You should not remove it or edit it as it can change at any time.** See [Next.js Docs](https://nextjs.org/docs/basic-features/typescript#existing-projects) for more information.
+File `next-env.d.ts` đảm bảo các kiểu của Next.js được trình biên dịch TypeScript nhận diện. **Bạn không nên xóa hoặc chỉnh sửa nó vì nó có thể thay đổi bất cứ lúc nào.** Tham khảo [Tài liệu Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) để biết thêm thông tin.
 
 </div>
 <div>
 
 ### `next.config.mjs`
 
-The `next.config.mjs` file is used to configure Next.js. See [Next.js Docs](https://nextjs.org/docs/api-reference/next.config.js/introduction) for more information. Note: The .mjs extension is used to allow for ESM imports.
+File `next.config.mjs` được sử dụng để cấu hình Next.js. Tham khảo [Tài liệu Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) để biết thêm thông tin. Lưu ý: Phần mở rộng .mjs được sử dụng để cho phép import ESM.
 
 </div>
 <div data-components="tailwind">
 
 ### `postcss.config.js`
 
-The `postcss.config.js` file is used for Tailwind PostCSS usage. See [Tailwind PostCSS Docs](https://tailwindcss.com/docs/installation/using-postcss) for more information.
+File `postcss.config.js` được sử dụng cho việc sử dụng Tailwind PostCSS. Tham khảo [Tài liệu Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) để biết thêm thông tin.
 
 </div>
 <div data-components="tailwind">
 
 ### `prettier.config.mjs`
 
-The `prettier.config.mjs` file is used to configure Prettier to include the prettier-plugin-tailwindcss for formatting Tailwind CSS classes. See the [Tailwind CSS blog post](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) for more information.
+File `prettier.config.mjs` được sử dụng để cấu hình Prettier bao gồm `prettier-plugin-tailwindcss` để định dạng các lớp Tailwind CSS. Tham khảo [bài đăng blog Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) để biết thêm thông tin.
 
 </div>
 <div data-components="drizzle">
 
-### `start-database.sh (mysql or postgres only)`
+### `start-database.sh (chỉ mysql hoặc postgres)`
 
-The `start-database.sh` file is used to start the database. Please see the comments inside the file for information on how to start the database with your operating system.
+File `start-database.sh` được sử dụng để khởi động cơ sở dữ liệu. Vui lòng xem các ghi chú chúng tôi đã đề cập ở bên trong file để biết thông tin về cách khởi động cơ sở dữ liệu với hệ điều hành của bạn.
 
 </div>
 <div>
 
 ### `tsconfig.json`
 
-The `tsconfig.json` file is used to configure TypeScript. Some non-defaults, such as `strict mode`, have been enabled to ensure the best usage of TypeScript for Create T3 App and its libraries. See [TypeScript Docs](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) or [TypeScript Usage](usage/typescript) for more information.
+File `tsconfig.json` được sử dụng để cấu hình TypeScript. Một số tùy chọn không mặc định, chẳng hạn như `strict mode`, đã được bật để đảm bảo việc sử dụng TypeScript tốt nhất cho Create T3 App và các thư viện của nó. Xem [Tài liệu TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) hoặc [Cách sử dụng TypeScript](/vi/usage/typescript) để biết thêm thông tin.
 
 </div>
