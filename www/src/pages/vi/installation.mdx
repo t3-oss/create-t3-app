@@ -1,14 +1,14 @@
 ---
-title: Installation
-description: Installation instructions for Create T3 App
+title: Cài đặt
+description: Hướng dẫn cài đặt Create T3 App
 layout: ../../layouts/docs.astro
-lang: en
+lang: vi
 isMdx: true
 ---
 
 import Callout from "../../components/docs/callout.tsx";
 
-To scaffold an app using `create-t3-app`, run any of the following commands and answer the command prompt questions:
+Để khởi tạo một ứng dụng sử dụng `create-t3-app`, hãy chạy bất kỳ lệnh sau đây và trả lời các câu hỏi của được đưa ra:
 
 ### npm
 
@@ -34,49 +34,50 @@ pnpm create t3-app@latest
 bun create t3-app@latest
 ```
 
-After your app has been scaffolded, check out the [first steps](/en/usage/first-steps) to get started on your new application.
+Sau khi ứng dụng của bạn đã được khởi tạo, hãy đọc [bước đầu tiên](/vi/usage/first-steps) để bắt đầu phát triển ứng dụng mới của bạn.
 
-## Advanced usage
+## Sử dụng nâng cao
 
-| Option/Flag       | Description                                                             |
-| ----------------- | ----------------------------------------------------------------------- |
-| `[dir]`           | Include a directory argument with a name for the project                |
-| `--noGit`         | Explicitly tell the CLI to not initialize a new git repo in the project |
-| `-y`, `--default` | Bypass the CLI and bootstrap a new t3-app with all options selected     |
-| `--noInstall`     | Generate project without installing dependencies                        |
+| Tùy chọn          | Mô tả                                                            |
+| ----------------- | ---------------------------------------------------------------- |
+| `[dir]`           | Bao gồm đối số thư mục với tên cho dự án                         |
+| `--noGit`         | Không khởi tạo repo git mới trong dự án                          |
+| `-y`, `--default` | Bỏ qua câu hỏi và khởi tạo dự án mới với tất cả tùy chọn đã chọn |
+| `--noInstall`     | Tạo dự án mà không cài đặt các thư viện đi kèm                   |
 
-## Experimental usage
+## Sử dụng với những tùy chọn thử nghiệm
 
-For our CI, we have some experimental flags that allow you to scaffold any app without any prompts. If this use case applies to you, you can use these flags. Please note that these flags are experimental and may change in the future without following semver versioning.
+Đối với CI của chúng tôi, chúng tôi cung cấp một số tùy chọn thử nghiệm cho phép bạn khởi tạo bất kỳ ứng dụng nào mà không cần bất kỳ câu hỏi nào. Nếu trường hợp này áp dụng cho bạn, bạn có thể sử dụng các tùy chọn này. Xin lưu ý rằng chúng tôi đang thử nghiệm các tùy chọn này và có thể thay đổi trong tương lai mà không tuân theo phiên bản semver.
 
-| Flag                      | Description                                  |
-| ------------------------- | -------------------------------------------- |
-| `--CI`                    | Let the CLI know you're in CI mode           |
-| `--trpc`                  | Include tRPC in the project                  |
-| `--prisma`                | Include Prisma in the project                |
-| `--drizzle`               | Include Drizzle in the project               |
-| `--nextAuth`              | Include NextAuth.js in the project           |
-| `--tailwind`              | Include Tailwind CSS in the project          |
-| `--dbProvider [provider]` | Include a configured database in the project |
-| `--appRouter`             | Use Next.js App Router in the project        |
+| Tùy chọn                  | Mô tả                                            |
+| ------------------------- | ------------------------------------------------ |
+| `--CI`                    | Cho phép CLI biết bạn đang ở trong môi trường CI |
+| `--trpc`                  | Sử dụng tRPC trong dự án                         |
+| `--prisma`                | Sử dụng Prisma trong dự án                       |
+| `--drizzle`               | Sử dụng Drizzle trong dự án                      |
+| `--nextAuth`              | Sử dụng NextAuth.js trong dự án                  |
+| `--tailwind`              | Sử dụng Tailwind CSS trong dự án                 |
+| `--dbProvider [provider]` | Sử dụng cơ sở dữ liệu đã cấu hình trong dự án    |
+| `--appRouter`             | Sử dụng Next.js App Router trong dự án           |
 
 <Callout type="warning">
-  If you don't provide the `CI` flag, the rest of these flags have no effect.
+  Nếu tùy chọn `CI` không được sử dụng, các tùy chọn còn lại sẽ không có hiệu
+  lực.
 </Callout>
 
-You don't need to explicitly opt-out of the packages you don't want. However, if you prefer to be explicit, you can pass `false`, e.g. `--nextAuth false`.
+Bạn không nhất thiết phải loại bỏ các tùy chọn mà bạn không muốn. Tuy nhiên, nếu bạn muốn loại bỏ chúng, bạn có thể truyền `false` vào sau các tùy chọn, ví dụ: `--nextAuth false`.
 
-The --dbProvider command has 4 database values to choose from: mysql, postgres, planetscale, sqlite. If the command is not provided the default value will be sqlite.
+Tùy chọn `--dbProvider` cung cấp 4 cơ sở dữ liệu cho bạn chọn: mysql, postgres, planetscale, sqlite. Nếu tùy chọn này không được sử dụng, giá trị mặc định sẽ là sqlite.
 
-### Example
+### Ví dụ
 
-The following would scaffold a T3 App with tRPC and Tailwind CSS.
+Ví dụ sau sẽ tạo ra một ứng dụng T3 với tRPC và Tailwind CSS.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --trpc --tailwind
 ```
 
-The following would scaffold a T3 App with NextAuth.js, Tailwind CSS, Drizzle, and PostgreSQL.
+Ví dụ sau sẽ tạo ra một ứng dụng T3 với NextAuth.js, Tailwind CSS, Drizzle, và PostgreSQL.
 
 ```bash
 pnpm dlx create-t3-app@latest --CI --nextAuth --tailwind --drizzle --dbProvider postgres
