@@ -1,50 +1,50 @@
 ---
-title: Why CT3A?
-description: Why you should pick Create T3 App for your next project
+title: Tại sao lại là CT3A?
+description: Tại sao bạn nên chọn Create T3 App cho dự án tiếp theo của mình
 layout: ../../layouts/docs.astro
-lang: en
+lang: vi
 ---
 
-We started Create T3 App because [Theo](https://twitter.com/t3dotgg) refused to make a template of his favorite technologies. Inspired by create-next-app, [Astro's CLI](https://astro.build), and a general love for typesafety, the Create T3 App team worked hard to build the best possible starting point for new T3 Stack projects.
+Chúng tôi tạo ra Create T3 App vì [Theo](https://twitter.com/t3dotgg) từ chối việc có một template cho các công nghệ yêu thích của anh ấy. Được truyền cảm hứng từ create-next-app, [CLI của Astro](https://astro.build), và một tình yêu to bự dành cho tính toàn vẹn của kiểu dữ liệu (typesafety), đội ngũ Create T3 App đã làm việc chăm chỉ để tạo nên một nền móng vững chắc nhất có thể dành cho các dự án T3 Stack mới.
 
-If you're interested in using Next.js in a typesafe way, this is the place to start. If you're curious about any of the specific technology choices we made, read on :)
+Nếu bạn thích việc sử dụng Next.js một cách typesafe, đây chính là điểm bắt đầu của bạn. Nếu bạn tò mò về bất kỳ lựa chọn công nghệ cụ thể nào mà chúng tôi đã thực hiện, hãy bình tĩnh, lấy một ly cà phê và cùng đọc tiếp nhé :)
 
-## Why TypeScript?
+## Tại sao lại là TypeScript?
 
-JavaScript is hard. Why add more rules?
+JavaScript đã khó rồi. Tại sao lại thêm nhiều các quy tắc rắc rối hơn hơn?
 
-We firmly believe the experience TypeScript provides will help you be a better developer. It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your editor or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line. Whether you're new to web development or a seasoned pro, the "strictness" of TypeScript will provide a less frustrating, more consistent experience than vanilla JS.
+Chúng tôi tin chắc rằng trải nghiệm mà TypeScript mang lại sẽ giúp bạn trở thành một lập trình viên tốt hơn. Nó cung cấp phản hồi trực tiếp khi bạn viết mã bằng cách xác định các kiểu dữ liệu bạn muốn, và nó cung cấp tính năng tự động hoàn thành (autocompletion) hữu ích trong trình soạn thảo (IDE) của bạn hoặc báo lỗi cho bạn bằng các đường lượn sóng màu đỏ nếu bạn đang cố gắng truy cập một thuộc tính không tồn tại hoặc cố gắng truyền một giá trị có kiểu sai, điều mà có thể khiến bạn phải đau đầu gỡ lỗi sau này nếu như không có chúng. Cho dù bạn là người mới làm quen với phát triển web hay một chuyên gia dày dạn kinh nghiệm, "sự nghiêm ngặt" của TypeScript sẽ mang lại trải nghiệm lập trình tuyệt vời hơn, nhất quán hơn so với JS thuần túy.
 
-Typesafety makes you faster. If you're not convinced, you [might be using TypeScript wrong...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
+Typesafety giúp bạn nhanh hơn. Nếu bạn chưa bị thuyết phục, có thể bạn [đang sử dụng TypeScript sai cách...](https://www.youtube.com/watch?v=RmGHnYUqQ4k)
 
-## Why Next.js?
+## Tại sao lại là Next.js?
 
-We love React. It has made UI development accessible in ways we never imagined before. It also can lead developers down some rough paths.
+Chúng tôi yêu React. Nó đã làm cho việc phát triển giao diện người dùng trở nên dễ tiếp cận theo những cách mà chúng tôi chưa bao giờ tưởng tượng được trước đây. Nhưng nó cũng có thể dẫn các bạn đi vào những con đường vô tận mà không có lối ra.
 
-Next.js offers a lightly opinionated, heavily optimized approach to creating applications using React. From routing to API definitions to image rendering, we trust Next.js to lead developers toward good decisions.
+Next.js cung cấp một cách tiếp cận nhẹ nhàng, nhưng cực kì được tối ưu hóa cao để tạo các ứng dụng bằng React. Từ hệ thống định tuyến (Routing) đến định nghĩa API (API Routes) đến kết xuất hình ảnh (Image Rendering), chúng tôi tin tưởng Next.js sẽ là "bạn đồng hành" tuyệt vời cho các nhà phát triển đưa ra những quyết định tốt.
 
-## Why tRPC/Prisma/Tailwind/etc?
+## Tại sao lại là tRPC/Prisma/Tailwind/etc?
 
-While we believe in keeping things as simple as possible, we find these pieces being used in every "app" like project we build. `create-t3-app` does a great job of letting you adopt the pieces you need.
+Mặc dù mục tiêu chúng tôi là giữ mọi thứ đơn giản nhất có thể, chúng tôi thấy rằng những công nghệ này thường được sử dụng trong mọi dự án mà chúng tôi xây dựng. `create-t3-app` làm rất tốt việc cho phép bạn chọn và sử dụng những công nghệ bạn cần.
 
 ### tRPC
 
-tRPC delivers on GraphQL's promise of seamless client development against a typesafe server without all of the boilerplate. It's a clever abuse of TypeScript that provides an incredible dev experience.
+tRPC là người viết tiếp sứ mệnh của GraphQL về việc kết nối liền mạch với client dựa trên một server typesafe mà không cần phải có các boilerplate code. Nó tận dụng kiểu dữ liệu của TypeScript một cách thông minh nhằm nâng cao trải nghiệm phát triển ứng dụng.
 
 ### Prisma
 
-Prisma is to SQL what TypeScript is to JS. It created a developer experience that didn't exist before. By generating types from a user-defined schema compatible with [several databases](https://www.prisma.io/docs/concepts/database-connectors), Prisma guarantees end-to-end typesafety from your database to your app.
+Prisma và SQL cũng giống như TypeScript và JS. Nó đã tạo ra một trải nghiệm phát triển chưa từng tồn tại trước đây. Bằng cách tạo ra các kiểu từ một file schema do người dùng định nghĩa và có tính tương thích cao với [nhiều cơ sở dữ liệu](https://www.prisma.io/docs/concepts/database-connectors), Prisma đảm bảo tính toàn vẹn dữ liệu (typesafety) từ đầu đến cuối từ cơ sở dữ liệu đến ứng dụng của bạn.
 
-Prisma provides a whole [suite of tools](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) making daily interactions with your database easier. Notably, the Prisma Client is responsible for querying and making SQL so easy you'll barely notice you're using it, and Prisma Studio is a convenient GUI for your database that lets you read and manipulate your data quickly without having to write code.
+Prisma cung cấp cả một [bộ công cụ](https://www.prisma.io/docs/concepts/overview/should-you-use-prisma#-you-want-a-tool-that-holistically-covers-your-database-workflows) giúp việc tương tác hàng ngày với cơ sở dữ liệu của bạn trở nên dễ dàng hơn. Đáng chú ý, Prisma Client chịu trách nhiệm truy vấn và làm cho SQL trở nên dễ dàng đến mức bạn sẽ hầu như không nhận thấy mình đang làm việc với cơ sở dữ liệu, và Prisma Studio là một GUI tiện lợi cho cơ sở dữ liệu của bạn bằng cách cho phép bạn đọc và thao tác dữ liệu trực tiếp mà không cần viết mã.
 
 ### Tailwind CSS
 
-Tailwind feels like "zen-mode CSS".
+Tailwind giống như "CSS ở chế độ chill".
 
-By providing building blocks in the form of good default colors, spacing, and other primitives, Tailwind makes it easy to create a good-looking app. And unlike component libraries, it does not hold you back when you want to take your app to the next level and create something beautiful and unique.
+Bằng cách cung cấp các khối xây dựng dưới dạng các gam màu mặc định hiện đại, khoảng cách và các yếu tố cơ bản khác, Tailwind giúp dễ dàng tạo ra một ứng dụng đẹp mắt. Và không giống như các thư viện component khác, nó giúp bạn đưa ứng dụng của mình lên một tầm cao mới và tạo ra thứ gì đó đẹp đẽ và độc đáo.
 
-Additionally, with its inline-like approach, Tailwind encourages you to style without worrying about naming classes, organizing files, or any other issue not directly tied to the problem you're trying to solve.
+Ngoài ra, với cách tiếp cận giống như inline, Tailwind khuyến khích bạn tạo kiểu mà không cần lo lắng về việc đặt tên lớp, tổ chức tệp hoặc bất kỳ vấn đề nào khác không liên quan trực tiếp đến vấn đề bạn đang cố gắng giải quyết.
 
 ### NextAuth.js
 
-When you want an authentication system in your NextJS application, NextAuth.js is an excellent solution to bring in the complexity of security without the hassle of having to build it yourself. It comes with an extensive list of providers to quickly add OAuth authentication and provides adapters for many databases and ORMs.
+Khi bạn muốn có một hệ thống xác thực trong ứng dụng NextJS của mình, NextAuth.js là một giải pháp tuyệt vời để giải quyết sự phức tạp của bảo mật mà không gặp rắc rối khi phải tự xây dựng nó. Nó đi kèm với một dãy các nhà cung cấp xác thực thứ 3 để bạn có thể thêm xác thực OAuth một cách nhanh chóng và đồng thời cung cấp các adapter cho nhiều cơ sở dữ liệu và ORM.
