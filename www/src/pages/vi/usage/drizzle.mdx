@@ -1,0 +1,84 @@
+---
+title: Drizzle
+description: Usage of Drizzle
+layout: ../../../layouts/docs.astro
+lang: en
+isMdx: true
+---
+
+Drizzle is a headless Typescript ORM with [relational](https://orm.drizzle.team/docs/rqb) and [SQL-like](https://orm.drizzle.team/docs/select) query APIs. It can handle database migrations and schemas, and provides a type safe database client. It also comes with [Drizzle-Kit](https://orm.drizzle.team/drizzle-studio/overview), a set of companion tools that help with querying your database.
+
+## Drizzle Client
+
+The Drizzle Client is located at `src/server/db/index.ts`. In this file, you can define your database connection url and connect your schema to the database object.
+
+```ts:src/server/db/index.ts
+import { env } from "~/env";
+import * as schema from "./schema";
+import postgres from "postgres";
+
+
+const conn = postgres(env.DATABASE_URL)
+
+export const db = drizzle(conn, { schema });
+```
+
+We reccommend including the database client in your tRPC Context:
+
+```ts:src/server/api/trpc.ts
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+## Schema
+
+The Drizzle schema file can be found at `src/server/db/schema.ts`. This file is where you can define your database schema and models, and connects to the Drizzle Client.
+
+When you select NextAuth.js in combination with Drizzle, the schema file is generated and set up for you with the recommended values for the `User`, `Session`, `Account`, and `VerificationToken` models, as per the [Auth.js documentation](https://authjs.dev/getting-started/adapters/drizzle).
+
+## Drizzle Kit
+
+Drizzle Kit is a collection of command line tools designed to help you manage your database. T3 Stack automatically includes drizzle kit when you select Drizzle as your ORM.
+
+```json:package.json
+"scripts": {
+    ...
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    ...
+  },
+```
+
+### Script Explanations
+
+`db:generate`
+Generates TypeScript types and models from your database schema, ensuring type safety and easy integration with Drizzle ORM.
+
+`db:migrate`
+Applies pending migrations to your database, keeping your schema in sync with changes and updates in your project.
+
+`db:push`
+Pushes local schema changes directly to the database without needing explicit migration files. This can be useful for quick syncing in development.
+
+`db:studio`
+Opens a visual interface for managing and inspecting your database tables, data, and relationships.
+
+## Useful Resources
+
+| Resource                    | Link                                                |
+| --------------------------- | --------------------------------------------------- |
+| Drizzle Docs                | https://orm.drizzle.team/docs/overview              |
+| Drizzle GitHub              | https://github.com/drizzle-team/drizzle-orm         |
+| Auth.JS Drizzle Adapter     | https://authjs.dev/getting-started/adapters/drizzle |
+| Drizzle Kit Migration Guide | https://orm.drizzle.team/docs/kit-overview          |

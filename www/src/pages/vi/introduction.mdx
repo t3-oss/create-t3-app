@@ -1,0 +1,41 @@
+---
+title: Giới thiệu
+description: Giới thiệu về T3 Stack
+layout: ../../layouts/docs.astro
+lang: vi
+---
+
+import { IntroductionTab } from "../../components/docs/introductionTab";
+
+<IntroductionTab client:load />
+## T3 Stack
+
+_"T3 Stack"_ là một stack dùng để phát triển web được tạo bởi [Theo](https://twitter.com/t3dotgg), nó tập trung vào sự đơn giản, mô-đun hóa và đảm bảo tính toàn vẹn của kiểu dữ liệu trong lập trình full-stack.
+
+T3 Stack được xây dựng dựa trên [**Next.js**](https://nextjs.org/) và [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) thường được dùng để thiết kế giao diện người dùng. Và nếu bạn đang làm bất cứ điều gì liên quan đến backend, đừng lo, hãy để [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), và [**NextAuth.js**](https://next-auth.js.org/) là những "món ăn" kèm theo tuyệt vời.
+
+Bạn có thể thấy rằng stack này có nhiều phần khác nhau. Cái này chính là điểm mạnh của nó. Bạn có thể thêm hoặc bớt các phần theo nhu cầu của bạn - vì stack này được thiết kế mô-đun hóa ở mức cơ sở :)
+
+## Vậy... create-t3-app là gì? Là một template sao?
+
+Bạn cũng có thể coi là như vậy? `create-t3-app` là một CLI được xây dựng bởi các nhà phát triển T3 Stack dày dạn kinh nghiệm để hợp lý hóa việc thiết lập một ứng dụng T3 Stack dạng mô-đun. Chính vì vậy, bạn có thể thêm hoặc bớt các phần theo nhu cầu của bạn, và "template" được tạo ra để đáp ứng trên nhu cầu cụ thể của bạn.
+
+Sau vô số dự án và nhiều năm làm việc với công nghệ này, chúng tôi có rất nhiều kiến thức, kinh nghiệm và trải nghiệm sâu sắc với những công nghệ này. Chính vì vậy, chúng tôi đã cố gắng hết sức để "gộp" chúng vào chiếc CLI này.
+
+Hãy lưu ý rằng, đây **KHÔNG** phải là một template bao gồm tất cả mọi thứ. Chúng tôi **khuyến khích** bạn sẽ mang các thư viện của riêng mình vào T3 Stack để giải quyết nhu cầu của ứng dụng **CỦA BẠN**. Mặc dù chúng tôi không ràng buộc các giải pháp cho các vấn đề cụ thể hơn như quản lý trạng thái và triển khai, nhưng chúng tôi [có một số khuyến nghị được liệt kê ở đây](/vi/other-recs).
+
+## Các Nguyên tắc của T3
+
+Chúng tôi sẽ thẳng thắn - đây là một dự án _có chính kiến_. Chúng tôi chia sẻ một số niềm tin cốt lõi về việc xây dựng và chúng tôi coi chúng là cơ sở cho các quyết định của mình.
+
+### Giải quyết Vấn đề
+
+Bạn có thể sẽ dễ rơi vào cái bẫy "thêm mọi thứ" - chúng tôi rõ ràng không muốn điều đó xảy ra. Vì vậy, những công nghệ được tích hợp vào trong `create-t3-app` sẽ được sử dụng để giải quyết những vấn đề hiễn hữu còn có trong những công nghệ chủ đạo. Điều này có nghĩa là chúng tôi sẽ không thêm những thứ như thư viện quản lý trạng thái (`zustand`, `redux`), thay vì đó, chúng tôi sẽ thêm những thứ như NextAuth.js và tích hợp Prisma và tRPC cho bạn.
+
+### Chuyển đổi công nghệ một cách Có Trách nhiệm (Bleed Responsibly)
+
+Chúng tôi yêu thích những công nghệ tiên tiến (bleeding edge). Vì nó nhanh và, thành thật mà nói, niềm vui đến từ những thứ mới mẻ thực sự rất tuyệt. Chúng tôi nghĩ rằng chuyển đổi công nghệ một cách có trách nhiệm (Bleed Responsibly) là một điều quan trọng, sử dụng công nghệ rủi ro hơn để bù đắp những phần ít rủi ro hơn. Và đồng thời, chúng tôi sẽ không ⛔️ tất tay vào công nghệ cơ sở dữ liệu mới đầy rủi ro (Tôi yêu SQL!). Nhưng chúng tôi rất vui vẻ ✅ "tất tay" vào tRPC vì bản chất nó chỉ là các hàm và nó cũng không mất nhiều cônng sức để chuyển đổi khỏi nó.
+
+### Đảm bảo Tính Toàn Vẹn của Kiểu dữ liệu (Typesafety) Không Phải Là Tùy Chọn
+
+Mục tiêu đã nêu của Create T3 App là cung cấp cách nhanh nhất để bắt đầu một ứng dụng web full-stack mà vẫn đảm bảo **tính toàn vẹn của kiểu dữ liệu (typesafe)** . Chúng tôi rất coi trọng việc đảm bảo tính toàn vẹn của kiểu dữ liệu vì nó cải thiện năng suất của chúng tôi và giúp chúng tôi gặp ít lỗi hơn khi phát hành. Bất kỳ quyết định nào mà không tuân thủ tính toàn vẹn của kiểu dữ liệu của Create T3 App là một quyết định nên được thực hiện trong một dự án khác.

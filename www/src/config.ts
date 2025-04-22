@@ -37,6 +37,7 @@ export const KNOWN_LANGUAGES = {
   no: "Norsk",
   pl: "Polski",
   uk: "Українська",
+  vi: "Tiếng Việt",
   "zh-hans": "简体中文",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
@@ -413,6 +414,42 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "zh-hans/deployment/docker" },
     ],
   },
+  vi: {
+    "Create T3 App": [
+      { text: "Giới thiệu", link: "vi/introduction" },
+      { text: "Tại sao chọn CT3A?", link: "vi/why" },
+      { text: "Cài đặt", link: "vi/installation" },
+      {
+        text: "Cấu trúc thư mục (Pages Router)",
+        link: "vi/folder-structure-pages",
+      },
+      {
+        text: "Cấu trúc thư mục (App Router)",
+        link: "vi/folder-structure-app",
+      },
+      { text: "Câu hỏi thường gặp", link: "vi/faq" },
+      { text: "T3 Collection", link: "vi/t3-collection" },
+      { text: "Các khuyến nghị khác", link: "vi/other-recs" },
+    ],
+    Usage: [
+      { text: "Bước đầu tiên", link: "vi/usage/first-steps" },
+      { text: "Next.js", link: "vi/usage/next-js" },
+      { text: "TypeScript", link: "vi/usage/typescript" },
+      { text: "tRPC", link: "vi/usage/trpc" },
+      { text: "Prisma", link: "vi/usage/prisma" },
+      { text: "NextAuth.js", link: "vi/usage/next-auth" },
+      {
+        text: "Biến môi trường",
+        link: "vi/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "vi/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "vi/deployment/vercel" },
+      { text: "Netlify", link: "vi/deployment/netlify" },
+      { text: "Docker", link: "vi/deployment/docker" },
+    ],
+  },
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
@@ -474,5 +511,10 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "用法",
     Deployment: "部署",
+  },
+  vi: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Sử dụng",
+    Deployment: "Triển khai",
   },
 };
