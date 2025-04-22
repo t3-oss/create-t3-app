@@ -429,6 +429,7 @@ export const SIDEBAR: Sidebar = {
       },
       { text: "Câu hỏi thường gặp", link: "vi/faq" },
       { text: "T3 Collection", link: "vi/t3-collection" },
+      { text: "Ví dụ", link: "vi/examples" },
       { text: "Các khuyến nghị khác", link: "vi/other-recs" },
     ],
     Usage: [
@@ -437,6 +438,7 @@ export const SIDEBAR: Sidebar = {
       { text: "TypeScript", link: "vi/usage/typescript" },
       { text: "tRPC", link: "vi/usage/trpc" },
       { text: "Prisma", link: "vi/usage/prisma" },
+      { text: "Drizzle", link: "vi/usage/drizzle" },
       { text: "NextAuth.js", link: "vi/usage/next-auth" },
       {
         text: "Biến môi trường",

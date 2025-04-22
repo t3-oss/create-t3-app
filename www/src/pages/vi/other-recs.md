@@ -1,55 +1,55 @@
 ---
-title: Other Recommendations
-description: Libraries and Services that we recommend for many projects
+title: Các khuyến nghị khác
+description: Thư viện và dịch vụ mà chúng tôi khuyến nghị cho nhiều dự án
 layout: ../../layouts/docs.astro
-lang: en
+lang: vi
 ---
 
-We recognize that the libraries included in `create-t3-app` don't solve every problem. While we encourage you to begin your project with the things that we provide, there will come a time when you need to bring in other packages. Only you can know what your project needs, but here are some things that we find ourselves recommending frequently.
+Chúng tôi nhận thấy rằng các thư viện đi kèm trong `create-t3-app` sẽ không giúp bạn giải quyết được mọi vấn đề. Mặc dù chúng tôi khuyến khích bạn bắt đầu dự án của mình với những thư viện chúng tôi cung cấp, sẽ đến một thời điểm nào đó mà bạn cần sử dụng những thư viện khác. Chỉ bạn mới biết dự án của mình cần gì, tuy nhiên, dưới đây là một số thứ mà chúng tôi thường xuyên đề xuất.
 
-These are recommendations by individual Create T3 App contributors and should not be seen as "official" endorsements by the Create T3 App team or T3-OSS. _**Please do your own research, especially before committing to paid services**_.
+Đây là những đề xuất của các cộng tác viên cá nhân của Create T3 App và không nên được xem là những đề xuất "chính thức" bởi nhóm Create T3 App hoặc T3-OSS. _**Hãy nghiên cứu kỹ lưỡng trước khi sử dụng, đặc biệt là trước khi cam kết sử dụng các dịch vụ trả phí**_.
 
-## State Management
+## Quản lý trạng thái (State Management)
 
-_**Editor's Note**_: State management libraries can be great, but often aren't necessary. tRPC's React Query hooks should be able to take care of your server state. For client state, start with React's `useState`, and reach for one of these options when you need more.
+_**Lưu ý của Editor**_: Các thư viện quản lý trạng thái (State Management Libraries) có thể rất tuyệt vời, nhưng chúng thường không cần thiết. Các hook React Query của tRPC có thể đảm nhiệm tốt việc quản lý trạng thái phía máy chủ (server state) của bạn. Đối với trạng thái phía máy khách (client state), hãy bắt đầu với `useState` của React và chỉ nên sử dụng một trong các tùy chọn này khi bạn cần nhiều hơn thế.
 
 ### Zustand
 
-**For never using Redux again**
+**Bạn sẽ không bao giờ phải dùng Redux nữa**
 
-The "modern, simple Redux" you didn't know you needed. [Poimandres](https://github.com/pmndrs) can always be trusted. You can build everything from video call apps to games to servers with this little library.
+Đây được coi là một "Redux hiện đại, đơn giản" mà bạn ước mình biết đến sớm hơn. [Poimandres](https://github.com/pmndrs) rất tín. Bạn có thể xây dựng mọi thứ từ ứng dụng gọi video đến trò chơi đến máy chủ với thư viện nhỏ bé này.
 
-- [Zustand Homepage](https://zustand-demo.pmnd.rs/)
-- [Zustand GitHub](https://github.com/pmndrs/zustand)
+- [Trang chủ Zustand](https://zustand-demo.pmnd.rs/)
+- [GitHub Zustand](https://github.com/pmndrs/zustand)
 
 ### Jotai
 
-**For never using Context again**
+**Bạn sẽ không bao giờ phải dùng Context nữa**
 
-For a more atomic approach, Jotai is hard to beat. Also by [Poimandres](https://github.com/pmndrs), Jotai lets you define singletons that feel like global useState. A great option for stateful behaviors that don't need a state machine just yet.
+Khi đề cập đến cách tiếp cận nguyên tử (atomic), Jotai gần như không thể bị đánh bại. Thư viện này cũng được tạo bởi [Poimandres](https://github.com/pmndrs), Jotai cho phép bạn định nghĩa các singleton giống như một useState, nhưng sử dụng một cách toàn cục. Đây sẽ là một lựa chọn tuyệt vời cho các hành vi có trạng thái (stateful behaviors) mà chưa cần đến trạng thái máy (state machine).
 
-- [Jotai Homepage](https://jotai.org/)
-- [Jotai GitHub](https://github.com/pmndrs/jotai)
+- [Trang chủ Jotai](https://jotai.org/)
+- [GitHub Jotai](https://github.com/pmndrs/jotai)
 
-## Component Libraries
+## Thư viện Component
 
-Most apps need the same handful of components - toggle buttons, dropdown menus, modals, and so on. These libraries provide great, accessible components that you can use and customize to your liking.
+Hầu hết các ứng dụng đều cần một số component giống nhau - nút bật tắt (toggle buttons), menu thả xuống (dropdown menus), modal, v.v. Các thư viện này cung cấp các component tuyệt vời, dễ tiếp cận mà bạn có thể sử dụng và tùy chỉnh theo ý thích.
 
-### Unstyled Component Libraries
+### Thư viện Component không định kiểu (Unstyled)
 
-Also known as headless libraries, they provide great unstyled, and accessible components that you can customize to your liking. Here are a few recommendations.
+Còn được gọi là thư viện headless, chúng cung cấp một danh sách component tuyệt vời, không có style sẵn và dễ tiếp cận, giúp bạn có thể tùy chỉnh theo ý thích cá nhân. Dưới đây là một vài đề xuất của chúng tôi.
 
-- [Radix UI](https://www.radix-ui.com/) gives you a powerful set of convenient and accessible primitives that you can style with vanilla or Tailwind CSS.
+- [Radix UI](https://www.radix-ui.com/) cung cấp cho bạn một bộ primitives mạnh mẽ, tiện lợi và dễ tiếp cận mà bạn có thể định nghĩa bằng CSS thuần hoặc Tailwind CSS.
 
-- [Headless UI](https://headlessui.com/) made by the Tailwind CSS team also provides unstyled, accessible components that integrate seamlessly with Tailwind CSS.
+- [Headless UI](https://headlessui.com/) được tạo bởi Tailwind, nó cung cấp các component không có style sẵn, dễ tiếp cận và dễ tích hợp với Tailwind CSS.
 
-- [React Aria](https://react-spectrum.adobe.com/react-aria/) provides accessible UI primitives for your design system. Their Date Picker component is top tier.
+- [React Aria](https://react-spectrum.adobe.com/react-aria/) cung cấp các UI primitives dễ tiếp cận cho hệ thống thiết kế (design system) của bạn. Date Picker của họ là một "wow" đáng kinh ngạc.
 
-### Styled Component Libraries
+### Thư viện Component có định kiểu (Styled)
 
-**For when you just want your app to look OK**
+**Khi ứng dụng của bạn chỉ ở mức ổn**
 
-Sometimes you're building a project where you just want the UI to look decent out of the box. For Admin Dashboards and other similar projects, any of these component libraries will get the job done.
+Đôi khi bạn đang xây dựng một dự án mà bạn chỉ muốn giao diện người dùng (UI) trông tươm tất ngay từ đầu. Đối với các Bảng điều khiển quản trị (Admin Dashboards) và các dự án tương tự khác, bất kỳ thư viện component nào trong số này cũng sẽ giúp bạn hoàn thành công việc trong thời gian ngắn nhất.
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
@@ -57,113 +57,113 @@ Sometimes you're building a project where you just want the UI to look decent ou
 
 ### Class Variance Authority
 
-**For building UI Libraries**
+**Để xây dựng thư viện UI**
 
-Declaratively build a UI Library with different color, size, etc. variants. When your project reaches a scale where you want a standardized set of UI components with multiple variants using Tailwind CSS, CVA is a great tool.
+Để xây dựng một Thư viện UI, bạn cần cách khai báo các biến thể màu sắc, kích thước, v.v. khác nhau. Khi dự án của bạn đạt đến quy mô mà bạn muốn có một bộ component UI được chuẩn hóa với nhiều biến thể sử dụng Tailwind CSS, CVA sẽ là một "người đồng hành" không thể thiếu của bạn.
 
-- [Class Variance Authority GitHub](https://github.com/joe-bell/cva)
+- [GitHub Class Variance Authority](https://github.com/joe-bell/cva)
 
-## Animations
+## Hoạt ảnh (Animations)
 
-For when you need animations in your app, here are our recommendations.
+Khi bạn cần hoạt ảnh trong ứng dụng của mình, đây là những đề xuất của chúng tôi.
 
 ### AutoAnimate
 
-**For animations with a single line of code**
+**Tạo hoạt ảnh chỉ với một dòng code**
 
-Most animation libraries try to satisfy every possible use case, and become clunky as a result. AutoAnimate is a zero-configuration tool that will give you a significant improvement in UX with no additional developer effort.
+Hầu hết các thư viện hoạt ảnh cố gắng đáp ứng mọi trường hợp sử dụng có thể và kết quả là hầu hết chúng đều rất cồng kềnh. AutoAnimate là một công cụ không cần cấu hình (zero-configuration) mà đem lại cho bạn sự cải thiện đáng kể về UX mà không cần phải nghĩ nhiều về setup.
 
-- [AutoAnimate Homepage](https://auto-animate.formkit.com/)
-- [AutoAnimate GitHub](https://github.com/formkit/auto-animate)
-- [AutoAnimate Component Snippet](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
+- [Trang chủ AutoAnimate](https://auto-animate.formkit.com/)
+- [GitHub AutoAnimate](https://github.com/formkit/auto-animate)
+- [Đoạn mã Component AutoAnimate](https://gist.github.com/hwkr/3fdea5d7f609b98c162e5325637cf3cb)
 
 ### Framer Motion
 
-**For complex animations with declarative code**
+**Tạo hoạt ảnh phức tạp với code khai báo đơn giản**
 
-Framer Motion provides a simple, declarative syntax and allows you to write less code to craft everything from complex animations to even gestures.
+Framer Motion cung cấp các cú pháp khai báo đơn giản và cho phép bạn viết ít code hơn để tạo ra mọi thứ từ hoạt ảnh phức tạp đến cả cử chỉ (gestures).
 
-- [Framer Motion Homepage](https://framer.com/motion)
-- [Framer Motion Documentation](https://www.framer.com/docs/)
+- [Trang chủ Framer Motion](https://framer.com/motion)
+- [Tài liệu Framer Motion](https://www.framer.com/docs/)
 
-## Deployments, Infrastructure, Databases and CI
+## Triển khai, Hạ tầng, Cơ sở dữ liệu và CI
 
 ### Vercel
 
-**For hosting your app**
+**Host ứng dụng của bạn một cách đơn giản nhất**
 
-Vercel took the hell of web deployments and made it a set-and-forget GitHub integration. We've scaled to hundreds of thousands of users without issue. AWS-powered, just a way better interface :)
+Vercel đã "vực dậy" việc triển khai web từ địa ngục đến việc chỉ cần thêm vào Github và "deploy". Chúng tôi đã mở rộng quy mô lên hàng trăm nghìn người dùng mà không gặp vấn đề gì. Được xây dựng trên nền của AWS, tuy nhiên giao diện của Vercel lại tốt hơn chục nghìn lần :)
 
-- [Vercel Homepage](https://vercel.com/)
-- [Create T3 App Vercel deployment guide](/en/deployment/vercel)
+- [Trang chủ Vercel](https://vercel.com/)
+- [Hướng dẫn triển khai Create T3 App trên Vercel](/vi/deployment/vercel)
 
 ### PlanetScale
 
-**For databases without the worry**
+**Chiếc cơ sở dữ liệu mà bạn không cần lo lắng**
 
-PlanetScale is the best "serverless database platform" we've used by far. Insane scale, great developer experience, and fantastic pricing. If you're using SQL (and hopefully Prisma), this is hard to beat.
+PlanetScale là "nền tảng cơ sở dữ liệu serverless" tốt nhất mà chúng tôi từng sử dụng. Nó có khả năng mở rộng đáng kinh ngạc, trải nghiệm lập trình tuyệt vời và giá cả phải chăng. Nếu bạn đang sử dụng SQL (và hy vọng là Prisma), thì bạn khó có thể không sử dụng nền tảng này.
 
-- [PlanetScale Homepage](https://planetscale.com/)
+- [Trang chủ PlanetScale](https://planetscale.com/)
 
 ### Railway
 
-**For hosting your infra**
+**Host hạ tầng của bạn**
 
-"Modern Heroku". The easiest way to get a real server up and running. If Vercel and PlanetScale aren't enough, Railway probably is. Point it at a GitHub repo and go.
+Được coi là một "Heroku hiện đại". Đây là cách dễ nhất để bạn khởi chạy và quản lý hạ tầng đám mây của bạn. Nếu Vercel và PlanetScale không đủ đối với bạn, Railway sẽ lấp đầy khoảng trống đó. Chỉ cần đưa nó vào một repo GitHub và bắt đầu hành trình của bạn.
 
-- [Railway Homepage](https://railway.app/)
+- [Trang chủ Railway](https://railway.app/)
 
 ### Upstash
 
-**For serverless Redis**
+**Một Redis serverless**
 
-We love Prisma and PlanetScale, but some projects require a more performant solution. Upstash allows you to get the in-memory performance of Redis in your serverless project, without having to manage the infrastructure and scaling yourself.
+Chúng tôi yêu thích Prisma và PlanetScale, nhưng một số dự án cần đòi hỏi giải pháp hiệu năng cao hơn. Upstash đẹm lại các tính năng của Redis trong dự án serverless của bạn mà không cần phải tự quản lý cơ sở hạ tầng và việc mở rộng quy mô.
 
-- [Upstash Homepage](https://upstash.com/)
+- [Trang chủ Upstash](https://upstash.com/)
 
 ### Pusher
 
-**For serverless WebSockets**
+**WebSockets serverless**
 
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
+Nếu WebSockets là trọng tâm chính của dự án của bạn, bạn có thể muốn xem xét sử dụng một backend server truyền thống như [Fastify](https://www.fastify.io/) (cũng [hoạt động với tRPC!](https://trpc.io/docs/v10/fastify)). Nhưng nếu bạn không đủ thời gian để thêm WebSockets vào một ứng dụng T3, đừng lo, Pusher sẽ là "món chính" tuyệt vời.
 
-- [Pusher Homepage](https://pusher.com/)
+- [Trang chủ Pusher](https://pusher.com/)
 
 ### Soketi
 
-Soketi is a self-hostable, simple, and fast alternative to Pusher. It's fully compatible with the Pusher SDK which you can use to connect to the server. Soketi serverless is also in beta.
+Soketi là một giải pháp tự host (self-hostable), đơn giản và nhanh chóng cho Pusher. Nó hoàn toàn tương thích với Pusher SDK mà bạn có thể sử dụng để kết nối với máy chủ. Hãy nhớ rằng, Soketi serverless hiện tại đang trong giai đoạn beta.
 
-- [Soketi Homepage](https://soketi.app)
-- [Soketi GitHub](https://github.com/soketi/soketi)
+- [Trang chủ Soketi](https://soketi.app)
+- [GitHub Soketi](https://github.com/soketi/soketi)
 
-## Analytics
+## Phân tích (Analytics)
 
-User data is very valuable when you're building an app. Here are some analytics providers we recommend.
+Dữ liệu người dùng rất có giá trị khi bạn xây dựng một ứng dụng. Dưới đây là một số nhà cung cấp dịch vụ phân tích mà chúng tôi đề xuất.
 
 ### PostHog
 
-PostHog is a full-featured, open-source, and self-hostable solution for bringing in depth analytics to your product. They have SDKs for every library/framework imaginable.
+PostHog là một giải pháp mã nguồn mở, đầy đủ tính năng và có thể tự host để mang lại phân tích chuyên sâu cho sản phẩm của bạn. Họ có SDK cho mọi thư viện/framework có thể tưởng tượng được.
 
-- [PostHog Homepage](https://posthog.com/)
+- [Trang chủ PostHog](https://posthog.com/)
 
 ### Plausible
 
-Need analytics? Plausible is one of the quickest ways to get them. Super minimal. It even has a [simple plugin for Next.js](https://plausible.io/docs/proxy/guides/nextjs).
+Bạn đang cần một nền tảng phân tích ưu việt? Plausible là một trong những cách nhanh nhất để có được chúng. Siêu tối giản. Nó thậm chí còn có hẳn cả [plugin đơn giản cho Next.js](https://plausible.io/docs/proxy/guides/nextjs).
 
-- [Plausible Homepage](https://plausible.io/)
+- [Trang chủ Plausible](https://plausible.io/)
 
 ### Umami
 
-Umami is an open-sourced, self-hostable, simple, fast, privacy-focused alternative to Google Analytics. You can deploy it really easily to Vercel, Railway, etc. with PlanetScale as your database or you can also use its cloud version.
+Umami là một giải pháp thay thế mã nguồn mở, có thể tự host, đơn giản, nhanh chóng và tập trung vào quyền riêng tư cho Google Analytics. Bạn có thể triển khai nó rất dễ dàng lên Vercel, Railway, v.v. với PlanetScale làm cơ sở dữ liệu hoặc bạn cũng có thể sử dụng phiên bản đám mây của nó.
 
-- [Umami Homepage](https://umami.is/)
-- [Umami GitHub](https://github.com/umami-software/umami)
+- [Trang chủ Umami](https://umami.is/)
+- [GitHub Umami](https://github.com/umami-software/umami)
 - [Umami Cloud](https://cloud.umami.is/)
 
-## Other
+## Khác
 
 ### Next Bundle Analyzer
 
-It can sometimes be difficult to determine what will be included in the build output for your app. Next Bundle Analyzer is an easy way to visualize and analyze the JavaScript bundles that are generated.
+Đôi khi có thể khó xác định những gì sẽ được bao gồm trong khi build (build output) ứng dụng của bạn. Next Bundle Analyzer là một cách dễ dàng để trực quan hóa và phân tích các gói JavaScript (JavaScript bundles) được tạo ra trong quá trình build sản phẩm của bạn.
 
-- [@next/bundle-analyzer on npm](https://www.npmjs.com/package/@next/bundle-analyzer)
+- [@next/bundle-analyzer trên npm](https://www.npmjs.com/package/@next/bundle-analyzer)
