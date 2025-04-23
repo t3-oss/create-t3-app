@@ -1,32 +1,32 @@
 ---
 title: Netlify
-description: Deploying to Netlify
+description: Triển khai lên Netlify
 layout: ../../../layouts/docs.astro
-lang: en
+lang: vi
 isMdx: true
 ---
 
 import Callout from "../../../components/docs/callout.tsx";
 
-Netlify is an alternative deployment provider in a similar vein to Vercel. See [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) for an example repo based on this doc.
+Netlify là một nhà cung cấp khác giúp bạn triển khai ứng dụng web của bạn tương tự như Vercel. Bạn có thể tham khảo [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) như là một repo ví dụ triển khai lên Netlify dựa trên tài liệu này.
 
-## Why Host on Netlify
+## Tại sao nên triển khai lên Netlify
 
-Conventional wisdom says Vercel has superior Next.js support because Vercel develops Next.js. They have a vested interest in ensuring the platform is tuned for optimal performance and DX with Next.js. For the majority of use cases, this will be true and it won't make sense to deviate from the standard path.
+Một sự thật mà chúng ta không thể phủ nhận được đó chính là việc Vercel chính là cha đẻ của Next.js, thế nên Vercel hỗ trợ Next.js tốt hơn là điều tất nhiên. Thế nên, họ luôn đi đầu trong việc đảm bảo nền tảng được tối ưu hóa cho hiệu suất và nâng cao DX cho Next.js. Đối với hầu hết các trường hợp sử dụng, điều này sẽ đúng và sẽ không có lý do gì để chúng ta tách biệt ra khỏi cái khuôn khổ này.
 
-There's also a common sentiment that many Next.js features are only supported on Vercel. While it's true that new Next.js features will be tested and supported on Vercel at the time of release by default, it's also the case that other providers like Netlify will [quickly implement and release support](https://www.netlify.com/blog/deploy-nextjs-13/) for [stable Next.js features](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+Và chúng ta cũng đều có chung một suy nghĩ rằng nhiều tính năng của Next.js chỉ được hỗ trợ trên Vercel. Mặc dù Vercel luôn đi đầu trong việc cho phép thử nghiệm các tính năng mới của Next.js và cho phép sử dụng chúng ngay khi được ra mắt, nhưng đồng thời cũng là trường hợp tương tự cho các nhà cung cấp khác như Netlify, khi mà họ cũng sẽ [nhanh chóng triển khai và phát hành hỗ trợ](https://www.netlify.com/blog/deploy-nextjs-13/) cho [các tính năng Next.js khi chúng được ra mắt](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
 
-There are relative pros and cons for all deployment providers since no single host can have the best support for all use cases. For example, Netlify built their own [custom Next.js runtime](https://github.com/netlify/next-runtime) for Netlify's Edge Functions (which run on Deno Deploy) and [maintain unique middleware to access and modify HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
+Tất nhiên, tất cả các nhà cung cấp triển khai sẽ đều có nhiều ưu và nhược điểm của riêng mình, vì không có một nhà cung cấp nào có thể có hỗ trợ tốt nhất cho tất cả các trường hợp sử dụng. Ví dụ, Netlify đã xây dựng hẳn một [runtime Next.js riêng cho Netlify's Edge Functions](https://github.com/netlify/next-runtime) (chạy trên Deno Deploy) và [duy trì middleware riêng để truy cập và sửa đổi HTTP responses](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
 
 <Callout type="info">
-  To track the status of non-stable Next 13 features see [Using the Next 13
-  `app` directory on
+  Để theo dõi những tính năng mới nhất của những phiên bản Next 13 non-stable,
+  xin mời tham khảo [Sử dụng Next 13 `app` directory trên
   Netlify](https://github.com/netlify/next-runtime/discussions/1724).
 </Callout>
 
-## Project Configuration
+## Cấu hình dự án
 
-There are numerous ways to configure your build instructions including directly through the Netlify CLI or Netlify dashboard. While not required, it is advisable to create and include a [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) file. This ensures that forked and cloned versions of the project will be easier to reproducibly deploy.
+Có muôn vàn cách để cấu hình lệnh build cho dự án của bạn, bao gồm việc cấu hình trực tiếp qua Netlify CLI hoặc Netlify dashboard. Trong khi việc tạo và bao gồm một tệp [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) là việc không bắt buộc, chúng tôi **khuyến khích** bạn nên làm điều này nhằm đảm bảo rằng các phiên bản được fork và clone của dự án sẽ dễ dàng triển khai lại.
 
 ```toml
 [build]
@@ -34,60 +34,60 @@ There are numerous ways to configure your build instructions including directly 
   publish = ".next"
 ```
 
-## Using the Netlify Dashboard
+## Sử dụng Netlify Dashboard
 
-1. Push your code to a GitHub repository and sign up for [Netlify](https://app.netlify.com/signup). After you've created an account, click on **Add new site** and then **Import an existing project**.
+1. Hãy đẩy code của bạn lên một repository GitHub và đăng ký tài khoản [Netlify](https://app.netlify.com/signup). Sau khi đã tạo tài khoản, hãy click vào **Add new site** và sau đó **Import an existing project**.
 
 ![New project on Netlify](/images/netlify-01-new-project.webp)
 
-2. Connect your Git provider.
+2. Kết nối với Git provider của bạn.
 
 ![Import repository](/images/netlify-02-connect-to-git-provider.webp)
 
-3. Select your project's repository.
+3. Chọn repository của dự án của bạn.
 
 ![Select your project's repository](/images/netlify-03-pick-a-repository-from-github.webp)
 
-4. Netlify will detect if you have a `netlify.toml` file and automatically configure your build command and publish directory.
+4. Netlify sẽ tự động phát hiện xem bạn có tệp `netlify.toml` hay không và tự động cấu hình lệnh build và thư mục publish.
 
 ![Nextjs build settings](/images/netlify-04-configure-build-settings.webp)
 
-5. Click **Show advanced** and then **New variable** to add your environment variables.
+5. Click **Show advanced** và sau đó **New variable** để thêm biến môi trường của bạn.
 
 ![Add environment variables](/images/netlify-05-env-vars.webp)
 
-6. Click **Deploy site**, wait for the build to complete, and view your new site.
+6. Chọn **Deploy site**, đợi cho quá trình build hoàn tất và xem trang web mới của bạn.
 
-## Using the Netlify CLI
+## Sử dụng Netlify CLI
 
-To deploy from the command line you must first push your project to a GitHub repo and [install the Netlify CLI](https://docs.netlify.com/cli/get-started/). You can install `netlify-cli` as a project dependency or install it globally on your machine with the following command:
+Để triển khai sử dụng Netlify CLI, bạn phải đầu tiên đẩy code của bạn lên một repository GitHub và [cài đặt Netlify CLI](https://docs.netlify.com/cli/get-started/). Bạn có thể cài đặt `netlify-cli` dưới dạng **Dev Dependency** cho dự án hoặc cài đặt nó toàn cục trên máy của bạn với lệnh sau:
 
 ```bash
 npm i -g netlify-cli
 ```
 
-To test your project locally, run the [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) command and open [`localhost:8888`](http://localhost:8888/) to view your locally running Netlify app:
+Để chạy dự án của bạn trên máy của bạn, chạy lệnh [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) và mở [`localhost:8888`](http://localhost:8888/) để xem dự án Netlify của bạn đang chạy:
 
 ```bash
 ntl dev
 ```
 
-Run the [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) command to configure your project:
+Chạy lệnh [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) để bắt đầu cấu hình dự án của bạn:
 
 ```bash
 ntl init
 ```
 
-Import your project's environment variables from your `.env` file with [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
+Nhập biến môi trường của dự án của bạn từ tệp `.env` với lệnh [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
 
 ```bash
 ntl env:import .env
 ```
 
-Deploy your project with [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). You'll need to pass the `--build` flag to run the build command before deployment and the `--prod` flag to deploy to your site's main URL:
+Triển khai dự án của bạn với lệnh [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). Bạn sẽ cần truyền `--build` để chạy lệnh build trước khi triển khai và `--prod` để triển khai lên URL chính của trang web của bạn:
 
 ```bash
 ntl deploy --prod --build
 ```
 
-To view a running example on Netlify, visit [ct3a.netlify.app](https://ct3a.netlify.app/).
+Để xem một ví dụ chạy trên Netlify, hãy truy cập [ct3a.netlify.app](https://ct3a.netlify.app/).
