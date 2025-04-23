@@ -24,7 +24,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "typecheck": "turbo typecheck",
     "build:cli": "turbo --filter=create-t3-app build",
@@ -46,21 +46,21 @@
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.27.3",
-    "@eslint/compat": "^1.2.7",
+    "@changesets/cli": "^2.29.2",
+    "@eslint/compat": "^1.2.8",
     "@eslint/eslintrc": "^3.3.1",
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@manypkg/cli": "^0.20.0",
     "@total-typescript/ts-reset": "^0.3.7",
-    "@types/node": "^20.14.10",
-    "eslint": "^9.23.0",
-    "eslint-plugin-import-x": "^4.9.1",
+    "@types/node": "^20.17.30",
+    "eslint": "^9.25.1",
+    "eslint-plugin-import-x": "^4.10.6",
     "eslint-plugin-isaacscript": "^4.0.0",
-    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.5.3",
     "turbo": "1.13.3-canary.3",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.27.0"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0"
   }
 }
