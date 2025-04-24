@@ -2,7 +2,7 @@
 title: TypeScript
 description: Usage of TypeScript
 layout: ../../../layouts/docs.astro
-lang: en
+lang: vi
 ---
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">

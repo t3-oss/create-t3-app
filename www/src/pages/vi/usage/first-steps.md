@@ -2,7 +2,7 @@
 title: First Steps
 description: Getting started with your new T3 App
 layout: ../../../layouts/docs.astro
-lang: en
+lang: vi
 ---
 
 You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.

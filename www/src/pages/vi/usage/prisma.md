@@ -2,7 +2,7 @@
 title: Prisma
 description: Usage of Prisma
 layout: ../../../layouts/docs.astro
-lang: en
+lang: vi
 ---
 
 Prisma is an ORM for TypeScript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
