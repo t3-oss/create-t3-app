@@ -1,53 +1,53 @@
 ---
-title: First Steps
-description: Getting started with your new T3 App
+title: Bước đầu tiên
+description: Bắt đầu với T3 App của bạn
 layout: ../../../layouts/docs.astro
 lang: vi
 ---
 
-You just scaffolded a new T3 App and are ready to go. Here is the bare minimum to get your app working.
+Vậy là bạn đã khởi tạo thành công chiếc T3 App cho mình rồi đấy. Bây giờ là lúc để bạn có thể bắt đầu làm việc với nó.
 
-## Database
+## Cơ sở dữ liệu
 
 ### MySQL, PostgreSQL
 
-If you chose MySQL or PostgreSQL as your database, your T3 app will come with a `start-database.sh` bash script that can create a docker container with a database for local development. If you already have a database, feel free to delete this file and put your database credentials in `.env`. On macOS, you can also use [DBngin](https://dbngin.com/) if you don't want to use docker.
+Nếu bạn chọn MySQL hoặc PostgreSQL làm cơ sở dữ liệu của mình, T3 App sẽ có một file `start-database.sh` viết bằng bash script mà có thể tạo một container dựa trên cơ sở dữ liệu đã chọn nhằm cho phép bạn phát triển cục bộ. Nếu bạn đã có một cơ sở dữ liệu, hãy cứ thoát khỏi file này và đặt chuỗi kết nối cơ sở dữ liệu của bạn vào `.env`. Trên macOS, bạn cũng có thể sử dụng [DBngin](https://dbngin.com/) nếu bạn không muốn sử dụng docker.
 
 ### Prisma
 
-If your app includes Prisma, make sure to run `npx prisma db push` from the root directory of your app. This command will sync your Prisma schema with your database and will generate the TypeScript types for the Prisma Client based on your schema. Note that you need to [restart the TypeScript server](https://tinytip.co/tips/vscode-restart-ts/) after doing this so that it can detect the generated types.
+Nếu app của bạn sử dụng Prisma, hãy chắc chắn rằng bạn đã chạy lệnh `npx prisma db push` từ thư mục gốc của app. Lệnh này sẽ đồng bộ hóa schema của Prisma với cơ sở dữ liệu của bạn và sẽ tạo ra các kiểu TypeScript cho Prisma Client dựa trên schema của bạn. Lưu ý rằng bạn cần [khởi động lại server TypeScript](https://tinytip.co/tips/vscode-restart-ts/) sau khi làm điều này để nó có thể phát hiện ra các kiểu đã được tạo.
 
 ### Drizzle
 
-If your app includes Drizzle, check the `.env` file for instructions on how to construct your `DATABASE_URL` env variable. Once your env file is ready, run `pnpm db:push` (or the equivalent for other package managers) to push your schema.
+Nếu app của bạn sử dụng Drizzle, hãy xem file `.env` để biết hướng dẫn cách tạo biến môi trường `DATABASE_URL`. Khi file env của bạn đã sẵn sàng, chạy lệnh `pnpm db:push` (hoặc lệnh tương đương cho các trình quản lý gói khác) để đẩy schema của bạn.
 
-## Authentication
+## Xác thực
 
-If your app includes NextAuth.js, we get you started with the `DiscordProvider`. This is one of the simplest providers that NextAuth.js offers, but it still requires a bit of initial setup on your part.
+Nếu app của bạn sử dụng NextAuth.js, chúng tôi cung cấp cho bạn một `DiscordProvider`. Đây là một trong những provider đơn giản nhất mà NextAuth.js cung cấp, tuy nhiên nó vẫn cần một chút cấu hình ban đầu từ phía bạn.
 
-Of course, if you prefer to use a different auth provider, you can also use one of the [many providers](https://next-auth.js.org/providers/) that NextAuth.js offers.
+Ngoài ra, nếu bạn muốn sử dụng một provider khác, bạn cũng có thể sử dụng một trong [nhiều provider](https://next-auth.js.org/providers/) mà NextAuth.js cung cấp.
 
-1. You will need a Discord account, so register one if you haven't already.
-2. Navigate to https://discord.com/developers/applications and click "New Application" in the top right corner. Give your application a name and agree to the Terms of Service.
-3. Once your application has been created, navigate to "Settings → OAuth2 → General".
-4. Copy the "Client ID" and add it to your `.env` as `AUTH_DISCORD_ID`.
-5. Click "Reset Secret", copy the new secret, and add it to your `.env` as `AUTH_DISCORD_SECRET`.
-6. Click "Add Redirect" and type in `http://localhost:3000/api/auth/callback/discord`.
-   - For production deployment, follow the previous steps to create another Discord Application, but this time replace `http://localhost:3000` with the URL that you are deploying to.
-7. Save Changes.
+1. Bạn cần một tài khoản Discord, vì vậy hãy tạo cho mình một cái một nếu bạn chưa có.
+2. Đi đến https://discord.com/developers/applications và ấn "New Application" ở góc trên bên phải. Đặt tên cho ứng dụng của bạn và đồng ý với Điều khoản dịch vụ.
+3. Khi ứng dụng của bạn đã được tạo, đi đến "Settings → OAuth2 → General".
+4. Copy "Client ID" và thêm nó vào file `.env` dưới dạng `AUTH_DISCORD_ID`.
+5. Click "Reset Secret", copy secret mới, và thêm nó vào file `.env` dưới dạng `AUTH_DISCORD_SECRET`.
+6. Click "Add Redirect" và nhập `http://localhost:3000/api/auth/callback/discord`.
+   - Đối với triển khai sản phẩm, hãy làm theo các bước trước để tạo một ứng dụng Discord khác, nhưng lần này thay thế `http://localhost:3000` với URL mà bạn đang triển khai.
+7. Lưu thay đổi.
 
-You should now be able to log in.
+Và giờ đây bạn đã có thể đăng nhập bằng Discord.
 
-## Editor Setup
+## Cấu hình trình soạn thảo của bạn
 
-The following extensions are recommended for an optimal developer experience. The links below provide editor specific plugin support.
+Các extension sau đây được khuyến nghị để mang lại một trải nghiệm phát triển tối ưu. Các liên kết dưới đây cung cấp hỗ trợ plugin cho trình chỉnh sửa cụ thể.
 
 - [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
 - [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
 - [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
-## Next Steps
+## Bước tiếp theo
 
-- If your app includes tRPC, check out `src/pages/index.tsx` and `src/server/api/routers/post.ts` to see how tRPC queries work.
-- Have a look around the Create T3 App docs, as well as the docs of the packages that your app includes.
-- Join our [Discord](https://t3.gg/discord) and give us a star on [GitHub](https://github.com/t3-oss/create-t3-app)! :)
+- Nếu app của bạn sử dụng tRPC, hãy xem `src/pages/index.tsx` và `src/server/api/routers/post.ts` để hiểu cách tRPC queries hoạt động.
+- Hãy xem xét các tài liệu của Create T3 App, cũng như các tài liệu của các thư viện mà app của bạn sử dụng.
+- Hãy tham gia [Discord](https://t3.gg/discord) của chúng tôi và cho chúng tôi một ngôi sao tại [GitHub](https://github.com/t3-oss/create-t3-app)! :)
