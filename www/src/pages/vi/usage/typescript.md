@@ -1,6 +1,6 @@
 ---
 title: TypeScript
-description: Usage of TypeScript
+description: Cách sử dụng TypeScript
 layout: ../../../layouts/docs.astro
 lang: vi
 ---
@@ -8,7 +8,7 @@ lang: vi
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>Build safety nets, not guard rails<span aria-hidden="true">&quot;</span> - <span aria-hidden="true">&quot;</span>Dựng lưới an toàn, chớ xây lan can<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -18,7 +18,7 @@ lang: vi
       src="/images/theo_300x300.webp"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Theo - creator of the T3 Stack</span>
+      <span className=" text-sm font-semibold">Theo - người tạo ra T3 Stack</span>
       <a
         href="https://twitter.com/t3dotgg"
         target="_blank"
@@ -31,37 +31,37 @@ lang: vi
   </cite>
 </blockquote>
 
-Whether you're a new or seasoned developer, we think that TypeScript is a must have. It can look intimidating at first, but much like a lot of tools, is something that many never look back from after starting to use it.
+Cho dù bạn có là lập trình viên tay mơ hay là lập trình viên có kinh nghiệm, chúng tôi nghĩ rằng TypeScript là một "người bạn" không thể thiếu. Mặc dù nó có thể khiến bạn gặp một chút khó khăn khi bắt đầu, nhưng giống như nhiều công cụ hữu ích khác, Typescript sẽ là công cụ khiến nhiều lập trình viên không bao giờ muốn "đường ai nấy đi" khi đã biết tận dụng sức mạnh của nó.
 
-It provides live feedback as you write your code by defining expected data types, and either provides helpful autocomplete in your code editor, or yells at you with red squiggly lines if you're trying to access a property that doesn't exist or trying to pass a value of the wrong type, which you would otherwise have to debug further down the line.
+Typescript phản hồi gần như tức thì khi bạn viết code bằng cách định nghĩa kiểu dữ liệu dự kiến, vì thế điểm mạnh của nó là tự cập nhật autocompletion theo những thay đổi mới nhất trong trình soạn thảo mã của bạn, hoặc có thể cảnh báo bạn với dòng gạch màu đỏ lòm nếu bạn đang cố gắng truy cập vào một thuộc tính không tồn tại hoặc đang cố gắng truyền một giá trị có kiểu sai, thứ khiến bạn sẽ phải tốn hàng giờ đồng hồ để "debug" sau đó.
 
-It is, perhaps, the tool that provides the most productivity to developers; providing documentation of the code you're writing or consuming directly in your editor, and having instant feedback as you inevitably make mistakes is absolutely priceless.
+Chính vì thế, Typescript là công cụ giúp cho lập trình viên có nhiều năng suất hơn bao giờ hết; cung cấp tài liệu cho code bạn đang viết hoặc sử dụng trực tiếp trong trình soạn thảo của bạn, và có phản hồi ngay lập tức khi bạn làm sai một cái gì đó, giống như bún đậu thì phải chấm với mắm tôm chứ không phải tương ớt vậy.
 
-## Type Inference
+## Suy luận kiểu dữ liệu (Type Inference)
 
-While many new TypeScript developers are concerned with _writing_ TypeScript, many of its benefits don't actually require you to change your code at all, in particular inference. Inference means that if something is typed, that type will follow it throughout the flow of the application without having to be re-declared in other places. This means that for example once you have defined the types of the arguments that a function takes, the remainder of the function will usually be typesafe without requiring any further TypeScript-specific code. Library developers put a ton of work into maintaining the types for their libraries, which means that we as application developers can benefit from both the inference and the built-in documentation in your code editor that these types provide.
+Mặc dù nhiều lập trình viên TypeScript mới thường lo lắng về việc _định nghĩa kiểu dữ liệu_ TypeScript một cách chuẩn chỉ, nhưng lợi ích thực sự của Typescript nằm ở chỗ nó không yêu cầu bạn phải thay đổi code của mình để thay đổi kiểu dữ liệu, hay còn gọi là suy luận kiểu dữ liệu (Type Inference). Suy luận kiểu dữ liệu có nghĩa là nếu bạn đã định nghĩa một kiểu dữ liệu, kiểu dữ liệu đó sẽ đi theo trong suốt luồng của ứng dụng mà không cần phải khai báo lại ở những nơi khác. Điều này có nghĩa là, ví dụ, một khi bạn đã định nghĩa kiểu của các tham số mà một hàm nhận vào, phần còn lại của hàm thường sẽ được đảm bảo an toàn về kiểu dữ liệu mà không cần thêm bất kỳ code TypeScript cụ thể nào. Các nhà phát triển thư viện đã phải bỏ ra rất nhiều công sức để duy trì các kiểu dữ liệu cho thư viện của họ, điều này có nghĩa là chúng ta với tư cách là nhà phát triển ứng dụng có thể hưởng lợi từ cả suy luận kiểu dữ liệu và "tài liệu" được tích hợp trong trình soạn thảo code mà các kiểu này cung cấp.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RmGHnYUqQ4k" title="You might be using Typescript wrong" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Check out Theo's video on how [you might be using TypeScript wrong](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
+Xem thêm video của Theo về cách [bạn có thể sử dụng TypeScript sai](https://www.youtube.com/watch?v=RmGHnYUqQ4k).
 
-## Powerful uses of type inference
+## Các ứng dụng mạnh mẽ của suy luận kiểu dữ liệu
 
 ### Zod
 
-[Zod](https://github.com/colinhacks/zod) is a schema validation library that is built on top of TypeScript. Write a schema that represents a single source of truth for your data, and Zod will ensure that your data is valid throughout your application, even across network boundaries and external APIs.
+[Zod](https://github.com/colinhacks/zod) là một thư viện kiểm tra dữ liệu được xây dựng trên TypeScript. Viết một schema đại diện cho một nguồn thật sự duy nhất cho dữ liệu của bạn, và Zod sẽ đảm bảo rằng dữ liệu của bạn hợp lệ trong suốt ứng dụng của bạn, thậm chí cả khi đi qua ranh giới mạng và API bên ngoài.
 
 ### Tanstack Query
 
-[Tanstack Query](https://tanstack.com/query/v4/) gives you declarative, always-up-to-date auto-managed queries and mutations that directly improve both your developer and user experiences.
+[Tanstack Query](https://tanstack.com/query/v4/) cung cấp cho bạn các truy vấn và thao tác sửa đổi theo kiểu khai báo, được quản lý tự động và luôn được cập nhật, từ đó trực tiếp cải thiện trải nghiệm của cả lập trình viên và người dùng.
 
-## Useful Resources
+## Tài liệu hữu ích
 
-| Resource                                                  | Link                                                              |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| TypeScript Handbook                                       | https://www.typescriptlang.org/docs/handbook/                     |
-| Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
-| Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
-| Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
+| Tài liệu                                                                            | Đường dẫn                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Cẩm nang TypeScript                                                                 | https://www.typescriptlang.org/docs/handbook/                     |
+| TypeScript dành cho tân thủ                                                         | https://github.com/total-typescript/beginners-typescript-tutorial |
+| Luyện tập typing chuẩn Typescript                                                   | https://github.com/type-challenges/type-challenges                |
+| Kênh Youtube của người được mệnh danh là Rodney Mullen của TypeScript (Matt Pocock) | https://www.youtube.com/c/MattPocockUk/videos                     |

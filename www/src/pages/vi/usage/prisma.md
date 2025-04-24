@@ -1,31 +1,31 @@
 ---
 title: Prisma
-description: Usage of Prisma
+description: Cách sử dụng Prisma
 layout: ../../../layouts/docs.astro
 lang: vi
 ---
 
-Prisma is an ORM for TypeScript, that allows you to define your database schema and models in a `schema.prisma` file, and then generate a type-safe client that can be used to interact with your database from your backend.
+Prisma là một ORM cho TypeScript, cho phép bạn định nghĩa schema và mô hình của cơ sở dữ liệu của bạn trong tệp `schema.prisma`, và sau đó tạo ra một client mà kiểu dữ liệu của bạn sẽ được liên kết chặt chẽ với cơ sở dữ liệu của bạn và có thể được sử dụng để tương tác với cơ sở dữ liệu của bạn từ backend.
 
 ## Prisma Client
 
-Located at `src/server/db.ts`, the Prisma Client is instantiated as a global variable (as recommended as [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) by the team at Prisma) and exported to be used in your API routes. We include the Prisma Client in [Context](/en/usage/trpc#-serverapitrpcts) by default and recommend using this instead of importing it separately in each file.
+Client của Prisma được đặt ở `src/server/db.ts`, được khởi tạo như là một biến toàn cục (được khuyến nghị là [best practice](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#problem) bởi đội ngũ tại Prisma) và được xuất ra để được sử dụng trong các route API của bạn. Chúng tôi đã bao gồm Prisma Client trong [Context](/en/usage/trpc#-serverapitrpcts) và khuyến nghị bạn sử dụng từ Context thay vì nhập nó riêng lẻ trong từng tệp.
 
 ## Schema
 
-You will find the Prisma schema file at `/prisma/schema.prisma`. This file is where you define your database schema and models, and is used when generating the Prisma Client.
+Bạn sẽ tìm thấy tệp schema của Prisma ở `/prisma/schema.prisma`. Đây là nơi bạn định nghĩa schema và mô hình của cơ sở dữ liệu của bạn, và được sử dụng khi tạo ra client của Prisma.
 
-### With NextAuth.js
+### Với NextAuth.js
 
-When you select NextAuth.js in combination with Prisma, the schema file is generated and set up for you with the recommended values for the `User`, `Session`, `Account`, and `VerificationToken` models, as per the [NextAuth.js documentation](https://next-auth.js.org/adapters/prisma).
+Khi bạn chọn NextAuth.js kết hợp với Prisma, tệp schema được tạo và thiết lập cho bạn với các giá trị được Auth.js khuyến nghị như là `User`, `Session`, `Account`, và `VerificationToken`, tìm hiểu thêm tại [tài liệu Auth.js](https://next-auth.js.org/adapters/prisma).
 
-## Default Database
+## Cơ sở dữ liệu mặc định
 
-The default database is an SQLite database, which is great for development and quickly spinning up a proof-of-concept but is not recommended for production. You can change the database to use by changing the `provider` in the `datasource` block to either `postgresql` or `mysql`, and then updating the connection string within environment variables to point to your database.
+Cơ sở dữ liệu mặc định là cơ sở dữ liệu SQLite, tuy đây là điều tốt để bạn có thể tập trung cho phát triển và tạo ra một proof-of-concept nhanh chóng, nhưng chúng tôi không khuyến nghị bạn làm điều này cho production cảu bạn. Bạn có thể thay đổi cơ sở dữ liệu để sử dụng bằng cách thay đổi `provider` trong khối `datasource` thành `postgresql` hoặc `mysql`, và sau đó cập nhật chuỗi kết nối trong biến môi trường để Prisma có thể kết nối với cơ sở dữ liệu của bạn.
 
-## Seeding your Database
+## Tạo dữ liệu cho cơ sở dữ liệu
 
-[Seeding your database](https://www.prisma.io/docs/guides/database/seed-database) is a great way to quickly populate your database with test data to help you get started. In order to setup seeding, you will need to create a `seed.ts` file in the `/prisma` directory, and then add a `seed` script to your `package.json` file. You'll also need a TypeScript runner that can execute the seed-script. We recommend [tsx](https://github.com/esbuild-kit/tsx), which is a very performant TypeScript runner that uses esbuild and doesn't require any ESM configuration, but `ts-node` or other runners will work as well.
+[Tạo dữ liệu cho cơ sở dữ liệu](https://www.prisma.io/docs/guides/database/seed-database) là một cách tốt để nhanh chóng điền đầy cơ sở dữ liệu với dữ liệu thử nghiệm để giúp bạn bắt đầu. Để thiết lập seeding, bạn sẽ cần tạo một tệp `seed.ts` trong thư mục `/prisma`, và sau đó thêm một script `seed` vào tệp `package.json` của bạn. Bạn cũng sẽ cần thêm vào một Typescript runner để thực thi script seed, chúng tôi đề xuất [tsx](https://github.com/esbuild-kit/tsx), một Typescript runner rất hiệu quả sử dụng esbuild và không yêu cầu bất kỳ cấu hình ESM, nhưng `ts-node` hoặc các runner khác cũng sẽ hoạt động tốt cho bước này.
 
 ```jsonc:package.json
 {
@@ -65,14 +65,14 @@ main()
   });
 ```
 
-Then, just run `pnpm db-seed` (or `npm`/`yarn`) to seed your database.
+Sau đó, chỉ cần chạy `pnpm db-seed` (hoặc `npm`/`yarn`) để tạo dữ liệu cho cơ sở dữ liệu của bạn.
 
-## Useful Resources
+## Tài liệu hữu ích
 
-| Resource                     | Link                                                                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Prisma Docs                  | https://www.prisma.io/docs/                                                                                                                       |
-| Prisma GitHub                | https://github.com/prisma/prisma                                                                                                                  |
-| Prisma Migrate Playground    | https://playground.prisma.io/guides                                                                                                               |
-| NextAuth.JS Prisma Adapter   | https://next-auth.js.org/adapters/prisma                                                                                                          |
-| PlanetScale Connection Guide | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
+| Tài liệu                                    | Đường dẫn                                                                                                                                         |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tài liệu của Prisma                         | https://www.prisma.io/docs/                                                                                                                       |
+| GitHub của Prisma                           | https://github.com/prisma/prisma                                                                                                                  |
+| Khu thử nghiệm Prisma Migrate               | https://playground.prisma.io/guides                                                                                                               |
+| Prisma Adapter cho NextAuth.JS              | https://next-auth.js.org/adapters/prisma                                                                                                          |
+| Hướng dẫn kết nối cơ sở dữ liệu PlanetScale | https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-planetscale |
