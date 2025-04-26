@@ -2,7 +2,7 @@ import Callout from "../../../components/docs/callout.tsx";
 
 ## Context Provider
 
-In your app's entrypoint, you'll see that your application is wrapped in a [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
+Trong điểm bắt đầu (entrypoint) của ứng dụng của bạn, bạn sẽ thấy rằng toàn bộ ứng dụng của bạn được bọc bởi một lớp [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
 
 ```tsx:pages/_app.tsx
 <SessionProvider session={session}>
@@ -10,7 +10,7 @@ In your app's entrypoint, you'll see that your application is wrapped in a [Sess
 </SessionProvider>
 ```
 
-This context provider allows your application to access the session data from anywhere in your application, without having to pass it down as props:
+Lớp context provider này cho phép ứng dụng của bạn truy cập dữ liệu phiên (session) từ bất cứ đâu trong ứng dụng của bạn, mà không cần phải truyền nó xuống như là props:
 
 ```tsx:pages/users/[id].tsx
 import { useSession } from "next-auth/react";
@@ -19,7 +19,7 @@ const User = () => {
   const { data: session } = useSession();
 
   if (!session) {
-    // Handle unauthenticated state, e.g. render a SignIn component
+    // Xử lý khi không có phiên hợp lí, ví dụ: hiển thị một component SignIn
     return <SignIn />;
   }
 
@@ -27,9 +27,9 @@ const User = () => {
 };
 ```
 
-## Retrieving session server-side
+## Lấy dữ liệu phiên ở phía server
 
-Sometimes you might want to request the session on the server. To do so, prefetch the session using the `getServerAuthSession` helper function that `create-t3-app` provides, and pass it down to the client using `getServerSideProps`:
+Đôi khi bạn có thể muốn lấy dữ liệu phiên đăng nhập ở phía server. Để làm điều đó, hãy sử dụng hàm `getServerAuthSession` mà `create-t3-app` cung cấp, và truyền nó xuống cho client sử dụng thông qua `getServerSideProps`:
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
@@ -44,15 +44,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 const User = () => {
   const { data: session } = useSession();
-  // NOTE: `session` wont have a loading state since it's already prefetched on the server
+  // NOTE: `session` sẽ không có trạng thái loading vì nó đã được lấy trước ở phía server
 
   ...
 }
 ```
 
-## Inclusion of `user.id` on the Session
+## Thêm `user.id` vào trong phiên
 
-Create T3 App is configured to utilise the [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) in the NextAuth.js config to include the user's ID within the `session` object.
+Create T3 App đã thiết lập sẵn [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) trong cấu hình NextAuth.js để bao gồm luôn ID của người dùng trong đối tượng `session`.
 
 ```ts:server/auth.ts
 callbacks: {
@@ -65,7 +65,7 @@ callbacks: {
   },
 ```
 
-This is coupled with a type declaration file to make sure the `user.id` is typed when accessed on the `session` object. Read more about [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) on NextAuth.js's docs.
+Và đông thời `user.id` cũng đã được khai báo thông qua một file định kiểu để đảm bảo rằng `user.id` được định kiểu rõ ràng khi truy cập vào đối tượng `session`. Đọc thêm về [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) trên tài liệu của NextAuth.js.
 
 ```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
@@ -79,15 +79,15 @@ declare module "next-auth" {
 }
 ```
 
-The same pattern can be used to add any other data to the `session` object, such as a `role` field, but **should not be misused to store sensitive data** on the client.
+Bước này có thể áp dụng để thêm bất kỳ dữ liệu nào khác vào đối tượng `session`, chẳng hạn như trường `role`, nhưng **không nên được sử dụng để lưu trữ dữ liệu nhạy cảm trên client**.
 
-## Usage with tRPC
+## Sử dụng với tRPC
 
-When using NextAuth.js with tRPC, you can create reusable, protected procedures using [middleware](https://trpc.io/docs/v10/middlewares). This allows you to create procedures that can only be accessed by authenticated users. `create-t3-app` sets all of this up for you, allowing you to easily access the session object within authenticated procedures.
+Khi sử dụng NextAuth.js với tRPC, bạn có thể tạo và tái sử dụng các procedures được bảo vệ kỹ càng bằng cách sử dụng [middleware](https://trpc.io/docs/v10/middlewares). Điều này cho phép bạn tạo ra các procedure mà chỉ có thể được dùng bởi người dùng đã đăng nhập. `create-t3-app` đã thiết lập tất cả điều này cho bạn, cho phép bạn dễ dàng truy cập vào đối tượng phiên (session object) trong các procedures được bảo vệ.
 
-This is done in a two step process:
+Điều này có thể được thực hiện qua hai bước:
 
-1. Grab the session from the request headers using the [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession) function. The advantage of using `getServerSession` instead of the regular `getSession` is that it's a server-side only function and doesn't trigger unnecessary fetch calls. `create-t3-app` creates a helper function that abstracts this peculiar API away so that you don't need to import both your NextAuth.js options as well as the `getServerSession` function every time you need to access the session.
+1. Lấy session từ request headers thông qua hàm [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession). Lợi thế của việc sử dụng `getServerSession` thay vì `getSession` là nó là một hàm chỉ thực thi ở phía server và không gây ra các cuộc gọi fetch không cần thiết. `create-t3-app` tạo ra một hàm trợ giúp để tóm tắt API này, để bạn không cần phải nhập cả hai tùy chọn NextAuth.js cũng như hàm `getServerSession` mỗi khi cần truy cập vào phiên.
 
 ```ts:server/auth.ts
 export const getServerAuthSession = (ctx: {
@@ -98,7 +98,7 @@ export const getServerAuthSession = (ctx: {
 };
 ```
 
-Using this helper function, we can grab the session and pass it through to the tRPC context:
+Bằng cách sử dụng hàm trợ giúp này, chúng ta có thể lấy phiên và truyền nó vào context của tRPC:
 
 ```ts:server/api/trpc.ts
 import { getServerAuthSession } from "../auth";
@@ -112,7 +112,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 ```
 
-2. Create a tRPC middleware that checks if the user is authenticated. We then use the middleware in a `protectedProcedure`. Any caller to these procedures must be authenticated, or else an error will be thrown which can be appropriately handled by the client.
+2. Tạo một tRPC middleware để kiểm tra xem người dùng có được xác thực hay không. Sau đó, chúng ta sử dụng middleware này trong một `protectedProcedure`. Bất kỳ caller nào gọi đến các procedure này phải được xác thực, nếu không caller đó sẽ bị báo lỗi mà client có thể dùng để xử lý (ví dụ: hiển thị một trang đăng nhập).
 
 ```ts:server/api/trpc.ts
 export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
@@ -121,14 +121,14 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
+      // Session phải được đảm bảo là không null
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
 })
 ```
 
-The session object is a light, minimal representation of the user and only contains a few fields. When using the `protectedProcedures`, you have access to the user's id which can be used to fetch more data from the database.
+Dữ liệu phiên ở đây là một sự biểu diễn tối giản và gọn nhẹ của người dùng và chỉ chứa một số trường. Khi sử dụng `protectedProcedures`, bạn có thể truy cập để lấy ID của người dùng để đạt được nhiều mục đích khác nhau, ví dụ như sử dụng ID để lấy thêm dữ liệu từ cơ sở dữ liệu.
 
 ```ts:server/api/routers/user.ts
 const userRouter = router({
@@ -143,15 +143,15 @@ const userRouter = router({
 });
 ```
 
-## Usage with Prisma
+## Sử dụng với Prisma
 
-Getting NextAuth.js to work with Prisma requires a lot of [initial setup](https://authjs.dev/reference/adapter/prisma/). `create-t3-app` handles all of this for you, and if you select both Prisma and NextAuth.js, you'll get a fully working authentication system with all the required models preconfigured. We ship your scaffolded app with a preconfigured Discord OAuth provider, which we chose because it is one of the easiest to get started with - just provide your tokens in the `.env` and you're good to go. However, you can easily add more providers by following the [NextAuth.js docs](https://next-auth.js.org/providers/). Note that certain providers require extra fields to be added to certain models. We recommend you read the documentation for the provider you would like to use to make sure you have all the required fields.
+Để NextAuth.js có thể hoạt động với Prisma, bạn cần phải chuẩn bị khá nhiều thủ tục [thiết lập ban đầu](https://authjs.dev/reference/adapter/prisma/). Tuy nhiên, `create-t3-app` đã làm tất cả những điều này cho bạn. Nếu bạn chọn cả Prisma và NextAuth.js khi khởi tạo dự án, bạn sẽ có ngay một hệ thống xác thực hoàn chỉnh với tất cả các model cần thiết đã được cấu hình sẵn. Ứng dụng mẫu mà chúng tôi cung cấp sẽ được cấu hình sẵn với nhà cung cấp Discord OAuth, vì đây là một trong những provider dễ bắt đầu nhất – bạn chỉ cần thêm các token vào file `.env` là có thể sử dụng ngay. Tuy nhiên, bạn cũng có thể dễ dàng thêm các provider khác bằng cách làm theo [tài liệu của NextAuth.js](https://next-auth.js.org/providers/). Lưu ý rằng một số provider sẽ yêu cầu bạn thêm các trường bổ sung vào một số model nhất định. Chúng tôi khuyến nghị bạn nên đọc kỹ tài liệu của provider mà bạn muốn sử dụng để đảm bảo rằng bạn đã thêm đầy đủ các trường cần thiết.
 
-### Adding new fields to your models
+### Thêm các trường mới vào model của bạn
 
-When adding new fields to any of the `User`, `Account`, `Session`, or `VerificationToken` models (most likely you'd only need to modify the `User` model), you need to keep in mind that the [Prisma adapter](https://next-auth.js.org/adapters/prisma) automatically creates fields on these models when new users sign up and log in. Therefore, when adding new fields to these models, you must provide default values for them, since the adapter is not aware of these fields.
+Khi thêm các trường mới vào bất kỳ model nào trong số `User`, `Account`, `Session`, or `VerificationToken` (đa số bạn chỉ cần sửa đổi model `User`), bạn cần lưu ý rằng [Prisma adapter](https://next-auth.js.org/adapters/prisma) tự động tạo các trường trên các model này khi người dùng mới đăng ký và đăng nhập. Do đó, khi thêm các trường mới vào các model này, bạn phải cung cấp giá trị mặc định cho chúng, vì adapter sẽ không thể nhận ra các trường này.
 
-If for example, you'd like to add a `role` to the `User` model, you would need to provide a default value to the `role` field. This is done by adding a `@default` value to the `role` field in the `User` model:
+Nếu bạn muốn thêm một trường `role` vào model `User`, bạn cần cung cấp một giá trị mặc định cho trường `role`. Điều này được thực hiện bằng cách thêm `@default` vào trường `role` trong model `User`:
 
 ```diff:prisma/schema.prisma
 + enum Role {
@@ -165,19 +165,17 @@ If for example, you'd like to add a `role` to the `User` model, you would need t
   }
 ```
 
-## Usage with Next.js middleware
+## Sử dụng với Next.js middleware
 
-Usage of NextAuth.js with Next.js middleware [requires the use of the JWT session strategy](https://next-auth.js.org/configuration/nextjs#caveats) for authentication. This is because the middleware is only able to access the session cookie if it is a JWT. By default, Create T3 App is configured to use the **default** database strategy, in combination with Prisma as the database adapter.
+Để sử dụng NextAuth.js với Next.js middleware, bạn cần sử dụng [xác thực phiên bằng JWT](https://next-auth.js.org/configuration/nextjs#caveats) cho xác thực. Điều này là do middleware chỉ có thể truy cập cookie phiên nếu nó là JWT. Theo mặc định, Create T3 App được cấu hình để sử dụng chiến lược **default**, kết hợp với Prisma làm adapter lưu trữ phiên trong cơ sở dữ liệu.
 
 <Callout type="warning">
-  Using database sessions is the recommended approach and you should read up on
-  JWTs before switching to the JWT session strategy to avoid any security
-  issues.
+  Lưu trữ phiên bằng cơ sở dữ liệu là cách tiếp cận được khuyến nghị và bạn nên
+  đọc thêm về JWTs trước khi chuyển sang xác thực phiên bằng JWT để tránh bất kỳ
+  vấn đề bảo mật nào.
 </Callout>
 
-After switching to the JWT session strategy. Make sure to update the `session` callback in `src/server/auth.ts`.
-The `user` object will be `undefined`. Instead, retrieve the user's ID from the `token` object.
-I.e.:
+Sau khi chuyển sang chiến lược phiên bằng JWT, hãy đảm bảo cập nhật callback `session` trong `src/server/auth.ts`. Đối tượng `user` sẽ là `undefined`. Thay vào đó, hãy lấy ID của người dùng thông qua đối tượng `token`. Ví dụ:
 
 ```diff:server/auth.ts
   export const authOptions: NextAuthOptions = {
@@ -198,21 +196,21 @@ I.e.:
   }
 ```
 
-## Setting up the default DiscordProvider
+## Thiết lập Discord Provider mặc định
 
-1. Head to [the Applications section in the Discord Developer Portal](https://discord.com/developers/applications), and click on "New Application"
-2. In the settings menu, go to "OAuth2 => General"
+1. Đi đến [phần Applications trong Discord Developer Portal](https://discord.com/developers/applications), và click vào "New Application"
+2. Trong menu settings, đi đến "OAuth2 => General"
 
-- Copy the Client ID and paste it in `DISCORD_CLIENT_ID` in `.env`.
-- Under Client Secret, click "Reset Secret" and copy that string to `DISCORD_CLIENT_SECRET` in `.env`. Be careful as you won't be able to see this secret again, and resetting it will cause the existing one to expire.
-- Click "Add Redirect" and paste in `<app url>/api/auth/callback/discord` (example for local development: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
-- Save your changes
-- It is possible, but not recommended, to use the same Discord Application for both development and production. You could also consider [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) during development.
+- Copy Client ID và dán nó vào `DISCORD_CLIENT_ID` trong `.env`.
+- Dưới Client Secret, click "Reset Secret" và copy chuỗi đó vào `DISCORD_CLIENT_SECRET` trong `.env`. Cẩn thận vì bạn sẽ không thể nhìn thấy chuỗi này lại nữa, và đặt lại nó sẽ làm cho chuỗi hiện tại hết hạn.
+- Click "Add Redirect" và dán vào `<app url>/api/auth/callback/discord` (ví dụ cho phát triển local: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
+- Lưu thay đổi của bạn
+- Có thể, nhưng không được khuyến nghị, là sử dụng cùng một ứng dụng Discord cho cả phát triển và sản phẩm. Bạn cũng có thể xem xét [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) trong quá trình phát triển.
 
-## Useful Resources
+## Tài liệu hữu ích
 
-| Resource                          | Link                                    |
-| --------------------------------- | --------------------------------------- |
-| NextAuth.js Docs                  | https://next-auth.js.org/               |
-| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
-| tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
+| Tài liệu                             | Đường dẫn                               |
+| ------------------------------------ | --------------------------------------- |
+| Tài liệu NextAuth.js                 | https://next-auth.js.org/               |
+| GitHub của NextAuth.js               | https://github.com/nextauthjs/next-auth |
+| tRPC Kitchen Sink - sử dụng NextAuth | https://kitchen-sink.trpc.io/next-auth  |

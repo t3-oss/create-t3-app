@@ -66,7 +66,7 @@ Tru Narla, hay được biết đến dưới tên một người dùng Twitter 
 
 Hãy đảm bảo rằng bạn đã cài đặt các plugin editor cho Tailwind CSS để cải thiện trải nghiệm viết Tailwind CSS.
 
-### Extensions and Plugins
+### Extensions và Plugins
 
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
