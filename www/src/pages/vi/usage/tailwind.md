@@ -1,19 +1,19 @@
 ---
 title: Tailwind CSS
-description: Usage of Tailwind CSS
+description: Sử dụng Tailwind CSS
 layout: ../../../layouts/docs.astro
 lang: vi
 ---
 
-## What is Tailwind CSS?
+## Tailwind CSS là gì?
 
-Tailwind CSS is a tiny, [utility first](https://tailwindcss.com/docs/utility-first) CSS framework for building custom designs, without the context switching that regular CSS requires. It is purely a CSS framework and does not provide any pre-built components or logic, and provides [a very different set of benefits](https://www.youtube.com/watch?v=CQuTF-bkOgc) compared to a component library like Material UI.
+Tailwind CSS là một framework CSS nhỏ gọn, [tập trung vào utility](https://tailwindcss.com/docs/utility-first) nhằm cho phép bạn xây dựng thiết kế tùy chỉnh mà không cần chuyển đổi context giữa CSS thông thường. Nó là một framework CSS và không cung cấp bất kỳ thành phần tiền xây dựng hoặc logic nào, và cung cấp [một tập hợp khác biệt](https://www.youtube.com/watch?v=CQuTF-bkOgc) so với một các thư viện khác như Material UI.
 
-It makes CSS incredibly easy and quick to write, as shown by the following example:
+Nó làm cho CSS trở nên vô cùng dễ dàng và nhanh chóng để viết, như được chứng minh bởi ví dụ sau:
 
-Old CSS:
+CSS thông thường:
 
-1. Write CSS, often in a separate file
+1. Viết CSS, thường trong một file riêng
 
 ```css
 .my-class {
@@ -28,21 +28,21 @@ Old CSS:
 }
 ```
 
-2. Import CSS into your component
+2. Import CSS vào component của bạn
 
 ```jsx
 import "./my-class.css";
 ```
 
-3. Add the class to your HTML
+3. Thêm class vào HTML
 
 ```html
 <div class="my-class">...</div>
 ```
 
-Equivalent in Tailwind:
+Tương đương trong Tailwind:
 
-1. Just write classes in your HTML
+1. Chỉ viết classes trong HTML của bạn
 
 ```html
 <div
@@ -52,19 +52,19 @@ Equivalent in Tailwind:
 </div>
 ```
 
-When used together with React Components, it is extremely powerful for quickly building UIs.
+Khi sử dụng cùng với React Components, nó mang đến sức mạnh để xây dựng UI một cách nhanh chóng.
 
-Tailwind CSS has a beautiful built-in design system, that comes out of the box with a carefully chosen color palette, sizing patterns for styles such as width/height and padding/margin for a uniform design, as well as media breakpoints for creating responsive layouts. This design system can be customized and extended to create the exact toolbox of styles that your project needs.
+Tailwind CSS có một hệ thống thiết kế tích hợp sẵn, được tạo ra từ box với một palette màu sắc được chọn cẩn thận, các kích thước cho các kiểu như width/height và padding/margin cho một thiết kế đồng nhất, cũng như các điểm cắt cho tạo ra các bố cục hài hòa. Hệ thống này được thiết kế này để có thể dễ dàng tùy chỉnh và mở rộng để tạo ra các công cụ mà bạn cần.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T-Zv73yZ_QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Tru Narla better known as [mewtru](https://twitter.com/trunarla) gave an amazing talk on [building a design system using Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
+Tru Narla, hay được biết đến dưới tên một người dùng Twitter là [mewtru](https://twitter.com/trunarla), đã cho chúng ta một bài nói chuyện tuyệt vời về [cách xây dựng một hệ thống thiết kế sử dụng Tailwind CSS](https://www.youtube.com/watch?v=T-Zv73yZ_QI).
 
-## Usage
+## Sử dụng
 
-Make sure you have editor plugins for Tailwind installed to improve your experience writing Tailwind.
+Hãy đảm bảo rằng bạn đã cài đặt các plugin editor cho Tailwind CSS để cải thiện trải nghiệm viết Tailwind CSS.
 
 ### Extensions and Plugins
 
@@ -72,25 +72,25 @@ Make sure you have editor plugins for Tailwind installed to improve your experie
 - [JetBrains Integration](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_install)
 - [Neovim LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss)
 
-### Formatting
+### Định dạng
 
-Tailwind CSS classes can easily get a bit messy, so a formatter for the classes is a must have. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sorts the classes in the [recommended order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) so that the classes match the outputted css bundle. When selecting Tailwind in the CLI, we will install and configure this for you.
+Tailwind CSS classes có thể dễ dàng trở nên lộn xộn, vì vậy việc cần có một định dạng cho các classes là điều cần thiết. [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) sắp xếp các classes trong [thứ tự được đề xuất](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) để các classes phù hợp với bundle CSS được xuất ra. Khi chọn Tailwind trong CLI, chúng tôi sẽ cài đặt và cấu hình nó cho bạn.
 
-### Conditionally Applying Classes
+### Áp dụng điều kiện
 
-Conditionally adding classes using ternaries can get very messy and hard to read. These packages help in organizing your classes when using some conditional logic.
+Thêm classes bằng cách sử dụng ternaries có thể trở nên rất lộn xộn và khó đọc. Các package này giúp sắp xếp các classes của bạn khi sử dụng một số logic điều kiện.
 
 - [clsx](https://github.com/lukeed/clsx)
 - [classnames](https://github.com/JedWatson/classnames)
 
-## Useful Resources
+## Tài liệu hữu ích
 
-| Resource                     | Link                                                     |
-| ---------------------------- | -------------------------------------------------------- |
-| Tailwind Docs                | https://tailwindcss.com/docs/editor-setup/               |
-| Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
-| awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
-| Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
-| TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
-| Tailwind Playground          | https://play.tailwindcss.com/                            |
+| Tài liệu                    | Đường dẫn                                                |
+| --------------------------- | -------------------------------------------------------- |
+| Tài liệu củaTailwind        | https://tailwindcss.com/docs/editor-setup/               |
+| Tailwind Cheat Sheet        | https://nerdcave.com/tailwind-cheat-sheet/               |
+| awesome-tailwindcss         | https://github.com/aniftyco/awesome-tailwindcss/         |
+| Cộng đồng Tailwind          | https://github.com/tailwindlabs/tailwindcss/discussions/ |
+| Server Discord của Tailwind | https://tailwindcss.com/discord/                         |
+| Kênh Youtube của Tailwind   | https://www.youtube.com/tailwindlabs/                    |
+| Playground của Tailwind     | https://play.tailwindcss.com/                            |

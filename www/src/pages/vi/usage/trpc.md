@@ -1,16 +1,16 @@
 ---
 title: tRPC
-description: Usage of tRPC
+description: Cách sử dụng tRPC
 layout: ../../../layouts/docs.astro
 lang: vi
 ---
 
-tRPC allows us to write end-to-end typesafe APIs without any code generation or runtime bloat. It uses TypeScript's great inference to infer your API router's type definitions and lets you call your API procedures from your frontend with full typesafety and auto-completion. When using tRPC, your frontend and backend feel closer together than ever before, allowing for an outstanding developer experience.
+tRPC cho phép chúng ta viết API có tính toàn vẹn của kiểu dữ liệu (typesafe) mà không cần qua các bước tạo code (code generation) hoặc runtime bloat. Nó sử dụng inference của TypeScript để suy ra định nghĩa kiểu của router API của bạn và cho phép bạn gọi các thủ tục API của bạn từ frontend mà vẫn đảm bảo tính toàn vẹn của kiểu dữ liệu và auto-completion. Khi sử dụng tRPC, frontend và backend của bạn gần nhau hơn bao giờ hết, cho phép bạn có trải nghiệm lập trình (developer experience) tuyệt vời.
 
 <blockquote className="w-full relative border-l-4 italic bg-t3-purple-200 dark:text-t3-purple-50 text-zinc-900 dark:bg-t3-purple-300/20 p-2 rounded-md text-sm my-3 border-neutral-500 quote">
   <div className="relative w-fit flex items-center justify-center p-1">
     <p className="mb-4 text-lg">
-      <span aria-hidden="true">&quot;</span>I built tRPC to allow people to move faster by removing the need for a traditional API-layer, while still having confidence that our apps won't break as we rapidly iterate.<span aria-hidden="true">&quot;</span>
+      <span aria-hidden="true">&quot;</span>Tôi tạo tRPC để cho phép mọi người lập trình nhanh hơn bằng cách loại bỏ API layer truyền thống, trong khi vẫn đảm bảo rằng ứng dụng của chúng ta sẽ không bị phá vỡ khi chúng ta lập trình ứng dụng một cách nhanh chóng.<span aria-hidden="true">&quot;</span>
     </p>
   </div>
   <cite className="flex items-center justify-end pr-4 pb-2">
@@ -20,7 +20,7 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
       src="https://avatars.githubusercontent.com/u/459267?v=4"
     />
     <div className="flex flex-col items-start not-italic">
-      <span className=" text-sm font-semibold">Alex - creator of tRPC</span>
+      <span className=" text-sm font-semibold">Alex - cha đẻ của tRPC</span>
       <a
         href="https://twitter.com/alexdotjs"
         target="_blank"
@@ -33,15 +33,15 @@ tRPC allows us to write end-to-end typesafe APIs without any code generation or 
   </cite>
 </blockquote>
 
-## How do I use tRPC?
+## Làm sao để tôi sử dụng tRPC?
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2LYM8gf184U" title="Making typesafe APIs easy with tRPC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer talk at Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) about tRPC. We highly recommend you watch it if you haven't already.
+Contributor của tRPC, [trashh_dev](https://twitter.com/trashh_dev), đã có [một bài giảng tuyệt vời tại Next.js Conf](https://www.youtube.com/watch?v=2LYM8gf184U) về tRPC. Chúng tôi khuyên bạn nên tham khảo qua video trước nếu bạn chưa từng sử dụng tRPC.
 
-With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
+Với tRPC, bạn viết các hàm TypeScript trên backend, và sau đó gọi chúng từ frontend. Một tRPC procedure đơn giản có thể được định nghĩa như sau:
 
 ```ts:server/api/routers/user.ts
 const userRouter = createTRPCRouter({
@@ -55,11 +55,11 @@ const userRouter = createTRPCRouter({
 });
 ```
 
-This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
+Đây là một tRPC procedure (tương đương với một route handler trong backend truyền thống), nó bắt đầu bằng cách kiểm tra đầu vào bằng thư viện Zod (đồng thời cũng là thư viện validation mà chúng tôi sử dụng cho [biến môi trường](./env-variables)) - trong trường hợp này, nó đảm bảo rằng đầu vào là một chuỗi. Nếu đầu vào không phải là một chuỗi, nó sẽ báo lỗi ngay.
 
-After the input, we chain a resolver function which can be either a [query](https://trpc.io/docs/client/react/useQuery), [mutation](https://trpc.io/docs/v11/client/react/useMutation), or a [subscription](https://trpc.io/docs/v11/subscriptions). In our example, the resolver calls our database using our [prisma](./prisma) client and returns the user whose `id` matches the one we passed in.
+Sau đó, chúng ta có một hàm resolver, có thể là [query](https://trpc.io/docs/client/react/useQuery), [mutation](https://trpc.io/docs/v11/client/react/useMutation), hoặc một [subscription](https://trpc.io/docs/v11/subscriptions). Trong ví dụ của chúng tôi, hàm resolver này gọi tới cơ sở dữ liệu bằng cách sử dụng [prisma](./prisma) client và trả về người dùng có `id` khớp với id mà chúng tôi đã truyền vào.
 
-You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
+Bạn định nghĩa các procedures trong `routers` mà đại diện cho một tập hợp các procedures liên quan với nhau và có cùng namespace. Bạn có thể có một router cho `users`, một cho `posts`, và một router khác cho `messages`. Sau đó, các router này có thể được gộp lại thành một `appRouter` duy nhất:
 
 ```ts:server/api/root.ts
 const appRouter = createTRPCRouter({
@@ -71,9 +71,9 @@ const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 ```
 
-Notice that we only need to export our router's type definitions, which means we are never importing any server code on our client.
+Chú ý rằng chúng ta chỉ cần xuất (export) kiểu dữ liệu của router của chúng ta, điều này có nghĩa là chúng ta chẳng cần phải import bất kỳ một đoạn code server nào ở phía client.
 
-Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
+Bây giờ, chúng ta sẽ thử gọi một procedure của chúng ta trên frontend. tRPC có cung cấp một wrapper cho `@tanstack/react-query` cho phép bạn sử dụng toàn bộ sức mạnh của các hooks mà nó cung cấp, nhưng với lợi ích thêm là các cuộc gọi API của bạn sẽ được tự động định kiểu và suy ra. Chúng ta có thể gọi các procedures của chúng ta từ frontend như sau:
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
@@ -91,13 +91,13 @@ const UserPage = () => {
 };
 ```
 
-You'll immediately notice how good the autocompletion and typesafety is. As soon as you write `api.`, your routers will show up in autocomplete, and when you select a router, its procedures will show up as well. You'll also get a TypeScript error if your input doesn't match the validator that you defined on the backend.
+Bạn sẽ nhận thấy ngay lập tức việc autocompletion và tính toàn vẹn kiểu dữ liệu làm cho việc lập trình trở nên tuyệt vời hơn bao giờ hết. Ngay khi bạn viết `api.`, các routers của bạn sẽ xuất hiện trong autocomplete, và khi bạn chọn một router, các procedures của nó cũng sẽ xuất hiện. Bạn cũng sẽ nhận được một lỗi TypeScript nếu đầu vào của bạn không khớp với validator mà bạn đã định nghĩa ở phía backend.
 
-## Inferring errors
+## Xử lý lỗi
 
-By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/v11/server/error-formatting) that lets you infer your Zod Errors if you get validation errors on the backend.
+Mặc định, `create-t3-app` đã thiết lập một [error formatter](https://trpc.io/docs/v11/server/error-formatting) cho phép bạn suy ra các lỗi Zod nếu bạn nhận được lỗi validation ở phía backend.
 
-Example usage:
+Ví dụ:
 
 ```tsx
 function MyComponent() {
@@ -111,7 +111,7 @@ function MyComponent() {
     }}>
       <input name="title" />
       {error?.data?.zodError?.fieldErrors.title && (
-        {/** `mutate` returned with an error on the `title` */}
+        {/** `mutate` trả về lỗi trên `title` */}
         <span className="mb-8 text-red-500">
           {error.data.zodError.fieldErrors.title}
         </span>
@@ -123,57 +123,57 @@ function MyComponent() {
 }
 ```
 
-## Files
+## Các file
 
-tRPC requires quite a lot of boilerplate that `create-t3-app` sets up for you. Let's go over the files that are generated:
+tRPC yêu cầu rất nhiều boilerplate mà `create-t3-app` đã thiết lập cho bạn. Hãy cùng chúng tôi đi qua các file đã được tạo:
 
 ### 📄 `pages/api/trpc/[trpc].ts`
 
-This is the entry point for your API and exposes the tRPC router. Normally, you won't touch this file very much, but if you need to, for example, enable CORS middleware or similar, it's useful to know that the exported `createNextApiHandler` is a [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) which takes a [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) and [response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object. This means that you can wrap the `createNextApiHandler` in any middleware you want. See below for an [example snippet](#enabling-cors) of adding CORS.
+Đây được gọi là điểm xuất phát cho API của bạn và để thêm vào các router của tRPC. Thông thường, bạn sẽ không phải lo lắng với file này nhiều, nhưng nếu cần thiết, ví dụ như khi bạn muốn sử dụng các middleware như CORS hoặc tương tự, hãy biết rằng hàm `createNextApiHandler` là một [Next.js API handler](https://nextjs.org/docs/api-routes/introduction) nhận vào một đối tượng [request](https://developer.mozilla.org/en-US/docs/Web/API/Request) và [response](https://developer.mozilla.org/en-US/docs/Web/API/Response). Điều này có nghĩa là bạn có thể bọc `createNextApiHandler` trong bất kỳ middleware nào bạn muốn. Xem [ví dụ](#sử-dụng-cors) dưới đây để biết cách thêm CORS.
 
 ### 📄 `server/api/trpc.ts`
 
-This file is split up in two parts, context creation and tRPC initialization:
+File này được chia thành hai phần: khởi tạo context và khởi tạo tRPC:
 
-1. We define the context that is passed to your tRPC procedures. Context is data that all of your tRPC procedures will have access to, and is a great place to put things like database connections, authentication information, etc. In create-t3-app we use two functions, to enable using a subset of the context when we do not have access to the request object.
+1. Đây là nơi chúng ta định nghĩa context mà tRPC procedures sẽ có thể truy cập. Context là nơi mà tất cả các procedures của tRPC sẽ có thể truy cập để sử dụng những dữ liệu được "đựng" trong đó. Chính vì thế, đây là nơi tuyệt vời để đặt các thứ như kết nối cơ sở dữ liệu, thông tin xác thực, v.v. Trong `create-t3-app`, chúng tôi sử dụng hai hàm, để cho phép sử dụng một tập con của context khi chúng ta không có đối tượng request.
 
-- `createInnerTRPCContext`: This is where you define context which doesn't depend on the request, e.g. your database connection. You can use this function for [integration testing](#sample-integration-test) or [ssg-helpers](https://trpc.io/docs/v10/client/nextjs/server-side-helpers) where you don't have a request object.
+- `createInnerTRPCContext`: Đây là nơi bạn định nghĩa context mà không phụ thuộc vào request, ví dụ như kết nối cơ sở dữ liệu. Bạn có thể sử dụng hàm này cho [integration testing](#sample-integration-test) hoặc [ssg-helpers](https://trpc.io/docs/v10/client/nextjs/server-side-helpers) khi bạn không có đối tượng request.
 
-- `createTRPCContext`: This is where you define context which depends on the request, e.g. the user's session. You request the session using the `opts.req` object, and then pass the session down to the `createInnerTRPCContext` function to create the final context.
+- `createTRPCContext`: Đây là nơi bạn định nghĩa context mà phụ thuộc vào request, ví dụ như thông tin phiên người dùng. Bạn yêu cầu phiên người dùng bằng cách sử dụng đối tượng `opts.req`, và sau đó chuyển phiên người dùng xuống hàm `createInnerTRPCContext` để tạo context cuối cùng.
 
-2. We initialize tRPC and define reusable [procedures](https://trpc.io/docs/v11/server/procedures) and [middlewares](https://trpc.io/docs/v11/server/middlewares). By convention, you shouldn't export the entire `t`-object but instead, create reusable procedures and middlewares and export those.
+2. Chúng ta khởi tạo tRPC và định nghĩa các procedures có thể tái sử dụng và [middlewares](https://trpc.io/docs/v11/server/middlewares). Theo quy ước, bạn không nên xuất toàn bộ đối tượng `t` mà thay vào đó, tạo các procedures và middlewares để có thể tái sử dụng chúng.
 
-You'll notice we use `superjson` as [data transformer](https://trpc.io/docs/v10/server/data-transformers). This makes it so that your data types are preserved when they reach the client, so if you for example send a `Date` object, the client will return a `Date` and not a string which is the case for most APIs.
+Chúng tôi sử dụng `superjson` để làm [data transformer](https://trpc.io/docs/v10/server/data-transformers). Điều này có nghĩa là dữ liệu của bạn sẽ được bảo toàn khi chúng đến client, vì vậy nếu bạn gửi một đối tượng `Date`, client sẽ trả về một đối tượng `Date` và không phải là một chuỗi, như là trường hợp với hầu hết các APIs.
 
 ### 📄 `server/api/routers/*.ts`
 
-This is where you define the routes and procedures of your API. By convention, you [create separate routers](https://trpc.io/docs/v11/server/routers) for related procedures.
+Đây là nơi bạn định nghĩa các routes và procedures của API của bạn. Theo quy ước, bạn nên [tạo các routers riêng biệt](https://trpc.io/docs/v11/server/routers) cho các procedures liên quan.
 
 ### 📄 `server/api/root.ts`
 
-Here we [merge](https://trpc.io/docs/v11/server/merging-routers) all the sub-routers defined in `routers/**` into a single app router.
+Ở đây chúng ta thực hiện [gộp](https://trpc.io/docs/v11/server/merging-routers) tất cả các routers con được định nghĩa trong `routers/**` thành một router duy nhất.
 
 ### 📄 `utils/api.ts`
 
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+Đây là điểm xuất phát cho tRPC ở phía frontend. Đây là nơi bạn sẽ import **type definition** của router và tạo client tRPC của bạn cùng với các hooks react-query. Vì chúng tôi đã sử dụng `superjson` làm data transformer ở phía backend, chúng tôi cần sử dụng nó ở phía frontend. Điều này sẽ giúp cho việc dữ liệu được chuyển đổi từ backend sẽ được giải mã ở phía frontend.
 
-You'll define your tRPC [links](https://trpc.io/docs/v11/client/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v11/client/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+Bạn sẽ định nghĩa các [links](https://trpc.io/docs/v11/client/links) ở đây, điều này xác định luồng request từ client đến server. Chúng tôi sử dụng [`httpBatchLink`](https://trpc.io/docs/v11/client/links/httpBatchLink) mà cho phép [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), cũng như một [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) mà xuất ra các log request hữu ích trong quá trình phát triển.
 
-Lastly, we export a [helper type](https://trpc.io/docs/client/vanilla/infer-types) which you can use to infer your types on the frontend.
+Cuối cùng, chúng tôi xuất ra một [helper type](https://trpc.io/docs/client/vanilla/infer-types) mà bạn có thể sử dụng để suy ra kiểu dữ liệu của bạn ở phía frontend.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Create T3 App contributor [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee) made [a video about data flows in tRPC](https://www.youtube.com/watch?v=x4mu-jOiA0Q). This video is recommended if you have used tRPC but still feel a bit unclear about how it works.
+Một contributor khác của Create T3 App, [Christopher Ehrlich](https://twitter.com/ccccjjjjeeee), đã làm một video về [luồng dữ liệu trong tRPC](https://www.youtube.com/watch?v=x4mu-jOiA0Q). Video này được khuyến khích nếu bạn đã sử dụng tRPC nhưng vẫn còn mơ hồ về cách nó hoạt động.
 
-## How do I call my API externally?
+## Làm sao để gọi API từ bên ngoài?
 
-With regular APIs, you can call your endpoints using any HTTP client such as `curl`, `Postman`, `fetch` or straight from your browser. With tRPC, it's a bit different. If you want to call your procedures without the tRPC client, there are two recommended ways to do it:
+Với các API thông thường, bạn có thể gọi các endpoint của mình bằng bất kỳ HTTP client nào như `curl`, `Postman`, `fetch` hoặc trực tiếp từ trình duyệt của bạn. Với tRPC, điều này hơi khác. Nếu bạn muốn gọi các procedures mà không cần sử dụng client tRPC, có hai cách được khuyến nghị:
 
-### Expose a single procedure externally
+### Khởi tạo một external procedure
 
-If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/server/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
+Nếu bạn muốn khởi tạo một procedure mà bạn có thể gọi từ bên ngoài, bạn có thể đang tìm kiếm [server side calls](https://trpc.io/docs/server/server-side-calls). Điều này sẽ cho phép bạn tạo một endpoint Next.js thông thường, nhưng sử dụng phần resolver của procedure tRPC của bạn.
 
 ```ts:pages/api/users/[id].ts
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -181,7 +181,7 @@ import { appRouter, createCaller } from "../../../server/api/root";
 import { createTRPCContext } from "../../../server/api/trpc";
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Create context and caller
+  // Tạo context và caller
   const ctx = await createTRPCContext({ req, res });
   const caller = createCaller(ctx);
   try {
@@ -190,30 +190,30 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json(user);
   } catch (cause) {
     if (cause instanceof TRPCError) {
-      // An error from tRPC occurred
+      // Một lỗi tRPC đã xảy ra
       const httpCode = getHTTPStatusCodeFromError(cause);
       return res.status(httpCode).json(cause);
     }
-    // Another error occurred
+    // Một lỗi khác đã xảy ra
     console.error(cause);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Lỗi máy chủ nội bộ" });
   }
 };
 
 export default userByIdHandler;
 ```
 
-### Exposing every procedure as a REST endpoint
+### Khởi tạo tất cả các procedures như các REST endpoints
 
-If you want to expose every single procedure externally, checkout the community built plugin [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). By providing some extra meta-data to your procedures, you can generate an OpenAPI compliant REST API from your tRPC router.
+Nếu bạn muốn khởi tạo tất cả các procedures mà bạn có thể gọi từ bên ngoài, bạn có thê tham khảo các plugins xây dựng bởi cộng đồng [trpc-openapi](https://github.com/jlalmes/trpc-openapi/tree/master). Bằng cách cung cấp một số thông tin meta-data cho các procedures của bạn, bạn có thể tạo ra một API REST tương thích với OpenAPI từ router tRPC của bạn.
 
-### It's just HTTP Requests
+### Đây chỉ là các HTTP Requests
 
-tRPC communicates over HTTP, so it is also possible to call your tRPC procedures using "regular" HTTP requests. However, the syntax can be cumbersome due to the [RPC protocol](https://trpc.io/docs/rpc) that tRPC uses. If you're curious, you can check what tRPC requests and responses look like in your browser's network tab, but we suggest doing this only as an educational exercise and sticking to one of the solutions outlined above.
+tRPC sử dụng giao thức HTTP, vì vậy bạn đều có thể gọi các procedures của tRPC bằng các HTTP requests thông thường. Tuy nhiên, cú pháp có thể khá phức tạp do tRPC sử dụng [kiểu định nghĩa giao thức RPC](https://trpc.io/docs/rpc) riêng biệt. Nếu bạn muốn tìm hiểu, bạn có thể kiểm tra các request và responses của tRPC trong tab mạng của trình duyệt của bạn, nhưng chúng tôi khuyến khích bạn nên làm điều này với mục đích học hỏi và sử dụng một trong các giải pháp được đề cập ở trên.
 
-## Comparison to a Next.js API endpoint
+## So sánh với Next.js API endpoint
 
-Let's compare a Next.js API endpoint to a tRPC procedure. Let's say we want to fetch a user object from our database and return it to the frontend. We could write a Next.js API endpoint like this:
+Hãy so sánh một endpoint Next.js API với một procedure tRPC. Ví dụ chúng ta muốn lấy một đối tượng user từ cơ sở dữ liệu và trả nó cho frontend. Chúng ta có thể viết một endpoint Next.js API như sau:
 
 ```ts:pages/api/users/[id].ts
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -259,21 +259,21 @@ const UserPage = () => {
 };
 ```
 
-Compare this to the tRPC example above and you can see some of the advantages of tRPC:
+So sánh với ví dụ tRPC ở trên và bạn có thể thấy một số lợi ích của tRPC:
 
-- Instead of specifying a url for each route, which can become annoying to debug if you move something, your entire router is an object with autocomplete.
-- You don’t need to validate which HTTP method was used.
-- You don’t need to validate that the request query or body contains the correct data in the procedure, because Zod takes care of this.
-- Instead of creating a response, you can throw errors and return a value or object as you would in any other TypeScript function.
-- Calling the procedure on the frontend provides autocompletion and type safety.
+- Thay vì phải tạo ra một URL cho mỗi route, điều này có thể trở nên khó khăn khi gỡ lỗi nếu bạn chuyển đổi điều gì đó, với tRPC, router của bạn là một đối tượng với autocomplete.
+- Bạn không cần phải xác định phương thức HTTP nào đã được sử dụng.
+- Bạn không cần phải xác định rằng request query hoặc body chứa dữ liệu đúng, vì Zod sẽ xử lý điều này.
+- Thay vì tạo ra một response, bạn có thể throws lỗi và trả về một giá trị hoặc đối tượng như bạn làm trong bất kỳ hàm TypeScript nào khác.
+- Gọi procedure ở phía frontend sẽ cung cấp đầy đủ autocompletion và tính toàn vẹn kiểu dữ liệu.
 
-## Useful snippets
+## Các snippet hữu ích
 
-Here are some snippets that might come in handy.
+Dưới đây là một số snippet mà có thể hữu ích cho bạn.
 
-### Enabling CORS
+### Sử dụng CORS
 
-If you need to consume your API from a different domain, for example in a monorepo that includes a React Native app, you might need to enable CORS:
+Nếu bạn cần sử dụng API của bạn từ một domain khác, ví dụ như trong một monorepo bao gồm một app React Native, bạn có thể cần phải sử dụng CORS:
 
 ```ts:pages/api/trpc/[trpc].ts
 import { type NextApiRequest, type NextApiResponse } from "next";
@@ -283,10 +283,10 @@ import { createTRPCContext } from "~/server/api/trpc";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Enable cors
+  // Sử dụng CORS
   await cors(req, res);
 
-  // Create and call the tRPC handler
+  // Tạo và gọi handler tRPC
   return createNextApiHandler({
     router: appRouter,
     createContext: createTRPCContext,
@@ -296,9 +296,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default handler;
 ```
 
-### Optimistic updates
+### Cập nhật tối ưu (Optimistic updates)
 
-Optimistic updates are when we update the UI before the API call has finished. This gives the user a better experience because they don't have to wait for the API call to finish before the UI reflects the result of their action. However, apps that value data correctness highly should avoid optimistic updates as they are not a "true" representation of backend state. You can read more on the [React Query docs](https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates).
+Cập nhật tối ưu (optimistic updates) là khi chúng ta cập nhật UI trước khi cuộc gọi API hoàn tất. Điều này cho phép người dùng có trải nghiệm tốt hơn vì họ không phải chờ cuộc gọi API hoàn tất trước khi UI phản ánh kết quả hành động của họ. Tuy nhiên, các ứng dụng có giá trị dữ liệu chính xác cao nên tránh sử dụng cập nhật tối ưu vì chúng không biểu hiện của trạng thái backend. Bạn có thể đọc thêm trên [tài liệu của React Query](https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -307,33 +307,33 @@ const MyComponent = () => {
   const utils = api.useUtils();
   const postCreate = api.post.create.useMutation({
     async onMutate(newPost) {
-      // Cancel outgoing fetches (so they don't overwrite our optimistic update)
+      // Hủy bỏ cuộc gọi API (để chúng không ghi đè lên cập nhật tối ưu của chúng ta)
       await utils.post.list.cancel();
 
-      // Get the data from the queryCache
+      // Lấy dữ liệu từ cache
       const prevData = utils.post.list.getData();
 
-      // Optimistically update the data with our new post
+      // Cập nhật dữ liệu tối ưu với bài viết mới
       utils.post.list.setData(undefined, (old) => [...old, newPost]);
 
-      // Return the previous data so we can revert if something goes wrong
+      // Trả về dữ liệu trước đó để chúng ta có thể quay lại nó nếu điều gì đó sai
       return { prevData };
     },
     onError(err, newPost, ctx) {
-      // If the mutation fails, use the context-value from onMutate
+      // Nếu cuộc gọi mutation thất bại, sử dụng giá trị từ onMutate
       utils.post.list.setData(undefined, ctx.prevData);
     },
     onSettled() {
-      // Sync with server once mutation has settled
+      // Đồng bộ với server một lần mutation đã hoàn tất
       utils.post.list.invalidate();
     },
   });
 };
 ```
 
-### Sample Integration Test
+### Ví dụ về tích hợp kiểm thử
 
-Here is a sample integration test that uses [Vitest](https://vitest.dev) to check that your tRPC router is working as expected, the input parser infers the correct type, and that the returned data matches the expected output.
+Dưới đây là một ví dụ về kiểm thử sử dụng [Vitest](https://vitest.dev) để kiểm tra xem router tRPC của bạn đang hoạt động như mong đợi, phân tích kiểu đầu vào đúng, và dữ liệu trả về phù hợp với kỳ vọng.
 
 ```ts
 import { type inferProcedureInput } from "@trpc/server";
@@ -357,7 +357,7 @@ test("example router", async () => {
 });
 ```
 
-If your procedure is protected, you can pass in a mocked `session` object when you create the context:
+Nếu procedure của bạn được bảo vệ, bạn có thể truyền vào một đối tượng `session` giả khi bạn tạo context:
 
 ```ts
 test("protected example router", async () => {
@@ -373,10 +373,10 @@ test("protected example router", async () => {
 });
 ```
 
-## Useful Resources
+## Tài liệu hữu ích
 
-| Resource               | Link                                            |
-| ---------------------- | ----------------------------------------------- |
-| tRPC Docs              | https://www.trpc.io                             |
-| Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples |
-| React Query Docs       | https://tanstack.com/query/latest/docs          |
+| Tài liệu             | Đường dẫn                                       |
+| -------------------- | ----------------------------------------------- |
+| Tài liệu tRPC        | https://www.trpc.io                             |
+| Ví dụ về tRPC        | https://github.com/trpc/trpc/tree/next/examples |
+| Tài liệu React Query | https://tanstack.com/query/latest/docs          |
