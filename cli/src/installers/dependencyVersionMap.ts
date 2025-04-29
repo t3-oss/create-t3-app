@@ -35,9 +35,9 @@ export const dependencyVersionMap = {
   "server-only": "^0.0.1",
 
   // oRPC
-  "@orpc/client": "^0.53.0",
-  "@orpc/react-query": "^0.53.0",
-  "@orpc/server": "^0.53.0",
+  "@orpc/client": "^1.1.1",
+  "@orpc/react-query": "^1.1.1",
+  "@orpc/server": "^1.1.1",
 
   // Tanstack Query
   "@tanstack/react-query": "^5.72.1",

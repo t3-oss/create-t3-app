@@ -1,5 +1,6 @@
 import { createRouterClient } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
+import { BatchHandlerPlugin } from "@orpc/server/plugins";
 
 import { postRouter } from "./routers/post";
 
@@ -18,7 +19,9 @@ export type ORPCRouter = typeof router;
 /**
  * Export handler for next app router
  */
-export const handler = new RPCHandler(router);
+export const handler = new RPCHandler(router, {
+  plugins: [new BatchHandlerPlugin()],
+});
 
 /**
  * Export a server-side caller for the oRPC API.

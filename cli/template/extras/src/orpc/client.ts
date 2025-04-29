@@ -1,5 +1,6 @@
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
+import { BatchLinkPlugin } from "@orpc/client/plugins";
 import { createORPCReactQueryUtils } from "@orpc/react-query";
 import { type RouterClient } from "@orpc/server";
 
@@ -17,6 +18,16 @@ export function createORPC(cookie?: string) {
     headers: {
       Cookie: cookie,
     },
+    plugins: [
+      new BatchLinkPlugin({
+        groups: [
+          {
+            condition: () => true,
+            context: {},
+          },
+        ],
+      }),
+    ],
   });
 
   const client: RouterClient<ORPCRouter> = createORPCClient(link);

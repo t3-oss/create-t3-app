@@ -330,9 +330,7 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "trpc", label: "tRPC" },
-              ...(results.appRouter
-                ? [{ value: "orpc", label: "oRPC (Beta)" }]
-                : []),
+              ...(results.appRouter ? [{ value: "orpc", label: "oRPC" }] : []),
             ],
             initialValue: "none",
           });
