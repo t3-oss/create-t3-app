@@ -1,18 +1,26 @@
 "use client";
 
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { useState } from "react";
 
-import { api } from "~/trpc/react";
-import styles from "../index.module.css";
+import { useTRPC } from "~/trpc/react";
 
 export function LatestPost() {
-  const [latestPost] = api.post.getLatest.useSuspenseQuery();
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
 
-  const utils = api.useUtils();
+  const { data: latestPost } = useSuspenseQuery(
+    trpc.post.getLatest.queryOptions()
+  );
+
   const [name, setName] = useState("");
-  const createPost = api.post.create.useMutation({
+  const createPost = useMutation({
     onSuccess: async () => {
-      await utils.post.invalidate();
+      await queryClient.invalidateQueries({ queryKey: trpc.post.pathKey() });
       setName("");
     },
   });

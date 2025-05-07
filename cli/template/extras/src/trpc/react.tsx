@@ -1,9 +1,17 @@
 "use client";
 
-import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
-import { httpBatchStreamLink, loggerLink } from "@trpc/client";
-import { createTRPCReact } from "@trpc/react-query";
+import {
+  isServer,
+  QueryClientProvider,
+  type QueryClient,
+} from "@tanstack/react-query";
+import {
+  createTRPCClient,
+  httpBatchStreamLink,
+  loggerLink,
+} from "@trpc/client";
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { useState } from "react";
 import SuperJSON from "superjson";
 
@@ -12,17 +20,23 @@ import { createQueryClient } from "./query-client";
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
-  if (typeof window === "undefined") {
+  if (isServer) {
     // Server: always make a new query client
     return createQueryClient();
   }
-  // Browser: use singleton pattern to keep the same query client
+  // Browser: make a new query client if we don't already have one
+  // This is very important, so we don't re-make a new client if React
+  // suspends during the initial render. This may not be needed if we
+  // have a suspense boundary BELOW the creation of the query client
   clientQueryClientSingleton ??= createQueryClient();
 
   return clientQueryClientSingleton;
 };
 
-export const api = createTRPCReact<AppRouter>();
+const api = createTRPCContext<AppRouter>();
+
+export const useTRPC = api.useTRPC;
+export const useTRPCClient = api.useTRPCClient;
 
 /**
  * Inference helper for inputs.
@@ -42,7 +56,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() =>
-    api.createClient({
+    createTRPCClient<AppRouter>({
       links: [
         loggerLink({
           enabled: (op) =>
@@ -64,9 +78,9 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <api.Provider client={trpcClient} queryClient={queryClient}>
+      <api.TRPCProvider client={trpcClient} queryClient={queryClient}>
         {props.children}
-      </api.Provider>
+      </api.TRPCProvider>
     </QueryClientProvider>
   );
 }
