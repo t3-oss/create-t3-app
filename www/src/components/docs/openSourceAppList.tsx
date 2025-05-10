@@ -344,6 +344,13 @@ const projects: App[] = [
     linkName: "AISEKA",
     link: "https://aiseka.com/",
   },
+  {
+    description: "Recap.games - provides the latest updates from game conferences such as SGF, and more.",
+    repoName: "TDanks2000/recap.games",
+    repo: "https://github.com/TDanks2000/recap.games",
+    linkName: "recap.games",
+    link: "https://recap.games",
+  },
 ];
 
 export default function OpenSourceAppList({
