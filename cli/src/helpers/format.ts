@@ -17,7 +17,7 @@ export const formatProject = async ({
   eslint: boolean;
   biome: boolean;
 }) => {
-  logger.info(`Formatting project with ${eslint ? "eslint" : "biome"}...`);
+  logger.info(`Formatting project with ${eslint ? "prettier" : "biome"}...`);
   const spinner = ora("Running format command\n").start();
 
   if (eslint) {
