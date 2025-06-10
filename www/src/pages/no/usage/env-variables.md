@@ -25,7 +25,7 @@ Endringene skjer i denne filen. Den inneholder to skjemaer, ett for servermiljø
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
-  // DATABASE_URL: z.string().url(),
+  // DATABASE_URL: z.url(),
 });
 
 export const serverEnv = {
