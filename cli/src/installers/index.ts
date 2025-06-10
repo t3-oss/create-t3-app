@@ -8,6 +8,7 @@ import { biomeInstaller } from "./biome.js";
 import { dbContainerInstaller } from "./dbContainer.js";
 import { drizzleInstaller } from "./drizzle.js";
 import { dynamicEslintInstaller } from "./eslint.js";
+import { orpcInstaller } from "./orpc.js";
 
 // Turning this into a const allows the list to be iterated over for programmatically creating prompt options
 // Should increase extensibility in the future
@@ -17,6 +18,7 @@ export const availablePackages = [
   "drizzle",
   "tailwind",
   "trpc",
+  "orpc",
   "envVariables",
   "eslint",
   "biome",
@@ -31,6 +33,9 @@ export const databaseProviders = [
   "planetscale",
 ] as const;
 export type DatabaseProvider = (typeof databaseProviders)[number];
+
+export const rpcProviders = ["none", "trpc", "orpc"] as const;
+export type RpcProvider = (typeof rpcProviders)[number];
 
 export interface InstallerOptions {
   projectDir: string;
@@ -76,6 +81,10 @@ export const buildPkgInstallerMap = (
   trpc: {
     inUse: packages.includes("trpc"),
     installer: trpcInstaller,
+  },
+  orpc: {
+    inUse: packages.includes("orpc"),
+    installer: orpcInstaller,
   },
   dbContainer: {
     inUse: ["mysql", "postgres"].includes(databaseProvider),
