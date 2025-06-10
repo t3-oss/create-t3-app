@@ -17,7 +17,8 @@ export const trpcInstaller: Installer = ({
       "superjson",
       "@trpc/server",
       "@trpc/client",
-      "@trpc/react-query",
+      "@trpc/react-query", // The legacy integration package is necessary for `createHydrationHelpers`. We can remove it once https://github.com/vercel/next.js/discussions/60640 is resolved.
+      "@trpc/tanstack-react-query",
     ],
     devMode: false,
   });
