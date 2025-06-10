@@ -14,7 +14,6 @@ Vercel va certainement configurer les commandes de génération et publier le r�
 ```json
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install"
 }

@@ -53,6 +53,7 @@ Parfois, vous créez un projet où vous voulez juste que l'interface utilisateur
 
 - [Chakra UI](https://chakra-ui.com)
 - [Mantine](https://mantine.dev)
+- [@shadcn/ui](https://ui.shadcn.com/)
 
 ### Class Variance Authority
 
@@ -151,6 +152,7 @@ Umami est une alternative open source à Google Analytics, auto-hébergée, simp
 
 - [Page d'accueil Umami](https://umami.is/)
 - [Umami GitHub](https://github.com/umami-software/umami)
+- [Umami Cloud](https://cloud.umami.is/)
 
 ## Autre
 

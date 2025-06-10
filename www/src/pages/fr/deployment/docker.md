@@ -62,8 +62,8 @@ README.md
 ```docker
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:16-apline3.17 AS deps
-RUN apk add --no-cache libc6-compat openssl1.1-compat
+FROM --platform=linux/amd64 node:20-alpine AS deps
+RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
@@ -75,15 +75,15 @@ COPY prisma ./
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
 RUN \
- if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
- elif [ -f package-lock.json ]; then npm ci; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
- else echo "Lockfile not found." && exit 1; \
- fi
+    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then npm ci; \
+    elif [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm i; \
+    else echo "Lockfile not found." && exit 1; \
+    fi
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:16-apline3.17 AS builder
+FROM --platform=linux/amd64 node:20-alpine AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -93,36 +93,32 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
- if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
- elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
- else echo "Lockfile not found." && exit 1; \
- fi
+    if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
+    elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
+    elif [ -f pnpm-lock.yaml ]; then npm install -g pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
+    else echo "Lockfile not found." && exit 1; \
+    fi
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 node:16-apline3.17 AS runner
+FROM --platform=linux/amd64 gcr.io/distroless/nodejs20-debian12 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
 
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
 COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-USER nextjs
 EXPOSE 3000
 ENV PORT 3000
 
-CMD ["node", "server.js"]
+CMD ["server.js"]
 
 ```
 
@@ -130,7 +126,8 @@ CMD ["node", "server.js"]
 >
 > - _L'émulation de `--platform=linux/amd64` n'est pas nécessaire à partir de Node 18._
 > - _Voir [`node:alpine`](https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine) pour comprendre pourquoi `libc6-compat` pourrait être nécessaire._
-> - _Next.js receuille [des données de télémétrie sur l'utilisation générale de façon anonyme](https://nextjs.org/telemetry). Décommentez la première occurrence de `ENV NEXT_TELEMETRY_DISABLED 1` pour désactiver la télémétrie durant le processus de génération. Décommentez la seconde occurence pour désactiver la télémétrie durant l'exécution._
+> - _L'utilisation d'images basées sur Alpine 3.17 [peut causer des problèmes avec Prisma](https://github.com/t3-oss/create-t3-app/issues/975). Définir `engineType = "binary"` résout le problème dans Alpine 3.17, [mais a un coût de performance associé](https://www.prisma.io/docs/concepts/components/prisma-engines/query-engine#the-query-engine-at-runtime)._
+> - _Next.js collecte des [données de télémétrie anonymes sur l'utilisation générale](https://nextjs.org/telemetry). Décommentez la première occurrence de `ENV NEXT_TELEMETRY_DISABLED 1` pour désactiver la télémétrie pendant la construction. Décommentez la deuxième occurrence pour désactiver la télémétrie pendant l'exécution._
 
 </div>
 </details>
@@ -152,7 +149,7 @@ Vous pouvez également utiliser Docker Compose pour générer l'image et exécut
 
 <details>
     <summary>
-      Suivez les étapes 1 à 4 ci-dessus, cliquez ici et incluez le contenue dans votre <code>docker-compose.yml</code>:
+      Suivez les étapes 1 à 3 ci-dessus, cliquez ici et incluez le contenue dans votre <code>docker-compose.yml</code>:
     </summary>
 <div class="content">
 
