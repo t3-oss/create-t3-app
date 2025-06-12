@@ -1,0 +1,18 @@
+---
+title: NextAuth.js
+description: Sử dụng NextAuth.js
+layout: ../../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+import Tabs from "../../../components/docs/tabs.astro";
+import AppRouter from "./_next-auth-app-router.mdx";
+import Pages from "./_next-auth-pages.mdx";
+
+Khi bạn muốn có cho mình một hệ thống xác thực hoàn thiện trong ứng dụng Next.js của bạn, NextAuth.js là một giải pháp tuyệt vời để mang đến sự phức tạp của bảo mật mà không cần tốn quá nhiều công sức để xây dựng. Nó cung cấp danh sách các nhà cung cấp bảo mật thứ 3 để thêm xác thực OAuth nhanh chóng và cung cấp các adapter dành cho nhiều cơ sở dữ liệu và ORM khác nhau.
+
+<Tabs slotOne="Pages Router" slotTwo="App Router" tabName="app-router">
+  <Pages slot="1" />
+  <AppRouter slot="2" />
+</Tabs>
