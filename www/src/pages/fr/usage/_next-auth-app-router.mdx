@@ -204,7 +204,7 @@ async authorized({ request, auth }) {
 - Sous Client Secret, cliquez sur "Reset Secret" et copiez cette chaîne de caractères dans `DISCORD CLIENT_SECRET` dans `.env`. Soyez prudent car vous ne pourrez plus voir ce secret et le réinitialiser entraînera l'expiration du secret existant.
 - Cliquez sur "Add Redirect" et collez `<app url>/api/auth/callback/discord` (exemple pour le développement local : <code class="break-all">http://localhost:3000/api/auth/rappel/discord</code>)
 - Enregistrez vos modifications
-- Il est possible, mais non recommandé, d'utiliser la même application Discord pour le développement et la production. Vous pouvez également envisager [moquer le fournisseur](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) pendant le développement.
+- Il est possible, mais non recommandé, d'utiliser la même application Discord pour le développement et la production. Vous pouvez également envisager de [mock le fournisseur](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) pendant le développement.
 
 ## Ressources utiles
 

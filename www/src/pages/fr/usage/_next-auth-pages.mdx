@@ -29,7 +29,7 @@ const User = () => {
 
 ## Récupérer la session côté serveur
 
-Parfois, vous souhaiterez demander la session côté serveur. Pour ce faire, prérécupérez la session à l'aide du helper `getServerAuthSession` fournie par `create-t3-app` et transmettez-le au client à l'aide de `getServerSideProps` :
+Parfois, vous souhaiterez récupérer les informations de session côté serveur. Pour se faire, prérécupérez la session à l'aide du helper `getServerAuthSession` fournie par `create-t3-app` et transmettez-le au client à l'aide de `getServerSideProps` :
 
 ```tsx:pages/users/[id].tsx
 import { getServerAuthSession } from "../server/auth";
