@@ -65,7 +65,7 @@ const companies: Company[] = [
     linkName: "HIX AI",
     link: "https://hix.ai",
   },
-   {
+  {
     name: "Zaprite",
     linkName: "app.zaprite.com",
     link: "https://app.zaprite.com/",
