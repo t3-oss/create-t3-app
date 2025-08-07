@@ -1,0 +1,79 @@
+---
+title: Drizzle
+description: Użytkowanie Drizzle.
+layout: ../../../layouts/docs.astro
+lang: pl
+isMdx: true
+---
+
+Drizzle to headless ORM napisany w TypeScript, oferujący relacyjne oraz podobne do SQL interfejsy zapytań. Obsługuje migracje i schematy baz danych, a także zapewnia typowany klient do pracy z bazą danych. W zestawie znajduje się również Drizzle Kit --- zestaw narzędzi wspomagających zapytania do bazy danych.
+
+# Drizzle Client
+
+Klient Drizzle znajduje się w pliku `src/server/db/index.ts`. W tym pliku definiujesz adres URL połączenia z bazą danych i łączysz swój schemat z obiektem bazy danych.
+
+```ts:src/server/db/index.ts
+import { env } from "~/env";
+import * as schema from "./schema";
+import postgres from "postgres";
+
+const conn = postgres(env.DATABASE_URL)
+
+export const db = drizzle(conn, { schema });
+```
+
+Zalecamy dołączenie klienta bazy danych do kontekstu tRPC:
+
+```ts:src/server/api/trpc.ts
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+Schema
+
+Plik schematu Drizzle znajduje się w `src/server/db/schema.ts`. To tutaj definiujesz strukturę swojej bazy danych i modele, a także łączysz je z klientem Drizzle.
+
+Jeśli wybierzesz integrację NextAuth.js z Drizzle, plik schematu zostanie wygenerowany automatycznie i skonfigurowany zgodnie z zaleceniami dla modeli `User`, `Session`, `Account` i `VerificationToken`, zgodnie z dokumentacją Auth.js.
+
+Drizzle Kit
+
+Drizzle Kit to zestaw narzędzi CLI (wiersza poleceń), zaprojektowany do zarządzania bazą danych. T3 Stack automatycznie uwzględnia Drizzle Kit, jeśli wybierzesz Drizzle jako swój ORM.
+
+```json:package.json
+"scripts": {
+    ...
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    ...
+}
+```
+
+### Opis poleceń
+
+`db:generate` Generuje typy TypeScript i modele na podstawie schematu bazy danych, zapewniając bezpieczeństwo typów i łatwą integrację z Drizzle ORM.
+
+`db:migrate` Stosuje oczekujące migracje do bazy danych, synchronizując schemat z aktualnymi zmianami w projekcie.
+
+`db:push` Wysyła lokalne zmiany w schemacie bez potrzeby tworzenia plików migracji. Przydatne do szybkiej synchronizacji w środowisku developerskim.
+
+`db:studio` Uruchamia wizualny interfejs do zarządzania tabelami bazy danych, danymi i relacjami.
+
+### Przydatne zasoby
+
+| Zasób                           | Link                                                |
+| ------------------------------- | --------------------------------------------------- |
+| Dokumentacja Drizzle            | https://orm.drizzle.team/docs/overview              |
+| Repozytorium Drizzle (GitHub)   | https://github.com/drizzle-team/drizzle-orm         |
+| Adapter Auth.JS dla Drizzle     | https://authjs.dev/getting-started/adapters/drizzle |
+| Przewodnik migracji Drizzle Kit | https://orm.drizzle.team/docs/kit-overview          |

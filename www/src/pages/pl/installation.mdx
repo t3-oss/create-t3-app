@@ -49,20 +49,23 @@ Po tym, jak szablon aplikacji zostanie utworzony, sprawdź [pierwsze kroki](/pl/
 
 Z powodu naszej integracji CI, posiadamy eksperymentalne flagi pozwalające skorzystać z szablonu bez żadnych informacji w konsoli. Jeżeli przemawia do Ciebie któraś z poniższych opcji, możesz z jakiejś flagi skorzystać. Pamiętaj, że są to opcje eksperymentalne - mogą się one zmienić bez względu na system wersji semver.
 
-| Flaga        | Opis                                        |
-| ------------ | ------------------------------------------- |
-| `--CI`       | Poinformuj narzędzie, że jesteś w trybie CI |
-| `--trpc`     | Zawrzyj tRPC w projekcie                    |
-| `--prisma`   | Zawrzyj Prisma w projekcie                  |
-| `--nextAuth` | Zawrzyj NextAuth.js w projekcie             |
-| `--tailwind` | Zawrzyj Tailwind CSS w projekcie            |
+| Flag                      | Opis                                        |
+| ------------------------- | ------------------------------------------- |
+| `--CI`                    | Poinformuj narzędzie, że jesteś w trybie CI |
+| `--trpc`                  | Zawrzyj tRPC w projekcie                    |
+| `--prisma`                | Zawrzyj Prisma w projekcie                  |
+| `--drizzle`               | Zawrzyj Drizzle w projekcie                 |
+| `--nextAuth`              | Zawrzyj NextAuth.js w projekcie             |
+| `--tailwind`              | Zawrzyj Tailwind CSS w projekcie            |
+| `--dbProvider [provider]` | Zawrzyj skonfigurowaną baze danych          |
+| `--appRouter`             | Użyj Next.js App Router w projekcie         |
 
 <Callout type="warning">
   Jeżeli nie podasz flagi `CI`, pozostałe flagi nie zostaną użyte.
 </Callout>
-Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżeli jednak
-wolisz jasno wskazać czego używasz, możesz podać wartość `false` - np. `--nextAuth
-false`.
+Nie musisz wyraźnie wskazywać paczek, z których nie chcesz korzystać. Jeżeli
+jednak wolisz jasno wskazać czego używasz, możesz podać wartość `false` - np.
+`--nextAuth false`.
 
 ### Przykład
 
