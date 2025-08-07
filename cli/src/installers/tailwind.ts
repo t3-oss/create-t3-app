@@ -8,31 +8,18 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const tailwindInstaller: Installer = ({ projectDir }) => {
   addPackageDependency({
     projectDir,
-    dependencies: [
-      "tailwindcss",
-      "postcss",
-      "prettier",
-      "prettier-plugin-tailwindcss",
-    ],
+    dependencies: ["tailwindcss", "postcss", "@tailwindcss/postcss"],
     devMode: true,
   });
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const twCfgSrc = path.join(extrasDir, "config/tailwind.config.ts");
-  const twCfgDest = path.join(projectDir, "tailwind.config.ts");
-
-  const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.cjs");
-  const postcssCfgDest = path.join(projectDir, "postcss.config.cjs");
-
-  const prettierSrc = path.join(extrasDir, "config/_prettier.config.js");
-  const prettierDest = path.join(projectDir, "prettier.config.js");
+  const postcssCfgSrc = path.join(extrasDir, "config/postcss.config.js");
+  const postcssCfgDest = path.join(projectDir, "postcss.config.js");
 
   const cssSrc = path.join(extrasDir, "src/styles/globals.css");
   const cssDest = path.join(projectDir, "src/styles/globals.css");
 
-  fs.copySync(twCfgSrc, twCfgDest);
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
-  fs.copySync(prettierSrc, prettierDest);
 };

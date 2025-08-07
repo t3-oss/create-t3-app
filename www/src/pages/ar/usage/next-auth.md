@@ -100,7 +100,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 ```ts:server/trpc/trpc.ts
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
@@ -159,9 +159,9 @@ const userRouter = router({
 
 2. في settings menu اضغط على OAuth2 ثم General
 
-3. إنسخ الـ Client ID وضعة في `.env` كـ DISCORD_CLIENT_ID
+3. إنسخ الـ Client ID وضعة في `.env` كـ AUTH_DISCORD_ID
 
-4. تحت Client Secret اضغط على "Reset Secret" ونسخ النص الجديد وضعه في `.env` كـ `DISCORD_CLIENT_SECRET `.
+4. تحت Client Secret اضغط على "Reset Secret" ونسخ النص الجديد وضعه في `.env` كـ `AUTH_DISCORD_SECRET `.
    كن حذرًا لأنك لن تتمكن من رؤية هذا كلمة السر مرة أخرى ، ستؤدي إعادة تعيينها إلى انتهاء صلاحية كلمة السر الحالية
 5. اضغط على Add Redirect واضف رابط إعادة التوجيه`http://localhost:3000/api/auth/callback/discord` كمثال
 6. احفظ التعديلات

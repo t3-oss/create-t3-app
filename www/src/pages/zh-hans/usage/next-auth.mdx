@@ -126,7 +126,7 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 ```ts:server/api/trpc.ts
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
@@ -212,8 +212,8 @@ const userRouter = router({
 1. 前往 [Discord 开发者页面的应用部分](https://discord.com/developers/applications)，然后点击 "New Application"
 2. 在设置菜单中，依次前往 "OAuth2 => General"
 
-- 复制 Client ID，然后粘贴到 `.env` 文件中的 `DISCORD_CLIENT_ID`。
-- 在 Client Secret 下方，点击 "Reset Secret"，然后复制该字符串到 `env` 中的 `DISCORD_CLIENT_SECRET`。务必要细心，因为你无法再次查看该密钥了，而将它重置会让现存的密钥失效。
+- 复制 Client ID，然后粘贴到 `.env` 文件中的 `AUTH_DISCORD_ID`。
+- 在 Client Secret 下方，点击 "Reset Secret"，然后复制该字符串到 `env` 中的 `AUTH_DISCORD_SECRET`。务必要细心，因为你无法再次查看该密钥了，而将它重置会让现存的密钥失效。
 - 点击 "Add Redirect"，然后将你应用的网址替换 `<app url>/api/auth/callback/discord` 里的 `<app url>`（例如，一个开发阶段的完整链接像这样：<code class="break-all">http://localhost:3000/api/auth/callback/discord</code>）
 - 保存你的更改
 - 在开发和生产环境使用同一个 Discord 应用是可行的，但不鼓励这么做。你应该也考虑在开发阶段 [模拟认证服务](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts)。

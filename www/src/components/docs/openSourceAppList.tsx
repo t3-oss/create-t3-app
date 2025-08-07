@@ -214,8 +214,8 @@ const projects: App[] = [
       "Prisma Editor - A powerful tool to visualize and edit Prisma Schema",
     repoName: "mohammed-bahumaish/prisma-editor",
     repo: "https://github.com/mohammed-bahumaish/prisma-editor",
-    linkName: "prisma-editor.up.railway.app",
-    link: "https://prisma-editor.up.railway.app",
+    linkName: "prisma-editor.bahumaish.com",
+    link: "https://prisma-editor.bahumaish.com",
   },
 
   {
@@ -308,6 +308,41 @@ const projects: App[] = [
     repo: "https://github.com/prabincankod/sunal-rahal",
     linkName: "SunalRhal",
     link: "https://sunal-rahal.vercel.app",
+  },
+  {
+    description: "RobertHavelaar.dev - A Modern Portfolio and Tool Showcase",
+    repoName: "EastTexasElectronics/portfolio",
+    repo: "https://github.com/EastTexasElectronics/portfolio",
+    linkName: "RobertHavelaar.dev",
+    link: "https://www.roberthavelaar.dev/",
+  },
+  {
+    description: "Tasky - Simplify task management",
+    repoName: "ismaelherreradev/tasky",
+    repo: "https://github.com/ismaelherreradev/tasky",
+    linkName: "taskyboard",
+    link: "https://taskyboard.vercel.app",
+  },
+  {
+    description: "Squeak - A multiplayer Solitaire-based game",
+    repoName: "michaelongaro/Squeak",
+    repo: "https://github.com/michaelongaro/Squeak",
+    linkName: "Squeak",
+    link: "https://playsqueak.com/",
+  },
+  {
+    description: "Ray - A full stack admin starter",
+    repoName: "koujialong/ray-admin",
+    repo: "https://github.com/koujialong/ray-admin",
+    linkName: "Ray",
+    link: "https://koujialong-ray.vercel.app/",
+  },
+  {
+    description: "Aiseka - Discover the best Color Palette & Color Tools",
+    repoName: "meetqy/aiseka",
+    repo: "https://github.com/meetqy/aiseka",
+    linkName: "AISEKA",
+    link: "https://aiseka.com/",
   },
 ];
 

@@ -2,13 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from "drizzle-orm";
-import {
-  bigint,
-  index,
-  mysqlTableCreator,
-  timestamp,
-  varchar,
-} from "drizzle-orm/mysql-core";
+import { index, mysqlTableCreator } from "drizzle-orm/mysql-core";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -20,15 +14,14 @@ export const createTable = mysqlTableCreator((name) => `project1_${name}`);
 
 export const posts = createTable(
   "post",
-  {
-    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at")
+  (d) => ({
+    id: d.bigint({ mode: "number" }).primaryKey().autoincrement(),
+    name: d.varchar({ length: 256 }),
+    createdAt: d
+      .timestamp()
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-    updatedAt: timestamp("updated_at").onUpdateNow(),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+    updatedAt: d.timestamp().onUpdateNow(),
+  }),
+  (t) => [index("name_idx").on(t.name)]
 );

@@ -14,6 +14,7 @@ import { getUserPkgManager } from "~/utils/getUserPkgManager.js";
 import { logger } from "~/utils/logger.js";
 import { parseNameAndPath } from "~/utils/parseNameAndPath.js";
 import { renderTitle } from "~/utils/renderTitle.js";
+import { formatProject } from "./helpers/format.js";
 import { installDependencies } from "./helpers/installDependencies.js";
 import { getVersion } from "./utils/getT3Version.js";
 import {
@@ -31,7 +32,9 @@ const main = async () => {
   const npmVersion = await getNpmVersion();
   const pkgManager = getUserPkgManager();
   renderTitle();
-  npmVersion && renderVersionWarning(npmVersion);
+  if (npmVersion) {
+    renderVersionWarning(npmVersion);
+  }
 
   const {
     appName,
@@ -81,6 +84,13 @@ const main = async () => {
 
   if (!noInstall) {
     await installDependencies({ projectDir });
+
+    await formatProject({
+      pkgManager,
+      projectDir,
+      eslint: packages.includes("eslint"),
+      biome: packages.includes("biome"),
+    });
   }
 
   if (!noGit) {

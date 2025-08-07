@@ -3,36 +3,63 @@
 
 # TO RUN ON WINDOWS:
 # 1. Install WSL (Windows Subsystem for Linux) - https://learn.microsoft.com/en-us/windows/wsl/install
-# 2. Install Docker Desktop for Windows - https://docs.docker.com/docker-for-windows/install/
+# 2. Install Docker Desktop or Podman Deskop
+# - Docker Desktop for Windows - https://docs.docker.com/docker-for-windows/install/
+# - Podman Desktop - https://podman.io/getting-started/installation
 # 3. Open WSL - `wsl`
 # 4. Run this script - `./start-database.sh`
 
 # On Linux and macOS you can run this script directly - `./start-database.sh`
 
-DB_CONTAINER_NAME="project1-mysql"
-
-if ! [ -x "$(command -v docker)" ]; then
-  echo -e "Docker is not installed. Please install docker and try again.\nDocker install guide: https://docs.docker.com/engine/install/"
-  exit 1
-fi
-
-if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
-  echo "Database container '$DB_CONTAINER_NAME' already running"
-  exit 0
-fi
-
-if [ "$(docker ps -q -a -f name=$DB_CONTAINER_NAME)" ]; then
-  docker start "$DB_CONTAINER_NAME"
-  echo "Existing database container '$DB_CONTAINER_NAME' started"
-  exit 0
-fi
-
-# import env variables from .env
 set -a
 source .env
 
 DB_PASSWORD=$(echo "$DATABASE_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
 DB_PORT=$(echo "$DATABASE_URL" | awk -F':' '{print $4}' | awk -F'\/' '{print $1}')
+DB_NAME=$(echo "$DATABASE_URL" | awk -F'/' '{print $4}')
+DB_CONTAINER_NAME="$DB_NAME-mysql"
+
+if ! [ -x "$(command -v docker)" ] && ! [ -x "$(command -v podman)" ]; then
+  echo -e "Docker or Podman is not installed. Please install docker or podman and try again.\nDocker install guide: https://docs.docker.com/engine/install/\nPodman install guide: https://podman.io/getting-started/installation"
+  exit 1
+fi
+
+# determine which docker command to use
+if [ -x "$(command -v docker)" ]; then
+  DOCKER_CMD="docker"
+elif [ -x "$(command -v podman)" ]; then
+  DOCKER_CMD="podman"
+fi
+
+if ! $DOCKER_CMD info > /dev/null 2>&1; then
+  echo "$DOCKER_CMD daemon is not running. Please start $DOCKER_CMD and try again."
+  exit 1
+fi
+
+if command -v nc >/dev/null 2>&1; then
+  if nc -z localhost "$DB_PORT" 2>/dev/null; then
+    echo "Port $DB_PORT is already in use."
+    exit 1
+  fi
+else
+  echo "Warning: Unable to check if port $DB_PORT is already in use (netcat not installed)"
+  read -p "Do you want to continue anyway? [y/N]: " -r REPLY
+  if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Aborting."
+    exit 1
+  fi
+fi
+
+if [ "$($DOCKER_CMD ps -q -f name=$DB_CONTAINER_NAME)" ]; then
+  echo "Database container '$DB_CONTAINER_NAME' already running"
+  exit 0
+fi
+
+if [ "$($DOCKER_CMD ps -q -a -f name=$DB_CONTAINER_NAME)" ]; then
+  $DOCKER_CMD start "$DB_CONTAINER_NAME"
+  echo "Existing database container '$DB_CONTAINER_NAME' started"
+  exit 0
+fi
 
 if [ "$DB_PASSWORD" == "password" ]; then
   echo "You are using the default database password"
@@ -43,12 +70,17 @@ if [ "$DB_PASSWORD" == "password" ]; then
   fi
   # Generate a random URL-safe password
   DB_PASSWORD=$(openssl rand -base64 12 | tr '+/' '-_')
-  sed -i -e "s#:password@#:$DB_PASSWORD@#" .env
+  if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS requires an empty string to be passed with the `i` flag
+    sed -i '' "s#:password@#:$DB_PASSWORD@#" .env
+  else
+    sed -i "s#:password@#:$DB_PASSWORD@#" .env
+  fi
 fi
 
-docker run -d \
+$DOCKER_CMD run -d \
   --name $DB_CONTAINER_NAME \
   -e MYSQL_ROOT_PASSWORD="$DB_PASSWORD" \
-  -e MYSQL_DATABASE=project1 \
+  -e MYSQL_DATABASE="$DB_NAME" \
   -p "$DB_PORT":3306 \
   docker.io/mysql && echo "Database container '$DB_CONTAINER_NAME' was successfully created"

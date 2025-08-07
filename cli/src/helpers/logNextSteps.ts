@@ -23,7 +23,9 @@ export const logNextSteps = async ({
   const pkgManager = getUserPkgManager();
 
   logger.info("Next steps:");
-  projectName !== "." && logger.info(`  cd ${projectName}`);
+  if (projectName !== ".") {
+    logger.info(`  cd ${projectName}`);
+  }
   if (noInstall) {
     // To reflect yarn's default behavior of installing packages when no additional args provided
     if (pkgManager === "yarn") {
@@ -43,6 +45,12 @@ export const logNextSteps = async ({
     } else {
       logger.info(`  ${pkgManager} db:push`);
     }
+  }
+
+  if (packages?.nextAuth.inUse) {
+    logger.info(
+      `  Fill in your .env with necessary values. See https://create.t3.gg/en/usage/first-steps for more info.`
+    );
   }
 
   if (["npm", "bun"].includes(pkgManager)) {
