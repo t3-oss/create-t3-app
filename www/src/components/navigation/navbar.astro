@@ -1,5 +1,6 @@
 ---
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
+import AskAIButton from "./AskAIButton";
 import GithubIcon from "./githubIcon.astro";
 import LanguageSelect from "./LanguageSelect";
 import Search from "./Search";
@@ -109,6 +110,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       <div class="hidden w-full max-w-xs rounded-lg md:block">
         <Search isLanding={isLanding} client:load />
       </div>
+      <AskAIButton client:load/>
     </div>
   </div>
 </nav>

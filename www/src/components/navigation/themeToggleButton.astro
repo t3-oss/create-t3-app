@@ -47,6 +47,8 @@
     html.classList.contains("dark") ? "dark" : "light",
   );
 
+  window.SiteAssist?.("changeTheme", html.classList.contains("dark") ? "dark" : "light")
+
   const toggleTheme = (t: "light" | "dark") => {
     localStorage.setItem("theme", t);
     html.classList.add(t === "dark" ? "dark" : "light");
@@ -54,6 +56,8 @@
     themeToggle!.setAttribute("title", getMessage());
     themeToggle!.setAttribute("aria-label", getMessage());
     themeToggle!.setAttribute("value", t);
+
+    window.SiteAssist?.("changeTheme", t)
   };
 
   themeToggle!.addEventListener("click", () => {

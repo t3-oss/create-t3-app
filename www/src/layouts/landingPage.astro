@@ -41,9 +41,24 @@ const { isNotFound } = Astro.props;
         html.classList.add("dark");
       }
     </script>
+
+
+    <!-- SiteAssist chat widget script -->
+    <script type="text/javascript">
+      !function(t,e,c,n,s){if(t[s])return;const i=t[s]=function(){i._q.push(arguments)};i._q=[];const o=e.createElement("script");o.async=!0,o.src="https://cnrib24ur3hk4b49.public.blob.vercel-storage.com/widget/latest/widget.js",e.head.appendChild(o)}(window,document,0,0,"SiteAssist");
+    </script>
+
+    <script type="text/javascript">
+      // Initialize the SiteAssist widget with the API Key
+      SiteAssist("init", {
+        apiKey: "pk_fVPIhyv2zqrRQaroMvYDizbpVHdcgEQlenWBxyYNk5YryeVvjHNwx9v6qZQBO",
+        theme: "auto",
+        type: 'sidepanel'
+      });
+    </script>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900"
+    class="min-h-screen bg-gradient-to-b from-gray-900 via-[#300171] to-slate-900 siteassist-container"
   >
     <JumpToContent />
     <div
