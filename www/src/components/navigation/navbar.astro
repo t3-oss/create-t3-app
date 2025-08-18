@@ -104,13 +104,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       >
         <ThemeToggleButton />
       </div>
-      <div class="block md:hidden">
-        <SidebarToggle isLanding={isLanding} />
-      </div>
       <div class="hidden w-full max-w-xs rounded-lg md:block">
         <Search isLanding={isLanding} client:load />
       </div>
       <AskAIButton client:load />
+      <div class="block md:hidden">
+        <SidebarToggle isLanding={isLanding} />
+      </div>
     </div>
   </div>
 </nav>

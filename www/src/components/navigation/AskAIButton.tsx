@@ -6,7 +6,7 @@ export default function AskAIButton() {
   return (
     <button
       onClick={handleClick}
-      className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 px-4 py-2 text-left focus:outline-none hover:bg-t3-purple-200/75 sm:text-sm dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
+      className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 px-2 py-2 text-left focus:outline-none hover:bg-t3-purple-200/75 sm:text-sm lg:px-4 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50"
     >
       <div className="flex items-center justify-center gap-1 lg:gap-3">
         <svg
@@ -26,7 +26,7 @@ export default function AskAIButton() {
           <path d="M22 4h-4" />
           <circle cx="4" cy="20" r="2" />
         </svg>
-        <span>Ask AI</span>
+        <span className="max-lg:sr-only">Ask AI</span>
       </div>
     </button>
   );
