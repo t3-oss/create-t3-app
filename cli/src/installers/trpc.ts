@@ -61,11 +61,11 @@ export const trpcInstaller: Installer = ({
   const rootRouterDest = path.join(projectDir, "src/server/api/root.ts");
 
   const exampleRouterFile =
-    usingAuth && usingPrisma
+    (usingAuth || usingBetterAuth) && usingPrisma
       ? "with-auth-prisma.ts"
-      : usingAuth && usingDrizzle
+      : (usingAuth || usingBetterAuth) && usingDrizzle
         ? "with-auth-drizzle.ts"
-        : usingAuth
+        : usingAuth || usingBetterAuth
           ? "with-auth.ts"
           : usingPrisma
             ? "with-prisma.ts"

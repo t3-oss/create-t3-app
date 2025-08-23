@@ -101,10 +101,15 @@ export const selectPageFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
+  const usingAuth = packages?.nextAuth.inUse;
+  const usingBetterAuth = packages?.betterAuth.inUse;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
+  if (usingTRPC && usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-trpc.tsx";
+  } else if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingAuth) {
     indexFile = "with-auth-trpc.tsx";

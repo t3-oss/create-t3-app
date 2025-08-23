@@ -19,7 +19,7 @@ export const posts = createTable(
     name: d.varchar({ length: 256 }),
     createdAt: d
       .timestamp({ withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
+      .$defaultFn(() => /* @__PURE__ */ new Date())
       .notNull(),
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
   }),

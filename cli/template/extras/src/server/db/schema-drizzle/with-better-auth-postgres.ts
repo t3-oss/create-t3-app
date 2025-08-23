@@ -8,7 +8,7 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
-export const createTable = pgTableCreator((name) => `project1_${name}`);
+export const createTable = pgTableCreator((name) => `pg-drizzle_${name}`);
 
 export const posts = createTable(
   "post",
@@ -18,10 +18,10 @@ export const posts = createTable(
     createdById: d
       .varchar({ length: 255 })
       .notNull()
-      .references(() => users.id),
+      .references(() => user.id),
     createdAt: d
       .timestamp({ withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
+      .$defaultFn(() => new Date())
       .notNull(),
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
   }),
@@ -31,7 +31,7 @@ export const posts = createTable(
   ]
 );
 
-export const users = pgTable("user", {
+export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
@@ -47,7 +47,7 @@ export const users = pgTable("user", {
     .notNull(),
 });
 
-export const sessions = pgTable("session", {
+export const session = pgTable("session", {
   id: text("id").primaryKey(),
   expiresAt: timestamp("expires_at").notNull(),
   token: text("token").notNull().unique(),
@@ -57,16 +57,16 @@ export const sessions = pgTable("session", {
   userAgent: text("user_agent"),
   userId: text("user_id")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
 });
 
-export const accounts = pgTable("account", {
+export const account = pgTable("account", {
   id: text("id").primaryKey(),
   accountId: text("account_id").notNull(),
   providerId: text("provider_id").notNull(),
   userId: text("user_id")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
   accessToken: text("access_token"),
   refreshToken: text("refresh_token"),
   idToken: text("id_token"),
@@ -78,7 +78,7 @@ export const accounts = pgTable("account", {
   updatedAt: timestamp("updated_at").notNull(),
 });
 
-export const verifications = pgTable("verification", {
+export const verification = pgTable("verification", {
   id: text("id").primaryKey(),
   identifier: text("identifier").notNull(),
   value: text("value").notNull(),
@@ -91,15 +91,15 @@ export const verifications = pgTable("verification", {
   ),
 });
 
-export const usersRelations = relations(users, ({ many }) => ({
-  accounts: many(accounts),
-  sessions: many(sessions),
+export const userRelations = relations(user, ({ many }) => ({
+  account: many(account),
+  session: many(session),
 }));
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, { fields: [accounts.userId], references: [users.id] }),
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(user, { fields: [account.userId], references: [user.id] }),
 }));
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(user, { fields: [session.userId], references: [user.id] }),
 }));

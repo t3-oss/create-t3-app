@@ -21,7 +21,7 @@ export const posts = createTable(
       .references(() => users.id),
     createdAt: d
       .timestamp({ withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
+      .$defaultFn(() => /* @__PURE__ */ new Date())
       .notNull(),
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
   }),
@@ -44,7 +44,7 @@ export const users = createTable("user", (d) => ({
       mode: "date",
       withTimezone: true,
     })
-    .default(sql`CURRENT_TIMESTAMP`),
+    .$defaultFn(() => /* @__PURE__ */ new Date()),
   image: d.varchar({ length: 255 }),
 }));
 

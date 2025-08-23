@@ -1,13 +1,16 @@
 import { relations, sql } from "drizzle-orm";
-import { index, sqliteTableCreator } from "drizzle-orm/sqlite-core";
+import {
+  index,
+  sqliteTable,
+  sqliteTableCreator,
+} from "drizzle-orm/sqlite-core";
 
 /**
  * Multi-project schema prefix helper
  */
-export const createTable = sqliteTableCreator((name) => `project1_${name}`);
 
 // Posts example table
-export const posts = createTable(
+export const posts = sqliteTable(
   "post",
   (d) => ({
     id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
@@ -15,7 +18,7 @@ export const posts = createTable(
     createdById: d
       .text({ length: 255 })
       .notNull()
-      .references(() => users.id),
+      .references(() => user.id),
     createdAt: d
       .integer({ mode: "timestamp" })
       .default(sql`(unixepoch())`)
@@ -29,7 +32,7 @@ export const posts = createTable(
 );
 
 // Better Auth core tables
-export const users = createTable("user", (d) => ({
+export const user = sqliteTable("user", (d) => ({
   id: d
     .text({ length: 255 })
     .notNull()
@@ -46,12 +49,12 @@ export const users = createTable("user", (d) => ({
   updatedAt: d.integer({ mode: "timestamp" }).$onUpdate(() => new Date()),
 }));
 
-export const usersRelations = relations(users, ({ many }) => ({
-  accounts: many(accounts),
-  sessions: many(sessions),
+export const userRelations = relations(user, ({ many }) => ({
+  account: many(account),
+  session: many(session),
 }));
 
-export const accounts = createTable(
+export const account = sqliteTable(
   "account",
   (d) => ({
     id: d
@@ -62,7 +65,7 @@ export const accounts = createTable(
     userId: d
       .text({ length: 255 })
       .notNull()
-      .references(() => users.id),
+      .references(() => user.id),
     accountId: d.text({ length: 255 }).notNull(),
     providerId: d.text({ length: 255 }).notNull(),
     accessToken: d.text(),
@@ -81,11 +84,11 @@ export const accounts = createTable(
   (t) => [index("account_user_id_idx").on(t.userId)]
 );
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, { fields: [accounts.userId], references: [users.id] }),
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(user, { fields: [account.userId], references: [user.id] }),
 }));
 
-export const sessions = createTable(
+export const session = sqliteTable(
   "session",
   (d) => ({
     id: d
@@ -96,7 +99,7 @@ export const sessions = createTable(
     userId: d
       .text({ length: 255 })
       .notNull()
-      .references(() => users.id),
+      .references(() => user.id),
     token: d.text({ length: 255 }).notNull().unique(),
     expiresAt: d.integer({ mode: "timestamp" }).notNull(),
     ipAddress: d.text({ length: 255 }),
@@ -110,11 +113,11 @@ export const sessions = createTable(
   (t) => [index("session_user_id_idx").on(t.userId)]
 );
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(user, { fields: [session.userId], references: [user.id] }),
 }));
 
-export const verifications = createTable(
+export const verifications = sqliteTable(
   "verification",
   (d) => ({
     id: d

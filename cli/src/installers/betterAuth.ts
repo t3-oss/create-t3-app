@@ -47,7 +47,27 @@ export const betterAuthInstaller: Installer = ({ projectDir, packages }) => {
     "src/server/better-auth/index.ts"
   );
 
+  // Better Auth client and server helpers
+  const betterAuthClientSrc = path.join(
+    extrasDir,
+    "src/server/better-auth/client.ts"
+  );
+  const betterAuthClientDest = path.join(
+    projectDir,
+    "src/server/better-auth/client.ts"
+  );
+  const betterAuthServerSrc = path.join(
+    extrasDir,
+    "src/server/better-auth/server.ts"
+  );
+  const betterAuthServerDest = path.join(
+    projectDir,
+    "src/server/better-auth/server.ts"
+  );
+
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(authConfigSrc, authConfigDest);
   fs.copySync(authIndexSrc, authIndexDest);
+  fs.copySync(betterAuthClientSrc, betterAuthClientDest);
+  fs.copySync(betterAuthServerSrc, betterAuthServerDest);
 };
