@@ -286,7 +286,7 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "next-auth", label: "NextAuth.js" },
-              { value: "better-auth", label: "better-auth" },
+              { value: "better-auth", label: "BetterAuth" },
               // Maybe later
               // { value: "clerk", label: "Clerk" },
             ],
