@@ -6,7 +6,11 @@ import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js
 import { type Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const betterAuthInstaller: Installer = ({ projectDir, packages }) => {
+export const betterAuthInstaller: Installer = ({
+  projectDir,
+  packages,
+  databaseProvider,
+}) => {
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
@@ -70,4 +74,56 @@ export const betterAuthInstaller: Installer = ({ projectDir, packages }) => {
   fs.copySync(authIndexSrc, authIndexDest);
   fs.copySync(betterAuthClientSrc, betterAuthClientDest);
   fs.copySync(betterAuthServerSrc, betterAuthServerDest);
+
+  // Update Better Auth adapter provider according to selected DB
+  try {
+    if (fs.pathExistsSync(authConfigDest)) {
+      const content = fs.readFileSync(authConfigDest, "utf8");
+
+      // Map CLI database provider to adapter provider strings
+      const providerForDrizzle = (db: string) => {
+        switch (db) {
+          case "postgres":
+            return "pg";
+          case "mysql":
+          case "planetscale":
+            return "mysql";
+          case "sqlite":
+            return "sqlite";
+          default:
+            return "pg";
+        }
+      };
+
+      const providerForPrisma = (db: string) => {
+        switch (db) {
+          case "postgres":
+            return "postgresql";
+          case "mysql":
+          case "planetscale":
+            return "mysql";
+          case "sqlite":
+            return "sqlite";
+          default:
+            return "postgresql";
+        }
+      };
+
+      const providerValue = usingPrisma
+        ? providerForPrisma(databaseProvider)
+        : usingDrizzle
+          ? providerForDrizzle(databaseProvider)
+          : undefined;
+
+      if (providerValue) {
+        const updated = content.replace(
+          /(provider:\s*")[^"]+("\s*,?)/,
+          `$1${providerValue}$2`
+        );
+        fs.writeFileSync(authConfigDest, updated, "utf8");
+      }
+    }
+  } catch {
+    // Non-fatal: leave default provider from template
+  }
 };
