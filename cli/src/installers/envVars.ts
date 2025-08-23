@@ -11,7 +11,7 @@ export const envVariablesInstaller: Installer = ({
   databaseProvider,
   scopedAppName,
 }) => {
-  const usingAuth = packages?.nextAuth.inUse;
+  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 

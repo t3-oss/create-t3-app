@@ -72,7 +72,7 @@ export const selectIndexFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
 
   let indexFile = "base.tsx";
   if (usingTRPC && usingTw && usingAuth) {
@@ -101,7 +101,7 @@ export const selectPageFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages.nextAuth.inUse;
+  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
 
   let indexFile = "base.tsx";
   if (usingTRPC && usingTw && usingAuth) {

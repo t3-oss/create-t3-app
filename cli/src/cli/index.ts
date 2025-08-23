@@ -286,6 +286,7 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "next-auth", label: "NextAuth.js" },
+              { value: "better-auth", label: "better-auth" },
               // Maybe later
               // { value: "clerk", label: "Clerk" },
             ],
@@ -372,6 +373,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.styling) packages.push("tailwind");
     if (project.trpc) packages.push("trpc");
     if (project.authentication === "next-auth") packages.push("nextAuth");
+    if (project.authentication === "better-auth") packages.push("betterAuth");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
     if (project.linter === "eslint") packages.push("eslint");
