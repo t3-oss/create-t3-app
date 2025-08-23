@@ -68,7 +68,8 @@ export default async function Home() {
                           callbackURL: "/",
                         },
                       });
-                      if (!res.url) throw new Error("No URL returned from signInSocial");
+                      if (!res.url)
+                        throw new Error("No URL returned from signInSocial");
                       redirect(res.url);
                     }}
                   >

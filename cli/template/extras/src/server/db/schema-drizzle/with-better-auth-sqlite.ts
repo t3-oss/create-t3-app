@@ -1,9 +1,5 @@
 import { relations, sql } from "drizzle-orm";
-import {
-  index,
-  sqliteTable,
-  sqliteTableCreator,
-} from "drizzle-orm/sqlite-core";
+import { index, sqliteTable } from "drizzle-orm/sqlite-core";
 
 /**
  * Multi-project schema prefix helper
