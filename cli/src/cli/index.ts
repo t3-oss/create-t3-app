@@ -34,6 +34,8 @@ interface CliFlags {
   /** @internal Used in CI. */
   nextAuth: boolean;
   /** @internal Used in CI. */
+  betterAuth: boolean;
+  /** @internal Used in CI. */
   appRouter: boolean;
   /** @internal Used in CI. */
   dbProvider: DatabaseProvider;
@@ -63,6 +65,7 @@ const defaultOptions: CliResults = {
     prisma: false,
     drizzle: false,
     nextAuth: false,
+    betterAuth: false,
     importAlias: "~/",
     appRouter: false,
     dbProvider: "sqlite",
@@ -113,6 +116,12 @@ export const runCli = async (): Promise<CliResults> => {
     .option(
       "--nextAuth [boolean]",
       "Experimental: Boolean value if we should install NextAuth.js. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
+    )
+    /** @experimental Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
+    .option(
+      "--betterAuth [boolean]",
+      "Experimental: Boolean value if we should install BetterAuth. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
@@ -199,6 +208,7 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.drizzle) cliResults.packages.push("drizzle");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
+    if (cliResults.flags.betterAuth) cliResults.packages.push("betterAuth");
     if (cliResults.flags.eslint) cliResults.packages.push("eslint");
     if (cliResults.flags.biome) cliResults.packages.push("biome");
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
@@ -210,6 +220,10 @@ export const runCli = async (): Promise<CliResults> => {
     }
     if (cliResults.flags.biome && cliResults.flags.eslint) {
       logger.warn("Incompatible combination Biome + ESLint. Exiting.");
+      process.exit(0);
+    }
+    if (cliResults.flags.nextAuth && cliResults.flags.betterAuth) {
+      logger.warn("Incompatible combination NextAuth + BetterAuth. Exiting.");
       process.exit(0);
     }
     if (databaseProviders.includes(cliResults.flags.dbProvider) === false) {
