@@ -13,7 +13,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import { auth } from "~/server/better-auth";
-import  { type Session } from "~/server/better-auth/config";
+import { type Session } from "~/server/better-auth/config";
 import { db } from "~/server/db";
 
 /**
