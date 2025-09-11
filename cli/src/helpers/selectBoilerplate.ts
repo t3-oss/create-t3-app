@@ -16,12 +16,17 @@ export const selectAppFile = ({
 
   const usingTw = packages.tailwind.inUse;
   const usingTRPC = packages.trpc.inUse;
-  const usingNextAuth = packages.nextAuth.inUse;
+  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
+  const usingBetterAuth = packages?.betterAuth.inUse;
 
   let appFile = "base.tsx";
-  if (usingTRPC && usingTw && usingNextAuth) {
+  if (usingTRPC && usingTw && usingBetterAuth) {
+    appFile = "with-better-auth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingBetterAuth) {
+    appFile = "with-better-auth-trpc.tsx";
+  } else if (usingTRPC && usingTw && usingAuth) {
     appFile = "with-auth-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw && usingNextAuth) {
+  } else if (usingTRPC && !usingTw && usingAuth) {
     appFile = "with-auth-trpc.tsx";
   } else if (usingTRPC && usingTw) {
     appFile = "with-trpc-tw.tsx";
@@ -29,9 +34,9 @@ export const selectAppFile = ({
     appFile = "with-trpc.tsx";
   } else if (!usingTRPC && usingTw) {
     appFile = "with-tw.tsx";
-  } else if (usingNextAuth && usingTw) {
+  } else if (usingAuth && usingTw) {
     appFile = "with-auth-tw.tsx";
-  } else if (usingNextAuth && !usingTw) {
+  } else if (usingAuth && !usingTw) {
     appFile = "with-auth.tsx";
   }
 
@@ -72,10 +77,16 @@ export const selectIndexFile = ({
 
   const usingTRPC = packages.trpc.inUse;
   const usingTw = packages.tailwind.inUse;
-  const usingAuth = packages?.nextAuth.inUse ?? packages?.betterAuth.inUse;
+  const usingBetterAuth = packages?.betterAuth.inUse;
+  const usingNextAuth = packages?.nextAuth.inUse;
+  const usingAuth = usingNextAuth || usingBetterAuth;
 
   let indexFile = "base.tsx";
-  if (usingTRPC && usingTw && usingAuth) {
+  if (usingTRPC && usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-trpc-tw.tsx";
+  } else if (usingTRPC && !usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-trpc.tsx";
+  } else if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingAuth) {
     indexFile = "with-auth-trpc.tsx";

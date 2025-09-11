@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
-import { type Installer } from "~/installers/index.js";
+import type { Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const trpcInstaller: Installer = ({
@@ -37,13 +37,9 @@ export const trpcInstaller: Installer = ({
   const apiHandlerSrc = path.join(extrasDir, srcToUse);
   const apiHandlerDest = path.join(projectDir, srcToUse);
 
-  // Better Auth tRPC templates currently exist only for App Router
-  const hasBetterAuthTemplates = !!appRouter;
-
   const trpcFile = (() => {
-    if (hasBetterAuthTemplates && usingBetterAuth && usingDb)
-      return "with-better-auth-db.ts";
-    if (hasBetterAuthTemplates && usingBetterAuth) return "with-better-auth.ts";
+    if (usingBetterAuth && usingDb) return "with-better-auth-db.ts";
+    if (usingBetterAuth) return "with-better-auth.ts";
     if (usingAuth && usingDb) return "with-auth-db.ts";
     if (usingAuth) return "with-auth.ts";
     if (usingDb) return "with-db.ts";

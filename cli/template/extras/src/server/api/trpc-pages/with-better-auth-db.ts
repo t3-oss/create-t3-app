@@ -12,7 +12,8 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { auth, type Session } from "~/server/better-auth";
+import { auth } from "~/server/better-auth";
+import type { Session } from "~/server/better-auth/config";
 import { db } from "~/server/db";
 
 /**
