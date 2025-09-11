@@ -2,14 +2,15 @@ import path from "path";
 import fs from "fs-extra";
 
 import { PKG_ROOT } from "~/consts.js";
-import { type AvailableDependencies } from "~/installers/dependencyVersionMap.js";
-import { type Installer } from "~/installers/index.js";
+import type { AvailableDependencies } from "~/installers/dependencyVersionMap.js";
+import type { Installer } from "~/installers/index.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
 export const betterAuthInstaller: Installer = ({
   projectDir,
   packages,
   databaseProvider,
+  appRouter,
 }) => {
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
@@ -26,7 +27,11 @@ export const betterAuthInstaller: Installer = ({
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const apiHandlerFile = "src/app/api/auth/[...all]/route.ts";
+  const isAppRouter = appRouter ?? true; // Default to app router if not specified
+
+  const apiHandlerFile = isAppRouter
+    ? "src/app/api/auth/[...all]/route.ts"
+    : "src/pages/api/auth/[...all].ts";
 
   const apiHandlerSrc = path.join(extrasDir, apiHandlerFile);
   const apiHandlerDest = path.join(projectDir, apiHandlerFile);
