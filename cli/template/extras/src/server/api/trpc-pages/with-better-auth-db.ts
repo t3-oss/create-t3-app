@@ -51,11 +51,19 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req } = opts;
+export const createTRPCContext = async ({ req }: CreateNextContextOptions) => {
+  // Convert IncomingHttpHeaders to Headers object
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(req.headers)) {
+    if (Array.isArray(value)) {
+      value.forEach((v) => headers.append(key, v));
+    } else if (value) {
+      headers.append(key, value);
+    }
+  }
 
   const session = await auth.api.getSession({
-    headers: req.headers,
+    headers,
   });
   return createInnerTRPCContext({
     session,
