@@ -3,19 +3,20 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
+
+// NOTE: When using mysql or sqlserver, uncomment the //@db.Text annotations in model Account below
+// Further reading:
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
 
 datasource db {
   provider = "sqlite"
-    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
   url      = env("DATABASE_URL")
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -27,29 +28,29 @@ model Post {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String    // @db.Text
+  id            String    @id
+  name          String //@db.Text
   email         String
-  emailVerified Boolean
-  image         String?   // @db.Text
-  createdAt     DateTime
-  updatedAt     DateTime
+  emailVerified Boolean   @default(false)
+  image         String? //@db.Text
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
-
   posts         Post[]
+
   @@unique([email])
   @@map("user")
 }
 
 model Session {
-  id        String   @id @default(cuid())
+  id        String   @id
   expiresAt DateTime
   token     String
-  createdAt DateTime
-  updatedAt DateTime
-  ipAddress String?  // @db.Text
-  userAgent String?  // @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String? //@db.Text
+  userAgent String? //@db.Text
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -58,31 +59,31 @@ model Session {
 }
 
 model Account {
-  id                    String    @id @default(cuid())
-  accountId             String    // @db.Text
-  providerId            String    // @db.Text
+  id                    String    @id
+  accountId             String //@db.Text
+  providerId            String //@db.Text
   userId                String
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken           String?   // @db.Text
-  refreshToken          String?   // @db.Text
-  idToken               String?   // @db.Text
+  accessToken           String? //@db.Text
+  refreshToken          String? //@db.Text
+  idToken               String? //@db.Text
   accessTokenExpiresAt  DateTime?
   refreshTokenExpiresAt DateTime?
-  scope                 String?   // @db.Text
-  password              String?   // @db.Text
-  createdAt             DateTime
-  updatedAt             DateTime
+  scope                 String? //@db.Text
+  password              String? //@db.Text
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
 
   @@map("account")
 }
 
 model Verification {
-  id         String    @id @default(cuid())
-  identifier String    // @db.Text
-  value      String    // @db.Text
+  id         String   @id
+  identifier String //@db.Text
+  value      String //@db.Text
   expiresAt  DateTime
-  createdAt  DateTime?
-  updatedAt  DateTime?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
 }

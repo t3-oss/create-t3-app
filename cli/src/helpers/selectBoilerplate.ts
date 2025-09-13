@@ -86,6 +86,10 @@ export const selectIndexFile = ({
     indexFile = "with-better-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingBetterAuth) {
     indexFile = "with-better-auth-trpc.tsx";
+  } else if (!usingTRPC && usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-tw.tsx";
+  } else if (!usingTRPC && !usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth.tsx";
   } else if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingAuth) {
@@ -120,6 +124,10 @@ export const selectPageFile = ({
     indexFile = "with-better-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingBetterAuth) {
     indexFile = "with-better-auth-trpc.tsx";
+  } else if (!usingTRPC && usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth-tw.tsx";
+  } else if (!usingTRPC && !usingTw && usingBetterAuth) {
+    indexFile = "with-better-auth.tsx";
   } else if (usingTRPC && usingTw && usingAuth) {
     indexFile = "with-auth-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw && usingAuth) {

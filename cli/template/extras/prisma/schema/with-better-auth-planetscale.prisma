@@ -1,20 +1,23 @@
-// Prisma schema for Better Auth (PlanetScale/MySQL)
+// Prisma schema for Better Auth
 // learn more: https://better-auth.com/docs/concepts/database
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
-datasource db {
-  provider = "mysql"
-      // If you have enabled foreign key constraints for your database, remove this line.
-  relationMode = "prisma"
+// NOTE: When using mysql or sqlserver, uncomment the  @db.Text annotations in model Account below
+// Further reading:
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
 
-  url      = env("DATABASE_URL")
+datasource db {
+  provider     = "mysql"
+  relationMode = "prisma"
+  url          = env("DATABASE_URL")
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -26,13 +29,13 @@ model Post {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id
   name          String    @db.Text
   email         String
-  emailVerified Boolean
+  emailVerified Boolean   @default(false)
   image         String?   @db.Text
-  createdAt     DateTime
-  updatedAt     DateTime
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
   posts         Post[]
@@ -42,11 +45,11 @@ model User {
 }
 
 model Session {
-  id        String   @id @default(cuid())
+  id        String   @id
   expiresAt DateTime
   token     String
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   ipAddress String?  @db.Text
   userAgent String?  @db.Text
   userId    String
@@ -57,7 +60,7 @@ model Session {
 }
 
 model Account {
-  id                    String    @id @default(cuid())
+  id                    String    @id
   accountId             String    @db.Text
   providerId            String    @db.Text
   userId                String
@@ -69,19 +72,19 @@ model Account {
   refreshTokenExpiresAt DateTime?
   scope                 String?   @db.Text
   password              String?   @db.Text
-  createdAt             DateTime
-  updatedAt             DateTime
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
 
   @@map("account")
 }
 
 model Verification {
-  id         String    @id @default(cuid())
-  identifier String    @db.Text
-  value      String    @db.Text
+  id         String   @id
+  identifier String   @db.Text
+  value      String   @db.Text
   expiresAt  DateTime
-  createdAt  DateTime?
-  updatedAt  DateTime?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
 }
