@@ -51,4 +51,4 @@ function isValid(combo) {
 const allCombos = generateCombinations(options);
 const validCombos = allCombos.filter(isValid);
 
-console.log(`matrix=${JSON.stringify(validCombos)}`);
+console.log(`matrix=${JSON.stringify({include: validCombos})}`);
