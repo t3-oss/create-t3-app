@@ -1,22 +1,11 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-	"files": {
-    "ignoreUnknown": false,
-    "ignore": []
-  },
-  "assists": {
-    "enabled": true,
-    "actions": { "source": { "sortJsxProps": "on" } }
-  },
-	"organizeImports": { "enabled": true },
-	"formatter": { "enabled": true, "indentStyle": "space" },
-  "javascript": { "formatter": { "quoteStyle": "single" } },
-  "css": { "parser": { "cssModules": true } },
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"formatter": { "enabled": true, "indentStyle": "tab" },
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -24,10 +13,21 @@
 				"useSortedClasses": {
 					"level": "warn",
 					"fix": "safe",
-					"options": { "functions": [ "clsx", "cva", "cn" ] }
+					"options": { "functions": ["clsx", "cva", "cn"] }
 				}
 			},
 			"recommended": true
 		}
-	}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on",
+				"useSortedAttributes": "on"
+			}
+		}
+	},
+	"javascript": { "formatter": { "quoteStyle": "double" } },
+	"css": { "parser": { "cssModules": true }, "linter": { "enabled": false } }
 }
