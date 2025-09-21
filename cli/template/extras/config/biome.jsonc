@@ -46,7 +46,15 @@
 	"css": {
 		"assist": { "enabled": true },
 		"formatter": { "enabled": true },
-		"linter": { "enabled": true },
-		"parser": { "cssModules": true }
+		"linter": {
+			// disabled until v2.2.5 is released which supports
+			// @theme and other Tailwind CSS directives.
+			"enabled": false
+		},
+		"parser": {
+			"cssModules": true
+			// enabled after upgrading to Biome v2.2.5:
+			// "tailwindDirectives": true
+		}
 	}
 }
