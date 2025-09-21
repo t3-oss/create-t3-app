@@ -1,33 +1,52 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"root": true,
 	"vcs": {
 		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
+		"useIgnoreFile": true,
+		"clientKind": "git"
 	},
-	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"recommended": true,
+			"source": {
+				"recommended": true,
+				"organizeImports": "on",
+				"useSortedAttributes": "on"
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"useEditorconfig": true,
+		"indentStyle": "tab"
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"recommended": true,
 			"nursery": {
 				"useSortedClasses": {
 					"level": "warn",
 					"fix": "safe",
 					"options": { "functions": ["clsx", "cva", "cn"] }
 				}
-			},
-			"recommended": true
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on",
-				"useSortedAttributes": "on"
 			}
 		}
 	},
-	"javascript": { "formatter": { "quoteStyle": "double" } },
-	"css": { "parser": { "cssModules": true }, "linter": { "enabled": false } }
+	"html": {
+		"formatter": { "enabled": true }
+	},
+	"javascript": {
+		"assist": { "enabled": true },
+		"formatter": { "enabled": true },
+		"linter": { "enabled": true }
+	},
+	"css": {
+		"assist": { "enabled": true },
+		"formatter": { "enabled": true },
+		"linter": { "enabled": true },
+		"parser": { "cssModules": true }
+	}
 }
