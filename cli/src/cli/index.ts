@@ -209,7 +209,8 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
     if (cliResults.flags.eslint) cliResults.packages.push("eslint");
     if (cliResults.flags.biome) cliResults.packages.push("biome");
-    cliResults.flags.ignoreBuildErrors = cliResults.flags.ignoreBuildErrors ?? false;
+    cliResults.flags.ignoreBuildErrors =
+      cliResults.flags.ignoreBuildErrors ?? false;
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
@@ -344,7 +345,8 @@ export const runCli = async (): Promise<CliResults> => {
         },
         ignoreBuildErrors: () => {
           return p.confirm({
-            message: "Would you like to ignore TypeScript and ESLint build errors?",
+            message:
+              "Would you like to ignore TypeScript and ESLint build errors?",
             initialValue: false,
           });
         },
@@ -403,7 +405,8 @@ export const runCli = async (): Promise<CliResults> => {
         noGit: !project.git || cliResults.flags.noGit,
         noInstall: !project.install || cliResults.flags.noInstall,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,
-        ignoreBuildErrors: project.ignoreBuildErrors ?? cliResults.flags.ignoreBuildErrors,
+        ignoreBuildErrors:
+          project.ignoreBuildErrors ?? cliResults.flags.ignoreBuildErrors,
       },
     };
   } catch (err) {

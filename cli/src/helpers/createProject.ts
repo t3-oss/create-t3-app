@@ -29,13 +29,13 @@ interface CreateProjectOptions {
 
 const updateNextConfigWithIgnoreOptions = (projectDir: string) => {
   const nextConfigPath = path.join(projectDir, "next.config.js");
-  
+
   if (!fs.existsSync(nextConfigPath)) {
     return;
   }
 
-  let configContent = fs.readFileSync(nextConfigPath, "utf-8");
-  
+  const configContent = fs.readFileSync(nextConfigPath, "utf-8");
+
   // Find the config object and add the ignore options
   const configWithIgnores = configContent.replace(
     /const config = {([^}]*)};/,
