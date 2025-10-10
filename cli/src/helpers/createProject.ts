@@ -24,7 +24,31 @@ interface CreateProjectOptions {
   importAlias: string;
   appRouter: boolean;
   databaseProvider: DatabaseProvider;
+  ignoreBuildErrors: boolean;
 }
+
+const updateNextConfigWithIgnoreOptions = (projectDir: string) => {
+  const nextConfigPath = path.join(projectDir, "next.config.js");
+  
+  if (!fs.existsSync(nextConfigPath)) {
+    return;
+  }
+
+  let configContent = fs.readFileSync(nextConfigPath, "utf-8");
+  
+  // Find the config object and add the ignore options
+  const configWithIgnores = configContent.replace(
+    /const config = {([^}]*)};/,
+    `const config = {$1  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },};`
+  );
+
+  fs.writeFileSync(nextConfigPath, configWithIgnores);
+};
 
 export const createProject = async ({
   projectName,
@@ -33,6 +57,7 @@ export const createProject = async ({
   noInstall,
   appRouter,
   databaseProvider,
+  ignoreBuildErrors,
 }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
@@ -73,6 +98,11 @@ export const createProject = async ({
   } else {
     selectAppFile({ projectDir, packages });
     selectIndexFile({ projectDir, packages });
+  }
+
+  // Add ignore build errors configuration if selected
+  if (ignoreBuildErrors) {
+    updateNextConfigWithIgnoreOptions(projectDir);
   }
 
   // If no tailwind, select use css modules
