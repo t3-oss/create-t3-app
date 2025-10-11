@@ -49,12 +49,17 @@ export const selectLayoutFile = ({
 
   const usingTw = packages.tailwind.inUse;
   const usingTRPC = packages.trpc.inUse;
+  const usingORPC = packages.orpc.inUse;
   let layoutFile = "base.tsx";
   if (usingTRPC && usingTw) {
     layoutFile = "with-trpc-tw.tsx";
-  } else if (usingTRPC && !usingTw) {
+  } else if (usingTRPC) {
     layoutFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw) {
+  } else if (usingORPC && usingTw) {
+    layoutFile = "with-orpc-tw.tsx";
+  } else if (usingORPC) {
+    layoutFile = "with-orpc.tsx";
+  } else if (usingTw) {
     layoutFile = "with-tw.tsx";
   }
 
@@ -100,6 +105,7 @@ export const selectPageFile = ({
   const indexFileDir = path.join(PKG_ROOT, "template/extras/src/app/page");
 
   const usingTRPC = packages.trpc.inUse;
+  const usingORPC = packages.orpc.inUse;
   const usingTw = packages.tailwind.inUse;
   const usingAuth = packages.nextAuth.inUse;
 
@@ -112,7 +118,15 @@ export const selectPageFile = ({
     indexFile = "with-trpc-tw.tsx";
   } else if (usingTRPC && !usingTw) {
     indexFile = "with-trpc.tsx";
-  } else if (!usingTRPC && usingTw) {
+  } else if (usingORPC && usingTw && usingAuth) {
+    indexFile = "with-auth-orpc-tw.tsx";
+  } else if (usingORPC && !usingTw && usingAuth) {
+    indexFile = "with-auth-orpc.tsx";
+  } else if (usingORPC && usingTw) {
+    indexFile = "with-orpc-tw.tsx";
+  } else if (usingORPC && !usingTw) {
+    indexFile = "with-orpc.tsx";
+  } else if (usingTw) {
     indexFile = "with-tw.tsx";
   }
 
