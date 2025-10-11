@@ -19,8 +19,6 @@
   },
   "formatter": {
     "enabled": true,
-    "useEditorconfig": true,
-    "indentStyle": "tab",
   },
   "linter": {
     "enabled": true,
@@ -30,23 +28,39 @@
         "useSortedClasses": {
           "level": "warn",
           "fix": "safe",
-          "options": { "functions": ["clsx", "cva", "cn"] },
+          "options": {
+            "functions": ["clsx", "cva", "cn"],
+          },
         },
       },
     },
   },
   "html": {
-    "formatter": { "enabled": true },
+    "formatter": {
+      "enabled": true,
+    },
   },
   "javascript": {
-    "assist": { "enabled": true },
-    "formatter": { "enabled": true },
-    "linter": { "enabled": true },
+    "assist": {
+      "enabled": true,
+    },
+    "formatter": {
+      "enabled": true,
+    },
+    "linter": {
+      "enabled": true,
+    },
   },
   "css": {
-    "assist": { "enabled": true },
-    "formatter": { "enabled": true },
-    "linter": { "enabled": true },
+    "assist": {
+      "enabled": true,
+    },
+    "formatter": {
+      "enabled": true,
+    },
+    "linter": {
+      "enabled": true,
+    },
     "parser": {
       "cssModules": true,
       "tailwindDirectives": true,
