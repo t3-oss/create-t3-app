@@ -1,0 +1,19 @@
+---
+title: NextAuth.js
+description: Penggunaan NextAuth.js
+layout: ../../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Tabs from "../../../components/docs/tabs.astro";
+import AppRouter from "./_next-auth-app-router.mdx";
+import Pages from "./_next-auth-pages.mdx";
+
+Ketika kamu ingin menambahkan sistem autentikasi di aplikasi Next.js, **NextAuth.js** adalah solusi yang sangat baik untuk menghadirkan keamanan tanpa harus membangun semuanya dari nol.  
+NextAuth.js menyediakan daftar penyedia (providers) yang luas untuk menambahkan autentikasi OAuth dengan cepat, serta adapter untuk berbagai database dan ORM.
+
+<Tabs slotOne="Pages Router" slotTwo="App Router" tabName="app-router">
+  <Pages slot="1" />
+  <AppRouter slot="2" />
+</Tabs>

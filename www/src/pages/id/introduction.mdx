@@ -1,0 +1,52 @@
+---
+title: Pengantar
+description: Pengantar tentang T3 Stack
+layout: ../../layouts/docs.astro
+lang: id
+---
+
+import { IntroductionTab } from "../../components/docs/introductionTab";
+
+<IntroductionTab client:load />
+
+## T3 Stack
+
+_"T3 Stack"_ adalah sebuah stack pengembangan web yang dibuat oleh [Theo](https://twitter.com/t3dotgg), berfokus pada **kesederhanaan**, **modularitas**, dan **typesafety full-stack**.
+
+Komponen utamanya adalah [**Next.js**](https://nextjs.org/) dan [**TypeScript**](https://typescriptlang.org/). [**Tailwind CSS**](https://tailwindcss.com/) hampir selalu disertakan. Jika kamu mengerjakan bagian backend, [**tRPC**](https://trpc.io/), [**Prisma**](https://prisma.io/), dan [**NextAuth.js**](https://next-auth.js.org/) juga merupakan tambahan yang sangat baik.
+
+Kamu mungkin menyadari bahwa ada… cukup banyak komponen di sini. Itu memang sengaja. Kamu bisa menukar dan memilih komponen sesuai kebutuhanmu — karena inti dari stack ini adalah **modularitas** :)
+
+## Jadi... apa itu create-t3-app? Template kah?
+
+Semacam?  
+`create-t3-app` adalah sebuah CLI yang dibuat oleh para pengembang berpengalaman di ekosistem T3 Stack untuk mempermudah proses setup aplikasi berbasis T3 Stack yang modular.  
+Artinya, setiap bagian bersifat **opsional**, dan "template"-nya akan dihasilkan berdasarkan kebutuhan spesifik proyekmu.
+
+Setelah mengerjakan banyak proyek dan bertahun-tahun menggunakan teknologi ini, kami mengumpulkan banyak opini dan wawasan. Kami berusaha sebaik mungkin untuk menuangkannya ke dalam CLI ini.
+
+Ini **BUKAN** template serba lengkap. Kami **mengharapkan** kamu membawa pustaka sendiri yang sesuai dengan kebutuhan **aplikasimu**.  
+Kami tidak ingin memaksakan solusi untuk masalah spesifik seperti manajemen state atau deployment, tetapi kami [menyediakan beberapa rekomendasi di sini](/id/other-recs).
+
+## Aksioma T3
+
+Terus terang, ini adalah proyek yang **beropini kuat**.  
+Kami memiliki beberapa keyakinan inti dalam membangun aplikasi, dan kami menjadikannya dasar dalam setiap pengambilan keputusan.
+
+### Selesaikan Masalah
+
+Sangat mudah terjebak dalam keinginan untuk “menambahkan semuanya” — kami secara eksplisit **tidak** ingin melakukan itu.  
+Setiap hal yang ditambahkan ke `create-t3-app` harus menyelesaikan masalah nyata yang ada di dalam teknologi inti yang sudah disertakan.  
+Artinya, kami tidak akan menambahkan pustaka seperti `zustand` atau `redux`, tetapi kami akan menambahkan hal-hal seperti NextAuth.js serta integrasi Prisma dan tRPC untukmu.
+
+### Gunakan Teknologi Baru dengan Bijak
+
+Kami menyukai teknologi bleeding-edge.  
+Kecepatan dan keseruan dari mencoba hal baru itu sangat menyenangkan. Tapi kami percaya penting untuk **menggunakannya dengan bijak** — gunakan teknologi yang berisiko di bagian aplikasi yang tidak terlalu berisiko.  
+Misalnya, kami tidak akan ⛔️ bertaruh pada teknologi database baru yang belum stabil (SQL sudah hebat!), tetapi kami dengan senang hati ✅ menggunakan tRPC karena pada dasarnya hanya fungsi yang mudah dipindahkan jika diperlukan.
+
+### Typesafety Itu Wajib
+
+Tujuan utama Create T3 App adalah menyediakan cara tercepat untuk memulai aplikasi web **full-stack** yang **typesafe**.  
+Kami sangat serius dengan typesafety karena itu meningkatkan produktivitas dan membantu kami mengirimkan lebih sedikit bug.  
+Setiap keputusan yang mengorbankan sifat typesafe dari Create T3 App sebaiknya diambil di proyek lain.

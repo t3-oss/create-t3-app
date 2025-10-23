@@ -1,0 +1,233 @@
+import Callout from "../../../components/docs/callout.tsx";
+
+## Context Provider
+
+Di entrypoint aplikasi kamu, kamu akan melihat bahwa aplikasimu dibungkus oleh [SessionProvider](https://next-auth.js.org/getting-started/client#sessionprovider):
+
+```tsx:pages/_app.tsx
+<SessionProvider session={session}>
+  <Component {...pageProps} />
+</SessionProvider>
+```
+
+Context provider ini memungkinkan aplikasi kamu untuk mengakses data sesi dari mana saja di aplikasi tanpa perlu meneruskannya sebagai props:
+
+```tsx:pages/users/[id].tsx
+import { useSession } from "next-auth/react";
+
+const User = () => {
+  const { data: session } = useSession();
+
+  if (!session) {
+    // Tangani keadaan belum terautentikasi, misalnya render komponen SignIn
+    return <SignIn />;
+  }
+
+  return <p>Selamat datang {session.user.name}!</p>;
+};
+```
+
+## Mengambil session di sisi server
+
+Terkadang kamu mungkin ingin mengambil session di sisi server. Untuk melakukannya, lakukan prefetch terhadap session menggunakan fungsi helper `getServerAuthSession` yang disediakan oleh `create-t3-app`, lalu teruskan ke client menggunakan `getServerSideProps`:
+
+```tsx:pages/users/[id].tsx
+import { getServerAuthSession } from "../server/auth";
+import { type GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+  return {
+    props: { session },
+  };
+};
+
+const User = () => {
+  const { data: session } = useSession();
+  // CATATAN: `session` tidak memiliki state loading karena sudah di-prefetch di server
+
+  ...
+}
+```
+
+## Penambahan `user.id` pada Session
+
+Create T3 App dikonfigurasi untuk menggunakan [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) di konfigurasi NextAuth.js untuk menambahkan ID pengguna ke dalam objek `session`.
+
+```ts:server/auth.ts
+callbacks: {
+    session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
+  },
+```
+
+Ini dipasangkan dengan file deklarasi tipe agar `user.id` tetap bertipe saat diakses dari objek `session`. Baca lebih lanjut tentang [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) di dokumentasi NextAuth.js.
+
+```ts:server/auth.ts
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user?: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+}
+```
+
+Pola yang sama dapat digunakan untuk menambahkan data lain ke objek `session`, seperti field `role`, namun **tidak boleh digunakan untuk menyimpan data sensitif** di sisi client.
+
+## Penggunaan dengan tRPC
+
+Saat menggunakan NextAuth.js bersama tRPC, kamu dapat membuat prosedur terlindungi yang dapat digunakan kembali menggunakan [middleware](https://trpc.io/docs/v10/middlewares).
+Hal ini memungkinkan kamu membuat prosedur yang hanya dapat diakses oleh pengguna yang telah terautentikasi. `create-t3-app` sudah mengatur semuanya untukmu, sehingga kamu dapat dengan mudah mengakses objek `session` dalam prosedur yang terlindungi.
+
+Proses ini dilakukan dalam dua langkah:
+
+1. Ambil session dari header request menggunakan fungsi [`getServerSession`](https://next-auth.js.org/configuration/nextjs#getServerSession).
+   Keuntungan menggunakan `getServerSession` dibandingkan `getSession` biasa adalah karena ia hanya berjalan di sisi server dan tidak memicu panggilan fetch tambahan.
+   `create-t3-app` membuat fungsi helper yang menyederhanakan API ini agar kamu tidak perlu mengimpor opsi NextAuth.js dan `getServerSession` setiap kali ingin mengakses session.
+
+```ts:server/auth.ts
+export const getServerAuthSession = (ctx: {
+  req: GetServerSidePropsContext["req"];
+  res: GetServerSidePropsContext["res"];
+}) => {
+  return getServerSession(ctx.req, ctx.res, authOptions);
+};
+```
+
+Dengan fungsi helper ini, kita bisa mengambil session dan meneruskannya ke context tRPC:
+
+```ts:server/api/trpc.ts
+import { getServerAuthSession } from "../auth";
+
+export const createContext = async (opts: CreateNextContextOptions) => {
+  const { req, res } = opts;
+  const session = await getServerAuthSession({ req, res });
+  return await createContextInner({
+    session,
+  });
+};
+```
+
+2. Buat middleware tRPC yang memeriksa apakah pengguna sudah terautentikasi.
+   Middleware ini kemudian digunakan di `protectedProcedure`. Setiap pemanggil prosedur ini harus terautentikasi — jika tidak, akan dilempar error yang bisa ditangani di sisi client.
+
+```ts:server/api/trpc.ts
+export const protectedProcedure = t.procedure.use(({ ctx, next }) =>  {
+  if (!ctx.session?.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      // menganggap `session` sebagai non-nullable
+      session: { ...ctx.session, user: ctx.session.user },
+    },
+  });
+})
+```
+
+Objek session adalah representasi ringan dari pengguna dan hanya berisi beberapa field.
+Saat menggunakan `protectedProcedures`, kamu memiliki akses ke `user.id` yang bisa digunakan untuk mengambil lebih banyak data dari database.
+
+```ts:server/api/routers/user.ts
+const userRouter = router({
+  me: protectedProcedure.query(async ({ ctx }) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+    return user;
+  }),
+});
+```
+
+## Penggunaan dengan Prisma
+
+Mengintegrasikan NextAuth.js dengan Prisma membutuhkan [setup awal](https://authjs.dev/reference/adapter/prisma/) yang cukup banyak.
+`create-t3-app` sudah menyiapkan semuanya untukmu — jika kamu memilih Prisma dan NextAuth.js, kamu akan langsung mendapatkan sistem autentikasi yang berfungsi penuh dengan semua model yang dikonfigurasi sebelumnya.
+
+Aplikasi hasil scaffold akan dilengkapi dengan **Discord OAuth provider** yang sudah disiapkan, karena ini salah satu yang paling mudah digunakan — cukup isi token di `.env` dan kamu siap jalan.
+Kamu juga bisa menambahkan provider lain dengan mengikuti [dokumentasi NextAuth.js](https://next-auth.js.org/providers/).
+Namun, beberapa provider memerlukan field tambahan di model tertentu, jadi pastikan kamu membaca dokumentasi provider yang ingin kamu gunakan.
+
+### Menambahkan field baru ke model
+
+Saat menambahkan field baru ke model `User`, `Account`, `Session`, atau `VerificationToken` (biasanya hanya `User`), perlu diingat bahwa [Prisma adapter](https://next-auth.js.org/adapters/prisma) otomatis membuat field saat pengguna baru mendaftar atau login.
+Jadi, jika kamu menambahkan field baru, kamu **harus memberikan nilai default** karena adapter tidak mengenali field baru tersebut.
+
+Contoh: jika ingin menambahkan `role` ke model `User`, tambahkan nilai default seperti ini:
+
+```diff:prisma/schema.prisma
++ enum Role {
++   USER
++   ADMIN
++ }
+
+  model User {
+    ...
++   role Role @default(USER)
+  }
+```
+
+## Penggunaan dengan Middleware Next.js
+
+Menggunakan NextAuth.js dengan middleware Next.js [memerlukan strategi sesi JWT](https://next-auth.js.org/configuration/nextjs#caveats).
+Hal ini karena middleware hanya dapat mengakses cookie sesi jika menggunakan JWT.
+Secara default, Create T3 App dikonfigurasi menggunakan strategi database, dikombinasikan dengan Prisma sebagai adapter database.
+
+<Callout type="warning">
+  Menggunakan sesi berbasis database adalah pendekatan yang direkomendasikan.
+  Pelajari lebih lanjut tentang JWT sebelum beralih ke strategi sesi JWT untuk
+  menghindari masalah keamanan.
+</Callout>
+
+Setelah beralih ke strategi sesi JWT, pastikan kamu memperbarui callback `session` di `src/server/auth.ts`.
+Objek `user` akan menjadi `undefined`. Sebagai gantinya, ambil ID pengguna dari objek `token` seperti ini:
+
+```diff:server/auth.ts
+  export const authOptions: NextAuthOptions = {
++   session: {
++     strategy: "jwt",
++   },
+    callbacks: {
+-     session: ({ session, user }) => ({
++     session: ({ session, token }) => ({
+        ...session,
+        user: {
+          ...session.user,
+-         id: user.id,
++         id: token.sub,
+        },
+      }),
+    },
+  }
+```
+
+## Mengatur DiscordProvider bawaan
+
+1. Masuk ke [Discord Developer Portal (Applications)](https://discord.com/developers/applications), lalu klik **"New Application"**
+2. Di menu pengaturan, buka **"OAuth2 => General"**
+
+- Salin **Client ID** dan tempelkan ke `DISCORD_CLIENT_ID` di `.env`
+- Di bawah **Client Secret**, klik **"Reset Secret"** dan salin nilainya ke `DISCORD_CLIENT_SECRET` di `.env`.
+  Hati-hati, karena kamu tidak bisa melihat secret ini lagi, dan reset akan membuat secret lama kadaluarsa.
+- Klik **"Add Redirect"** lalu tempelkan `<app url>/api/auth/callback/discord`
+  (contoh untuk lokal: <code class="break-all">[http://localhost:3000/api/auth/callback/discord](http://localhost:3000/api/auth/callback/discord)</code>)
+- Simpan perubahanmu
+- Meskipun bisa, **tidak disarankan** menggunakan aplikasi Discord yang sama untuk development dan production.
+  Kamu juga bisa [memalsukan provider (mocking)](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) saat pengembangan.
+
+## Sumber Berguna
+
+| Sumber                              | Tautan                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| Dokumentasi NextAuth.js             | [https://next-auth.js.org/](https://next-auth.js.org/)                             |
+| GitHub NextAuth.js                  | [https://github.com/nextauthjs/next-auth](https://github.com/nextauthjs/next-auth) |
+| tRPC Kitchen Sink - dengan NextAuth | [https://kitchen-sink.trpc.io/next-auth](https://kitchen-sink.trpc.io/next-auth)   |
