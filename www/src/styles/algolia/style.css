@@ -625,3 +625,8 @@ svg.DocSearch-Hit-Select-Icon {
     opacity: 1;
   }
 }
+
+/* Fix overlapping of Search text with input box */
+.DocSearch-VisuallyHiddenForAccessibility {
+  margin-right: 8px;
+}
