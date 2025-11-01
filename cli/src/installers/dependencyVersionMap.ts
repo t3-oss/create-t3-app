@@ -39,7 +39,7 @@ export const dependencyVersionMap = {
   "server-only": "^0.0.1",
 
   // biome
-  "@biomejs/biome": "1.9.4",
+  "@biomejs/biome": "^2.2.5",
 
   // eslint / prettier
   prettier: "^3.5.3",
