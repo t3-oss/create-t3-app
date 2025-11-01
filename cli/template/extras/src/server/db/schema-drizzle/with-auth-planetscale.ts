@@ -18,7 +18,7 @@ export const posts = createTable(
     createdById: d.varchar({ length: 255 }).notNull(),
     createdAt: d
       .timestamp()
-      .default(sql`CURRENT_TIMESTAMP`)
+      .$defaultFn(() => /* @__PURE__ */ new Date())
       .notNull(),
     updatedAt: d.timestamp().onUpdateNow(),
   }),
