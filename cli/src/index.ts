@@ -85,6 +85,12 @@ const main = async () => {
   if (!noInstall) {
     await installDependencies({ projectDir });
 
+    if (usePackages.prisma.inUse) {
+      logger.info("Generating Prisma client...");
+      await execa("npx", ["prisma", "generate"], { cwd: projectDir });
+      logger.info("Successfully generated Prisma client!");
+    }
+
     await formatProject({
       pkgManager,
       projectDir,
