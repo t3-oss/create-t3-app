@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
+import { api, HydrateClient, prefetch } from "~/trpc/server";
 import styles from "./index.module.css";
 
 export default async function Home() {
@@ -10,7 +10,7 @@ export default async function Home() {
   const session = await auth();
 
   if (session?.user) {
-    void api.post.getLatest.prefetch();
+    void prefetch((api) => api.post.getLatest.queryOptions());
   }
 
   return (

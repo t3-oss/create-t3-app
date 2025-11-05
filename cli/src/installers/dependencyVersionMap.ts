@@ -32,9 +32,10 @@ export const dependencyVersionMap = {
   // tRPC
   "@trpc/client": "^11.0.0",
   "@trpc/server": "^11.0.0",
-  "@trpc/react-query": "^11.0.0",
   "@trpc/next": "^11.0.0",
   "@tanstack/react-query": "^5.69.0",
+  "@trpc/tanstack-react-query": "^11.3.1",
+  "@trpc/react-query": "^11.0.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
 
