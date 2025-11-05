@@ -35,5 +35,6 @@ jobs:
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
           # NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }} # OIDC
           NODE_ENV: "production"
