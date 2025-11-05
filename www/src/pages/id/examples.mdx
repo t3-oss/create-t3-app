@@ -1,0 +1,22 @@
+---
+title: Contoh
+description: Contoh berbagai aplikasi yang sedang berjalan
+layout: ../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+import Form from "../../components/docs/exampleOptionForm.astro";
+
+Kamu dapat mencoba berbagai kombinasi teknologi yang ditawarkan oleh create-t3-app.
+
+<Callout type="info">
+  Kamu tidak dapat memilih `prisma` dan `drizzle` secara bersamaan.
+</Callout>
+
+<Form />
+
+<Callout type="warning">
+  Beberapa fitur mungkin tidak berfungsi kecuali kamu membuat file env
+</Callout>

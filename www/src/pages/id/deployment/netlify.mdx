@@ -1,0 +1,93 @@
+---
+title: Netlify
+description: Deploy ke Netlify
+layout: ../../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Netlify adalah penyedia layanan deployment alternatif yang mirip dengan Vercel. Lihat contoh repositori [`ajcwebdev/ct3a-netlify`](https://github.com/ajcwebdev/ct3a-netlify) yang dibuat berdasarkan panduan ini.
+
+## Mengapa Menghosting di Netlify
+
+Secara umum, banyak orang berpendapat bahwa Vercel memiliki dukungan Next.js yang lebih unggul karena Vercel sendiri yang mengembangkan Next.js. Mereka memiliki kepentingan untuk memastikan performa dan pengalaman pengembang (DX) optimal di platform mereka. Dalam sebagian besar kasus, hal ini benar dan tidak ada alasan kuat untuk berpindah dari jalur standar tersebut.
+
+Namun, ada juga anggapan bahwa banyak fitur Next.js hanya didukung di Vercel. Walaupun benar bahwa fitur baru Next.js akan diuji dan didukung di Vercel terlebih dahulu saat dirilis, penyedia lain seperti Netlify juga [dengan cepat mengimplementasikan dan merilis dukungan](https://www.netlify.com/blog/deploy-nextjs-13/) untuk [fitur Next.js yang stabil](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+
+Setiap platform hosting memiliki kelebihan dan kekurangannya masing-masing, karena tidak ada satu penyedia pun yang terbaik untuk semua skenario. Misalnya, Netlify membangun [runtime Next.js khusus](https://github.com/netlify/next-runtime) untuk Edge Functions mereka (yang berjalan di Deno Deploy) dan [memiliki middleware unik untuk mengakses dan memodifikasi respons HTTP](https://github.com/netlify/next-runtime#nextjs-middleware-on-netlify).
+
+<Callout type="info">
+  Untuk memantau status fitur Next 13 yang belum stabil, lihat [Menggunakan
+  direktori `app` Next 13 di
+  Netlify](https://github.com/netlify/next-runtime/discussions/1724).
+</Callout>
+
+## Konfigurasi Proyek
+
+Ada banyak cara untuk mengonfigurasi perintah build proyekmu, termasuk melalui Netlify CLI atau langsung dari dashboard Netlify. Walaupun tidak wajib, sangat disarankan untuk membuat file [`netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/). Ini memastikan proyek hasil fork atau clone bisa dengan mudah dideploy kembali secara konsisten.
+
+```toml
+[build]
+  command = "next build"
+  publish = ".next"
+```
+
+## Menggunakan Dashboard Netlify
+
+1. Push kode kamu ke repositori GitHub, lalu daftar di [Netlify](https://app.netlify.com/signup). Setelah membuat akun, klik **Add new site**, lalu pilih **Import an existing project**.
+
+![New project on Netlify](/images/netlify-01-new-project.webp)
+
+2. Hubungkan akun Git kamu.
+
+![Import repository](/images/netlify-02-connect-to-git-provider.webp)
+
+3. Pilih repositori proyekmu.
+
+![Select your project's repository](/images/netlify-03-pick-a-repository-from-github.webp)
+
+4. Netlify akan otomatis mendeteksi file `netlify.toml` dan mengonfigurasi perintah build serta direktori publik secara otomatis.
+
+![Nextjs build settings](/images/netlify-04-configure-build-settings.webp)
+
+5. Klik **Show advanced**, lalu pilih **New variable** untuk menambahkan environment variable.
+
+![Add environment variables](/images/netlify-05-env-vars.webp)
+
+6. Klik **Deploy site**, tunggu proses build selesai, dan lihat situs barumu secara langsung.
+
+## Menggunakan Netlify CLI
+
+Untuk melakukan deploy dari command line, pertama-tama kamu perlu mem-push proyekmu ke repositori GitHub dan [menginstal Netlify CLI](https://docs.netlify.com/cli/get-started/). Kamu bisa menginstalnya sebagai dependency proyek atau secara global di komputer dengan perintah berikut:
+
+```bash
+npm i -g netlify-cli
+```
+
+Untuk menguji proyek secara lokal, jalankan perintah [`ntl dev`](https://docs.netlify.com/cli/get-started/#run-a-local-development-environment) dan buka [`localhost:8888`](http://localhost:8888/) untuk melihat aplikasi Netlify kamu berjalan secara lokal:
+
+```bash
+ntl dev
+```
+
+Jalankan perintah [`ntl init`](https://docs.netlify.com/cli/get-started/#continuous-deployment) untuk mengonfigurasi proyekmu:
+
+```bash
+ntl init
+```
+
+Impor environment variable dari file `.env` menggunakan perintah [`ntl env:import`](https://cli.netlify.com/commands/env#envimport):
+
+```bash
+ntl env:import .env
+```
+
+Lakukan deploy proyek dengan perintah [`ntl deploy`](https://docs.netlify.com/cli/get-started/#manual-deploys). Tambahkan flag `--build` untuk menjalankan perintah build sebelum deploy, dan `--prod` untuk melakukan deploy ke URL utama situsmu:
+
+```bash
+ntl deploy --prod --build
+```
+
+Untuk melihat contoh proyek yang berjalan di Netlify, kunjungi [ct3a.netlify.app](https://ct3a.netlify.app/).

@@ -1,0 +1,149 @@
+---
+title: Variabel Lingkungan
+description: Memulai dengan Create T3 App
+layout: ../../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Create T3 App menggunakan paket khususnya sendiri [@t3-oss/env-nextjs](https://env.t3.gg) bersama dengan [zod](https://zod.dev) di balik layar untuk memvalidasi variabel lingkungan saat _runtime_ **dan** _buildtime_ dengan logika sederhana di `src/env.js`.
+
+## env.js
+
+_TLDR; Jika kamu ingin menambahkan variabel lingkungan / env baru, kamu harus menambahkan validasi untuknya di `src/env.js`, lalu tambahkan pasangan kunci-nilai (KV-pair) di `.env`_
+
+```ts:env.js
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
+});
+```
+
+T3 Env menggunakan fungsi `createEnv` untuk membuat skema validasi yang memeriksa variabel lingkungan di sisi server maupun klien.
+
+<Callout type="info">
+  Untuk informasi lebih lanjut tentang bagaimana `createEnv` bekerja secara
+  internal, lihat dokumentasi [T3 Env](https://env.t3.gg/docs/introduction)
+</Callout>
+
+## Menggunakan Variabel Lingkungan / env
+
+Saat kamu ingin menggunakan variabel lingkungan, kamu bisa mengimpornya dari `env.js` dan memakainya seperti biasa. Jika kamu mengimpor ini di sisi klien dan mencoba mengakses variabel lingkungan yang hanya tersedia di server, kamu akan mendapatkan _runtime error_.
+
+```ts:pages/api/hello.ts
+import { env } from "../../env.js";
+
+// `env` sepenuhnya memiliki tipe dan menyediakan autocompletion
+const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.js";
+
+// ❌ Ini akan memunculkan runtime error
+const dbUrl = env.DATABASE_URL;
+
+// ✅ Ini aman
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
+```
+
+## .env.example
+
+Karena file `.env` default tidak dikomit ke sistem kontrol versi, kami juga menyertakan file `.env.example`, di mana kamu bisa menyimpan salinan struktur `.env` tanpa menyertakan data rahasia. Ini tidak wajib, tapi sangat disarankan untuk menjaga file contoh tetap _up-to-date_, sehingga kontributor baru dapat dengan mudah menyiapkan lingkungan pengembangan mereka.
+
+Beberapa framework dan _build tool_ seperti Next.js menyarankan untuk menyimpan rahasia di `.env.local` dan mengkomit file `.env` ke proyek. **Ini tidak disarankan**, karena bisa membuatmu tanpa sengaja mengkomit data rahasia. Sebagai gantinya, kami merekomendasikan untuk menyimpan rahasia di `.env`, menambahkan file `.env` ke `.gitignore`, dan hanya mengkomit file `.env.example`.
+
+## Menambahkan Variabel Lingkungan / env
+
+Untuk memastikan _build_ tidak selesai tanpa variabel lingkungan yang dibutuhkan, kamu perlu menambahkan variabel baru di **dua** lokasi:
+
+📄 `.env`: Tambahkan variabel seperti biasa, misalnya `KEY=VALUE`
+
+📄 `env.js`: Tambahkan logika validasi untuk variabel tersebut dengan mendefinisikan skema Zod di dalam `createEnv`, misalnya `KEY: z.string()`. Selain itu, pastikan kamu menambahkan _destructuring_ di opsi `runtimeEnv`, misalnya `KEY: process.env.KEY`.
+
+<Callout type="info">
+  Kenapa saya harus mendestruktur variabel lingkungan di `runtimeEnv`? Ini
+  karena cara Next.js membundel variabel lingkungan di beberapa *runtime*.
+  Dengan mendestruktur secara manual, kamu memastikan variabel tersebut tidak
+  akan dihapus dari bundle.
+</Callout>
+
+Opsional: kamu juga bisa memperbarui `.env.example`:
+
+📄 `.env.example`: Tambahkan variabel lingkungan, tapi jangan sertakan nilainya jika itu rahasia, misalnya `KEY=` atau `KEY=VALUE` tanpa nilai sebenarnya.
+
+### Contoh
+
+_Saya ingin menambahkan Token API Twitter saya sebagai variabel lingkungan di sisi server_
+
+1. Tambahkan variabel lingkungan di `.env`:
+
+```
+TWITTER_API_TOKEN=1234567890
+```
+
+2. Tambahkan variabel lingkungan ke `env.js`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
+  // ...
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
+```
+
+3. _Opsional:_ Tambahkan variabel lingkungan ke `.env.example` tanpa menyertakan nilainya
+
+```bash
+TWITTER_API_TOKEN=
+```
+
+## Tipe Konversi (_Type Coercion_)
+
+Semua variabel di `.env` akan diimpor sebagai string, meskipun nilainya merepresentasikan tipe lain. Jika kamu ingin menggunakan variabel lingkungan sebagai tipe lain saat _runtime_, kamu bisa menggunakan `coerce` dari Zod untuk mengonversi string ke tipe yang diinginkan. Akan muncul error jika konversi gagal.
+
+Tambahkan variabel ke `.env`:
+
+```
+SOME_NUMBER=123
+SOME_BOOLEAN=true
+```
+
+Lalu, validasikan di `env.js`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    SOME_NUMBER: z.coerce.number(),
+    SOME_BOOLEAN: z.coerce.boolean(),
+  },
+  // ...
+  runtimeEnv: {
+    SOME_NUMBER: process.env.SOME_NUMBER,
+    SOME_BOOLEAN: process.env.SOME_BOOLEAN,
+  },
+});
+```

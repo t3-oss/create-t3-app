@@ -1,0 +1,86 @@
+---
+title: Instalasi
+description: Panduan instalasi untuk Create T3 App
+layout: ../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Untuk membuat aplikasi menggunakan `create-t3-app`, jalankan salah satu perintah berikut dan jawab pertanyaan yang muncul di terminal:
+
+### npm
+
+```bash
+npm create t3-app@latest
+```
+
+### yarn
+
+```bash
+yarn create t3-app
+```
+
+### pnpm
+
+```bash
+pnpm create t3-app@latest
+```
+
+### bun
+
+```bash
+bun create t3-app@latest
+```
+
+Setelah aplikasi berhasil dibuat, lihat [langkah pertama](/id/usage/first-steps) untuk memulai pengembangan aplikasi barumu.
+
+## Penggunaan Lanjutan
+
+| Opsi / Flag       | Deskripsi                                                                 |
+| ----------------- | ------------------------------------------------------------------------- |
+| `[dir]`           | Tambahkan argumen direktori dengan nama proyek yang ingin dibuat          |
+| `--noGit`         | Memerintahkan CLI agar **tidak** membuat repositori git baru di proyek    |
+| `-y`, `--default` | Lewati proses interaktif dan langsung buat proyek dengan semua opsi aktif |
+| `--noInstall`     | Membuat proyek tanpa menginstal dependensi                                |
+
+## Penggunaan eksperimental
+
+Untuk kebutuhan CI, tersedia beberapa flag eksperimental yang memungkinkan kamu membuat proyek tanpa interaksi (prompt). Jika kamu membutuhkan cara ini, kamu bisa menggunakan flag-flag berikut. Harap dicatat bahwa flag ini bersifat eksperimental dan dapat berubah di masa mendatang tanpa mengikuti aturan versi semver.
+
+| Flag                      | Deskripsi                                       |
+| ------------------------- | ----------------------------------------------- |
+| `--CI`                    | Memberitahu CLI bahwa kamu sedang dalam mode CI |
+| `--trpc`                  | Menyertakan tRPC di proyek                      |
+| `--prisma`                | Menyertakan Prisma di proyek                    |
+| `--drizzle`               | Menyertakan Drizzle di proyek                   |
+| `--nextAuth`              | Menyertakan NextAuth.js di proyek               |
+| `--tailwind`              | Menyertakan Tailwind CSS di proyek              |
+| `--dbProvider [provider]` | Menyertakan konfigurasi database di proyek      |
+| `--appRouter`             | Menggunakan Next.js App Router di proyek        |
+
+<Callout type="warning">
+  Jika kamu tidak menambahkan flag `--CI`, maka flag lainnya tidak akan
+  berpengaruh.
+</Callout>
+
+Kamu tidak perlu secara eksplisit menonaktifkan paket yang tidak diinginkan.
+Namun, jika kamu ingin lebih eksplisit, kamu bisa memberikan nilai `false`, misalnya: `--nextAuth false`.
+
+Perintah --dbProvider memiliki 4 pilihan database: mysql, postgres, planetscale, dan sqlite.
+Jika tidak ditentukan, nilai default-nya adalah sqlite.
+
+### Contoh
+
+Perintah berikut akan membuat T3 App dengan tRPC dan Tailwind CSS:
+
+```bash
+pnpm dlx create-t3-app@latest --CI --trpc --tailwind
+```
+
+Perintah berikut akan membuat T3 App dengan NextAuth.js, Tailwind CSS, Drizzle, dan PostgreSQL:
+
+```bash
+pnpm dlx create-t3-app@latest --CI --nextAuth --tailwind --drizzle --dbProvider postgres
+```

@@ -1,0 +1,84 @@
+---
+title: Drizzle
+description: Penggunaan Drizzle
+layout: ../../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+Drizzle adalah ORM TypeScript tanpa antarmuka (headless) dengan API query [relasional](https://orm.drizzle.team/docs/rqb) dan [mirip SQL](https://orm.drizzle.team/docs/select). Drizzle dapat menangani migrasi dan skema basis data, serta menyediakan klien basis data yang aman terhadap tipe (type-safe). Drizzle juga dilengkapi dengan [Drizzle-Kit](https://orm.drizzle.team/drizzle-studio/overview), serangkaian alat pendamping yang membantu melakukan query ke basis data Anda.
+
+## Klien Drizzle
+
+Klien Drizzle terletak di `src/server/db/index.ts`. Di file ini, Anda dapat mendefinisikan URL koneksi basis data dan menghubungkan skema Anda ke objek basis data.
+
+```ts:src/server/db/index.ts
+import { env } from "~/env";
+import * as schema from "./schema";
+import postgres from "postgres";
+
+
+const conn = postgres(env.DATABASE_URL)
+
+export const db = drizzle(conn, { schema });
+```
+
+Kami merekomendasikan untuk menyertakan klien basis data di dalam konteks tRPC Anda:
+
+```ts:src/server/api/trpc.ts
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+## Skema
+
+File skema Drizzle dapat ditemukan di `src/server/db/schema.ts`. File ini adalah tempat Anda mendefinisikan skema dan model basis data Anda, serta menghubungkannya dengan Klien Drizzle.
+
+Ketika Anda memilih NextAuth.js bersama dengan Drizzle, file skema ini akan dibuat dan diatur secara otomatis dengan nilai yang direkomendasikan untuk model `User`, `Session`, `Account`, dan `VerificationToken`, sesuai dengan [dokumentasi Auth.js](https://authjs.dev/getting-started/adapters/drizzle).
+
+## Drizzle Kit
+
+Drizzle Kit adalah kumpulan alat baris perintah (command-line tools) yang dirancang untuk membantu Anda mengelola basis data. T3 Stack secara otomatis menyertakan Drizzle Kit ketika Anda memilih Drizzle sebagai ORM Anda.
+
+```json:package.json
+"scripts": {
+    ...
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    ...
+  },
+```
+
+### Penjelasan Script
+
+`db:generate`
+Menghasilkan tipe dan model TypeScript dari skema basis data Anda, memastikan keamanan tipe dan integrasi yang mudah dengan Drizzle ORM.
+
+`db:migrate`
+Menerapkan migrasi yang tertunda ke basis data Anda, menjaga agar skema tetap sinkron dengan perubahan dan pembaruan dalam proyek Anda.
+
+`db:push`
+Mendorong (push) perubahan skema lokal langsung ke basis data tanpa perlu membuat file migrasi secara eksplisit. Ini berguna untuk sinkronisasi cepat selama pengembangan.
+
+`db:studio`
+Membuka antarmuka visual untuk mengelola dan memeriksa tabel, data, serta relasi dalam basis data Anda.
+
+## Sumber Daya Berguna
+
+| Sumber Daya                   | Tautan                                                                                                     |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Dokumentasi Drizzle           | [https://orm.drizzle.team/docs/overview](https://orm.drizzle.team/docs/overview)                           |
+| GitHub Drizzle                | [https://github.com/drizzle-team/drizzle-orm](https://github.com/drizzle-team/drizzle-orm)                 |
+| Adapter Drizzle untuk Auth.JS | [https://authjs.dev/getting-started/adapters/drizzle](https://authjs.dev/getting-started/adapters/drizzle) |
+| Panduan Migrasi Drizzle Kit   | [https://orm.drizzle.team/docs/kit-overview](https://orm.drizzle.team/docs/kit-overview)                   |

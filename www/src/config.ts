@@ -38,6 +38,7 @@ export const KNOWN_LANGUAGES = {
   pl: "Polski",
   uk: "Українська",
   "zh-hans": "简体中文",
+  id: "Indonesia",
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
@@ -413,6 +414,39 @@ export const SIDEBAR: Sidebar = {
       { text: "Docker", link: "zh-hans/deployment/docker" },
     ],
   },
+  id: {
+    "Create T3 App": [
+      { text: "Pendahuluan", link: "id/introduction" },
+      { text: "Mengapa CT3A?", link: "id/why" },
+      { text: "Instalasi", link: "id/installation" },
+      {
+        text: "Struktur Folder (Pages)",
+        link: "id/folder-structure-pages",
+      },
+      { text: "FAQ", link: "id/faq" },
+      { text: "Koleksi T3", link: "id/t3-collection" },
+      { text: "Contoh", link: "id/examples" },
+      { text: "Rekomendasi Lain", link: "id/other-recs" },
+    ],
+    Usage: [
+      { text: "Langkah Pertama", link: "id/usage/first-steps" },
+      { text: "Next.js", link: "id/usage/next-js" },
+      { text: "TypeScript", link: "id/usage/typescript" },
+      { text: "tRPC", link: "id/usage/trpc" },
+      { text: "Prisma", link: "id/usage/prisma" },
+      { text: "NextAuth.js", link: "id/usage/next-auth" },
+      {
+        text: "Variabel Lingkungan / env",
+        link: "id/usage/env-variables",
+      },
+      { text: "Tailwind CSS", link: "id/usage/tailwind" },
+    ],
+    Deployment: [
+      { text: "Vercel", link: "id/deployment/vercel" },
+      { text: "Netlify", link: "id/deployment/netlify" },
+      { text: "Docker", link: "id/deployment/docker" },
+    ],
+  },
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
@@ -474,5 +508,10 @@ export const SIDEBAR_HEADER_MAP: Record<
     "Create T3 App": "Create T3 App",
     Usage: "用法",
     Deployment: "部署",
+  },
+  id: {
+    "Create T3 App": "Create T3 App",
+    Usage: "Penggunaan",
+    Deployment: "Penyebaran",
   },
 };

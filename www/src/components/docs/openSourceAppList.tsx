@@ -344,6 +344,13 @@ const projects: App[] = [
     linkName: "AISEKA",
     link: "https://aiseka.com/",
   },
+  {
+    description: "Binder — Chat, Messaging, and Collaboration Made Easy",
+    repoName: "mhmadamrii/binder",
+    repo: "https://github.com/mhmadamrii/binder",
+    linkName: "Binder",
+    link: "https://binder-goakal.vercel.app/",
+  },
 ];
 
 export default function OpenSourceAppList({
