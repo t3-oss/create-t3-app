@@ -12,9 +12,9 @@ export const dependencyVersionMap = {
   "better-auth": "^1.3",
 
   // Prisma
-  prisma: "^6.6.0",
-  "@prisma/client": "^6.6.0",
-  "@prisma/adapter-planetscale": "^6.6.0",
+  prisma: "~6.6.0",
+  "@prisma/client": "~6.6.0",
+  "@prisma/adapter-planetscale": "~6.6.0",
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
