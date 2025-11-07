@@ -205,6 +205,7 @@ export const SIDEBAR: Sidebar = {
       { text: "Dlaczego CT3A?", link: "pl/why" },
       { text: "Instalacja", link: "pl/installation" },
       { text: "Struktura Projektu (Pages)", link: "pl/folder-structure-pages" },
+      { text: "Struktura Projektu (App)", link: "pl/folder-structure-app" },
       { text: "FAQ", link: "pl/faq" },
       { text: "Kolekcja T3", link: "pl/t3-collection" },
       { text: "Przykłady", link: "pl/examples" },
@@ -216,6 +217,7 @@ export const SIDEBAR: Sidebar = {
       { text: "TypeScript", link: "pl/usage/typescript" },
       { text: "tRPC", link: "pl/usage/trpc" },
       { text: "Prisma", link: "pl/usage/prisma" },
+      { text: "Drizzle", link: "pl/usage/drizzle" },
       { text: "NextAuth.js", link: "pl/usage/next-auth" },
       {
         text: "Zmienne Środowiskowe",
