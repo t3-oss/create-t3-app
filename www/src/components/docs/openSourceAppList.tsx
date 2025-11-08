@@ -344,6 +344,13 @@ const projects: App[] = [
     linkName: "AISEKA",
     link: "https://aiseka.com/",
   },
+  {
+    description: "Community Driven, Open Source and Modern Turkish Dictionary",
+    repoName: "4Furki4/Turkish-Dictionary",
+    repo: "https://github.com/4Furki4/Turkish-Dictionary",
+    linkName: "turkce-sozluk",
+    link: "https://turkce-sozluk.com/",
+  }
 ];
 
 export default function OpenSourceAppList({
