@@ -1,0 +1,254 @@
+---
+title: Cấu trúc thư mục (App Router)
+description: Cấu trúc thư mục của một ứng dụng T3 được tạo mới với App Router
+layout: ../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+import Diagram from "../../components/docs/folderStructureDiagramApp.astro";
+import Form from "../../components/docs/folderStructureForm.astro";
+
+Vui lòng chọn các thư viện được đề cập ở dưới để xem cấu trúc thư mục của một ứng dụng T3 được tạo mới với các lựa chọn đó. Ở phía dưới, bạn sẽ tìm thấy mô tả chi tiết cho mỗi file trong cây thư mục.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+Thư mục `prisma` chứa file `schema.prisma` được sử dụng để cấu hình kết nối với cơ sở dữ liệu và định nghĩa schema cho cơ sở dữ liệu. Đây cũng là nơi lưu trữ các file migration và/hoặc seed script, nếu được sử dụng. Tham khảo [Cách sử dụng Prisma](/vi/usage/prisma) để biết thêm thông tin.
+
+</div>
+<div>
+
+### `public`
+
+Thư mục `public` chứa các file tĩnh (static assets) được phục vụ bởi web server. File `favicon.ico` là một ví dụ về file tĩnh.
+
+</div>
+<div>
+
+### `src/env`
+
+Được sử dụng để xác thực biến môi trường (environment variables) và định nghĩa kiểu cho biến môi trường (environment variables) đó - Tham khảo [Biến môi trường](/vi/usage/env-variables).
+
+</div>
+<div>
+
+### `src/app`
+
+Thư mục `app` chứa tất cả các định tuyến (routes) của ứng dụng Next.js. File `page.tsx` ở thư mục gốc `/app` là trang chủ của ứng dụng. File `layout.tsx` được sử dụng để định nghĩa layout cho ứng dụng và bao bọc ứng dụng với các provider. Tham khảo [tài liệu Next.js](https://nextjs.org/docs/app/building-your-application/routing) để biết thêm thông tin.
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/_components/post.tsx`
+
+File `post.tsx` là một ví dụ về client component mà một tRPC mutation được sử dụng.
+
+</div>
+<div data-components="nextauth">
+
+#### `src/app/api/auth/[...nextauth]/route.ts`
+
+File `[...nextauth]/route.ts` là slug route xác thực của NextAuth.js. Nó được sử dụng để xử lý các yêu cầu xác thực. Tham khảo [Cách sử dụng NextAuth.js](/vi/usage/next-auth) để biết thêm thông tin về NextAuth.js, và [Tài liệu Next.js Dynamic Routes](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) để biết thông tin về các route catch-all/slug.
+
+</div>
+<div data-components="trpc">
+
+#### `src/app/api/trpc/[trpc]/route.ts`
+
+File `[trpc].ts` là điểm xuất phát (entrypoint) API của tRPC. Nó được sử dụng để xử lý các yêu cầu tRPC. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc) để biết thêm thông tin về file này, và [Tài liệu Next.js Dynamic Routes](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) để biết thông tin về các route catch-all/slug.
+
+</div>
+<div data-components="trpc prisma nextauth drizzle">
+
+### `src/server`
+
+Thư mục `server` được sử dụng để phân tách rõ ràng code chỉ được sử dụng và thực thi trên server.
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+Điểm xuất phát (entrypoint) cho logic xác thực phía server. Tại đây, chúng ta thiết lập các [tùy chọn cấu hình](/vi/usage/next-auth) NextAuth.js, thực hiện [module augmentation](/vi/usage/next-auth#inclusion-of-userid-on-the-session) cũng như cung cấp một số tiện ích DX cho việc xác thực như lấy session của người dùng ở phía server. Tham khảo [Cách sử dụng NextAuth.js](/vi/usage/next-auth#usage-with-trpc) để biết thêm thông tin.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+File `db.ts` được sử dụng để khởi tạo Prisma client ở phạm vi toàn cục (global scope). Tham khảo [Cách sử dụng Prisma](/vi/usage/prisma#prisma-client) và [các phương pháp tốt nhất để sử dụng Prisma với Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) để biết thêm thông tin.
+
+</div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+Thư mục `db` chứa Drizzle client và schema. Lưu ý rằng drizzle cũng yêu cầu file cấu hình `drizzle.config.ts` (xem bên dưới).
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+File `index.ts` được sử dụng để khởi tạo Drizzle client ở phạm vi toàn cục. Tham khảo [Cách sử dụng Drizzle](/vi/usage/drizzle#drizzle-client) để biết thêm thông tin.
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+File `schema.ts` được sử dụng để định nghĩa schema cơ sở dữ liệu. Tham khảo [Cách sử dụng Drizzle](/vi/usage/drizzle#drizzle-client) và [tài liệu Drizzle schema](https://orm.drizzle.team/docs/sql-schema-declaration) để biết thêm thông tin.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+Thư mục `api` chứa code tRPC phía server.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+Thư mục `routers` chứa tất cả các sub-router tRPC của bạn.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+File `example.ts` là một ví dụ về tRPC router sử dụng helper `publicProcedure` để minh họa cách tạo một tRPC route công khai.
+
+Tùy thuộc vào các thư viện bạn đã chọn, router này chứa nhiều hoặc ít route hơn để minh họa tốt nhất cách sử dụng phù hợp với nhu cầu của bạn.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+File `trpc.ts` là file cấu hình chính cho back-end tRPC của bạn. Tại đây chúng ta:
+
+1. Định nghĩa context được sử dụng trong các yêu cầu tRPC. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapitrpcts) để biết thêm thông tin.
+2. Xuất các helper procedure. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapitrpcts) để biết thêm thông tin.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+File `root.ts` được sử dụng để hợp nhất các tRPC router và xuất chúng dưới dạng một router duy nhất, cũng như định nghĩa kiểu của router. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc#-serverapirootts) để biết thêm thông tin.
+
+</div>
+<div data-components="trpc">
+
+### `src/trpc`
+
+Thư mục `trpc` chứa thiết lập để cho phép bạn gọi các procedure tRPC từ server component và client component.
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/query-client.ts`
+
+File `query-client.ts` tạo ra Query Client mà tRPC sử dụng để cache và loại bỏ dữ liệu trùng lặp trong client component.
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/react.tsx`
+
+File `react.tsx` là điểm bắt đầu phía front-end cho tRPC. Nó cũng chứa các kiểu dữ liệu được định nghĩa cho input và output của router. Tham khảo [Cách sử dụng tRPC](/vi/usage/trpc) để biết thêm thông tin.
+
+</div>
+<div data-components="trpc">
+
+#### `src/trpc/server.ts`
+
+File `server.ts` là điểm bắt đầu để sử dụng tRPC trong Server Component.
+
+</div>
+<div>
+
+### `.env`
+
+File `.env` được sử dụng để lưu trữ các biến môi trường. Tham khảo [Biến môi trường](/vi/usage/env-variables) để biết thêm thông tin. File này **không** nên được commit vào lịch sử git.
+
+</div>
+<div>
+
+### `.env.example`
+
+File `.env.example` hiển thị các biến môi trường ví dụ dựa trên các thư viện đã chọn. File này **nên** được commit vào lịch sử git.
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+File `.eslintrc.cjs` được sử dụng để cấu hình ESLint. Tham khảo [Tài liệu ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) để biết thêm thông tin.
+
+</div>
+<div data-components="drizzle">
+
+### `db.sqlite (chỉ sqlite)`
+
+File `db.sqlite` chứa cơ sở dữ liệu phát triển của bạn. File này chỉ được tạo sau khi chạy lệnh `db:push` và bị bỏ qua bởi git.
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+File `drizzle.config.ts` được sử dụng để cấu hình drizzle kit. Tham khảo [tài liệu](https://orm.drizzle.team/kit-docs/config-reference) để biết thêm thông tin.
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+File `next-env.d.ts` đảm bảo các kiểu của Next.js được trình biên dịch TypeScript nhận diện. **Bạn không nên xóa hoặc chỉnh sửa nó vì nó có thể thay đổi bất cứ lúc nào.** Tham khảo [Tài liệu Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript) để biết thêm thông tin.
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+File `next.config.mjs` được sử dụng để cấu hình Next.js. Tham khảo [Tài liệu Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) để biết thêm thông tin. Lưu ý: Phần mở rộng .mjs được sử dụng để cho phép import ESM.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.js`
+
+File `postcss.config.js` được sử dụng cho việc sử dụng Tailwind PostCSS. Tham khảo [Tài liệu Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) để biết thêm thông tin.
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.mjs`
+
+File `prettier.config.mjs` được sử dụng để cấu hình Prettier bao gồm `prettier-plugin-tailwindcss` để định dạng các lớp Tailwind CSS. Tham khảo [bài đăng blog Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) để biết thêm thông tin.
+
+</div>
+<div data-components="drizzle">
+
+### `start-database.sh (chỉ mysql hoặc postgres)`
+
+File `start-database.sh` được sử dụng để khởi động cơ sở dữ liệu. Vui lòng xem các ghi chú chúng tôi đã đề cập ở bên trong file để biết thông tin về cách khởi động cơ sở dữ liệu với hệ điều hành của bạn.
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+File `tsconfig.json` được sử dụng để cấu hình TypeScript. Một số tùy chọn không mặc định, chẳng hạn như `strict mode`, đã được bật để đảm bảo việc sử dụng TypeScript tốt nhất cho Create T3 App và các thư viện của nó. Xem [Tài liệu TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) hoặc [Cách sử dụng TypeScript](/vi/usage/typescript) để biết thêm thông tin.
+
+</div>

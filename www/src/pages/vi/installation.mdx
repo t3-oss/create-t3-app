@@ -1,0 +1,84 @@
+---
+title: Cài đặt
+description: Hướng dẫn cài đặt Create T3 App
+layout: ../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Để khởi tạo một ứng dụng sử dụng `create-t3-app`, hãy chạy bất kỳ lệnh sau đây và trả lời các câu hỏi của được đưa ra:
+
+### npm
+
+```bash
+npm create t3-app@latest
+```
+
+### yarn
+
+```bash
+yarn create t3-app
+```
+
+### pnpm
+
+```bash
+pnpm create t3-app@latest
+```
+
+### bun
+
+```bash
+bun create t3-app@latest
+```
+
+Sau khi ứng dụng của bạn đã được khởi tạo, hãy đọc [bước đầu tiên](/vi/usage/first-steps) để bắt đầu phát triển ứng dụng mới của bạn.
+
+## Sử dụng nâng cao
+
+| Tùy chọn          | Mô tả                                                            |
+| ----------------- | ---------------------------------------------------------------- |
+| `[dir]`           | Bao gồm đối số thư mục với tên cho dự án                         |
+| `--noGit`         | Không khởi tạo repo git mới trong dự án                          |
+| `-y`, `--default` | Bỏ qua câu hỏi và khởi tạo dự án mới với tất cả tùy chọn đã chọn |
+| `--noInstall`     | Tạo dự án mà không cài đặt các thư viện đi kèm                   |
+
+## Sử dụng với những tùy chọn thử nghiệm
+
+Đối với CI của chúng tôi, chúng tôi cung cấp một số tùy chọn thử nghiệm cho phép bạn khởi tạo bất kỳ ứng dụng nào mà không cần bất kỳ câu hỏi nào. Nếu trường hợp này áp dụng cho bạn, bạn có thể sử dụng các tùy chọn này. Xin lưu ý rằng chúng tôi đang thử nghiệm các tùy chọn này và có thể thay đổi trong tương lai mà không tuân theo phiên bản semver.
+
+| Tùy chọn                  | Mô tả                                            |
+| ------------------------- | ------------------------------------------------ |
+| `--CI`                    | Cho phép CLI biết bạn đang ở trong môi trường CI |
+| `--trpc`                  | Sử dụng tRPC trong dự án                         |
+| `--prisma`                | Sử dụng Prisma trong dự án                       |
+| `--drizzle`               | Sử dụng Drizzle trong dự án                      |
+| `--nextAuth`              | Sử dụng NextAuth.js trong dự án                  |
+| `--tailwind`              | Sử dụng Tailwind CSS trong dự án                 |
+| `--dbProvider [provider]` | Sử dụng cơ sở dữ liệu đã cấu hình trong dự án    |
+| `--appRouter`             | Sử dụng Next.js App Router trong dự án           |
+
+<Callout type="warning">
+  Nếu tùy chọn `CI` không được sử dụng, các tùy chọn còn lại sẽ không có hiệu
+  lực.
+</Callout>
+
+Bạn không nhất thiết phải loại bỏ các tùy chọn mà bạn không muốn. Tuy nhiên, nếu bạn muốn loại bỏ chúng, bạn có thể truyền `false` vào sau các tùy chọn, ví dụ: `--nextAuth false`.
+
+Tùy chọn `--dbProvider` cung cấp 4 cơ sở dữ liệu cho bạn chọn: mysql, postgres, planetscale, sqlite. Nếu tùy chọn này không được sử dụng, giá trị mặc định sẽ là sqlite.
+
+### Ví dụ
+
+Ví dụ sau sẽ tạo ra một ứng dụng T3 với tRPC và Tailwind CSS.
+
+```bash
+pnpm dlx create-t3-app@latest --CI --trpc --tailwind
+```
+
+Ví dụ sau sẽ tạo ra một ứng dụng T3 với NextAuth.js, Tailwind CSS, Drizzle, và PostgreSQL.
+
+```bash
+pnpm dlx create-t3-app@latest --CI --nextAuth --tailwind --drizzle --dbProvider postgres
+```
