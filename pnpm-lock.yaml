@@ -119,16 +119,16 @@ importers:
         version: 4.1.16
       '@tanstack/react-query':
         specifier: ^5.69.0
-        version: 5.69.0(react@19.0.0)
+        version: 5.69.0(react@19.2.0)
       '@trpc/client':
         specifier: 11.0.0
         version: 11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2)
       '@trpc/next':
         specifier: 11.0.0
-        version: 11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(next@16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2)
+        version: 11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(next@16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2)
       '@trpc/react-query':
         specifier: 11.0.0
-        version: 11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2)
+        version: 11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2)
       '@trpc/server':
         specifier: 11.0.0
         version: 11.0.0(typescript@5.8.2)
@@ -143,7 +143,7 @@ importers:
         version: 20.14.10
       better-auth:
         specifier: ^1.3
-        version: 1.3.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@4.1.12)
+        version: 1.3.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(zod@4.1.12)
       drizzle-kit:
         specifier: ^0.30.5
         version: 0.30.5
@@ -155,10 +155,10 @@ importers:
         version: 3.11.0
       next:
         specifier: ^16.0.0
-        version: 16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-auth:
         specifier: ^4.24.13
-        version: 4.24.13(next@16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 4.24.13(next@16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
@@ -172,11 +172,11 @@ importers:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.8.2)
       react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        specifier: ^19.2.0
+        version: 19.2.0
       react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        specifier: ^19.2.0
+        version: 19.2.0(react@19.2.0)
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
@@ -212,19 +212,19 @@ importers:
         version: 3.3.0
       '@astrojs/vercel':
         specifier: ^8.1.3
-        version: 8.1.3(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.7.0))(next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(rollup@4.36.0)
+        version: 8.1.3(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.7.0))(next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(rollup@4.36.0)
       '@docsearch/css':
         specifier: ^3.9.0
         version: 3.9.0
       '@docsearch/react':
         specifier: ^3.9.0
-        version: 3.9.0(@algolia/client-search@5.21.0)(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)
+        version: 3.9.0(@algolia/client-search@5.21.0)(@types/react@19.0.12)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.17.3)
       '@fontsource-variable/inter':
         specifier: ^5.2.5
         version: 5.2.5
       '@headlessui/react':
         specifier: ^2.2.0
-        version: 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 2.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.2.1
         version: 4.4.1(prettier@3.5.3)
@@ -236,7 +236,7 @@ importers:
         version: 1.11.0
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -267,7 +267,7 @@ importers:
     devDependencies:
       '@astrojs/react':
         specifier: ^4.2.1
-        version: 4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.7.0)
+        version: 4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(terser@5.31.1)(yaml@2.7.0)
       '@astrojs/tailwind':
         specifier: ^6.0.1
         version: 6.0.1(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.7.0))(tailwindcss@3.4.17)
@@ -299,14 +299,14 @@ importers:
         specifier: ^0.6.11
         version: 0.6.14(@ianvs/prettier-plugin-sort-imports@4.4.1(prettier@3.5.3))(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
       react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        specifier: ^19.2.0
+        version: 19.2.0
       react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        specifier: ^19.2.0
+        version: 19.2.0(react@19.2.0)
       react-typist:
         specifier: ^2.0.5
-        version: 2.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 2.0.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
@@ -5585,10 +5585,10 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  react-dom@19.0.0:
-    resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
+  react-dom@19.2.0:
+    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
     peerDependencies:
-      react: ^19.0.0
+      react: ^19.2.0
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -5603,8 +5603,8 @@ packages:
       react: ^0.14 || ^15.0 || ^16.0
       react-dom: ^^0.14 || ^15.0 || ^16.0
 
-  react@19.0.0:
-    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
+  react@19.2.0:
+    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -5853,8 +5853,8 @@ packages:
   sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
 
-  scheduler@0.25.0:
-    resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
+  scheduler@0.27.0:
+    resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
 
   search-insights@2.17.3:
     resolution: {integrity: sha512-RQPdCYTa8A68uM2jwxoY842xDhvx3E5LFL1LxvxCNMev4o5mLuokczhzjAgGwUZBAmOKZknArSxLKmXtIi2AxQ==}
@@ -7189,13 +7189,13 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.31.1)(yaml@2.7.0)':
+  '@astrojs/react@4.2.1(@types/node@20.14.10)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(terser@5.31.1)(yaml@2.7.0)':
     dependencies:
       '@types/react': 19.0.12
       '@types/react-dom': 19.0.4(@types/react@19.0.12)
       '@vitejs/plugin-react': 4.3.4(vite@6.2.2(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.31.1)(yaml@2.7.0))
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       ultrahtml: 1.5.3
       vite: 6.2.2(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.31.1)(yaml@2.7.0)
     transitivePeerDependencies:
@@ -7240,10 +7240,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.1.3(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.7.0))(next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(rollup@4.36.0)':
+  '@astrojs/vercel@8.1.3(astro@5.5.4(@planetscale/database@1.19.0)(@types/node@20.14.10)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.36.0)(terser@5.31.1)(typescript@5.8.2)(yaml@2.7.0))(next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(rollup@4.36.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
-      '@vercel/analytics': 1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      '@vercel/analytics': 1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       '@vercel/edge': 1.2.1
       '@vercel/nft': 0.29.2(rollup@4.36.0)
       '@vercel/routing-utils': 5.0.4
@@ -7724,7 +7724,7 @@ snapshots:
 
   '@docsearch/css@3.9.0': {}
 
-  '@docsearch/react@3.9.0(@algolia/client-search@5.21.0)(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)':
+  '@docsearch/react@3.9.0(@algolia/client-search@5.21.0)(@types/react@19.0.12)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.17.3)':
     dependencies:
       '@algolia/autocomplete-core': 1.17.9(@algolia/client-search@5.21.0)(algoliasearch@5.21.0)(search-insights@2.17.3)
       '@algolia/autocomplete-preset-algolia': 1.17.9(@algolia/client-search@5.21.0)(algoliasearch@5.21.0)
@@ -7732,8 +7732,8 @@ snapshots:
       algoliasearch: 5.21.0
     optionalDependencies:
       '@types/react': 19.0.12
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       search-insights: 2.17.3
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -8063,32 +8063,32 @@ snapshots:
       '@floating-ui/core': 1.6.9
       '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/react-dom@2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@floating-ui/react-dom@2.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@floating-ui/dom': 1.6.13
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
-  '@floating-ui/react@0.26.28(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@floating-ui/react@0.26.28(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@floating-ui/react-dom': 2.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@floating-ui/utils': 0.2.9
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       tabbable: 6.2.0
 
   '@floating-ui/utils@0.2.9': {}
 
   '@fontsource-variable/inter@5.2.5': {}
 
-  '@headlessui/react@2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@headlessui/react@2.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@floating-ui/react': 0.26.28(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@react-aria/focus': 3.20.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@react-aria/interactions': 3.24.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/react-virtual': 3.13.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      '@floating-ui/react': 0.26.28(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@react-aria/focus': 3.20.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@react-aria/interactions': 3.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@tanstack/react-virtual': 3.13.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@hexagon/base64@1.1.28': {}
 
@@ -8632,54 +8632,54 @@ snapshots:
     dependencies:
       '@prisma/debug': 6.6.0
 
-  '@react-aria/focus@3.20.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@react-aria/focus@3.20.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@react-aria/interactions': 3.24.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@react-aria/utils': 3.28.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@react-types/shared': 3.28.0(react@19.0.0)
+      '@react-aria/interactions': 3.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@react-aria/utils': 3.28.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@react-types/shared': 3.28.0(react@19.2.0)
       '@swc/helpers': 0.5.15
       clsx: 2.1.1
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
-  '@react-aria/interactions@3.24.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@react-aria/interactions@3.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@react-aria/ssr': 3.9.7(react@19.0.0)
-      '@react-aria/utils': 3.28.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@react-aria/ssr': 3.9.7(react@19.2.0)
+      '@react-aria/utils': 3.28.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-stately/flags': 3.1.0
-      '@react-types/shared': 3.28.0(react@19.0.0)
+      '@react-types/shared': 3.28.0(react@19.2.0)
       '@swc/helpers': 0.5.15
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
-  '@react-aria/ssr@3.9.7(react@19.0.0)':
+  '@react-aria/ssr@3.9.7(react@19.2.0)':
     dependencies:
       '@swc/helpers': 0.5.15
-      react: 19.0.0
+      react: 19.2.0
 
-  '@react-aria/utils@3.28.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@react-aria/utils@3.28.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@react-aria/ssr': 3.9.7(react@19.0.0)
+      '@react-aria/ssr': 3.9.7(react@19.2.0)
       '@react-stately/flags': 3.1.0
-      '@react-stately/utils': 3.10.5(react@19.0.0)
-      '@react-types/shared': 3.28.0(react@19.0.0)
+      '@react-stately/utils': 3.10.5(react@19.2.0)
+      '@react-types/shared': 3.28.0(react@19.2.0)
       '@swc/helpers': 0.5.15
       clsx: 2.1.1
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@react-stately/flags@3.1.0':
     dependencies:
       '@swc/helpers': 0.5.15
 
-  '@react-stately/utils@3.10.5(react@19.0.0)':
+  '@react-stately/utils@3.10.5(react@19.2.0)':
     dependencies:
       '@swc/helpers': 0.5.15
-      react: 19.0.0
+      react: 19.2.0
 
-  '@react-types/shared@3.28.0(react@19.0.0)':
+  '@react-types/shared@3.28.0(react@19.2.0)':
     dependencies:
-      react: 19.0.0
+      react: 19.2.0
 
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
     optional: true
@@ -8942,16 +8942,16 @@ snapshots:
 
   '@tanstack/query-core@5.69.0': {}
 
-  '@tanstack/react-query@5.69.0(react@19.0.0)':
+  '@tanstack/react-query@5.69.0(react@19.2.0)':
     dependencies:
       '@tanstack/query-core': 5.69.0
-      react: 19.0.0
+      react: 19.2.0
 
-  '@tanstack/react-virtual@3.13.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@tanstack/react-virtual@3.13.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@tanstack/virtual-core': 3.13.4
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@tanstack/virtual-core@3.13.4': {}
 
@@ -8962,25 +8962,25 @@ snapshots:
       '@trpc/server': 11.0.0(typescript@5.8.2)
       typescript: 5.8.2
 
-  '@trpc/next@11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(next@16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2)':
+  '@trpc/next@11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(next@16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2)':
     dependencies:
       '@trpc/client': 11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2)
       '@trpc/server': 11.0.0(typescript@5.8.2)
-      next: 16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      next: 16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       typescript: 5.8.2
     optionalDependencies:
-      '@tanstack/react-query': 5.69.0(react@19.0.0)
-      '@trpc/react-query': 11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2)
+      '@tanstack/react-query': 5.69.0(react@19.2.0)
+      '@trpc/react-query': 11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2)
 
-  '@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.0.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.2)':
+  '@trpc/react-query@11.0.0(@tanstack/react-query@5.69.0(react@19.2.0))(@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.0(typescript@5.8.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.8.2)':
     dependencies:
-      '@tanstack/react-query': 5.69.0(react@19.0.0)
+      '@tanstack/react-query': 5.69.0(react@19.2.0)
       '@trpc/client': 11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2)
       '@trpc/server': 11.0.0(typescript@5.8.2)
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       typescript: 5.8.2
 
   '@trpc/server@11.0.0(typescript@5.8.2)':
@@ -9256,10 +9256,10 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vercel/analytics@1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@vercel/analytics@1.5.0(next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
     optionalDependencies:
-      next: 16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react: 19.0.0
+      next: 16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
 
   '@vercel/edge@1.2.1': {}
 
@@ -9649,7 +9649,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  better-auth@1.3.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@4.1.12):
+  better-auth@1.3.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(zod@4.1.12):
     dependencies:
       '@better-auth/utils': 0.2.6
       '@better-fetch/fetch': 1.1.18
@@ -9664,8 +9664,8 @@ snapshots:
       nanostores: 0.11.4
       zod: 4.1.12
     optionalDependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   better-call@1.0.15:
     dependencies:
@@ -12302,30 +12302,30 @@ snapshots:
 
   neotraverse@0.6.18: {}
 
-  next-auth@4.24.13(next@16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next-auth@4.24.13(next@16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@babel/runtime': 7.24.6
       '@panva/hkdf': 1.2.1
       cookie: 0.7.1
       jose: 4.15.9
-      next: 16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       oauth: 0.9.15
       openid-client: 5.7.1
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
       uuid: 8.3.2
 
-  next@16.0.1(@babel/core@7.24.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next@16.0.1(@babel/core@7.24.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@next/env': 16.0.1
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001706
       postcss: 8.4.31
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      styled-jsx: 5.1.6(@babel/core@7.24.6)(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      styled-jsx: 5.1.6(@babel/core@7.24.6)(react@19.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.0.1
       '@next/swc-darwin-x64': 16.0.1
@@ -12340,15 +12340,15 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@16.0.1(@babel/core@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next@16.0.1(@babel/core@7.26.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@next/env': 16.0.1
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001706
       postcss: 8.4.31
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      styled-jsx: 5.1.6(@babel/core@7.26.10)(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      styled-jsx: 5.1.6(@babel/core@7.26.10)(react@19.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.0.1
       '@next/swc-darwin-x64': 16.0.1
@@ -12825,22 +12825,22 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-dom@19.0.0(react@19.0.0):
+  react-dom@19.2.0(react@19.2.0):
     dependencies:
-      react: 19.0.0
-      scheduler: 0.25.0
+      react: 19.2.0
+      scheduler: 0.27.0
 
   react-is@16.13.1: {}
 
   react-refresh@0.14.2: {}
 
-  react-typist@2.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  react-typist@2.0.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       prop-types: 15.8.1
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
-  react@19.0.0: {}
+  react@19.2.0: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -13250,7 +13250,7 @@ snapshots:
 
   sax@1.2.4: {}
 
-  scheduler@0.25.0: {}
+  scheduler@0.27.0: {}
 
   search-insights@2.17.3: {}
 
@@ -13626,17 +13626,17 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.3
 
-  styled-jsx@5.1.6(@babel/core@7.24.6)(react@19.0.0):
+  styled-jsx@5.1.6(@babel/core@7.24.6)(react@19.2.0):
     dependencies:
       client-only: 0.0.1
-      react: 19.0.0
+      react: 19.2.0
     optionalDependencies:
       '@babel/core': 7.24.6
 
-  styled-jsx@5.1.6(@babel/core@7.26.10)(react@19.0.0):
+  styled-jsx@5.1.6(@babel/core@7.26.10)(react@19.2.0):
     dependencies:
       client-only: 0.0.1
-      react: 19.0.0
+      react: 19.2.0
     optionalDependencies:
       '@babel/core': 7.26.10
     optional: true
