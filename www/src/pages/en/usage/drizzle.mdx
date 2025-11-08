@@ -23,7 +23,7 @@ const conn = postgres(env.DATABASE_URL)
 export const db = drizzle(conn, { schema });
 ```
 
-We reccommend including the database client in your tRPC Context:
+We recommend including the database client in your tRPC Context:
 
 ```ts:src/server/api/trpc.ts
 import { db } from "~/server/db";
