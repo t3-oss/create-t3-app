@@ -1,16 +1,19 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+import { vercel } from "@t3-oss/env-nextjs/presets-zod";
 import { z } from "zod";
 
 export const env = createEnv({
+  extends: [vercel()],
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.url(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    PORT: z.coerce.number(),
   },
 
   /**
@@ -29,7 +32,7 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    PORT: process.env.PORT, // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -54,7 +54,7 @@
     "@total-typescript/ts-reset": "^0.3.7",
     "@types/node": "^20.14.10",
     "eslint": "^9.23.0",
-    "eslint-plugin-import-x": "^4.9.1",
+    "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-isaacscript": "^4.0.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",

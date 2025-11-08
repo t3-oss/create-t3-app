@@ -82,8 +82,8 @@
     "drizzle-kit": "^0.30.5",
     "drizzle-orm": "^0.41.0",
     "mysql2": "^3.11.0",
-    "next": "^15.2.3",
-    "next-auth": "^4.24.7",
+    "next": "^16.0.0",
+    "next-auth": "^4.24.13",
     "postgres": "^3.4.4",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -91,10 +91,10 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "superjson": "^2.2.1",
-    "tailwindcss": "^4.0.15",
+    "tailwindcss": "^4.1.16",
     "tsup": "^6.7.0",
     "type-fest": "^3.13.1",
     "typescript": "^5.8.2",
-    "zod": "^3.24.2"
+    "zod": "^4.1.12"
   }
 }
