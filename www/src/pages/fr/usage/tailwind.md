@@ -36,7 +36,7 @@ import "./my-class.css";
 
 3. Ajouter la classe à votre code HTML
 
-```jsx
+```html
 <div class="my-class">...</div>
 ```
 

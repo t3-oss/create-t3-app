@@ -118,3 +118,33 @@ export const env = createEnv({
 ```
 TWITTER_API_TOKEN=
 ```
+
+## Coercition de type
+
+Toutes les variables que vous ajoutez à `.env` seront importées en tant que chaînes de caractères, même si leur valeur est destinée à représenter un type différent. Si vous souhaitez utiliser vos variables d'environnement comme un type différent au moment de l'exécution, vous pouvez utiliser la fonction `coerce` de Zod pour convertir la chaîne vers le type souhaité. Une erreur sera lancée si la conversion échoue.
+
+Ajoutez les variables à votre fichier `.env` :
+
+```
+SOME_NUMBER=123
+SOME_BOOLEAN=true
+```
+
+Ensuite, validez-les dans `env.js` :
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    SOME_NUMBER: z.coerce.number(),
+    SOME_BOOLEAN: z.coerce.boolean(),
+  },
+  // ...
+  runtimeEnv: {
+    SOME_NUMBER: process.env.SOME_NUMBER,
+    SOME_BOOLEAN: process.env.SOME_BOOLEAN,
+  },
+});
+```
