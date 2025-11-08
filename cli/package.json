@@ -68,8 +68,8 @@
     "@planetscale/database": "^1.19.0",
     "@prisma/adapter-planetscale": "^6.6.0",
     "@prisma/client": "^6.6.0",
-    "@t3-oss/env-nextjs": "^0.12.0",
-    "@tailwindcss/postcss": "^4.0.15",
+    "@t3-oss/env-nextjs": "^0.13.8",
+    "@tailwindcss/postcss": "^4.1.16",
     "@tanstack/react-query": "^5.69.0",
     "@trpc/client": "11.0.0",
     "@trpc/next": "11.0.0",
@@ -82,8 +82,8 @@
     "drizzle-kit": "^0.30.5",
     "drizzle-orm": "^0.41.0",
     "mysql2": "^3.11.0",
-    "next": "^15.2.3",
-    "next-auth": "^4.24.7",
+    "next": "^16.0.0",
+    "next-auth": "^4.24.13",
     "postgres": "^3.4.4",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -91,10 +91,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "superjson": "^2.2.1",
-    "tailwindcss": "^4.0.15",
+    "tailwindcss": "^4.1.16",
     "tsup": "^6.7.0",
     "type-fest": "^3.13.1",
     "typescript": "^5.8.2",
-    "zod": "^3.24.2"
+    "zod": "^4.1.12"
   }
 }
