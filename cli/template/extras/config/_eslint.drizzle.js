@@ -1,4 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 import tseslint from 'typescript-eslint';
 // @ts-ignore -- no types for this plugin
 import drizzle from "eslint-plugin-drizzle";
@@ -11,7 +13,6 @@ export default tseslint.config(
   {
 		ignores: ['.next']
 	},
-  ...compat.extends("next/core-web-vitals"),
   {
     files: ['**/*.ts', '**/*.tsx'],
     plugins: {
@@ -20,7 +21,9 @@ export default tseslint.config(
 		extends: [
 			...tseslint.configs.recommended,
 			...tseslint.configs.recommendedTypeChecked,
-			...tseslint.configs.stylisticTypeChecked
+			...tseslint.configs.stylisticTypeChecked,
+      ...nextCoreWebVitals,
+      ...nextTypescript
 		],
       rules: {
     "@typescript-eslint/array-type": "off",
