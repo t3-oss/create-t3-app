@@ -59,6 +59,7 @@ export default async function Home() {
               {!session ? (
                 <form>
                   <button
+                    type="submit"
                     className={styles.loginButton}
                     formAction={async () => {
                       "use server";
@@ -79,6 +80,7 @@ export default async function Home() {
               ) : (
                 <form>
                   <button
+                    type="submit"
                     className={styles.loginButton}
                     formAction={async () => {
                       "use server";

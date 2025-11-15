@@ -1,4 +1,4 @@
-import { Menu } from "@headlessui/react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { type MarkdownHeading } from "astro";
 import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
@@ -80,7 +80,7 @@ export default function OnThisPageLinks({
         {({ open }) => (
           <div className="relative w-full">
             <div className="">
-              <Menu.Button className="text-md inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
+              <MenuButton className="text-md inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border-2 bg-t3-purple-200/50 px-3 py-2 font-medium hover:bg-t3-purple-200/75 dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
                 On this page
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,17 +103,17 @@ export default function OnThisPageLinks({
                     }
                   />
                 </svg>
-              </Menu.Button>
+              </MenuButton>
             </div>
-            <Menu.Items
+            <MenuItems
               dir="ltr"
               className="t3-scrollbar absolute top-full z-10 mt-3 max-h-[45vh] w-full overflow-y-auto rounded-md border-2 border-primary bg-default py-1.5 shadow-md dark:border-t3-purple-200/20 dark:bg-default"
             >
               <ul dir={isLtr ? "ltr" : "rtl"}>
                 {headingWithIsVisible.map((heading) => (
                   <li key={heading.slug} className="w-full">
-                    <Menu.Item>
-                      {({ active }) => (
+                    <MenuItem>
+                      {({ focus }) => (
                         <a
                           className={clsx(
                             "text-md line-clamp-1 block w-full py-2 text-t3-purple-800 transition-colors hover:bg-t3-purple-300/20 hover:text-t3-purple-400 dark:text-t3-purple-200 dark:hover:bg-t3-purple-300/10 dark:hover:text-t3-purple-50",
@@ -121,7 +121,7 @@ export default function OnThisPageLinks({
                             isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
                             {
                               "bg-t3-purple-300/20 text-t3-purple-400 underline dark:bg-t3-purple-300/10 dark:text-t3-purple-100":
-                                active,
+                                focus,
                               "bg-t3-purple-300/30 font-medium text-t3-purple-700 underline dark:bg-t3-purple-300/20 dark:text-t3-purple-100":
                                 heading.isVisible,
                             },
@@ -131,11 +131,11 @@ export default function OnThisPageLinks({
                           {heading.text}
                         </a>
                       )}
-                    </Menu.Item>
+                    </MenuItem>
                   </li>
                 ))}
               </ul>
-            </Menu.Items>
+            </MenuItems>
           </div>
         )}
       </Menu>

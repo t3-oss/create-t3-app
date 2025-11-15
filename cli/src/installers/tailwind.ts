@@ -8,7 +8,7 @@ import { addPackageDependency } from "~/utils/addPackageDependency.js";
 export const tailwindInstaller: Installer = ({ projectDir }) => {
   addPackageDependency({
     projectDir,
-    dependencies: ["tailwindcss", "postcss", "@tailwindcss/postcss"],
+    dependencies: ["tailwindcss", "@tailwindcss/postcss"],
     devMode: true,
   });
 
