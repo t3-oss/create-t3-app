@@ -1,4 +1,10 @@
-import { Menu, Transition } from "@headlessui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
 
@@ -42,7 +48,7 @@ export default function ClipboardSelect() {
     <div className="flex items-center gap-2">
       <Menu as="div">
         <div className="relative">
-          <Menu.Button className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left focus:outline-none hover:bg-t3-purple-200/75 sm:text-sm dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
+          <MenuButton className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left focus:outline-none hover:bg-t3-purple-200/75 sm:text-sm dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
             <svg
               className={`h-[1em] w-[1em] ${coolDown && "hidden"}`}
               xmlns="http://www.w3.org/2000/svg"
@@ -75,25 +81,25 @@ export default function ClipboardSelect() {
             >
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-          </Menu.Button>
+          </MenuButton>
           <Transition
             as={Fragment}
             enter={"transition ease-out duration-100"}
             enterFrom={"transform opacity-0 -translate-y-1"}
             enterTo={"transform opacity-100 -translate-y-0"}
           >
-            <Menu.Items
+            <MenuItems
               className={clsx(
                 "focus-none shadow-l t3-scrollbar absolute right-0 mt-1 max-h-60 w-fit min-w-[6em] overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none sm:text-sm dark:border-t3-purple-200/20",
               )}
             >
               {commands.map(({ manager, command }) => (
-                <Menu.Item key={manager}>
-                  {({ active }) => {
+                <MenuItem key={manager}>
+                  {({ focus }) => {
                     return (
                       <button
                         className={`${
-                          active && "bg-t3-purple-200/20"
+                          focus && "bg-t3-purple-200/20"
                         } group flex w-full items-center bg-t3-purple-200/10 px-4 py-2 text-sm font-medium hover:bg-t3-purple-200/20`}
                         onClick={() => {
                           handleCopyToClipboard(manager, command)
@@ -110,9 +116,9 @@ export default function ClipboardSelect() {
                       </button>
                     );
                   }}
-                </Menu.Item>
+                </MenuItem>
               ))}
-            </Menu.Items>
+            </MenuItems>
           </Transition>
         </div>
       </Menu>

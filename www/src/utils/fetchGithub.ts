@@ -35,7 +35,8 @@ export const fetchGithub = async <T extends "commits" | "repo">(
 > | null> => {
   const { throwIfNotOk = true, throwIfNoAuth = true, fetchType } = opts;
 
-  const schema = fetchType === "commits" ? commitsSchema : repoSchema;
+  const schema: z.ZodType =
+    fetchType === "commits" ? commitsSchema : repoSchema;
 
   const token = import.meta.env.PUBLIC_GITHUB_TOKEN as string | undefined;
 
@@ -59,7 +60,9 @@ export const fetchGithub = async <T extends "commits" | "repo">(
       return null;
     }
 
-    return parsed.data;
+    return parsed.data as z.infer<
+      T extends "repo" ? typeof repoSchema : typeof commitsSchema
+    >;
   }
 
   const auth = `Basic ${Buffer.from(token, "binary").toString("base64")}`;
@@ -98,5 +101,7 @@ export const fetchGithub = async <T extends "commits" | "repo">(
     return null;
   }
 
-  return parsed.data;
+  return parsed.data as z.infer<
+    T extends "repo" ? typeof repoSchema : typeof commitsSchema
+  >;
 };
