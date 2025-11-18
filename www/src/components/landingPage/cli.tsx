@@ -118,6 +118,7 @@ export default function CodeCard() {
         >
           <span className="text-blue-400">❯</span>
           <span className="text-blue-400">◉ nextAuth</span>
+          <span className="text-blue-400">◉ better-auth</span>
           <br />
           &nbsp;◉ prisma
           <br />

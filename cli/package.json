@@ -1,6 +1,6 @@
 {
   "name": "create-t3-app",
-  "version": "7.39.3",
+  "version": "7.40.0",
   "description": "Create web application with the t3 stack",
   "license": "MIT",
   "repository": {
@@ -78,6 +78,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.14.10",
+    "better-auth": "^1.3",
     "drizzle-kit": "^0.30.5",
     "drizzle-orm": "^0.41.0",
     "mysql2": "^3.11.0",
