@@ -144,7 +144,7 @@ export const runCli = async (): Promise<CliResults> => {
     )
     /** @experimental - Used for CI E2E tests. Used in conjunction with `--CI` to skip prompting. */
     .option(
-      "-i, --import-alias",
+      "-i, --import-alias [alias]",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags.importAlias
     )
