@@ -12,9 +12,17 @@ export const dependencyVersionMap = {
   "better-auth": "^1.4.0",
 
   // Prisma
-  prisma: "^6.6.0",
-  "@prisma/client": "^6.6.0",
-  "@prisma/adapter-planetscale": "^6.6.0",
+  prisma: "^7.0.0",
+  "@prisma/client": "^7.0.0",
+  "@prisma/adapter-planetscale": "^7.0.0",
+  "@prisma/adapter-pg": "^7.0.0",
+  "@prisma/adapter-mariadb": "^7.0.0",
+  "@prisma/adapter-better-sqlite3": "^7.0.0",
+  pg: "^8.13.1",
+  "@types/pg": "^8.11.10",
+  "@types/better-sqlite3": "^7.6.11",
+  "@types/node": "^22.10.5",
+  "dotenv-cli": "^8.0.0",
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
