@@ -1,10 +1,11 @@
-import { PrismaPlanetScale } from "@prisma/adapter-planetscale";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 import { env } from "~/env";
 import { PrismaClient } from "../../generated/prisma/client";
 
 const createPrismaClient = () => {
-  const adapter = new PrismaPlanetScale({ url: env.DATABASE_URL });
+  const connectionString = env.DATABASE_URL;
+  const adapter = new PrismaPg({ connectionString });
   return new PrismaClient({
     adapter,
     log:
