@@ -140,7 +140,7 @@ export const prismaInstaller: Installer = ({
     projectDir,
     scripts: {
       "with-env": "dotenv -e .env --",
-      postinstall: `${pkgManager} run with-env prisma generate`,
+      postinstall: `SKIP_ENV_VALIDATION=1 ${pkgManager} run with-env prisma generate`,
       "db:push": `${pkgManager} run with-env prisma db push`,
       "db:studio": `${pkgManager} run with-env prisma studio`,
       "db:generate": `${pkgManager} run with-env prisma migrate dev`,
