@@ -13,7 +13,7 @@ export const env = createEnv({
       process.env.NODE_ENV === "production"
         ? z.string()
         : z.string().optional(),
-    BETTER_AUTH_URL: z.string(),
+    BETTER_AUTH_URL: z.url(),
     BETTER_AUTH_GITHUB_CLIENT_ID: z.string(),
     BETTER_AUTH_GITHUB_CLIENT_SECRET: z.string(),
     NODE_ENV: z

@@ -41,7 +41,7 @@
   "devDependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.19.1",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@types/react-typist": "^2.0.6",

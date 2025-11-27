@@ -21,7 +21,7 @@ export const dependencyVersionMap = {
   pg: "^8.13.1",
   "@types/pg": "^8.11.10",
   "@types/better-sqlite3": "^7.6.11",
-  "@types/node": "^22.10.5",
+  "@types/node": "^22.19.1",
   "dotenv-cli": "^8.0.0",
 
   // Drizzle
