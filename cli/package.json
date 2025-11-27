@@ -66,10 +66,17 @@
     "@auth/prisma-adapter": "^1.6.0",
     "@libsql/client": "^0.14.0",
     "@planetscale/database": "^1.19.0",
+<<<<<<< HEAD
     "@prisma/adapter-planetscale": "^6.6.0",
     "@prisma/client": "^6.6.0",
     "@t3-oss/env-nextjs": "^0.12.0",
     "@tailwindcss/postcss": "^4.0.15",
+=======
+    "@prisma/adapter-planetscale": "^7.0.1",
+    "@prisma/client": "^7.0.1",
+    "@t3-oss/env-nextjs": "^0.13.8",
+    "@tailwindcss/postcss": "^4.1.16",
+>>>>>>> c984986c (update prisma in package json)
     "@tanstack/react-query": "^5.69.0",
     "@trpc/client": "11.0.0",
     "@trpc/next": "11.0.0",
@@ -87,7 +94,7 @@
     "postgres": "^3.4.4",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "prisma": "^6.6.0",
+    "prisma": "^7.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "superjson": "^2.2.1",
