@@ -13,14 +13,14 @@
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.8",
     "next": "^16.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "typescript": "^5.8.2"
   }
 }
