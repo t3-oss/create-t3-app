@@ -12,12 +12,12 @@ export const dependencyVersionMap = {
   "better-auth": "^1.4.0",
 
   // Prisma
-  prisma: "^7.0.0",
-  "@prisma/client": "^7.0.0",
-  "@prisma/adapter-planetscale": "^7.0.0",
-  "@prisma/adapter-pg": "^7.0.0",
-  "@prisma/adapter-mariadb": "^7.0.0",
-  "@prisma/adapter-better-sqlite3": "^7.0.0",
+  prisma: "^7.0.1",
+  "@prisma/client": "^7.0.1",
+  "@prisma/adapter-planetscale": "^7.0.1",
+  "@prisma/adapter-pg": "^7.0.1",
+  "@prisma/adapter-mariadb": "^7.0.1",
+  "@prisma/adapter-better-sqlite3": "^7.0.1",
   pg: "^8.13.1",
   "@types/pg": "^8.11.10",
   "@types/better-sqlite3": "^7.6.11",
