@@ -103,6 +103,10 @@ AUTH_SECRET=""
 # Next Auth Discord Provider
 AUTH_DISCORD_ID=""
 AUTH_DISCORD_SECRET=""
+
+# Production App URL in case its custom (see react.tsx / api.ts) 
+APP_URL="http://localhost:3000"
+
 `;
 
   if (usingBetterAuth)
@@ -114,6 +118,8 @@ BETTER_AUTH_SECRET=""
 # Better Auth GitHub OAuth
 BETTER_AUTH_GITHUB_CLIENT_ID=""
 BETTER_AUTH_GITHUB_CLIENT_SECRET=""
+BETTER_AUTH_URL="http://localhost:3000" # Production App URL in case its custom (see react.tsx / api.ts)
+
 `;
 
   if (usingPrisma)

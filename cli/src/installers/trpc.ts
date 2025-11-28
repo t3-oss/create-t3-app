@@ -129,6 +129,18 @@ export const trpcInstaller: Installer = ({
   }
 
   copySrcDest.forEach(([src, dest]) => {
-    fs.copySync(src, dest);
+    if (
+      usingBetterAuth &&
+      (src.endsWith("utils/api.ts") || src.endsWith("trpc/react.tsx"))
+    ) {
+      const content = fs.readFileSync(src, "utf-8");
+      const newContent = content.replace(
+        /process\.env\.APP_URL/g,
+        "process.env.BETTER_AUTH_URL"
+      );
+      fs.outputFileSync(dest, newContent);
+    } else {
+      fs.copySync(src, dest);
+    }
   });
 };
