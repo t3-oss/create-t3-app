@@ -19,6 +19,7 @@ export const auth = betterAuth({
       redirectURI: "http://localhost:3000/api/auth/callback/github",
     },
   },
+  // Make sure nextCookies() is the last plugin in the array
   plugins: [nextCookies()],
 });
 

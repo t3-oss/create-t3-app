@@ -5,6 +5,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  // Make sure nextCookies() is the last plugin in the array
   plugins: [nextCookies()],
 });
 
