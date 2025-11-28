@@ -2,4 +2,4 @@
 "create-t3-app": minor
 ---
 
-feat: Next.js v16
+feat: better-auth 1.4
