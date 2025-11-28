@@ -86,7 +86,7 @@ function getVendorBaseUrl() {
 }
 
 function getBaseUrl() {
-  if (typeof window !== undefined) return window.location.origin;
+  if (typeof window !== "undefined") return window.location.origin;
   if (process.env.APP_URL) return process.env.APP_URL;
   const vendorUrl = getVendorBaseUrl();
   if (vendorUrl) return vendorUrl;
