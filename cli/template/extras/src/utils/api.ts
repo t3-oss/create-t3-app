@@ -19,7 +19,7 @@ function getVendorBaseUrl() {
   const railway = env.RAILWAY_PUBLIC_DOMAIN
     ? `https://${env.RAILWAY_PUBLIC_DOMAIN}`
     : undefined;
-  return vercel || netlify || render || railway;
+  return vercel ?? netlify ?? render ?? railway;
 }
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
