@@ -6,15 +6,15 @@ export const createTable = mysqlTableCreator((name) => `project1_${name}`);
 export const posts = createTable(
   "post",
   (d) => ({
-    id: d.bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: d.varchar("name", { length: 256 }),
+    id: d.bigint({ mode: "number" }).primaryKey().autoincrement(),
+    name: d.varchar({ length: 256 }),
     createdById: d
-      .varchar("created_by_id", { length: 255 })
+      .varchar({ length: 255 })
       .notNull()
       .references(() => user.id),
-    createdAt: d.timestamp("created_at", { fsp: 3 }).defaultNow().notNull(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at", { fsp: 3 })
+      .timestamp({ fsp: 3 })
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   }),
@@ -25,14 +25,14 @@ export const posts = createTable(
 );
 
 export const user = createTable("user", (d) => ({
-  id: d.varchar("id", { length: 36 }).primaryKey(),
-  name: d.varchar("name", { length: 255 }).notNull(),
-  email: d.varchar("email", { length: 255 }).notNull().unique(),
-  emailVerified: d.boolean("email_verified").default(false).notNull(),
-  image: d.text("image"),
-  createdAt: d.timestamp("created_at", { fsp: 3 }).defaultNow().notNull(),
+  id: d.varchar({ length: 36 }).primaryKey(),
+  name: d.varchar({ length: 255 }).notNull(),
+  email: d.varchar({ length: 255 }).notNull().unique(),
+  emailVerified: d.boolean().default(false).notNull(),
+  image: d.text(),
+  createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
   updatedAt: d
-    .timestamp("updated_at", { fsp: 3 })
+    .timestamp({ fsp: 3 })
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
@@ -41,18 +41,18 @@ export const user = createTable("user", (d) => ({
 export const session = createTable(
   "session",
   (d) => ({
-    id: d.varchar("id", { length: 36 }).primaryKey(),
-    expiresAt: d.timestamp("expires_at", { fsp: 3 }).notNull(),
-    token: d.varchar("token", { length: 255 }).notNull().unique(),
-    createdAt: d.timestamp("created_at", { fsp: 3 }).defaultNow().notNull(),
+    id: d.varchar({ length: 36 }).primaryKey(),
+    expiresAt: d.timestamp({ fsp: 3 }).notNull(),
+    token: d.varchar({ length: 255 }).notNull().unique(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at", { fsp: 3 })
+      .timestamp({ fsp: 3 })
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
-    ipAddress: d.text("ip_address"),
-    userAgent: d.text("user_agent"),
+    ipAddress: d.text(),
+    userAgent: d.text(),
     userId: d
-      .varchar("user_id", { length: 36 })
+      .varchar({ length: 36 })
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
   }),
@@ -62,23 +62,23 @@ export const session = createTable(
 export const account = createTable(
   "account",
   (d) => ({
-    id: d.varchar("id", { length: 36 }).primaryKey(),
-    accountId: d.text("account_id").notNull(),
-    providerId: d.text("provider_id").notNull(),
+    id: d.varchar({ length: 36 }).primaryKey(),
+    accountId: d.text().notNull(),
+    providerId: d.text().notNull(),
     userId: d
-      .varchar("user_id", { length: 36 })
+      .varchar({ length: 36 })
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
-    accessToken: d.text("access_token"),
-    refreshToken: d.text("refresh_token"),
-    idToken: d.text("id_token"),
-    accessTokenExpiresAt: d.timestamp("access_token_expires_at", { fsp: 3 }),
-    refreshTokenExpiresAt: d.timestamp("refresh_token_expires_at", { fsp: 3 }),
-    scope: d.text("scope"),
-    password: d.text("password"),
-    createdAt: d.timestamp("created_at", { fsp: 3 }).defaultNow().notNull(),
+    accessToken: d.text(),
+    refreshToken: d.text(),
+    idToken: d.text(),
+    accessTokenExpiresAt: d.timestamp({ fsp: 3 }),
+    refreshTokenExpiresAt: d.timestamp({ fsp: 3 }),
+    scope: d.text(),
+    password: d.text(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at", { fsp: 3 })
+      .timestamp({ fsp: 3 })
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   }),
@@ -88,13 +88,13 @@ export const account = createTable(
 export const verification = createTable(
   "verification",
   (d) => ({
-    id: d.varchar("id", { length: 36 }).primaryKey(),
-    identifier: d.varchar("identifier", { length: 255 }).notNull(),
-    value: d.text("value").notNull(),
-    expiresAt: d.timestamp("expires_at", { fsp: 3 }).notNull(),
-    createdAt: d.timestamp("created_at", { fsp: 3 }).defaultNow().notNull(),
+    id: d.varchar({ length: 36 }).primaryKey(),
+    identifier: d.varchar({ length: 255 }).notNull(),
+    value: d.text().notNull(),
+    expiresAt: d.timestamp({ fsp: 3 }).notNull(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at", { fsp: 3 })
+      .timestamp({ fsp: 3 })
       .defaultNow()
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),

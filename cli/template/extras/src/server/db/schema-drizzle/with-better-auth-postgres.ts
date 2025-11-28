@@ -25,14 +25,14 @@ export const posts = createTable(
 );
 
 export const user = createTable("user", (d) => ({
-  id: d.text("id").primaryKey(),
-  name: d.text("name").notNull(),
-  email: d.text("email").notNull().unique(),
-  emailVerified: d.boolean("email_verified").default(false).notNull(),
-  image: d.text("image"),
-  createdAt: d.timestamp("created_at").defaultNow().notNull(),
+  id: d.text().primaryKey(),
+  name: d.text().notNull(),
+  email: d.text().notNull().unique(),
+  emailVerified: d.boolean().default(false).notNull(),
+  image: d.text(),
+  createdAt: d.timestamp().defaultNow().notNull(),
   updatedAt: d
-    .timestamp("updated_at")
+    .timestamp()
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
@@ -41,18 +41,18 @@ export const user = createTable("user", (d) => ({
 export const session = createTable(
   "session",
   (d) => ({
-    id: d.text("id").primaryKey(),
-    expiresAt: d.timestamp("expires_at").notNull(),
-    token: d.text("token").notNull().unique(),
-    createdAt: d.timestamp("created_at").defaultNow().notNull(),
+    id: d.text().primaryKey(),
+    expiresAt: d.timestamp().notNull(),
+    token: d.text().notNull().unique(),
+    createdAt: d.timestamp().defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at")
+      .timestamp()
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
-    ipAddress: d.text("ip_address"),
-    userAgent: d.text("user_agent"),
+    ipAddress: d.text(),
+    userAgent: d.text(),
     userId: d
-      .text("user_id")
+      .text()
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
   }),
@@ -62,23 +62,23 @@ export const session = createTable(
 export const account = createTable(
   "account",
   (d) => ({
-    id: d.text("id").primaryKey(),
-    accountId: d.text("account_id").notNull(),
-    providerId: d.text("provider_id").notNull(),
+    id: d.text().primaryKey(),
+    accountId: d.text().notNull(),
+    providerId: d.text().notNull(),
     userId: d
-      .text("user_id")
+      .text()
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
-    accessToken: d.text("access_token"),
-    refreshToken: d.text("refresh_token"),
-    idToken: d.text("id_token"),
-    accessTokenExpiresAt: d.timestamp("access_token_expires_at"),
-    refreshTokenExpiresAt: d.timestamp("refresh_token_expires_at"),
-    scope: d.text("scope"),
-    password: d.text("password"),
-    createdAt: d.timestamp("created_at").defaultNow().notNull(),
+    accessToken: d.text(),
+    refreshToken: d.text(),
+    idToken: d.text(),
+    accessTokenExpiresAt: d.timestamp(),
+    refreshTokenExpiresAt: d.timestamp(),
+    scope: d.text(),
+    password: d.text(),
+    createdAt: d.timestamp().defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at")
+      .timestamp()
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   }),
@@ -88,13 +88,13 @@ export const account = createTable(
 export const verification = createTable(
   "verification",
   (d) => ({
-    id: d.text("id").primaryKey(),
-    identifier: d.text("identifier").notNull(),
-    value: d.text("value").notNull(),
-    expiresAt: d.timestamp("expires_at").notNull(),
-    createdAt: d.timestamp("created_at").defaultNow().notNull(),
+    id: d.text().primaryKey(),
+    identifier: d.text().notNull(),
+    value: d.text().notNull(),
+    expiresAt: d.timestamp().notNull(),
+    createdAt: d.timestamp().defaultNow().notNull(),
     updatedAt: d
-      .timestamp("updated_at")
+      .timestamp()
       .defaultNow()
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
