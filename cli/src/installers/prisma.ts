@@ -26,6 +26,7 @@ const providerDependencyMap: Record<DatabaseProvider, ProviderDependencies> = {
   },
   sqlite: {
     adapter: "@prisma/adapter-better-sqlite3",
+    driver: "better-sqlite3",
     types: ["@types/better-sqlite3"],
   },
   planetscale: {
@@ -52,6 +53,7 @@ export const prismaInstaller: Installer = ({
     dependencies: ["@prisma/client"],
     devMode: false,
   });
+  
 
   // Install dotenv-cli as dev dependency
   addPackageDependency({
@@ -59,6 +61,7 @@ export const prismaInstaller: Installer = ({
     dependencies: ["dotenv-cli"],
     devMode: true,
   });
+
 
   // Get provider-specific dependencies
   const providerDeps = providerDependencyMap[databaseProvider];

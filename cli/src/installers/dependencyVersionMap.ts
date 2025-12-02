@@ -18,6 +18,7 @@ export const dependencyVersionMap = {
   "@prisma/adapter-pg": "^7.0.1",
   "@prisma/adapter-mariadb": "^7.0.1",
   "@prisma/adapter-better-sqlite3": "^7.0.1",
+  "better-sqlite3": "12.5.0",
   pg: "^8.13.1",
   "@types/pg": "^8.11.10",
   "@types/better-sqlite3": "^7.6.11",
