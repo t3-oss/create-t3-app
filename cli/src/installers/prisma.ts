@@ -53,7 +53,6 @@ export const prismaInstaller: Installer = ({
     dependencies: ["@prisma/client"],
     devMode: false,
   });
-  
 
   // Install dotenv-cli as dev dependency
   addPackageDependency({
@@ -61,7 +60,6 @@ export const prismaInstaller: Installer = ({
     dependencies: ["dotenv-cli"],
     devMode: true,
   });
-
 
   // Get provider-specific dependencies
   const providerDeps = providerDependencyMap[databaseProvider];
