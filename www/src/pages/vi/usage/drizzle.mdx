@@ -1,0 +1,84 @@
+---
+title: Drizzle
+description: Cách sử dụng Drizzle
+layout: ../../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+Drizzle là một Headless Typescript ORM với [các truy vấn kiểu quan hệ](https://orm.drizzle.team/docs/rqb) và [các truy vấn kiểu SQL](https://orm.drizzle.team/docs/select). Nó có thể xử lý các cập nhật cơ sở dữ liệu và các mô hình, và đồng thời cung cấp một client nơi kiểu dữ liệu có mối liên hệ chặt chẽ với cơ sở dữ liệu. Mặt khác, Drizzle cũng cho ra mắt [Drizzle-Kit](https://orm.drizzle.team/drizzle-studio/overview), một bộ công cụ không thể thiếu nhằm giúp bạn làm việc với cơ sở dữ liệu của bạn.
+
+## Drizzle Client
+
+Drizzle Client được định nghĩa ở `src/server/db/index.ts`. Trong tệp này, bạn có thể định nghĩa URL kết nối cơ sở dữ liệu của bạn và kết nối schema của bạn với cơ sở dữ liệu.
+
+```ts:src/server/db/index.ts
+import { env } from "~/env";
+import * as schema from "./schema";
+import postgres from "postgres";
+
+
+const conn = postgres(env.DATABASE_URL)
+
+export const db = drizzle(conn, { schema });
+```
+
+Chúng tôi khuyên bạn nên bao gồm client của Drizzle trong context của tRPC:
+
+```ts:src/server/api/trpc.ts
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+## Schema
+
+Schema của Drizzle có thể được tìm thấy ở `src/server/db/schema.ts`. Đây là nơi bạn có thể định nghĩa schema của cơ sở dữ liệu và các mô hình của bạn, và kết nối chúng với Drizzle Client.
+
+Khi bạn chọn sử dụng NextAuth.js kết hợp với Drizzle, tệp schema được tạo và thiết lập cho bạn với các giá trị được Auth.js khuyến nghị như là `User`, `Session`, `Account`, và `VerificationToken`, tìm hiểu thêm tại [tài liệu Auth.js](https://authjs.dev/getting-started/adapters/drizzle).
+
+## Drizzle Kit
+
+Drizzle Kit là một bộ công cụ dòng lệnh (CLI) được thiết kế giúp bạn quản lý cơ sở dữ liệu của bạn. T3 Stack tự động bao gồm Drizzle Kit khi bạn chọn Drizzle làm ORM của mình.
+
+```json:package.json
+"scripts": {
+    ...
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    ...
+  },
+```
+
+### Giải thích các lệnh
+
+`db:generate`
+Tạo ra các kiểu TypeScript và mô hình từ schema của cơ sở dữ liệu của bạn, đảm bảo tính toàn vẹn của kiểu dữ liệu và dễ dàng tích hợp với Drizzle ORM.
+
+`db:migrate`
+Áp dụng các cập nhật chưa được áp dụng cho cơ sở dữ liệu của bạn, giữ cho schema của bạn đồng bộ với các thay đổi và cập nhật trong dự án của bạn.
+
+`db:push`
+Đẩy các thay đổi schema cục bộ trực tiếp đến cơ sở dữ liệu mà không cần các tệp cập nhật chuyển đổi. Điều này có thể hữu ích cho việc đồng bộ hóa nhanh chóng trong quá trình phát triển.
+
+`db:studio`
+Mở một giao diện trực quan để quản lý và kiểm tra các bảng, dữ liệu và mối quan hệ của cơ sở dữ liệu của bạn.
+
+## Tài liệu hữu ích
+
+| Tài liệu                              | Đường dẫn                                           |
+| ------------------------------------- | --------------------------------------------------- |
+| Tài liệu của Drizzle                  | https://orm.drizzle.team/docs/overview              |
+| GitHub của Drizzle                    | https://github.com/drizzle-team/drizzle-orm         |
+| Adapter Drizzle của Auth.JS           | https://authjs.dev/getting-started/adapters/drizzle |
+| Hướng dẫn migrate sử dụng Drizzle Kit | https://orm.drizzle.team/docs/kit-overview          |

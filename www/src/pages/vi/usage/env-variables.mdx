@@ -1,0 +1,148 @@
+---
+title: Biến môi trường
+description: Bắt đầu với Create T3 App
+layout: ../../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+import Callout from "../../../components/docs/callout.tsx";
+
+Create T3 App sử dụng một thư viện tự tạo tên là [@t3-oss/env-nextjs](https://env.t3.gg) cùng với [zod](https://zod.dev) để xác thực biến môi trường trong thời gian chạy (runtime) _và_ thời gian xây dựng (buildtime) bằng cách cung cấp một logic đơn giản trong `src/env.js`.
+
+## env.js
+
+_TLDR; Nếu bạn muốn thêm một biến môi trường mới, bạn phải thêm một validator trong `src/env.js`, và sau đó thêm chúng vào trong `.env`_
+
+```ts:env.js
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+  },
+  client: {
+    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
+});
+```
+
+T3 Env sử dụng hàm `createEnv` để tạo schema và xác thực cả biến môi trường cho cả client-side và server-side.
+
+<Callout type="info">
+  Để biết thêm thông tin về cách `createEnv` hoạt động bên trong, hãy tham khảo
+  tài liệu của [T3 Env](https://env.t3.gg/docs/introduction)
+</Callout>
+
+## Sử dụng biến môi trường
+
+Khi bạn muốn sử dụng biến môi trường của bạn, bạn có thể nhập chúng từ tập tin đã tạo `env.js` và sử dụng chúng như bạn thường làm. Nếu bạn nhập chúng trên client và cố gắng truy cập vào một biến môi trường server-side, bạn sẽ nhận được một lỗi thời gian chạy.
+
+```ts:pages/api/hello.ts
+import { env } from "../../env.js";
+
+// `env` đảm bảo typesafe và cung cấp tự động hoàn tất
+const dbUrl = env.DATABASE_URL;
+```
+
+```ts:pages/index.tsx
+import { env } from "../env.js";
+
+// ❌ Sẽ tạo ra một lỗi thời gian chạy
+const dbUrl = env.DATABASE_URL;
+
+// ✅ Đủ wow rồi đó
+const wsKey = env.NEXT_PUBLIC_WS_KEY;
+```
+
+## .env.example
+
+Vì tập tin `.env` mặc định không được commit vào version control, chúng tôi cũng đã bao gồm một tập tin `.env.example`, trong đó bạn có thể tùy chọn giữ một bản sao của tập tin `.env` của bạn mà không để lộ bất kì thông tin nào bí mật. Điều này không bắt buộc, nhưng chúng tôi khuyên bạn nên giữ file này để dễ dàng hơn cho người đóng góp bắt đầu với môi trường của họ.
+
+Một số framework và công cụ build, như Next.js, khuyên bạn nên lưu trữ bí mật trong tập tin `.env.local` và commit tập tin `.env` vào project. Chúng tôi không khuyến khích điều này, vì nó có thể làm cho việc commit bí mật vào project trở nên dễ dàng hơn. Thay vào đó, chúng tôi khuyên bạn nên lưu trữ bí mật trong `.env`, giữ tập tin `.env` của bạn trong `.gitignore` và chỉ commit tập tin `.env.example` vào project.
+
+## Thêm biến môi trường
+
+Để đảm bảo rằng quá trình build của bạn không thể hoành thành nếu không có các biến môi trường mà project cần, bạn sẽ cần thêm biến môi trường mới vào **hai** vị trí:
+
+📄 `.env`: Nhập biến môi trường của bạn như bạn dưới dạng `KEY=VALUE` trong tập tin `.env`
+
+📄 `env.js`: Thêm logic xác thực thích hợp cho các biến môi trường bằng cách định nghĩa một schema Zod bên trong `createEnv` cho mỗi biến, ví dụ: `KEY: z.string()`. Ngoài ra, hãy đảm bảo rằng bạn thêm chúng trong tùy chọn `runtimeEnv`, ví dụ: `KEY: process.env.KEY`
+
+<Callout type="info">
+  Tại sao tôi cần phân thêm biến môi trường trong `runtimeEnv`? Điều này là do
+  cách Next.js đóng gói biến môi trường trong các runtime nhất định. Bằng cách
+  này, bạn đảm bảo rằng biến sẽ không bao giờ bị loại bỏ khỏi bundle.
+</Callout>
+
+Tùy chọn, bạn cũng có thể giữ tập tin `.env.example` cập nhật:
+
+📄 `.env.example`: Nhập biến môi trường của bạn, nhưng hãy đảm bảo rằng bạn không bao gồm giá trị nếu nó là bí mật, tức là `KEY=VALUE` hoặc `KEY=`
+
+### Ví dụ
+
+_Tôi muốn thêm biến môi trường của Twitter API vào biến môi trường server-side_
+
+1. Thêm biến môi trường vào `.env`:
+
+```
+TWITTER_API_TOKEN=1234567890
+```
+
+2. Thêm biến môi trường vào `env.js`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    TWITTER_API_TOKEN: z.string(),
+  },
+  // ...
+  runtimeEnv: {
+    // ...
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
+  },
+});
+```
+
+3. _Tùy chọn:_ Thêm biến môi trường vào `.env.example` và đảm bảo rằng bạn không bao gồm giá trị bí mật trong tùy chọn `runtimeEnv`
+
+```bash
+TWITTER_API_TOKEN=
+```
+
+## Ép kiểu biến
+
+Tất cả các biến môi trường bạn thêm vào `.env` sẽ được nhập dưới dạng chuỗi, ngay cả khi giá trị của chúng được dự định đại diện cho một kiểu khác. Nếu bạn muốn sử dụng biến môi trường của bạn dưới dạng kiểu khác tại thời gian chạy, bạn có thể sử dụng `zod.coerce` để chuyển đổi chuỗi thành kiểu bạn muốn. Nó sẽ báo lỗi nếu ép kiểu không thành công.
+
+Thêm biến môi trường vào `.env`:
+
+```
+SOME_NUMBER=123
+SOME_BOOLEAN=true
+```
+
+Sau đó, xác thực chúng trong `env.js`:
+
+```ts
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
+
+export const env = createEnv({
+  server: {
+    SOME_NUMBER: z.coerce.number(),
+    SOME_BOOLEAN: z.coerce.boolean(),
+  },
+  // ...
+  runtimeEnv: {
+    SOME_NUMBER: process.env.SOME_NUMBER,
+    SOME_BOOLEAN: process.env.SOME_BOOLEAN,
+  },
+});
+```

@@ -1,0 +1,210 @@
+import Callout from "../../../components/docs/callout.tsx";
+import Tabs from "../../../components/docs/tabs.astro";
+
+<Callout type="warning">
+  Phiên bản mới nhất của NextAuth đã chuyển sang [Auth.js](https://authjs.dev/)
+</Callout>
+
+## Lấy dữ liệu phiên từ phía server
+
+Đôi khi bạn có thể muốn lấy dữ liệu phiên trên server. Để làm điều đó, sử dụng hàm trợ giúp `auth` mà `create-t3-app` cung cấp.
+
+```tsx:app/page.tsx
+import { auth } from "~/server/auth";
+
+export default async function Home() {
+  const session = await auth();
+  ...
+}
+```
+
+## Thêm `user.id` vào phiên
+
+Create T3 App đã thiết lập sẵn [session callback](https://authjs.dev/guides/extending-the-session) trong cấu hình NextAuth.js để bao gồm ID của người dùng trong đối tượng `session`.
+
+```ts:server/auth/config.ts
+callbacks: {
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+      },
+    }),
+  },
+```
+
+Và đông thời `user.id` cũng đã được khai báo thông qua một file định kiểu để đảm bảo rằng `user.id` được định kiểu rõ ràng khi truy cập vào đối tượng `session`. Đọc thêm về [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) trên tài liệu của NextAuth.js.
+
+```ts:server/auth/config.ts
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+```
+
+Bước này có thể áp dụng để thêm bất kỳ dữ liệu nào khác vào đối tượng `session`, chẳng hạn như trường `role`, nhưng **không nên được sử dụng để lưu trữ dữ liệu nhạy cảm trên client**.
+
+## Usage with tRPC
+
+Khi sử dụng NextAuth.js với tRPC, bạn có thể tạo và tái sử dụng các procedures được bảo vệ kỹ càng bằng cách sử dụng [middleware](https://trpc.io/docs/v10/middlewares). Điều này cho phép bạn tạo ra các procedure mà chỉ có thể được dùng bởi người dùng đã đăng nhập. `create-t3-app` đã thiết lập tất cả điều này cho bạn, cho phép bạn dễ dàng truy cập vào đối tượng phiên (session object) trong các procedures được bảo vệ.
+
+Điều này có thể được thực hiện qua hai bước:
+
+1. Thêm phiên xác thực vào context của tRPC:
+
+```ts:server/api/trpc.ts
+import { auth } from "~/server/auth";
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+2. Tạo một tRPC middleware kiểm tra xem người dùng có được xác thực hay không. Sau đó, sử dụng middleware này trong `protectedProcedure`. Bất kỳ caller nào gọi đến các procedure này phải được xác thực, nếu không caller đó sẽ bị báo lỗi mà client có thể dùng để xử lý (ví dụ: hiển thị một trang đăng nhập).
+
+```ts:server/api/trpc.ts
+export const protectedProcedure = t.procedure
+  .use(({ ctx, next }) => {
+    if (!ctx.session?.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next({
+      ctx: {
+        session: { ...ctx.session, user: ctx.session.user },
+      },
+    });
+  });
+```
+
+Dữ liệu phiên ở đây là một sự biểu diễn tối giản và gọn nhẹ của người dùng và chỉ chứa một số trường. Khi sử dụng `protectedProcedures`, bạn có thể truy cập để lấy ID của người dùng để đạt được nhiều mục đích khác nhau, ví dụ như sử dụng ID để lấy thêm dữ liệu từ cơ sở dữ liệu.
+
+```ts:server/api/routers/user.ts
+const userRouter = router({
+  me: protectedProcedure.query(async ({ ctx }) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+    return user;
+  }),
+});
+```
+
+## Sử dụng với các Database Providers
+
+<Tabs slotOne="Prisma" slotTwo="Drizzle" tabName="db-provider">
+  <div slot="1">
+    Để NextAuth.js có thể hoạt động với Prisma, bạn cần phải chuẩn bị khá nhiều
+    thủ tục [thiết lập ban đầu](https://authjs.dev/reference/adapter/prisma/).
+    Tuy nhiên, `create-t3-app` đã làm tất cả những điều này cho bạn. Nếu bạn
+    chọn cả Prisma và NextAuth.js khi khởi tạo dự án, bạn sẽ có ngay một hệ
+    thống xác thực hoàn chỉnh với tất cả các model cần thiết đã được cấu hình
+    sẵn. Ứng dụng mẫu mà chúng tôi cung cấp sẽ được cấu hình sẵn với nhà cung
+    cấp Discord OAuth, vì đây là một trong những provider dễ bắt đầu nhất – bạn
+    chỉ cần thêm các token vào file `.env` là có thể sử dụng ngay. Tuy nhiên,
+    bạn cũng có thể dễ dàng thêm các provider khác bằng cách làm theo [tài liệu
+    của NextAuth.js](https://next-auth.js.org/providers/). Lưu ý rằng một số
+    provider sẽ yêu cầu bạn thêm các trường bổ sung vào một số model nhất định.
+    Chúng tôi khuyến nghị bạn nên đọc kỹ tài liệu của provider mà bạn muốn sử
+    dụng để đảm bảo rằng bạn đã thêm đầy đủ các trường cần thiết.
+  </div>
+  <div slot="2">
+    Để NextAuth.js có thể hoạt động với Drizzle, bạn cần phải chuẩn bị khá nhiều
+    thủ tục [thiết lập ban
+    đầu](https://authjs.dev/getting-started/adapters/drizzle). Tuy nhiên,
+    `create-t3-app` đã làm tất cả những điều này cho bạn. Nếu bạn chọn cả
+    Drizzle và NextAuth.js khi khởi tạo dự án, bạn sẽ có ngay một hệ thống xác
+    thực hoàn chỉnh với tất cả các model cần thiết đã được cấu hình sẵn. Ứng
+    dụng mẫu mà chúng tôi cung cấp sẽ được cấu hình sẵn với nhà cung cấp Discord
+    OAuth, vì đây là một trong những provider dễ bắt đầu nhất – bạn chỉ cần thêm
+    các token vào file `.env` là có thể sử dụng ngay. Tuy nhiên, bạn cũng có thể
+    dễ dàng thêm các provider khác bằng cách làm theo [tài liệu của
+    Auth.js](https://authjs.dev/getting-started/authentication/oauth). Lưu ý
+    rằng một số provider sẽ yêu cầu bạn thêm các trường bổ sung vào một số model
+    nhất định. Chúng tôi khuyến nghị bạn nên đọc kỹ tài liệu của provider mà bạn
+    muốn sử dụng để đảm bảo rằng bạn đã thêm đầy đủ các trường cần thiết.
+  </div>
+</Tabs>
+
+### Thêm các trường mới vào model của bạn
+
+Khi thêm các trường mới vào bất kỳ model nào trong số `User`, `Account`, `Session`, or `VerificationToken` (đa số bạn chỉ cần sửa đổi model `User`), bạn cần lưu ý rằng [Prisma adapter](https://next-auth.js.org/adapters/prisma) tự động tạo các trường trên các model này khi người dùng mới đăng ký và đăng nhập. Do đó, khi thêm các trường mới vào các model này, bạn phải cung cấp giá trị mặc định cho chúng, vì adapter sẽ không thể nhận ra các trường này.
+
+Nếu bạn muốn thêm một trường `role` vào model `User`, bạn cần cung cấp một giá trị mặc định cho trường `role`. Điều này được thực hiện bằng cách thêm `@default` vào trường `role` trong model `User`:
+
+```diff:prisma/schema.prisma
++ enum Role {
++   USER
++   ADMIN
++ }
+
+  model User {
+    ...
++   role Role @default(USER)
+  }
+```
+
+## Sử dụng với Next.js middleware
+
+Với Next.js 12+, cách dễ nhất để bảo vệ các trang trong ứng dụng của bạn là sử dụng [middleware file](https://authjs.dev/getting-started/session-management/protecting?framework=express#nextjs-middleware). Bạn có thể tạo một file middleware.ts trong thư mục root của pages (hoặc app nếu bạn dùng App Router) với nội dung sau:
+
+```middleware.ts
+export { auth as middleware } from "@/auth"
+```
+
+Sau đó, định nghĩa các callback bảo vệ trong file auth.ts của bạn. Để biết thêm chi tiết, hãy xem [tài liệu tham khảo](https://authjs.dev/reference/nextjs#authorized).
+
+```app/auth.ts
+async authorized({ request, auth }) {
+  const url = request.nextUrl
+
+  if(request.method === "POST") {
+    const { authToken } = (await request.json()) ?? {}
+    // Nếu yêu cầu có một token xác thực hợp lệ, nó được xác thực
+    const valid = await validateAuthToken(authToken)
+    if(valid) return true
+    return NextResponse.json("Invalid auth token", { status: 401 })
+  }
+
+  // Chỉ các người dùng đã đăng nhập mới được quyền vào, nếu không hãy chuyển hướng đến trang đăng nhập
+  return !!auth.user
+}
+```
+
+<Callout type="warning">
+  Bạn không nên chỉ dựa vào middleware để kiểm soát quyền truy cập. Hãy luôn đảm
+  bảo rằng phiên đăng nhập (session) được xác thực càng gần với nơi lấy dữ liệu
+  càng tốt.
+</Callout>
+
+## Thiết lập Discord Provider mặc định
+
+1. Đi đến [phần Applications trong Discord Developer Portal](https://discord.com/developers/applications), và click vào "New Application"
+2. Trong menu settings, đi đến "OAuth2 => General"
+
+- Copy Client ID và dán nó vào `DISCORD_CLIENT_ID` trong `.env`.
+- Dưới Client Secret, click "Reset Secret" và copy chuỗi đó vào `DISCORD_CLIENT_SECRET` trong `.env`. Cẩn thận vì bạn sẽ không thể nhìn thấy chuỗi này lại nữa, và đặt lại nó sẽ làm cho chuỗi hiện tại hết hạn.
+- Click "Add Redirect" và dán vào `<app url>/api/auth/callback/discord` (ví dụ cho phát triển local: <code class="break-all">http://localhost:3000/api/auth/callback/discord</code>)
+- Lưu thay đổi của bạn
+- Có thể, nhưng không được khuyến nghị, là sử dụng cùng một ứng dụng Discord cho cả phát triển và sản phẩm. Bạn cũng có thể xem xét [Mocking the Provider](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) trong quá trình phát triển.
+
+## Tài liệu hữu ích
+
+| Tài liệu                             | Đường dẫn                               |
+| ------------------------------------ | --------------------------------------- |
+| Tài liệu NextAuth.js                 | https://authjs.dev/                     |
+| GitHub của NextAuth.js               | https://github.com/nextauthjs/next-auth |
+| tRPC Kitchen Sink - sử dụng NextAuth | https://kitchen-sink.trpc.io/next-auth  |

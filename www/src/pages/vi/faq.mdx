@@ -1,0 +1,78 @@
+---
+title: Câu hỏi thường gặp
+description: Câu hỏi thường gặp về Create T3 App
+layout: ../../layouts/docs.astro
+lang: vi
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Dưới đây là một số câu hỏi bạn sẽ thường gặp về Create T3 App.
+
+## Vậy bây giờ tôi có thể làm gì tiếp? Làm thế nào để tôi có thể tạo một ứng dụng với T3 Stack?
+
+Chúng tôi luôn cố gắng giữ cho dự án này đơn giản nhất có thể, vì vậy bạn có thể bắt đầu với những thứ đã được thiết lập sẵn, và thêm những thứ khác sau nếu như bạn cần.
+
+Nếu bạn không quen với các công nghệ được sử dụng trong dự án này, vui lòng tham khảo tài liệu tương ứng với công nghệ đó. Nếu bạn vẫn còn gặp khó khăn, hãy tham gia [Discord](https://t3.gg/discord) để được giải đáp thắc mắc của bạn.
+
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
+- [Drizzle](https://orm.drizzle.team/docs/overview)
+
+## Làm sao để ứng dụng của tôi được cập nhật ?
+
+Create T3 App là một công cụ dùng để tạo ra một bộ khung cho ứng dụng của bạn (scaffolding tool), không phải là một framework. Điều này có nghĩa là một khi bạn khởi tạo ứng dụng, nó hoàn toàn thuộc về bạn. Không có câu lệnh CLI nào tương tự như `postinstall` để giúp bạn cập nhật ứng dụng. Nếu bạn muốn theo dõi bất kỳ cập nhật nào chúng tôi thực hiện đối với template, bạn có thể [bật thông báo cho các bản phát hành](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) trên kho lưu trữ (repository) của chúng tôi. Tuy nhiên, việc áp dụng mọi thay đổi chúng tôi thực hiện đối với template vào ứng dụng của bạn là không thực sự cần thiết.
+
+## Hiện tại có bất kỳ tài liệu học tập nào không ?
+
+Mặc dù các tài liệu được liệt kê dưới đây là một số tài liệu tốt nhất hiện có dành cho T3 Stack, cộng đồng (và [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) khuyên bạn nên bắt đầu sử dụng và học hỏi stack trong quá trình xây dựng với nó.
+
+Nếu bạn đang cân nhắc Create T3 App, có khả năng bạn đã biết sử dụng một số phần của chiếc stack này. Vậy tại sao bạn không bắt đầu học các phần khác trong khi bạn xây dựng một cái gì đó, đúng không ?
+
+Tuy nhiên, chúng tôi cũng nhận ra kiểu học này không phù hợp với tất cả mọi người. Vì vậy, nếu bạn cảm thấy đã thử cách trên và vẫn muốn có thêm tài liệu, hoặc bạn không tự tin làm điều đó một mình và/hoặc cảm thấy quá tải bởi stack, vui lòng tham khảo các hướng dẫn tuyệt vời này về Create T3 App:
+
+### Bài viết
+
+Một số bài viết này có thể đã cũ.
+
+- [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+
+### Video
+
+- [From 0 to Production - The Modern React Tutorial (RSCs, Next.js, Shadui, Drizzle, TS and more)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(recommended)** (updated 2024)\*
+- [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+
+## Tại sao lại có các file `.js` trong dự án?
+
+Theo [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), chúng tôi đề cao tính toàn vẹn của kiểu dữ liệu (typesafety). Tuy vậy, không phải tất cả các framework và plugin đều hỗ trợ TypeScript, điều này có nghĩa là một số tệp cấu hình phải ở dưới dạng `.js`.
+
+Chúng tôi nhấn mạnh rằng các tệp này được viết dưới dạng JavaScript vì một lý do, đó chính là khai báo kiểu của mỗi tệp (`cjs` hoặc `mjs`) tùy thuộc vào những gì được hỗ trợ bởi thư viện mà nó được sử dụng. Ngoài ra, tất cả các tệp `js` trong dự án này vẫn được kiểm tra kiểu dữ liệu bằng tùy chọn `checkJs` trong trình biên dịch (được định nghĩa trong tsconfig).
+
+## Tôi đang gặp khó khăn khi thêm i18n vào ứng dụng của tôi. Có bất kỳ tài liệu tham khảo nào tôi có thể sử dụng không?
+
+Chúng tôi đã quyết định không bao gồm i18n mặc định trong `create-t3-app` vì có rất nhiều ý kiến trái chiều xoay quanh chủ đề này và có nhiều cách để thực hiện nó.
+
+Tuy nhiên, nếu bạn gặp khó khăn khi thực hiện điều này và tham khảo muốn một dự án, chúng tôi có một [repository](https://github.com/juliusmarminge/t3-i18n) cho thấy cách bạn có thể thêm i18n vào một ứng dụng T3 sử dụng [next-i18next](https://github.com/i18next/next-i18next).
+
+## Tôi nên sử dụng `/app` từ Next.js 13 hay là vẫn sử dụng `/pages`?
+
+Bạn có thể chọn sử dụng cấu trúc thư mục `/app` khi khởi tạo một ứng dụng bằng Create T3 App. Tại thời điểm hiện tại, tính năng này đã được coi là đủ ổn định để được sử dụng trong môi trường production bởi cộng đồng T3 Stack. Để hiểu lý do tại sao chúng tôi đã tốn nhiều thời gian để đưa ra quyết định này, bạn có thể xem [video này](https://www.youtube.com/watch?v=PmBfq-SpzCU).
+
+Tuy nhiên, nếu bạn thực sự vẫn muốn sử dụng cấu trúc thư mục `/pages`, bạn vẫn có thể chọn nó. Chuyển đổi kiểu router của mà bạn đang dùng hiện tại có thể mất rất nhiều thời gian, vì vậy bạn đừng nên cảm thấy bị áp lực để làm điều đó không cần thiết.
+
+<Callout type="info">
+  Để xem danh sách các tính năng đã được hỗ trợ, dự kiến sẽ được hỗ trợ và đang
+  được hỗ trợ trong thư mục `/app`, truy cập [tài liệu beta của
+  Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>
