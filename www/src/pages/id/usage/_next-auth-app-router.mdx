@@ -1,0 +1,206 @@
+import Callout from "../../../components/docs/callout.tsx";
+import Tabs from "../../../components/docs/tabs.astro";
+
+<Callout type="warning">
+  Versi terbaru dari NextAuth telah bermigrasi ke [Auth.js](https://authjs.dev/)
+</Callout>
+
+## Mengambil sesi di sisi server
+
+Terkadang kamu mungkin ingin mengambil sesi di sisi server. Untuk melakukannya, gunakan fungsi helper `auth` yang disediakan oleh `create-t3-app`.
+
+```tsx:app/page.tsx
+import { auth } from "~/server/auth";
+
+export default async function Home() {
+  const session = await auth();
+  ...
+}
+```
+
+## Penambahan `user.id` pada Session
+
+Create T3 App dikonfigurasi untuk menggunakan [callback session](https://authjs.dev/guides/extending-the-session) di konfigurasi NextAuth.js agar menyertakan ID pengguna di dalam objek `session`.
+
+```ts:server/auth/config.ts
+callbacks: {
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+      },
+    }),
+  },
+```
+
+Ini juga disertai dengan file deklarasi tipe untuk memastikan bahwa `user.id` memiliki tipe yang benar ketika diakses dari objek `session`. Baca lebih lanjut tentang [`Module Augmentation`](https://authjs.dev/getting-started/typescript#resources*module-augmentation) di dokumentasi NextAuth.js.
+
+```ts:server/auth/config.ts
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+```
+
+Pola yang sama dapat digunakan untuk menambahkan data lain ke dalam objek `session`, seperti field `role`, namun **tidak boleh digunakan untuk menyimpan data sensitif** di sisi klien.
+
+## Penggunaan dengan tRPC
+
+Ketika menggunakan NextAuth.js dengan tRPC, kamu dapat membuat _procedure_ terlindungi yang dapat digunakan kembali dengan [middleware](https://trpc.io/docs/v10/middlewares). Ini memungkinkan kamu membuat _procedure_ yang hanya dapat diakses oleh pengguna yang sudah terautentikasi. `create-t3-app` sudah menyiapkan semua ini untukmu, sehingga kamu dapat dengan mudah mengakses objek sesi di dalam _procedure_ yang dilindungi.
+
+Ini dilakukan dalam dua langkah:
+
+1. Oper sesi autentikasi ke dalam konteks tRPC:
+
+```ts:server/api/trpc.ts
+import { auth } from "~/server/auth";
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+2. Buat middleware tRPC yang memeriksa apakah pengguna sudah terautentikasi. Kemudian gunakan middleware tersebut dalam `protectedProcedure`. Pemanggil _procedure_ ini harus terautentikasi, jika tidak maka akan muncul error yang dapat ditangani dengan tepat di sisi klien.
+
+```ts:server/api/trpc.ts
+export const protectedProcedure = t.procedure
+  .use(({ ctx, next }) => {
+    if (!ctx.session?.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next({
+      ctx: {
+        session: { ...ctx.session, user: ctx.session.user },
+      },
+    });
+  });
+```
+
+Objek sesi adalah representasi ringan dari pengguna dan hanya berisi beberapa field. Saat menggunakan `protectedProcedures`, kamu memiliki akses ke ID pengguna yang bisa digunakan untuk mengambil data lebih lanjut dari database.
+
+```ts:server/api/routers/user.ts
+const userRouter = router({
+  me: protectedProcedure.query(async ({ ctx }) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+    return user;
+  }),
+});
+```
+
+## Penggunaan dengan penyedia database
+
+<Tabs slotOne="Prisma" slotTwo="Drizzle" tabName="db-provider">
+  <div slot="1">
+    Menggunakan NextAuth.js dengan Prisma memerlukan banyak [pengaturan
+    awal](https://authjs.dev/reference/adapter/prisma/). `create-t3-app` sudah
+    menangani semua ini untukmu, dan jika kamu memilih Prisma dan NextAuth.js,
+    kamu akan mendapatkan sistem autentikasi yang sudah berfungsi penuh dengan
+    semua model yang dibutuhkan telah dikonfigurasi sebelumnya. Kami menyertakan
+    aplikasi dengan penyedia OAuth Discord yang sudah disiapkan, karena ini
+    adalah salah satu cara termudah untuk memulai — cukup masukkan token-mu di
+    `.env` dan semuanya siap. Namun, kamu juga bisa menambahkan penyedia lain
+    dengan mengikuti [dokumentasi
+    Auth.js](https://authjs.dev/getting-started/authentication/oauth).
+    Perhatikan bahwa beberapa penyedia memerlukan field tambahan pada model
+    tertentu. Kami sarankan membaca dokumentasi penyedia yang ingin kamu gunakan
+    untuk memastikan semua field yang diperlukan telah disiapkan.
+  </div>
+  <div slot="2">
+    Menggunakan NextAuth.js dengan Drizzle juga memerlukan banyak [pengaturan
+    awal](https://authjs.dev/getting-started/adapters/drizzle). `create-t3-app`
+    sudah menangani semua ini untukmu, dan jika kamu memilih Drizzle dan
+    NextAuth.js, kamu akan mendapatkan sistem autentikasi yang sudah berfungsi
+    penuh dengan model yang dibutuhkan telah dikonfigurasi sebelumnya. Kami
+    menyertakan aplikasi dengan penyedia OAuth Discord yang sudah disiapkan —
+    cukup masukkan token-mu di `.env` dan semuanya siap. Kamu juga bisa
+    menambahkan penyedia lain dengan mengikuti [dokumentasi
+    Auth.js](https://authjs.dev/getting-started/authentication/oauth). Beberapa
+    penyedia membutuhkan field tambahan pada model tertentu, jadi pastikan
+    membaca dokumentasinya untuk menyesuaikan kebutuhanmu.
+  </div>
+</Tabs>
+
+### Menambahkan field baru ke model
+
+Saat menambahkan field baru ke salah satu model `User`, `Account`, `Session`, atau `VerificationToken` (biasanya kamu hanya perlu memodifikasi model `User`), perlu diingat bahwa [adapter Prisma](https://authjs.dev/reference/adapter/prisma/) secara otomatis membuat field pada model ini ketika pengguna baru mendaftar atau masuk. Karena itu, ketika menambahkan field baru, kamu harus menyediakan nilai default untuk field tersebut, karena adapter tidak mengetahui keberadaannya.
+
+Sebagai contoh, jika kamu ingin menambahkan `role` ke model `User`, kamu harus menyediakan nilai default untuk field `role`. Ini dilakukan dengan menambahkan nilai `@default` pada field `role` di model `User`:
+
+```diff:prisma/schema.prisma
++ enum Role {
++   USER
++   ADMIN
++ }
+
+  model User {
+    ...
++   role Role @default(USER)
+  }
+```
+
+## Penggunaan dengan middleware Next.js
+
+Dengan Next.js 12+, cara termudah untuk melindungi halaman adalah dengan menggunakan [file middleware](https://authjs.dev/getting-started/session-management/protecting?framework=express#nextjs-middleware). Kamu dapat membuat file `middleware.ts` di direktori halaman utama dengan isi berikut:
+
+```middleware.ts
+export { auth as middleware } from "@/auth"
+```
+
+Kemudian definisikan callback `authorized` di file `auth.ts`. Untuk detail lebih lanjut, lihat [dokumentasi referensi.](https://authjs.dev/reference/nextjs#authorized)
+
+```app/auth.ts
+async authorized({ request, auth }) {
+  const url = request.nextUrl
+
+  if(request.method === "POST") {
+    const { authToken } = (await request.json()) ?? {}
+    // Jika permintaan memiliki token autentikasi yang valid, maka diizinkan
+    const valid = await validateAuthToken(authToken)
+    if(valid) return true
+    return NextResponse.json("Token autentikasi tidak valid", { status: 401 })
+  }
+
+  // Pengguna yang sudah login akan diizinkan, selain itu akan diarahkan ke halaman login
+  return !!auth.user
+}
+```
+
+<Callout type="warning">
+  Kamu tidak boleh hanya mengandalkan middleware untuk otorisasi. Selalu
+  pastikan sesi diverifikasi sedekat mungkin dengan proses pengambilan data.
+</Callout>
+
+## Mengatur DiscordProvider bawaan
+
+1. Buka [bagian Aplikasi di Portal Pengembang Discord](https://discord.com/developers/applications), lalu klik "New Application"
+2. Di menu pengaturan, buka "OAuth2 => General"
+
+- Salin Client ID dan tempel ke `DISCORD_CLIENT_ID` di `.env`.
+- Di bawah Client Secret, klik "Reset Secret" dan salin string tersebut ke `DISCORD_CLIENT_SECRET` di `.env`. Hati-hati karena kamu tidak akan bisa melihat secret ini lagi, dan mereset-nya akan membuat secret lama tidak berlaku.
+- Klik "Add Redirect" dan tempel `<app url>/api/auth/callback/discord` (contoh untuk pengembangan lokal: <code class="break-all">[http://localhost:3000/api/auth/callback/discord](http://localhost:3000/api/auth/callback/discord)</code>)
+- Simpan perubahanmu
+- Kamu bisa menggunakan Aplikasi Discord yang sama untuk pengembangan dan produksi, tapi hal ini **tidak direkomendasikan**. Pertimbangkan juga untuk [memalsukan penyedia (Mocking the Provider)](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) saat pengembangan.
+
+## Sumber Daya yang Berguna
+
+| Sumber Daya                         | Tautan                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| Dokumentasi NextAuth.js             | [https://authjs.dev/](https://authjs.dev/)                                         |
+| GitHub NextAuth.js                  | [https://github.com/nextauthjs/next-auth](https://github.com/nextauthjs/next-auth) |
+| tRPC Kitchen Sink - dengan NextAuth | [https://kitchen-sink.trpc.io/next-auth](https://kitchen-sink.trpc.io/next-auth)   |

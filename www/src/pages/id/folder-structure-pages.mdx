@@ -1,0 +1,247 @@
+---
+title: Struktur Folder (Pages)
+description: Struktur folder dari aplikasi T3 baru yang dibuat dengan Pages Router
+layout: ../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Diagram from "../../components/docs/folderStructureDiagramPages.astro";
+import Form from "../../components/docs/folderStructureForm.astro";
+
+Silakan pilih paket yang ingin kamu gunakan untuk melihat struktur folder dari aplikasi baru yang dibuat dengan pilihan tersebut. Di bagian bawah, kamu akan menemukan deskripsi untuk setiap entri.
+
+<Form />
+
+<Diagram />
+
+<div data-components="prisma">
+
+### `prisma`
+
+Folder `prisma` berisi file `schema.prisma` yang digunakan untuk mengonfigurasi koneksi database dan skema database. Folder ini juga menjadi tempat untuk menyimpan file migrasi dan/atau skrip seed jika digunakan. Lihat [penggunaan Prisma](/en/usage/prisma) untuk informasi lebih lanjut.
+
+</div>
+<div>
+
+### `public`
+
+Folder `public` berisi aset statis yang dilayani oleh web server. File `favicon.ico` adalah contoh dari aset statis.
+
+</div>
+<div>
+
+### `src/env`
+
+Digunakan untuk validasi variabel lingkungan dan definisi tipe — lihat [Variabel Lingkungan](usage/env-variables).
+
+</div>
+<div>
+
+### `src/pages`
+
+Folder `pages` berisi semua halaman dari aplikasi Next.js. File `index.tsx` di direktori root `/pages` adalah halaman utama dari aplikasi. File `_app.tsx` digunakan untuk membungkus aplikasi dengan penyedia (providers). Lihat [dokumentasi Next.js](https://nextjs.org/docs/basic-features/pages) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="nextauth trpc">
+
+#### `src/pages/api`
+
+Folder `api` berisi semua route API dari aplikasi Next.js. Lihat [Dokumentasi API Routes Next.js](https://nextjs.org/docs/api-routes/introduction) untuk informasi lebih lanjut tentang route API.
+
+</div>
+<div data-components="nextauth">
+
+#### `src/pages/api/auth/[...nextauth].ts`
+
+File `[...nextauth].ts` adalah route slug autentikasi NextAuth.js. File ini digunakan untuk menangani permintaan autentikasi. Lihat [penggunaan NextAuth.js](usage/next-auth) untuk informasi lebih lanjut tentang NextAuth.js, dan [Dokumentasi Dynamic Routes Next.js](https://nextjs.org/docs/routing/dynamic-routes) untuk info tentang route catch-all/slug.
+
+</div>
+<div data-components="trpc">
+
+#### `src/pages/api/trpc/[trpc].ts`
+
+File `[trpc].ts` adalah titik masuk API tRPC. File ini digunakan untuk menangani permintaan tRPC. Lihat [penggunaan tRPC](usage/trpc#-pagesapitrpctrpcts) untuk informasi lebih lanjut tentang file ini, dan [Dokumentasi Dynamic Routes Next.js](https://nextjs.org/docs/routing/dynamic-routes) untuk info tentang route catch-all/slug.
+
+</div>
+<div data-components="trpc prisma nextauth drizzle">
+
+### `src/server`
+
+Folder `server` digunakan untuk memisahkan kode yang hanya digunakan di sisi server.
+
+</div>
+<div data-components="nextauth+trpc">
+
+#### `src/server/auth.ts`
+
+Titik masuk utama untuk logika autentikasi sisi server. Di sini, kita mengatur [opsi konfigurasi](usage/next-auth) NextAuth.js, melakukan [augmentasi modul](usage/next-auth#inclusion-of-userid-on-the-session), serta menyediakan beberapa utilitas DX untuk autentikasi seperti mengambil sesi pengguna di sisi server. Lihat [penggunaan NextAuth.js](usage/next-auth#usage-with-trpc) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="prisma">
+
+#### `src/server/db.ts`
+
+File `db.ts` digunakan untuk membuat instance Prisma client secara global. Lihat [penggunaan Prisma](usage/prisma#prisma-client) dan [praktik terbaik menggunakan Prisma dengan Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+Folder `db` berisi client dan skema Drizzle. Perlu diperhatikan bahwa Drizzle juga memerlukan file `drizzle.config.ts` (lihat di bawah).
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+File `index.ts` digunakan untuk membuat instance Drizzle client secara global. Lihat [penggunaan Drizzle](usage/drizzle#drizzle-client) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+File `schema.ts` digunakan untuk mendefinisikan skema database. Lihat [penggunaan Drizzle](usage/drizzle#drizzle-client) dan [dokumentasi skema Drizzle](https://orm.drizzle.team/docs/sql-schema-declaration) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="trpc">
+
+### `src/server/api`
+
+Folder `api` berisi kode sisi server untuk tRPC.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers`
+
+Folder `routers` berisi semua sub-router tRPC kamu.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/routers/example.ts`
+
+File `example.ts` adalah contoh router tRPC yang menggunakan helper `publicProcedure` untuk menunjukkan cara membuat route publik tRPC.
+
+Tergantung pada paket yang kamu pilih, router ini dapat berisi lebih banyak atau lebih sedikit route untuk menyesuaikan contoh penggunaannya.
+
+</div>
+<div data-components="trpc">
+
+#### `src/server/api/trpc.ts`
+
+File `trpc.ts` adalah file konfigurasi utama untuk back-end tRPC. Di sini kita:
+
+1. Mendefinisikan context yang digunakan dalam permintaan tRPC. Lihat [penggunaan tRPC](usage/trpc#-serverapitrpcts) untuk informasi lebih lanjut.
+2. Mengekspor helper procedure. Lihat [penggunaan tRPC](usage/trpc#-serverapitrpcts) untuk informasi lebih lanjut.
+
+</div>
+
+<div data-components="trpc">
+
+#### `src/server/api/root.ts`
+
+File `root.ts` digunakan untuk menggabungkan router tRPC dan mengekspornya sebagai satu router, serta definisi tipe dari router tersebut. Lihat [penggunaan tRPC](usage/trpc#-serverapirootts) untuk informasi lebih lanjut.
+
+</div>
+<div>
+
+### `src/styles`
+
+Folder `styles` berisi gaya global (global styles) dari aplikasi.
+
+</div>
+<div data-components="trpc">
+
+### `src/utils`
+
+Folder `utils` digunakan untuk menyimpan fungsi utilitas yang sering digunakan kembali.
+
+</div>
+<div data-components="trpc">
+
+#### `src/utils/api.ts`
+
+File `api.ts` adalah titik masuk front-end untuk tRPC. Lihat [penggunaan tRPC](usage/trpc#-utilsapits) untuk informasi lebih lanjut.
+
+</div>
+<div>
+
+### `.env`
+
+File `.env` digunakan untuk menyimpan variabel lingkungan. Lihat [Variabel Lingkungan](usage/env-variables) untuk informasi lebih lanjut. File ini **tidak boleh** dikomit ke riwayat git.
+
+</div>
+<div>
+
+### `.env.example`
+
+File `.env.example` menunjukkan contoh variabel lingkungan berdasarkan pustaka yang dipilih. File ini **harus** dikomit ke riwayat git.
+
+</div>
+<div>
+
+### `.eslintrc.cjs`
+
+File `.eslintrc.cjs` digunakan untuk mengonfigurasi ESLint. Lihat [Dokumentasi ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="drizzle">
+
+### `db.sqlite (sqlite only)`
+
+File `db.sqlite` berisi database pengembanganmu. File ini hanya dibuat setelah menjalankan perintah `db:push`, dan diabaikan oleh git.
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+File `drizzle.config.ts` digunakan untuk mengonfigurasi drizzle kit. Lihat [dokumentasi ini](https://orm.drizzle.team/kit-docs/config-reference) untuk informasi lebih lanjut.
+
+</div>
+<div>
+
+### `next-env.d.ts`
+
+File `next-env.d.ts` memastikan tipe Next.js dikenali oleh kompiler TypeScript. **Kamu tidak boleh menghapus atau mengedit file ini karena bisa berubah sewaktu-waktu.** Lihat [Dokumentasi Next.js](https://nextjs.org/docs/basic-features/typescript#existing-projects) untuk informasi lebih lanjut.
+
+</div>
+<div>
+
+### `next.config.mjs`
+
+File `next.config.mjs` digunakan untuk mengonfigurasi Next.js. Lihat [Dokumentasi Next.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) untuk informasi lebih lanjut. Catatan: Ekstensi `.mjs` digunakan untuk mendukung impor ESM.
+
+</div>
+<div data-components="tailwind">
+
+### `postcss.config.js`
+
+File `postcss.config.js` digunakan untuk penggunaan Tailwind dengan PostCSS. Lihat [Dokumentasi Tailwind PostCSS](https://tailwindcss.com/docs/installation/using-postcss) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="tailwind">
+
+### `prettier.config.mjs`
+
+File `prettier.config.mjs` digunakan untuk mengonfigurasi Prettier agar menyertakan `prettier-plugin-tailwindcss` untuk memformat kelas Tailwind CSS. Lihat [blog resmi Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) untuk informasi lebih lanjut.
+
+</div>
+<div data-components="drizzle">
+
+### `start-database.sh (mysql or postgres only)`
+
+File `start-database.sh` digunakan untuk memulai database. Silakan lihat komentar di dalam file untuk informasi cara menjalankan database sesuai sistem operasi kamu.
+
+</div>
+<div>
+
+### `tsconfig.json`
+
+File `tsconfig.json` digunakan untuk mengonfigurasi TypeScript. Beberapa pengaturan non-default seperti `strict mode` telah diaktifkan untuk memastikan penggunaan TypeScript terbaik di Create T3 App dan pustaka-pustaka yang digunakan. Lihat [Dokumentasi TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) atau [Penggunaan TypeScript](usage/typescript) untuk informasi lebih lanjut.
+
+</div>

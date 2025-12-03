@@ -1,0 +1,83 @@
+---
+title: FAQ
+description: Pertanyaan yang sering diajukan tentang Create T3 App
+layout: ../../layouts/docs.astro
+lang: id
+isMdx: true
+---
+
+import Callout from "../../components/docs/callout.tsx";
+
+Berikut adalah beberapa pertanyaan yang sering diajukan tentang Create T3 App.
+
+## Apa langkah selanjutnya? Bagaimana cara membuat aplikasi dengan ini?
+
+Kami berusaha menjaga proyek ini sesederhana mungkin, sehingga kamu bisa memulai hanya dengan kerangka dasar (scaffolding) yang telah kami siapkan, dan menambahkan fitur tambahan nanti jika dibutuhkan.
+
+Jika kamu belum familiar dengan berbagai teknologi yang digunakan dalam proyek ini, silakan merujuk ke dokumentasi masing-masing. Jika masih merasa bingung, kamu bisa bergabung di [Discord kami](https://t3.gg/discord) dan meminta bantuan.
+
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
+- [Drizzle](https://orm.drizzle.team/docs/overview)
+
+## Bagaimana cara menjaga aplikasiku tetap terbaru?
+
+Create T3 App adalah alat scaffolding, bukan framework. Artinya, setelah kamu menginisialisasi sebuah aplikasi, aplikasi itu sepenuhnya milikmu. Tidak ada alat CLI pasca-instalasi untuk membantu kamu tetap up to date.  
+Jika kamu ingin mengikuti pembaruan atau peningkatan yang kami buat pada template, kamu bisa [mengaktifkan notifikasi rilis](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) di repositori kami.  
+Namun, tidak wajib untuk menerapkan setiap perubahan yang kami buat ke aplikasi kamu.
+
+## Sumber belajar apa saja yang tersedia saat ini?
+
+Meskipun sumber di bawah ini adalah beberapa yang terbaik untuk T3 Stack, komunitas (dan [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) menyarankan agar kamu langsung mulai menggunakan stack ini dan belajar sambil membangun proyek nyata.
+
+Jika kamu mempertimbangkan untuk menggunakan Create T3 App, kemungkinan kamu sudah pernah memakai beberapa bagian dari stack ini. Jadi kenapa tidak langsung saja terjun dan mempelajari bagian lainnya sambil membuat sesuatu?
+
+Namun, kami menyadari bahwa pendekatan ini tidak cocok untuk semua orang. Jadi, jika kamu merasa sudah mencoba tetapi masih butuh sumber tambahan, atau kurang percaya diri melakukannya sendiri, coba lihat tutorial-tutorial keren berikut tentang Create T3 App:
+
+### Artikel
+
+Beberapa mungkin sudah tidak sepenuhnya terbaru.
+
+- [Melihat pertama kali Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrasi T3 App ke Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrasi Stripe ke T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+
+### Video
+
+- [Dari 0 ke Produksi - Tutorial React Modern (RSC, Next.js, Shadui, Drizzle, TS, dan lainnya)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(disarankan)** (diperbarui 2024)
+- [Jack Herrington - Membangun aplikasi pencatat dengan T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [Bangun Klon Twitter dengan T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [Bangun Blog dengan T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Bangun Aplikasi Chat Langsung dengan T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [T3 Stack - Bagaimana Kami Membangunnya](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [Ikhtisar Create T3 App (Next, TypeScript, Tailwind, tRPC, NextAuth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+
+## Kenapa ada file `.js` di proyek ini?
+
+Sesuai dengan [T3-Axiom #3](/en/introduction#typesafety-isnt-optional), kami memperlakukan type safety sebagai bagian utama. Sayangnya, tidak semua framework dan plugin mendukung TypeScript, yang berarti beberapa file konfigurasi harus menggunakan ekstensi `.js`.
+
+Kami menekankan bahwa file-file tersebut memang JavaScript dengan alasan yang jelas, dengan mendeklarasikan tipe file secara eksplisit (`cjs` atau `mjs`) tergantung pada dukungan library yang digunakan. Selain itu, semua file `js` dalam proyek ini tetap diperiksa tipe-nya menggunakan opsi `checkJs` di kompiler (tsconfig).
+
+## Saya kesulitan menambahkan i18n ke aplikasiku. Apakah ada referensi yang bisa saya gunakan?
+
+Kami memutuskan untuk **tidak menyertakan i18n secara default** di `create-t3-app` karena topik ini sangat subjektif dan memiliki banyak pendekatan implementasi.
+
+Namun, jika kamu kesulitan menerapkannya dan ingin melihat contoh proyek referensi, kami memiliki [repo referensi](https://github.com/juliusmarminge/t3-i18n) yang menunjukkan cara menambahkan i18n ke T3 App menggunakan [next-i18next](https://github.com/i18next/next-i18next).
+
+## Haruskah saya menggunakan `/app` dari Next.js 13 atau tetap dengan paradigma `/pages` yang lebih matang?
+
+Kamu memiliki opsi saat membuat proyek dengan Create T3 App untuk memilih struktur direktori `/app`.  
+Pada saat ini, fitur tersebut dianggap cukup matang untuk digunakan dalam produksi oleh komunitas T3 Stack.  
+Untuk penjelasan mengapa butuh waktu lama sebelum kami menyertakannya, kamu bisa menonton [video ini](https://www.youtube.com/watch?v=PmBfq-SpzCU).
+
+Namun demikian, jika kamu lebih suka tetap menggunakan paradigma `/pages`, itu juga sepenuhnya valid.  
+Memindahkan router yang sudah ada bisa menjadi pekerjaan besar, jadi jangan merasa tertekan untuk melakukannya jika tidak perlu.
+
+<Callout type="info">
+  Untuk daftar fitur yang didukung, direncanakan, dan sedang dikembangkan di
+  direktori `/app`, kunjungi [dokumentasi beta
+  Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+</Callout>
