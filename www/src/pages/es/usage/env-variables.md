@@ -25,7 +25,7 @@ Este es el archivo que realmente modificarás. Contiene dos esquemas, uno para l
 
 ```ts:env/schema.mjs
 export const serverSchema = z.object({
-  // DATABASE_URL: z.string().url(),
+  // DATABASE_URL: z.url(),
 });
 
 export const clientSchema = z.object({
