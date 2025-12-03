@@ -252,7 +252,7 @@ const UserPage = () => {
 
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch(`/api/user/${id}`)
+    fetch(`/api/users/${id}`)
       .then((res) => res.json())
       .then((data) => setUser(data));
   }, [id]);
