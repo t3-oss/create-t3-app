@@ -17,7 +17,7 @@ export const trpcInstaller: Installer = ({
       "superjson",
       "@trpc/server",
       "@trpc/client",
-      "@trpc/react-query",
+      "@trpc/tanstack-react-query",
     ],
     devMode: false,
   });
@@ -96,8 +96,8 @@ export const trpcInstaller: Installer = ({
     const trpcDir = path.join(extrasDir, "src/trpc");
     copySrcDest.push(
       [
-        path.join(trpcDir, "server.ts"),
-        path.join(projectDir, "src/trpc/server.ts"),
+        path.join(trpcDir, "server.tsx"),
+        path.join(projectDir, "src/trpc/server.tsx"),
       ],
       [
         path.join(trpcDir, "react.tsx"),
@@ -118,7 +118,7 @@ export const trpcInstaller: Installer = ({
     );
   } else {
     addPackageDependency({
-      dependencies: ["@trpc/next"],
+      dependencies: ["@trpc/next", "@trpc/react-query"],
       devMode: false,
       projectDir,
     });
