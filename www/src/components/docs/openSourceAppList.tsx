@@ -9,6 +9,13 @@ interface App {
 
 const projects: App[] = [
   {
+    description: "FunArt - AI Art Generator",
+    repoName: "vanxh/funart",
+    repo: "https://github.com/vanxh/funart",
+    linkName: "funart.app",
+    link: "https://funart.app",
+  },
+  {
     description: "OpenBio - Open Source Link in Bio",
     repoName: "vanxh/openbio",
     repo: "https://github.com/vanxh/openbio",
