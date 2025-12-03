@@ -43,6 +43,8 @@ interface CliFlags {
   eslint: boolean;
   /** @internal Used in CI */
   biome: boolean;
+  /** @internal Used in CI */
+  ignoreBuildErrors: boolean;
 }
 
 interface CliResults {
@@ -71,6 +73,7 @@ const defaultOptions: CliResults = {
     dbProvider: "sqlite",
     eslint: false,
     biome: false,
+    ignoreBuildErrors: false,
   },
   databaseProvider: "sqlite",
 };
@@ -170,6 +173,11 @@ export const runCli = async (): Promise<CliResults> => {
       "Experimental: Boolean value if we should install biome. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false"
     )
+    .option(
+      "--ignoreBuildErrors [boolean]",
+      "Experimental: Boolean value if we should ignore TypeScript and ESLint build errors. Must be used in conjunction with `--CI`.",
+      (value) => !!value && value !== "false"
+    )
     /** END CI-FLAGS */
     .version(getVersion(), "-v, --version", "Display the version number")
     .addHelpText(
@@ -211,6 +219,8 @@ export const runCli = async (): Promise<CliResults> => {
     if (cliResults.flags.betterAuth) cliResults.packages.push("betterAuth");
     if (cliResults.flags.eslint) cliResults.packages.push("eslint");
     if (cliResults.flags.biome) cliResults.packages.push("biome");
+    cliResults.flags.ignoreBuildErrors =
+      cliResults.flags.ignoreBuildErrors ?? false;
     if (cliResults.flags.prisma && cliResults.flags.drizzle) {
       // We test a matrix of all possible combination of packages in CI. Checking for impossible
       // combinations here and exiting gracefully is easier than changing the CI matrix to exclude
@@ -348,6 +358,13 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: "eslint",
           });
         },
+        ignoreBuildErrors: () => {
+          return p.confirm({
+            message:
+              "Would you like to ignore TypeScript and ESLint build errors?",
+            initialValue: false,
+          });
+        },
         ...(!cliResults.flags.noGit && {
           git: () => {
             return p.confirm({
@@ -404,6 +421,8 @@ export const runCli = async (): Promise<CliResults> => {
         noGit: !project.git || cliResults.flags.noGit,
         noInstall: !project.install || cliResults.flags.noInstall,
         importAlias: project.importAlias ?? cliResults.flags.importAlias,
+        ignoreBuildErrors:
+          project.ignoreBuildErrors ?? cliResults.flags.ignoreBuildErrors,
       },
     };
   } catch (err) {
