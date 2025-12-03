@@ -1,0 +1,215 @@
+import Callout from "../../../components/docs/callout.tsx";
+import Tabs from "../../../components/docs/tabs.astro";
+
+<Callout type="warning">
+  La toute dernière version de NextAuth a migré vers
+  [Auth.js](https://authjs.dev/).
+</Callout>
+
+## Récupération de la session côté serveur.
+
+Parfois, vous voudrez peut-être demander la session sur le serveur. Pour ce faire, utilisez la fonction d'assistance `auth` fournie par `create-t3-app`.
+
+```tsx:app/page.tsx
+import { auth } from "~/server/auth";
+
+export default async function Home() {
+  const session = await auth();
+  ...
+}
+```
+
+## Inclusion de l'`id` de l'utilisateur dans la session.
+
+Create T3 App est configuré pour utiliser la [fonction de rappel de session](https://authjs.dev/guides/extending-the-session) dans la configuration NextAuth.js afin d'inclure l'ID de l'utilisateur dans l'objet `session`.
+
+```ts:server/auth/config.ts
+callbacks: {
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+      },
+    }),
+  },
+```
+
+Ceci est associé à un fichier de déclaration de type pour s'assurer que l'`id` de l'utilisateur est typé lorsqu'il est accédé sur l'objet `session`. En savoir plus sur l'[`Augmentation de Module`](https://authjs.dev/getting-started/typescript#resources*module-augmentation) dans la documentation de NextAuth.js.
+
+```ts:server/auth/config.ts
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+```
+
+Le même modèle peut être utilisé pour ajouter d'autres données à l'objet `session`, comme un champ `role`, mais **ne doit pas être mal utilisé pour stocker des données sensibles** côté client.
+
+## Utilisation avec tRPC.
+
+Lorsque vous utilisez NextAuth.js avec tRPC, vous pouvez créer des procédures protégées et réutilisables à l'aide de [middleware](https://trpc.io/docs/v11/middlewares). Cela vous permet de créer des procédures accessibles uniquement aux utilisateurs authentifiés. `create-t3-app` configure tout cela pour vous, vous permettant d'accéder facilement à l'objet de session dans les procédures authentifiées.
+
+Ceci se fait en deux étapes :
+
+1. Passer la session d'authentification dans le contexte tRPC :
+
+```ts:server/api/trpc.ts
+import { auth } from "~/server/auth";
+import { db } from "~/server/db";
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const session = await auth();
+
+  return {
+    db,
+    session,
+    ...opts,
+  };
+};
+```
+
+2. Créer un middleware tRPC qui vérifie si l'utilisateur est authentifié. Nous utilisons ensuite ce middleware dans une `protectedProcedure`. Tout appelant à ces procédures doit être authentifié, sinon une erreur sera lancée et pourra être gérée de manière appropriée par le client.
+
+```ts:server/api/trpc.ts
+export const protectedProcedure = t.procedure
+  .use(({ ctx, next }) => {
+    if (!ctx.session?.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next({
+      ctx: {
+        session: { ...ctx.session, user: ctx.session.user },
+      },
+    });
+  });
+```
+
+L'objet de session est une représentation légère et minimale de l'utilisateur et ne contient que quelques champs. Lorsque vous utilisez les `protectedProcedures`, vous avez accès à l'ID de l'utilisateur, qui peut être utilisé pour récupérer davantage de données depuis la base de données.
+
+```ts:server/api/routers/user.ts
+const userRouter = router({
+  me: protectedProcedure.query(async ({ ctx }) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+    return user;
+  }),
+});
+```
+
+## Utilisation avec un fournisseur de base de données.
+
+<Tabs slotOne="Prisma" slotTwo="Drizzle" tabName="db-provider">
+  <div slot="1">
+    Pour faire fonctionner NextAuth.js avec Prisma, il faut beaucoup de
+    [configuration initiale](https://authjs.dev/reference/adapter/prisma/).
+    `create-t3-app` gère tout cela pour vous, et si vous sélectionnez à la fois
+    Prisma et NextAuth.js, vous obtiendrez un système d'authentification
+    entièrement fonctionnel avec tous les modèles requis préconfigurés. Nous
+    fournissons votre application de base avec un fournisseur Discord OAuth
+    préconfiguré, que nous avons choisi car il est l'un des plus faciles à
+    utiliser pour commencer - il suffit de fournir vos jetons dans le `.env` et
+    vous êtes prêt. Cependant, vous pouvez facilement ajouter d'autres
+    fournisseurs en suivant la [documentation
+    Auth.js](https://authjs.dev/getting-started/authentication/oauth). Notez que
+    certains fournisseurs nécessitent l'ajout de champs supplémentaires à
+    certains modèles. Nous vous recommandons de lire la documentation du
+    fournisseur que vous souhaitez utiliser pour vous assurer d'avoir tous les
+    champs requis.
+  </div>
+  <div slot="2">
+    Pour faire fonctionner NextAuth.js avec Drizzle, il faut beaucoup de
+    [configuration
+    initiale](https://authjs.dev/getting-started/adapters/drizzle).
+    `create-t3-app` gère tout cela pour vous, et si vous sélectionnez à la fois
+    Drizzle et NextAuth.js, vous obtiendrez un système d'authentification
+    entièrement fonctionnel avec tous les modèles requis préconfigurés. Nous
+    fournissons votre application de base avec un fournisseur Discord OAuth
+    préconfiguré, que nous avons choisi car il est l'un des plus faciles à
+    utiliser pour commencer - il suffit de fournir vos jetons dans le `.env` et
+    vous êtes prêt. Cependant, vous pouvez facilement ajouter d'autres
+    fournisseurs en suivant la [documentation
+    Auth.js](https://authjs.dev/getting-started/authentication/oauth). Notez que
+    certains fournisseurs nécessitent l'ajout de champs supplémentaires à
+    certains modèles. Nous vous recommandons de lire la documentation du
+    fournisseur que vous souhaitez utiliser pour vous assurer d'avoir tous les
+    champs requis.
+  </div>
+</Tabs>
+
+### Ajouter de nouveaux champs à vos modèles.
+
+Lorsque vous ajoutez de nouveaux champs à l'un des modèles `User`, `Account`, `Session` ou `VerificationToken` (le plus souvent, vous n'aurez besoin de modifier que le modèle `User`), vous devez garder à l'esprit que l'[adaptateur Prisma](https://authjs.dev/reference/adapter/prisma/) crée automatiquement des champs sur ces modèles lorsque de nouveaux utilisateurs s'inscrivent et se connectent. Par conséquent, lorsque vous ajoutez de nouveaux champs à ces modèles, vous devez leur fournir des valeurs par défaut, car l'adaptateur n'est pas au courant de ces champs.
+
+Si, par exemple, vous souhaitez ajouter un `role` au modèle `User`, vous devrez fournir une valeur par défaut au champ `role`. Cela se fait en ajoutant une valeur `@default` au champ `role` dans le modèle `User` :
+
+```diff:prisma/schema.prisma
++ enum Role {
++   USER
++   ADMIN
++ }
+
+  model User {
+    ...
++   role Role @default(USER)
+  }
+```
+
+## Utilisation avec le middleware Next.js.
+
+Avec Next.js 12+, la manière la plus simple de protéger un ensemble de pages est d'utiliser le [fichier middleware](https://authjs.dev/getting-started/session-management/protecting?framework=express#nextjs-middleware). Vous pouvez créer un fichier `middleware.ts` dans le répertoire racine de vos pages avec le contenu suivant.
+
+```middleware.ts
+export { auth as middleware } from "@/auth"
+```
+
+Ensuite, définissez le callback `authorized` dans votre fichier `auth.ts`. Pour plus de détails, consultez la [documentation de référence](https://authjs.dev/reference/nextjs#authorized).
+
+```app/auth.ts
+async authorized({ request, auth }) {
+  const url = request.nextUrl
+
+  if(request.method === "POST") {
+    const { authToken } = (await request.json()) ?? {}
+    // If the request has a valid auth token, it is authorized
+    const valid = await validateAuthToken(authToken)
+    if(valid) return true
+    return NextResponse.json("Invalid auth token", { status: 401 })
+  }
+
+  // Logged in users are authenticated, otherwise redirect to login page
+  return !!auth.user
+}
+```
+
+<Callout type="warning">
+  Vous ne devriez pas vous fier exclusivement au middleware pour l'autorisation.
+  Assurez-vous toujours que la session est vérifiée au plus près de la
+  récupération de vos données.
+</Callout>
+
+## Configuration du DiscordProvider par défaut
+
+1. Rendez-vous dans [la section Applications du portail des développeurs Discord](https://discord.com/developers/applications), et cliquez sur "New Application"
+1. Dans le menu des paramètres, allez dans "OAuth2 => General"
+
+- Copiez l'ID client et collez-le dans `AUTH_DISCORD_ID` dans `.env`.
+- Sous Client Secret, cliquez sur "Reset Secret" et copiez cette chaîne de caractères dans `DISCORD CLIENT_SECRET` dans `.env`. Soyez prudent car vous ne pourrez plus voir ce secret et le réinitialiser entraînera l'expiration du secret existant.
+- Cliquez sur "Add Redirect" et collez `<app url>/api/auth/callback/discord` (exemple pour le développement local : <code class="break-all">http://localhost:3000/api/auth/rappel/discord</code>)
+- Enregistrez vos modifications
+- Il est possible, mais non recommandé, d'utiliser la même application Discord pour le développement et la production. Vous pouvez également envisager de [mock le fournisseur](https://github.com/trpc/trpc/blob/main/examples/next-prisma-websockets-starter/src/pages/api/auth/%5B...nextauth%5D.ts) pendant le développement.
+
+## Ressources utiles
+
+| Resource                          | Link                                    |
+| --------------------------------- | --------------------------------------- |
+| Documentation de NextAuth.js      | https://authjs.dev/                     |
+| NextAuth.js GitHub                | https://github.com/nextauthjs/next-auth |
+| tRPC Kitchen Sink - with NextAuth | https://kitchen-sink.trpc.io/next-auth  |
