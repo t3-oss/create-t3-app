@@ -8,13 +8,7 @@ interface App {
 }
 
 const projects: App[] = [
-   {
-  description: "SkipSetup - T3-powered foundation for AI-native development",
-  repoName: "Noble-TS/skipsetup",
-  repo: "https://github.com/Noble-TS/skipsetup",
-  linkName: "npmjs.com/package/skipsetup-cli",
-  link: "https://www.npmjs.com/package/skipsetup-cli",
-},
+
   {
     description: "OpenBio - Open Source Link in Bio",
     repoName: "vanxh/openbio",
@@ -308,6 +302,13 @@ const projects: App[] = [
     repo: "https://github.com/mittalsam98/profilee",
     linkName: "Profilee",
     link: "https://www.profilee.info/",
+  },
+  {
+    description: "SkipSetup - T3-powered foundation for AI-native development",
+    repoName: "Noble-TS/skipsetup",
+    repo: "https://github.com/Noble-TS/skipsetup",
+    linkName: "npmjs.com/package/skipsetup-cli",
+    link: "https://www.npmjs.com/package/skipsetup-cli",
   },
   {
     description: "SunalRahal - Your Spotify, in a SVG",
