@@ -302,7 +302,7 @@ const projects: App[] = [
     linkName: "Profilee",
     link: "https://www.profilee.info/",
   },
-   {
+  {
     description: "SkipSetup - T3-powered foundation for AI-native development",
     repoName: "Noble-TS/skipsetup",
     repo: "https://github.com/Noble-TS/skipsetup",
