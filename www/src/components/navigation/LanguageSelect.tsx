@@ -1,4 +1,10 @@
-import { Listbox, Transition } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment } from "react";
 
@@ -21,7 +27,7 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
     <div className="flex items-center gap-2">
       <Listbox value={language} onChange={handleSelect}>
         <div className="relative">
-          <Listbox.Button className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left focus:outline-none hover:bg-t3-purple-200/75 sm:text-sm dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
+          <ListboxButton className="relative flex cursor-pointer items-center justify-center rounded-lg border bg-t3-purple-200/50 p-2 text-left hover:bg-t3-purple-200/75 focus:outline-none sm:text-sm dark:border-t3-purple-200/20 dark:bg-t3-purple-200/10 dark:hover:border-t3-purple-200/50">
             <svg
               viewBox="0 0 88.6 77.3"
               className="h-6 w-6 text-slate-900 dark:text-t3-purple-100"
@@ -36,14 +42,14 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
                 d="M53.6 60.6c-10-4-16-9-22-14 0 0 1.3 1.3 0 0-6 5-20 13-20 13l-4-6c8-5 10-6 19-13-2.1-1.9-12-13-13-19h8c4 9 10 14 10 14 10-8 10-19 10-19h8s-1 13-12 24c5 5 10 9 19 13l-3 7zm-52-44h56v-8h-23v-7h-9v7h-24v8z"
               ></path>
             </svg>
-          </Listbox.Button>
+          </ListboxButton>
           <Transition
             as={Fragment}
             enter={"transition ease-out duration-100"}
             enterFrom={"transform opacity-0 -translate-y-1"}
             enterTo={"transform opacity-100 -translate-y-0"}
           >
-            <Listbox.Options
+            <ListboxOptions
               dir="ltr"
               className={clsx(
                 "focus-none shadow-l t3-scrollbar absolute right-0 mt-1 max-h-60 w-fit overflow-auto rounded-lg border bg-default text-base focus:outline-none focus-visible:outline-none sm:text-sm dark:border-t3-purple-200/20",
@@ -51,12 +57,12 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
               )}
             >
               {Object.entries(KNOWN_LANGUAGES).map(([code, name]) => (
-                <Listbox.Option
+                <ListboxOption
                   key={code}
-                  className={({ selected, active }) =>
+                  className={({ selected, focus }) =>
                     `focus-none relative cursor-pointer bg-t3-purple-200/50 px-4 py-2 text-slate-900 outline-none hover:bg-t3-purple-300/75 dark:bg-t3-purple-200/10 dark:text-t3-purple-100 dark:hover:bg-t3-purple-200/20 ${
                       selected && "bg-t3-purple-400/75 dark:bg-t3-purple-400/20"
-                    } ${active && "bg-t3-purple-300/75 dark:bg-t3-purple-200/20"}`
+                    } ${focus && "bg-t3-purple-300/75 dark:bg-t3-purple-200/20"}`
                   }
                   value={code}
                 >
@@ -71,9 +77,9 @@ export default function LanguageSelect({ language }: LanguageSelectProps) {
                       {name}
                     </span>
                   )}
-                </Listbox.Option>
+                </ListboxOption>
               ))}
-            </Listbox.Options>
+            </ListboxOptions>
           </Transition>
         </div>
       </Listbox>

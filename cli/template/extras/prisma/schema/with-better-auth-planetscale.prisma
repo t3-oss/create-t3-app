@@ -2,7 +2,7 @@
 // learn more: https://better-auth.com/docs/concepts/database
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
   output   = "../generated/prisma"
 }
 
@@ -13,7 +13,6 @@ generator client {
 datasource db {
   provider     = "mysql"
   relationMode = "prisma"
-  url          = env("DATABASE_URL")
 }
 
 model Post {

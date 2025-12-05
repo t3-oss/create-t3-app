@@ -2,14 +2,12 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["driverAdapters"]
-    output          = "../generated/prisma"
+    provider = "prisma-client"
+    output   = "../generated/prisma"
 }
 
 datasource db {
     provider = "mysql"
-    url      = env("DATABASE_URL")
 
     // If you have enabled foreign key constraints for your database, remove this line.
     relationMode = "prisma"

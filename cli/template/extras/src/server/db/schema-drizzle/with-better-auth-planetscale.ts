@@ -1,13 +1,5 @@
 import { relations } from "drizzle-orm";
-import {
-  boolean,
-  index,
-  mysqlTable,
-  mysqlTableCreator,
-  text,
-  timestamp,
-  varchar,
-} from "drizzle-orm/mysql-core";
+import { index, mysqlTableCreator } from "drizzle-orm/mysql-core";
 
 export const createTable = mysqlTableCreator((name) => `project1_${name}`);
 
@@ -16,15 +8,12 @@ export const posts = createTable(
   (d) => ({
     id: d.bigint({ mode: "number" }).primaryKey().autoincrement(),
     name: d.varchar({ length: 256 }),
-    createdById: d
-      .varchar({ length: 255 })
-      .notNull()
-      .references(() => user.id),
-    createdAt: d
-      .timestamp()
-      .$defaultFn(() => /* @__PURE__ */ new Date())
+    createdById: d.varchar({ length: 255 }).notNull(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
+    updatedAt: d
+      .timestamp({ fsp: 3 })
+      .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
-    updatedAt: d.timestamp().onUpdateNow(),
   }),
   (t) => [
     index("created_by_idx").on(t.createdById),
@@ -32,65 +21,77 @@ export const posts = createTable(
   ]
 );
 
-export const user = mysqlTable("user", {
-  id: varchar("id", { length: 36 }).primaryKey(),
-  name: text("name").notNull(),
-  email: varchar("email", { length: 255 }).notNull().unique(),
-  emailVerified: boolean("email_verified")
-    .$defaultFn(() => false)
+export const user = createTable("user", (d) => ({
+  id: d.varchar({ length: 36 }).primaryKey(),
+  name: d.varchar({ length: 255 }).notNull(),
+  email: d.varchar({ length: 255 }).notNull().unique(),
+  emailVerified: d.boolean().default(false).notNull(),
+  image: d.text(),
+  createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
+  updatedAt: d
+    .timestamp({ fsp: 3 })
+    .defaultNow()
+    .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
-  image: text("image"),
-  createdAt: timestamp("created_at")
-    .$defaultFn(() => /* @__PURE__ */ new Date())
-    .notNull(),
-  updatedAt: timestamp("updated_at")
-    .$defaultFn(() => /* @__PURE__ */ new Date())
-    .notNull(),
-});
+}));
 
-export const session = mysqlTable("session", {
-  id: varchar("id", { length: 36 }).primaryKey(),
-  expiresAt: timestamp("expires_at").notNull(),
-  token: varchar("token", { length: 255 }).notNull().unique(),
-  createdAt: timestamp("created_at").notNull(),
-  updatedAt: timestamp("updated_at").notNull(),
-  ipAddress: text("ip_address"),
-  userAgent: text("user_agent"),
-  userId: varchar("user_id", { length: 36 })
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-});
+export const session = createTable(
+  "session",
+  (d) => ({
+    id: d.varchar({ length: 36 }).primaryKey(),
+    expiresAt: d.timestamp({ fsp: 3 }).notNull(),
+    token: d.varchar({ length: 255 }).notNull().unique(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
+    updatedAt: d
+      .timestamp({ fsp: 3 })
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+    ipAddress: d.text(),
+    userAgent: d.text(),
+    userId: d.varchar({ length: 36 }).notNull(),
+  }),
+  (table) => [index("session_user_id_idx").on(table.userId)]
+);
 
-export const account = mysqlTable("account", {
-  id: varchar("id", { length: 36 }).primaryKey(),
-  accountId: text("account_id").notNull(),
-  providerId: text("provider_id").notNull(),
-  userId: varchar("user_id", { length: 36 })
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-  accessToken: text("access_token"),
-  refreshToken: text("refresh_token"),
-  idToken: text("id_token"),
-  accessTokenExpiresAt: timestamp("access_token_expires_at"),
-  refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
-  scope: text("scope"),
-  password: text("password"),
-  createdAt: timestamp("created_at").notNull(),
-  updatedAt: timestamp("updated_at").notNull(),
-});
+export const account = createTable(
+  "account",
+  (d) => ({
+    id: d.varchar({ length: 36 }).primaryKey(),
+    accountId: d.text().notNull(),
+    providerId: d.text().notNull(),
+    userId: d.varchar({ length: 36 }).notNull(),
+    accessToken: d.text(),
+    refreshToken: d.text(),
+    idToken: d.text(),
+    accessTokenExpiresAt: d.timestamp({ fsp: 3 }),
+    refreshTokenExpiresAt: d.timestamp({ fsp: 3 }),
+    scope: d.text(),
+    password: d.text(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
+    updatedAt: d
+      .timestamp({ fsp: 3 })
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  }),
+  (table) => [index("account_user_id_idx").on(table.userId)]
+);
 
-export const verification = mysqlTable("verification", {
-  id: varchar("id", { length: 36 }).primaryKey(),
-  identifier: text("identifier").notNull(),
-  value: text("value").notNull(),
-  expiresAt: timestamp("expires_at").notNull(),
-  createdAt: timestamp("created_at").$defaultFn(
-    () => /* @__PURE__ */ new Date()
-  ),
-  updatedAt: timestamp("updated_at").$defaultFn(
-    () => /* @__PURE__ */ new Date()
-  ),
-});
+export const verification = createTable(
+  "verification",
+  (d) => ({
+    id: d.varchar({ length: 36 }).primaryKey(),
+    identifier: d.varchar({ length: 255 }).notNull(),
+    value: d.text().notNull(),
+    expiresAt: d.timestamp({ fsp: 3 }).notNull(),
+    createdAt: d.timestamp({ fsp: 3 }).defaultNow().notNull(),
+    updatedAt: d
+      .timestamp({ fsp: 3 })
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  }),
+  (table) => [index("verification_identifier_idx").on(table.identifier)]
+);
 
 export const usersRelations = relations(user, ({ many }) => ({
   accounts: many(account),

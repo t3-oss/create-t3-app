@@ -87,7 +87,10 @@ const main = async () => {
 
     if (usePackages.prisma.inUse) {
       logger.info("Generating Prisma client...");
-      await execa("npx", ["prisma", "generate"], { cwd: projectDir });
+      await execa(pkgManager, ["run", "with-env", "prisma", "generate"], {
+        cwd: projectDir,
+        env: { SKIP_ENV_VALIDATION: "1" },
+      });
       logger.info("Successfully generated Prisma client!");
     }
 

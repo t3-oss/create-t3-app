@@ -1,5 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import tseslint from 'typescript-eslint';
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -9,13 +11,14 @@ export default tseslint.config(
   {
 		ignores: ['.next']
 	},
-  ...compat.extends("next/core-web-vitals"),
   {
     files: ['**/*.ts', '**/*.tsx'],
 		extends: [
 			...tseslint.configs.recommended,
 			...tseslint.configs.recommendedTypeChecked,
-			...tseslint.configs.stylisticTypeChecked
+			...tseslint.configs.stylisticTypeChecked,
+      ...nextCoreWebVitals,
+      ...nextTypescript,
 		],
       rules: {
     "@typescript-eslint/array-type": "off",

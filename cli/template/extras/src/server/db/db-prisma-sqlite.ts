@@ -1,10 +1,11 @@
-import { PrismaPlanetScale } from "@prisma/adapter-planetscale";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
 import { env } from "~/env";
 import { PrismaClient } from "../../generated/prisma/client";
 
 const createPrismaClient = () => {
-  const adapter = new PrismaPlanetScale({ url: env.DATABASE_URL });
+  const connectionString = `${env.DATABASE_URL}`;
+  const adapter = new PrismaBetterSqlite3({ url: connectionString });
   return new PrismaClient({
     adapter,
     log:

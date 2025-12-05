@@ -63,8 +63,8 @@ export const get: APIRoute = async (request) => {
   const resvg = new Resvg(svg, {});
   const pngData = resvg.render();
   const pngBuffer = pngData.asPng();
-
-  return new Response(pngBuffer, {
+  // note: ArrayLikeBuffer is not assignable to BodyInit so we are type casting
+  return new Response(pngBuffer as unknown as BodyInit, {
     headers: {
       "Content-Type": "image/png",
       "cache-control": "public, max-age=31536000, immutable",

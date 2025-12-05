@@ -11,9 +11,21 @@ import superjson from "superjson";
 
 import { type AppRouter } from "~/server/api/root";
 
+function getVendorBaseUrl() {
+  const env = process.env;
+  const vercel = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : undefined;
+  const netlify = env.URL;
+  const render = env.RENDER_EXTERNAL_URL;
+  const railway = env.RAILWAY_PUBLIC_DOMAIN
+    ? `https://${env.RAILWAY_PUBLIC_DOMAIN}`
+    : undefined;
+  return vercel ?? netlify ?? render ?? railway;
+}
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
+  if (process.env.APP_URL) return process.env.APP_URL;
+  const vendorUrl = getVendorBaseUrl();
+  if (vendorUrl) return vendorUrl; //ssr shoud use prod url
   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
 

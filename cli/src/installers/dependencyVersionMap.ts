@@ -9,12 +9,21 @@ export const dependencyVersionMap = {
   "@auth/drizzle-adapter": "^1.7.2",
 
   // Better-Auth
-  "better-auth": "^1.3",
+  "better-auth": "^1.4.0",
 
   // Prisma
-  prisma: "^6.6.0",
-  "@prisma/client": "^6.6.0",
-  "@prisma/adapter-planetscale": "^6.6.0",
+  prisma: "^7.0.1",
+  "@prisma/client": "^7.0.1",
+  "@prisma/adapter-planetscale": "^7.0.1",
+  "@prisma/adapter-pg": "^7.0.1",
+  "@prisma/adapter-mariadb": "^7.0.1",
+  "@prisma/adapter-better-sqlite3": "^7.0.1",
+  "better-sqlite3": "12.5.0",
+  pg: "^8.13.1",
+  "@types/pg": "^8.11.10",
+  "@types/better-sqlite3": "^7.6.11",
+  "@types/node": "^22.19.1",
+  "dotenv-cli": "^8.0.0",
 
   // Drizzle
   "drizzle-kit": "^0.30.5",
@@ -25,9 +34,8 @@ export const dependencyVersionMap = {
   "@libsql/client": "^0.14.0",
 
   // TailwindCSS
-  tailwindcss: "^4.0.15",
-  postcss: "^8.5.3",
-  "@tailwindcss/postcss": "^4.0.15",
+  tailwindcss: "^4.1.16",
+  "@tailwindcss/postcss": "^4.1.16",
 
   // tRPC
   "@trpc/client": "^11.0.0",
@@ -46,7 +54,7 @@ export const dependencyVersionMap = {
   "@eslint/eslintrc": "^3.3.1",
   "prettier-plugin-tailwindcss": "^0.6.11",
   eslint: "^9.23.0",
-  "eslint-config-next": "^15.2.3",
+  "eslint-config-next": "^16.0.0",
   "eslint-plugin-drizzle": "^0.2.3",
   "typescript-eslint": "^8.27.0",
 } as const;
