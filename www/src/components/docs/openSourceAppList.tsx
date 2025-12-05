@@ -8,6 +8,13 @@ interface App {
 }
 
 const projects: App[] = [
+   {
+  description: "SkipSetup - T3-powered foundation for AI-native development",
+  repoName: "Noble-TS/skipsetup",
+  repo: "https://github.com/Noble-TS/skipsetup",
+  linkName: "npmjs.com/package/skipsetup-cli",
+  link: "https://www.npmjs.com/package/skipsetup-cli",
+},
   {
     description: "OpenBio - Open Source Link in Bio",
     repoName: "vanxh/openbio",
