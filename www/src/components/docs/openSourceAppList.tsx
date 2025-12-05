@@ -302,6 +302,13 @@ const projects: App[] = [
     linkName: "Profilee",
     link: "https://www.profilee.info/",
   },
+   {
+    description: "SkipSetup - T3-powered foundation for AI-native development",
+    repoName: "Noble-TS/skipsetup",
+    repo: "https://github.com/Noble-TS/skipsetup",
+    linkName: "npmjs.com/package/skipsetup-cli",
+    link: "https://www.npmjs.com/package/skipsetup-cli",
+  },
   {
     description: "SunalRahal - Your Spotify, in a SVG",
     repoName: "prabincankod/sunal-rahal",
