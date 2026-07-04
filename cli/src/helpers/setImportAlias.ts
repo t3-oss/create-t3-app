@@ -21,6 +21,8 @@ function replaceTextInFiles(
 }
 
 export const setImportAlias = (projectDir: string, importAlias: string) => {
+  if (typeof importAlias !== "string") return;
+
   const normalizedImportAlias = importAlias
     .replace(/\*/g, "") // remove any wildcards (~/* -> ~/)
     .replace(/[^/]$/, "$&/"); // ensure trailing slash (@ -> ~/)

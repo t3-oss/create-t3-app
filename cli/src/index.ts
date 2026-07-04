@@ -78,7 +78,7 @@ const main = async () => {
   });
 
   // update import alias in any generated files if not using the default
-  if (importAlias !== "~/") {
+  if (typeof importAlias === "string" && importAlias !== "~/") {
     setImportAlias(projectDir, importAlias);
   }
 
