@@ -40,7 +40,7 @@ export const logNextSteps = async ({
   }
 
   if (packages?.prisma.inUse || packages?.drizzle.inUse) {
-    if (["npm", "bun"].includes(pkgManager)) {
+    if (["npm", "bun", "nub"].includes(pkgManager)) {
       logger.info(`  ${pkgManager} run db:push`);
     } else {
       logger.info(`  ${pkgManager} db:push`);
@@ -53,7 +53,7 @@ export const logNextSteps = async ({
     );
   }
 
-  if (["npm", "bun"].includes(pkgManager)) {
+  if (["npm", "bun", "nub"].includes(pkgManager)) {
     logger.info(`  ${pkgManager} run dev`);
   } else {
     logger.info(`  ${pkgManager} dev`);

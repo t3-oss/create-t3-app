@@ -69,6 +69,19 @@ const runInstallCommand = async (
     // When using bun, the stdout stream is ignored and the spinner is shown
     case "bun":
       return execWithSpinner(projectDir, pkgManager, { stdout: "ignore" });
+    // nub is pnpm-CLI-compatible, so mirror the pnpm progress handling
+    case "nub":
+      return execWithSpinner(projectDir, pkgManager, {
+        onDataHandle: (spinner) => (data) => {
+          const text = data.toString();
+
+          if (text.includes("Progress")) {
+            spinner.text = text.includes("|")
+              ? (text.split(" | ")[1] ?? "")
+              : text;
+          }
+        },
+      });
   }
 };
 

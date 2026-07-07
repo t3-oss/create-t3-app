@@ -1,4 +1,4 @@
-export type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
+export type PackageManager = "npm" | "pnpm" | "yarn" | "bun" | "nub";
 
 export const getUserPkgManager: () => PackageManager = () => {
   // This environment variable is set by npm and yarn but pnpm seems less consistent
@@ -11,6 +11,8 @@ export const getUserPkgManager: () => PackageManager = () => {
       return "pnpm";
     } else if (userAgent.startsWith("bun")) {
       return "bun";
+    } else if (userAgent.startsWith("nub")) {
+      return "nub";
     } else {
       return "npm";
     }
