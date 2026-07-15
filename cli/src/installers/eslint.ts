@@ -43,6 +43,12 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
 
   fs.copySync(prettierSrc, prettierDest);
 
+  // .prettierignore — prevents Prettier from formatting generated files
+  // (e.g. Prisma client under generated/prisma/) which cause persistent
+  // git diff churn. See https://github.com/t3-oss/create-t3-app/issues/2217
+  const prettierIgnoreSrc = path.join(extrasDir, "config/_prettierignore");
+  fs.copySync(prettierIgnoreSrc, path.join(projectDir, ".prettierignore"));
+
   // pnpm
   const pkgManager = getUserPkgManager();
   if (pkgManager === "pnpm") {
