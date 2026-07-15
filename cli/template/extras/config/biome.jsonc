@@ -18,7 +18,7 @@
     },
   },
   "files": {
-    "ignore": ["generated"]
+    "includes": ["**", "!**/generated"]
   },
   "formatter": {
     "enabled": true,
