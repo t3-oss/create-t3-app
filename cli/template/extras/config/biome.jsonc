@@ -17,6 +17,9 @@
       },
     },
   },
+  "files": {
+    "ignore": ["generated"]
+  },
   "formatter": {
     "enabled": true,
   },
