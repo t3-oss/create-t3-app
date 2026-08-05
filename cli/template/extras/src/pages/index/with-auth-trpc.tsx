@@ -71,6 +71,7 @@ function AuthShowcase() {
         {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
+        type="button"
         className={styles.loginButton}
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >

@@ -43,12 +43,15 @@ export const drizzleInstaller: Installer = ({
   );
   const configDest = path.join(projectDir, "drizzle.config.ts");
 
+  const schemaBaseName = packages?.betterAuth.inUse
+    ? "with-better-auth"
+    : packages?.nextAuth.inUse
+      ? "with-auth"
+      : "base";
   const schemaSrc = path.join(
     extrasDir,
     "src/server/db/schema-drizzle",
-    packages?.nextAuth.inUse
-      ? `with-auth-${databaseProvider}.ts`
-      : `base-${databaseProvider}.ts`
+    `${schemaBaseName}-${databaseProvider}.ts`
   );
   const schemaDest = path.join(projectDir, "src/server/db/schema.ts");
 

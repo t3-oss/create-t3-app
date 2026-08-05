@@ -11,6 +11,10 @@ on:
 jobs:
   release:
     if: ${{ github.repository_owner == 't3-oss' }}
+    permissions:
+      contents: write # to create release (changesets/action)
+      id-token: write # OpenID Connect token needed for provenance
+      pull-requests: write # to create pull request (changesets/action)
     name: Create a PR for release workflow
     runs-on: ubuntu-latest
     steps:
@@ -35,5 +39,6 @@ jobs:
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NODE_ENV: "production"

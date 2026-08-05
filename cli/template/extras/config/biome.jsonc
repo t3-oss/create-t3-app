@@ -1,26 +1,69 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
   "vcs": {
     "enabled": true,
+    "useIgnoreFile": true,
     "clientKind": "git",
-    "useIgnoreFile": true
   },
-  "files": { "ignoreUnknown": false, "ignore": [] },
-  "formatter": { "enabled": true },
-  "organizeImports": { "enabled": true },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "recommended": true,
+      "source": {
+        "recommended": true,
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+      },
+    },
+  },
+  "formatter": {
+    "enabled": true,
+  },
   "linter": {
     "enabled": true,
     "rules": {
+      "recommended": true,
       "nursery": {
         "useSortedClasses": {
           "level": "warn",
           "fix": "safe",
           "options": {
-            "functions": ["clsx", "cva", "cn"]
-          }
-        }
+            "functions": ["clsx", "cva", "cn"],
+          },
+        },
       },
-      "recommended": true
-    }
-  }
+    },
+  },
+  "html": {
+    "formatter": {
+      "enabled": true,
+    },
+  },
+  "javascript": {
+    "assist": {
+      "enabled": true,
+    },
+    "formatter": {
+      "enabled": true,
+    },
+    "linter": {
+      "enabled": true,
+    },
+  },
+  "css": {
+    "assist": {
+      "enabled": true,
+    },
+    "formatter": {
+      "enabled": true,
+    },
+    "linter": {
+      "enabled": true,
+    },
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true,
+    },
+  },
 }

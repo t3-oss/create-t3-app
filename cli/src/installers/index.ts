@@ -4,6 +4,7 @@ import { prismaInstaller } from "~/installers/prisma.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
 import { type PackageManager } from "~/utils/getUserPkgManager.js";
+import { betterAuthInstaller } from "./betterAuth.js";
 import { biomeInstaller } from "./biome.js";
 import { dbContainerInstaller } from "./dbContainer.js";
 import { drizzleInstaller } from "./drizzle.js";
@@ -13,6 +14,7 @@ import { dynamicEslintInstaller } from "./eslint.js";
 // Should increase extensibility in the future
 export const availablePackages = [
   "nextAuth",
+  "betterAuth",
   "prisma",
   "drizzle",
   "tailwind",
@@ -60,6 +62,10 @@ export const buildPkgInstallerMap = (
   nextAuth: {
     inUse: packages.includes("nextAuth"),
     installer: nextAuthInstaller,
+  },
+  betterAuth: {
+    inUse: packages.includes("betterAuth"),
+    installer: betterAuthInstaller,
   },
   prisma: {
     inUse: packages.includes("prisma"),
