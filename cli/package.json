@@ -32,7 +32,7 @@
     "package.json"
   ],
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=20.9.0"
   },
   "scripts": {
     "typecheck": "tsc",
@@ -82,8 +82,8 @@
     "drizzle-kit": "^0.30.5",
     "drizzle-orm": "^0.41.0",
     "mysql2": "^3.11.0",
-    "next": "^15.5.9",
-    "next-auth": "^4.24.7",
+    "next": "^16.3.6",
+    "next-auth": "^4.24.15",
     "postgres": "^3.4.4",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",

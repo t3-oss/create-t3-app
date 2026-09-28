@@ -4,7 +4,7 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "5.0.0-beta.25",
+  "next-auth": "5.0.0-beta.32",
   "@auth/prisma-adapter": "^2.7.2",
   "@auth/drizzle-adapter": "^1.7.2",
 
@@ -43,11 +43,10 @@ export const dependencyVersionMap = {
 
   // eslint / prettier
   prettier: "^3.5.3",
-  "@eslint/eslintrc": "^3.3.1",
   "prettier-plugin-tailwindcss": "^0.6.11",
-  eslint: "^9.23.0",
-  "eslint-config-next": "^15.2.3",
+  eslint: "^9.39.5",
+  "eslint-config-next": "^16.3.6",
   "eslint-plugin-drizzle": "^0.2.3",
-  "typescript-eslint": "^8.27.0",
+  "typescript-eslint": "^8.46.0",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;
