@@ -15,7 +15,6 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
     "eslint",
     "eslint-config-next",
     "typescript-eslint",
-    "@eslint/eslintrc",
   ];
 
   if (packages?.tailwind.inUse) {
@@ -53,9 +52,9 @@ export const dynamicEslintInstaller: Installer = ({ projectDir, packages }) => {
   addPackageScript({
     projectDir,
     scripts: {
-      lint: "next lint",
-      "lint:fix": "next lint --fix",
-      check: "next lint && tsc --noEmit",
+      lint: "eslint .",
+      "lint:fix": "eslint . --fix",
+      check: "eslint . && tsc --noEmit",
       "format:write": 'prettier --write "**/*.{ts,tsx,js,jsx,mdx}" --cache',
       "format:check": 'prettier --check "**/*.{ts,tsx,js,jsx,mdx}" --cache',
     },

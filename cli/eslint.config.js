@@ -49,8 +49,14 @@ export default tseslint.config(
   },
   {
     // Template files don't have reliable type information
-    files: ["./template/**/*.{ts,tsx}"],
+    files: ["template/**/*.{ts,tsx}"],
     extends: [tseslint.configs.disableTypeChecked],
+    rules: {
+      // Scaffolded apps use `verbatimModuleSyntax`, which emits `import { type X }` as a
+      // side-effect import, so type-only imports must use a top-level `import type`.
+      "import-x/consistent-type-specifier-style": "off",
+      "@typescript-eslint/no-import-type-side-effects": "error",
+    },
   },
   {
     linterOptions: {

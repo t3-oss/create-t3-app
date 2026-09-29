@@ -1,6 +1,6 @@
-import { type Session } from "next-auth";
+import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { type AppType } from "next/app";
+import type { AppType } from "next/app";
 import { Geist } from "next/font/google";
 
 import "~/styles/globals.css";
