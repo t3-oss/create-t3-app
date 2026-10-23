@@ -344,6 +344,13 @@ const projects: App[] = [
     linkName: "AISEKA",
     link: "https://aiseka.com/",
   },
+  {
+    description: "Autostrum - An interactive guitar tab and practice platform",
+    repoName: "michaelongaro/Autostrum",
+    repo: "https://github.com/michaelongaro/Autostrum",
+    linkName: "Autostrum",
+    link: "https://www.autostrum.com/",
+  },
 ];
 
 export default function OpenSourceAppList({
