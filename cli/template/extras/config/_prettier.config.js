@@ -1,2 +1,4 @@
 /** @type {import('prettier').Config} */
-export default {};
+const config = {};
+
+export default config;
