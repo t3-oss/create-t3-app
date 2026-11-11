@@ -86,6 +86,6 @@ import "./my-class.css";
 | Tailwind Cheat Sheet         | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss          | https://github.com/aniftyco/awesome-tailwindcss/         |
 | Tailwind Community           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server      | https://tailwindcss.com/discord/                         |
+| Tailwind Discord Server      | https://discord.com/invite/tailwindcss                         |
 | TailwindLabs Youtube Channel | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground          | https://play.tailwindcss.com/                            |

@@ -51,19 +51,19 @@ Este archivo es donde defines el contexto que se pasa a tus procedimientos tRPC.
 
 ### 📄 `server/trpc/trpc.ts`
 
-Aquí es donde inicializas tRPC y defines [procedimientos](https://trpc.io/docs/v10/procedures) reutilizables y [middlewares](https://trpc.io/docs/v10/middlewares). Por convención, no debes exportar todo el objeto `t`, sino crear procedimientos y middlewares reutilizables y exportarlos.
+Aquí es donde inicializas tRPC y defines [procedimientos](https://trpc.io/docs/v10/server/procedures) reutilizables y [middlewares](https://trpc.io/docs/v10/server/middlewares). Por convención, no debes exportar todo el objeto `t`, sino crear procedimientos y middlewares reutilizables y exportarlos.
 
-Notarás que usamos `superjson` como [transformador de datos](https://trpc.io/docs/v10/data-transformers). Esto hace que tus tipos de datos se conserven cuando llegan al cliente, por lo que si por ejemplo envías un objeto `Date`, el cliente devolverá un `Date` y no una string, que es el caso para la mayoría de las APIs.
+Notarás que usamos `superjson` como [transformador de datos](https://trpc.io/docs/v10/server/data-transformers). Esto hace que tus tipos de datos se conserven cuando llegan al cliente, por lo que si por ejemplo envías un objeto `Date`, el cliente devolverá un `Date` y no una string, que es el caso para la mayoría de las APIs.
 
 ### 📄 `server/trpc/router/*.ts`
 
-Aquí es donde defines las rutas y procedimientos de tu API. Por convención, tu deberías [crear enrutadores separados](https://trpc.io/docs/v10/router) para procedimientos relacionados, luego [fusionar](https://trpc.io/docs/v10/merging-routers) todos ellos en un solo enrutador en `servidor/trpc/router/_app.ts`.
+Aquí es donde defines las rutas y procedimientos de tu API. Por convención, tu deberías [crear enrutadores separados](https://trpc.io/docs/v10/router) para procedimientos relacionados, luego [fusionar](https://trpc.io/docs/v10/server/merging-routers) todos ellos en un solo enrutador en `servidor/trpc/router/_app.ts`.
 
 ### 📄 `utils/trpc.ts`
 
 Este es el punto de entrada frontend para tRPC. Aquí es donde importarás la definición de tipo **del enrutador** y crearás tu cliente tRPC junto con los hooks react-query. Dado que habilitamos `superjson` como nuestro transformador de datos en el backend, también debemos habilitarlo en el frontend. Esto se debe a que los datos serializados del backend están deserializados en la parte del frontend.
 
-Definirás tus [enlaces](https://trpc.io/docs/v10/links) tRPC aquí, que determinan el flujo de la solicitud del cliente al servidor. Utilizamos el "predeterminado" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpbatchlink) que habilita [solicitudes en conjunto](https://cloud.google.com/compute/docs/api/how-tos/batch), así como un [`loggerLink`](https://trpc.io/docs/v10/links/loggerlink) que genera registros de solicitudes útiles durante el desarrollo.
+Definirás tus [enlaces](https://trpc.io/docs/v10/client/links) tRPC aquí, que determinan el flujo de la solicitud del cliente al servidor. Utilizamos el "predeterminado" [`httpBatchLink`](https://trpc.io/docs/v10/client/links/httpbatchlink) que habilita [solicitudes en conjunto](https://cloud.google.com/compute/docs/api/how-tos/batch), así como un [`loggerLink`](https://trpc.io/docs/v10/client/links/loggerlink) que genera registros de solicitudes útiles durante el desarrollo.
 
 Por último, exportamos un [tipo de ayuda](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) que puedes usar para inferir tus tipos en el frontend.
 
@@ -91,7 +91,7 @@ const userRouter = t.router({
 
 Este es un procedimiento TRPC (equivalente a un manejador de ruta en un backend tradicional) que primero valida la entrada usando Zod (que es la misma librería de validación que utilizamos para las [variables de entorno](./env-variables)) - en este caso, se asegura de que la entrada sea un string. Si la entrada no es un string, enviará un error informativo en su lugar.
 
-Después de la entrada, encadenamos una función de resolución que puede ser una [consulta](https://trpc.io/docs/v10/react-queries), [mutación](https://trpc.io/docs/v10/react-mutations), o una [suscripción](https://trpc.io/docs/v10/subscriptions). En nuestro ejemplo, la función de resolución llama a nuestra base de datos utilizando nuestro cliente [prisma](./prisma) y devuelve al usuario cuyo `id` coincide con el que pasamos.
+Después de la entrada, encadenamos una función de resolución que puede ser una [consulta](https://trpc.io/docs/v10/react-queries), [mutación](https://trpc.io/docs/v10), o una [suscripción](https://trpc.io/docs/v10/subscriptions). En nuestro ejemplo, la función de resolución llama a nuestra base de datos utilizando nuestro cliente [prisma](./prisma) y devuelve al usuario cuyo `id` coincide con el que pasamos.
 
 Tu defines tus procedimientos en `routers` que representan una colección de procedimientos relacionados con un nombre compartido. Es posible que tengas un enrutador para `users`, uno para `posts` y otro para `messages`. Estos enrutadores se pueden fusionar en un único `appRouter` centralizado:
 
@@ -257,7 +257,7 @@ export default handler;
 
 ### Actualizaciones optimistas
 
-Las actualizaciones optimistas son cuando actualizamos la interfaz de usuario antes de que la llamada API haya terminado. Esto le da al usuario una mejor experiencia porque no tiene que esperar a que la llamada API termine antes de que la interfaz de usuario refleje el resultado de tu acción. Sin embargo, las aplicaciones que valoran el estado correcto de los datos deben evitar actualizaciones optimistas, ya que no son una representación "verdadera" del estado del backend. Puede leer más en la documentación de [React Query](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Las actualizaciones optimistas son cuando actualizamos la interfaz de usuario antes de que la llamada API haya terminado. Esto le da al usuario una mejor experiencia porque no tiene que esperar a que la llamada API termine antes de que la interfaz de usuario refleje el resultado de tu acción. Sin embargo, las aplicaciones que valoran el estado correcto de los datos deben evitar actualizaciones optimistas, ya que no son una representación "verdadera" del estado del backend. Puede leer más en la documentación de [React Query](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -322,4 +322,4 @@ test("example router", async () => {
 | ----------------------------- | ------------------------------------------------------- |
 | Documentación de tRPC         | https://www.trpc.io                                     |
 | Un montón de ejemplos de tRPC | https://github.com/trpc/trpc/tree/next/examples         |
-| Documentación de React Query  | https://tanstack.com/query/v4/docs/adapters/react-query |
+| Documentación de React Query  | https://tanstack.com/query/v4 |

@@ -110,7 +110,7 @@ dir: rtl
 
 **For serverless WebSockets**
 
-إذا كان الـ WebSockets مُهمة بالنسبة لك، فإنه مِن الأفضل الإعتماد على سيرفر تقليدي مثل [Fastify](https://www.fastify.io/) والتي أيضا تدعم [tRPC](https://trpc.io/docs/v10/fastify)
+إذا كان الـ WebSockets مُهمة بالنسبة لك، فإنه مِن الأفضل الإعتماد على سيرفر تقليدي مثل [Fastify](https://www.fastify.io/) والتي أيضا تدعم [tRPC](https://trpc.io/docs/v10)
 لكن إذا كانت السرعة مهمة لك فإن Pusher هو الخيار المناسب لك.
 
 - [Pusher Homepage](https://pusher.com/)

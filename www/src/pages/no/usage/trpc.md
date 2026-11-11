@@ -58,7 +58,7 @@ const userRouter = createTRPCRouter({
 
 Dette er tRPC-prosedyre (tilsvarer en rutebehandler i en tradisjonell backend) som først validerer inndataene ved å bruke Zod (som er det samme valideringsbiblioteket vi bruker for [miljøvariablene](./env-variables)) - i dette tilfellet forsikres det at _input_ er en streng. Hvis input ikke er en streng, returneres en detaljert feil.
 
-Etter input følger en resolver-funksjon som enten utfører en [query](https://trpc.io/docs/v10/react-queries), [mutasjon](https://trpc.io/docs/v10/react-mutations) eller en [subscription](https://trpc.io/docs/v10/subscriptions). I vårt eksempel kaller resolver-funksjonen vår database med vår [prisma](./prisma)-klient og returnerer brukeren hvis `id` samsvarer med den vi sendte inn.
+Etter input følger en resolver-funksjon som enten utfører en [query](https://trpc.io/docs/v10/react-queries), [mutasjon](https://trpc.io/docs/v10) eller en [subscription](https://trpc.io/docs/v10/subscriptions). I vårt eksempel kaller resolver-funksjonen vår database med vår [prisma](./prisma)-klient og returnerer brukeren hvis `id` samsvarer med den vi sendte inn.
 
 Du definerer prosedyrene dine i `rutere` som er en samling av relaterte prosedyrer innenfor et felles _namespace_. Du kan ha en ruter for `users`, en for `posts` og en for `messages`. Disse ruterne kan deretter slås sammen til en enkelt, sentral `appRouter`:
 
@@ -112,9 +112,9 @@ Denne filen er delt opp i to deler, kontekstoppretting og tRPC-initialisering:
 
 - `createTRPCContext`: Det er her du definerer konteksten som avhenger av forespørselen, f.eks. brukerens økt. Du ber om økten ved å bruke `opts.req`-objektet, og sender deretter økten ned til `createInnerTRPCContext`-funksjonen for å lage den endelige konteksten.
 
-2. Vi initialiserer tRPC og definerer gjenbrukbare [prosedyrer](https://trpc.io/docs/v10/procedures) og [middlewares](https://trpc.io/docs/v10/middlewares). Av konvensjon bør du ikke eksponere hele `t`-objektet, men i stedet lage gjenbrukbare prosedyrer og middleware og eksportere de.
+2. Vi initialiserer tRPC og definerer gjenbrukbare [prosedyrer](https://trpc.io/docs/v10/server/procedures) og [middlewares](https://trpc.io/docs/v10/middlewares). Av konvensjon bør du ikke eksponere hele `t`-objektet, men i stedet lage gjenbrukbare prosedyrer og middleware og eksportere de.
 
-Du har sikkert lagt merke til at vi bruker `superjson` som [datatransformator](https://trpc.io/docs/v10/data-transformers). Dette sikrer at datatypene dine blir bevart når de når klienten, så hvis du for eksempel sender et `Date`-objekt til klienten så returneres et `Date`-objekt og ikke en streng slik de fleste API gjør.
+Du har sikkert lagt merke til at vi bruker `superjson` som [datatransformator](https://trpc.io/docs/v10/server/data-transformers). Dette sikrer at datatypene dine blir bevart når de når klienten, så hvis du for eksempel sender et `Date`-objekt til klienten så returneres et `Date`-objekt og ikke en streng slik de fleste API gjør.
 
 ### 📄 `server/api/routers/*.ts`
 
@@ -122,13 +122,13 @@ Det er her du definerer ruterne og prosedyrene for API-et din. Konvensjon tilsie
 
 ### 📄 `server/api/root.ts`
 
-Her slår vi sammen alle underruterne definert i `routers/**` [merge](https://trpc.io/docs/v10/merging-routers) til et enkelt app-ruter.
+Her slår vi sammen alle underruterne definert i `routers/**` [merge](https://trpc.io/docs/v10/server/merging-routers) til et enkelt app-ruter.
 
 ### 📄 `utils/api.ts`
 
 Dette er inngangspunktet for tRPC på klientsiden. Her importerer du ruterens **typedefinisjonen** og oppretter tRPC-klienten, samt hooks for react-query. Ettersom vi har aktivert `superjson` som vår datatransformator på serversiden, må vi aktivere den på klientsiden også. Dette er fordi serialisert data fra _backend_ blir deserialisert på _frontend_.
 
-Du definerer tRPC [lenker](https://trpc.io/docs/v10/links) her, som kartlegger request-flyten fra klienten til serveren. Vi bruker "standard" [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) som muliggjør [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), samt en [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) som gir ut request-logger som kan være nyttige under utviklingsprosessen.
+Du definerer tRPC [lenker](https://trpc.io/docs/v10/client/links) her, som kartlegger request-flyten fra klienten til serveren. Vi bruker "standard" [`httpBatchLink`](https://trpc.io/docs/v10/client/links/httpBatchLink) som muliggjør [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), samt en [`loggerLink`](https://trpc.io/docs/v10/client/links/loggerLink) som gir ut request-logger som kan være nyttige under utviklingsprosessen.
 
 Til slutt eksporterer vi en [hjelpertype](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) som du kan bruke til å utlede typene dine på klientsiden.
 
@@ -263,7 +263,7 @@ export default handler;
 
 ### Optimistiske oppdateringer
 
-Optimistiske oppdateringer er oppdateringer vi gjør før API-forespørselen fullføres. Dette gir en bedre opplevelse for brukeren siden de ikke trenger å vente på at API-forespørselen skal fullføres før brukergrensesnittet reflekterer resultatet av handlingen deres. Imidlertid bør applikasjoner som verdsetter riktigheten av dataen unngå optimistiske oppdateringer, da de ikke gjenspeiler de "sanne" dataene til backend. Du kan lese mer om det i [React Query-dokumentasjonen](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+Optimistiske oppdateringer er oppdateringer vi gjør før API-forespørselen fullføres. Dette gir en bedre opplevelse for brukeren siden de ikke trenger å vente på at API-forespørselen skal fullføres før brukergrensesnittet reflekterer resultatet av handlingen deres. Imidlertid bør applikasjoner som verdsetter riktigheten av dataen unngå optimistiske oppdateringer, da de ikke gjenspeiler de "sanne" dataene til backend. Du kan lese mer om det i [React Query-dokumentasjonen](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -328,4 +328,4 @@ test("example router", async () => {
 | ------------------------- | ------------------------------------------------------- |
 | tRPC Dokumentasjon        | https://www.trpc.io                                     |
 | Noen tRPC-eksempler       | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Dokumentasjon | https://tanstack.com/query/v4/docs/adapters/react-query |
+| React Query Dokumentasjon | https://tanstack.com/query/v4 |

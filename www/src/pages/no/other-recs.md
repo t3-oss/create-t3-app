@@ -125,7 +125,7 @@ Vi elsker Prisma og PlanetScale, men enkelte prosjekter tremger noen ganger en m
 
 **For serverløse WebSockets**
 
-Hvis WebSockets er hovedfokuset for prosjektet ditt, kan det være lurt å vurdere en mer tradisjonell backend-løsning som [Fastify](https://www.fastify.io/) (som [også fungerer med tRPC!](https://trpc.io/docs/v10/fastify)). For raskt å legge til WebSockets i en T3-app er Pusher et utmerket valg.
+Hvis WebSockets er hovedfokuset for prosjektet ditt, kan det være lurt å vurdere en mer tradisjonell backend-løsning som [Fastify](https://www.fastify.io/) (som [også fungerer med tRPC!](https://trpc.io/docs/v10)). For raskt å legge til WebSockets i en T3-app er Pusher et utmerket valg.
 
 - [Pusher Hjemmeside](https://pusher.com/)
 

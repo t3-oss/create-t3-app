@@ -56,4 +56,4 @@ Sin embargo, si tienes dificultades para implementarlo y quieres ver un proyecto
 
 Según [Axioma-T3 #2](/es/introduction#responsablemente-vanguardista), nos encantan las cosas innovadoras, pero valoramos la estabilidad, todo tu enrutador es difícil de portar, [no es un buen lugar para ser vanguardista](https://youtu.be/mnwUbtieOuI?t=1662). Si bien `/app` es [un vistazo al futuro](https://youtu.be/rnsC-12PVlM?t=818), no está lista para producción; La API está en versión beta y se espera que tenga cambios significativos.
 
-Para obtener una lista de funciones compatibles, planificadas y en las que se ha trabajado en el directorio `/app`, visita [la documentación beta de Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+Para obtener una lista de funciones compatibles, planificadas y en las que se ha trabajado en el directorio `/app`, visita [la documentación beta de Next.js](https://nextjs.org/docs/app).

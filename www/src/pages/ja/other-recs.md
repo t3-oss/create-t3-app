@@ -125,7 +125,7 @@ PlanetScale は、これまで使った中で最も優れた「サーバーレ�
 
 **サーバーレス WebSockets 用**
 
-WebSocket がプロジェクトの主な焦点である場合、[Fastify](https://www.fastify.io/) (これは[tRPC でも動作する!](https://trpc.io/docs/v10/fastify))のようなもっと伝統的なバックエンドを検討することをお勧めします。しかし、T3 アプリに WebSocket を素早く追加するには、Pusher は優れた選択です。
+WebSocket がプロジェクトの主な焦点である場合、[Fastify](https://www.fastify.io/) (これは[tRPC でも動作する!](https://trpc.io/docs/v10))のようなもっと伝統的なバックエンドを検討することをお勧めします。しかし、T3 アプリに WebSocket を素早く追加するには、Pusher は優れた選択です。
 
 - [Pusher ホームページ](https://pusher.com/)
 

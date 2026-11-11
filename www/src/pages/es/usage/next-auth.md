@@ -67,7 +67,7 @@ El mismo patrón se puede usar para agregar cualquier otro dato al objeto `sessi
 
 ## Uso con tRPC
 
-Cuando utilices NextAuth.js con tRPC, puedes crear procedimientos protegidos reutilizables usando [middleware](https://trpc.io/docs/v10/middlewares). Esto te permite crear procedimientos a los que solo los usuarios autenticados pueden acceder. `create-t3-app` establece todo esto para ti, lo que te permite acceder fácilmente al objeto de sesión dentro de los procedimientos autenticados.
+Cuando utilices NextAuth.js con tRPC, puedes crear procedimientos protegidos reutilizables usando [middleware](https://trpc.io/docs/v10/server/middlewares). Esto te permite crear procedimientos a los que solo los usuarios autenticados pueden acceder. `create-t3-app` establece todo esto para ti, lo que te permite acceder fácilmente al objeto de sesión dentro de los procedimientos autenticados.
 
 Esto se hace en un proceso de dos pasos:
 
