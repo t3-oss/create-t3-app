@@ -89,6 +89,6 @@ L'ajout conditionnel de classes à l'aide de ternaires peut devenir très compli
 | Feuille de triche pour Tailwind | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss             | https://github.com/aniftyco/awesome-tailwindcss/         |
 | Communauté Tailwind             | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord Server         | https://tailwindcss.com/discord/                         |
+| Tailwind Discord Server         | https://discord.com/invite/tailwindcss                         |
 | TailwindLabs Youtube Channel    | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground             | https://play.tailwindcss.com/                            |

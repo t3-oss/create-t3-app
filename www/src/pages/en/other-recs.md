@@ -125,7 +125,7 @@ We love Prisma and PlanetScale, but some projects require a more performant solu
 
 **For serverless WebSockets**
 
-If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10/fastify)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
+If WebSockets are the primary focus of your project, you may want to consider a more traditional backend such as [Fastify](https://www.fastify.io/) (which [also works with tRPC!](https://trpc.io/docs/v10)). But for quickly adding WebSockets to a T3 App, Pusher is an excellent choice.
 
 - [Pusher Homepage](https://pusher.com/)
 

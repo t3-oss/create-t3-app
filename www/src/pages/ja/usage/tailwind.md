@@ -93,6 +93,6 @@ Tailwind CSS のクラス名は、少し乱雑になりやすいので、クラ�
 | Tailwind チートシート           | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss             | https://github.com/aniftyco/awesome-tailwindcss/         |
 | Tailwind コミュニティ           | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Tailwind Discord サーバー       | https://tailwindcss.com/discord/                         |
+| Tailwind Discord サーバー       | https://discord.com/invite/tailwindcss                         |
 | TailwindLabs Youtube チャンネル | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind プレイグラウンド       | https://play.tailwindcss.com/                            |

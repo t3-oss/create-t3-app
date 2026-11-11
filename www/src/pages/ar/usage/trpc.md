@@ -53,13 +53,13 @@ dir: rtl
 
 ### 📄ملف `server/trpc/trpc.ts`
 
-في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/procedures) و [middlewares](https://trpc.io/docs/v10)، من الافضل ان لا تقوم بعمل export لـ t Object كاملا
+في هذا حَيثُ يمكنك تحديد الـ [procedures](https://trpc.io/docs/v10/server/procedures) و [middlewares](https://trpc.io/docs/v10)، من الافضل ان لا تقوم بعمل export لـ t Object كاملا
 /middlewares) بل قم بتصدير procedures و middlewares
-ستلاحظ أننا نستخدم `superjson` كـ [data transformer](https://trpc.io/docs/v10/data-transformers)، ذلك حتى نحفظ الـ Types لحين إستخدامها في في الـ client، فمثلا إذا كان الـ Type هو Date فإن الـ client سَيُعيد Date ,gds string
+ستلاحظ أننا نستخدم `superjson` كـ [data transformer](https://trpc.io/docs/v10/server/data-transformers)، ذلك حتى نحفظ الـ Types لحين إستخدامها في في الـ client، فمثلا إذا كان الـ Type هو Date فإن الـ client سَيُعيد Date ,gds string
 
 ### 📄 ملف `server/trpc/router/*.ts`
 
-هنا يمكنك تحديد الـ route ,والـ procedure للـ API، من الافضل [أن تُنشئ routers](https://trpc.io/docs/v10/router) مُنفصلة للـ procedures المتقاربة ومن ثَم [دمجها](https://trpc.io/docs/v10/merging-routers) في router واحد في `server/trpc/router/_app.ts`
+هنا يمكنك تحديد الـ route ,والـ procedure للـ API، من الافضل [أن تُنشئ routers](https://trpc.io/docs/v10/router) مُنفصلة للـ procedures المتقاربة ومن ثَم [دمجها](https://trpc.io/docs/v10/server/merging-routers) في router واحد في `server/trpc/router/_app.ts`
 
 ### 📄 ملف `utils/trpc.ts`
 
@@ -67,8 +67,8 @@ dir: rtl
 جنب مع react query hooks. نظرًا لأننا قمنا بتفعيل "superjson" في الواجهة الخلفية
 فنحن بحاجة إلى تفعيلة على الواجهة الأمامية أيضًا. هذا لان البيانات التي يحدث لها serialized في الـ client يتم عمل deserialized لها في الـ client.
 
-هنا تقوم بتحديد [روابط](https://trpc.io/docs/v10/links) الـ tRPC حيث تُُحدد المسار الذي سيمر به الـ request من الـ client إلى الـ server
-نحن نستخدم [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) بشكل إفتراضي مع تفعيل [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch) و [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink)
+هنا تقوم بتحديد [روابط](https://trpc.io/docs/v10/client/links) الـ tRPC حيث تُُحدد المسار الذي سيمر به الـ request من الـ client إلى الـ server
+نحن نستخدم [`httpBatchLink`](https://trpc.io/docs/v10/client/links/httpBatchLink) بشكل إفتراضي مع تفعيل [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch) و [`loggerLink`](https://trpc.io/docs/v10/client/links/loggerLink)
 
 وفي الاخير نقوم بتصدير [helper type](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type) حتى نستعمل الـ type infre في الـ frontend
 
@@ -95,7 +95,7 @@ const userRouter = t.router({
 ```
 
 في نهاية الأمر تتحول tRPC procedure الي backend عادي فيقوم بفحص الـ input ويمرر الـ request إذا كان صحيحاًويعيد رسالة خطأ إذا كانت المدخلات غير صحيحة.
-بعد التأكد من صحة البيانات يتم نداء function والتي إما لجلب بيانات ([query](https://trpc.io/docs/v10/react-queries)) أو أن تغير في البانات ([mutation](https://trpc.io/docs/v10/react-mutations))
+بعد التأكد من صحة البيانات يتم نداء function والتي إما لجلب بيانات ([query](https://trpc.io/docs/v10/react-queries)) أو أن تغير في البانات ([mutation](https://trpc.io/docs/v10))
 أنت
 
 ```ts:server/trpc/router/_app.ts
@@ -257,7 +257,7 @@ export default handler;
 
 ### Optimistic updates
 
-الـ Optimistic updates هي تحديثات تحديث واجهة المستخدم قبل أن ينتهي الـ Request مما يُحسن تجربة المستخدم، لكن التطبيقات التي تُفضل دقة المعلومات يجب أن تتجنب الـ Optimistic updates، للمزيد من المعلومات إقرا [React Query docs](https://tanstack.com/query/v4/docs/guides/optimistic-updates).
+الـ Optimistic updates هي تحديثات تحديث واجهة المستخدم قبل أن ينتهي الـ Request مما يُحسن تجربة المستخدم، لكن التطبيقات التي تُفضل دقة المعلومات يجب أن تتجنب الـ Optimistic updates، للمزيد من المعلومات إقرا [React Query docs](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates).
 
 ```tsx
 const MyComponent = () => {
@@ -322,4 +322,4 @@ test("example router", async () => {
 | ---------------------- | ------------------------------------------------------- |
 | tRPC Docs              | https://www.trpc.io                                     |
 | Bunch of tRPC Examples | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query Docs       | https://tanstack.com/query/v4/docs/adapters/react-query |
+| React Query Docs       | https://tanstack.com/query/v4 |

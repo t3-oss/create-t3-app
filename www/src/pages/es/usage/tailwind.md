@@ -91,6 +91,6 @@ Agregar condicionalmente clases con operadores ternarios puede ser muy desordena
 | Tailwind Cheat Sheet             | https://nerdcave.com/tailwind-cheat-sheet/               |
 | awesome-tailwindcss              | https://github.com/aniftyco/awesome-tailwindcss/         |
 | Comunidad de Tailwind            | https://github.com/tailwindlabs/tailwindcss/discussions/ |
-| Servidor Discord de Tailwind     | https://tailwindcss.com/discord/                         |
+| Servidor Discord de Tailwind     | https://discord.com/invite/tailwindcss                         |
 | Canal de Youtube de TailwindLabs | https://www.youtube.com/tailwindlabs/                    |
 | Tailwind Playground              | https://play.tailwindcss.com/                            |

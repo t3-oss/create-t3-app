@@ -59,7 +59,7 @@ const userRouter = createTRPCRouter({
 
 これは tRPC プロシージャ（従来のバックエンドのルートハンドラに相当）で、まず Zod を使って入力の検証を行います（これは[環境変数の検証](./env-variables)に使っているのと同じ検証ライブラリです）。この場合、入力が文字列であることを確認しています。入力が文字列でない場合は、代わりに情報提供のためのエラー情報をレスポンスとして送信します。
 
-入力の後、[query](https://trpc.io/docs/v10/react-queries)、[mutation](https://trpc.io/docs/v10/react-mutations)、[subscription](https://trpc.io/docs/v10/subscriptions)のいずれかであるリゾルバー関数を連鎖させます。この例では、リゾルバは[prisma](./prisma)クライアントを使用してデータベースを呼び出し、渡された`id`と一致するユーザを返します。
+入力の後、[query](https://trpc.io/docs/v10/react-queries)、[mutation](https://trpc.io/docs/v10)、[subscription](https://trpc.io/docs/v10/subscriptions)のいずれかであるリゾルバー関数を連鎖させます。この例では、リゾルバは[prisma](./prisma)クライアントを使用してデータベースを呼び出し、渡された`id`と一致するユーザを返します。
 
 名前空間を共有する一連のプロシージャをまとめた`routers`を定義できます。例えば、`users`のルータ、`posts`のルータ、`messages`のルータがあるとして、これらのルータは、単一の集約された `appRouter` にマージすることができます：
 
@@ -143,9 +143,9 @@ tRPC は、`create-t3-app`が設定するかなり多くのボイラープレー
 
 - `createTRPCContext`：これは、リクエストに依存するコンテキストを定義している場所です。例えば、ユーザのセッションです。`opts.req`オブジェクトを使ってセッションをリクエストし、そのセッションを `createInnerTRPCContext` 関数に渡して最終的なコンテキストを作成します。
 
-2. tRPC を初期化し、再利用可能な[手続き](https://trpc.io/docs/v10/procedures)と[ミドルウェア](https://trpc.io/docs/v10/middlewares)を定義しています。慣例として、`t`オブジェクト全体をエクスポートするのではなく、再利用可能な手続きとミドルウェアを作成し、それらをエクスポートするようにしてください。
+2. tRPC を初期化し、再利用可能な[手続き](https://trpc.io/docs/v10/server/procedures)と[ミドルウェア](https://trpc.io/docs/v10/middlewares)を定義しています。慣例として、`t`オブジェクト全体をエクスポートするのではなく、再利用可能な手続きとミドルウェアを作成し、それらをエクスポートするようにしてください。
 
-[データトランスフォーマー](https://trpc.io/docs/v10/data-transformers)として `superjson` を使用していることにお気づきでしょう。これにより、データがクライアントに到達したときにもデータ型が保持されるため、例えば`Date`オブジェクトを送信すると、クライアントは文字列ではなく`Date`を返します。他の API のほとんどではこうならないでしょう。
+[データトランスフォーマー](https://trpc.io/docs/v10/server/data-transformers)として `superjson` を使用していることにお気づきでしょう。これにより、データがクライアントに到達したときにもデータ型が保持されるため、例えば`Date`オブジェクトを送信すると、クライアントは文字列ではなく`Date`を返します。他の API のほとんどではこうならないでしょう。
 
 ### 📄 `server/api/routers/*.ts`.
 
@@ -153,13 +153,13 @@ tRPC は、`create-t3-app`が設定するかなり多くのボイラープレー
 
 ### 📄 `server/api/root.ts`.
 
-ここでは、`routers/**`で定義されたすべてのサブルータを 1 つの app ルータに[マージ](https://trpc.io/docs/v10/merging-routers)しています。
+ここでは、`routers/**`で定義されたすべてのサブルータを 1 つの app ルータに[マージ](https://trpc.io/docs/v10/server/merging-routers)しています。
 
 ### 📄 `utils/api.ts`
 
 これは tRPC のフロントエンドのエントリポイントです。ここでルーターの**型定義**をインポートし、tRPC クライアントと react-query フックを作成します。バックエンドでデータトランスフォーマーとして `superjson` を有効にしたので、フロントエンドでも有効にする必要があります。これは、バックエンドからのシリアライズされたデータが、フロントエンドでデシリアライズされるようにするためです。
 
-ここでは tRPC の[リンク](https://trpc.io/docs/v10/links)を定義し、クライアントからサーバーへのリクエストフローを決定します。ここでは、デフォルトとして [`httpBatchLink`](https://trpc.io/docs/v10/links/httpBatchLink) が指定されており、[リクエストバッチ](https://cloud.google.com/compute/docs/api/how-tos/batch) が有効になっています。また、開発中に役立つリクエストログを出力する [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) も使用しています。
+ここでは tRPC の[リンク](https://trpc.io/docs/v10/client/links)を定義し、クライアントからサーバーへのリクエストフローを決定します。ここでは、デフォルトとして [`httpBatchLink`](https://trpc.io/docs/v10/client/links/httpBatchLink) が指定されており、[リクエストバッチ](https://cloud.google.com/compute/docs/api/how-tos/batch) が有効になっています。また、開発中に役立つリクエストログを出力する [`loggerLink`](https://trpc.io/docs/v10/client/links/loggerLink) も使用しています。
 
 最後に、フロントエンドで型を推論するために使える[ヘルパー型](https://trpc.io/docs/v10/infer-types#additional-dx-helper-type)をエクスポートします。
 
@@ -300,7 +300,7 @@ export default handler;
 
 ### 楽観的な更新
 
-楽観的な更新とは、API コールが終了する前に UI を更新することです。API コールの終了を待たずに UI に反映されるため、ユーザーにとってより良い体験になります。しかし、データの正確性を重視するアプリケーションでは、バックエンドの状態を「真に」反映していないため、楽観的な更新は避けるべきでしょう。詳しくは、[React Query ドキュメント](https://tanstack.com/query/v4/docs/guides/optimistic-updates)をご覧ください。
+楽観的な更新とは、API コールが終了する前に UI を更新することです。API コールの終了を待たずに UI に反映されるため、ユーザーにとってより良い体験になります。しかし、データの正確性を重視するアプリケーションでは、バックエンドの状態を「真に」反映していないため、楽観的な更新は避けるべきでしょう。詳しくは、[React Query ドキュメント](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates)をご覧ください。
 
 ```tsx
 const MyComponent = () => {
@@ -381,4 +381,4 @@ test("protected example router", async () => {
 | ------------------------ | ------------------------------------------------------- |
 | tRPC ドキュメント        | https://www.trpc.io                                     |
 | tRPC のサンプル集        | https://github.com/trpc/trpc/tree/next/examples         |
-| React Query ドキュメント | https://tanstack.com/query/v4/docs/adapters/react-query |
+| React Query ドキュメント | https://tanstack.com/query/v4 |

@@ -66,7 +66,7 @@ declare module "next-auth" {
 
 ## Usage with tRPC
 
-عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها إلا بواسطة أشخاص معينين
+عند استخدام NextAuth.js مع tRPC، يمكنك إنشاء producers وحمايتها باستخدام [middleware](https://trpc.io/docs/v10/server/middlewares)، وهذا يسمح لك بإنشاء procedures لا يمكن الوصول لها إلا بواسطة أشخاص معينين
 
 يُمكن فَعل هذا في خطوتين:
 

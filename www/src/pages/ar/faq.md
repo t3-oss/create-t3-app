@@ -57,4 +57,4 @@ dir: rtl
 كما ذكرنا مُسبقا في [T3-Axiom #2](/en/introduction#bleed-responsibly)، نحن نُحب الأشياء المتطورة لكننا نُقدر الاستقرار، فمن الصعب تَحويل الـ router إلي النظام الجديد، شاهد [not a great place to bleed](https://youtu.be/mnwUbtieOuI?t=1662).
 فإن `/app` [مُجرد لَمحة من المستقبل](https://youtu.be/rnsC-12PVlM?t=818)، فهو ليس جاهزًا للإنتاج؛ غير إن (API) في مَرحلة تجريبية ومن المتوقع أن تحدث له تغييرات جذرية.
 
-لمعرفة الميزات المدعومة والمخطط العمل عليها في dir المسمى `/app`، زر [beta Next.js docs](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+لمعرفة الميزات المدعومة والمخطط العمل عليها في dir المسمى `/app`، زر [beta Next.js docs](https://nextjs.org/docs/app).
