@@ -100,7 +100,7 @@ const getEnvContent = (
 # https://next-auth.js.org/configuration/options#secret
 AUTH_SECRET=""
 
-# Next Auth Discord Provider
+# Next Auth Discord Provider (leave blank in dev/tests; required in production)
 AUTH_DISCORD_ID=""
 AUTH_DISCORD_SECRET=""
 `;
