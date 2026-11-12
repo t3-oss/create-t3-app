@@ -18,12 +18,13 @@ import { expect, test } from "@playwright/test";
 
 test("signs in with Mockatoo", async ({ page }) => {
   await page.goto("http://localhost:3000");
-  await page.getByRole("button", { name: /sign in/i }).click();
-  await page.locator("#email").fill(process.env.MOCK_EMAIL!);
-  await page.locator("#password").fill(process.env.MOCK_PASSWORD!);
+  await page.goto("/api/auth/signin");
+  await page.getByRole("button", { name: /discord/i }).click();
+  await page.locator("#email").fill(process.env.MOCK_EMAIL ?? "");
+  await page.locator("#password").fill(process.env.MOCK_PASSWORD ?? "");
   await page.getByRole("button", { name: "Log in with password" }).click();
   await page.getByRole("button", { name: "Authorize" }).click();
-  await expect(page.getByText("Signed in")).toBeVisible();
+  await expect(page).toHaveURL(/localhost:3000\/$/);
 });
 ```
 
