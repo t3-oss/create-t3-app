@@ -4,7 +4,8 @@
  */
 export const dependencyVersionMap = {
   // NextAuth.js
-  "next-auth": "5.0.0-beta.25",
+  "next-auth": "5.0.0-beta.32",
+  "@mockatoo/connect-authjs": "^0.1.2",
   "@auth/prisma-adapter": "^2.7.2",
   "@auth/drizzle-adapter": "^1.7.2",
 
