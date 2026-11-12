@@ -1,3 +1,4 @@
+import { MockDiscord } from "@mockatoo/connect-authjs";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 
@@ -29,7 +30,7 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    process.env.NODE_ENV === "production" ? DiscordProvider : MockDiscord(),
     /**
      * ...add more providers here.
      *
