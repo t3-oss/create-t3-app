@@ -130,6 +130,10 @@ export const SIDEBAR: Sidebar = {
       { text: "Prisma", link: "en/usage/prisma" },
       { text: "NextAuth.js", link: "en/usage/next-auth" },
       {
+        text: "Testing authentication with Mockatoo",
+        link: "en/usage/mockatoo-auth",
+      },
+      {
         text: "Environment Variables",
         link: "en/usage/env-variables",
       },
