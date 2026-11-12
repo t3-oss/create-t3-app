@@ -22,6 +22,8 @@ test("signs in with Mockatoo", async ({ page }) => {
   await page.goto("http://localhost:3000");
   await page.getByRole("link", { name: "Sign in" }).click();
   await page.getByRole("button", { name: /discord/i }).click();
+  await expect(page).toHaveURL(/^https:\/\/app\.mockatoo\.globalunderdog\.com/);
+  await expect(page.locator("#email")).toBeVisible();
   await page.locator("#email").fill(process.env.MOCK_EMAIL ?? "");
   await page.locator("#password").fill(process.env.MOCK_PASSWORD ?? "");
   await page.getByRole("button", { name: "Log in with password" }).click();
@@ -38,6 +40,8 @@ import { expect, test } from "@playwright/test";
 test("signs in with Mockatoo", async ({ page }) => {
   await page.goto("http://localhost:3000");
   await page.getByRole("button", { name: "Sign in with Github" }).click();
+  await expect(page).toHaveURL(/^https:\/\/app\.mockatoo\.globalunderdog\.com/);
+  await expect(page.locator("#email")).toBeVisible();
   await page.locator("#email").fill(process.env.MOCK_EMAIL ?? "");
   await page.locator("#password").fill(process.env.MOCK_PASSWORD ?? "");
   await page.getByRole("button", { name: "Log in with password" }).click();
