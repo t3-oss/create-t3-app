@@ -10,7 +10,8 @@ export const dependencyVersionMap = {
   "@auth/drizzle-adapter": "^1.7.2",
 
   // Better-Auth
-  "better-auth": "^1.3",
+  "better-auth": "^1.7.7",
+  "@mockatoo/connect-better-auth": "^0.1.2",
 
   // Prisma
   prisma: "^6.6.0",
@@ -18,8 +19,8 @@ export const dependencyVersionMap = {
   "@prisma/adapter-planetscale": "^6.6.0",
 
   // Drizzle
-  "drizzle-kit": "^0.30.5",
-  "drizzle-orm": "^0.41.0",
+  "drizzle-kit": "^0.31.4",
+  "drizzle-orm": "^0.45.2",
   mysql2: "^3.11.0",
   "@planetscale/database": "^1.19.0",
   postgres: "^3.4.4",
