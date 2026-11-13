@@ -100,7 +100,7 @@ const getEnvContent = (
 # https://next-auth.js.org/configuration/options#secret
 AUTH_SECRET=""
 
-# Next Auth Discord Provider
+# Next Auth Discord Provider (leave blank in dev/tests; required in production)
 AUTH_DISCORD_ID=""
 AUTH_DISCORD_SECRET=""
 `;
@@ -111,7 +111,7 @@ AUTH_DISCORD_SECRET=""
 # Secret used by Better Auth
 BETTER_AUTH_SECRET=""
 
-# Better Auth GitHub OAuth
+# Better Auth GitHub OAuth (leave blank in dev/tests; required in production)
 BETTER_AUTH_GITHUB_CLIENT_ID=""
 BETTER_AUTH_GITHUB_CLIENT_SECRET=""
 `;

@@ -1,4 +1,5 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { MockDiscord } from "@mockatoo/connect-authjs";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 
@@ -38,7 +39,10 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    // Discord sends `iss` on sign-in; Auth.js rejects it unless `issuer` is set.
+    process.env.NODE_ENV === "production"
+      ? DiscordProvider({ issuer: "https://discord.com" })
+      : MockDiscord({ issuer: "https://discord.com" }),
     /**
      * ...add more providers here.
      *
