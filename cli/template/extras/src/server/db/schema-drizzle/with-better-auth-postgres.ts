@@ -8,7 +8,8 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
-export const createTable = pgTableCreator((name) => `pg-drizzle_${name}`);
+// ponytail: project1_ placeholder consumed by drizzleInstaller replace()
+export const createTable = pgTableCreator((name) => `project1_${name}`);
 
 export const posts = createTable(
   "post",
