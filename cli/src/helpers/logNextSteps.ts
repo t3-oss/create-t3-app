@@ -47,7 +47,7 @@ export const logNextSteps = async ({
     }
   }
 
-  if (packages?.nextAuth.inUse) {
+  if (packages?.nextAuth.inUse || packages?.betterAuth.inUse) {
     logger.info(
       `  Fill in your .env with necessary values. See https://create.t3.gg/en/usage/first-steps for more info.`
     );
