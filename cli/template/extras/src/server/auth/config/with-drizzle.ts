@@ -39,7 +39,10 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    process.env.NODE_ENV === "production" ? DiscordProvider : MockDiscord(),
+    // Discord sends `iss` on sign-in; Auth.js rejects it unless `issuer` is set.
+    process.env.NODE_ENV === "production"
+      ? DiscordProvider({ issuer: "https://discord.com" })
+      : MockDiscord({ issuer: "https://discord.com" }),
     /**
      * ...add more providers here.
      *
