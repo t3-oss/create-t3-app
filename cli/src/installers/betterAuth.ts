@@ -15,7 +15,10 @@ export const betterAuthInstaller: Installer = ({
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
-  const deps: AvailableDependencies[] = ["better-auth"];
+  const deps: AvailableDependencies[] = [
+    "better-auth",
+    "@mockatoo/connect-better-auth",
+  ];
   if (usingPrisma) deps.push("@auth/prisma-adapter");
   if (usingDrizzle) deps.push("@auth/drizzle-adapter");
 
