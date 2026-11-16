@@ -75,13 +75,13 @@ Notice that we only need to export our router's type definitions, which means we
 
 Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tanstack/react-query` which lets you utilize the full power of the hooks they provide, but with the added benefit of having your API calls typed and inferred. We can call our procedures from our frontend like this:
 
-```tsx:pages/users/[id].tsx
-import { useRouter } from "next/router";
-import { api } from "../../utils/api";
+```tsx:app/_components/user.tsx
+"use client";
 
-const UserPage = () => {
-  const { query } = useRouter();
-  const userQuery = api.users.getById.useQuery(query.id);
+import { api } from "~/trpc/react";
+
+export function UserProfile({ id }: { id: string }) {
+  const userQuery = api.users.getById.useQuery(id);
 
   return (
     <div>
@@ -153,13 +153,13 @@ This is where you define the routes and procedures of your API. By convention, y
 
 Here we [merge](https://trpc.io/docs/v11/server/merging-routers) all the sub-routers defined in `routers/**` into a single app router.
 
-### 📄 `utils/api.ts`
+### 📄 `trpc/react.tsx`
 
-This is the frontend entry point for tRPC. This is where you'll import the router's **type definition** and create your tRPC client along with the react-query hooks. Since we enabled `superjson` as our data transformer on the backend, we need to enable it on the frontend as well. This is because the serialized data from the backend is deserialized on the frontend.
+This is the frontend entry point for tRPC in App Router applications. This is where you'll import the router's **type definition** and create your tRPC client along with the React Query hooks via `createTRPCReact<AppRouter>()`. The `TRPCReactProvider` wraps your application in the root layout, supplying the query client and tRPC client. Since we enabled `superjson` as our data transformer on the backend, we configure `httpBatchStreamLink` with SuperJSON here as well so serialized data is automatically deserialized on the frontend.
 
-You'll define your tRPC [links](https://trpc.io/docs/v11/client/links) here, which determines the request flow from the client to the server. We use the "default" [`httpBatchLink`](https://trpc.io/docs/v11/client/links/httpBatchLink) which enables [request batching](https://cloud.google.com/compute/docs/api/how-tos/batch), as well as a [`loggerLink`](https://trpc.io/docs/v10/links/loggerLink) which outputs useful request logs during development.
+You'll define your tRPC [links](https://trpc.io/docs/v11/client/links) here, which determine the request flow from the client to the server. We use [`httpBatchStreamLink`](https://trpc.io/docs/v11/client/links/httpBatchStreamLink) which enables request batching and streaming, as well as a [`loggerLink`](https://trpc.io/docs/v11/client/links/loggerLink) which outputs useful request logs during development.
 
-Lastly, we export a [helper type](https://trpc.io/docs/client/vanilla/infer-types) which you can use to infer your types on the frontend.
+Lastly, we export `RouterInputs` and `RouterOutputs` [helper types](https://trpc.io/docs/v11/client/vanilla/infer-types) which you can use to infer your procedure inputs and outputs on the frontend.
 
 <div class="embed">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/x4mu-jOiA0Q" title="How tRPC really works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
