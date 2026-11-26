@@ -32,7 +32,7 @@ lang: ru
 - [Build a full stack app with Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
 - [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
 - [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
-- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+- [Integrating Stripe into your T3 App](https://github.com/nramkissoon/t3-stripe)
 
 ### Видео
 
